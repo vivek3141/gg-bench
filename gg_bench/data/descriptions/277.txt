@@ -1,0 +1,231 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+Divisor Duel is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the player who removes the last number from a shared list of numbers. Players take turns removing numbers according to specific mathematical rules. Victory is achieved by forcing your opponent into a position where they cannot make a valid move on their turn.
+
+## Setup
+
+- **Number List**: A shared list of even numbers from **2** to **20** inclusive.
+  ```
+  Numbers: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+  ```
+- **Players**: Two players, Player 1 and Player 2.
+- **Starting Conditions**: All numbers are available at the beginning of the game. No numbers have been removed yet.
+
+## Game Components
+
+- **Number List**: The central component is the list of even numbers from **2** to **20**. Each number can only be removed once.
+  - **Appearance**: Represented as a simple numerical list.
+  - **Functionality**: Players select numbers to remove from this list during their turns.
+- **Player Turn Indicator**: Keeps track of whose turn it is.
+- **Removed Numbers Log**: A history of numbers that have been removed, used to determine valid moves.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Available Numbers**: At the start of each turn, the current list of available numbers is displayed.
+2. **Player Action**: The active player selects a number to remove from the list, following the game rules.
+3. **Validation**: The game checks if the chosen number is a valid move.
+4. **Update Game State**:
+   - Remove the chosen number from the available list.
+   - Add the number to the removed numbers log.
+5. **Turn Progression**: The turn passes to the next player.
+
+### Order of Actions
+
+- **Player 1** starts the game and makes the first move.
+- Turns alternate between Player 1 and Player 2 until the game ends.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - Player 1 can remove **any one number** from the available list on their first turn.
+2. **Subsequent Moves**:
+   - On their turn, a player must remove a number that is either a **divisor or a multiple** of the **last number removed**.
+   - The chosen number must be present in the current available numbers list.
+3. **Invalid Moves**:
+   - If a player cannot make a valid move (no available numbers satisfy the divisor or multiple condition), they **lose the game**.
+   - If a player attempts to select an invalid number, they are prompted to choose again.
+
+### Special Conditions
+
+- **Removed Numbers**: Once a number is removed, it cannot be selected again.
+- **Game End**: The game ends when a player cannot make a valid move on their turn.
+
+### Examples of Valid and Invalid Moves
+
+- If the last removed number is **8**:
+  - **Valid Moves**: 2, 4, 16 (since they are divisors or multiples of 8 and are available).
+  - **Invalid Moves**: 6, 10 (not divisors or multiples of 8).
+
+## Scoring
+
+- **Winning the Game**: The player who removes the last number or forces the opponent into a position with no valid moves **wins the game**.
+- **No Point System**: There is no point or scoring system; the game is won by strategic play leading to victory.
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Available Numbers**:
+```
+2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Removes **12**.
+- **Available Numbers**:
+  ```
+  2, 4, 6, 8, 10, 14, 16, 18, 20
+  ```
+- **Removed Numbers**: 12
+
+#### Turn 2: Player 2
+
+- **Last Number Removed**: 12
+- **Valid Choices** (Divisors or Multiples of 12):
+  - **Valid Numbers**: 2, 4, 6, 18
+- **Action**: Removes **6**.
+- **Available Numbers**:
+  ```
+  2, 4, 8, 10, 14, 16, 18, 20
+  ```
+- **Removed Numbers**: 12, 6
+
+#### Turn 3: Player 1
+
+- **Last Number Removed**: 6
+- **Valid Choices**:
+  - **Valid Numbers**: 2, 4, 8, 12, 18 (Note: 12 is already removed)
+- **Action**: Removes **18**.
+- **Available Numbers**:
+  ```
+  2, 4, 8, 10, 14, 16, 20
+  ```
+- **Removed Numbers**: 12, 6, 18
+
+#### Turn 4: Player 2
+
+- **Last Number Removed**: 18
+- **Valid Choices**:
+  - **Valid Numbers**: 2, 6, 9 (Note: 6 is removed, 9 not in the list)
+- **Action**: Removes **2**.
+- **Available Numbers**:
+  ```
+  4, 8, 10, 14, 16, 20
+  ```
+- **Removed Numbers**: 12, 6, 18, 2
+
+#### Turn 5: Player 1
+
+- **Last Number Removed**: 2
+- **Valid Choices**:
+  - **Valid Numbers**: 4, 8, 10, 14, 16, 20
+- **Action**: Removes **4**.
+- **Available Numbers**:
+  ```
+  8, 10, 14, 16, 20
+  ```
+- **Removed Numbers**: 12, 6, 18, 2, 4
+
+#### Turn 6: Player 2
+
+- **Last Number Removed**: 4
+- **Valid Choices**:
+  - **Valid Numbers**: 8, 12, 16, 20 (Note: 12 is removed)
+- **Action**: Removes **8**.
+- **Available Numbers**:
+  ```
+  10, 14, 16, 20
+  ```
+- **Removed Numbers**: 12, 6, 18, 2, 4, 8
+
+#### Turn 7: Player 1
+
+- **Last Number Removed**: 8
+- **Valid Choices**:
+  - **Valid Numbers**: 16
+- **Action**: Removes **16**.
+- **Available Numbers**:
+  ```
+  10, 14, 20
+  ```
+- **Removed Numbers**: 12, 6, 18, 2, 4, 8, 16
+
+#### Turn 8: Player 2
+
+- **Last Number Removed**: 16
+- **Valid Choices**:
+  - **Valid Numbers**: None (Since 16's divisors/multiples are 2, 4, 8, 32, all either removed or not in the list)
+- **Result**: Player 2 cannot make a valid move and **loses the game**.
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Welcome to Divisor Duel!
+
+Available Numbers: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+
+Player 1, it's your turn.
+Select a number to remove: 12
+```
+
+#### Player 1 Turn
+
+```
+You removed 12.
+
+Available Numbers: 2, 4, 6, 8, 10, 14, 16, 18, 20
+
+Player 2, it's your turn.
+Last number removed: 12
+Valid choices are multiples or divisors of 12.
+
+Select a number to remove: 6
+```
+
+#### Player 2 Turn
+
+```
+You removed 6.
+
+Available Numbers: 2, 4, 8, 10, 14, 16, 18, 20
+
+Player 1, it's your turn.
+Last number removed: 6
+Valid choices are multiples or divisors of 6.
+
+Select a number to remove: 18
+```
+
+... and so on, until:
+
+#### Final Turn
+
+```
+Available Numbers: 10, 14, 20
+
+Player 2, it's your turn.
+Last number removed: 16
+Valid choices are multiples or divisors of 16.
+
+No valid moves available.
+Player 2 cannot make a valid move. Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the current numbers.
+- **Control the Game**: Aim to remove numbers that limit your opponent's options.
+- **Number Selection**: Choosing numbers with fewer divisors or multiples can corner your opponent.
+
+---
+
+Enjoy playing Divisor Duel! Sharpen your strategic thinking and may the best player win.

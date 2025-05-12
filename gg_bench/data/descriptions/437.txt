@@ -1,0 +1,164 @@
+# Blockade
+
+## Objective
+
+Be the last player able to place a token on the grid according to the placement rules. Outmaneuver your opponent by strategically placing your tokens to limit their available moves while maximizing your own options.
+
+## Setup
+
+- **Game Board**: A 5x5 grid representing the playing area, with cells labeled by their row and column coordinates from (1,1) to (5,5). All cells start empty.
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Tokens**: Each player has a unique token symbol:
+  - Player 1 uses `'X'`
+  - Player 2 uses `'O'`
+- **Starting Player**: Decide who goes first by mutual agreement or random selection.
+
+## Game Components
+
+- **Grid (5x5)**: Represents the game board where tokens are placed.
+- **Tokens**: Symbols used to mark positions on the grid.
+  - **Appearance**: Characters displayed in the command line (`'X'` and `'O'`).
+  - **Functionality**: Mark ownership of cells.
+  - **Unique Attributes**: Tokens are unlimited in supply and unique per player.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the designated starting player.
+- **Player Actions**:
+  - On your turn, place one of your tokens on an empty cell following the placement rules.
+- **Progression**:
+  - After placing a token, the turn passes to the opponent.
+  - The game continues until a player cannot make a valid move.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **Empty Cell**: You must place your token on an empty cell.
+2. **Non-Adjacent to Opponent**:
+   - The chosen cell **must not** be adjacent to any of your opponent's tokens.
+   - **Adjacency**: Cells directly horizontal, vertical, or diagonal (up to 8 surrounding cells).
+3. **Adjacency to Own Tokens**:
+   - You **may** place tokens adjacent to your own tokens without restriction.
+
+### Gameplay Mechanics
+
+- **Valid Moves**:
+  - A move is valid if it adheres to the placement rules.
+- **Winning the Game**:
+  - If a player cannot make a valid move on their turn, they lose.
+  - The opponent is declared the winner.
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player wins.
+
+## Scoring
+
+- **Victory**: Achieved by forcing your opponent into a position where they have no valid moves.
+- **Tracking**:
+  - No point system; the focus is on strategic placement.
+  - The game outcome is win or loss based on the ability to place a token.
+
+## Examples
+
+### Example Game
+
+#### Initial Grid
+
+All cells are empty:
+
+```
+(1,1)[ ] (1,2)[ ] (1,3)[ ] (1,4)[ ] (1,5)[ ]
+(2,1)[ ] (2,2)[ ] (2,3)[ ] (2,4)[ ] (2,5)[ ]
+(3,1)[ ] (3,2)[ ] (3,3)[ ] (3,4)[ ] (3,5)[ ]
+(4,1)[ ] (4,2)[ ] (4,3)[ ] (4,4)[ ] (4,5)[ ]
+(5,1)[ ] (5,2)[ ] (5,3)[ ] (5,4)[ ] (5,5)[ ]
+```
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - Places `'X'` at **(3,3)**.
+   - Reasons:
+     - Central position for maximum control.
+     - No adjacent opponent tokens to consider.
+   
+2. **Player 2's Turn**:
+   - Places `'O'` at **(1,1)**.
+   - Reasons:
+     - Corner position, far from `'X'` at (3,3).
+     - Opens up sides for future moves.
+
+3. **Player 1's Turn**:
+   - Places `'X'` at **(2,5)**.
+   - Reasons:
+     - Not adjacent to opponent's `'O'`.
+     - Begins to control another area of the board.
+
+4. **Player 2's Turn**:
+   - Places `'O'` at **(5,2)**.
+   - Reasons:
+     - Avoids adjacency to `'X'`.
+     - Attempts to limit Player 1's options.
+
+5. **Player 1's Turn**:
+   - Places `'X'` at **(4,4)**.
+   - Reasons:
+     - Adjacent to own token at (3,3) is allowed.
+     - Continues to expand control without violating rules.
+
+6. **Player 2's Turn**:
+   - No valid moves available.
+     - All remaining empty cells are adjacent to either `'X'` or `'O'`.
+
+#### Conclusion
+
+- **Winner**: Player 1
+- **Reason**: Player 2 has no valid moves left.
+
+### Command-Line Interaction Example
+
+```plaintext
+Welcome to Blockade!
+
+Current Grid:
+(1,1)[ ] (1,2)[ ] (1,3)[ ] (1,4)[ ] (1,5)[ ]
+(2,1)[ ] (2,2)[ ] (2,3)[ ] (2,4)[ ] (2,5)[ ]
+(3,1)[ ] (3,2)[ ] (3,3)[ ] (3,4)[ ] (3,5)[ ]
+(4,1)[ ] (4,2)[ ] (4,3)[ ] (4,4)[ ] (4,5)[ ]
+(5,1)[ ] (5,2)[ ] (5,3)[ ] (5,4)[ ] (5,5)[ ]
+
+Player 1's turn (X).
+Enter your move (row column): 3 3
+
+Player 1 placed an 'X' at (3,3).
+
+Current Grid:
+(1,1)[ ] (1,2)[ ] (1,3)[ ] (1,4)[ ] (1,5)[ ]
+(2,1)[ ] (2,2)[ ] (2,3)[ ] (2,4)[ ] (2,5)[ ]
+(3,1)[ ] (3,2)[ ] (3,3)[X] (3,4)[ ] (3,5)[ ]
+(4,1)[ ] (4,2)[ ] (4,3)[ ] (4,4)[ ] (4,5)[ ]
+(5,1)[ ] (5,2)[ ] (5,3)[ ] (5,4)[ ] (5,5)[ ]
+
+Player 2's turn (O).
+Enter your move (row column): 1 1
+
+Player 2 placed an 'O' at (1,1).
+
+...
+
+Player 2 has no valid moves left.
+Player 1 wins!
+```
+
+## Strategic Depth and Complexity
+
+- **Control Strategic Positions**:
+  - Occupying central or critical positions can limit your opponent's options.
+- **Anticipate Opponent's Moves**:
+  - Think ahead to block potential future moves of your opponent.
+- **Cluster Your Tokens**:
+  - Placing tokens adjacent to your own can expand your area of control without breaking the rules.
+
+---
+
+**Enjoy the game, and may the best strategist win!**

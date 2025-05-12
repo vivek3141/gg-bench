@@ -1,0 +1,147 @@
+# Binary Battle
+
+## Objective
+
+**Binary Battle** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to construct a binary number that meets a predefined winning condition, such as being divisible by a specific decimal number. Players build their binary numbers one bit at a time, strategically choosing between '0' and '1' to achieve the objective. Victory is achieved by creating a binary number that satisfies the winning condition on your turn before your opponent does.
+
+## Setup
+
+1. **Winning Condition**: Players agree on a winning condition before the game starts. This could be any of the following:
+   - The binary number is divisible by a specific decimal number (e.g., 3, 5, 7).
+   - The binary number equals a predetermined decimal value.
+   - The binary number has a certain number of '1's or '0's.
+
+2. **Starting State**: Both players begin with an empty binary string:
+   - Player 1's binary string: `""` (empty)
+   - Player 2's binary string: `""` (empty)
+
+3. **Turn Order**: Decide which player will take the first turn. This can be determined randomly or by agreement.
+
+## Game Components
+
+- **Binary Strings**: Each player has their own binary string, which they build during the game by appending bits ('0' or '1') on their turns.
+  
+- **Bits**: The fundamental units of the game, representing binary digits '0' and '1'.
+
+- **Winning Condition**: A predefined rule that determines what binary number will result in a win (e.g., binary number divisible by 5).
+
+- **Command-Line Interface**: Players interact with the game by inputting commands to add bits to their binary strings.
+
+## Turns
+
+1. **Turn Structure**:
+   - **Player Input**: On their turn, a player must choose to append either a '0' or a '1' to the end of their binary string.
+   - **Validation**: The game checks if the new binary string meets the winning condition.
+   - **Turn Progression**: If the winning condition is not met, the turn passes to the other player.
+
+2. **Actions During a Turn**:
+   - **Append Bit**: Add '0' or '1' to your binary string.
+   - **Display Strings**: Both players' current binary strings are displayed after each turn for transparency.
+
+## Rules and Mechanics
+
+1. **Building the Binary String**:
+   - Players can only append one bit ('0' or '1') to their binary string each turn.
+   - Bits are added to the **right end** of the string, effectively building the binary number from left to right.
+
+2. **Winning the Game**:
+   - The first player whose binary string meets the winning condition on their turn wins the game.
+   - If a player's move results in meeting the winning condition, the game ends immediately, and that player is declared the winner.
+
+3. **Strategic Considerations**:
+   - **Planning Ahead**: Players must anticipate the outcomes of their choices, considering how each bit affects their binary number relative to the winning condition.
+   - **Blocking**: Players can attempt to prevent their opponent from winning by choosing bits that may force the opponent into a less favorable position.
+
+4. **Valid Moves**:
+   - Only '0' or '1' can be added.
+   - Players cannot skip their turn or undo previous moves.
+
+5. **Game Constraints**:
+   - No maximum length for the binary strings unless agreed upon before the game starts.
+   - The game cannot end in a draw; play continues until one player wins.
+
+## Scoring
+
+- **Win**: The player who first meets the winning condition wins the game.
+- **No Points System**: There is no point tracking beyond declaring the winner.
+- **Match Play**: Players may agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example 1: Winning Condition - Binary Number Divisible by 5
+
+**Winning Condition**: First player to construct a binary number divisible by 5 wins.
+
+#### Gameplay:
+
+1. **Starting State**:
+   - Player 1's binary string: `""`
+   - Player 2's binary string: `""`
+
+2. **Turn 1 - Player 1**:
+   - Appends '1'
+   - Player 1's binary string: `"1"` (Decimal 1)
+   - Not divisible by 5.
+
+3. **Turn 2 - Player 2**:
+   - Appends '0'
+   - Player 2's binary string: `"0"` (Decimal 0)
+   - 0 is divisible by 5, but since the game started with empty strings, and adding '0' doesn't change it meaningfully, the game continues.
+
+4. **Turn 3 - Player 1**:
+   - Appends '0'
+   - Player 1's binary string: `"10"` (Decimal 2)
+   - Not divisible by 5.
+
+5. **Turn 4 - Player 2**:
+   - Appends '1'
+   - Player 2's binary string: `"01"` (Decimal 1)
+   - Not divisible by 5.
+
+6. **Turn 5 - Player 1**:
+   - Appends '1'
+   - Player 1's binary string: `"101"` (Decimal 5)
+   - Divisible by 5.
+   - **Player 1 wins!**
+
+### Command-Line Interactions
+
+**Turn Prompts**:
+
+- *Player 1, enter your bit (0 or 1):* `1`
+- *Player 1's binary string is now:* `1`
+
+- *Player 2, enter your bit (0 or 1):* `0`
+- *Player 2's binary string is now:* `0`
+
+**Winning Announcement**:
+
+- *Player 1 has constructed binary number 101 (decimal 5), which is divisible by 5.*
+- *Player 1 wins the game!*
+
+## Additional Rules (Optional Variations)
+
+- **Maximum Length**: Players may set a maximum length for binary strings to increase difficulty.
+  
+- **Alternate Winning Conditions**:
+  - Binary number is a prime number.
+  - Binary number contains a specific pattern (e.g., '1010').
+  - Binary number has an odd number of '1's.
+
+- **Hidden Strings**: For advanced play, players may keep their binary strings hidden, only revealing the decimal value after each turn.
+
+## Strategic Tips
+
+- **Understanding Binary to Decimal Conversion**: Familiarity with converting binary numbers to decimal helps in planning moves.
+
+- **Prediction**: Try to predict the opponent's potential moves and adjust your strategy to block their path to victory.
+
+- **Flexibility**: Be prepared to change tactics based on the evolving state of both binary strings.
+
+- **Winning Condition Awareness**: Keep the winning condition in mind at all times, ensuring each move brings you closer to meeting it.
+
+## Summary
+
+**Binary Battle** is a simple yet strategic game that combines elements of binary numbers and divisibility. Its minimal components and straightforward mechanics make it easy to code and play in a command-line interface. The game emphasizes planning, mathematical thinking, and anticipation of the opponent's moves, ensuring that skilled players have a consistent advantage.
+
+Have fun battling in binary, and may the best strategist win!

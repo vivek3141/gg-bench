@@ -1,0 +1,213 @@
+# Divide and Conquer
+
+## Objective
+
+**Divide and Conquer** is a two-player turn-based strategy game. The primary goal is to be the player who reduces the **Shared Number** to exactly **1** by making valid moves. Alternatively, you can win by forcing your opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+1. **Shared Number Initialization**: The game begins with a **Shared Number** set to a positive integer. For a standard game, the initial Shared Number is **100**.
+
+2. **Player Order**: Decide which player will be **Player 1** and which will be **Player 2**. This can be determined by mutual agreement or by flipping a coin.
+
+---
+
+## Game Components
+
+- **Shared Number**: A positive integer that both players manipulate according to the game rules. This number changes throughout the game based on players' actions.
+
+- **Players**: Two players who take turns making moves.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Player Action**: On your turn, you must attempt to perform a valid move as per the Rules and Mechanics.
+
+2. **Turn Completion**: After making your move, or if you cannot make a valid move, your turn ends, and play passes to your opponent.
+
+### Turn Progression
+
+- Players alternate turns throughout the game.
+- The game continues until a win condition is met.
+
+---
+
+## Rules and Mechanics
+
+### Valid Moves
+
+1. **Division by Proper Divisor**:
+
+   - On your turn, **divide** the Shared Number by one of its **proper divisors**.
+   - A **proper divisor** is a whole number greater than **1** and less than the Shared Number that divides evenly into the Shared Number (no remainder).
+
+2. **Updating the Shared Number**:
+
+   - The result of your division becomes the new Shared Number.
+   - The new Shared Number must be a whole number greater than or equal to **1**.
+
+3. **Restrictions**:
+
+   - You **cannot** divide by **1** or by the Shared Number itself.
+   - You **cannot** perform an operation that results in a non-integer or a number less than **1**.
+
+### Winning the Game
+
+- **Reducing to 1**: If, after your move, the Shared Number is exactly **1**, you win the game.
+
+### Losing the Game
+
+- **No Valid Moves**: If it's your turn and the Shared Number is a **prime number** (has no proper divisors), you cannot make a valid move and lose the game.
+
+---
+
+## Scoring
+
+- The game ends when one player wins according to the Rules and Mechanics.
+- **Winner**: The player who reduces the Shared Number to **1** on their turn or forces their opponent into a position where they cannot make a valid move.
+
+---
+
+## Examples
+
+### Example Game 1
+
+- **Initial Shared Number**: 100
+
+#### Player 1's Turn:
+
+- **Shared Number**: 100
+- **Proper Divisors of 100**: 2, 4, 5, 10, 20, 25, 50
+- **Move**: Divide by **2**
+- **New Shared Number**: 50
+
+#### Player 2's Turn:
+
+- **Shared Number**: 50
+- **Proper Divisors of 50**: 2, 5, 10, 25
+- **Move**: Divide by **2**
+- **New Shared Number**: 25
+
+#### Player 1's Turn:
+
+- **Shared Number**: 25
+- **Proper Divisors of 25**: 5
+- **Move**: Divide by **5**
+- **New Shared Number**: 5
+
+#### Player 2's Turn:
+
+- **Shared Number**: 5
+- **Proper Divisors of 5**: None (5 is prime)
+- **Outcome**: Cannot make a valid move
+- **Result**: **Player 2 loses**
+
+**Winner**: **Player 1**
+
+---
+
+### Example Game 2
+
+- **Initial Shared Number**: 60
+
+#### Player 1's Turn:
+
+- **Shared Number**: 60
+- **Proper Divisors**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- **Move**: Divide by **5**
+- **New Shared Number**: 12
+
+#### Player 2's Turn:
+
+- **Shared Number**: 12
+- **Proper Divisors**: 2, 3, 4, 6
+- **Move**: Divide by **4**
+- **New Shared Number**: 3
+
+#### Player 1's Turn:
+
+- **Shared Number**: 3
+- **Proper Divisors of 3**: None (3 is prime)
+- **Outcome**: Cannot make a valid move
+- **Result**: **Player 1 loses**
+
+**Winner**: **Player 2**
+
+---
+
+## Command-Line Interactions
+
+Below is an example of how the game might proceed in a command-line interface.
+
+### Game Start
+
+```
+Welcome to Divide and Conquer!
+The starting Shared Number is 100.
+Player 1 goes first.
+```
+
+### Player 1's Turn
+
+```
+Shared Number: 100
+Proper Divisors: 2, 4, 5, 10, 20, 25, 50
+Enter the divisor you want to use: 2
+You divided 100 by 2.
+New Shared Number is 50.
+```
+
+### Player 2's Turn
+
+```
+Shared Number: 50
+Proper Divisors: 2, 5, 10, 25
+Enter the divisor you want to use: 2
+You divided 50 by 2.
+New Shared Number is 25.
+```
+
+### Player 1's Turn
+
+```
+Shared Number: 25
+Proper Divisors: 5
+Enter the divisor you want to use: 5
+You divided 25 by 5.
+New Shared Number is 5.
+```
+
+### Player 2's Turn
+
+```
+Shared Number: 5
+Proper Divisors: None (5 is prime)
+No valid moves available. You lose.
+```
+
+### Game End
+
+```
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate the results of your moves to avoid leaving a prime number for your opponent.
+- **Prime Awareness**: Be mindful of when the Shared Number could become prime to force your opponent into a losing position.
+- **Divisor Selection**: Choose divisors that reduce the Shared Number significantly but avoid setting up your opponent for a winning move.
+
+---
+
+## Summary
+
+**Divide and Conquer** is a game of numerical strategy and foresight. Players must use their understanding of divisibility and prime numbers to outmaneuver their opponent. Each move can drastically change the game's outcome, making every decision critical. The simplicity of the rules allows for quick gameplay, while the depth of strategy provides a challenging experience for both new and seasoned players.
+
+Enjoy the battle of wits, and may the best strategist win!

@@ -1,0 +1,236 @@
+# "Number Wars" Rule Book
+
+---
+
+## Objective
+
+**"Number Wars"** is a strategic two-player turn-based game played in a command-line interface. Each player aims to reduce their opponent's Life Points (LP) from **100** to **0** by selecting unique attack numbers. The player who successfully brings the opponent's LP to zero or below **wins the game**.
+
+---
+
+## Setup
+
+1. **Starting Life Points:**
+   - Both players start with **100 LP**.
+2. **Player Records:**
+   - Keep a record (list) of all numbers each player has previously chosen.
+3. **Determine Turn Order:**
+   - Decide who takes the first turn (e.g., by coin toss or agreement).
+
+---
+
+## Game Components
+
+- **Life Points (LP):**
+  - Represents each player's health.
+  - Starts at **100** for both players.
+  - Cannot exceed 100 or go below zero.
+- **Attack Numbers:**
+  - Integers from **1** to **10** (inclusive).
+  - Each number can be used **once per player**.
+- **Player Records:**
+  - A log of numbers each player has previously chosen to avoid repeats.
+- **Command-Line Interface:**
+  - Players input their attack numbers and receive game status updates.
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns throughout the game.
+   - On each turn, only one player acts while the other waits.
+2. **Turn Actions:**
+   - **Select Attack Number:**
+     - Choose an integer between **1** and **10** that you haven't used before.
+   - **Declare Attack:**
+     - Announce the chosen number to your opponent.
+   - **Resolve Attack:**
+     - Subtract the attack number from the opponent's LP.
+     - Record the number used in your player record.
+3. **Turn Progression:**
+   - After resolving the attack, the turn passes to the opponent.
+   - The game continues until a player's LP reaches zero or below.
+
+---
+
+## Rules and Mechanics
+
+1. **Unique Number Selection:**
+   - You **cannot** select a number you've previously chosen.
+   - Keep track of your used numbers to avoid mistakes.
+2. **Attack Resolution:**
+   - The opponent's LP decreases by the value of your attack number.
+   - Negative LP values are allowed for determining the game end.
+3. **Invalid Moves:**
+   - If you choose a number you've already used:
+     - The attack **fails**.
+     - The opponent's LP remains unchanged.
+     - Your turn ends, and play passes to your opponent.
+4. **Winning the Game:**
+   - You **win** if you reduce your opponent's LP to **zero or below**.
+   - The game ends immediately upon a win condition.
+5. **No Draws:**
+   - The game cannot end in a draw.
+   - Play continues until one player wins.
+6. **Time Limits (Optional):**
+   - Players may agree on a time limit per turn to keep the game moving swiftly (e.g., 30 seconds).
+
+---
+
+## Scoring
+
+- **Life Points (LP):**
+  - Track each player's LP throughout the game.
+  - LP decreases when attacked.
+- **Winning:**
+  - Reduce your opponent's LP to zero or below to win.
+- **Losing:**
+  - If your LP reaches zero or below, you lose the game.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+**Initial State:**
+- Player 1 LP: 100
+- Player 2 LP: 100
+- Player 1 Used Numbers: none
+- Player 2 Used Numbers: none
+
+---
+
+**Turn 1 - Player 1:**
+- **Selects Attack Number:** 7
+- **Announces:** "I attack with 7!"
+- **Resolves Attack:**
+  - Player 2 LP: 100 - 7 = **93**
+- **Records Number:** 7
+- **Status Update:**
+  - Player 1 LP: 100
+  - Player 2 LP: 93
+  - Player 1 Used Numbers: 7
+
+---
+
+**Turn 2 - Player 2:**
+- **Selects Attack Number:** 5
+- **Announces:** "I attack with 5!"
+- **Resolves Attack:**
+  - Player 1 LP: 100 - 5 = **95**
+- **Records Number:** 5
+- **Status Update:**
+  - Player 1 LP: 95
+  - Player 2 LP: 93
+  - Player 2 Used Numbers: 5
+
+---
+
+**Turn 3 - Player 1:**
+- **Selects Attack Number:** 9
+- **Announces:** "I attack with 9!"
+- **Resolves Attack:**
+  - Player 2 LP: 93 - 9 = **84**
+- **Records Number:** 9
+- **Status Update:**
+  - Player 1 LP: 95
+  - Player 2 LP: 84
+  - Player 1 Used Numbers: 7, 9
+
+---
+
+**Turn 4 - Player 2:**
+- **Selects Attack Number:** 5
+- **Announces:** "I attack with 5!"
+- **Invalid Move:**
+  - Number 5 has already been used by Player 2.
+  - Attack fails; Player 1's LP remains at 95.
+- **Turn Ends:** No number is recorded; play passes to Player 1.
+- **Status Update:**
+  - Player 1 LP: 95
+  - Player 2 LP: 84
+  - Player 2 Used Numbers: 5
+
+---
+
+**Turn 5 - Player 1:**
+- **Selects Attack Number:** 4
+- **Announces:** "I attack with 4!"
+- **Resolves Attack:**
+  - Player 2 LP: 84 - 4 = **80**
+- **Records Number:** 4
+- **Status Update:**
+  - Player 1 LP: 95
+  - Player 2 LP: 80
+  - Player 1 Used Numbers: 7, 9, 4
+
+---
+
+**Game Continues...**
+
+- Players keep selecting unique numbers and attacking.
+- Players must avoid repeating their own numbers to not lose turns.
+- The game progresses until one player's LP reaches zero or below.
+
+---
+
+### Sample Command-Line Interaction
+
+```
+--- Number Wars Game Start ---
+
+Player 1 LP: 100
+Player 2 LP: 100
+
+Player 1, enter your attack number (1-10): 7
+Player 1 attacks with 7!
+Player 2 LP is now 93.
+
+Player 2, enter your attack number (1-10): 5
+Player 2 attacks with 5!
+Player 1 LP is now 95.
+
+Player 1, enter your attack number (1-10): 9
+Player 1 attacks with 9!
+Player 2 LP is now 84.
+
+Player 2, enter your attack number (1-10): 5
+Invalid move! You have already used the number 5.
+You lose your turn.
+
+Player 1, enter your attack number (1-10): 4
+Player 1 attacks with 4!
+Player 2 LP is now 80.
+
+...
+
+Player 2, enter your attack number (1-10): 10
+Player 2 attacks with 10!
+Player 1 LP is now -5.
+
+Player 2 wins the game!
+
+--- Game Over ---
+```
+
+---
+
+## Strategy Tips
+
+- **Number Management:**
+  - Use high numbers early to deal more damage but save some for later stages.
+- **Memory and Tracking:**
+  - Keep careful track of your used numbers to avoid invalid moves.
+  - Observe your opponent's used numbers to anticipate their options.
+- **Balancing Attacks:**
+  - Mix high and low numbers to maximize damage over time and maintain available options.
+- **Opponent Prediction:**
+  - Anticipate which numbers your opponent might use next to plan your strategy.
+
+---
+
+**Note:** "Number Wars" offers strategic depth through simple mechanics, making it accessible yet challenging. Players must balance immediate damage with long-term planning, making every choice critical to victory.
+
+Enjoy the battle of numbers!

@@ -1,0 +1,275 @@
+# Rule Book: **Pathfinder Duel**
+
+---
+
+## **Objective**
+
+**Pathfinder Duel** is a strategic two-player, turn-based game played on a linear path. The primary goal is to be the first player to navigate your token from your starting position to the opponent's starting position on the opposite end of the path. Victory is achieved by strategically moving your token forward and placing obstacles to hinder your opponent. The game cannot end in a draw.
+
+---
+
+## **Setup**
+
+- **Game Board**: A one-dimensional linear path consisting of 21 consecutive cells numbered from **0** to **20**.
+
+    ```
+    [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+    ```
+
+- **Player Tokens**:
+    - **Player 1** (`P1`): Starts at cell **0**.
+    - **Player 2** (`P2`): Starts at cell **20**.
+
+- **Obstacles**:
+    - Each player has **5 obstacles** (`X`) to use during the game.
+
+- **Initial Game State**:
+
+    ```
+    [P1] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [P2]
+    ```
+
+---
+
+## **Game Components**
+
+### **Tokens**
+
+- **Player Tokens**:
+    - Represented by `P1` and `P2`.
+    - Indicate each player's current position on the path.
+
+### **Obstacles**
+
+- Represented by `X`.
+- Can be placed on empty cells to block the opponent's movement.
+- Each player has a limited supply of 5 obstacles.
+
+### **The Path**
+
+- A linear array of 21 cells.
+- Cells can be:
+    - **Empty** (`[ ]`)
+    - **Occupied by a Player Token** (`[P1]` or `[P2]`)
+    - **Occupied by an Obstacle** (`[X]`)
+
+---
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions Per Turn**: On their turn, a player must choose one of the following actions:
+    1. **Move** their token forward by **1**, **2**, or **3** cells.
+    2. **Place** an obstacle on an empty cell within range.
+- **Turn Progression**:
+    - Players continue taking turns until one player's token reaches the opponent's starting cell, resulting in a win.
+
+---
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+- **Moving Forward**:
+    - A player may move their token forward toward the opponent's side by **1**, **2**, or **3** cells.
+    - **Example**: If `P1` is on cell **3**, they can move to cell **4**, **5**, or **6**.
+
+- **Movement Restrictions**:
+    - Cannot move onto a cell occupied by an **Obstacle** (`X`) or the **Opponent's Token**.
+    - Cannot move beyond cell **20** (`P1`) or cell **0** (`P2`).
+
+- **No Backward Movement**:
+    - Tokens cannot move backward.
+
+### **Obstacle Placement Rules**
+
+- **Placing Obstacles**:
+    - Instead of moving, a player may place an obstacle (`X`).
+    - **Placement Range**:
+        - Player can place an obstacle on any empty cell within **5 cells ahead** of their token.
+        - Obstacles cannot be placed on the current cell of the player's token.
+
+    - **Obstacle Limit**:
+        - Each player has **5 obstacles** for the entire game.
+
+- **Obstacle Restrictions**:
+    - Cannot place an obstacle on a cell already occupied by a **Token** or **Obstacle**.
+    - Cannot block the path entirely; there must always be at least one route for the opponent to advance.
+
+### **Interacting with Obstacles**
+
+- **Removing Obstacles**:
+    - A player can remove an opponent's obstacle by **landing exactly** on the cell occupied by the obstacle.
+    - The obstacle is removed, and the player's token occupies that cell.
+
+- **Cannot Jump Over Obstacles**:
+    - Players cannot move past an obstacle without first removing it.
+
+### **Victory Condition**
+
+- **Winning the Game**:
+    - The first player to reach the opponent's starting cell (**Player 1** reaching cell **20**, **Player 2** reaching cell **0**) wins the game.
+
+---
+
+## **Scoring**
+
+- **No Point System**:
+    - The game does not track points.
+- **Win Condition**:
+    - The game is won immediately when a player reaches the opponent's starting position.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+#### **Initial State**
+
+```
+[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]  [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[P1] [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [P2]
+```
+
+#### **Turn 1: Player 1**
+
+- **Action**: Move forward **3** cells.
+- **New Position**: Cell **3**.
+
+```
+[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]  [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[ ]  [ ]  [ ]  [P1] [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [P2]
+```
+
+#### **Turn 2: Player 2**
+
+- **Action**: Place obstacle at cell **17**.
+- **Obstacles Left**: **4**
+
+```
+[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]  [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[ ]  [ ]  [ ]  [P1] [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [X]  [ ]  [ ]  [P2]
+```
+
+#### **Turn 3: Player 1**
+
+- **Action**: Move forward **3** cells to cell **6**.
+- **New Position**: Cell **6**
+
+```
+[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]  [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [P1] [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [X]  [ ]  [ ]  [P2]
+```
+
+#### **Turn 4: Player 2**
+
+- **Action**: Move forward **3** cells to cell **17**.
+- **Note**: Cell **17** has an obstacle.
+- **Resolution**: Player cannot move to cell **17**. Chooses to move **2** cells to cell **18** instead.
+
+```
+[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]  [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [P1] [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [X]  [P2] [ ]  [ ]
+```
+
+#### **Turn 5: Player 1**
+
+- **Action**: Place obstacle at cell **9**.
+- **Obstacles Left**: **4**
+
+```
+[0]  [1]  [2]  [3]  [4]  [5]  [6]  [7]  [8]  [9]  [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [P1] [ ]  [ ]  [X]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [X]  [P2] [ ]  [ ]
+```
+
+#### **Subsequent Turns**
+
+Players continue taking actions, either moving their tokens forward or placing obstacles strategically, until one player reaches the opponent's starting cell.
+
+---
+
+### **Sample Command-Line Interactions**
+
+#### **Starting the Game**
+
+```
+Welcome to Pathfinder Duel!
+
+Player 1 (P1) starts at position 0.
+Player 2 (P2) starts at position 20.
+
+Each player has 5 obstacles (X).
+```
+
+#### **Displaying the Board**
+
+```
+Current Board:
+[0][1][2][3][4][5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20]
+[P1][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][P2]
+```
+
+#### **Player Turn Prompt**
+
+- **Player 1's Turn**:
+
+    ```
+    Player 1's Turn.
+    Choose an action:
+    1. Move forward (1-3 cells)
+    2. Place an obstacle
+    Your choice: 1
+    Enter cells to move forward (1-3): 3
+    You moved to position 3.
+    ```
+
+- **Player 2's Turn**:
+
+    ```
+    Player 2's Turn.
+    Choose an action:
+    1. Move forward (1-3 cells)
+    2. Place an obstacle
+    Your choice: 2
+    Enter position to place obstacle (within 5 cells ahead): 17
+    Obstacle placed at position 17.
+    Obstacles remaining: 4
+    ```
+
+#### **Invalid Move Handling**
+
+- **Attempting to Move onto an Obstacle**:
+
+    ```
+    Player 2's Turn.
+    Choose an action:
+    1. Move forward (1-3 cells)
+    2. Place an obstacle
+    Your choice: 1
+    Enter cells to move forward (1-3): 3
+    Cannot move to position 17, obstacle in the way.
+    Choose a different action.
+    ```
+
+#### **Winning the Game**
+
+- **Player Reaches Opponent's Starting Cell**:
+
+    ```
+    Player 1 moved to position 20.
+    Congratulations, Player 1! You have reached the opponent's starting position and won the game!
+    ```
+
+---
+
+## **Strategy Tips**
+
+- **Balance Movement and Obstacles**: Decide when to advance quickly and when to slow your opponent by placing obstacles.
+- **Predict Opponent's Moves**: Try to anticipate where your opponent will move and place obstacles accordingly.
+- **Conserve Obstacles**: Use obstacles wisely; you have a limited number.
+- **Clearing the Path**: Remember that landing on an obstacle removes it, allowing you to progress.
+
+---
+
+Enjoy your game of **Pathfinder Duel**! May the best strategist win.

@@ -1,0 +1,180 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the player who makes the last valid move by reducing a shared number, **N**, to a prime number or zero. Players take turns subtracting proper divisors of the current number **N**. The player who cannot make a valid move on their turn loses the game.
+
+---
+
+## Setup
+
+1. **Starting Number Selection**:
+   - Players agree on a positive integer **N** to start the game. It can be any integer greater than 1. For a quick game, it's recommended to choose a smaller number (e.g., between 10 and 30).
+
+2. **Player Assignment**:
+   - Decide which player will take the first turn. This can be determined randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Shared Number (**`N`**)**:
+  - A positive integer that both players will manipulate throughout the game. It is displayed prominently in the command-line interface at the start and updated after each turn.
+
+- **Proper Divisors**:
+  - The numbers that divide **N** exactly, excluding 1 and **N** itself. These are the options a player can choose from on their turn.
+
+- **Players**:
+  - **Player 1** and **Player 2**, who will alternate turns.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with the player designated during setup.
+
+2. **Turn Structure**:
+   - **Displaying Current Number**: The current value of **N** is displayed.
+   - **Calculating Proper Divisors**: The game lists all proper divisors of **N** (excluding 1 and **N**).
+   - **Player Action**: The player selects one of the listed proper divisors to subtract from **N**.
+   - **Updating Number**: **N** is updated to `N - (chosen divisor)`.
+   - **Turn End**: The turn ends, and control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On their turn, a player must subtract one of the proper divisors of the current **N** (excluding 1 and **N** itself).
+   - If **N** has no proper divisors other than 1 and itself (i.e., **N** is a prime number or 1), the player cannot make a move and loses the game.
+
+2. **Proper Divisors Calculation**:
+   - Proper divisors are all positive integers less than **N** that divide **N** without leaving a remainder, excluding 1 and **N**.
+   - The game will assist by listing these divisors at the start of each turn.
+
+3. **End of Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The last player who made a valid move is declared the winner.
+
+4. **No Draws**:
+   - There is no possibility of a draw. The game will always result in a win for one player.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The winner is the player who forces the opponent into a position where they cannot make a valid move.
+  - There is no point-scoring system; victory is achieved by making the last valid move.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Starting Conditions:
+
+- **Starting Number (**`N`**)**: 21
+- **Player 1**: Alice
+- **Player 2**: Bob
+- **Player 1** takes the first turn.
+
+---
+
+#### Turn-by-Turn Breakdown:
+
+**--- Turn 1 ---**
+
+- **Current N**: 21
+- **Proper Divisors of 21**: 3, 7
+- **Alice's Move**:
+  - Chooses to subtract 7.
+  - **Calculation**: 21 - 7 = 14
+- **Updated N**: 14
+
+**--- Turn 2 ---**
+
+- **Current N**: 14
+- **Proper Divisors of 14**: 2, 7
+- **Bob's Move**:
+  - Chooses to subtract 7.
+  - **Calculation**: 14 - 7 = 7
+- **Updated N**: 7
+
+**--- Turn 3 ---**
+
+- **Current N**: 7
+- **Proper Divisors of 7**: None (since 7 is a prime number)
+- **Alice's Move**:
+  - Cannot make a valid move.
+- **Result**:
+  - **Bob wins** because Alice cannot make a valid move.
+
+---
+
+### Sample Command-Line Interaction
+
+Below is an example of how the game might play out in a command-line interface.
+
+#### Game Start:
+
+```
+Welcome to Divisor Duel!
+
+Enter the starting number (N): 15
+
+Player 1 (Alice) will go first.
+```
+
+#### Turn 1 - Alice:
+
+```
+Current N: 15
+Proper divisors of 15 (excluding 1 and 15): 3, 5
+
+Alice, it's your turn.
+Enter a proper divisor to subtract: 5
+
+You chose to subtract 5 from N.
+Updated N is now: 10
+```
+
+#### Turn 2 - Bob:
+
+```
+Current N: 10
+Proper divisors of 10 (excluding 1 and 10): 2, 5
+
+Bob, it's your turn.
+Enter a proper divisor to subtract: 5
+
+You chose to subtract 5 from N.
+Updated N is now: 5
+```
+
+#### Turn 3 - Alice:
+
+```
+Current N: 5
+Proper divisors of 5 (excluding 1 and 5): None
+
+Alice, there are no valid moves. You cannot make a move.
+
+Bob wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider the consequences of your move on the subsequent turns. Try to force your opponent into a position where the remaining N is a prime number on their turn.
+
+- **Avoid Prime Numbers on Your Turn**: Try not to reduce N to a prime number on your turn unless it guarantees a win.
+
+- **Use Larger Divisors When Advantageous**: Subtracting larger proper divisors can rapidly decrease N, but ensure that it doesn't give an advantage to your opponent.
+
+---
+
+Enjoy playing **Divisor Duel**, and may the best strategist win!

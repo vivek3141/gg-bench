@@ -1,0 +1,226 @@
+# Bitwise Battle: Rule Book
+
+Welcome to **Bitwise Battle**, an engaging two-player, turn-based game designed for the command-line interface. This game combines strategy with basic binary arithmetic, offering a unique and competitive experience. Sharpen your logic skills and outsmart your opponent to emerge victorious!
+
+## Objective
+
+Be the **first player** to construct a binary number that satisfies a specific winning condition. Players take turns appending bits (0 or 1) to a shared binary sequence. The goal is to strategically add bits to create a binary number that meets the predefined condition while preventing your opponent from doing the same.
+
+## Setup
+
+1. **Select Winning Condition**: Before starting, players agree on a winning condition for the binary number. Examples include:
+   - The binary number is divisible by a specific integer (e.g., 3, 5, 7).
+   - The binary number has a set number of 1s (e.g., exactly four 1s).
+   - The binary number equals a specific decimal number when converted.
+
+2. **Initialize Game State**:
+   - Begin with an **empty binary sequence**.
+   - Decide who takes the **first turn** (e.g., flip a coin).
+
+## Game Components
+
+- **Binary Sequence**: A shared sequence of bits (0s and 1s) that represents the binary number being constructed.
+- **Bits**:
+  - **0**: Represents the binary digit zero.
+  - **1**: Represents the binary digit one.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns.
+   - On each turn, a player appends **one bit** (either `0` or `1`) to the **end** of the binary sequence.
+
+2. **Actions Per Turn**:
+   - **Choose Bit**: Decide to add a `0` or a `1`.
+   - **Update Sequence**: Append the chosen bit to the binary sequence.
+
+3. **Example Turn**:
+   - Current Sequence: `101`
+   - Player's Choice: `1`
+   - Updated Sequence: `1011`
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - Each turn must involve adding **only one bit** (`0` or `1`).
+   - Bits are always added to the **end** of the binary sequence.
+
+2. **Winning Condition**:
+   - The game ends when a player creates a binary sequence that **satisfies the winning condition** on their turn.
+   - The winning condition is checked **immediately** after a bit is added.
+
+3. **Preventing Opponent's Win**:
+   - Players must anticipate and block potential winning moves by their opponent.
+   - Strategic bit selection is crucial to control the sequence's progression.
+
+4. **No Backtracking**:
+   - Once a bit is added, it cannot be changed or removed.
+   - Players cannot skip their turn.
+
+5. **Sequence Limit**:
+   - The maximum length of the binary sequence is **20 bits** to ensure the game concludes in a timely manner.
+   - If the maximum length is reached without a winner, the player who made the **last move** loses the game.
+
+## Scoring
+
+- **Victory**: The player who first creates a binary number meeting the winning condition wins the game.
+- **No Ongoing Scoring**: There are no points; the game is won by meeting the condition.
+- **Match Play (Optional)**:
+  - Players can compete in multiple rounds.
+  - Keep track of wins to determine an overall champion.
+
+## Examples
+
+### Example 1: Divisibility Condition
+
+**Winning Condition**: The binary number is divisible by **3**.
+
+**Game Play**:
+
+1. **Initial State**:
+   - Binary Sequence: (empty)
+
+2. **Turn 1**:
+   - **Player 1** adds `1`.
+   - Sequence: `1` (Decimal: 1)
+
+3. **Turn 2**:
+   - **Player 2** adds `0`.
+   - Sequence: `10` (Decimal: 2)
+
+4. **Turn 3**:
+   - **Player 1** adds `1`.
+   - Sequence: `101` (Decimal: 5)
+
+5. **Turn 4**:
+   - **Player 2** adds `1`.
+   - Sequence: `1011` (Decimal: 11)
+
+6. **Turn 5**:
+   - **Player 1** adds `0`.
+   - Sequence: `10110` (Decimal: 22)
+
+7. **Turn 6**:
+   - **Player 2** adds `1`.
+   - Sequence: `101101` (Decimal: 45)
+
+   - **Check Winning Condition**: 45 is divisible by 3.
+
+   - **Player 2 Wins!**
+
+### Example 2: Number of Ones Condition
+
+**Winning Condition**: The binary number contains **exactly four `1`s**.
+
+**Game Play**:
+
+1. **Initial State**:
+   - Binary Sequence: (empty)
+   - `1` Count: 0
+
+2. **Turn 1**:
+   - **Player 1** adds `1`.
+   - Sequence: `1`
+   - `1` Count: 1
+
+3. **Turn 2**:
+   - **Player 2** adds `0`.
+   - Sequence: `10`
+   - `1` Count: 1
+
+4. **Turn 3**:
+   - **Player 1** adds `1`.
+   - Sequence: `101`
+   - `1` Count: 2
+
+5. **Turn 4**:
+   - **Player 2** adds `1`.
+   - Sequence: `1011`
+   - `1` Count: 3
+
+6. **Turn 5**:
+   - **Player 1** adds `0`.
+   - Sequence: `10110`
+   - `1` Count: 3
+
+7. **Turn 6**:
+   - **Player 2** adds `1`.
+   - Sequence: `101101`
+   - `1` Count: 4
+
+   - **Check Winning Condition**: Sequence has four `1`s.
+
+   - **Player 2 Wins!**
+
+### Command-Line Interaction Sample
+
+Assuming the winning condition is **binary number divisible by 5**.
+
+**Game Start**:
+
+```
+Welcome to Bitwise Battle!
+Winning Condition: Binary number divisible by 5.
+
+Player 1's turn.
+Current Sequence: 
+Choose a bit to add (0 or 1): 1
+
+Player 2's turn.
+Current Sequence: 1
+Choose a bit to add (0 or 1): 0
+
+Player 1's turn.
+Current Sequence: 10
+Choose a bit to add (0 or 1): 1
+
+Player 2's turn.
+Current Sequence: 101
+Choose a bit to add (0 or 1): 0
+
+Player 1's turn.
+Current Sequence: 1010
+Choose a bit to add (0 or 1): 1
+
+Checking winning condition...
+Binary Sequence: 10101 (Decimal: 21)
+21 mod 5 = 1
+
+Player 1's turn ends. No win yet.
+
+Player 2's turn.
+Current Sequence: 10101
+Choose a bit to add (0 or 1): 0
+
+Checking winning condition...
+Binary Sequence: 101010 (Decimal: 42)
+42 mod 5 = 2
+
+Player 2's turn ends. No win yet.
+
+Player 1's turn.
+Current Sequence: 101010
+Choose a bit to add (0 or 1): 1
+
+Checking winning condition...
+Binary Sequence: 1010101 (Decimal: 85)
+85 mod 5 = 0
+
+Player 1 Wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Think about how your bit choice affects the binary number's value and the winning condition.
+- **Block Opponent**: Anticipate your opponent's moves. If they are close to winning, choose bits that make the winning condition harder to achieve.
+- **Bit Significance**: Remember that adding bits changes the number significantly. Appending a `1` doubles the current value and adds one.
+- **Odd and Even**: Use knowledge of how adding `0` or `1` affects the parity (odd or even) of the number if the condition depends on it.
+- **Calculation**: Be quick and accurate in converting binary to decimal if necessary.
+
+## Conclusion
+
+**Bitwise Battle** is a fast-paced and strategic game that tests players' logical thinking and understanding of binary numbers. With simple rules and deep strategic potential, it's perfect for quick matches or competitive series. Enjoy the challenge and may the best strategist win!
+
+---
+
+*Happy gaming!*

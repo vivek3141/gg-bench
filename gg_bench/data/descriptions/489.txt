@@ -1,0 +1,215 @@
+# Digit Duel
+
+## Objective
+
+Be the first player to strategically assemble a **lower 4-digit number** than your opponent by selecting and assigning digits from a shared pool. Utilize clever decision-making to place digits in your own number or sabotage your opponent by assigning unfavorable digits to theirs. The player with the **lower final 4-digit number** wins the game.
+
+## Setup
+
+1. **Digit Pool Initialization**:
+   - Create a shared pool containing digits **0** through **9**, with **two copies of each digit**. This results in a pool of **20 digits**.
+2. **Player Number Boards**:
+   - Each player has a personal number board with **four empty slots** representing the **thousands**, **hundreds**, **tens**, and **ones** places:
+     ```
+     +----------+
+     | _ _ _ _ |
+     +----------+
+       T H T O
+     ```
+   - **T**: Thousands place
+   - **H**: Hundreds place
+   - **T**: Tens place
+   - **O**: Ones place
+3. **Determine Starting Player**:
+   - Decide which player goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Digit Pool**:
+  - Shared between both players.
+  - Contains digits **0-9**, each appearing **twice**.
+  - Digits are removed from the pool once selected.
+- **Player Number Boards**:
+  - Each player has their own board to construct their 4-digit number.
+  - Positions:
+    - **Thousands (T)**
+    - **Hundreds (H)**
+    - **Tens (T)**
+    - **Ones (O)**
+- **Digits**:
+  - Digits range from **0** to **9**.
+  - Players assign digits to positions on their own or opponent's board.
+
+## Turns
+
+1. **Digit Selection**:
+   - On your turn, **select one digit** from the shared digit pool.
+2. **Digit Assignment**:
+   - Assign the selected digit to **any empty position** on either:
+     - **Your own number board**, or
+     - **Your opponent's number board**.
+   - Once assigned, digits **cannot be moved**.
+3. **Turn Progression**:
+   - Players **alternate turns**.
+   - The game continues until **all positions** on both number boards are filled.
+
+## Rules and Mechanics
+
+- **Digit Availability**:
+  - Only digits present in the digit pool can be selected.
+  - Once a digit is selected and assigned, it is **removed** from the pool.
+- **Assignment Restrictions**:
+  - You **must** assign the selected digit during your turn.
+  - You cannot skip your turn or pass.
+- **Placement Strategy**:
+  - Consider the impact of assigning digits to:
+    - **Your own board** to lower your final number.
+    - **Your opponent's board** to increase their final number.
+- **Final Number Formation**:
+  - Once all positions are filled, each player's board forms a **4-digit number**.
+  - The numbers are read from left to right (thousands to ones place).
+
+## Scoring
+
+- **Winning the Game**:
+  - After all digits are assigned, compare the final 4-digit numbers.
+  - The player with the **lower number** **wins** the game.
+- **Tie-Breaker**:
+  - In the unlikely event of a tie (identical numbers):
+    - **The second player wins** to avoid a draw.
+- **No Draws**:
+  - The game is designed with mechanics to **prevent draws**.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial State
+
+- **Digit Pool**:
+  ```
+  [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+  ```
+- **Player Boards**:
+  - **Player 1**: `_ _ _ _`
+  - **Player 2**: `_ _ _ _`
+
+#### Turn-by-Turn Example
+
+##### Turn 1: Player 1
+
+- **Digit Selected**: `9`
+- **Action**: Assigns `9` to **Player 2's thousands place**.
+- **Reasoning**: Forces Player 2 to have a high starting digit.
+- **Updated Boards**:
+  - **Player 1**: `_ _ _ _`
+  - **Player 2**: `9 _ _ _`
+- **Updated Digit Pool**:
+  ```
+  [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9]
+  ```
+
+##### Turn 2: Player 2
+
+- **Digit Selected**: `0`
+- **Action**: Assigns `0` to **their own thousands place**.
+- **Reasoning**: Ensures their number starts as low as possible.
+- **Updated Boards**:
+  - **Player 1**: `0 _ _ _`
+  - **Player 2**: `9 _ _ _`
+- **Updated Digit Pool**:
+  ```
+  [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9]
+  ```
+
+##### Turn 3: Player 1
+
+- **Digit Selected**: `1`
+- **Action**: Assigns `1` to **their own hundreds place**.
+- **Reasoning**: Builds a low number for themselves.
+- **Updated Boards**:
+  - **Player 1**: `0 1 _ _`
+  - **Player 2**: `9 _ _ _`
+- **Updated Digit Pool**:
+  ```
+  [0, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9]
+  ```
+
+##### Turn 4: Player 2
+
+- **Digit Selected**: `8`
+- **Action**: Assigns `8` to **Player 1's hundreds place**.
+- **Reasoning**: Increases Player 1's number.
+- **Updated Boards**:
+  - **Player 1**: `0 1 _ _`
+  - **Player 2**: `9 _ 8 _`
+- **Updated Digit Pool**:
+  ```
+  [0, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 9]
+  ```
+
+##### Subsequent Turns
+
+- Players continue selecting and assigning digits.
+- Strategic choices are made to minimize one's own number and maximize the opponent's number.
+
+#### Final Boards
+
+- **Player 1**: `0 1 7 5` (Final number: `0175`)
+- **Player 2**: `9 2 8 6` (Final number: `9286`)
+
+#### Outcome
+
+- **Winner**: **Player 1** wins with the lower number (`0175` vs. `9286`).
+
+### Sample Command-Line Interaction
+
+```
+Welcome to Digit Duel!
+
+The digit pool is: 0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+
+Player 1, it's your turn.
+Available digits: [0, 0, 1, 1, ..., 9, 9]
+Enter the digit you want to select: 9
+Assign digit '9' to which player? (1 for you, 2 for opponent): 2
+Assign to which position? (T/H/T/O): T
+Player 1 assigned digit '9' to Player 2's thousands place.
+
+Player 2, it's your turn.
+Available digits: [0, 0, 1, 1, ..., 8, 8, 9]
+Enter the digit you want to select: 0
+Assign digit '0' to which player? (1 for you, 2 for opponent): 1
+Assign to which position? (T/H/T/O): T
+Player 2 assigned digit '0' to their own thousands place.
+
+...
+
+[Game continues until all positions are filled]
+
+Final Numbers:
+Player 1: 0175
+Player 2: 9286
+
+Player 1 wins!
+```
+
+## Strategies and Tips
+
+- **Anticipate Opponent's Moves**:
+  - Pay attention to which digits remain in the pool.
+  - Predict which digits your opponent may want next.
+- **Balance Offense and Defense**:
+  - Decide when to improve your own number vs. sabotaging your opponent's number.
+- **Manage Zeroes Wisely**:
+  - Assign zeroes to your own highest places to lower your number.
+  - Assign high digits to your opponent's highest places.
+- **Position Priorities**:
+  - Thousands and hundreds places have a greater impact on the final number.
+  - Consider filling these positions strategically early in the game.
+
+## Conclusion
+
+Digit Duel combines luck with strategic depth, challenging players to outwit their opponents through clever digit assignments. By carefully choosing when to bolster your own number or hinder your opponent's progress, skilled players can consistently secure victory.
+
+Enjoy the game and may the savviest strategist win!

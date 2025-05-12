@@ -1,0 +1,150 @@
+# Dividers: The Ultimate Numerical Showdown
+
+## Objective
+
+**Dividers** is a strategic two-player turn-based game where players race to reduce a starting number, known as the **Pile**, to exactly **1**. The primary goal is to be the player who successfully reduces the Pile to **1** by dividing it with carefully chosen divisors. If a player cannot make a valid move on their turn, they lose the game. The game demands foresight and strategic planning, ensuring that a skilled player can consistently outperform an unskilled opponent.
+
+## Setup
+
+- **Starting Pile**: The game begins with the Pile set to **100**.
+- **Players**: Two players will alternate turns. Decide who will be **Player 1** and **Player 2**. Player 1 makes the first move.
+- **Interface**: The game is played in a command-line interface where players input their chosen divisors when prompted.
+
+## Game Components
+
+- **Pile**: A shared number that players will manipulate throughout the game. It starts at **100** and changes based on players' moves.
+- **Divisors**: Whole numbers greater than **1** that players select to divide the current Pile. Divisors must meet specific criteria detailed in the rules.
+- **Command-Line Interface**: The medium through which players input their moves and receive game updates.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Actions Per Turn**:
+  1. **Valid Divisor Selection**: The player selects a valid divisor based on the current Pile.
+  2. **Pile Update**: The Pile is divided by the chosen divisor, and the result becomes the new Pile value.
+  3. **Display**: The game displays the new Pile value and prompts the next player.
+
+## Rules and Mechanics
+
+### Valid Divisors
+
+On each turn, the player must choose a divisor (**D**) that adheres to the following rules:
+
+1. **Whole Number Greater Than 1**: \( D > 1 \).
+2. **Divides Evenly Into the Pile**: The Pile divided by \( D \) must result in a whole number with no remainder.
+3. **Less Than Current Pile**: \( D < \) current Pile value.
+4. **Less Than or Equal to Half of the Pile**: \( D \leq \frac{\text{current Pile}}{2} \).
+
+### Pile Reduction
+
+- **Updating the Pile**: After a valid divisor is chosen, the Pile is updated by dividing it by \( D \):
+  \[
+  \text{New Pile} = \frac{\text{Current Pile}}{D}
+  \]
+- **Valid Moves Only**: If the player cannot find a valid divisor on their turn, they lose the game.
+
+### Winning the Game
+
+- **Achieving Pile of 1**: The player who reduces the Pile to exactly **1** wins the game.
+- **Opponent's Inability to Move**: If a player cannot make a valid move (i.e., cannot find a valid divisor that meets all criteria), they lose, and their opponent wins.
+
+### Additional Rules
+
+- **No Repeats on the Same Pile Value**: If the Pile returns to a previous value during the game, all previous moves remain valid as long as the divisor rules are followed.
+- **No Skipping Turns**: Players must make a valid move on their turn if possible.
+
+## Scoring
+
+- **Win/Loss Outcome**: The game is determined by a win or loss outcome without points.
+- **Tracking Wins**: Players may choose to play multiple rounds and keep track of the number of games won.
+
+## Examples
+
+### Example 1: Strategic Play
+
+**Starting Pile**: 100
+
+#### Player 1's Turn
+
+- **Possible Divisors**: 2, 4, 5, 10, 20, 25, 50 (divisors of 100 that are ≤50)
+- **Choice**: Player 1 selects **D = 4**.
+- **Pile Update**: \( \frac{100}{4} = 25 \)
+- **New Pile**: 25
+
+#### Player 2's Turn
+
+- **Possible Divisors**: 5 (since \( \frac{25}{2} = 12.5 \), divisors must be ≤12)
+- **Choice**: Player 2 selects **D = 5**.
+- **Pile Update**: \( \frac{25}{5} = 5 \)
+- **New Pile**: 5
+
+#### Player 1's Turn
+
+- **Possible Divisors**: None (since divisors must be >1 and ≤2.5)
+- **Outcome**: Player 1 cannot make a valid move and loses.
+- **Winner**: Player 2
+
+### Example 2: Extended Play
+
+**Starting Pile**: 100
+
+#### Player 1's Turn
+
+- **Choice**: **D = 2**
+- **New Pile**: \( \frac{100}{2} = 50 \)
+
+#### Player 2's Turn
+
+- **Choice**: **D = 5**
+- **New Pile**: \( \frac{50}{5} = 10 \)
+
+#### Player 1's Turn
+
+- **Choice**: **D = 2**
+- **New Pile**: \( \frac{10}{2} = 5 \)
+
+#### Player 2's Turn
+
+- **Possible Divisors**: None (since \( D \leq \frac{5}{2} = 2.5 \), and 2 does not divide 5 evenly)
+- **Outcome**: Player 2 cannot make a valid move and loses.
+- **Winner**: Player 1
+
+## Command-Line Interaction
+
+### Sample Turn
+
+```
+Current Pile: 100
+Player 1, enter your divisor: 4
+You chose 4. New Pile is 25.
+
+Current Pile: 25
+Player 2, enter your divisor: 5
+You chose 5. New Pile is 5.
+
+Current Pile: 5
+Player 1, enter your divisor: 
+No valid divisors available. You lose!
+Player 2 wins the game!
+```
+
+### Valid Move Prompt
+
+- The game may assist players by listing possible valid divisors on their turn.
+
+### Invalid Move Handling
+
+- If a player enters an invalid divisor, the game will prompt them to choose again:
+  ```
+  Invalid divisor. Please select a whole number greater than 1, less than the current Pile, divides evenly into the Pile, and is less than or equal to half of the Pile.
+  ```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future Pile values to force your opponent into a position with no valid moves.
+- **Reduce Options**: Choose divisors that limit the next player's possible moves.
+- **Control the Pile**: Aim for Pile values that have fewer divisors, increasing the chance your opponent cannot make a valid move.
+
+---
+
+Enjoy the challenge of **Dividers** and may the best strategist win!

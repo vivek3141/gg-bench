@@ -1,0 +1,289 @@
+**Game Title:** Capture Squares
+
+---
+
+## **Objective**
+
+Capture Squares is a two-player turn-based strategy game. The primary goal is to gain the highest total score by capturing numbered squares on a shared grid. Players strategically select squares to maximize their score while limiting their opponent's opportunities. The player with the highest total score at the end of the game wins.
+
+---
+
+## **Setup**
+
+1. **Game Board:** The game is played on a 3x3 grid, consisting of 9 squares.
+
+2. **Number Assignment:** Each square is assigned a unique number from 1 to 9. These numbers are randomly distributed across the grid at the start of the game. All numbers are visible to both players.
+
+3. **Player Roles:**
+   - **Player 1:** Takes the first turn.
+   - **Player 2:** Takes the second turn.
+
+---
+
+## **Game Components**
+
+- **3x3 Grid:** Represents the game board with positions labeled for reference (e.g., positions 1 to 9 or coordinates).
+
+- **Numbered Squares:** Each square contains a distinct number from 1 to 9. The numbers serve both as the score value and as a strategic element for capturing additional squares.
+
+- **Score Tracker:** A method (such as a notepad or built-in score display) to keep track of each player's total score throughout the game.
+
+- **Command-Line Interface (CLI):** The game is played via text-based commands entered into a command-line interface.
+
+---
+
+## **Turns**
+
+1. **Turn Order:** Players alternate turns, starting with Player 1.
+
+2. **Actions Per Turn:**
+   - **Selection Phase:** The active player selects one available (uncaptured) square on the grid.
+   - **Capture Phase:** The active player captures the selected square and any eligible adjacent squares.
+   - **Scoring Phase:** The captured squares' numbers are added to the active player's total score.
+   - **Update Phase:** The grid is updated to reflect captured squares, and the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+### **1. Square Selection**
+
+- On your turn, you must select any one available square on the grid.
+- The selected square is immediately captured and removed from the grid.
+
+### **2. Capturing Adjacent Squares**
+
+- After capturing the selected square, you may also capture any orthogonally adjacent squares (up, down, left, right) if they meet the following condition:
+  - **Capture Condition:** The number in the adjacent square is **less than** the number in the square you selected.
+- All captured adjacent squares are removed from the grid.
+
+### **3. Scoring**
+
+- Your score for the turn is the sum of the numbers in all squares you captured during that turn (the selected square plus any eligible adjacent squares).
+- Keep a cumulative total of your score after each turn.
+
+### **4. Game Progression**
+
+- The game continues with players alternating turns until all squares on the grid have been captured.
+
+### **5. Winning the Game**
+
+- After all squares have been captured, the player with the **higher total score** wins the game.
+- Since there are 45 points available (sum of numbers 1 to 9), ties are impossible under standard play. There is no draw mechanism.
+
+---
+
+## **Scoring**
+
+- **Turn Score:** Sum of all numbers captured during a single turn.
+- **Total Score:** Cumulative sum of all your turn scores.
+- **Winning Condition:** Player with the highest total score at the end of the game.
+
+---
+
+## **Examples**
+
+### **Example Grid Positioning**
+
+```
++---+---+---+
+| 5 | 3 | 8 |
++---+---+---+
+| 2 | 9 | 1 |
++---+---+---+
+| 6 | 4 | 7 |
++---+---+---+
+```
+
+### **Sample Turns**
+
+#### **Turn 1: Player 1**
+
+- **Selection:** Player 1 selects the square containing **9** at position (2,2).
+- **Capturing Adjacent Squares:**
+  - Adjacent squares to (2,2):
+    - Up (1,2): **3**
+    - Down (3,2): **4**
+    - Left (2,1): **2**
+    - Right (2,3): **1**
+  - All adjacent numbers **less than 9** are captured: **3**, **4**, **2**, **1**
+- **Squares Captured:** 9, 3, 4, 2, 1
+- **Turn Score:** 9 + 3 + 4 + 2 + 1 = **19**
+- **Grid Update:**
+
+```
++---+---+---+
+| 5 |   | 8 |
++---+---+---+
+|   |   |   |
++---+---+---+
+| 6 |   | 7 |
++---+---+---+
+```
+
+#### **Turn 2: Player 2**
+
+- **Selection:** Player 2 selects the square containing **8** at position (1,3).
+- **Capturing Adjacent Squares:**
+  - Adjacent squares to (1,3):
+    - Left (1,2): Already captured.
+    - Down (2,3): Already captured.
+  - No adjacent squares to capture.
+- **Squares Captured:** 8
+- **Turn Score:** 8
+- **Grid Update:**
+
+```
++---+---+---+
+| 5 |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+| 6 |   | 7 |
++---+---+---+
+```
+
+#### **Turn 3: Player 1**
+
+- **Selection:** Player 1 selects the square containing **7** at position (3,3).
+- **Capturing Adjacent Squares:**
+  - Adjacent squares to (3,3):
+    - Up (2,3): Already captured.
+    - Left (3,2): Already captured.
+  - No adjacent squares to capture.
+- **Squares Captured:** 7
+- **Turn Score:** 7
+- **Grid Update:**
+
+```
++---+---+---+
+| 5 |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+| 6 |   |   |
++---+---+---+
+```
+
+#### **Turn 4: Player 2**
+
+- **Selection:** Player 2 selects the square containing **6** at position (3,1).
+- **Capturing Adjacent Squares:**
+  - Adjacent squares to (3,1):
+    - Up (2,1): Already captured.
+    - Right (3,2): Already captured.
+  - No adjacent squares to capture.
+- **Squares Captured:** 6
+- **Turn Score:** 6
+- **Grid Update:**
+
+```
++---+---+---+
+| 5 |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+```
+
+#### **Turn 5: Player 1**
+
+- **Selection:** Player 1 selects the square containing **5** at position (1,1).
+- **Capturing Adjacent Squares:**
+  - Adjacent squares to (1,1):
+    - Right (1,2): Already captured.
+    - Down (2,1): Already captured.
+  - No adjacent squares to capture.
+- **Squares Captured:** 5
+- **Turn Score:** 5
+- **Grid Update:**
+
+```
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+```
+
+### **Final Scores**
+
+- **Player 1 Total Score:** 19 + 7 + 5 = **31**
+- **Player 2 Total Score:** 8 + 6 = **14**
+
+**Winner:** Player 1
+
+---
+
+## **Command-Line Interaction Examples**
+
+### **Starting the Game**
+
+```
+Welcome to Capture Squares!
+
+Initial Grid:
++---+---+---+
+| 5 | 3 | 8 |
++---+---+---+
+| 2 | 9 | 1 |
++---+---+---+
+| 6 | 4 | 7 |
++---+---+---+
+
+Player 1, it's your turn.
+Please enter the position of the square you want to capture (e.g., 2 2 for row 2, column 2):
+```
+
+### **Player Input Example**
+
+```
+Player 1: 2 2
+
+You have selected number 9 at position (2,2).
+Captured squares: (2,2)=9, (1,2)=3, (2,1)=2, (2,3)=1, (3,2)=4
+Your turn score: 19
+```
+
+### **Grid Update Example**
+
+```
+Updated Grid:
++---+---+---+
+| 5 |   | 8 |
++---+---+---+
+|   |   |   |
++---+---+---+
+| 6 |   | 7 |
++---+---+---+
+
+Player 2, it's your turn.
+Please enter the position of the square you want to capture:
+```
+
+---
+
+## **Strategic Considerations**
+
+- **High-Value Squares:** Capturing squares with higher numbers may allow you to capture more adjacent squares, maximizing your turn score.
+
+- **Denying Opponent:** Be mindful of which squares you leave available. Avoid leaving high-value squares that your opponent can exploit.
+
+- **Capturing Opportunities:** Plan your moves to potentially block your opponent's access to advantageous captures.
+
+- **Score Balance:** Keep track of the score difference. If you're leading, you may opt for safer moves to maintain your lead.
+
+---
+
+## **Conclusion**
+
+Capture Squares is a simple yet strategic game that challenges players to think ahead and make tactical decisions. With a quick setup and straightforward rules, it's perfect for a command-line interface and offers ample opportunity for skilled players to outmaneuver their opponents.
+
+Enjoy the game!
+
+---
+
+**Note:** This game is designed to be unique and is not based on existing conventional board games. Its simplicity makes it easy to implement in a command-line environment while providing depth for strategic play.

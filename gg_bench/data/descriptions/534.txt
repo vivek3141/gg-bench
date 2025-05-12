@@ -1,0 +1,242 @@
+# Sequence Builder: Rule Book
+
+## Objective
+
+Be the first player to create a sequence of **five numbers** where **each adjacent pair sums to an even number**. Use strategic selection to build your sequence while blocking your opponent from completing theirs.
+
+---
+
+## Setup
+
+1. **Number Pool**: Create a shared pool of numbers from **1 to 9**.
+2. **Player Sequences**: Both players start with an empty sequence.
+3. **Determine Turn Order**: Decide who will take the first turn (e.g., flip a coin or mutual agreement).
+
+---
+
+## Game Components
+
+- **Number Pool**: A list of numbers ranging from **1 to 9**. Once a number is chosen by a player, it is removed from the pool.
+  
+- **Player Sequences**: Each player maintains their own sequence of numbers, with a maximum length of five numbers. The sequence is built progressively over the course of the game.
+
+- **Command-Line Interface**: The game is played via a command-line interface where players input their number choices, and the game state is displayed after each turn.
+
+---
+
+## Turns
+
+- **Turn Order**: Players take turns alternately, starting with the player determined during setup.
+
+- **Actions on a Turn**:
+  - **Select a Number**: Choose any available number from the Number Pool.
+  - **Update Sequence**: Add the chosen number to the end of your sequence.
+
+- **Number Availability**: Once a number is taken from the Number Pool, it cannot be selected again by either player.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, pick any number from the remaining numbers in the Number Pool.
+   - Input your chosen number when prompted.
+
+2. **Building the Sequence**:
+   - Add the selected number to the **end** of your sequence.
+   - The sequence progresses over your turns, up to a maximum of five numbers.
+
+3. **Adjacency Condition**:
+   - After each addition, check the sum of **each adjacent pair** in your sequence.
+   - An adjacent pair consists of two consecutive numbers in your sequence.
+   - **Even Sum Requirement**: Each adjacent pair must sum to an **even number** to satisfy the win condition.
+
+4. **Winning the Game**:
+   - **Immediate Win**: If your sequence reaches five numbers and **all adjacent pairs** sum to even numbers, you win.
+   - **End of Number Pool**: If all numbers are taken and no player has met the above condition, proceed to scoring.
+
+5. **Strategic Blocking**:
+   - You may choose numbers that not only help your sequence but also prevent your opponent from completing theirs.
+   - Consider the numbers your opponent might need based on their sequence.
+
+---
+
+## Scoring
+
+- **Primary Victory**: The first player to complete a five-number sequence with all adjacent pairs summing to even numbers wins.
+
+- **Secondary Victory**:
+  - If neither player meets the primary victory condition after all numbers are used, tally the number of adjacent pairs that sum to even numbers in each player's sequence.
+  - The player with the **higher count** of valid adjacent pairs wins.
+  - **Tie-Breaker**: If both players have the same number of valid adjacent pairs, the player who completed their sequence **first** wins.
+
+- **No Draws**: The game is designed to prevent draws, ensuring a clear winner each time.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+**Initial Number Pool**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+#### Turn 1
+- **Player 1**:
+  - Chooses **6**.
+  - Sequence: `[6]`
+  - Number Pool: `[1, 2, 3, 4, 5, 7, 8, 9]`
+
+#### Turn 2
+- **Player 2**:
+  - Chooses **5**.
+  - Sequence: `[5]`
+  - Number Pool: `[1, 2, 3, 4, 7, 8, 9]`
+
+#### Turn 3
+- **Player 1**:
+  - Chooses **2**.
+  - Sequence: `[6, 2]`
+  - Adjacent Pair: `6 + 2 = 8` (**Even**)
+  - Number Pool: `[1, 3, 4, 7, 8, 9]`
+
+#### Turn 4
+- **Player 2**:
+  - Chooses **3**.
+  - Sequence: `[5, 3]`
+  - Adjacent Pair: `5 + 3 = 8` (**Even**)
+  - Number Pool: `[1, 4, 7, 8, 9]`
+
+#### Turn 5
+- **Player 1**:
+  - Chooses **7**.
+  - Sequence: `[6, 2, 7]`
+  - Adjacent Pairs:
+    - `6 + 2 = 8` (**Even**)
+    - `2 + 7 = 9` (**Odd**)
+  - Number Pool: `[1, 4, 8, 9]`
+
+#### Turn 6
+- **Player 2**:
+  - Chooses **1**.
+  - Sequence: `[5, 3, 1]`
+  - Adjacent Pairs:
+    - `5 + 3 = 8` (**Even**)
+    - `3 + 1 = 4` (**Even**)
+  - Number Pool: `[4, 8, 9]`
+
+#### Turn 7
+- **Player 1**:
+  - Chooses **4**.
+  - Sequence: `[6, 2, 7, 4]`
+  - Adjacent Pairs:
+    - `6 + 2 = 8` (**Even**)
+    - `2 + 7 = 9` (**Odd**)
+    - `7 + 4 = 11` (**Odd**)
+  - Number Pool: `[8, 9]`
+
+#### Turn 8
+- **Player 2**:
+  - Chooses **8**.
+  - Sequence: `[5, 3, 1, 8]`
+  - Adjacent Pairs:
+    - `5 + 3 = 8` (**Even**)
+    - `3 + 1 = 4` (**Even**)
+    - `1 + 8 = 9` (**Odd**)
+  - Number Pool: `[9]`
+
+#### Turn 9
+- **Player 1**:
+  - Chooses **9**.
+  - Sequence: `[6, 2, 7, 4, 9]`
+  - Adjacent Pairs:
+    - `6 + 2 = 8` (**Even**)
+    - `2 + 7 = 9` (**Odd**)
+    - `7 + 4 = 11` (**Odd**)
+    - `4 + 9 = 13` (**Odd**)
+  - Number Pool: `[]`
+
+### Scoring and Winner Determination
+
+- **Player 1**:
+  - Total Valid Adjacent Pairs: **1**
+- **Player 2**:
+  - Total Valid Adjacent Pairs: **2**
+
+- **Winner**: **Player 2** wins by having more adjacent pairs that sum to an even number.
+
+---
+
+### Sample Command-Line Interaction
+
+```plaintext
+Current Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1, it's your turn.
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Enter your chosen number: 6
+
+Player 1's Sequence: [6]
+Remaining Numbers: [1, 2, 3, 4, 5, 7, 8, 9]
+
+---
+
+Player 2, it's your turn.
+Available Numbers: [1, 2, 3, 4, 5, 7, 8, 9]
+Enter your chosen number: 5
+
+Player 2's Sequence: [5]
+Remaining Numbers: [1, 2, 3, 4, 7, 8, 9]
+
+---
+
+Player 1, it's your turn.
+Available Numbers: [1, 2, 3, 4, 7, 8, 9]
+Enter your chosen number: 2
+
+Player 1's Sequence: [6, 2]
+Adjacent Pair Sums: [6 + 2 = 8 (Even)]
+Remaining Numbers: [1, 3, 4, 7, 8, 9]
+
+---
+
+[Gameplay continues as above...]
+
+---
+
+**Final Sequences:**
+
+Player 1's Sequence: `[6, 2, 7, 4, 9]`
+Adjacent Pair Sums:
+- `6 + 2 = 8` (**Even**)
+- `2 + 7 = 9` (**Odd**)
+- `7 + 4 = 11` (**Odd**)
+- `4 + 9 = 13` (**Odd**)
+
+Player 2's Sequence: `[5, 3, 1, 8]`
+Adjacent Pair Sums:
+- `5 + 3 = 8` (**Even**)
+- `3 + 1 = 4` (**Even**)
+- `1 + 8 = 9` (**Odd**)
+
+**Winner**: Player 2 wins with more valid adjacent pairs.
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider the combinations of numbers that will result in even sums for adjacent pairs.
+  
+- **Observe Opponent's Choices**: Keep track of your opponent's sequence and anticipate which numbers they may need to complete their sequence.
+
+- **Blocking**: Strategically choose numbers that are crucial for your opponent to prevent them from winning.
+
+- **Adapting**: Be prepared to adjust your strategy based on the numbers available and your opponent's actions.
+
+---
+
+## Summary
+
+"Sequence Builder" is a simple yet strategic turn-based game suitable for command-line play. It challenges players to think ahead and outmaneuver their opponent by carefully selecting numbers to create sequences with specific properties. The game is easy to code, ends quickly, and ensures that skill and strategy determine the winner, without the possibility of a draw.
+
+Enjoy the game, and may the best strategist win!

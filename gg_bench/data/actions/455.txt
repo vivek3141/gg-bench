@@ -1,0 +1,7 @@
+The action space in this game is represented by indices that correspond to specific moves. Each action index is mapped to a particular way of dividing a selected number from the current Number List. The action index is divided into two parts: 
+
+1. **Number Index**: This is calculated by `action // self.MAX_SPLITS`. It specifies which number in the sorted, non-zero portion of the Number List is chosen for division. The Number List index is thus derived from dividing the action index by the maximum possible splits, grouping actions by the target number.
+
+2. **Split Value**: This is calculated by `(action % self.MAX_SPLITS) + 2`, representing the two resultant numbers' first part (`split_k`), from splitting. The remainder of the division (`action % self.MAX_SPLITS`) plus 2 ensures split values start from 2, as needed based on division rules where each part must be greater than 1.
+
+In essence, the action space encodes which number to split and how to split it, allowing players to execute their chosen division strategy by selecting corresponding action indices.

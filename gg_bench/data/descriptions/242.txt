@@ -1,0 +1,229 @@
+# Capture Relay
+
+## Objective
+
+Capture Relay is a strategic two-player turn-based game played on a simple linear chain of nodes. The primary goal is to be the first player to capture the opponent's base by moving your token across the nodes to the far end of the chain. Victory is achieved by successfully moving your token onto the opponent's base node. The game is designed to end quickly and ensures that a skilled player can consistently outmaneuver an unskilled player.
+
+## Setup
+
+1. **Game Board**: A linear chain of **9 nodes** numbered from **1** to **9**.
+2. **Player Bases**:
+   - **Player 1's Base**: Node **1**.
+   - **Player 2's Base**: Node **9**.
+3. **Tokens**:
+   - Each player has a single token representing their position on the chain.
+   - **Player 1's Token** starts on Node **1**.
+   - **Player 2's Token** starts on Node **9**.
+
+The initial setup places both players at opposite ends of the chain, ready to advance towards each other.
+
+## Game Components
+
+- **Nodes**: Represented by numbers **1** to **9** in a linear arrangement.
+- **Player Tokens**:
+  - **Appearance**: Any distinct marker or symbol identifiable in a command-line interface (e.g., `P1` for Player 1 and `P2` for Player 2).
+  - **Functionality**: Indicates each player's current position on the chain.
+- **Game Board Representation**:
+  - A simple text-based line displaying nodes and token positions.
+
+## Turns
+
+- **Turn Order**: Players alternate turns. Decide randomly or mutually agree on who starts first.
+- **Actions per Turn**:
+  - **Move Forward**: Move your token one node towards the opponent's base.
+  - **Push Back Opponent**: If your token is **adjacent** to the opponent's token (occupying neighboring nodes), you can choose to push the opponent's token back by **one node** instead of moving forward.
+- **Turn Progression**: After a player completes their action, the turn passes to the other player.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Moving Forward**:
+   - On your turn, you may move your token forward by one node towards the opponent's base.
+   - Example: If your token is on Node **3**, you can move to Node **4**.
+
+2. **Pushing Back the Opponent**:
+   - If the opponent's token is on a node **directly next to yours** (either ahead or behind), you may choose to push their token back by one node **instead** of moving your token.
+   - **Conditions for Pushing**:
+     - Your token must be adjacent to the opponent's token.
+     - You cannot push the opponent's token back beyond their own base (they cannot move off the board).
+   - Example: If your token is on Node **5** and the opponent's token is on Node **6**, you can push their token back to Node **7**.
+
+3. **Restrictions**:
+   - You cannot move your token backward.
+   - You cannot push the opponent's token forward.
+   - You cannot occupy the same node as the opponent's token.
+
+### Winning the Game
+
+- **Victory Condition**: You win the game when you move your token onto the opponent's base node.
+  - **Player 1 Wins**: When Player 1's token reaches Node **9**.
+  - **Player 2 Wins**: When Player 2's token reaches Node **1**.
+
+## Scoring
+
+- **Single-Point Victory**: The game is won by fulfilling the victory condition. No points are accumulated; the focus is on achieving the objective before your opponent.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+```
+Nodes: 1 2 3 4 5 6 7 8 9
+Tokens: P1 on Node 1, P2 on Node 9
+```
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - Action: Moves forward to Node **2**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 2, P2 on Node 9
+     ```
+
+2. **Player 2's Turn**:
+   - Action: Moves forward to Node **8**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 2, P2 on Node 8
+     ```
+
+3. **Player 1's Turn**:
+   - Action: Moves forward to Node **3**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 3, P2 on Node 8
+     ```
+
+4. **Player 2's Turn**:
+   - Action: Moves forward to Node **7**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 3, P2 on Node 7
+     ```
+
+5. **Player 1's Turn**:
+   - Action: Moves forward to Node **4**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 4, P2 on Node 7
+     ```
+
+6. **Player 2's Turn**:
+   - Action: Moves forward to Node **6**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 4, P2 on Node 6
+     ```
+
+7. **Player 1's Turn**:
+   - Action: Moves forward to Node **5**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 5, P2 on Node 6
+     ```
+
+8. **Player 2's Turn**:
+   - Action: Moves forward to Node **5** (opponent's token is on Node 5).
+   - Since nodes cannot be shared, Player 2 cannot move to Node **5**.
+   - **Alternative Action**: Pushes Player 1's token back to Node **4**.
+   - Board State:
+     ```
+     Nodes: 1 2 3 4 5 6 7 8 9
+     Tokens: P1 on Node 4, P2 on Node 6
+     ```
+
+9. **Player 1's Turn**:
+   - Action: Moves forward to Node **5** again.
+   - Board State remains the same as two turns prior.
+
+10. **Player 2's Turn**:
+    - Action: Pushes Player 1's token back to Node **4** again.
+    - Board State remains the same.
+
+11. **Player 1's Turn**:
+    - Recognizing the stalemate of moving to Node 5, Player 1 decides to push Player 2's token back instead.
+    - Condition: Their tokens are adjacent (P1 on Node **4**, P2 on Node **6** are not adjacent).
+    - Since they are not adjacent, Player 1 cannot push back.
+    - **Action**: Moves forward to Node **5**.
+    - Board State remains the same.
+
+12. **Player 2's Turn**:
+    - Action: Pushes Player 1's token back to Node **4**.
+    - Board State remains the same.
+
+13. **Player 1's Turn**:
+    - Strategy shift: Moves forward to Node **5** again.
+
+14. **Player 2's Turn**:
+    - Repeats the push-back.
+
+15. **Player 1's Turn**:
+    - Decides to move back to Node **3** (Not allowed as per the rules).
+    - **Correction**: Player cannot move backward.
+    - **Alternative Action**: With no other options, continues attempting to move forward.
+
+After several iterations, Player 1 may realize that without changing strategy, progress cannot be made. Instead, Player 1 can attempt to position themselves adjacent to Player 2 to eventually push them back, or find another strategic move.
+
+### Sample Command-Line Interaction
+
+Here's how the game might look in a command-line interface:
+
+```
+--- Capture Relay Game Start ---
+Player 1's Base: Node 1
+Player 2's Base: Node 9
+
+Current Positions:
+P1: Node 1
+P2: Node 9
+
+---
+
+Player 1's Turn:
+Options:
+1. Move forward to Node 2
+Enter your choice: 1
+
+Player 1 moves to Node 2.
+
+---
+
+Player 2's Turn:
+Options:
+1. Move forward to Node 8
+Enter your choice: 1
+
+Player 2 moves to Node 8.
+
+---
+
+[Game continues with similar prompts for each player's turn.]
+
+```
+
+## Strategic Tips
+
+- **Anticipate Opponent's Moves**: Try to predict whether your opponent will advance or attempt to push you back.
+- **Maintain Adjacency**: Position your token adjacent to the opponent's token to have the option to push them back.
+- **Balance Offense and Defense**: Know when to advance towards the opponent's base and when to hinder their progress.
+
+## Summary
+
+Capture Relay is a simple yet strategic game that emphasizes planning and anticipation. With straightforward rules and quick gameplay, it offers a competitive experience suitable for a command-line interface. Mastery comes from understanding the flow of movement and effectively countering the opponent's strategies.
+
+Enjoy the challenge and may the best strategist win!
+
+---
+
+Remember, the key to success in Capture Relay is to think ahead and stay adaptable to the changing positions on the board. Happy gaming!

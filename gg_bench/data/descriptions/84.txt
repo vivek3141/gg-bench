@@ -1,0 +1,160 @@
+# Binary Battle
+
+## Objective
+
+Be the first player to reduce your opponent's binary number to zero by strategically flipping bits. Employ tactics to outmaneuver your opponent, forcing them into a position where they have no remaining bits set to 1. Victory is achieved when all bits in your opponent's binary number are flipped to 0, leaving them with the decimal number 0.
+
+## Setup
+
+- **Players**: 2
+- **Initial State**:
+  - Each player begins with an 8-bit binary number set to all ones.
+  - This number can be represented in decimal as **255** (binary **11111111**).
+- **Display**:
+  - Each player's binary number is known to both players at all times.
+  - The numbers are displayed in both binary and decimal formats for clarity.
+
+## Game Components
+
+- **Binary Numbers**:
+  - Each player has their own 8-bit binary number.
+  - The binary number can range from **0** (binary **00000000**) to **255** (binary **11111111**).
+- **Bit Positions**:
+  - Bit positions are numbered from **0** (least significant bit) to **7** (most significant bit).
+  - Players will select these bit positions to flip bits in their opponent's binary number.
+- **Command-Line Interface**:
+  - The game is played through a command-line interface where players input their chosen bit positions.
+  - The interface displays current binary numbers and prompts for input.
+
+## Turns
+
+- **Turn Sequence**:
+  - Players alternate turns, starting with Player 1.
+- **Turn Actions**:
+  - On their turn, a player selects a bit position (0-7) to flip in their opponent's binary number.
+  - The chosen bit must be currently set to **1** in the opponent's number (you cannot flip a bit that is already **0**).
+- **Progression**:
+  - After a bit is flipped, the opponent's binary number is updated immediately.
+  - The updated number is displayed to both players before the next turn begins.
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - **Valid Moves**: A player can only flip bits that are set to **1** in their opponent's binary number.
+   - **Flipping Process**: Selecting a bit position changes the bit from **1** to **0**.
+2. **Invalid Moves**:
+   - Attempting to flip a bit that is already **0** is not allowed.
+   - If a player attempts an invalid move, they are prompted to choose a different bit.
+3. **Winning the Game**:
+   - The game is won when a player's action reduces their opponent's binary number to **0**.
+   - The player who achieves this first is declared the winner.
+4. **Example of Bit Positions**:
+   - Bit 7: Most Significant Bit (MSB)
+   - Bits proceed down to:
+   - Bit 0: Least Significant Bit (LSB)
+
+## Scoring
+
+- **No Point System**: The game does not use a scoring system; it is a win/loss game based on the binary numbers.
+- **Victory Condition**: The goal is to reduce the opponent's binary number to **0**.
+- **Tracking Progress**:
+  - Players track progress by observing the decreasing value of their opponent's binary number.
+  - The command-line interface displays current binary numbers after each move.
+
+## Examples
+
+### Sample Game Play
+
+**Initial State**:
+- Player 1's Number: **255** (binary **11111111**)
+- Player 2's Number: **255** (binary **11111111**)
+
+---
+
+**Turn 1**: *Player 1*
+
+- **Action**: Flips bit **7** in Player 2's number.
+- **Player 2's Number**:
+  - Before: **255** (binary **11111111**)
+  - After: **127** (binary **01111111**)
+
+---
+
+**Turn 2**: *Player 2*
+
+- **Action**: Flips bit **0** in Player 1's number.
+- **Player 1's Number**:
+  - Before: **255** (binary **11111111**)
+  - After: **254** (binary **11111110**)
+
+---
+
+**Turn 3**: *Player 1*
+
+- **Action**: Flips bit **6** in Player 2's number.
+- **Player 2's Number**:
+  - Before: **127** (binary **01111111**)
+  - After: **63** (binary **00111111**)
+
+---
+
+**Turn 4**: *Player 2*
+
+- **Action**: Flips bit **1** in Player 1's number.
+- **Player 1's Number**:
+  - Before: **254** (binary **11111110**)
+  - After: **252** (binary **11111100**)
+
+---
+
+**Turn 5**: *Player 1*
+
+- **Action**: Flips bit **5** in Player 2's number.
+- **Player 2's Number**:
+  - Before: **63** (binary **00111111**)
+  - After: **31** (binary **00011111**)
+
+---
+
+**Turn 6**: *Player 2*
+
+- **Action**: Flips bit **2** in Player 1's number.
+- **Player 1's Number**:
+  - Before: **252** (binary **11111100**)
+  - After: **248** (binary **11111000**)
+
+---
+
+**Turns Continue**:
+
+- Players continue flipping bits in each other's numbers.
+- Strategic choices involve deciding which bits to flip to limit the opponent's options.
+- Priority might be given to flipping higher-order bits to reduce the opponent's number more significantly.
+
+---
+
+**Final Turns**:
+
+- Eventually, one player's number is reduced to **0**.
+- **Winning Move Example**:
+  - If Player 1 flips the last bit set to **1** in Player 2's number, reducing it to **0**.
+
+**Game End**:
+
+- **Winner**: Player 1
+- **Loser**: Player 2
+
+## Strategy Tips
+
+- **Target High Bits Early**:
+  - Flipping higher-order bits (bits with higher positions) reduces the opponent's number more significantly.
+- **Anticipate the Opponent's Moves**:
+  - Keep track of which bits remain in your number and predict which ones the opponent may target.
+- **Balance Offense and Defense**:
+  - While reducing the opponent's number, be mindful of preserving key bits in your own number.
+- **Force Limited Options**:
+  - Try to force your opponent into positions where they have fewer bits to choose from, limiting their strategic options.
+
+## Summary
+
+Binary Battle is a game of tactical decision-making and foresight. By strategically flipping bits in your opponent's binary number, you aim to reduce their number to zero before they do the same to you. Each move requires consideration of both the immediate impact and the future implications, providing depth and challenge in a simple, easy-to-code format perfect for a command-line interface. Enjoy the battle of bits!

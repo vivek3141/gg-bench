@@ -1,0 +1,204 @@
+# Divide and Conquer - Rule Book
+
+## Objective
+
+Be the last player to make a valid move by strategically dividing the shared number **N** by its prime factors. Force your opponent into a position where they cannot make a valid move, thereby securing your victory.
+
+---
+
+## Setup
+
+1. **Starting Number**: The game begins with a positive integer **N**. The default starting number is **100**, but players may agree on any positive integer greater than **1**.
+
+2. **Players**: Two players participate, alternating turns throughout the game.
+
+3. **Game State**: The current value of **N** is shared and updated after each turn.
+
+---
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that players will manipulate according to the game rules.
+
+- **Prime Factors**: The set of prime numbers that divide into **N** without leaving a remainder. These are essential for making valid moves.
+
+- **Command-Line Interface**: All interactions occur through text prompts and inputs in a command-line environment.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately, starting with **Player 1**.
+
+2. **Player Actions**:
+
+   - **View Current N**: At the start of your turn, note the current value of **N**.
+
+   - **Determine Prime Factors**: Identify all prime factors of **N**.
+
+   - **Choose a Prime Factor**: Select one prime factor to divide **N** by.
+
+   - **Update N**: Divide **N** by the chosen prime factor and announce the new value.
+
+3. **Turn Progression**: After updating **N**, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+
+   - You must divide **N** by one of its prime factors greater than **1**.
+
+   - The chosen prime factor must divide **N** exactly, with no remainder.
+
+2. **Updating N**:
+
+   - After division, the new value of **N** becomes the current game state.
+
+   - **N** must always remain a positive integer greater than or equal to **1**.
+
+3. **Winning the Game**:
+
+   - If **N** is **1** at the start of your turn and you have no valid moves (since **1** has no prime factors greater than **1**), you lose the game.
+
+   - The last player to make a valid move **(i.e., the player who reduces N to 1)** wins.
+
+4. **Invalid Moves**:
+
+   - Choosing a number that is not a prime factor of **N** is not allowed.
+
+   - Attempting to divide by a prime factor that does not divide **N** exactly is invalid.
+
+---
+
+## Scoring
+
+- **Victory**: The player who makes the last valid move (reducing **N** to **1**) wins the game.
+
+- **Defeat**: The player who cannot make a valid move on their turn loses.
+
+---
+
+## Examples
+
+### Example Game
+
+**Starting with N = 100**
+
+1. **Player 1's Turn**:
+   - **N** is **100**.
+   - Prime factors of **100**: **2**, **2**, **5**, **5**.
+   - Player 1 chooses to divide by **2**.
+   - **N** becomes **50** (`100 / 2`).
+   - *Announce*: "Player 1 divides by 2. N is now 50."
+
+2. **Player 2's Turn**:
+   - **N** is **50**.
+   - Prime factors of **50**: **2**, **5**, **5**.
+   - Player 2 chooses to divide by **5**.
+   - **N** becomes **10** (`50 / 5`).
+   - *Announce*: "Player 2 divides by 5. N is now 10."
+
+3. **Player 1's Turn**:
+   - **N** is **10**.
+   - Prime factors of **10**: **2**, **5**.
+   - Player 1 chooses to divide by **2**.
+   - **N** becomes **5** (`10 / 2`).
+   - *Announce*: "Player 1 divides by 2. N is now 5."
+
+4. **Player 2's Turn**:
+   - **N** is **5**.
+   - Prime factors of **5**: **5**.
+   - Player 2 chooses to divide by **5**.
+   - **N** becomes **1** (`5 / 5`).
+   - *Announce*: "Player 2 divides by 5. N is now 1."
+
+5. **Player 1's Turn**:
+   - **N** is **1**.
+   - **N** has no prime factors greater than **1**.
+   - Player 1 cannot make a valid move and loses.
+   - *Announce*: "Player 1 has no valid moves. Player 2 wins!"
+
+---
+
+## Command-Line Interactions
+
+### Starting the Game
+
+- The game announces the starting number **N** and prompts **Player 1** for their move.
+
+  ```
+  Welcome to Divide and Conquer!
+  Starting number (N) is 100.
+  ```
+
+### Player's Turn
+
+1. **Display Current N and Prime Factors**:
+
+   ```
+   Player 1's turn:
+   Current N: 100
+   Prime factors of N: 2, 2, 5, 5
+   ```
+
+2. **Prompt for Input**:
+
+   ```
+   Choose a prime factor to divide N by:
+   ```
+
+3. **Handle Input**:
+
+   - If the input is valid:
+
+     ```
+     You chose to divide by 2.
+     N is now 50.
+     ```
+
+   - If the input is invalid:
+
+     ```
+     Invalid choice. Please select a valid prime factor of N.
+     ```
+
+### Ending the Game
+
+- When a player cannot make a valid move:
+
+  ```
+  Player 1 has no valid moves remaining.
+  Player 2 wins the game!
+  ```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves by considering how your choice affects the remaining prime factors.
+
+- **Prime Factorization**: Familiarity with prime factors of common numbers can provide a strategic advantage.
+
+- **Forcing Moves**: Try to force your opponent into positions where their options are limited.
+
+- **Optimal Play**: Sometimes dividing by smaller primes extends the game, while larger primes can force a quicker end.
+
+---
+
+## Additional Rules
+
+- **Agreement on Starting N**: Players may agree to start with a different **N** to adjust game length or difficulty.
+
+- **Time Limits**: Optionally, players can set a time limit per turn to increase the challenge.
+
+- **Rematches**: Players can play multiple rounds, keeping score of victories to determine an overall winner.
+
+---
+
+## Conclusion
+
+Divide and Conquer is a strategic and educational game that tests your numerical reasoning and planning skills. By carefully selecting prime factors and anticipating your opponent's moves, you can outmaneuver them and claim victory.
+
+Enjoy the challenge and may the best strategist win!

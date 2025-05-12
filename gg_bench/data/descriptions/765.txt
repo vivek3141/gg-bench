@@ -1,0 +1,152 @@
+# Blockade Duel
+
+## Objective
+
+Be the first player to reach your opponent's base by strategically moving your token along a linear number line while blocking your opponent's progress.
+
+## Setup
+
+- **Number Line**: A linear sequence of positions numbered from **0** to **10**.
+- **Player Bases**:
+  - **Player 1's Base**: Position **0**.
+  - **Player 2's Base**: Position **10**.
+- **Starting Positions**:
+  - Both players' tokens start at the central position **5**.
+
+## Game Components
+
+- **Tokens**: Each player has a unique token representing their position on the number line.
+  - Tokens cannot occupy the same position simultaneously.
+- **Number Line Positions**: Numerical markers from **0** to **10** indicating possible token locations.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately, with **Player 1** starting the game.
+- **Actions per Turn**:
+  - Move your token **1** or **2** steps toward your opponent's base.
+  - You cannot skip a turn unless no legal moves are available.
+
+## Rules and Mechanics
+
+### Movement
+
+- **Direction**:
+  - **Player 1** moves **forward** toward position **10**.
+  - **Player 2** moves **backward** toward position **0**.
+- **Step Options**: On your turn, you must move your token either **1** or **2** positions closer to your opponent's base.
+- **Occupancy Restriction**: Tokens cannot occupy the same position:
+  - You cannot move to a position already occupied by your opponent's token.
+  - If both possible moves would land on the opponent's position or exceed the number line limits, you forfeit your turn.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to reach the opponent's base position (**0** for Player 2, **10** for Player 1) **wins the game**.
+- **Forfeiting Turns**: If a player cannot make a legal move, they forfeit their turn, and the opponent continues.
+- **No Draws**: The game continues until one player reaches the opponent's base.
+
+## Scoring
+
+- **Winning**: Successfully moving your token to your opponent's base earns you the victory.
+- **Skill Advantage**: Strategic movement and blocking can consistently lead a skilled player to win.
+
+## Example Gameplay
+
+### Initial Setup
+
+- **Player 1's Token**: Position **5**.
+- **Player 2's Token**: Position **5**.
+
+### Turn-by-Turn Example
+
+#### Turn 1
+
+- **Player 1's Move**:
+  - Options: Move to position **6** or **7**.
+  - Chooses to move **1** step to position **6**.
+- **Token Positions**:
+  - Player 1: Position **6**.
+  - Player 2: Position **5**.
+
+#### Turn 2
+
+- **Player 2's Move**:
+  - Options: Move to position **4** or **3**.
+  - Chooses to move **2** steps to position **3**.
+- **Token Positions**:
+  - Player 1: Position **6**.
+  - Player 2: Position **3**.
+
+#### Turn 3
+
+- **Player 1's Move**:
+  - Options: Move to position **7** or **8**.
+  - Chooses to move **2** steps to position **8**.
+- **Token Positions**:
+  - Player 1: Position **8**.
+  - Player 2: Position **3**.
+
+#### Turn 4
+
+- **Player 2's Move**:
+  - Options: Move to position **4** or **5**.
+  - **Position 5 is unoccupied**.
+  - Chooses to move **2** steps to position **5**.
+- **Token Positions**:
+  - Player 1: Position **8**.
+  - Player 2: Position **5**.
+
+#### Turn 5
+
+- **Player 1's Move**:
+  - Options: Move to position **9** or **10**.
+  - Chooses to move **2** steps to position **10**.
+- **Player 1 has reached Player 2's base and wins the game.**
+
+## Command-Line Interaction Example
+
+```
+--- Game Start ---
+Player 1 and Player 2 are both at position 5.
+
+Player 1's turn:
+- Your token is at position 5.
+- Move 1 or 2 steps toward position 10.
+Enter your move (1 or 2): 1
+Player 1 moves to position 6.
+
+Player 2's turn:
+- Your token is at position 5.
+- Move 1 or 2 steps toward position 0.
+Enter your move (1 or 2): 2
+Player 2 moves to position 3.
+
+Player 1's turn:
+- Your token is at position 6.
+- Move 1 or 2 steps toward position 10.
+Enter your move (1 or 2): 2
+Player 1 moves to position 8.
+
+Player 2's turn:
+- Your token is at position 3.
+- Move 1 or 2 steps toward position 0.
+Enter your move (1 or 2): 2
+Player 2 moves to position 1.
+
+Player 1's turn:
+- Your token is at position 8.
+- Move 1 or 2 steps toward position 10.
+Enter your move (1 or 2): 2
+Player 1 moves to position 10.
+
+Player 1 has reached Player 2's base. Player 1 wins!
+```
+
+## Strategic Depth
+
+- **Blocking Strategy**: Anticipate your opponent's possible moves to block their path by positioning your token to limit their movement options.
+- **Aggressive Advance**: Decide when to prioritize rapid advancement toward the opponent's base over blocking.
+- **Forced Forfeits**: Position your token to create scenarios where the opponent has no legal moves on their turn.
+
+## Summary
+
+**Blockade Duel** is a simple yet strategic game ideal for a command-line interface. It requires players to balance offensive moves with defensive positioning to outmaneuver their opponent. With straightforward rules and quick gameplay, it offers depth and complexity that can consistently reward skilled players over unskilled ones.

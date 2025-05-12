@@ -1,0 +1,167 @@
+# Sum Trap: A Two-Player Command-Line Game
+
+## Objective
+
+**Sum Trap** is a strategic two-player turn-based game where the goal is to be the first player to reach an exact total sum of **50** without exceeding it. Players take turns adding numbers to their individual totals, carefully choosing numbers to avoid surpassing the target while tactically restricting their opponent's options.
+
+## Setup
+
+- **Starting Total**: Both players begin with a total sum of **0**.
+- **Number Pool**: Numbers from **1** to **10** are available for players to choose from during their turns.
+- **No Repeats**: Players keep track of the numbers chosen in the previous turn to ensure compliance with the rules.
+
+## Game Components
+
+- **Players**: Two participants, referred to as **Player 1** and **Player 2**.
+- **Totals**: Each player has their own cumulative total sum, starting at **0**.
+- **Number Choices**: Integers from **1** to **10**, representing the possible choices on each turn.
+- **Command-Line Interface**: The game is played in a command-line environment where players input their number choices.
+
+## Turns
+
+1. **Starting Player**: Decide randomly or by agreement who takes the first turn.
+2. **Turn Structure**:
+   - **Number Selection**: On their turn, the player selects a number from **1** to **10**, ensuring it is not the same number their opponent chose on the immediately preceding turn.
+   - **Updating Total**: The chosen number is added to the player's total sum.
+   - **Announcement**: The player announces their chosen number and their new total.
+3. **Turn Progression**: Players alternate turns following the same structure until the game ends.
+
+## Rules and Mechanics
+
+- **Valid Numbers**: On each turn, a player must choose an integer between **1** and **10** inclusive.
+- **No Immediate Repeats**: A player **cannot** select the same number their opponent selected on the **previous turn**. However, they may choose any other valid number, including numbers they themselves have chosen on earlier turns.
+- **Exact Total of 50**: The objective is to reach a total sum of **exactly 50**. If a player's addition would cause their total to exceed 50, they **lose the game immediately**.
+- **Winning the Game**: The first player to reach a total sum of **exactly 50** wins the game.
+- **Forcing a Loss**: If both players are unable to reach exactly 50 without exceeding it, the player whose turn it is and cannot make a valid move without exceeding 50 **loses the game**.
+
+## Scoring
+
+- **Tracking Totals**: Each player's cumulative total is tracked throughout the game.
+- **Victory Condition**: The game does not use a point system beyond reaching the target total. The focus is on strategic number selection to achieve the exact sum of 50.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial State:
+- Player 1 Total: 0
+- Player 2 Total: 0
+
+#### Turn 1:
+- **Player 1's Turn**
+  - Chooses **7**.
+  - Player 1 Total: 0 + 7 = **7**
+  - Announces: "I choose 7. My total is now 7."
+
+#### Turn 2:
+- **Player 2's Turn**
+  - Cannot choose **7** (Player 1's last number).
+  - Chooses **10**.
+  - Player 2 Total: 0 + 10 = **10**
+  - Announces: "I choose 10. My total is now 10."
+
+#### Turn 3:
+- **Player 1's Turn**
+  - Cannot choose **10** (Player 2's last number).
+  - Chooses **8**.
+  - Player 1 Total: 7 + 8 = **15**
+  - Announces: "I choose 8. My total is now 15."
+
+#### Turn 4:
+- **Player 2's Turn**
+  - Cannot choose **8** (Player 1's last number).
+  - Chooses **10** (valid since it wasn't chosen in the immediate previous turn by Player 1).
+  - Player 2 Total: 10 + 10 = **20**
+  - Announces: "I choose 10. My total is now 20."
+
+#### Turn 5:
+- **Player 1's Turn**
+  - Cannot choose **10** (Player 2's last number).
+  - Chooses **5**.
+  - Player 1 Total: 15 + 5 = **20**
+  - Announces: "I choose 5. My total is now 20."
+
+#### Turn 6:
+- **Player 2's Turn**
+  - Cannot choose **5** (Player 1's last number).
+  - Chooses **10**.
+  - Player 2 Total: 20 + 10 = **30**
+  - Announces: "I choose 10. My total is now 30."
+
+#### Turn 7:
+- **Player 1's Turn**
+  - Cannot choose **10** (Player 2's last number).
+  - Chooses **7**.
+  - Player 1 Total: 20 + 7 = **27**
+  - Announces: "I choose 7. My total is now 27."
+
+#### Turn 8:
+- **Player 2's Turn**
+  - Cannot choose **7** (Player 1's last number).
+  - Chooses **10**.
+  - Player 2 Total: 30 + 10 = **40**
+  - Announces: "I choose 10. My total is now 40."
+
+#### Turn 9:
+- **Player 1's Turn**
+  - Cannot choose **10** (Player 2's last number).
+  - Chooses **3**.
+  - Player 1 Total: 27 + 3 = **30**
+  - Announces: "I choose 3. My total is now 30."
+
+#### Turn 10:
+- **Player 2's Turn**
+  - Cannot choose **3** (Player 1's last number).
+  - Chooses **10**.
+  - Player 2 Total: 40 + 10 = **50**
+  - Announces: "I choose 10. My total is now 50."
+- **Player 2 Wins** by reaching a total of **50** exactly.
+
+## Command-Line Interaction Sample
+
+Below is a sample interaction illustrating how the game might proceed in a command-line interface.
+
+```
+--- Sum Trap Game Start ---
+Player 1 Total: 0
+Player 2 Total: 0
+
+Player 1, it's your turn.
+Enter a number between 1 and 10: 7
+You chose 7. Your total is now 7.
+
+Player 2, it's your turn.
+(Note: You cannot choose 7)
+Enter a number between 1 and 10: 10
+You chose 10. Your total is now 10.
+
+Player 1, it's your turn.
+(Note: You cannot choose 10)
+Enter a number between 1 and 10: 8
+You chose 8. Your total is now 15.
+
+Player 2, it's your turn.
+(Note: You cannot choose 8)
+Enter a number between 1 and 10: 10
+You chose 10. Your total is now 20.
+
+[...game continues in the same pattern...]
+
+Player 2, it's your turn.
+(Note: You cannot choose 3)
+Enter a number between 1 and 10: 10
+You chose 10. Your total is now 50.
+
+Congratulations Player 2! You have reached a total of 50 and won the game!
+```
+
+## Strategy Tips
+
+- **Avoid Repeats**: Keep track of the numbers your opponent selects to avoid invalid moves.
+- **Plan Ahead**: Anticipate future moves to force your opponent into a position where they cannot reach 50 without exceeding it.
+- **Number Selection**: Repeatedly selecting high numbers can quickly increase your total but might limit your options later in the game.
+- **Control the Pace**: Use smaller numbers strategically to adjust your total and manipulate the flow of the game.
+
+---
+
+Enjoy playing **Sum Trap** and may the most strategic player win!

@@ -1,0 +1,242 @@
+# Number Connect
+
+## Objective
+
+Be the first player to transform the shared current number into the target number by strategically applying allowed mathematical operations. Victory is achieved by reaching the target number exactly on your turn without repeating any numbers in the sequence.
+
+## Setup
+
+1. **Starting Number (S):** Randomly select an integer between 1 and 100 to serve as the starting number. For example, `S = 7`.
+
+2. **Target Number (T):** Randomly select a different integer between 1 and 100 as the target number. Ensure that `T` is not equal to `S`. For example, `T = 10`.
+
+3. **Current Number:** Initialize the current number to the starting number `S`.
+
+4. **Number Sequence List:** Begin a list to keep track of all numbers used in the sequence, starting with `S`.
+
+## Game Components
+
+- **Starting Number (S):** The initial number from which players will begin their transformations.
+  
+- **Target Number (T):** The goal number that players aim to reach through allowed operations.
+  
+- **Current Number:** The result of the most recent operation applied; starts equal to `S`.
+  
+- **Allowed Operations:**
+  - **Add 1:** `current_number = current_number + 1`
+  - **Subtract 1:** `current_number = current_number - 1`
+  - **Multiply by 2:** `current_number = current_number * 2`
+  - **Divide by 2:** `current_number = current_number / 2` (allowed only if `current_number` is even)
+  
+- **Number Sequence List:** A list that records all the numbers that have been part of the sequence to prevent repeats.
+
+## Turns
+
+- Players decide who goes first (e.g., coin toss).
+  
+- Turns alternate between Player 1 and Player 2.
+  
+- **Turn Structure:**
+  1. The player chooses one allowed operation to apply to the current number.
+  2. The player calculates the new current number.
+  3. The new current number is checked:
+     - If it equals the target number `T`, the player wins.
+     - If the new current number has already appeared in the number sequence list, the player loses immediately.
+     - If neither condition is met, the new current number is added to the number sequence list.
+  4. The turn passes to the other player, with the current number updated.
+
+## Rules and Mechanics
+
+1. **Allowed Operations:**
+   - **Add 1** (`+1`)
+   - **Subtract 1** (`-1`)
+   - **Multiply by 2** (`*2`)
+   - **Divide by 2** (`/2`), only if the current number is even.
+
+2. **Operation Selection:**
+   - On each turn, a player must choose **one** operation from the allowed list.
+   - The operation is applied to the current number to produce a new current number.
+
+3. **Sequence Integrity:**
+   - **No Repeats:** The new current number **must not** have appeared previously in the number sequence list.
+   - **Recording Moves:** Each new current number is recorded in the number sequence list immediately after it is calculated.
+
+4. **Winning the Game:**
+   - **Victory Condition:** A player wins if they transform the current number into the target number `T` on their turn.
+   - **Loss Condition:** A player loses if:
+     - They attempt to repeat a number already in the sequence.
+     - They have no valid operations (e.g., all operations would lead to a repeated number or are invalid).
+
+5. **Valid Numbers:**
+   - All numbers must be positive integers.
+   - Operations resulting in non-integer or negative numbers are invalid.
+
+## Scoring
+
+- **Win:** Successfully reaching the target number `T` on your turn.
+- **Loss:**
+  - Repeating a number already in the sequence.
+  - Performing an invalid operation.
+  - Having no valid moves.
+
+There are no points tracked; the game is won by achieving the victory condition.
+
+## Examples
+
+### Example 1
+
+**Starting Number (S):** 7  
+**Target Number (T):** 10  
+**Number Sequence List:** [7]
+
+**Turn Sequence:**
+
+- **Player 1:**
+  - **Operation:** Multiply by 2 (`*2`)
+  - **Calculation:** `7 * 2 = 14`
+  - **Sequence Check:** 14 is not in [7]
+  - **Update Sequence List:** [7, 14]
+  - **Current Number:** 14
+
+- **Player 2:**
+  - **Operation:** Subtract 1 (`-1`)
+  - **Calculation:** `14 - 1 = 13`
+  - **Sequence Check:** 13 is not in [7, 14]
+  - **Update Sequence List:** [7, 14, 13]
+  - **Current Number:** 13
+
+- **Player 1:**
+  - **Operation:** Subtract 1 (`-1`)
+  - **Calculation:** `13 - 1 = 12`
+  - **Sequence Check:** 12 is not in [7, 14, 13]
+  - **Update Sequence List:** [7, 14, 13, 12]
+  - **Current Number:** 12
+
+- **Player 2:**
+  - **Operation:** Divide by 2 (`/2`)
+  - **Calculation:** `12 / 2 = 6`
+  - **Sequence Check:** 6 is not in [7, 14, 13, 12]
+  - **Update Sequence List:** [7, 14, 13, 12, 6]
+  - **Current Number:** 6
+
+- **Player 1:**
+  - **Operation:** Add 1 (`+1`)
+  - **Calculation:** `6 + 1 = 7`
+  - **Sequence Check:** 7 is already in [7, 14, 13, 12, 6]
+  - **Outcome:** Player 1 loses (number repeated)
+
+- **Winner:** Player 2
+
+### Example 2
+
+**Starting Number (S):** 15  
+**Target Number (T):** 1  
+**Number Sequence List:** [15]
+
+**Turn Sequence:**
+
+- **Player 1:**
+  - **Operation:** Subtract 1 (`-1`)
+  - **Calculation:** `15 - 1 = 14`
+  - **Sequence Check:** 14 is not in [15]
+  - **Update Sequence List:** [15, 14]
+  - **Current Number:** 14
+
+- **Player 2:**
+  - **Operation:** Divide by 2 (`/2`)
+  - **Calculation:** `14 / 2 = 7`
+  - **Sequence Check:** 7 is not in [15, 14]
+  - **Update Sequence List:** [15, 14, 7]
+  - **Current Number:** 7
+
+- **Player 1:**
+  - **Operation:** Subtract 1 (`-1`)
+  - **Calculation:** `7 - 1 = 6`
+  - **Sequence Check:** 6 is not in [15, 14, 7]
+  - **Update Sequence List:** [15, 14, 7, 6]
+  - **Current Number:** 6
+
+- **Player 2:**
+  - **Operation:** Divide by 2 (`/2`)
+  - **Calculation:** `6 / 2 = 3`
+  - **Sequence Check:** 3 is not in [15, 14, 7, 6]
+  - **Update Sequence List:** [15, 14, 7, 6, 3]
+  - **Current Number:** 3
+
+- **Player 1:**
+  - **Operation:** Subtract 1 (`-1`)
+  - **Calculation:** `3 - 1 = 2`
+  - **Sequence Check:** 2 is not in [15, 14, 7, 6, 3]
+  - **Update Sequence List:** [15, 14, 7, 6, 3, 2]
+  - **Current Number:** 2
+
+- **Player 2:**
+  - **Operation:** Divide by 2 (`/2`)
+  - **Calculation:** `2 / 2 = 1`
+  - **Sequence Check:** 1 is not in [15, 14, 7, 6, 3, 2]
+  - **Update Sequence List:** [15, 14, 7, 6, 3, 2, 1]
+  - **Current Number:** 1
+  - **Outcome:** Player 2 reaches the target number `T = 1`
+
+- **Winner:** Player 2
+
+## Command-Line Interaction Sample
+
+**Game Start:**
+
+```
+Welcome to Number Connect!
+
+Starting Number (S): 8
+Target Number (T): 20
+
+Player 1, it's your turn.
+Current Number: 8
+Available Operations: +1, -1, *2, /2
+
+Enter your operation: *2
+New Current Number: 16
+Sequence: [8, 16]
+```
+
+**Next Turn:**
+
+```
+Player 2, it's your turn.
+Current Number: 16
+Available Operations: +1, -1, *2, /2
+
+Enter your operation: +1
+New Current Number: 17
+Sequence: [8, 16, 17]
+```
+
+**Subsequent Turns Continue Similarly...**
+
+**Victory Message:**
+
+```
+Player 1, it's your turn.
+Current Number: 19
+Available Operations: +1, -1, *2
+
+Enter your operation: +1
+New Current Number: 20
+Sequence: [8, 16, 17, 34, 33, 32, 31, 30, 15, 16, 17, 18, 19, 20]
+
+Congratulations, Player 1! You've reached the target number 20. You win!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Consider the potential future moves and avoid setting up your opponent for a win.
+  
+- **Avoid Loops:** Keep track of the sequence to ensure you don't repeat numbers.
+  
+- **Control the Game Flow:** Use operations that limit your opponent's options.
+  
+- **Aim for Strategic Numbers:** Think about numbers that can quickly lead you to the target or restrict your opponent.
+
+## Conclusion
+
+Number Connect is a strategic, fast-paced game that challenges players to think ahead and manipulate numbers carefully. With simple rules and operations, it's easy to learn but offers depth for skillful play. Enjoy testing your numerical wit against your opponent!

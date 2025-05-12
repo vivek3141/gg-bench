@@ -1,0 +1,304 @@
+# Bit Flip Showdown
+
+## Objective
+
+Be the first player to transform your binary string to exactly match the target binary pattern by strategically flipping and swapping bits.
+
+## Setup
+
+1. **Target Pattern Generation**:
+   - At the start of the game, a random 8-bit binary target pattern is generated. This pattern consists of eight bits, each being either `0` or `1`. For example: `10110011`.
+   
+2. **Player Binary Strings**:
+   - Each player begins with their own binary string of eight bits, all initialized to `0`. So both players start with `00000000`.
+
+3. **Player Turn Order**:
+   - Decide which player goes first (e.g., by agreement or a coin toss).
+
+## Game Components
+
+- **Target Pattern**:
+  - An 8-bit binary string (e.g., `10110011`) that players aim to match with their own binary strings.
+  
+- **Player Binary Strings**:
+  - Each player has their own 8-bit binary string that they manipulate during the game. Initially set to `00000000`.
+
+- **Bits**:
+  - Individual positions in the binary string, numbered from 1 to 8 from left to right.
+
+- **Operations**:
+  - Actions that players can perform on their binary strings:
+    - **Flip**: Change a bit from `0` to `1` or from `1` to `0` at a specified position.
+    - **Swap**: Exchange the bits between any two positions in the binary string.
+
+## Turns
+
+- Players take turns performing operations on their binary strings.
+- **Turn Structure**:
+  1. **Operation Selection**:
+     - On their turn, a player chooses one of the two available operations:
+       - **Flip a Bit**
+       - **Swap Bits**
+  2. **Execute Operation**:
+     - The player specifies the bit positions involved and performs the operation on their binary string.
+  3. **Update Binary String**:
+     - The player's binary string is updated to reflect the operation performed.
+  4. **Check for Victory**:
+     - If the player's binary string now exactly matches the target pattern, the game ends, and that player wins.
+  5. **End Turn**:
+     - If no victory is achieved, the turn passes to the other player.
+
+## Rules and Mechanics
+
+### Operations
+
+1. **Flip a Bit**:
+   - The player selects one bit position (1-8) in their binary string.
+   - The bit at that position is flipped:
+     - If it was `0`, it becomes `1`.
+     - If it was `1`, it becomes `0`.
+
+2. **Swap Bits**:
+   - The player selects two different bit positions (1-8) in their binary string.
+   - The bits at these two positions are swapped with each other.
+
+### General Rules
+
+- **Valid Moves**:
+  - Only one operation (flip or swap) may be performed per turn.
+  - The player must specify valid bit positions (integers between 1 and 8).
+- **State Visibility**:
+  - Both players' binary strings and the target pattern are visible to both players at all times.
+- **No Skipping Turns**:
+  - Players must perform an operation on their turn; passing is not allowed.
+- **No Draws**:
+  - The game continues until one player wins by matching their binary string to the target pattern.
+  
+## Scoring
+
+- **Winning the Game**:
+  - The first player to manipulate their binary string to exactly match the target pattern wins the game.
+- **No Points System**:
+  - There is no scoring or points system beyond achieving the match with the target pattern.
+
+## Examples
+
+### Sample Game Play
+
+**Target Pattern**: `10110011`
+
+**Initial State**:
+
+- **Player 1 Binary String**: `00000000`
+- **Player 2 Binary String**: `00000000`
+
+---
+
+#### Turn 1: Player 1
+
+- **Operation**: Flip a bit at position 1.
+- **Action**: Change bit 1 from `0` to `1`.
+- **Resulting Binary String**: `10000000`
+
+**Player 1 Binary String**: `10000000`
+
+---
+
+#### Turn 2: Player 2
+
+- **Operation**: Flip a bit at position 2.
+- **Action**: Change bit 2 from `0` to `1`.
+- **Resulting Binary String**: `01000000`
+
+**Player 2 Binary String**: `01000000`
+
+---
+
+#### Turn 3: Player 1
+
+- **Operation**: Flip a bit at position 3.
+- **Action**: Change bit 3 from `0` to `1`.
+- **Resulting Binary String**: `10100000`
+
+**Player 1 Binary String**: `10100000`
+
+---
+
+#### Turn 4: Player 2
+
+- **Operation**: Swap bits at positions 2 and 3.
+- **Action**: Exchange bits at positions 2 and 3.
+- **Resulting Binary String**: `00100000`
+
+**Player 2 Binary String**: `00100000`
+
+---
+
+#### Turn 5: Player 1
+
+- **Operation**: Flip a bit at position 4.
+- **Action**: Change bit 4 from `0` to `1`.
+- **Resulting Binary String**: `10110000`
+
+**Player 1 Binary String**: `10110000`
+
+---
+
+#### Turn 6: Player 2
+
+- **Operation**: Flip a bit at position 3.
+- **Action**: Change bit 3 from `0` to `1`.
+- **Resulting Binary String**: `00110000`
+
+**Player 2 Binary String**: `00110000`
+
+---
+
+#### Turn 7: Player 1
+
+- **Operation**: Swap bits at positions 7 and 8.
+- **Action**: Exchange bits at positions 7 and 8.
+- **Resulting Binary String**: `10110000` (No change since bits 7 and 8 are both `0`)
+
+**Player 1 Binary String**: `10110000`
+
+---
+
+#### Turn 8: Player 2
+
+- **Operation**: Flip a bit at position 1.
+- **Action**: Change bit 1 from `0` to `1`.
+- **Resulting Binary String**: `10110000`
+
+**Player 2 Binary String**: `10110000`
+
+---
+
+#### Turn 9: Player 1
+
+- **Operation**: Flip a bit at position 7.
+- **Action**: Change bit 7 from `0` to `1`.
+- **Resulting Binary String**: `10110010`
+
+**Player 1 Binary String**: `10110010`
+
+---
+
+#### Turn 10: Player 2
+
+- **Operation**: Flip a bit at position 8.
+- **Action**: Change bit 8 from `0` to `1`.
+- **Resulting Binary String**: `10110001`
+
+**Player 2 Binary String**: `10110001`
+
+---
+
+#### Turn 11: Player 1
+
+- **Operation**: Flip a bit at position 8.
+- **Action**: Change bit 8 from `0` to `1`.
+- **Resulting Binary String**: `10110011`
+
+**Player 1 Binary String**: `10110011`
+
+- **Victory Check**: Player 1's binary string matches the target pattern.
+
+---
+
+### Conclusion
+
+- **Winner**: Player 1 wins by matching their binary string to the target pattern `10110011`.
+
+## Command-Line Interaction Example
+
+This section provides a sample of how the game might be played in a command-line interface.
+
+---
+
+**Game Start**
+
+```
+Welcome to Bit Flip Showdown!
+
+Target Pattern:
+1 0 1 1 0 0 1 1
+
+Player 1 Binary String:
+0 0 0 0 0 0 0 0
+
+Player 2 Binary String:
+0 0 0 0 0 0 0 0
+
+Player 1, it's your turn.
+Choose an operation:
+1. Flip a bit
+2. Swap bits
+Enter the number of your choice: 
+```
+
+**Player 1 Turn Input**
+
+```
+1
+Enter the position to flip (1-8): 
+1
+```
+
+**Game State Update**
+
+```
+Player 1 flipped bit 1.
+
+Player 1 Binary String:
+1 0 0 0 0 0 0 0
+
+Player 2 Binary String:
+0 0 0 0 0 0 0 0
+
+Player 2, it's your turn.
+Choose an operation:
+1. Flip a bit
+2. Swap bits
+Enter the number of your choice:
+```
+
+**Player 2 Turn Input**
+
+```
+1
+Enter the position to flip (1-8):
+2
+```
+
+**Game State Update**
+
+```
+Player 2 flipped bit 2.
+
+Player 1 Binary String:
+1 0 0 0 0 0 0 0
+
+Player 2 Binary String:
+0 1 0 0 0 0 0 0
+
+Player 1, it's your turn.
+...
+```
+
+*(The game continues in this fashion until a player wins.)*
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Look at the differences between your binary string and the target pattern to determine the most efficient sequence of operations.
+- **Prioritize Flipping Correct Bits**: Flip bits that are different from the target pattern. This is often more straightforward than swapping.
+- **Use Swaps Wisely**: Swapping can be powerful when you have correct bits in the wrong positions.
+- **Anticipate Opponent Moves**: While you cannot directly affect your opponent's binary string, keeping track of their progress can help you gauge the urgency of your moves.
+  
+## Summary
+
+Bit Flip Showdown is a strategic two-player game that requires logical thinking and planning. By flipping and swapping bits in your binary string to match the target pattern, you engage in a mental tug-of-war with your opponent. The simplicity of the rules allows for quick gameplay, while the depth of strategy provides a challenging experience.
+
+Are you ready to test your binary wits and outmaneuver your opponent? Let the Bit Flip Showdown begin!

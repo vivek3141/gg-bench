@@ -1,0 +1,166 @@
+# **Quantum Duel**
+
+## **Objective**
+
+Become the first player to collapse the quantum state by successfully predicting and capturing the opponent's quantum token. Victory is achieved by navigating uncertainty and outmaneuvering your opponent through strategic choices and logical deduction.
+
+## **Setup**
+
+1. **Quantum Grid**: A linear grid consisting of 7 positions, numbered 1 through 7.
+2. **Tokens**:
+   - Each player has one quantum token, indistinct in appearance.
+3. **Initial Positions**:
+   - Both players' tokens start off the grid in a state of superposition.
+4. **Turn Order**:
+   - Players decide who goes first (can be randomized or decided by mutual agreement).
+
+## **Game Components**
+
+- **Quantum Tokens**:
+  - Represented by 'Q' when observed on the grid.
+  - Each player controls one quantum token.
+- **Quantum Grid**:
+  - A simple line of positions: `[1][2][3][4][5][6][7]`.
+  - Positions can be occupied by a token or remain empty.
+- **Observation Marker**:
+  - Used to represent an attempted observation at a specific position.
+
+## **Turns**
+
+- Players alternate turns.
+- Each turn consists of two phases:
+  1. **Superposition Movement Phase**:
+     - Secretly choose to move your quantum token to an adjacent position or stay in place.
+     - Movement is limited to positions 1 through 7.
+  2. **Observation Phase**:
+     - Attempt to observe (guess) the opponent's token position.
+
+## **Rules and Mechanics**
+
+### **Superposition Movement Phase**
+
+- **Movement Rules**:
+  - Tokens can move to an adjacent position (left or right) or stay in place.
+  - Tokens cannot move beyond positions 1 or 7.
+- **Secret Movement**:
+  - Movements are not disclosed to the opponent.
+  - Players record their moves secretly (e.g., write them down).
+
+### **Observation Phase**
+
+- **Attempting an Observation**:
+  - Declare a position (1-7) to observe.
+  - If the opponent's token is in the declared position, the token collapses, and you capture it.
+- **Outcome of Observation**:
+  - **Successful Observation**:
+    - Opponent reveals that their token is at the declared position.
+    - You win the game by capturing the opponent's token.
+  - **Failed Observation**:
+    - Opponent states that their token is not at the declared position.
+    - Game continues to the next turn.
+- **Restriction on Observations**:
+  - You cannot observe the same position in two consecutive turns.
+
+### **Special Mechanics**
+
+- **Quantum Tunneling**:
+  - Once per game, each player can "tunnel" their token, moving it to any position on the grid during the Superposition Movement Phase instead of moving to an adjacent position.
+  - This move is also done secretly.
+- **Collision Rule**:
+  - If both tokens occupy the same position after the Movement Phase, they are both revealed, and the game results in a **Quantum Collapse**, where the player who initiated the collision loses due to instability.
+
+## **Scoring**
+
+- **Winning the Game**:
+  - Capture the opponent's quantum token through a successful observation.
+  - Force a collision where the opponent initiated the move to the shared position.
+- **Losing the Game**:
+  - Opponent captures your quantum token.
+  - You initiate a collision by moving into the opponent's position.
+
+## **Examples**
+
+### **Sample Turn Sequence**
+
+**Initial Setup**:
+
+- Both tokens are off the grid in superposition.
+
+**Turn 1**:
+
+- **Player 1 Movement**: Secretly moves token to position 3.
+- **Player 1 Observation**: Attempts to observe position 5.
+  - **Player 2 Response**: "Token not at position 5."
+- **Player 2 Movement**: Secretly moves token to position 5.
+- **Player 2 Observation**: Attempts to observe position 3.
+  - **Player 1 Response**: "Token is at position 3."
+  - **Result**: Player 2 captures Player 1's token and wins the game.
+
+### **Using Quantum Tunneling**
+
+**Turn 2**:
+
+- **Player 1 Movement**: Uses Quantum Tunneling to move token to position 7.
+- **Player 1 Observation**: Attempts to observe position 5.
+  - **Player 2 Response**: "Token not at position 5."
+- **Player 2 Movement**: Secretly moves token to position 6.
+- **Player 2 Observation**: Attempts to observe position 7.
+  - **Player 1 Response**: "Token is at position 7."
+  - **Result**: Player 2 captures Player 1's token and wins the game.
+
+### **Collision Scenario**
+
+**Turn 3**:
+
+- **Player 1 Movement**: Moves token from position 4 to position 5.
+- **Player 1 Observation**: Attempts to observe position 2.
+  - **Player 2 Response**: "Token not at position 2."
+- **Player 2 Movement**: Moves token from position 6 to position 5 (causing a collision).
+- **Player 2 Observation**: Attempts to observe position 7.
+  - **Player 1 Response**: "Token not at position 7."
+- **Collision Resolution**:
+  - Both tokens reveal they are at position 5.
+  - **Result**: Player 2 initiated the collision and loses the game due to instability.
+
+## **Command-Line Interaction Example**
+
+**Turn Sequence**:
+
+1. **Player 1**:
+   - Enters: `MOVE 3`
+   - Enters: `OBSERVE 5`
+   - **Output**: "Player 2's token is not at position 5."
+2. **Player 2**:
+   - Enters: `MOVE 5`
+   - Enters: `OBSERVE 3`
+   - **Output**: "Player 1's token is at position 3."
+   - **Game Over**: "Player 2 wins by capturing Player 1's token!"
+
+**Special Move Example**:
+
+1. **Player 1**:
+   - Enters: `TUNNEL 7` (uses Quantum Tunneling)
+   - Enters: `OBSERVE 5`
+   - **Output**: "Player 2's token is not at position 5."
+2. **Player 2**:
+   - Enters: `MOVE 7`
+   - Enters: `OBSERVE 4`
+   - **Output**: "Player 1's token is not at position 4."
+   - **Collision Detected**:
+     - **Result**: Player 2 loses due to initiating collision.
+     - **Game Over**: "Player 1 wins! Player 2's token destabilized in collision."
+
+## **Strategy Tips**
+
+- **Memory and Deduction**:
+  - Keep track of previously observed positions to narrow down the opponent's possible locations.
+- **Unpredictability**:
+  - Use Quantum Tunneling strategically to evade capture or set up the opponent.
+- **Observation Limitation**:
+  - Remember you cannot observe the same position twice in a row; plan observations accordingly.
+- **Collision Caution**:
+  - Avoid moving into a position where a collision could occur unless it benefits you.
+
+---
+
+**Note**: "Quantum Duel" is a game of hidden movement and strategic observation, offering depth and excitement in a simple, easy-to-code format suitable for command-line play. Mastery comes from predicting your opponent's moves and effectively using special mechanics to outmaneuver them.

@@ -1,0 +1,158 @@
+# **Last Digit Duel**
+
+## **Objective**
+
+The primary goal of **Last Digit Duel** is to be the player who multiplies the shared number to produce a result that ends with the digit **0**. Players achieve victory by strategically choosing multipliers to steer the shared number towards ending with zero. The first player to make the shared number end with the digit **0** wins the game. A loss occurs when a player fails to prevent their opponent from achieving this objective on their subsequent turn.
+
+## **Setup**
+
+1. **Shared Number Initialization**: The game begins with a shared number set to **1**.
+2. **Player Designation**: Determine which player goes first (Player 1 and Player 2). This can be decided by a coin toss, random number generation, or mutual agreement.
+
+## **Game Components**
+
+- **Shared Number**: A single integer value that both players manipulate. It starts at **1** and changes with each turn based on player actions.
+- **Multipliers**: Players use integers from **2** to **9** as multipliers during their turns.
+- **Command-Line Interface**: The game is played via a command-line interface where players input their chosen multipliers.
+
+## **Turns**
+
+1. **Turn Order**: Players alternate turns, starting with Player 1.
+2. **Player Action**:
+   - On their turn, a player selects a multiplier (an integer between **2** and **9**, inclusive).
+   - The player multiplies the shared number by their chosen multiplier.
+   - The shared number is then updated to this new value.
+3. **Progression**:
+   - The updated shared number carries over to the next player's turn.
+   - The game continues with players alternating turns and selecting multipliers.
+
+## **Rules and Mechanics**
+
+1. **Multipliers**:
+   - Players must choose an integer multiplier between **2** and **9** on each turn.
+   - Multipliers cannot be outside this range.
+2. **Shared Number Update**:
+   - The shared number is updated immediately after a player multiplies it by their chosen multiplier.
+   - The new shared number becomes the starting point for the next player's turn.
+3. **Winning Condition**:
+   - A player wins if, after their turn, the shared number ends with the digit **0**.
+4. **Strategic Play**:
+   - Players must anticipate their opponent's potential moves.
+   - The game requires strategic selection of multipliers to either move towards ending with zero or to prevent the opponent from doing so.
+5. **No Draws**:
+   - The game continues until a player wins by making the shared number end with zero.
+   - There is no possibility of a draw.
+
+## **Scoring**
+
+- **Victory**: The player who causes the shared number to end with the digit **0** wins the game.
+- **No Point Accumulation**: There is no point system; the game is won by meeting the winning condition.
+- **Tracking**: The shared number progression serves as the game's state and is tracked throughout.
+
+## **Examples**
+
+### **Example Game Play**
+
+**Starting Shared Number**: 1
+
+**Turn 1**:  
+- **Player 1's Turn**  
+- Chooses multiplier: **5**  
+- Calculation: 1 × 5 = **5**  
+- **Shared Number** is now **5**
+
+**Turn 2**:  
+- **Player 2's Turn**  
+- Chooses multiplier: **2**  
+- Calculation: 5 × 2 = **10**  
+- **Shared Number** is now **10**  
+- Since the shared number ends with **0**, **Player 2 wins the game**
+
+### **Strategic Gameplay Illustration**
+
+**Starting Shared Number**: 1
+
+**Turn 1**:  
+- **Player 1's Turn**  
+- Chooses multiplier: **3**  
+- Calculation: 1 × 3 = **3**  
+- **Shared Number** is now **3**
+
+**Turn 2**:  
+- **Player 2's Turn**  
+- Chooses multiplier: **7**  
+- Calculation: 3 × 7 = **21**  
+- **Shared Number** is now **21**
+
+**Turn 3**:  
+- **Player 1's Turn**  
+- Chooses multiplier: **4**  
+- Calculation: 21 × 4 = **84**  
+- **Shared Number** is now **84**
+
+**Turn 4**:  
+- **Player 2's Turn**  
+- Chooses multiplier: **5**  
+- Calculation: 84 × 5 = **420**  
+- **Shared Number** is now **420**  
+- Since the shared number ends with **0**, **Player 2 wins the game**
+
+### **Command-Line Interaction Sample**
+
+**Game Start**
+
+```
+Shared Number is 1
+Player 1's turn.
+Choose a multiplier (2-9): 6
+Shared Number is now 6
+
+Player 2's turn.
+Choose a multiplier (2-9): 7
+Shared Number is now 42
+
+Player 1's turn.
+Choose a multiplier (2-9): 5
+Shared Number is now 210
+
+Player 1 wins! The shared number ends with 0.
+```
+
+### **Longer Gameplay Example**
+
+**Game Start**
+
+```
+Shared Number is 1
+Player 1's turn.
+Choose a multiplier (2-9): 2
+Shared Number is now 2
+
+Player 2's turn.
+Choose a multiplier (2-9): 3
+Shared Number is now 6
+
+Player 1's turn.
+Choose a multiplier (2-9): 7
+Shared Number is now 42
+
+Player 2's turn.
+Choose a multiplier (2-9): 2
+Shared Number is now 84
+
+Player 1's turn.
+Choose a multiplier (2-9): 5
+Shared Number is now 420
+
+Player 1 wins! The shared number ends with 0.
+```
+
+## **Strategic Considerations**
+
+- **Multipliers Ending with 5 or Even Numbers**: Multiplying by 5 or an even number can be strategic since numbers ending with 0 are multiples of 10.
+- **Avoiding Immediate Loss**: Players should be cautious not to set up the shared number in a way that allows the opponent to win on their next turn.
+- **Predicting Outcomes**: Skilled players will calculate future possibilities based on current shared number and available multipliers.
+
+## **Summary**
+
+**Last Digit Duel** is a simple yet strategic game that challenges players to manipulate a shared number through multiplication with the aim of ending the number with zero. It requires foresight and planning to outmaneuver the opponent and secure a win. The game's simplicity makes it easy to code and play in a command-line interface while offering depth for skilled strategic play.

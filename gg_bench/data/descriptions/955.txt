@@ -1,0 +1,206 @@
+**Game Title: Sequence Duel**
+
+---
+
+### **Objective**
+
+Be the first player to successfully create a continuous numerical sequence of a specified length from a shared pool of numbers. The sequence must consist of consecutive numbers in ascending order. The game tests strategic planning and foresight, allowing skilled players to consistently outperform unskilled ones.
+
+---
+
+### **Setup**
+
+1. **Number Pool**: Create a shared pool of numbers ranging from **1** to **20**.
+2. **Sequence Length**: Decide on the sequence length required to win (e.g., **5** numbers).
+3. **Initial Hands**: Both players start with an empty hand.
+4. **Starting Conditions**: Determine randomly who takes the first turn (e.g., flip a coin or let the youngest player start).
+
+---
+
+### **Game Components**
+
+1. **Number Pool**:
+   - A list of numbers from **1** to **20**.
+   - Each number is available only once; once taken, it is removed from the pool.
+2. **Player Hands**:
+   - Each player has a personal collection area (their "hand") where they hold the numbers they've selected.
+3. **Command-Line Interface**:
+   - Players interact by entering commands to select numbers and view hands.
+
+---
+
+### **Turns**
+
+1. **Turn Structure**:
+   - Players alternate turns.
+   - On each turn, a player selects **one** number from the shared pool.
+2. **Actions Per Turn**:
+   - **Select Number**: Choose an available number from the pool.
+   - **View Hands** (Optional): Players can view their own hand and the opponent's hand at any time.
+3. **Turn Progression**:
+   - The game continues with players taking turns until one player achieves a valid sequence or no more valid moves can be made.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Selecting Numbers**:
+   - Players must select numbers strategically to build a consecutive ascending sequence.
+   - Once a number is selected, it is **removed** from the pool and cannot be chosen again.
+2. **Building a Sequence**:
+   - A valid sequence consists of consecutive numbers in ascending order (e.g., 5, 6, 7, 8, 9).
+   - The sequence length required to win is predetermined (e.g., 5 numbers).
+3. **Blocking Opponents**:
+   - Players can select numbers that their opponent may need, introducing a strategic blocking element.
+4. **Winning the Game**:
+   - The first player to collect the required number of consecutive numbers in ascending order wins.
+5. **No Valid Moves**:
+   - If neither player can possibly achieve the sequence with the remaining numbers, the player with the **longest consecutive sequence** wins.
+   - If tied, the player with the **highest numerical sequence** wins (e.g., 6-7-8 beats 3-4-5).
+
+---
+
+### **Scoring**
+
+- **Winning Condition**: Successfully create a consecutive ascending sequence of the predetermined length.
+- **Alternate Winning Condition**: If the main condition can't be met, the player with the longest consecutive sequence wins.
+- **Tie-Breaker**: If both players have sequences of equal length, the player with the higher numerical sequence wins.
+
+---
+
+### **Examples**
+
+#### **Example 1: Standard Playthrough**
+
+**Sequence Length**: 3
+
+**Number Pool**: 1-10
+
+**Turn 1**:
+
+- **Player 1** selects **5**.
+- **Player 1's Hand**: 5
+
+**Turn 2**:
+
+- **Player 2** selects **6**.
+- **Player 2's Hand**: 6
+
+**Turn 3**:
+
+- **Player 1** selects **4**.
+- **Player 1's Hand**: 5, 4
+
+**Turn 4**:
+
+- **Player 2** selects **7**.
+- **Player 2's Hand**: 6, 7
+
+**Turn 5**:
+
+- **Player 1** selects **3**.
+- **Player 1's Hand**: 5, 4, 3
+
+**Player 1** has a consecutive sequence: **3, 4, 5** and wins the game.
+
+#### **Example 2: Blocking Strategy**
+
+**Sequence Length**: 4
+
+**Number Pool**: 1-15
+
+**Turn 1**:
+
+- **Player 1** selects **8**.
+- **Player 1's Hand**: 8
+
+**Turn 2**:
+
+- **Player 2** selects **7**.
+- **Player 2's Hand**: 7
+
+**Turn 3**:
+
+- **Player 1** notices Player 2 might be aiming for **7, 8, 9, 10**.
+- **Player 1** selects **9** to block.
+- **Player 1's Hand**: 8, 9
+
+**Turn 4**:
+
+- **Player 2** selects **6**.
+- **Player 2's Hand**: 7, 6
+
+**Turn 5**:
+
+- **Player 1** selects **10**.
+- **Player 1's Hand**: 8, 9, 10
+
+**Turn 6**:
+
+- **Player 2** selects **5**.
+- **Player 2's Hand**: 7, 6, 5
+
+**Turn 7**:
+
+- **Player 1** selects **11**.
+- **Player 1's Hand**: 8, 9, 10, 11
+
+**Player 1** has a consecutive sequence: **8, 9, 10, 11** and wins the game.
+
+#### **Command-Line Interaction Sample**
+
+```
+Welcome to Sequence Duel!
+
+The number pool is: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+Sequence length to win: 3
+
+Player 1, it's your turn.
+Available numbers: 1-10
+Enter the number you wish to select: 5
+
+Player 1 has selected 5.
+
+Player 2, it's your turn.
+Available numbers: 1-4, 6-10
+Enter the number you wish to select: 6
+
+Player 2 has selected 6.
+
+Player 1, it's your turn.
+Available numbers: 1-4, 7-10
+Enter the number you wish to select: 4
+
+Player 1 has selected 4.
+
+Player 2, it's your turn.
+Available numbers: 1-3, 7-10
+Enter the number you wish to select: 7
+
+Player 2 has selected 7.
+
+Player 1, it's your turn.
+Available numbers: 1-3, 8-10
+Enter the number you wish to select: 3
+
+Player 1 has selected 3.
+
+Congratulations, Player 1! You have formed the sequence: 3, 4, 5.
+You win!
+```
+
+---
+
+### **Additional Notes**
+
+- **Strategic Depth**:
+  - Players must balance between building their own sequence and blocking their opponent.
+  - Observing the numbers the opponent selects is crucial for anticipating their strategy.
+- **Game Variations**:
+  - **Adjusting Sequence Length**: Increase for longer games, decrease for shorter ones.
+  - **Expanding Number Pool**: Use a larger range for more complexity.
+  - **Multiple Sequences**: Require players to build more than one sequence to win.
+  
+---
+
+By offering simple rules with strategic possibilities, **Sequence Duel** provides an engaging experience that is easy to code and play via a command-line interface. The clear objective and mechanics ensure that games end quickly, with skilled players able to consistently outperform less experienced opponents.

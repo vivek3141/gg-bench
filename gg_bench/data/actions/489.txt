@@ -1,0 +1,21 @@
+The action space in the `CustomEnv` is an integer range from 0 to 79, representing all possible moves. This range is divided into segments to map each index to a specific game action:  
+
+- **Digit Selection (0-9)**: The first step involves selecting one of the ten available digits (0 through 9). The index divides into chunks of 8 to account for this: each sequence of 8 actions starts with a different digit.
+
+- **Target Player (0-1)**: For each digit, there are two target options:
+  - 0 for assigning the digit to the current player's board.
+  - 1 for assigning the digit to the opponent's board.
+
+- **Board Position (0-3)**: Each target player option includes four positions on the player's number board:
+  - 0 for thousands position.
+  - 1 for hundreds position.
+  - 2 for tens position.
+  - 3 for ones position.
+
+Given a single-action index `action`, the mapping is as follows:
+- Calculate the digit as `action // 8`.
+- Compute the remainder as `action % 8`.
+- Determine target player as `remainder // 4`.
+- Establish board position as `remainder % 4`.  
+
+Thus, a single-action index fully encapsulates a decision about which digit to place, which player's board to target, and which position to fill.

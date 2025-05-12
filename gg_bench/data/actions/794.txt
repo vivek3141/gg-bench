@@ -1,0 +1,6 @@
+In the game, the action space is represented as a single integer ranging from 0 to 24, corresponding to each of the 25 cells in the 5x5 grid. The mapping from an action space index to a grid move is done by converting the index to a grid position using the following formula:
+
+- Calculate the row number as `index // grid_size`, where `grid_size` is 5. This division gives the correct row number by determining how many complete rows of 5 have been counted.
+- Calculate the column number as `index % grid_size`. This modulo operation gives the remainder of the division, which corresponds to the column position within the row.
+
+This linear mapping allows each index to uniquely identify a specific cell on the 5x5 grid.

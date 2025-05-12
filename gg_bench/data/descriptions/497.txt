@@ -1,0 +1,199 @@
+# Grid Lock
+
+## Objective
+
+**Grid Lock** is a strategic two-player game where the goal is to be the last player able to make a valid move. Players navigate a shared grid, moving their pieces and blocking spaces to confine their opponent. The player who successfully traps their opponent, leaving them with no legal moves on their turn, wins the game.
+
+## Setup
+
+- **Grid**: The game is played on a 3x3 grid represented in the command-line interface.
+- **Starting Positions**:
+  - **Player A** begins on the top-left corner at position **(0, 0)**.
+  - **Player B** begins on the bottom-right corner at position **(2, 2)**.
+- **Initial Grid State**: All cells are unblocked and unoccupied except for the starting positions of the players.
+
+## Game Components
+
+- **Grid Cells**: Each of the nine cells in the grid, identified by their row and column indices ranging from **0** to **2**.
+- **Player Markers**:
+  - **Player A** is represented by **'A'**.
+  - **Player B** is represented by **'B'**.
+- **Blocked Cells**: Cells that have been occupied and left by a player are marked as blocked with **'X'**. Blocked cells cannot be entered or passed through by either player.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player A**.
+- **Turn Actions**:
+  1. **Move**: The player moves their marker to an adjacent, unblocked, and unoccupied cell.
+  2. **Block**: After moving, the cell the player moved from becomes blocked.
+- **Adjacency**: Players can move horizontally or vertically but not diagonally.
+
+## Rules and Mechanics
+
+### Movement
+
+- **Valid Moves**: On their turn, players must move to an adjacent cell that is not blocked or occupied.
+- **Adjacency Criteria**: Cells directly above, below, left, or right are considered adjacent.
+- **Boundaries**: Players cannot move off the grid.
+
+### Blocking
+
+- **Blocking Mechanism**: After moving, the player's previous cell becomes blocked.
+- **Blocked Cells**: Marked with an **'X'**, these cells are impassable for the remainder of the game.
+- **Effect**: Blocking adds a strategic element, as players can limit their opponent's movement options.
+
+### Winning the Game
+
+- **Victory Condition**: A player wins if their opponent has no valid moves on their turn.
+- **No Passing**: Players cannot skip a turn; if a valid move is available, they must take it.
+- **Tie-Breaker**: If both players become blocked simultaneously, the player who made the last valid move wins.
+
+### Additional Rules
+
+- **No Occupying the Same Cell**: Players cannot move into a cell occupied by the opponent.
+- **Continuous Play**: The game proceeds until a win condition is met; there are no draws.
+
+## Examples
+
+### Initial Grid
+
+```
+ A |   |  
+---+---+---
+   |   |  
+---+---+---
+   |   | B
+```
+
+### Sample Turn Sequence
+
+1. **Player A's Turn**:
+   - **Current Position**: (0, 0)
+   - **Available Moves**: (0, 1), (1, 0)
+   - **Action**: Moves to (0, 1), blocks (0, 0)
+
+   ```
+    X | A |  
+   ---+---+---
+       |   |  
+   ---+---+---
+       |   | B
+   ```
+
+2. **Player B's Turn**:
+   - **Current Position**: (2, 2)
+   - **Available Moves**: (2, 1), (1, 2)
+   - **Action**: Moves to (1, 2), blocks (2, 2)
+
+   ```
+    X | A |  
+   ---+---+---
+       |   | B
+   ---+---+---
+       |   | X
+   ```
+
+3. **Player A's Turn**:
+   - **Current Position**: (0, 1)
+   - **Available Moves**: (0, 2), (1, 1)
+   - **Action**: Moves to (1, 1), blocks (0, 1)
+
+   ```
+    X | X |  
+   ---+---+---
+       | A | B
+   ---+---+---
+       |   | X
+   ```
+
+4. **Player B's Turn**:
+   - **Current Position**: (1, 2)
+   - **Available Moves**: (0, 2), (2, 2), (1, 1)
+   - **Action**: Can't move to (2, 2) [blocked], (1, 1) [occupied], moves to (0, 2), blocks (1, 2)
+
+   ```
+    X | X | B
+   ---+---+---
+       | A | X
+   ---+---+---
+       |   | X
+   ```
+
+5. **Player A's Turn**:
+   - **Current Position**: (1, 1)
+   - **Available Moves**: (1, 0), (2, 1)
+   - **Action**: Moves to (1, 0), blocks (1, 1)
+
+   ```
+    X | X | B
+   ---+---+---
+    A | X | X
+   ---+---+---
+       |   | X
+   ```
+
+6. **Player B's Turn**:
+   - **Current Position**: (0, 2)
+   - **Available Moves**: None (all adjacent cells are blocked or occupied)
+   - **Result**: Player B cannot move. **Player A wins!**
+
+### Command-Line Interaction Example
+
+```
+Player A's turn.
+Your current position: (0, 0)
+Available moves:
+- (0, 1)
+- (1, 0)
+Enter your move (row,column): 0,1
+You moved to (0,1) and blocked (0,0).
+
+Player B's turn.
+Your current position: (2, 2)
+Available moves:
+- (1, 2)
+- (2, 1)
+Enter your move (row,column): 1,2
+You moved to (1,2) and blocked (2,2).
+
+Player A's turn.
+Your current position: (0, 1)
+Available moves:
+- (0, 2)
+- (1, 1)
+Enter your move (row,column): 1,1
+You moved to (1,1) and blocked (0,1).
+
+Player B's turn.
+Your current position: (1, 2)
+Available moves:
+- (0, 2)
+Enter your move (row,column): 0,2
+You moved to (0,2) and blocked (1,2).
+
+Player A's turn.
+Your current position: (1, 1)
+Available moves:
+- (1, 0)
+- (2, 1)
+Enter your move (row,column): 1,0
+You moved to (1,0) and blocked (1,1).
+
+Player B's turn.
+Your current position: (0, 2)
+Available moves:
+- None
+No valid moves available. Player A wins!
+```
+
+## Strategic Depth and Complexity
+
+Despite its simple rules and quick gameplay, **Grid Lock** offers strategic depth:
+
+- **Positioning**: Deciding which cell to move to can affect future movement options for both players.
+- **Blocking Strategy**: Choosing which cell to block can either limit your opponent or preserve your own mobility.
+- **Anticipation**: Predicting your opponent's moves allows you to block critical paths and gain an advantage.
+
+## Conclusion
+
+**Grid Lock** is an engaging, easy-to-code game perfect for command-line play. It provides a balance of simplicity and strategic complexity, ensuring that skilled players can consistently outmaneuver less experienced opponents. The lack of a draw condition and the compact grid size ensures that games are quick and decisive.

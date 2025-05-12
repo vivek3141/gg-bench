@@ -1,0 +1,221 @@
+# Factor Frenzy Rule Book
+
+Welcome to **Factor Frenzy**, a strategic two-player turn-based game designed for quick play in a command-line interface. Engage in a battle of wits as you manipulate numbers and outmaneuver your opponent to achieve victory.
+
+---
+
+## Objective
+
+The primary goal of **Factor Frenzy** is to be the player who reduces the shared number to **1** on your turn. Players achieve victory by strategically choosing proper factors of the current number to subtract, forcing the opponent into a position where they cannot make a valid move.
+
+A player **wins** the game by:
+
+- Reducing the shared number to **1** on their turn.
+
+A player **loses** the game if:
+
+- They cannot select a valid proper factor on their turn because the current number is prime and greater than **1**.
+
+---
+
+## Setup
+
+1. **Starting Number**: Decide on a starting positive integer **N** between **10** and **50** (inclusive). This number will be the shared number both players will manipulate during the game.
+
+2. **Player Order**: Determine who will take the first turn. This can be decided randomly or by mutual agreement.
+
+3. **Initial Conditions**: The game begins with the shared number set to the chosen starting number **N**.
+
+---
+
+## Game Components
+
+- **Shared Number**: The central element of the game; a positive integer that changes as players subtract factors.
+  
+- **Players**: Two players alternate turns. No physical pieces, boards, or cards are required—just the ability to perform calculations and input commands.
+
+- **Command-Line Interface**: The game is played via text input and output in a command-line environment.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Display Current Number**: At the beginning of each turn, the current shared number is displayed.
+
+2. **Player Action**: The active player selects a proper factor of the current number to subtract.
+
+3. **Update Number**: The chosen factor is subtracted from the current number to form the new shared number.
+
+4. **Check for Win/Loss Conditions**: Determine if the game has been won or if the next player cannot make a valid move.
+
+5. **Pass Turn**: If the game has not ended, the turn passes to the other player.
+
+### Player Actions
+
+- On their turn, a player must:
+  - **Choose a Proper Factor**: Select a proper factor of the current number (an integer greater than **1** and less than the current number that divides it evenly).
+  - **Subtract the Factor**: Subtract the selected factor from the current number.
+
+---
+
+## Rules and Mechanics
+
+1. **Proper Factors Only**: Players can only select proper factors of the current number. Factors must satisfy:
+   - Greater than **1**.
+   - Less than the current number.
+   - Divides the current number evenly (no remainder).
+
+2. **Updating the Number**:
+   - Subtract the chosen factor from the current number.
+   - The result becomes the new current number for the next turn.
+
+3. **Winning the Game**:
+   - If a player reduces the current number to **1** on their turn, they win the game.
+
+4. **Losing the Game**:
+   - If the current number is prime (and greater than **1**), and the player cannot select a valid proper factor, they lose the game.
+
+5. **No Reuse Restrictions**:
+   - Factors can be reused in subsequent turns if they are still proper factors of the new current number.
+
+---
+
+## Scoring
+
+- **Victory**: Winning the game by reducing the number to **1** on your turn.
+
+- **No Point System**: The game does not use a point or scoring system. Victory is achieved directly through gameplay.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Setup
+
+- Starting Number (**N**): **24**
+- Player 1: Alice
+- Player 2: Bob
+- Alice will take the first turn.
+
+#### Turn-By-Turn Breakdown
+
+---
+
+**Turn 1: Alice**
+
+- **Current Number**: 24
+- **Proper Factors of 24**: 2, 3, 4, 6, 8, 12
+- **Alice's Move**: Chooses factor **12**
+- **Calculation**: 24 - 12 = **12**
+- **Updated Number**: 12
+- **Status**: Game continues.
+
+---
+
+**Turn 2: Bob**
+
+- **Current Number**: 12
+- **Proper Factors of 12**: 2, 3, 4, 6
+- **Bob's Move**: Chooses factor **6**
+- **Calculation**: 12 - 6 = **6**
+- **Updated Number**: 6
+- **Status**: Game continues.
+
+---
+
+**Turn 3: Alice**
+
+- **Current Number**: 6
+- **Proper Factors of 6**: 2, 3
+- **Alice's Move**: Chooses factor **3**
+- **Calculation**: 6 - 3 = **3**
+- **Updated Number**: 3
+- **Status**: Game continues.
+
+---
+
+**Turn 4: Bob**
+
+- **Current Number**: 3
+- **Proper Factors of 3**: None (since 3 is prime and greater than 1)
+- **Bob's Move**: Cannot make a move.
+
+- **Bob Loses**: Bob cannot select a proper factor.
+- **Alice Wins**: By default since Bob cannot make a move.
+
+---
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Starting Factor Frenzy!
+Choose a starting number between 10 and 50: 24
+Player 1 (Alice) will start.
+```
+
+---
+
+**Turn 1: Alice**
+
+```
+Current Number: 24
+Proper factors available: [2, 3, 4, 6, 8, 12]
+Alice, choose a proper factor to subtract: 12
+You selected 12.
+New Current Number: 12
+```
+
+---
+
+**Turn 2: Bob**
+
+```
+Current Number: 12
+Proper factors available: [2, 3, 4, 6]
+Bob, choose a proper factor to subtract: 6
+You selected 6.
+New Current Number: 6
+```
+
+---
+
+**Turn 3: Alice**
+
+```
+Current Number: 6
+Proper factors available: [2, 3]
+Alice, choose a proper factor to subtract: 3
+You selected 3.
+New Current Number: 3
+```
+
+---
+
+**Turn 4: Bob**
+
+```
+Current Number: 3
+No proper factors available. 3 is prime.
+Bob cannot make a move.
+Bob loses! Alice wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Aim for Primes**: Try to force the current number to be a prime number greater than 1 on your opponent's turn.
+
+- **Control the Flow**: By choosing factors that leave fewer options for your opponent, you can dictate the pace of the game.
+
+- **Think Ahead**: Consider the possible results of each of your potential moves and how they will impact your opponent's options.
+
+---
+
+Enjoy playing **Factor Frenzy** and may the best strategist win!

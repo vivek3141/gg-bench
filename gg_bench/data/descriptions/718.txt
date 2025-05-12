@@ -1,0 +1,221 @@
+**Cross Over: A Two-Player Strategic Race Game**
+
+---
+
+### **Objective**
+
+Be the first player to move your marker past your opponent's starting position on a linear track. Use strategic movement to outmaneuver your opponent without landing on the same position. Victory is achieved by successfully crossing over the opponent's starting point while adhering to the movement rules.
+
+---
+
+### **Setup**
+
+1. **Game Board**: A linear sequence of numbered positions from **1** to **9**, representing a straight track.
+
+2. **Player Markers**:
+   - **Player 1**: Starts at position **1**.
+   - **Player 2**: Starts at position **9**.
+
+3. **Starting Conditions**:
+   - Both players begin with their markers on their respective starting positions.
+   - Players decide who takes the first turn (e.g., coin toss, mutual agreement).
+
+---
+
+### **Game Components**
+
+1. **Track Positions**:
+   - Positions are numbered sequentially from **1** to **9**.
+
+2. **Player Markers**:
+   - **Marker Appearance**: Simple identifiers such as `P1` for Player 1 and `P2` for Player 2.
+   - **Functionality**: Markers indicate each player's current position on the track.
+
+3. **Command-Line Interface Elements**:
+   - Text-based representation of the track and marker positions.
+   - Input prompts for players to enter their moves.
+
+---
+
+### **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns throughout the game.
+   - The player designated to go first begins the game.
+
+2. **Player Actions During a Turn**:
+   - Choose to move your marker forward along the track by **1**, **2**, or **3** positions.
+
+3. **Turn Progression**:
+   - After a player completes their move, the turn passes to the opponent.
+   - The game continues until one player wins by crossing over the opponent's starting position.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement Rules**:
+   - On your turn, you **must** move your marker forward by **1**, **2**, or **3** positions.
+   - Movement is only **forward** towards the opponent's starting position.
+
+2. **Occupied Positions**:
+   - **Markers Cannot Occupy the Same Position**: You cannot move your marker to a position currently occupied by your opponent's marker.
+   - If a chosen move would result in both markers landing on the same position, you **must** choose a different number of positions to move.
+
+3. **Winning the Game**:
+   - A player wins by moving their marker **past** the opponent's starting position.
+   - The game immediately ends when a player achieves this objective.
+
+4. **Blocked Moves**:
+   - If you have no legal moves (all possible moves result in landing on the opponent's position), you **must** skip your turn.
+   - Skipping a turn does not prevent the opponent from moving.
+
+5. **Game End Condition**:
+   - The game ends when one player successfully crosses over the opponent's starting position, thus winning the game.
+   - There are no draws; a winner is always determined.
+
+---
+
+### **Scoring**
+
+- **Winning**: The first player to cross over the opponent's starting position wins the game.
+- **No Point System**: The game does not utilize points; victory is solely based on achieving the objective.
+- **Match Play (Optional)**:
+  - Players can play multiple rounds, keeping track of wins to determine an overall champion.
+  - For example, the first player to win **3** games wins the match.
+
+---
+
+### **Examples**
+
+#### **Example Game Flow**
+
+**Initial Track State**:
+```
+Positions: 1 2 3 4 5 6 7 8 9
+Markers:   P1                      P2
+```
+
+**Turn 1**:
+- **Player 1's Move**:
+  - Chooses to move forward **3** positions.
+  - New position: **1 + 3 = 4**.
+- **Track State**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9
+  Markers:           P1         P2
+  ```
+
+**Turn 2**:
+- **Player 2's Move**:
+  - Chooses to move forward **2** positions.
+  - New position: **9 - 2 = 7**.
+- **Track State**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9
+  Markers:           P1     P2
+  ```
+
+**Turn 3**:
+- **Player 1's Move**:
+  - Cannot move **3** positions (would land on position 7, occupied by P2).
+  - Chooses to move **2** positions instead.
+  - New position: **4 + 2 = 6**.
+- **Track State**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9
+  Markers:               P1 P2
+  ```
+
+**Turn 4**:
+- **Player 2's Move**:
+  - Cannot move **1** position (would land on position 6, occupied by P1).
+  - Chooses to move **2** positions.
+  - New position: **7 - 2 = 5**.
+- **Track State**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9
+  Markers:             P2   P1
+  ```
+
+**Turn 5**:
+- **Player 1's Move**:
+  - Chooses to move **3** positions.
+  - New position: **6 + 3 = 9**.
+- **Track State**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9
+  Markers:             P2       P1
+  ```
+
+**Turn 6**:
+- **Player 2's Move**:
+  - Chooses to move **3** positions.
+  - New position: **5 - 3 = 2**.
+- **Track State**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9
+  Markers:     P2            P1
+  ```
+
+**Turn 7**:
+- **Player 1's Move**:
+  - Chooses to move **1** position.
+  - New position: **9 + 1 = 10** (beyond position 9).
+  - Player 1 has crossed over Player 2's starting position (**position 9**) and **wins the game**.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+```
+Welcome to Cross Over!
+
+Player 1 starts at position 1.
+Player 2 starts at position 9.
+
+Player 1, it's your turn.
+Enter the number of positions to move forward (1, 2, or 3):
+```
+
+**Player Inputs**
+
+```
+Player 1: 3
+
+[Game updates positions]
+
+Player 2, it's your turn.
+Enter the number of positions to move forward (1, 2, or 3):
+```
+
+**Invalid Move Example**
+
+```
+Player 1: 3
+
+Cannot move 3 positions; that would land on Player 2's position.
+Please choose a different number of positions to move (1 or 2):
+```
+
+**Game End**
+
+```
+Player 1 has crossed over Player 2's starting position!
+Player 1 wins the game!
+```
+
+---
+
+### **Strategic Considerations**
+
+- **Anticipate Opponent Moves**: Plan your moves based on possible responses from your opponent to avoid being forced into skipping a turn.
+- **Control the Center**: Occupying central positions can limit your opponent's options.
+- **Force Skip**: Aim to position your marker such that the opponent has no legal moves, increasing your chances to advance unhindered.
+- **Optimal Moves**: Calculate ahead to utilize the full range of movement options without violating the occupied position rule.
+
+---
+
+Enjoy the challenge of **Cross Over**, where every move counts, and strategic foresight can lead you to victory!

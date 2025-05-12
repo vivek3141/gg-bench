@@ -1,0 +1,128 @@
+# Divide and Conquer
+
+## Objective
+
+**Be the last player to make a valid move by strategically dividing the current number.** Players take turns dividing a shared number according to specific rules. The player who forces their opponent into a position where no valid division can be made wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a positive integer, **N**, which is decided upon by both players before the game starts. A common starting number is **100** for a balanced game.
+- **Players**: Two players, **Player 1** and **Player 2**, will alternate turns.
+- **Turn Order**: Decide who takes the first turn (e.g., by a coin toss or mutual agreement).
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that changes during the game based on players' actions.
+- **Divisors**: Integers greater than **1** and less than or equal to the square root of **N** that exactly divide **N**.
+
+## Turns
+
+1. **Current Number Announcement**: At the start of each turn, the current value of **N** is announced.
+2. **Choose a Divisor**: The active player selects a valid divisor **d** of **N**, where **1 < d ≤ √N**, and **N mod d = 0**.
+3. **Divide and Update**: The player divides **N** by **d** to get a new **N** (i.e., **N = N / d**).
+4. **Announce New Number**: The new value of **N** is announced for the next player's turn.
+5. **Turn Progression**: The next player takes their turn following the same steps.
+
+## Rules and Mechanics
+
+- **Valid Divisors**: 
+  - A divisor **d** must satisfy the following conditions:
+    - **d** is an integer.
+    - **d > 1**.
+    - **d ≤ √N** (square root of the current **N**).
+    - **N mod d = 0** (i.e., **d** divides **N** exactly).
+- **Winning the Game**:
+  - If a player cannot make a move because there is no valid **d** (i.e., **N** is **1** or a prime number greater than **2**), they lose.
+  - The opponent who made the last valid move wins.
+- **Example of Valid Moves**:
+  - If **N = 36**, valid divisors **d** can be **2**, **3**, **4**, **6** (since **1 < d ≤ 6**, and they divide **36**).
+- **Prohibited Moves**:
+  - Divisors less than or equal to **1** or greater than **√N** are not allowed.
+  - Divisors that do not divide **N** exactly are invalid.
+
+## Scoring
+
+- **No Points System**: The game does not involve points. Victory is determined by the last valid move.
+- **Match Play**: Players may agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game:
+
+**Starting Number (N):** 100
+
+#### Turn 1:
+- **Player 1's Turn**:
+  - **Current N**: 100
+  - **Valid Divisors (d)**: 2, 4, 5, 10 (since **1 < d ≤ 10** and **d** divides **100**)
+  - **Player 1 Chooses**: **d = 5**
+  - **Calculation**: N = 100 / 5 = **20**
+  - **Announce New N**: 20
+
+#### Turn 2:
+- **Player 2's Turn**:
+  - **Current N**: 20
+  - **Valid Divisors (d)**: 2, 4 (since **1 < d ≤ 4.47**, use d ≤ 4)
+  - **Player 2 Chooses**: **d = 2**
+  - **Calculation**: N = 20 / 2 = **10**
+  - **Announce New N**: 10
+
+#### Turn 3:
+- **Player 1's Turn**:
+  - **Current N**: 10
+  - **Valid Divisors (d)**: 2 (since **1 < d ≤ 3.16**, use d ≤ 3)
+  - **Player 1 Chooses**: **d = 2**
+  - **Calculation**: N = 10 / 2 = **5**
+  - **Announce New N**: 5
+
+#### Turn 4:
+- **Player 2's Turn**:
+  - **Current N**: 5
+  - **Valid Divisors (d)**: None (since **√5 ≈ 2.24**, and no integers **>1** and **≤2** divide **5** exactly)
+  - **Outcome**: Player 2 cannot make a move.
+  - **Winner**: **Player 1**
+
+## Command-Line Interaction Example
+
+### Starting the Game
+```
+Welcome to Divide and Conquer!
+Starting Number (N): 100
+Player 1 begins.
+```
+
+### Turn Sequence
+```
+Player 1's Turn:
+Current N: 100
+Choose a divisor (d) where 1 < d <= 10 and N mod d == 0
+Enter your divisor: 5
+New N is now: 20
+
+Player 2's Turn:
+Current N: 20
+Choose a divisor (d) where 1 < d <= 4 and N mod d == 0
+Enter your divisor: 2
+New N is now: 10
+
+Player 1's Turn:
+Current N: 10
+Choose a divisor (d) where 1 < d <= 3 and N mod d == 0
+Enter your divisor: 2
+New N is now: 5
+
+Player 2's Turn:
+Current N: 5
+No valid divisors available. You cannot make a move.
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Aim for Primes**: Try to reduce **N** to a prime number on your opponent's turn, limiting their options.
+- **Control the Square Root**: Be mindful of the square root of **N** to understand the range of valid divisors.
+- **Avoid 1 and N**: Remember that divisors must be greater than **1** and less than or equal to **√N**; planning moves ahead can trap your opponent.
+
+## Conclusion
+
+Divide and Conquer is a simple yet strategic game that challenges players to think ahead and use number theory to their advantage. By understanding the properties of numbers and divisors, skilled players can consistently outperform less experienced opponents. Enjoy the battle of wits in this numerical showdown!

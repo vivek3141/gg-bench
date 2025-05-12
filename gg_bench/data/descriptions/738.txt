@@ -1,0 +1,221 @@
+# Rule Book for "Number Factor"
+
+---
+
+## Objective
+
+**"Number Factor"** is a two-player turn-based strategy game. The primary goal is to be the player who reduces the shared number to exactly **1** using strategic division. Players take turns dividing the current shared number by its proper divisors. The player who successfully reduces the number to **1** on their turn **wins** the game.
+
+---
+
+## Setup
+
+- **Starting Number (N):** The game begins with a shared positive integer, recommended to be **30** for a quick game. Players agree on this starting number before the game starts.
+- **Players:** Two players are required. Decide who will take the first turn (e.g., by a coin toss).
+
+---
+
+## Game Components
+
+- **Shared Number (N):** A positive integer that both players manipulate during the game.
+- **Proper Divisors:** The numbers greater than **1** and less than **N** that divide **N** without leaving a remainder.
+  - **Example:** Proper divisors of **30** are **2, 3, 5, 6, 10, 15**.
+
+---
+
+## Turns
+
+- **Turn Order:** Players alternate turns throughout the game.
+- **Turn Actions:**
+  1. **Determine Proper Divisors:** At the start of each turn, calculate the proper divisors of the current number **N**.
+  2. **Choose an Action:**
+     - **Divide N by a Proper Divisor:** Select one proper divisor and divide **N** by it.
+     - **Pass Turn:** If there are no proper divisors (i.e., **N** is prime), the player must pass their turn.
+  3. **Update N:** The result of the division becomes the new **N** for the next turn.
+  4. **Check for Win Condition:** If **N** is reduced to **1**, the player who made the move wins the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - A player may only divide **N** by its proper divisors (excluding **1** and **N** itself).
+   - If **N** is prime (no proper divisors other than **1** and **N**), the player cannot make a move and must pass their turn.
+2. **Passing a Turn:**
+   - If a player cannot make a valid move, they must announce that they are passing their turn.
+   - Play passes to the opponent.
+3. **Winning the Game:**
+   - The player who reduces **N** to exactly **1** on their turn **wins**.
+   - If neither player can make a move and **N** is not **1**, the last player to successfully make a move **wins**.
+4. **Invalid Moves:**
+   - Dividing by numbers that are not proper divisors is not allowed.
+   - Attempting an invalid move results in losing that turn.
+5. **Game End Conditions:**
+   - **Win:** When **N** is reduced to **1**.
+   - **Forfeit:** If a player violates the rules intentionally, they forfeit the game.
+
+---
+
+## Scoring
+
+- **Victory:** The game is won by the player who reduces **N** to **1**.
+- **No Points System:** There is no points or scoring system; each game results in a win or loss.
+- **Match Play (Optional):** Players can agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Game Start:** The starting number is **30**.
+
+---
+
+**Turn 1: Player 1**
+
+- **Current N:** 30
+- **Proper Divisors of 30:** 2, 3, 5, 6, 10, 15
+- **Action:** Player 1 chooses to divide by **5**.
+- **Calculation:** 30 ÷ 5 = **6**
+- **New N:** **6**
+
+---
+
+**Turn 2: Player 2**
+
+- **Current N:** 6
+- **Proper Divisors of 6:** 2, 3
+- **Action:** Player 2 chooses to divide by **2**.
+- **Calculation:** 6 ÷ 2 = **3**
+- **New N:** **3**
+
+---
+
+**Turn 3: Player 1**
+
+- **Current N:** 3
+- **Proper Divisors of 3:** None (3 is prime)
+- **Action:** Player 1 cannot make a move and passes the turn.
+
+---
+
+**Turn 4: Player 2**
+
+- **Current N:** 3
+- **Proper Divisors of 3:** None (3 is prime)
+- **Action:** Player 2 cannot make a move and passes the turn.
+
+---
+
+**Game End:**
+
+- Neither player can make a move.
+- The last player to successfully make a move was **Player 2**.
+- **Player 2 wins the game!**
+
+---
+
+### Alternate Scenario
+
+**Game Start:** The starting number is **30**.
+
+---
+
+**Turn 1: Player 1**
+
+- **Current N:** 30
+- **Proper Divisors of 30:** 2, 3, 5, 6, 10, 15
+- **Action:** Player 1 chooses to divide by **2**.
+- **Calculation:** 30 ÷ 2 = **15**
+- **New N:** **15**
+
+---
+
+**Turn 2: Player 2**
+
+- **Current N:** 15
+- **Proper Divisors of 15:** 3, 5
+- **Action:** Player 2 chooses to divide by **5**.
+- **Calculation:** 15 ÷ 5 = **3**
+- **New N:** **3**
+
+---
+
+**Turn 3: Player 1**
+
+- **Current N:** 3
+- **Proper Divisors of 3:** None (3 is prime)
+- **Action:** Player 1 cannot make a move and passes the turn.
+
+---
+
+**Turn 4: Player 2**
+
+- **Current N:** 3
+- **Proper Divisors of 3:** None (3 is prime)
+- **Action:** Player 2 cannot make a move and passes the turn.
+
+---
+
+**Game End:**
+
+- Neither player can make a move.
+- The last player to successfully make a move was **Player 2**.
+- **Player 2 wins the game!**
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample command-line interaction for a game of "Number Factor":
+
+```
+Welcome to Number Factor!
+Starting number (N) is 30.
+
+Player 1's turn.
+Current N: 30
+Proper divisors of 30 are: 2, 3, 5, 6, 10, 15
+Choose a proper divisor to divide N: 5
+You chose 5. Calculating 30 ÷ 5...
+New N is 6.
+
+Player 2's turn.
+Current N: 6
+Proper divisors of 6 are: 2, 3
+Choose a proper divisor to divide N: 2
+You chose 2. Calculating 6 ÷ 2...
+New N is 3.
+
+Player 1's turn.
+Current N: 3
+3 is a prime number. No proper divisors. Turn passed.
+
+Player 2's turn.
+Current N: 3
+3 is a prime number. No proper divisors. Turn passed.
+
+No valid moves remaining.
+Last successful move was made by Player 2.
+Congratulations, Player 2 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Consider the consequences of each move. Dividing by smaller divisors may prolong the game but could put your opponent at a disadvantage.
+- **Force Primes:** Try to leave the shared number as a prime on your opponent's turn, forcing them to pass.
+- **Control the Game Pace:** Use larger divisors to reduce **N** quickly when it benefits you.
+- **Avoid Immediate Primes:** If possible, avoid reducing **N** to a prime number on your own turn unless it leads directly to a win.
+
+---
+
+## Conclusion
+
+"Number Factor" is a simple yet strategic game that challenges players to think ahead and manipulate numbers to their advantage. Its minimal components and straightforward mechanics make it easy to code and play in a command-line interface, while the strategic depth ensures that skilled players can consistently outperform their opponents.
+
+Enjoy the game, and may the best strategist win!
+
+---

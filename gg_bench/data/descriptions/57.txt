@@ -1,0 +1,293 @@
+# GridLock Duel
+
+## Objective
+
+**Be the last player able to make a valid move on the grid.** Players take turns marking cells on a shared grid, following specific adjacency rules. The player who makes the final move, after which no further valid moves are possible, **wins** the game.
+
+## Setup
+
+- **Game Board**: A 3x3 grid consisting of 9 empty cells.
+- **Players**: Two players, identified as **Player X** and **Player O**.
+- **Starting Conditions**: The grid is empty at the beginning of the game. Players decide who goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Grid Cells**: Each cell can be empty (`-`), marked with an `X`, or marked with an `O`.
+
+  ```
+  - - -
+  - - -
+  - - -
+  ```
+
+- **Player Symbols**:
+  - **Player X**: Marks cells with an `X`.
+  - **Player O**: Marks cells with an `O`.
+
+- **Grid Positions**: Cells are referenced by their row and column numbers (1-based indexing).
+
+  ```
+  (1,1) (1,2) (1,3)
+  (2,1) (2,2) (2,3)
+  (3,1) (3,2) (3,3)
+  ```
+
+## Turns
+
+- **Turn Order**: Players alternate turns. The player designated to go first makes the initial move.
+- **Player Actions during Turn**:
+  1. **Select a Cell**: Choose any empty cell that is **not adjacent** to the cell marked by the opponent in their previous turn.
+  2. **Mark the Cell**: Place your symbol (`X` or `O`) in the chosen cell.
+- **Adjacency Constraints**:
+  - Cells are considered adjacent if they are directly horizontal, vertical, or diagonal neighbors.
+  - On the **first turn of the game**, there are no adjacency restrictions.
+
+## Rules and Mechanics
+
+1. **Cell Selection**:
+   - A player **cannot** select a cell that is adjacent to the cell marked by the opponent in their immediate previous turn.
+   - If there are no valid cells available that meet the adjacency rule, the player **must pass** their turn.
+
+2. **Adjacency Definition**:
+   - For a cell at position `(row, column)`, adjacent cells include all positions where:
+     - `row_diff = abs(current_row - opponent_row) <= 1`
+     - `column_diff = abs(current_column - opponent_column) <= 1`
+     - Excluding the cell where both `row_diff` and `column_diff` are 0 (the opponent's last move).
+
+3. **Winning the Game**:
+   - The game ends when a player makes a move after which the opponent has no valid moves left.
+   - The player who made the last valid move **wins**.
+
+4. **Invalid Moves**:
+   - If a player attempts to select an invalid cell:
+     - The game prompts them to select a different cell.
+     - Repeated attempts to make invalid moves result in forfeiting the game.
+
+## Scoring
+
+- **Winning**: The player who makes the last valid move scores a **win**.
+- **Losing**: The player who cannot make a valid move on their turn **loses**.
+- **Game Tracking**: Keep track of wins for each player if playing multiple rounds.
+
+## Examples
+
+### Example Game Play
+
+**Initial Grid**:
+
+```
+- - -
+- - -
+- - -
+```
+
+**Turn 1**: *Player X*
+
+- **Action**: Player X chooses cell `(2,2)`.
+
+- **Grid**:
+
+  ```
+  - - -
+  - X -
+  - - -
+  ```
+
+**Turn 2**: *Player O*
+
+- **Opponent's Last Move**: `(2,2)`
+- **Invalid Choices**: All cells adjacent to `(2,2)`:
+  - `(1,1)`, `(1,2)`, `(1,3)`
+  - `(2,1)`,       `(2,3)`
+  - `(3,1)`, `(3,2)`, `(3,3)`
+- **Valid Choices**: None (since the grid is only 3x3, all cells are adjacent to the center)
+- **Action**: Player O cannot make a valid move and must pass.
+
+**Turn 3**: *Player X*
+
+- **Opponent's Last Move**: None (Player O passed)
+- **Adjacency Rule Reset**: Since the opponent did not make a move, Player X can select any remaining empty cell.
+- **Action**: Player X chooses cell `(1,1)`.
+
+- **Grid**:
+
+  ```
+  X - -
+  - X -
+  - - -
+  ```
+
+**Turn 4**: *Player O*
+
+- **Opponent's Last Move**: `(1,1)`
+- **Invalid Choices**: Adjacent to `(1,1)`:
+  - `(1,2)`, `(2,1)`, `(2,2)`
+- **Valid Choices**:
+  - `(1,3)`, `(2,3)`, `(3,1)`, `(3,2)`, `(3,3)`
+- **Action**: Player O chooses cell `(3,3)`.
+
+- **Grid**:
+
+  ```
+  X - -
+  - X -
+  - - O
+  ```
+
+**Turn 5**: *Player X*
+
+- **Opponent's Last Move**: `(3,3)`
+- **Invalid Choices**: Adjacent to `(3,3)`:
+  - `(2,2)`, `(2,3)`, `(3,2)`
+- **Valid Choices**:
+  - `(1,2)`, `(1,3)`, `(2,1)`, `(3,1)`
+- **Action**: Player X chooses cell `(1,3)`.
+
+- **Grid**:
+
+  ```
+  X - X
+  - X -
+  - - O
+  ```
+
+**Turn 6**: *Player O*
+
+- **Opponent's Last Move**: `(1,3)`
+- **Invalid Choices**: Adjacent to `(1,3)`:
+  - `(1,2)`, `(2,2)`, `(2,3)`
+- **Valid Choices**:
+  - `(2,1)`, `(3,1)`, `(3,2)`
+- **Action**: Player O chooses cell `(3,1)`.
+
+- **Grid**:
+
+  ```
+  X - X
+  - X -
+  O - O
+  ```
+
+**Turn 7**: *Player X*
+
+- **Opponent's Last Move**: `(3,1)`
+- **Invalid Choices**: Adjacent to `(3,1)`:
+  - `(2,1)`, `(2,2)`, `(3,2)`
+- **Valid Choices**:
+  - `(1,2)`
+- **Action**: Player X chooses cell `(1,2)`.
+
+- **Grid**:
+
+  ```
+  X X X
+  - X -
+  O - O
+  ```
+
+**Turn 8**: *Player O*
+
+- **Opponent's Last Move**: `(1,2)`
+- **Invalid Choices**: Adjacent to `(1,2)`:
+  - `(1,1)`, `(1,3)`, `(2,1)`, `(2,2)`, `(2,3)`
+- **Valid Choices**:
+  - `(3,2)`
+- **Action**: Player O chooses cell `(3,2)`.
+
+- **Grid**:
+
+  ```
+  X X X
+  - X -
+  O O O
+  ```
+
+**Turn 9**: *Player X*
+
+- **Opponent's Last Move**: `(3,2)`
+- **Invalid Choices**: Adjacent to `(3,2)`:
+  - `(2,1)`, `(2,2)`, `(2,3)`, `(3,1)`, `(3,3)`
+- **Valid Choices**:
+  - None
+- **Action**: Player X has no valid moves and must pass.
+
+**Conclusion**:
+
+- **No Valid Moves Left**: Both players have no valid moves remaining.
+- **Winner**: The last player to make a valid move was **Player O**.
+- **Result**: **Player O wins the game**.
+
+## Command-Line Interaction Example
+
+Here's how the game might proceed in a command-line interface:
+
+**Game Start**
+
+```
+Welcome to GridLock Duel!
+
+The grid is numbered as follows:
+
+(1,1) (1,2) (1,3)
+(2,1) (2,2) (2,3)
+(3,1) (3,2) (3,3)
+
+Player X will go first.
+```
+
+**Turn 1**: *Player X*
+
+```
+Player X, it's your turn.
+Enter the row and column number of your chosen cell (e.g., 2 2):
+> 2 2
+
+You marked cell (2,2).
+
+Current Grid:
+- - -
+- X -
+- - -
+```
+
+**Turn 2**: *Player O*
+
+```
+Player O, it's your turn.
+You cannot choose a cell adjacent to (2,2).
+
+Invalid Cells: (1,1), (1,2), (1,3), (2,1), (2,3), (3,1), (3,2), (3,3)
+Valid Cells: None
+
+No valid moves available. You must pass your turn.
+```
+
+**Turn 3**: *Player X*
+
+```
+Player X, it's your turn.
+Opponent passed last turn. You can choose any empty cell.
+
+Enter the row and column number of your chosen cell:
+> 1 1
+
+You marked cell (1,1).
+
+Current Grid:
+X - -
+- X -
+- - -
+```
+
+(Continue the game following the previous example until the conclusion.)
+
+## Strategy Tips
+
+- **Control the Center**: Starting at the center limits your opponent's options.
+- **Anticipate Moves**: Consider the cells that will be invalidated for your opponent based on your move.
+- **Force Passes**: Aim to leave your opponent with no valid moves.
+- **Plan Ahead**: Think multiple turns ahead to corner your opponent.
+
+## Conclusion
+
+GridLock Duel is a game of strategic placement and foresight. While the rules are simple, mastering the game requires practice and careful planning. Enjoy challenging your opponents in this battle of wits!

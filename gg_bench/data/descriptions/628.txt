@@ -1,0 +1,209 @@
+**Sequence Builder: A Strategic Number Sequencing Game**
+
+---
+
+### **Objective**
+
+Be the first player to successfully complete a secret sequence of five numbers following a specific mathematical rule without your opponent correctly guessing the type of sequence you're building. Alternatively, deduce your opponent's sequence type before they complete it to hinder their progress.
+
+---
+
+### **Setup**
+
+1. **Number Pool**: A common pool of numbers ranging from 1 to 9 is available to both players. Each number is available in unlimited quantity.
+2. **Player Sequences**: Each player has an empty sequence area where they will build their sequence of numbers.
+3. **Secret Sequence Type**: At the beginning of the game, each player secretly chooses a sequence type from the allowed list of sequence types.
+
+---
+
+### **Game Components**
+
+- **Number Pool (1-9)**: These are the digits players will use to build their sequences. They are represented simply by their numerical value and are unlimited in supply.
+  
+- **Player Sequence Area**: A virtual space (or a simple list) where each player records the numbers they've added to their sequence.
+
+- **Allowed Sequence Types**:
+  - **Arithmetic Sequence**: Each number increases by a constant difference (e.g., 2, 4, 6, 8, 10).
+  - **Geometric Sequence**: Each number is multiplied by a constant factor (e.g., 2, 4, 8, 16, 32).
+  - **Fibonacci Sequence**: Each number is the sum of the two preceding ones (starting numbers chosen by the player).
+  - **Prime Numbers**: A sequence of prime numbers (e.g., 2, 3, 5, 7, 11).
+  - **Square Numbers**: Numbers which are squares of integers (e.g., 1, 4, 9, 16, 25).
+  - **Cube Numbers**: Numbers which are cubes of integers (e.g., 1, 8, 27, 64, 125).
+  - **Multiples of N**: All numbers are multiples of a chosen number N (e.g., multiples of 3: 3, 6, 9, 12, 15).
+  - **Even/Odd Numbers**: All numbers are even or all are odd.
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Players decide who goes first (e.g., by coin toss). Turns alternate between players.
+   
+2. **Actions Per Turn**:
+   - **Add a Number**: The player selects a number from the number pool (1-9) and adds it to their sequence.
+   - **Optional Guess**: Instead of adding a number, a player may choose to guess the opponent's sequence type.
+     - **Guessing Mechanics**:
+       - The player states one sequence type from the allowed list.
+       - The opponent must confirm if the guess is correct or incorrect.
+   
+3. **Turn Progression**: The game continues with players alternating turns, performing one action per turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Building the Sequence**:
+   - **Sequence Length**: The goal is to build a sequence of exactly five numbers.
+   - **Sequence Validity**:
+     - Each new number added must comply with the player's secret sequence type.
+     - The sequence must start from any valid number as per the sequence type.
+     - All numbers must be from the number pool (1-9).
+     - Repetition of numbers is allowed if it fits the sequence type.
+   
+2. **Secret Sequence Type**:
+   - Players keep their chosen sequence type secret.
+   - Players may not change their sequence type once the game begins.
+   
+3. **Guessing Opponent's Sequence**:
+   - **Correct Guess**:
+     - If a player correctly guesses the opponent's sequence type, the opponent's sequence is wiped, and they must start over.
+     - The opponent selects a new sequence type (cannot be the same as the one just guessed) and continues the game.
+   - **Incorrect Guess**:
+     - If the guess is incorrect, the game proceeds, and the guessing player gains no information.
+     - Players may only make one guess per turn instead of adding a number.
+   
+4. **Winning the Game**:
+   - **Sequence Completion**:
+     - If a player completes their five-number sequence without the opponent correctly guessing the sequence type, they win.
+   - **Strategic Guessing**:
+     - Players must balance between advancing their sequence and attempting to guess the opponent's sequence to prevent them from winning.
+   
+5. **Additional Mechanics**:
+   - **Validity Checks**: Players may challenge the validity of a sequence at any time. If a sequence is invalid, it must be corrected or restarted.
+   - **Honesty Clause**: Players must be truthful about their sequence type and sequence validity when challenged.
+
+---
+
+### **Scoring**
+
+No points are accumulated during the game. Victory is achieved by either:
+
+- Successfully completing a valid five-number sequence according to the secret sequence type without the opponent guessing it.
+  
+- Correctly guessing the opponent's sequence type, causing them to restart, thereby gaining a strategic advantage to complete your sequence first.
+
+---
+
+### **Examples**
+
+#### **Example 1: Building an Arithmetic Sequence**
+
+- **Player A's Secret Sequence Type**: Arithmetic Sequence with a common difference of +2.
+
+- **Turn 1**:
+  - **Player A**: Adds the number **2** to their sequence.
+  
+- **Turn 2**:
+  - **Player B**: Adds the number **3** to their sequence.
+
+- **Turn 3**:
+  - **Player A**: Adds the number **4** to their sequence (sequence so far: 2, 4).
+
+- **Turn 4**:
+  - **Player B**: Guesses that Player A is building a sequence of even numbers.
+    - **Player A**: Responds that the guess is **incorrect**.
+  
+- **Turn 5**:
+  - **Player A**: Adds the number **6** to their sequence (sequence so far: 2, 4, 6).
+  
+- **Turn 6**:
+  - **Player B**: Adds the number **5** to their sequence.
+
+- **Turn 7**:
+  - **Player A**: Adds the number **8** to their sequence (sequence so far: 2, 4, 6, 8).
+
+- **Turn 8**:
+  - **Player B**: Guesses that Player A is building an arithmetic sequence with a common difference of +2.
+    - **Player A**: Confirms that the guess is **correct**.
+    - **Player A**: Must now restart with a new sequence type (cannot choose Arithmetic Sequence with a common difference of +2).
+
+#### **Example 2: Completing a Sequence Without Being Guessed**
+
+- **Player B's Secret Sequence Type**: Prime Numbers.
+
+- **Sequence Progression**:
+  - **Player B** adds numbers: **2**, **3**, **5**, **7**, **2**.
+  
+- **Outcome**:
+  - **Player A** fails to guess the sequence type.
+  - **Player B** completes the five-number sequence of prime numbers and wins the game.
+
+---
+
+### **Command-Line Interaction Sample**
+
+Assuming a simple command-line interface, the game might proceed as follows:
+
+#### **Game Start**
+
+- **Player A** and **Player B** choose their secret sequence types privately.
+
+#### **Turn 1**
+
+- **Player A's Turn**:
+  - Command: `add 2`
+  - Output: `Player A adds 2 to their sequence.`
+
+#### **Turn 2**
+
+- **Player B's Turn**:
+  - Command: `add 3`
+  - Output: `Player B adds 3 to their sequence.`
+
+#### **Turn 3**
+
+- **Player A's Turn**:
+  - Command: `guess "Prime Numbers"`
+  - Output: `Player B responds: Incorrect guess.`
+  
+#### **Turn 4**
+
+- **Player B's Turn**:
+  - Command: `add 5`
+  - Output: `Player B adds 5 to their sequence.`
+
+#### **Turn 5**
+
+- **Player A's Turn**:
+  - Command: `add 4`
+  - Output: `Player A adds 4 to their sequence.`
+
+#### **Turn 6**
+
+- **Player B's Turn**:
+  - Command: `add 7`
+  - Output: `Player B adds 7 to their sequence.`
+
+#### **Turn 7**
+
+- **Player A's Turn**:
+  - Command: `guess "Prime Numbers"`
+  - Output: `Player B responds: Correct guess!`
+  - **Player B** must now restart with a new sequence type.
+
+---
+
+### **Strategic Depth and Complexity**
+
+- **Bluffing**: Players may choose numbers that fit multiple sequence types to mislead the opponent.
+  
+- **Risk Management**: Deciding when to guess the opponent's sequence type versus advancing your own sequence adds strategic tension.
+  
+- **Observation**: Careful attention to the numbers your opponent selects can provide clues to their sequence type.
+
+---
+
+### **Conclusion**
+
+Sequence Builder is a game of deduction, strategy, and numerical prowess. It combines simple arithmetic with strategic guessing, providing depth and replayability while remaining easy to code and quick to play in a command-line interface.
+
+---

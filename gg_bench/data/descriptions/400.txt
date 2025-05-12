@@ -1,0 +1,164 @@
+# Binary Battle
+
+## Objective
+
+Be the first player to transform a shared 8-bit binary number into a predetermined target binary number by strategically flipping bits. The player who successfully matches the shared binary number to the target binary number wins the game.
+
+## Setup
+
+1. **Initialize the Shared Binary Number**: Start with an 8-bit binary number set to `00000000`.
+2. **Determine the Target Binary Number**: Generate a random 8-bit binary number (e.g., `10101100`). Both players are informed of this target number.
+3. **Decide Player Order**: Choose who goes first by mutual agreement or by a random method like a coin toss.
+
+## Game Components
+
+- **Shared Binary Number**: An 8-bit binary number that both players manipulate during the game. It is displayed for both players after each turn.
+- **Target Binary Number**: An 8-bit binary number that players aim to achieve. It remains constant throughout the game.
+- **Players**: Two players who alternate turns.
+
+## Turns
+
+### Turn Structure
+
+- **Action Phase**:
+  - On your turn, you must flip one or two bits in the shared binary number.
+  - Bits are numbered from 1 (most significant bit) to 8 (least significant bit).
+- **Restrictions**:
+  - You cannot flip the same bit or combination of bits in two consecutive turns.
+  - Flipped bits must result in a change; flipping a bit that doesn't alter the number (e.g., flipping a `1` to a `1`) is not allowed.
+
+### Order of Actions
+
+1. **Announce Bits to Flip**: Declare which bit(s) you will flip.
+2. **Flip the Bits**: Change the selected bit(s) in the shared binary number from `0` to `1` or `1` to `0`.
+3. **Display Updated Number**: Show the new state of the shared binary number.
+4. **Check for Win Condition**: Determine if the shared binary number matches the target.
+5. **Pass Turn**: If the game hasn't ended, the next player takes their turn.
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - You must flip either one or two bits on your turn.
+   - Bits can be any position from 1 to 8, provided you adhere to the restrictions.
+2. **Move Restrictions**:
+   - You cannot repeat your exact previous move. This includes flipping the same single bit or the same combination of two bits.
+   - You can flip one of the bits from your previous turn, but not the exact same set.
+3. **Winning the Game**:
+   - The game is won when a player’s move causes the shared binary number to exactly match the target binary number.
+4. **No Available Moves**:
+   - If you have no legal moves that can change the shared binary number, you lose the game.
+5. **Illegal Moves**:
+   - Flipping bits without changing the shared binary number (e.g., flipping a `1` to a `1`) results in a forfeited turn.
+   - Repeating your exact previous move is not allowed and results in a forfeited turn.
+
+## Scoring
+
+- **Winning**: The player who matches the shared binary number to the target binary number wins the game.
+- **Losing**: A player loses if they cannot make a legal move on their turn.
+
+## Examples
+
+### Example Game Playthrough
+
+**Target Binary Number**: `10101100`
+
+**Initial Shared Binary Number**: `00000000`
+
+---
+
+**Turn 1**: *Player 1*
+
+- **Available Bits**: 1-8
+- **Action**: Flips bit 1
+- **Shared Binary Number**: `10000000`
+
+**Turn 2**: *Player 2*
+
+- **Available Bits**: 1-8
+- **Action**: Flips bits 3 and 6
+- **Shared Binary Number**: `10000100`
+
+**Turn 3**: *Player 1*
+
+- **Available Bits**: 1-8 (cannot flip bit 1 alone)
+- **Action**: Flips bits 2 and 5
+- **Shared Binary Number**: `11001100`
+
+**Turn 4**: *Player 2*
+
+- **Available Bits**: 1-8 (cannot flip bits 3 and 6 together)
+- **Action**: Flips bit 8
+- **Shared Binary Number**: `11001100` (bit 8 was already `0`, flipping it changes it to `1`)
+
+**Turn 5**: *Player 1*
+
+- **Available Bits**: 1-8 (cannot flip bits 2 and 5 together)
+- **Action**: Flips bit 7
+- **Shared Binary Number**: `11001100` (bit 7 remains the same; illegal move)
+- **Result**: Move forfeited due to no change.
+
+**Turn 6**: *Player 2*
+
+- **Available Bits**: 1-8
+- **Action**: Flips bit 4
+- **Shared Binary Number**: `11001100` (bit 4 remains the same; illegal move)
+- **Result**: Move forfeited due to no change.
+
+**Turn 7**: *Player 1*
+
+- **Available Bits**: 1-8
+- **Action**: Flips bit 8
+- **Shared Binary Number**: `11001100` (bit 8 changes to `0`)
+- **Result**: Shared binary number matches the target.
+
+**Winner**: Player 1
+
+### Command-Line Interaction Example
+
+```
+Target Binary Number: 10101100
+Shared Binary Number: 00000000
+
+Player 1's Turn:
+Available bits to flip: 1-8
+Enter bit(s) to flip (1 or 2 bits): 1
+Updated Shared Binary Number: 10000000
+
+Player 2's Turn:
+Available bits to flip: 1-8
+(Note: Cannot flip bit 1 alone)
+Enter bit(s) to flip: 3 6
+Updated Shared Binary Number: 10000100
+
+Player 1's Turn:
+Available bits to flip: 1-8
+(Note: Cannot flip bit 1)
+Enter bit(s) to flip: 2 5
+Updated Shared Binary Number: 11001100
+
+Player 2's Turn:
+Available bits to flip: 1-8
+(Note: Cannot flip bits 3 and 6 together)
+Enter bit(s) to flip: 8
+Updated Shared Binary Number: 11001100
+
+Player 1's Turn:
+Available bits to flip: 1-8
+(Note: Cannot flip bits 2 and 5 together)
+Enter bit(s) to flip: 8
+Updated Shared Binary Number: 11001100
+Player 1 wins! The shared binary number matches the target.
+```
+
+## Strategies and Tips
+
+- **Progress Towards the Target**: Always aim to flip bits that bring the shared binary number closer to the target.
+- **Block Your Opponent**: Anticipate your opponent's moves and flip bits that might hinder their progress.
+- **Avoid Illegal Moves**: Ensure that the bits you flip result in a change to the shared binary number.
+- **Remember Past Moves**: Keep track of your previous moves to avoid repeating them illegally.
+
+## Conclusion
+
+"Binary Battle" is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. Its straightforward mechanics make it easy to play in a command-line interface, and with careful planning, skilled players can consistently gain the upper hand.
+
+Enjoy the challenge, and may the best strategist win!

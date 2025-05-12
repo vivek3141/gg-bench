@@ -1,0 +1,181 @@
+# **Grid Runner Duel**
+
+## **Objective**
+
+Be the first player to reach your designated goal square on a shared grid by strategically moving your token. Use tactical planning to navigate the grid while anticipating your opponent's moves. The first player to land on their goal square wins the game.
+
+## **Setup**
+
+- **Game Board**: A 5x5 grid labeled with coordinates from (1,1) at the top-left corner to (5,5) at the bottom-right corner.
+- **Players**:
+  - **Player 1** starts at the top-left corner (1,1).
+  - **Player 2** starts at the bottom-right corner (5,5).
+- **Goal Squares**:
+  - **Player 1's goal** is the bottom-right corner (5,5).
+  - **Player 2's goal** is the top-left corner (1,1).
+
+Both players' tokens are placed on their respective starting positions.
+
+## **Game Components**
+
+- **Grid Board**: A 5x5 coordinate grid represented in the command-line interface.
+- **Player Tokens**: Each player controls a token that occupies a square on the grid. Tokens can be represented by different symbols or colors in the CLI (e.g., `P1` and `P2`).
+- **Coordinates**: Each square is identified by its `(row, column)` coordinate.
+
+## **Turns**
+
+- Players alternate turns, starting with Player 1.
+- During each turn, a player may perform the following action:
+  - Move their token to an adjacent square.
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+- **Adjacent Moves**: A token can move to any of the four directly adjacent squares (up, down, left, right). Diagonal moves are not allowed.
+- **Bounds**: Tokens cannot move off the edge of the grid.
+- **Occupied Squares**: Tokens cannot move into a square occupied by the opponent's token.
+
+### **Special Mechanics**
+
+- **Blocking**: Players may attempt to block their opponent's path by occupying strategic squares.
+- **No Passing**: Players cannot skip their turn or pass; they must move their token each turn.
+
+### **Winning the Game**
+
+- **Victory Condition**: The first player to move their token onto their goal square wins the game.
+- **No Draws**: Due to the game's design, a draw is not possible.
+
+## **Scoring**
+
+- **Win**: The winning player earns 1 point.
+- **Match Play**: Players can agree to play multiple rounds, keeping track of points to determine an overall winner.
+
+## **Example Gameplay**
+
+### **Initial Grid Setup**
+
+```
+P1 - - - -
+-  - - - -
+-  - - - -
+-  - - - -
+-  - - - P2
+```
+
+`P1` is at (1,1), and `P2` is at (5,5).
+
+### **Sample Turns**
+
+#### **Turn 1: Player 1**
+
+- **Action**: Moves down to (2,1).
+- **Grid**:
+
+```
+-  -  -  -  -
+P1 -  -  -  -
+-  -  -  -  -
+-  -  -  -  -
+-  -  -  -  P2
+```
+
+#### **Turn 2: Player 2**
+
+- **Action**: Moves up to (4,5).
+- **Grid**:
+
+```
+-  -  -  -  -
+P1 -  -  -  -
+-  -  -  -  -
+-  -  -  - P2
+-  -  -  -  -
+```
+
+#### **Turn 3: Player 1**
+
+- **Action**: Moves right to (2,2).
+- **Grid**:
+
+```
+-  -  -  -  -
+- P1 -  -  -
+-  -  -  -  -
+-  -  -  - P2
+-  -  -  -  -
+```
+
+#### **Turn 4: Player 2**
+
+- **Action**: Moves left to (4,4).
+- **Grid**:
+
+```
+-  -  -  -  -
+- P1 -  -  -
+-  -  -  -  -
+-  -  - P2 -
+-  -  -  -  -
+```
+
+#### **Continuing the Game**
+
+Players continue to alternate moves, strategically navigating the grid toward their goal squares while attempting to block or avoid the opponent.
+
+### **Winning the Game**
+
+If Player 1 reaches (5,5) or Player 2 reaches (1,1), the game ends immediately with that player as the winner.
+
+## **Command-Line Interaction Example**
+
+Assuming a simple command-line input where players enter their desired move coordinates.
+
+### **Prompt**
+
+- **Player 1's Turn**:
+
+  ```
+  Player 1 (P1), enter your move (up, down, left, right): down
+  ```
+
+- **Player 2's Turn**:
+
+  ```
+  Player 2 (P2), enter your move (up, down, left, right): up
+  ```
+
+### **Processing Moves**
+
+- The game updates the grid after each move, displaying the new positions of the tokens.
+
+### **Displaying the Grid**
+
+- After each turn, the updated grid is printed to the console to show the current state.
+
+### **Victory Declaration**
+
+- When a player reaches their goal square:
+
+  ```
+  Congratulations, Player 1! You've reached your goal at (5,5). You win!
+  ```
+
+## **Strategic Depth**
+
+- **Path Planning**: Players must plan their route to the goal while considering the shortest path and potential obstacles.
+- **Opponent Anticipation**: Anticipate and block your opponent's moves without compromising your path.
+- **Decision Making**: Choose between advancing toward your goal or detouring to block the opponent.
+
+## **Game Flow Summary**
+
+1. **Initialize the Game**: Set up the 5x5 grid and place Player 1 and Player 2 on their starting squares.
+2. **Alternate Turns**: Players take turns moving their tokens according to the movement rules.
+3. **Update Grid**: After each move, the grid is updated, and the new positions of the tokens are displayed.
+4. **Check for Victory**: After each move, check if a player has reached their goal square.
+5. **Declare Winner**: If a player reaches their goal square, announce the winner and end the game.
+6. **Repeat or Exit**: Players can choose to play another round or exit the game.
+
+## **Conclusion**
+
+**Grid Runner Duel** is a simple yet strategic game that is easy to implement in a command-line interface. With clear rules and straightforward mechanics, players can engage in quick matches that emphasize planning and anticipation. The game's design ensures that skillful play leads to consistent victories, providing a satisfying experience for players seeking both simplicity and depth.

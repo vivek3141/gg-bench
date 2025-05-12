@@ -1,0 +1,185 @@
+# **Tail End**
+
+## **Objective**
+
+Be the player to flip the last coin(s) from heads to tails. The primary goal is to strategically flip coins in such a way that you force your opponent into a position where they have no valid moves except to flip the last coin(s), thereby securing your victory.
+
+## **Setup**
+
+- A straight line of **7 coins** is placed on a table or represented in the command-line interface.
+- All coins are initially placed **heads up**, forming a sequence from **Coin 1** (leftmost) to **Coin 7** (rightmost).
+- Players decide who will take the first turn (you can flip a coin, have the program randomly choose, or agree amongst yourselves).
+
+## **Game Components**
+
+- **Coins**: Seven coins arranged in a line. Each coin has two states:
+  - **Heads Up (H)**: The coin is active and can be flipped.
+  - **Tails Up (T)**: The coin has been flipped and is no longer active.
+- **Game Board**: A visual or textual representation of the coin line, showing the current state of each coin. For example:
+  ```
+  [H][H][H][H][H][H][H]
+  ```
+
+## **Turns**
+
+- Players take turns alternately.
+- **Turn Structure**:
+  1. **Select a Coin**: On your turn, you must select one coin that is currently heads up.
+  2. **Flip Coins**: Flip the selected coin and any immediate adjacent coins to its right that are also heads up. Flipping changes coins from heads up (H) to tails up (T).
+ 3. **Update the Game Board**: The game board is updated to reflect the new state after the flip.
+- **Example Turn**:
+  - **Before Move**:
+    ```
+    [H][H][H][H][H][H][H]
+    ```
+  - **Player 1 selects Coin 3**.
+  - **Coins Flipped**: Coin 3, Coin 4, Coin 5 (since Coins 4 and 5 are immediate right adjacent coins that are heads up).
+  - **After Move**:
+    ```
+    [H][H][T][T][T][H][H]
+    ```
+
+## **Rules and Mechanics**
+
+1. **Flipping Coins**:
+   - **Mandatory Flip**: On your turn, you must flip **exactly one coin** that is heads up.
+   - **Chain Reaction**: When you flip a coin, if there are any coins immediately to the right of the selected coin that are also heads up, they **automatically flip to tails** as part of your move.
+     - The chain stops when it reaches a coin that is already tails up or there are no more coins to the right.
+   - **Edge Case**: If you flip the **last coin (Coin 7)** and it is heads up, only that coin flips since there are no coins to the right.
+
+2. **Valid Moves**:
+   - You cannot skip a turn; you must flip a coin if there is at least one heads-up coin remaining.
+   - If no coins are heads up at the start of your turn, the game ends.
+
+3. **Winning the Game**:
+   - The player who flips the last coin(s) from heads to tails **wins** the game.
+   - If after your move all coins are tails up, you are declared the winner.
+
+## **Scoring**
+
+- No points are tracked in this game.
+- Victory is determined by who flips the last coin(s) to tails.
+- The game is purely strategic, focusing on making moves that force your opponent into flipping the last coin(s).
+
+## **Example Gameplay**
+
+### **Starting Board**:
+
+```
+[H][H][H][H][H][H][H]
+```
+
+### **Turn-by-Turn Example**:
+
+#### **Player 1's Turn**:
+- **Selects Coin 2**.
+- **Coins Flipped**: Coin 2, Coin 3, Coin 4, Coin 5, Coin 6, Coin 7.
+- **Board After Move**:
+  ```
+  [H][T][T][T][T][T][T]
+  ```
+
+#### **Player 2's Turn**:
+- **Selects Coin 1**.
+- **Coins Flipped**: Coin 1.
+- **Board After Move**:
+  ```
+  [T][T][T][T][T][T][T]
+  ```
+- **Player 2 Wins** (flipped the last coin(s)).
+
+**Note**: In this scenario, Player 1 made a move that allowed Player 2 to win. Strategic thinking is required to avoid setting up your opponent for a winning move.
+
+## **Command-Line Interaction Sample**
+
+### **Game Start**
+
+```
+Welcome to Tail End!
+
+Initial Board:
+[1:H][2:H][3:H][4:H][5:H][6:H][7:H]
+
+Player 1, it's your turn.
+Select a coin to flip (1-7):
+```
+
+### **Player Inputs**
+
+- **Player 1 selects Coin 5**.
+
+```
+You selected Coin 5.
+
+Flipping coins...
+Coins flipped: 5, 6, 7
+
+Current Board:
+[1:H][2:H][3:H][4:H][5:T][6:T][7:T]
+
+Player 2, it's your turn.
+Select a coin to flip (1-7):
+```
+
+- **Player 2 selects Coin 3**.
+
+```
+You selected Coin 3.
+
+Flipping coins...
+Coins flipped: 3, 4
+
+Current Board:
+[1:H][2:H][3:T][4:T][5:T][6:T][7:T]
+
+Player 1, it's your turn.
+Select a coin to flip (1-7):
+```
+
+- **Player 1 selects Coin 2**.
+
+```
+You selected Coin 2.
+
+Flipping coins...
+Coins flipped: 2
+
+Current Board:
+[1:H][2:T][3:T][4:T][5:T][6:T][7:T]
+
+Player 2, it's your turn.
+Select a coin to flip (1-7):
+```
+
+- **Player 2 selects Coin 1**.
+
+```
+You selected Coin 1.
+
+Flipping coins...
+Coins flipped: 1
+
+Current Board:
+[1:T][2:T][3:T][4:T][5:T][6:T][7:T]
+
+Player 2 flips the last coin(s) and wins the game! Congratulations!
+```
+
+**Analysis**: Player 1's move allowed Player 2 to flip the last coin. Careful planning is required to avoid such pitfalls.
+
+## **Strategic Tips**
+
+- **Plan Ahead**: Consider the outcome of your move and how it will affect the next turn.
+- **Avoid Flipping Certain Coins**: Be cautious when flipping coins that will leave only a single heads-up coin for your opponent, as this may allow them to win.
+- **Forced Moves**: Try to force your opponent into a position where they have no choice but to set you up for a win.
+
+## **Additional Rules**
+
+- **Invalid Input Handling**: If a player selects a coin that is already tails up or outside the range, prompt them again.
+- **Termination**: If a player cannot make a valid move (all coins are tails up at the start of their turn), they lose the game.
+
+## **Summary**
+
+Tail End is a simple yet strategically rich game that requires foresight and careful planning. With only seven coins and straightforward rules, it's quick to play and easy to code for a command-line interface. The alternating turns and flipping mechanics create opportunities for players to outmaneuver each other and secure a win.
+
+Enjoy the challenge and may the best strategist win!

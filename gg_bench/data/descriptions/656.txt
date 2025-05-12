@@ -1,0 +1,184 @@
+# Multiplication Duel
+
+## Objective
+
+**Multiplication Duel** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reach or exceed a target number—**100**—by multiplying a shared running total using numbers from a limited pool. Players must strategically choose multipliers to advance the total while blocking their opponent's options. Victory is achieved by reaching or surpassing the target number on your turn.
+
+## Setup
+
+1. **Initialize the Game**:
+   - Set the shared running total to **1**.
+   - Define the target number as **100**.
+
+2. **Prepare the Multiplier Pool**:
+   - Create a list of multipliers ranging from **2** to **9**.
+   - Each multiplier can only be used **once** per game.
+
+3. **Determine Turn Order**:
+   - Players decide who goes first (e.g., by coin toss or mutual agreement).
+
+4. **Display Initial Information**:
+   - Show the starting total (**1**).
+   - List available multipliers (**2-9**).
+
+## Game Components
+
+- **Shared Running Total**:
+  - A number that starts at **1** and is updated each turn by multiplication.
+  
+- **Multipliers Pool**:
+  - Numbers from **2** to **9**.
+  - Each multiplier is **unique** and can be used only once per game.
+  - Once a multiplier is used, it's **removed** from the pool.
+
+- **Target Number**:
+  - The goal is to reach or exceed **100**.
+
+- **Players**:
+  - **Player 1** and **Player 2** alternate turns.
+
+## Turns
+
+### Turn Structure:
+
+1. **Announcement**:
+   - Display the current running total.
+   - List available multipliers.
+
+2. **Action**:
+   - The active player selects an unused multiplier from the pool.
+
+3. **Calculation**:
+   - Multiply the running total by the chosen multiplier.
+   - Update the running total with the new value.
+
+4. **Validation**:
+   - Check if the new total is **greater than or equal to 100**.
+
+5. **Turn Completion**:
+   - If the target is reached or exceeded, the game ends.
+   - If not, remove the used multiplier from the pool.
+   - Pass the turn to the other player.
+
+## Rules and Mechanics
+
+1. **Multiplier Selection**:
+   - On your turn, you must choose an unused multiplier between **2** and **9**.
+   - You cannot skip your turn or pass.
+
+2. **Unique Usage**:
+   - Each multiplier can be used **only once** per game.
+   - Keep track of used multipliers to avoid repetition.
+
+3. **Calculations**:
+   - Multiplication only; no addition, subtraction, or division.
+   - Calculate accurately to ensure the correct running total.
+
+4. **Winning the Game**:
+   - If after your turn the running total is **equal to or exceeds 100**, you win.
+   - If both players have used all available multipliers without reaching 100, the player with the **higher running total** wins.
+
+5. **Strategic Play**:
+   - Anticipate your opponent's options based on remaining multipliers.
+   - Aim to leave your opponent with less advantageous multipliers.
+
+6. **Draws**:
+   - There are **no draw conditions**; the game must end with a winner.
+
+## Scoring
+
+- **Victory**:
+  - Achieved by being the first to reach or exceed the target running total of **100** on your turn.
+
+- **In Case of Multiplier Depletion**:
+  - If all multipliers are used and **no player has reached 100**, the player with the **highest running total** wins.
+
+- **No Points System**:
+  - The game does not use points; winning is based solely on achieving the objective.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup:
+
+- **Running Total**: 1
+- **Available Multipliers**: [2, 3, 4, 5, 6, 7, 8, 9]
+
+#### Turn 1: Player 1
+
+- **Current Total**: 1
+- **Action**: Chooses multiplier **5**
+- **Calculation**: 1 × 5 = 5
+- **Running Total**: **5**
+- **Available Multipliers**: [2, 3, 4, 6, 7, 8, 9]
+
+#### Turn 2: Player 2
+
+- **Current Total**: 5
+- **Action**: Chooses multiplier **9**
+- **Calculation**: 5 × 9 = 45
+- **Running Total**: **45**
+- **Available Multipliers**: [2, 3, 4, 6, 7, 8]
+
+#### Turn 3: Player 1
+
+- **Current Total**: 45
+- **Action**: Chooses multiplier **3**
+- **Calculation**: 45 × 3 = 135
+- **Running Total**: **135**
+- **Result**: Running total is **≥ 100**; **Player 1 wins**.
+
+### Command-Line Interaction Example
+
+#### Start of Game:
+
+```
+Current Total: 1
+Available Multipliers: 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1's Turn:
+Choose a multiplier: 5
+
+New Total: 5
+Used Multipliers: 5
+```
+
+#### Next Turn:
+
+```
+Current Total: 5
+Available Multipliers: 2, 3, 4, 6, 7, 8, 9
+
+Player 2's Turn:
+Choose a multiplier: 9
+
+New Total: 45
+Used Multipliers: 5, 9
+```
+
+#### Subsequent Turn:
+
+```
+Current Total: 45
+Available Multipliers: 2, 3, 4, 6, 7, 8
+
+Player 1's Turn:
+Choose a multiplier: 3
+
+New Total: 135
+Used Multipliers: 3, 5, 9
+
+Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider how your choice will affect the next turn and limit your opponent's options.
+- **Multiplier Impact**: Higher multipliers can rapidly increase the total but may give your opponent an opportunity to win if not timed correctly.
+- **Resource Management**: Keep track of used multipliers to anticipate which options remain for both you and your opponent.
+- **Defensive Play**: Sometimes it's beneficial to choose a lower multiplier to avoid setting up your opponent for a win on their next turn.
+
+## Game Summary
+
+Multiplication Duel is a fast-paced, strategic game that combines simple arithmetic with tactical foresight. It's easy to code and provides depth for players to develop and refine their strategies. With a clear objective and straightforward rules, it's an engaging game that challenges players to think ahead and outmaneuver their opponent.

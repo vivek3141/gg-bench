@@ -1,0 +1,215 @@
+# Equation Duel
+
+## Objective
+
+Equation Duel is a two-player turn-based mathematical strategy game. The primary goal is to be the first player to reduce your own score to exactly zero while strategically manipulating your opponent's score through arithmetic operations. Players must balance reducing their own score and hindering their opponent to achieve victory.
+
+## Setup
+
+- **Starting Scores**: Both players begin the game with a score of **20**.
+- **Available Numbers**: On each turn, players can choose an integer **`n`** between **1** and **6**, inclusive.
+- **Operations**: Players have access to four arithmetic operations:
+  - Addition (**`+`**)
+  - Subtraction (**`-`**)
+  - Multiplication (**`*`**)
+  - Integer Division (**`/`**), where the result discards any fractions (e.g., `7 / 3` results in `2`).
+
+## Game Components
+
+- **Player Scores**: Each player keeps track of their current score, starting from **20**.
+- **Number Choices**: The integers **1** through **6**, available for selection each turn.
+- **Operations**: The arithmetic operations **`+`**, **`-`**, **`*`**, and **`/`**.
+- **Command-Line Interface**: The game is played through text-based inputs and outputs.
+
+## Turns
+
+1. **Number Selection**: The current player selects an integer **`n`** between **1** and **6**.
+2. **Self-Score Adjustment**: The player subtracts **`n`** from their own score.
+3. **Operation Selection**: The player chooses an arithmetic operation (**`+`**, **`-`**, **`*`**, or **`/`**).
+4. **Opponent's Score Adjustment**: The selected operation is applied to the opponent's score using **`n`** as the operand.
+5. **Validity Check**: If the operation results in an invalid score (non-integer or outside the range **0** to **40**, inclusive), the move is invalid, and the player's turn is forfeited.
+6. **Turn Progression**: The turn ends, and control passes to the other player.
+
+## Rules and Mechanics
+
+- **Self-Score Reduction**:
+  - On each turn, a player **must** subtract their chosen number **`n`** from their own score.
+  - A player's score cannot go below zero; if subtracting **`n`** would result in a negative score, the move is invalid.
+
+- **Opponent's Score Manipulation**:
+  - After adjusting their own score, the player applies the chosen operation to the opponent's score using **`n`**.
+  - The result must be an integer within the range **0** to **40**, inclusive.
+  - **Division Rule**: Division is **integer division**; fractions are discarded.
+    - Example: `7 / 3` results in `2`.
+  - If the operation would result in an invalid score (e.g., negative number, non-integer, or a number greater than 40), the opponent's score remains unchanged.
+
+- **Valid Moves**:
+  - All parts of the move (number selection, self-score adjustment, operation selection, opponent's score adjustment) must be valid.
+  - If any part of the move is invalid, the entire move is invalid, and the player's turn is forfeited.
+
+- **Winning the Game**:
+  - The first player to reduce their own score to **exactly zero** wins the game.
+  - If a player's move results in both players reaching zero simultaneously, the player who made the move wins.
+
+- **Ending the Game**:
+  - If a player cannot make a valid move (e.g., no valid number **`n`** can be selected without causing a negative self-score), they forfeit their turn.
+  - The game continues until one player achieves victory.
+
+## Scoring
+
+- **Player Scores**: Each player's score is tracked throughout the game, starting from **20** and being adjusted each turn.
+- **Winning Condition**: Reducing your own score to **exactly zero** results in a win.
+- **Score Limits**:
+  - Player scores must remain within **0** and **40**, inclusive, at all times.
+  - Opponent's score adjustments that would result in invalid scores are not applied.
+
+## Examples
+
+### Example Game Play
+
+**Initial State**:
+- Player 1 Score: 20
+- Player 2 Score: 20
+
+---
+
+**Player 1's Turn**:
+
+1. **Number Selection**: Chooses **`n = 5`**.
+2. **Self-Score Adjustment**: `20 - 5 = 15`. Player 1's new score is **15**.
+3. **Operation Selection**: Chooses **`+`**.
+4. **Opponent's Score Adjustment**: `20 + 5 = 25`. Player 2's new score is **25**.
+5. **Turn Ends**.
+
+**State After Turn**:
+- Player 1 Score: 15
+- Player 2 Score: 25
+
+---
+
+**Player 2's Turn**:
+
+1. **Number Selection**: Chooses **`n = 6`**.
+2. **Self-Score Adjustment**: `25 - 6 = 19`. Player 2's new score is **19**.
+3. **Operation Selection**: Chooses **`-`**.
+4. **Opponent's Score Adjustment**: `15 - 6 = 9`. Player 1's new score is **9**.
+5. **Turn Ends**.
+
+**State After Turn**:
+- Player 1 Score: 9
+- Player 2 Score: 19
+
+---
+
+**Player 1's Turn**:
+
+1. **Number Selection**: Chooses **`n = 4`**.
+2. **Self-Score Adjustment**: `9 - 4 = 5`. Player 1's new score is **5**.
+3. **Operation Selection**: Chooses **`*`**.
+4. **Opponent's Score Adjustment**: `19 * 4 = 76`. Since 76 is greater than 40, the move is invalid. Player 2's score remains **19**.
+5. **Turn Ends**.
+
+**State After Turn**:
+- Player 1 Score: 5
+- Player 2 Score: 19
+
+---
+
+**Player 2's Turn**:
+
+1. **Number Selection**: Chooses **`n = 5`**.
+2. **Self-Score Adjustment**: `19 - 5 = 14`. Player 2's new score is **14**.
+3. **Operation Selection**: Chooses **`/`**.
+4. **Opponent's Score Adjustment**: `5 / 5 = 1`. Player 1's new score is **1**.
+5. **Turn Ends**.
+
+**State After Turn**:
+- Player 1 Score: 1
+- Player 2 Score: 14
+
+---
+
+**Player 1's Turn**:
+
+1. **Number Selection**: Chooses **`n = 1`**.
+2. **Self-Score Adjustment**: `1 - 1 = 0`. Player 1's new score is **0**.
+3. **Operation Selection**: Chooses **`+`**.
+4. **Opponent's Score Adjustment**: `14 + 1 = 15`. Player 2's new score is **15**.
+5. **Player 1 Wins**, having reduced their own score to zero.
+
+---
+
+### Command-Line Interaction Sample
+
+**Player 1's Turn**:
+
+```
+Your score: 20
+Opponent's score: 20
+Select a number between 1 and 6: 5
+Choose an operation (+, -, *, /): +
+You subtract 5 from your score. Your new score is 15.
+You add 5 to your opponent's score. Opponent's new score is 25.
+```
+
+**Player 2's Turn**:
+
+```
+Your score: 25
+Opponent's score: 15
+Select a number between 1 and 6: 6
+Choose an operation (+, -, *, /): -
+You subtract 6 from your score. Your new score is 19.
+You subtract 6 from your opponent's score. Opponent's new score is 9.
+```
+
+**Player 1's Turn**:
+
+```
+Your score: 9
+Opponent's score: 19
+Select a number between 1 and 6: 4
+Choose an operation (+, -, *, /): *
+You subtract 4 from your score. Your new score is 5.
+Invalid move: Resulting opponent's score is out of bounds.
+Your opponent's score remains 19.
+```
+
+**Player 2's Turn**:
+
+```
+Your score: 19
+Opponent's score: 5
+Select a number between 1 and 6: 5
+Choose an operation (+, -, *, /): /
+You subtract 5 from your score. Your new score is 14.
+You divide your opponent's score by 5. Opponent's new score is 1.
+```
+
+**Player 1's Turn**:
+
+```
+Your score: 1
+Opponent's score: 14
+Select a number between 1 and 6: 1
+Choose an operation (+, -, *, /): +
+You subtract 1 from your score. Your new score is 0.
+You add 1 to your opponent's score. Opponent's new score is 15.
+Congratulations! You have reduced your score to zero and won the game.
+```
+
+## Game Strategy Tips
+
+- **Balance Your Moves**: While reducing your own score is essential, manipulating your opponent's score can delay their progress or force them into unfavorable positions.
+- **Operation Choice**:
+  - Use **addition** to increase your opponent's score, making it harder for them to reach zero.
+  - Use **subtraction** to decrease their score, possibly setting them up for an unwanted zero or negative result.
+  - Use **multiplication** carefully; increasing their score can backfire if not within limits.
+  - Use **division** to reduce their score quickly, especially when they have a higher score.
+- **Valid Moves**: Always check that your operations will result in valid scores to avoid forfeiting your turn.
+- **Plan Ahead**: Anticipate your opponent's possible moves based on their current score and adjust your strategy accordingly.
+- **Keep Track**: Remember which numbers you've chosen to avoid repetitive moves and to plan your path to zero.
+
+---
+
+Equation Duel combines simple arithmetic with strategic decision-making, offering a unique and engaging experience that tests both mathematical skills and tactical thinking. Enjoy the challenge and outsmart your opponent to claim victory!

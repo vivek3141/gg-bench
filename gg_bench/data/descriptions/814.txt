@@ -1,0 +1,247 @@
+# Number Quest: A Strategic Command-Line Game
+
+## Objective
+
+**Number Quest** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reach or exceed a target number, **31**, by strategically choosing to either add small numbers or multiply the current number. Players must carefully plan their moves, anticipating their opponent's strategy to secure victory. The game is designed so that skilled players can consistently outmaneuver unskilled players, ensuring competitive and engaging gameplay.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared current number set to **1**.
+- **Target Number**: The objective is to reach or exceed **31**.
+- **Players**: Two players, designated as **Player 1** and **Player 2**.
+  
+No physical components are required other than the command-line interface displaying the current number and accepting player inputs.
+
+## Game Components
+
+- **Current Number**: A shared number that changes based on player actions each turn.
+- **Operations**: The actions players can take on their turn:
+  - **Addition**: Add **1**, **2**, or **3** to the current number.
+  - **Multiplication**: Multiply the current number by **2**.
+- **Operation History**: Tracks the last type of operation performed to enforce move restrictions.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Current Number**: At the start of each turn, the current number is displayed.
+2. **Available Actions**: Players are informed of which operations they can perform, based on the last operation by their opponent.
+3. **Player Input**: The current player selects their operation and inputs the required number if adding.
+4. **Update Current Number**: The game updates the current number based on the player's action.
+5. **Check for Victory**: The game checks if the current number has reached or exceeded **31**.
+6. **Next Turn**: If the game hasn't ended, control passes to the other player.
+
+### Turn Order
+
+- **Player 1** takes the first turn.
+- Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Available Operations**:
+   - **Addition**: Add **1**, **2**, or **3** to the current number.
+   - **Multiplication**: Multiply the current number by **2**.
+2. **Operation Restriction**:
+   - A player **cannot** perform the same type of operation (addition or multiplication) that their opponent performed on the previous turn.
+   - This rule forces players to alternate their strategies and anticipate their opponent's moves.
+3. **Victory Condition**:
+   - The first player to reach or exceed the target number of **31** wins the game.
+4. **Valid Moves**:
+   - Players must choose a valid operation based on the available actions.
+   - If a player has no valid moves (which is rare given the options), they forfeit their turn.
+
+### Detailed Mechanics
+
+- **Addition**:
+  - The player chooses to add **1**, **2**, or **3**.
+  - The chosen number is added to the current number.
+- **Multiplication**:
+  - The current number is multiplied by **2**.
+
+### Example of Operation Restriction
+
+- If **Player 1** adds a number on their turn, **Player 2** cannot choose to add on their subsequent turn and must multiply.
+- Conversely, if **Player 1** multiplies, **Player 2** must choose to add **1**, **2**, or **3** on their turn.
+
+## Scoring
+
+- **Current Number Tracking**: The game tracks the current number after each operation.
+- **Winning the Game**:
+  - The player who causes the current number to reach or exceed **31** during their turn wins.
+  - There is no scoring beyond reaching the target number; the focus is on strategic plays to win.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial Setup
+
+- **Current Number**: 1
+- **Target Number**: 31
+- **Last Operation**: N/A (No operations have been performed yet)
+
+#### Turn 1: Player 1
+
+- **Available Operations**: Add or Multiply (no restrictions on the first turn)
+- **Action**: Multiply
+- **Calculation**: 1 × 2 = 2
+- **Current Number**: 2
+- **Last Operation**: Multiply
+
+#### Turn 2: Player 2
+
+- **Available Operations**: Add only (cannot multiply because the last operation was a multiplication)
+- **Action**: Add 3
+- **Calculation**: 2 + 3 = 5
+- **Current Number**: 5
+- **Last Operation**: Addition
+
+#### Turn 3: Player 1
+
+- **Available Operations**: Multiply only (cannot add because the last operation was an addition)
+- **Action**: Multiply
+- **Calculation**: 5 × 2 = 10
+- **Current Number**: 10
+- **Last Operation**: Multiply
+
+#### Turn 4: Player 2
+
+- **Available Operations**: Add only
+- **Action**: Add 3
+- **Calculation**: 10 + 3 = 13
+- **Current Number**: 13
+- **Last Operation**: Addition
+
+#### Turn 5: Player 1
+
+- **Available Operations**: Multiply only
+- **Action**: Multiply
+- **Calculation**: 13 × 2 = 26
+- **Current Number**: 26
+- **Last Operation**: Multiply
+
+#### Turn 6: Player 2
+
+- **Available Operations**: Add only
+- **Action**: Add 3
+- **Calculation**: 26 + 3 = 29
+- **Current Number**: 29
+- **Last Operation**: Addition
+
+#### Turn 7: Player 1
+
+- **Available Operations**: Multiply only
+- **Action**: Multiply
+- **Calculation**: 29 × 2 = 58
+- **Current Number**: 58
+- **Last Operation**: Multiply
+- **Victory Check**: Current number (58) exceeds 31.
+
+**Player 1 wins the game!**
+
+### Command-Line Interaction Example
+
+Below is an example of how the game might look in a command-line interface:
+
+```
+Welcome to Number Quest!
+
+Target Number: 31
+Starting Number: 1
+
+---
+
+Player 1's Turn
+Current Number: 1
+Available Actions:
+1. Add (1, 2, or 3)
+2. Multiply by 2
+Choose your action: 2
+You chose to Multiply.
+New Current Number: 2
+
+---
+
+Player 2's Turn
+Current Number: 2
+Available Actions:
+1. Add (1, 2, or 3)
+Choose your action: 1
+Enter the number to add (1, 2, or 3): 3
+You added 3.
+New Current Number: 5
+
+---
+
+Player 1's Turn
+Current Number: 5
+Available Actions:
+1. Multiply by 2
+Choose your action: 1
+You chose to Multiply.
+New Current Number: 10
+
+---
+
+Player 2's Turn
+Current Number: 10
+Available Actions:
+1. Add (1, 2, or 3)
+Choose your action: 1
+Enter the number to add (1, 2, or 3): 3
+You added 3.
+New Current Number: 13
+
+---
+
+Player 1's Turn
+Current Number: 13
+Available Actions:
+1. Multiply by 2
+Choose your action: 1
+You chose to Multiply.
+New Current Number: 26
+
+---
+
+Player 2's Turn
+Current Number: 26
+Available Actions:
+1. Add (1, 2, or 3)
+Choose your action: 1
+Enter the number to add (1, 2, or 3): 3
+You added 3.
+New Current Number: 29
+
+---
+
+Player 1's Turn
+Current Number: 29
+Available Actions:
+1. Multiply by 2
+Choose your action: 1
+You chose to Multiply.
+New Current Number: 58
+
+Congratulations, Player 1! You have reached 58 and won the game!
+```
+
+## Strategy Tips
+
+- **Control the Operations**: Forcing your opponent into a specific type of move can work to your advantage. Plan your moves to limit their options.
+- **Anticipate Outcomes**: Think ahead about how the current number will change with both addition and multiplication to avoid setting up your opponent for a win.
+- **Operation Balancing**: Use both operations wisely. Multiplication can rapidly increase the current number but may also give your opponent an advantage.
+
+## Game Flow Summary
+
+1. The game starts at **1**, and players alternate turns.
+2. On each turn, players perform an operation, adhering to the move restrictions.
+3. The current number updates, and the next player takes their turn.
+4. The game continues until a player reaches or exceeds **31**.
+5. The player who achieves this first is declared the winner.
+
+---
+
+**Number Quest** combines simple arithmetic operations with strategic depth, ensuring that while the game is easy to learn and code for the command-line interface, it provides challenging gameplay where skill prevails over chance.

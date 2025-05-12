@@ -1,0 +1,129 @@
+# Digit Duel
+
+## Objective
+
+The objective of **Digit Duel** is to be the first player to create a three-digit number that is a multiple of seven using digits selected from a shared pool. Players take turns picking digits, strategically aiming to form a winning number before their opponent does. Victory is achieved by successfully assembling a valid three-digit multiple of seven from the digits in your hand.
+
+## Setup
+
+1. **Shared Digit Pool**: The game uses a shared pool of digits ranging from 0 to 9.
+2. **Empty Hands**: Both players start with empty hands.
+3. **Turn Order**: Decide which player goes first (e.g., flip a coin or mutual agreement).
+
+## Game Components
+
+- **Digits (0-9)**: A set of numerical digits available for selection by both players.
+  - **Appearance**: Represented by their numerical value (e.g., `0`, `1`, `2`, ..., `9`).
+  - **Functionality**: Digits are used to build a three-digit number.
+  - **Unique Attributes**: Once a digit is picked by a player, it is no longer available to either player.
+
+## Turns
+
+1. **Selection Phase**:
+   - On their turn, a player selects **one digit** from the shared pool.
+   - The chosen digit is removed from the pool and added to the player's hand.
+2. **Turn Progression**:
+   - Players alternate turns until each has collected **three digits**.
+   - If a player can form a valid number before all digits are picked, they may declare victory on their turn.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Players can choose any remaining digit from the shared pool on their turn.
+   - Strategic selection is crucial to both build your number and block your opponent.
+2. **Number Formation**:
+   - Each player aims to form a three-digit number using the digits in their hand.
+   - Digits can be arranged in any order to form the number.
+3. **Winning the Game**:
+   - The first player to form a three-digit number that is **exactly divisible by 7** wins.
+   - The number must be declared on the player's turn after they have the necessary digits.
+4. **End of Game Conditions**:
+   - **Immediate Win**: A player forms a valid number divisible by 7 before all digits are picked.
+   - **All Digits Picked**: If both players have three digits and neither has formed a multiple of seven:
+     - The player whose number is **closest to a multiple of seven** without exceeding the opponent's number wins.
+     - If both numbers are equally close, the player with the **higher number** wins.
+5. **Validity Checks**:
+   - Players must verify the divisibility of their number by 7 before declaring victory.
+   - Miscalculations result in the opponent's immediate win.
+
+## Scoring
+
+- **Victory**: Achieved by forming a valid three-digit multiple of seven.
+- **No Point System**: The game is won by meeting the victory condition, not by accumulating points.
+
+## Examples
+
+### Example Game Play
+
+**Shared Digit Pool at Start**: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9`
+
+#### Turn 1
+
+- **Player 1** picks **7**.
+  - **Player 1's Hand**: `7`
+- **Player 2** picks **5**.
+  - **Player 2's Hand**: `5`
+- **Digits Remaining**: `0, 1, 2, 3, 4, 6, 8, 9`
+
+#### Turn 2
+
+- **Player 1** picks **1**.
+  - **Player 1's Hand**: `7, 1`
+- **Player 2** picks **8**.
+  - **Player 2's Hand**: `5, 8`
+- **Digits Remaining**: `0, 2, 3, 4, 6, 9`
+
+#### Turn 3
+
+- **Player 1** picks **2**.
+  - **Player 1's Hand**: `7, 1, 2`
+- **Player 1** now attempts to form a number divisible by 7.
+
+**Player 1's Possible Numbers**:
+- 127, 172, 217, 271, 712, 721
+
+**Checking Divisibility**:
+- **721 ÷ 7 = 103** ⇒ **Valid**
+
+**Player 1 declares victory** with the number **721**.
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Shared Digits: 0 1 2 3 4 5 6 7 8 9
+
+Player 1, pick a digit: 7
+Digits Remaining: 0 1 2 3 4 5 6 8 9
+
+Player 2, pick a digit: 5
+Digits Remaining: 0 1 2 3 4 6 8 9
+
+Player 1, pick a digit: 1
+Digits Remaining: 0 2 3 4 6 8 9
+
+Player 2, pick a digit: 8
+Digits Remaining: 0 2 3 4 6 9
+
+Player 1, pick a digit: 2
+Digits Remaining: 0 3 4 6 9
+
+Player 1's Hand: 7, 1, 2
+Possible Numbers: 127, 172, 217, 271, 712, 721
+
+Player 1 forms 721 which is divisible by 7.
+
+Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Early High-Value Digits**: Picking high digits like `7` or `9` can provide more options for forming a multiple of seven.
+- **Blocking**: Pay attention to which digits your opponent might need and consider picking them to block their potential multiples of seven.
+- **Flexibility**: Aim for digits that can combine in multiple ways to form different numbers divisible by 7.
+- **Calculation**: Be prepared to perform quick divisibility checks on potential numbers.
+
+## Final Notes
+
+**Digit Duel** is a game of both strategy and arithmetic skill. By carefully selecting digits and anticipating your opponent's moves, you can increase your chances of victory. The game is quick to play and easy to code, making it perfect for command-line implementation. Enjoy the challenge of outsmarting your opponent in this numerical showdown!

@@ -1,0 +1,10 @@
+In the provided code for the gym environment, each action in the action space is represented by an integer index, which maps to a possible move in the game. The action space uses indices from 0 to `N_max * 2 - 1`, where each index corresponds to a specific way of splitting the current number `N`. 
+
+The mapping works as follows:
+- Each action index `a` is split into two components: the split number `k` and the choice `s`. 
+- The split number `k` is derived from the formula `k = a // 2 + 1`, which means `k` starts at 1 and increments by 1 for every two consecutive indices.
+- The choice `s` is determined by `s = a % 2`, where `s` can be either 0 or 1.
+  - If `s = 0`, the player selects `k` as the new `N`.
+  - If `s = 1`, the player selects `N - k` as the new `N`.
+  
+This encoding allows each valid split and both possible new `N` selections (from the split) to be represented uniquely in the action space. Each `k` has two associated actions depending on the value of `s`.

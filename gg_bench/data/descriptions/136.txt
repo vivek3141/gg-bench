@@ -1,0 +1,189 @@
+# Sequence Duel
+
+## Objective
+
+**Sequence Duel** is a strategic two-player, turn-based game where players compete to be the first to collect three numbers that form an arithmetic sequence. An arithmetic sequence is a set of numbers where the difference between consecutive numbers is consistent (e.g., 4, 7, 10 with a common difference of 3). The primary goal is to outmaneuver your opponent by selecting numbers that contribute to your sequence while blocking your opponent's potential sequences.
+
+## Setup
+
+- **Number Pool**: A shared list of numbers from **1** to **20**.
+- **Player Hands**: Both players start with empty hands.
+- **Turn Order**: Decide which player goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Number Pool**: Represents the available numbers for selection. Displayed as a list in the command-line interface.
+  
+  ```
+  Available Numbers: 1, 2, 3, ..., 20
+  ```
+
+- **Player Hands**: Each player's collected numbers. Initially empty and displayed after each turn.
+
+  ```
+  Player 1's Numbers: 
+  Player 2's Numbers: 
+  ```
+
+- **Command-Line Interface**: Players interact with the game by entering commands to select numbers.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Display Available Numbers**: The game shows the numbers that have not been picked yet.
+  2. **Player Action**: The current player selects an available number.
+  3. **Update Hands**: The selected number is added to the player's hand and removed from the pool.
+  4. **Check for Victory**: The game checks if the current player has formed an arithmetic sequence.
+  5. **Display Hands**: Shows the updated hands of both players.
+
+- **Turn Progression**: Players alternate turns until one player wins or all numbers are exhausted.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, select any one number from the available numbers.
+   - Enter the number you wish to pick when prompted.
+
+2. **Forming an Arithmetic Sequence**:
+   - **Objective**: Collect any three numbers that can be arranged to form an arithmetic sequence.
+   - **Order Doesn't Matter**: The numbers in your hand do not need to be picked in sequence.
+   - **Example of Valid Sequences**:
+     - 2, 5, 8 (common difference of 3)
+     - 10, 15, 20 (common difference of 5)
+     - 7, 14, 21 (if numbers go up to 21)
+
+3. **Blocking**:
+   - Strategy involves selecting numbers that could potentially complete your opponent's sequence to block them.
+
+4. **Victory Conditions**:
+   - **Primary Victory**: The first player to have any three numbers forming an arithmetic sequence wins immediately.
+   - **Secondary Victory**: If all numbers are exhausted without a primary victory, the player with the highest total sum of numbers in their hand wins.
+
+5. **Tie-Breaker**:
+   - If both players have the same total sum, the game continues in sudden death:
+     - Players continue selecting one number per turn from any remaining numbers (if any).
+     - The first player to increase their total sum above the opponent's wins.
+
+## Scoring
+
+- **Primary Scoring**:
+  - Winning by forming an arithmetic sequence is considered a strategic win.
+- **Secondary Scoring**:
+  - Total Sum of Numbers:
+    - Sum the numbers in your hand.
+    - Higher total sum wins if no arithmetic sequence is formed.
+  
+## Examples
+
+### Example Game
+
+**Initial Available Numbers**:
+```
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+```
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Picks **5**
+  - **Player 1's Numbers**: 5
+- **Available Numbers**:
+  ```
+  1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+  ```
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - Picks **7**
+  - **Player 2's Numbers**: 7
+- **Available Numbers**:
+  ```
+  1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+  ```
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - Picks **10**
+  - **Player 1's Numbers**: 5, 10
+- **Available Numbers**:
+  ```
+  1, 2, 3, 4, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+  ```
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - Picks **13**
+  - **Player 2's Numbers**: 7, 13
+- **Available Numbers**:
+  ```
+  1, 2, 3, 4, 6, 8, 9, 11, 12, 14, 15, 16, 17, 18, 19, 20
+  ```
+
+**Turn 5**:
+- **Player 1's Turn**:
+  - Picks **15**
+  - **Player 1's Numbers**: 5, 10, 15
+- **Player 1 Wins**:
+  - Forms the sequence **5, 10, 15** (common difference of 5).
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Welcome to Sequence Duel!
+
+Available Numbers:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+Player 1, select a number: 5
+
+Player 1's Numbers: 5
+Player 2's Numbers: 
+
+Available Numbers:
+1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+Player 2, select a number: 7
+
+Player 1's Numbers: 5
+Player 2's Numbers: 7
+
+Available Numbers:
+1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+Player 1, select a number: 10
+
+Player 1's Numbers: 5, 10
+Player 2's Numbers: 7
+
+Available Numbers:
+1, 2, 3, 4, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+Player 2, select a number: 13
+
+Player 1's Numbers: 5, 10
+Player 2's Numbers: 7, 13
+
+Available Numbers:
+1, 2, 3, 4, 6, 8, 9, 11, 12, 14, 15, 16, 17, 18, 19, 20
+
+Player 1, select a number: 15
+
+Player 1's Numbers: 5, 10, 15
+Player 2's Numbers: 7, 13
+
+Congratulations, Player 1! You've formed an arithmetic sequence: 5, 10, 15
+
+Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of both your numbers and your opponent's numbers.
+- **Block Opponent**: If you notice your opponent is two-thirds of the way to a sequence, consider picking a number they might need.
+- **Common Differences**: Be aware of common differences that can be formed with available numbers.
+- **Balance**: While blocking is important, don't lose sight of forming your own sequence.
+
+## Conclusion
+
+Sequence Duel is a simple yet strategic game that tests numerical reasoning and foresight. By carefully selecting numbers and anticipating your opponent's moves, you can outsmart them and claim victory. Enjoy the challenge and may the best strategist win!

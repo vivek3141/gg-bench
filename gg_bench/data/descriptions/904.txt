@@ -1,0 +1,194 @@
+# Isolation
+
+## Objective
+
+Be the player to remove the last available number from a linear sequence by strategically isolating your opponent's options. The primary goal is to force your opponent into a position where they cannot make a valid move on their turn, thereby securing your victory.
+
+## Setup
+
+- **Game Sequence**: A line of consecutive numbers from **1** to **11**, arranged in ascending order.
+  
+  ```
+  1 2 3 4 5 6 7 8 9 10 11
+  ```
+
+- **Player Assignment**: Two players are designated as **Player 1** and **Player 2**. Decide who takes the first turn (e.g., by a coin toss or mutual agreement).
+
+## Game Components
+
+- **Number Line**: A simple linear sequence of numbers from **1** to **11**.
+  
+- **Markers**: In a command-line interface, numbers can be displayed as available or removed. Removed numbers and isolated numbers can be indicated by brackets or symbols.
+
+  - **Available Number**: Display the number as-is (e.g., `5`).
+  - **Removed Number**: Indicate with parentheses (e.g., `(5)`).
+  - **Isolated Number**: Indicate with square brackets (e.g., `[5]`).
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+  
+- **Turn Actions**: During your turn, perform the following steps:
+
+  1. **Select a Number**: Choose one available number from the sequence to remove.
+  2. **Update the Sequence**: Mark the chosen number as removed and update adjacent numbers as isolated.
+  3. **Display**: Show the updated sequence to your opponent.
+
+- **Turn Progression**: The game continues with players alternating turns until no valid moves remain.
+
+## Rules and Mechanics
+
+1. **Removing Numbers**:
+
+   - On your turn, you must remove **one** available number from the sequence.
+   - To remove a number, it must not be isolated or already removed.
+
+2. **Isolation Mechanic**:
+
+   - When a number is removed, its immediate neighbors (numbers directly adjacent to it in the sequence) become **isolated**.
+   - Isolated numbers cannot be removed on subsequent turns.
+   - If an adjacent number is already removed or isolated, it remains in its current state.
+
+3. **Valid Moves**:
+
+   - A valid move consists of removing an available (non-isolated, non-removed) number.
+   - If a player has no valid moves on their turn, they lose the game.
+
+4. **Winning the Game**:
+
+   - The player who removes the last available number wins.
+   - If a player cannot make a move on their turn (no available numbers remain), they lose.
+
+## Scoring
+
+- **Victory Condition**: Winning a single game constitutes a win.
+  
+- **Match Play (Optional)**:
+
+  - Players can agree to play multiple rounds.
+  - Keep track of the number of games won by each player.
+  - The player with the most victories after an agreed number of rounds is the overall winner.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Sequence:
+
+```
+1 2 3 4 5 6 7 8 9 10 11
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Removes number **6**.
+- **Isolation**: Numbers **5** and **7** become isolated.
+- **Updated Sequence**:
+
+```
+1 2 3 4 [5] (6) [7] 8 9 10 11
+```
+
+#### Turn 2: Player 2
+
+- **Available Numbers**: 1, 2, 3, 4, 8, 9, 10, 11.
+- **Action**: Removes number **2**.
+- **Isolation**: Numbers **1** and **3** become isolated.
+- **Updated Sequence**:
+
+```
+[1] (2) [3] 4 [5] (6) [7] 8 9 10 11
+```
+
+#### Turn 3: Player 1
+
+- **Available Numbers**: 4, 8, 9, 10, 11.
+- **Action**: Removes number **9**.
+- **Isolation**: Numbers **8** and **10** become isolated.
+- **Updated Sequence**:
+
+```
+[1] (2) [3] 4 [5] (6) [7] [8] (9) [10] 11
+```
+
+#### Turn 4: Player 2
+
+- **Available Numbers**: 4, 11.
+- **Action**: Removes number **4**.
+- **Isolation**: Numbers **3** and **5** are already isolated or removed.
+- **Updated Sequence**:
+
+```
+[1] (2) [3] (4) [5] (6) [7] [8] (9) [10] 11
+```
+
+#### Turn 5: Player 1
+
+- **Available Numbers**: 11.
+- **Action**: Removes number **11**.
+- **Isolation**: Number **10** is already isolated.
+- **Updated Sequence**:
+
+```
+[1] (2) [3] (4) [5] (6) [7] [8] (9) [10] (11)
+```
+
+#### Result:
+
+- **Player 1** has removed the last available number.
+- **Player 1 Wins**.
+
+## Command-Line Interaction Example
+
+```plaintext
+Game Start!
+Sequence: 1 2 3 4 5 6 7 8 9 10 11
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10 11
+Enter the number you wish to remove: 6
+
+You removed 6.
+Sequence: 1 2 3 4 [5] (6) [7] 8 9 10 11
+
+Player 2's turn.
+Available numbers: 1 2 3 4 8 9 10 11
+Enter the number you wish to remove: 2
+
+You removed 2.
+Sequence: [1] (2) [3] 4 [5] (6) [7] 8 9 10 11
+
+Player 1's turn.
+Available numbers: 4 8 9 10 11
+Enter the number you wish to remove: 9
+
+You removed 9.
+Sequence: [1] (2) [3] 4 [5] (6) [7] [8] (9) [10] 11
+
+Player 2's turn.
+Available numbers: 4 11
+Enter the number you wish to remove: 4
+
+You removed 4.
+Sequence: [1] (2) [3] (4) [5] (6) [7] [8] (9) [10] 11
+
+Player 1's turn.
+Available numbers: 11
+Enter the number you wish to remove: 11
+
+You removed 11.
+Sequence: [1] (2) [3] (4) [5] (6) [7] [8] (9) [10] (11)
+
+No moves left for Player 2.
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Central Control**: Removing central numbers early (like 6) isolates multiple numbers and limits your opponent's options.
+- **Isolation**: Aim to create clusters of isolated numbers around the numbers your opponent might choose.
+- **Forced Moves**: Try to force your opponent into positions where their choices are limited to ensure your path to victory.
+
+---
+
+By understanding and applying these rules and strategies, players can engage in a quick, strategic, and enjoyable game of **Isolation**, where skillful play is rewarded, and each decision can determine the outcome.

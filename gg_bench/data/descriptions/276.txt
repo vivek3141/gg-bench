@@ -1,0 +1,178 @@
+# Digit Deductions
+
+## Objective
+
+The primary goal of **Digit Deductions** is to be the first player to correctly deduce and guess your opponent's secret two-digit number. Victory is achieved by using logical reasoning based on feedback provided by your opponent in response to your guesses. There are no draws in this game; the first player to guess correctly wins.
+
+## Setup
+
+1. **Secret Number Selection**:
+   - Each player independently and secretly selects a two-digit number.
+   - Both digits must be integers from **1 to 9** (inclusive). The digits can be the same or different.
+   - Zero is **not allowed** in any position.
+
+2. **Preparation**:
+   - Players should have a means to record guesses and feedback, such as a notepad or digital text editor.
+   - In a command-line interface, this can be managed within the game program itself.
+
+3. **Starting the Game**:
+   - Decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Secret Numbers**: Each player has a secret two-digit number known only to themselves.
+- **Guess Records**: A log of all guesses made and the corresponding feedback received. This helps players deduce the opponent's number.
+- **Feedback Mechanism**: The method by which players provide information about the accuracy of their opponent's guesses.
+
+## Turns
+
+- **Turn Structure**:
+  - Players take turns in alternating order.
+  - On each turn, the active player performs the following actions:
+    1. **Announce a Guess**: Verbally or by inputting a two-digit number as their guess of the opponent's secret number.
+    2. **Receive Feedback**: The opponent calculates and communicates the feedback based on the guess.
+
+- **Guessing Rules**:
+  - Guesses must be valid two-digit numbers with digits from 1 to 9.
+  - Players should ensure their guesses are logical based on previous feedback.
+
+## Rules and Mechanics
+
+### Guessing and Feedback
+
+1. **Making a Guess**:
+   - The active player guesses the opponent's secret number by stating a two-digit number (e.g., 5 7).
+
+2. **Calculating Feedback**:
+   - The opponent calculates the **sum of the absolute differences** between each corresponding digit of the secret number and the guess.
+   - **Formula**:
+     - If the secret number is **A B** and the guess is **C D**, then the feedback is calculated as:
+       - **Feedback = |A − C| + |B − D|**
+     - `|A − C|` means the absolute value of the difference between digits A and C.
+   - **Example**:
+     - Secret Number: 6 8
+     - Guess: 5 7
+     - Calculation: |6 − 5| + |8 − 7| = 1 + 1 = 2
+     - Feedback Provided: **2**
+
+3. **Providing Feedback**:
+   - The opponent communicates the numerical feedback to the guessing player.
+   - Only the feedback number is provided—no additional hints or information.
+
+### Winning the Game
+
+- **Correct Guess**:
+  - A player wins immediately if their guess exactly matches the opponent's secret number.
+  - The game ends upon a correct guess; no further turns are taken.
+
+- **Simultaneous Guess**:
+  - If both players guess each other's secret numbers correctly on the same turn, the player who made their guess **first** in that turn wins.
+  - Since turns are taken alternately, simultaneous correct guesses cannot occur.
+
+## Scoring
+
+- **Victory**:
+  - The player who first deduces and correctly guesses the opponent's secret number wins the game.
+  - No points are accumulated; it's a race to the correct answer.
+
+- **No Draws**:
+  - The game is designed to prevent draws. There will always be a winner based on who guesses correctly first.
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Player 1's Secret Number**: 4 7  
+**Player 2's Secret Number**: 6 5
+
+**Turn 1**:
+
+- **Player 1 Guesses**: 5 5
+  - **Player 2 Calculates Feedback**:
+    - |6 − 5| + |5 − 5| = 1 + 0 = **1**
+  - **Feedback Provided**: 1
+
+- **Player 2 Guesses**: 3 9
+  - **Player 1 Calculates Feedback**:
+    - |4 − 3| + |7 − 9| = 1 + 2 = **3**
+  - **Feedback Provided**: 3
+
+**Turn 2**:
+
+- **Player 1 Guesses**: 6 5
+  - **Player 2 Calculates Feedback**:
+    - |6 − 6| + |5 − 5| = 0 + 0 = **0**
+  - **Feedback Provided**: 0
+  - **Player 1 Wins**: Guess exactly matches Player 2's secret number.
+
+### Example 2: Strategic Deduction
+
+**Player 1's Secret Number**: 8 3  
+**Player 2's Secret Number**: 2 9
+
+**Turn 1**:
+
+- **Player 1 Guesses**: 5 5
+  - **Player 2's Feedback**:
+    - |2 − 5| + |9 − 5| = 3 + 4 = **7**
+
+- **Player 2 Guesses**: 7 4
+  - **Player 1's Feedback**:
+    - |8 − 7| + |3 − 4| = 1 + 1 = **2**
+
+**Turn 2**:
+
+- **Player 1 Guesses**: 2 8
+  - **Player 2's Feedback**:
+    - |2 − 2| + |9 − 8| = 0 + 1 = **1**
+
+- **Player 2 Guesses**: 8 2
+  - **Player 1's Feedback**:
+    - |8 − 8| + |3 − 2| = 0 + 1 = **1**
+
+**Turn 3**:
+
+- **Player 1 Guesses**: 2 9
+  - **Player 2's Feedback**:
+    - |2 − 2| + |9 − 9| = 0 + 0 = **0**
+  - **Player 1 Wins**: Guess exactly matches Player 2's secret number.
+
+## Game Strategies
+
+- **Analyze Feedback**: Use the feedback numbers to narrow down possible digits. A feedback of zero means the guess is entirely correct.
+- **Digit by Digit Deduction**: Focus on one digit at a time by changing one digit in your guesses while keeping the other constant.
+- **Elimination**: Keep track of which numbers have been eliminated based on previous guesses and feedback.
+- **Opponent's Guesses**: Pay attention to the numbers your opponent guesses; they might reveal information about their own number.
+
+## Command-Line Interaction Example
+
+Assuming a command-line interface, here's how a sample game might proceed:
+
+**Player 1's Secret Number**: 3 7  
+**Player 2's Secret Number**: 5 6
+
+**Turn 1**:
+
+- **Player 1's Turn**:
+  - **Input Guess**: `5 5`
+  - **Player 2's Feedback**: `|5−5| + |6−5| = 0 + 1 = 1`
+  - **Output**: `Feedback: 1`
+
+- **Player 2's Turn**:
+  - **Input Guess**: `3 5`
+  - **Player 1's Feedback**: `|3−3| + |7−5| = 0 + 2 = 2`
+  - **Output**: `Feedback: 2`
+
+**Turn 2**:
+
+- **Player 1's Turn**:
+  - **Input Guess**: `5 6`
+  - **Player 2's Feedback**: `|5−5| + |6−6| = 0 + 0 = 0`
+  - **Output**: `Feedback: 0`
+  - **Player 1 Wins**
+
+**Note**: The game ends immediately when a player receives a feedback of `0`.
+
+## Conclusion
+
+**Digit Deductions** is a simple yet strategically deep game that tests players' logical deduction skills. Easy to implement in a command-line interface, it offers quick gameplay with clear rules. By carefully analyzing feedback and planning guesses, a skilled player can consistently outmaneuver an unskilled opponent and achieve victory.

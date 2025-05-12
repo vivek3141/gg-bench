@@ -1,0 +1,142 @@
+# Attack and Defend
+
+## Objective
+
+Be the first player to eliminate all of your opponent's soldiers. Use strategy to decide when to attack with your stronger or weaker soldiers. The game cannot end in a draw; one player will always emerge victorious. A skilled player can consistently outmaneuver an unskilled opponent through strategic choices.
+
+## Setup
+
+1. **Players**: Two players participate in the game, referred to as Player 1 and Player 2.
+2. **Soldiers**: Each player starts with a set of five soldiers, numbered from **1** to **5**.
+3. **Initial State**: All soldiers are available at the start of the game. Soldiers are unique and can be used only once.
+
+## Game Components
+
+- **Soldier Numbers**: The soldiers are represented by their numbers (**1**, **2**, **3**, **4**, **5**).
+- **Soldier Pool**: Each player has their own pool of soldiers.
+- **Eliminated Soldiers**: A record of soldiers that have been removed from play.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, with Player 1 starting the game.
+- **Actions Per Turn**:
+  - **Select an Attacking Soldier**: Choose one available soldier from your pool.
+  - **Declare an Attack**: Announce the number of your attacking soldier.
+  - **Select Opponent's Soldier**: Target one of your opponent's available soldiers by number.
+
+## Rules and Mechanics
+
+1. **Attacking**:
+   - On your turn, you must attack using one of your available soldiers.
+   - You cannot skip your turn or pass.
+
+2. **Resolving an Attack**:
+   - Compare the numbers of the attacking soldier and the defending soldier.
+     - **Attacker's Number Higher**: The defending soldier is eliminated and removed from the opponent's pool.
+     - **Numbers Equal**: Both soldiers are eliminated and removed from their respective pools.
+     - **Attacker's Number Lower**: The attacking soldier is eliminated and removed from your pool.
+
+3. **Soldier Usage**:
+   - Once a soldier has been used in an attack (whether it wins, loses, or ties), it is removed from the game.
+   - Soldiers cannot be reused in subsequent turns.
+
+4. **Winning the Game**:
+   - You win if your opponent has no soldiers left in their pool at the start of their turn.
+   - If both players lose their last soldiers in the same battle, the attacking player loses the game.
+
+## Scoring
+
+- **Victory Condition**: Eliminate all of your opponent's soldiers.
+- **No Point System**: The game does not use points; winning is based on the elimination of opponent's soldiers.
+- **Tracking**: Keep track of available and eliminated soldiers for both players throughout the game.
+
+## Examples
+
+### Example 1: Strategic Victory
+
+**Initial State**:
+
+- Player 1's Soldiers: 1, 2, 3, 4, 5
+- Player 2's Soldiers: 1, 2, 3, 4, 5
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**:
+   - Attacks with soldier **3** targeting Player 2's soldier **2**.
+   - **Outcome**: 3 > 2. Player 2's soldier **2** is eliminated.
+   - Player 1's Soldiers: 1, 2, 4, 5
+   - Player 2's Soldiers: 1, 3, 4, 5
+
+2. **Player 2's Turn**:
+   - Attacks with soldier **5** targeting Player 1's soldier **5**.
+   - **Outcome**: 5 = 5. Both soldiers **5** are eliminated.
+   - Player 1's Soldiers: 1, 2, 4
+   - Player 2's Soldiers: 1, 3, 4
+
+3. **Player 1's Turn**:
+   - Attacks with soldier **4** targeting Player 2's soldier **4**.
+   - **Outcome**: 4 = 4. Both soldiers **4** are eliminated.
+   - Player 1's Soldiers: 1, 2
+   - Player 2's Soldiers: 1, 3
+
+4. **Player 2's Turn**:
+   - Attacks with soldier **3** targeting Player 1's soldier **2**.
+   - **Outcome**: 3 > 2. Player 1's soldier **2** is eliminated.
+   - Player 1's Soldiers: 1
+   - Player 2's Soldiers: 1
+
+5. **Player 1's Turn**:
+   - Attacks with soldier **1** targeting Player 2's soldier **1**.
+   - **Outcome**: 1 = 1. Both soldiers **1** are eliminated.
+   - Player 1's Soldiers: None
+   - Player 2's Soldiers: None
+
+**Result**:
+
+- Both players have no soldiers left.
+- Last attacking player is **Player 1**.
+- **Player 1 loses** according to the rules.
+- **Player 2 wins** the game.
+
+### Example 2: Command-Line Interaction
+
+**Game Start**
+
+```
+Player 1's Soldiers: 1, 2, 3, 4, 5
+Player 2's Soldiers: 1, 2, 3, 4, 5
+
+Player 1's Turn:
+Available Soldiers: 1, 2, 3, 4, 5
+Enter the number of your attacking soldier: 4
+Enter the number of Player 2's soldier to attack: 3
+
+Player 1 attacks with soldier 4 targeting soldier 3.
+
+Result: 4 > 3. Player 2's soldier 3 is eliminated.
+
+Player 2's Turn:
+Available Soldiers: 1, 2, 4, 5
+Enter the number of your attacking soldier: 5
+Enter the number of Player 1's soldier to attack: 4
+
+Player 2 attacks with soldier 5 targeting soldier 4.
+
+Result: 5 > 4. Player 1's soldier 4 is eliminated.
+
+...
+
+Player 1 has no soldiers left.
+Player 2 wins the game!
+```
+
+## Additional Notes
+
+- **Strategic Depth**: Decide when to use stronger soldiers. Using high-numbered soldiers early may win battles but leave you vulnerable later.
+- **Game Length**: The game is designed to play quickly, usually concluding within a few minutes.
+- **No Draws**: The rules ensure that the game cannot end in a draw.
+- **Skill Advantage**: Skilled players can anticipate opponent's moves and plan their soldier usage accordingly.
+
+## Summary
+
+"Attack and Defend" is a simple yet strategic two-player game perfect for a command-line interface. Players must carefully choose when to deploy their soldiers, balancing the immediate advantage against long-term strategy. The clear rules and quick gameplay make it easy to code and enjoyable to play, with each match offering new tactical challenges.

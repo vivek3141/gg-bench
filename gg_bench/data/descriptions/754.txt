@@ -1,0 +1,215 @@
+# Divisibility Duel
+
+## Objective
+
+The primary goal of **Divisibility Duel** is to be the first player to construct a number using unique digits that is **divisible by a predetermined target number**. Players take turns selecting digits from a shared pool and strategically placing them to form their personal number. The player who successfully creates such a number wins the game.
+
+## Setup
+
+1. **Digit Pool**: A shared pool containing the digits from **1** to **9**.
+2. **Player Numbers**: Each player starts with an **empty number**.
+3. **Target Number**: Players agree on a target number for divisibility before the game begins (e.g., **7**).
+4. **Determine First Player**: Decide which player will take the first turn (e.g., by a coin toss or mutual agreement).
+
+## Game Components
+
+- **Digits (1-9)**:
+  - **Appearance**: Represented by their numerical values.
+  - **Functionality**: Used by players to build their numbers.
+  - **Unique Attribute**: Each digit can be used only once in the game.
+
+- **Player Numbers**:
+  - **Appearance**: A sequence of digits forming a whole number.
+  - **Functionality**: Represents the player's current number in the game.
+  - **Unique Attribute**: Can be extended by adding digits to the left or right.
+
+- **Target Number**:
+  - **Appearance**: A single predetermined number agreed upon before starting (e.g., **7**).
+  - **Functionality**: The number by which players' numbers must be divisible to win.
+  - **Unique Attribute**: Remains constant throughout the game.
+
+## Turns
+
+### Structure of a Turn
+
+1. **Select a Digit**:
+   - Choose any available digit from the shared digit pool.
+
+2. **Place the Digit**:
+   - Append the selected digit to **either the left or right** end of your existing number.
+
+3. **Check for Victory**:
+   - Determine if your new number is divisible by the target number.
+     - **If divisible**: You win the game.
+     - **If not divisible**: The game continues.
+
+4. **Turn Progression**:
+   - The turn passes to the other player.
+
+### Actions Allowed During a Turn
+
+- **Digit Selection**: Pick one digit per turn.
+- **Digit Placement**: Decide where to place the digit (left or right of your current number).
+- **Victory Check**: Verify divisibility after placement.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Digit Availability**:
+   - The digits **1-9** are available in the shared pool at the start.
+   - Each digit can be used **only once** in the game.
+
+2. **Digit Placement**:
+   - You must place the selected digit on **either end** of your current number.
+   - **Middle insertion** is not allowed.
+
+3. **Building Numbers**:
+   - Your number starts empty and builds up as you add digits.
+   - Example Sequence:
+     - Turn 1: Number is `5`.
+     - Turn 2: Add `3` to the left -> Number is `35`.
+     - Turn 3: Add `7` to the right -> Number is `357`.
+
+4. **Divisibility Check**:
+   - After each turn, check if your number is divisible by the target number.
+   - Use standard division to verify.
+   - No remainders should result; the division must be exact.
+
+5. **Winning the Game**:
+   - The first player to have a number divisible by the target number immediately wins.
+   - The game ends upon a win condition being met.
+
+6. **Exhausting Digits**:
+   - If all digits have been used and no player has won, the game proceeds to a **tie-breaker**.
+
+### Special Mechanics
+
+#### Tie-Breaker Rules
+
+1. **Closeness to Divisibility**:
+   - Calculate the **absolute difference** between each player's number and the nearest lower multiple of the target number.
+   - The player with the **smaller difference** wins the tie-breaker.
+
+2. **Example**:
+   - Target Number: **7**
+   - Player 1's Number: **428** (428 ÷ 7 = 61.14; nearest lower multiple is 427, difference is 1)
+   - Player 2's Number: **395** (395 ÷ 7 = 56.42; nearest lower multiple is 392, difference is 3)
+   - **Player 1 wins** because their number is closer to a multiple of 7.
+
+3. **Tie in Differences**:
+   - If both players have the same difference, the game is declared a **draw**.
+
+## Scoring
+
+- **Winning**:
+  - Achieve a number divisible by the target number during your turn.
+  - Immediate victory; the game ends.
+
+- **Tie-Breaker Victory**:
+  - If no immediate win, the closer number to a multiple of the target number after all digits are used wins.
+
+- **No Points System**:
+  - The game operates on a win/loss basis per round.
+  - No cumulative scoring is involved.
+
+## Examples
+
+### Example Scenario
+
+**Target Number**: **7**
+
+**Digit Pool at Start**: `1 2 3 4 5 6 7 8 9`
+
+#### Game Play
+
+- **Player 1's Turn**:
+  - **Selects Digit**: `4`
+  - **Places Digit**: Right end (Number: `4`)
+  - **Divisibility Check**: `4` ÷ `7` → Not divisible.
+
+- **Player 2's Turn**:
+  - **Selects Digit**: `3`
+  - **Places Digit**: Right end (Number: `3`)
+  - **Divisibility Check**: `3` ÷ `7` → Not divisible.
+
+- **Player 1's Turn**:
+  - **Selects Digit**: `2`
+  - **Places Digit**: Right end (Number: `42`)
+  - **Divisibility Check**: `42` ÷ `7` = `6` → **Divisible! Player 1 wins.**
+
+### Command-Line Interaction
+
+```
+Welcome to Divisibility Duel!
+Target Number: 7
+
+Available Digits: 1 2 3 4 5 6 7 8 9
+
+Player 1's Turn:
+- Select a digit from the available digits: 4
+- Place digit '4' on (L)eft or (R)ight of your number? R
+- Your Number: 4
+- Checking divisibility by 7... Not divisible.
+
+Player 2's Turn:
+- Available Digits: 1 2 3 5 6 7 8 9
+- Select a digit from the available digits: 3
+- Place digit '3' on (L)eft or (R)ight of your number? R
+- Your Number: 3
+- Checking divisibility by 7... Not divisible.
+
+Player 1's Turn:
+- Available Digits: 1 2 5 6 7 8 9
+- Select a digit from the available digits: 2
+- Place digit '2' on (L)eft or (R)ight of your number? R
+- Your Number: 42
+- Checking divisibility by 7... Divisible!
+Congratulations, Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**:
+  - Anticipate which digits will help you achieve divisibility.
+  - Consider the mathematical impact of adding a digit to the left versus the right.
+
+- **Deny Key Digits**:
+  - Observe which digits your opponent may need and consider selecting them.
+
+- **Balance Your Number**:
+  - Keep your number flexible to maximize future opportunities for divisibility.
+
+- **Mathematical Calculations**:
+  - Familiarize yourself with multiples of the target number to quickly assess potential moves.
+
+## Additional Rules and Variants
+
+### Variable Target Number
+
+- **Changing Targets**:
+  - Players can agree to change the target number each game to add variety.
+  - Example: Use prime numbers like 11 or 13 for increased difficulty.
+
+### Expanded Digit Pool
+
+- **Including Zero**:
+  - Add the digit `0` to the pool for more options.
+  - Placing `0` can significantly alter a number's divisibility.
+
+### Multiple Wins
+
+- **Best of Series**:
+  - Play a series of games, and the player who wins the most rounds wins the series.
+
+### Time Limit per Turn
+
+- **Timed Turns**:
+  - Implement a time limit for each turn to increase the challenge.
+  - Encourages quick thinking and decision-making.
+
+## Conclusion
+
+**Divisibility Duel** offers a unique blend of strategy and mathematical prowess. By carefully selecting and placing digits, players engage in a tactical battle to outmaneuver their opponent and achieve divisibility first. Whether you're a math enthusiast or a strategic thinker, this game provides an engaging and competitive experience.
+
+Enjoy the duel, and may the best strategist win!

@@ -1,0 +1,219 @@
+# Sum Challenge: A Two-Player Turn-Based Game
+
+## Objective
+
+Be the first player to reach a total sum of **exactly 31** by strategically adding numbers to your total while anticipating and blocking your opponent's moves. Careful planning and foresight are key, as overshooting the target sum will result in an immediate loss.
+
+## Setup
+
+- **Players**: Two players.
+- **Starting Total**: Both players begin with a total sum of **0**.
+
+No physical setup is required. The game can be played using a command-line interface where each player inputs their chosen numbers when prompted.
+
+## Game Components
+
+- **Total Sum Tracker**: Keeps track of each player's current total sum.
+- **Number Choices**: Integers from **1** to **6** (inclusive). These numbers represent the possible choices a player can add to their total sum on each turn.
+
+The game components are digital and will be managed within the command-line interface, displaying current totals and validating moves according to the rules.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately. Decide who goes first by mutual agreement or a random method.
+- **Player Actions**:
+  - **Choose a Number**: On your turn, select a number between **1** and **6** (inclusive) to add to your total sum.
+  - **Restrictions**: You **cannot** choose the same number that your opponent selected on their previous turn.
+- **Turn Progression**:
+  1. **Input Selection**: The current player inputs their chosen number.
+  2. **Validation**: The game checks for compliance with the rules (valid number range and not repeating the opponent's last choice).
+  3. **Update Total**: The chosen number is added to the player's total sum.
+  4. **Check for Win/Loss Conditions**: The game assesses if the current move results in a win, loss, or continuation.
+  5. **Display Totals**: Updated totals are displayed to both players.
+  6. **Next Player's Turn**: The turn switches to the other player.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection**:
+   - On your turn, you must choose an integer between **1** and **6**.
+   - You cannot select the same number your opponent chose on their immediately preceding turn.
+
+2. **Updating Total Sum**:
+   - The number you select is added to your personal total sum.
+   - The game keeps separate totals for each player.
+
+3. **Winning the Game**:
+   - The first player to reach a total sum of **exactly 31** wins the game.
+
+4. **Losing the Game**:
+   - **Overstepping**: If adding your chosen number causes your total sum to exceed **31**, you immediately lose the game.
+   - **Invalid Move**: Selecting an invalid number (outside 1-6 or repeating the opponent's last number) prompts a retry, but repeated invalid attempts may result in a loss (optional rule for timed or competitive play).
+
+### Strategic Mechanics
+
+- **Number Memory**: Keep track of the numbers your opponent selects to avoid illegal moves.
+- **Blocking**: Choose numbers that force your opponent into a difficult position or limit their options.
+- **Planning Ahead**: Anticipate future sums to avoid overstepping the target of 31.
+
+## Scoring
+
+- **Victory**: Successfully reaching a total sum of exactly **31**.
+- **Defeat**:
+  - Exceeding a total sum of **31**.
+  - Being unable to make a legal move on your turn due to the opponent restricting your options (if all allowable numbers would cause you to exceed 31).
+
+No ongoing score is tracked beyond the current game, but players may choose to play multiple rounds and keep track of wins for extended play.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Player 1** begins the game.
+
+#### Turn 1
+
+- **Player 1**:
+  - Chooses **4**.
+  - Total sum: **0 + 4 = 4**.
+- **Player 2** cannot choose **4** on this turn.
+
+#### Turn 2
+
+- **Player 2**:
+  - Chooses **6**.
+  - Total sum: **0 + 6 = 6**.
+- **Player 1** cannot choose **6** on this turn.
+
+#### Turn 3
+
+- **Player 1**:
+  - Chooses **5**.
+  - Total sum: **4 + 5 = 9**.
+- **Player 2** cannot choose **5** on this turn.
+
+#### Turn 4
+
+- **Player 2**:
+  - Chooses **3**.
+  - Total sum: **6 + 3 = 9**.
+- **Player 1** cannot choose **3** on this turn.
+
+#### Turn 5
+
+- **Player 1**:
+  - Chooses **2**.
+  - Total sum: **9 + 2 = 11**.
+- **Player 2** cannot choose **2** on this turn.
+
+#### Turn 6
+
+- **Player 2**:
+  - Chooses **6**.
+  - **Invalid Move**: Cannot choose **6** because it was not the last number chosen by Player 1.
+  - **Corrected Move**: Chooses **4**.
+  - Total sum: **9 + 4 = 13**.
+- **Player 1** cannot choose **4** on this turn.
+
+#### Turn 7
+
+- **Player 1**:
+  - Chooses **6**.
+  - Total sum: **11 + 6 = 17**.
+- **Player 2** cannot choose **6** on this turn.
+
+#### Subsequent Turns
+
+- Players continue in this manner, carefully choosing numbers to increment their totals towards **31**, while trying to prevent the opponent from selecting advantageous numbers.
+
+### Winning Scenario
+
+Assuming continued play:
+
+#### Final Turns
+
+- **Player 1** has a total sum of **26**.
+- **Player 2's** last chosen number was **5**.
+  
+**Player 1's Turn**:
+
+- **Available Numbers**: 1, 2, 3, 4, 6 (cannot choose 5).
+- **Choices**:
+  - Choosing **5** is illegal (opponent's last choice).
+  - **1**: Total sum would be **26 + 1 = 27**.
+  - **2**: Total sum would be **28**.
+  - **3**: Total sum would be **29**.
+  - **4**: Total sum would be **30**.
+  - **6**: Total sum would be **32** (exceeds 31, results in a loss).
+- **Optimal Choice**: Selecting **4**, total sum becomes **30**.
+
+**Player 2's Turn**:
+
+- Cannot choose **4** (Player 1's last choice).
+- **Available Numbers**: 1, 2, 3, 5, 6.
+- **Choices**:
+  - **1**: Total sum **26 + 1 = 27**
+  - **2**: Total sum **26 + 2 = 28**
+  - **3**: Total sum **26 + 3 = 29**
+  - **5**: Total sum **26 + 5 = 31** **(Player 2 wins!)**
+  
+**Outcome**:
+
+- **Player 2** selects **5**, reaching a total sum of **31**, and wins the game.
+
+## Command-Line Interaction Example
+
+```
+Welcome to Sum Challenge!
+
+Player 1, it's your turn.
+Your total sum: 0
+Enter a number between 1 and 6 (cannot be the same as opponent's last pick): 4
+
+Player 1 chose 4.
+Player 1's total sum is now 4.
+
+Player 2, it's your turn.
+Your total sum: 0
+(Note: You cannot choose 4.)
+Enter a number between 1 and 6: 6
+
+Player 2 chose 6.
+Player 2's total sum is now 6.
+
+Player 1, it's your turn.
+Your total sum: 4
+(Note: You cannot choose 6.)
+Enter a number between 1 and 6: 5
+...
+
+[Gameplay continues as per the example above.]
+
+...
+
+Player 2, it's your turn.
+Your total sum: 26
+(Note: You cannot choose 4.)
+Enter a number between 1 and 6: 5
+
+Player 2 chose 5.
+Player 2's total sum is now 31.
+
+Congratulations, Player 2! You have reached exactly 31 and won the game!
+```
+
+## Additional Notes
+
+- **Invalid Inputs**: If a player inputs an invalid number (outside 1-6 or the opponent's last number), prompt them to enter a valid number.
+- **Repeated Invalid Attempts**: To maintain game flow, you may limit the number of invalid attempts per turn (e.g., after 3 invalid attempts, the player loses their turn).
+- **Strategy Tips**:
+  - **Anticipate Opponent Moves**: Keep track of which numbers may lead your opponent to win or lose.
+  - **Control Key Numbers**: Avoid choosing numbers that set up your opponent for an easy win.
+  - **Calculate Ahead**: Plan your moves several turns in advance to navigate towards 31 without overshooting.
+
+---
+
+Enjoy playing Sum Challenge and may the best strategist win!

@@ -1,0 +1,273 @@
+# Last Digit Zero
+
+## Objective
+
+Last Digit Zero is a two-player, turn-based number game played in a command-line interface. The primary goal is to avoid being the player who causes the current number to end with the digit zero. Players take turns multiplying the current number by an integer between 2 and 9. The player who causes the last digit of the number to become zero **loses** the game.
+
+---
+
+## Setup
+
+- **Starting Number**: The game begins with the current number set to **1**.
+- **Players**: Two players, Player 1 and Player 2. Decide who goes first by mutual agreement or a random method.
+
+---
+
+## Game Components
+
+- **Current Number**: A positive integer that gets updated each turn based on players' moves. Initially set to **1**.
+- **Multipliers**: Integers ranging from **2** to **9** inclusive. These are the options players can choose to multiply the current number by during their turn.
+
+---
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Display Current Number**: At the start of each turn, the current number is displayed.
+  2. **Choose Multiplier**: The active player selects a multiplier between 2 and 9.
+  3. **Calculate New Number**: Multiply the current number by the chosen multiplier to get the new current number.
+  4. **Check Last Digit**: If the last digit of the new current number is zero, the active player **loses**.
+  5. **Update Current Number**: If the last digit is not zero, the new current number is set for the next player's turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Starting the Game**:
+   - The game starts with the current number **1**.
+
+2. **Choosing a Multiplier**:
+   - On their turn, a player must select an integer between **2** and **9** (inclusive) to multiply the current number.
+   - The chosen multiplier must be an integer; fractions or numbers outside the range are not allowed.
+
+3. **Updating the Current Number**:
+   - Multiply the current number by the selected multiplier.
+   - For example, if the current number is 3 and the selected multiplier is 4, the new current number is \(3 \times 4 = 12\).
+
+4. **Determining a Loss**:
+   - After the multiplication, check the last digit (units place) of the new current number.
+   - If the last digit is **0**, the active player **loses**, and the game ends immediately.
+   - If the last digit is not zero, the game continues with the next player's turn.
+
+5. **Prohibited Moves**:
+   - A player **cannot** skip their turn.
+   - Players must choose a valid multiplier on each turn.
+
+6. **Winning the Game**:
+   - The player who **avoids** causing the last digit to be zero wins the game.
+   - The game can only be won by forcing the opponent into a position where any move they make will cause the last digit to become zero on their turn.
+
+---
+
+## Scoring
+
+- **Victory Condition**: The player who **does not** cause the current number to end with zero is declared the **winner**.
+- **Loss Condition**: The player who causes the current number to end with zero **loses** the game.
+- There are no points or cumulative scoring; each game results in a win or loss.
+
+---
+
+## Example Game Play
+
+Below is an example of how a game of Last Digit Zero might proceed, including sample command-line interactions.
+
+### Game Start
+
+- **Current Number**: 1
+- **Player 1's Turn**
+
+### Turn 1: Player 1
+
+```
+Current Number: 1
+Player 1, choose a multiplier (2-9): 3
+Calculation: 1 * 3 = 3
+The new current number is 3.
+```
+
+- **Last Digit**: 3 (not zero)
+- **Game Continues**
+
+### Turn 2: Player 2
+
+```
+Current Number: 3
+Player 2, choose a multiplier (2-9): 5
+Calculation: 3 * 5 = 15
+The new current number is 15.
+```
+
+- **Last Digit**: 5 (not zero)
+- **Game Continues**
+
+### Turn 3: Player 1
+
+```
+Current Number: 15
+Player 1, choose a multiplier (2-9): 2
+Calculation: 15 * 2 = 30
+The new current number is 30.
+```
+
+- **Last Digit**: 0
+- **Player 1 Loses**
+
+```
+The last digit is zero.
+Player 1 loses the game!
+```
+
+### Analysis
+
+- **Player 1's Mistake**: Multiplying 15 (which ends with 5) by an even number (2) results in a number ending with zero.
+- **Strategic Consideration**: Players should avoid multiplying numbers ending with 5 by even multipliers (2, 4, 6, 8) to prevent creating a number ending with zero.
+
+---
+
+## Strategic Tips
+
+- **Avoid Ending with 0**: Be cautious when the current number ends with 2 or 5, as certain multipliers can result in a last digit of zero.
+- **Multiplying Numbers Ending with 5**:
+  - **Dangerous Multipliers**: Multiplying a number ending with 5 by an even number (2, 4, 6, 8) will cause the last digit to be zero.
+  - **Safe Multipliers**: Multiplying by odd numbers (3, 5, 7, 9) will not result in a last digit of zero.
+- **Forced Moves**: Try to force your opponent into a position where all their possible moves will result in a number ending with zero.
+- **Understanding Last Digit Patterns**: Familiarize yourself with multiplication patterns of the last digit to plan your moves strategically.
+
+---
+
+## Sample Game with Detailed Commentary
+
+### Game Start
+
+- **Current Number**: 1
+- **Player 1's Turn**
+
+### Turn 1: Player 1
+
+```
+Current Number: 1
+Player 1, choose a multiplier (2-9): 7
+Calculation: 1 * 7 = 7
+The new current number is 7.
+```
+
+- **Last Digit**: 7
+- **Game Continues**
+
+### Turn 2: Player 2
+
+```
+Current Number: 7
+Player 2, choose a multiplier (2-9): 3
+Calculation: 7 * 3 = 21
+The new current number is 21.
+```
+
+- **Last Digit**: 1
+- **Game Continues**
+
+### Turn 3: Player 1
+
+```
+Current Number: 21
+Player 1, choose a multiplier (2-9): 9
+Calculation: 21 * 9 = 189
+The new current number is 189.
+```
+
+- **Last Digit**: 9
+- **Game Continues**
+
+### Turn 4: Player 2
+
+```
+Current Number: 189
+Player 2, choose a multiplier (2-9): 2
+Calculation: 189 * 2 = 378
+The new current number is 378.
+```
+
+- **Last Digit**: 8
+- **Game Continues**
+
+### Turn 5: Player 1
+
+```
+Current Number: 378
+Player 1, choose a multiplier (2-9): 5
+Calculation: 378 * 5 = 1890
+The new current number is 1890.
+```
+
+- **Last Digit**: 0
+- **Player 1 Loses**
+
+```
+The last digit is zero.
+Player 1 loses the game!
+```
+
+### Commentary
+
+- **Turn 5 Mistake**: Player 1 multiplied a number ending with 8 by 5, resulting in a number ending with zero.
+- **Alternative Strategy**: Player 1 could have chosen a different multiplier to avoid ending the game in a loss at this turn.
+
+---
+
+## Command-Line Interaction Template
+
+Below is a template for how each turn should be structured in the command-line interface:
+
+1. **Display Current Number**:
+
+   ```
+   Current Number: [Current_Number]
+   ```
+
+2. **Prompt Player for Multiplier**:
+
+   ```
+   Player [Player_Number], choose a multiplier (2-9): [Player_Input]
+   ```
+
+3. **Display Calculation and New Number**:
+
+   ```
+   Calculation: [Current_Number] * [Player_Input] = [New_Number]
+   The new current number is [New_Number].
+   ```
+
+4. **Check for Loss**:
+
+   - If the last digit is zero:
+
+     ```
+     The last digit is zero.
+     Player [Player_Number] loses the game!
+     ```
+
+   - If the last digit is not zero:
+
+     - Proceed to the next player's turn.
+
+---
+
+## Conclusion
+
+Last Digit Zero is a simple yet strategic game that challenges players to think ahead and understand the effects of their multiplier choices on the last digit of the current number. With straightforward rules and quick gameplay, it is easy to code and play in a command-line interface. Skilled players can use mathematical patterns and strategies to consistently outsmart their opponents, ensuring an engaging and competitive experience.
+
+---
+
+## Summary of Rules
+
+- **Objective**: Avoid being the player who causes the current number to end with zero.
+- **Starting Number**: 1.
+- **Player Actions**: On your turn, multiply the current number by an integer between 2 and 9.
+- **Losing Condition**: If the last digit of the new current number is zero after your turn, you lose.
+- **Winning Condition**: If your opponent causes the last digit to become zero on their turn, you win.
+- **Prohibited Moves**: You cannot skip your turn or choose a multiplier outside the range of 2 to 9.
+
+---
+
+Enjoy playing Last Digit Zero, and may the most strategic player win!

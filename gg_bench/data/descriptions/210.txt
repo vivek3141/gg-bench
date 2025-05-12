@@ -1,0 +1,222 @@
+# Prime Pursuit
+
+**A Two-Player Numerical Strategy Game**
+
+---
+
+## Objective
+
+Be the first player to accumulate a total sum that is a **prime number between 20 and 31 inclusive** without exceeding 31. Strategic selection of numbers is essential to reach a prime total before your opponent. If a player exceeds a total sum of 31, they lose the game immediately.
+
+---
+
+## Setup
+
+- **Players**: Two players
+- **Starting Sums**: Both players start with a total sum of **0**.
+- **Number Pool**: Numbers **1** through **10** (inclusive). Each number can be chosen multiple times.
+- **Determine First Player**: Decide who goes first (e.g., coin toss, random selection, or mutual agreement).
+
+---
+
+## Game Components
+
+1. **Number Pool**: The numbers **1** to **10**, available for both players to choose from during their turns.
+
+2. **Player Sum Tracker**: A running total for each player that keeps track of the sum of the numbers they have selected.
+
+3. **Prime Number List**: The prime numbers between **20** and **31** inclusive, which are the target sums to win the game. These primes are:
+   - **23**
+   - **29**
+   - **31**
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Announce Current Totals**: Before each turn, the current total sums of both players are displayed.
+  2. **Number Selection**: The active player selects a number from **1** to **10**.
+  3. **Update Total Sum**: Add the chosen number to the player's total sum.
+  4. **Check for Victory or Loss**:
+     - If the player's total sum equals one of the target prime numbers, they win.
+     - If the player's total sum exceeds **31**, they lose.
+  5. **Switch Turns**: The other player takes their turn following the same structure.
+
+- **Turn Order**: Players alternate turns throughout the game.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- On your turn, **choose any number between 1 and 10** (inclusive).
+- You may choose the **same number multiple times** during the game.
+- Both players may choose the **same numbers** independently.
+
+### 2. Sum Calculation
+
+- **Cumulative Sum**: Your chosen numbers are added together to form your total sum.
+- **Tracking**: Keep track of your total sum after each turn. This sum determines your progress toward winning or losing.
+
+### 3. Winning the Game
+
+- **Prime Total Sum**: The first player to reach a total sum that is **exactly** one of the target prime numbers (**23**, **29**, **31**) wins the game immediately.
+
+### 4. Exceeding the Limit
+
+- **Automatic Loss**: If your total sum **exceeds 31**, you lose the game immediately.
+- **Careful Planning**: Avoid selecting numbers that would push your total sum over 31.
+
+### 5. Visibility
+
+- **Open Information**: Both players' total sums are visible to each other at all times.
+- **Strategic Awareness**: Use the knowledge of your opponent's total sum to inform your strategy.
+
+### 6. No Draws
+
+- The game cannot end in a draw. A winner is always determined by either:
+  - A player reaching a prime total sum within the target range.
+  - A player exceeding the total sum of 31, resulting in their loss.
+
+---
+
+## Scoring
+
+- **Winning**: Achieve a total sum of **23**, **29**, or **31**.
+- **Losing**: Exceed a total sum of **31**.
+- **No Points System**: The game is won by meeting the winning conditions, not by accruing points.
+- **Multiple Rounds**: Players can play multiple rounds, keeping track of victories to determine an overall winner if desired.
+
+---
+
+## Examples
+
+### Example 1
+
+**Gameplay Sequence**:
+
+1. **Player 1's Turn**
+   - Current Totals: Player 1 = 0, Player 2 = 0
+   - Player 1 selects **7**
+   - Player 1's total sum: 0 + 7 = **7**
+
+2. **Player 2's Turn**
+   - Current Totals: Player 1 = 7, Player 2 = 0
+   - Player 2 selects **8**
+   - Player 2's total sum: 0 + 8 = **8**
+
+3. **Player 1's Turn**
+   - Current Totals: Player 1 = 7, Player 2 = 8
+   - Player 1 selects **9**
+   - Player 1's total sum: 7 + 9 = **16**
+
+4. **Player 2's Turn**
+   - Current Totals: Player 1 = 16, Player 2 = 8
+   - Player 2 selects **7**
+   - Player 2's total sum: 8 + 7 = **15**
+
+5. **Player 1's Turn**
+   - Current Totals: Player 1 = 16, Player 2 = 15
+   - Player 1 selects **7**
+   - Player 1's total sum: 16 + 7 = **23**
+
+**Outcome**:
+
+- Player 1's total sum is **23**, a target prime number.
+- **Player 1 wins the game**.
+
+### Example 2
+
+**Gameplay Sequence**:
+
+1. **Player 1's Turn**
+   - Current Totals: Player 1 = 0, Player 2 = 0
+   - Player 1 selects **10**
+   - Player 1's total sum: 0 + 10 = **10**
+
+2. **Player 2's Turn**
+   - Current Totals: Player 1 = 10, Player 2 = 0
+   - Player 2 selects **10**
+   - Player 2's total sum: 0 + 10 = **10**
+
+3. **Player 1's Turn**
+   - Current Totals: Player 1 = 10, Player 2 = 10
+   - Player 1 selects **9**
+   - Player 1's total sum: 10 + 9 = **19**
+
+4. **Player 2's Turn**
+   - Current Totals: Player 1 = 19, Player 2 = 10
+   - Player 2 selects **10**
+   - Player 2's total sum: 10 + 10 = **20**
+
+5. **Player 1's Turn**
+   - Current Totals: Player 1 = 19, Player 2 = 20
+   - Player 1 selects **4**
+   - Player 1's total sum: 19 + 4 = **23**
+
+**Outcome**:
+
+- Player 1's total sum is **23**, a target prime number.
+- **Player 1 wins the game**.
+
+---
+
+## Sample Command-Line Interaction
+
+```plaintext
+--- Prime Pursuit Game Start ---
+
+Player 1's Turn
+Current Totals: Player 1 = 0, Player 2 = 0
+Select a number between 1 and 10: 7
+Player 1 selects 7.
+Player 1's total sum is now 7.
+
+Player 2's Turn
+Current Totals: Player 1 = 7, Player 2 = 0
+Select a number between 1 and 10: 8
+Player 2 selects 8.
+Player 2's total sum is now 8.
+
+Player 1's Turn
+Current Totals: Player 1 = 7, Player 2 = 8
+Select a number between 1 and 10: 9
+Player 1 selects 9.
+Player 1's total sum is now 16.
+
+Player 2's Turn
+Current Totals: Player 1 = 16, Player 2 = 8
+Select a number between 1 and 10: 7
+Player 2 selects 7.
+Player 2's total sum is now 15.
+
+Player 1's Turn
+Current Totals: Player 1 = 16, Player 2 = 15
+Select a number between 1 and 10: 7
+Player 1 selects 7.
+Player 1's total sum is now 23.
+Player 1 has reached a total sum of 23, a target prime number!
+--- Player 1 Wins! ---
+```
+
+---
+
+## Strategy Tips
+
+- **Aim for Target Primes**: Plan your number selections to reach **23**, **29**, or **31**.
+- **Calculate Ahead**: Before selecting a number, consider how it affects your path to a target prime.
+- **Monitor Opponent**: Keep an eye on your opponent's total sum to anticipate their possible moves.
+- **Avoid Overstepping**: Be cautious with large numbers that might cause you to exceed a total sum of 31.
+- **Defensive Play**: If your opponent is close to a target prime, consider selecting numbers that may force them into a difficult position on their next turn.
+
+---
+
+## Conclusion
+
+**Prime Pursuit** offers a blend of simplicity and strategic depth. It's easy to code and play in a command-line interface, making it accessible while providing enough complexity to challenge players. The game encourages numerical calculation and forward-thinking, allowing skilled players to consistently outperform less experienced opponents. With no draw mechanism and a quick path to victory or defeat, each match is engaging and conclusive.
+
+Enjoy the challenge and may the best strategist win!
+
+---

@@ -1,0 +1,154 @@
+# Digit Subtractor
+
+## Objective
+
+**Digit Subtractor** is a two-player, turn-based game where players take turns subtracting digits from a shared number. The primary goal of the game is to be the player who reduces the shared number to exactly zero. Strategic planning and foresight are crucial, as each move can significantly impact the path to victory. There are no draws in this game; the first player to reduce the number to zero wins.
+
+## Setup
+
+1. **Starting Number**: The game begins with a shared positive integer, referred to as **N**. It is recommended to start with a two-digit number for a quick game (e.g., 25). For longer games, a larger starting number can be used.
+2. **Players**: Two players are required. Decide who will take the first turn through mutual agreement or a random method, such as a coin toss.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players will manipulate throughout the game. This number changes as players subtract digits from it.
+- **Digits of N**: The individual non-zero digits that compose the current value of N. These digits are the only valid options for subtraction during a player's turn.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player designated to go first during the setup.
+2. **Actions During a Turn**:
+   - **Identify Digits**: Examine the current value of N and identify all non-zero digits.
+   - **Subtract a Digit**: Choose one of the non-zero digits to subtract from N.
+   - **Update N**: Calculate the new value of N by subtracting the chosen digit.
+   - **Announce Move**: Clearly state which digit is being subtracted and the new value of N.
+3. **Turn Progression**: After a player completes their turn and updates N, the next player takes their turn following the same steps.
+
+## Rules and Mechanics
+
+1. **Valid Subtractions**:
+   - Players may only subtract **one non-zero digit** from N on their turn.
+   - The digit must be one of the digits currently present in N.
+   - Leading zeros are not considered valid digits and cannot be used.
+2. **Updating N**:
+   - After subtraction, the new N becomes `N = N - chosen_digit`.
+   - N must always remain a non-negative integer.
+3. **Winning the Game**:
+   - The player who reduces N to **exactly zero** on their turn **wins** the game.
+4. **Losing the Game**:
+   - If a player cannot make a valid move because N is zero (0), they **lose** the game.
+5. **Strategy Notes**:
+   - Players should plan ahead to avoid setting up their opponent for a winning move.
+   - Observing the potential digits available on future turns can provide a strategic advantage.
+
+## Scoring
+
+- **Victory**: The game is won by the player who successfully reduces N to zero.
+- **No Points System**: There is no point tracking beyond the current value of N.
+- **Match Play**: Players may choose to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game: Starting with N = 25
+
+#### Game Start
+- **N = 25**
+- **Player 1** starts.
+
+#### Turn by Turn Play
+
+1. **Player 1's Turn**:
+   - Digits in N: **2**, **5**.
+   - Chooses to subtract **5**.
+   - Calculation: `25 - 5 = 20`.
+   - Announces: "I subtract 5. N is now 20."
+
+2. **Player 2's Turn**:
+   - N = **20**.
+   - Digits in N: **2**, **0** (ignore 0).
+   - Chooses to subtract **2**.
+   - Calculation: `20 - 2 = 18`.
+   - Announces: "I subtract 2. N is now 18."
+
+3. **Player 1's Turn**:
+   - N = **18**.
+   - Digits in N: **1**, **8**.
+   - Chooses to subtract **8**.
+   - Calculation: `18 - 8 = 10`.
+   - Announces: "I subtract 8. N is now 10."
+
+4. **Player 2's Turn**:
+   - N = **10**.
+   - Digits in N: **1**, **0** (ignore 0).
+   - Chooses to subtract **1**.
+   - Calculation: `10 - 1 = 9`.
+   - Announces: "I subtract 1. N is now 9."
+
+5. **Player 1's Turn**:
+   - N = **9**.
+   - Digits in N: **9**.
+   - Chooses to subtract **9**.
+   - Calculation: `9 - 9 = 0`.
+   - Announces: "I subtract 9. N is now 0."
+
+#### Result
+
+- **Player 1 wins** by reducing N to zero.
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their moves.
+
+```
+Game Start: N = 25
+Player 1's turn.
+Digits in N: 2, 5
+Enter digit to subtract: 5
+You subtracted 5. N is now 20.
+
+Player 2's turn.
+Digits in N: 2, 0
+Enter digit to subtract: 2
+You subtracted 2. N is now 18.
+
+Player 1's turn.
+Digits in N: 1, 8
+Enter digit to subtract: 8
+You subtracted 8. N is now 10.
+
+Player 2's turn.
+Digits in N: 1, 0
+Enter digit to subtract: 1
+You subtracted 1. N is now 9.
+
+Player 1's turn.
+Digits in N: 9
+Enter digit to subtract: 9
+You subtracted 9. N is now 0.
+
+Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Anticipate Opponent's Options**: Consider which digits will be available to your opponent after your move.
+- **Control the Game Pace**: Aim to leave N in a state where your opponent has limited beneficial moves.
+- **Avoid Reducing N to a Number Composed of Low Digits**: This might give your opponent an easy path to zero.
+  
+## Variations
+
+To add complexity or extend the game's length:
+
+- **Larger Starting Number**: Begin with a larger N to increase the number of possible moves.
+- **Multiple Digits Subtraction**: Allow players to subtract more than one digit per turn for advanced play.
+- **Forbidden Digit**: Introduce a rule where a specific digit (e.g., 7) cannot be subtracted, adding an extra layer of strategy.
+
+## Concluding the Game
+
+After a game concludes:
+
+1. **Review Moves**: Players may discuss the game sequence to improve their strategies.
+2. **Rematch**: Optionally, players can start a new game, perhaps with the second player going first.
+3. **Keep Score**: In a series of games, track wins to determine an overall winner.
+
+Enjoy the challenge of **Digit Subtractor** and may the best strategist win!

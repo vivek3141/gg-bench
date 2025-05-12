@@ -1,0 +1,214 @@
+# Prime War
+
+## Objective
+
+**Be the first player to reach exactly 50 points by strategically selecting prime numbers from a shared pool.** The player who accumulates a total score of exactly 50 points first wins the game. If a player's total score exceeds 50 at any point, they lose immediately. There is no possibility of a draw.
+
+---
+
+## Setup
+
+1. **Starting Scores:**
+   - Both Player 1 and Player 2 begin with a score of **0**.
+
+2. **Shared Prime Pool:**
+   - A communal list of prime numbers between **2** and **29** (inclusive):
+     ```
+     2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+     ```
+
+3. **Player Order:**
+   - Determine who will be **Player 1** and **Player 2**. Player 1 takes the first turn.
+
+4. **Command-Line Interface:**
+   - The game is played via text input and output in a command-line interface.
+
+---
+
+## Game Components
+
+- **Prime Numbers Pool:**
+  - A list of available prime numbers that players can select from during their turn.
+  - Once a prime number is selected, it is removed from the pool.
+
+- **Player Scores:**
+  - Each player has an individual score that is the sum of the primes they have selected.
+  - Scores are updated and displayed after each turn.
+
+- **Command-Line Prompts:**
+  - The game prompts players to make selections and displays game states.
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Player Actions:**
+   - On their turn, a player must:
+     - **Select a Prime Number** from the current pool.
+     - **Add the Prime Number** to their total score.
+     - The selected prime is then **removed** from the pool.
+
+3. **Turn Progression:**
+   - After a player completes their turn, the game updates:
+     - **Player's Score**
+     - **Available Primes in the Pool**
+     - Checks for **Win or Loss Conditions**
+     - Prompts the next player.
+
+---
+
+## Rules and Mechanics
+
+1. **Prime Selection:**
+   - Players can only select from the primes currently available in the pool.
+   - If a player attempts to select a number not in the pool, they are prompted again.
+
+2. **Scoring:**
+   - A player's score is the cumulative sum of the primes they have selected.
+   - Scores are recalculated and displayed after each turn.
+
+3. **Winning the Game:**
+   - The first player to reach **exactly 50 points** wins the game immediately.
+
+4. **Losing the Game:**
+   - If a player's score **exceeds 50** after their turn, they lose the game immediately.
+   - The opposing player is declared the winner.
+
+5. **No Draws:**
+   - Due to the finite set of primes and the scoring rules, the game cannot end in a draw.
+
+6. **Strategic Play:**
+   - Players must plan ahead to avoid exceeding 50 and to block their opponent's paths to victory.
+   - Awareness of the remaining primes and possible score combinations is key.
+
+---
+
+## Scoring
+
+- **Score Calculation:**
+  - **Player's Score** = Sum of all primes they have selected.
+
+- **Score Limit:**
+  - The maximum score a player can have without losing is **50**.
+  
+- **Score Tracking:**
+  - After each turn, the game displays:
+    - The player's new total score.
+    - The remaining primes in the pool.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### **Starting Game State:**
+
+- **Prime Pool:**
+  ```
+  2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+  ```
+- **Player 1 Score:** 0
+- **Player 2 Score:** 0
+
+#### **Turns:**
+
+1. **Player 1's Turn:**
+   - **Selects:** 29
+   - **Updated Score:** 0 + 29 = **29**
+   - **Updated Prime Pool:**
+     ```
+     2, 3, 5, 7, 11, 13, 17, 19, 23
+     ```
+   
+2. **Player 2's Turn:**
+   - **Selects:** 23
+   - **Updated Score:** 0 + 23 = **23**
+   - **Updated Prime Pool:**
+     ```
+     2, 3, 5, 7, 11, 13, 17, 19
+     ```
+
+3. **Player 1's Turn:**
+   - **Selects:** 19
+   - **Updated Score:** 29 + 19 = **48**
+   - **Updated Prime Pool:**
+     ```
+     2, 3, 5, 7, 11, 13, 17
+     ```
+
+4. **Player 2's Turn:**
+   - **Selects:** 17
+   - **Updated Score:** 23 + 17 = **40**
+   - **Updated Prime Pool:**
+     ```
+     2, 3, 5, 7, 11, 13
+     ```
+
+5. **Player 1's Turn:**
+   - **Selects:** 2
+   - **Updated Score:** 48 + 2 = **50**
+   - **Player 1 Wins!**
+
+### Command-Line Interaction:
+
+```
+Player 1, it's your turn.
+Available primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+Enter a prime number to select: 29
+
+Player 1 selected 29.
+Player 1's total score: 29
+
+Player 2, it's your turn.
+Available primes: 2, 3, 5, 7, 11, 13, 17, 19, 23
+Enter a prime number to select: 23
+
+Player 2 selected 23.
+Player 2's total score: 23
+
+Player 1, it's your turn.
+Available primes: 2, 3, 5, 7, 11, 13, 17, 19
+Enter a prime number to select: 19
+
+Player 1 selected 19.
+Player 1's total score: 48
+
+...
+
+Player 1, it's your turn.
+Available primes: 2, 3, 5, 7, 11, 13
+Enter a prime number to select: 2
+
+Player 1 selected 2.
+Player 1's total score: 50
+
+Congratulations, Player 1! You have reached exactly 50 and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:**
+  - Keep track of both your own and your opponent's scores.
+  - Anticipate which primes they might select next.
+
+- **Control the Pool:**
+  - Select primes that can hinder your opponent's ability to reach 50.
+  - Be mindful of leaving primes that allow them to win on their next turn.
+
+- **Avoid Exceeding 50:**
+  - Calculate potential score outcomes before selecting a prime.
+  - It's better to select a smaller prime to stay in the game than to lose by exceeding 50.
+
+---
+
+## Summary
+
+**Prime War** is a game of numerical strategy and foresight. By selecting prime numbers and carefully managing your total score, you can outmaneuver your opponent and be the first to reach exactly 50 points. Stay sharp, plan your moves, and may the best mathematician win!
+
+# Happy Gaming!

@@ -1,0 +1,219 @@
+# Number Snatch: A Strategic Two-Player Game
+
+## Objective
+
+**Number Snatch** is a strategic numeric game where two players compete to be the first to reach an exact total of **50** by selecting numbers from a shared pool. The primary goal is to carefully choose numbers that add up to exactly **50** while preventing your opponent from doing the same. The player who first reaches a total sum of **50** wins the game.
+
+## Setup
+
+1. **Number Pool**: Create a list of integers from **1** to **20**. This is the shared pool of numbers available for selection.
+2. **Player Scores**: Initialize both players' scores to **0**.
+3. **Turn Order**: Decide which player goes first (e.g., by coin flip).
+
+The initial setup is straightforward and requires only the shared number pool and a way to track each player's total score.
+
+## Game Components
+
+- **Number Pool**: A list of integers from **1** to **20**.
+- **Player Scores**: Each player has a personal total score starting at **0**.
+- **Command-Line Interface**: Players interact with the game through text commands.
+
+### Appearance and Functionality
+
+- **Number Pool**:
+  - Displayed as a list of available numbers for selection.
+  - Numbers are removed from the pool once selected.
+- **Player Scores**:
+  - Displayed after each turn to show the current total.
+- **Command-Line Prompts**:
+  - Guide players through their turn by displaying available numbers and requesting input.
+
+## Turns
+
+1. **Display Information**:
+   - Show the current **Number Pool**.
+   - Present both players' **current scores**.
+2. **Player Action**:
+   - The active player selects one number from the **Number Pool**.
+3. **Validation**:
+   - Ensure the selected number is available in the **Number Pool**.
+   - Confirm that adding the number does not cause the player's total score to exceed **50**.
+4. **Update Game State**:
+   - Add the selected number to the player's score.
+   - Remove the selected number from the **Number Pool**.
+5. **Turn Progression**:
+   - If the player's total score is exactly **50**, the game ends, and the player wins.
+   - If the player's total score exceeds **50**, the turn is forfeited (see Rules and Mechanics).
+   - Otherwise, the turn passes to the opponent.
+6. **Repeat**:
+   - Continue alternating turns until a player wins.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On their turn, a player **must** select one number from the **Number Pool**.
+   - Players **cannot** skip a turn unless no valid moves are available.
+
+2. **Score Calculation**:
+   - The selected number is **added** to the player's total score.
+   - The player's total score must **not exceed 50**.
+
+3. **Exceeding 50**:
+   - If a player cannot select any number without exceeding a total score of **50**, they **forfeit their turn**.
+   - The game continues with the opponent's next turn.
+
+4. **Winning the Game**:
+   - The first player to reach a total score of **exactly 50** wins.
+   - There is **no draw mechanism**; the game continues until a player wins.
+
+5. **Strategic Play**:
+   - Players can strategize by selecting numbers that not only advance their total but also limit the opponent's options.
+   - Keep track of the numbers already taken to plan future moves.
+
+6. **Invalid Moves**:
+   - If a player selects an unavailable number or a number that causes their total to exceed **50**, they are prompted to choose again (if possible).
+   - Repeated invalid selections can be penalized at the players' discretion.
+
+## Scoring
+
+- **Player Total Score**:
+  - The sum of all numbers a player has selected during the game.
+- **Winning Condition**:
+  - Achieving a total score of **exactly 50**.
+
+There are no points beyond reaching the total of **50**; the focus is on strategic number selection to meet the winning condition.
+
+## Examples
+
+### Example Game Play
+
+Let's illustrate a sample game between **Player 1** and **Player 2**.
+
+#### Initial Setup
+
+- **Number Pool**: `[1, 2, 3, ..., 20]`
+- **Player 1 Score**: `0`
+- **Player 2 Score**: `0`
+
+#### Turn 1: Player 1
+
+- **Available Numbers**: `[1, 2, 3, ..., 20]`
+- **Player 1 selects**: `15`
+- **Player 1 Score**: `0 + 15 = 15`
+- **Number Pool**: `[1, 2, 3, ..., 14, 16, ..., 20]`
+
+#### Turn 2: Player 2
+
+- **Available Numbers**: `[1, 2, 3, ..., 14, 16, ..., 20]`
+- **Player 2 selects**: `20`
+- **Player 2 Score**: `0 + 20 = 20`
+- **Number Pool**: `[1, 2, 3, ..., 14, 16, ..., 19]`
+
+#### Turn 3: Player 1
+
+- **Available Numbers**: `[1, 2, 3, ..., 14, 16, ..., 19]`
+- **Player 1 selects**: `18`
+- **Player 1 Score**: `15 + 18 = 33`
+- **Number Pool**: `[1, 2, 3, ..., 14, 16, 17, 19]`
+
+#### Turn 4: Player 2
+
+- **Available Numbers**: `[1, 2, 3, ..., 14, 16, 17, 19]`
+- **Player 2 selects**: `17`
+- **Player 2 Score**: `20 + 17 = 37`
+- **Number Pool**: `[1, 2, 3, ..., 14, 16, 19]`
+
+#### Turn 5: Player 1
+
+- **Available Numbers**: `[1, 2, 3, ..., 14, 16, 19]`
+- **Player 1 selects**: `16`
+- **Player 1 Score**: `33 + 16 = 49`
+- **Number Pool**: `[1, 2, 3, ..., 14, 19]`
+
+#### Turn 6: Player 2
+
+- **Available Numbers**: `[1, 2, 3, ..., 14, 19]`
+- **Player 2 cannot select**: Any number without exceeding **50** (since `37 + 14 = 51` and all remaining numbers are greater than or equal to `14`).
+- **Player 2 forfeits turn**.
+
+#### Turn 7: Player 1
+
+- **Available Numbers**: `[1, 2, 3, ..., 14, 19]`
+- **Player 1 needs**: `1` to reach **50**.
+- **Player 1 selects**: `1`
+- **Player 1 Score**: `49 + 1 = 50`
+- **Player 1 wins the game!**
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Welcome to Number Snatch!
+
+Player 1 Score: 0
+Player 2 Score: 0
+
+Available Numbers:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+Player 1, it's your turn.
+Enter a number to select: 15
+```
+
+#### After Player 1's Turn
+
+```
+Player 1 selected 15.
+
+Player 1 Score: 15
+Player 2 Score: 0
+
+Available Numbers:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20
+
+Player 2, it's your turn.
+Enter a number to select: 20
+```
+
+#### After Player 2's Turn
+
+```
+Player 2 selected 20.
+
+Player 1 Score: 15
+Player 2 Score: 20
+
+Available Numbers:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19
+
+Player 1, it's your turn.
+Enter a number to select: 18
+```
+
+#### Continuing Turns
+
+*The interaction continues similarly, displaying current scores and available numbers, until a player wins.*
+
+#### Winning the Game
+
+```
+Player 1 selected 1.
+
+Player 1 Score: 50
+Player 2 Score: 37
+
+Player 1 has reached a total of 50 and wins the game!
+Congratulations, Player 1!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which numbers are still available and calculate potential future sums.
+- **Block Opponent**: Anticipate your opponent's needs and select numbers that might help them reach **50**.
+- **Balance**: Weigh the benefits of selecting high numbers to quickly increase your total against the risk of limiting future options.
+- **Forced Forfeit**: Try to force your opponent into a position where they cannot make a valid move without exceeding **50**.
+
+---
+
+Enjoy playing **Number Snatch** and may the most strategic player win!

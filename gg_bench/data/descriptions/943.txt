@@ -1,0 +1,149 @@
+# Match Six
+
+## Objective
+
+Be the first player to create a sequence where any three consecutive numbers sum to **exactly 6** without exceeding it. The player who adds a number that causes the sum of the last three numbers in the sequence to be exactly 6 **wins** the game. If the sum exceeds 6, the player who caused this **loses**.
+
+---
+
+## Setup
+
+- **Sequence Initialization**: The game begins with an empty shared sequence of numbers.
+- **Player Assignment**: Two players are designated as **Player 1** and **Player 2**. Determine who goes first by mutual agreement or a random method.
+- **Starting Conditions**: Both players have full visibility of the current sequence at all times.
+
+---
+
+## Game Components
+
+- **Shared Sequence**: A list that both players contribute to, which holds the sequence of numbers chosen during the game.
+- **Numbers**: Integers between **1** and **3** (inclusive). These are the only valid inputs a player can choose on their turn.
+- **Command-Line Interface**: The game is played entirely through text input and output in a command-line environment.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Player Actions**:
+  1. **Input**: On your turn, enter a number between **1** and **3**.
+  2. **Validation**: Ensure the input is valid (an integer between 1 and 3).
+  3. **Update Sequence**: Add the chosen number to the end of the shared sequence.
+  4. **Check for Win/Loss**: Evaluate the sum of the last three numbers in the sequence if it contains at least three numbers.
+- **Progression**: The game continues in this manner until a win or loss condition is met.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**: On each turn, players must choose an integer between **1** and **3** (inclusive) to add to the sequence.
+2. **Updating the Sequence**: The chosen number is appended to the end of the shared sequence.
+3. **Win Condition**:
+   - If **after your turn**, the sum of the **last three numbers** in the sequence is **exactly 6**, you **win** the game.
+4. **Loss Condition**:
+   - If the sum of the last three numbers is **greater than 6**, you **lose** the game immediately.
+5. **No Action on Less Than Three Numbers**:
+   - If the sequence contains **less than three numbers**, no sum calculation is performed.
+6. **No Draws**: The game cannot end in a draw. It will continue until one player wins or loses according to the above conditions.
+7. **Strategic Play**:
+   - Players must plan ahead to avoid setting up the opponent for a win on their next turn.
+   - Be cautious of the existing sequence and anticipate potential sums.
+
+---
+
+## Scoring
+
+- **Victory**: Achieved by causing the sum of the last three numbers to be **exactly 6** on your turn.
+- **Defeat**: Occurs if you cause the sum of the last three numbers to exceed 6 on your turn.
+- **No Point System**: The game is won or lost per match; there is no cumulative scoring.
+
+---
+
+## Examples
+
+### Example 1
+
+**Gameplay**:
+
+1. **Player 1**: Chooses **2**.
+   - Sequence: [2]
+   - No sum calculation (less than three numbers).
+2. **Player 2**: Chooses **2**.
+   - Sequence: [2, 2]
+   - No sum calculation.
+3. **Player 1**: Chooses **2**.
+   - Sequence: [2, 2, 2]
+   - Sum of last three numbers: 2 + 2 + 2 = **6**
+   - **Player 1 wins!**
+
+### Example 2
+
+**Gameplay**:
+
+1. **Player 1**: Chooses **1**.
+   - Sequence: [1]
+   - No sum calculation.
+2. **Player 2**: Chooses **3**.
+   - Sequence: [1, 3]
+   - No sum calculation.
+3. **Player 1**: Chooses **3**.
+   - Sequence: [1, 3, 3]
+   - Sum of last three numbers: 1 + 3 + 3 = **7**
+   - Sum exceeds 6.
+   - **Player 1 loses!**
+
+### Example 3
+
+**Gameplay**:
+
+1. **Player 1**: Chooses **1**.
+   - Sequence: [1]
+2. **Player 2**: Chooses **1**.
+   - Sequence: [1, 1]
+3. **Player 1**: Chooses **2**.
+   - Sequence: [1, 1, 2]
+   - Sum: 1 + 1 + 2 = 4 (game continues).
+4. **Player 2**: Chooses **3**.
+   - Sequence: [1, 1, 2, 3]
+   - Sum: 1 + 2 + 3 = 6
+   - **Player 2 wins!**
+
+---
+
+## Sample Command-Line Interaction
+
+```
+Game Start!
+
+Current Sequence: []
+Player 1's turn. Choose a number (1-3): 2
+
+Current Sequence: [2]
+Player 2's turn. Choose a number (1-3): 3
+
+Current Sequence: [2, 3]
+Player 1's turn. Choose a number (1-3): 1
+
+Current Sequence: [2, 3, 1]
+Sum of last three numbers: 2 + 3 + 1 = 6
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Avoid Immediate Loss**: Never choose a number that would cause the sum of the last three numbers to exceed 6.
+- **Plan Ahead**: Pay attention to the current sequence to avoid setting up your opponent for a win.
+- **Force Opponent's Hand**: Try to play in a way that limits your opponent's safe options, potentially forcing them into a losing move.
+- **Balance**: Mix your number choices to keep the sequence sums unpredictable.
+
+---
+
+## Conclusion
+
+"Match Six" is a simple yet strategically rich game suitable for a command-line interface. Its straightforward rules make it easy to learn and code, while the necessity for foresight and planning ensures that skilled players can consistently outperform less experienced opponents. With quick gameplay and no possibility of a draw, "Match Six" offers engaging and decisive matches.
+
+Enjoy the game and may the best strategist win!
+
+---

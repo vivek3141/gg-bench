@@ -1,0 +1,142 @@
+# Shadow Capture: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+**Shadow Capture** is a strategic two-player turn-based game played in a command-line interface. The primary goal is to be the first player to capture all of your opponent's shadows while protecting your own. A player achieves victory by successfully capturing all opposing shadows, leading to the opponent's defeat.
+
+## Setup
+
+1. **Game Board**: The game is played on a 5x5 grid, with positions labeled from `(1,1)` to `(5,5)`.
+2. **Starting Positions**:
+   - Player 1's shadows start on the leftmost column (`x=1`), occupying rows `(1,1)` to `(5,1)`.
+   - Player 2's shadows start on the rightmost column (`x=5`), occupying rows `(1,5)` to `(5,5)`.
+3. **Initial Shadows**: Each player begins with five shadows, one on each row of their respective starting columns.
+
+## Game Components
+
+- **Shadows**:
+  - Representation: Each shadow is represented by a unique identifier (`S1` for Player 1 and `S2` for Player 2).
+  - Functionality: Shadows can move, cast, and capture opponent shadows.
+  - Attributes: Each shadow has an energy level starting at `3`.
+
+## Turns
+
+- Players alternate turns, starting with Player 1.
+- **Turn Structure**:
+  1. **Action Phase**: The player can perform one of the following actions with each shadow:
+     - **Move**: Move a shadow to an adjacent cell (up, down, left, right; no diagonals).
+     - **Cast**: Extend a shadow to an adjacent cell to attempt a capture.
+ 2. **Energy Phase**: Shadows regenerate `1` energy point if they did not move during the Action Phase.
+- **Turn Progression**: After a player completes their turn, the next player begins their turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- Shadows can move to any adjacent cell that is not occupied by another shadow (friendly or opposing).
+- Moving a shadow reduces its energy by `1`.
+- Shadows cannot move outside the bounds of the 5x5 grid.
+
+### Casting Shadows
+
+- A shadow can cast to an adjacent cell (up, down, left, right) to attempt to capture an opponent's shadow.
+- Casting costs `2` energy points.
+- If the cast lands on a cell occupied by an opponent's shadow, the opponent's shadow loses `1` energy point.
+- If an opponent's shadow's energy drops to `0`, it is captured and removed from the board.
+
+### Energy Mechanics
+
+- Each shadow has an energy level ranging from `0` to `5`.
+- Energy is reduced when performing actions:
+  - Moving: `-1` energy.
+  - Casting: `-2` energy.
+- Shadows that do not move during the Action Phase regain `1` energy during the Energy Phase.
+- A shadow's energy cannot exceed `5`.
+
+### Capturing Shadows
+
+- A shadow with `0` energy is captured and removed from the board.
+- Capture opposing shadows by reducing their energy to `0` through casting.
+- The goal is to capture all of the opponent's shadows.
+
+### Special Abilities
+
+- **Overcharge**: If a shadow reaches `5` energy, it can perform an **Overcharge Cast** on its next turn.
+  - Overcharge Cast costs all `5` energy points.
+  - The cast affects all adjacent cells simultaneously.
+  - Opponent shadows hit by an Overcharge Cast lose `2` energy points instead of `1`.
+
+## Scoring
+
+- There is no point system; the game is won by capturing all of the opponent's shadows.
+- The progression of the game is tracked by the number of remaining shadows each player has on the board.
+
+## Examples
+
+### Sample Turn
+
+**Scenario**:
+- It's Player 1's turn.
+- Player 1 has a shadow (`S1`) at position `(3,3)` with `3` energy.
+- Player 2 has a shadow (`S2`) at position `(3,4)` with `2` energy.
+
+**Player 1's Action Phase**:
+- Chooses to have `S1` cast towards `(3,4)`.
+
+**Command-Line Interaction**:
+```
+Player 1's Turn:
+Shadow S1 at (3,3) with 3 energy.
+Choose action for S1:
+1. Move
+2. Cast
+Selection: 2
+Enter target coordinates for casting (up, down, left, right from current position):
+Target Position: (3,4)
+Casting successful. S2 at (3,4) loses 1 energy.
+```
+
+**Result**:
+- Player 1's `S1` now has `1` energy (`3 - 2` from casting).
+- Player 2's `S2` at `(3,4)` now has `1` energy (`2 - 1` from being hit).
+
+**Player 1's Energy Phase**:
+- Since `S1` performed an action, it does not regain energy.
+
+### Overcharge Example
+
+**Scenario**:
+- Player 2's shadow (`S2`) at `(5,3)` has `5` energy.
+- Surrounding opponent shadows at `(4,3)`, `(5,2)`, and `(5,4)`.
+
+**Player 2's Action Phase**:
+- Chooses to perform an Overcharge Cast with `S2`.
+
+**Command-Line Interaction**:
+```
+Player 2's Turn:
+Shadow S2 at (5,3) with 5 energy.
+Overcharge available!
+Do you want to perform an Overcharge Cast? (y/n): y
+Overcharge Cast executed. All adjacent opponent shadows lose 2 energy.
+```
+
+**Result**:
+- `S2` now has `0` energy and is captured after the action.
+- Opponent shadows at `(4,3)`, `(5,2)`, and `(5,4)` each lose `2` energy.
+- Any of those shadows whose energy drops to `0` are captured.
+
+## Game End
+
+- The game ends immediately when one player has no remaining shadows on the board.
+- The player who still has shadows remaining is declared the winner.
+
+## Strategy Tips
+
+- Balance movement and energy management; sometimes staying still to regain energy is beneficial.
+- Anticipate your opponent's moves and position your shadows to defend or attack strategically.
+- Utilize Overcharge wisely; sacrificing a shadow might lead to capturing multiple opponent shadows.
+
+---
+
+Enjoy the game of **Shadow Capture** and may the most strategic player win!

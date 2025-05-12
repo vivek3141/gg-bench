@@ -1,0 +1,317 @@
+**Divisor Duel**
+
+---
+
+**Objective**
+
+Become the last player able to make a valid move by selecting numbers strategically, forcing your opponent into a position where they cannot select a valid number on their turn.
+
+---
+
+**Setup**
+
+1. **Shared Number Pool**:
+   - Create a shared list of integers from **2** to **50** inclusive.
+   - This list represents the available numbers for selection during the game.
+
+2. **Determine First Player**:
+   - Decide who will take the first turn. This can be done by mutual agreement or by a random method such as a coin toss.
+
+3. **Initial Conditions**:
+   - No numbers have been selected at the start of the game.
+   - Both players are aware of the complete list of available numbers.
+
+---
+
+**Game Components**
+
+1. **Shared Number Pool**:
+   - A list containing integers from 2 to 50 that both players can view.
+   - Numbers are removed from this list as they are selected during the game.
+
+2. **Selected Numbers**:
+   - A record of numbers that have been chosen and removed from the shared pool.
+   - This prevents numbers from being reused and affects the options available to each player.
+
+---
+
+**Turns**
+
+- Players alternate turns throughout the game.
+- Each turn consists of the following steps:
+  1. **Review**: The player notes the last number selected by their opponent.
+  2. **Select Number**: The player chooses a valid number from the shared pool based on the game rules.
+  3. **Update Pool**: The selected number is removed from the shared pool.
+  4. **Announce Move**: The player announces their chosen number so the opponent can verify its validity.
+
+---
+
+**Rules and Mechanics**
+
+1. **First Turn**:
+   - The first player may select **any number** from the shared pool as their initial move.
+
+2. **Valid Moves (Subsequent Turns)**:
+   - On each subsequent turn, a player must select a number that is **either a factor or a multiple** of the **last number** chosen by the opponent.
+   - The selected number must be present in the shared number pool (i.e., it has not been previously selected).
+
+3. **Factors and Multiples**:
+   - A **factor** is a number that divides another number without leaving a remainder.
+     - For example, 3 is a factor of 15 because 15 ÷ 3 = 5.
+   - A **multiple** is the product of a number and an integer.
+     - For example, 20 is a multiple of 5 because 5 × 4 = 20.
+
+4. **Restrictions**:
+   - Once a number is selected and removed from the shared pool, it cannot be chosen again.
+   - If no valid numbers are available on a player's turn, they **lose** the game.
+
+5. **Winning the Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The last player to have made a valid move is declared the **winner**.
+
+6. **Examples of Valid and Invalid Moves**:
+   - If the last number was 8, valid moves include:
+     - Factors of 8: 2, 4.
+     - Multiples of 8: 16, 24, 32, 40, 48.
+   - If the last number was 17 (a prime number), valid moves include:
+     - Factors of 17: None other than 1 (which is not in the pool).
+     - Multiples of 17: 34.
+
+---
+
+**Scoring**
+
+- **Win/Loss Outcome**:
+  - There is no point scoring system.
+  - The game results in a win for one player and a loss for the other.
+
+- **No Draws**:
+  - The game cannot end in a draw due to the finite number of moves and the mutual exclusivity of valid moves.
+
+---
+
+**Examples**
+
+**Example Game Play**
+
+*Assume Player 1 starts the game.*
+
+1. **Turn 1 - Player 1**:
+   - Chooses **15** (any number from 2-50).
+   - Removes 15 from the shared pool.
+
+2. **Turn 2 - Player 2**:
+   - Last number: **15**
+   - Valid choices (factors or multiples of 15):
+     - Factors: 3, 5.
+     - Multiples: 30, 45.
+   - Chooses **5**.
+   - Removes 5 from the shared pool.
+
+3. **Turn 3 - Player 1**:
+   - Last number: **5**
+   - Valid choices:
+     - Factors: None (1 is not in the pool, 5 already used).
+     - Multiples: 10, 15 (used), 20, 25, 30, 35, 40, 45, 50.
+   - Chooses **20**.
+   - Removes 20 from the shared pool.
+
+4. **Turn 4 - Player 2**:
+   - Last number: **20**
+   - Valid choices:
+     - Factors: 2, 4, 5 (used), 10.
+     - Multiples: 40.
+   - Chooses **10**.
+   - Removes 10 from the shared pool.
+
+5. **Turn 5 - Player 1**:
+   - Last number: **10**
+   - Valid choices:
+     - Factors: 2, 5 (used).
+     - Multiples: 20 (used), 30, 40 (available).
+   - Chooses **30**.
+   - Removes 30 from the shared pool.
+
+6. **Turn 6 - Player 2**:
+   - Last number: **30**
+   - Valid choices:
+     - Factors: 2, 3, 5 (used), 6, 10 (used), 15 (used).
+     - Multiples: None within range.
+   - Chooses **6**.
+   - Removes 6 from the shared pool.
+
+7. **Turn 7 - Player 1**:
+   - Last number: **6**
+   - Valid choices:
+     - Factors: 2, 3.
+     - Multiples: 12, 18, 24, 36, 42, 48.
+   - Chooses **12**.
+   - Removes 12 from the shared pool.
+
+8. **Turn 8 - Player 2**:
+   - Last number: **12**
+   - Valid choices:
+     - Factors: 2, 3, 4, 6 (used).
+     - Multiples: 24, 36, 48.
+   - Chooses **3**.
+   - Removes 3 from the shared pool.
+
+9. **Turn 9 - Player 1**:
+   - Last number: **3**
+   - Valid choices:
+     - Factors: None (1 not in pool, 3 used).
+     - Multiples: 6 (used), 9, 12 (used), 15 (used), 18, 21, 24, 27, 30 (used), 33, 36, 39, 42, 45, 48.
+   - Chooses **9**.
+   - Removes 9 from the shared pool.
+
+10. **Turn 10 - Player 2**:
+    - Last number: **9**
+    - Valid choices:
+      - Factors: 3 (used).
+      - Multiples: 18, 27, 36, 45.
+    - Chooses **18**.
+    - Removes 18 from the shared pool.
+
+11. **Turn 11 - Player 1**:
+    - Last number: **18**
+    - Valid choices:
+      - Factors: 2, 3 (used), 6 (used), 9 (used).
+      - Multiples: 36 (available).
+
+    - Chooses **36**.
+    - Removes 36 from the shared pool.
+
+12. **Turn 12 - Player 2**:
+    - Last number: **36**
+    - Valid choices:
+      - Factors: 2, 3 (used), 4, 6 (used), 9 (used), 12 (used), 18 (used).
+      - Multiples: None within range.
+    - Chooses **4**.
+    - Removes 4 from the shared pool.
+
+13. **Turn 13 - Player 1**:
+    - Last number: **4**
+    - Valid choices:
+      - Factors: 2.
+      - Multiples: 8, 12 (used), 16, 20 (used), 24, 28, 32, 36 (used), 40, 44, 48.
+    - Chooses **24**.
+    - Removes 24 from the shared pool.
+
+14. **Turn 14 - Player 2**:
+    - Last number: **24**
+    - Valid choices:
+      - Factors: 2, 3 (used), 4 (used), 6 (used), 8.
+      - Multiples: None within range.
+    - Chooses **8**.
+    - Removes 8 from the shared pool.
+
+15. **Turn 15 - Player 1**:
+    - Last number: **8**
+    - Valid choices:
+      - Factors: 2, 4 (used).
+      - Multiples: 16, 24 (used), 32, 40, 48.
+    - Chooses **16**.
+    - Removes 16 from the shared pool.
+
+16. **Turn 16 - Player 2**:
+    - Last number: **16**
+    - Valid choices:
+      - Factors: 2, 4 (used), 8 (used).
+      - Multiples: None within range.
+    - Chooses **2**.
+    - Removes 2 from the shared pool.
+
+17. **Turn 17 - Player 1**:
+    - Last number: **2**
+    - Valid choices:
+      - Factors: None (2 used).
+      - Multiples: 4 (used), 6 (used), 8 (used), 10 (used), 12 (used), 14, 16 (used), 18 (used), 20 (used), 22, 24 (used), 26, 28, 30 (used), 32, 34, 36 (used), 38, 40, 42, 44, 46, 48, 50.
+    - Chooses **14**.
+    - Removes 14 from the shared pool.
+
+18. **Turn 18 - Player 2**:
+    - Last number: **14**
+    - Valid choices:
+      - Factors: 2 (used), 7.
+      - Multiples: 28, 42.
+    - Chooses **7**.
+    - Removes 7 from the shared pool.
+
+19. **Turn 19 - Player 1**:
+    - Last number: **7**
+    - Valid choices:
+      - Factors: None (7 is prime and used).
+      - Multiples: 14 (used), 21, 28, 35, 42, 49.
+    - Chooses **21**.
+    - Removes 21 from the shared pool.
+
+20. **Turn 20 - Player 2**:
+    - Last number: **21**
+    - Valid choices:
+      - Factors: 3 (used), 7 (used).
+      - Multiples: 42.
+
+    - Chooses **42**.
+    - Removes 42 from the shared pool.
+
+21. **Turn 21 - Player 1**:
+    - Last number: **42**
+    - Valid choices:
+      - Factors: 2 (used), 3 (used), 6 (used), 7 (used), 14 (used), 21 (used).
+      - Multiples: None within range.
+    - No valid moves left.
+
+- **Result**: Player 1 cannot make a valid move and **loses**. Player 2 **wins** the game.
+
+**Command-Line Interaction Example**
+
+*Below is a simplified example of how the game might proceed in a command-line interface.*
+
+```
+Shared Numbers: [2, 3, 4, 5, 6, ..., 50]
+
+Player 1's Turn:
+- Last Opponent Number: None
+- Available Numbers: [2, 3, 4, 5, 6, ..., 50]
+- Enter your chosen number: 15
+
+Player 2's Turn:
+- Last Opponent Number: 15
+- Available Numbers: [2, 3, 4, 5, 6, ..., 50] (excluding 15)
+- Valid choices (factors/multiples of 15): 3, 5, 30, 45
+- Enter your chosen number: 5
+
+Player 1's Turn:
+- Last Opponent Number: 5
+- Available Numbers: [2, 3, 4, 6, 7, ..., 50] (excluding 5, 15)
+- Valid choices (factors/multiples of 5): 10, 20, 25, 30, 35, 40, 45, 50
+- Enter your chosen number: 20
+```
+
+*...and so on until the game concludes.*
+
+---
+
+**Strategy Tips**
+
+- **Plan Ahead**:
+  - Look several moves ahead to anticipate your opponent's options.
+  - Try to select numbers that limit the valid moves available to your opponent.
+
+- **Control the Options**:
+  - Choose numbers with fewer factors and multiples remaining in the shared pool.
+  - Avoid selecting numbers that give your opponent access to many valid moves.
+
+- **Use Prime Numbers Wisely**:
+  - Prime numbers have no factors other than 1 and themselves.
+  - Selecting a prime number can sometimes limit your opponent's options, but be cautious of their multiples.
+
+---
+
+**Conclusion**
+
+Divisor Duel is a game of numerical strategy and foresight. By carefully selecting numbers and anticipating your opponent's moves, you can control the flow of the game and increase your chances of winning. The simplicity of the rules makes it easy to learn and quick to play, yet it offers depth and complexity for those who enjoy tactical thinking.
+
+---
+
+Enjoy the game and may the best strategist win!

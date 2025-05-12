@@ -1,0 +1,11 @@
+In this game, the action space is a discrete set of indices representing possible moves. Each index encodes a unique combination of selecting a pile and a specific split of that pile:
+
+1. **Index Calculation**: The action index is derived from combining the pile index and the specific way a pile can be split.
+   
+2. **Pile Selection**: The action index is divided by the maximum possible splits per pile to determine which pile to select (i.e., `pile_index = action_id // MAX_POSSIBLE_SPLITS_PER_PILE`).
+
+3. **Split Selection**: The remainder from the above division gives the index of a specific split in the list of valid splits for the chosen pile (i.e., `split_index = action_id % MAX_POSSIBLE_SPLITS_PER_PILE`).
+
+4. **Valid Splits**: The `_get_possible_splits` method precomputes all valid splits for piles of a certain size, ensuring splits are unequal and within bounds.
+
+5. **Action Encoding**: Each possible move is encoded in the format `action_id = pile_index * MAX_POSSIBLE_SPLITS_PER_PILE + split_index`, creating a unique action id for every valid move across piles and splits.

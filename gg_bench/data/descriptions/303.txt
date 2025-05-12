@@ -1,0 +1,177 @@
+# Alphabet Sequence Duel
+
+## Objective
+
+Be the first player to collect **three letters** that are sequential in the English alphabet (e.g., **D, E, F**). The letters can be collected in any order. Successfully gathering such a sequence constitutes a win.
+
+## Setup
+
+- **Alphabet Pool**: A list of unclaimed letters from **A** to **Z**.
+- **Player Collections**: Each player starts with an empty collection of letters.
+- **Player Order**: Decide which player goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Alphabet Pool**:
+  - Contains all 26 letters of the English alphabet at the start.
+  - Letters are removed from the pool as they are claimed by players.
+- **Player Collections**:
+  - Each player has their own collection where they keep the letters they have claimed.
+  - Collections are visible to both players.
+
+## Turns
+
+- Players take turns in the agreed order.
+- **On a Player's Turn**:
+  1. **Select a Letter**: Choose any unclaimed letter from the Alphabet Pool.
+  2. **Claim the Letter**: Add the selected letter to your collection.
+  3. **Update the Pool**: Remove the selected letter from the Alphabet Pool.
+- Turns alternate between players until one wins.
+
+## Rules and Mechanics
+
+1. **Letter Selection**:
+   - Only unclaimed letters can be selected.
+   - Players cannot select letters already claimed by either player.
+2. **Winning the Game**:
+   - A player wins by collecting three letters that are sequential in the alphabet.
+   - The sequential letters do not need to be claimed in order.
+   - Example of winning sequences:
+     - **A, B, C**
+     - **J, K, L**
+     - **X, Y, Z**
+3. **Strategy and Blocking**:
+   - Players can anticipate opponents' moves and select letters to block their sequences.
+   - Balancing between building your own sequence and preventing your opponent's is key.
+4. **No Draws**:
+   - The game continues until one player achieves a sequential trio.
+   - With 26 letters and two players, the game will conclude in a finite number of turns.
+
+## Scoring
+
+- The first player to collect a sequential trio of letters wins the game.
+- There are no points; the focus is on achieving the objective before your opponent.
+
+## Examples
+
+### Example Game Play
+
+Assume Player 1 and Player 2 decide that Player 1 will start.
+
+**Turn 1**
+
+- **Player 1's Turn**:
+  - Selects **M** from the Alphabet Pool.
+  - Adds **M** to their collection.
+- **Player Collections**:
+  - Player 1: **M**
+  - Player 2: *(empty)*
+
+**Turn 2**
+
+- **Player 2's Turn**:
+  - Selects **E**.
+  - Adds **E** to their collection.
+- **Player Collections**:
+  - Player 1: **M**
+  - Player 2: **E**
+
+**Turn 3**
+
+- **Player 1's Turn**:
+  - Selects **N**.
+  - Adds **N** to their collection.
+- **Player Collections**:
+  - Player 1: **M**, **N**
+  - Player 2: **E**
+
+**Turn 4**
+
+- **Player 2's Turn**:
+  - Notices Player 1 is close to getting **L, M, N** or **M, N, O**.
+  - Selects **O** to block Player 1's potential sequence.
+  - Adds **O** to their collection.
+- **Player Collections**:
+  - Player 1: **M**, **N**
+  - Player 2: **E**, **O**
+
+**Turn 5**
+
+- **Player 1's Turn**:
+  - Selects **L**.
+  - Adds **L** to their collection.
+- **Player Collections**:
+  - Player 1: **L**, **M**, **N**
+  - Player 2: **E**, **O**
+- **Win Check**:
+  - Player 1 has **L**, **M**, **N**—a sequential trio.
+  - **Player 1 wins the game**.
+
+### Command-Line Interaction Sample
+
+Below is how the game might play out in a command-line interface.
+
+```
+Available Letters:
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+Player 1's Turn
+Enter a letter to claim: M
+
+Player 1 has claimed: M
+Remaining Letters:
+A B C D E F G H I J K L N O P Q R S T U V W X Y Z
+
+Player 2's Turn
+Enter a letter to claim: E
+
+Player 2 has claimed: E
+Remaining Letters:
+A B C D F G H I J K L N O P Q R S T U V W X Y Z
+
+Player 1's Turn
+Enter a letter to claim: N
+
+Player 1 has claimed: N
+Remaining Letters:
+A B C D F G H I J K L O P Q R S T U V W X Y Z
+
+Player 2's Turn
+Enter a letter to claim: O
+
+Player 2 has claimed: O
+Remaining Letters:
+A B C D F G H I J K L P Q R S T U V W X Y Z
+
+Player 1's Turn
+Enter a letter to claim: L
+
+Player 1 has claimed: L
+Remaining Letters:
+A B C D F G H I J K P Q R S T U V W X Y Z
+
+Player 1 has collected: L, M, N
+Player 1 wins the game!
+```
+
+### Strategic Notes
+
+- **Blocking**: Player 2 tried to block Player 1 by taking **O**, but missed that **L** was still available.
+- **Anticipation**: Keeping track of which letters your opponent needs is crucial.
+- **Order of Play**: As Player 1, starting first can be an advantage if you plan your moves.
+
+## Additional Rules
+
+- **Validity of Letters**:
+  - Only standard English alphabet letters are used (no accented letters).
+- **Turn Timer (Optional)**:
+  - To keep the game moving, players may agree on a time limit per turn (e.g., 30 seconds).
+  - If a player fails to select a letter within the time limit, they forfeit their turn.
+- **Communication**:
+  - Both players should openly communicate and confirm selected letters and collections each turn.
+
+## Conclusion
+
+**Alphabet Sequence Duel** is a simple yet strategic game that can be played easily in a command-line interface. It requires players to think ahead, anticipate their opponent's moves, and make tactical decisions to achieve victory. The straightforward rules combined with deep strategic possibilities make it enjoyable for players of all skill levels.
+
+Have fun dueling!

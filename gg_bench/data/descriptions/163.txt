@@ -1,0 +1,183 @@
+**Game Name**: Prime Battle
+
+---
+
+**Objective**
+
+Be the last player able to name a valid prime number according to the game's rules. Victory is achieved when your opponent cannot name a valid prime number on their turn.
+
+---
+
+**Setup**
+
+- The game begins with no numbers in play.
+- Determine randomly which player takes the first turn.
+- No additional setup is required.
+
+---
+
+**Game Components**
+
+- **Prime Numbers**: An implicit list of prime numbers used during the game. Players are expected to know or deduce prime numbers without external assistance.
+- **Used Primes Log**: A record of all prime numbers that have been named during the game.
+- **Current Prime**: The last prime number that was named. Initially undefined until the first player makes a move.
+
+---
+
+**Turns**
+
+- Players alternate turns throughout the game.
+- On each turn, a player must:
+  1. Name a valid prime number according to the rules.
+  2. The named prime number becomes the **Current Prime**.
+  3. Add the named prime number to the **Used Primes Log**.
+
+---
+
+**Rules and Mechanics**
+
+1. **Valid Prime Number**:
+   - **Not Previously Used**: The prime number must not be in the Used Primes Log.
+   - **Sequential Relation**: The prime number must be greater than the Current Prime from the previous turn.
+   - **Range Constraint**: The prime number must be less than double the Current Prime.
+     - Mathematically, if the Current Prime is \( P \), the next prime \( N \) must satisfy:
+       \[ P < N < 2P \]
+   - **First Turn Exception**: On the very first turn, since there is no Current Prime, the player may choose any prime number greater than 2.
+
+2. **Winning the Game**:
+   - If a player cannot name a valid prime number on their turn, they lose the game.
+   - The opponent is declared the winner.
+
+3. **Prime Number Knowledge**:
+   - Players must rely on their own knowledge to identify prime numbers.
+   - External aids (e.g., calculators, internet) are not allowed.
+
+4. **No Repeats**:
+   - Once a prime number has been used, it cannot be used again in the same game.
+
+5. **Fair Play**:
+   - Players must ensure the prime numbers they name are correct.
+   - Disputes over whether a number is prime should be resolved by verifying its primality.
+
+---
+
+**Scoring**
+
+- There is no point system in this game.
+- The winner is simply the player who successfully names a valid prime number when their opponent cannot.
+
+---
+
+**Examples**
+
+**Example 1: Basic Gameplay**
+
+- **Turn 1**:
+  - *Player 1*: Chooses **5** (any prime number greater than 2).
+  - *Used Primes Log*: [5]
+  - *Current Prime*: 5
+
+- **Turn 2**:
+  - *Player 2*: Must choose a prime number greater than 5 but less than 10 (since \( 2 \times 5 = 10 \)).
+  - *Options*: 7
+  - *Player 2*: Chooses **7**.
+  - *Used Primes Log*: [5, 7]
+  - *Current Prime*: 7
+
+- **Turn 3**:
+  - *Player 1*: Must choose a prime number greater than 7 but less than 14.
+  - *Options*: 11, 13
+  - *Player 1*: Chooses **11**.
+  - *Used Primes Log*: [5, 7, 11]
+  - *Current Prime*: 11
+
+- **Turn 4**:
+  - *Player 2*: Must choose a prime number greater than 11 but less than 22.
+  - *Options*: 13, 17, 19
+  - *Player 2*: Chooses **13**.
+  - *Used Primes Log*: [5, 7, 11, 13]
+  - *Current Prime*: 13
+
+- **Turn 5**:
+  - *Player 1*: Must choose a prime number greater than 13 but less than 26.
+  - *Options*: 17, 19, 23
+  - *Player 1*: Chooses **17**.
+  - *Used Primes Log*: [5, 7, 11, 13, 17]
+  - *Current Prime*: 17
+
+- **...**
+
+**Example 2: Endgame Scenario**
+
+- **Used Primes Log**: [5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83]
+- **Current Prime**: 83
+
+- **Turn N**:
+  - *Player 1*: Chooses **89** (since \( 83 < 89 < 166 \))
+  - *Used Primes Log*: [5, 7, ..., 83, 89]
+  - *Current Prime*: 89
+
+- **Turn N+1**:
+  - *Player 2*: Must choose a prime number greater than 89 but less than 178.
+  - *Options*: 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197
+  - *Player 2*: Chooses **97**.
+  - *Used Primes Log*: [5, 7, ..., 89, 97]
+  - *Current Prime*: 97
+
+- **Turn N+2**:
+  - *Player 1*: Must choose a prime number greater than 97 but less than 194.
+  - *Player 1* cannot remember any valid primes in this range that haven't been used.
+  - *Player 1* fails to make a move.
+  - *Player 2* wins the game.
+
+---
+
+**Command-Line Interaction Examples**
+
+*Turn 1*
+
+```
+Player 1, enter your prime number: 5
+System: Player 1 chooses 5.
+```
+
+*Turn 2*
+
+```
+Player 2, enter your prime number (greater than 5 and less than 10): 7
+System: Player 2 chooses 7.
+```
+
+*Turn 3*
+
+```
+Player 1, enter your prime number (greater than 7 and less than 14): 11
+System: Player 1 chooses 11.
+```
+
+*Turn 4*
+
+```
+Player 2, enter your prime number (greater than 11 and less than 22): 13
+System: Player 2 chooses 13.
+```
+
+*...continues until a player cannot make a valid move.*
+
+---
+
+**Strategy Tips**
+
+- **Think Ahead**: Consider choosing primes that limit your opponent's options on their next turn.
+- **Prime Knowledge**: Familiarize yourself with prime numbers, especially larger ones, to gain an advantage.
+- **Avoid Common Primes**: Selecting less common primes may restrict your opponent's choices.
+
+---
+
+**Game End**
+
+The game ends when a player cannot name a valid prime number on their turn according to the game's rules. The last player to have named a valid prime number is declared the winner.
+
+---
+
+This game combines numerical knowledge with strategic planning, allowing skilled players to leverage their familiarity with prime numbers and foresight to outmaneuver their opponents. Since the game progresses quickly and there are finite prime numbers within practical ranges, it ensures a swift conclusion without the possibility of a draw.

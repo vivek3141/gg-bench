@@ -1,0 +1,181 @@
+# Digit Drop Duel
+
+## Objective
+
+Be the last player to remove a digit from a shared number without reducing it to zero. The player who removes the last digit and reduces the number to zero **loses** the game.
+
+---
+
+## Setup
+
+- **Starting Number**: The game begins with a shared multi-digit positive integer. Players agree on the starting number before the game begins.
+  - *Example Starting Number*: `123456`
+
+- **Decide Turn Order**: Players determine who goes first, either by mutual agreement or a random method (e.g., coin toss).
+
+- **Command-Line Interface**: The game is played through a command-line interface where players input their moves and the game displays the current state.
+
+---
+
+## Game Components
+
+- **Shared Number**: A multi-digit positive integer that both players manipulate during the game.
+  - The number changes as digits are removed by the players.
+
+- **Digits (0-9)**: Individual numerals within the shared number that players can remove on their turns.
+
+---
+
+## Turns
+
+### Structure of a Turn
+
+1. **Current Number Displayed**: The game displays the current shared number.
+2. **Player's Move**:
+   - The player selects one digit from the current number to remove.
+   - They input this digit via the command line.
+3. **Update Number**:
+   - The game removes the first occurrence of the selected digit from the number.
+   - The updated number is displayed.
+
+### Turn Order
+
+- Players alternate turns throughout the game.
+- Play continues until the game ends per the rules.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Digit Removal**:
+   - On their turn, a player must remove **one** digit from the current shared number.
+   - The digit can be chosen from any position within the number.
+   - Only the **first occurrence** of the chosen digit is removed (leftmost if duplicates exist).
+   - **Example**: If the number is `1223` and a player removes `2`, the new number is `123`.
+
+2. **Leading Zeros Not Allowed**:
+   - If removing a digit results in leading zeros, those zeros are dropped.
+   - **Example**: Removing `1` from `1023` results in `23`, not `023`.
+
+3. **No Skipping Turns**:
+   - Players cannot skip their turn. A move must be made if possible.
+
+4. **Game End Condition**:
+   - The player who reduces the shared number to zero **loses** the game.
+   - If a player has no valid moves (the number is already zero), they lose.
+
+5. **Integrity of Number**:
+   - After a digit is removed, the remaining digits retain their original order.
+   - Digits are not rearranged or shifted.
+
+### Additional Mechanics
+
+- **Duplicate Digits**:
+  - If the number contains duplicate digits, only one instance (the first occurrence) is removed per turn unless all digits are the same.
+- **Single-Digit Number**:
+  - If the current number is a single-digit number greater than zero, the next player must remove that digit, resulting in zero and losing the game.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - A player wins by forcing their opponent to reduce the shared number to zero on their turn.
+- **Match Play (Optional)**:
+  - Players can compete in multiple rounds, keeping score to determine an overall winner.
+  - **Point System**:
+    - Each game won earns the player one point.
+    - The first player to reach a predetermined number of points wins the match.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Starting Number**: `123456`
+
+1. **Player 1's Turn**:
+   - Removes `5`
+   - **New Number**: `12346`
+
+2. **Player 2's Turn**:
+   - Removes `2`
+   - **New Number**: `1346`
+
+3. **Player 1's Turn**:
+   - Removes `1`
+   - **New Number**: `346`
+
+4. **Player 2's Turn**:
+   - Removes `3`
+   - **New Number**: `46`
+
+5. **Player 1's Turn**:
+   - Removes `6`
+   - **New Number**: `4`
+
+6. **Player 2's Turn**:
+   - Only digit left is `4`
+   - Removes `4`
+   - **New Number**: `0`
+   - **Player 2 loses the game**.
+
+### Command-Line Interaction Example
+
+```
+Starting Number: 123456
+
+Player 1's Turn:
+Enter the digit to remove: 5
+Updated Number: 12346
+
+Player 2's Turn:
+Enter the digit to remove: 2
+Updated Number: 1346
+
+Player 1's Turn:
+Enter the digit to remove: 1
+Updated Number: 346
+
+Player 2's Turn:
+Enter the digit to remove: 3
+Updated Number: 46
+
+Player 1's Turn:
+Enter the digit to remove: 6
+Updated Number: 4
+
+Player 2's Turn:
+Only one digit left.
+Enter the digit to remove: 4
+Updated Number: 0
+
+Player 2 has reduced the number to zero.
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**:
+  - Anticipate future moves by considering how your choice will affect the number of digits remaining.
+  - Aim to force your opponent into a position where they must remove the last digit.
+
+- **Digit Selection**:
+  - Removing certain digits can limit your opponent's options.
+  - Focus on removing digits that, if left, could prolong the game in your opponent's favor.
+
+- **Balance the Number**:
+  - Avoid leaving the number with an even number of digits when possible, as this can be advantageous.
+
+---
+
+## Summary
+
+Digit Drop Duel is a simple yet strategic two-player game perfect for a command-line interface. Players take turns removing digits from a shared number, aiming to avoid being the one who reduces it to zero. With easy-to-understand rules and quick gameplay, the game offers depth and complexity that allows skilled players to consistently outmaneuver less experienced opponents.
+
+Enjoy the challenge and may the best strategist win!

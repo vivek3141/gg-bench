@@ -1,0 +1,168 @@
+# Function Duel
+
+## Objective
+
+Be the first player to reach or exceed the target number **100** by strategically applying mathematical functions to a running total. Use addition and multiplication wisely to outmaneuver your opponent and achieve victory.
+
+## Setup
+
+1. **Starting Number**: The game begins with a **current number** set to **1**.
+2. **Target Number**: The goal is to be the first to reach or exceed **100**.
+3. **Players**: Two players compete against each other.
+
+## Game Components
+
+- **Current Number**: A shared number that players manipulate on their turns. It starts at **1** and changes as players apply functions.
+- **Functions**:
+  - **Add 3**: Increases the current number by **3**.
+  - **Multiply by 2**: Multiplies the current number by **2**.
+
+## Turns
+
+- Players alternate turns, starting with Player 1.
+- **On a player's turn**:
+  - Choose one of the two functions (**Add 3** or **Multiply by 2**) to apply to the current number.
+  - Update the current number with the result of the function.
+  - Announce the chosen function and the new current number.
+- **Function Usage Constraint**:
+  - A player cannot use the same function more than **two times in a row**.
+    - After using a function twice consecutively, the player **must** use the other function on their next turn.
+
+## Rules and Mechanics
+
+1. **Applying Functions**:
+   - Only the specified functions (**Add 3** or **Multiply by 2**) can be used.
+   - Functions are applied to the current number to generate a new current number.
+2. **Function Usage Limitation**:
+   - Track your function usage to avoid exceeding the two-in-a-row limit.
+   - Failure to switch functions when required results in forfeiting your turn.
+3. **Winning the Game**:
+   - The first player to reach a current number of **100** or more wins the game.
+   - If a function application causes the current number to exceed **100**, the game still ends with that player winning.
+4. **Strategic Considerations**:
+   - Plan ahead to force your opponent into a position where they must increase the current number to your advantage.
+   - Balance between quick advancements and setting traps for your opponent.
+
+## Scoring
+
+- **Victory**: The game does not use a point system. Winning is achieved by reaching or exceeding the target number **100** first.
+
+## Examples
+
+### Example Game Play
+
+**Initial State**:
+- Current Number: 1
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**:
+   - Chooses to **Multiply by 2**.
+   - Current Number: \(1 \times 2 = 2\).
+   - Announces: "Multiplied by 2; Current number is 2."
+
+2. **Player 2's Turn**:
+   - Chooses to **Add 3**.
+   - Current Number: \(2 + 3 = 5\).
+   - Announces: "Added 3; Current number is 5."
+
+3. **Player 1's Turn**:
+   - Chooses to **Multiply by 2** (second consecutive use).
+   - Current Number: \(5 \times 2 = 10\).
+   - Announces: "Multiplied by 2; Current number is 10."
+   - Note: Player 1 has used "Multiply by 2" twice in a row and must use "Add 3" on their next turn.
+
+4. **Player 2's Turn**:
+   - Chooses to **Multiply by 2**.
+   - Current Number: \(10 \times 2 = 20\).
+   - Announces: "Multiplied by 2; Current number is 20."
+
+5. **Player 1's Turn**:
+   - Must use **Add 3** due to function usage constraint.
+   - Current Number: \(20 + 3 = 23\).
+   - Announces: "Added 3; Current number is 23."
+
+6. **Player 2's Turn**:
+   - Chooses to **Add 3**.
+   - Current Number: \(23 + 3 = 26\).
+   - Announces: "Added 3; Current number is 26."
+   - Note: Player 2 has now used "Add 3" once.
+
+7. **Player 1's Turn**:
+   - Function usage has reset; can choose any function.
+   - Chooses to **Multiply by 2**.
+   - Current Number: \(26 \times 2 = 52\).
+   - Announces: "Multiplied by 2; Current number is 52."
+
+8. **Player 2's Turn**:
+   - Chooses to **Add 3** (second consecutive use).
+   - Current Number: \(52 + 3 = 55\).
+   - Announces: "Added 3; Current number is 55."
+   - Note: Player 2 must use "Multiply by 2" on their next turn.
+
+9. **Player 1's Turn**:
+   - Chooses to **Multiply by 2** (second consecutive use).
+   - Current Number: \(55 \times 2 = 110\).
+   - Announces: "Multiplied by 2; Current number is 110."
+   - **Player 1 wins** as the current number has reached 100 or more.
+
+### Command-Line Interaction Sample
+
+Assuming a simple command-line interface where players input their choices:
+
+```
+Current Number: 1
+
+Player 1, choose your function:
+1. Add 3
+2. Multiply by 2
+> 2
+Player 1 multiplied by 2.
+Current Number is now 2.
+
+Player 2, choose your function:
+1. Add 3
+2. Multiply by 2
+> 1
+Player 2 added 3.
+Current Number is now 5.
+
+Player 1, choose your function:
+1. Add 3
+2. Multiply by 2
+> 2
+Player 1 multiplied by 2.
+Current Number is now 10.
+
+(Note: Player 1 has used 'Multiply by 2' twice in a row and must use 'Add 3' next turn.)
+
+Player 2, choose your function:
+1. Add 3
+2. Multiply by 2
+> 2
+Player 2 multiplied by 2.
+Current Number is now 20.
+
+Player 1, you must use 'Add 3' this turn.
+> 1
+Player 1 added 3.
+Current Number is now 23.
+
+...
+
+Player 1 multiplied by 2.
+Current Number is now 110.
+Player 1 wins!
+```
+
+## Tips for Players
+
+- **Monitor Function Usage**: Keep track of both your own and your opponent's function usage to anticipate their next move.
+- **Plan Ahead**: Look several moves ahead to set up opportunities to force your opponent into a disadvantageous position.
+- **Balance Aggression and Caution**: Rapidly increasing the current number might seem advantageous but can backfire if it gives your opponent the chance to win.
+
+## Conclusion
+
+Function Duel is a game of simple rules but deep strategic potential. By carefully choosing when to add or multiply, and by keeping track of function usage constraints, players can develop winning strategies. The game's simplicity makes it easy to code and perfect for command-line interfaces, while its strategic depth ensures that skillful play is rewarded.
+
+Enjoy the challenge and may the best mathematician win!

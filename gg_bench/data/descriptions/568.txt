@@ -1,0 +1,201 @@
+# Number Collapse: A Two-Player Turn-Based Game
+
+## Objective
+
+**Be the first player to reduce the shared number to zero on your turn by strategically subtracting proper divisors.**
+
+Players take turns subtracting proper divisors from a shared number. The goal is to be the player who reduces the shared number exactly to zero. If a player cannot make a valid move, they lose the game.
+
+---
+
+## Setup
+
+1. **Initial Shared Number**: The game begins with a shared positive integer, known as the **Shared Number**. By default, the starting number is **30**, but players can agree on any positive integer greater than **1** to increase or decrease the game's difficulty.
+   
+2. **Start Player**: Decide which player goes first. This can be determined by a coin toss, random selection, or mutual agreement.
+
+---
+
+## Game Components
+
+- **Shared Number**: An integer value that both players will manipulate during the game. It starts at the initial value agreed upon during setup (default is **30**).
+
+- **Proper Divisors**: These are numbers that divide the Shared Number evenly, excluding **1** and the Shared Number itself. Players will use proper divisors to subtract from the Shared Number.
+
+- **Player Turns**: Alternating turns where each player interacts with the Shared Number according to the game rules.
+
+---
+
+## Turns
+
+1. **Determine Proper Divisors**: At the start of a player's turn, identify all the proper divisors of the current Shared Number (excluding **1** and the Shared Number itself).
+
+2. **Select a Divisor**: The player selects one of the proper divisors.
+
+3. **Subtract the Divisor**: The selected proper divisor is subtracted from the Shared Number, resulting in a new Shared Number.
+
+4. **End Turn**: The turn ends, and control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On your turn, you **must** subtract a proper divisor (excluding **1** and the number itself) from the Shared Number.
+   - If the Shared Number has no proper divisors (i.e., it is a prime number or **1**), and it is your turn, you lose the game.
+
+2. **Proper Divisors**:
+   - Proper divisors are positive integers greater than **1** but less than the Shared Number that divide the Shared Number evenly (no remainder).
+   - Example: Proper divisors of **20** are **2, 4, 5,** and **10**.
+
+3. **Subtracting Divisors**:
+   - Subtract the selected proper divisor from the Shared Number.
+   - The result becomes the new Shared Number for the next player's turn.
+
+4. **Winning the Game**:
+   - If a player reduces the Shared Number **exactly to zero** on their turn by subtracting a proper divisor, they **win** the game.
+   - If a player cannot make a valid move because there are no proper divisors, they **lose** the game.
+
+5. **No Skipping Turns**:
+   - Players cannot skip their turn. If there is at least one valid move, they must make one.
+
+6. **No Repeats Necessary**:
+   - Players can choose any valid proper divisor on their turn, regardless of previous moves.
+
+---
+
+## Scoring
+
+- **Win Condition**: The player who reduces the Shared Number to **zero** on their turn wins the game.
+
+- **Loss Condition**: If a player cannot make a valid move on their turn (no proper divisors available), they lose the game.
+
+- **No Draws**: The game cannot end in a draw due to the nature of the mechanics.
+
+---
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Starting Shared Number**: 30
+
+**Turn-by-Turn Breakdown**:
+
+1. **Player 1's Turn**:
+   - **Shared Number**: 30
+   - **Proper Divisors**: 2, 3, 5, 6, 10, 15
+   - **Player 1 selects**: 5
+   - **New Shared Number**: 30 - 5 = **25**
+
+2. **Player 2's Turn**:
+   - **Shared Number**: 25
+   - **Proper Divisors**: 5
+   - **Player 2 selects**: 5
+   - **New Shared Number**: 25 - 5 = **20**
+
+3. **Player 1's Turn**:
+   - **Shared Number**: 20
+   - **Proper Divisors**: 2, 4, 5, 10
+   - **Player 1 selects**: 10
+   - **New Shared Number**: 20 - 10 = **10**
+
+4. **Player 2's Turn**:
+   - **Shared Number**: 10
+   - **Proper Divisors**: 2, 5
+   - **Player 2 selects**: 5
+   - **New Shared Number**: 10 - 5 = **5**
+
+5. **Player 1's Turn**:
+   - **Shared Number**: 5
+   - **Proper Divisors**: None (5 is prime)
+   - **Player 1 cannot make a move and loses the game**.
+
+**Result**: **Player 2 wins** because Player 1 was unable to make a valid move.
+
+### Example 2: Winning by Reducing to Zero
+
+**Starting Shared Number**: 18
+
+**Turn-by-Turn Breakdown**:
+
+1. **Player 1's Turn**:
+   - **Shared Number**: 18
+   - **Proper Divisors**: 2, 3, 6, 9
+   - **Player 1 selects**: 9
+   - **New Shared Number**: 18 - 9 = **9**
+
+2. **Player 2's Turn**:
+   - **Shared Number**: 9
+   - **Proper Divisors**: 3
+   - **Player 2 selects**: 3
+   - **New Shared Number**: 9 - 3 = **6**
+
+3. **Player 1's Turn**:
+   - **Shared Number**: 6
+   - **Proper Divisors**: 2, 3
+   - **Player 1 selects**: 6 (Note: Cannot select 6 as it is the number itself)
+   - **Player 1 selects**: 3
+   - **New Shared Number**: 6 - 3 = **3**
+
+4. **Player 2's Turn**:
+   - **Shared Number**: 3
+   - **Proper Divisors**: None (3 is prime)
+   - **Player 2 cannot make a move and loses the game**.
+
+**Result**: **Player 1 wins** because Player 2 was unable to make a valid move.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their chosen divisors.
+
+**Game Start**:
+- Shared Number: 12
+
+**Player 1's Turn**:
+- Shared Number: 12
+- Proper Divisors: 2, 3, 4, 6
+- Prompt: "Player 1, choose a proper divisor of 12: "
+- **Player 1 inputs**: 4
+- Output: "Player 1 subtracts 4. New Shared Number is 8."
+
+**Player 2's Turn**:
+- Shared Number: 8
+- Proper Divisors: 2, 4
+- Prompt: "Player 2, choose a proper divisor of 8: "
+- **Player 2 inputs**: 4
+- Output: "Player 2 subtracts 4. New Shared Number is 4."
+
+**Player 1's Turn**:
+- Shared Number: 4
+- Proper Divisors: 2
+- Prompt: "Player 1, choose a proper divisor of 4: "
+- **Player 1 inputs**: 2
+- Output: "Player 1 subtracts 2. New Shared Number is 2."
+
+**Player 2's Turn**:
+- Shared Number: 2
+- Proper Divisors: None (2 is prime)
+- Output: "Player 2 cannot make a valid move. Player 1 wins!"
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future Shared Numbers and plan your moves to force your opponent into a position where they cannot make a valid move.
+
+- **Avoid Prime Numbers**: Try to leave the Shared Number as a prime number on your opponent's turn, forcing them into a loss if possible.
+
+- **Subtract Larger Divisors**: When advantageous, subtract larger proper divisors to reduce the Shared Number quickly, potentially catching your opponent off-guard.
+
+- **Control the Flow**: Manipulate the Shared Number to guide the game towards numbers where you have a strategic advantage.
+
+---
+
+## Summary
+
+Number Collapse is a simple yet strategic game that challenges players to think ahead and use basic arithmetic and number theory concepts. The gameplay is straightforward, making it easy to code and quick to play, while still offering depth for skilled players to consistently outperform novices.
+
+Enjoy the battle of wits as you collapse numbers and outmaneuver your opponent!

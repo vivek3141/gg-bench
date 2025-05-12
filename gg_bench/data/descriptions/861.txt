@@ -1,0 +1,198 @@
+**Game Name:** Number Reverse
+
+---
+
+### **Objective**
+
+Be the first player to reach exactly the target number by strategically building and manipulating your personal number through digit appending and number reversal. Players aim to reach the target number without exceeding it, using tactical decisions to outmaneuver their opponent.
+
+---
+
+### **Setup**
+
+1. **Target Number:** Decide on a target number that both players will aim to reach. For a quick game, a target number of **100** is recommended, but any reasonable positive integer can be used to adjust game length and difficulty.
+
+2. **Starting Numbers:** Both players begin with a personal current number set to **0**.
+
+3. **Player Order:** Determine who takes the first turn. This can be decided randomly, such as by a coin toss.
+
+---
+
+### **Game Components**
+
+- **Digits Pool:** The digits **1** through **9** are available for players to append to their current numbers.
+
+- **Player Current Number:** Each player maintains their own current number, which evolves throughout the game based on their actions.
+
+- **Target Number:** The agreed-upon positive integer that players strive to reach exactly. Exceeding this number results in an immediate loss.
+
+---
+
+### **Turns**
+
+Players alternate turns, performing one action per turn. The structure of a turn is as follows:
+
+1. **Select Action:** The player chooses one of two possible actions:
+   - **Append Digit:** Add a digit (1-9) to the **end** of your current number.
+   - **Reverse Number:** Reverse the digits of your current number (e.g., 123 becomes 321).
+
+2. **Update Current Number:** Perform the chosen action to obtain your new current number.
+
+3. **Check for Victory or Loss:** 
+   - If your current number is **exactly equal** to the target number, you win.
+   - If your current number **exceeds** the target number, you lose immediately.
+
+4. **End Turn:** The turn passes to the opponent.
+
+---
+
+### **Rules and Mechanics**
+
+#### **Action Details**
+
+1. **Append Digit**
+   - **Usage:** On your turn, you may append any digit from 1 to 9 to the right end of your current number.
+   - **Example:** If your current number is 0 and you append 5, your new current number is 5. If your current number is 23 and you append 7, your new current number is 237.
+
+2. **Reverse Number**
+   - **Usage:** Instead of appending a digit, you may reverse the digits of your current number.
+   - **Example:** If your current number is 123, reversing it makes it 321. If your current number is 40, reversing it results in 04 (which is effectively 4, since leading zeros are not counted).
+
+#### **Additional Rules**
+
+- **Leading Zeros:** Any leading zeros resulting from a reversal are not counted. For example, reversing 50 yields 05, which is considered 5.
+
+- **Exceeding Target Number:** If at any point your current number exceeds the target number after your action, you lose the game immediately.
+
+- **Exact Match Required:** Only reaching exactly the target number results in a win. Players must plan their moves carefully to avoid overshooting.
+
+---
+
+### **Scoring**
+
+- **Winning the Game:** You win if:
+  - After your turn, your current number equals the target number exactly.
+  - Your opponent exceeds the target number on their turn.
+
+- **Losing the Game:** You lose if:
+  - After your turn, your current number exceeds the target number.
+  - Your opponent reaches the target number exactly before you do.
+
+---
+
+### **Examples**
+
+Below are sample turns to illustrate how the game is played.
+
+#### **Example Scenario**
+
+- **Target Number:** 100
+- **Starting Current Numbers:** Player 1: 0, Player 2: 0.
+
+##### **Turn Sequence**
+
+1. **Player 1's Turn**
+   - **Action:** Append Digit 9.
+   - **Current Number:** 0 → 9.
+   - **Reasoning:** Starting with a moderate digit to build up the number.
+
+2. **Player 2's Turn**
+   - **Action:** Append Digit 9.
+   - **Current Number:** 0 → 9.
+   - **Reasoning:** Mirroring Player 1's strategy.
+
+3. **Player 1's Turn**
+   - **Action:** Append Digit 1.
+   - **Current Number:** 9 → 91.
+   - **Reasoning:** Moving closer to the target number.
+
+4. **Player 2's Turn**
+   - **Action:** Reverse Number.
+   - **Current Number:** 9 → 9 (reversal doesn't change a single-digit number).
+   - **Reasoning:** Attempting to unsettle Player 1 or waiting to see their next move.
+
+5. **Player 1's Turn**
+   - **Action:** Reverse Number.
+   - **Current Number:** 91 → 19.
+   - **Reasoning:** Reducing their number to avoid overshooting the target.
+
+6. **Player 2's Turn**
+   - **Action:** Append Digit 9.
+   - **Current Number:** 9 → 99.
+   - **Reasoning:** Aiming to get close to the target number.
+
+7. **Player 1's Turn**
+   - **Action:** Append Digit 8.
+   - **Current Number:** 19 → 198.
+   - **Outcome:** Player 1's current number exceeds 100.
+   - **Result:** Player 1 loses immediately.
+
+**Winner:** Player 2
+
+---
+
+#### **Command-Line Interaction Example**
+
+Below is a sample command-line interaction for a turn between Player 1 and Player 2.
+
+```plaintext
+** Target Number: 50 **
+** Starting the game. Both players start with 0. **
+
+-- Player 1's Turn --
+Current Number: 0
+Choose an action:
+1. Append a digit
+2. Reverse the number
+Enter choice (1 or 2): 1
+Enter digit to append (1-9): 5
+Updated Current Number: 5
+[End of Turn]
+
+-- Player 2's Turn --
+Current Number: 0
+Choose an action:
+1. Append a digit
+2. Reverse the number
+Enter choice (1 or 2): 1
+Enter digit to append (1-9): 8
+Updated Current Number: 8
+[End of Turn]
+
+-- Player 1's Turn --
+Current Number: 5
+Choose an action:
+1. Append a digit
+2. Reverse the number
+Enter choice (1 or 2): 1
+Enter digit to append (1-9): 4
+Updated Current Number: 54
+** Current Number exceeds target! **
+Player 1 loses the game.
+** Player 2 wins! Congratulations! **
+```
+
+**Explanation:**
+
+- Player 1 attempted to append 4 to 5, resulting in 54, which exceeds the target number of 50.
+- According to the rules, exceeding the target number results in an immediate loss for the player.
+
+---
+
+### **Strategic Considerations**
+
+- **Avoid Overshooting:** Always be mindful of the current number and how close it is to the target number.
+
+- **Use Reversal Wisely:** Reversing can significantly change your number, potentially bringing you closer or further from the target. It's a useful tool to adjust your number strategically.
+
+- **Predict Opponent's Moves:** Anticipate whether your opponent is aiming for a quick win or setting up a trap that could cause you to overshoot.
+
+- **Plan Ahead:** Think a few moves ahead to avoid putting yourself in a position where any move you make will cause you to lose.
+
+---
+
+### **Conclusion**
+
+Number Reverse is a simple yet strategic game that challenges players to think ahead and make tactical decisions to reach the target number. With straightforward rules and minimal components, it’s easy to pick up and play in a command-line interface. The blend of number manipulation and strategic foresight ensures that a skilled player can consistently outperform an unskilled one, providing a quick and competitive experience.
+
+Enjoy the game and may the best strategist win!

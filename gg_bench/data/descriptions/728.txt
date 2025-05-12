@@ -1,0 +1,153 @@
+# Digit Conquest
+
+## Objective
+
+Be the first player to create a cumulative number that is **divisible by a target divisor** (e.g., 7) on your turn. Strategic selection of digits and understanding of divisibility are key to victory.
+
+## Setup
+
+1. **Choose a Target Divisor**: Agree on a target number by which divisibility will be tested (e.g., 7). This number should be the same for both players throughout the game.
+2. **Determine Turn Order**: Decide who will take the first turn (e.g., flip a coin or mutual agreement).
+3. **Initialize the Game**: Start with an empty cumulative number.
+
+## Game Components
+
+- **Digits (1-9)**: Players will use digits from 1 to 9. Digits can be reused, and there is an unlimited supply.
+- **Cumulative Number**: A number formed by sequentially appending digits chosen by the players.
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns.
+  - On each turn, a player performs the following actions:
+    1. **Select a Digit**: Choose any digit from 1 to 9.
+    2. **Append the Digit**: Add the chosen digit to the right end of the cumulative number.
+    3. **Check Divisibility**: Determine if the new cumulative number is divisible by the target divisor.
+
+## Rules and Mechanics
+
+1. **Appending Digits**:
+   - Players must choose a digit between 1 and 9 on their turn.
+   - The chosen digit is appended to the cumulative number, building upon the existing sequence.
+   - Example: If the cumulative number is `13` and a player appends `7`, the new cumulative number becomes `137`.
+
+2. **Winning the Game**:
+   - **Immediate Victory**: If, after appending a digit, the cumulative number is divisible by the target divisor, the player wins the game.
+   - **Example**: If the cumulative number is `126` and the target divisor is `7`, since `126 ÷ 7 = 18`, the player who formed `126` wins.
+
+3. **Maximum Length Rule**:
+   - **Losing Condition**: If the cumulative number reaches a length of **10 digits** without being divisible by the target divisor, the player who appended the last digit loses.
+   - This rule ensures that the game ends in a finite number of moves and eliminates the possibility of a draw.
+
+4. **Digit Selection Strategy**:
+   - Players may choose any digit from 1 to 9 on each turn, and digits may be reused.
+   - Strategic selection of digits can influence the divisibility of the cumulative number and set up the opponent for a loss.
+
+5. **No Skipping Turns**:
+   - Players must make a valid move on their turn and cannot pass or skip a turn.
+
+## Scoring
+
+- **Single Round Play**:
+  - The player who wins the round scores 1 point.
+- **Multiple Rounds**:
+  - Players may agree to play multiple rounds, keeping a tally of points to determine an overall winner after a set number of rounds.
+
+## Examples
+
+### Example Game with Target Divisor 7
+
+**Initial State**:
+- Cumulative Number: (empty)
+
+**Gameplay Sequence**:
+
+1. **Player 1's Turn**:
+   - Chooses digit **1**.
+   - Cumulative Number: `1`.
+   - Divisibility Check: `1` is not divisible by `7`.
+
+2. **Player 2's Turn**:
+   - Chooses digit **4**.
+   - Cumulative Number: `14`.
+   - Divisibility Check: `14 ÷ 7 = 2`.
+   - **Player 2 Wins!**
+
+**Alternate Extended Gameplay**:
+
+1. **Player 1's Turn**:
+   - Chooses digit **2**.
+   - Cumulative Number: `2`.
+   - Not divisible by `7`.
+
+2. **Player 2's Turn**:
+   - Chooses digit **5**.
+   - Cumulative Number: `25`.
+   - Not divisible by `7`.
+
+3. **Player 1's Turn**:
+   - Chooses digit **1**.
+   - Cumulative Number: `251`.
+   - Not divisible by `7`.
+
+4. **Player 2's Turn**:
+   - Chooses digit **7**.
+   - Cumulative Number: `2517`.
+   - Divisibility Check: `2517 ÷ 7 ≈ 359.571` (Not divisible).
+
+5. **Player 1's Turn**:
+   - Chooses digit **0** (allowed as a special rule if agreed upon).
+   - Cumulative Number: `25170`.
+   - Divisibility Check: `25170 ÷ 7 = 3596.142` (Not divisible).
+
+6. **...Game continues...**
+
+7. **Player X's Turn**:
+   - After several turns, the cumulative number reaches 10 digits.
+   - The last player to append a digit loses if the number is not divisible by `7`.
+
+## Command-Line Interaction Example
+
+```plaintext
+=== Digit Conquest ===
+Target Divisor: 7
+
+Cumulative Number: 
+
+Player 1's turn.
+Enter a digit (1-9): 3
+Cumulative Number: 3
+Not divisible by 7.
+
+Player 2's turn.
+Enter a digit (1-9): 5
+Cumulative Number: 35
+35 is divisible by 7!
+Player 2 wins!
+```
+
+## Strategic Tips
+
+- **Understanding Divisibility**:
+  - Familiarize yourself with the rules of divisibility for the target number.
+  - Use shortcuts and patterns to quickly assess whether a number may be divisible.
+
+- **Setting Traps**:
+  - Anticipate potential moves by your opponent and steer the cumulative number into ranges that may force them into a loss.
+
+- **Digit Selection**:
+  - Choosing certain digits may make it more difficult for your opponent to win on their next turn.
+
+## Game Variations
+
+- **Different Target Divisors**:
+  - Players can agree on a different target divisor to adjust difficulty and strategy (e.g., 3, 5, 11).
+
+- **Limited Digit Use**:
+  - Introduce a rule where each digit from 1-9 can only be used a certain number of times to increase complexity.
+
+## Conclusion
+
+Digit Conquest is a simple yet intellectually stimulating game that combines basic arithmetic with strategic planning. It's easy to code in a command-line interface and provides a clear win/loss outcome without the possibility of a draw. With its unique mechanics, it's distinct from traditional games like Go, Nim, Tic-Tac-Toe, or Chess, offering a fresh challenge for players seeking quick and strategic gameplay.
+
+Enjoy your game of Digit Conquest, and may the best strategist win!

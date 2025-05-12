@@ -1,0 +1,203 @@
+# Digit Removal Duel
+
+## Objective
+
+Be the **player who forces your opponent to remove the last digit(s)** of a shared number, thereby winning the game. The goal is to strategically reduce the number to compel your opponent to make the final move that empties the number.
+
+---
+
+## Setup
+
+- **Starting Number**: The game begins with a large positive integer. For a standard game, the starting number is:
+
+  ```
+  987654321
+  ```
+
+- **Player Roles**: Two players participate, taking turns. Determine randomly or by agreement who will be **Player 1** and **Player 2**.
+
+---
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer displayed on the command-line interface, accessible and visible to both players. This number changes as players remove digits.
+
+- **No Physical Pieces**: The game requires no physical components—players interact solely through digit removal commands.
+
+---
+
+## Turns
+
+- **Alternating Turns**: Players take turns alternately, starting with **Player 1**.
+
+- **Turn Structure**:
+  1. **Display Current Number**: The game shows the current value of **N**.
+  2. **Player Decision**: The active player chooses how many digits to remove and from which end.
+  3. **Update Number**: The game updates **N** based on the player's move.
+  4. **Check for Game End**: If **N** is empty, the game ends.
+
+- **No Skipping**: Players must make a valid move on their turn; passing is not allowed.
+
+---
+
+## Rules and Mechanics
+
+### 1. Digit Removal
+
+- **Removal Options**:
+  - **Start of N**: Remove one or more consecutive digits from the beginning of **N**.
+  - **End of N**: Remove one or more consecutive digits from the end of **N**.
+
+- **Consecutive Digits**: The digits removed must be consecutive and from one end only; you cannot skip or remove digits from the middle.
+
+- **Minimum Removal**: At least one digit must be removed on each turn.
+
+### 2. Updating N
+
+- **New N**: After removal, the remaining digits form the new **N** for the next player's turn.
+  
+- **Examples**:
+  - If **N** is `987654321` and you remove `"9876"` from the start, the new **N** is `54321`.
+  - If **N** is `54321` and you remove `"21"` from the end, the new **N** is `543`.
+
+### 3. Winning the Game
+
+- **Objective**: Force your opponent to remove the last digit(s), leaving **N** empty.
+  
+- **Victory Condition**:
+  - If a player's move results in **N** becoming empty (no digits remaining), that player **loses** the game.
+  - The opposing player is then declared the **winner**.
+
+- **No Draws**: The game always results in a win or loss; there are no tie scenarios.
+
+---
+
+## Scoring
+
+- **No Points System**: The game does not track points.
+  
+- **Win/Loss Outcome**:
+  - The player who avoids removing the last digit(s) **wins**.
+  - The player who removes the last digit(s) **loses**.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Starting Number:
+```
+987654321
+```
+
+#### Turn-by-Turn Breakdown:
+
+1. **Player 1's Turn**:
+   - **Current N**: `987654321`
+   - **Action**: Removes `"98"` from the **start**.
+   - **New N**: `7654321`
+
+2. **Player 2's Turn**:
+   - **Current N**: `7654321`
+   - **Action**: Removes `"1"` from the **end**.
+   - **New N**: `765432`
+
+3. **Player 1's Turn**:
+   - **Current N**: `765432`
+   - **Action**: Removes `"765"` from the **start**.
+   - **New N**: `432`
+
+4. **Player 2's Turn**:
+   - **Current N**: `432`
+   - **Action**: Removes `"2"` from the **end**.
+   - **New N**: `43`
+
+5. **Player 1's Turn**:
+   - **Current N**: `43`
+   - **Action**: Removes `"4"` from the **start**.
+   - **New N**: `3`
+
+6. **Player 2's Turn**:
+   - **Current N**: `3`
+   - **Action**: Must remove the last digit `"3"`.
+   - **New N**: (empty)
+   - **Result**: **Player 2** loses, **Player 1** wins.
+
+### Command-Line Interaction Example
+
+```
+Starting number: 987654321
+
+---
+
+Player 1's Turn:
+Current number: 987654321
+Enter number of digits to remove: 2
+Remove from start or end? start
+New number: 7654321
+
+---
+
+Player 2's Turn:
+Current number: 7654321
+Enter number of digits to remove: 1
+Remove from start or end? end
+New number: 765432
+
+---
+
+Player 1's Turn:
+Current number: 765432
+Enter number of digits to remove: 3
+Remove from start or end? start
+New number: 432
+
+---
+
+Player 2's Turn:
+Current number: 432
+Enter number of digits to remove: 1
+Remove from start or end? end
+New number: 43
+
+---
+
+Player 1's Turn:
+Current number: 43
+Enter number of digits to remove: 1
+Remove from start or end? start
+New number: 3
+
+---
+
+Player 2's Turn:
+Current number: 3
+Enter number of digits to remove: 1
+Remove from start or end? start
+New number: 
+Game over! Player 2 has removed the last digit and loses.
+Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Think several moves in advance to control the flow of the game.
+
+- **Digit Counting**: Pay attention to the number of digits remaining after each move.
+
+- **Control the Length**: Try to leave the number in lengths that are advantageous to you (e.g., even or odd number of digits).
+
+- **Force Moves**: Make moves that limit your opponent's options, pushing them toward removing the last digit.
+
+---
+
+## Summary
+
+"Digit Removal Duel" is a quick, strategic game where players manipulate a shared number by removing digits. Skillful planning and foresight allow a player to control the game's progression and force the opponent into a losing move. The simplicity of the game's mechanics makes it easy to code and understand, while the strategic depth offers engaging challenges for players.
+
+---
+
+Enjoy the game and may the best strategist win!

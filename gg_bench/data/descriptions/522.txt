@@ -1,0 +1,198 @@
+# Prime Subtractor: A Two-Player Turn-Based Command-Line Game
+
+## Objective
+
+**Prime Subtractor** is a strategic two-player game where players take turns subtracting prime numbers from a shared total. The primary goal is to be the player who reduces the shared total to exactly **zero**. Victory is achieved by careful calculation and foresight, ensuring you reach the target total before your opponent does.
+
+---
+
+## Setup
+
+1. **Starting Total**: The game begins with a shared total of **100**.
+2. **Determine First Player**: Decide who will take the first turn. This can be done by mutual agreement or by a simple method like a coin toss.
+3. **Prime Numbers List**: Familiarize both players with the list of allowable prime numbers for subtraction:
+   - **2, 3, 5, 7, 11, 13**
+
+---
+
+## Game Components
+
+- **Shared Total**: A single number that both players will subtract from, starting at **100**.
+- **Prime Numbers**: The set of prime numbers between **2** and **13** (inclusive) that players can subtract:
+  - **2, 3, 5, 7, 11, 13**
+- **Players**: Two participants who will alternate turns.
+- **Command-Line Interface**: The game is played via a command-line interface where players input their chosen prime numbers.
+
+---
+
+## Turns
+
+1. **Alternating Play**: Players take turns subtracting prime numbers from the shared total.
+2. **Turn Actions**:
+   - **Select a Prime Number**: On your turn, choose one prime number from the allowable list.
+   - **Subtract from Total**: Subtract the chosen prime number from the current shared total.
+   - **Update Total**: The new total becomes the starting point for the next player's turn.
+3. **Turn Progression**: The game continues with players alternating turns until one player reduces the total to exactly zero.
+
+---
+
+## Rules and Mechanics
+
+### 1. Selecting Prime Numbers
+
+- **Allowed Primes**: You may only subtract the following prime numbers:
+  - **2, 3, 5, 7, 11, 13**
+- **Reuse of Primes**: Prime numbers can be selected multiple times throughout the game.
+
+### 2. Valid Moves
+
+- **Positive Totals**: After subtracting, the shared total must remain **zero or positive**. Negative totals are not allowed.
+- **Available Moves**: If no prime number can be subtracted without resulting in a negative total, the player loses their turn.
+
+### 3. Winning the Game
+
+- **Exact Zero**: The player who reduces the shared total to **exactly zero** wins the game.
+- **No Draws**: The game cannot end in a draw; play continues until a player wins.
+
+### 4. Illegal Moves
+
+- **Invalid Primes**: Selecting a number not in the allowed list of primes is prohibited.
+- **Negative Totals**: Making a move that would reduce the total below zero is not permitted.
+- **Repercussions**: Attempting an illegal move results in losing your turn.
+
+### 5. Strategy and Tactics
+
+- **Planning Ahead**: Anticipate future moves and the possible totals your opponent can achieve.
+- **Control the Game**: Try to force the shared total into numbers that are advantageous for you and limit your opponent's options.
+- **Mathematical Thinking**: Use basic arithmetic and understanding of prime numbers to guide your decisions.
+
+---
+
+## Scoring
+
+- **Winning**: Victory is achieved by the player who brings the total to exactly zero.
+- **No Point System**: There is no point tracking; the focus is on reaching the game's objective.
+- **Game End**: The game concludes immediately when a player wins.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Starting Total**: 100
+
+#### Turn Sequence:
+
+1. **Player 1**:
+   - Chooses **13**.
+   - Calculation: 100 - 13 = **87**.
+   - **New Total**: 87
+
+2. **Player 2**:
+   - Chooses **7**.
+   - Calculation: 87 - 7 = **80**.
+   - **New Total**: 80
+
+3. **Player 1**:
+   - Chooses **13**.
+   - Calculation: 80 - 13 = **67**.
+   - **New Total**: 67
+
+4. **Player 2**:
+   - Chooses **11**.
+   - Calculation: 67 - 11 = **56**.
+   - **New Total**: 56
+
+5. **Player 1**:
+   - Chooses **13**.
+   - Calculation: 56 - 13 = **43**.
+   - **New Total**: 43
+
+6. **Player 2**:
+   - Chooses **13**.
+   - Calculation: 43 - 13 = **30**.
+   - **New Total**: 30
+
+7. **Player 1**:
+   - Chooses **13**.
+   - Calculation: 30 - 13 = **17**.
+   - **New Total**: 17
+
+8. **Player 2**:
+   - Chooses **13**.
+   - Calculation: 17 - 13 = **4**.
+   - **New Total**: 4
+
+9. **Player 1**:
+   - Chooses **2**.
+   - Calculation: 4 - 2 = **2**.
+   - **New Total**: 2
+
+10. **Player 2**:
+    - Chooses **2**.
+    - Calculation: 2 - 2 = **0**.
+    - **New Total**: 0
+    - **Player 2 Wins!**
+
+### Invalid Move Example
+
+**Current Total**: 5
+
+**Player's Turn**:
+
+- Attempts to subtract **7**.
+- Calculation: 5 - 7 = **-2**.
+- **Invalid Move**: Total cannot be negative.
+- **Consequence**: Player loses their turn.
+
+---
+
+## Command-Line Interaction Example
+
+```
+Welcome to Prime Subtractor!
+Starting Total: 100
+
+Player 1's turn.
+Available primes to subtract: 2, 3, 5, 7, 11, 13
+Enter a prime number to subtract: 13
+New Total: 87
+
+Player 2's turn.
+Available primes to subtract: 2, 3, 5, 7, 11, 13
+Enter a prime number to subtract: 7
+New Total: 80
+
+Player 1's turn.
+Available primes to subtract: 2, 3, 5, 7, 11, 13
+Enter a prime number to subtract: 13
+New Total: 67
+
+Player 2's turn.
+Available primes to subtract: 2, 3, 5, 7, 11, 13
+Enter a prime number to subtract: 11
+New Total: 56
+
+... [Game continues] ...
+
+Player 2's turn.
+Available primes to subtract: 2, 3, 5, 7, 11, 13
+Enter a prime number to subtract: 2
+New Total: 0
+
+Player 2 wins! Congratulations!
+```
+
+---
+
+## Tips for Players
+
+- **Memorize Prime Numbers**: Knowing the allowed primes helps make quick decisions.
+- **Think Ahead**: Consider the possible totals after your move and how they will affect your opponent's options.
+- **Avoid Negative Totals**: Always ensure your chosen prime does not reduce the total below zero.
+- **Use Larger Primes Wisely**: Subtracting larger primes early can shorten the game but may open opportunities for your opponent.
+
+---
+
+Enjoy playing **Prime Subtractor** and may the best strategist win!

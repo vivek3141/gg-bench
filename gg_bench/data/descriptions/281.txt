@@ -1,0 +1,192 @@
+# Double or Add: The Race to 20
+
+## Objective
+
+**Double or Add** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to reach **exactly 20** by applying mathematical operations to a shared current number. Players must carefully choose between doubling the current number or adding one to it, planning ahead to outmaneuver their opponent. The game requires foresight and strategy, ensuring that a skilled player can consistently beat an unskilled player. The game cannot end in a draw and is designed to conclude quickly.
+
+## Setup
+
+- **Starting Number**: The game begins with the **current number set to 1**.
+- **Target Number**: The objective is to reach the **target number of 20** exactly.
+- **Players**: Two players participate, each taking turns to manipulate the current number.
+
+No additional materials or components are needed beyond the command-line interface.
+
+## Game Components
+
+- **Current Number**: A shared numerical value that starts at 1 and changes based on player actions.
+- **Operations**: Two mathematical operations available to players:
+  1. **Add 1**: Increase the current number by 1.
+  2. **Multiply by 2**: Double the current number.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., by coin toss, mutual agreement, or random selection by the program).
+- **Player Actions**: On their turn, a player must choose **one** of the two allowed operations to apply to the current number.
+- **Progression**: After a player applies an operation, the updated current number is displayed, and the turn passes to the other player.
+- **Example Turn Structure**:
+  1. **Player 1's Turn**:
+     - Current number is 1.
+     - Player 1 chooses an operation (e.g., Multiply by 2).
+     - Current number becomes 2.
+  2. **Player 2's Turn**:
+     - Current number is 2.
+     - Player 2 chooses an operation (e.g., Add 1).
+     - Current number becomes 3.
+
+## Rules and Mechanics
+
+1. **Allowed Operations**:
+   - **Add 1**: The player increases the current number by 1.
+   - **Multiply by 2**: The player doubles the current number.
+2. **Valid Moves**:
+   - Players must choose one of the allowed operations on their turn.
+   - The result of the operation must not cause the current number to exceed the target number (20).
+3. **Winning the Game**:
+   - The first player to alter the current number to exactly **20** wins the game.
+4. **Losing the Game**:
+   - If a player's chosen operation would cause the current number to exceed 20, they **cannot make that move** and must select the alternative operation.
+   - If both operations would cause the current number to exceed 20, the player loses the game immediately.
+5. **No Skipping Turns**:
+   - Players cannot pass or skip their turn; they must choose an available operation.
+6. **No Draws**:
+   - The game cannot end in a draw due to the finite number of possible moves and the losing condition when exceeding 20.
+
+## Scoring
+
+- **Single Game Victory**: The winner is the player who reaches exactly 20 first.
+- **Match Play (Optional)**:
+  - Players may agree to play multiple rounds.
+  - Keep track of the number of games won by each player.
+  - The player with the most victories after all rounds is the overall winner.
+
+## Examples
+
+### Example Game Play
+
+**Starting the Game:**
+
+- Current Number: **1**
+- Target Number: **20**
+
+**Turn-by-Turn Breakdown:**
+
+1. **Player 1's Turn**
+   - Current Number: 1
+   - Choices:
+     - Add 1 → Result: 2
+     - Multiply by 2 → Result: 2
+   - **Player 1 chooses to Multiply by 2.**
+   - Current Number becomes **2**.
+2. **Player 2's Turn**
+   - Current Number: 2
+   - Choices:
+     - Add 1 → Result: 3
+     - Multiply by 2 → Result: 4
+   - **Player 2 chooses to Multiply by 2.**
+   - Current Number becomes **4**.
+3. **Player 1's Turn**
+   - Current Number: 4
+   - Choices:
+     - Add 1 → Result: 5
+     - Multiply by 2 → Result: 8
+   - **Player 1 chooses to Multiply by 2.**
+   - Current Number becomes **8**.
+4. **Player 2's Turn**
+   - Current Number: 8
+   - Choices:
+     - Add 1 → Result: 9
+     - Multiply by 2 → Result: 16
+   - **Player 2 chooses to Multiply by 2.**
+   - Current Number becomes **16**.
+5. **Player 1's Turn**
+   - Current Number: 16
+   - Choices:
+     - Add 1 → Result: 17
+     - Multiply by 2 → Result: 32 (Invalid, exceeds 20)
+   - **Player 1 cannot Multiply by 2** (would exceed 20).
+   - **Player 1 chooses to Add 1.**
+   - Current Number becomes **17**.
+6. **Player 2's Turn**
+   - Current Number: 17
+   - Choices:
+     - Add 1 → Result: 18
+     - Multiply by 2 → Result: 34 (Invalid, exceeds 20)
+   - **Player 2 cannot Multiply by 2**.
+   - **Player 2 chooses to Add 1.**
+   - Current Number becomes **18**.
+7. **Player 1's Turn**
+   - Current Number: 18
+   - Choices:
+     - Add 1 → Result: 19
+     - Multiply by 2 → Result: 36 (Invalid)
+   - **Player 1 cannot Multiply by 2**.
+   - **Player 1 chooses to Add 1.**
+   - Current Number becomes **19**.
+8. **Player 2's Turn**
+   - Current Number: 19
+   - Choices:
+     - Add 1 → Result: 20
+     - Multiply by 2 → Result: 38 (Invalid)
+   - **Player 2 cannot Multiply by 2**.
+   - **Player 2 chooses to Add 1 and reaches 20.**
+   - **Player 2 wins the game!**
+
+### Strategic Note:
+
+- In the above example, Player 1 might have avoided this outcome by choosing different operations earlier in the game to control the flow and force Player 2 into a losing position.
+
+## Command-Line Interaction Example
+
+**Program Prompt**:
+
+```
+Current Number: 1
+It's Player 1's turn.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2):
+```
+
+**Player Input**:
+
+```
+2
+```
+
+**Program Output**:
+
+```
+You chose to Multiply by 2.
+Current Number is now 2.
+--------------------------------
+Current Number: 2
+It's Player 2's turn.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2):
+```
+
+*(... and so on, following the turn structure outlined above.)*
+
+## Additional Rules (Optional Variants)
+
+To add more strategic depth or variation, players may agree to modify the game's parameters before starting:
+
+1. **Different Target Number**:
+   - Players can agree to a different target number (e.g., 31).
+   - This changes the dynamics and required strategies.
+
+2. **Additional Operations**:
+   - Introduce a third operation, such as "Subtract 1," with appropriate adjustments to the rules.
+   - Be cautious to maintain game balance and ensure the game cannot end in a draw.
+
+3. **Limited Operation Use**:
+   - Limit the number of times an operation can be used (e.g., each player can double only three times per game).
+   - This adds another layer of strategic planning.
+
+## Conclusion
+
+**Double or Add: The Race to 20** is a simple yet strategically rich game that challenges players to think ahead and anticipate their opponent's moves. Its straightforward rules make it easy to code and quick to play, while the strategic possibilities ensure that skillful play is rewarded. Enjoy testing your tactical thinking in this numerical duel!

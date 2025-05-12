@@ -1,0 +1,217 @@
+# Number Tower - Rule Book
+
+## Objective
+
+**Number Tower** is a strategic two-player, turn-based game where players alternately build a tower by stacking numbered blocks according to specific mathematical rules. The primary goal is to be the last player to place a block successfully. A player wins by making a move that forces the opponent into a position where they cannot place a valid block on their turn.
+
+---
+
+## Setup
+
+- **Block Pool**: A shared set of numbered blocks from **1** to **9**.
+- **Tower**: Initially empty. Players will build the tower by placing blocks on top of each other during their turns.
+- **Player Order**: Decide which player goes first (Player 1 and Player 2) by mutual agreement or a random method.
+
+---
+
+## Game Components
+
+### Blocks
+
+- **Numbers**: Each block is labeled with an integer from **1** to **9**.
+- **Unique Use**: Once a block is placed on the tower, it is no longer available for either player.
+- **Shared Pool**: All blocks are available to both players until used.
+
+### Tower
+
+- **Structure**: A single stack where blocks are placed one on top of the other.
+- **Visibility**: The entire sequence of blocks in the tower is visible to both players at all times.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately. Player 1 makes the first move.
+2. **Turn Actions**:
+   - **Select a Block**: Choose one available block from the pool.
+   - **Place the Block**: Add the selected block on top of the tower following the placement rules.
+3. **Turn Completion**: After placing a block, the turn passes to the other player.
+4. **Unable to Move**: If a player cannot place a valid block on their turn, the game ends, and that player loses.
+
+---
+
+## Rules and Mechanics
+
+### Block Placement Rules
+
+1. **First Move**:
+   - Any block numbered from **1** to **9** can be placed as the first block.
+2. **Subsequent Moves**:
+   - The block must be a **divisor** or a **multiple** of the block immediately below it.
+   - **Divisor**: A number that divides another number completely without leaving a remainder.
+   - **Multiple**: A number that is the product of another number and an integer.
+   - **Example**:
+     - If the block below is **4**, valid blocks to place on top are **1**, **2**, **4**, **8** (since 1, 2, and 4 are divisors of 4, and 8 is a multiple of 4).
+3. **Block Availability**:
+   - Only unused blocks from the pool can be selected.
+   - Once a block has been placed on the tower, it cannot be used again by either player.
+
+### Winning the Game
+
+- **Victory Condition**: A player wins by placing a block that leaves the opponent with no valid moves on their subsequent turn.
+- **Losing the Game**: A player loses if, on their turn, they cannot place a valid block according to the placement rules.
+
+---
+
+## Scoring
+
+There is no point-scoring system in **Number Tower**. The game is won by strategic block placement that leads to the opponent's inability to make a valid move.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup
+
+- **Available Blocks**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Tower**: Empty
+- **Player 1**: First to move
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - **Chooses Block**: 6
+   - **Places Block**: 6 on the tower
+   - **Available Blocks**: 1, 2, 3, 4, 5, 7, 8, 9
+   - **Tower**: [6]
+
+2. **Player 2's Turn**:
+   - **Possible Blocks**: Must be a divisor or multiple of 6 (1, 2, 3, 6, 9)
+   - **Available Blocks**: 1, 2, 3, 4, 5, 7, 8, 9
+   - **Chooses Block**: 3
+   - **Places Block**: 3 on the tower
+   - **Available Blocks**: 1, 2, 4, 5, 7, 8, 9
+   - **Tower**: [6, 3]
+
+3. **Player 1's Turn**:
+   - **Possible Blocks**: Must be a divisor or multiple of 3 (1, 3, 6, 9)
+   - **Available Blocks**: 1, 2, 4, 5, 7, 8, 9
+   - **Chooses Block**: 9
+   - **Places Block**: 9 on the tower
+   - **Available Blocks**: 1, 2, 4, 5, 7, 8
+   - **Tower**: [6, 3, 9]
+
+4. **Player 2's Turn**:
+   - **Possible Blocks**: Must be a divisor or multiple of 9 (1, 3, 9)
+   - **Available Blocks**: 1, 2, 4, 5, 7, 8
+   - **Chooses Block**: 1
+   - **Places Block**: 1 on the tower
+   - **Available Blocks**: 2, 4, 5, 7, 8
+   - **Tower**: [6, 3, 9, 1]
+
+5. **Player 1's Turn**:
+   - **Possible Blocks**: Any remaining block (since every number is a multiple of 1)
+   - **Available Blocks**: 2, 4, 5, 7, 8
+   - **Chooses Block**: 2
+   - **Places Block**: 2 on the tower
+   - **Available Blocks**: 4, 5, 7, 8
+   - **Tower**: [6, 3, 9, 1, 2]
+
+6. **Player 2's Turn**:
+   - **Possible Blocks**: Must be a divisor or multiple of 2 (2, 4, 6, 8)
+   - **Available Blocks**: 4, 5, 7, 8
+   - **Chooses Block**: 4
+   - **Places Block**: 4 on the tower
+   - **Available Blocks**: 5, 7, 8
+   - **Tower**: [6, 3, 9, 1, 2, 4]
+
+7. **Player 1's Turn**:
+   - **Possible Blocks**: Must be a divisor or multiple of 4 (1, 2, 4, 8)
+   - **Available Blocks**: 5, 7, 8
+   - **Chooses Block**: 8
+   - **Places Block**: 8 on the tower
+   - **Available Blocks**: 5, 7
+   - **Tower**: [6, 3, 9, 1, 2, 4, 8]
+
+8. **Player 2's Turn**:
+   - **Possible Blocks**: Must be a divisor or multiple of 8 (1, 2, 4, 8)
+   - **Available Blocks**: 5, 7
+   - **No Valid Blocks Available**
+   - **Player 2 Loses**: Cannot make a valid move
+
+#### Outcome
+
+- **Winner**: Player 1
+- **Reason**: Player 2 had no valid blocks to place on their turn.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample of how the game might proceed in a command-line interface.
+
+### Start of the Game
+
+```
+Welcome to Number Tower!
+Available Blocks: 1, 2, 3, 4, 5, 6, 7, 8, 9
+The tower is currently empty.
+Player 1, it's your turn.
+Select a block to place on the tower: 6
+```
+
+### After Player 1's Move
+
+```
+Player 1 placed block 6 on the tower.
+Available Blocks: 1, 2, 3, 4, 5, 7, 8, 9
+Tower: [6]
+Player 2, it's your turn.
+Valid blocks to place: 1, 2, 3, 6, 9
+Select a block to place on the tower: 3
+```
+
+### After Player 2's Move
+
+```
+Player 2 placed block 3 on the tower.
+Available Blocks: 1, 2, 4, 5, 7, 8, 9
+Tower: [6, 3]
+Player 1, it's your turn.
+Valid blocks to place: 1, 9
+Select a block to place on the tower: 9
+```
+
+### Continuing the Game
+
+The game continues in this fashion, with the command-line displaying:
+
+- Available blocks
+- The current state of the tower
+- Valid blocks for the current player to choose from
+- Prompting the player to select a block
+
+When a player cannot make a valid move:
+
+```
+Player 2, it's your turn.
+Valid blocks to place: None
+Player 2 cannot place any valid block.
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Planning Ahead**: Anticipate the blocks that will be available on future turns to avoid getting trapped.
+- **Controlling the Flow**: Use blocks that limit your opponent's options in their next move.
+- **Block Management**: Consider the implications of removing a block from the pool for both current and future moves.
+
+---
+
+## Conclusion
+
+**Number Tower** is a game of strategy and foresight. By carefully selecting and placing blocks, you can outmaneuver your opponent and secure victory. Enjoy building your tower of numbers!

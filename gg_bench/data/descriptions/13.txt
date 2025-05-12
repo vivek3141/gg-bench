@@ -1,0 +1,371 @@
+# **King's Line**
+
+## **Objective**
+
+Be the first player to move the King piece to your opponent's starting position. Utilize strategic movements and swaps to control the King along the linear board. The player who successfully brings the King to the opposing end wins the game.
+
+## **Setup**
+
+- **Board**: A linear board consisting of 7 numbered positions arranged sequentially from 1 to 7.
+  
+  ```
+  Positions: [1] [2] [3] [4] [5] [6] [7]
+  ```
+  
+- **Starting Positions**:
+  - **Player 1 (P1)**: Places their Marker at **Position 1**.
+  - **Player 2 (P2)**: Places their Marker at **Position 7**.
+  - **King Piece (K)**: Placed at the center, **Position 4**.
+
+The initial setup looks like this:
+
+```
+[ P1 ] [   ] [   ] [ K ] [   ] [   ] [ P2 ]
+   1      2     3     4     5     6     7
+```
+
+## **Game Components**
+
+- **Linear Board**: A simple row of 7 consecutive positions numbered from 1 to 7.
+
+- **Markers**:
+  - **Player Markers**:
+    - **Player 1 Marker (P1)**: Represents Player 1's position on the board.
+    - **Player 2 Marker (P2)**: Represents Player 2's position on the board.
+  - **King Piece (K)**: The central piece that players aim to move to the opponent's starting position.
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns starting with **Player 1**.
+
+- **Turn Actions**:
+  - **Move Marker**: Move your Player Marker one position towards the King.
+  - **Swap with King**: If your Player Marker is adjacent to the King, you may swap positions with the King.
+
+- **Turn Progression**:
+  1. **Player Action**: Choose to move or swap as per the rules.
+  2. **Update Board**: Reflect the changes on the board.
+  3. **Check for Win**: Determine if the game has been won.
+  4. **Pass Turn**: Proceed to the opponent's turn.
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+- **Moving Towards the King**:
+  - On your turn, you may move your Player Marker **one position closer** to the King.
+  - **Player 1** moves towards higher-numbered positions.
+  - **Player 2** moves towards lower-numbered positions.
+
+- **Swapping with the King**:
+  - If your Player Marker is **adjacent** to the King, you may choose to **swap positions** with the King instead of moving.
+  - Swapping places your Player Marker where the King was and moves the King towards your opponent.
+
+- **Adjacency**:
+  - Two pieces are adjacent if there is no other piece between them.
+  - Positions are considered adjacent if their numerical difference is 1.
+
+### **Movement Restrictions**
+
+- **Occupied Positions**:
+  - A Player Marker or the King cannot move into a position occupied by the other Player Marker.
+  - Players cannot skip over the King or the other Player Marker.
+
+- **Direction of Movement**:
+  - Players must always move towards the King when moving their Marker.
+  - Players cannot move away from the King unless swapping.
+
+### **Winning the Game**
+
+- **Victory Condition**:
+  - A player wins by moving the King Piece to the opponent's starting position (Position 1 for Player 2 and Position 7 for Player 1).
+
+- **No Draws**:
+  - The game cannot end in a draw. Play continues until one player wins.
+
+## **Scoring**
+
+- **Winning**: Achieving the objective awards the player a win.
+
+- **Tracking Wins**:
+  - Keep count of the number of games won if playing multiple rounds.
+
+## **Examples**
+
+### **Sample Game**
+
+**Initial Setup:**
+
+```
+Turn 0:
+[ P1 ] [   ] [   ] [ K ] [   ] [   ] [ P2 ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 1 (Player 1):**
+
+- **Action**: Move Marker from Position 1 to Position 2.
+- **Board State**:
+
+```
+[   ] [ P1 ] [   ] [ K ] [   ] [   ] [ P2 ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 2 (Player 2):**
+
+- **Action**: Move Marker from Position 7 to Position 6.
+- **Board State**:
+
+```
+[   ] [ P1 ] [   ] [ K ] [   ] [ P2 ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 3 (Player 1):**
+
+- **Action**: Move Marker from Position 2 to Position 3.
+- **Board State**:
+
+```
+[   ] [   ] [ P1 ] [ K ] [   ] [ P2 ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 4 (Player 2):**
+
+- **Action**: Move Marker from Position 6 to Position 5.
+- **Board State**:
+
+```
+[   ] [   ] [ P1 ] [ K ] [ P2 ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 5 (Player 1):**
+
+- **Action**: Swap with King (Positions 3 and 4).
+- **Board State**:
+
+```
+[   ] [   ] [ K ] [ P1 ] [ P2 ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 6 (Player 2):**
+
+- **Action**: Swap with King (Positions 5 and 3).
+- **Board State**:
+
+```
+[   ] [   ] [ P2 ] [ P1 ] [ K ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 7 (Player 1):**
+
+- **Action**: Cannot move towards the King (blocked by P2). **Option**: Move away from the King is not allowed. **Forced to Pass**.
+
+**Turn 8 (Player 2):**
+
+- **Action**: Move Marker from Position 3 to Position 2 towards opponent’s starting position.
+- **Board State**:
+
+```
+[   ] [ P2 ] [   ] [ P1 ] [ K ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 9 (Player 1):**
+
+- **Action**: Swap with King (Positions 4 and 5).
+- **Board State**:
+
+```
+[   ] [ P2 ] [   ] [ K ] [ P1 ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 10 (Player 2):**
+
+- **Action**: Move Marker from Position 2 to Position 1 (opponent's starting position).
+- **Board State**:
+
+```
+[ P2 ] [   ] [   ] [ K ] [ P1 ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Outcome**:
+
+- **Player 2** has moved their Marker to **Position 1**, but since the objective is to move the **King** to the opponent's starting position, the game continues.
+
+**Turn 11 (Player 1):**
+
+- **Action**: Cannot move towards the King (already adjacent). Decide to swap with King (Positions 5 and 4).
+- **Board State**:
+
+```
+[ P2 ] [   ] [   ] [ P1 ] [ K ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 12 (Player 2):**
+
+- **Action**: Move Marker from Position 1 to Position 2.
+- **Board State**:
+
+```
+[   ] [ P2 ] [   ] [ P1 ] [ K ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 13 (Player 1):**
+
+- **Action**: Swap with King (Positions 4 and 5).
+- **Board State**:
+
+```
+[   ] [ P2 ] [   ] [ K ] [ P1 ] [   ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 14 (Player 2):**
+
+- **Action**: Cannot move towards the King (blocked by P1). **Forced to Pass**.
+
+**Turn 15 (Player 1):**
+
+- **Action**: Move Marker from Position 5 to Position 6.
+- **Board State**:
+
+```
+[   ] [ P2 ] [   ] [ K ] [   ] [ P1 ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 16 (Player 2):**
+
+- **Action**: Swap with King (Positions 2 and 4).
+- **Board State**:
+
+```
+[   ] [ K ] [   ] [ P2 ] [   ] [ P1 ] [   ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 17 (Player 1):**
+
+- **Action**: Move Marker from Position 6 to Position 7 (opponent's starting position).
+- **Board State**:
+
+```
+[   ] [ K ] [   ] [ P2 ] [   ] [   ] [ P1 ]
+   1      2     3     4     5     6     7
+```
+
+**Outcome**:
+
+- **Player 1** has moved their Marker to **Position 7** (Player 2's starting position).
+- However, this does not fulfill the win condition.
+
+**Turn 18 (Player 2):**
+
+- **Action**: Swap with King (Positions 4 and 5).
+- **Board State**:
+
+```
+[   ] [ K ] [   ] [   ] [ P2 ] [   ] [ P1 ]
+   1      2     3     4     5     6     7
+```
+
+**Turn 19 (Player 1):**
+
+- **Action**: Swap with King (Positions 7 and 1). **Invalid Move** (cannot swap non-adjacent positions). **Player 1** cannot make a valid move.
+
+**Outcome**:
+
+- **Player 2** moves the King to **Position 1** in the next turn and **wins the game**.
+
+## **Strategy Tips**
+
+- **Control the King**: Focus on swapping with the King to move it towards your opponent's side.
+  
+- **Block Opponent**: Position your Marker to block your opponent's ability to swap with the King.
+  
+- **Forced Moves**: Anticipate forced moves that limit your opponent's options.
+
+- **Adjacency Timing**: Plan your moves to become adjacent to the King when it benefits you the most.
+
+## **Command-Line Interaction Example**
+
+### **Notation**
+
+- **Positions**: Numbered 1 to 7.
+- **Commands**:
+  - `move` - Move your Marker towards the King.
+  - `swap` - Swap your Marker with the King when adjacent.
+
+### **Sample Turn**
+
+**Player 1's Turn:**
+
+- **Prompt**:
+
+  ```
+  Player 1, it's your turn.
+  Current Board:
+  [   ] [   ] [ P1 ] [ K ] [ P2 ] [   ] [   ]
+     1      2     3     4     5     6     7
+
+  Enter your action ('move' or 'swap'):
+  ```
+
+- **Player Input**:
+
+  ```
+  swap
+  ```
+
+- **Result**:
+
+  ```
+  You swapped with the King!
+  New Board:
+  [   ] [   ] [ K ] [ P1 ] [ P2 ] [   ] [   ]
+     1      2     3     4     5     6     7
+  ```
+
+**Player 2's Turn:**
+
+- **Prompt**:
+
+  ```
+  Player 2, it's your turn.
+  Current Board:
+  [   ] [   ] [ K ] [ P1 ] [ P2 ] [   ] [   ]
+     1      2     3     4     5     6     7
+
+  Enter your action ('move' or 'swap'):
+  ```
+
+- **Player Input**:
+
+  ```
+  move
+  ```
+
+- **Result**:
+
+  ```
+  You moved towards the King.
+  New Board:
+  [   ] [   ] [ K ] [ P1 ] [   ] [ P2 ] [   ]
+     1      2     3     4     5     6     7
+  ```
+
+## **Conclusion**
+
+"King's Line" is a simple yet strategic game that challenges players to think ahead and control the movement of the central King piece. With straightforward rules and quick gameplay, it offers depth and competitiveness suitable for both new and experienced players.
+
+Feel free to adjust the number of positions or add variations to increase complexity or simplify the game further. Enjoy strategizing and may the best player win!

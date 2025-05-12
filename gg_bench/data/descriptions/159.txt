@@ -1,0 +1,214 @@
+# Rule Book: Number Duel
+
+## Objective
+
+**Number Duel** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the last player able to select a valid number according to the game rules. Players take turns selecting numbers between **1** and **100** that meet specific criteria relative to the previously selected number. The player who cannot select a valid number on their turn loses, and their opponent wins the game.
+
+---
+
+## Setup
+
+1. **Starting the Game:**
+   - Decide which player will go first (e.g., by coin toss or mutual agreement).
+   - Begin with all numbers from **1** to **100** unselected and available for play.
+   
+2. **Initialization:**
+   - There is no initial number; the game starts once the first player selects a number.
+
+---
+
+## Game Components
+
+- **Numbers Pool:** The numbers **1** to **100** are used in the game. Each number can be selected only once.
+- **Used Numbers List:** A list tracking the numbers that have been selected during the game.
+- **Players:** Two participants who will alternate turns throughout the game.
+
+---
+
+## Turns
+
+### Turn Structure:
+
+1. **Announcement:**
+   - The game announces which player's turn it is and displays the previous number selected (except for the first turn).
+2. **Selection:**
+   - The player selects an unchosen number between **1** and **100** that satisfies the selection criteria.
+3. **Validation:**
+   - The game checks if the selected number is valid (not previously chosen and meets the criteria).
+4. **Update:**
+   - If valid, the number is added to the Used Numbers List, and the turn passes to the opponent.
+   - If invalid, the player is prompted to select again.
+5. **End of Turn:**
+   - The game updates the available numbers and displays any necessary information for the next player.
+
+### Turn Progression:
+
+- **Player 1** starts by selecting any number from **1** to **100**.
+- **Player 2** then selects a valid number based on **Player 1's** selection.
+- Players continue to alternate turns following the game rules until one cannot make a valid move.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection Criteria:
+
+After the first turn, each number selected must meet **at least one** of the following criteria relative to the **previous number selected by the opponent**:
+
+1. **Multiple or Factor:**
+   - The number is a **multiple** or **factor** of the previous number.
+     - *Example:* If the previous number is **15**, valid multiples are **30**, **45**, etc.; valid factors are **1**, **3**, **5**.
+
+2. **Shared Digit:**
+   - The number **shares at least one digit** with the previous number.
+     - *Example:* If the previous number is **28**, numbers containing **2** or **8**, such as **82**, **20**, **18**, are valid.
+
+### Additional Rules:
+
+- **Single Use:** Each number from **1** to **100** can be selected only once during the game.
+- **Valid Numbers Only:** Players must select an **unused number** that meets the criteria. Attempting to select an invalid or previously used number results in being prompted again.
+- **No Skipping Turns:** Players must make a valid selection if possible. If a player has valid moves available, they cannot pass or skip their turn.
+- **Winning the Game:** A player loses if they cannot make a valid move on their turn. The opponent wins the game.
+
+---
+
+## Examples
+
+### Sample Game Play:
+
+#### Start of the Game:
+
+- **Player 1's Turn:**
+  - **Action:** Selects **28** (any number between 1 and 100).
+  - **Used Numbers List:** **28**
+
+#### Subsequent Turns:
+
+- **Player 2's Turn:**
+  - **Previous Number:** **28**
+  - **Valid Selections:**
+    - **Multiples of 28:** **56**, **84**.
+    - **Factors of 28:** **1**, **2**, **4**, **7**, **14**.
+    - **Numbers with Digit '2' or '8':** **12**, **82**, **18**, etc.
+  - **Action:** Chooses **14** (factor of 28).
+  - **Used Numbers List:** **28**, **14**
+
+- **Player 1's Turn:**
+  - **Previous Number:** **14**
+  - **Valid Selections:**
+    - **Multiples of 14:** **42**, **70**, **84**, **98**.
+    - **Factors of 14:** **1**, **2**, **7**.
+    - **Numbers with Digit '1' or '4':** **41**, **24**, **47**, etc.
+    - (Exclude numbers already used: **14**, **28**)
+  - **Action:** Chooses **41** (shares digit '4').
+  - **Used Numbers List:** **28**, **14**, **41**
+
+- **Player 2's Turn:**
+  - **Previous Number:** **41**
+  - **Valid Selections:**
+    - **Multiples of 41:** **82**.
+    - **Factors of 41:** **1** (since 41 is prime).
+    - **Numbers with Digit '4' or '1':** **1**, **14**, **24**, **54**, etc.
+    - (Exclude numbers already used: **14**, **28**, **41**)
+  - **Action:** Chooses **82** (multiple of 41).
+  - **Used Numbers List:** **28**, **14**, **41**, **82**
+
+- **Player 1's Turn:**
+  - **Previous Number:** **82**
+  - **Valid Selections:**
+    - **Multiples of 82:** None within 1-100 that are unused.
+    - **Factors of 82:** **1**, **2**, **41**.
+    - **Numbers with Digit '8' or '2':** **2**, **18**, **28**, **58**, etc.
+    - **Action:** Chooses **2** (factor of 82).
+  - **Used Numbers List:** **28**, **14**, **41**, **82**, **2**
+
+- **Play continues** until a player cannot make a valid move.
+
+---
+
+## Scoring
+
+- **Win Condition:** The game ends when a player cannot select a valid number on their turn.
+- **Winner:** The opponent of the player who cannot make a valid move is declared the winner.
+- **No Points:** There are no cumulative points; the game is based on a win/loss outcome for each match.
+
+---
+
+## Example Command-Line Interaction
+
+```
+Game Start!
+Available numbers: 1 to 100
+
+Player 1, it's your turn.
+Enter your number (1-100): 28
+
+Player 2, it's your turn.
+Previous number: 28
+Available numbers: 1-27,29-100 (excluding 28)
+Select a number that is a multiple/factor of 28 or shares a digit with it.
+Enter your number: 14
+
+Player 1, it's your turn.
+Previous number: 14
+Available numbers: 1-13,15-27,29-100 (excluding 14,28)
+Select a number that is a multiple/factor of 14 or shares a digit with it.
+Enter your number: 41
+
+Player 2, it's your turn.
+Previous number: 41
+Available numbers: (excluding 14,28,41)
+Select a number that is a multiple/factor of 41 or shares a digit with it.
+Enter your number: 82
+
+Player 1, it's your turn.
+Previous number: 82
+Available numbers: (excluding 2,14,28,41,82)
+Select a number that is a multiple/factor of 82 or shares a digit with it.
+Enter your number: 2
+
+...
+
+Player 2, it's your turn.
+Previous number: [number]
+No valid moves available.
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:**
+  - Anticipate possible future moves based on the numbers you leave available for your opponent.
+- **Limit Opponent's Options:**
+  - Choose numbers that reduce the number of valid options for your opponent's next turn.
+- **Reserve Key Numbers:**
+  - Be mindful of pivotal numbers (e.g., numbers with common digits or factors) and use them strategically.
+- **Track Used Numbers:**
+  - Keep track of which numbers have been used to avoid invalid selections and plan your strategy.
+- **Balance Risk and Opportunity:**
+  - Sometimes selecting a less obvious number can catch your opponent off guard.
+
+---
+
+## Variations
+
+For added challenge or to adjust game length, consider the following variations:
+
+- **Adjust Number Range:**
+  - Limit the numbers to **1** to **50** for a shorter game or expand beyond **100** for a longer game.
+- **Change Criteria:**
+  - Modify the selection criteria to include additional mathematical relationships (e.g., numbers whose sum of digits equals that of the previous number).
+- **Time Limits:**
+  - Implement a time limit per turn to increase pressure and difficulty.
+
+---
+
+## Conclusion
+
+**Number Duel** is a simple yet strategically rich game that tests numerical aptitude and foresight. Easy to implement in a command-line interface, it provides quick gameplay that ensures a clear winner without the possibility of a draw. Through careful planning and strategic number selection, skilled players can consistently outmaneuver their opponents.
+
+Enjoy the challenge and may the best strategist win!
+
+---

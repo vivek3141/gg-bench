@@ -1,0 +1,248 @@
+# Max Digit Zero
+
+## Objective
+
+Be the first player to reduce the shared number to exactly **zero** by strategically subtracting its largest digit on your turn.
+
+## Setup
+
+1. **Initial Number Selection**: Both players agree on a positive integer **N** to start the game. This number can be any positive integer (e.g., 100).
+
+2. **Determine Turn Order**: Decide which player takes the first turn. This can be done by a mutual agreement or by a random method such as flipping a coin.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players will manipulate during the game. This number changes as players make their moves.
+
+- **Digits of N**: The individual digits that compose the current shared number. Players will identify these digits to determine their moves.
+
+## Turns
+
+1. **Player's Turn Structure**:
+   - **Identify**: Examine the current shared number **N** and identify its largest single digit.
+   - **Subtract**: Subtract the largest digit from **N**.
+   - **Update N**: The result of the subtraction becomes the new shared number **N**.
+
+2. **Turn Progression**: Players alternate turns following the same structure until the game ends.
+
+3. **Example Turn**:
+   - Current **N**: 75
+   - Largest Digit: 7
+   - Calculation: 75 - 7 = 68
+   - New **N**: 68
+   - Next player's turn begins with **N** = 68.
+
+## Rules and Mechanics
+
+1. **Identifying the Largest Digit**:
+   - Players must analyze the current number **N** and determine the largest digit within it.
+   - Example: For **N** = 47, the digits are 4 and 7. The largest digit is 7.
+
+2. **Subtracting the Largest Digit**:
+   - The player subtracts the largest digit from the current **N**.
+   - The subtraction must result in a non-negative integer.
+   - Example: **N** = 23; Largest digit = 3; New **N** = 23 - 3 = 20.
+
+3. **Winning the Game**:
+   - If a player's subtraction reduces **N** to exactly **zero**, that player **wins** the game.
+   - Example: **N** = 9; Largest digit = 9; New **N** = 9 - 9 = 0. The player wins.
+
+4. **Losing the Game**:
+   - If a player's subtraction would make **N** negative, the move is invalid, and the player **loses** the game.
+   - Example: **N** = 2; Largest digit = 2; Attempting to subtract 2 (2 - 2 = 0) is valid.
+   - If **N** was 1, Largest digit = 1; Subtracting 1 results in 0, which is valid.
+   - If **N** was 0 before a player's turn, the previous player has already won.
+
+5. **Allowed Numbers**:
+   - **N** must always be a non-negative integer throughout the game.
+   - Players cannot subtract digits that would result in a negative **N**.
+
+6. **Invalid Moves**:
+   - If a player mistakenly identifies the largest digit or performs incorrect subtraction, they must redo their turn correctly.
+   - Persistent invalid moves may result in a forfeit at the discretion of both players.
+
+## Scoring
+
+- There is no point-based scoring system.
+- The game is won by the player who reduces **N** to exactly zero following the rules.
+- There are no draws; the game always results in a win or loss.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+- **Initial N**: 100
+- **Players**: Player 1 and Player 2
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**
+   - Current **N**: 100
+   - Digits: 1, 0, 0
+   - Largest Digit: **1**
+   - Calculation: 100 - 1 = **99**
+   - New **N**: **99**
+
+2. **Player 2's Turn**
+   - Current **N**: 99
+   - Digits: 9, 9
+   - Largest Digit: **9**
+   - Calculation: 99 - 9 = **90**
+   - New **N**: **90**
+
+3. **Player 1's Turn**
+   - Current **N**: 90
+   - Digits: 9, 0
+   - Largest Digit: **9**
+   - Calculation: 90 - 9 = **81**
+   - New **N**: **81**
+
+4. **Player 2's Turn**
+   - Current **N**: 81
+   - Digits: 8, 1
+   - Largest Digit: **8**
+   - Calculation: 81 - 8 = **73**
+   - New **N**: **73**
+
+5. **Player 1's Turn**
+   - Current **N**: 73
+   - Digits: 7, 3
+   - Largest Digit: **7**
+   - Calculation: 73 - 7 = **66**
+   - New **N**: **66**
+
+6. **Player 2's Turn**
+   - Current **N**: 66
+   - Digits: 6, 6
+   - Largest Digit: **6**
+   - Calculation: 66 - 6 = **60**
+   - New **N**: **60**
+
+7. **Player 1's Turn**
+   - Current **N**: 60
+   - Digits: 6, 0
+   - Largest Digit: **6**
+   - Calculation: 60 - 6 = **54**
+   - New **N**: **54**
+
+8. **Player 2's Turn**
+   - Current **N**: 54
+   - Digits: 5, 4
+   - Largest Digit: **5**
+   - Calculation: 54 - 5 = **49**
+   - New **N**: **49**
+
+9. **Player 1's Turn**
+   - Current **N**: 49
+   - Digits: 4, 9
+   - Largest Digit: **9**
+   - Calculation: 49 - 9 = **40**
+   - New **N**: **40**
+
+10. **Player 2's Turn**
+    - Current **N**: 40
+    - Digits: 4, 0
+    - Largest Digit: **4**
+    - Calculation: 40 - 4 = **36**
+    - New **N**: **36**
+
+11. **Player 1's Turn**
+    - Current **N**: 36
+    - Digits: 3, 6
+    - Largest Digit: **6**
+    - Calculation: 36 - 6 = **30**
+    - New **N**: **30**
+
+12. **Player 2's Turn**
+    - Current **N**: 30
+    - Digits: 3, 0
+    - Largest Digit: **3**
+    - Calculation: 30 - 3 = **27**
+    - New **N**: **27**
+
+13. **Player 1's Turn**
+    - Current **N**: 27
+    - Digits: 2, 7
+    - Largest Digit: **7**
+    - Calculation: 27 - 7 = **20**
+    - New **N**: **20**
+
+14. **Player 2's Turn**
+    - Current **N**: 20
+    - Digits: 2, 0
+    - Largest Digit: **2**
+    - Calculation: 20 - 2 = **18**
+    - New **N**: **18**
+
+15. **Player 1's Turn**
+    - Current **N**: 18
+    - Digits: 1, 8
+    - Largest Digit: **8**
+    - Calculation: 18 - 8 = **10**
+    - New **N**: **10**
+
+16. **Player 2's Turn**
+    - Current **N**: 10
+    - Digits: 1, 0
+    - Largest Digit: **1**
+    - Calculation: 10 - 1 = **9**
+    - New **N**: **9**
+
+17. **Player 1's Turn**
+    - Current **N**: 9
+    - Digits: **9**
+    - Largest Digit: **9**
+    - Calculation: 9 - 9 = **0**
+    - New **N**: **0**
+    - **Player 1 wins the game!**
+
+### Command-Line Interaction Sample
+
+Assuming a simple command-line interface, here's how the interaction might look:
+
+```
+Game Start! Initial N is 100.
+
+Player 1's Turn:
+Current N: 100
+Digits: [1, 0, 0]
+Largest Digit: 1
+Action: 100 - 1 = 99
+New N: 99
+
+Player 2's Turn:
+Current N: 99
+Digits: [9, 9]
+Largest Digit: 9
+Action: 99 - 9 = 90
+New N: 90
+
+Player 1's Turn:
+Current N: 90
+Digits: [9, 0]
+Largest Digit: 9
+Action: 90 - 9 = 81
+New N: 81
+
+...
+
+Player 1's Turn:
+Current N: 9
+Digits: [9]
+Largest Digit: 9
+Action: 9 - 9 = 0
+New N: 0
+
+Player 1 has reduced N to zero and wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves by considering how your subtraction will affect the upcoming largest digits.
+- **Manage High Digits**: Try to force your opponent into situations where they have to subtract smaller digits, prolonging the game in your favor.
+- **Control the Endgame**: Aim to be the player who reaches the single-digit numbers when possible, setting yourself up to win by reducing **N** to zero.
+
+## Conclusion
+
+Max Digit Zero is a simple yet strategic game that challenges players to think ahead and make calculated decisions. It is easy to learn and quick to play, making it perfect for a command-line interface implementation. Enjoy testing your numerical prowess against an opponent in this battle to zero!

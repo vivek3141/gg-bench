@@ -1,0 +1,180 @@
+**Parity War: A Strategic Number Selection Game**
+
+---
+
+### **Objective**
+
+The primary goal of Parity War is to be the last player able to make a legal move. Players take turns selecting numbers from a shared list, following specific parity rules. Strategic planning and foresight are crucial, as a skilled player can consistently force their opponent into a losing position.
+
+### **Setup**
+
+- **Number List**: Create a shared list of integers from **1 to 15**.
+- **Starting Player**: Decide who will take the first turn (e.g., flip a coin or mutual agreement).
+
+### **Game Components**
+
+- **Number List**: The central element of the game, comprising numbers **1** through **15**.
+  - **Appearance**: The numbers are displayed in a simple list format, e.g., `1, 2, 3, ..., 15`.
+  - **Functionality**: Numbers are selected and removed from the list during gameplay.
+  - **Unique Attributes**: Each number has a parity—**odd** or **even**—which dictates the flow of the game.
+
+### **Turns**
+
+- **Turn Structure**:
+  - **First Turn**: The starting player selects any number from the list.
+  - **Subsequent Turns**: Players alternate turns following the parity rule.
+- **Order of Actions**:
+  1. **Select a Number**: On your turn, choose a number from the list that adheres to the parity rule.
+  2. **Announce the Selection**: Clearly state the chosen number.
+  3. **Update the List**: Remove the selected number from the shared list.
+- **Progression of Turns**: Play continues with players alternating turns until one player cannot make a legal move.
+
+### **Rules and Mechanics**
+
+1. **Initial Move**:
+   - The first player may select **any number** from the list (numbers 1-15).
+2. **Parity Rule**:
+   - From the second turn onward, the number selected **must be of the opposite parity** (odd or even) to the number previously chosen by the opponent.
+     - If the opponent's last selected number was **odd**, you must choose an **even** number.
+     - If the opponent's last selected number was **even**, you must choose an **odd** number.
+3. **Legal Moves**:
+   - A move is legal if there is at least one number of the required parity remaining in the list.
+4. **Winning the Game**:
+   - If a player cannot make a legal move on their turn (i.e., there are no numbers of the required parity left), they **lose**, and their opponent **wins** the game.
+5. **Number Removal**:
+   - Once a number is selected, it is **removed** from the list and cannot be chosen again.
+6. **No Skipping Turns**:
+   - Players **must** take a turn if a legal move is available.
+7. **Invalid Moves**:
+   - Selecting a number of the incorrect parity is not allowed. If attempted, the player should be prompted to choose a valid number.
+
+### **Scoring**
+
+- **Victory**: The winner is the player who successfully forces their opponent into a position where they have no legal moves remaining.
+- **No Point System**: Parity War does not use a point-based scoring system; instead, the focus is on strategic elimination.
+
+### **Examples**
+
+#### **Example Game Playthrough**
+
+**Initial Number List**:
+
+`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15`
+
+**Turn 1**:
+- **Player 1** selects **8** (even).
+- **Updated List**: `1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15`
+
+**Turn 2**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **7** (odd).
+- **Updated List**: `1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15`
+
+**Turn 3**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Player 1** selects **12** (even).
+- **Updated List**: `1, 2, 3, 4, 5, 6, 9, 10, 11, 13, 14, 15`
+
+**Turn 4**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **15** (odd).
+- **Updated List**: `1, 2, 3, 4, 5, 6, 9, 10, 11, 13, 14`
+
+**Turn 5**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Player 1** selects **2** (even).
+- **Updated List**: `1, 3, 4, 5, 6, 9, 10, 11, 13, 14`
+
+**Turn 6**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **13** (odd).
+- **Updated List**: `1, 3, 4, 5, 6, 9, 10, 11, 14`
+
+**Turn 7**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Player 1** selects **14** (even).
+- **Updated List**: `1, 3, 4, 5, 6, 9, 10, 11`
+
+**Turn 8**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **11** (odd).
+- **Updated List**: `1, 3, 4, 5, 6, 9, 10`
+
+**Turn 9**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Player 1** selects **6** (even).
+- **Updated List**: `1, 3, 4, 5, 9, 10`
+
+**Turn 10**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **5** (odd).
+- **Updated List**: `1, 3, 4, 9, 10`
+
+**Turn 11**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Player 1** selects **4** (even).
+- **Updated List**: `1, 3, 9, 10`
+
+**Turn 12**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **9** (odd).
+- **Updated List**: `1, 3, 10`
+
+**Turn 13**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Player 1** selects **10** (even).
+- **Updated List**: `1, 3`
+
+**Turn 14**:
+- **Parity Requirement**: Player 2 must select an **odd** number.
+- **Player 2** selects **3** (odd).
+- **Updated List**: `1`
+
+**Turn 15**:
+- **Parity Requirement**: Player 1 must select an **even** number.
+- **Available Numbers**: Only **1** remains (odd).
+- **Outcome**: Player 1 cannot make a legal move and **loses**.
+- **Winner**: **Player 2**
+
+#### **Command-Line Interaction Example**
+
+```
+Number List: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+Player 1's turn.
+Select any number: 8
+
+Number List: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15
+Player 2's turn.
+You must select an odd number.
+Available odd numbers: 1, 3, 5, 7, 9, 11, 13, 15
+Select a number: 7
+
+Number List: 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15
+Player 1's turn.
+You must select an even number.
+Available even numbers: 2, 4, 6, 9, 10, 12, 14
+Select a number: 12
+
+... (continued gameplay)
+
+Number List: 1
+Player 1's turn.
+You must select an even number.
+Available even numbers: None
+No legal moves available. You lose!
+Player 2 wins the game.
+```
+
+### **Strategic Considerations**
+
+- **Planning Ahead**: Anticipate your opponent's options by tracking the remaining numbers of each parity.
+- **Parity Balance**: Be mindful of the number of odd and even numbers left to avoid being forced into a loss.
+- **First-Move Advantage**: Choosing the optimal starting number can influence the flow of the game.
+
+### **Summary**
+
+Parity War is a simple yet strategically rich game that can be easily played in a command-line interface. By requiring players to select numbers of alternating parity, it introduces a layer of complexity that rewards forward-thinking and tactical decision-making. The absence of a draw mechanism ensures that each game concludes decisively, and the quick gameplay allows for multiple rounds in a short period.
+
+---
+
+Enjoy playing Parity War, and may the most strategic player win!

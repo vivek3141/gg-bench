@@ -1,0 +1,10 @@
+In the game's action space, each action index corresponds to selecting a specific digit and assigning it to a particular slot. The action space has 27 possible actions, divided as follows:
+
+- There are 9 possible digits (1 through 9), and each can be assigned to one of 3 slots: hundreds, tens, or ones.
+- The mapping of action indices is structured such that:
+  - Each group of 3 indices corresponds to a single digit and covers all slot assignments for that digit.
+  - An action index, `a`, can be converted to a digit and a slot using the formulae:
+    - `digit = (a // 3) + 1`: This maps indices 0-2 to digit 1, 3-5 to digit 2, etc.
+    - `slot = a % 3`: This determines the slot, with index 0 for hundreds, 1 for tens, and 2 for ones.
+
+Thus, each action efficiently represents a move in selecting and placing a digit in the player's number.

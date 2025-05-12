@@ -1,0 +1,202 @@
+**Divisor Duel**
+
+**Objective:**
+
+Divisor Duel is a strategic two-player turn-based game where the primary goal is to avoid being the player who reduces the shared number to a prime number. The player who forces the shared number to become a prime at the end of their turn loses the game. Your objective is to manipulate the shared number in such a way that your opponent is compelled to reduce it to a prime number during their turn.
+
+---
+
+**Setup:**
+
+1. **Starting Number (N):**
+   - Decide on a starting number \( N \) (an integer greater than 2) that will serve as the shared number. This can be any positive integer agreed upon by both players. For a quick game, a starting number between 20 and 100 is recommended.
+
+2. **Determine Turn Order:**
+   - Flip a coin or agree on who will be **Player 1** and who will be **Player 2**.
+
+3. **Game Initialization:**
+   - Set the shared number \( N \) to the chosen starting number.
+
+---
+
+**Game Components:**
+
+1. **Shared Number (N):**
+   - This is the central element of the game. It starts at the agreed-upon value and gets reduced during the game. Players manipulate this number by subtracting proper divisors.
+
+2. **Proper Divisors:**
+   - The set of numbers that divide \( N \) without leaving a remainder, excluding 1 and \( N \) itself. These are the numbers players can choose to subtract from \( N \).
+
+3. **Players:**
+   - **Player 1** and **Player 2** alternate turns, making strategic choices to influence the outcome.
+
+---
+
+**Turns:**
+
+1. **Turn Structure:**
+   - Players take turns alternately, starting with **Player 1**.
+
+2. **On Your Turn:**
+   - **a.** **Identify Proper Divisors:**
+     - List all proper divisors of the current shared number \( N \) (exclude 1 and \( N \)).
+   - **b.** **Choose a Divisor:**
+     - Select one proper divisor from the list.
+   - **c.** **Subtract the Divisor:**
+     - Subtract the chosen divisor from \( N \) to obtain the new \( N \).
+   - **d.** **Announce Move:**
+     - Declare the chosen divisor and the new value of \( N \).
+
+3. **Turn Progression:**
+   - The updated \( N \) becomes the shared number for the next player's turn.
+   - The game continues until a player is forced to reduce \( N \) to a prime number.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Valid Moves:**
+   - You must subtract a proper divisor of \( N \) (excluding 1 and \( N \) itself).
+   - If \( N \) has no proper divisors other than 1 and itself (i.e., \( N \) is prime), you have no valid moves.
+
+2. **Prime Number Condition:**
+   - If, after your turn, \( N \) becomes a prime number, you lose the game.
+   - If it's your turn and \( N \) is already a prime number, you lose because you cannot make a valid move.
+
+3. **Winning the Game:**
+   - You win if your opponent is forced to reduce \( N \) to a prime number on their turn or cannot make a valid move because \( N \) is prime at the start of their turn.
+
+4. **No Reversals:**
+   - Once a move is made and \( N \) is updated, the move cannot be reversed.
+
+5. **Allowed Divisors:**
+   - Only proper divisors of \( N \) can be subtracted.
+   - Proper divisors are positive integers greater than 1 and less than \( N \) that divide \( N \) without leaving a remainder.
+
+---
+
+**Scoring:**
+
+- **Win-Loss Outcome:**
+  - There is no point system. The game results in a win for one player and a loss for the other.
+
+- **Victory Conditions:**
+  - **Win:** Your opponent reduces \( N \) to a prime number or cannot make a valid move.
+  - **Loss:** You reduce \( N \) to a prime number or cannot make a valid move.
+
+---
+
+**Examples:**
+
+**Example 1:**
+
+*Starting with \( N = 20 \)*
+
+1. **Player 1's Turn:**
+   - Proper divisors of 20: 2, 4, 5, 10
+   - Player 1 chooses to subtract 10.
+   - New \( N = 20 - 10 = 10 \)
+   - Announcement: "I subtract 10 from \( N \). New \( N \) is 10."
+
+2. **Player 2's Turn:**
+   - Proper divisors of 10: 2, 5
+   - Player 2 chooses to subtract 5.
+   - New \( N = 10 - 5 = 5 \)
+   - Announcement: "I subtract 5 from \( N \). New \( N \) is 5."
+
+3. **Player 1's Turn:**
+   - \( N = 5 \) is a prime number.
+   - Player 1 has no valid moves and loses the game.
+   - **Player 2 wins!**
+
+---
+
+**Example 2:**
+
+*Starting with \( N = 30 \)*
+
+1. **Player 1's Turn:**
+   - Proper divisors of 30: 2, 3, 5, 6, 10, 15
+   - Player 1 subtracts 15.
+   - New \( N = 30 - 15 = 15 \)
+   - Announcement: "I subtract 15 from \( N \). New \( N \) is 15."
+
+2. **Player 2's Turn:**
+   - Proper divisors of 15: 3, 5
+   - Player 2 subtracts 5.
+   - New \( N = 15 - 5 = 10 \)
+   - Announcement: "I subtract 5 from \( N \). New \( N \) is 10."
+
+3. **Player 1's Turn:**
+   - Proper divisors of 10: 2, 5
+   - Player 1 subtracts 5.
+   - New \( N = 10 - 5 = 5 \)
+   - Announcement: "I subtract 5 from \( N \). New \( N \) is 5."
+
+4. **Player 2's Turn:**
+   - \( N = 5 \) is a prime number.
+   - Player 2 has no valid moves and loses the game.
+   - **Player 1 wins!**
+
+---
+
+**Command-Line Interaction:**
+
+*Assuming starting \( N = 20 \)*
+
+- **Game Start:**
+  ```
+  Starting N is 20.
+  ```
+
+- **Player 1's Turn:**
+  ```
+  Current N: 20
+  Proper divisors of N: [2, 4, 5, 10]
+  Player 1, choose a divisor to subtract:
+  ```
+  - *Player 1 inputs:* `10`
+  ```
+  Player 1 subtracts 10 from N.
+  New N is 10.
+  ```
+
+- **Player 2's Turn:**
+  ```
+  Current N: 10
+  Proper divisors of N: [2, 5]
+  Player 2, choose a divisor to subtract:
+  ```
+  - *Player 2 inputs:* `5`
+  ```
+  Player 2 subtracts 5 from N.
+  New N is 5.
+  ```
+
+- **Player 1's Turn:**
+  ```
+  Current N: 5
+  N is a prime number.
+  Player 1 has no valid moves.
+  Player 2 wins the game!
+  ```
+
+---
+
+**Strategic Tips:**
+
+- **Plan Ahead:** Always consider the possible moves your opponent can make after your turn. Try to force them into a position where they have no choice but to reduce \( N \) to a prime.
+
+- **Prime Awareness:** Be mindful of the prime numbers less than the current \( N \). Aim to avoid leaving \( N \) at a value where the next subtraction will inevitably result in a prime number.
+
+- **Divisor Selection:** Sometimes subtracting a smaller divisor may be more strategic than a larger one, depending on the resulting \( N \) and its divisors.
+
+---
+
+**Conclusion:**
+
+Divisor Duel is an engaging game that combines elements of number theory and strategic planning. The simplicity of the rules makes it easy to learn and play, while the depth of strategy ensures that skilled players can consistently outmaneuver their opponents. Enjoy the challenge and may the best strategist win!
+
+---
+
+**Note:** This game is designed to be played in a command-line interface, but can also be enjoyed with pen and paper. The minimal components and straightforward mechanics make it easy to implement and play.

@@ -1,0 +1,282 @@
+# GridLock: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+GridLock is a competitive strategy game where two players navigate a shared grid to reach each other's starting positions. The primary goal is to be the first player to move your token to the opponent's starting square while strategically blocking their paths. Victory is achieved by successfully reaching the opponent's starting position or by trapping the opponent so they cannot make a legal move on their turn.
+
+## Setup
+
+- **Game Grid**: A 4x4 grid (4 rows and 4 columns) is used for gameplay.
+- **Starting Positions**:
+  - **Player 1** starts at the top-left corner of the grid (Position `(0,0)`).
+  - **Player 2** starts at the bottom-right corner of the grid (Position `(3,3)`).
+- **Blocked Cells**: Initially, all cells are unblocked except for the cells occupied by the players' tokens.
+- **Turn Order**: Players decide who goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Grid**:
+  - Represented as a 4x4 matrix, where each cell can be empty, occupied by a player's token, or blocked.
+- **Player Tokens**:
+  - **Player 1 Token**: Represented by `P1`.
+  - **Player 2 Token**: Represented by `P2`.
+- **Blocked Cells**:
+  - Represented by `X` on the grid.
+- **Empty Cells**:
+  - Represented by `.` on the grid.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **During a Turn**, a player performs the following actions in order:
+  1. **Move**: Move their token to an adjacent cell.
+  2. **Block**: Choose one adjacent cell (including diagonals) to block.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- A player can move their token to any **orthogonally adjacent** cell (up, down, left, or right).
+- Moves are only allowed to **unblocked and unoccupied** cells.
+- Players cannot move diagonally.
+
+### Blocking Rules
+
+- After moving, a player must block one **adjacent cell**, which can be any of the **eight surrounding cells** (including diagonals).
+- Blocked cells are impassable for both players for the remainder of the game.
+- A player **cannot** block a cell that is already blocked or occupied by either player's token.
+- If no adjacent cells are available to block (surrounded by blocked cells or edges of the grid), the player skips the blocking phase.
+
+### Winning the Game
+
+- A player **wins** by:
+  - Moving their token onto the opponent's starting position.
+  - **Or** if the opponent cannot make a legal move on their turn (they are "locked" in).
+
+### Losing the Game
+
+- A player **loses** if:
+  - They cannot make a legal move on their turn.
+  - The opponent reaches their starting position before they reach the opponent's.
+
+### Additional Rules
+
+- **No Passing**: Players must move on their turn if a legal move is available.
+- **No Self-Blocking**: A player cannot block the cell their own token occupies.
+- **Game End**: The game ends immediately when a win or loss condition is met.
+
+## Scoring
+
+- Since GridLock is a win-or-lose game with no point system, scoring is based on wins and losses.
+- Players may keep track of the number of games won to determine overall mastery.
+
+## Examples
+
+### Example Gameplay
+
+#### Initial Grid
+
+```
+P1 .  .  .
+ .  .  .  .
+ .  .  .  .
+ .  .  . P2
+```
+
+#### Turn 1: Player 1
+
+- **Move**: Player 1 moves to position `(0,1)`.
+
+  ```
+  . P1 .  .
+   .  .  .  .
+   .  .  .  .
+   .  .  . P2
+  ```
+
+- **Block**: Player 1 blocks position `(1,0)`.
+
+  ```
+  . P1 .  .
+  X  .  .  .
+   .  .  .  .
+   .  .  . P2
+  ```
+
+#### Turn 2: Player 2
+
+- **Move**: Player 2 moves to position `(3,2)`.
+
+  ```
+  . P1 .  .
+   X  .  .  .
+   .  .  .  .
+   .  . P2 .
+  ```
+
+- **Block**: Player 2 blocks position `(2,3)`.
+
+  ```
+  . P1 .  .
+   X  .  .  .
+   .  .  . X
+   .  . P2 .
+  ```
+
+#### Turn 3: Player 1
+
+- **Move**: Player 1 moves to position `(0,2)`.
+
+  ```
+  .  . P1 .
+   X  .  .  .
+   .  .  . X
+   .  . P2 .
+  ```
+
+- **Block**: Player 1 blocks position `(1,1)`.
+
+  ```
+  .  . P1 .
+   X  X  .  .
+   .  .  . X
+   .  . P2 .
+  ```
+
+#### Turn 4: Player 2
+
+- **Move**: Player 2 moves to position `(2,2)`.
+
+  ```
+  .  . P1 .
+   X  X  .  .
+   .  . P2 X
+   .  .  .  .
+  ```
+
+- **Block**: Player 2 blocks position `(2,1)`.
+
+  ```
+  .  . P1 .
+   X  X  .  .
+   . X P2 X
+   .  .  .  .
+  ```
+
+#### Turn 5: Player 1
+
+- **Move**: Player 1 moves to position `(1,2)`.
+
+  ```
+  .  .  .  .
+   X  X P1 .
+   . X P2 X
+   .  .  .  .
+  ```
+
+- **Block**: Player 1 attempts to block position `(2,2)`, but it's occupied.
+- **Blocks position `(0,2)` instead**.
+
+  ```
+  .  .  X  .
+   X  X P1 .
+   . X P2 X
+   .  .  .  .
+  ```
+
+#### Turn 6: Player 2
+
+- **Move**: Player 2 attempts to move but all adjacent cells are blocked or off the grid.
+
+  - Adjacent Cells:
+    - `(1,2)`: Occupied by Player 1.
+    - `(2,3)`: Blocked.
+    - `(3,2)`: Empty.
+
+- **Move**: Player 2 moves to `(3,2)`.
+
+  ```
+  .  .  X  .
+   X  X P1 .
+   . X  . X
+   .  . P2 .
+  ```
+
+- **Block**: Player 2 blocks position `(3,1)`.
+
+  ```
+  .  .  X  .
+   X  X P1 .
+   . X  . X
+   . X P2 .
+  ```
+
+#### Turn 7: Player 1
+
+- **Move**: Player 1 moves to `(1,3)`.
+
+  ```
+  .  .  X  .
+   X  X  . P1
+   . X  . X
+   . X P2 .
+  ```
+
+- **Block**: Player 1 blocks position `(2,3)`.
+
+  ```
+  .  .  X  .
+   X  X  . P1
+   . X  . X
+   . X P2 X
+  ```
+
+#### Turn 8: Player 2
+
+- **Player 2** has no legal moves (all adjacent cells are blocked or off the grid).
+
+- **Player 1 Wins** by trapping Player 2.
+
+## Command-Line Interactions
+
+### Notation
+
+- **Grid Coordinates**: `(row,column)` with rows and columns starting from `0`.
+- **Commands**:
+  - `move row column`: Move token to specified coordinates.
+  - `block row column`: Block the specified cell.
+
+### Sample Turn
+
+**Player 1's Turn**
+
+- Prompt: `Player 1, enter your move (e.g., 'move 0 1'):`
+- Player Input: `move 0 1`
+- Prompt: `Player 1, enter a cell to block (e.g., 'block 1 0'):`
+- Player Input: `block 1 0`
+- **Game Updates**:
+  - Moves `P1` to `(0,1)`.
+  - Blocks cell `(1,0)`.
+
+### Sample Invalid Move
+
+- Prompt: `Player 1, enter your move:`
+- Player Input: `move 0 1`
+- **Error Message**: `Invalid move. The cell is either blocked, occupied, or out of bounds. Please try again.`
+
+### End of Game
+
+- Message: `Player 1 has no legal moves left. Player 2 wins!`
+
+## Strategy Tips
+
+- **Balance Offense and Defense**:
+  - While advancing toward the opponent's starting position, carefully choose blocks to hinder their progress.
+- **Control the Center**:
+  - Blocking central cells can limit the opponent's movement options.
+- **Anticipate Moves**:
+  - Try to predict the opponent's paths and block them preemptively.
+
+## Conclusion
+
+GridLock is a simple yet deep strategy game that emphasizes spatial reasoning and forward planning. With no chance elements, a skilled player can consistently outmaneuver an unskilled opponent. The game's mechanics ensure quick gameplay, making it ideal for a command-line interface implementation and for players seeking a fast-paced strategic challenge.

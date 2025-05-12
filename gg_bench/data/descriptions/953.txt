@@ -1,0 +1,120 @@
+# Divide and Conquer
+
+## Objective
+
+**Divide and Conquer** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the player who reduces the shared number to exactly **1**. Players achieve victory by strategically dividing the current number by its proper divisors, aiming to force their opponent into a position where they cannot make a valid move.
+
+## Setup
+
+1. **Starting Number**: The game begins with a shared positive integer, known as the **Current Number**. It is recommended to start with **N = 100** for a standard game, but players can agree on any positive integer greater than **1** to vary the game's length and complexity.
+2. **Player Order**: Determine which player goes first. This can be decided randomly or by mutual agreement.
+
+## Game Components
+
+- **Current Number (N)**: A shared positive integer that both players manipulate during the game.
+- **Proper Divisors**: Positive integers greater than **1** and less than **N** that divide **N** without leaving a remainder.
+- **Command-Line Interface**: Players interact with the game by entering commands or numbers when prompted.
+
+## Turns
+
+1. **Turn Structure**:
+   - **Prompt**: The game displays the Current Number.
+   - **Player Action**: The current player selects a proper divisor of the Current Number.
+   - **Update**: The game updates the Current Number by dividing it by the chosen divisor and rounding down to the nearest whole number if necessary.
+2. **Order of Play**: Players alternate turns until the game ends.
+3. **Valid Moves**: On each turn, the player must select a proper divisor of the Current Number. The divisor must satisfy:
+   - **Greater than 1**.
+   - **Less than the Current Number**.
+   - **Divides the Current Number evenly (no remainder)**.
+
+## Rules and Mechanics
+
+1. **Choosing a Divisor**:
+   - The player must select a proper divisor of the Current Number.
+   - If no proper divisors are available (i.e., the Current Number is a prime number), the player loses their turn, and the opponent wins the game.
+2. **Updating the Current Number**:
+   - After a valid divisor is chosen, divide the Current Number by this divisor.
+   - The result becomes the new Current Number for the next turn.
+   - Example: If the Current Number is **50** and the player chooses **5**, the new Current Number is **50 / 5 = 10**.
+3. **Winning the Game**:
+   - The player who reduces the Current Number to exactly **1** on their turn wins the game.
+   - If a player cannot make a valid move because the Current Number has no proper divisors (and is not **1**), that player loses, and the opponent wins.
+4. **Invalid Moves**:
+   - If a player selects an invalid divisor (e.g., not a proper divisor, leaves a remainder, or is outside the allowed range), they are prompted to choose again.
+   - Repeated invalid attempts can result in a forfeit, based on mutual agreement or a predefined number of allowed retries.
+
+## Scoring
+
+- **Victory**: The game is won by the player who reduces the Current Number to **1**.
+- **No Point System**: There are no points tracked; the focus is on strategic play to force a win.
+- **Match Play**: Players can play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game
+
+**Starting Number**: 100
+
+#### Turn 1:
+- **Player 1's Turn**
+  - **Current Number**: 100
+  - **Proper Divisors** of 100: 2, 4, 5, 10, 20, 25, 50
+  - **Player 1 selects**: 4
+  - **New Current Number**: 100 / 4 = 25
+
+#### Turn 2:
+- **Player 2's Turn**
+  - **Current Number**: 25
+  - **Proper Divisors** of 25: 5
+  - **Player 2 selects**: 5
+  - **New Current Number**: 25 / 5 = 5
+
+#### Turn 3:
+- **Player 1's Turn**
+  - **Current Number**: 5
+  - **Proper Divisors** of 5: None (5 is prime)
+  - **Player 1 cannot make a valid move**.
+  - **Player 2 wins the game**.
+
+### Command-Line Interaction
+
+```plaintext
+Starting the game "Divide and Conquer"!
+
+Enter the starting number (N > 1): 100
+
+Player 1, it's your turn.
+Current Number: 100
+Proper Divisors: [2, 4, 5, 10, 20, 25, 50]
+Select a divisor: 4
+
+You selected 4.
+New Current Number: 25
+
+Player 2, it's your turn.
+Current Number: 25
+Proper Divisors: [5]
+Select a divisor: 5
+
+You selected 5.
+New Current Number: 5
+
+Player 1, it's your turn.
+Current Number: 5
+Proper Divisors: []
+No valid divisors available. Player 2 wins!
+```
+
+### Strategic Notes
+
+- **Planning Ahead**: Players should anticipate future moves by considering how their choice of divisor will affect the subsequent Current Number and the options available to the opponent.
+- **Forcing Moves**: Aim to leave the opponent with a prime number, where they cannot make a valid move.
+- **Avoiding Traps**: Be cautious of reducing the Current Number to a small prime number on your turn, as this can hand victory to the opponent.
+
+## Additional Notes
+
+- **Custom Starting Number**: Players can experiment with different starting numbers to vary the difficulty and length of the game.
+- **Time Limits**: For added challenge, impose a time limit per turn to encourage quick thinking.
+- **Variants**: Players can introduce new rules, such as allowing the subtraction of proper divisors instead of division, to create alternative versions of the game.
+
+Enjoy playing **Divide and Conquer**, and may the smartest strategist win!

@@ -1,0 +1,220 @@
+**Game Title:** Bit Battle
+
+---
+
+### **Objective**
+
+Be the first to capture all of your opponent's bits by strategically attacking their binary number. A player wins when their opponent's binary number is reduced to zero (all bits are set to `0`).
+
+---
+
+### **Setup**
+
+- **Players:** Two players, designated as Player 1 and Player 2.
+- **Initial Configuration:**
+  - Each player starts with an 8-bit binary number set to `11111111` (which is `255` in decimal).
+  - Bits are numbered from **1** (leftmost bit) to **8** (rightmost bit).
+
+---
+
+### **Game Components**
+
+- **Binary Numbers:**
+  - Each player has their own 8-bit binary number.
+  - **Bits:** Individual units in the binary number that can be either `1` (active) or `0` (inactive).
+- **Bit Positions:**
+  - Bits are assigned positions from 1 to 8.
+  - Position 1 is the most significant bit (leftmost), and position 8 is the least significant bit (rightmost).
+
+---
+
+### **Turns**
+
+- Players alternate turns, starting with Player 1.
+- **Turn Sequence:**
+  1. **Attack Phase:** Choose a bit position (1-8) to attack.
+  2. **Resolution Phase:** Resolve the attack according to the rules.
+  3. **End of Turn:** Turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Attacking:**
+   - On your turn, you must choose one bit position to attack.
+   - **Eligibility to Attack:**
+     - **Your bit at the chosen position must be active (`1`).**
+     - **You can attack only if your bit at that position is `1`.**
+     - If your bit at that position is `0`, you cannot use it to attack.
+   - **Attack Outcome:**
+     - If both your bit and the opponent's bit at the chosen position are `1`:
+       - **Opponent's bit is captured and set to `0`.**
+       - **Your bit is also expended and set to `0`.**
+     - If the opponent's bit at that position is already `0`:
+       - **Your bit is still expended and set to `0`.**
+       - No change to the opponent's bits.
+2. **Defending:**
+   - There is no active defense; the outcome depends solely on the attacking player's and opponent's bits.
+3. **Bit States:**
+   - Once a bit is set to `0`, it remains inactive for the rest of the game.
+4. **No Skipping Turns:**
+   - Players must attack on their turn if they have any active bits (`1`).
+   - If a player has no active bits, they forfeit their turns.
+5. **Winning the Game:**
+   - The first player to reduce all of their opponent's bits to `0` wins the game.
+
+---
+
+### **Scoring**
+
+- **Victory Condition:** Capture all 8 of your opponent's bits.
+- **No Points System:** The game does not use a points system; the focus is on strategic play to outmaneuver your opponent.
+- **No Draws:** The game cannot end in a draw; play continues until one player wins.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial State:**
+
+- **Player 1 Number:** `1 1 1 1 1 1 1 1`
+- **Player 2 Number:** `1 1 1 1 1 1 1 1`
+
+**Turn 1: Player 1 Attacks**
+
+- **Action:** Player 1 attacks bit position **3**.
+- **Conditions:**
+  - Player 1's bit 3: `1` (active)
+  - Player 2's bit 3: `1` (active)
+- **Outcome:**
+  - Player 1's bit 3 becomes `0`.
+  - Player 2's bit 3 becomes `0`.
+- **Updated Numbers:**
+  - **Player 1 Number:** `1 1 0 1 1 1 1 1`
+  - **Player 2 Number:** `1 1 0 1 1 1 1 1`
+
+**Turn 2: Player 2 Attacks**
+
+- **Action:** Player 2 attacks bit position **5**.
+- **Conditions:**
+  - Player 2's bit 5: `1` (active)
+  - Player 1's bit 5: `1` (active)
+- **Outcome:**
+  - Player 2's bit 5 becomes `0`.
+  - Player 1's bit 5 becomes `0`.
+- **Updated Numbers:**
+  - **Player 1 Number:** `1 1 0 1 0 1 1 1`
+  - **Player 2 Number:** `1 1 0 1 0 1 1 1`
+
+**Turn 3: Player 1 Attacks**
+
+- **Action:** Player 1 attacks bit position **2**.
+- **Conditions:**
+  - Player 1's bit 2: `1` (active)
+  - Player 2's bit 2: `1` (active)
+- **Outcome:**
+  - Player 1's bit 2 becomes `0`.
+  - Player 2's bit 2 becomes `0`.
+- **Updated Numbers:**
+  - **Player 1 Number:** `1 0 0 1 0 1 1 1`
+  - **Player 2 Number:** `1 0 0 1 0 1 1 1`
+
+**Turn 4: Player 2 Attacks**
+
+- **Action:** Player 2 attacks bit position **1**.
+- **Conditions:**
+  - Player 2's bit 1: `1` (active)
+  - Player 1's bit 1: `1` (active)
+- **Outcome:**
+  - Player 2's bit 1 becomes `0`.
+  - Player 1's bit 1 becomes `0`.
+- **Updated Numbers:**
+  - **Player 1 Number:** `0 0 0 1 0 1 1 1`
+  - **Player 2 Number:** `0 0 0 1 0 1 1 1`
+
+**Turn 5: Player 1 Attacks**
+
+- **Action:** Player 1 attacks bit position **4**.
+- **Conditions:**
+  - Player 1's bit 4: `1` (active)
+  - Player 2's bit 4: `1` (active)
+- **Outcome:**
+  - Player 1's bit 4 becomes `0`.
+  - Player 2's bit 4 becomes `0`.
+- **Updated Numbers:**
+  - **Player 1 Number:** `0 0 0 0 0 1 1 1`
+  - **Player 2 Number:** `0 0 0 0 0 1 1 1`
+
+**Game Continues:**
+
+- Players continue to attack using their remaining active bits.
+- **Strategic Choices:** Players must decide which bits to use for attack and consider the opponent's potential responses.
+
+**End Game Scenario:**
+
+- If Player 1 succeeds in capturing all of Player 2's bits before losing all of their own, Player 1 wins.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Notation:**
+
+- Bits are displayed from position 1 to 8.
+- Active bits are represented by `1`, inactive bits by `0`.
+- Players input the bit position they wish to attack.
+
+**Sample Turn:**
+
+```
+Player 1's Number: 1 0 1 1 0 1 1 1
+Player 2's Number: 0 0 1 1 0 1 1 1
+
+Player 1's Turn:
+Enter bit position to attack (1-8): 6
+
+Processing Attack...
+Player 1's bit at position 6: 1
+Player 2's bit at position 6: 1
+
+Attack Successful!
+Player 1's bit at position 6 is now 0.
+Player 2's bit at position 6 is now 0.
+
+Updated Numbers:
+Player 1's Number: 1 0 1 1 0 0 1 1
+Player 2's Number: 0 0 1 1 0 0 1 1
+
+Turn ends. It's now Player 2's turn.
+```
+
+---
+
+### **Strategic Tips**
+
+- **Resource Management:**
+  - Conserve your bits by choosing when to attack high-value positions.
+  - Avoid unnecessary attacks that don't significantly impact the opponent.
+- **Prioritizing Attacks:**
+  - Target bits that the opponent is likely to use against you.
+  - Consider which bits the opponent has left and plan accordingly.
+- **Anticipate Moves:**
+  - Predict the opponent's next attack and adjust your strategy.
+  - Use your bits to disable opponent's bits before they can use them against you.
+- **Balancing Offense and Defense:**
+  - While aggressive play can be rewarding, leaving yourself without active bits can be risky.
+  - Balance attacking with preserving key bits for future turns.
+
+---
+
+### **Conclusion**
+
+Bit Battle is a fast-paced, strategic game that tests players' ability to think ahead and manage limited resources. Its simplicity makes it easy to learn and play, while the depth of strategy ensures that skilled players can consistently outmaneuver their opponents.
+
+Enjoy the battle, and may the best strategist win!
+
+---
+
+**Note:** This game is designed to be implemented in a command-line interface and is simple to code using basic programming constructs. It provides a unique and engaging experience distinct from traditional games like Nim or Tic-Tac-Toe.

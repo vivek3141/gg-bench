@@ -1,0 +1,172 @@
+**Sequence Duel**  
+*An Original Two-Player Turn-Based Game*
+
+---
+
+### **Objective**
+
+Be the last player to successfully make a valid move according to the game rules. You win by forcing your opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+### **Setup**
+
+- **Number Sequence**: Start with an empty sequence.
+- **Available Numbers**: Digits from **1** to **9** (inclusive). Each number can be used only once during the game.
+
+---
+
+### **Game Components**
+
+- **Number Sequence**:
+  - A list that records the numbers played in order.
+  - Starts empty and grows as players add numbers on their turns.
+
+- **Available Numbers**:
+  - The digits **1** through **9**.
+  - Once a number is used, it cannot be selected again by either player.
+
+- **Players**:
+  - **Player 1** and **Player 2** alternate turns.
+  - Player 1 makes the first move.
+
+---
+
+### **Turns**
+
+- **Turn Order**:
+  - Players take turns alternately, starting with Player 1.
+
+- **Turn Actions**:
+  - **Select a Number**: Choose an unused number from **1** to **9**.
+  - **Add to Sequence**: Append the chosen number to the end of the sequence.
+  - **Validity Check**:
+    - **First Turn**: Any number from **1** to **9** can be chosen.
+    - **Subsequent Turns**: The chosen number must be a **factor** or **multiple** of the **last number** in the sequence.
+
+---
+
+### **Rules and Mechanics**
+
+1. **First Move**:
+   - Player 1 selects any number from **1** to **9** and adds it to the sequence.
+
+2. **Valid Numbers**:
+   - **Factors**: Numbers that divide evenly into the last number (without remainder).
+   - **Multiples**: Numbers that the last number divides evenly into.
+
+3. **Number Restrictions**:
+   - Each number from **1** to **9** can be used **only once**.
+   - Once a number is in the sequence, it cannot be selected again.
+
+4. **Valid Move Criteria**:
+   - The chosen number must satisfy:
+     - It is **unused**.
+     - It is a **factor** or **multiple** of the **last number** in the sequence.
+
+5. **Winning the Game**:
+   - **Victory Condition**: Your opponent cannot make a valid move on their turn.
+   - **Losing Condition**: You cannot make a valid move on your turn.
+
+---
+
+### **Examples**
+
+#### *Example Game Play:*
+
+1. **Game Start**:
+   - **Sequence**: *empty*
+   - **Available Numbers**: 1-9
+
+2. **Player 1's Turn**:
+   - Chooses **4**.
+   - **Sequence**: [4]
+   - **Available Numbers**: 1-3, 5-9
+
+3. **Player 2's Turn**:
+   - Last number is **4**.
+   - Valid options (factors/multiples of 4): **1**, **2**, **8**
+   - Chooses **2**.
+   - **Sequence**: [4, 2]
+   - **Available Numbers**: 1, 3, 5-9 (except 2 and 4)
+
+4. **Player 1's Turn**:
+   - Last number is **2**.
+   - Valid options: **1**, **6**, **8**
+   - Chooses **6**.
+   - **Sequence**: [4, 2, 6]
+   - **Available Numbers**: 1, 3, 5, 7-9
+
+5. **Player 2's Turn**:
+   - Last number is **6**.
+   - Valid options: **1**, **3**
+   - Chooses **3**.
+   - **Sequence**: [4, 2, 6, 3]
+   - **Available Numbers**: 1, 5, 7-9
+
+6. **Player 1's Turn**:
+   - Last number is **3**.
+   - Valid options: **1**, **9**
+   - Chooses **9**.
+   - **Sequence**: [4, 2, 6, 3, 9]
+   - **Available Numbers**: 1, 5, 7, 8
+
+7. **Player 2's Turn**:
+   - Last number is **9**.
+   - Valid option: **1**
+   - Chooses **1**.
+   - **Sequence**: [4, 2, 6, 3, 9, 1]
+   - **Available Numbers**: 5, 7, 8
+
+8. **Player 1's Turn**:
+   - Last number is **1**.
+   - Valid options: **5**, **7**, **8**
+   - Chooses **5**.
+   - **Sequence**: [4, 2, 6, 3, 9, 1, 5]
+   - **Available Numbers**: 7, 8
+
+9. **Player 2's Turn**:
+   - Last number is **5**.
+   - No valid moves (no factors/multiples left).
+   - **Player 2 loses**.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Player 1's Turn:**
+
+- **Prompt**: "Player 1, enter your number:"
+- **Input**: `4`
+- **Output**:
+  - "Sequence: [4]"
+  - "Available Numbers: 1-3, 5-9"
+
+**Player 2's Turn:**
+
+- **Prompt**: "Player 2, the last number is 4. Choose from factors/multiples: 1, 2, 8"
+- **Input**: `2`
+- **Output**:
+  - "Sequence: [4, 2]"
+  - "Available Numbers: 1, 3, 5-9"
+
+*...and so on.*
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead**: Anticipate which numbers will be available on your next turn.
+- **Limit Opponent's Options**: Choose numbers that leave your opponent with fewer valid moves.
+- **Number Awareness**: Keep track of which numbers have been used.
+
+---
+
+### **Game End**
+
+- When a player cannot make a valid move on their turn, the game ends.
+- The other player is declared the **winner**.
+
+---
+
+*Enjoy playing Sequence Duel and may the most strategic player win!*

@@ -1,0 +1,301 @@
+# **Game Rule Book: "Quantum Leap"**
+
+---
+
+## **Objective**
+
+Be the first player to reach the **Quantum Cell** on a linear grid by strategically moving your token through quantum leaps. The player who lands exactly on the Quantum Cell wins the game. There are no draws; the game continues until one player achieves victory.
+
+---
+
+## **Setup**
+
+1. **Game Board:**
+   - A linear grid consisting of **21 cells** numbered from **1** (starting cell) to **21** (Quantum Cell).
+   - Both players start off the grid before the first cell.
+
+2. **Player Tokens:**
+   - **Player 1:** Uses the token `X`.
+   - **Player 2:** Uses the token `O`.
+
+3. **Starting Positions:**
+   - Players decide who goes first (e.g., coin toss).
+   - Both tokens are placed off the grid, ready to enter at cell 1 on their first turn.
+
+---
+
+## **Game Components**
+
+1. **Linear Grid:**
+   - Cells numbered sequentially from **1** to **21**.
+   - Represented in the command-line interface as a series of numbers.
+
+2. **Player Tokens:**
+   - `X` for Player 1.
+   - `O` for Player 2.
+
+3. **Quantum Leap Mechanics:**
+   - Movement rules that allow players to advance strategically.
+
+---
+
+## **Turns**
+
+- Players alternate turns starting with the player determined during setup.
+
+### **Turn Structure**
+
+1. **Movement Phase:**
+   - The player moves their token forward on the grid according to the movement rules.
+
+2. **End of Turn:**
+   - After moving, control passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+1. **Entering the Grid:**
+   - On their first turn, a player places their token on **cell 1**.
+
+2. **Quantum Leaps:**
+   - On each subsequent turn, a player can move their token forward by a number of cells that **exactly divides the current cell number**.
+   - For example:
+     - If your token is on cell **4**, you can move forward by **1**, **2**, or **4** cells (since 1, 2, and 4 are divisors of 4).
+
+3. **Winning the Game:**
+   - The first player to land **exactly** on **cell 21** wins.
+   - Overshooting cell 21 is not allowed; you must land exactly on it.
+
+### **Special Rules**
+
+- **No Backward Movement:**
+  - Players cannot move backward; they must always move forward according to the movement rules.
+
+- **Exact Divisors Only:**
+  - Players must choose a move that is an exact divisor of their current cell number.
+  - If no valid moves are available (i.e., no divisors other than 1 that keep the player within the grid), the player must move forward by **1** cell (since **1** divides every number).
+
+- **Forced Moves:**
+  - If a player has only one valid move, they must take it.
+
+### **Interaction Between Players**
+
+- **Shared Cells Allowed:**
+  - Both players can occupy the same cell during the game.
+
+- **No Blocking:**
+  - Players do not block each other's movement.
+
+---
+
+## **Scoring**
+
+- **Victory Condition:**
+  - The first player to land exactly on cell **21** wins the game.
+
+- **No Draws:**
+  - If the game reaches a state where neither player can move to cell 21, the player who gets closest without overshooting wins.
+
+- **Forfeit:**
+  - If a player cannot make a valid move and cannot move forward by 1 without overshooting cell 21, they forfeit the game.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+#### **Initial Setup**
+
+- **Grid:**
+
+  ```
+  [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+  ```
+
+- **Player Positions:**
+  - Player 1 (`X`): Off the grid
+  - Player 2 (`O`): Off the grid
+
+#### **Turn-by-Turn Play**
+
+1. **Player 1's Turn:**
+   - Enters the grid on **cell 1**.
+   - Grid:
+
+     ```
+     [X] [2] [3] ... [21]
+     ```
+
+2. **Player 2's Turn:**
+   - Enters the grid on **cell 1**.
+   - Grid:
+
+     ```
+     [X,O] [2] [3] ... [21]
+     ```
+
+3. **Player 1's Turn:**
+   - Current cell: **1**
+   - Divisors of 1: **1**
+   - Moves forward by **1** cell to **cell 2**.
+   - Grid:
+
+     ```
+     [O] [X] [3] ... [21]
+     ```
+
+4. **Player 2's Turn:**
+   - Current cell: **1**
+   - Divisors of 1: **1**
+   - Moves forward by **1** cell to **cell 2**.
+   - Grid:
+
+     ```
+     [ ] [X,O] [3] ... [21]
+     ```
+
+5. **Player 1's Turn:**
+   - Current cell: **2**
+   - Divisors of 2: **1**, **2**
+   - Options: Move forward by **1** or **2**
+   - Chooses to move **2** cells to **cell 4**.
+   - Grid:
+
+     ```
+     [ ] [O] [3] [X] [5] ... [21]
+     ```
+
+6. **Player 2's Turn:**
+   - Current cell: **2**
+   - Divisors of 2: **1**, **2**
+   - Options: **1** or **2**
+   - Chooses to move **2** cells to **cell 4**.
+   - Grid:
+
+     ```
+     [ ] [ ] [3] [X,O] [5] ... [21]
+     ```
+
+7. **Player 1's Turn:**
+   - Current cell: **4**
+   - Divisors of 4: **1**, **2**, **4**
+   - Options: Move forward by **1**, **2**, or **4**
+   - Chooses to move **4** cells to **cell 8**.
+   - Grid:
+
+     ```
+     [ ] [ ] [3] [O] [5] [6] [7] [X] [9] ... [21]
+     ```
+
+8. **Player 2's Turn:**
+   - Current cell: **4**
+   - Divisors of 4: **1**, **2**, **4**
+   - Chooses to move **2** cells to **cell 6**.
+   - Grid:
+
+     ```
+     [ ] [ ] [3] [ ] [5] [O] [7] [X] [9] ... [21]
+     ```
+
+9. **Player 1's Turn:**
+   - Current cell: **8**
+   - Divisors of 8: **1**, **2**, **4**, **8**
+   - Options: Move forward by **1**, **2**, **4**, or **8**
+   - Chooses to move **8** cells to **cell 16**.
+   - Grid:
+
+     ```
+     [ ] [ ] [3] [ ] [5] [O] [7] [ ] [9] [10] [11] [12] [13] [14] [15] [X] [17] [18] [19] [20] [21]
+     ```
+
+10. **Player 2's Turn:**
+    - Current cell: **6**
+    - Divisors of 6: **1**, **2**, **3**, **6**
+    - Options: Move forward by **1**, **2**, **3**, or **6**
+    - Chooses to move **6** cells to **cell 12**.
+    - Grid:
+
+      ```
+      [ ] [ ] [3] [ ] [5] [ ] [7] [ ] [9] [10] [11] [O] [13] [14] [15] [X] [17] [18] [19] [20] [21]
+      ```
+
+11. **Player 1's Turn:**
+    - Current cell: **16**
+    - Divisors of 16: **1**, **2**, **4**, **8**, **16**
+    - Options: **1**, **2**, **4**, **8**, **16**
+    - Moving **8** cells to **cell 24** would overshoot (since grid ends at 21).
+    - Next highest option: Move **4** cells to **cell 20**.
+    - Grid:
+
+      ```
+      [ ] [ ] [3] [ ] [5] [ ] [7] [ ] [9] [10] [11] [O] [13] [14] [15] [ ] [17] [18] [19] [X] [21]
+      ```
+
+12. **Player 2's Turn:**
+    - Current cell: **12**
+    - Divisors of 12: **1**, **2**, **3**, **4**, **6**, **12**
+    - Options: Move **1**, **2**, **3**, **4**, **6**, or **12**
+    - Chooses to move **9** cells to **cell 21** is invalid (9 is not a divisor of 12).
+    - Chooses to move **9** cells is invalid.
+    - Chooses to move **6** cells to **cell 18**.
+    - Grid:
+
+      ```
+      [ ] [ ] [3] [ ] [5] [ ] [7] [ ] [9] [10] [11] [ ] [13] [14] [15] [ ] [17] [O] [19] [X] [21]
+      ```
+
+13. **Player 1's Turn:**
+    - Current cell: **20**
+    - Divisors of 20: **1**, **2**, **4**, **5**, **10**, **20**
+    - Options: Cannot move **1**, **2** without overshooting.
+    - Moving **1** cell to **cell 21**.
+    - **Player 1 wins** by landing exactly on cell **21**.
+
+---
+
+## **Command-Line Interaction Example**
+
+```
+Welcome to Quantum Leap!
+
+Player 1 (X), it's your turn.
+You are off the grid. Entering at cell 1.
+[X][2][3][4][5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20][21]
+
+Player 2 (O), it's your turn.
+You are off the grid. Entering at cell 1.
+[X,O][2][3][4][5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20][21]
+
+Player 1 (X), it's your turn.
+You are on cell 1.
+Possible moves: 1
+Choose your move: 1
+You move to cell 2.
+[ ][X][3][4][5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20][21]
+
+Player 2 (O), it's your turn.
+You are on cell 1.
+Possible moves: 1
+Choose your move: 1
+You move to cell 2.
+[ ][X,O][3][4][5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20][21]
+
+...
+
+Player 1 (X), it's your turn.
+You are on cell 20.
+Possible moves: 1
+Choose your move: 1
+You move to cell 21.
+Congratulations, Player 1! You have reached the Quantum Cell and won the game!
+```
+
+---
+
+## **Summary**
+
+"Quantum Leap" is a strategic two-player game that challenges players to think ahead and use divisibility rules to navigate a linear grid. By allowing only moves that are exact divisors of the current cell number, players must plan their leaps carefully to land exactly on the Quantum Cell (cell 21) to win. The simplicity of the game mechanics makes it easy to code and play via a command-line interface, while the strategic depth ensures skilled players have an advantage over unskilled players.

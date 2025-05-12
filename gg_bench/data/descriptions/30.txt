@@ -1,0 +1,182 @@
+# Sequence Capture - Game Rule Book
+
+## Objective
+
+**Sequence Capture** is a two-player, turn-based game designed for a command-line interface. The primary goal is to be the first player to claim a sequence of **four consecutive numbers** from a shared number line ranging from 1 to 10. Players must strategically select numbers to build their own sequence while blocking their opponent's progress.
+
+## Setup
+
+1. **Number Line Initialization**:
+   - A shared number line is displayed with numbers **1** through **10**.
+   - At the start, all numbers are unclaimed and available for selection.
+
+2. **Player Assignment**:
+   - Two players are identified as **Player 1** and **Player 2**.
+   - Each player is assigned a unique marker:
+     - **Player 1**: `X`
+     - **Player 2**: `O`
+
+3. **Starting Player**:
+   - Decide who goes first (e.g., coin toss, random selection, or mutual agreement).
+
+## Game Components
+
+- **Number Line**: Represents numbers from 1 to 10.
+  ```
+  1 2 3 4 5 6 7 8 9 10
+  ```
+- **Player Markers**:
+  - `X` for Player 1.
+  - `O` for Player 2.
+- **Command-Line Interface**:
+  - Displays the number line with claimed numbers marked.
+  - Prompts players for their input on their turn.
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns starting with the designated first player.
+- **Turn Actions**:
+  1. **Display**: The current state of the number line is shown.
+  2. **Selection**: The current player selects one unclaimed number to claim.
+  3. **Update**: The number line is updated with the player's marker on the claimed number.
+- **Invalid Moves**:
+  - Selecting an already claimed number is not allowed.
+  - If an invalid move is made, the player is prompted to select again.
+
+## Rules and Mechanics
+
+1. **Claiming Numbers**:
+   - On their turn, a player claims one unclaimed number from the number line.
+   - The claimed number is marked with the player's marker.
+
+2. **Building a Sequence**:
+   - The objective is to have four of your claimed numbers in consecutive order.
+   - Sequences can start at any number as long as they consist of four numbers in a row (e.g., 2-3-4-5).
+
+3. **Blocking Opponent**:
+   - Players may claim numbers that are strategic for blocking the opponent's potential sequences.
+
+4. **Winning the Game**:
+   - The first player to achieve a sequence of four consecutive claimed numbers wins immediately.
+
+5. **Game Continuation**:
+   - If neither player has achieved a sequence after all numbers are claimed, proceed to the tiebreaker.
+
+6. **Tiebreaker Mechanism** (No Draws Allowed):
+   - Compare the longest consecutive sequences claimed by each player.
+   - The player with the longer sequence wins.
+   - If both players have sequences of equal length, the player whose sequence starts with the lower number wins.
+
+## Scoring
+
+- **Winning**:
+  - Achieving a four-number consecutive sequence.
+  - Winning via the tiebreaker if necessary.
+- **Losing**:
+  - Failing to achieve the objective before the opponent.
+  - Having a shorter or higher-starting sequence in the tiebreaker.
+
+*Note*: There is no points system; the game results in a win or a loss.
+
+## Examples
+
+### Example Game Play
+
+#### Turn 1:
+
+- **Player 1's Turn**:
+  - Number Line: `1 2 3 4 5 6 7 8 9 10`
+  - Player 1 claims **5**.
+  - Updated Line: `1 2 3 4 [X] 6 7 8 9 10`
+
+#### Turn 2:
+
+- **Player 2's Turn**:
+  - Player 2 claims **6**.
+  - Updated Line: `1 2 3 4 [X] [O] 7 8 9 10`
+
+#### Turn 3:
+
+- **Player 1's Turn**:
+  - Player 1 claims **4**.
+  - Updated Line: `1 2 3 [X] [X] [O] 7 8 9 10`
+
+#### Turn 4:
+
+- **Player 2's Turn**:
+  - Player 2 claims **7**.
+  - Updated Line: `1 2 3 [X] [X] [O] [O] 8 9 10`
+
+#### Turn 5:
+
+- **Player 1's Turn**:
+  - Player 1 claims **3**.
+  - Updated Line: `1 2 [X] [X] [X] [O] [O] 8 9 10`
+
+#### Turn 6:
+
+- **Player 2's Turn**:
+  - Player 2 claims **8**.
+  - Updated Line: `1 2 [X] [X] [X] [O] [O] [O] 9 10`
+
+#### Turn 7:
+
+- **Player 1's Turn**:
+  - Player 1 claims **2**.
+  - Updated Line: `1 [X] [X] [X] [X] [O] [O] [O] 9 10`
+
+- **Win Condition Check**:
+  - Player 1 has claimed numbers **2**, **3**, **4**, **5**.
+  - This is a sequence of four consecutive numbers.
+  - **Player 1 wins the game**.
+
+### Command-Line Interaction Sample
+
+#### At the Start:
+
+```
+Number Line:
+1 2 3 4 5 6 7 8 9 10
+
+Player 1 (X), select a number to claim:
+> 5
+
+Number Line:
+1 2 3 4 [X] 6 7 8 9 10
+```
+
+#### Next Turn:
+
+```
+Player 2 (O), select a number to claim:
+> 6
+
+Number Line:
+1 2 3 4 [X] [O] 7 8 9 10
+```
+
+*...and so on until the game concludes.*
+
+## Strategic Tips
+
+- **Anticipate Moves**:
+  - Pay attention to which numbers your opponent is claiming.
+  - Try to predict their intended sequence and block it.
+
+- **Prioritize Middle Numbers**:
+  - Claiming middle numbers (like 5 and 6) gives more flexibility for building sequences.
+
+- **Create Multiple Options**:
+  - Work towards building more than one potential sequence to adapt to your opponent's moves.
+
+- **Blocking Early**:
+  - If your opponent starts building a sequence, block it early before it's too late.
+
+## Conclusion
+
+Sequence Capture is a quick and strategic game that tests your foresight and ability to anticipate your opponent's moves. Simple to learn and play, it provides depth for players who enjoy planning and strategy in a minimalistic game setting.
+
+Enjoy the game and may the best strategist win!
+
+---

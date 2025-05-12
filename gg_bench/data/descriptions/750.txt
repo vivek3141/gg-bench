@@ -1,0 +1,234 @@
+# Number Maze Duel - Rule Book
+
+## Objective
+
+**Be the first player to reach exactly the target number by sequentially applying allowed mathematical operations to the current number.**
+
+Players take turns applying operations to a shared current number. The first to reach the agreed-upon target number wins the game.
+
+---
+
+## Setup
+
+1. **Agree on Game Parameters:**
+   - **Start Number:** The number from which the game begins (e.g., `1`).
+   - **Target Number:** The exact number players aim to reach (e.g., `20`).
+   - **Allowed Operations:** A predefined set of mathematical operations that can be applied to the current number (e.g., `+1`, `×2`).
+
+2. **Initialize the Game:**
+   - Set the **Current Number** to the **Start Number**.
+
+---
+
+## Game Components
+
+- **Start Number:**
+  - The initial number from which calculations begin.
+  - Must be a positive integer.
+
+- **Target Number:**
+  - The specific number players aim to reach.
+  - Must be greater than the Start Number.
+
+- **Allowed Operations:**
+  - A list of mathematical operations agreed upon before the game starts.
+  - Examples include:
+    - Addition: `+1`, `+2`, `+5`, etc.
+    - Multiplication: `×2`, `×3`, etc.
+    - Subtraction: `-1`, `-2`, etc. (resulting number must remain positive)
+    - Division: `÷2`, `÷3`, etc. (result must be an integer)
+  - Operations must always result in an integer when applied to the Current Number.
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players decide who goes first (e.g., by coin toss).
+   - Players alternate turns thereafter.
+
+2. **Player Actions on Their Turn:**
+   - **Select an Operation:** Choose one operation from the Allowed Operations.
+   - **Apply the Operation:** Perform the operation on the Current Number.
+   - **Update the Current Number:** The result becomes the new Current Number.
+
+3. **Turn Progression:**
+   - The turn passes to the next player with the updated Current Number.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - Operations must be selected from the Allowed Operations.
+   - The result of the operation must be:
+     - An integer.
+     - Greater than zero.
+     - Not exceeding the Target Number.
+
+2. **Winning the Game:**
+   - A player wins if:
+     - They reach **exactly** the Target Number on their turn after applying an operation.
+   
+3. **Losing the Game:**
+   - A player loses if:
+     - They have no valid operations that can be applied without exceeding the Target Number.
+     - They exceed the Target Number by applying an operation (invalid move).
+
+4. **Additional Rules:**
+   - **No Skipping Turns:** Players must make a move if a valid one exists.
+   - **Operation Limits:** Each operation can be used any number of times unless otherwise agreed upon.
+   - **Enforcement of Integer Results:** All operation results must be integers; operations resulting in fractions or decimals are invalid.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The first player to reach the Target Number wins the game.
+- **Tracking Wins:**
+  - Players can play multiple rounds, keeping track of the number of games won.
+
+---
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+- **Start Number:** `1`
+- **Target Number:** `10`
+- **Allowed Operations:** `+1`, `×2`
+
+#### Game Play:
+
+1. **Player 1's Turn:**
+   - Current Number: `1`
+   - Chooses `×2` → `1 × 2 = 2`
+   - New Current Number: `2`
+
+2. **Player 2's Turn:**
+   - Current Number: `2`
+   - Chooses `×2` → `2 × 2 = 4`
+   - New Current Number: `4`
+
+3. **Player 1's Turn:**
+   - Current Number: `4`
+   - Chooses `+1` → `4 + 1 = 5`
+   - New Current Number: `5`
+
+4. **Player 2's Turn:**
+   - Current Number: `5`
+   - Chooses `×2` → `5 × 2 = 10`
+   - New Current Number: `10`
+   - **Player 2 wins by reaching the Target Number.**
+
+### Example 2: Strategic Play
+
+- **Start Number:** `3`
+- **Target Number:** `23`
+- **Allowed Operations:** `+2`, `×3`
+
+#### Game Play:
+
+1. **Player 1's Turn:**
+   - Current Number: `3`
+   - Chooses `×3` → `3 × 3 = 9`
+   - New Current Number: `9`
+
+2. **Player 2's Turn:**
+   - Current Number: `9`
+   - Chooses `+2` → `9 + 2 = 11`
+   - New Current Number: `11`
+
+3. **Player 1's Turn:**
+   - Current Number: `11`
+   - Chooses `×3` → `11 × 3 = 33`
+   - Exceeds Target Number (`33 > 23`)
+   - **Invalid move; Player 1 loses.**
+
+---
+
+## Command-Line Interaction Examples
+
+### Beginning the Game
+
+- **Display:**
+  ```
+  Start Number: 1
+  Target Number: 15
+  Allowed Operations: +1, ×2
+  Current Number: 1
+  ```
+
+### During a Turn
+
+- **Player 1's Turn:**
+  ```
+  Player 1, choose an operation (+1, *2): *2
+  New Current Number: 2
+  ```
+
+- **Player 2's Turn:**
+  ```
+  Current Number: 2
+  Player 2, choose an operation (+1, *2): +1
+  New Current Number: 3
+  ```
+
+### Invalid Move Example
+
+- **Player's Turn:**
+  ```
+  Current Number: 14
+  Player 1, choose an operation (+1, *2): *2
+  Error: Result exceeds the target number. Choose a valid operation.
+  ```
+
+### Winning the Game
+
+- **Final Turn:**
+  ```
+  Current Number: 14
+  Player 2, choose an operation (+1, *2): +1
+  New Current Number: 15
+  Congratulations, Player 2! You have reached the target number and won the game!
+  ```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:**
+  - Anticipate future moves to avoid positions where you have no valid operations.
+  
+- **Control the Flow:**
+  - Force the current number into values that limit your opponent's options.
+
+- **Operation Choice:**
+  - Sometimes adding a smaller number is better to prevent overshooting the target.
+
+- **Operation Sequence:**
+  - Think in terms of sequences that will get you to the target first.
+
+---
+
+## Adjusting Difficulty and Complexity
+
+- **Changing Allowed Operations:**
+  - Introduce more complex operations (e.g., `^2` for squaring, `-3` subtraction).
+  
+- **Setting Different Targets:**
+  - Larger target numbers increase game length and complexity.
+
+- **Limiting Operations:**
+  - Restrict the number of times an operation can be used to add depth.
+
+---
+
+## Conclusion
+
+Number Maze Duel is a simple yet strategic game that challenges players to think ahead and use basic arithmetic operations to outmaneuver their opponent. By adjusting the game parameters, players can tailor the game's complexity to their preference, ensuring a fun and engaging experience every time.
+
+---
+
+Happy gaming!

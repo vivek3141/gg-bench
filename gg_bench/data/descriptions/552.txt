@@ -1,0 +1,317 @@
+# Opposite Ends: A Strategy Game for Two Players
+
+## Objective
+
+**Opposite Ends** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to avoid being the first player whose accumulated total exceeds a target sum of **50**. Players take turns removing numbers from either end of a shared linear sequence, strategically selecting numbers to accumulate points while limiting their opponent's options.
+
+**Victory Conditions:**
+
+- **Loss:** A player loses immediately if their accumulated total exceeds 50.
+- **Win:** If all numbers are exhausted without any player exceeding 50, the player with the **lower** accumulated total wins.
+
+---
+
+## Setup
+
+1. **Initial Sequence:**
+
+   - Create a linear list (array) of consecutive integers from **1** to **20**, arranged in ascending order.
+   - The sequence represents the pool of numbers available for selection.
+
+     ```
+     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+      11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+     ```
+
+2. **Player Totals:**
+
+   - Both players start with an accumulated total of **0**.
+   - Player totals are tracked separately.
+
+3. **Determine First Player:**
+
+   - Decide which player goes first (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+1. **Number Sequence:**
+
+   - A shared list of numbers from **1** to **20**.
+   - The sequence is dynamic and shrinks as numbers are removed.
+
+2. **Player Accumulated Totals:**
+
+   - Each player has a running total of the numbers they have collected.
+   - Totals are updated after each turn.
+
+3. **Turns Indicator:**
+
+   - A prompt to indicate which player's turn it is.
+
+4. **Command-Line Interface:**
+
+   - Players interact with the game via text input.
+   - The interface displays the current sequence, player totals, and prompts for actions.
+
+---
+
+## Turns
+
+1. **Turn Structure:**
+
+   - Players alternate turns, starting with the first player determined during setup.
+   - On their turn, a player performs the following actions:
+
+     a. **View Current Sequence and Totals:**
+
+        - The game displays the current number sequence.
+        - Both players' accumulated totals are shown.
+
+     b. **Choose a Number:**
+
+        - The player selects a number from either **end** of the sequence (the first or last number).
+        - The choice is entered into the command line.
+
+     c. **Update Totals and Sequence:**
+
+        - The chosen number is added to the player's accumulated total.
+        - The number is removed from the sequence.
+
+     d. **Check for Loss Condition:**
+
+        - If the player's total exceeds **50**, they lose immediately.
+        - If not, the game proceeds to the next player's turn.
+
+2. **Turn Progression:**
+
+   - The game continues with players alternating turns until a win or loss condition is met.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+
+   - On each turn, a player **must** remove **one** number from either the **start** (left end) or **end** (right end) of the sequence.
+   - Only the first or last number in the current sequence can be chosen.
+
+2. **Accumulating Totals:**
+
+   - The selected number is **added** to the player's accumulated total.
+   - The total reflects the sum of all numbers the player has selected throughout the game.
+
+3. **Sequence Update:**
+
+   - After a number is selected, it is **removed** from the sequence.
+   - The sequence shrinks and updates are shown to both players.
+
+4. **Loss Condition:**
+
+   - If a player's accumulated total **exceeds 50** after their turn, they **immediately lose** the game.
+
+5. **Win Condition:**
+
+   - If all numbers are exhausted without any player exceeding 50, the player with the **lower** accumulated total **wins** the game.
+
+6. **Tie Condition:**
+
+   - Since the sequence has an even number of numbers (20), and both players start at zero, it's possible for both players to end with the same total.
+   - In the event of a tie, the **second player** (the one who did not start the game) **wins**.
+
+7. **Invalid Moves:**
+
+   - Players **must** choose a number from the ends of the sequence.
+   - Selecting a number from the middle or an invalid index results in a prompt to choose again.
+
+---
+
+## Scoring
+
+- **Player Accumulated Total:**
+
+  - Represents the player's score.
+  - Updated each turn by adding the selected number.
+
+- **Winning the Game:**
+
+  - Avoid exceeding an accumulated total of 50.
+  - Aim for a lower total than your opponent if all numbers are used.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup:**
+
+- Sequence:
+
+  ```
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+   11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  ```
+
+- Player Totals:
+
+  - Player 1: 0
+  - Player 2: 0
+
+**Turn-by-Turn Breakdown:**
+
+---
+
+**Turn 1: Player 1**
+
+- **Sequence:** [**1**, 2, ..., 19, 20]
+- **Player 1 Choice:** Removes **1** from the start.
+- **Player 1 Total:** 0 + 1 = **1**
+- **Updated Sequence:** [2, 3, ..., 19, 20]
+
+---
+
+**Turn 2: Player 2**
+
+- **Sequence:** [2, 3, ..., 19, **20**]
+- **Player 2 Choice:** Removes **20** from the end.
+- **Player 2 Total:** 0 + 20 = **20**
+- **Updated Sequence:** [2, 3, ..., 19]
+
+---
+
+**Turn 3: Player 1**
+
+- **Sequence:** [**2**, 3, ..., 19]
+- **Player 1 Choice:** Removes **2** from the start.
+- **Player 1 Total:** 1 + 2 = **3**
+- **Updated Sequence:** [3, 4, ..., 19]
+
+---
+
+**Turn 4: Player 2**
+
+- **Sequence:** [3, 4, ..., 19]
+- **Player 2 Choice:** Removes **19** from the end.
+- **Player 2 Total:** 20 + 19 = **39**
+- **Updated Sequence:** [3, 4, ..., 18]
+
+---
+
+**Turn 5: Player 1**
+
+- **Sequence:** [**3**, 4, ..., 18]
+- **Player 1 Choice:** Removes **3** from the start.
+- **Player 1 Total:** 3 + 3 = **6**
+- **Updated Sequence:** [4, 5, ..., 18]
+
+---
+
+**Turn 6: Player 2**
+
+- **Sequence:** [4, 5, ..., **18**]
+- **Player 2 Choice:** Removes **18** from the end.
+- **Player 2 Total:** 39 + 18 = **57**
+- **Player 2's total exceeds 50.**
+
+---
+
+**Conclusion:**
+
+- **Player 2 loses** as their total is **57**, which exceeds **50**.
+- **Player 1 wins** the game.
+
+---
+
+### Strategic Considerations
+
+- **Managing Totals:**
+
+  - Players should monitor both their own and their opponent's totals.
+  - Aim to force the opponent into selecting high numbers.
+
+- **Sequence Awareness:**
+
+  - Be mindful of the numbers remaining in the sequence.
+  - Anticipate future moves based on available numbers.
+
+- **Forcing Moves:**
+
+  - By selecting certain numbers, you can limit your opponent's options.
+  - Try to leave high numbers for your opponent when their total is near 50.
+
+---
+
+## Sample Command-Line Interaction
+
+**Game Start:**
+
+```
+Welcome to Opposite Ends!
+
+Current Sequence:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 1 Total: 0
+Player 2 Total: 0
+
+Player 1, it's your turn.
+Choose a number from the start (1) or end (20) of the sequence.
+Enter 'start' or 'end':
+```
+
+**Player Input:**
+
+```
+start
+```
+
+**Game Responds:**
+
+```
+You selected 1 from the start.
+Player 1 Total: 1
+
+Updated Sequence:
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 
+ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 2, it's your turn.
+Choose a number from the start (2) or end (20) of the sequence.
+Enter 'start' or 'end':
+```
+
+**Player 2 Input:**
+
+```
+end
+```
+
+**Game Responds:**
+
+```
+You selected 20 from the end.
+Player 2 Total: 20
+
+Updated Sequence:
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 
+ 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+Player 1, it's your turn.
+Choose a number from the start (2) or end (19) of the sequence.
+Enter 'start' or 'end':
+```
+
+---
+
+*The game continues in this fashion until a player loses by exceeding a total of 50 or all numbers are exhausted.*
+
+---
+
+## Conclusion
+
+**Opposite Ends** is a simple yet strategically rich game that combines arithmetic with foresight. Its straightforward mechanics make it easy to code and play in a command-line interface, while the depth of strategy ensures engaging and competitive gameplay. Players must carefully balance their selections to avoid surpassing the target total while positioning themselves to win.
+
+Enjoy the challenge of **Opposite Ends** and may the most strategic player win!

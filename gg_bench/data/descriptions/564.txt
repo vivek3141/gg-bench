@@ -1,0 +1,240 @@
+# Factor Frenzy
+
+Welcome to **Factor Frenzy**, a strategic two-player turn-based game of numbers and foresight. Engage in a battle of wits as you and your opponent select numbers, eliminating options and aiming to outmaneuver each other. Simple to learn yet rich in strategy, **Factor Frenzy** promises quick gameplay with depth for those who seek it.
+
+## Objective
+
+The primary goal of **Factor Frenzy** is to be the last player able to select a valid number from the available list. On each turn, players pick a number, which then affects the choices available in subsequent turns. A player loses if they cannot select a valid number on their turn.
+
+## Setup
+
+1. **Number Pool**: Create a list of integers from **2 to 50**, inclusive.
+2. **Available Numbers**: Initially, all numbers in the list are available for selection.
+3. **Starting Player**: Decide who goes first (e.g., flip a coin or have the younger player start).
+
+## Game Components
+
+- **Number Pool**: The numbers **2 through 50** act as the central elements of the game.
+- **Selection List**: A dynamic list that updates as numbers are chosen and eliminated.
+- **Player Indicators**: Each player may be represented by their name or an identifier (e.g., Player 1 and Player 2).
+
+The game is played in a command-line interface where the current state of the **Available Numbers** list is displayed after each turn.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the designated first player.
+- **Player Actions**:
+  - **Select a Number**: On your turn, choose any number from the **Available Numbers** list.
+  - **Update List**: After selection, eliminate certain numbers from the list based on the rules.
+- **Turn Progression**: The game continues with players alternating turns until a player cannot make a valid selection on their turn.
+
+## Rules and Mechanics
+
+### 1. Selecting a Number
+
+- **Valid Selection**: You may select **any number** from the **Available Numbers** list.
+- **Unique Selection**: A number can only be selected **once** during the game.
+
+### 2. Eliminating Numbers
+
+After a number is selected:
+
+- **Remove the Selected Number**: The chosen number is removed from the **Available Numbers** list.
+- **Remove Proper Divisors**:
+  - Eliminate all proper divisors of the selected number from the list.
+  - *Proper Divisors* are numbers less than the selected number that divide it exactly (without leaving a remainder).
+- **Remove Proper Multiples**:
+  - Eliminate all proper multiples of the selected number from the list.
+  - *Proper Multiples* are numbers greater than the selected number that the selected number divides into exactly.
+
+**Note**: The number **1** is excluded from the game and is not considered a proper divisor for the purposes of elimination.
+
+### 3. Winning the Game
+
+- **Victory Condition**: If your opponent cannot select a valid number on their turn because there are no valid options remaining, you win the game.
+- **Forfeit**: If a player erroneously selects an invalid number (e.g., a number not in the Available Numbers list), they forfeit the game.
+
+## Scoring
+
+**Factor Frenzy** is typically played in single rounds with the winner being the player who successfully forces the opponent into a position with no valid moves.
+
+For extended play:
+
+- **Match Play**: Players can compete in a series of games (e.g., best of three or five).
+- **Point System**:
+  - **Win**: 1 point.
+  - **Loss**: 0 points.
+- The player with the most points at the end of the series wins the match.
+
+## Examples
+
+### Example Game Play
+
+**Initial Available Numbers**:
+
+```
+2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+```
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Selects**: **7**
+   - **Eliminates**:
+     - **Selected Number**: 7
+     - **Proper Divisors of 7**: None (since 1 is excluded)
+     - **Proper Multiples of 7**: 14, 21, 28, 35, 42, 49
+   - **Updated Available Numbers**: (Numbers excluding 7, 14, 21, 28, 35, 42, 49)
+
+2. **Player 2's Turn**:
+   - **Selects**: **9**
+   - **Eliminates**:
+     - **Selected Number**: 9
+     - **Proper Divisors of 9**: 3
+     - **Proper Multiples of 9**: 18, 27, 36, 45
+   - **Updated Available Numbers**: (Remaining numbers excluding 9, 3, 18, 27, 36, 45)
+
+3. **Player 1's Turn**:
+   - **Selects**: **11**
+   - **Eliminates**:
+     - **Selected Number**: 11
+     - **Proper Divisors of 11**: None
+     - **Proper Multiples of 11**: 22, 33, 44
+   - **Updated Available Numbers**: (Remaining numbers excluding 11, 22, 33, 44)
+
+4. **Player 2's Turn**:
+   - **Selects**: **13**
+   - **Eliminates**:
+     - **Selected Number**: 13
+     - **Proper Divisors of 13**: None
+     - **Proper Multiples of 13**: 26, 39
+   - **Updated Available Numbers**: (Remaining numbers excluding 13, 26, 39)
+
+5. **Player 1's Turn**:
+   - **Selects**: **5**
+   - **Eliminates**:
+     - **Selected Number**: 5
+     - **Proper Divisors of 5**: None
+     - **Proper Multiples of 5**: 10, 15, 20, 25, 30, 35 (already eliminated), 40, 45 (already eliminated), 50
+   - **Updated Available Numbers**: (Remaining numbers excluding 5, 10, 15, 20, 25, 30, 40, 50)
+
+6. **Player 2's Turn**:
+   - **Selects**: **17**
+   - **Eliminates**:
+     - **Selected Number**: 17
+     - **Proper Divisors of 17**: None
+     - **Proper Multiples of 17**: 34
+   - **Updated Available Numbers**: (Remaining numbers excluding 17, 34)
+
+7. **Player 1's Turn**:
+   - **Selects**: **19**
+   - **Eliminates**:
+     - **Selected Number**: 19
+     - **Proper Divisors of 19**: None
+     - **Proper Multiples of 19**: 38
+   - **Updated Available Numbers**: (Remaining numbers excluding 19, 38)
+
+8. **Player 2's Turn**:
+   - **Selects**: **23**
+   - **Eliminates**:
+     - **Selected Number**: 23
+     - **Proper Divisors of 23**: None
+     - **Proper Multiples of 23**: 46
+   - **Updated Available Numbers**: (Remaining numbers excluding 23, 46)
+
+9. **Player 1's Turn**:
+   - **Selects**: **29**
+   - **Eliminates**:
+     - **Selected Number**: 29
+     - **Proper Divisors of 29**: None
+     - **Proper Multiples of 29**: None (since multiples exceed 50)
+   - **Updated Available Numbers**: (Remaining numbers excluding 29)
+
+10. **Player 2's Turn**:
+    - **Selects**: **31**
+    - **Eliminates**:
+      - **Selected Number**: 31
+      - **Proper Divisors of 31**: None
+      - **Proper Multiples of 31**: None (since multiples exceed 50)
+    - **Updated Available Numbers**: (Remaining numbers excluding 31)
+
+11. **Player 1's Turn**:
+    - **Selects**: **37**
+    - **Eliminates**:
+      - **Selected Number**: 37
+      - **Proper Divisors of 37**: None
+      - **Proper Multiples of 37**: None (since multiples exceed 50)
+    - **Updated Available Numbers**: (Remaining numbers excluding 37)
+
+12. **Player 2's Turn**:
+    - **Selects**: **41**
+    - **Eliminates**:
+      - **Selected Number**: 41
+      - **Proper Divisors of 41**: None
+      - **Proper Multiples of 41**: None (since multiples exceed 50)
+    - **Updated Available Numbers**: (Remaining numbers excluding 41)
+
+13. **Player 1's Turn**:
+    - **Selects**: **43**
+    - **Eliminates**:
+      - **Selected Number**: 43
+      - **Proper Divisors of 43**: None
+      - **Proper Multiples of 43**: None (since multiples exceed 50)
+    - **Updated Available Numbers**: (Remaining numbers excluding 43)
+
+14. **Player 2's Turn**:
+    - **Selects**: **47**
+    - **Eliminates**:
+      - **Selected Number**: 47
+      - **Proper Divisors of 47**: None
+      - **Proper Multiples of 47**: None (since multiples exceed 50)
+    - **Updated Available Numbers**: (Remaining numbers excluding 47)
+
+15. **Player 1's Turn**:
+    - **Available Numbers**: None
+    - **Outcome**: Player 1 cannot make a valid move.
+    - **Winner**: **Player 2**
+
+### Command-Line Interaction Example
+
+```plaintext
+Welcome to Factor Frenzy!
+
+Available Numbers:
+2, 3, 4, ..., 50
+
+Player 1's turn.
+Select a number: 7
+You selected 7.
+Eliminated: 7, 14, 21, 28, 35, 42, 49
+
+Available Numbers:
+2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 22, 23, 24,
+25, 26, 27, 29, 30, 31, 32, 33, 34, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46,
+47, 48, 50
+
+Player 2's turn.
+Select a number: 9
+You selected 9.
+Eliminated: 9, 3, 18, 27, 36, 45
+
+... [Game continues as per the example above] ...
+
+Player 1's turn.
+No available numbers left to select.
+Player 1 cannot make a valid move.
+Player 2 wins the game!
+```
+
+## Strategic Tips
+
+- **Prioritize Prime Numbers**: Selecting prime numbers can be advantageous since they have no proper divisors (other than 1, which is excluded).
+- **Block Opponent Options**: Choose numbers whose multiples are still available to eliminate more options for your opponent.
+- **Plan Ahead**: Keep track of remaining numbers and anticipate possible moves to avoid being trapped without options.
+- **Avoid Early Selection of Highly Composite Numbers**: Numbers with many divisors and multiples (like 12, 18, 24) can reduce your own future options along with your opponent's.
+
+## Conclusion
+
+**Factor Frenzy** is a captivating game that combines simple arithmetic with strategic planning. Its straightforward rules make it easy to learn, while the depth of strategy provides a challenge for players seeking a competitive experience. Enjoy sharpening your numerical and tactical skills in this exciting numerical showdown!

@@ -1,0 +1,217 @@
+# **Game Name**: **Bracket Balance**
+
+## **Objective**
+
+Be the player who completes a balanced bracket expression of a predetermined length without violating the balancing rules. The goal is to strategically add brackets to force your opponent into a position where they either complete the balanced expression for you or cannot make a valid move.
+
+---
+
+## **Setup**
+
+- **Determine Target Length**: Players agree on the target length of the bracket expression (e.g., 10 brackets). For a quick game, a shorter length like 6 can be used.
+- **Initialize Expression**: Start with an empty bracket expression.
+- **Decide Turn Order**: Flip a coin or agree on who takes the first turn.
+
+---
+
+## **Game Components**
+
+- **Bracket Expression**: A sequence that builds up from an empty string as players add brackets.
+- **Brackets Available**:
+  - Opening Bracket: `(`
+  - Closing Bracket: `)`
+- **Command-Line Interface**:
+  - Players input their choices via the command line.
+  - The current expression is displayed after each turn.
+
+---
+
+## **Turns**
+
+1. **Player Input**:
+   - On their turn, a player inputs either an opening bracket `(` or a closing bracket `)`.
+2. **Updating Expression**:
+   - The chosen bracket is added to the end of the current expression.
+3. **Validating Move**:
+   - The game checks if the new expression violates any rules.
+4. **Progressing the Game**:
+   - If the move is valid, the turn passes to the other player.
+   - If the move is invalid, the player loses, and the game ends.
+
+---
+
+## **Rules and Mechanics**
+
+### **1. Valid Moves**
+
+- **Balance Maintenance**:
+  - At any point, the number of closing brackets `)` cannot exceed the number of opening brackets `(`.
+  - This ensures the expression is potentially balanceable.
+- **Expression Length**:
+  - Players cannot exceed the agreed-upon target length.
+- **Available Brackets**:
+  - Players can only add one bracket per turn.
+  - Only the specified brackets `(` and `)` are allowed.
+
+### **2. Winning the Game**
+
+- **Completing the Expression**:
+  - The player who adds the last bracket to create a balanced expression of the target length wins.
+- **Forcing a Loss**:
+  - If a player cannot make a valid move on their turn, they lose.
+  - This can happen if any move would violate the balancing rules or exceed the target length.
+
+### **3. Strategic Considerations**
+
+- **Planning Ahead**:
+  - Anticipate the impact of your move on future turns.
+- **Forcing Moves**:
+  - Strategically force the opponent into making moves that limit their options.
+- **Balance vs. Imbalance**:
+  - Decide when to balance the expression or when to introduce imbalance to control the game flow.
+
+---
+
+## **Scoring**
+
+- **Winning**:
+  - The winner is the player who successfully adds the final bracket to complete the balanced expression or forces the opponent into an invalid move.
+- **No Points System**:
+  - The game does not involve a points system; it's a win-or-lose outcome per game.
+- **Multiple Rounds**:
+  - Players can play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough (Target Length: 6)**
+
+1. **Initial State**:
+   - Current Expression: (empty)
+   - Target Length: 6 brackets
+   - Player 1 starts.
+
+2. **Turn 1 - Player 1**:
+   - Input: `(`
+   - Current Expression: `(`
+   - **Valid Move**: Yes
+
+3. **Turn 2 - Player 2**:
+   - Input: `(`
+   - Current Expression: `( (`
+   - **Valid Move**: Yes
+
+4. **Turn 3 - Player 1**:
+   - Input: `)`
+   - Current Expression: `( ( )`
+   - **Valid Move**: Yes
+
+5. **Turn 4 - Player 2**:
+   - Input: `(`
+   - Current Expression: `( ( ) (`
+   - **Valid Move**: Yes
+
+6. **Turn 5 - Player 1**:
+   - Input: `)`
+   - Current Expression: `( ( ) ( )`
+   - **Valid Move**: Yes
+
+7. **Turn 6 - Player 2**:
+   - Input: `)`
+   - Current Expression: `( ( ) ( ) )`
+   - Expression Length: 6
+   - **Valid Move**: Yes
+
+8. **Game End**:
+   - It's Player 1's turn.
+   - Any additional bracket would exceed the target length.
+   - **Player 1 cannot make a valid move and loses**.
+   - **Winner**: Player 2
+
+### **Command-Line Interaction Example**
+
+```plaintext
+Target expression length: 6
+Current Expression: 
+Player 1's turn. Enter '(' or ')':
+> (
+Current Expression: (
+Player 2's turn. Enter '(' or ')':
+> (
+Current Expression: ((
+Player 1's turn. Enter '(' or ')':
+> )
+Current Expression: (()
+Player 2's turn. Enter '(' or ')':
+> (
+Current Expression: (()( 
+Player 1's turn. Enter '(' or ')':
+> )
+Current Expression: (()()
+Player 2's turn. Enter '(' or ')':
+> )
+Current Expression: (()())
+Expression length reached.
+Player 1 cannot make a valid move.
+Player 2 wins!
+```
+
+---
+
+## **Ensure Fair Play**
+
+- **Valid Inputs Only**:
+  - Players must only input `(` or `)`.
+- **No Retractions**:
+  - Once a move is made, it cannot be taken back unless both players agree to restart.
+- **Disputes**:
+  - If there is a disagreement on a valid move, refer back to the rules for clarification.
+
+---
+
+## **Strategy Tips**
+
+- **Control the Game Length**:
+  - Being aware of the remaining brackets can help you plan moves that force your opponent into a corner.
+- **Balance Early vs. Late**:
+  - Deciding when to balance the expression can prevent your opponent from making advantageous moves.
+- **Force Invalid Moves**:
+  - By carefully choosing your brackets, you can limit the options available to your opponent.
+
+---
+
+## **Advanced Variations**
+
+For players seeking more complexity, consider these variations:
+
+### **1. Different Bracket Types**
+
+- **Include Multiple Bracket Types**:
+  - Add `{ }` and `[ ]` into the mix.
+- **Nesting Rules**:
+  - Brackets must be properly nested (e.g., `({[]})` is valid).
+- **Increased Difficulty**:
+  - More bracket types add complexity and strategic depth.
+
+### **2. Random Starting Expression**
+
+- **Predefined Expression**:
+  - Start with a non-empty, balanced or unbalanced expression.
+- **Challenge**:
+  - Adds unpredictability and requires adaptive strategies.
+
+### **3. Variable Target Length**
+
+- **Unknown Length**:
+  - Do not set a target length; the game continues until a player cannot make a valid move.
+- **Strategic Uncertainty**:
+  - Players must manage the balance without knowing when the game will end.
+
+---
+
+## **Conclusion**
+
+**Bracket Balance** is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and minimal components, it's perfect for quick matches on a command-line interface. By mastering the art of balancing and anticipating your opponent's moves, you can consistently secure victory.
+
+**Enjoy the game, and may the best strategist win!**

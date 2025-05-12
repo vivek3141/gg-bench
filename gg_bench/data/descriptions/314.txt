@@ -1,0 +1,258 @@
+# Prime Duel
+
+## Objective
+
+Be the first player to reduce your opponent's Life Points (LP) to **zero or less** by strategically selecting prime numbers as attacks while managing the shared pool of available primes.
+
+## Setup
+
+1. **Life Points**:
+   - Each player starts with **50 Life Points (LP)**.
+2. **Prime Number Pool**:
+   - Create a shared list of all prime numbers less than 50:
+     ```
+     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
+     ```
+3. **Determine Starting Player**:
+   - Decide who takes the first turn (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Life Points (LP)**:
+  - A numerical representation of each player's health.
+  - Starts at 50 for both players.
+- **Prime Number Pool**:
+  - A shared list of prime numbers used for attacking.
+  - Primes are removed from the pool once used.
+- **Command-Line Interface**:
+  - Players interact with the game by entering commands in a text-based interface.
+- **Players**:
+  - Two participants: **Player A** and **Player B**.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns throughout the game.
+2. **Turn Actions**:
+   - **Select Attack Prime**:
+     - The active player chooses a prime number from the available Prime Number Pool to use as an attack.
+   - **Resolve Attack**:
+     - The opponent's LP is reduced by the value of the chosen prime number.
+   - **Update Prime Number Pool**:
+     - Remove the used prime number from the pool.
+   - **Check for Victory**:
+     - If the opponent's LP is zero or less, the active player wins.
+   - **Pass Turn**:
+     - If no victory, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### 1. Selecting an Attack Prime
+
+- **Available Choices**:
+  - The active player must choose a prime number from the current Prime Number Pool.
+- **Attack Limitations**:
+  - If possible, the chosen prime number must be **less than or equal to** the opponent's current LP.
+  - **If no such prime is available**, the player must select the **smallest available prime number**.
+
+### 2. Attacking
+
+- **Reducing Life Points**:
+  - Subtract the value of the chosen prime number from the opponent's LP.
+- **Negative Life Points**:
+  - The opponent's LP can become negative.
+- **One-Time Use Primes**:
+  - Once a prime number is used, it's removed from the pool and cannot be used again by either player.
+
+### 3. Winning the Game
+
+- **Victory Condition**:
+  - A player wins when the opponent's LP is reduced to zero or less.
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player wins.
+
+### 4. Strategic Considerations
+
+- **Prime Management**:
+  - High-value primes are powerful but limited.
+- **Anticipate Opponent Moves**:
+  - Keep track of used primes to predict the opponent's options.
+- **Endgame Strategy**:
+  - Save smaller primes to ensure you can finish off the opponent when their LP is low.
+
+## Scoring
+
+- **Life Points (LP)**:
+  - Both players start with 50 LP.
+  - LP decreases as a result of opponent attacks.
+  - LP can be reduced below zero, but not increased.
+- **Tracking LP**:
+  - Players should keep track of both their own and their opponent's current LP at all times.
+
+## Examples
+
+### Initial Setup
+
+- **Player A's LP**: 50
+- **Player B's LP**: 50
+- **Prime Number Pool**:
+  ```
+  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
+  ```
+
+### Sample Gameplay
+
+#### Turn 1: Player A
+
+- **Action**:
+  - Chooses to attack with **23**.
+- **Resolution**:
+  - Player B's LP is reduced by 23: 50 - 23 = **27 LP**.
+  - Remove 23 from the Prime Number Pool.
+- **Updated Prime Pool**:
+  ```
+  2, 3, 5, 7, 11, 13, 17, 19, 29, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 2: Player B
+
+- **Action**:
+  - Chooses to attack with **29**.
+- **Resolution**:
+  - Player A's LP is reduced by 29: 50 - 29 = **21 LP**.
+  - Remove 29 from the Prime Number Pool.
+- **Updated Prime Pool**:
+  ```
+  2, 3, 5, 7, 11, 13, 17, 19, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 3: Player A
+
+- **Action**:
+  - Chooses to attack with **19**.
+- **Resolution**:
+  - Player B's LP is reduced by 19: 27 - 19 = **8 LP**.
+  - Remove 19 from the Prime Number Pool.
+- **Updated Prime Pool**:
+  ```
+  2, 3, 5, 7, 11, 13, 17, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 4: Player B
+
+- **Action**:
+  - Chooses to attack with **17**.
+- **Resolution**:
+  - Player A's LP is reduced by 17: 21 - 17 = **4 LP**.
+  - Remove 17 from the Prime Number Pool.
+- **Updated Prime Pool**:
+  ```
+  2, 3, 5, 7, 11, 13, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 5: Player A
+
+- **Player B's LP**: 8
+- **Available Primes ≤ 8**: 2, 3, 5, 7
+
+- **Action**:
+  - Chooses to attack with **7**.
+- **Resolution**:
+  - Player B's LP is reduced by 7: 8 - 7 = **1 LP**.
+  - Remove 7 from the Prime Number Pool.
+- **Updated Prime Pool**:
+  ```
+  2, 3, 5, 11, 13, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 6: Player B
+
+- **Player A's LP**: 4
+- **Available Primes ≤ 4**: 2, 3
+
+- **Action**:
+  - Chooses to attack with **3**.
+- **Resolution**:
+  - Player A's LP is reduced by 3: 4 - 3 = **1 LP**.
+  - Remove 3 from the Prime Number Pool.
+- **Updated Prime Pool**:
+  ```
+  2, 5, 11, 13, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 7: Player A
+
+- **Player B's LP**: 1
+- **Available Primes ≤ 1**: None
+
+- **Action**:
+  - No primes ≤ 1 are available.
+  - Must select the smallest available prime: **2**.
+- **Resolution**:
+  - Player B's LP is reduced by 2: 1 - 2 = **-1 LP**.
+  - Remove 2 from the Prime Number Pool.
+- **Outcome**:
+  - Player B's LP is less than zero.
+  - **Player A wins the game**.
+
+## Command-Line Interaction Example
+
+### Beginning of Player A's Turn
+
+```
+---------------------------------------
+Player A's Turn
+---------------------------------------
+Your LP: 50
+Opponent's LP: 50
+Available Primes: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+Select a prime number to attack with:
+```
+
+### Player A Input
+
+```
+23
+```
+
+### System Response
+
+```
+You have chosen to attack with 23.
+Player B's LP reduced to 27.
+Prime number 23 removed from the pool.
+
+Press Enter to end your turn.
+```
+
+### Beginning of Player B's Turn
+
+```
+---------------------------------------
+Player B's Turn
+---------------------------------------
+Your LP: 27
+Opponent's LP: 50
+Available Primes: [2, 3, 5, 7, 11, 13, 17, 19, 29, 31, 37, 41, 43, 47]
+Select a prime number to attack with:
+```
+
+(And so on.)
+
+## Ensuring Strategic Depth
+
+- **Early Game**:
+  - Use mid-range primes to conserve higher primes for when they can be most effective.
+- **Mid Game**:
+  - Anticipate which primes the opponent might use next.
+- **Late Game**:
+  - Ensure you have small primes available to finish off the opponent.
+  - Be prepared to use larger primes if no small primes are left.
+
+## Summary
+
+"Prime Duel" is a simple yet strategic game that challenges players to balance immediate offensive actions with long-term resource management. By carefully choosing primes to attack and anticipating the opponent's moves, skilled players can consistently outmaneuver their opponents and secure victory.
+
+---
+
+Enjoy the game!

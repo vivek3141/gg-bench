@@ -1,0 +1,187 @@
+# Game Title: **Tower Tactics**
+
+---
+
+## Objective
+
+Become the first player to build a tower that reaches **exactly 15 levels** high. Players add levels to their tower by strategically selecting blocks with varying heights. Overshooting the height of 15 levels results in an immediate loss. The game requires careful planning and foresight to outmaneuver your opponent.
+
+---
+
+## Setup
+
+1. **Initial Tower Height**: Both players start with a tower of height **0**.
+2. **Block Pool**: A shared pool of blocks numbered from **1** to **10** is available. There are **two copies** of each block (totaling **20 blocks**).
+3. **Turn Order**: Decide which player goes first (Player 1 and Player 2). This can be random or predetermined.
+
+---
+
+## Game Components
+
+- **Blocks (1-10)**: Represented by numbers **1** through **10**. Each block's number indicates its height.
+  - *Appearance*: In the command-line interface, blocks are displayed by their numerical value.
+  - *Functionality*: Blocks are used to increase the tower's height.
+  - *Unique Attributes*: Once a block is selected by a player, it is removed from the block pool and cannot be selected again.
+
+- **Tower Height Tracker**: Keeps track of each player's current tower height.
+  - *Appearance*: Displayed next to each player's name in the interface.
+  - *Functionality*: Updates as players add blocks to their tower.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Block Selection**: On their turn, a player selects one block from the block pool.
+  2. **Tower Building**: The selected block's height is added to their tower.
+  3. **Block Removal**: The chosen block is removed from the block pool.
+  4. **Turn Completion**: The turn passes to the other player.
+
+- **Turn Progression**:
+  - Players alternate turns until the game ends.
+  - Players must make a move on their turn if possible.
+
+---
+
+## Rules and Mechanics
+
+1. **Block Selection**:
+   - Players can choose any available block from the block pool during their turn.
+   - Each block can only be used once by either player (since there are two copies of each block, each can be selected only twice in total).
+
+2. **Tower Height Limit**:
+   - The goal is to build a tower with a height of **exactly 15 levels**.
+   - If adding a block would cause a player's tower to exceed 15 levels, they **cannot** select that block.
+   - If no valid moves are available (all remaining blocks would cause the tower to exceed 15), the player loses their turn.
+
+3. **Winning the Game**:
+   - The first player to reach a tower height of exactly **15** wins the game.
+   - If a player cannot make a valid move on their turn and the opponent also cannot make a move on their following turn, the player with the tower height **closest to 15 without exceeding it** wins.
+   - If a player mistakenly adds a block that causes their tower to exceed 15, they **lose immediately**.
+
+4. **Strategic Considerations**:
+   - Players must not only consider their own tower height but also anticipate their opponent's potential moves.
+   - Blocking: Selecting blocks that the opponent may need to reach 15 can be a key strategy.
+
+---
+
+## Scoring
+
+- **Tower Height Tracking**: The primary means of tracking progress.
+  - Each player's current tower height is updated each turn.
+  - There are no points beyond the tower height; victory is achieved by reaching the target height under the game's rules.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Block Pool**:
+```
+[1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
+```
+
+**Starting Tower Heights**:
+```
+Player 1 Tower Height: 0
+Player 2 Tower Height: 0
+```
+
+---
+
+**Turn 1: Player 1**
+
+- **Available Blocks**: All blocks.
+- **Action**: Player 1 selects a block of height **8**.
+- **Tower Update**: Player 1's tower height becomes **0 + 8 = 8**.
+- **Block Pool Update**: One block of **8** is removed.
+  
+```
+Player 1 Tower Height: 8
+Player 2 Tower Height: 0
+Remaining Blocks: [..., 8, ..., 10, 10]
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Available Blocks**: All except one **8**.
+- **Action**: Player 2 selects a block of height **7**.
+- **Tower Update**: Player 2's tower height becomes **0 + 7 = 7**.
+- **Block Pool Update**: One block of **7** is removed.
+
+```
+Player 1 Tower Height: 8
+Player 2 Tower Height: 7
+Remaining Blocks: [..., 7, ..., 8, ..., 10, 10]
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Player 1 wants to select a block of height **7**.
+- **Consideration**: Adding 7 to their current height (8) would make **15**, which is acceptable.
+- **Action**: Player 1 selects the remaining block of **7**.
+- **Tower Update**: **8 + 7 = 15**
+- **Result**: Player 1 reaches exactly **15** and **wins the game**.
+
+---
+
+### Command-Line Interaction Sample
+
+**Turn 1:**
+
+```
+[Block Pool]: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10]
+[Player 1 Tower Height]: 0
+[Player 2 Tower Height]: 0
+
+Player 1, select a block: 8
+
+[Block Pool]: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,9,9,10,10]
+[Player 1 Tower Height]: 8
+```
+
+**Turn 2:**
+
+```
+Player 2, select a block: 7
+
+[Block Pool]: [1,1,2,2,3,3,4,4,5,5,6,6,7,8,9,9,10,10]
+[Player 2 Tower Height]: 7
+```
+
+**Turn 3:**
+
+```
+Player 1, select a block: 7
+
+[Block Pool]: [1,1,2,2,3,3,4,4,5,5,6,6,8,9,9,10,10]
+[Player 1 Tower Height]: 15
+
+Congratulations, Player 1! You've reached a tower height of 15 and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which blocks have been used to anticipate what your opponent might do.
+- **Blocking Moves**: If possible, select blocks that your opponent needs to reach 15.
+- **Avoid Overbuilding**: Always check that your chosen block won't cause your tower to exceed 15.
+- **Force Errors**: Manipulate the remaining blocks to limit your opponent's options, potentially forcing them into a position where they cannot win.
+
+---
+
+## Game End Conditions
+
+- **Victory**: Achieving a tower height of exactly **15**.
+- **Immediate Loss**: Exceeding a tower height of **15**.
+- **No Moves Available**: If neither player can make a valid move, the player closest to 15 without exceeding it wins.
+
+---
+
+Enjoy building your tower and outsmarting your opponent in **Tower Tactics**!

@@ -1,0 +1,236 @@
+# **Game Title**: **Binary Race**
+
+---
+
+## **Objective**
+
+Be the first player to reach or surpass position **31** on the virtual track by strategically moving forward using powers of two. Outmaneuver your opponent with calculated moves to cross the finish line first.
+
+---
+
+## **Setup**
+
+- **Virtual Track**: A linear track with positions numbered from **0** to **31**.
+- **Starting Positions**: Both players begin at position **0**.
+- **First Player**: Decide who goes first (e.g., coin toss, random selection).
+
+---
+
+## **Game Components**
+
+- **Virtual Track**: Represents the path from position **0** to **31**.
+- **Player Tokens**: Each player has a token (or a variable in the command-line interface) indicating their current position on the track.
+- **Movement Options**: Players can move forward by increments corresponding to powers of two:
+  - **1** (2^0)
+  - **2** (2^1)
+  - **4** (2^2)
+  - **8** (2^3)
+  - **16** (2^4)
+
+---
+
+## **Turns**
+
+1. **Turn Order**: Players alternate turns, starting with the player determined during setup.
+2. **Move Selection**:
+   - On your turn, choose one of the available movement options: **1**, **2**, **4**, **8**, or **16**.
+   - Announce your chosen move.
+3. **Updating Position**:
+   - Add the chosen movement to your current position.
+   - Your new position becomes your current position for the next turn.
+4. **Turn Progression**:
+   - After a player completes their move, the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+### **1. Movement**
+
+- **Allowed Moves**: On each turn, you may move forward by **1**, **2**, **4**, **8**, or **16** positions.
+- **Legal Moves**: You cannot move in a way that would bypass position **31** without landing on or exceeding it exactly.
+
+### **2. Winning the Game**
+
+- **Victory Condition**: The first player to reach or surpass position **31** wins the game.
+- **Exact Landing Not Required**: You do not need to land exactly on **31**; surpassing it is acceptable.
+
+### **3. Restrictions**
+
+- **Forward Movement Only**: Backward moves are not allowed.
+- **No Move Limitations**: You may choose the same movement value multiple times throughout the game.
+- **Valid Moves Near the End**:
+  - If your current position plus the chosen move exceeds **31**, but does not equal or surpass it, you must choose a smaller move.
+  - Example: If you're at position **29**, you may only move by **1** or **2**.
+
+### **4. Game End**
+
+- The game ends immediately when a player reaches or surpasses position **31**.
+- No further moves are made after a player wins.
+
+---
+
+## **Scoring**
+
+- **Winning the Game**: The game is won outright by the first player to reach or surpass position **31**.
+- **No Points System**: There is no cumulative point scoring; victory is achieved by meeting the objective.
+
+---
+
+## **Examples**
+
+### **Example Turn Sequence**
+
+**Initial State**:
+
+- Player 1 Position: **0**
+- Player 2 Position: **0**
+
+---
+
+**Turn 1**:
+
+- **Player 1**:
+  - Chooses to move **16** positions.
+  - New Position: **0 + 16 = 16**
+
+---
+
+**Turn 2**:
+
+- **Player 2**:
+  - Chooses to move **8** positions.
+  - New Position: **0 + 8 = 8**
+
+---
+
+**Turn 3**:
+
+- **Player 1**:
+  - Chooses to move **8** positions.
+  - New Position: **16 + 8 = 24**
+
+---
+
+**Turn 4**:
+
+- **Player 2**:
+  - Chooses to move **16** positions.
+  - New Position: **8 + 16 = 24**
+
+---
+
+**Turn 5**:
+
+- **Player 1**:
+  - Chooses to move **4** positions.
+  - New Position: **24 + 4 = 28**
+
+---
+
+**Turn 6**:
+
+- **Player 2**:
+  - Chooses to move **4** positions.
+  - New Position: **24 + 4 = 28**
+
+---
+
+**Turn 7**:
+
+- **Player 1**:
+  - Chooses to move **2** positions.
+  - New Position: **28 + 2 = 30**
+
+---
+
+**Turn 8**:
+
+- **Player 2**:
+  - Chooses to move **2** positions.
+  - New Position: **28 + 2 = 30**
+
+---
+
+**Turn 9**:
+
+- **Player 1**:
+  - Chooses to move **1** position.
+  - New Position: **30 + 1 = 31**
+  - **Player 1 wins the game!**
+
+---
+
+## **Command-Line Interaction Example**
+
+```
+--- Binary Race Game Start ---
+
+Player 1's Turn
+Current Position: 0
+Choose your move (1, 2, 4, 8, 16): 16
+Player 1 moves to Position 16
+
+Player 2's Turn
+Current Position: 0
+Choose your move (1, 2, 4, 8, 16): 8
+Player 2 moves to Position 8
+
+Player 1's Turn
+Current Position: 16
+Choose your move (1, 2, 4, 8, 16): 8
+Player 1 moves to Position 24
+
+Player 2's Turn
+Current Position: 8
+Choose your move (1, 2, 4, 8, 16): 16
+Player 2 moves to Position 24
+
+Player 1's Turn
+Current Position: 24
+Choose your move (1, 2, 4, 8, 16): 4
+Player 1 moves to Position 28
+
+Player 2's Turn
+Current Position: 24
+Choose your move (1, 2, 4, 8, 16): 4
+Player 2 moves to Position 28
+
+Player 1's Turn
+Current Position: 28
+Choose your move (1, 2, 4): 2
+Player 1 moves to Position 30
+
+Player 2's Turn
+Current Position: 28
+Choose your move (1, 2, 4): 2
+Player 2 moves to Position 30
+
+Player 1's Turn
+Current Position: 30
+Choose your move (1): 1
+Player 1 moves to Position 31
+
+Player 1 has reached or surpassed Position 31 and wins the game!
+
+--- Game Over ---
+```
+
+---
+
+## **Strategic Tips**
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your strategy to control the game's progression.
+- **Control Key Positions**: Aim to land on positions that limit your opponent’s options in subsequent turns.
+- **Mathematical Patterns**: Recognize patterns in powers of two to optimize your moves.
+- **Stay Flexible**: Be ready to adjust your strategy based on your opponent's moves.
+
+---
+
+## **Summary**
+
+**Binary Race** is a simple yet strategically rich game where players race to position **31** by moving in powers of two. With straightforward rules and a clear objective, players must think ahead and make calculated decisions each turn. The game is quick to learn, easy to play in a command-line interface, and provides ample opportunity for skillful play to triumph.
+
+---
+
+Enjoy the race, and may the best strategist win!

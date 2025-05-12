@@ -1,0 +1,210 @@
+# Number Chain Duel
+
+## Objective
+
+Be the player to successfully place the last number in the chain according to the game's rules. The goal is to force your opponent into a position where they cannot make a valid move on their turn, thereby securing your victory.
+
+## Setup
+
+- **Starting the Game:**
+  - Decide who will take the first turn (e.g., by flipping a coin).
+  - Begin with an empty number chain.
+
+## Game Components
+
+- **Numbers 1 to 9:**
+  - A set of numbers from **1** to **9**.
+  - Each number can be used **only once** during the game.
+
+- **Number Chain:**
+  - A sequential list where players add numbers on their turns following specific rules.
+  - Starts empty and builds up as the game progresses.
+
+## Turns
+
+- **Turn Structure:**
+  - Players alternate turns throughout the game.
+  - On your turn, you must add **one valid number** to the end of the chain.
+
+- **Actions on Your Turn:**
+  - **Select a Number:**
+    - Choose an unused number from **1** to **9**.
+    - The chosen number must satisfy the placement rules.
+
+- **Progression of Turns:**
+  - The game continues with players adding numbers to the chain until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+### 1. Number Selection Rules
+
+- **Unused Numbers:**
+  - You can only select numbers that have not been used previously in the game.
+  - Once a number is placed in the chain, it is no longer available to either player.
+
+- **Placement Rules:**
+  - **First Move:**
+    - The first player can choose any number from **1** to **9** to start the chain.
+  - **Subsequent Moves:**
+    - The number you place must be a **factor** or a **multiple** of the **last number** in the chain.
+    - **Factor:** A number that divides evenly into the last number.
+    - **Multiple:** A number that is evenly divisible by the last number.
+
+### 2. Valid Moves
+
+- A move is considered valid if:
+  - The number has not been used before.
+  - The number is a factor or multiple of the last number in the chain.
+
+### 3. Winning the Game
+
+- **Winning Condition:**
+  - If your opponent cannot make a valid move on their turn, you win the game.
+- **Losing Condition:**
+  - If you cannot make a valid move on your turn, you lose the game.
+
+## Scoring
+
+- There is no point system.
+- The game outcome is determined solely by the win/loss condition.
+- The focus is on strategic placement to outmaneuver your opponent.
+
+## Examples
+
+### Example Game Playthrough
+
+**Game Start:**
+
+- The chain is empty.
+- **Player 1** will make the first move.
+
+---
+
+**Turn 1: Player 1**
+
+- **Available Numbers:** 1-9
+- **Action:** Chooses **4**.
+- **Reasoning:** Any number is valid on the first turn.
+- **Chain:** **4**
+
+---
+
+**Turn 2: Player 2**
+
+- **Available Numbers:** 1-3, 5-9 (since 4 is used)
+- **Last Number:** 4
+- **Valid Choices:**
+  - **Factors of 4:** 1, 2
+  - **Multiples of 4:** 8
+- **Action:** Chooses **2**.
+- **Reasoning:** 2 is a factor of 4.
+- **Chain:** 4, **2**
+
+---
+
+**Turn 3: Player 1**
+
+- **Available Numbers:** 1, 3, 5-9 (since 2 and 4 are used)
+- **Last Number:** 2
+- **Valid Choices:**
+  - **Factors of 2:** 1
+  - **Multiples of 2:** 4, 6, 8
+- **Valid Available Choices:** 1, 6, 8 (4 is already used)
+- **Action:** Chooses **8**.
+- **Reasoning:** 8 is a multiple of 2.
+- **Chain:** 4, 2, **8**
+
+---
+
+**Turn 4: Player 2**
+
+- **Available Numbers:** 1, 3, 5-7, 9
+- **Last Number:** 8
+- **Valid Choices:**
+  - **Factors of 8:** 1, 2, 4
+  - **Multiples of 8:** None within 1-9
+- **Valid Available Choices:** 1 (2 and 4 are used)
+- **Action:** Chooses **1**.
+- **Reasoning:** 1 is a factor of every number.
+- **Chain:** 4, 2, 8, **1**
+
+---
+
+**Turn 5: Player 1**
+
+- **Available Numbers:** 3, 5-7, 9
+- **Last Number:** 1
+- **Valid Choices:** All remaining numbers (since any number is a multiple and factor of 1)
+- **Action:** Chooses **5**.
+- **Reasoning:** Strategic choice to limit opponent's options.
+- **Chain:** 4, 2, 8, 1, **5**
+
+---
+
+**Turn 6: Player 2**
+
+- **Available Numbers:** 3, 6, 7, 9
+- **Last Number:** 5
+- **Valid Choices:**
+  - **Factors of 5:** 1, 5
+  - **Multiples of 5:** None within 1-9 other than 5
+- **Valid Available Choices:** None (1 and 5 are used)
+- **Action:** Cannot make a valid move.
+- **Outcome:** **Player 2 loses**, **Player 1 wins**.
+
+### Command-Line Interaction Example
+
+```
+[Game Start]
+The number chain is empty.
+
+Player 1's turn.
+Available numbers: 1,2,3,4,5,6,7,8,9
+Player 1 selects: 4
+Number chain: 4
+
+Player 2's turn.
+Available numbers: 1,2,3,5,6,7,8,9
+Last number in chain: 4
+Valid choices: 1,2,8
+Player 2 selects: 2
+Number chain: 4,2
+
+Player 1's turn.
+Available numbers: 1,3,5,6,7,8,9
+Last number in chain: 2
+Valid choices: 1,6,8
+Player 1 selects: 8
+Number chain: 4,2,8
+
+Player 2's turn.
+Available numbers: 1,3,5,6,7,9
+Last number in chain: 8
+Valid choices: 1
+Player 2 selects: 1
+Number chain: 4,2,8,1
+
+Player 1's turn.
+Available numbers: 3,5,6,7,9
+Last number in chain: 1
+Valid choices: 3,5,6,7,9
+Player 1 selects: 5
+Number chain: 4,2,8,1,5
+
+Player 2's turn.
+Available numbers: 3,6,7,9
+Last number in chain: 5
+Valid choices: None
+Player 2 cannot make a valid move.
+Player 2 loses.
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Keep track of which numbers are still available and anticipate your opponent's possible moves.
+- **Control Key Numbers:** Numbers like **1** and **2** are versatile; using them strategically can limit your opponent's options.
+- **Force Moves:** Try to lead the chain into numbers where you know your opponent will have fewer valid options.
+
+---
+
+Enjoy playing **Number Chain Duel** and may the most strategic player win!

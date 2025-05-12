@@ -1,0 +1,202 @@
+# Fifty!
+
+## Objective
+
+Be the player who brings the shared total sum to **exactly 50** by strategically choosing numbers from a limited set. Use careful planning and foresight to outmaneuver your opponent and achieve the target sum without exceeding it.
+
+---
+
+## Setup
+
+1. **Initial Total Sum**: The game starts with a total sum of **0**.
+2. **Available Numbers**: A list of integers from **1 to 9** is presented. Each number can be used **only once** during the game.
+3. **Player Order**: Decide which player goes first. This can be determined randomly (e.g., flipping a coin) or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Total Sum**: A shared running total that both players contribute to during the game.
+- **Number Pool**: The set of numbers **1 through 9**, each of which can be selected only once.
+- **Players**: Two players alternate turns, strategically selecting numbers from the pool.
+
+---
+
+## Turns
+
+1. **Turn Sequence**: Players take turns alternately, starting with Player 1.
+2. **Action on Turn**:
+   - **Select a Number**: Choose any available number from the number pool (numbers 1-9 that haven't been used).
+   - **Update Total Sum**: Add the selected number to the total sum.
+   - **Remove Number**: Mark the selected number as used so it cannot be chosen again.
+
+---
+
+## Rules and Mechanics
+
+1. **Selecting Numbers**:
+   - Numbers must be selected from the current list of **available numbers**.
+   - Each number from **1 to 9** can be selected **only once** during the game.
+
+2. **Updating Total Sum**:
+   - After a number is selected, it is **added** to the shared total sum.
+   - Keep track of the total sum after each turn.
+
+3. **Winning the Game**:
+   - The player who brings the total sum to **exactly 50** **wins** the game.
+
+4. **Exceeding the Total Sum**:
+   - If a player’s move causes the total sum to **exceed 50**, that player **immediately loses** the game.
+
+5. **All Numbers Used**:
+   - If all numbers from **1 to 9** have been used and the total sum has **not** reached 50:
+     - The player with the total sum **closest to 50 without exceeding it** **wins**.
+     - If both players have the same total sum, the **last player to make a move wins**.
+
+6. **No Draws**:
+   - The game is designed to **eliminate the possibility of a draw** through the tie-breaking rule when all numbers are used.
+
+---
+
+## Scoring
+
+- **Win**: Successfully bring the total sum to exactly 50, or have the closest total sum to 50 without exceeding it when all numbers are used.
+- **Loss**: Cause the total sum to exceed 50, or have a lower total sum when all numbers are used.
+
+---
+
+## Examples
+
+### Example 1: Reaching Exactly 50
+
+**Initial Total Sum**: 0  
+**Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9  
+
+#### Turn Sequence:
+
+1. **Player 1** selects **9**.
+   - Total Sum: 0 + 9 = **9**
+   - Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8
+2. **Player 2** selects **8**.
+   - Total Sum: 9 + 8 = **17**
+   - Available Numbers: 1, 2, 3, 4, 5, 6, 7
+3. **Player 1** selects **7**.
+   - Total Sum: 17 + 7 = **24**
+   - Available Numbers: 1, 2, 3, 4, 5, 6
+4. **Player 2** selects **6**.
+   - Total Sum: 24 + 6 = **30**
+   - Available Numbers: 1, 2, 3, 4, 5
+5. **Player 1** selects **5**.
+   - Total Sum: 30 + 5 = **35**
+   - Available Numbers: 1, 2, 3, 4
+6. **Player 2** selects **4**.
+   - Total Sum: 35 + 4 = **39**
+   - Available Numbers: 1, 2, 3
+7. **Player 1** selects **3**.
+   - Total Sum: 39 + 3 = **42**
+   - Available Numbers: 1, 2
+8. **Player 2** selects **2**.
+   - Total Sum: 42 + 2 = **44**
+   - Available Numbers: 1
+9. **Player 1** selects **1**.
+   - Total Sum: 44 + 1 = **45**
+   - Available Numbers: None
+
+**Result**:
+
+- All numbers have been used.
+- Total Sum: **45**
+- Neither player reached 50.
+- **Player 1** wins as they were the last to make a move.
+
+### Example 2: Exceeding 50
+
+**Initial Total Sum**: 0  
+**Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9  
+
+#### Turn Sequence:
+
+1. **Player 1** selects **9**.
+   - Total Sum: 0 + 9 = **9**
+2. **Player 2** selects **9** (Invalid move; 9 has been used).
+   - **Player 2** selects **8** instead.
+   - Total Sum: 9 + 8 = **17**
+3. **Player 1** selects **7**.
+   - Total Sum: 17 + 7 = **24**
+4. **Player 2** selects **6**.
+   - Total Sum: 24 + 6 = **30**
+5. **Player 1** selects **5**.
+   - Total Sum: 30 + 5 = **35**
+6. **Player 2** selects **7** (Invalid move; 7 has been used).
+   - **Player 2** selects **9** (Invalid move; 9 has been used).
+   - **Player 2** selects **10** (Invalid; number not in pool).
+   - **Player 2** selects **15** (Invalid; number not in pool).
+   - **Player 2** selects **4**.
+   - Total Sum: 35 + 4 = **39**
+7. **Player 1** calculates that adding **6** would cause the total to exceed 50 (39 + 6 = 45), safe to proceed.
+   - **Player 1** selects **6**.
+   - Total Sum: 39 + 6 = **45**
+8. **Player 2** has the only options of selecting **1, 2, or 3**.
+   - Selecting any of these will not reach 50.
+   - **Player 2** selects **5** (Invalid; 5 has been used).
+   - Corrects to **Player 2** selects **3**.
+   - Total Sum: 45 + 3 = **48**
+9. **Player 1** selects **2**.
+   - Total Sum: 48 + 2 = **50**
+
+**Result**:
+
+- **Player 1** wins by bringing the total sum to exactly **50**.
+
+---
+
+## Command-Line Interaction Sample
+
+### Starting the Game
+
+```
+Welcome to Fifty!
+Total Sum: 0
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1's turn.
+Select a number: 
+```
+
+### Sample Turn
+
+```
+Player 1 selects 9.
+Total Sum: 9
+Available Numbers: 1 2 3 4 5 6 7 8
+Player 2's turn.
+Select a number: 
+```
+
+### Invalid Move Attempt
+
+```
+Player 2 selects 9.
+Invalid move! The number 9 has already been used.
+Available Numbers: 1 2 3 4 5 6 7 8
+Select a different number: 
+```
+
+### Winning Move
+
+```
+Player 1 selects 2.
+Total Sum: 48 + 2 = 50
+Congratulations! Player 1 wins by reaching exactly 50!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of the numbers your opponent is likely to choose and plan your selections accordingly.
+- **Control the Game**: Try to force your opponent into a position where any move they make will lead to their loss.
+- **Counting**: Regularly calculate the remaining total needed to reach 50 and consider which available numbers can get you there.
+
+---
+
+Enjoy the game and may the best strategist win!

@@ -1,0 +1,343 @@
+# Power Line: A Strategic Duel
+
+## Objective
+
+**Power Line** is a two-player, turn-based strategy game played on a linear grid. The primary goal is to create an unbroken chain of your power nodes from one end of the power line to the other before your opponent does. To achieve victory, you must strategically place and upgrade your power nodes, manage your energy reserves, and outmaneuver your opponent by capturing their nodes when possible. The first player to successfully connect their nodes from position 0 to position 10 wins the game.
+
+---
+
+## Setup
+
+1. **Game Board**:
+   - The game is played on a linear grid called the **Power Line**, consisting of **11 positions** numbered from **0** (left end) to **10** (right end).
+  
+2. **Players**:
+   - Two players: **Player 1** and **Player 2**.
+   - Each player uses unique symbols to represent their power nodes (e.g., Player 1 uses "A", Player 2 uses "B").
+
+3. **Initial Conditions**:
+   - **Energy Reserve**: Both players start with **15 energy units**.
+   - **Power Nodes**: Each player has **5 power nodes** available for placement.
+   - The Power Line is initially empty (all positions unoccupied).
+
+---
+
+## Game Components
+
+### 1. Power Line Grid
+
+- **Structure**: A straight line with **11 sequential positions** (0 to 10).
+- **Positions**: Each position can hold **one power node**.
+  
+### 2. Power Nodes
+
+- **Representation**:
+  - Unique symbols for each player ("A" for Player 1, "B" for Player 2).
+- **Power Level**:
+  - Each node has a power level ranging from **1 to 10**.
+  - Power levels determine the node's strength in capturing mechanics.
+  
+### 3. Energy Reserve
+
+- **Functionality**:
+  - Used to **place** and **upgrade** power nodes.
+  - Players must manage this finite resource strategically.
+  
+---
+
+## Turns
+
+### Turn Structure
+
+Players alternate turns, beginning with **Player 1**.
+
+### Actions Per Turn
+
+On their turn, a player **must** perform **one** of the following actions:
+
+1. **Place a New Power Node**
+
+   - **Placement**:
+     - Place one of your unused power nodes on any **empty position** on the Power Line.
+   - **Assign Power Level**:
+     - Choose an initial power level between **1 and 5**.
+   - **Energy Cost**:
+     - **Equal** to the power level assigned.
+     - **Deducted** from your energy reserve.
+   - **Example**:
+     - Placing a node at position 5 with power level 3 costs **3 energy units**.
+
+2. **Upgrade an Existing Power Node**
+
+   - **Selection**:
+     - Choose one of your power nodes already on the Power Line.
+   - **Upgrade**:
+     - Increase its power level by **1** (maximum power level is **10**).
+   - **Energy Cost**:
+     - **Equal** to the **new** power level.
+     - **Deducted** from your energy reserve.
+   - **Example**:
+     - Upgrading a node from power level 4 to 5 costs **5 energy units**.
+
+---
+
+## Rules and Mechanics
+
+### 1. Energy Management
+
+- **Limited Resource**:
+  - Each player begins with **15 energy units**.
+- **Insufficient Energy**:
+  - If you lack enough energy for any action, you **pass** your turn.
+
+### 2. Node Placement
+
+- **Available Nodes**:
+  - Each player has **5 nodes** to place during the game.
+- **Placement Restrictions**:
+  - Cannot place a node on an occupied position.
+  - Must assign a power level between **1 and 5** upon placement.
+
+### 3. Node Upgrading
+
+- **Upgrade Limit**:
+  - Each node’s power level cannot exceed **10**.
+- **Multiple Upgrades**:
+  - Nodes can be upgraded multiple times over several turns.
+
+### 4. Node Interaction
+
+#### Adjacent Nodes
+
+- **Definition**:
+  - Nodes are adjacent if they are on **consecutive positions**.
+
+#### Capturing Mechanics
+
+- **When Capturing Occurs**:
+  - After placing or upgrading a node, if it becomes adjacent to an opponent's node, a power comparison is triggered.
+
+- **Power Comparison**:
+  - **Higher Power Wins**:
+    - If your node's power level is **greater** than the adjacent opponent's node, you **capture** it.
+    - The opponent's node is **removed** from the Power Line and returned to their available nodes.
+  - **Equal Power**:
+    - Both nodes **remain** in place; no capture occurs.
+  - **Lower Power**:
+    - No action; both nodes remain.
+
+- **Chain Reactions**:
+  - Capturing an opponent's node may create new adjacencies, potentially leading to additional captures in the same turn.
+
+### 5. Winning the Game
+
+- **Victory Condition**:
+  - You win by creating an **unbroken chain** of your nodes from position **0** to position **10**.
+- **No Draws**:
+  - The game continues until one player achieves the victory condition.
+  - Energy depletion does not end the game; players must continue with available actions.
+
+---
+
+## Scoring
+
+- **Non-Point-Based**:
+  - The game does not use a traditional scoring system.
+- **Progress Tracking**:
+  - Players should monitor:
+    - **Energy Reserve**: Remaining units of energy.
+    - **Node Positions**: Locations and power levels of nodes on the Power Line.
+    - **Available Nodes**: Remaining nodes that can be placed.
+
+---
+
+## Examples
+
+### Example Scenario
+
+#### Initial State
+
+- **Energy Reserves**:
+  - Player 1: 15
+  - Player 2: 15
+- **Available Nodes**:
+  - Both players have 5 nodes.
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Place a new node.
+- **Position**: 3
+- **Power Level**: 3
+- **Energy Cost**: 3
+- **Energy Remaining**: 12
+- **Power Line State**:
+  - Position 3: A(3)
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Place a new node.
+- **Position**: 4
+- **Power Level**: 2
+- **Energy Cost**: 2
+- **Energy Remaining**: 13
+- **Power Line State**:
+  - Position 3: A(3)
+  - Position 4: B(2)
+
+##### Capturing Check
+
+- **Adjacent Nodes**:
+  - A(3) at position 3 and B(2) at position 4.
+- **Power Comparison**:
+  - Player 1's node power (3) vs. Player 2's node power (2).
+- **Result**:
+  - Player 1's node captures Player 2's node.
+  - Position 4 is now empty.
+  - Player 2's node is returned to their available nodes.
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Upgrade existing node.
+- **Node Position**: 3
+- **New Power Level**: 4
+- **Energy Cost**: 4
+- **Energy Remaining**: 8
+- **Power Line State**:
+  - Position 3: A(4)
+
+---
+
+#### Turn 4: Player 2
+
+- **Action**: Place a new node.
+- **Position**: 2
+- **Power Level**: 5
+- **Energy Cost**: 5
+- **Energy Remaining**: 8
+- **Power Line State**:
+  - Position 2: B(5)
+  - Position 3: A(4)
+
+##### Capturing Check
+
+- **Adjacent Nodes**:
+  - B(5) at position 2 and A(4) at position 3.
+- **Power Comparison**:
+  - Player 2's node power (5) vs. Player 1's node power (4).
+- **Result**:
+  - Player 2's node captures Player 1's node.
+  - Position 3 is now empty.
+  - Player 1's node is returned to their available nodes.
+
+---
+
+#### Progression Towards Victory
+
+- Players continue to strategically place and upgrade nodes, managing their energy while attempting to build a continuous chain from position 0 to 10.
+
+### Command-Line Interaction Example
+
+#### Player 1's Turn
+
+```
+----------------------------------------
+Player 1's Turn
+Energy Remaining: 8
+Available Nodes: 4
+Power Line: [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
+Positions:  0  1  2  3  4  5  6  7  8  9 10
+
+Choose an action:
+1. Place a new power node
+2. Upgrade an existing power node
+Enter choice (1 or 2): 1
+
+Enter position to place the node (0-10): 5
+Enter power level for the new node (1-5): 2
+
+Placing node at position 5 with power level 2.
+Energy cost: 2
+Energy remaining: 6
+
+Updated Power Line:
+Positions:  0  1  2  3  4  5  6  7  8  9 10
+PowerLine: [ ][ ][ ][ ][ ][A(2)][ ][ ][ ][ ][ ]
+----------------------------------------
+```
+
+#### Capturing Scenario
+
+```
+After placing, checking for adjacent opponent nodes...
+
+No adjacent opponent nodes detected.
+
+Turn ends.
+```
+
+#### Player 2's Turn
+
+```
+----------------------------------------
+Player 2's Turn
+Energy Remaining: 8
+Available Nodes: 4
+Power Line: [ ][ ][ ][ ][ ][A(2)][ ][ ][ ][ ][ ]
+
+Choose an action:
+1. Place a new power node
+2. Upgrade an existing power node
+Enter choice (1 or 2): 1
+
+Enter position to place the node (0-10): 4
+Enter power level for the new node (1-5): 3
+
+Placing node at position 4 with power level 3.
+Energy cost: 3
+Energy remaining: 5
+
+Updated Power Line:
+Positions:  0  1  2  3  4  5  6  7  8  9 10
+PowerLine: [ ][ ][ ][ ][B(3)][A(2)][ ][ ][ ][ ][ ]
+----------------------------------------
+
+After placing, checking for adjacent opponent nodes...
+
+Adjacent opponent node detected at position 5.
+
+Comparing power levels:
+Your node power: 3
+Opponent's node power: 2
+
+Result: You capture the opponent's node at position 5.
+
+Updated Power Line:
+Positions:  0  1  2  3  4  5  6  7  8  9 10
+PowerLine: [ ][ ][ ][ ][B(3)][ ][ ][ ][ ][ ][ ]
+----------------------------------------
+```
+
+--- 
+
+## Strategy Tips
+
+- **Energy Conservation**: Balance between spending energy to place nodes and saving energy for crucial upgrades.
+- **Node Placement**: Position nodes to create potential for capturing opponent nodes and prevent them from forming their chain.
+- **Upgrading Wisely**: Upgrade nodes to strengthen positions critical for your chain or to overpower nearby opponent nodes.
+- **Anticipate Opponent Moves**: Keep track of your opponent's energy and node positions to predict their strategy.
+
+---
+
+## Conclusion
+
+**Power Line** combines simple rules with strategic depth, making it easy to learn yet challenging to master. Each decision impacts your path to victory, requiring careful planning and anticipation of your opponent's moves. Through managing energy reserves, strategically placing and upgrading nodes, and capturing opponent nodes, skilled players can consistently outmaneuver less experienced opponents. Enjoy the challenge of creating your unbroken connection across the Power Line!
+
+---
+
+*Happy gaming!*

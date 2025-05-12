@@ -1,0 +1,408 @@
+# Hidden Path
+
+## Objective
+
+Be the first player to successfully navigate the hidden path and reach **Step 10** without being sent back to the start by triggering your opponent's traps.
+
+---
+
+## Setup
+
+1. **Game Board**: A linear path consisting of steps numbered from **1** to **10**.
+   
+2. **Player Positions**: Both players start off the board at **Step 0** (before the first step).
+
+3. **Traps Placement**:
+   - Each player secretly selects **three distinct steps** between **1** and **10** to place traps on.
+   - Players record their trap positions privately; these remain hidden from the opponent until triggered.
+
+---
+
+## Game Components
+
+- **Path Steps**:
+  - Numbered from **1** to **10**.
+  - Represents the positions players move through to reach the objective.
+
+- **Player Tokens (Optional)**:
+  - Represent players' current positions on the path.
+  - In a command-line interface, this can be tracked with simple variables.
+
+- **Traps**:
+  - Invisible to the opponent until triggered.
+  - Each player has **three traps** placed on the path.
+  - Once a trap is triggered, it becomes inactive and is revealed.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., coin toss, random selection).
+   - Turns alternate between Player 1 and Player 2.
+
+2. **Actions During a Turn**:
+   - **Move Forward**:
+     - A player must move forward by **1**, **2**, or **3** steps from their current position.
+     - Example: If on Step 0, possible moves are to Step 1, Step 2, or Step 3.
+   
+   - **Check for Traps**:
+     - After moving, check if the new position is a trap set by the opponent.
+     - If a trap is triggered, the player returns to **Step 0**, and the trap is revealed and deactivated.
+     - If no trap is present, the player remains on the new step.
+   
+3. **Turn Progression**:
+   - The turn ends after the player moves and any traps are resolved.
+   - The next player then takes their turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - Players must choose to move forward by **1**, **2**, or **3** steps.
+   - Moves cannot skip over Step 10; players cannot move beyond it.
+   - Exact landing on Step 10 is required to win.
+
+2. **Traps**:
+   - Each player has **three traps** placed secretly at the start.
+   - Traps are only revealed when triggered.
+   - Once a trap is triggered and revealed, it is removed from play.
+   - Players cannot place multiple traps on the same step.
+
+3. **Triggering a Trap**:
+   - If a player lands on a step that is trapped by the opponent:
+     - The player returns to **Step 0**.
+     - The trap is revealed and deactivated.
+     - The position of the trap is now known and safe for future moves.
+   
+4. **Winning the Game**:
+   - The first player to land **exactly** on **Step 10** wins the game.
+   - If a move would take a player beyond Step 10, that move is not allowed.
+
+5. **No Skipping Turns**:
+   - Players must make a move on their turn; passing is not allowed.
+
+---
+
+## Scoring
+
+- **Victory Condition**:
+  - The winner is the first player to reach Step 10 exactly.
+  
+- **No Points System**:
+  - The game is won by achieving the objective, not by accumulating points.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**:
+
+- **Player 1's Traps**: Steps 4, 7, 9 (secret).
+- **Player 2's Traps**: Steps 3, 6, 8 (secret).
+
+---
+
+**Turn 1**:
+
+- **Player 1**:
+  - Current Position: Step 0.
+  - Chooses to move **2 steps** to **Step 2**.
+  - **No trap** triggered.
+  
+---
+
+**Turn 2**:
+
+- **Player 2**:
+  - Current Position: Step 0.
+  - Chooses to move **3 steps** to **Step 3**.
+  - Triggers **Player 1's trap** at Step 3 (not a trapped step for Player 1; misread, correcting).
+  - Oops, in the initial setup, Player 1's traps are at 4, 7, 9.
+  - **No trap** triggered.
+  
+---
+
+**Turn 3**:
+
+- **Player 1**:
+  - Current Position: Step 2.
+  - Chooses to move **1 step** to **Step 3**.
+  - **No trap** triggered.
+  
+---
+
+**Turn 4**:
+
+- **Player 2**:
+  - Current Position: Step 3.
+  - Chooses to move **3 steps** to **Step 6**.
+  - Triggers **Player 1's trap** at **Step 6**.
+  - **Player 2** returns to **Step 0**.
+  - Trap at Step 6 is revealed and deactivated.
+
+**Correction**: According to initial setup, Player 1's traps are at 4, 7, 9.
+
+So, since Step 6 is not a trap set by Player 1, Player 2 should not trigger a trap there.
+
+Rewriting Turn 4:
+
+**Turn 4**:
+
+- **Player 2**:
+  - Current Position: Step 3.
+  - Chooses to move **2 steps** to **Step 5**.
+  - **No trap** triggered.
+
+---
+
+**Turn 5**:
+
+- **Player 1**:
+  - Current Position: Step 3.
+  - Chooses to move **1 step** to **Step 4**.
+  - Triggers **Player 2's trap** at **Step 4**.
+  - **Player 1** returns to **Step 0**.
+  - Trap at Step 4 is revealed and deactivated.
+
+**Correction**: According to initial setup, Player 2's traps are at 3, 6, 8.
+
+Therefore, Player 1's move to Step 4 should not trigger a trap.
+
+Rewriting Turn 5:
+
+**Turn 5**:
+
+- **Player 1**:
+  - Current Position: Step 3.
+  - Chooses to move **2 steps** to **Step 5**.
+  - **No trap** triggered.
+
+---
+
+**Turn 6**:
+
+- **Player 2**:
+  - Current Position: Step 5.
+  - Chooses to move **1 step** to **Step 6**.
+  - Triggers **Player 1's trap** at **Step 6**.
+  - **Player 2** returns to **Step 0**.
+  - Trap at Step 6 is revealed and deactivated.
+
+Again, according to initial setup, Player 1's traps are at 4, 7, 9.
+
+Step 6 is not a trap set by Player 1.
+
+Similarly, Player 2's traps are at Steps 3, 6, 8.
+
+Thus, when Player 2 moves to Step 6, Player 2 triggers their own trap? No. Players cannot trigger their own traps.
+
+Given these inconsistencies, let's simplify and correct the example with accurate information.
+
+**Correct Initial Setup**:
+
+- **Player 1's Traps**: Steps **4**, **7**, **9** (secret).
+- **Player 2's Traps**: Steps **3**, **6**, **8** (secret).
+
+I'll proceed carefully.
+
+---
+
+**Turn 1**:
+
+- **Player 1**:
+  - Current Position: Step **0**.
+  - Moves **2 steps** to **Step 2**.
+  - **No trap** triggered.
+
+**Turn 2**:
+
+- **Player 2**:
+  - Current Position: Step **0**.
+  - Moves **3 steps** to **Step 3**.
+  - Triggers **Player 1's trap** at **Step 3** (Player 1's traps are at 4, 7, 9, so no trap at Step 3).
+  - But Step 3 is trapped by **Player 2** themselves (traps cannot affect their owner).
+  - Therefore, **No trap** is triggered.
+
+**Correction**: Players cannot trigger their own traps, so no trap is triggered.
+
+---
+
+**Turn 3**:
+
+- **Player 1**:
+  - Current Position: Step **2**.
+  - Moves **1 step** to **Step 3**.
+  - **No trap** triggered.
+
+---
+
+**Turn 4**:
+
+- **Player 2**:
+  - Current Position: Step **3**.
+  - Moves **2 steps** to **Step 5**.
+  - **No trap** triggered.
+
+---
+
+**Turn 5**:
+
+- **Player 1**:
+  - Current Position: Step **3**.
+  - Moves **3 steps** to **Step 6**.
+  - Triggers **Player 2's trap** at **Step 6**.
+  - **Player 1** returns to **Step 0**.
+  - Trap at Step 6 is revealed and deactivated.
+
+---
+
+**Turn 6**:
+
+- **Player 2**:
+  - Current Position: Step **5**.
+  - Moves **3 steps** to **Step 8**.
+  - Triggers **Player 1's trap** at **Step 8** (no, Player 1's traps are at 4, 7, 9).
+  - But Step 8 is trapped by **Player 2** themselves, which doesn't affect them.
+  - **No trap** triggered.
+
+---
+
+**Turn 7**:
+
+- **Player 1**:
+  - Current Position: **Step 0**.
+  - Moves **3 steps** to **Step 3**.
+  - **No trap** triggered.
+
+---
+
+**Turn 8**:
+
+- **Player 2**:
+  - Current Position: **Step 8**.
+  - Moves **2 steps** to **Step 10**.
+  - **Player 2** reaches Step 10 and **wins the game**.
+
+---
+
+**Analysis**:
+
+- **Player 2** successfully avoided Player 1's traps and reached Step 10 first.
+- **Player 1** was set back by triggering a trap at Step 6, giving Player 2 the advantage.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample command-line interaction to illustrate gameplay.
+
+**Game Start**
+
+- **Player 1**, enter your trap positions (three numbers between 1-10): `[Hidden from Player 2]`.
+- **Player 2**, enter your trap positions (three numbers between 1-10): `[Hidden from Player 1]`.
+
+---
+
+**Turn 1**
+
+- **Player 1's Move**:
+  - Current Position: 0
+  - Enter steps to move (1, 2, or 3): `2`
+  - Moved to Step 2.
+  - No trap triggered.
+
+---
+
+**Turn 2**
+
+- **Player 2's Move**:
+  - Current Position: 0
+  - Enter steps to move (1, 2, or 3): `3`
+  - Moved to Step 3.
+  - No trap triggered.
+
+---
+
+**Turn 3**
+
+- **Player 1's Move**:
+  - Current Position: 2
+  - Enter steps to move (1, 2, or 3): `1`
+  - Moved to Step 3.
+  - No trap triggered.
+
+---
+
+**Turn 4**
+
+- **Player 2's Move**:
+  - Current Position: 3
+  - Enter steps to move (1, 2, or 3): `2`
+  - Moved to Step 5.
+  - No trap triggered.
+
+---
+
+**Turn 5**
+
+- **Player 1's Move**:
+  - Current Position: 3
+  - Enter steps to move (1, 2, or 3): `3`
+  - Moved to Step 6.
+  - **Trap triggered!**
+  - Player 1 returns to Step 0.
+  - Trap at Step 6 is now revealed and inactive.
+
+---
+
+**Turn 6**
+
+- **Player 2's Move**:
+  - Current Position: 5
+  - Enter steps to move (1, 2, or 3): `3`
+  - Cannot move 3 steps to Step 8 (since they can).
+  - Moved to Step 8.
+  - No trap triggered.
+
+---
+
+**Turn 7**
+
+- **Player 1's Move**:
+  - Current Position: 0
+  - Enter steps to move (1, 2, or 3): `3`
+  - Moved to Step 3.
+  - No trap triggered.
+
+---
+
+**Turn 8**
+
+- **Player 2's Move**:
+  - Current Position: 8
+  - Enter steps to move (1, 2, or 3): `2`
+  - Moved to Step 10.
+  - **Player 2 wins!**
+
+---
+
+## Strategic Tips
+
+- **Trap Placement**:
+  - Place traps on steps that are likely to be landed on based on common move options (e.g., multiples of common move totals).
+  - Consider the opponent's possible paths and set traps accordingly.
+
+- **Movement Choices**:
+  - Vary your move distances to avoid predictability.
+  - Keep track of revealed traps to plan safe routes.
+
+- **Risk Assessment**:
+  - Weigh the risk of landing on potential traps against the advantage of moving quickly.
+
+---
+
+By understanding the rules and employing strategic planning, players can enjoy a game that is simple to code yet offers depth and excitement. "Hidden Path" combines elements of memory, strategy, and anticipation, making each game a unique and engaging experience.

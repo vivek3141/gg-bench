@@ -1,0 +1,190 @@
+# **Crossroads Clash**
+
+---
+
+## **Objective**
+
+Crossroads Clash is a two-player, turn-based strategy game played on a command-line interface. The primary goal is to be the first player to traverse from one side of a grid to the opposite side by claiming a continuous path of nodes. Players must strategically choose their moves to block their opponent and create an unbroken route across the grid. The player who successfully forms a connected path from their designated start side to the opposite end wins the game.
+
+---
+
+## **Setup**
+
+- **Grid Creation**: The game is played on a square grid of nodes. The default size is a 5x5 grid, but it can be adjusted for different difficulty levels.
+- **Player Assignment**:
+  - **Player 1** begins on the left side of the grid and aims to create a path to the right side.
+  - **Player 2** begins on the top of the grid and aims to create a path to the bottom.
+- **Initial State**: All nodes in the grid are unclaimed at the start of the game.
+
+---
+
+## **Game Components**
+
+- **Grid Nodes**: Represented by coordinates `(row, column)`, each node can be claimed by a player.
+  - **Unclaimed Node**: Denoted by `.` (dot).
+  - **Player 1's Node**: Denoted by `X`.
+  - **Player 2's Node**: Denoted by `O`.
+- **Grid Display**: The grid is displayed in the command-line interface, updating after each turn to show the current state.
+- **Player Symbols**:
+  - **Player 1**: `X`
+  - **Player 2**: `O`
+
+---
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns. Player 1 starts first.
+- **Actions per Turn**:
+  - **Claim a Node**: On their turn, a player selects an unclaimed node to claim by entering its coordinates.
+- **Turn Progression**:
+  1. **Display Grid**: The current grid is displayed to both players.
+  2. **Player Input**: The active player is prompted to enter the coordinates of the node they wish to claim.
+  3. **Validation**: The game validates the input to ensure the node is unclaimed and within the grid boundaries.
+  4. **Update Grid**: The selected node is marked with the player's symbol.
+  5. **Check for Win**: The game checks if the player has formed a continuous path connecting their start and goal sides.
+  6. **Switch Turns**: If no win condition is met, the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+### **Claiming Nodes**
+
+- **Valid Moves**: A player may claim any unclaimed node on the grid.
+- **Invalid Moves**:
+  - Selecting a node outside the grid boundaries.
+  - Selecting a node that has already been claimed.
+
+### **Winning the Game**
+
+- **Path Formation**:
+  - **Player 1 (X)** aims to form a continuous path connecting the leftmost column to the rightmost column.
+  - **Player 2 (O)** aims to form a continuous path connecting the top row to the bottom row.
+- **Connectivity**: Nodes are connected if they are adjacent horizontally, vertically, or diagonally.
+- **Win Condition**: A player wins if they have a continuous chain of claimed nodes connecting their designated sides.
+
+### **Blocking**
+
+- Players may claim nodes strategically to block their opponent's potential paths.
+
+### **No Draws**
+
+- The game continues until one player achieves their objective. Due to the grid size and gameplay mechanics, a draw is impossible.
+
+---
+
+## **Scoring**
+
+- **Victory**: The winning player is declared upon meeting the win condition.
+- **No Point System**: There are no points; the game outcome is a win or loss.
+
+---
+
+## **Examples**
+
+### **Example Turn**
+
+**Initial Grid (5x5)**:
+
+```
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+**Player 1's Turn**:
+
+- **Prompt**: "Player 1 (X), enter the coordinates of the node you wish to claim (row and column):"
+- **Input**: `2 1`
+- **Validation**: Coordinates are within bounds and node is unclaimed.
+- **Grid Update**:
+
+```
+. . . . .
+X . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+### **Continuing Play**
+
+**Player 2's Turn**:
+
+- **Prompt**: "Player 2 (O), enter the coordinates of the node you wish to claim (row and column):"
+- **Input**: `1 3`
+- **Grid Update**:
+
+```
+. . O . .
+X . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+### **Winning Scenario**
+
+Assuming the game progresses, and Player 1 achieves the following path:
+
+```
+X . O . .
+X X O . .
+. X O . .
+. . O . .
+. . O . .
+```
+
+Player 1 has connected the left side to the right side with a continuous path of `X`s.
+
+- **Game Output**: "Player 1 (X) wins by connecting the left side to the right side!"
+
+---
+
+## **Command-Line Interactions**
+
+- **Game Start**:
+
+```
+Welcome to Crossroads Clash!
+Player 1 (X) vs. Player 2 (O)
+Starting grid size: 5x5
+Player 1 begins.
+```
+
+- **Turn Prompt**:
+
+```
+Current Grid:
+. . . . .
+X X O . .
+. X O . .
+. . O . .
+. . O . .
+
+Player 2 (O), enter the coordinates of the node you wish to claim (row and column):
+```
+
+- **Invalid Input Handling**:
+
+```
+Invalid input. Please enter valid row and column numbers for an unclaimed node.
+```
+
+---
+
+## **Strategic Depth**
+
+- **Path Planning**: Players must plan their routes while anticipating and obstructing their opponent's paths.
+- **Blocking**: Deciding when to advance their own path versus when to block the opponent can change the game's outcome.
+- **Grid Awareness**: Monitoring the entire grid is crucial for both offensive and defensive play.
+
+---
+
+## **Conclusion**
+
+Crossroads Clash offers a simple yet strategically rich gameplay experience that's easy to code and play via a command-line interface. Its unique mechanics and clear objective ensure that skilled players can consistently outperform less experienced opponents, while the impossibility of a draw keeps games quick and decisive.
+
+---

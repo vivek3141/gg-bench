@@ -1,0 +1,282 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a strategic two-player turn-based game where players take turns selecting numbers from a shared grid. The primary goal is to force your opponent into a position where they cannot make a valid move according to the game's rules. A player wins by selecting a number that leaves no valid options for the opponent on their next turn, thus causing the opponent to lose.
+
+## Setup
+
+1. **Game Grid Initialization**: The game is played on a 3x3 grid containing the numbers 1 through 9 arranged as follows:
+
+   ```
+   1 2 3
+   4 5 6
+   7 8 9
+   ```
+
+2. **Starting Conditions**:
+   - All numbers on the grid are initially unclaimed and available for selection.
+   - Players decide who will take the first turn (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Game Grid**:
+  - A 3x3 grid displaying numbers 1 to 9.
+  - Each number represents a selectable position on the grid.
+  - Numbers are unmarked at the start and become marked when selected.
+
+- **Markers**:
+  - Virtual markers are used to indicate numbers that have been selected.
+  - In a command-line interface, this could be shown by listing selected numbers or marking them as unavailable.
+
+- **Players**:
+  - Two players: Player 1 and Player 2.
+  - No physical tokens are required; players keep track of selections through the interface.
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, with the starting player making the first move.
+  
+- **Turn Structure**:
+  1. **Selection Phase**:
+     - The current player selects an unclaimed number from the grid that adheres to the selection rules (see Rules and Mechanics).
+  2. **Validation Phase**:
+     - The game checks if the selected number is valid.
+     - If the move is invalid, the player is prompted to choose again.
+  3. **Update Phase**:
+     - The selected number is marked as claimed and is no longer available.
+  4. **End Turn**:
+     - The turn ends, and control passes to the opponent.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - On the first turn of the game, the starting player may select any unclaimed number from the grid.
+
+2. **Subsequent Moves**:
+   - On their turn, a player must select an unclaimed number that is either a **divisor** or a **multiple** of the **number selected by the opponent on their previous turn**.
+   - Only numbers that satisfy this condition and are unclaimed can be selected.
+
+3. **Valid Moves**:
+   - A valid move is one where the selected number fulfills the divisor or multiple condition relative to the opponent's last selected number.
+   - If no valid moves are available, the player loses the game.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - A player wins if they successfully select a number that leaves the opponent with no valid moves on their subsequent turn.
+- **Losing the Game**:
+  - A player loses if, on their turn, they have no valid numbers to select according to the game rules.
+
+## Scoring
+
+- **Game Outcome**:
+  - The game is won by the player who forces their opponent into a position with no valid moves.
+  - There is no point scoring system; the outcome is a win or loss based on gameplay.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Grid**:
+
+```
+1 2 3
+4 5 6
+7 8 9
+```
+
+**Game Start**:
+
+- **Player 1's Turn**:
+  - **Selection**: Player 1 selects **6** (any number is valid on the first turn).
+  - **Grid Update**:
+    ```
+    1 2 3
+    4 5 X
+    7 8 9
+    ```
+  
+- **Player 2's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 6.
+    - Divisors of 6: 1, 2, 3
+    - Multiples of 6: None (since the grid only goes up to 9)
+    - **Valid Selections**: 1, 2, 3
+  - **Selection**: Player 2 selects **3**.
+  - **Grid Update**:
+    ```
+    1 2 X
+    4 5 X
+    7 8 9
+    ```
+  
+- **Player 1's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 3.
+    - Divisors of 3: 1
+    - Multiples of 3: 9 (since 3 x 3 = 9)
+    - **Valid Selections**: 1, 9
+  - **Selection**: Player 1 selects **9**.
+  - **Grid Update**:
+    ```
+    1 2 X
+    4 5 X
+    7 8 X
+    ```
+  
+- **Player 2's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 9.
+    - Divisors of 9: 1
+    - Multiples of 9: None
+    - **Valid Selections**: 1
+  - **Selection**: Player 2 selects **1**.
+  - **Grid Update**:
+    ```
+    X 2 X
+    4 5 X
+    7 8 X
+    ```
+  
+- **Player 1's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 1.
+    - Divisors of 1: 1 (already claimed)
+    - Multiples of 1: 2, 4, 5, 7, 8
+    - **Valid Selections**: 2, 4, 5, 7, 8
+  - **Selection**: Player 1 selects **8**.
+  - **Grid Update**:
+    ```
+    X 2 X
+    4 5 X
+    7 X X
+    ```
+  
+- **Player 2's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 8.
+    - Divisors of 8: 2, 4
+    - Multiples of 8: None
+    - **Valid Selections**: 2, 4
+  - **Selection**: Player 2 selects **2**.
+  - **Grid Update**:
+    ```
+    X X X
+    4 5 X
+    7 X X
+    ```
+  
+- **Player 1's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 2.
+    - Divisors of 2: 1 (already claimed)
+    - Multiples of 2: 4
+    - **Valid Selections**: 4
+  - **Selection**: Player 1 selects **4**.
+  - **Grid Update**:
+    ```
+    X X X
+    X 5 X
+    7 X X
+    ```
+  
+- **Player 2's Turn**:
+  - **Available Numbers**: Numbers that are unclaimed and are a divisor or multiple of 4.
+    - Divisors of 4: 1 (already claimed), 2 (already claimed)
+    - Multiples of 4: None
+    - **Valid Selections**: None
+  - **Outcome**: Player 2 has no valid moves and loses the game.
+
+### Command-Line Interaction Example
+
+**Note**: This example demonstrates how the game might be played in a command-line interface.
+
+```plaintext
+Welcome to Divisor Duel!
+
+Initial Grid:
+1 2 3
+4 5 6
+7 8 9
+
+Player 1's turn.
+Select a number from the grid: 6
+
+Updated Grid:
+1 2 3
+4 5 X
+7 8 9
+
+Player 2's turn.
+Valid selections are divisors or multiples of 6.
+Available numbers: 1, 2, 3
+Select a number from the grid: 3
+
+Updated Grid:
+1 2 X
+4 5 X
+7 8 9
+
+Player 1's turn.
+Valid selections are divisors or multiples of 3.
+Available numbers: 1, 9
+Select a number from the grid: 9
+
+Updated Grid:
+1 2 X
+4 5 X
+7 8 X
+
+Player 2's turn.
+Valid selections are divisors or multiples of 9.
+Available numbers: 1
+Select a number from the grid: 1
+
+Updated Grid:
+X 2 X
+4 5 X
+7 8 X
+
+Player 1's turn.
+Valid selections are divisors or multiples of 1.
+Available numbers: 2, 4, 5, 7, 8
+Select a number from the grid: 8
+
+Updated Grid:
+X 2 X
+4 5 X
+7 X X
+
+Player 2's turn.
+Valid selections are divisors or multiples of 8.
+Available numbers: 2, 4
+Select a number from the grid: 2
+
+Updated Grid:
+X X X
+4 5 X
+7 X X
+
+Player 1's turn.
+Valid selections are divisors or multiples of 2.
+Available numbers: 4
+Select a number from the grid: 4
+
+Updated Grid:
+X X X
+X 5 X
+7 X X
+
+Player 2's turn.
+Valid selections are divisors or multiples of 4.
+No valid moves available.
+Player 2 has no valid moves. Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Control Key Numbers**: Selecting numbers like 1 and prime numbers early can limit the opponent's options.
+- **Monitor Remaining Numbers**: Keep track of unclaimed numbers to anticipate the opponent's potential moves.
+- **Force Moves**: Aim to force the opponent into selecting numbers that will give you an advantage on your next turn.
+
+## Conclusion
+
+Divisor Duel is a simple yet strategic game that combines mathematical reasoning with tactical planning. By understanding the relationships between numbers and anticipating your opponent's moves, you can increase your chances of victory. Enjoy the challenge of outmaneuvering your opponent in this numerical showdown!

@@ -1,0 +1,176 @@
+# Prime Panic: Rule Book
+
+## Objective
+
+**Prime Panic** is a strategic numerical game for two players. The primary goal is to be the first player to reach **exactly 50 points**. Players accumulate points by adding numbers to their total score. Special rules apply when the total score reaches a prime number, adding strategic depth to the game. Victory is achieved by skillfully selecting numbers to reach the target score while leveraging the prime number rule.
+
+## Setup
+
+- **Players**: Two players are required.
+- **Starting Score**: Both players start with a score of **0 points**.
+- **Turn Order**: Decide who goes first (e.g., flip a coin). Play then alternates between the two players.
+
+## Game Components
+
+- **Score Tracker**: Each player needs a method to track their score. This can be a simple variable in the command-line interface or noted on paper.
+- **Number Selection**: Players will choose numbers between **1 and 10** inclusive during their turns.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Number Selection**: On their turn, a player selects a whole number between **1 and 10** inclusive.
+  2. **Score Update**: The selected number is added to the player's total score.
+  3. **Prime Check**:
+     - If the new total score is a **prime number**, the player's total score is **doubled** immediately.
+  4. **Win Condition Check**: If the player's total score is **exactly 50**, they win the game.
+  5. **Overage Check**: If the player's total score exceeds **50**, their score is reset to **0**.
+- **Turn Progression**: After completing the above steps, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must choose a whole number between **1 and 10** inclusive on each turn.
+   - The chosen number is added to their own total score.
+
+2. **Prime Number Rule**:
+   - After adding the chosen number, if the player's new total score is a **prime number**, their total score is immediately **doubled**.
+   - The doubling occurs only once per turn, regardless of whether the doubled score is also a prime number.
+
+3. **Scoring Limits**:
+   - If a player's total score exceeds **50** after any actions (addition and potential doubling), their score is reset to **0**.
+   - Players must reach **exactly 50 points** to win; exceeding 50 results in a reset.
+
+4. **Winning the Game**:
+   - The first player to reach a total score of **exactly 50 points** wins the game.
+
+5. **No Draws**:
+   - There is no draw mechanism in the game. Play continues until one player reaches exactly 50 points.
+
+6. **Strategy**:
+   - Players must strategically choose numbers to optimize their score progression while considering the prime number rule.
+   - Anticipating future moves and the potential for score doubling adds depth to the gameplay.
+
+## Scoring
+
+- **Tracking Score**: Keep a running total of each player's score throughout the game.
+- **Doubling for Primes**:
+  - Example: If a player's score is **17** after addition, since **17** is prime, the score is doubled to **34**.
+- **Exceeding 50**:
+  - If a player's score exceeds **50** at any point, their score resets to **0**.
+  - Example: A player with **45** chooses **7**, totaling **52**. Since **52 > 50**, their score resets to **0**.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Player 1 Score**: 0
+- **Player 2 Score**: 0
+
+#### Turn-by-Turn Overview
+
+1. **Player 1's Turn**:
+   - Chooses **7**.
+   - New score: 0 + 7 = **7**.
+   - **7** is a prime number.
+   - Score doubles: 7 × 2 = **14**.
+   - **Player 1 Score**: 14
+
+2. **Player 2's Turn**:
+   - Chooses **5**.
+   - New score: 0 + 5 = **5**.
+   - **5** is a prime number.
+   - Score doubles: 5 × 2 = **10**.
+   - **Player 2 Score**: 10
+
+3. **Player 1's Turn**:
+   - Chooses **3**.
+   - New score: 14 + 3 = **17**.
+   - **17** is a prime number.
+   - Score doubles: 17 × 2 = **34**.
+   - **Player 1 Score**: 34
+
+4. **Player 2's Turn**:
+   - Chooses **10**.
+   - New score: 10 + 10 = **20**.
+   - **20** is not a prime number.
+   - No doubling.
+   - **Player 2 Score**: 20
+
+5. **Player 1's Turn**:
+   - Chooses **8**.
+   - New score: 34 + 8 = **42**.
+   - **42** is not a prime number.
+   - No doubling.
+   - **Player 1 Score**: 42
+
+6. **Player 2's Turn**:
+   - Chooses **7**.
+   - New score: 20 + 7 = **27**.
+   - **27** is not a prime number.
+   - No doubling.
+   - **Player 2 Score**: 27
+
+7. **Player 1's Turn**:
+   - Chooses **4**.
+   - New score: 42 + 4 = **46**.
+   - **46** is not a prime number.
+   - No doubling.
+   - **Player 1 Score**: 46
+
+8. **Player 2's Turn**:
+   - Chooses **3**.
+   - New score: 27 + 3 = **30**.
+   - **30** is not a prime number.
+   - No doubling.
+   - **Player 2 Score**: 30
+
+9. **Player 1's Turn**:
+   - Chooses **4**.
+   - New score: 46 + 4 = **50**.
+   - **50** is not a prime number.
+   - No doubling.
+   - **Player 1 Score**: 50
+   - **Player 1 wins the game!**
+
+### Command-Line Interaction Sample
+
+Below is a simplified sample of how the command-line interaction might look:
+
+```
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1's turn. Enter a number between 1 and 10: 7
+Player 1 adds 7 to their score.
+7 is a prime number. Score doubles to 14.
+Player 1 Score: 14
+
+Player 2's turn. Enter a number between 1 and 10: 5
+Player 2 adds 5 to their score.
+5 is a prime number. Score doubles to 10.
+Player 2 Score: 10
+
+Player 1's turn. Enter a number between 1 and 10: 3
+Player 1 adds 3 to their score.
+17 is a prime number. Score doubles to 34.
+Player 1 Score: 34
+
+...
+
+Player 1's turn. Enter a number between 1 and 10: 4
+Player 1 adds 4 to their score.
+50 is not a prime number.
+Player 1 Score: 50
+
+Congratulations, Player 1! You have reached exactly 50 points and won the game!
+```
+
+## Conclusion
+
+**Prime Panic** is a simple yet strategic game that combines basic arithmetic with prime number recognition. Its straightforward rules make it easy to code and play in a command-line interface. The prime number rule adds a layer of strategy that allows skilled players to plan ahead and outmaneuver their opponents. Enjoy challenging your friends and honing your numerical prowess with Prime Panic!
+
+---
+
+*Note: Familiarity with prime numbers up to 50 will enhance gameplay experience and strategy.*

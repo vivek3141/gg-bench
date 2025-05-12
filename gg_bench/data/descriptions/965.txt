@@ -1,0 +1,186 @@
+# Sequence Builder
+
+## Objective
+
+Be the first player to reach the **target number** exactly by strategically adding or multiplying the **current number**. The player who successfully reaches the target number first **wins** the game.
+
+## Setup
+
+1. **Determine the Target Number**: Players agree on a target number to reach. The default target number is **23**, but any positive integer can be used to adjust the game's difficulty.
+
+2. **Initialize the Current Number**: The game starts with the **current number** set to **1**.
+
+3. **Player Assignment**: Decide which player goes first. This can be done by a coin toss, random selection, or mutual agreement.
+
+## Game Components
+
+- **Current Number**: An integer that starts at 1 and changes as players take their turns.
+
+- **Target Number**: The agreed-upon integer that players aim to reach exactly.
+
+- **Operations**:
+  - **Addition**: Players can add **1** or **2** to the current number.
+  - **Multiplication**: Players can multiply the current number by **2**.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Display the Current Number**: The game shows the current number before each turn.
+  2. **Choose an Operation**: On their turn, a player selects one of the allowed operations:
+     - Add **1** to the current number.
+     - Add **2** to the current number.
+     - Multiply the current number by **2**.
+  3. **Apply the Operation**: The chosen operation is applied, and the current number is updated.
+  4. **Check for Victory**: If the current number equals the target number, the player wins.
+  5. **Turn Ends**: If the target number is not reached, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Allowed Operations**:
+   - **Addition**:
+     - Players may add **1** or **2** to the current number.
+   - **Multiplication**:
+     - Players may multiply the current number by **2**.
+2. **Staying Within Bounds**:
+   - The current number **must not exceed** the target number after an operation.
+   - If all possible operations would result in a number greater than the target number, the player **loses their turn**.
+3. **Reaching the Target**:
+   - The player who updates the current number to exactly match the target number **wins immediately**.
+4. **Invalid Moves**:
+   - If a player attempts an operation that would exceed the target number, they are prompted to choose a different operation.
+   - Repeated invalid attempts result in **loss of turn**.
+5. **No Draws**:
+   - The game cannot end in a draw. Play continues until one player reaches the target number.
+
+## Scoring
+
+- **Winning the Game**: The player who reaches the target number exactly is declared the **winner**.
+- **No Point System**: The game does not use points; victory is achieved by meeting the objective.
+- **Match Play (Optional)**:
+  - Players can play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Scenario
+
+**Target Number**: 23  
+**Current Number**: 1  
+**Players**: Alice (Player 1) and Bob (Player 2)
+
+#### Turn-by-Turn Play
+
+1. **Turn 1 - Alice**
+   - Current Number: 1
+   - Alice chooses to add 2.
+   - New Current Number: 3
+
+2. **Turn 2 - Bob**
+   - Current Number: 3
+   - Bob chooses to multiply by 2.
+   - New Current Number: 6
+
+3. **Turn 3 - Alice**
+   - Current Number: 6
+   - Alice chooses to add 1.
+   - New Current Number: 7
+
+4. **Turn 4 - Bob**
+   - Current Number: 7
+   - Bob chooses to multiply by 2.
+   - New Current Number: 14
+
+5. **Turn 5 - Alice**
+   - Current Number: 14
+   - Alice chooses to add 2.
+   - New Current Number: 16
+
+6. **Turn 6 - Bob**
+   - Current Number: 16
+   - Bob wants to multiply by 2, but 16 * 2 = 32 exceeds the target number.
+   - Bob chooses to add 1.
+   - New Current Number: 17
+
+7. **Turn 7 - Alice**
+   - Current Number: 17
+   - Alice chooses to add 2.
+   - New Current Number: 19
+
+8. **Turn 8 - Bob**
+   - Current Number: 19
+   - Bob chooses to add 2.
+   - New Current Number: 21
+
+9. **Turn 9 - Alice**
+   - Current Number: 21
+   - Alice cannot multiply by 2 (would be 42) or add 2 (would be 23, which is acceptable).
+   - Alice chooses to add 2.
+   - New Current Number: 23
+   - Alice reaches the target number and **wins** the game.
+
+### Command-Line Interaction Sample
+
+Below is how a command-line version of the game might look during play.
+
+```
+Game Start!
+Target Number: 23
+Current Number: 1
+
+Alice's Turn:
+Current Number is 1
+Choose an operation:
+1. Add 1
+2. Add 2
+3. Multiply by 2
+Enter choice (1-3): 2
+You chose to add 2.
+New Current Number is 3
+
+Bob's Turn:
+Current Number is 3
+Choose an operation:
+1. Add 1
+2. Add 2
+3. Multiply by 2
+Enter choice (1-3): 3
+You chose to multiply by 2.
+New Current Number is 6
+
+Alice's Turn:
+Current Number is 6
+Choose an operation:
+1. Add 1
+2. Add 2
+3. Multiply by 2
+Enter choice (1-3): 1
+You chose to add 1.
+New Current Number is 7
+
+...
+
+Alice's Turn:
+Current Number is 21
+Choose an operation:
+1. Add 1
+2. Add 2
+3. Multiply by 2
+Enter choice (1-3): 2
+You chose to add 2.
+New Current Number is 23
+
+Congratulations, Alice! You have reached the target number and won the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's moves and plan your operations to control the flow of the game.
+- **Avoid Overshooting**: Be cautious with multiplication as it can quickly overshoot the target number.
+- **Force the Win**: Try to set up the current number so that you can reach the target on your next turn, regardless of your opponent's moves.
+- **Learn Optimal Paths**: Familiarize yourself with number sequences that lead to a win to enhance your chances against less skilled players.
+
+## Conclusion
+
+Sequence Builder is a simple yet strategic game that tests your arithmetic skills and foresight. With straightforward rules and quick gameplay, it offers an engaging experience that rewards planning and strategy.
+
+Enjoy the game and may the best strategist win!

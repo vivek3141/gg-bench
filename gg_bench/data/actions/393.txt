@@ -1,0 +1,11 @@
+The action space indices in the game `CustomEnv` are mapped to moves based on direction and steps. 
+
+- **Directions**: There are four possible directions: `up`, `down`, `left`, and `right`.
+- **Steps**: For each direction, the token can move 1 to 6 steps, considering the constraints of the grid size and visited cells.
+
+The action space is thus a combination of direction and steps. For each step count (1 to 6), all four directions are possible, resulting in `6 (steps) * 4 (directions) = 24` distinct actions. Each action index corresponds to a specific combination:
+
+1. **Direction Calculation**: `direction_index = action % 4`
+2. **Steps Calculation**: `steps = (action // 4) + 1`
+
+This mapping ensures that every action from 0 to 23 corresponds to a unique move within the parameters of the game.

@@ -1,0 +1,216 @@
+# **Number Elimination Duel**
+
+---
+
+## **Objective**
+
+Be the player who removes the last number from a shared list by strategically selecting numbers and eliminating their factors or multiples, thus leaving your opponent with no valid moves.
+
+---
+
+## **Setup**
+
+- **Number List**: A shared list of consecutive integers from **1 to 15** is presented at the start of the game.
+- **Players**: Two players decide who takes the first turn (e.g., coin toss, agreement).
+
+---
+
+## **Game Components**
+
+- **Number List**:
+  - **Numbers 1-15**: These are the numbers available for selection and elimination during the game.
+- **Players**:
+  - **Player 1** and **Player 2**: Participants who alternate turns selecting numbers.
+
+---
+
+## **Turns**
+
+1. **Turn Progression**:
+   - Players alternate turns, starting with the player agreed upon.
+   - On each turn, the active player selects one available number from the list.
+
+2. **Action Order**:
+   - **Selection**: Choose a number from the current list.
+   - **Elimination**: Remove the selected number and all numbers that share a common factor greater than 1 with it.
+   - **Update List**: Present the updated list to the next player.
+
+3. **End of Turn**:
+   - The turn ends after the elimination process.
+   - The next player then takes their turn with the updated list.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Selection**:
+   - On your turn, select **one** number from the available numbers in the list.
+
+2. **Elimination Rule**:
+   - After selecting a number, remove from the list:
+     - The **selected number**.
+     - Any other numbers that share a **common factor greater than 1** with the selected number.
+
+3. **Common Factors**:
+   - A common factor is any number (other than 1) that divides two numbers exactly.
+   - For example:
+     - Selecting **6** eliminates numbers like 2, 3, 4, 6, 8, 9, 10, 12, 14, and 15 because they share factors with 6.
+
+4. **Prime Numbers**:
+   - Selecting a **prime number** eliminates:
+     - The selected prime number.
+     - Any multiples of that prime number remaining in the list.
+
+5. **Number 1**:
+   - **1** can be selected on its own turn.
+   - Since **1** has no factors other than itself, only **1** is removed from the list.
+
+6. **Winning the Game**:
+   - The player who eliminates the **last number(s)** from the list wins.
+   - If a player cannot make a move because there are no numbers left to select, they **lose**.
+
+---
+
+## **Scoring**
+
+- **Victory Condition**: Win by removing the last number(s) from the list, leaving the opponent with no available moves.
+- **No Points System**: The game is won instantly upon fulfilling the victory condition.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Starting List**:  
+`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15`
+
+---
+
+**Player 1's Turn**:
+
+- **Selects**: **2**
+- **Eliminated Numbers** (common factors with 2): `2, 4, 6, 8, 10, 12, 14`
+- **Remaining List**: `1, 3, 5, 7, 9, 11, 13, 15`
+
+---
+
+**Player 2's Turn**:
+
+- **Selects**: **3**
+- **Eliminated Numbers** (common factors with 3): `3, 6, 9, 12, 15`
+- **Remaining List**: `1, 5, 7, 11, 13`
+
+---
+
+**Player 1's Turn**:
+
+- **Selects**: **5**
+- **Eliminated Numbers** (common factors with 5): `5, 10, 15`
+- **Remaining List**: `1, 7, 11, 13`
+
+---
+
+**Player 2's Turn**:
+
+- **Selects**: **7**
+- **Eliminated Numbers** (common factors with 7): `7, 14`
+- **Remaining List**: `1, 11, 13`
+
+---
+
+**Player 1's Turn**:
+
+- **Selects**: **11**
+- **Eliminated Numbers** (common factors with 11): `11`
+- **Remaining List**: `1, 13`
+
+---
+
+**Player 2's Turn**:
+
+- **Selects**: **13**
+- **Eliminated Numbers** (common factors with 13): `13`
+- **Remaining List**: `1`
+
+---
+
+**Player 1's Turn**:
+
+- **Selects**: **1**
+- **Eliminated Numbers**: `1`
+- **Remaining List**: _None_
+
+---
+
+**Result**:
+
+- **Player 1 wins** by removing the last number from the list.
+- **Player 2** has no numbers left to select and thus loses.
+
+---
+
+## **Sample Command-Line Interaction**
+
+```
+*** Number Elimination Duel ***
+
+Starting numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+
+Player 1's turn.
+Available numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+Select a number: 2
+Numbers eliminated: 2, 4, 6, 8, 10, 12, 14
+
+Player 2's turn.
+Available numbers: 1, 3, 5, 7, 9, 11, 13, 15
+Select a number: 3
+Numbers eliminated: 3, 9, 15
+
+Player 1's turn.
+Available numbers: 1, 5, 7, 11, 13
+Select a number: 5
+Numbers eliminated: 5
+
+Player 2's turn.
+Available numbers: 1, 7, 11, 13
+Select a number: 7
+Numbers eliminated: 7
+
+Player 1's turn.
+Available numbers: 1, 11, 13
+Select a number: 11
+Numbers eliminated: 11
+
+Player 2's turn.
+Available numbers: 1, 13
+Select a number: 13
+Numbers eliminated: 13
+
+Player 1's turn.
+Available numbers: 1
+Select a number: 1
+Numbers eliminated: 1
+
+No numbers remaining.
+Player 1 wins!
+```
+
+---
+
+## **Strategic Depth**
+
+To excel at **Number Elimination Duel**, players should:
+
+- **Plan Ahead**: Anticipate which numbers will be available in future turns based on current choices.
+- **Factor Awareness**: Understand the common factors between numbers to maximize the impact of each selection.
+- **Control the Game**: Aim to force the opponent into a position where they have no beneficial moves.
+- **Prioritize Eliminations**: Remove numbers that provide strategic advantage to the opponent if left available.
+
+---
+
+## **Conclusion**
+
+**Number Elimination Duel** is a simple yet strategically rich game that challenges players to think ahead and apply mathematical reasoning. Its straightforward mechanics make it easy to learn and quick to play, ensuring an engaging experience that rewards skill and planning over chance.
+
+**Enjoy the duel and may the best strategist win!**

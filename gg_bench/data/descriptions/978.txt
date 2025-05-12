@@ -1,0 +1,288 @@
+**Game Title: Capture the Flag**
+
+---
+
+### **Objective**
+
+Be the first player to capture your opponent's flag by strategically moving your soldiers across the battlefield. Victory is achieved by advancing one of your soldiers to your opponent's flag position at the opposite end of the line while preventing your opponent from doing the same.
+
+---
+
+### **Setup**
+
+- **Battlefield Layout**: A linear board consisting of 11 positions numbered from `0` to `10`.
+  
+- **Player Positions**:
+  - **Player 1**:
+    - **Flag**: Placed at position `0`.
+    - **Soldiers**: Two soldiers starting at position `0` (alongside the flag).
+  - **Player 2**:
+    - **Flag**: Placed at position `10`.
+    - **Soldiers**: Two soldiers starting at position `10` (alongside the flag).
+
+- **Starting Conditions**: Decide which player takes the first turn (can be determined randomly or by mutual agreement).
+
+---
+
+### **Game Components**
+
+- **Battlefield (Linear Board)**:
+  - Represented as positions numbered from `0` to `10`.
+  - Positions are sequential and reflect the soldiers' locations.
+
+- **Flags**:
+  - Each player has one flag.
+  - **Player 1's Flag**: Located at position `0`.
+  - **Player 2's Flag**: Located at position `10`.
+  - Flags remain stationary throughout the game.
+
+- **Soldiers**:
+  - Each player has two soldiers, represented by unique identifiers (e.g., `S1` and `S2` for Player 1, `S3` and `S4` for Player 2).
+  - Soldiers can move forward along the positions towards the opponent's flag.
+
+---
+
+### **Turns**
+
+- **Turn Order**:
+  - Players alternate turns.
+  - On each turn, only one soldier may be moved.
+
+- **Turn Actions**:
+  - **Move Soldier**:
+    - Choose one of your soldiers to move.
+    - Soldiers can be moved forward by **1 or 2 positions**.
+    - Soldiers cannot move backward.
+  - **Combat**:
+    - If a soldier lands on a position occupied by an opponent's soldier, the opponent's soldier is sent back to their own flag position.
+
+- **Progression**:
+  - Continue alternating turns until one player captures the opponent's flag.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement**:
+   - Soldiers can only move forward towards the opponent's flag.
+   - On each turn, a soldier may move:
+     - **1 Position Forward**: For cautious advancement.
+     - **2 Positions Forward**: For rapid progression but potentially increased risk.
+
+2. **Combat Mechanics**:
+   - **Engagement**:
+     - Landing on an opponent's soldier results in combat.
+     - The opponent's soldier is removed from its current position and placed back at their own flag position.
+   - **Multiple Occupancy**:
+     - Multiple soldiers (from the same player) can occupy the same position.
+
+3. **Capturing the Flag**:
+   - A player wins by moving one of their soldiers onto the opponent's flag position.
+   - The flag is considered captured upon arrival; no additional action is required.
+
+4. **Restrictions**:
+   - **Backward Movement**: Soldiers cannot move backward.
+   - **Skipping Turns**: Players cannot skip their turn; a soldier must be moved if possible.
+   - **Boundaries**:
+     - Soldiers cannot move beyond position `10` (Player 2's flag) or below position `0` (Player 1's flag).
+
+---
+
+### **Scoring**
+
+- **Victory Condition**:
+  - The game is won immediately when a player captures the opponent's flag.
+- **No Point System**:
+  - There is no points or scoring system; the focus is on strategic movement and capture.
+
+---
+
+### **Example Gameplay**
+
+**Initial Setup**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag, S1, S2]
+Player 2:                             [S3, S4, Flag]
+```
+
+**Turn 1: Player 1**
+
+- Moves Soldier `S1` from position `0` to position `2` (moves forward 2 positions).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag, S2]       [S1]
+Player 2:                             [S3, S4, Flag]
+```
+
+**Turn 2: Player 2**
+
+- Moves Soldier `S3` from position `10` to position `9` (moves forward 1 position towards Player 1's flag, but since the numbering is from 10 to 0, moving towards `0` is moving to lower numbers).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag, S2]       [S1]
+Player 2:                         [S3]     [S4, Flag]
+```
+
+**Turn 3: Player 1**
+
+- Moves Soldier `S2` from position `0` to position `1` (moves forward 1 position).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]  [S1]
+Player 2:                         [S3]     [S4, Flag]
+```
+
+**Turn 4: Player 2**
+
+- Moves Soldier `S3` from position `9` to position `7` (moves forward 2 positions).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]  [S1]
+Player 2:                   [S3]         [S4, Flag]
+```
+
+**Turn 5: Player 1**
+
+- Moves Soldier `S1` from position `2` to position `4` (moves forward 2 positions).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]       [S1]
+Player 2:                   [S3]         [S4, Flag]
+```
+
+**Turn 6: Player 2**
+
+- Moves Soldier `S4` from position `10` to position `8` (moves forward 2 positions).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]       [S1]
+Player 2:               [S4]   [S3]     [Flag]
+```
+
+**Turn 7: Player 1**
+
+- Moves Soldier `S1` from position `4` to position `6` (moves forward 2 positions).
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]             [S1]
+Player 2:               [S4]   [S3]     [Flag]
+```
+
+**Turn 8: Player 2**
+
+- Moves Soldier `S3` from position `7` to position `5` (moves forward 2 positions).
+- **Combat Occurs**: Soldier `S3` lands on an empty position; no combat.
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]             [S1]
+Player 2:               [S4] [S3]       [Flag]
+```
+
+**Turn 9: Player 1**
+
+- Moves Soldier `S1` from position `6` to position `8` (moves forward 2 positions).
+- **Combat Occurs**: Soldier `S1` lands on position `8` occupied by Soldier `S4`.
+  - Soldier `S4` is sent back to Player 2's flag at position `10`.
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [Flag]    [S2]                   [S1]
+Player 2:                         [S3]       [S4, Flag]
+```
+
+**Turn 10: Player 2**
+
+- Moves Soldier `S3` from position `5` to position `4` (moves forward 1 position).
+- **Combat Occurs**: Soldier `S3` lands on position `4` occupied by Soldier `S2`.
+  - Soldier `S2` is sent back to Player 1's flag at position `0`.
+
+**Game State**:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Player 1: [S2, Flag]                 [S1]
+Player 2:                   [S3]         [S4, Flag]
+```
+
+**Turn 11: Player 1**
+
+- Moves Soldier `S1` from position `8` to position `10` (moves forward 2 positions).
+- **Capturing the Flag**: Soldier `S1` reaches Player 2's flag position.
+- **Result**: Player 1 wins the game by capturing Player 2's flag.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Initial Prompt**:
+
+```
+Welcome to Capture the Flag!
+Player 1: You are 'P1' with soldiers S1 and S2 starting at position 0.
+Player 2: You are 'P2' with soldiers S3 and S4 starting at position 10.
+
+Positions: 0 [P1_Flag] ... 10 [P2_Flag]
+
+Player 1, it's your turn.
+Enter the soldier to move (S1/S2) and positions to move (1 or 2):
+```
+
+**Player 1 Input**:
+
+```
+S1 2
+```
+
+**Game Output**:
+
+```
+Player 1 moves S1 forward 2 positions to position 2.
+```
+
+**Updated Positions**:
+
+```
+Positions:
+0 [P1_Flag, S2]
+1 []
+2 [S1]
+...
+10 [P2_Flag, S3, S4]
+
+Player 2, it's your turn.
+Enter the soldier to move (S3/S4) and positions to move (1 or 2):
+```
+
+---
+
+### **Conclusion**
+
+"Capture the Flag" is a simple yet strategic two-player game that combines tactical movement with direct engagement. The clear objective, straightforward rules, and quick gameplay make it easy to code and play within a command-line interface. Players must carefully decide how to advance their soldiers while anticipating and countering their opponent's moves, ensuring that skillful play is rewarded.

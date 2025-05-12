@@ -1,0 +1,197 @@
+# Zero Sum Duel
+
+## Objective
+
+The objective of **Zero Sum Duel** is to be the first player to have a hand of cards that sums exactly to zero. Players strategically draw and discard numbered cards, aiming to balance positive and negative values in their hand. The player who achieves a total hand value of zero wins the game.
+
+## Setup
+
+1. **Deck Preparation**: Create a deck of cards numbered from **-5** to **+5**, excluding zero. There should be one card for each number, resulting in a total of **10** cards.
+2. **Shuffle**: Shuffle the deck thoroughly to randomize the order of the cards.
+3. **No Initial Hands**: Both players start with an empty hand.
+4. **Starting Player**: Decide who will take the first turn (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Deck of Numbered Cards**: Cards numbered from **-5** to **+5** (excluding zero), making **10** cards in total.
+  - **Card Values**: Each card represents an integer value, either positive or negative.
+- **Player Hands**: Each player can hold up to a maximum of **3** cards in their hand.
+- **Discard Pile**: A place to put discarded cards face up.
+
+## Turns
+
+The game progresses in alternating turns between the two players. Each turn consists of the following steps:
+
+1. **Draw Phase**: The active player draws the top card from the deck.
+2. **Hand Limit Check**: If the player's hand now contains more than **3** cards, they must proceed to the Discard Phase.
+3. **Discard Phase** (if needed):
+   - The player must choose one card from their hand to discard into the discard pile.
+4. **Hand Evaluation**: The player checks if the sum of the cards in their hand equals zero.
+   - **Win Condition**: If the sum is zero, the player declares it and wins the game.
+5. **Turn End**: If the sum is not zero, the turn passes to the other player.
+
+## Rules and Mechanics
+
+- **Drawing Cards**:
+  - Players must draw one card from the deck at the beginning of their turn.
+  - If the deck is empty, shuffle the discard pile to form a new deck.
+- **Hand Limit**:
+  - A player's hand cannot contain more than **3** cards at any time.
+  - If drawing a card causes the hand to exceed **3** cards, the player must discard one card during the Discard Phase.
+- **Discarding Cards**:
+  - Players may only discard during their own turn and only when their hand exceeds **3** cards.
+  - Discarded cards are placed face up in the discard pile.
+- **Winning the Game**:
+  - A player wins immediately when the sum of the cards in their hand equals zero.
+  - The sum must be exactly zero; no other total results in a win.
+- **No Draws**:
+  - The game continues until a player wins; there are no draw conditions.
+- **Strategy Elements**:
+  - Players must decide which cards to keep and which to discard to achieve a zero total.
+  - Tracking which cards have been played can provide an advantage.
+
+## Scoring
+
+- **Victory**: The first player to achieve a hand sum of zero wins the game.
+- There are no points or secondary scoring methods; the game is won outright.
+
+## Examples
+
+### Example Scenario
+
+Let's walk through a sample game between Player A and Player B.
+
+#### Initial Setup
+
+- Deck: Cards -5 to +5 (excluding 0), shuffled.
+- Hands: Both players start with empty hands.
+- Discard Pile: Empty.
+- Player A will start first.
+
+#### Turn 1: Player A
+
+1. **Draw Phase**: Player A draws a card.
+   - Card drawn: **+3**
+2. **Hand Limit Check**: Player A's hand has 1 card (no discard needed).
+3. **Hand Evaluation**: Hand sum is **+3** (does not equal zero).
+4. **Turn End**: Passes turn to Player B.
+
+#### Turn 2: Player B
+
+1. **Draw Phase**: Player B draws a card.
+   - Card drawn: **-2**
+2. **Hand Limit Check**: Player B's hand has 1 card (no discard needed).
+3. **Hand Evaluation**: Hand sum is **-2** (does not equal zero).
+4. **Turn End**: Passes turn to Player A.
+
+#### Turn 3: Player A
+
+1. **Draw Phase**: Player A draws a card.
+   - Card drawn: **-5**
+2. **Hand Limit Check**: Player A's hand has 2 cards (no discard needed).
+3. **Hand Evaluation**: Hand contains **+3** and **-5**, sum is **-2** (does not equal zero).
+4. **Turn End**: Passes turn to Player B.
+
+#### Turn 4: Player B
+
+1. **Draw Phase**: Player B draws a card.
+   - Card drawn: **+4**
+2. **Hand Limit Check**: Player B's hand has 2 cards (no discard needed).
+3. **Hand Evaluation**: Hand contains **-2** and **+4**, sum is **+2** (does not equal zero).
+4. **Turn End**: Passes turn to Player A.
+
+#### Turn 5: Player A
+
+1. **Draw Phase**: Player A draws a card.
+   - Card drawn: **+2**
+2. **Hand Limit Check**: Player A's hand has 3 cards (no discard needed).
+3. **Hand Evaluation**: Hand contains **+3**, **-5**, **+2**, sum is **0**.
+4. **Win Condition**: Player A declares that their hand sums to zero.
+5. **Victory**: Player A wins the game.
+
+### Command-Line Interaction Example
+
+Below is a simplified example of how the game might play out in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to Zero Sum Duel!
+
+Shuffling deck...
+Player A will go first.
+```
+
+#### Turn 1: Player A
+
+```
+Player A's Turn:
+You draw a card: +3
+Your hand: [+3]
+Your hand sum: +3
+(No action can be taken.)
+End of turn. Press Enter to continue.
+```
+
+#### Turn 2: Player B
+
+```
+Player B's Turn:
+You draw a card: -2
+Your hand: [-2]
+Your hand sum: -2
+(No action can be taken.)
+End of turn. Press Enter to continue.
+```
+
+#### Turn 3: Player A
+
+```
+Player A's Turn:
+You draw a card: -5
+Your hand: [+3, -5]
+Your hand sum: -2
+(No action can be taken.)
+End of turn. Press Enter to continue.
+```
+
+#### Turn 4: Player B
+
+```
+Player B's Turn:
+You draw a card: +4
+Your hand: [-2, +4]
+Your hand sum: +2
+(No action can be taken.)
+End of turn. Press Enter to continue.
+```
+
+#### Turn 5: Player A
+
+```
+Player A's Turn:
+You draw a card: +2
+Your hand: [+3, -5, +2]
+Your hand sum: 0
+Congratulations! Your hand sums to zero.
+Player A wins the game!
+```
+
+## Additional Rules for Strategic Depth
+
+- **Observing Discards**: Since discarded cards are visible, players can infer which cards remain in the deck.
+- **Bluffing**: Players might keep high positive or negative cards to mislead the opponent.
+- **Deck Cycling**: If the deck runs out, shuffle the discard pile to form a new deck, adding a layer of strategy regarding which cards might come up again.
+
+## Implementation Notes for Command-Line Interface
+
+- **Card Representation**: Use simple strings like "+3", "-2" to represent cards.
+- **Input Prompts**: Clearly prompt players when they need to make decisions (e.g., choosing a card to discard).
+- **Game State Display**: Show players their hand and hand sum at each turn.
+- **Validation**: Ensure inputs for discarding are valid (e.g., the card exists in their hand).
+
+## Conclusion
+
+**Zero Sum Duel** is a simple yet strategic game that challenges players to balance their hand to achieve a total sum of zero. With straightforward rules and minimal components, it is easy to code and play within a command-line interface. The game offers depth through strategic discarding and the ability to track which cards have been played, allowing skilled players to gain an advantage over unskilled opponents.
+
+Enjoy the challenge of reaching zero, and may the best player win!

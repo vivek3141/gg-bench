@@ -1,0 +1,258 @@
+# Game Name: Stack Attack
+
+## Objective
+
+Be the last player to successfully place a number on the stack according to the stacking rules, thereby forcing your opponent into a position where they cannot make a legal move.
+
+## Setup
+
+- **Players:** 2
+- **Starting Conditions:**
+  - The game begins with an empty stack.
+  - A shared pool of numbers from 1 to 9 is available for both players.
+  - Numbers can be used multiple times; they are not removed from the pool after being played.
+- **Decide Turn Order:**
+  - Flip a coin or agree on who will take the first turn.
+
+## Game Components
+
+- **The Stack:**
+  - A virtual or physical stack where numbers are placed in sequence.
+  - Initially empty at the start of the game.
+
+- **Number Pool (1-9):**
+  - Digits from 1 to 9.
+  - Each number has the following attributes:
+    - **Value:** The integer from 1 to 9.
+    - **Unlimited Use:** Numbers are not consumed upon use and can be played multiple times.
+
+## Turns
+
+- **Turn Structure:**
+  - Players alternate turns throughout the game.
+  - During a turn, a player must perform the following action:
+    1. **Select a Number:** Choose a number from 1 to 9 that complies with the stacking rules.
+    2. **Place on Stack:** Add the chosen number to the top of the stack.
+
+- **Turn Progression:**
+  - The game continues with players taking turns until one player cannot make a legal move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Stacking Rule:**
+   - **First Move:**
+     - If the stack is empty, any number from 1 to 9 can be placed.
+   - **Subsequent Moves:**
+     - The number placed must be **either a factor or a multiple** of the number currently on top of the stack.
+     - Examples:
+       - If the top number is **2**, valid moves include **1, 2, 4, 6, 8**.
+       - If the top number is **5**, valid moves include **1, 5**.
+
+2. **Number Selection:**
+   - Players can choose any number from 1 to 9 as long as it adheres to the stacking rule.
+   - Numbers are **not** removed from the pool after use and can be played repeatedly.
+
+3. **Legal Moves:**
+   - A move is legal if it satisfies the stacking rule.
+   - If a player cannot make a legal move on their turn, they lose the game.
+
+4. **Winning the Game:**
+   - The last player to successfully place a number on the stack wins.
+   - The opponent loses if they cannot place a number according to the stacking rule on their turn.
+
+### Additional Mechanics
+
+- **No Skip or Pass:**
+  - Players cannot skip or pass their turn.
+  - If no legal move is available, the player loses.
+
+- **No Repeating Consecutive Numbers by Same Player:**
+  - A player cannot place the same number they played on their previous turn unless necessary.
+
+- **Game End Conditions:**
+  - The game ends immediately when a player cannot make a legal move.
+  - There are no draws; one player will always win.
+
+## Scoring
+
+- **Win Condition:**
+  - The player who successfully places a number on the stack when their opponent cannot make a subsequent legal move wins the game.
+
+- **No Points or Tally:**
+  - The game does not use a point system.
+  - Victory is determined solely by the last successful legal move.
+
+## Examples
+
+### Example Game Play
+
+#### Turn-by-Turn Breakdown
+
+1. **Turn 1: Player 1**
+   - **Stack:** Empty
+   - **Action:** Chooses **4** (any number is valid on the first turn).
+   - **Stack After Move:** `[4]`
+
+2. **Turn 2: Player 2**
+   - **Top of Stack:** 4
+   - **Valid Numbers:** 1, 2, 4, 8 (factors or multiples of 4)
+   - **Action:** Chooses **8**.
+   - **Stack After Move:** `[4, 8]`
+
+3. **Turn 3: Player 1**
+   - **Top of Stack:** 8
+   - **Valid Numbers:** 1, 2, 4, 8 (factors or multiples of 8)
+   - **Action:** Chooses **2**.
+   - **Stack After Move:** `[4, 8, 2]`
+
+4. **Turn 4: Player 2**
+   - **Top of Stack:** 2
+   - **Valid Numbers:** 1, 2, 4, 6, 8 (factors or multiples of 2)
+   - **Action:** Chooses **6**.
+   - **Stack After Move:** `[4, 8, 2, 6]`
+
+5. **Turn 5: Player 1**
+   - **Top of Stack:** 6
+   - **Valid Numbers:** 1, 2, 3, 6, 9 (factors or multiples of 6)
+   - **Action:** Chooses **3**.
+   - **Stack After Move:** `[4, 8, 2, 6, 3]`
+
+6. **Turn 6: Player 2**
+   - **Top of Stack:** 3
+   - **Valid Numbers:** 1, 3, 6, 9 (factors or multiples of 3)
+   - **Action:** Chooses **9**.
+   - **Stack After Move:** `[4, 8, 2, 6, 3, 9]`
+
+7. **Turn 7: Player 1**
+   - **Top of Stack:** 9
+   - **Valid Numbers:** 1, 3, 9 (factors or multiples of 9)
+   - **Action:** Chooses **1**.
+   - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1]`
+
+8. **Turn 8: Player 2**
+   - **Top of Stack:** 1
+   - **Valid Numbers:** Any number from 1 to 9 (since all numbers are multiples of 1)
+   - **Action:** Chooses **5**.
+   - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5]`
+
+9. **Turn 9: Player 1**
+   - **Top of Stack:** 5
+   - **Valid Numbers:** 1, 5 (factors or multiples of 5)
+   - **Action:** Chooses **5**.
+   - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5]`
+
+10. **Turn 10: Player 2**
+    - **Top of Stack:** 5
+    - **Valid Numbers:** 1, 5
+    - **Action:** Chooses **1**.
+    - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5, 1]`
+
+11. **Turn 11: Player 1**
+    - **Top of Stack:** 1
+    - **Valid Numbers:** Any number from 1 to 9
+    - **Action:** Chooses **7**.
+    - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7]`
+
+12. **Turn 12: Player 2**
+    - **Top of Stack:** 7
+    - **Valid Numbers:** 1, 7
+    - **Action:** Chooses **7**.
+    - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7]`
+
+13. **Turn 13: Player 1**
+    - **Top of Stack:** 7
+    - **Valid Numbers:** 1, 7
+    - **Action:** Chooses **1**.
+    - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7, 1]`
+
+14. **Turn 14: Player 2**
+    - **Top of Stack:** 1
+    - **Valid Numbers:** Any number from 1 to 9
+    - **Action:** Chooses **2**.
+    - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7, 1, 2]`
+
+15. **Turn 15: Player 1**
+    - **Top of Stack:** 2
+    - **Valid Numbers:** 1, 2, 4, 6, 8
+    - **Action:** Chooses **8**.
+    - **Stack After Move:** `[4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7, 1, 2, 8]`
+
+16. **Turn 16: Player 2**
+    - **Top of Stack:** 8
+    - **Valid Numbers:** 1, 2, 4, 8
+    - **Action:** Cannot place a number—no legal moves remaining.
+
+- **Outcome:** Player 2 cannot make a legal move and loses the game. **Player 1 wins.**
+
+### Sample Command-Line Interaction
+
+Below is an example of how the game might be played in a command-line interface.
+
+```plaintext
+Starting Stack Attack Game!
+Player 1 begins.
+
+Current Stack: Empty
+Player 1, enter a number (1-9): 4
+
+Current Stack: [4]
+Player 2, enter a number that is a factor or multiple of 4: 8
+
+Current Stack: [4, 8]
+Player 1, enter a number that is a factor or multiple of 8: 2
+
+Current Stack: [4, 8, 2]
+Player 2, enter a number that is a factor or multiple of 2: 6
+
+Current Stack: [4, 8, 2, 6]
+Player 1, enter a number that is a factor or multiple of 6: 3
+
+Current Stack: [4, 8, 2, 6, 3]
+Player 2, enter a number that is a factor or multiple of 3: 9
+
+Current Stack: [4, 8, 2, 6, 3, 9]
+Player 1, enter a number that is a factor or multiple of 9: 1
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1]
+Player 2, enter a number that is a factor or multiple of 1: 5
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5]
+Player 1, enter a number that is a factor or multiple of 5: 5
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5]
+Player 2, enter a number that is a factor or multiple of 5: 1
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5, 1]
+Player 1, enter a number that is a factor or multiple of 1: 7
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7]
+Player 2, enter a number that is a factor or multiple of 7: 7
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7]
+Player 1, enter a number that is a factor or multiple of 7: 1
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7, 1]
+Player 2, enter a number that is a factor or multiple of 1: 2
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7, 1, 2]
+Player 1, enter a number that is a factor or multiple of 2: 8
+
+Current Stack: [4, 8, 2, 6, 3, 9, 1, 5, 5, 1, 7, 7, 1, 2, 8]
+Player 2, enter a number that is a factor or multiple of 8: 
+
+No valid moves available. Player 2 loses.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Consider possible future moves to avoid leaving yourself without options.
+- **Force Opponent's Hand:** Try to play numbers that limit the next player's options.
+- **Utilize Number 1 Wisely:** Since all numbers are multiples of 1, playing 1 can reset the stack but may also give your opponent more options.
+- **Avoid Loops:** Be cautious of creating sequences that allow the opponent to force you into an unwinnable position.
+
+---
+
+Enjoy playing Stack Attack! May the best strategist win.

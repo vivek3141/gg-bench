@@ -1,0 +1,260 @@
+# Zero-Sum Grid
+
+## Objective
+
+Be the first player to reduce **all numbers on the grid to zero** on your turn. The player who makes the move that results in all numbers in the grid being zeros wins the game.
+
+---
+
+## Setup
+
+- **Grid Size:** The game is played on a **3x3 grid**.
+- **Initial Numbers:** Each cell in the grid is initialized with a **random integer between -5 and 5**, excluding zero (i.e., values range from -5 to -1 and 1 to 5).
+- **Player Order:** Players decide who goes first (e.g., flip a coin or mutual agreement).
+
+---
+
+## Game Components
+
+### Grid
+
+- A 3x3 grid displayed on the command-line interface.
+- Each cell contains an integer value.
+  
+Example Initial Grid:
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   4
+   2    | -1   5  -2
+   3    |  3  -4   1
+```
+
+### Players
+
+- **Player 1** and **Player 2** take turns.
+- Each player will perform actions to modify the grid.
+
+---
+
+## Turns
+
+On each turn, a player must:
+
+1. **Select a Line:**
+   - Choose either a **row** or a **column** to modify.
+   - Rows are numbered **1** to **3** from top to bottom.
+   - Columns are numbered **1** to **3** from left to right.
+
+2. **Choose an Operation:**
+   - Decide to either **add 1** or **subtract 1** to all numbers in the selected line.
+
+3. **Execute Move:**
+   - The chosen operation is applied to all numbers in the selected row or column simultaneously.
+   - The grid updates to reflect the changes.
+
+4. **Check for Win:**
+   - After the move, if **all numbers in the grid are zero**, the player wins the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Line Selection:**
+   - Players can choose any row or column on their turn.
+   - There is no restriction on selecting the same line multiple times during the game.
+
+2. **Operations:**
+   - **Add 1 (+1):** Increases all numbers in the selected line by 1.
+   - **Subtract 1 (-1):** Decreases all numbers in the selected line by 1.
+
+3. **Grid Updates:**
+   - Numbers can become positive, negative, or zero.
+   - The grid is updated immediately after each turn.
+
+4. **Winning the Game:**
+   - The first player to make all numbers in the grid zero on their turn wins.
+   - The game cannot end in a draw due to the finite number of possible states.
+
+5. **Invalid Moves:**
+   - All moves are valid as long as they follow the turn structure.
+   - There are no prohibited actions or illegal moves.
+
+---
+
+## Scoring
+
+- **Victory Condition:** The game is won by reducing all numbers in the grid to zero on your turn.
+- **No Points System:** There is no point accumulation; the focus is on achieving the objective to win.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid:
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   4
+   2    | -1   5  -2
+   3    |  3  -4   1
+```
+
+#### Turn 1: Player 1
+
+- **Selects:** Row 1
+- **Operation:** Add 1 (+1)
+- **Action:** Adds 1 to all numbers in Row 1
+- **Updated Grid:**
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  3  -2   5
+   2    | -1   5  -2
+   3    |  3  -4   1
+```
+
+#### Turn 2: Player 2
+
+- **Selects:** Column 2
+- **Operation:** Subtract 1 (-1)
+- **Action:** Subtracts 1 from all numbers in Column 2
+- **Updated Grid:**
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  3  -3   5
+   2    | -1   4  -2
+   3    |  3  -5   1
+```
+
+#### Turn 3: Player 1
+
+- **Selects:** Row 2
+- **Operation:** Add 1 (+1)
+- **Action:** Adds 1 to all numbers in Row 2
+- **Updated Grid:**
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  3  -3   5
+   2    |  0   5  -1
+   3    |  3  -5   1
+```
+
+#### Turn 4: Player 2
+
+- **Selects:** Column 1
+- **Operation:** Subtract 1 (-1)
+- **Action:** Subtracts 1 from all numbers in Column 1
+- **Updated Grid:**
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   5
+   2    | -1   5  -1
+   3    |  2  -5   1
+```
+
+#### Turn 5: Player 1
+
+- **Selects:** Column 3
+- **Operation:** Subtract 1 (-1)
+- **Action:** Subtracts 1 from all numbers in Column 3
+- **Updated Grid:**
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   4
+   2    | -1   5  -2
+   3    |  2  -5   0
+```
+
+#### Turn 6: Player 2
+
+- **Selects:** Row 3
+- **Operation:** Add 1 (+1)
+- **Action:** Adds 1 to all numbers in Row 3
+- **Updated Grid:**
+
+```
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   4
+   2    | -1   5  -2
+   3    |  3  -4   1
+```
+
+*... The game continues until a player zeros out the grid.*
+
+---
+
+## Command-Line Interaction
+
+The game interaction follows a simple, text-based format.
+
+### Example Turn Prompt:
+
+```
+Player 1's turn.
+Current Grid:
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   4
+   2    | -1   5  -2
+   3    |  3  -4   1
+
+Select a line type:
+[R] Row
+[C] Column
+Enter choice (R/C): R
+
+Enter the line number (1-3): 2
+
+Choose an operation:
+[A] Add 1
+[S] Subtract 1
+Enter choice (A/S): A
+
+Updated Grid:
+Row\Col |  1   2   3
+-----------------------
+   1    |  2  -3   4
+   2    |  0   6  -1
+   3    |  3  -4   1
+```
+
+### After Move:
+
+- The grid updates are displayed.
+- The program checks for a win condition.
+- If the game continues, the next player is prompted.
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Consider how your move will affect the grid not only on this turn but in future turns.
+- **Anticipate Moves:** Try to predict your opponent's strategies and counter them.
+- **Balance Lines:** Focus on lines where you can bring numbers closer to zero without setting up your opponent for a win.
+- **Control Critical Numbers:** Pay attention to cells that are close to zero, as they can be pivotal in winning the game.
+- **Force Moves:** Manipulate the grid to force your opponent into making moves that benefit you.
+
+---
+
+## Summary
+
+"Zero-Sum Grid" is a turn-based strategy game that combines simple arithmetic with tactical decision-making. By adding or subtracting 1 from entire rows or columns, players must work to zero out the entire grid. The game's simplicity makes it easy to learn, but achieving victory requires foresight and strategic planning. It is a fast-paced game with no possibility of a draw, ensuring a decisive outcome in every match.
+
+Enjoy sharpening your arithmetic and strategic skills in this engaging two-player challenge!
+
+---

@@ -1,0 +1,271 @@
+# Grid Runner
+
+## Objective
+
+Grid Runner is a strategic two-player, turn-based game played on a 5x5 grid. The primary goal is to navigate your runner from your starting corner to the opponent's starting corner before they reach yours or to capture the opponent's runner by landing on their position. The first player to successfully reach the opponent's starting corner or capture the opponent's runner wins the game.
+
+## Setup
+
+1. **Game Board**: A 5x5 grid is used as the game board, with rows labeled 1 to 5 from top to bottom and columns labeled A to E from left to right.
+
+2. **Player Runners**:
+   - **Player 1** (P1) starts at the top-left corner of the grid (position A1).
+   - **Player 2** (P2) starts at the bottom-right corner of the grid (position E5).
+
+3. **Barriers**:
+   - Each player begins with three barriers.
+   - Barriers are used to block a cell on the grid, preventing runners from moving into or through that cell.
+
+4. **Initial Conditions**:
+   - The grid is empty except for the players' runners at their starting positions.
+   - No barriers are placed on the grid at the start of the game.
+
+## Game Components
+
+- **Grid Cells**: Each cell on the 5x5 grid can be identified by its column and row (e.g., B3).
+
+- **Runners**:
+  - Represented by `P1` and `P2` on the grid.
+  - Can move one cell per turn in any of the four orthogonal directions (up, down, left, right).
+
+- **Barriers**:
+  - Represented by `X` on the grid.
+  - Once placed, they remain on the grid for the duration of the game.
+  - Cannot be placed on a cell occupied by a runner.
+
+## Turns
+
+Players take turns alternately, starting with Player 1.
+
+### On Each Turn, a Player Must:
+
+1. **Choose an Action**:
+   - **Move Runner**: Move your runner one cell in any orthogonal direction (no diagonal moves).
+   - **Place Barrier**: Place one of your remaining barriers on an empty cell to block it.
+
+2. **Conditions**:
+   - **Movement**:
+     - Cannot move into a cell occupied by a barrier or the opponent's runner.
+     - Cannot move off the grid.
+   - **Barrier Placement**:
+     - Can only place barriers on empty cells not currently occupied by either runner.
+     - Cannot place barriers on cells adjacent to their own runner's current position.
+     - Once all barriers are used, the player can only move their runner.
+
+## Rules and Mechanics
+
+1. **Runner Movement**:
+   - Runners move one cell per turn.
+   - Movement is restricted to up, down, left, or right.
+   - Cannot move into or through a barrier.
+
+2. **Capturing Opponent's Runner**:
+   - If a player moves their runner onto the cell occupied by the opponent's runner, they capture the opponent and win the game.
+
+3. **Winning the Game**:
+   - **Victory by Reach**: Reach the opponent's starting corner (P2 reaches A1, P1 reaches E5).
+   - **Victory by Capture**: Capture the opponent's runner by landing on their cell.
+
+4. **Barriers**:
+   - Each player has only three barriers for the entire game.
+   - Barriers are static and cannot be moved once placed.
+   - Strategic placement can block the opponent's path or protect your own runner.
+
+5. **Blocked Paths**:
+   - If a player has no legal moves due to barriers, the opponent must allow at least one escape route; barriers cannot completely enclose a runner.
+
+6. **No Draws**:
+   - The game continues until one player wins by reaching the opponent's starting corner or capturing the opponent's runner. There are no draw conditions.
+
+## Scoring
+
+- The game is won by achieving the objective as per the rules.
+- No points are awarded; it's a win/loss outcome.
+- A skilled player can consistently win by strategically moving and placing barriers.
+
+## Examples
+
+### Example Game Play
+
+**Initial Grid**:
+
+```
+  A B C D E
+1 P1 . . . .
+2 .  . . . .
+3 .  . . . .
+4 .  . . . .
+5 .  . . . P2
+```
+
+**Player Actions and Turns**:
+
+- **Turn 1**: *P1's Move*
+  - Action: Move Runner to B1.
+  - Grid Update:
+
+    ```
+      A B C D E
+    1 . P1 . . .
+    2 .  .  . . .
+    3 .  .  . . .
+    4 .  .  . . .
+    5 .  .  . . P2
+    ```
+  
+- **Turn 2**: *P2's Move*
+  - Action: Place Barrier at D5.
+  - Grid Update:
+
+    ```
+      A B C D E
+    1 . P1 . . .
+    2 .  .  . . .
+    3 .  .  . . .
+    4 .  .  . . .
+    5 .  .  . X P2
+    ```
+
+- **Turn 3**: *P1's Move*
+  - Action: Move Runner to B2.
+  - Grid Update:
+
+    ```
+      A B C D E
+    1 .  .  . . .
+    2 . P1 . . .
+    3 .  .  . . .
+    4 .  .  . . .
+    5 .  .  . X P2
+    ```
+
+- **Turn 4**: *P2's Move*
+  - Action: Move Runner to D5.
+  - Note: Cannot move to D5 (barrier present).
+  - Action: Move Runner to E4.
+  - Grid Update:
+
+    ```
+      A B C D E
+    1 .  .  . . .
+    2 . P1 . . .
+    3 .  .  . . .
+    4 .  .  . . P2
+    5 .  .  . X .
+    ```
+
+- **Turn 5**: *P1's Move*
+  - Action: Place Barrier at B3.
+  - Grid Update:
+
+    ```
+      A B C D E
+    1 .  .  . . .
+    2 . P1 . . .
+    3 . X  . . .
+    4 .  .  . . P2
+    5 .  .  . X .
+    ```
+
+- **Turn 6**: *P2's Move*
+  - Action: Move Runner to D4.
+  - Grid Update:
+
+    ```
+      A B C D E
+    1 .  .  . . .
+    2 . P1 . . .
+    3 . X  . . .
+    4 .  .  . P2 .
+    5 .  .  . X .
+    ```
+
+- **...**
+
+**Victory Scenario**:
+
+Suppose the game continues, and on **Turn 10**, P1 moves to E5 (P2's starting position).
+
+- **Turn 10**: *P1's Move*
+  - Action: Move Runner to E5 (P2's starting corner).
+  - *P1 wins the game by reaching the opponent's starting corner.*
+
+### Command-Line Interaction Sample
+
+**Notation**:
+
+- Players input commands in the format of `ACTION POSITION`.
+  - For movement: `MOVE B2`
+  - For placing a barrier: `BARRIER C3`
+
+**Sample Interaction**:
+
+- **P1's Turn**:
+  - `P1> MOVE B1`
+  - *Game updates P1's position to B1.*
+
+- **P2's Turn**:
+  - `P2> BARRIER D5`
+  - *Game places a barrier at D5.*
+
+- **P1's Turn**:
+  - `P1> MOVE B2`
+  - *Game updates P1's position to B2.*
+
+- **P2's Turn**:
+  - `P2> MOVE E4`
+  - *Game updates P2's position to E4.*
+
+- **P1's Turn**:
+  - `P1> BARRIER B3`
+  - *Game places a barrier at B3.*
+
+- **P2's Turn**:
+  - `P2> MOVE D4`
+  - *Game updates P2's position to D4.*
+
+- **...**
+
+- **P1's Winning Move**:
+  - `P1> MOVE E5`
+  - *Game announces P1 has reached P2's starting corner. P1 wins!*
+
+## Additional Rules and Clarifications
+
+- **Illegal Moves**:
+  - If a player attempts to move into a barrier or off the grid, they are prompted to make a valid move.
+  - Attempting to place a barrier on an occupied or invalid cell results in being prompted to choose a valid cell.
+
+- **No Skipping Turns**:
+  - Players must make an action each turn; they cannot skip their turn.
+
+- **Barrier Limit**:
+  - Once a player has used all three barriers, they cannot place more and must move their runner on their turns.
+
+- **Movement Priority**:
+  - If both runners would occupy the same cell due to simultaneous moves, the player whose turn it is reaches the cell first.
+
+- **Fair Play**:
+  - Players should not intentionally make invalid moves to delay the game.
+  - The game enforces valid moves, ensuring smooth gameplay.
+
+## Strategy Tips
+
+- **Balance Offense and Defense**:
+  - Use barriers to block your opponent's most direct path while keeping your route clear.
+
+- **Conserve Barriers**:
+  - Don't use all your barriers too early; you may need them to block unexpected moves later.
+
+- **Predict Opponent's Moves**:
+  - Anticipate where your opponent is heading and plan your moves accordingly.
+
+- **Control the Center**:
+  - Gaining control of the center of the grid can give you more movement options.
+
+- **Avoid Traps**:
+  - Be cautious of being funneled into areas where you could be easily blocked.
+
+## Conclusion
+
+Grid Runner is a simple yet strategic game that tests players' planning and foresight. Easy to code and quick to play, it ensures no draws and that skilled players have a consistent edge over unskilled opponents. Enjoy the challenge of outmaneuvering your opponent in this exciting grid-based duel!

@@ -1,0 +1,310 @@
+# **Game Title: Quantum Duel**
+
+---
+
+## **Objective**
+
+Be the first player to collapse all of your opponent's quantum states by strategically observing and manipulating shared particles, thus achieving a total quantum collapse of their system.
+
+---
+
+## **Setup**
+
+- **Quantum Particles Grid**: A 3x3 grid representing quantum particles shared between the two players.
+- **Quantum States**: Each cell in the grid can be in one of two quantum states: *Superposed* `(S)` or *Collapsed* `(C)`.
+- **Initial State**: All particles start in the *Superposed* state `(S)`.
+
+---
+
+## **Game Components**
+
+1. **Quantum Grid**:
+   - A 3x3 matrix accessible via command-line interface positions:
+     ```
+     [1][2][3]
+     [4][5][6]
+     [7][8][9]
+     ```
+   - Each cell can hold a quantum particle in a specific state.
+
+2. **States**:
+   - **Superposed (S)**: The particle is in a potential state and has not been observed.
+   - **Collapsed (C)**: The particle has been observed by a player and has taken a definite state.
+
+3. **Player Tokens**:
+   - **Player 1**: Represented by `P1`.
+   - **Player 2**: Represented by `P2`.
+
+---
+
+## **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns; determine who goes first randomly or by mutual agreement.
+
+2. **Turn Structure**:
+   - **Observation Phase**:
+     - The player selects one *Superposed* particle to observe (collapse).
+     - The particle's state changes from `(S)` to `(C)`, and it becomes associated with the observing player (`P1` or `P2`).
+   - **Manipulation Phase** (Optional):
+     - The player may perform one special action per turn if conditions are met (see **Rules and Mechanics**).
+
+3. **Progression**:
+   - The game continues with players alternating turns until one player collapses all of the opponent's particles.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Observing Particles**:
+   - **Observation**: On your turn, you must observe one *Superposed* particle.
+   - **Claiming**: The observed particle is claimed and marked with your player token (`P1` or `P2`).
+
+2. **Superposition Collapse**:
+   - Once observed, a particle cannot return to a *Superposed* state.
+
+3. **Adjacency Rule**:
+   - **Chain Reaction**: If you observe a particle adjacent (horizontally or vertically) to one or more particles owned by the opponent, those opponent particles become entangled.
+   
+4. **Entanglement and Collapse**:
+   - **Entangled Particles**: An opponent's particle that is adjacent to your newly observed particle becomes entangled.
+   - **Collapsing Entangled Particles**:
+     - On your next turn, instead of observing a new particle, you may choose to collapse all entangled opponent particles.
+     - Collapsed opponent particles are removed from the grid (set to a neutral state `(X)`).
+
+5. **Special Actions**:
+   - **Quantum Swap**:
+     - Condition: You must have exactly two claimed particles adjacent to a single opponent's particle.
+     - Action: Swap the state of one of your adjacent particles with the opponent's particle.
+   - **Quantum Tunnel**:
+     - Condition: There must be exactly one unclaimed *Superposed* particle between two of your claimed particles.
+     - Action: Claim the *Superposed* particle between your particles by tunneling, without using the observation phase.
+
+6. **Winning the Game**:
+   - **Victory Condition**: You win if you collapse all of your opponent's particles (i.e., the opponent has no claimed particles left on the grid).
+
+---
+
+## **Scoring**
+
+- **No Points System**: The game is won by meeting the victory condition, without the need for point tracking.
+
+---
+
+## **Examples**
+
+### **Example Scenario**
+
+Let's walk through a sample game to illustrate the rules.
+
+#### **Initial Grid**
+
+All particles are in the *Superposed* state `(S)`:
+
+```
+[1:S][2:S][3:S]
+[4:S][5:S][6:S]
+[7:S][8:S][9:S]
+```
+
+#### **Turn 1: Player 1**
+
+- **Observation Phase**:
+  - Player 1 observes particle at position 5.
+  - The grid updates:
+
+```
+[1:S][2:S][3:S]
+[4:S][5:P1][6:S]
+[7:S][8:S][9:S]
+```
+
+#### **Turn 2: Player 2**
+
+- **Observation Phase**:
+  - Player 2 observes particle at position 2.
+  - No adjacent opponent particles, so no entanglement.
+  - The grid updates:
+
+```
+[1:S][2:P2][3:S]
+[4:S][5:P1][6:S]
+[7:S][8:S][9:S]
+```
+
+#### **Turn 3: Player 1**
+
+- **Observation Phase**:
+  - Player 1 observes particle at position 6.
+  - It's adjacent to Player 2's particle at position 2.
+  - Player 2's particle at position 2 becomes entangled.
+  - The grid updates:
+
+```
+[1:S][2:P2*][3:S]
+[4:S][5:P1][6:P1]
+[7:S][8:S][9:S]
+```
+- (`P2*` denotes an entangled particle)
+
+#### **Turn 4: Player 2**
+
+- **Collapse Option**:
+  - Player 2 could choose to collapse their entangled particle but decides to observe instead.
+- **Observation Phase**:
+  - Observes particle at position 8.
+  - The grid updates:
+
+```
+[1:S][2:P2*][3:S]
+[4:S][5:P1][6:P1]
+[7:S][8:P2][9:S]
+```
+
+#### **Turn 5: Player 1**
+
+- **Collapse Option**:
+  - Player 1 chooses to collapse the entangled opponent particle at position 2.
+  - Particle at position 2 is removed (set to neutral `(X)`).
+  - The grid updates:
+
+```
+[1:S][2:X][3:S]
+[4:S][5:P1][6:P1]
+[7:S][8:P2][9:S]
+```
+
+#### **Turn 6: Player 2**
+
+- **Observation Phase**:
+  - Observes particle at position 9.
+  - No adjacent opponent particles.
+  - The grid updates:
+
+```
+[1:S][2:X][3:S]
+[4:S][5:P1][6:P1]
+[7:S][8:P2][9:P2]
+```
+
+#### **Game Continues...**
+
+Players continue to take turns according to the rules until one player collapses all opponent particles.
+
+---
+
+## **Command-Line Interaction Sample**
+
+Below is a simulated command-line interaction between Player 1 and Player 2.
+
+### **Starting the Game**
+
+```
+Welcome to Quantum Duel!
+
+All particles are in Superposed state.
+
+Player 1 and Player 2, decide who goes first.
+
+Player 1 will start.
+```
+
+### **Turn 1: Player 1**
+
+```
+Player 1's Turn:
+Grid Status:
+[1:S][2:S][3:S]
+[4:S][5:S][6:S]
+[7:S][8:S][9:S]
+
+Choose a particle to observe (1-9): 5
+
+You have observed particle 5.
+```
+
+### **Turn 2: Player 2**
+
+```
+Player 2's Turn:
+Grid Status:
+[1:S][2:S][3:S]
+[4:S][5:P1][6:S]
+[7:S][8:S][9:S]
+
+Choose a particle to observe (1-9): 2
+
+You have observed particle 2.
+```
+
+### **Turn 3: Player 1**
+
+```
+Player 1's Turn:
+Grid Status:
+[1:S][2:P2][3:S]
+[4:S][5:P1][6:S]
+[7:S][8:S][9:S]
+
+Choose a particle to observe (1-9): 6
+
+You have observed particle 6.
+
+Player 2's particle at position 2 is now entangled.
+```
+
+### **Turn 4: Player 2**
+
+```
+Player 2's Turn:
+Grid Status:
+[1:S][2:P2*][3:S]
+[4:S][5:P1][6:P1]
+[7:S][8:S][9:S]
+
+You have an entangled particle at position 2.
+Options:
+1. Collapse entangled particles.
+2. Observe a new particle.
+
+Choose an option (1 or 2): 1
+
+You have collapsed your entangled particle at position 2.
+
+Particle at position 2 is now neutral.
+```
+
+### **Turn 5: Player 1**
+
+```
+Player 1's Turn:
+Grid Status:
+[1:S][2:X][3:S]
+[4:S][5:P1][6:P1]
+[7:S][8:S][9:S]
+
+Choose a particle to observe (1-9): 9
+
+You have observed particle 9.
+```
+
+### **Game Continues...**
+
+Players continue interacting in this manner until the game concludes.
+
+---
+
+## **Strategic Depth**
+
+- **Entanglement Management**: Deciding when to entangle opponent particles or when to collapse them adds a layer of strategy.
+- **Special Actions Utilization**: Timing the use of Quantum Swap and Quantum Tunnel can turn the tide of the game.
+- **Positional Advantage**: Claiming particles that maximize your control while minimizing risk.
+- **Prediction**: Anticipating the opponent's moves based on the current grid state.
+
+---
+
+## **Conclusion**
+
+"Quantum Duel" combines simple rules with strategic complexity, providing an engaging experience that is easy to code and play in a command-line interface. The mechanics encourage players to think ahead and outmaneuver their opponent, ensuring that skillful play is rewarded and that each game is quick yet challenging.
+
+Enjoy the duel!

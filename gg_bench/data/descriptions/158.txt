@@ -1,0 +1,136 @@
+# Number Clash
+
+## Objective
+
+Be the first player to reach the target score by strategically selecting numbers to add to your cumulative total. The player who reaches or exceeds the target score first wins the game.
+
+## Setup
+
+- **Players:** Two players, Player 1 and Player 2.
+- **Target Score:** A predefined target score agreed upon before starting (e.g., 50).
+- **Number Pool:** Numbers from **1** to **10** are available for selection.
+- **Starting Conditions:** Both players start with a cumulative score of **0**.
+
+## Game Components
+
+- **Cumulative Score Tracker:** Keeps track of each player's total score.
+- **Number Pool:** Digits from **1** to **10** that players can choose from during their turn.
+- **Command-Line Interface:** Players input their choices through text prompts.
+
+## Turns
+
+1. **Turn Order:** Players alternate turns, starting with Player 1.
+2. **Action on Turn:**
+   - **Select a Number:** Choose a number from **1** to **10** that hasn't been used by either player during the game.
+   - **Update Score:** Add the selected number to your cumulative score.
+3. **Turn Progression:** After a player completes their turn, the game prompts the next player.
+
+## Rules and Mechanics
+
+- **Number Selection:**
+  - On your turn, select an unused number from the number pool.
+  - A number, once selected by either player, cannot be selected again in the game.
+- **Cumulative Scoring:**
+  - Add the chosen number to your cumulative score.
+- **Winning the Game:**
+  - The first player whose cumulative score **reaches or exceeds the target score** wins immediately.
+- **Strategic Play:**
+  - Players must plan their selections to reach the target score while potentially blocking their opponent.
+- **No Draws:**
+  - Since a player wins upon reaching the target score first, draws are not possible.
+
+## Scoring
+
+- **Tracking Scores:**
+  - Players' scores are updated each turn based on their selected numbers.
+  - Scores are displayed after each turn for both players.
+- **Victory Condition:**
+  - The game ends when a player's cumulative score is **greater than or equal to** the target score.
+
+## Examples
+
+### Example Game Play to Target Score of 15
+
+**Initial State:**
+- Target Score: 15
+- Available Numbers: 1-10
+- Player 1 Score: 0
+- Player 2 Score: 0
+
+---
+
+**Turn 1 – Player 1:**
+- **Available Numbers:** 1-10
+- **Player 1 selects:** **7**
+- **Player 1 Score:** 0 + 7 = **7**
+- **Updated Available Numbers:** 1-6, 8-10
+
+**Output:**
+```
+Player 1 chose 7. Player 1's total score is now 7.
+```
+
+---
+
+**Turn 2 – Player 2:**
+- **Available Numbers:** 1-6, 8-10
+- **Player 2 selects:** **8**
+- **Player 2 Score:** 0 + 8 = **8**
+- **Updated Available Numbers:** 1-6, 9-10
+
+**Output:**
+```
+Player 2 chose 8. Player 2's total score is now 8.
+```
+
+---
+
+**Turn 3 – Player 1:**
+- **Available Numbers:** 1-6, 9-10
+- **Player 1 selects:** **9**
+- **Player 1 Score:** 7 + 9 = **16**
+- **Player 1 has reached the target score and wins the game.**
+
+**Output:**
+```
+Player 1 chose 9. Player 1's total score is now 16.
+Player 1 has reached the target score of 15 and wins the game!
+```
+
+---
+
+### Command-Line Interaction Sample
+
+**Game Start:**
+```
+Welcome to Number Clash!
+Target Score to Win: 15
+Player 1 and Player 2 start at 0 points.
+Numbers available: 1,2,3,4,5,6,7,8,9,10
+```
+
+**Player Turns:**
+```
+Player 1, select a number from the available numbers: 7
+Player 1 chose 7. Total score: 7
+Numbers remaining: 1,2,3,4,5,6,8,9,10
+
+Player 2, select a number from the available numbers: 8
+Player 2 chose 8. Total score: 8
+Numbers remaining: 1,2,3,4,5,6,9,10
+
+Player 1, select a number from the available numbers: 9
+Player 1 chose 9. Total score: 16
+Player 1 has reached the target score and wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead:** Keep track of remaining numbers to anticipate your opponent's options.
+- **Block the Opponent:** Choose numbers that might help your opponent reach the target score if left available.
+- **Optimal Choices:** Aim to select higher numbers early to reach the target score quickly.
+- **Adjust Strategy:** If you're behind, consider which numbers you can select to prevent your opponent from winning on their next turn.
+
+## Conclusion
+
+Number Clash is a quick and strategic game that challenges players to think ahead and make tactical decisions. With simple rules and a clear objective, it offers depth and replayability, ensuring that skilled players can consistently outperform by planning and foresight.

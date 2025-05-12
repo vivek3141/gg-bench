@@ -1,0 +1,205 @@
+# Switch Conquer: Rule Book
+
+## Objective
+
+**Switch Conquer** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to align all four switches to your designated state. Each player is assigned a state—either 'A' or 'B'—and must manipulate the switches to achieve a uniform configuration of their state. The first player to successfully set all switches to their state on their turn wins the game.
+
+---
+
+## Setup
+
+1. **Players**: Two players are required. 
+   - **Player 1** is assigned state **'A'**.
+   - **Player 2** is assigned state **'B'**.
+
+2. **Switches**: There are four switches arranged in a linear sequence. Each switch has two possible states:
+   - **State 'A'**
+   - **State 'B'**
+
+3. **Initial Configuration**: The game starts with the switches in a random configuration of states 'A' and 'B'. For example:
+   ```
+   Switches: A B B A
+   ```
+
+---
+
+## Game Components
+
+- **Switches**: Represented as a sequence of four characters ('A' or 'B') indicating their current states. For example:
+  ```
+  A B A B
+  ```
+
+- **Player States**: Each player's designated state ('A' or 'B'). Players aim to change the switches to match their state.
+
+---
+
+## Turns
+
+- **Turn Order**: Player 1 begins the game, and players alternate turns thereafter.
+
+- **Actions per Turn**: On their turn, a player can perform one of the following actions:
+  1. **Flip a Single Switch**: Change the state of any one switch.
+  2. **Flip Two Adjacent Switches**: Change the states of any two switches that are next to each other.
+
+- **Turn Progression**: After a player completes their action, the game checks for a win condition. If neither player has won, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Flipping a Switch**:
+   - **Single Switch Flip**:
+     - Select any one of the four switches.
+     - Change its state from 'A' to 'B' or from 'B' to 'A'.
+   - **Adjacent Switches Flip**:
+     - Select any two switches that are adjacent (next to each other).
+     - Change both of their states.
+
+2. **Switch States**:
+   - Switch states are always either 'A' or 'B'.
+   - Flipping changes 'A' to 'B' and 'B' to 'A'.
+
+3. **Winning the Game**:
+   - **Player 1 Wins**: When all switches are in state 'A' on Player 1's turn.
+   - **Player 2 Wins**: When all switches are in state 'B' on Player 2's turn.
+   - The win condition is checked at the end of each player's turn.
+
+4. **No Draws**:
+   - The game continues until one player wins.
+   - Due to the finite number of switch configurations and the ability to always change states, the game cannot end in a draw.
+
+---
+
+## Scoring
+
+- **Victory Condition**: The game is won by the player who first aligns all switches to their designated state.
+- **No Points System**: There is no point scoring system. The outcome is a win or loss based on achieving the objective.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Configuration**:
+```
+Switches: A B A B
+```
+**Player 1's Goal**: Align all switches to 'A'.
+
+**Player 2's Goal**: Align all switches to 'B'.
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Flip Switch 2.
+  - Switch 2 changes from 'B' to 'A'.
+- **Resulting Configuration**:
+  ```
+  Switches: A A A B
+  ```
+- **Win Check**: Not all switches are 'A'; the game continues.
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Flip Switches 3 and 4.
+  - Switch 3 changes from 'A' to 'B'.
+  - Switch 4 changes from 'B' to 'A'.
+- **Resulting Configuration**:
+  ```
+  Switches: A A B A
+  ```
+- **Win Check**: Not all switches are 'B'; the game continues.
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Flip Switch 3.
+  - Switch 3 changes from 'B' to 'A'.
+- **Resulting Configuration**:
+  ```
+  Switches: A A A A
+  ```
+- **Win Check**: All switches are 'A'.
+- **Outcome**: **Player 1 wins!**
+
+---
+
+### Command-Line Interaction Example
+
+Below is a sample of how the game might be played in a command-line interface.
+
+**Game Start**:
+```
+Welcome to Switch Conquer!
+
+Initial Switch Configuration:
+Switches: A B A B
+
+Player 1's turn. Your goal is to set all switches to 'A'.
+
+Choose your action:
+1. Flip a single switch.
+2. Flip two adjacent switches.
+Enter 1 or 2: 1
+
+Select the switch to flip (1-4): 2
+
+Switches after your turn:
+Switches: A A A B
+
+No winner yet. Passing turn to Player 2.
+```
+
+**Player 2's turn**:
+```
+Player 2's turn. Your goal is to set all switches to 'B'.
+
+Choose your action:
+1. Flip a single switch.
+2. Flip two adjacent switches.
+Enter 1 or 2: 2
+
+Select the first switch to flip (1-3): 3
+
+Switches after your turn:
+Switches: A A B A
+
+No winner yet. Passing turn to Player 1.
+```
+
+**Player 1's winning turn**:
+```
+Player 1's turn. Your goal is to set all switches to 'A'.
+
+Choose your action:
+1. Flip a single switch.
+2. Flip two adjacent switches.
+Enter 1 or 2: 1
+
+Select the switch to flip (1-4): 3
+
+Switches after your turn:
+Switches: A A A A
+
+Congratulations, Player 1! You have aligned all switches to 'A' and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's moves and plan your flips to counteract their strategy.
+- **Control the Center**: Flipping the middle switches can be more impactful due to their adjacency to two other switches.
+- **Force Moves**: Try to create configurations where your opponent has limited options to prevent them from aligning the switches to their state.
+
+---
+
+## Conclusion
+
+Switch Conquer is a simple yet strategic game that requires foresight and planning. By understanding the mechanics of flipping switches and anticipating your opponent's actions, you can develop strategies to consistently outmaneuver less skilled players. Enjoy the mind games and may the best strategist win!

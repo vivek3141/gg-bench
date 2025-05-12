@@ -1,0 +1,301 @@
+# Blockade - Game Rule Book
+
+Welcome to **Blockade**, a strategic two-player turn-based game played on a grid. The objective is to outmaneuver your opponent by carefully placing your markers and blocking their paths, ultimately leaving them with no legal moves. This game is designed for quick play sessions and can be easily implemented in a command-line interface.
+
+---
+
+## Objective
+
+The primary goal of **Blockade** is to be the last player able to make a legal move on the grid. Players achieve victory by strategically placing their markers adjacent to the last placed marker and removing grid cells to limit the opponent's options. A player loses if they cannot place their marker on their turn according to the game rules.
+
+---
+
+## Setup
+
+1. **Game Board Initialization**:
+   - The game is played on a 5x5 grid, initially composed of 25 empty cells.
+   - Each cell is identified by its row and column coordinates, ranging from (1,1) to (5,5).
+
+2. **Player Assignment**:
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Each player is assigned a unique marker symbol:
+     - **Player 1**: `'A'`
+     - **Player 2**: `'B'`
+
+3. **Starting Conditions**:
+   - No markers are placed on the grid at the beginning of the game.
+   - All cells are available for placement and removal.
+
+---
+
+## Game Components
+
+- **Grid**:
+  - A 5x5 matrix representing the game board.
+  - Cells can be in one of three states:
+    - **Empty**: Available for placement.
+    - **Occupied**: Contains a player's marker.
+    - **Removed**: Blocked and cannot be used.
+
+- **Player Markers**:
+  - Symbols representing each player's presence on the grid.
+  - **Player 1** uses `'A'`.
+  - **Player 2** uses `'B'`.
+
+- **Cell Coordinates**:
+  - Each cell is accessed using its row and column numbers.
+  - Coordinates are entered as `(row,column)`.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - **Player 1** takes the first turn.
+   - Players alternate turns thereafter.
+
+2. **Turn Structure**:
+   On each turn, a player performs the following actions in order:
+   1. **Placement Phase**:
+      - Place your marker on an empty cell that is adjacent (up, down, left, or right) to the last placed marker.
+      - **Exception**: On the very first turn of the game, **Player 1** may place their marker on any empty cell.
+   2. **Blockade Phase**:
+      - Remove (blockade) any one empty cell on the grid, making it unusable for the rest of the game.
+      - The removed cell cannot be one that is occupied or already removed.
+
+3. **Adjacency Rules**:
+   - A cell is considered adjacent if it is directly above, below, to the left, or to the right of a given cell.
+   - Diagonal cells are **not** considered adjacent.
+
+4. **Turn Progression**:
+   - After completing both phases, control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Marker Placement**:
+   - A marker must be placed on an **empty** and **adjacent** cell relative to the last marker placed (regardless of which player placed it).
+   - If no adjacent empty cells are available, the player loses.
+
+2. **Cell Removal (Blockading)**:
+   - After placing a marker, the player must remove any one **empty** cell from the grid.
+   - Removed cells are considered blocked and cannot be used for placement or movement.
+
+3. **Legal Moves**:
+   - A move is legal if the player can both:
+     - Place their marker according to the placement rules.
+     - Remove an empty cell during the blockade phase.
+
+4. **Winning the Game**:
+   - A player wins if the opposing player cannot make a legal move on their turn.
+   - This occurs when the opponent cannot place their marker due to lack of adjacent empty cells.
+
+5. **Illegal Moves**:
+   - If a player attempts an illegal move, they must choose a different action that conforms to the rules.
+   - If no legal moves are available, the player loses.
+
+---
+
+## Scoring
+
+- **Victory Condition**:
+  - The game does not utilize a point-based scoring system.
+  - The winner is determined by the last player able to make a legal move.
+- **Game End**:
+  - The game ends immediately when a player cannot legally place their marker on their turn.
+  - There are no draws in **Blockade**; a game always results in a win for one player and a loss for the other.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Grid State**:
+
+All cells are empty.
+
+**Turn 1**: *Player 1*
+
+- **Placement**:
+  - Player 1 places `'A'` at position **(3,3)**.
+- **Blockade**:
+  - Player 1 removes cell at position **(1,1)**.
+
+**Grid State**:
+
+- `'A'` at (3,3)
+- Removed cell at (1,1)
+
+---
+
+**Turn 2**: *Player 2*
+
+- **Placement**:
+  - Player 2 must place `'B'` adjacent to (3,3).
+  - Options: (2,3), (3,2), (3,4), (4,3)
+  - Player 2 chooses to place `'B'` at **(3,4)**.
+- **Blockade**:
+  - Player 2 removes cell at position **(1,2)**.
+
+**Grid State**:
+
+- `'A'` at (3,3)
+- `'B'` at (3,4)
+- Removed cells at (1,1) and (1,2)
+
+---
+
+**Turn 3**: *Player 1*
+
+- **Placement**:
+  - Player 1 must place `'A'` adjacent to (3,4).
+  - Options: (2,4), (3,3), (3,5), (4,4)
+  - (3,3) is already occupied by `'A'`.
+  - Player 1 places `'A'` at **(2,4)**.
+- **Blockade**:
+  - Player 1 removes cell at position **(5,5)**.
+
+**Grid State**:
+
+- `'A'` at (3,3) and (2,4)
+- `'B'` at (3,4)
+- Removed cells at (1,1), (1,2), and (5,5)
+
+---
+
+**Turn 4**: *Player 2*
+
+- **Placement**:
+  - Player 2 must place `'B'` adjacent to (2,4).
+  - Options: (1,4), (2,3), (2,5), (3,4)
+  - (3,4) is occupied by `'B'`.
+  - Player 2 places `'B'` at **(2,5)**.
+- **Blockade**:
+  - Player 2 removes cell at position **(1,3)**.
+
+**Grid State**:
+
+- `'A'` at (3,3) and (2,4)
+- `'B'` at (3,4) and (2,5)
+- Removed cells at (1,1), (1,2), (1,3), and (5,5)
+
+---
+
+**Turn 5**: *Player 1*
+
+- **Placement**:
+  - Player 1 must place `'A'` adjacent to (2,5).
+  - Options: (1,5), (2,4), (3,5)
+  - (2,4) is occupied by `'A'`.
+  - Player 1 places `'A'` at **(1,5)**.
+- **Blockade**:
+  - Player 1 removes cell at position **(5,4)**.
+
+**Grid State**:
+
+- `'A'` at (3,3), (2,4), and (1,5)
+- `'B'` at (3,4) and (2,5)
+- Removed cells at (1,1), (1,2), (1,3), (5,4), and (5,5)
+
+---
+
+**Turn 6**: *Player 2*
+
+- **Placement**:
+  - Player 2 must place `'B'` adjacent to (1,5).
+  - Options: (1,4), (2,5)
+  - (2,5) is occupied by `'B'`.
+  - Player 2 places `'B'` at **(1,4)**.
+- **Blockade**:
+  - Player 2 removes cell at position **(5,3)**.
+
+**Grid State**:
+
+- `'A'` at (3,3), (2,4), and (1,5)
+- `'B'` at (3,4), (2,5), and (1,4)
+- Removed cells at (1,1), (1,2), (1,3), (5,3), (5,4), and (5,5)
+
+---
+
+**Turn 7**: *Player 1*
+
+- **Placement**:
+  - Player 1 must place `'A'` adjacent to (1,4).
+  - Options: (1,3), (2,4)
+  - (1,3) is removed.
+  - (2,4) is occupied by `'A'`.
+  - **No legal moves available.**
+
+**Result**:
+
+- **Player 1 cannot make a legal move and loses.**
+- **Player 2 wins the game.**
+
+---
+
+### Command-Line Interaction Sample
+
+Below is a sample of how the game might be played in a command-line interface.
+
+#### Turn 1: Player 1
+
+```
+Player 1's turn.
+Place your marker ('A').
+
+Enter row (1-5): 3
+Enter column (1-5): 3
+
+You placed 'A' at (3,3).
+
+Block a cell.
+
+Enter row (1-5): 1
+Enter column (1-5): 1
+
+You removed cell at (1,1).
+```
+
+#### Turn 2: Player 2
+
+```
+Player 2's turn.
+Place your marker ('B') adjacent to (3,3).
+
+Available cells: (2,3), (3,2), (3,4), (4,3)
+Enter row (1-5): 3
+Enter column (1-5): 4
+
+You placed 'B' at (3,4).
+
+Block a cell.
+
+Enter row (1-5): 1
+Enter column (1-5): 2
+
+You removed cell at (1,2).
+```
+
+*...and so on, following the gameplay as described in the example playthrough.*
+
+---
+
+## Tips for Strategic Play
+
+- **Plan Ahead**:
+  - Consider not just your current move but how it will affect future options for both you and your opponent.
+  
+- **Control the Center**:
+  - Occupying central cells may give you more adjacent options in subsequent turns.
+
+- **Block Wisely**:
+  - Remove cells that would provide key opportunities for your opponent in future turns.
+
+- **Limit Opponent's Moves**:
+  - Try to force your opponent into positions where their options are minimal.
+
+---
+
+Enjoy playing **Blockade**, and may the most strategic player win!

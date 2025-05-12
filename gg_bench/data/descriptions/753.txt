@@ -1,0 +1,214 @@
+# Prime Duel
+
+## Objective
+
+Be the first player to reduce your opponent's health points to zero by strategically selecting prime numbers as attacks. Utilize mathematical insights to avoid attack reflections and outmaneuver your opponent.
+
+## Setup
+
+- **Players:** 2
+- **Starting Health:**
+  - Player 1 Health Points (HP): **100**
+  - Player 2 Health Points (HP): **100**
+- **Determine First Player:**
+  - Use a fair method such as a coin toss or mutual agreement.
+- **Prime Numbers Available for Attacks:**
+  - **[2, 3, 5, 7, 11, 13, 17, 19]**
+
+## Game Components
+
+- **Health Points (HP):**
+  - Numerical representation of a player's remaining vitality.
+  - Both players start with **100 HP**.
+- **Prime Number List:**
+  - The set of prime numbers between **2** and **19**, inclusive.
+  - Primes used for attacks: **2**, **3**, **5**, **7**, **11**, **13**, **17**, **19**.
+- **Command-Line Interface:**
+  - Players input their chosen prime numbers during their turns.
+  - The interface displays current HP and available primes.
+
+## Turns
+
+1. **Player Action:**
+   - On their turn, a player selects a prime number from the list to use as their attack value.
+2. **Attack Resolution:**
+   - Compare the attack number to the opponent's current HP:
+     - **If the opponent's HP is _not_ a multiple of the attack number:**
+       - The attack is **successful**.
+       - Opponent loses HP equal to the attack number.
+     - **If the opponent's HP _is_ a multiple of the attack number:**
+       - The attack is **reflected**.
+       - Attacker loses HP equal to the attack number.
+3. **Update Health Points:**
+   - Reflect the HP changes based on the attack outcome.
+4. **Turn Progression:**
+   - The turn passes to the other player.
+   - Repeat until one player's HP is reduced to zero or below.
+
+## Rules and Mechanics
+
+### Attack Selection
+
+- **Choosing Primes:**
+  - Players must select a prime number from the available list.
+  - The same prime can be used multiple times throughout the game.
+- **Strategic Consideration:**
+  - Players should consider the opponent's current HP to avoid reflections.
+
+### Attack Resolution
+
+- **Successful Attack:**
+  - Opponent's HP decreases by the attack value.
+- **Reflected Attack:**
+  - Attacker's HP decreases by the attack value.
+  - Occurs when the opponent's HP is divisible by the attack prime.
+- **No Double Reflections:**
+  - Reflected attacks cannot be reflected back.
+
+### Health Points (HP)
+
+- **Tracking HP:**
+  - Both players must keep an accurate account of their own and their opponent's HP.
+- **HP Reduction:**
+  - HP cannot go below zero.
+- **Winning the Game:**
+  - The first player to reduce the opponent's HP to zero or below wins.
+  - If both players reach zero HP on the same turn, the attacking player wins.
+
+## Scoring
+
+- **No Points System:**
+  - Victory is determined solely by reducing the opponent's HP to zero.
+- **HP Awareness:**
+  - Knowledge of current HP is crucial for decision-making.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup:
+
+- **Player 1 HP:** 100
+- **Player 2 HP:** 100
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Action:** Chooses prime **7**.
+- **Calculation:**
+  - Is **100** divisible by **7**?
+    - **100 ÷ 7 =** approximately **14.29** (Not a whole number).
+- **Result:** Attack is **successful**. Player 2 loses **7 HP**.
+- **Updated HP:**
+  - Player 1 HP: **100**
+  - Player 2 HP: **93**
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Action:** Chooses prime **5**.
+- **Calculation:**
+  - Is **100** divisible by **5**?
+    - **100 ÷ 5 = 20** (Whole number).
+- **Result:** Attack is **reflected**. Player 2 loses **5 HP**.
+- **Updated HP:**
+  - Player 1 HP: **100**
+  - Player 2 HP: **88**
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Action:** Chooses prime **11**.
+- **Calculation:**
+  - Is **88** divisible by **11**?
+    - **88 ÷ 11 = 8** (Whole number).
+- **Result:** Attack is **reflected**. Player 1 loses **11 HP**.
+- **Updated HP:**
+  - Player 1 HP: **89**
+  - Player 2 HP: **88**
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Action:** Chooses prime **13**.
+- **Calculation:**
+  - Is **89** divisible by **13**?
+    - **89 ÷ 13** ≈ **6.85** (Not a whole number).
+- **Result:** Attack is **successful**. Player 1 loses **13 HP**.
+- **Updated HP:**
+  - Player 1 HP: **76**
+  - Player 2 HP: **88**
+
+---
+
+### Command-Line Interaction Example
+
+#### **Player 1's Turn**
+
+```
+---------------------------------------
+It's your turn.
+
+Your HP: 76
+Opponent's HP: 88
+
+Available Primes: [2, 3, 5, 7, 11, 13, 17, 19]
+
+Enter your attack prime number: 7
+
+Calculating attack...
+
+Opponent's HP is not divisible by 7.
+Attack successful! Opponent loses 7 HP.
+
+Updated Opponent's HP: 81
+---------------------------------------
+```
+
+#### **Player 2's Turn**
+
+```
+---------------------------------------
+It's your turn.
+
+Your HP: 81
+Opponent's HP: 76
+
+Available Primes: [2, 3, 5, 7, 11, 13, 17, 19]
+
+Enter your attack prime number: 2
+
+Calculating attack...
+
+Opponent's HP is divisible by 2.
+Attack reflected! You lose 2 HP.
+
+Updated Your HP: 79
+---------------------------------------
+```
+
+### Strategic Considerations
+
+- **Avoiding Reflections:**
+  - Before choosing an attack, divide the opponent's HP by the prime number.
+  - If the result is a whole number, avoid that prime.
+- **Predicting Opponent's Moves:**
+  - Anticipate which primes the opponent might avoid or use based on your own HP.
+- **Adjusting Strategy:**
+  - As HP values change, so should your choice of attack primes.
+
+## Conclusion
+
+**Prime Duel** offers a blend of simple rules and deep strategy, relying on basic arithmetic to create engaging gameplay. By considering the mathematical relationships between prime numbers and health points, players can outwit their opponents and secure victory. The game's unique mechanics ensure that skillful play is rewarded, making it both enjoyable and competitive.
+
+---
+
+**Note to Players:**
+
+- Keep a calculator or scratch paper handy for quick division checks.
+- Always update both players' HP after each turn for clarity.
+- Enjoy the challenge and may the best strategist win!

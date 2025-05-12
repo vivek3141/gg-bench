@@ -1,0 +1,195 @@
+**Multiples and Factors**
+
+---
+
+**Objective**
+
+The primary goal of *Multiples and Factors* is to be the last player able to make a valid move by selecting an unused number according to the game's rules. Players aim to strategically choose numbers to force their opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+**Setup**
+
+- **Number Set**: A consecutive list of positive integers from 1 to **N**, where **N** is agreed upon by both players before the game starts. For quick gameplay, **N = 10** is recommended.
+  
+- **Used Numbers List**: An initially empty list that tracks the numbers already selected during the game.
+
+- **Available Numbers**: All numbers from the number set that have not yet been selected.
+
+- **Starting Conditions**: No numbers have been chosen, and it's Player 1's turn to start the game.
+
+---
+
+**Game Components**
+
+- **Number Set**: Represents the pool of numbers from which players can select. Example: `{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}`.
+
+- **Used Numbers List**: Keeps track of numbers that have been selected. This prevents reuse of numbers. Initially empty.
+
+- **Current Number**: The number selected in the previous turn that dictates the valid selections for the next player.
+
+---
+
+**Turns**
+
+- **Turn Order**: Players alternate turns, beginning with Player 1.
+
+- **Player Actions**:
+  1. **Selection**: Choose an unused number from the available numbers.
+  2. **Validation**: Ensure the chosen number is a **factor** or a **multiple** of the current number (except on the first turn).
+  3. **Update Lists**: Add the chosen number to the Used Numbers List and remove it from the Available Numbers.
+  4. **Set Current Number**: The chosen number becomes the new current number for the next turn.
+
+- **Turn Progression**: The game continues with players taking turns until one player cannot make a valid move.
+
+---
+
+**Rules and Mechanics**
+
+1. **First Turn**:
+   - Player 1 may select any number from the Number Set to start the game.
+   - There is no current number constraint on the first move.
+
+2. **Subsequent Turns**:
+   - Players must select an unused number that is either a **factor** or a **multiple** of the current number.
+   - A **factor** divides the current number exactly without leaving a remainder.
+   - A **multiple** is the product of the current number and any positive integer within the Number Set.
+   - If a player cannot select a valid number, they lose the game.
+
+3. **Selection Constraints**:
+   - **Unused Numbers Only**: Players cannot select numbers already in the Used Numbers List.
+   - **Within Number Set**: Selections must be within the initial Number Set.
+
+4. **Winning the Game**:
+   - A player wins by making a valid move when their opponent cannot make a subsequent valid move.
+   - There are no draws in this game; play continues until a winner is determined.
+
+---
+
+**Scoring**
+
+- No points are tracked in the game.
+- The outcome is a binary win or loss, determined by a player's ability to make valid moves.
+- The focus is on strategic selection rather than cumulative scoring.
+
+---
+
+**Examples**
+
+*Example Game with N = 10*
+
+**Initial Setup**:
+- **Available Numbers**: `{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}`
+- **Used Numbers**: `{}`
+- **Current Number**: `None`
+
+**Turn-by-Turn Play**:
+
+1. **Player 1's Turn**:
+   - **Action**: Chooses **7** (any number is valid on the first turn).
+   - **Used Numbers**: `{7}`
+   - **Available Numbers**: `{1, 2, 3, 4, 5, 6, 8, 9, 10}`
+   - **Current Number**: `7`
+
+2. **Player 2's Turn**:
+   - **Possible Choices**: Factors or multiples of **7** from available numbers.
+   - **Factors of 7**: `{1}`
+   - **Multiples of 7**: No multiples within 1-10 other than 7 (already used).
+   - **Action**: Chooses **1**.
+   - **Used Numbers**: `{7, 1}`
+   - **Available Numbers**: `{2, 3, 4, 5, 6, 8, 9, 10}`
+   - **Current Number**: `1`
+
+3. **Player 1's Turn**:
+   - **Possible Choices**: Any unused number (since every number is a multiple of 1).
+   - **Action**: Chooses **2**.
+   - **Used Numbers**: `{7, 1, 2}`
+   - **Available Numbers**: `{3, 4, 5, 6, 8, 9, 10}`
+   - **Current Number**: `2`
+
+4. **Player 2's Turn**:
+   - **Possible Choices**: Factors or multiples of **2** from available numbers.
+   - **Factors of 2**: None (1 and 2 are used).
+   - **Multiples of 2**: `{4, 6, 8, 10}`
+   - **Action**: Chooses **4**.
+   - **Used Numbers**: `{7, 1, 2, 4}`
+   - **Available Numbers**: `{3, 5, 6, 8, 9, 10}`
+   - **Current Number**: `4`
+
+5. **Player 1's Turn**:
+   - **Possible Choices**: Factors or multiples of **4** from available numbers.
+   - **Factors of 4**: `{}` (1, 2, and 4 are used).
+   - **Multiples of 4**: `{8}`
+   - **Action**: Chooses **8**.
+   - **Used Numbers**: `{7, 1, 2, 4, 8}`
+   - **Available Numbers**: `{3, 5, 6, 9, 10}`
+   - **Current Number**: `8`
+
+6. **Player 2's Turn**:
+   - **Possible Choices**: Factors or multiples of **8** from available numbers.
+   - **Factors of 8**: `{}` (1, 2, 4, and 8 are used).
+   - **Multiples of 8**: `{}` (No multiples within available numbers).
+   - **Action**: Cannot make a valid move.
+   - **Result**: **Player 1 wins the game.**
+
+---
+
+**Command-Line Interaction Examples**
+
+_Player inputs and system outputs illustrating a sample game._
+
+1. **Player 1's Turn**:
+   - **Input**: `select 7`
+   - **Output**: `Player 1 selects 7. Used Numbers: {7}`
+
+2. **Player 2's Turn**:
+   - **Input**: `select 1`
+   - **Output**: `Player 2 selects 1. Used Numbers: {7, 1}`
+
+3. **Player 1's Turn**:
+   - **Input**: `select 2`
+   - **Output**: `Player 1 selects 2. Used Numbers: {7, 1, 2}`
+
+4. **Player 2's Turn**:
+   - **Input**: `select 4`
+   - **Output**: `Player 2 selects 4. Used Numbers: {7, 1, 2, 4}`
+
+5. **Player 1's Turn**:
+   - **Input**: `select 8`
+   - **Output**: `Player 1 selects 8. Used Numbers: {7, 1, 2, 4, 8}`
+
+6. **Player 2's Turn**:
+   - **Output**: `No valid moves available for Player 2.`
+   - **Output**: `Player 1 wins the game!`
+
+---
+
+**Strategic Depth and Complexity**
+
+- **Anticipation**: Players must think ahead to anticipate the implications of their selections on future moves.
+  
+- **Number Properties**: Understanding factors and multiples of numbers enhances strategic options.
+
+- **Limiting Opponent's Moves**: Choosing numbers that minimize the opponent's valid options can secure a win.
+
+- **Resource Management**: Since numbers cannot be reused, players must manage the finite set of available numbers wisely.
+
+---
+
+**Miscellaneous**
+
+- **Variations**:
+  - Adjust **N** to change game length and complexity.
+  - Use larger number sets for a more challenging game, e.g., **N = 20**.
+  
+- **Education**:
+  - Excellent for practicing number theory concepts such as factors and multiples.
+
+- **Fair Play**:
+  - Since Player 1 has the advantage of the first move, consider alternating who starts in subsequent games.
+
+---
+
+**Enjoy the Challenge of Multiples and Factors!**
+
+With simple rules but strategic depth, *Multiples and Factors* offers an engaging experience that sharpens mathematical thinking and strategic planning. Whether you're playing for fun or honing your skills, this game provides quick and enjoyable competition in a minimalistic setting.

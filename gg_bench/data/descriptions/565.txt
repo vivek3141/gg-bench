@@ -1,0 +1,218 @@
+**Sum Split: A Strategic Two-Player Game**
+
+---
+
+### **Objective**
+
+The objective of *Sum Split* is to be the last player to successfully perform a valid split of a number. Players take turns splitting numbers into smaller integers, and the player who makes the final valid move wins the game.
+
+---
+
+### **Setup**
+
+1. **Starting Number**: The game begins with a single positive integer, known as the **Starting Number**. By default, the Starting Number is **16**, but players can agree on any positive integer greater than 2 to begin the game.
+
+2. **Initial List**: The Starting Number is placed in a list that represents the current set of available numbers for splitting. At the beginning, this list contains only the Starting Number.
+
+---
+
+### **Game Components**
+
+- **Numbers List**: A dynamic list of positive integers greater than zero. This list changes as players split numbers during the game.
+
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Player 1 makes the first move. Turns alternate between the two players.
+
+2. **Player Actions on Their Turn**:
+
+   - **Select a Number to Split**: Choose any number from the Numbers List that is greater than 1.
+
+   - **Perform a Valid Split**: Split the chosen number into **two smaller positive integers** that sum up to the original number.
+
+   - **Update the Numbers List**: Remove the original number that was split from the list and add the two new numbers to the list.
+
+3. **Turn Progression**: After a player completes their move, the turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Splits**:
+
+   - A number can only be split into two positive integers greater than zero.
+
+   - The two new numbers must sum up exactly to the original number.
+
+   - Both resulting numbers must be whole numbers (integers).
+
+2. **Available Numbers**:
+
+   - Only numbers present in the Numbers List at the start of a player's turn can be chosen for splitting.
+
+   - Numbers equal to **1** cannot be split and remain in the list until the game ends.
+
+3. **Winning the Game**:
+
+   - A player wins if their opponent cannot perform a valid split on their turn.
+
+   - If a player is unable to make a move on their turn because all numbers in the list are **1**, they lose the game.
+
+---
+
+### **Scoring**
+
+- **Victory**: The winner is the player who makes the last valid split.
+
+- **No Point System**: There is no point system; the game is won by strategic play leading to a win condition as per the rules.
+
+---
+
+### **Examples**
+
+Below are example scenarios demonstrating how the game is played in a command-line interface.
+
+#### **Example Game Play**
+
+**Starting Number**: 16  
+**Numbers List**: [16]
+
+---
+
+**Turn 1: Player 1**
+
+- **Available Numbers**: [16]
+- **Player 1's Move**:
+  - Selects **16** to split.
+  - Splits **16** into **10** and **6**.
+- **Numbers List After Turn**: [10, 6]
+
+---
+
+**Turn 2: Player 2**
+
+- **Available Numbers**: [10, 6]
+- **Player 2's Move**:
+  - Selects **10** to split.
+  - Splits **10** into **7** and **3**.
+- **Numbers List After Turn**: [7, 3, 6]
+
+---
+
+**Turn 3: Player 1**
+
+- **Available Numbers**: [7, 3, 6]
+- **Player 1's Move**:
+  - Selects **7** to split.
+  - Splits **7** into **4** and **3**.
+- **Numbers List After Turn**: [4, 3, 3, 6]
+
+---
+
+**Turn 4: Player 2**
+
+- **Available Numbers**: [4, 3, 3, 6]
+- **Player 2's Move**:
+  - Selects **6** to split.
+  - Splits **6** into **5** and **1**.
+- **Numbers List After Turn**: [4, 3, 3, 5, 1]
+
+---
+
+**Turn 5: Player 1**
+
+- **Available Numbers**: [4, 3, 3, 5, 1]
+- **Player 1's Move**:
+  - Selects **5** to split.
+  - Splits **5** into **2** and **3**.
+- **Numbers List After Turn**: [4, 3, 3, 2, 3, 1]
+
+---
+
+**Turn 6: Player 2**
+
+- **Available Numbers**: [4, 3, 3, 2, 3, 1]
+- **Player 2's Move**:
+  - Selects **4** to split.
+  - Splits **4** into **2** and **2**.
+- **Numbers List After Turn**: [2, 2, 3, 3, 2, 3, 1]
+
+---
+
+**...Game Continues...**
+
+The game continues in this fashion until all numbers in the list are **1**. The player who made the last valid split is declared the winner.
+
+---
+
+#### **Command-Line Interaction Sample**
+
+Below is a sample of how the game might proceed in a command-line environment.
+
+```
+Game Start!
+Starting Number: 16
+Numbers List: [16]
+
+Player 1's turn.
+Available Numbers: [16]
+Select a number to split: 16
+Enter first number: 10
+Enter second number: 6
+Numbers List after split: [10, 6]
+
+Player 2's turn.
+Available Numbers: [10, 6]
+Select a number to split: 10
+Enter first number: 7
+Enter second number: 3
+Numbers List after split: [7, 3, 6]
+
+Player 1's turn.
+Available Numbers: [7, 3, 6]
+Select a number to split: 7
+Enter first number: 4
+Enter second number: 3
+Numbers List after split: [4, 3, 3, 6]
+
+Player 2's turn.
+Available Numbers: [4, 3, 3, 6]
+Select a number to split: 6
+Enter first number: 5
+Enter second number: 1
+Numbers List after split: [4, 3, 3, 5, 1]
+
+Player 1's turn.
+Available Numbers: [4, 3, 3, 5, 1]
+Select a number to split: 5
+Enter first number: 2
+Enter second number: 3
+Numbers List after split: [4, 3, 3, 2, 3, 1]
+
+...
+
+Player X cannot make a move!
+Player Y wins the game!
+```
+
+---
+
+### **Game Strategies**
+
+- **Plan Ahead**: Anticipate your opponent's potential moves based on the current Numbers List.
+
+- **Control the Numbers**: Aim to leave numbers that limit your opponent's options on their turn.
+
+- **Balance Splits**: Consider splitting numbers into pairs that can be advantageous in future moves.
+
+---
+
+### **Conclusion**
+
+*Sum Split* is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and minimal components, it's perfect for quick matches and can be easily implemented in a command-line interface.
+
+Enjoy the game and may the best strategist win!

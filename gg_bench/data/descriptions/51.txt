@@ -1,0 +1,225 @@
+**Number Tower**
+
+---
+
+### **Objective**
+
+Become the first player to successfully build a three-level Number Tower by strategically selecting numbers from a shared pool. Each level of your tower must contain a number smaller than the one below it, adhering to the descending order rule. The first player to complete their tower following these rules wins the game.
+
+### **Setup**
+
+1. **Player Preparation**: Two players are required. Decide who will be Player 1 and Player 2.
+2. **Tower Structure**: Each player has an empty tower with three levels:
+   - **Level 1 (Bottom)**
+   - **Level 2 (Middle)**
+   - **Level 3 (Top)**
+3. **Number Pool**:
+   - A shared pool of numbers ranging from **1 to 9**.
+   - Each number from **1 to 9** is available in **unlimited quantity** for simplicity.
+4. **Starting Conditions**:
+   - Both players' towers are empty at the start of the game.
+   - The number pool contains numbers **1** through **9** available for selection.
+
+### **Game Components**
+
+- **Number Pool**: A collection of numbers from **1** to **9**.
+- **Player Towers**: Each player has a personal tower with three levels to fill.
+- **Levels**:
+  - **Level 1 (Bottom)**: The foundation of the tower.
+  - **Level 2 (Middle)**: Placed above Level 1.
+  - **Level 3 (Top)**: The final level at the top.
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions Per Turn**:
+  - **Select a Number**: Choose any number from **1** to **9** from the number pool.
+  - **Place the Number**: Place the selected number on the **lowest available level** of your tower.
+- **Turn Progression**: After placing a number, the turn passes to the other player.
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+   - Players can choose any number between **1** and **9**, regardless of previous selections.
+   - Numbers are **not removed** from the pool upon selection; they remain available for both players.
+2. **Placement Rules**:
+   - **Level 1 (Bottom)**:
+     - Can be any number from **1** to **9**.
+   - **Level 2 (Middle)**:
+     - Must be **less than** the number on Level 1.
+   - **Level 3 (Top)**:
+     - Must be **less than** the number on Level 2.
+3. **Descending Order Requirement**:
+   - The tower must have numbers in **strict descending order** from bottom to top (e.g., 7 > 5 > 2).
+4. **Valid Moves**:
+   - If a player cannot place a number due to the descending order rule, they **forfeit their turn**.
+5. **Winning the Game**:
+   - The first player to **successfully complete all three levels** of their tower following the placement rules wins.
+6. **Forfeiting**:
+   - If a player makes an **invalid move** (e.g., places a number not less than the one below), they **must undo** the move and **forfeit their turn**.
+
+### **Scoring**
+
+- **Winning Condition**:
+  - Successfully build a three-level tower with numbers in strict descending order.
+- **No Points System**: The game does not use points; victory is achieved by meeting the objective first.
+
+### **Examples**
+
+#### **Sample Gameplay**
+
+**Initial State**:
+
+- Both towers are empty.
+- Number Pool: Numbers **1** through **9** are available.
+
+**Turn 1**:
+
+- **Player 1**:
+  - Selects **number 7**.
+  - Places **7** on **Level 1** (Bottom) of their tower.
+- **Player 1's Tower**:
+  - Level 1: **7**
+  - Level 2: Empty
+  - Level 3: Empty
+
+**Turn 2**:
+
+- **Player 2**:
+  - Selects **number 8**.
+  - Places **8** on **Level 1** (Bottom) of their tower.
+- **Player 2's Tower**:
+  - Level 1: **8**
+  - Level 2: Empty
+  - Level 3: Empty
+
+**Turn 3**:
+
+- **Player 1**:
+  - Selects **number 5**.
+  - Since **5** is less than **7** (Level 1), places **5** on **Level 2** (Middle).
+- **Player 1's Tower**:
+  - Level 1: **7**
+  - Level 2: **5**
+  - Level 3: Empty
+
+**Turn 4**:
+
+- **Player 2**:
+  - Selects **number 9**.
+  - Attempts to place **9** on **Level 2** (Middle).
+  - **Invalid Move**: **9** is not less than **8** (Level 1).
+  - **Action**: Cannot place **9**, forfeits turn.
+
+**Turn 5**:
+
+- **Player 1**:
+  - Selects **number 3**.
+  - Since **3** is less than **5** (Level 2), places **3** on **Level 3** (Top).
+- **Player 1's Tower**:
+  - Level 1: **7**
+  - Level 2: **5**
+  - Level 3: **3**
+
+**Result**:
+
+- **Player 1** has successfully built a tower in strict descending order (**7 > 5 > 3**).
+- **Player 1 wins** the game.
+
+#### **Command-Line Interaction Example**
+
+**Game Start**:
+
+```
+Welcome to Number Tower!
+Player 1 and Player 2, get ready to build your towers.
+
+Number Pool: 1 2 3 4 5 6 7 8 9
+```
+
+**Player 1's Turn**:
+
+```
+Player 1's Tower:
+Level 1: Empty
+Level 2: Empty
+Level 3: Empty
+
+Player 1, select a number for Level 1:
+> 6
+
+You placed 6 on Level 1.
+```
+
+**Player 2's Turn**:
+
+```
+Player 2's Tower:
+Level 1: Empty
+Level 2: Empty
+Level 3: Empty
+
+Player 2, select a number for Level 1:
+> 6
+
+You placed 6 on Level 1.
+```
+
+**Player 1's Next Turn**:
+
+```
+Player 1's Tower:
+Level 1: 6
+Level 2: Empty
+Level 3: Empty
+
+Player 1, select a number less than 6 for Level 2:
+> 4
+
+You placed 4 on Level 2.
+```
+
+**Player 2's Next Turn**:
+
+```
+Player 2's Tower:
+Level 1: 6
+Level 2: Empty
+Level 3: Empty
+
+Player 2, select a number less than 6 for Level 2:
+> 7
+
+Invalid move! 7 is not less than 6.
+You forfeit your turn.
+```
+
+**Player 1's Next Turn**:
+
+```
+Player 1's Tower:
+Level 1: 6
+Level 2: 4
+Level 3: Empty
+
+Player 1, select a number less than 4 for Level 3:
+> 2
+
+You placed 2 on Level 3.
+
+Congratulations, Player 1! You have completed your tower and won the game!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Think about the numbers you will need for upper levels before choosing your base number.
+- **Avoid High Base Numbers**: Choosing a very high number for Level 1 may limit your options for Levels 2 and 3.
+- **Watch Your Opponent**: Pay attention to your opponent's choices to anticipate their potential moves.
+- **Flexible Choices**: Opt for middle-range numbers on lower levels to keep more options open for higher levels.
+- **Avoid Invalid Moves**: Double-check that your selected number is less than the one below to prevent forfeiting your turn.
+
+---
+
+**Enjoy building your Number Towers and may the best strategist win!**

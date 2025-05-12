@@ -1,0 +1,225 @@
+**Palindrome Duel**
+
+---
+
+**Objective**
+
+Palindrome Duel is a two-player, turn-based game where players compete to be the first to create a palindrome within a shared word space. A palindrome is a sequence of letters that reads the same forwards and backwards. The primary goal is to strategically place letters to form a palindrome of at least three letters in length. The first player to create such a palindrome wins the game.
+
+**Setup**
+
+- A shared word space consisting of **seven** empty positions, represented as underscores (`_`), is presented to both players.
+- The positions are numbered from **1** to **7** for reference.
+- Both players have access to the letters **A** to **Z** for placement.
+
+Initial Word Space:
+
+```
+Position: 1 2 3 4 5 6 7
+           _ _ _ _ _ _ _
+```
+
+**Game Components**
+
+- **Shared Word Space**: A linear sequence of seven positions where letters will be placed.
+- **Letters**: Each player can use any letter from **A** to **Z** during their turn.
+- **Positions**: Each position in the word space is identified by a number from 1 to 7.
+
+**Turns**
+
+- Players decide who goes first (e.g., by coin toss).
+- Players take turns alternately.
+- On each turn, a player performs the following actions:
+  - **Select** an empty position (1-7) in the word space.
+  - **Place** a letter (A-Z) into the chosen position.
+
+**Rules and Mechanics**
+
+1. **Letter Placement**
+   - Players can place any letter from A to Z.
+   - Once a letter is placed, it cannot be moved or changed.
+   - Each position can only hold one letter.
+
+2. **Creating a Palindrome**
+   - A palindrome must be at least **three letters** long.
+   - The palindrome can start and end at any positions within the word space.
+   - The palindrome can be formed using letters placed by **both players**.
+   - The player who places the final letter that completes a palindrome of at least three letters wins the game.
+
+3. **Winning the Game**
+   - The game is won immediately when a player completes a palindrome on their turn.
+   - If the entire word space is filled without a palindrome being formed, the **last player who made a move loses**.
+
+4. **Preventing Opponent's Victory**
+   - Players should be cautious not to set up their opponent to win on the next turn.
+   - Strategic letter placement can block potential palindromic sequences.
+
+**Scoring**
+
+- **Winning**: The player who successfully creates a palindrome of at least three letters wins the game.
+- **Losing**: If the word space is completely filled without a palindrome, the last player to place a letter loses.
+
+**Examples**
+
+Below are example scenarios to illustrate how the game is played in a command-line interface.
+
+---
+
+**Example Game Play**
+
+Initial Word Space:
+
+```
+Position: 1 2 3 4 5 6 7
+           _ _ _ _ _ _ _
+```
+
+*Player 1 and Player 2 decide that Player 1 will start.*
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Place letter **'R'** at position **4**.
+- **Command**: `place R 4`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             _ _ _ R _ _ _
+  ```
+
+**Turn 2: Player 2**
+
+- **Action**: Place letter **'A'** at position **3**.
+- **Command**: `place A 3`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             _ _ A R _ _ _
+  ```
+
+**Turn 3: Player 1**
+
+- **Action**: Place letter **'C'** at position **5**.
+- **Command**: `place C 5`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             _ _ A R C _ _
+  ```
+
+**Turn 4: Player 2**
+
+- **Action**: Place letter **'E'** at position **2**.
+- **Command**: `place E 2`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             _ E A R C _ _
+  ```
+
+**Turn 5: Player 1**
+
+- **Action**: Place letter **'C'** at position **6**.
+- **Command**: `place C 6`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             _ E A R C C _
+  ```
+
+**Turn 6: Player 2**
+
+- **Action**: Place letter **'A'** at position **1**.
+- **Command**: `place A 1`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             A E A R C C _
+  ```
+
+**Turn 7: Player 1**
+
+- **Action**: Place letter **'R'** at position **7**.
+- **Command**: `place R 7`
+- **Resulting Word Space**:
+
+  ```
+  Position: 1 2 3 4 5 6 7
+             A E A R C C R
+  ```
+
+---
+
+**Analyzing for Palindromes:**
+
+- Player 1 just placed **'R'** at position **7**.
+- Let's look for palindromic sequences of at least three letters.
+
+Checking positions 5-7:
+- Letters: C C R
+- Sequence: Not a palindrome.
+
+Checking positions 4-7:
+- Letters: R C C R
+- Sequence: **R C C R** is a palindrome.
+- **Player 1 forms the palindrome 'RCCR' and wins the game.**
+
+---
+
+**Conclusion**
+
+- **Player 1** wins by creating the palindrome **'RCCR'**.
+
+---
+
+**Command-Line Interaction Example**
+
+```
+Player 1's turn.
+Current word space: _ _ _ _ _ _ _
+Enter your move (e.g., place A 4): place R 4
+
+Player 2's turn.
+Current word space: _ _ _ R _ _ _
+Enter your move: place A 3
+
+Player 1's turn.
+Current word space: _ _ A R _ _ _
+Enter your move: place C 5
+
+Player 2's turn.
+Current word space: _ _ A R C _ _
+Enter your move: place E 2
+
+Player 1's turn.
+Current word space: _ E A R C _ _
+Enter your move: place C 6
+
+Player 2's turn.
+Current word space: _ E A R C C _
+Enter your move: place A 1
+
+Player 1's turn.
+Current word space: A E A R C C _
+Enter your move: place R 7
+
+Player 1 creates a palindrome 'RCCR' and wins the game!
+```
+
+**Strategic Notes**
+
+- **Plan Ahead**: Try to anticipate your opponent's moves and prevent them from completing a palindrome.
+- **Block Opponent**: Place letters in positions that could disrupt potential palindromic sequences your opponent might be forming.
+- **Use Symmetry**: Leveraging symmetrical placement can help you set up your own palindromes.
+- **Be Cautious**: Avoid setting up a sequence that your opponent could easily complete to form a palindrome on their turn.
+
+**Summary**
+
+Palindrome Duel is a simple yet strategic game that requires players to think ahead and carefully choose their letter placements. With easy-to-understand rules and quick gameplay, it provides an engaging experience that can be easily implemented in a command-line interface.

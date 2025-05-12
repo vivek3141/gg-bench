@@ -1,0 +1,305 @@
+# Sequence Stack - Rule Book
+
+## Objective
+
+Sequence Stack is a two-player, turn-based game where players compete to be the first to build a sequential stack of numbers from 1 to 5. By strategically managing drawn numbers and blocking their opponent's progress, players aim to complete their ascending sequence before their opponent does. The primary goal is to build a personal stack with the numbers **1, 2, 3, 4, 5** in exact ascending order.
+
+## Setup
+
+1. **Game Components Initialization**:
+   - **Shared Deck**: Create a deck consisting of numbered cards from **1** to **5**, with **two copies** of each number, totaling **10 cards**.
+   - **Player Stacks**: Each player has their own stack area (initially empty) where they will place their sequence of numbers.
+   - **Discard Pile**: An area designated for discarded cards.
+
+2. **Deck Preparation**:
+   - Shuffle the shared deck thoroughly.
+   - Place the shuffled deck face-down within reach of both players.
+
+3. **Player Positions**:
+   - Decide which player will take the first turn (e.g., by coin toss or mutual agreement).
+   - Players should be seated so that both have easy access to the deck and can view the discard pile.
+
+## Game Components
+
+- **Numbered Cards**:
+  - **Quantity**: Two of each number from **1** to **5**.
+  - **Appearance**: Each card displays a clear, bold number between **1** and **5**.
+  - **Functionality**: Used to build sequences in player stacks or to block the opponent when discarded.
+
+- **Player Stacks**:
+  - **Purpose**: Personal area where players build their ascending sequence from **1** to **5**.
+  - **Rules**:
+    - Numbers must be placed in exact ascending order starting from **1**.
+    - Only one instance of each number can be in the stack.
+
+- **Discard Pile**:
+  - **Purpose**: Holds cards that have been discarded by players.
+  - **Functionality**:
+    - Discarded cards **block** the opponent from using that specific number in their sequence.
+    - A blocked number cannot be placed into the opponent's stack for the remainder of the game.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Draw Phase**: The active player draws the top card from the deck.
+  2. **Decision Phase**: The player decides to either place or discard the drawn card.
+     - **Place**: If the card is the next required number in their sequence, they may place it on top of their stack.
+     - **Discard**: If they cannot use the card or choose to block the opponent, they discard it to the discard pile.
+  3. **Turn End**: The turn passes to the other player.
+
+- **Order of Actions**:
+  - Players alternate turns throughout the game.
+  - No skipping of turns is permitted unless the deck is depleted.
+
+## Rules and Mechanics
+
+1. **Building the Sequence**:
+   - Players must start their stack with the number **1** and build in exact ascending order up to **5**.
+   - A player cannot place a number if the preceding number in the sequence is not already in their stack.
+
+2. **Placing Cards**:
+   - **Valid Placement**: A drawn card can only be placed if it is the next number required in the player's sequence.
+     - Example: If a player's top card is **2**, they can only place a **3** next.
+   - **Invalid Placement**: If the drawn card is not the next required number, it cannot be placed and may be discarded.
+
+3. **Discarding Cards**:
+   - When a player discards a card, it is placed face-up in the discard pile.
+   - **Blocking Mechanism**:
+     - A discarded number is **blocked** for the opponent.
+     - The opponent cannot place a blocked number into their stack for the remainder of the game.
+     - A player may still draw and discard a blocked number, but cannot place it.
+
+4. **Depleted Deck**:
+   - If the deck runs out of cards before a player completes their sequence, reshuffle the discard pile (excluding blocked numbers for each player) to form a new deck.
+
+5. **Winning the Game**:
+   - The first player to complete their stack with the sequence **1, 2, 3, 4, 5** in exact order wins the game.
+   - If both players are unable to complete their sequences due to blocked numbers, the player with the most numbers in sequence wins.
+   - In the case of a tie in the number of cards, the game continues until the tie is broken by further draws or one player concedes.
+
+## Scoring
+
+- **Victory Condition**: Successfully build the full ascending sequence from **1** to **5**.
+- **Tracking Progress**:
+  - Monitor the cards in each player's stack.
+  - Keep note of blocked numbers for each player.
+- **Determining the Winner**:
+  - The player who first completes their sequence wins immediately.
+  - If completion is impossible, the player with the longer sequence (more cards) is declared the winner.
+
+## Examples
+
+### Example 1: Straightforward Playthrough
+
+**Initial Deck** (shuffled): `3, 1, 5, 2, 4, 1, 2, 5, 4, 3`
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Draws**: `3`
+   - **Decision**: Cannot place `3` (needs `1` first), decides to **discard** it.
+   - **Blocking**: `3` is now blocked for Player 2.
+
+2. **Player 2's Turn**:
+   - **Draws**: `1`
+   - **Decision**: Places `1` in their stack.
+   - **Player 2's Stack**: `1`
+
+3. **Player 1's Turn**:
+   - **Draws**: `5`
+   - **Decision**: Cannot place `5`, discards it.
+   - **Blocking**: `5` is now blocked for Player 2.
+
+4. **Player 2's Turn**:
+   - **Draws**: `2`
+   - **Decision**: Needs `2` next, places it.
+   - **Player 2's Stack**: `1, 2`
+
+5. **Player 1's Turn**:
+   - **Draws**: `4`
+   - **Decision**: Cannot place `4`, discards it.
+   - **Blocking**: `4` is now blocked for Player 2.
+
+6. **Player 2's Turn**:
+   - **Draws**: `1`
+   - **Decision**: Already has `1`, cannot use it again, discards it.
+   - **Blocking**: `1` is now blocked for Player 1 (though they haven't started their sequence).
+
+7. **Player 1's Turn**:
+   - **Draws**: `2`
+   - **Decision**: Needs `1` first, but `1` is now blocked. Cannot place `2`, discards it.
+   - **Blocking**: `2` is now blocked for Player 2.
+
+8. **Player 2's Turn**:
+   - **Draws**: `5`
+   - **Decision**: `5` is blocked for them, must discard.
+   - **Blocking**: `5` remains blocked.
+
+9. **Player 1's Turn**:
+   - **Draws**: `4`
+   - **Decision**: Cannot place `4`, discards it.
+   - **Blocking**: `4` remains blocked.
+
+10. **Player 2's Turn**:
+    - **Draws**: `3`
+    - **Decision**: Needs `3` next, but `3` is blocked. Cannot place, discards it.
+
+#### Outcome
+
+- **Player 2's Stack**: `1, 2`
+- **Player 1's Stack**: Empty
+- **Blocked Numbers for Player 1**: `1`
+- **Blocked Numbers for Player 2**: `3, 4, 5`
+
+- **Winner**: Player 2 wins due to having the longer sequence.
+
+### Example 2: Strategic Blocking
+
+**Initial Deck** (shuffled): `1, 2, 3, 1, 4, 2, 5, 3, 5, 4`
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Draws**: `1`
+   - **Decision**: Places `1`.
+   - **Player 1's Stack**: `1`
+
+2. **Player 2's Turn**:
+   - **Draws**: `2`
+   - **Decision**: Cannot place `2` (needs `1`), decides to **discard** it to block Player 1.
+   - **Blocking**: `2` is now blocked for Player 1.
+
+3. **Player 1's Turn**:
+   - **Draws**: `3`
+   - **Decision**: Needs `2` next but `2` is blocked, cannot place `3`, discards it.
+   - **Blocking**: `3` is now blocked for Player 2.
+
+4. **Player 2's Turn**:
+   - **Draws**: `1`
+   - **Decision**: Places `1`.
+   - **Player 2's Stack**: `1`
+
+5. **Player 1's Turn**:
+   - **Draws**: `4`
+   - **Decision**: Cannot place `4`, discards it.
+   - **Blocking**: `4` is now blocked for Player 2.
+
+6. **Player 2's Turn**:
+   - **Draws**: `2`
+   - **Decision**: Places `2`.
+   - **Player 2's Stack**: `1, 2`
+
+7. **Player 1's Turn**:
+   - **Draws**: `5`
+   - **Decision**: Cannot place `5`, discards it.
+   - **Blocking**: `5` is now blocked for Player 2.
+
+8. **Player 2's Turn**:
+   - **Draws**: `3`
+   - **Decision**: `3` is blocked, cannot place, discards it.
+
+9. **Player 1's Turn**:
+   - **Draws**: `5`
+   - **Decision**: Cannot place `5`, discards it.
+
+10. **Player 2's Turn**:
+    - **Draws**: `4`
+    - **Decision**: Needs `3` next but `3` is blocked, cannot place `4`, discards it.
+
+#### Outcome
+
+- **Player 2's Stack**: `1, 2`
+- **Player 1's Stack**: `1`
+- **Blocked Numbers for Player 1**: `2`
+- **Blocked Numbers for Player 2**: `3, 4, 5`
+
+- **Winner**: Player 2 wins due to having the longer sequence.
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Welcome to Sequence Stack!
+
+Target Sequence: 1, 2, 3, 4, 5
+
+Player 1 and Player 2, get ready.
+```
+
+### Turns
+
+1. **Player 1's Turn**:
+
+   ```
+   Player 1's turn.
+   Cards in Stack: Empty
+   Available Numbers: 1,1,2,2,3,3,4,4,5,5
+   Discard Pile: Empty
+
+   You draw a '1'.
+   You can place this card.
+   Do you want to place it in your stack? (yes/no): yes
+
+   You placed '1' in your stack.
+   ```
+
+2. **Player 2's Turn**:
+
+   ```
+   Player 2's turn.
+   Cards in Stack: Empty
+   Available Numbers: 1,2,2,3,3,4,4,5,5
+   Discard Pile: Empty
+
+   You draw a '1'.
+   You can place this card.
+   Do you want to place it in your stack? (yes/no): yes
+
+   You placed '1' in your stack.
+   ```
+
+3. **Player 1's Turn**:
+
+   ```
+   Player 1's turn.
+   Cards in Stack: 1
+   Available Numbers: 2,2,3,3,4,4,5,5
+   Discard Pile: Empty
+
+   You draw a '3'.
+   You need a '2' next.
+   Do you want to discard '3' to block opponent? (yes/no): yes
+
+   You discarded '3'. '3' is now blocked for Player 2.
+   ```
+
+4. **Player 2's Turn**:
+
+   ```
+   Player 2's turn.
+   Cards in Stack: 1
+   Available Numbers: 2,2,3,4,4,5,5
+   Discard Pile: 3
+
+   You draw a '3'.
+   '3' is blocked for you.
+   You must discard this card.
+
+   You discarded '3'.
+   ```
+
+### Game Conclusion
+
+After several more turns of strategic placing and discarding, one player successfully builds the sequence `1, 2, 3, 4, 5` and is declared the winner.
+
+## Strategy Tips
+
+- **Block Wisely**: Discarding a card not only removes it from play but also blocks your opponent from using that number. Use this to prevent them from completing their sequence.
+- **Anticipate Opponent's Needs**: Keep track of which numbers your opponent needs next and discard those numbers when possible.
+- **Manage Redundancy**: Since there are two of each number, blocking both copies can ensure your opponent cannot proceed.
+- **Balance**: Weigh the benefits of advancing your own sequence against hindering your opponent.
+
+---
+
+Sequence Stack is a simple yet strategically rich game that can be easily coded for a command-line interface. It ensures a quick gameplay experience with no possibility of a draw. The game's mechanics reward strategic thinking, allowing skilled players to consistently outperform less experienced opponents.

@@ -1,0 +1,317 @@
+**Game Name**: Battle of Wits
+
+---
+
+### **Objective**
+
+Be the first player to reduce your opponent's health points from **10 to 0** by strategically selecting attack values, while managing your limited resources. Outsmart your opponent by predicting their moves and making calculated decisions.
+
+---
+
+### **Setup**
+
+1. **Health Points**: Both players start with **10 Health Points (HP)**.
+2. **Attack Values**: Each player has a set of attack values numbered **1** through **5**.
+3. **Usage Limit**: Each attack value can be used **exactly twice** per game by each player.
+4. **Recording**: Players keep track of their remaining usages for each attack value.
+
+---
+
+### **Game Components**
+
+- **Health Points (HP)**:
+  - Represents the player's life total.
+  - Starts at **10 HP** for each player.
+  - Cannot exceed **10 HP** or drop below **0 HP**.
+  
+- **Attack Values**:
+  - Numbers from **1** to **5**.
+  - Each number can be used **twice per game** by each player.
+  - Attack values are chosen secretly each turn.
+
+- **Command-Line Interface**:
+  - Players input their attack values via the command line.
+  - The interface keeps track of HP and usage limits.
+
+---
+
+### **Turns**
+
+1. **Simultaneous Selection**:
+   - Both players **simultaneously** choose an attack value from **1** to **5** that they have remaining usages of.
+   - Choices are made in secret and then revealed at the same time.
+   
+2. **Usage Tracking**:
+   - After selection, players decrement the remaining usage count for the chosen attack value.
+   
+3. **Damage Calculation**:
+   - Determine the outcome based on the selected attack values.
+   
+4. **Turn Progression**:
+   - Repeat the process each turn until a player's HP is reduced to **0**.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Attack Selection**:
+   - Players can only select attack values they have remaining usages of (each attack value is limited to **two uses** per player).
+   - Selection is done in secret each turn.
+
+2. **Revealing Choices**:
+   - After both players have made their selection, choices are revealed simultaneously.
+
+3. **Damage Resolution**:
+   - **If attack values are equal**:
+     - No damage is dealt by either player.
+     - Both players proceed to the next turn.
+   - **If attack values are different**:
+     - The player with the **higher attack value** deals damage to the opponent.
+     - **Damage Dealt**: Equal to the **difference** between the two attack values.
+       - *Example*: If Player A selects 4 and Player B selects 2, Player A deals **2 damage** to Player B (4 - 2 = 2).
+     - The player with the lower attack value does not deal damage.
+
+4. **Health Points**:
+   - HP is reduced according to the damage taken.
+   - If a player's HP reaches **0 or below**, they lose the game.
+   - HP cannot fall below **0**.
+
+5. **Usage Limits**:
+   - Each attack value (**1** through **5**) can be used **twice** per player during the game.
+   - Once a player has used an attack value twice, they cannot select that value again.
+   - Players must keep track of their remaining usages.
+
+6. **Invalid Moves**:
+   - If a player selects an attack value they have no remaining usages of, they forfeit the game.
+   - It is crucial to track and remember the attack values used.
+
+---
+
+### **Scoring**
+
+- **Victory Condition**:
+  - The game ends when a player's HP is reduced to **0**.
+  - The player with remaining HP is declared the **winner**.
+
+- **Draws**:
+  - There are **no draw conditions** in Battle of Wits.
+  - The game continues until one player wins.
+
+---
+
+### **Examples**
+
+#### **Example Game Playthrough**
+
+**Initial Setup**:
+- Player A and Player B both have **10 HP**.
+- Both have attack values **1** through **5**, each available **twice**.
+
+---
+
+**Turn 1**:
+
+- **Selection**:
+  - Player A selects **3**.
+  - Player B selects **4**.
+  
+- **Usage Remaining**:
+  - Player A has **1** usage left for attack value **3**.
+  - Player B has **1** usage left for attack value **4**.
+
+- **Outcome**:
+  - Player B's attack is higher.
+  - Damage Dealt: **4 - 3 = 1** damage to Player A.
+  - **Player A's HP**: 10 - 1 = **9 HP**.
+  
+---
+
+**Turn 2**:
+
+- **Selection**:
+  - Player A selects **5**.
+  - Player B selects **3**.
+  
+- **Usage Remaining**:
+  - Player A has **1** usage left for attack value **5**.
+  - Player B has **1** usage left for attack value **3**.
+
+- **Outcome**:
+  - Player A's attack is higher.
+  - Damage Dealt: **5 - 3 = 2** damage to Player B.
+  - **Player B's HP**: 10 - 2 = **8 HP**.
+  
+---
+
+**Turn 3**:
+
+- **Selection**:
+  - Player A selects **2**.
+  - Player B selects **2**.
+  
+- **Usage Remaining**:
+  - Both players have **1** usage left for attack value **2**.
+
+- **Outcome**:
+  - Attack values are equal.
+  - No damage dealt.
+  
+---
+
+**Turn 4**:
+
+- **Selection**:
+  - Player A selects **5** (last usage).
+  - Player B selects **5**.
+  
+- **Usage Remaining**:
+  - Player A has **0** usages left for attack value **5**.
+  - Player B has **1** usage left for attack value **5**.
+
+- **Outcome**:
+  - Attack values are equal.
+  - No damage dealt.
+  
+---
+
+**Turn 5**:
+
+- **Selection**:
+  - Player A selects **4**.
+  - Player B selects **5** (last usage).
+
+- **Usage Remaining**:
+  - Player A has **1** usage left for attack value **4**.
+  - Player B has **0** usages left for attack value **5**.
+
+- **Outcome**:
+  - Player B's attack is higher.
+  - Damage Dealt: **5 - 4 = 1** damage to Player A.
+  - **Player A's HP**: 9 - 1 = **8 HP**.
+  
+---
+
+**Turn 6**:
+
+- **Selection**:
+  - Player A selects **4** (last usage).
+  - Player B selects **1**.
+
+- **Usage Remaining**:
+  - Player A has **0** usages left for attack value **4**.
+  - Player B has **1** usage left for attack value **1**.
+
+- **Outcome**:
+  - Player A's attack is higher.
+  - Damage Dealt: **4 - 1 = 3** damage to Player B.
+  - **Player B's HP**: 8 - 3 = **5 HP**.
+  
+---
+
+**Turn 7**:
+
+- **Selection**:
+  - Player A selects **3** (last usage).
+  - Player B selects **4** (last usage).
+
+- **Usage Remaining**:
+  - Player A has **0** usages left for attack value **3**.
+  - Player B has **0** usages left for attack value **4**.
+
+- **Outcome**:
+  - Player B's attack is higher.
+  - Damage Dealt: **4 - 3 = 1** damage to Player A.
+  - **Player A's HP**: 8 - 1 = **7 HP**.
+
+---
+
+**Turn 8**:
+
+- **Selection**:
+  - Player A selects **2** (last usage).
+  - Player B selects **5**.
+
+- **Usage Remaining**:
+  - Player A has **0** usages left for attack value **2**.
+  - Player B attempts to use **5**, but has **0 usages** left.
+
+- **Outcome**:
+  - Player B has made an **invalid move** (no usages left for attack value **5**).
+  - **Player B automatically loses the game**.
+
+---
+
+**Winner**: **Player A**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Assumptions**:
+- The game prompts each player for their attack value.
+- The interface checks for remaining usages.
+- Inputs are hidden to prevent the opponent from seeing the selection.
+
+---
+
+**Turn 1**:
+
+- **Player A's Input**:
+
+  ```
+  [Player A] Enter your attack value (remaining usages shown):
+  1 (2 uses left)
+  2 (2 uses left)
+  3 (2 uses left)
+  4 (2 uses left)
+  5 (2 uses left)
+  > 3
+  ```
+
+- **Player B's Input**:
+
+  ```
+  [Player B] Enter your attack value (remaining usages shown):
+  1 (2 uses left)
+  2 (2 uses left)
+  3 (2 uses left)
+  4 (2 uses left)
+  5 (2 uses left)
+  > 4
+  ```
+
+- **Outcome Displayed**:
+
+  ```
+  Both players have chosen.
+  Player A selected 3.
+  Player B selected 4.
+  Player B's attack is higher.
+  Player B deals 1 damage to Player A.
+  Player A HP: 9
+  Player B HP: 10
+  ```
+
+---
+
+*(Subsequent turns follow the same pattern, with the interface updating remaining usages and HP.)*
+
+---
+
+**Note**: Players should keep their selections concealed until prompted by the interface to reveal them.
+
+---
+
+### **Strategy Tips**
+
+- **Predict Opponent's Moves**: Pay attention to the attack values your opponent has used to anticipate their possible choices.
+  
+- **Manage Resources**: Use your higher attack values wisely, as they are limited.
+
+- **Bluffing**: Sometimes selecting a lower attack value can save your higher ones for critical moments.
+
+- **Avoid Invalid Moves**: Keep track of your remaining usages to prevent automatic loss due to an invalid selection.
+
+---
+
+**Battle of Wits** is a simple yet strategic game that tests your ability to outthink your opponent. By carefully managing your limited resources and anticipating your opponent's choices, you can emerge victorious. Enjoy the duel of minds!

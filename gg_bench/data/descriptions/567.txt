@@ -1,0 +1,142 @@
+# Flag Chase
+
+## Objective
+
+Flag Chase is a two-player turn-based strategy game played on a linear path. The primary goal is to be the first player to reach the flag positioned at the center of the path. Players start at opposite ends and move towards the flag, strategically deciding how many steps to take each turn. The first player to land exactly on the flag tile wins the game.
+
+## Setup
+
+- **Game Board**: A linear path consisting of 11 sequentially numbered tiles from 0 to 10.
+- **Starting Positions**:
+  - **Player 1** begins on tile **0**.
+  - **Player 2** begins on tile **10**.
+- **Flag Position**: The flag is placed on the center tile, which is tile **5**.
+
+The initial setup is as follows:
+
+```
+[Player 1 (P1)] - Tile 0 - Tile 1 - Tile 2 - Tile 3 - Tile 4 - [Flag] Tile 5 - Tile 6 - Tile 7 - Tile 8 - Tile 9 - Tile 10 [Player 2 (P2)]
+```
+
+## Game Components
+
+- **Linear Path**: Represented as a series of tiles numbered from 0 to 10.
+- **Player Markers**: Each player has a unique marker to indicate their current position on the path.
+  - **Player 1**: Represented by `P1`.
+  - **Player 2**: Represented by `P2`.
+- **Flag**: A special marker placed on tile 5 to represent the objective.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Player Actions**:
+  - On their turn, a player must move their marker towards the flag by moving **1**, **2**, or **3** tiles forward.
+  - Moves are only permitted towards the flag (Player 1 moves from lower to higher numbered tiles, Player 2 moves from higher to lower numbered tiles).
+- **Turn Progression**:
+  - Players announce the number of steps they wish to move.
+  - The player's marker is advanced accordingly.
+  - The turn ends, and it becomes the other player's turn.
+
+## Rules and Mechanics
+
+- **Movement Rules**:
+  - Players can choose to move **1**, **2**, or **3** tiles on their turn.
+  - A player **cannot** move past the flag tile (tile 5). If the desired move would overshoot the flag, the move is not allowed.
+- **Winning the Game**:
+  - The first player to land **exactly** on the flag tile (tile 5) wins the game.
+- **Simultaneous Arrival**:
+  - If a player moves onto the flag tile, and the other player's marker is also on the flag tile due to previous turns, the player who moved there most recently wins.
+- **Invalid Moves**:
+  - If a player cannot make a valid move (e.g., all possible moves would overshoot the flag tile), they **lose** their turn, and play passes to the opponent.
+
+## Scoring
+
+- **Victory Condition**: The game does not use a point-based scoring system. Winning is determined by being the first to reach the flag tile following the movement rules.
+- **Match Play**: Players may agree to play multiple rounds, keeping track of the number of games won to determine an overall winner.
+
+## Examples
+
+### Example Game
+
+#### Initial Setup
+
+```
+Positions:
+[P1] Tile 0 - Tile 1 - Tile 2 - Tile 3 - Tile 4 - [Flag] Tile 5 - Tile 6 - Tile 7 - Tile 8 - Tile 9 - Tile 10 [P2]
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Moves **3** tiles forward.
+- **Movement**: Tile 0 → Tile 3.
+- **New Position**:
+
+```
+Tile 0 - Tile 1 - Tile 2 - [P1] Tile 3 - Tile 4 - [Flag] Tile 5 - Tile 6 - Tile 7 - Tile 8 - Tile 9 - Tile 10 [P2]
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Moves **2** tiles forward (towards tile 5).
+- **Movement**: Tile 10 → Tile 8.
+- **New Position**:
+
+```
+Tile 0 - Tile 1 - Tile 2 - [P1] Tile 3 - Tile 4 - [Flag] Tile 5 - Tile 6 - Tile 7 - [P2] Tile 8 - Tile 9 - Tile 10
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Moves **2** tiles forward.
+- **Movement**: Tile 3 → Tile 5.
+- **Outcome**: Player 1 lands exactly on the flag tile.
+- **Result**: **Player 1 wins the game**.
+
+### Command-Line Interaction Example
+
+#### Player Commands
+
+- To move, a player inputs the number of steps (1, 2, or 3) they wish to take.
+
+#### Sample Interaction
+
+```
+Player 1, you're on tile 0. The flag is on tile 5.
+Enter your move (1, 2, or 3): 3
+
+Player 1 moves from tile 0 to tile 3.
+
+Player 2, you're on tile 10. The flag is on tile 5.
+Enter your move (1, 2, or 3): 2
+
+Player 2 moves from tile 10 to tile 8.
+
+Player 1, you're on tile 3. The flag is on tile 5.
+Enter your move (1, 2, or 3): 2
+
+Player 1 moves from tile 3 to tile 5.
+Player 1 has reached the flag!
+**Player 1 wins the game!**
+```
+
+## Strategic Depth and Complexity
+
+While Flag Chase has simple rules and is easy to code for a command-line interface, it offers strategic depth:
+
+- **Optimal Movement**: Players must plan their moves to land exactly on the flag tile while considering the opponent's position.
+- **Anticipation**: Predicting the opponent's possible moves can allow a player to block their winning strategies.
+- **Forced Moves**: Players can force the opponent into situations where they cannot make a valid move without overshooting the flag.
+
+## Additional Rules for Enhanced Strategy (Optional)
+
+- **Reverse Movement**:
+  - Players may choose to move backwards (away from the flag) by **1** tile instead of moving forward.
+  - This can be used strategically to adjust positioning.
+- **Skipping Turns**:
+  - A player may choose to skip their turn. This could force the opponent into a difficult position.
+
+These optional rules add layers of strategy but are not necessary for the basic gameplay.
+
+---
+
+Flag Chase is a simple yet strategic game that ensures a quick playthrough with a clear win condition and no possibility of a draw. Its straightforward mechanics make it easy to implement in a command-line interface while providing players with opportunities for skillful play.

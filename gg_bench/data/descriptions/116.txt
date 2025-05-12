@@ -1,0 +1,249 @@
+# Digit Battle Rule Book
+
+## Objective
+
+**Digit Battle** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to reduce your opponent's Life Points to zero by strategically manipulating a shared number according to specific rules. Victory is achieved by carefully selecting digits to alter the shared number, imposing penalties on your opponent while avoiding detrimental effects on yourself.
+
+## Setup
+
+- **Life Points**: Both players start with **10 Life Points**.
+- **Shared Number**: There is a shared number accessible to both players, which starts at **0**.
+
+At the beginning of the game, the shared number is displayed as `Current Number: 0`, and both players have their Life Points set:
+
+- `Player 1 Life Points: 10`
+- `Player 2 Life Points: 10`
+
+Players decide who will take the first turn, perhaps by a random selection or mutual agreement.
+
+## Game Components
+
+- **Digits (1-9)**: Players will use digits from **1** to **9** to alter the shared number. Digits can be used multiple times throughout the game.
+- **Shared Number**: A number that both players modify on their turns according to the game rules.
+- **Life Points**: A score representing each player's remaining life. Starts at 10 and decreases based on in-game penalties.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Status**: At the start of each turn, display:
+   - Both players' Life Points.
+   - The current value of the shared number.
+2. **Action Phase**:
+   - The active player selects a digit between **1** and **9**.
+   - Based on the game rules, the selected digit is either **added to** or **subtracted from** the shared number.
+3. **Result and Effects**:
+   - Update the shared number with the new value.
+   - Apply any penalties or special effects resulting from the move.
+4. **Turn Progression**:
+   - The turn passes to the next player.
+
+### Example Turn Flow
+
+- **Player 1's Turn**:
+  - Current Number: 0 (even)
+  - Player 1 selects digit **5**.
+  - Adds 5 to the current number (0 + 5 = 5).
+  - Updates the shared number to 5.
+- **Player 2's Turn**:
+  - Current Number: 5 (odd)
+  - Player 2 selects digit **3**.
+  - Subtracts 3 from the current number (5 - 3 = 2).
+  - Updates the shared number to 2.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Digit Selection**:
+   - On each turn, a player selects any digit from **1** to **9**.
+   - Digits can be reused; there are no limits on the number of times a digit can be selected.
+
+2. **Operation Based on Shared Number**:
+   - **If the shared number is even**:
+     - The selected digit **must be added** to the shared number.
+   - **If the shared number is odd**:
+     - The selected digit **must be subtracted** from the shared number.
+
+3. **Resulting Shared Number**:
+   - After the operation, the shared number is updated to the new value.
+   - The shared number can be positive, zero, or negative.
+
+### Special Conditions and Penalties
+
+1. **Negative Shared Number**:
+   - **Penalty to Active Player**:
+     - If the shared number becomes **negative** after the player's turn, the **active player loses 1 Life Point**.
+     - The shared number remains negative unless reset by game rules.
+
+2. **Reaching 15**:
+   - **Penalty to Opponent**:
+     - If the shared number becomes exactly **15** after the player's turn, the **opponent loses 3 Life Points**.
+     - The shared number is then **reset to 0**.
+
+3. **Over 20 Condition**:
+   - **Penalty to Active Player**:
+     - If the shared number exceeds **20** after the player's turn, the **active player loses 2 Life Points**.
+     - The shared number is then **reset to 10**.
+
+### Winning the Game
+
+- The game continues with players taking turns according to the rules.
+- **Victory Condition**:
+  - The first player to reduce their opponent's Life Points to **0 or below** wins the game.
+- **Defeat**:
+  - A player loses if their own Life Points are reduced to **0 or below**.
+
+## Scoring
+
+- **Life Points Tracking**:
+  - Each player starts with **10 Life Points**.
+  - Life Points are decreased based on penalties from the game mechanics.
+  - Life Points cannot exceed the starting amount (no healing or bonuses to increase Life Points).
+- **Life Points Penalties**:
+  - **Lose 1 Life Point**: If the active player's move results in a negative shared number.
+  - **Lose 3 Life Points (Opponent)**: If the active player's move results in the shared number becoming exactly **15**.
+  - **Lose 2 Life Points**: If the active player's move results in the shared number exceeding **20**.
+
+## Examples
+
+### Example Game Scenario
+
+**Initial Setup**:
+- Player 1 Life Points: 10
+- Player 2 Life Points: 10
+- Current Number: 0
+
+**Player 1's Turn**:
+- Current Number is **0** (even).
+- Player 1 selects digit **7**.
+- Adds 7 to current number: 0 + 7 = **7**.
+- New Current Number: **7**
+
+**Player 2's Turn**:
+- Current Number is **7** (odd).
+- Player 2 selects digit **5**.
+- Subtracts 5 from current number: 7 - 5 = **2**.
+- New Current Number: **2**
+
+**Player 1's Turn**:
+- Current Number is **2** (even).
+- Player 1 selects digit **8**.
+- Adds 8 to current number: 2 + 8 = **10**.
+- New Current Number: **10**
+
+**Player 2's Turn**:
+- Current Number is **10** (even).
+- Player 2 selects digit **5**.
+- Adds 5 to current number: 10 + 5 = **15**.
+- New Current Number: **15**
+- **Special Condition Met**:
+  - Player 1 (opponent) loses **3 Life Points**.
+  - Player 1 Life Points: 10 - 3 = **7**
+  - Shared number resets to **0**.
+
+**Player 1's Turn**:
+- Current Number is **0** (even).
+- Player 1 selects digit **9**.
+- Adds 9 to current number: 0 + 9 = **9**.
+- New Current Number: **9**
+
+**Player 2's Turn**:
+- Current Number is **9** (odd).
+- Player 2 selects digit **6**.
+- Subtracts 6 from current number: 9 - 6 = **3**.
+- New Current Number: **3**
+
+**Player 1's Turn**:
+- Current Number is **3** (odd).
+- Player 1 selects digit **4**.
+- Subtracts 4 from current number: 3 - 4 = **-1**.
+- New Current Number: **-1**
+- **Special Condition Met**:
+  - Player 1 loses **1 Life Point** for causing negative number.
+  - Player 1 Life Points: 7 - 1 = **6**
+
+**Player 2's Turn**:
+- Current Number is **-1** (odd).
+- Player 2 selects digit **2**.
+- Subtracts 2 from current number: -1 - 2 = **-3**
+- New Current Number: **-3**
+- **Special Condition Met**:
+  - Player 2 loses **1 Life Point** for causing negative number.
+  - Player 2 Life Points: 10 - 1 = **9**
+
+**Player 1's Turn**:
+- Current Number is **-3** (odd).
+- Player 1 selects digit **1**.
+- Subtracts 1 from current number: -3 - 1 = **-4**
+- New Current Number: **-4**
+- **Special Condition Met**:
+  - Player 1 loses **1 Life Point** for causing negative number.
+  - Player 1 Life Points: 6 - 1 = **5**
+
+*The game continues in this manner until one player's Life Points reach zero.*
+
+## Command-Line Interaction Sample
+
+Below is a sample interaction of how the game might proceed in a command-line interface.
+
+```
+--- New Game Started ---
+Player 1 Life Points: 10
+Player 2 Life Points: 10
+Current Number: 0
+
+Player 1's Turn:
+Current Number: 0 (Even)
+Select a digit to add (1-9): 7
+Updated Number: 7
+
+Player 2 Life Points: 10
+Player 2's Turn:
+Current Number: 7 (Odd)
+Select a digit to subtract (1-9): 5
+Updated Number: 2
+
+Player 1 Life Points: 10
+Player 1's Turn:
+Current Number: 2 (Even)
+Select a digit to add (1-9): 8
+Updated Number: 10
+
+Player 2 Life Points: 10
+Player 2's Turn:
+Current Number: 10 (Even)
+Select a digit to add (1-9): 5
+Updated Number: 15
+Special Condition! Player 1 loses 3 Life Points.
+Player 1 Life Points: 7
+Current Number reset to 0
+
+Player 1's Turn:
+Current Number: 0 (Even)
+Select a digit to add (1-9): 9
+Updated Number: 9
+
+...
+
+```
+
+## Strategic Tips
+
+- **Monitor the Shared Number**: Keep track of the shared number's parity (even or odd) to plan your moves accordingly.
+- **Anticipate Opponent's Moves**: Consider how your choice will set up the shared number for your opponent, potentially forcing them into a penalty.
+- **Use Special Conditions to Your Advantage**:
+  - Aim to reach exactly **15** to inflict significant damage on your opponent.
+  - Be cautious when the shared number is close to negative or exceeding 20 to avoid self-penalties.
+- **Digit Selection**: Higher digits can swing the shared number significantly but may carry greater risk.
+
+## Game End
+
+- The game ends when a player's Life Points are reduced to **0 or below**.
+- The opponent is declared the **winner**.
+
+## Conclusion
+
+**Digit Battle** is a game of arithmetic strategy and foresight. By carefully selecting digits and anticipating the effects on the shared number, players can outmaneuver their opponent and claim victory. The game's simplicity makes it easy to code and quick to play, while the strategic depth ensures skilled players can consistently triumph.
+
+Enjoy the challenge of **Digit Battle** and may the best strategist win!

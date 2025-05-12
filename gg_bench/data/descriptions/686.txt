@@ -1,0 +1,348 @@
+# Grid Lock: A Two-Player Strategy Game
+
+## Objective
+
+**Grid Lock** is a two-player, turn-based strategy game played on a 4x4 grid. The primary goal is to be the last player able to make a valid move on the grid. Players take turns placing their markers on the grid according to adjacency rules. The game ends when a player cannot make a valid move on their turn, at which point they lose the game, and their opponent wins. There are no draws in Grid Lock.
+
+---
+
+## Setup
+
+1. **Game Board**:
+   - The game is played on a **4x4 grid**, consisting of 16 cells.
+   - All cells start as empty.
+
+2. **Players**:
+   - **Player 1** uses the marker **'X'**.
+   - **Player 2** uses the marker **'O'**.
+   - Players decide who will be Player 1 and Player 2 before the game starts.
+
+3. **Starting the Game**:
+   - **Player 1** makes the first move.
+   - The game begins with an entirely empty grid.
+
+---
+
+## Game Components
+
+1. **Grid**:
+   - Represents the game board.
+   - It's a 4x4 matrix of cells.
+   - Each cell can be in one of three states:
+     - Empty (`[ ]`)
+     - Occupied by Player 1's marker (`[X]`)
+     - Occupied by Player 2's marker (`[O]`)
+
+2. **Markers**:
+   - Symbols used by players to claim cells on the grid.
+   - **'X'** for Player 1.
+   - **'O'** for Player 2.
+
+3. **Turn Indicator**:
+   - A mechanism (e.g., a prompt or message) indicating which player's turn it is.
+
+---
+
+## Turns
+
+### Structure of a Turn
+
+1. **Player's Action**:
+   - On their turn, a player places their marker on an empty cell of the grid, following the adjacency rules.
+
+2. **Order of Play**:
+   - Players alternate turns throughout the game.
+   - The turn order is:
+     - Player 1
+     - Player 2
+     - Repeat until the game ends.
+
+### First Turn
+
+- **Player 1's First Move**:
+  - Can place their marker on **any empty cell** on the grid.
+
+### Subsequent Turns
+
+- **Adjacency Rule**:
+  - After the first move, each player must place their marker on an empty cell that is **adjacent** to the cell most recently claimed (regardless of which player claimed it).
+  - **Adjacent cells** are those **directly above, below, to the left, or to the right** of a cell.
+  - **Diagonal cells are not considered adjacent**.
+
+- **Valid Moves**:
+  - A move is valid if:
+    - The cell is empty.
+    - The cell is adjacent to the last move made.
+
+- **Invalid Moves**:
+  - If a player attempts an invalid move, they must select a different, valid cell.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Adjacency Rule**:
+   - After the first move, all moves must be to an empty cell adjacent (up, down, left, or right) to the cell most recently claimed.
+   - This applies regardless of which player made the last move.
+
+2. **Occupied Cells**:
+   - Players cannot place their marker on a cell that is already occupied by any marker (`X` or `O`).
+
+3. **No Skipping Turns**:
+   - Players must make a move on their turn if a valid move is available.
+   - Skipping a turn or passing is not allowed.
+
+4. **End of Game Condition**:
+   - The game ends when a player cannot make any valid moves on their turn due to all adjacent cells being occupied.
+   - The player who cannot make a move **loses**, and the other player **wins**.
+
+### Special Considerations
+
+- **Game Continuity**:
+  - The game continues until the end condition is met, with no interruptions.
+
+- **No Draws**:
+  - Due to the nature of the adjacency rule and the finite grid, the game cannot end in a draw.
+
+- **Strategic Depth**:
+  - Players can plan ahead to control the play area and limit their opponent's options.
+
+---
+
+## Scoring
+
+- **Win Condition**:
+  - The objective is to force your opponent into a position where they cannot make a valid move on their turn.
+
+- **No Point System**:
+  - Grid Lock does not use a point-based scoring system.
+  - Winning is based solely on strategic play leading to the opponent's inability to move.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Grid State**:
+
+All cells are empty.
+
+```
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Player 1's Turn (First Move)**:
+
+- **Action**: Places 'X' at position **(2, 2)** (row 2, column 2).
+
+```
+[ ][ ][ ][ ]
+[ ][X][ ][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Player 2's Turn**:
+
+- **Available Cells**: Cells adjacent to (2, 2):
+
+  - Up: (1, 2)
+  - Down: (3, 2)
+  - Left: (2, 1)
+  - Right: (2, 3)
+
+- **Action**: Chooses to place 'O' at **(2, 3)**.
+
+```
+[ ][ ][ ][ ]
+[ ][X][O][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Player 1's Turn**:
+
+- **Last Move**: (2, 3)
+- **Available Cells**: Adjacent to (2, 3):
+
+  - Up: (1, 3)
+  - Down: (3, 3)
+  - Left: (2, 2) - **Occupied**
+  - Right: (2, 4)
+
+- **Action**: Places 'X' at **(3, 3)**.
+
+```
+[ ][ ][ ][ ]
+[ ][X][O][ ]
+[ ][ ][X][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Player 2's Turn**:
+
+- **Last Move**: (3, 3)
+- **Available Cells**: Adjacent to (3, 3):
+
+  - Up: (2, 3) - **Occupied**
+  - Down: (4, 3)
+  - Left: (3, 2)
+  - Right: (3, 4)
+
+- **Action**: Places 'O' at **(3, 2)**.
+
+```
+[ ][ ][ ][ ]
+[ ][X][O][ ]
+[ ][O][X][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Play Continues**:
+
+Players continue to take turns, each time selecting an empty, adjacent cell to the last move.
+
+---
+
+**End Game Scenario**:
+
+- Let's assume later in the game the grid looks like this, and it's Player 1's turn:
+
+```
+[X][O][X][O]
+[O][X][O][X]
+[X][O][X][O]
+[O][X][O][ ]
+```
+
+- **Last Move**: Player 2 placed 'O' at **(4, 3)**.
+- **Player 1's Turn**:
+
+  - **Available Cells**:
+
+    - Adjacent to (4, 3):
+      - Up: (3, 3) - **Occupied**
+      - Down: N/A
+      - Left: (4, 2) - **Occupied**
+      - Right: (4, 4)
+
+  - **Action**: Places 'X' at **(4, 4)**.
+
+```
+[X][O][X][O]
+[O][X][O][X]
+[X][O][X][O]
+[O][X][O][X]
+```
+
+- **Player 2's Turn**:
+
+  - **Last Move**: (4, 4)
+  - **Available Cells**:
+
+    - Adjacent to (4, 4):
+      - Up: (3, 4) - **Occupied**
+      - Left: (4, 3) - **Occupied**
+
+  - **No Valid Moves Available**.
+  - **Player 2 loses**, **Player 1 wins**.
+
+---
+
+### Command-Line Interaction Example
+
+**Game Start**:
+
+```
+Welcome to Grid Lock!
+
+Player 1 (X) will start the game.
+```
+
+---
+
+**Player 1's Turn**:
+
+```
+Player 1's Turn (X)
+Enter row (1-4): 2
+Enter column (1-4): 2
+
+Updated Grid:
+[ ][ ][ ][ ]
+[ ][X][ ][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Player 2's Turn**:
+
+```
+Player 2's Turn (O)
+Last move was at (2, 2)
+Available moves:
+- (1,2)
+- (2,1)
+- (2,3)
+- (3,2)
+Enter row (1-4): 2
+Enter column (1-4): 3
+
+Updated Grid:
+[ ][ ][ ][ ]
+[ ][X][O][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+```
+
+---
+
+**Turns Continue**:
+
+Players continue entering their moves following the adjacency rules, with the game state updating after each move.
+
+---
+
+**End of Game**:
+
+```
+Player 2's Turn (O)
+Last move was at (4, 4)
+No valid moves available.
+Player 2 cannot make a move.
+Player 1 (X) wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Control the Center**: Occupying central cells can give more options for adjacency and limit your opponent's moves.
+- **Limit Opponent's Options**: Try to guide the game towards the edges or corners to restrict your opponent's available moves.
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your strategy to force them into a position where they have no valid moves.
+
+---
+
+## Conclusion
+
+Grid Lock is a simple yet strategically deep game that requires foresight and planning. The clear rules and quick gameplay make it easy to learn but challenging to master. Players must think ahead and adapt to their opponent's moves to secure victory.
+
+Enjoy the battle of wits in Grid Lock!

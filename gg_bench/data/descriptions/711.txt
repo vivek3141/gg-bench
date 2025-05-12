@@ -1,0 +1,237 @@
+# Center Square Showdown
+
+## Objective
+
+The objective of **Center Square Showdown** is to be the first player to move the shared token onto the center square of a 5x5 grid. Players take turns moving the token, aiming to outmaneuver their opponent and claim victory by strategically navigating the token to the center position **(Row 3, Column 3)**. The player who successfully moves the token to the center square wins the game.
+
+## Setup
+
+- **Game Board**: A 5x5 grid is used, with rows and columns numbered from 1 to 5.
+- **Starting Position**: The shared token, represented by an asterisk `*`, starts at the top-left corner of the grid at position **(1,1)**.
+- **Player Roles**: Two players are designated as **Player 1** and **Player 2**. A method such as a coin toss or mutual agreement determines who takes the first turn.
+
+## Game Components
+
+### Grid
+
+- **Dimensions**: The grid consists of 5 rows and 5 columns.
+- **Coordinates**: Positions on the grid are identified by their row and column numbers, ranging from 1 to 5.
+- **Visualization**: The grid is displayed in the command-line interface, updating after each move to show the current position of the token.
+
+### Token
+
+- **Representation**: The shared token is depicted by an asterisk `*`.
+- **Function**: Players move the token around the grid according to the game rules. The token is the central focus of gameplay, and its position determines the players' moves.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the player determined to go first during setup.
+- **Player Actions**: On their turn, a player must move the shared token one square in any of the four cardinal directions: **up**, **down**, **left**, or **right**.
+- **Turn Progression**: After a player makes a move, the turn passes to the other player, and this alternation continues until the game ends.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Legal Moves**:
+   - A player must move the token one square per turn.
+   - The token can move **up**, **down**, **left**, or **right**.
+   - Diagonal moves are **not allowed**.
+2. **Grid Boundaries**:
+   - The token cannot move off the grid.
+   - Moves that would place the token outside the grid are **illegal**.
+3. **Forbidden Reversals**:
+   - Players cannot reverse the opponent's last move on their immediate next turn.
+   - Example: If Player 1 moves the token from (1,1) to (1,2), Player 2 cannot move it back to (1,1) on their next turn.
+4. **No Passing**:
+   - Players **must** make a move on their turn if possible.
+   - Skipping a turn or passing is **not permitted**.
+
+### Winning the Game
+
+- The game is won by the player who moves the token onto the center square at position **(3,3)**.
+- The game ends immediately when the token reaches the center square.
+- There are no draws in this game; a winner is always determined.
+
+## Scoring
+
+- **No Point System**: There is no point scoring or tracking in the game.
+- **Victory Condition**: Winning is solely based on being the player who moves the token to the center square.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Grid
+
+```
+    1   2   3   4   5
+  -------------------------
+1 | * |   |   |   |   |
+  -------------------------
+2 |   |   |   |   |   |
+  -------------------------
+3 |   |   |   |   |   |
+  -------------------------
+4 |   |   |   |   |   |
+  -------------------------
+5 |   |   |   |   |   |
+  -------------------------
+```
+
+- **Token Position**: (1,1)
+- **Player Turn**: Player 1
+
+#### Turn 1: Player 1
+
+- **Action**: Moves the token **right** to (1,2)
+- **Input**: `right`
+- **Updated Grid**:
+
+```
+    1   2   3   4   5
+  -------------------------
+1 |   | * |   |   |   |
+  -------------------------
+2 |   |   |   |   |   |
+  -------------------------
+3 |   |   |   |   |   |
+  -------------------------
+4 |   |   |   |   |   |
+  -------------------------
+5 |   |   |   |   |   |
+  -------------------------
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Moves the token **down** to (2,2)
+- **Input**: `down`
+- **Updated Grid**:
+
+```
+    1   2   3   4   5
+  -------------------------
+1 |   |   |   |   |   |
+  -------------------------
+2 |   | * |   |   |   |
+  -------------------------
+3 |   |   |   |   |   |
+  -------------------------
+4 |   |   |   |   |   |
+  -------------------------
+5 |   |   |   |   |   |
+  -------------------------
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Moves the token **down** to (3,2)
+- **Input**: `down`
+- **Updated Grid**:
+
+```
+    1   2   3   4   5
+  -------------------------
+1 |   |   |   |   |   |
+  -------------------------
+2 |   |   |   |   |   |
+  -------------------------
+3 |   | * |   |   |   |
+  -------------------------
+4 |   |   |   |   |   |
+  -------------------------
+5 |   |   |   |   |   |
+  -------------------------
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Moves the token **right** to (3,3)
+- **Input**: `right`
+- **Updated Grid**:
+
+```
+    1   2   3   4   5
+  -------------------------
+1 |   |   |   |   |   |
+  -------------------------
+2 |   |   |   |   |   |
+  -------------------------
+3 |   |   | * |   |   |
+  -------------------------
+4 |   |   |   |   |   |
+  -------------------------
+5 |   |   |   |   |   |
+  -------------------------
+```
+
+#### Outcome
+
+- **Winner**: Player 2 wins by moving the token to the center square (3,3).
+
+### Command-Line Interaction
+
+#### Displaying the Grid
+
+- The grid is displayed after each move, showing the position of the token.
+- Rows and columns are numbered for easy reference.
+
+#### Player Input
+
+- On their turn, players are prompted to enter a move direction:
+  - `up`
+  - `down`
+  - `left`
+  - `right`
+- The game validates the input and ensures the move is legal.
+
+#### Sample Turn Sequence
+
+```
+Current Grid Position:
+    1   2   3   4   5
+  -------------------------
+1 | * |   |   |   |   |
+  -------------------------
+2 |   |   |   |   |   |
+  -------------------------
+3 |   |   |   |   |   |
+  -------------------------
+4 |   |   |   |   |   |
+  -------------------------
+5 |   |   |   |   |   |
+
+Player 1's Turn.
+Enter move (up/down/left/right): right
+
+[Game checks move validity...]
+
+Token moved to position (1,2).
+
+[Grid updates and displays new position...]
+
+Player 2's Turn.
+Enter move (up/down/left/right): down
+
+[Game checks move validity...]
+
+Token moved to position (2,2).
+
+[Grid updates and displays new position...]
+```
+
+## Strategic Depth and Complexity
+
+- **Anticipating Moves**: Players must anticipate their opponent's moves and plan several steps ahead to control the token's path.
+- **Control of the Center**: Deciding when to approach the center square is crucial. Moving too early might give the opponent the advantage.
+- **Limiting Options**: Players can force their opponent into positions with fewer options, eventually leading to a win.
+- **Forbidden Reversals**: This rule adds complexity, preventing simple back-and-forth moves and encouraging more strategic planning.
+
+## Summary
+
+**Center Square Showdown** is a simple yet strategically rich game that challenges players to think ahead and navigate the shared token to the center of the grid. With clear rules and a straightforward objective, it is easy to code and play in a command-line interface. The game guarantees a quick conclusion with no possibility of a draw, ensuring that one player will emerge victorious based on skillful play.
+
+---
+
+This rule book provides all the necessary information for players to understand and enjoy **Center Square Showdown**. The game's unique mechanics offer strategic depth, making it engaging for both new and experienced players.

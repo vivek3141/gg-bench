@@ -1,0 +1,331 @@
+# Number Conquest: Rule Book
+
+## Objective
+
+Become the first player to reduce your opponent's Life Points to zero by strategically selecting numbers to perform attacks or bolster your defense. Utilize the shared pool of numbers wisely to outmaneuver your opponent and achieve victory.
+
+---
+
+## Setup
+
+1. **Life Points Initialization**:
+   - Each player starts with **20 Life Points**.
+   - Life Points represent the player's health. When a player's Life Points reach zero, they lose the game.
+
+2. **Shield Points Initialization**:
+   - Both players begin with **0 Shield Points**.
+   - Shield Points absorb incoming damage but do not exceed a maximum limit (unlimited in this game).
+
+3. **Number Pool**:
+   - A shared pool of numbers from **1 to 9** is available.
+   - These numbers are used for performing actions and are **removed from the pool once used**.
+
+---
+
+## Game Components
+
+- **Life Points (LP)**:
+  - Numeric value representing a player's health.
+  - Starts at 20 for each player.
+
+- **Shield Points (SP)**:
+  - Numeric value representing defensive strength.
+  - Absorbs damage from attacks.
+  - Starts at 0 and increases when a player chooses to defend.
+
+- **Number Pool**:
+  - Shared list of available numbers **[1, 2, 3, 4, 5, 6, 7, 8, 9]**.
+  - Numbers are used for actions and removed upon use.
+
+- **Actions**:
+  - **Attack**: Deal damage to the opponent.
+  - **Defend**: Increase your Shield Points.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., coin toss or agreement).
+   - Turns alternate between players.
+
+2. **Turn Structure**:
+   - **Step 1**: Display current Life Points, Shield Points, and available numbers.
+   - **Step 2**: Choose an available number from the Number Pool.
+   - **Step 3**: Choose an action:
+     - **Attack**: Use the number to deal damage.
+     - **Defend**: Use the number to increase your Shield Points.
+   - **Step 4**: Execute the action.
+   - **Step 5**: Remove the used number from the Number Pool.
+   - **Step 6**: Check for victory condition.
+   - **Step 7**: End turn.
+
+---
+
+## Rules and Mechanics
+
+### Actions
+
+#### Attack
+
+- **Damage Calculation**:
+  - **Damage Dealt** = Chosen Number - Opponent's Shield Points.
+  - If the opponent has Shield Points, they are subtracted from the attack value.
+  - **Example**: If you attack with a 6 and your opponent has 2 Shield Points:
+    - Damage Dealt = 6 - 2 = 4.
+    - Opponent's Shield Points reduce to 0.
+  - **Shield Points cannot become negative**.
+- **Life Points Reduction**:
+  - Opponent's Life Points decrease by the Damage Dealt.
+  - **Minimum Damage**: If Shield Points are equal to or exceed the attack value, Damage Dealt is 0.
+
+#### Defend
+
+- **Shield Increase**:
+  - Your Shield Points increase by the value of the chosen number.
+  - **Example**: If you defend with a 5:
+    - Your Shield Points increase by 5.
+- **Accumulation**:
+  - Shield Points accumulate over turns unless reduced by attacks.
+
+### Number Pool Management
+
+- **Number Usage**:
+  - Once a number is used for an action, it is **removed** from the Number Pool.
+  - Both players cannot use that number again.
+- **Availability**:
+  - Players can only choose from the remaining numbers in the pool on their turn.
+
+### Victory Condition
+
+- **Winning the Game**:
+  - A player wins when their opponent's Life Points are reduced to **zero or below**.
+- **No Draws**:
+  - Since numbers are finite and Life Points will eventually reach zero, the game cannot end in a draw.
+
+---
+
+## Scoring
+
+- **Life Points Tracking**:
+  - Main metric for determining the winner.
+  - Keep track of both players' Life Points throughout the game.
+
+- **Shield Points Tracking**:
+  - Important for defense strategy and calculating damage.
+  - Reset only when reduced by attacks; otherwise, they accumulate.
+
+---
+
+## Examples
+
+### Sample Game Flow
+
+**Starting Game State**:
+
+- Player 1 LP: 20, SP: 0
+- Player 2 LP: 20, SP: 0
+- Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Player 1 Action**:
+  - Chooses number **7**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Opponent SP: 0
+  - Damage Dealt: 7 - 0 = 7
+- **Update**:
+  - Player 2 LP: 20 - 7 = **13**
+  - Number 7 is removed from the pool.
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 8, 9]
+- **Player 2 Action**:
+  - Chooses number **8**.
+  - Chooses to **Defend**.
+- **Shield Update**:
+  - Player 2 SP: 0 + 8 = **8**
+- **Update**:
+  - Number 8 is removed from the pool.
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 9]
+- **Player 1 Action**:
+  - Chooses number **6**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Opponent SP: 8
+  - Damage Dealt: 6 - 8 = 0 (no damage)
+- **Shield Reduction**:
+  - Player 2 SP: 8 - 6 = **2**
+- **Update**:
+  - Number 6 is removed from the pool.
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 9]
+- **Player 2 Action**:
+  - Chooses number **9**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Player 1 SP: 0
+  - Damage Dealt: 9 - 0 = 9
+- **Update**:
+  - Player 1 LP: 20 - 9 = **11**
+  - Number 9 is removed from the pool.
+
+---
+
+#### **Turn 5: Player 1**
+
+- **Available Numbers**: [1, 2, 3, 4, 5]
+- **Player 1 Action**:
+  - Chooses number **5**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Opponent SP: 2
+  - Damage Dealt: 5 - 2 = 3
+- **Shield Reduction**:
+  - Player 2 SP: 2 - 5 = 0
+- **Update**:
+  - Player 2 LP: 13 - 3 = **10**
+  - Number 5 is removed from the pool.
+
+---
+
+#### **Turn 6: Player 2**
+
+- **Available Numbers**: [1, 2, 3, 4]
+- **Player 2 Action**:
+  - Chooses number **4**.
+  - Chooses to **Defend**.
+- **Shield Update**:
+  - Player 2 SP: 0 + 4 = **4**
+- **Update**:
+  - Number 4 is removed from the pool.
+
+---
+
+#### **Turn 7: Player 1**
+
+- **Available Numbers**: [1, 2, 3]
+- **Player 1 Action**:
+  - Chooses number **3**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Opponent SP: 4
+  - Damage Dealt: 3 - 4 = 0
+- **Shield Reduction**:
+  - Player 2 SP: 4 - 3 = **1**
+- **Update**:
+  - Number 3 is removed from the pool.
+
+---
+
+#### **Turn 8: Player 2**
+
+- **Available Numbers**: [1, 2]
+- **Player 2 Action**:
+  - Chooses number **2**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Player 1 SP: 0
+  - Damage Dealt: 2 - 0 = 2
+- **Update**:
+  - Player 1 LP: 11 - 2 = **9**
+  - Number 2 is removed from the pool.
+
+---
+
+#### **Turn 9: Player 1**
+
+- **Available Number**: [1]
+- **Player 1 Action**:
+  - Chooses number **1**.
+  - Chooses to **Attack**.
+- **Damage Calculation**:
+  - Opponent SP: 1
+  - Damage Dealt: 1 - 1 = 0
+- **Shield Reduction**:
+  - Player 2 SP: 1 - 1 = **0**
+- **Update**:
+  - Number 1 is removed from the pool.
+
+---
+
+#### **End of Number Pool**
+
+- Since all numbers have been used, the game proceeds to determine the winner based on remaining Life Points.
+
+**Final Life Points**:
+
+- Player 1 LP: **9**
+- Player 2 LP: **10**
+
+**Winner**: **Player 2**, having more Life Points remaining.
+
+---
+
+## Strategy Tips
+
+- **Balance Attack and Defense**:
+  - Use high numbers for attacking when the opponent's Shield Points are low.
+  - Consider defending with high numbers if you anticipate strong attacks.
+
+- **Track Used Numbers**:
+  - Keep note of which numbers have been used to anticipate your opponent's potential moves.
+
+- **Manage Shield Points**:
+  - Reducing your opponent's Shield Points can set up for a stronger attack in the next turn.
+
+- **Plan Ahead**:
+  - Think several moves ahead to reserve certain numbers for crucial moments.
+
+---
+
+## Command-Line Interaction Example
+
+```plaintext
+-- Turn 1: Player 1 --
+Player 1 LP: 20, SP: 0
+Player 2 LP: 20, SP: 0
+Available Numbers: [1,2,3,4,5,6,7,8,9]
+Choose a number: 7
+Choose action (Attack/Defend): Attack
+You chose to attack with 7.
+Damage Dealt: 7
+Player 2 LP is now 13.
+
+-- Turn 2: Player 2 --
+Player 1 LP: 20, SP: 0
+Player 2 LP: 13, SP: 0
+Available Numbers: [1,2,3,4,5,6,8,9]
+Choose a number: 8
+Choose action (Attack/Defend): Defend
+You chose to defend with 8.
+Player 2 SP is now 8.
+
+... (game continues)
+```
+
+---
+
+## Conclusion
+
+"Number Conquest" is a strategic game of resource management and tactical decision-making. By carefully choosing when to attack or defend and selecting the optimal numbers, players can outsmart their opponents and secure victory. The simplicity of the game's mechanics, combined with the depth of strategy, makes it both easy to code and engaging to play.
+
+---
+
+Enjoy the battle of numbers, and may the best strategist win!

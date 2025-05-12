@@ -1,0 +1,221 @@
+# **Factor Frenzy**
+
+## **Objective**
+
+Be the player to force your opponent into a position where they cannot make a valid move by strategically selecting numbers and eliminating options from the shared pool of numbers. Victory is achieved when your opponent has no available moves on their turn.
+
+## **Setup**
+
+1. **Number Pool Initialization**: Create a shared list of integers ranging from **2 to 50** inclusive.
+   
+2. **Starting Player**: Determine who takes the first turn, either randomly or by mutual agreement.
+
+## **Game Components**
+
+- **Number Pool**: A list containing integers from **2 to 50**. This pool represents the available numbers players can select during the game.
+  
+- **Selected Numbers**: A record of numbers that have been chosen during the game, along with their factors and multiples which are subsequently removed from the Number Pool.
+
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+## **Turns**
+
+- Players alternate turns starting with the designated starting player.
+  
+- **Turn Structure**:
+  1. **Selection Phase**: The active player selects an available number from the Number Pool.
+  
+  2. **Elimination Phase**: After selecting, all factors and multiples of the chosen number are removed from the Number Pool.
+
+- The game continues in this fashion until a player cannot make a valid selection on their turn.
+
+## **Rules and Mechanics**
+
+1. **Valid Selection**:
+   - On your turn, you must select a number from the current Number Pool.
+   - If there are no available numbers to select, you lose the game.
+
+2. **Number Selection**:
+   - **Choosing a Number**: Select any remaining number from the Number Pool.
+
+3. **Elimination of Numbers**:
+   - **Factors and Multiples Removal**:
+     - Once a number is selected, both that number and all of its factors and multiples are removed from the Number Pool.
+     - **Factors**: Numbers less than the chosen number that divide evenly into it.
+     - **Multiples**: Numbers greater than the chosen number that the chosen number divides evenly into.
+
+   - **Example**:
+     - If **12** is selected, remove **2, 3, 4, 6, 12, 24, 36, 48** from the Number Pool.
+
+4. **Unavailable Moves**:
+   - If a player cannot select a number because the Number Pool is empty, or all remaining numbers have been eliminated due to previous selections, that player loses.
+
+5. **Winning the Game**:
+   - You win by forcing your opponent into a position where they cannot make a valid move on their turn.
+
+6. **Game End**:
+   - The game ends immediately when a player has no valid moves on their turn.
+
+## **Scoring**
+
+- **Victory**: Winning the game constitutes achieving the primary objective and is noted as a win for the player.
+  
+- **Match Play**:
+  - Players may choose to play multiple games in a match format where the first player to reach a predetermined number of victories wins the match.
+
+## **Examples**
+
+### **Example 1: Basic Gameplay**
+
+**Initial Number Pool**: 2 to 10 (for simplicity in this example).
+
+**Turn 1 - Player 1**:
+- **Selection**: Chooses **5**.
+- **Elimination**:
+  - Factors of **5**: **5** (itself).
+  - Multiples of **5** within the pool: **10**.
+  - **Numbers Removed**: **5**, **10**.
+- **Updated Number Pool**: **2, 3, 4, 6, 7, 8, 9**.
+
+**Turn 2 - Player 2**:
+- **Selection**: Chooses **4**.
+- **Elimination**:
+  - Factors of **4**: **2**, **4**.
+  - Multiples of **4** within the pool: **8**.
+  - **Numbers Removed**: **2**, **4**, **8**.
+- **Updated Number Pool**: **3, 6, 7, 9**.
+
+**Turn 3 - Player 1**:
+- **Selection**: Chooses **9**.
+- **Elimination**:
+  - Factors of **9**: **3**, **9**.
+  - Multiples of **9** within the pool: None (since pool goes up to 10).
+  - **Numbers Removed**: **3**, **9**.
+- **Updated Number Pool**: **6**, **7**.
+
+**Turn 4 - Player 2**:
+- **Selection**: Chooses **6**.
+- **Elimination**:
+  - Factors of **6**: **6** (itself).
+  - Multiples of **6** within the pool: None.
+  - **Numbers Removed**: **6**.
+- **Updated Number Pool**: **7**.
+
+**Turn 5 - Player 1**:
+- **Selection**: Chooses **7**.
+- **Elimination**:
+  - Factors of **7**: **7** (itself).
+  - Multiples of **7** within the pool: None.
+  - **Numbers Removed**: **7**.
+- **Updated Number Pool**: Empty.
+
+**Turn 6 - Player 2**:
+- **No Valid Moves**: The Number Pool is empty.
+- **Result**: **Player 2 loses**, **Player 1 wins**.
+
+### **Example 2: Strategic Play**
+
+**Initial Number Pool**: 2 to 20.
+
+**Turn 1 - Player 1**:
+- **Selection**: Chooses **7**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 7, 14**.
+
+**Turn 2 - Player 2**:
+- **Selection**: Chooses **9**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 3, 9, 18**.
+
+**Turn 3 - Player 1**:
+- **Selection**: Chooses **8**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 2, 4, 8, 16**.
+
+**Turn 4 - Player 2**:
+- **Selection**: Chooses **5**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 5, 10, 15, 20**.
+
+**Turn 5 - Player 1**:
+- **Selection**: Chooses **11**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 11**.
+
+**Turn 6 - Player 2**:
+- **Selection**: Chooses **13**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 13**.
+
+**Turn 7 - Player 1**:
+- **Selection**: Chooses **17**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 17**.
+
+**Turn 8 - Player 2**:
+- **Selection**: Chooses **19**.
+- **Elimination**:
+  - **Numbers Removed**: **1, 19**.
+
+**Turn 9 - Player 1**:
+- **No Valid Moves**: Remaining numbers (**12**, **6**) have been eliminated as factors/multiples.
+- **Result**: **Player 1 loses**, **Player 2 wins**.
+
+---
+
+**Note on Strategy**:
+
+- **Prime Numbers**: Selecting prime numbers can be advantageous as they have fewer factors and multiples, thus eliminating fewer options from the Number Pool for yourself but potentially limiting your opponent's future moves.
+
+- **Composite Numbers**: Choosing composite numbers with many factors and multiples can eliminate more options from the Number Pool, potentially restricting your opponent's valid moves.
+
+## **Command-Line Interaction Example**
+
+### **Game Start**
+
+```plaintext
+Welcome to Factor Frenzy!
+
+Available Numbers: 2 through 20
+
+Player 1, it's your turn.
+Enter a number to select: 8
+You selected 8.
+Numbers removed: 1, 2, 4, 8, 16
+
+Available Numbers: 3, 5, 6, 7, 9, 10, 12, 14, 15, 18, 20
+
+Player 2, it's your turn.
+Enter a number to select: 9
+You selected 9.
+Numbers removed: 1, 3, 9, 18
+
+Available Numbers: 5, 6, 7, 10, 12, 14, 15, 20
+
+Player 1, it's your turn.
+Enter a number to select: 7
+You selected 7.
+Numbers removed: 1, 7, 14
+
+Available Numbers: 5, 6, 10, 12, 15, 20
+
+Player 2, it's your turn.
+Enter a number to select: 5
+You selected 5.
+Numbers removed: 1, 5, 10, 15, 20
+
+Available Numbers: 6, 12
+
+Player 1, it's your turn.
+Enter a number to select: 12
+You selected 12.
+Numbers removed: 1, 2, 3, 4, 6, 12
+
+Available Numbers: None
+
+Player 2, no valid moves remaining. Player 1 wins!
+```
+
+---
+
+With these rules and examples, you are now ready to play **Factor Frenzy**. Remember to think ahead and plan your moves strategically to limit your opponent's options and secure your victory. Enjoy the game!

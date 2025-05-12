@@ -1,0 +1,169 @@
+# Fraction Race
+
+## Objective
+
+Be the first player to reach a cumulative sum of fractions exactly equal to **1**. Utilize strategic selection of fractions to outmaneuver your opponent and achieve the perfect total before they do.
+
+## Setup
+
+1. **Starting Position**: Both players begin with a cumulative fraction sum of **0**.
+2. **Fraction Pool**: A shared pool of fraction cards is available, containing one of each of the following fractions:
+   - \( \frac{1}{2} \)
+   - \( \frac{1}{3} \)
+   - \( \frac{1}{4} \)
+   - \( \frac{1}{5} \)
+   - \( \frac{1}{6} \)
+3. **Order of Play**: Decide which player goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Fraction Cards**: Represented by their numerical values (\( \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \frac{1}{5}, \frac{1}{6} \)). Each fraction card can be selected only once during the game.
+- **Cumulative Sum Tracker**: A simple numerical total for each player to keep track of their cumulative fraction sums.
+- **Command-Line Interface**: Players input commands to select fractions and view the game state.
+
+## Turns
+
+1. **Player's Turn**:
+   - The current player selects an available fraction from the pool.
+   - The selected fraction is added to the player's cumulative sum.
+   - The selected fraction is removed from the pool and cannot be chosen again.
+2. **Turn Progression**:
+   - Turns alternate between players.
+   - The game continues until a player reaches a cumulative sum of exactly **1** or the game ends based on the rules.
+
+## Rules and Mechanics
+
+1. **Fraction Selection**:
+   - On your turn, select any one available fraction from the pool.
+   - You cannot select a fraction if adding it to your cumulative sum would exceed **1**.
+2. **Cumulative Sum**:
+   - Keep a running total of your fraction sums.
+   - The cumulative sum must always be less than or equal to **1**.
+3. **Winning the Game**:
+   - **Exact Sum Victory**: If you reach a cumulative sum of exactly **1**, you win the game immediately.
+4. **Forced Pass**:
+   - If you cannot select any fraction without exceeding a cumulative sum of **1**, you must pass your turn.
+5. **Game End Without Exact Sum**:
+   - If both players are forced to pass consecutively, the game ends.
+   - The player with the cumulative sum closest to **1** without exceeding it wins.
+   - In the event of a tie (both players have the same cumulative sum), the **last player to make a valid move wins**.
+
+## Scoring
+
+- **Winning**: Achieve a cumulative sum of exactly **1** or have the closest cumulative sum to **1** when the game ends.
+- **Tracking Scores**: While this game does not use a point system over multiple rounds, players may keep track of wins for match play.
+
+## Examples
+
+### Example Game Play
+
+**Fraction Pool**:
+\( \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \frac{1}{5}, \frac{1}{6} \)
+
+**Player A and Player B both start with a cumulative sum of 0.**
+
+---
+
+1. **Player A's Turn**:
+   - Selects \( \frac{1}{2} \).
+   - Cumulative Sum: \( 0 + \frac{1}{2} = \frac{1}{2} \).
+   - Fraction Pool: \( \frac{1}{3}, \frac{1}{4}, \frac{1}{5}, \frac{1}{6} \).
+
+2. **Player B's Turn**:
+   - Selects \( \frac{1}{3} \).
+   - Cumulative Sum: \( 0 + \frac{1}{3} = \frac{1}{3} \).
+   - Fraction Pool: \( \frac{1}{4}, \frac{1}{5}, \frac{1}{6} \).
+
+3. **Player A's Turn**:
+   - Selects \( \frac{1}{4} \).
+   - Cumulative Sum: \( \frac{1}{2} + \frac{1}{4} = \frac{3}{4} \).
+   - Fraction Pool: \( \frac{1}{5}, \frac{1}{6} \).
+
+4. **Player B's Turn**:
+   - Considers options:
+     - \( \frac{1}{4} \) is no longer available.
+     - Selecting \( \frac{1}{5} \): \( \frac{1}{3} + \frac{1}{5} = \frac{8}{15} \) (approx. 0.533).
+     - Selecting \( \frac{1}{6} \): \( \frac{1}{3} + \frac{1}{6} = \frac{1}{2} \).
+   - Chooses \( \frac{1}{6} \).
+   - Cumulative Sum: \( \frac{1}{3} + \frac{1}{6} = \frac{1}{2} \).
+   - Fraction Pool: \( \frac{1}{5} \).
+
+5. **Player A's Turn**:
+   - Only \( \frac{1}{5} \) remains.
+   - Adding \( \frac{1}{5} \):
+     - Cumulative Sum: \( \frac{3}{4} + \frac{1}{5} = \frac{19}{20} \) (approx. 0.95).
+     - Does not exceed 1.
+   - Selects \( \frac{1}{5} \).
+   - Cumulative Sum: \( \frac{3}{4} + \frac{1}{5} = \frac{19}{20} \).
+   - Fraction Pool is now empty.
+
+6. **Player B's Turn**:
+   - No fractions remain in the pool.
+   - Must pass.
+
+7. **Player A's Turn**:
+   - No fractions remain in the pool.
+   - Must pass.
+   - The game ends.
+
+**Result**:
+- **Player A's Cumulative Sum**: \( \frac{19}{20} \) (approx. 0.95).
+- **Player B's Cumulative Sum**: \( \frac{1}{2} \) (0.5).
+- **Winner**: **Player A** wins for having the cumulative sum closest to **1** without exceeding it.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Welcome to Fraction Race!
+
+Fraction Pool: 1/2, 1/3, 1/4, 1/5, 1/6
+
+Player A's turn.
+Available fractions: 1/2, 1/3, 1/4, 1/5, 1/6
+Your cumulative sum: 0
+Select a fraction: 1/2
+
+Player B's turn.
+Available fractions: 1/3, 1/4, 1/5, 1/6
+Your cumulative sum: 0
+Select a fraction: 1/3
+
+Player A's turn.
+Available fractions: 1/4, 1/5, 1/6
+Your cumulative sum: 0.5
+Select a fraction: 1/4
+
+Player B's turn.
+Available fractions: 1/5, 1/6
+Your cumulative sum: 0.3333333333
+Select a fraction: 1/6
+
+Player A's turn.
+Available fractions: 1/5
+Your cumulative sum: 0.75
+Select a fraction: 1/5
+
+Player B's turn.
+Available fractions: None
+No available fractions to select. You must pass.
+
+Player A's turn.
+Available fractions: None
+No available fractions to select. You must pass.
+
+Game over!
+Player A's cumulative sum: 0.95
+Player B's cumulative sum: 0.5
+Winner: Player A
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which fractions will be available on your next turn based on your current choice.
+- **Force Passes**: Try to leave your opponent with fractions that they cannot select without exceeding a sum of **1**.
+- **Calculate Precisely**: Keep track of both your and your opponent's cumulative sums to make informed decisions.
+- **Aim for Exact Sum**: Whenever possible, prioritize moves that could lead you to an exact sum of **1** for an immediate win.
+
+---
+
+Enjoy playing **Fraction Race** and may the best strategist win!

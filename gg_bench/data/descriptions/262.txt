@@ -1,0 +1,188 @@
+# Multiplication Showdown
+
+## Objective
+
+Be the first player to reach **exactly 100** by strategically multiplying the current number using integers between 2 and 9. Avoid exceeding the target number to secure victory.
+
+## Setup
+
+1. **Starting Number**: The game begins with the current number set to **1**.
+2. **Players**: Two players participate, deciding randomly or by agreement who takes the first turn.
+
+## Game Components
+
+- **Current Number**: A shared number that changes each turn based on player actions. Initially set to **1**.
+- **Multipliers**: Integers from **2** to **9** inclusive. These are the numbers players will use to multiply the current number.
+- **Target Number**: The number **100**. Players aim to reach this number exactly.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Action**:
+  - On their turn, a player selects a multiplier (an integer between 2 and 9).
+  - The player multiplies the **current number** by the chosen multiplier.
+  - The **product** becomes the new current number.
+
+## Rules and Mechanics
+
+1. **Choosing a Multiplier**:
+   - Players must select a multiplier between **2** and **9** inclusive.
+   - The chosen multiplier is applied to the current number to produce a new current number.
+
+2. **Updating the Current Number**:
+   - Multiply the current number by the selected multiplier.
+   - Example: If the current number is 5 and the player chooses 3, the new current number is \( 5 \times 3 = 15 \).
+
+3. **Winning the Game**:
+   - If a player's action results in the current number being **exactly 100**, that player **wins** the game immediately.
+
+4. **Exceeding 100**:
+   - If a player's action causes the current number to exceed 100, that player **loses** the game immediately.
+   - Players must carefully choose multipliers to avoid surpassing the target number.
+
+5. **Forced Loss**:
+   - If it is a player's turn and all possible multipliers would cause the current number to exceed 100, the player **loses** the game.
+   - Players must strategize to avoid being left without valid moves.
+
+6. **Valid Moves Requirement**:
+   - Players must select a multiplier that results in a new current number greater than the current number but not exceeding 100.
+   - Skipping a turn or selecting invalid multipliers is not allowed.
+
+## Scoring
+
+- **Winning**: Reaching exactly 100 on your turn.
+- **Losing**: Causing the current number to exceed 100 or having no valid moves on your turn.
+
+_No points are accumulated; the game results in a win or loss based on the above conditions._
+
+## Examples
+
+### Example Game 1
+
+**Turn 1**:
+- **Player 1**
+  - Current Number: 1
+  - Chooses Multiplier: **5**
+  - Calculation: \( 1 \times 5 = 5 \)
+  - New Current Number: **5**
+
+**Turn 2**:
+- **Player 2**
+  - Current Number: 5
+  - Chooses Multiplier: **9**
+  - Calculation: \( 5 \times 9 = 45 \)
+  - New Current Number: **45**
+
+**Turn 3**:
+- **Player 1**
+  - Current Number: 45
+  - Chooses Multiplier: **2**
+  - Calculation: \( 45 \times 2 = 90 \)
+  - New Current Number: **90**
+
+**Turn 4**:
+- **Player 2**
+  - Current Number: 90
+  - Must choose a multiplier between 2 and 9 such that the product does not exceed 100.
+  - Possible Multipliers: None (all multipliers will exceed 100)
+  - **Player 2 loses** due to no valid moves.
+
+**Winner**: **Player 1**
+
+---
+
+### Example Game 2
+
+**Turn 1**:
+- **Player 1**
+  - Current Number: 1
+  - Chooses Multiplier: **2**
+  - Calculation: \( 1 \times 2 = 2 \)
+  - New Current Number: **2**
+
+**Turn 2**:
+- **Player 2**
+  - Current Number: 2
+  - Chooses Multiplier: **5**
+  - Calculation: \( 2 \times 5 = 10 \)
+  - New Current Number: **10**
+
+**Turn 3**:
+- **Player 1**
+  - Current Number: 10
+  - Chooses Multiplier: **9**
+  - Calculation: \( 10 \times 9 = 90 \)
+  - New Current Number: **90**
+
+**Turn 4**:
+- **Player 2**
+  - Current Number: 90
+  - Chooses Multiplier: **\* (No valid multiplier as all options exceed 100)**
+  - **Player 2 loses** due to no valid moves.
+
+**Winner**: **Player 1**
+
+---
+
+### Example Game 3
+
+**Turn 1**:
+- **Player 1**
+  - Current Number: 1
+  - Chooses Multiplier: **4**
+  - Calculation: \( 1 \times 4 = 4 \)
+  - New Current Number: **4**
+
+**Turn 2**:
+- **Player 2**
+  - Current Number: 4
+  - Chooses Multiplier: **5**
+  - Calculation: \( 4 \times 5 = 20 \)
+  - New Current Number: **20**
+
+**Turn 3**:
+- **Player 1**
+  - Current Number: 20
+  - Chooses Multiplier: **5**
+  - Calculation: \( 20 \times 5 = 100 \)
+  - New Current Number: **100**
+
+- **Player 1 wins** by reaching exactly 100.
+
+**Winner**: **Player 1**
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate the results of multipliers several moves in advance to avoid being trapped.
+- **Control the Pace**: Early in the game, consider smaller multipliers to maintain control over the current number.
+- **Force Opponent's Hand**: Try to position the current number so that your opponent has no valid moves.
+
+## Command-Line Interaction Example
+
+```plaintext
+Game Start! Target Number: 100
+
+Current Number is 1
+
+Player 1's turn.
+Choose a multiplier between 2 and 9: 5
+New Current Number: 5
+
+Player 2's turn.
+Choose a multiplier between 2 and 9: 9
+New Current Number: 45
+
+Player 1's turn.
+Choose a multiplier between 2 and 9: 2
+New Current Number: 90
+
+Player 2's turn.
+No valid multipliers without exceeding 100.
+Player 2 loses!
+
+Player 1 wins the game!
+```
+
+## Game Summary
+
+"Multiplication Showdown" is a fast-paced, strategic game where players must carefully choose multipliers to reach exactly 100 without surpassing it. The simplicity of the rules allows for quick gameplay, while the strategic depth ensures that skilled players can consistently outperform less experienced opponents. Enjoy the challenge of balancing risk and foresight in this exciting numerical duel!

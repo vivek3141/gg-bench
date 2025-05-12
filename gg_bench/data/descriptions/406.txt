@@ -1,0 +1,202 @@
+# Grid Runner
+
+## Objective
+
+Be the first player to reach your opponent's baseline or capture their token. Strategically navigate your token across a 5x5 grid to outmaneuver your opponent. Victory is achieved by either:
+
+- Moving your token to any square on your opponent's baseline.
+- Capturing your opponent's token by landing on their square.
+
+## Setup
+
+1. **Grid Creation**: The game is played on a 5x5 grid, with rows and columns numbered from 0 to 4.
+
+2. **Starting Positions**:
+   - **Player 1**:
+     - Token starts at position **(0, 2)** (the center square of the top row).
+   - **Player 2**:
+     - Token starts at position **(4, 2)** (the center square of the bottom row).
+
+3. **Baselines**:
+   - **Player 1's Baseline**: Row 0 (top row).
+   - **Player 2's Baseline**: Row 4 (bottom row).
+
+## Game Components
+
+- **Grid**: A 5x5 matrix representing the game board.
+- **Tokens**: Each player has one token, which can be represented by unique symbols or colors in the command-line interface (e.g., "P1" for Player 1 and "P2" for Player 2).
+- **Positions**: Tokens occupy grid coordinates denoted as **(row, column)**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, with Player 1 starting the game.
+- **Actions per Turn**:
+  - A player moves their token according to the movement rules.
+- **Turn Progression**:
+  1. **Display Grid**: The current state of the grid is shown.
+  2. **Player's Move**: The active player inputs their move.
+  3. **Update Grid**: The grid updates to reflect the move.
+  4. **Check for Win Conditions**: Determine if the game has been won.
+  5. **Next Player's Turn**: If the game continues, the next player takes their turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Directions**:
+  - **Forward**: Toward the opponent's baseline.
+    - Player 1 moves toward higher row numbers.
+    - Player 2 moves toward lower row numbers.
+  - **Lateral**: Left or right within the same row.
+  - **Diagonal Forward**: Combines forward and lateral movement.
+- **Allowed Moves**:
+  - **Move Forward**: Advance one square toward the opponent's baseline.
+  - **Move Left**: Move one square to the left (decreasing column number).
+  - **Move Right**: Move one square to the right (increasing column number).
+  - **Move Diagonally Forward Left**: Move one square diagonally forward and left.
+  - **Move Diagonally Forward Right**: Move one square diagonally forward and right.
+- **Restrictions**:
+  - **No Backward Moves**: Moving toward your own baseline is not allowed.
+  - **Stay Within Bounds**: Tokens cannot move off the grid.
+  - **Single Square Movement**: Only one square per turn.
+
+### Capturing
+
+- **Landing on Opponent's Token**:
+  - If a player moves their token onto the square occupied by the opponent's token, they capture it and win the game.
+
+### Winning the Game
+
+- **Reaching Opponent's Baseline**:
+  - A player wins by moving their token onto any square of the opponent's baseline.
+- **Capturing Opponent's Token**:
+  - A player wins by capturing the opponent's token as described above.
+- **Simultaneous Baseline Reach**:
+  - If both players reach each other's baseline on the same turn, the player who moved first (Player 1) wins.
+
+## Scoring
+
+- **No Point System**: The game is a win/lose scenario without point tracking.
+- **Match Play** (Optional):
+  - Players may agree to play multiple rounds, keeping track of wins to determine an overall champion after a set number of games.
+
+## Examples
+
+### Sample Turn Sequence
+
+**Initial Positions**:
+- Player 1 Token at **(0, 2)**
+- Player 2 Token at **(4, 2)**
+
+---
+
+**Turn 1**:
+- **Player 1**:
+  - **Possible Moves**: (1, 1), (1, 2), (1, 3)
+  - **Chooses**: Move Forward to **(1, 2)**
+- **Grid Update**:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][ ][P1][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][P2][ ][ ]
+  ```
+
+---
+
+**Turn 2**:
+- **Player 2**:
+  - **Possible Moves**: (3, 1), (3, 2), (3, 3)
+  - **Chooses**: Move Forward to **(3, 2)**
+- **Grid Update**:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][ ][P1][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][P2][ ][ ]
+  [ ][ ][ ][ ][ ]
+  ```
+
+---
+
+**Turn 3**:
+- **Player 1**:
+  - **Possible Moves**:
+    - Forward to (2, 2)
+    - Diagonal Forward Left to (2, 1)
+    - Diagonal Forward Right to (2, 3)
+  - **Chooses**: Move Forward to **(2, 2)**
+- **Grid Update**:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][P1][ ][ ]
+  [ ][ ][P2][ ][ ]
+  [ ][ ][ ][ ][ ]
+  ```
+
+---
+
+**Turn 4**:
+- **Player 2**:
+  - **Possible Moves**:
+    - Forward to (2, 2) — Occupied by Player 1
+    - Diagonal Forward Left to (2, 1)
+    - Diagonal Forward Right to (2, 3)
+  - **Chooses**: Move Forward to **(2, 2)** to capture
+- **Result**:
+  - Player 2 lands on **(2, 2)**, captures Player 1's token, and wins the game.
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**:
+```
+Current Grid:
+[ ][ ][ ][ ][ ]
+[ ][ ][P1][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][P2][ ][ ]
+[ ][ ][ ][ ][ ]
+
+Player 1, enter your move (format: row,column):
+> 2,2
+
+Move accepted. Player 1 moved to (2,2).
+```
+
+**Player 2's Turn**:
+```
+Current Grid:
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][P1][ ][ ]
+[ ][ ][P2][ ][ ]
+[ ][ ][ ][ ][ ]
+
+Player 2, enter your move (format: row,column):
+> 2,2
+
+Move accepted. Player 2 moved to (2,2).
+
+Player 2 has captured Player 1's token and wins the game!
+```
+
+## Strategy Tips
+
+- **Predict Opponent's Moves**: Anticipate where your opponent might move and position yourself to block or capture.
+- **Control the Center**: Holding central positions can give you more movement options.
+- **Balance Offense and Defense**: While advancing toward the baseline, be wary of exposing yourself to capture.
+
+## Additional Rules (Optional Variations)
+
+- **Blocked Squares**:
+  - Players may agree to designate certain squares as blocked, adding complexity to movement options.
+- **Teleport Squares**:
+  - Introducing squares that allow tokens to teleport to another part of the grid.
+- **Multiple Tokens**:
+  - Each player controls multiple tokens, with victory conditions adjusted accordingly.
+
+---
+
+Enjoy the game of Grid Runner, where every move counts, and strategic planning leads to victory!

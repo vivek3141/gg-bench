@@ -1,0 +1,229 @@
+# Alpha Chase: Rule Book
+
+## Objective
+
+**Alpha Chase** is a two-player, turn-based strategy game where players race to collect letters needed to complete their secret word. Each player aims to be the first to gather all the unique letters in their word from a shared pool of letters. Strategic planning and anticipating your opponent's moves are key to victory.
+
+## Setup
+
+1. **Word Selection**:
+   - Each player selects a secret word of **five unique letters** from a predefined list provided at the start of the game.
+   - The words chosen by both players are **publicly revealed** before the game begins.
+   - Example word list:
+     - BRAVE
+     - CHARM
+     - GHOST
+     - PLANT
+     - QUICK
+
+2. **Letter Pool**:
+   - All 26 letters of the English alphabet (`A` to `Z`) are available in the shared letter pool.
+   - Letters are available only once; once taken by a player, they are removed from the pool.
+
+## Game Components
+
+- **Letter Pool**:
+  - A shared collection of letters from `A` to `Z`.
+  - Represents the available letters players can select on their turns.
+- **Player Words**:
+  - Each player's chosen word consisting of five unique letters.
+  - Words are known to both players, adding a layer of strategy.
+
+- **Player Collections**:
+  - Each player maintains a list of letters they have collected.
+
+## Turns
+
+- Players decide who goes first (e.g., coin toss, mutual agreement).
+- Turns alternate between Player 1 and Player 2.
+- **Turn Structure**:
+  - **Selection Phase**:
+    - The player selects one available letter from the letter pool.
+    - The chosen letter is added to the player's collection and removed from the letter pool.
+  - **Update Phase**:
+    - Check if the player has collected all the letters needed for their word.
+    - If so, the game ends, and that player wins.
+  - **Pass Turn**:
+    - Control passes to the other player.
+
+## Rules and Mechanics
+
+1. **Letter Selection**:
+   - On their turn, a player must select **one** letter from the available letters.
+   - Players cannot skip their turn or pass without selecting a letter.
+
+2. **Letter Availability**:
+   - Once a letter is selected by a player, it is no longer available to either player.
+   - Each letter can be selected only once in the game.
+
+3. **Winning the Game**:
+   - The first player to collect all **five** letters needed to spell their word wins.
+   - If all letters are exhausted and no player has all the letters for their word, the player with the **most letters** from their word wins.
+   - In the event of a tie (both players have the same number of letters from their word), the player who collected the first letter wins.
+
+4. **Strategic Blocking**:
+   - Players may choose letters needed by their opponent to prevent them from completing their word.
+   - Balancing between collecting your letters and blocking your opponent is key.
+
+5. **Letter Collections**:
+   - Players must keep track of the letters they have collected.
+   - The game can display each player's current collection after each turn.
+
+6. **No Duplicate Letters in Words**:
+   - Words selected must consist of **five unique letters** to ensure fairness and simplicity.
+
+## Scoring
+
+- **Primary Victory**:
+  - Collect all five letters of your word.
+- **Secondary Victory** (if no player completes their word):
+  - Have the most letters from your word collected when the letter pool is exhausted.
+- **Tie-Breaker**:
+  - If tied on letters collected, the player who collected the first letter wins.
+
+## Examples
+
+### Sample Game Play
+
+**Players and Words**:
+- **Player 1** selects the word: `PLANT`
+- **Player 2** selects the word: `GHOST`
+
+**Game Start**:
+- Available letters: A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
+- Both players' words are known to each other.
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Chooses `P` (needed for `PLANT`).
+  - Updates their collection: `P`.
+  - Available letters now exclude `P`.
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - Chooses `G` (needed for `GHOST`).
+  - Updates their collection: `G`.
+  - Available letters now exclude `G`.
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - Chooses `T` (needed for `PLANT` and to block `GHOST`).
+  - Updates their collection: `P`, `T`.
+  - Available letters now exclude `T`.
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - Notices `T` is taken (needed for `GHOST`), decides to block.
+  - Chooses `A` (which `Player 1` needs).
+  - Updates their collection: `G`, `A`.
+  - Available letters now exclude `A`.
+
+**Turn 5**:
+- **Player 1's Turn**:
+  - Chooses `L` (needed for `PLANT`).
+  - Updates their collection: `P`, `T`, `L`.
+  - Available letters now exclude `L`.
+
+**Turn 6**:
+- **Player 2's Turn**:
+  - Chooses `H` (needed for `GHOST`).
+  - Updates their collection: `G`, `A`, `H`.
+  - Available letters now exclude `H`.
+
+**Turn 7**:
+- **Player 1's Turn**:
+  - Chooses `N` (needed for `PLANT`).
+  - Updates their collection: `P`, `T`, `L`, `N`.
+  - Available letters now exclude `N`.
+
+**Turn 8**:
+- **Player 2's Turn**:
+  - Chooses `S` (needed for `GHOST`).
+  - Updates their collection: `G`, `A`, `H`, `S`.
+  - Available letters now exclude `S`.
+
+**Turn 9**:
+- **Player 1's Turn**:
+  - Only needs `A` to complete `PLANT`, but `A` was taken by Player 2.
+  - Game continues; Player 1 cannot complete their word.
+  - Chooses to block.
+  - Chooses `O` (needed by `GHOST`).
+  - Updates their collection: `P`, `T`, `L`, `N`, `O`.
+
+**Turn 10**:
+- **Player 2's Turn**:
+  - Needs `O` and `T`, both taken.
+  - Cannot complete `GHOST`.
+  - Game ends as all letters are exhausted or no player can complete their word.
+
+**Scoring**:
+- **Player 1** letters from their word: `P`, `T`, `L`, `N` (4 letters).
+- **Player 2** letters from their word: `G`, `H`, `S` (3 letters).
+- **Winner**: Player 1 wins with more letters collected from their word.
+
+### Command-Line Interaction Example
+
+**Game Start**:
+```
+Welcome to Alpha Chase!
+
+Player 1's word: PLANT
+Player 2's word: GHOST
+
+Available letters: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
+Player 1's turn.
+Enter a letter to select: P
+
+Player 1 has selected 'P'.
+Letters collected: P
+Available letters: A B C D E F G H I J K L M N O Q R S T U V W X Y Z
+
+Player 2's turn.
+Enter a letter to select: G
+
+Player 2 has selected 'G'.
+Letters collected: G
+Available letters: A B C D E F H I J K L M N O Q R S T U V W X Y Z
+
+[...game continues...]
+
+Game Over.
+Player 1 wins!
+```
+
+**Note**: The actual implementation would handle input validation, display updates, and check for victory conditions after each turn. This interaction demonstrates the basic flow of the game.
+
+## Additional Guidelines
+
+- **Fair Play**:
+  - Players should not change their word once the game has started.
+  - Both players should keep their collections visible (in the command-line output) to maintain transparency.
+
+- **Game Timing**:
+  - To keep the game moving quickly, players may have a time limit per turn (e.g., 30 seconds) to make their selection.
+
+- **Dispute Resolution**:
+  - In case of any disputes, refer back to the rules outlined in this rule book.
+  - If an illegal move is made (e.g., selecting an unavailable letter), the player should be prompted to choose again.
+
+## Strategy Tips
+
+- **Prioritize Critical Letters**:
+  - Identify letters that are unique to your word or crucial for its completion and secure them early.
+
+- **Block Strategically**:
+  - Observe which letters your opponent needs and consider blocking them by selecting those letters, especially if you don't urgently need any specific letter on your turn.
+
+- **Balance**:
+  - Find the right balance between advancing your progress and hindering your opponent.
+
+- **Adapt**:
+  - Be prepared to adjust your strategy based on the letters available and your opponent's choices.
+
+- **Planning Ahead**:
+  - Anticipate future moves and plan several turns ahead to outmaneuver your opponent.
+
+## Conclusion
+
+**Alpha Chase** is a game of strategic letter selection and foresight. With simple rules and quick gameplay, it offers depth and replayability, challenging players to think critically and adapt to their opponent's tactics. Enjoy the chase and may the best wordsmith win!

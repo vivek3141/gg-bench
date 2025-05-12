@@ -1,0 +1,11 @@
+In the Grid Hunt gym environment, the action space consists of 50 discrete actions. These are divided into two types of actions:
+
+1. **Scan Actions (0-24):** 
+   - Indices 0 to 24 represent the `Scan` action at each of the 25 grid locations. 
+   - Each index corresponds to a specific coordinate on the 5x5 grid, where the index can be converted to a coordinate using integer division and modulus operations (i.e., `row, column = divmod(index, 5)`).
+
+2. **Dig Actions (25-49):**
+   - Indices 25 to 49 represent the `Dig` action at the respective grid locations.
+   - These indices can be converted by subtracting 25 to get the corresponding Scan index, which is then converted to coordinates in the same manner as the Scan actions. 
+
+This setup allows players to specify their desired grid coordinate to either scan for a distance to the treasure or dig in an attempt to locate the treasure.

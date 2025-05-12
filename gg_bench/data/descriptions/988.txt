@@ -1,0 +1,205 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+Divisor Duel is a strategic two-player turn-based game where players take turns selecting numbers from a shared pool. The primary goal is to be the last player able to select a valid number according to the game rules. A player wins by forcing their opponent into a position where they cannot make a valid move on their turn.
+
+## Setup
+
+1. **Number Pool**: The game uses a pool of integers ranging from **2 to 50** inclusive.
+2. **Starting Player**: Decide who will take the first turn (Player 1) and who will take the second turn (Player 2). This can be determined randomly or by mutual agreement.
+3. **Game Board**: Since the game is played in a command-line interface, the game board is represented by the list of available numbers in the pool.
+
+## Game Components
+
+- **Number Pool**: A shared list of available numbers from **2 to 50**.
+- **Player Selections**: Each player maintains a list of numbers they have selected during the game.
+- **Command-Line Interface**: Players input their chosen numbers through the command line when prompted.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with Player 1.
+2. **Turn Structure**:
+   - **Available Numbers Display**: At the beginning of a player's turn, the game displays the list of available numbers in the pool.
+   - **Player's Previous Selections Display**: The game displays both players' previous selections for reference.
+   - **Number Selection**: The current player selects a valid number from the pool according to the game rules.
+   - **Validation**: The game checks if the chosen number is valid.
+   - **Update**: If valid, the chosen number is removed from the pool and added to the player's list of selections.
+   - **Turn Ends**: The turn passes to the next player.
+
+## Rules and Mechanics
+
+1. **Valid Number Selection**:
+   - On their turn, a player must select a number from the pool that is **not a multiple nor a divisor** of any number previously selected by **either player**.
+   - **Example**: If a player has previously selected the number 5, neither player can later select numbers like 1 (divisor of 5), 5 (already used), 10 (multiple of 5), or 25 (multiple of 5).
+
+2. **Invalid Moves**:
+   - If a player selects a number that is a multiple or divisor of any previously selected number, the move is invalid, and they are prompted to select another number.
+   - If there are no valid numbers available for the player to choose, the player loses the game.
+
+3. **End of Game**:
+   - **Winning**: A player wins if they successfully select a valid number when their opponent cannot.
+   - **Losing**: A player loses if they cannot select a valid number on their turn.
+
+4. **Additional Rules**:
+   - **No Reuse**: Once a number is selected, it is removed from the pool and cannot be selected again.
+   - **Shared History**: Both players' selections affect the validity of future moves for both players.
+
+## Scoring
+
+- **Winning Player**: The player who successfully forces their opponent into a position with no valid moves is declared the winner.
+- **Game Tracking**: While there is no point system, players can track the number of games won over multiple rounds to determine overall performance.
+- **Strategic Depth**: Skilled players can plan ahead to control the pool of available numbers, increasing their chances of winning.
+
+## Examples
+
+### Example Scenario
+
+**Initial Number Pool**: 2 to 10 (for brevity in this example).
+
+**Player 1's Turn**:
+- **Available Numbers**: 2, 3, 4, 5, 6, 7, 8, 9, 10
+- **Player 1 Selects**: 7
+  - **Reason**: 7 is a prime number; fewer multiples/divisors to worry about.
+- **Update**:
+  - Number 7 is removed from the pool.
+  - Player 1's selections: [7]
+  - Player 2's selections: []
+
+**Player 2's Turn**:
+- **Available Numbers**: 2, 3, 4, 5, 6, 8, 9, 10
+- **Invalid Choices**: Any multiples or divisors of 7 (already selected). Since 7 is prime and 7 is not in list anymore, 7's multiples (14, 21, ...) are out of range.
+- **Player 2 Selects**: 3
+  - **Reason**: Another prime number.
+- **Update**:
+  - Number 3 is removed from the pool.
+  - Player 1's selections: [7]
+  - Player 2's selections: [3]
+
+**Player 1's Turn**:
+- **Available Numbers**: 2, 4, 5, 6, 8, 9, 10
+- **Invalid Choices**: Multiples/divisors of 7 or 3.
+  - **Invalid Due to 7**: None within this range.
+  - **Invalid Due to 3**: 3 (already used), 6 (multiple of 3), 9 (multiple of 3)
+- **Valid Choices**: 2, 4, 5, 8, 10
+- **Player 1 Selects**: 5
+  - **Reason**: Choosing another prime to restrict options.
+- **Update**:
+  - Number 5 is removed from the pool.
+  - Player 1's selections: [7, 5]
+  - Player 2's selections: [3]
+
+**Player 2's Turn**:
+- **Available Numbers**: 2, 4, 6, 8, 10
+- **Invalid Choices**:
+  - **Due to 3**: 6, 9 (not in pool)
+  - **Due to 5**: 5 (already used), 10 (multiple of 5)
+- **Valid Choices**: 2, 4, 8
+- **Player 2 Selects**: 8
+  - **Reason**: Limited options; selects a number not invalidated.
+- **Update**:
+  - Number 8 is removed from the pool.
+  - Player 1's selections: [7, 5]
+  - Player 2's selections: [3, 8]
+
+**Player 1's Turn**:
+- **Available Numbers**: 2, 4, 6, 10
+- **Invalid Choices**:
+  - **Due to 7 and 5**: None
+  - **Due to 3 and 8**:
+    - 2 (divisor of 8)
+    - 4 (divisor of 8)
+    - 6 (multiple of 3)
+    - 8 (already used)
+    - 10 (not invalid due to previous numbers)
+- **Valid Choices**: 10
+- **Player 1 Selects**: 10
+  - **Update**:
+    - Number 10 is removed from the pool.
+    - Player 1's selections: [7, 5, 10]
+    - Player 2's selections: [3, 8]
+
+**Player 2's Turn**:
+- **Available Numbers**: 2, 4, 6
+- **Invalid Choices**:
+  - **Due to Previous Selections**:
+    - 2 (divisor of 8 and 10)
+    - 4 (divisor of 8)
+    - 6 (multiple of 3)
+- **Valid Choices**: None
+
+**Result**:
+
+- **Player 2 Cannot Move**: No valid numbers to select.
+- **Player 1 Wins**
+
+### Sample Command-Line Interaction
+
+**Game Start**
+
+- **Number Pool**: 2 to 10
+
+**Player 1's Turn**
+
+```
+Available Numbers: 2, 3, 4, 5, 6, 7, 8, 9, 10
+Your Selections: []
+Opponent's Selections: []
+Enter your selection: 7
+```
+
+**Player 2's Turn**
+
+```
+Available Numbers: 2, 3, 4, 5, 6, 8, 9, 10
+Your Selections: []
+Opponent's Selections: [7]
+Enter your selection: 3
+```
+
+**Player 1's Turn**
+
+```
+Available Numbers: 2, 4, 5, 6, 8, 9, 10
+Your Selections: [7]
+Opponent's Selections: [3]
+Enter your selection: 5
+```
+
+**Player 2's Turn**
+
+```
+Available Numbers: 2, 4, 6, 8, 9, 10
+Your Selections: [3]
+Opponent's Selections: [7, 5]
+Enter your selection: 8
+```
+
+**Player 1's Turn**
+
+```
+Available Numbers: 2, 4, 6, 9, 10
+Your Selections: [7, 5]
+Opponent's Selections: [3, 8]
+Enter your selection: 10
+```
+
+**Player 2's Turn**
+
+```
+Available Numbers: 2, 4, 6, 9
+Your Selections: [3, 8]
+Opponent's Selections: [7, 5, 10]
+No valid moves available. You lose!
+```
+
+## Strategy Tips
+
+- **Prioritize Prime Numbers**: Selecting prime numbers reduces the number of multiples/divisors affecting future moves.
+- **Control the Pool**: Choose numbers that limit your opponent's options in subsequent turns.
+- **Track Selections**: Keep a close eye on both your and your opponent's selections to plan ahead.
+- **Anticipate Moves**: Think ahead about how your selection will impact the available numbers.
+
+## Conclusion
+
+Divisor Duel is a game of strategic number selection and foresight. By carefully choosing numbers and anticipating your opponent's options, you can control the flow of the game and increase your chances of winning. Enjoy the mental challenge and may the best strategist win!

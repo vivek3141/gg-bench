@@ -1,0 +1,266 @@
+**Divisor Duel**
+
+---
+
+**Objective:**
+
+Divisor Duel is a strategic two-player turn-based game where players take turns selecting numbers from a shared pool. The primary goal is to force your opponent into a position where they cannot make a valid move according to the game's rules. A player wins by making the last valid move, leaving the opponent without any legal options on their turn.
+
+---
+
+**Setup:**
+
+- **Number Pool:** A shared pool of integers ranging from **2** to **50** (inclusive).
+- **Starting Condition:** All numbers in the pool are unclaimed and available for selection.
+- **Player Roles:** Two players, Player 1 and Player 2, will alternate turns. Decide who goes first by mutual agreement or a random method.
+
+---
+
+**Game Components:**
+
+- **Number Pool:**
+  - Contains integers from **2** to **50**.
+  - Numbers are removed from the pool once selected.
+- **Players:**
+  - Each player does not have personal pieces or tokens but interacts with the shared number pool.
+- **Game Interface:**
+  - A command-line interface displays the available numbers in the pool after each turn.
+  - Players input their chosen numbers when prompted.
+
+---
+
+**Turns:**
+
+- **Turn Structure:**
+  1. **Display:** At the start of each turn, the game displays the last number chosen (or notes that it's the first turn) and the current available numbers in the pool.
+  2. **Selection:** The player selects a valid number from the pool according to the rules.
+  3. **Validation:** The game verifies the selected number's validity.
+  4. **Update:** The selected number is removed from the pool.
+  5. **Turn Progression:** The turn passes to the next player.
+- **Player Actions:**
+  - **First Turn:** Player 1 selects any number from the pool.
+  - **Subsequent Turns:** Each player must select a number from the pool that is either a **divisor** or a **multiple** of the **last number chosen**.
+
+---
+
+**Rules and Mechanics:**
+
+1. **First Move:**
+   - Player 1 begins by selecting **any** number from the pool.
+2. **Valid Moves:**
+   - A valid number is one that is **unclaimed** and is a **divisor** or **multiple** of the **last number chosen**.
+   - **Divisor:** A number that divides the last number chosen without leaving a remainder.
+   - **Multiple:** A number that is a product of the last number chosen and an integer.
+3. **Number Selection:**
+   - Players input their chosen number when prompted.
+   - The game will reject invalid inputs and prompt the player to select a valid number.
+4. **Unavailable Moves:**
+   - If a player cannot select a valid number (no divisors or multiples available in the pool), they **lose** the game.
+5. **Number Removal:**
+   - Once a number is selected, it is removed from the pool and cannot be selected again.
+6. **Forbidden Moves:**
+   - Players cannot pass their turn.
+   - Players cannot select a number that does not meet the divisor or multiple criteria.
+7. **End of Game:**
+   - The game ends when a player wins by making the last valid move.
+
+---
+
+**Scoring:**
+
+- **Winning the Game:**
+  - A player wins by making a valid move that leaves the opponent with no available valid moves on their turn.
+- **No Point Tracking:**
+  - There is no point or score tracking; the focus is on strategic number selection leading to a win.
+- **Multiple Rounds (Optional):**
+  - Players can agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+**Examples:**
+
+Below are sample turns to illustrate how Divisor Duel is played, including command-line interactions.
+
+**Game Start:**
+
+- **Available Numbers:** 2 through 50
+
+---
+
+**Turn 1:**
+
+- **Player 1's Turn**
+  - **Prompt:**
+    ```
+    It's your turn, Player 1.
+    There is no last number chosen.
+    Available numbers: 2, 3, 4, 5, 6, ..., 50
+    Select any number from the pool:
+    ```
+  - **Input:**
+    ```
+    12
+    ```
+  - **Game Updates:**
+    ```
+    Player 1 has chosen 12.
+    ```
+
+---
+
+**Turn 2:**
+
+- **Player 2's Turn**
+  - **Prompt:**
+    ```
+    It's your turn, Player 2.
+    The last number chosen is 12.
+    Available numbers: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, ..., 50
+    Select a number that is a divisor or multiple of 12:
+    ```
+  - **Options for Player 2:**
+    - **Divisors of 12 in the pool:** 2, 3, 4, 6
+    - **Multiples of 12 in the pool:** 24, 36, 48
+  - **Input:**
+    ```
+    6
+    ```
+  - **Game Updates:**
+    ```
+    Player 2 has chosen 6.
+    ```
+
+---
+
+**Turn 3:**
+
+- **Player 1's Turn**
+  - **Prompt:**
+    ```
+    It's your turn, Player 1.
+    The last number chosen is 6.
+    Available numbers: 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, ..., 50
+    Select a number that is a divisor or multiple of 6:
+    ```
+  - **Options for Player 1:**
+    - **Divisors of 6 in the pool:** 2, 3
+    - **Multiples of 6 in the pool:** 18, 24, 30, 36, 42, 48
+  - **Input:**
+    ```
+    24
+    ```
+  - **Game Updates:**
+    ```
+    Player 1 has chosen 24.
+    ```
+
+---
+
+**Turn 4:**
+
+- **Player 2's Turn**
+  - **Prompt:**
+    ```
+    It's your turn, Player 2.
+    The last number chosen is 24.
+    Available numbers: 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, ..., 50
+    Select a number that is a divisor or multiple of 24:
+    ```
+  - **Options for Player 2:**
+    - **Divisors of 24 in the pool:** 2, 3, 4, 6, 8
+    - **Multiples of 24 in the pool:** 48
+  - **Input:**
+    ```
+    8
+    ```
+  - **Game Updates:**
+    ```
+    Player 2 has chosen 8.
+    ```
+
+---
+
+**Game Progression:**
+
+Players continue to alternate turns, each time selecting a valid number based on the last number chosen. They must carefully consider their choices to avoid leaving their opponent with available moves while minimizing their own options on subsequent turns.
+
+---
+
+**Sample Command-Line Interaction:**
+
+Below is a simplified example of command-line inputs and outputs:
+
+```
+Player 1, select any number from 2 to 50:
+> 15
+Player 1 has chosen 15.
+
+Player 2, select a divisor or multiple of 15 from the available numbers:
+> 5
+Player 2 has chosen 5.
+
+Player 1, select a divisor or multiple of 5 from the available numbers:
+> 25
+Player 1 has chosen 25.
+
+Player 2, select a divisor or multiple of 25 from the available numbers:
+> 50
+Player 2 has chosen 50.
+
+Player 1, select a divisor or multiple of 50 from the available numbers:
+> 10
+Player 1 has chosen 10.
+
+Player 2, select a divisor or multiple of 10 from the available numbers:
+> 20
+Player 2 has chosen 20.
+
+Player 1, select a divisor or multiple of 20 from the available numbers:
+> 40
+Player 1 has chosen 40.
+
+Player 2, select a divisor or multiple of 40 from the available numbers:
+> 4
+Player 2 has chosen 4.
+
+Player 1, select a divisor or multiple of 4 from the available numbers:
+> 2
+Player 1 has chosen 2.
+
+Player 2, select a divisor or multiple of 2 from the available numbers:
+> (No valid moves left)
+
+Player 2 has no valid moves left. Player 1 wins!
+```
+
+---
+
+**Strategic Tips:**
+
+- **Plan Ahead:** Anticipate the numbers that will be available to your opponent after your move.
+- **Number Selection:** Choosing numbers with fewer divisors or multiples can limit your opponent's options.
+- **Avoid Common Factors:** Be cautious when selecting numbers that share many common factors with remaining numbers in the pool.
+- **Control the Game Flow:** Aim to drive the sequence into numbers that you can control based on the available pool.
+
+---
+
+**Conclusion:**
+
+Divisor Duel combines simple arithmetic with strategic planning, making it an engaging and challenging game. As players become more skilled, they'll recognize patterns and develop tactics to outmaneuver their opponent. Enjoy testing your numerical prowess in this battle of wits!
+
+---
+
+**Note to Developers:**
+
+Implementing Divisor Duel in a command-line interface is straightforward:
+
+- **Data Structures:**
+  - Use an array or list to represent the number pool.
+- **Input Validation:**
+  - Ensure that inputs are valid numbers within the rules.
+- **Game Loop:**
+  - Alternate turns using a loop until the game ends.
+- **Winning Condition:**
+  - Check for available valid moves before each player's turn.
+
+By adhering to these guidelines, you can create an enjoyable and functional game for players to challenge each other.

@@ -1,0 +1,176 @@
+# Consecutive Connect
+
+## Objective
+
+Be the first player to collect any **three numbers** that can form a consecutive sequence (in any order). The sequence can be ascending or descending, and the numbers do not need to be selected sequentially during gameplay. If all numbers are taken without any player forming such a sequence, the player with the highest total sum of their numbers wins. In the event of a tie in total sums, the last player to have taken a turn loses.
+
+---
+
+## Setup
+
+- **Shared Pool**: A set of numbers from **1** to **9** available to both players.
+- **Player Hands**: Both players start with an empty hand.
+- **Turn Order**: Decide who will take the first turn (can be determined randomly or by agreement).
+
+---
+
+## Game Components
+
+- **Numbers (1-9)**: Represented as a list or array in the command-line interface.
+- **Player Hands**: Each player's collected numbers, displayed during their turn.
+- **Command-Line Interface**: The game is played entirely through text input and output.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns, starting with the first player.
+  - On each turn, a player selects one number from the shared pool.
+  - The selected number is added to the player's hand and removed from the shared pool.
+- **Available Actions**:
+  - **Select Number**: Choose any available number from the shared pool.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Valid Choices**: Any number currently in the shared pool.
+- **Selection Process**:
+  - The player enters the desired number when prompted.
+  - The game updates the shared pool and the player's hand accordingly.
+
+### Winning Condition
+
+- **Consecutive Sequence**:
+  - A set of three numbers where each number is one greater or one less than another (e.g., 2, 3, 4 or 5, 4, 3).
+  - Numbers do not need to be in order in the player's hand; they can be rearranged to form the sequence.
+- **Victory**:
+  - The first player to collect three numbers that can form a consecutive sequence wins immediately.
+  
+### Game End without a Sequence
+
+- If all numbers are taken and neither player has a consecutive sequence:
+  - **Highest Total Sum Wins**: The player with the higher sum of their collected numbers wins.
+  - **Tie-Breaker**:
+    - If both players have the same total sum, the player who took the **last turn loses**.
+
+### Additional Rules
+
+- **No Duplicate Numbers**: Once a number is selected, it cannot be chosen again.
+- **Hand Limit**: Players may hold up to five numbers since there are nine numbers in total.
+
+---
+
+## Scoring
+
+- **No Ongoing Scoring**: The game is won by meeting the winning condition during gameplay.
+- **Final Scoring** (if no sequence is formed):
+  - **Calculate Total Sum**: Add up the numbers in each player's hand.
+  - **Determine Winner**: Higher total sum wins.
+  - **Tie-Breaker**: Last player to have taken a turn loses.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+**Initial Shared Pool**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+**Player 1's Hand**: `[]`
+
+**Player 2's Hand**: `[]`
+
+#### Turn 1: Player 1
+
+- **Action**: Selects **5**.
+- **Shared Pool**: `[1, 2, 3, 4, 6, 7, 8, 9]`
+- **Player 1's Hand**: `[5]`
+
+#### Turn 2: Player 2
+
+- **Action**: Selects **4**.
+- **Shared Pool**: `[1, 2, 3, 6, 7, 8, 9]`
+- **Player 2's Hand**: `[4]`
+
+#### Turn 3: Player 1
+
+- **Action**: Selects **6**.
+- **Shared Pool**: `[1, 2, 3, 7, 8, 9]`
+- **Player 1's Hand**: `[5, 6]`
+
+#### Turn 4: Player 2
+
+- **Action**: Selects **3**.
+- **Shared Pool**: `[1, 2, 7, 8, 9]`
+- **Player 2's Hand**: `[4, 3]`
+
+#### Turn 5: Player 1
+
+- **Action**: Selects **7**.
+- **Player 1's Hand**: `[5, 6, 7]`
+- **Sequence Formed**: `5, 6, 7` (consecutive numbers)
+- **Result**: **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+```
+Shared Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Player 1's Hand: []
+Player 2's Hand: []
+
+Player 1, select a number from the shared pool: 5
+
+Shared Pool: [1, 2, 3, 4, 6, 7, 8, 9]
+Player 1's Hand: [5]
+Player 2's Hand: []
+
+Player 2, select a number from the shared pool: 4
+
+Shared Pool: [1, 2, 3, 6, 7, 8, 9]
+Player 1's Hand: [5]
+Player 2's Hand: [4]
+
+...
+
+Player 1, select a number from the shared pool: 7
+
+Player 1's Hand: [5, 6, 7]
+Congratulations, Player 1! You've formed a consecutive sequence and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Observe Opponent's Hand**: Pay attention to the numbers your opponent selects to anticipate their possible sequences.
+- **Block Strategically**: If you notice your opponent is close to forming a sequence, consider selecting a number they need.
+- **Plan Ahead**: Aim to collect numbers that offer multiple sequence possibilities.
+- **Sum Awareness**: Keep an eye on the total sums in case the game comes down to tiebreakers.
+
+---
+
+## Game Flow Summary
+
+1. **Initialize Game**: Set up the shared pool and empty player hands.
+2. **Determine First Player**: Decide who starts.
+3. **Alternate Turns**:
+   - Display the shared pool and current hands.
+   - Prompt the current player to select a number.
+   - Update the shared pool and the player's hand.
+4. **Check for Winning Condition**:
+   - After each turn, check if the current player has a consecutive sequence.
+   - If so, declare the player the winner.
+5. **End Game if Pool is Empty**:
+   - If all numbers are taken without a winner, calculate total sums.
+   - Determine the winner based on the highest sum or apply the tie-breaker rule.
+6. **Declare Winner**: Announce the winner and end the game.
+
+---
+
+## Conclusion
+
+**Consecutive Connect** is a simple yet strategic game that challenges players to think ahead and anticipate their opponent's moves. Its straightforward rules and minimal components make it easy to implement in a command-line interface, ensuring quick gameplay with depth for skilled players to consistently outperform less experienced opponents.

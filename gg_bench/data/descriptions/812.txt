@@ -1,0 +1,171 @@
+# **Shadow Grid Duel**
+
+Welcome to **Shadow Grid Duel**, a fast-paced, two-player strategy game designed for quick matches and strategic depth. This game is perfect for a command-line interface and is simple to code. It ensures that a skilled player can consistently outperform an unskilled one. Below is the comprehensive rule book to get you started.
+
+---
+
+## **Objective**
+
+The primary goal of **Shadow Grid Duel** is to be the first player to align a trio of your numbers (either in a row, column, or diagonal) where the cumulative sum equals a secret target number known only to both players at the start of the game. Victory is achieved by strategically placing numbers on a shared grid to create this sum, while simultaneously blocking your opponent from achieving their goal.
+
+---
+
+## **Setup**
+
+1. **Grid Initialization**: The game is played on a 3x3 grid, initially empty.
+2. **Secret Target Number**: At the start of the game, both players agree upon a secret target number between 10 and 20 (inclusive). This number remains constant throughout the game.
+3. **Number Pool**: Each player has their own set of numbers from 1 to 9, inclusive. These numbers are used to place on the grid during the game.
+4. **Starting Player**: Decide who will take the first turn (e.g., by agreement or random selection).
+
+---
+
+## **Game Components**
+
+- **Grid**: A 3x3 matrix representing the game board. Positions are identified by coordinates (row and column numbers).
+
+- **Player Numbers**: Each player has numbers 1 through 9, which they can place on the grid. Once a number is used, it cannot be used again by the same player.
+
+- **Secret Target Number**: A number between 10 and 20 that players aim to achieve by summing three of their numbers in alignment on the grid.
+
+---
+
+## **Turns**
+
+- **Turn Structure**:
+  1. **Number Selection**: The current player chooses a number from their available numbers (1-9).
+  2. **Placement**: The player selects an empty cell on the grid to place their chosen number.
+  3. **Turn Completion**: The turn ends, and control passes to the other player.
+
+- **Turn Order**: Players alternate turns throughout the game.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Placement**:
+   - Players can only place numbers in empty cells.
+   - Each player can use each number from 1 to 9 only once.
+
+2. **Alignment and Summation**:
+   - After placing a number, players should check all possible alignments (rows, columns, diagonals) for a trio of their numbers.
+   - If any alignment of three numbers sums up to the secret target number, the player wins immediately.
+
+3. **Blocking**:
+   - Players can place numbers to prevent their opponent from achieving the target sum in an alignment.
+
+4. **No Draws**:
+   - Since the grid has a finite number of cells and numbers, and the target sum is strategically chosen, the game cannot end in a draw.
+
+5. **Game End**:
+   - The game ends immediately when a player achieves the target sum with three of their numbers in alignment.
+   - If all cells are filled without either player achieving the target sum, the player who made the last move loses, emphasizing strategic foresight.
+
+---
+
+## **Scoring**
+
+- **Victory Condition**: Achieving an alignment (row, column, or diagonal) where the sum of the player's three numbers equals the secret target number.
+
+- **Tracking**: No points are tracked beyond the immediate goal. The focus is on winning individual matches.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Secret Target Number**: 15
+
+**Player 1's Turn**:
+- **Available Numbers**: 1-9
+- **Action**: Chooses number **5**, places it at position (1,1).
+
+**Player 2's Turn**:
+- **Available Numbers**: 1-9
+- **Action**: Chooses number **7**, places it at position (1,2).
+
+**Player 1's Turn**:
+- **Available Numbers**: 1-9 excluding **5**
+- **Action**: Chooses number **6**, places it at position (2,2).
+
+**Player 2's Turn**:
+- **Available Numbers**: 1-9 excluding **7**
+- **Action**: Chooses number **8**, places it at position (1,3).
+
+**Player 1's Turn**:
+- **Available Numbers**: 1-9 excluding **5**, **6**
+- **Action**: Chooses number **4**, places it at position (3,3).
+
+**Check for Victory**:
+- Player 1 has numbers **5** at (1,1), **6** at (2,2), **4** at (3,3).
+- These positions form a diagonal.
+- Sum = **5 + 6 + 4 = 15**, which equals the secret target number.
+
+**Result**: **Player 1 wins**.
+
+### **Command-Line Interaction Sample**
+
+```
+[Game Start]
+Secret Target Number is set between 10 and 20.
+
+Player 1, enter your name: Alice
+Player 2, enter your name: Bob
+
+Secret Target Number agreed upon: 15
+
+[Grid Status]
+_ _ _
+_ _ _
+_ _ _
+
+Alice's Turn:
+Available Numbers: 1-9
+Enter number to place: 5
+Enter position (row,col): 1,1
+
+[Grid Status]
+5 _ _
+_ _ _
+_ _ _
+
+Bob's Turn:
+Available Numbers: 1-9
+Enter number to place: 7
+Enter position (row,col): 1,2
+
+[Grid Status]
+5 7 _
+_ _ _
+_ _ _
+
+... [Game continues] ...
+
+Alice places number 4 at position 3,3
+
+[Grid Status]
+5 7 _
+_ 6 _
+_ _ 4
+
+Alice has formed a diagonal with positions (1,1), (2,2), (3,3)
+Sum = 5 + 6 + 4 = 15
+
+Alice wins!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Number Selection**: Choose numbers that not only help you reach the target sum but also prevent your opponent from doing the same.
+
+- **Blocking**: Always be aware of your opponent's placements and the numbers they've used. Place numbers that can block potential alignments.
+
+- **Planning Ahead**: Think several moves ahead to set up your winning alignment.
+
+- **Secret Target Number Choice**: Selecting a challenging secret target number adds depth to the game. Consider numbers that require more strategic planning to achieve.
+
+---
+
+Enjoy the duel of wits in **Shadow Grid Duel**!

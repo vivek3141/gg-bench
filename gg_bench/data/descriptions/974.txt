@@ -1,0 +1,226 @@
+**Sequence Duel**
+
+---
+
+### **Objective**
+
+Sequence Duel is a two-player, turn-based strategy game played on a command-line interface. The primary goal of the game is to avoid being the first player to form any three-number arithmetic sequence with your selected numbers. An arithmetic sequence is a sequence of numbers where the difference between consecutive numbers is constant (e.g., 2, 4, 6 or 3, 5, 7). Players take turns selecting numbers from a shared pool of numbers ranging from 1 to 9. The player who first forms an arithmetic sequence of three numbers among their selected numbers loses the game. Therefore, the objective is to strategically select numbers to prevent yourself from forming such a sequence while attempting to force your opponent into doing so.
+
+---
+
+### **Setup**
+
+1. **Initial Number Pool**: The game begins with a shared pool of numbers from **1 to 9**, all unclaimed and available for selection.
+   
+2. **Player Assignment**: Decide which player will take the first turn. This can be determined by mutual agreement or by any random method such as a coin toss.
+
+3. **Game Display**: The command-line interface will display:
+
+   - **Available Numbers**: A list of numbers still available for selection.
+   - **Player Selections**: Lists showing the numbers each player has selected so far.
+
+---
+
+### **Game Components**
+
+- **Numbers (1 to 9)**: The core components of the game. These numbers are shared between players and are claimed during the game.
+  
+- **Player Selections**:
+
+  - **Player 1's Numbers**: The list of numbers selected by Player 1.
+  - **Player 2's Numbers**: The list of numbers selected by Player 2.
+
+- **Command-Line Interface**: The platform where the game is played. Players will interact by entering commands to select numbers.
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Players take turns alternately throughout the game.
+
+2. **Player Actions on a Turn**:
+
+   - **Select a Number**: On their turn, a player must select one number from the available numbers.
+   - **Update Selections**:
+     - Add the selected number to their list of numbers.
+     - Remove the selected number from the pool of available numbers.
+
+3. **Turn Progression**:
+
+   - After a player selects a number, the turn passes to the other player.
+   - The game continues with players alternating turns until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+
+   - **Unique Selection**: Each number from 1 to 9 can be selected only once during the game.
+   - **Mandatory Selection**: Players must select a number on their turn; passing is not allowed.
+
+2. **Forming an Arithmetic Sequence**:
+
+   - **Definition**: An arithmetic sequence consists of three numbers where the difference between consecutive numbers is the same.
+   - **Sequence Order**: The sequence can be in any order within the player's selected numbers; they do not need to be chosen consecutively.
+   - **Examples of Arithmetic Sequences**:
+     - 2, 4, 6 (common difference of 2)
+     - 3, 5, 7 (common difference of 2)
+     - 4, 5, 6 (common difference of 1)
+     - 1, 5, 9 (common difference of 4)
+
+3. **Winning and Losing Conditions**:
+
+   - **Loss Condition**: If a player has any three numbers that form an arithmetic sequence among their selected numbers, they immediately lose the game.
+   - **Victory Condition**: A player wins the game if the opposing player forms an arithmetic sequence of three numbers among their selections.
+
+4. **Game End**:
+
+   - The game ends immediately when one player forms an arithmetic sequence of three numbers.
+   - There are no draws; the game will always result in a win or loss.
+
+5. **Strategy Considerations**:
+
+   - **Defensive Play**: Players should avoid selecting numbers that could complete an arithmetic sequence within their own selections.
+   - **Offensive Play**: Players can select numbers to block potential sequences for the opponent or force the opponent into selecting numbers that would complete a sequence in their own selections.
+
+---
+
+### **Scoring**
+
+- **No Point System**: Sequence Duel does not use a point-based scoring system.
+  
+- **Win/Loss Outcome**:
+
+  - **Winner**: The player who avoids forming an arithmetic sequence of three numbers.
+  - **Loser**: The player who first forms an arithmetic sequence of three numbers among their selections.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Setup**:
+
+- **Available Numbers**: 1 2 3 4 5 6 7 8 9
+- **Player 1's Numbers**: (empty)
+- **Player 2's Numbers**: (empty)
+
+---
+
+**Turn 1**:
+
+- **Player 1's Move**:
+  - Selects **5**
+- **Updated Lists**:
+  - **Available Numbers**: 1 2 3 4 6 7 8 9
+  - **Player 1's Numbers**: 5
+
+---
+
+**Turn 2**:
+
+- **Player 2's Move**:
+  - Selects **7**
+- **Updated Lists**:
+  - **Available Numbers**: 1 2 3 4 6 8 9
+  - **Player 2's Numbers**: 7
+
+---
+
+**Turn 3**:
+
+- **Player 1's Move**:
+  - Selects **1**
+- **Updated Lists**:
+  - **Available Numbers**: 2 3 4 6 8 9
+  - **Player 1's Numbers**: 1, 5
+
+---
+
+**Turn 4**:
+
+- **Player 2's Move**:
+  - Selects **3**
+- **Updated Lists**:
+  - **Available Numbers**: 2 4 6 8 9
+  - **Player 2's Numbers**: 3, 7
+
+---
+
+**Turn 5**:
+
+- **Player 1's Move**:
+  - Selects **9**
+- **Updated Lists**:
+  - **Available Numbers**: 2 4 6 8
+  - **Player 1's Numbers**: 1, 5, 9
+
+---
+
+**Game Evaluation**:
+
+- **Player 1 Checks for Arithmetic Sequences**:
+  - **Sequence**: 1, 5, 9
+  - **Common Difference**: 4
+  - **Result**: Forms an arithmetic sequence.
+
+---
+
+**Conclusion**:
+
+- **Player 1 Loses**: Player 1 has formed an arithmetic sequence of three numbers.
+- **Player 2 Wins**: Player 2 wins the game.
+
+---
+
+#### **Command-Line Interaction Example**
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+
+Player 1, select a number: 5
+
+Player 1's Numbers: 5
+Available Numbers: 1 2 3 4 6 7 8 9
+
+Player 2, select a number: 7
+
+Player 2's Numbers: 7
+Available Numbers: 1 2 3 4 6 8 9
+
+Player 1, select a number: 1
+
+Player 1's Numbers: 1 5
+Available Numbers: 2 3 4 6 8 9
+
+Player 2, select a number: 3
+
+Player 2's Numbers: 3 7
+Available Numbers: 2 4 6 8 9
+
+Player 1, select a number: 9
+
+Player 1's Numbers: 1 5 9
+
+Player 1 has formed an arithmetic sequence: 1, 5, 9
+
+Player 1 loses! Player 2 wins the game.
+```
+
+---
+
+### **Tips for Strategic Play**
+
+- **Avoid Critical Numbers**: Be cautious when selecting numbers that could contribute to an arithmetic sequence in your selections.
+
+- **Monitor Opponent's Choices**: Keep track of the numbers your opponent selects to prevent them from forcing you into selecting a number that will form a sequence.
+
+- **Force Moves**: When possible, select numbers that limit your opponent's safe options on their next turn.
+
+- **Plan Ahead**: Think multiple turns ahead to anticipate potential sequences that could form with future number selections.
+
+---
+
+**Enjoy the challenge of Sequence Duel, and may the most strategic player win!**

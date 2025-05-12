@@ -1,0 +1,139 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the player who reduces the shared number to **1** through division by its proper divisors. The player who achieves this objective wins the game. Conversely, a player loses if they cannot make a valid move on their turn.
+
+## Setup
+
+1. **Starting Number**: The game begins with a positive integer called the **Current Number**. By default, this number is **60**, but players can agree on any positive integer greater than **1**.
+
+2. **Players**: Two players participate in the game. Decide randomly or mutually agree on who takes the first turn.
+
+## Game Components
+
+- **Current Number**: A shared positive integer that is modified during the game.
+- **Proper Divisors**: All positive integers that divide the **Current Number** exactly, excluding **1** and the **Current Number** itself.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Identify Proper Divisors**: The player identifies all proper divisors of the **Current Number**.
+  2. **Choose Divisor**: The player selects one proper divisor.
+  3. **Divide**: The player divides the **Current Number** by the chosen proper divisor.
+  4. **Update Current Number**: The result becomes the new **Current Number**.
+  5. **Pass Turn**: The turn passes to the other player.
+
+## Rules and Mechanics
+
+### 1. Dividing the Current Number
+
+- **Valid Move**: On your turn, you must divide the **Current Number** by one of its proper divisors.
+  - **Proper Divisors** exclude **1** and the **Current Number** itself.
+  - The division must result in an integer with no remainder.
+- **Updating**: The quotient becomes the new **Current Number** for the next turn.
+
+### 2. Winning the Game
+
+- **Victory Condition**: If you reduce the **Current Number** to exactly **1** on your turn, you win the game.
+
+### 3. Losing the Game
+
+- **No Valid Moves**: If the **Current Number** is a prime number greater than **1** on your turn, you have no valid proper divisors to choose from.
+  - **Result**: You lose the game because you cannot make a move.
+
+### 4. Forbidden Moves
+
+- **Invalid Divisors**: You cannot choose **1** or the **Current Number** itself as the divisor.
+- **Non-Divisors**: You cannot divide by a number that does not divide the **Current Number** exactly.
+
+### 5. Additional Guidelines
+
+- **Strategic Play**: Use foresight to leave your opponent with a **Current Number** that is a prime number greater than **1**, forcing them into a position with no valid moves.
+
+## Scoring
+
+- **Win/Loss Outcome**: The game does not involve a point system. The outcome is either a win or a loss.
+  - **Winner**: The player who reduces the **Current Number** to **1**.
+  - **Loser**: The player who cannot make a valid move on their turn.
+
+## Examples
+
+### Example Game Play
+
+#### Game Start
+
+- **Current Number**: 60
+- **Players**: Player 1 and Player 2
+
+#### Turn Sequence
+
+1. **Player 1's Turn**
+   - **Current Number**: 60
+   - **Proper Divisors** of 60: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+   - **Action**: Player 1 chooses divisor **10**.
+   - **Calculation**: 60 ÷ 10 = **6**
+   - **New Current Number**: 6
+
+2. **Player 2's Turn**
+   - **Current Number**: 6
+   - **Proper Divisors** of 6: 2, 3
+   - **Action**: Player 2 chooses divisor **2**.
+   - **Calculation**: 6 ÷ 2 = **3**
+   - **New Current Number**: 3
+
+3. **Player 1's Turn**
+   - **Current Number**: 3
+   - **Proper Divisors** of 3: None (since 3 is prime)
+   - **Outcome**: Player 1 cannot make a move and loses the game.
+
+#### Game Result
+
+- **Winner**: Player 2
+- **Loser**: Player 1
+
+### Command-Line Interaction Example
+
+#### Assuming Players Alice and Bob
+
+1. **Game Start**
+   ```
+   Starting Number: 60
+   ```
+2. **Alice's Turn**
+   ```
+   Current Number: 60
+   Proper Divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+   Alice chooses to divide by 6.
+   Calculation: 60 ÷ 6 = 10
+   New Current Number: 10
+   ```
+3. **Bob's Turn**
+   ```
+   Current Number: 10
+   Proper Divisors: 2, 5
+   Bob chooses to divide by 2.
+   Calculation: 10 ÷ 2 = 5
+   New Current Number: 5
+   ```
+4. **Alice's Turn**
+   ```
+   Current Number: 5
+   Proper Divisors: None (since 5 is prime)
+   Alice cannot make a move.
+   ```
+5. **Game Over**
+   ```
+   Bob wins the game!
+   ```
+
+## Strategy Tips
+
+- **Aim for Primes**: Try to leave the **Current Number** as a prime greater than **1** on your opponent's turn.
+- **Plan Ahead**: Consider the possible divisors and resulting numbers two or more moves ahead.
+- **Divisor Choice**: Opt for divisors that reduce the number to a value with limited proper divisors.
+
+## Conclusion
+
+**Divisor Duel** offers a quick and engaging experience that combines simple arithmetic with strategic planning. Its straightforward mechanics make it easy to code and play in a command-line interface. The game provides depth and complexity, allowing skilled players to consistently outmaneuver less experienced opponents. Enjoy honing your strategic thinking with this unique numerical challenge!

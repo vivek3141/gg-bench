@@ -1,0 +1,198 @@
+# Edge Sum
+
+## Objective
+
+Edge Sum is a strategic two-player turn-based game played on the command line. The primary goal of the game is to accumulate a higher total sum than your opponent by strategically selecting numbers from a shared sequence. Players take turns picking numbers from either end of a sequence of integers. The player with the highest total sum at the end of the game wins.
+
+## Setup
+
+1. **Game Sequence Initialization**:
+   - A sequence of positive integers is generated and presented to both players. For simplicity, the sequence contains an even number of elements, typically between 6 to 10 numbers. Example: `[3, 9, 1, 2, 7, 5]`.
+
+2. **Player Assignment**:
+   - Two players are identified as **Player 1** and **Player 2**. Player 1 makes the first move.
+
+3. **Starting Conditions**:
+   - Both players begin with a total sum of zero.
+   - The game sequence is displayed to both players at the start of the game.
+
+## Game Components
+
+- **Game Sequence**: An ordered list of integers displayed horizontally. Example: `[3, 9, 1, 2, 7, 5]`.
+- **Players**: Two participants alternating turns, referred to as **Player 1** and **Player 2**.
+- **Player Totals**: Each player maintains a running total sum of the numbers they have selected.
+- **Turn Indicator**: Displays which player's turn it is.
+- **Command-Line Interface**: Players interact with the game by inputting commands in the terminal.
+
+## Turns
+
+1. **Turn Structure**:
+   - At the start of each turn, the current state of the game sequence is displayed.
+   - The player whose turn it is chooses a number from **either the leftmost or rightmost end** of the sequence.
+
+2. **Player Actions During a Turn**:
+   - **View Game Sequence**: Players see the current sequence of numbers.
+   - **Select a Number**: Players input their choice to pick the leftmost or rightmost number.
+   - **Update Totals**: The selected number is added to the player's total sum.
+   - **Sequence Update**: The chosen number is removed from the sequence.
+
+3. **Turn Progression**:
+   - Turns alternate between Player 1 and Player 2.
+   - The game continues until all numbers in the sequence have been selected.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On their turn, a player must choose **either** the leftmost **or** the rightmost number in the sequence.
+   - Only the end numbers are available for selection; players cannot select numbers from the middle.
+
+2. **Adding to Total Sum**:
+   - Once a number is selected, it is immediately added to the player's total sum.
+   - The selected number is removed from the game sequence.
+
+3. **Game Sequence Management**:
+   - After each turn, the sequence shrinks as numbers are removed from the ends.
+   - The updated sequence is displayed at the start of each new turn.
+
+4. **Winning the Game**:
+   - The game ends when all numbers have been selected.
+   - The player with the **higher total sum** wins the game.
+   - There is **no draw**; if the total sums are equal, the game can declare a tiebreaker based on predefined criteria (e.g., the last player to pick wins or loses), or adjust the initial conditions to prevent ties.
+
+5. **Strategic Depth**:
+   - Players must anticipate future moves and plan accordingly.
+   - Understanding which numbers remain and predicting the opponent's choices are key to winning.
+
+## Scoring
+
+- **Player Totals**:
+  - Each player maintains a running total of the numbers they have selected.
+  - The totals are updated and displayed after each turn.
+
+- **Determining the Winner**:
+  - After the final turn, compare the total sums of both players.
+  - The player with the **higher total sum** is declared the winner.
+
+- **No Draw Mechanism**:
+  - The game is designed to avoid ties. If the sums are equal, the game rules determine a clear winner based on a tiebreaker (such as the last player to make a move).
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Game Sequence**: `[3, 9, 1, 2, 7, 5]`
+- **Player 1 Total**: 0
+- **Player 2 Total**: 0
+
+#### Turn-by-Turn Interaction
+
+1. **Player 1's Turn**:
+   - **Sequence**: `[3, 9, 1, 2, 7, 5]`
+   - **Action**: Chooses the rightmost number `5`.
+   - **Player 1 Total**: `0 + 5 = 5`
+   - **Updated Sequence**: `[3, 9, 1, 2, 7]`
+
+2. **Player 2's Turn**:
+   - **Sequence**: `[3, 9, 1, 2, 7]`
+   - **Action**: Chooses the leftmost number `3`.
+   - **Player 2 Total**: `0 + 3 = 3`
+   - **Updated Sequence**: `[9, 1, 2, 7]`
+
+3. **Player 1's Turn**:
+   - **Sequence**: `[9, 1, 2, 7]`
+   - **Action**: Chooses the leftmost number `9`.
+   - **Player 1 Total**: `5 + 9 = 14`
+   - **Updated Sequence**: `[1, 2, 7]`
+
+4. **Player 2's Turn**:
+   - **Sequence**: `[1, 2, 7]`
+   - **Action**: Chooses the rightmost number `7`.
+   - **Player 2 Total**: `3 + 7 = 10`
+   - **Updated Sequence**: `[1, 2]`
+
+5. **Player 1's Turn**:
+   - **Sequence**: `[1, 2]`
+   - **Action**: Chooses the rightmost number `2`.
+   - **Player 1 Total**: `14 + 2 = 16`
+   - **Updated Sequence**: `[1]`
+
+6. **Player 2's Turn**:
+   - **Sequence**: `[1]`
+   - **Action**: Chooses the remaining number `1`.
+   - **Player 2 Total**: `10 + 1 = 11`
+   - **Updated Sequence**: `[]`
+
+#### Game Conclusion
+
+- **Final Totals**:
+  - **Player 1 Total**: `16`
+  - **Player 2 Total**: `11`
+
+- **Winner**: **Player 1** wins with a total sum of `16` compared to Player 2's `11`.
+
+### Command-Line Interaction Sample
+
+Below is a sample of how the game might proceed in a command-line interface.
+
+#### Start of the Game
+
+```
+Welcome to Edge Sum!
+
+Initial Sequence: [3, 9, 1, 2, 7, 5]
+
+Player 1 Total: 0
+Player 2 Total: 0
+
+Player 1's turn.
+Current Sequence: [3, 9, 1, 2, 7, 5]
+Choose 'left' or 'right': right
+You picked 5.
+Player 1 Total: 5
+
+Player 2's turn.
+Current Sequence: [3, 9, 1, 2, 7]
+Choose 'left' or 'right': left
+You picked 3.
+Player 2 Total: 3
+
+Player 1's turn.
+Current Sequence: [9, 1, 2, 7]
+Choose 'left' or 'right': left
+You picked 9.
+Player 1 Total: 14
+
+Player 2's turn.
+Current Sequence: [1, 2, 7]
+Choose 'left' or 'right': right
+You picked 7.
+Player 2 Total: 10
+
+Player 1's turn.
+Current Sequence: [1, 2]
+Choose 'left' or 'right': right
+You picked 2.
+Player 1 Total: 16
+
+Player 2's turn.
+Current Sequence: [1]
+Choose 'left' or 'right': left
+You picked 1.
+Player 2 Total: 11
+
+Game over!
+Final Totals - Player 1: 16, Player 2: 11
+Winner: Player 1!
+```
+
+## Strategy Tips
+
+- **Anticipate Opponent's Moves**: Consider the value of the numbers that will be available to your opponent after your turn.
+- **Plan Ahead**: Look several moves ahead to determine which selections will maximize your total and minimize your opponent's options.
+- **Control High Numbers**: Try to secure higher numbers for yourself or force your opponent to take lower numbers.
+
+---
+
+Edge Sum combines simple rules with strategic depth, ensuring a quick and engaging gameplay experience where skillful planning leads to consistent victories.

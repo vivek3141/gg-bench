@@ -1,0 +1,177 @@
+# Rule Book for "Number Tower"
+
+## Objective
+
+Be the first player to reach **exactly** the **Target Height** by strategically adding Number Blocks to the Tower without exceeding it.
+
+---
+
+## Setup
+
+1. **Target Height**: Agree on a Target Height for the Tower (e.g., **20** for a quick game).
+2. **Number Blocks**: Each player has a set of Number Blocks numbered **1** to **9**.
+3. **Tower**: The Tower starts at a height of **0**.
+
+---
+
+## Game Components
+
+### Number Blocks
+
+- **Description**: Individual blocks numbered **1** through **9**.
+- **Appearance**: Represented by their numerical value (e.g., `1`, `2`, ..., `9`).
+- **Functionality**: 
+  - Each block increases the Tower's height by its number when added.
+  - Once used, a Number Block is removed from the player's set and cannot be reused.
+  
+### Tower
+
+- **Description**: A shared structure representing the cumulative height.
+- **Starting Height**: **0**.
+- **Functionality**: 
+  - The current height increases as players add Number Blocks.
+  - The Tower's height cannot exceed the Target Height.
+
+---
+
+## Turns
+
+1. **Turn Order**: Decide who goes first (e.g., by coin toss or mutual agreement). Turns alternate between players.
+2. **During a Turn**:
+   - **Select a Number Block**: Choose one available Number Block from your set.
+   - **Add to Tower**: Increase the Tower's height by the value of the chosen Number Block.
+   - **Remove Number Block**: Remove the used Number Block from your set.
+3. **Valid Moves**:
+   - You must choose a Number Block that does not cause the Tower to exceed the Target Height.
+   - If no such Number Block is available on your turn, you lose the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Adding Number Blocks**:
+   - On your turn, you **must** add one Number Block to the Tower.
+   - The block's value is added to the current Tower height.
+   
+2. **Target Height Limit**:
+   - The Tower's height **cannot exceed** the Target Height.
+   - If adding any of your remaining Number Blocks would exceed the Target Height, you lose.
+   
+3. **Winning the Game**:
+   - The player who brings the Tower's height to **exactly** the Target Height wins immediately.
+   
+4. **Number Block Availability**:
+   - Each player tracks their own set of Number Blocks.
+   - Used blocks are removed from the game and cannot be reused.
+   
+5. **Strategic Considerations**:
+   - Anticipate the consequences of your move on the opponent's options.
+   - Aim to avoid setting up the opponent for a winning move.
+
+---
+
+## Scoring
+
+- **Single Game Victory**: The player who wins the game by reaching the Target Height scores **1 point**.
+- **Match Play (Optional)**:
+  - Play a series of games (e.g., best of five).
+  - The player with the most points at the end of the series wins the match.
+
+---
+
+## Examples
+
+### Example Game
+
+**Setup**:
+
+- **Target Height**: **20**
+- **Players**: Alice (Player A) and Bob (Player B)
+- **Initial Tower Height**: **0**
+- **Number Blocks Available**:
+  - **Alice**: `1, 2, 3, 4, 5, 6, 7, 8, 9`
+  - **Bob**: `1, 2, 3, 4, 5, 6, 7, 8, 9`
+
+**Gameplay**:
+
+1. **Turn 1**: Alice's Turn
+   - Chooses Number Block **`5`**.
+   - Tower Height: `0 + 5 = 5`.
+   - Alice's Remaining Blocks: `1, 2, 3, 4, 6, 7, 8, 9`.
+
+2. **Turn 2**: Bob's Turn
+   - Chooses Number Block **`4`**.
+   - Tower Height: `5 + 4 = 9`.
+   - Bob's Remaining Blocks: `1, 2, 3, 5, 6, 7, 8, 9`.
+
+3. **Turn 3**: Alice's Turn
+   - Chooses Number Block **`6`**.
+   - Tower Height: `9 + 6 = 15`.
+   - Alice's Remaining Blocks: `1, 2, 3, 4, 7, 8, 9`.
+
+4. **Turn 4**: Bob's Turn
+   - Chooses Number Block **`5`**.
+   - Tower Height: `15 + 5 = 20`.
+   - Bob's Remaining Blocks: `1, 2, 3, 6, 7, 8, 9`.
+
+**Result**: Bob reaches the Target Height of **20** and **wins** the game.
+
+**Analysis**:
+
+- Alice's move to add `6` brought the Tower Height to `15`, allowing Bob the opportunity to win by adding his `5`.
+- Alice could have avoided this by adding a smaller Number Block.
+
+---
+
+### Command-Line Interaction Example
+
+```plaintext
+[Game Start] Target Height: 20. Tower Height: 0.
+
+Player A's turn.
+Your Number Blocks: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Enter Number Block to add: 5
+You added 5 to the Tower.
+Tower Height is now 5.
+
+Player B's turn.
+Your Number Blocks: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Enter Number Block to add: 4
+You added 4 to the Tower.
+Tower Height is now 9.
+
+Player A's turn.
+Your Number Blocks: 1, 2, 3, 4, 6, 7, 8, 9
+Enter Number Block to add: 6
+You added 6 to the Tower.
+Tower Height is now 15.
+
+Player B's turn.
+Your Number Blocks: 1, 2, 3, 5, 6, 7, 8, 9
+Enter Number Block to add: 5
+You added 5 to the Tower.
+Tower Height is now 20.
+
+Player B has reached the Target Height. Player B wins!
+```
+
+---
+
+## Strategies
+
+- **Plan Ahead**: Think about the cumulative total and how your Number Block choice will affect the next turn.
+- **Avoid Setting Up the Opponent**: Don't raise the Tower Height to a number that allows the opponent to reach the Target Height on their next turn.
+- **Use Lower Number Blocks Early**: Preserve higher Number Blocks to control the endgame.
+- **Track Opponent's Blocks**: Keep note of which Number Blocks the opponent has used to anticipate their potential moves.
+
+---
+
+## Variations
+
+- **Different Target Heights**: Adjust the Target Height to change the game's length and complexity.
+- **Limited Number Blocks**: Use a subset of Number Blocks (e.g., only `1` to `5`) for a shorter game.
+- **Hidden Blocks**: Keep your remaining Number Blocks secret to increase unpredictability.
+
+---
+
+By following this rule book, players can enjoy a game of "Number Tower" that is simple to understand but offers strategic depth. Skilled players will recognize patterns and anticipate their opponent's moves, leading to a consistently higher chance of winning.

@@ -1,0 +1,188 @@
+# Non-Consecutive
+
+## Objective
+
+Be the last player able to select a number from the list while following the adjacency rule. The game is won by forcing your opponent into a position where they have no valid moves remaining.
+
+## Setup
+
+- **Players**: Two players.
+- **Number List**: Create a list of numbers from **1** to **20** arranged in ascending order.
+
+## Game Components
+
+- **Number List**: A sequential list of integers from **1** to **20**. Each number can be selected only once and has the following attributes:
+  - **Value**: The integer itself (1-20).
+  - **Status**: `Available` or `Selected`. Initially, all numbers are `Available`.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., by coin toss). Turns alternate between players.
+- **Actions Per Turn**:
+  1. **Select a Number**: Choose an `Available` number from the list, following the adjacency rule.
+  2. **Update Status**: Mark the chosen number as `Selected`.
+  3. **Update Adjacent Numbers**: Identify numbers adjacent (numerically consecutive) to the selected number and remove them from future play (they become `Unavailable`).
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**: The first player can select any number from **1** to **20**.
+2. **Adjacency Rule**:
+   - A number is considered **adjacent** if it is exactly one more or one less than any number that has been `Selected` by either player.
+   - `Unavailable` numbers cannot be selected.
+3. **Selecting Numbers**:
+   - On your turn, you must select an `Available` number that is **not adjacent** to any `Selected` numbers.
+   - If no such number exists, you lose your turn and the game.
+4. **Winning the Game**:
+   - If a player cannot make a valid move on their turn, they lose.
+   - The opposing player is declared the winner.
+
+### Example of Adjacency
+
+- If the number **7** is `Selected`, numbers **6** and **8** become `Unavailable`.
+- If both **7** and **10** are `Selected`, numbers **6**, **8**, **9**, and **11** are `Unavailable`.
+
+## Scoring
+
+- **Winning**: The winner is the player who successfully forces their opponent into a position with no valid moves.
+- **No Points System**: The game does not use a points system; it is a win/loss outcome based on strategic play.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Setup
+
+- **Available Numbers**: 1 through 20.
+
+#### Turn 1: Player 1
+
+- **Action**: Selects **10**.
+- **Update**:
+  - **Selected Numbers**: 10.
+  - **Unavailable Numbers**: 9 and 11 (adjacent to 10).
+- **Remaining Available Numbers**: 1-8, 12-20 (excluding 9 and 11).
+
+#### Turn 2: Player 2
+
+- **Action**: Selects **5**.
+- **Update**:
+  - **Selected Numbers**: 5, 10.
+  - **Unavailable Numbers**: 4 and 6 (adjacent to 5), 9 and 11.
+- **Remaining Available Numbers**: 1-3, 7-8, 12-20 (excluding 4, 6, 9, 11).
+
+#### Turn 3: Player 1
+
+- **Action**: Selects **14**.
+- **Update**:
+  - **Selected Numbers**: 5, 10, 14.
+  - **Unavailable Numbers**: 4, 6, 9, 11, **13** and **15** (adjacent to 14).
+- **Remaining Available Numbers**: 1-3, 7-8, 12, 16-20.
+
+#### Turn 4: Player 2
+
+- **Action**: Selects **2**.
+- **Update**:
+  - **Selected Numbers**: 2, 5, 10, 14.
+  - **Unavailable Numbers**: **1** and **3** (adjacent to 2), 4, 6, 9, 11, 13, 15.
+- **Remaining Available Numbers**: 7-8, 12, 16-20.
+
+#### Turn 5: Player 1
+
+- **Action**: Selects **18**.
+- **Update**:
+  - **Selected Numbers**: 2, 5, 10, 14, 18.
+  - **Unavailable Numbers**: 1, 3, 4, 6, 9, 11, 13, 15, **17**, **19** (adjacent to 18).
+- **Remaining Available Numbers**: 7-8, 12, 16, 20.
+
+#### Turn 6: Player 2
+
+- **Action**: Selects **8**.
+- **Update**:
+  - **Selected Numbers**: 2, 5, 8, 10, 14, 18.
+  - **Unavailable Numbers**: 1, 3, 4, 6, **7**, **9**, 11, 13, 15, 17, 19.
+- **Remaining Available Numbers**: 12, 16, 20.
+
+#### Turn 7: Player 1
+
+- **Action**: Selects **12**.
+- **Update**:
+  - **Selected Numbers**: 2, 5, 8, 10, 12, 14, 18.
+  - **Unavailable Numbers**: 1, 3, 4, 6, 7, 9, **11**, **13**, 15, 17, 19.
+- **Remaining Available Numbers**: 16, 20.
+
+#### Turn 8: Player 2
+
+- **Action**: Selects **16**.
+- **Update**:
+  - **Selected Numbers**: 2, 5, 8, 10, 12, 14, 16, 18.
+  - **Unavailable Numbers**: 1, 3, 4, 6, 7, 9, 11, 13, **15**, **17**, 19.
+- **Remaining Available Number**: 20.
+
+#### Turn 9: Player 1
+
+- **Action**: Selects **20**.
+- **Update**:
+  - **Selected Numbers**: All numbers `Selected` or `Unavailable`.
+- **Remaining Available Numbers**: None.
+
+#### Result
+
+- **Player 2** has no valid moves.
+- **Player 1** wins the game.
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Available Numbers: 1-20
+
+Player 1's turn.
+Enter a number to select: 10
+
+Player 1 selected 10.
+Numbers 9 and 11 are now unavailable.
+```
+
+### Subsequent Turns
+
+```
+Available Numbers: 1-8, 12-20 (excluding 9 and 11)
+
+Player 2's turn.
+Enter a number to select: 5
+
+Player 2 selected 5.
+Numbers 4 and 6 are now unavailable.
+```
+
+### Game End
+
+```
+Available Numbers: 16, 20
+
+Player 1's turn.
+Enter a number to select: 20
+
+Player 1 selected 20.
+Numbers 19 and 21 are now unavailable (21 is beyond our list).
+
+No numbers remaining.
+Player 2 has no valid moves.
+
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Think several moves in advance to block your opponent's options.
+- **Control the Center**: Choosing central numbers can eliminate more of your opponent's potential moves.
+- **Avoid Early Traps**: Be cautious of selecting numbers that limit your own future options.
+
+## Summary
+
+"Non-Consecutive" is a simple yet strategic game that requires players to think ahead and carefully choose numbers to limit their opponent's choices while maximizing their own. With easy-to-understand rules and minimal components, it's perfect for quick and engaging gameplay in a command-line interface.
+
+Happy gaming!

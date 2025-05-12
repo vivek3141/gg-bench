@@ -1,0 +1,328 @@
+# Pyramid Challenge: Rule Book
+
+## Objective
+
+Be the first player to successfully build a numerical pyramid by strategically placing numbers according to the game's rules. The pyramid is constructed by placing numbers that are the sum or difference of the two numbers directly below them. The first player to complete their pyramid wins the game.
+
+---
+
+## Setup
+
+1. **Pyramid Structure**: Each player has a pyramid consisting of three levels:
+   - **Bottom Level**: 3 positions
+   - **Middle Level**: 2 positions
+   - **Top Level**: 1 position
+
+2. **Starting Conditions**:
+   - Both players start with empty pyramids.
+   - A shared pool of number tokens ranging from 1 to 9 is available for both players.
+
+---
+
+## Game Components
+
+- **Player Pyramids**:
+  - Visual representation of each player's pyramid with empty slots for numbers.
+  
+- **Number Tokens**:
+  - Numbers from **1** to **9**.
+  - Each number token can be used multiple times by both players.
+
+- **Command-Line Interface**:
+  - Displays each player's pyramid.
+  - Shows the available number tokens.
+  - Facilitates player interactions and inputs.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., by coin toss or mutual agreement).
+   - Players take turns in alternating order.
+
+2. **Player Actions During a Turn**:
+   - **Select a Number Token**: Choose a number from **1** to **9**.
+   - **Place the Number**: Place the selected number into the next available position in your pyramid according to the placement rules.
+
+3. **Turn Progression**:
+   - A player completes their action, then it's the next player's turn.
+   - The game continues until a player completes their pyramid or no valid moves remain for both players.
+
+---
+
+## Rules and Mechanics
+
+### Pyramid Construction Rules
+
+1. **Placement Order**:
+   - **Bottom Level First**: Fill the three positions on the bottom level from left to right.
+   - **Middle Level Second**: Fill the two positions on the middle level from left to right.
+   - **Top Level Last**: Fill the single position at the top level.
+
+2. **Number Placement Rules**:
+   - **Bottom Level**:
+     - You may place any number from **1** to **9** in each position.
+   - **Middle and Top Levels**:
+     - The number placed must be **either the sum or the absolute difference** of the two numbers directly below it.
+     - **Example**:
+       - If the two numbers below are **3** and **5**, the possible numbers to place above are:
+         - **Sum**: 3 + 5 = 8
+         - **Difference**: \|3 - 5\| = 2
+
+3. **Valid Moves**:
+   - If you have valid numbers that can be placed according to the rules, you must choose one of them.
+   - If no valid number exists (e.g., the sum or difference is outside the range **1** to **9**), you must pass your turn.
+
+4. **Reusing Numbers**:
+   - Number tokens can be reused; there is no limit to how many times a number can be selected by either player.
+
+### Winning the Game
+
+- The first player to complete all levels of their pyramid according to the placement rules wins the game.
+
+### Passing Turns
+
+- If a player cannot make a valid move on their turn, they **pass**, and the turn goes to the opponent.
+- The game continues until one player completes their pyramid.
+
+---
+
+## Scoring
+
+- The game is won by the first player to successfully fill all positions in their pyramid following the placement rules.
+- There are no points or additional scoring mechanisms.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Setup**:
+- Players: Alice and Bob
+- Alice goes first.
+
+---
+
+**Alice's Turn**:
+- **Bottom Level Position 1**:
+  - Chooses number **4**.
+  - Alice's Pyramid:
+    ```
+    [ ] 
+   [ ][ ] 
+  [4][ ][ ] 
+    ```
+
+**Bob's Turn**:
+- **Bottom Level Position 1**:
+  - Chooses number **5**.
+  - Bob's Pyramid:
+    ```
+    [ ] 
+   [ ][ ] 
+  [5][ ][ ] 
+    ```
+
+---
+
+**Alice's Turn**:
+- **Bottom Level Position 2**:
+  - Chooses number **7**.
+  - Alice's Pyramid:
+    ```
+    [ ] 
+   [ ][ ] 
+  [4][7][ ] 
+    ```
+
+**Bob's Turn**:
+- **Bottom Level Position 2**:
+  - Chooses number **2**.
+  - Bob's Pyramid:
+    ```
+    [ ] 
+   [ ][ ] 
+  [5][2][ ] 
+    ```
+
+---
+
+**Alice's Turn**:
+- **Bottom Level Position 3**:
+  - Chooses number **3**.
+  - Alice's Pyramid:
+    ```
+    [ ] 
+   [ ][ ] 
+  [4][7][3] 
+    ```
+
+**Bob's Turn**:
+- **Bottom Level Position 3**:
+  - Chooses number **6**.
+  - Bob's Pyramid:
+    ```
+    [ ] 
+   [ ][ ] 
+  [5][2][6] 
+    ```
+
+---
+
+**Alice's Turn**:
+- **Middle Level Position 1**:
+  - Numbers below are **4** and **7**.
+  - Possible numbers:
+    - Sum: 4 + 7 = **11** (Invalid, exceeds 9)
+    - Difference: \|4 - 7\| = **3**
+  - Chooses number **3**.
+  - Alice's Pyramid:
+    ```
+    [ ] 
+   [3][ ] 
+  [4][7][3] 
+    ```
+
+**Bob's Turn**:
+- **Middle Level Position 1**:
+  - Numbers below are **5** and **2**.
+  - Possible numbers:
+    - Sum: 5 + 2 = **7**
+    - Difference: \|5 - 2\| = **3**
+  - Chooses number **7**.
+  - Bob's Pyramid:
+    ```
+    [ ] 
+   [7][ ] 
+  [5][2][6] 
+    ```
+
+---
+
+**Alice's Turn**:
+- **Middle Level Position 2**:
+  - Numbers below are **7** and **3**.
+  - Possible numbers:
+    - Sum: 7 + 3 = **10** (Invalid, exceeds 9)
+    - Difference: \|7 - 3\| = **4**
+  - Chooses number **4**.
+  - Alice's Pyramid:
+    ```
+    [ ] 
+   [3][4] 
+  [4][7][3] 
+    ```
+
+**Bob's Turn**:
+- **Middle Level Position 2**:
+  - Numbers below are **2** and **6**.
+  - Possible numbers:
+    - Sum: 2 + 6 = **8**
+    - Difference: \|2 - 6\| = **4**
+  - Chooses number **8**.
+  - Bob's Pyramid:
+    ```
+    [ ] 
+   [7][8] 
+  [5][2][6] 
+    ```
+
+---
+
+**Alice's Turn**:
+- **Top Level Position**:
+  - Numbers below are **3** and **4**.
+  - Possible numbers:
+    - Sum: 3 + 4 = **7**
+    - Difference: \|3 - 4\| = **1**
+  - Chooses number **7**.
+  - Alice's Pyramid:
+    ```
+      [7] 
+     [3][4] 
+    [4][7][3] 
+    ```
+- **Alice has filled all positions and wins the game!**
+
+---
+
+## Command-Line Interaction Example
+
+The following illustrates how the game might proceed in a command-line interface.
+
+---
+
+**Game Start**
+
+```
+Welcome to Pyramid Challenge!
+
+Player 1: Alice
+Player 2: Bob
+
+It's Alice's turn.
+```
+
+---
+
+**Alice's Turn**
+
+```
+Alice's Pyramid:
+      [ ]
+     [ ][ ]
+    [ ][ ][ ]
+
+Select a number from 1 to 9 for Bottom Level Position 1:
+> 4
+
+Alice's Pyramid:
+      [ ]
+     [ ][ ]
+    [4][ ][ ]
+
+Turn ends. Switching to Bob.
+```
+
+---
+
+**Bob's Turn**
+
+```
+Bob's Pyramid:
+      [ ]
+     [ ][ ]
+    [ ][ ][ ]
+
+Select a number from 1 to 9 for Bottom Level Position 1:
+> 5
+
+Bob's Pyramid:
+      [ ]
+     [ ][ ]
+    [5][ ][ ]
+
+Turn ends. Switching to Alice.
+```
+
+---
+
+*The game continues with each player making their moves as shown in the example playthrough above.*
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider not just the current move but how it will affect your ability to place numbers in the higher levels.
+- **Number Selection**: Choose numbers that offer multiple possibilities for sums and differences in subsequent levels.
+- **Keep Options Open**: Avoid selecting numbers that limit your future moves. For example, two identical numbers below will only allow a difference of zero (invalid) or a sum that's double the number.
+
+---
+
+## Conclusion
+
+Pyramid Challenge is a game of strategy and foresight. By carefully selecting numbers and anticipating future moves, players can outmaneuver their opponent and be the first to complete their pyramid.
+
+Enjoy the game and may the best strategist win!

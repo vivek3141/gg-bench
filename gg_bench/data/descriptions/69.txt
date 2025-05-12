@@ -1,0 +1,212 @@
+# Grid Runner
+
+## Objective
+
+Be the first player to reach your opponent's starting position on the opposite corner of a 5x5 grid without revisiting any cells. Alternatively, force your opponent into a position where they have no legal moves left.
+
+---
+
+## Setup
+
+- **Grid Size:** The game is played on a 5x5 grid with cells identified by their coordinates `(row, column)`, where `row` and `column` range from 1 to 5.
+- **Starting Positions:**
+  - **Player 1 (P1):** Starts at the top-left corner `(1,1)`.
+  - **Player 2 (P2):** Starts at the bottom-right corner `(5,5)`.
+- **Visited Cells:** Each player marks their starting position as visited.
+
+---
+
+## Game Components
+
+- **Grid:**
+  - A 5x5 grid represented in the command-line interface.
+  - Each cell can be empty, occupied by a player, or marked as visited.
+- **Player Tokens:**
+  - Represented by `P1` for Player 1 and `P2` for Player 2 on the grid.
+- **Visited Cells:**
+  - Cells that a player has moved through are marked to indicate they cannot be revisited.
+- **Coordinates:**
+  - Cells are identified using `(row,column)` notation.
+
+---
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- **During a Turn:**
+  - A player moves to an adjacent unvisited cell.
+  - Adjacent cells are those directly above, below, left, or right (no diagonal moves).
+  - After moving, the player's previous cell remains marked as visited.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Rules:**
+   - Players can move to any adjacent cell that they have not visited before.
+   - Cells cannot be revisited once left.
+   - Players cannot occupy the same cell simultaneously.
+
+2. **Winning the Game:**
+   - **Victory Condition 1:** Reach your opponent's starting position before they reach yours.
+   - **Victory Condition 2:** Create a situation where your opponent has no legal moves on their turn.
+
+3. **Losing the Game:**
+   - If you have no legal moves on your turn, you lose.
+   - If your opponent reaches your starting position before you reach theirs, you lose.
+
+4. **Draws:**
+   - There are no draw conditions; the game continues until one player wins.
+
+5. **Game Notation (for Command-Line Play):**
+   - Empty cells are represented by `.`
+   - Visited cells are represented by `*`
+   - Player positions are represented by `P1` or `P2`
+
+---
+
+## Scoring
+
+- The winner is the first player to satisfy a victory condition.
+- There are no points; the game results in a win or loss.
+
+---
+
+## Example Gameplay
+
+### Initial Grid:
+
+```
+P1 .  .  .  .
+.  .  .  .  .
+.  .  .  .  .
+.  .  .  .  .
+.  .  .  .  P2
+```
+
+### Turn Sequence:
+
+1. **Player 1's Turn:**
+   - **Current Position:** `(1,1)`
+   - **Possible Moves:** `(1,2)`, `(2,1)`
+   - **Move Chosen:** `(1,2)`
+   - **Grid Update:**
+
+     ```
+     *  P1 .  .  .
+     .   .  .  .  .
+     .   .  .  .  .
+     .   .  .  .  .
+     .   .  .  .  P2
+     ```
+
+2. **Player 2's Turn:**
+   - **Current Position:** `(5,5)`
+   - **Possible Moves:** `(5,4)`, `(4,5)`
+   - **Move Chosen:** `(5,4)`
+   - **Grid Update:**
+
+     ```
+     *  P1 .  .  .
+     .   .  .  .  .
+     .   .  .  .  .
+     .   .  .  .  .
+     .   .  .  P2 *
+     ```
+
+3. **Player 1's Turn:**
+   - **Current Position:** `(1,2)`
+   - **Possible Moves:** `(1,3)`, `(2,2)`
+   - **Move Chosen:** `(2,2)`
+   - **Grid Update:**
+
+     ```
+     *   *  .  .  .
+     .  P1  .  .  .
+     .   .  .  .  .
+     .   .  .  .  .
+     .   .  .  P2 *
+     ```
+
+4. **Player 2's Turn:**
+   - **Current Position:** `(5,4)`
+   - **Possible Moves:** `(5,3)`, `(4,4)`
+   - **Move Chosen:** `(4,4)`
+   - **Grid Update:**
+
+     ```
+     *   *  .   .  .
+     .  P1  .   .  .
+     .   .  .   .  .
+     .   .  .  P2  .
+     .   .  .   *  *
+     ```
+
+5. **Continuing the Game:**
+   - Players continue moving toward each other's starting positions, avoiding revisiting cells.
+
+### Ending the Game:
+
+- **Winning Move for Player 1:**
+  - **Current Position:** `(5,4)`
+  - **Possible Moves:** `(5,5)` (Player 2's starting position)
+  - **Move Chosen:** `(5,5)`
+  - **Player 1 reaches Player 2's starting position and wins the game.**
+
+---
+
+## Command-Line Interaction Example
+
+### Turn 1:
+
+```
+Player 1's turn. Current position: (1,1)
+Available moves: (1,2), (2,1)
+Enter your move (row,column): 1,2
+```
+
+### Turn 2:
+
+```
+Player 2's turn. Current position: (5,5)
+Available moves: (5,4), (4,5)
+Enter your move (row,column): 5,4
+```
+
+### ...
+
+### Winning Move:
+
+```
+Player 1's turn. Current position: (5,4)
+Available moves: (5,5)
+Enter your move (row,column): 5,5
+
+Player 1 has reached Player 2's starting position and wins the game!
+```
+
+---
+
+## Strategic Considerations
+
+- **Path Planning:** Balance between the shortest path to the opponent's corner and limiting your opponent's options.
+- **Blocking:** Position yourself to restrict your opponent's movement, potentially forcing them into a corner.
+- **Resource Management:** Avoid unnecessary moves that consume valuable unvisited cells.
+
+---
+
+## Additional Rules (Optional Variations)
+
+- **Grid Size Variation:** Play on larger or smaller grids for different difficulty levels.
+- **Obstacle Addition:** Introduce obstacles that neither player can pass through.
+- **Teleportation Cells:** Designate certain cells that allow players to jump to another location on the grid.
+
+---
+
+## Conclusion
+
+Grid Runner is a strategic, turn-based game that challenges players to outmaneuver their opponent on a shared grid. With simple mechanics and the absence of random chance, skilled players can consistently outperform less experienced opponents. The game's simplicity makes it easy to implement in a command-line interface, ensuring quick and engaging gameplay.
+
+Enjoy the challenge, and may the best strategist win!
+
+---

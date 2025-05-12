@@ -1,0 +1,196 @@
+# Digit Chain Duel
+
+## Objective
+
+The primary goal of **Digit Chain Duel** is to be the last player able to make a valid move. Players take turns selecting numbers from a shared pool based on the last digit of the previously selected number. Strategic planning and foresight are key to forcing your opponent into a position where they cannot make a valid move, thereby securing your victory.
+
+## Setup
+
+1. **Number Pool**: The game uses a shared pool of numbers ranging from **1** to **99**.
+2. **Current Number**: At the start of the game, there is no current number. It will be established after the first player's turn.
+3. **Players**: Two players are needed. Decide who will be **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Number Pool**: A list of integers from **1** to **99**. This pool is shared between both players and is updated as numbers are selected.
+- **Current Number**: The most recently selected number. Determines the options available to the next player.
+- **Player Hands**: While not a physical component, each player keeps track of the numbers they've selected for strategic purposes.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Actions**:
+  1. **Select a Number**: Choose a valid number from the number pool based on the game's rules.
+  2. **Update the Pool**: Remove the selected number from the number pool.
+  3. **Update the Current Number**: The selected number becomes the new current number.
+
+## Rules and Mechanics
+
+1. **First Turn**:
+   - **Player 1** can select **any number** from the number pool as there is no current number yet.
+2. **Subsequent Turns**:
+   - A player must select a number whose **first digit** matches the **last digit** of the current number.
+   - **Example**: If the current number is **47**, the next player must pick a number starting with **7** (e.g., **7**, **72**, **79**).
+3. **Valid Moves**:
+   - The selected number must be present in the number pool.
+   - The number must meet the first digit matching condition.
+4. **Winning the Game**:
+   - If a player cannot make a valid move on their turn (no numbers in the pool start with the required digit), they **lose**, and the other player **wins**.
+5. **End of the Game**:
+   - The game ends immediately when a player fails to make a valid move.
+
+## Scoring
+
+- There is no point scoring system; the outcome is a **win** or **loss**.
+- The player who forces their opponent into a position where they cannot make a valid move is the **winner**.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Number Pool**: Numbers **1** to **99**.
+- **Current Number**: None.
+- **Players**: Player 1 and Player 2.
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - No current number exists.
+   - **Action**: Chooses **26** from the number pool.
+   - **Updated Pool**: Numbers **1** to **99**, excluding **26**.
+   - **Current Number**: **26**.
+
+2. **Player 2's Turn**:
+   - Current number is **26** (last digit is **6**).
+   - Must select a number starting with **6**.
+   - **Action**: Chooses ** sixty-one (61)**.
+   - **Updated Pool**: Numbers **1** to **99**, excluding **26**, **61**.
+   - **Current Number**: **61**.
+
+3. **Player 1's Turn**:
+   - Current number is **61** (last digit is **1**).
+   - Must select a number starting with **1**.
+   - **Action**: Chooses **19**.
+   - **Updated Pool**: Excluding **19**.
+   - **Current Number**: **19**.
+
+4. **Player 2's Turn**:
+   - Current number is **19** (last digit is **9**).
+   - Must select a number starting with **9**.
+   - **Action**: Chooses ** ninety-four (94)**.
+   - **Updated Pool**: Excluding **94**.
+   - **Current Number**: **94**.
+
+5. **Player 1's Turn**:
+   - Current number is **94** (last digit is **4**).
+   - Must select a number starting with **4**.
+   - **Action**: Chooses ** forty-two (42)**.
+   - **Updated Pool**: Excluding **42**.
+   - **Current Number**: **42**.
+
+6. **Player 2's Turn**:
+   - Current number is **42** (last digit is **2**).
+   - Must select a number starting with **2**.
+   - **Action**: Chooses ** twenty-eight (28)**.
+   - **Updated Pool**: Excluding **28**.
+   - **Current Number**: **28**.
+
+7. **Player 1's Turn**:
+   - Current number is **28** (last digit is **8**).
+   - Must select a number starting with **8**.
+   - **Action**: Chooses ** eighty-three (83)**.
+   - **Updated Pool**: Excluding **83**.
+   - **Current Number**: **83**.
+
+8. **Player 2's Turn**:
+   - Current number is **83** (last digit is **3**).
+   - Must select a number starting with **3**.
+   - **Action**: Chooses ** thirty-seven (37)**.
+   - **Updated Pool**: Excluding **37**.
+   - **Current Number**: **37**.
+
+9. **Player 1's Turn**:
+   - Current number is **37** (last digit is **7**).
+   - Must select a number starting with **7**.
+   - **Action**: Chooses ** seventy-five (75)**.
+   - **Updated Pool**: Excluding **75**.
+   - **Current Number**: **75**.
+
+10. **Player 2's Turn**:
+    - Current number is **75** (last digit is **5**).
+    - Must select a number starting with **5**.
+    - **Action**: Chooses ** fifty-four (54)**.
+    - **Updated Pool**: Excluding **54**.
+    - **Current Number**: **54**.
+
+11. **Player 1's Turn**:
+    - Current number is **54** (last digit is **4**).
+    - Must select a number starting with **4**.
+    - **Action**: No numbers starting with **4** remain in the pool.
+    - **Result**: Player 1 cannot make a valid move and **loses**.
+    - **Winner**: Player 2.
+
+### Command-Line Interaction
+
+#### Sample Turn Structure
+
+- **Prompt**: Indicates the player's turn and the last digit they need to match.
+- **Input**: The player inputs their chosen number.
+- **Validation**: The game checks if the move is valid.
+- **Output**: Updates the game state or declares a winner if the move is invalid.
+
+#### Example
+
+```
+-- Digit Chain Duel --
+
+Available Numbers: [1-99 excluding taken numbers]
+
+Current Number: None
+
+Player 1's Turn:
+Select any number from the pool: 26
+
+Available Numbers: [1-99 excluding 26]
+
+Current Number: 26 (Last digit: 6)
+
+Player 2's Turn:
+Select a number starting with 6: 61
+
+Available Numbers: [1-99 excluding 26, 61]
+
+Current Number: 61 (Last digit: 1)
+
+Player 1's Turn:
+Select a number starting with 1: 19
+
+... [Game continues as per the example above] ...
+
+Player 1's Turn:
+Current Number: 54 (Last digit: 4)
+Select a number starting with 4: 
+
+No valid numbers starting with 4 are available.
+Player 1 cannot make a move.
+Player 2 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of which numbers have been used to anticipate potential pitfalls.
+- **Control the Last Digit**: Try to end your turn with a last digit that limits your opponent's options.
+- **Avoid Common Starting Digits**: Numbers starting with less common digits (like 0 or 9) can be strategic choices.
+- **Monitor the Pool**: Be aware of the remaining numbers to make informed decisions.
+
+---
+
+## Conclusion
+
+**Digit Chain Duel** is a simple yet strategically rich game that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and quick gameplay, it's perfect for a command-line interface and offers endless replayability as players develop new tactics.
+
+Enjoy the duel, and may the most strategic player win!

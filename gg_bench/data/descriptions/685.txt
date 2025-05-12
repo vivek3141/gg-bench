@@ -1,0 +1,203 @@
+# Summation Showdown
+
+## Objective
+
+Be the first player to create a valid arithmetic expression that **equals exactly 100**, without exceeding it. If a player creates an expression that surpasses 100, they immediately lose. Strategic selection of numbers and operators is crucial to outmaneuver your opponent and reach the target sum.
+
+## Setup
+
+- **Target Number**: 100
+- **Starting Expression**: Empty
+- **Players**: Two participants competing against each other
+- **Turn Order**: Decide who goes first (e.g., coin toss)
+
+## Game Components
+
+- **Number Pool**: Digits from `1` to `9` (each can be used multiple times)
+- **Operators**: Addition (`+`) and Multiplication (`*`)
+- **Expression**: A shared arithmetic expression built collaboratively by both players
+- **Valid Characters**: 
+
+  | Type      | Characters |
+  |-----------|------------|
+  | Numbers   | `1` `2` `3` `4` `5` `6` `7` `8` `9` |
+  | Operators | `+` `*`    |
+
+## Turns
+
+- **Turn Structure**:
+  1. **Player Action**: On your turn, choose to append either a **number** or an **operator** to the expression.
+  2. **Expression Update**: The chosen character is added to the end of the current expression.
+  3. **Validity Check**: Ensure the expression remains valid (no invalid sequences).
+  4. **Evaluation**: If the expression is complete (ends with a number), calculate its value.
+
+- **Turn Progression**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Appending Characters**:
+   - You may add **one** character per turn.
+   - Choose to add either a **number** (`1`-`9`) **or** an **operator** (`+` or `*`).
+   - The expression must always form a valid arithmetic sequence.
+
+2. **Expression Validity**:
+   - **Cannot start** with an operator.
+   - **Operators cannot be adjacent**; there must be a number between operators.
+   - **Numbers cannot be adjacent** without an operator unless they form a multi-digit number (e.g., appending `2` and then `3` to make `23`).
+
+3. **Building Numbers**:
+   - To create a multi-digit number (e.g., `23`), continue appending numbers without inserting an operator.
+   - Once an operator is added after a number, that number is considered complete, and subsequent numbers will start a new operand.
+
+4. **Calculating the Expression**:
+   - Only evaluate the expression when it **ends with a number**.
+   - Use **left-to-right** evaluation **without operator precedence** (ignore standard mathematical precedence rules).
+
+     For example:
+     - Expression: `2+3*4`
+     - Calculation: `(2 + 3) * 4 = 5 * 4 = 20`
+
+5. **Winning the Game**:
+   - If a player creates an expression that **equals exactly 100**, they **win**.
+   - If a player causes the expression to **exceed 100**, they **lose** immediately.
+   
+6. **Ending the Game**:
+   - The game ends when a player wins by reaching 100 or loses by exceeding 100.
+
+7. **Additional Constraints**:
+   - **No Deletion**: Once a character is added, it cannot be removed.
+   - **No Skipping Turns**: Players must add a character on their turn.
+   - **Visibility**: The expression is public; both players see all moves.
+
+## Scoring
+
+- **Victory**: Achieved by creating an expression that equals exactly 100.
+- **Loss**: Occurs if a player causes the expression to exceed 100.
+- **Skill Factor**: Strategic planning and arithmetic proficiency are essential for victory.
+
+## Examples
+
+### Example Game
+
+**Starting Expression**: (empty)
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1**:
+   - **Action**: Adds `9`
+   - **Expression**: `9`
+   - **Evaluation**: `9` (incomplete, no need to evaluate)
+   
+2. **Player 2**:
+   - **Action**: Adds `+`
+   - **Expression**: `9+`
+   - **Evaluation**: Incomplete
+
+3. **Player 1**:
+   - **Action**: Adds `8`
+   - **Expression**: `9+8`
+   - **Evaluation**: `9 + 8 = 17`
+
+4. **Player 2**:
+   - **Action**: Adds `*`
+   - **Expression**: `9+8*`
+   - **Evaluation**: Incomplete
+
+5. **Player 1**:
+   - **Action**: Adds `7`
+   - **Expression**: `9+8*7`
+   - **Evaluation**: Left-to-right without precedence:
+     - `9 + 8 = 17`
+     - `17 * 7 = 119`
+   - **Result**: Expression exceeds 100.
+
+6. **Game Ends**:
+   - **Winner**: Player 2
+   - **Reason**: Player 1 exceeded 100.
+
+**Note**: Player 1 failed to account for the lack of operator precedence, resulting in a miscalculation.
+
+### Strategic Considerations
+
+- **Operator Precedence**: Remember that multiplication and addition are evaluated from left to right **without** standard precedence.
+  
+  Example:
+  - Expression: `2+3*4`
+  - Calculation: `(2 + 3) * 4 = 5 * 4 = 20`
+
+- **Planning Ahead**: Anticipate the cumulative total and aim to force your opponent into a position where any move they make may lead to exceeding 100.
+
+- **Blocking**: Use operators to disrupt your opponent's potential strategies.
+
+## Command-Line Interaction Example
+
+Below is a simulated command-line game between two players.
+
+### Game Start
+
+- **Target Number**: 100
+- **Current Expression**: (empty)
+- **Current Total**: 0
+
+### Turns
+
+1. **Player 1**:
+   - **Input**: `5`
+   - **Expression**: `5`
+   - **Total**: 5
+
+2. **Player 2**:
+   - **Input**: `*`
+   - **Expression**: `5*`
+   - **Total**: Cannot evaluate yet
+
+3. **Player 1**:
+   - **Input**: `9`
+   - **Expression**: `5*9`
+   - **Total**: `5 * 9 = 45`
+
+4. **Player 2**:
+   - **Input**: `+`
+   - **Expression**: `5*9+`
+   - **Total**: Cannot evaluate yet
+
+5. **Player 1**:
+   - **Input**: `6`
+   - **Expression**: `5*9+6`
+   - **Total**: Left-to-right calculation:
+     - `5 * 9 = 45`
+     - `45 + 6 = 51`
+
+6. **Player 2**:
+   - **Input**: `*`
+   - **Expression**: `5*9+6*`
+   - **Total**: Cannot evaluate yet
+
+7. **Player 1**:
+   - **Input**: `8`
+   - **Expression**: `5*9+6*8`
+   - **Total**: 
+     - `5 * 9 = 45`
+     - `45 + 6 = 51`
+     - `51 * 8 = 408`
+   - **Result**: Exceeds 100
+
+### Game Over
+
+- **Winner**: Player 2
+- **Reason**: Player 1 exceeded 100.
+
+## Summary
+
+**Summation Showdown** is a game of arithmetic strategy where players collaboratively build an expression, aiming to reach exactly 100 without going over. It encourages forward-thinking and mental math skills, providing depth and competitive excitement in a simple, command-line interface.
+
+---
+
+### Tips for Players
+
+- **Calculate After Each Turn**: Always compute the current total after each complete expression to avoid surpassing 100 unintentionally.
+- **Monitor Opponent's Moves**: Anticipate possible numbers or operators your opponent might add and plan your moves to counter them.
+- **Use Multiplication Wisely**: Multiplication can greatly increase the total; use it strategically to reach 100 or to force your opponent into a tough spot.
+- **Build Multi-Digit Numbers**: Create larger numbers when beneficial, but be cautious of how they impact the total.
+
+Enjoy the challenge and may the most cunning mathematician win!

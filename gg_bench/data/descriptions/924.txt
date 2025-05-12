@@ -1,0 +1,176 @@
+# Game Name: Sum Stack
+
+## Objective
+
+**Primary Goal:**  
+Be the last player to make a valid move without causing the cumulative sum of the shared stack to exceed **50**. The objective is to strategically add numbers to a shared stack, forcing your opponent into a position where they cannot make a valid move.
+
+**Victory Condition:**  
+- **Win:** You win if you successfully add a number to the stack without exceeding the total sum limit of 50, and your opponent cannot make a valid move on their turn.
+- **Loss:** You lose if you cannot make a valid move on your turn without exceeding the total sum of 50.
+
+## Setup
+
+1. **Players:** Two players are required, referred to as **Player 1** and **Player 2**.
+2. **Initial State:** The game begins with an empty shared stack and a cumulative total sum of **0**.
+3. **Order of Play:** Decide who will be Player 1 and Player 2 (e.g., by mutual agreement or by a random method like a coin toss). Players will alternate turns throughout the game.
+
+## Game Components
+
+- **Shared Stack:** A list that keeps track of all numbers added by both players during the game.
+- **Total Sum:** The cumulative sum of all numbers in the shared stack.
+- **Available Numbers:** Integers from **1** to **9** (inclusive).
+
+## Turns
+
+On each turn, the active player performs the following steps:
+
+1. **Select a Number:**
+   - Choose any integer between **1** and **9** (inclusive).
+   - The chosen number must not cause the total sum to exceed **50** when added to the current total sum.
+
+2. **Add to Stack:**
+   - Place (push) the selected number onto the top of the shared stack.
+
+3. **Update Total Sum:**
+   - Add the selected number to the current total sum.
+
+4. **Declare Move:**
+   - Announce the chosen number and the new total sum.
+
+5. **Turn Progression:**
+   - The turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - You must select a number between **1** and **9**.
+   - The selected number, when added to the total sum, must not exceed **50**.
+   - If only certain numbers are valid (due to the total sum approaching **50**), you must choose from those numbers.
+
+2. **Winning the Game:**
+   - If you make a move that brings the total sum to exactly **50**, you win immediately.
+   - If your opponent cannot make a valid move on their turn (any number they choose will exceed **50**), you win.
+
+3. **Forcing a Loss:**
+   - Strategy involves trying to force your opponent into a position where they have no valid moves.
+   - Plan your moves to control the progression of the total sum.
+
+4. **Invalid Moves:**
+   - If a player cannot make a valid move on their turn, they lose.
+   - If a player mistakenly adds a number that causes the total sum to exceed **50**, they lose immediately.
+
+5. **Game End:**
+   - The game ends when one player wins according to the conditions above.
+
+## Scoring
+
+- **Tracking Progress:**
+  - Keep track of the shared stack and the total sum after each turn.
+  - No points are awarded; the outcome is a win or a loss for each game.
+
+- **Determining Overall Winner:**
+  - Players may choose to play multiple rounds.
+  - The player who wins the most rounds can be declared the overall winner.
+
+## Examples
+
+### Example Game Play
+
+**Initial State:**
+- Shared Stack: `[]`
+- Total Sum: `0`
+
+**Player 1's Turn:**
+- Chooses number: `5`
+- Shared Stack: `[5]`
+- Total Sum: `5`
+- Announces: "I choose 5. Total sum is now 5."
+
+**Player 2's Turn:**
+- Chooses number: `9`
+- Shared Stack: `[5, 9]`
+- Total Sum: `14`
+- Announces: "I choose 9. Total sum is now 14."
+
+**Player 1's Turn:**
+- Chooses number: `9`
+- Shared Stack: `[5, 9, 9]`
+- Total Sum: `23`
+- Announces: "I choose 9. Total sum is now 23."
+
+**Player 2's Turn:**
+- Chooses number: `9`
+- Shared Stack: `[5, 9, 9, 9]`
+- Total Sum: `32`
+- Announces: "I choose 9. Total sum is now 32."
+
+**Player 1's Turn:**
+- Chooses number: `9`
+- Shared Stack: `[5, 9, 9, 9, 9]`
+- Total Sum: `41`
+- Announces: "I choose 9. Total sum is now 41."
+
+**Player 2's Turn:**
+- Must select a number between 1 and 9 without exceeding a total sum of 50.
+- Maximum allowed number is `9` (since 41 + 9 = 50).
+- Chooses number: `9`
+- Shared Stack: `[5, 9, 9, 9, 9, 9]`
+- Total Sum: `50`
+- Announces: "I choose 9. Total sum is now 50. I win!"
+
+**Game Result:**
+- Player 2 wins by bringing the total sum to exactly 50.
+
+### Example Command-Line Interaction
+
+```
+Welcome to Sum Stack!
+
+Total Sum: 0
+
+Player 1's Turn:
+Choose a number between 1 and 9: 7
+You chose 7.
+Total Sum is now 7.
+
+Player 2's Turn:
+Choose a number between 1 and 9: 8
+You chose 8.
+Total Sum is now 15.
+
+Player 1's Turn:
+Choose a number between 1 and 9: 9
+You chose 9.
+Total Sum is now 24.
+
+Player 2's Turn:
+Choose a number between 1 and 9: 9
+You chose 9.
+Total Sum is now 33.
+
+Player 1's Turn:
+Choose a number between 1 and 9: 8
+You chose 8.
+Total Sum is now 41.
+
+Player 2's Turn:
+Choose a number between 1 and 9: 9
+You chose 9.
+Total Sum is now 50.
+
+Player 2 wins! Congratulations!
+```
+
+## Strategic Tips
+
+- **Plan Ahead:** Always be aware of the current total sum and calculate how your choice will affect the next turn.
+- **Control the Game:** Try to force the total sum into numbers where the opponent has limited options.
+- **Avoid Risky Moves:** Be cautious when the total sum is approaching 50. Selecting a smaller number might prevent giving your opponent an easy win.
+- **Predict Opponent's Moves:** Anticipate which numbers your opponent might choose and strategize accordingly.
+
+## Summary
+
+Sum Stack is a simple yet strategic game that requires players to make careful choices to outmaneuver their opponent. By understanding the mechanics and employing strategic thinking, a skilled player can consistently win against less experienced opponents. The game is easy to code and play in a command-line interface, making it accessible and engaging for players of all levels.
+
+Enjoy the challenge, and may the best strategist win!

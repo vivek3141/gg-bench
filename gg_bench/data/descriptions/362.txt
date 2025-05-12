@@ -1,0 +1,296 @@
+# **Factor Duel**
+
+## **Objective**
+
+Become the last player able to make a valid move by factoring numbers. The goal is to strategically factor numbers to force your opponent into a position where they cannot factor the current number because it is a prime number.
+
+---
+
+## **Setup**
+
+1. **Starting Number (N):**
+   - Agree on a starting composite number. This number should be an integer greater than 1 that is not prime (i.e., it has factors other than 1 and itself).
+   - For a quick game, choose a small composite number (e.g., 30, 48, 60).
+   - For increased complexity, select a larger composite number.
+
+2. **Determine Turn Order:**
+   - Decide which player will take the first turn. This can be done by mutual agreement or by a random method such as flipping a coin.
+
+3. **Initial Conditions:**
+   - Set the **Current Number** to the starting number **N**.
+   - Both players should have a way to perform basic arithmetic and factorization (e.g., paper and pencil, calculator, or mental math).
+
+---
+
+## **Game Components**
+
+- **Current Number:**
+  - A single integer that changes throughout the game based on players' moves.
+  - Initially set to the agreed-upon starting number **N**.
+  - The focus of each turn; players will factor this number.
+
+- **No Physical Components Needed:**
+  - The game is played using numbers and basic arithmetic operations.
+  - Ideal for a command-line interface or textual interaction.
+
+---
+
+## **Turns**
+
+1. **Player's Turn Structure:**
+   - **Factoring:**
+     - The player factors the **Current Number** into two integers greater than 1.
+     - Both factors must multiply together to equal the **Current Number**.
+     - Example: If the **Current Number** is 18, valid factors could be (2,9), (3,6).
+
+   - **Selecting the New Current Number:**
+     - The player chooses one of the two factors to become the **New Current Number** for the next turn.
+     - The unused factor is discarded and plays no further role in the game.
+
+2. **Passing the Turn:**
+   - Once the **New Current Number** is selected, the turn ends.
+   - The opponent's turn begins with the **Current Number** set to the chosen factor.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Valid Moves:**
+   - Players must factor the **Current Number** into two integers greater than 1.
+   - Both factors must be whole numbers; decimal or fractional factors are not allowed.
+   - The factors cannot be 1 or the **Current Number** itself.
+
+2. **Prime Numbers:**
+   - If the **Current Number** is a prime number, it cannot be factored further.
+   - The player faced with a prime **Current Number** and unable to make a valid move loses the game.
+
+3. **Winning the Game:**
+   - The player who forces their opponent into a position where the **Current Number** is prime wins.
+   - There are no draw conditions; the game always results in a win or loss.
+
+4. **Forbidden Moves:**
+   - Players cannot pass their turn; they must factor the **Current Number** if possible.
+   - Providing incorrect factors or attempting to factor a prime number results in an immediate loss.
+
+---
+
+## **Scoring**
+
+- **Win/Loss Outcome:**
+  - The game is won by the last player to make a valid move.
+  - No points are tallied; the outcome is simply a win or a loss.
+
+- **Match Series (Optional):**
+  - Players can agree to play a series of games.
+  - Keep track of wins to determine an overall champion.
+
+---
+
+## **Examples**
+
+### **Sample Game 1**
+
+**Starting Number (N):** 60
+
+---
+
+**Player 1's Turn:**
+
+- **Current Number:** 60
+- **Possible Factors:** (2,30), (3,20), (4,15), (5,12), (6,10)
+- **Chosen Factors:** 6 and 10
+- **Selected New Current Number:** **6**
+
+**Player 2's Turn:**
+
+- **Current Number:** 6
+- **Possible Factors:** (2,3)
+- **Chosen Factors:** 2 and 3
+- **Selected New Current Number:** **2**
+
+**Player 1's Turn:**
+
+- **Current Number:** 2
+- **Since 2 is prime, Player 1 cannot make a move.**
+
+**Result:** Player 2 wins the game.
+
+---
+
+### **Sample Game 2**
+
+**Starting Number (N):** 105
+
+---
+
+**Player 1's Turn:**
+
+- **Current Number:** 105
+- **Possible Factors:** (3,35), (5,21), (7,15)
+- **Chosen Factors:** 5 and 21
+- **Selected New Current Number:** **21**
+
+**Player 2's Turn:**
+
+- **Current Number:** 21
+- **Possible Factors:** (3,7)
+- **Chosen Factors:** 3 and 7
+- **Selected New Current Number:** **7**
+
+**Player 1's Turn:**
+
+- **Current Number:** 7
+- **Since 7 is prime, Player 1 cannot make a move.**
+
+**Result:** Player 2 wins the game.
+
+---
+
+## **Strategic Tips**
+
+- **Plan Ahead:**
+  - Anticipate the possible resulting numbers your opponent will face after your move.
+  - Aim to leave them with numbers that are either prime or have limited factoring options.
+
+- **Avoid Small Composite Numbers Early:**
+  - Leaving your opponent with a small composite number (like 4, 6, 9) can backfire since they can easily factor them into primes that could be unfavorable for you.
+
+- **Consider the Factor Pairs:**
+  - Choose factor pairs that allow you to control the flow of the game.
+  - Be cautious of selecting factors that lead to your opponent having an easy winning move.
+
+---
+
+## **Command-Line Interaction Examples**
+
+### **Example 1**
+
+```
+Game Start! The starting number is 60.
+
+Player 1's turn.
+
+Current number: 60
+
+Enter two factors of 60 (both greater than 1):
+
+Player 1 enters: 6 10
+
+Select the new current number (6 or 10):
+
+Player 1 selects: 6
+
+---
+
+Player 2's turn.
+
+Current number: 6
+
+Enter two factors of 6 (both greater than 1):
+
+Player 2 enters: 2 3
+
+Select the new current number (2 or 3):
+
+Player 2 selects: 2
+
+---
+
+Player 1's turn.
+
+Current number: 2
+
+2 is a prime number and cannot be factored further.
+
+Player 1 cannot make a move.
+
+Player 2 wins the game!
+```
+
+---
+
+### **Example 2**
+
+```
+Game Start! The starting number is 105.
+
+Player 1's turn.
+
+Current number: 105
+
+Enter two factors of 105 (both greater than 1):
+
+Player 1 enters: 5 21
+
+Select the new current number (5 or 21):
+
+Player 1 selects: 21
+
+---
+
+Player 2's turn.
+
+Current number: 21
+
+Enter two factors of 21 (both greater than 1):
+
+Player 2 enters: 3 7
+
+Select the new current number (3 or 7):
+
+Player 2 selects: 7
+
+---
+
+Player 1's turn.
+
+Current number: 7
+
+7 is a prime number and cannot be factored further.
+
+Player 1 cannot make a move.
+
+Player 2 wins the game!
+```
+
+---
+
+## **Advanced Strategies**
+
+- **Forcing Moves:**
+  - Try to force your opponent into a position where all their potential moves lead to you having an advantage.
+
+- **Controlling the Number Size:**
+  - Keep the current number within a range that limits your opponent's options.
+
+- **Memory and Calculation:**
+  - Keep track of which numbers have limited factors to avoid accidentally giving your opponent an easy win.
+
+---
+
+## **Additional Variants (Optional)**
+
+### **Variant 1: Multiple Starting Numbers**
+
+- **Gameplay:**
+  - Instead of starting with a single number, use a sequence of starting numbers.
+  - Players alternate starting the game with different numbers, adding depth and variety.
+
+### **Variant 2: Scoring System**
+
+- **Gameplay:**
+  - Assign points based on the difficulty of the win.
+  - For example, winning with a larger prime number as the final **Current Number** earns more points.
+  - First player to reach a predetermined point total wins the match.
+
+---
+
+## **Conclusion**
+
+"Factor Duel" is a simple yet strategically rich game that combines basic arithmetic with forward-thinking tactics. It is easy to learn and quick to play, making it ideal for a command-line interface. Players must use their knowledge of numbers and factoring to outsmart their opponent, ensuring that a skilled player can consistently gain an advantage over an unskilled player.
+
+Whether played casually or competitively, "Factor Duel" offers engaging gameplay that challenges players to think ahead and make calculated decisions. Enjoy the battle of wits as you factor your way to victory!
+
+---
+
+Feel free to adapt the starting number and incorporate your own strategies as you become more familiar with the game. Happy factoring!

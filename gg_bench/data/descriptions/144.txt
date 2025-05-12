@@ -1,0 +1,145 @@
+# Multiplication Showdown
+
+## Objective
+
+The objective of **Multiplication Showdown** is to avoid being the player who causes the cumulative product to reach or exceed **1,000**. Players take turns selecting numbers from a shared pool and multiplying them with a cumulative product. Strategic selection is key, as players must anticipate the results of their choices to avoid reaching the losing threshold.
+
+## Setup
+
+- **Players**: 2
+- **Initial Cumulative Product**: 1
+- **Number Pool**: Digits **2** through **9**, inclusive.
+
+## Game Components
+
+### Cumulative Product
+
+- **Description**: A running total that starts at **1** and is updated by multiplying the selected numbers.
+- **Functionality**: Represents the product of all numbers selected so far.
+- **Unique Attribute**: The key element determining the game's outcome; reaching or exceeding **1,000** results in a loss.
+
+### Number Pool
+
+- **Description**: A set of digits from **2** to **9**.
+- **Functionality**: Players select numbers from this pool on their turns.
+- **Unique Attribute**: Each number can be selected only once per game.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss). Turns alternate between the two players.
+- **Actions on a Turn**:
+  1. **Select a Number**: Choose an unused number from the number pool.
+  2. **Multiply**: Multiply the cumulative product by the selected number.
+  3. **Update**: The new product becomes the cumulative product for the next turn.
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- On your turn, select **one** unused number from the number pool.
+- Numbers range from **2** to **9**.
+- Once a number is selected, it is **removed** from the pool and cannot be chosen again.
+
+### 2. Updating the Cumulative Product
+
+- Multiply the **current cumulative product** by your selected number.
+- Update the cumulative product to this new value.
+- Example: If the current cumulative product is **9** and you select **5**, the new cumulative product is **9 × 5 = 45**.
+
+### 3. Losing Condition
+
+- If your move causes the cumulative product to **reach or exceed 1,000**, you **lose** the game.
+- The game ends immediately when this condition is met.
+
+### 4. Winning Condition
+
+- You **win** if your opponent causes the cumulative product to reach or exceed **1,000** on their turn.
+- Play strategically to force your opponent into a losing move.
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who does **not** cause the cumulative product to reach or exceed **1,000**.
+- **No Point System**: The game is a single-round win/loss scenario with no cumulative scoring.
+
+## Examples
+
+### Example Game Play
+
+**Starting Conditions**
+
+- **Cumulative Product**: 1
+- **Available Numbers**: 2, 3, 4, 5, 6, 7, 8, 9
+
+**Turn 1**
+
+- **Player 1** selects **9**.
+  - New Cumulative Product: **1 × 9 = 9**
+- **Available Numbers**: 2, 3, 4, 5, 6, 7, 8
+
+**Turn 2**
+
+- **Player 2** selects **8**.
+  - New Cumulative Product: **9 × 8 = 72**
+- **Available Numbers**: 2, 3, 4, 5, 6, 7
+
+**Turn 3**
+
+- **Player 1** selects **7**.
+  - New Cumulative Product: **72 × 7 = 504**
+- **Available Numbers**: 2, 3, 4, 5, 6
+
+**Turn 4**
+
+- **Player 2** evaluates options:
+  - Remaining numbers: **2, 3, 4, 5, 6**
+  - Potential new products:
+    - **504 × 2 = 1,008** (exceeds 1,000, results in loss)
+    - **504 × 3 = 1,512** (exceeds 1,000, results in loss)
+    - **504 × 4 = 2,016** (exceeds 1,000, results in loss)
+    - **504 × 5 = 2,520** (exceeds 1,000, results in loss)
+    - **504 × 6 = 3,024** (exceeds 1,000, results in loss)
+- **Player 2** must select a number.
+- **Player 2** selects **2**, causing the cumulative product to become **1,008**.
+- **Player 2 loses** the game.
+
+### Command-Line Interaction Sample
+
+```
+Game Start!
+Cumulative Product: 1
+Available Numbers: 2 3 4 5 6 7 8 9
+
+Player 1's Turn
+Select a number: 9
+Updated Cumulative Product: 1 x 9 = 9
+Available Numbers: 2 3 4 5 6 7 8
+
+Player 2's Turn
+Select a number: 8
+Updated Cumulative Product: 9 x 8 = 72
+Available Numbers: 2 3 4 5 6 7
+
+Player 1's Turn
+Select a number: 7
+Updated Cumulative Product: 72 x 7 = 504
+Available Numbers: 2 3 4 5 6
+
+Player 2's Turn
+Select a number: 2
+Updated Cumulative Product: 504 x 2 = 1008
+Cumulative Product has reached 1008
+
+Player 2 loses! Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the results of your moves and your opponent's possible responses.
+- **Control High Numbers**: Early in the game, consider taking higher numbers to limit your opponent's options later.
+- **Force the Loss**: Aim to leave your opponent with no safe moves by controlling the cumulative product and available numbers.
+
+## Conclusion
+
+Multiplication Showdown is a quick and engaging game that combines simple arithmetic with strategic planning. With each move, players must carefully consider the immediate and future impacts on the cumulative product to outmaneuver their opponent and avoid crossing the critical threshold of 1,000.
+
+Enjoy the game, and may the most strategic player win!

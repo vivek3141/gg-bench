@@ -1,0 +1,218 @@
+# Pathway Pursuit Rule Book
+
+## Objective
+
+**Pathway Pursuit** is a two-player, turn-based strategy game played on a 5x5 grid. The primary goal is to be the first player to create a continuous path connecting any two opposite edges of the grid (top to bottom or left to right), using numbers that sum to **exactly 15**. Each player places numbers on the grid, aiming to build their path while strategically blocking their opponent.
+
+## Setup
+
+- **Game Board**: A 5x5 grid with cells numbered from `(1,1)` to `(5,5)`, representing rows and columns.
+- **Starting Conditions**: The grid is initially empty.
+- **Player Symbols**:
+  - **Player 1** uses the symbol `X`.
+  - **Player 2** uses the symbol `O`.
+
+## Game Components
+
+- **Numbers**: Digits from **1** to **9**.
+  - Each player has unlimited access to all numbers between 1 and 9.
+  - Numbers are placed on the grid and are associated with the player who placed them.
+- **Grid Positions**:
+  - Each cell in the grid can hold one number.
+  - Cells are referenced by their coordinates `(row, column)`.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions per Turn**:
+  - **Place a Number**:
+    - Select any unused, empty cell on the grid.
+    - Choose a number from **1** to **9**.
+    - Place the chosen number in the selected cell.
+    - Mark the number with your symbol (`X` or `O`) to indicate ownership.
+- **Turn Progression**:
+  - After placing a number, the turn passes to the other player.
+  - Once placed, numbers remain on the grid for the rest of the game.
+
+## Rules and Mechanics
+
+### Building Paths
+
+- **Objective Path**:
+  - **Player 1** aims to connect the **left edge** to the **right edge**.
+  - **Player 2** aims to connect the **top edge** to the **bottom edge**.
+- **Creating a Path**:
+  - A path consists of adjacent cells occupied by the player's own numbers.
+  - Cells are considered adjacent if they touch horizontally, vertically, or diagonally.
+- **Winning Condition**:
+  - The sum of the numbers in the continuous path must be **exactly 15**.
+  - The path must connect the player's designated opposite edges.
+- **Blocking**:
+  - Players can place numbers to block their opponent's potential paths.
+  - Numbers placed by one player cannot be used in the opponent's path.
+
+### Number Placement Rules
+
+- **Number Selection**:
+  - Players may choose any number from **1** to **9** on their turn.
+  - There is no limit to how many times a number can be used in the game.
+- **Cell Occupancy**:
+  - Once a cell has a number placed in it, it cannot be changed or removed.
+- **Ownership**:
+  - Numbers are marked with the placing player's symbol and belong to that player.
+  - Only a player's own numbers can be used to form their path.
+
+### Victory and End of Game
+
+- **Winning the Game**:
+  - A player wins immediately upon creating a valid path that meets the winning condition.
+- **No Draws**:
+  - The game continues until one player achieves victory.
+  - With finite grid spaces and the blocking mechanic, a win is always possible.
+
+## Scoring
+
+- **Tracking Progress**:
+  - Players should keep track of the sums of potential paths as they place numbers.
+  - There is no point system; the game is won by achieving the objective.
+- **Sum Calculation**:
+  - Only include the numbers in the continuous path when calculating the sum.
+  - The sum must be **exactly 15** to satisfy the winning condition.
+
+## Example Gameplay
+
+### Sample Grid Positions
+
+```
+(1,1) (1,2) (1,3) (1,4) (1,5)
+(2,1) (2,2) (2,3) (2,4) (2,5)
+(3,1) (3,2) (3,3) (3,4) (3,5)
+(4,1) (4,2) (4,3) (4,4) (4,5)
+(5,1) (5,2) (5,3) (5,4) (5,5)
+```
+
+### Sample Turns
+
+1. **Player 1's Turn**:
+   - Chooses number **5**.
+   - Places **5** at position `(3,1)`.
+   - Marks it with `X`.
+
+2. **Player 2's Turn**:
+   - Chooses number **6**.
+   - Places **6** at position `(1,3)`.
+   - Marks it with `O`.
+
+3. **Player 1's Turn**:
+   - Chooses number **7**.
+   - Places **7** at position `(4,2)`, adjacent to their previous `5`.
+   - Marks it with `X`.
+
+4. **Player 2's Turn**:
+   - Chooses number **2**.
+   - Places **2** at position `(2,3)`, aiming to connect to `(1,3)`.
+   - Marks it with `O`.
+
+5. **Player 1's Turn**:
+   - Chooses number **3**.
+   - Places **3** at position `(5,3)`, connecting to `(4,2)`.
+   - Marks it with `X`.
+
+6. **Player 2's Turn**:
+   - Chooses number **7**.
+   - Places **7** at position `(3,3)`, connecting to `(2,3)` and `(1,3)`.
+   - Marks it with `O`.
+
+### Evaluating for a Win
+
+- **Player 1's Path**:
+  - Numbers at positions `(3,1)`, `(4,2)`, `(5,3)`:
+    - Sum: `5 + 7 + 3 = 15`.
+    - Path connects from left edge (column 1) to right edge (column 5): **Not yet**.
+    - **Player 1** hasn't won yet.
+
+- **Player 2's Path**:
+  - Numbers at positions `(1,3)`, `(2,3)`, `(3,3)`:
+    - Sum: `6 + 2 + 7 = 15`.
+    - Path connects from top edge (row 1) to bottom edge (row 5): **Not yet**.
+    - **Player 2** hasn't won yet.
+
+### Continuing the Game
+
+Players continue to take turns, strategically placing numbers to complete their paths while blocking their opponent. The first to create a valid path that sums to exactly 15 and connects their designated edges wins the game.
+
+## Strategy Tips
+
+- **Plan Ahead**:
+  - Think multiple moves ahead to build your path efficiently.
+- **Blocking**:
+  - Anticipate your opponent's path and place numbers to interrupt it.
+- **Number Selection**:
+  - Use a combination of high and low numbers to reach the exact sum of 15.
+- **Controlled Aggression**:
+  - Balance between advancing your path and hindering your opponent.
+
+## Command-Line Interaction Example
+
+### Initial Prompt
+
+```
+Welcome to Pathway Pursuit!
+Player 1 (X), you go first.
+```
+
+### Turn Sequence
+
+1. **Player 1's Turn**:
+   ```
+   Player 1, enter your move.
+   Select a number (1-9): 5
+   Select a position (row,column): 3,1
+   ```
+
+2. **Player 2's Turn**:
+   ```
+   Player 2, enter your move.
+   Select a number (1-9): 6
+   Select a position (row,column): 1,3
+   ```
+
+3. **Player 1's Turn**:
+   ```
+   Player 1, enter your move.
+   Select a number (1-9): 7
+   Select a position (row,column): 4,2
+   ```
+
+4. **Player 2's Turn**:
+   ```
+   Player 2, enter your move.
+   Select a number (1-9): 2
+   Select a position (row,column): 2,3
+   ```
+
+### Grid Display
+
+After each turn, the game displays the current grid:
+
+```
+Current Grid:
+(1,1): .   (1,2): .   (1,3): O6  (1,4): .   (1,5): .
+(2,1): .   (2,2): .   (2,3): O2  (2,4): .   (2,5): .
+(3,1): X5  (3,2): .   (3,3): .   (3,4): .   (3,5): .
+(4,1): .   (4,2): X7  (4,3): .   (4,4): .   (4,5): .
+(5,1): .   (5,2): .   (5,3): .   (5,4): .   (5,5): .
+```
+
+### Winning Announcement
+
+```
+Congratulations, Player 1! You have connected the left edge to the right edge with a sum of 15.
+You win!
+```
+
+## Conclusion
+
+**Pathway Pursuit** combines strategic placement, numerical summing, and spatial awareness to create an engaging and competitive game. With simple rules and straightforward mechanics, it's easy to learn but offers depth for players to develop and refine their strategies.
+
+Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,167 @@
+# Palindrome Quest
+
+## Objective
+
+**Palindrome Quest** is a two-player turn-based game where the goal is to be the first player to create a multi-digit palindromic number. Players take turns appending digits to a shared number, aiming to form a palindrome (a number that reads the same forward and backward). Strategic planning is crucial, as each move can set up opportunities for victory or defeat.
+
+## Setup
+
+1. **Initial Number**: The game starts with a shared number `N`, initialized to `0`.
+2. **Maximum Length**: Players agree on a maximum length `L` for the number to prevent the game from continuing indefinitely (e.g., `L = 9` digits).
+
+## Game Components
+
+- **Shared Number (`N`)**: Displayed to both players, representing the current state of the game.
+- **Digits (1-9)**: A set of digits that players can choose from to append to `N` on their turn.
+- **Command-Line Interface**: Players input their chosen digit through the command line, and the game displays the updated number after each turn.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Player Actions**:
+  - **Select a Digit**: On your turn, choose any digit from `1` to `9`.
+  - **Append Digit**: Append the chosen digit to the right end of the current number `N` to form a new number.
+  - **Update Number**: The new number becomes the current `N` for the next turn.
+
+## Rules and Mechanics
+
+1. **Starting the Game**:
+   - The initial number `N` is `0`.
+   - Single-digit numbers are **not** considered palindromes for winning.
+
+2. **Appending Digits**:
+   - Only digits `1` through `9` may be appended (no zeros).
+   - Players cannot skip their turn; a digit must be appended.
+
+3. **Winning Condition**:
+   - If, after appending a digit, the new `N` is a multi-digit palindrome, the player wins immediately.
+
+4. **Maximum Length Rule**:
+   - If the number of digits in `N` reaches the agreed maximum length `L` without producing a palindrome, the player who made the last move **loses** the game.
+   - This rule encourages players to strategize and prevents the game from stalling.
+
+5. **Strategy Considerations**:
+   - Players should aim to form a palindrome while preventing their opponent from doing so.
+   - Consider the implications of each appended digit on future moves.
+
+## Scoring
+
+- **Winning**: The player who forms a multi-digit palindrome first is declared the winner.
+- **Losing**: If the maximum length `L` is reached without a palindrome, the player who made the last move loses, and their opponent wins.
+
+## Examples
+
+### Example 1: Player Wins by Forming a Palindrome
+
+- **Maximum Length**: `L = 5`
+- **Initial Number**: `N = 0`
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - Appends digit `1`.
+   - New `N`: `1` (single-digit, not a palindrome).
+
+2. **Player 2's Turn**:
+   - Appends digit `2`.
+   - New `N`: `12` (not a palindrome).
+
+3. **Player 1's Turn**:
+   - Appends digit `3`.
+   - New `N`: `123` (not a palindrome).
+
+4. **Player 2's Turn**:
+   - Appends digit `2`.
+   - New `N`: `1232` (not a palindrome).
+
+5. **Player 1's Turn**:
+   - Appends digit `1`.
+   - New `N`: `12321` (palindrome).
+
+**Outcome**: Player 1 wins by creating the palindrome `12321`.
+
+### Example 2: Player Loses by Reaching Maximum Length
+
+- **Maximum Length**: `L = 4`
+- **Initial Number**: `N = 0`
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - Appends digit `2`.
+   - New `N`: `2` (single-digit, not a palindrome).
+
+2. **Player 2's Turn**:
+   - Appends digit `3`.
+   - New `N`: `23` (not a palindrome).
+
+3. **Player 1's Turn**:
+   - Appends digit `4`.
+   - New `N`: `234` (not a palindrome).
+
+4. **Player 2's Turn**:
+   - Appends digit `5`.
+   - New `N`: `2345` (not a palindrome).
+   - The length of `N` is now `4`, which is the maximum length.
+
+**Outcome**: Player 2 made the last move and reached the maximum length without forming a palindrome. Player 2 loses, and Player 1 wins.
+
+### Example 3: Strategic Play to Block Opponent
+
+- **Maximum Length**: `L = 7`
+- **Initial Number**: `N = 0`
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - Appends digit `1`.
+   - New `N`: `1`.
+
+2. **Player 2's Turn**:
+   - Appends digit `2`.
+   - New `N`: `12`.
+
+3. **Player 1's Turn**:
+   - Appends digit `1`.
+   - New `N`: `121` (palindrome).
+
+**Outcome**: Player 1 wins by creating the palindrome `121`.
+
+## Command-Line Interaction Example
+
+**Game Start**:
+
+```
+Welcome to Palindrome Quest!
+The initial number is 0.
+Maximum length is set to 5 digits.
+Player 1, it's your turn.
+```
+
+**Player Turns**:
+
+- **Player 1**:
+
+  ```
+  Choose a digit to append (1-9): 1
+  The new number is: 1
+  ```
+
+- **Player 2**:
+
+  ```
+  Choose a digit to append (1-9): 2
+  The new number is: 12
+  ```
+
+- **Player 1**:
+
+  ```
+  Choose a digit to append (1-9): 1
+  The new number is: 121
+  Congratulations, Player 1! You've created the palindrome 121 and won the game!
+  ```
+
+## Summary
+
+**Palindrome Quest** is a simple yet strategic game that requires players to think ahead and anticipate their opponent's moves. By carefully selecting which digits to append, players can build towards creating a palindrome or block their opponent from doing so. The game is easy to code and play in a command-line interface, ensuring quick gameplay with no possibility of a draw.

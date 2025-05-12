@@ -1,0 +1,267 @@
+# Number Slide: A Two-Player Command-Line Game
+
+## Objective
+
+**Number Slide** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to reach a total score of exactly **15** by strategically adding or subtracting numbers from a shared sequence. Players must carefully choose numbers and operations to manipulate their total score while anticipating their opponent's moves. The game ends when a player successfully reaches the target score of 15.
+
+## Setup
+
+1. **Shared Sequence**: Create a shared sequence of numbers arranged in a single row. The sequence consists of the digits from **1** to **9** arranged in ascending order:
+
+   ```
+   [1] [2] [3] [4] [5] [6] [7] [8] [9]
+   ```
+
+2. **Player Totals**: Both players start with a **total score of 0**.
+
+3. **Player Order**: Decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Shared Sequence**: The central element of the game is the sequence of numbers from 1 to 9. These numbers are accessible to both players and form the pool from which numbers are selected during the game.
+
+- **Player Totals**: Each player maintains their own total score, starting at 0. This total is updated each turn based on the number selected and the operation performed.
+
+- **Operations**: Players can choose to **add** or **subtract** the selected number to or from their total score.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Select a Number**: On your turn, choose a number from **either end** (the first or last number) of the shared sequence.
+  2. **Choose an Operation**: Decide whether to **add** or **subtract** the chosen number to/from your total score.
+  3. **Update the Sequence**: Remove the selected number from the shared sequence.
+  4. **Update Total Score**: Apply the operation and adjust your total score accordingly.
+  5. **Announce Move**: Declare your chosen number, operation, and new total score.
+  6. **Check for Win Condition**: If your total score is exactly 15, you win the game.
+
+- **Turn Progression**: Players alternate turns until the game ends. Ensure that each player's actions are clearly communicated to maintain game flow.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - You may only select a number from either **end** of the shared sequence (i.e., the first or last remaining number).
+   - Once a number is selected and removed, it is no longer available for either player.
+
+2. **Operations**:
+   - After selecting a number, you must choose to **add** or **subtract** it from your current total score.
+   - Your total score can be **positive**, **negative**, or **zero** during the game.
+
+3. **Winning the Game**:
+   - The **first player** to reach a total score of **exactly 15** wins the game.
+   - If both players reach 15 on the same round, the game continues until a player reaches 15 while the opponent does not.
+
+4. **Invalid Moves**:
+   - If a player cannot make a valid move (e.g., no numbers remain in the sequence), the game continues until a win condition is met.
+   - Players **cannot skip** their turn; a number must be selected if available.
+
+5. **End of the Sequence**:
+   - The game can continue even if all numbers have been used, as the win condition depends solely on reaching a total score of 15.
+   - If neither player reaches 15 after all numbers have been used, the game ends in a **loss for both players**.
+
+## Scoring
+
+- **Tracking Scores**:
+  - Each player keeps a running total of their score after each turn.
+  - Scores are updated based on the selected number and chosen operation.
+
+- **Victory Condition**:
+  - The **sole scoring objective** is to reach a total score of **exactly 15**.
+  - There are no additional points or scoring mechanisms.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**:
+
+- Shared Sequence:
+
+  ```
+  [1] [2] [3] [4] [5] [6] [7] [8] [9]
+  ```
+
+- Player Totals:
+  - Player 1 Total: 0
+  - Player 2 Total: 0
+
+---
+
+**Turn 1**:
+- **Player 1** selects **9** from the end of the sequence.
+- Chooses to **add** 9 to their total.
+- **Player 1 Total**: 0 + 9 = **9**
+- Updated Sequence:
+
+  ```
+  [1] [2] [3] [4] [5] [6] [7] [8]
+  ```
+
+---
+
+**Turn 2**:
+- **Player 2** selects **1** from the start of the sequence.
+- Chooses to **add** 1 to their total.
+- **Player 2 Total**: 0 + 1 = **1**
+- Updated Sequence:
+
+  ```
+  [2] [3] [4] [5] [6] [7] [8]
+  ```
+
+---
+
+**Turn 3**:
+- **Player 1** selects **8** from the end.
+- Chooses to **add** 8 to their total.
+- **Player 1 Total**: 9 + 8 = **17**
+- Updated Sequence:
+
+  ```
+  [2] [3] [4] [5] [6] [7]
+  ```
+
+---
+
+**Turn 4**:
+- **Player 2** selects **2** from the start.
+- Chooses to **subtract** 2 from their total.
+- **Player 2 Total**: 1 - 2 = **-1**
+- Updated Sequence:
+
+  ```
+  [3] [4] [5] [6] [7]
+  ```
+
+---
+
+**Turn 5**:
+- **Player 1** selects **7** from the end.
+- Chooses to **subtract** 7 from their total.
+- **Player 1 Total**: 17 - 7 = **10**
+- Updated Sequence:
+
+  ```
+  [3] [4] [5] [6]
+  ```
+
+---
+
+**Turn 6**:
+- **Player 2** selects **3** from the start.
+- Chooses to **add** 3 to their total.
+- **Player 2 Total**: -1 + 3 = **2**
+- Updated Sequence:
+
+  ```
+  [4] [5] [6]
+  ```
+
+---
+
+**Turn 7**:
+- **Player 1** selects **6** from the end.
+- Chooses to **add** 6 to their total.
+- **Player 1 Total**: 10 + 6 = **16**
+- Updated Sequence:
+
+  ```
+  [4] [5]
+  ```
+
+---
+
+**Turn 8**:
+- **Player 2** selects **4** from the start.
+- Chooses to **add** 4 to their total.
+- **Player 2 Total**: 2 + 4 = **6**
+- Updated Sequence:
+
+  ```
+  [5]
+  ```
+
+---
+
+**Turn 9**:
+- **Player 1** selects **5**, the only remaining number.
+- Chooses to **subtract** 5 from their total.
+- **Player 1 Total**: 16 - 5 = **11**
+- Updated Sequence:
+
+  ```
+  []
+  ```
+
+---
+
+**End of Game**:
+
+- All numbers have been used.
+- Neither player has reached a total score of 15.
+- **Result**: Loss for both players as the win condition was not met.
+
+---
+
+## Command-Line Interaction Example
+
+Below is an example of how the game could be played in a command-line interface.
+
+---
+
+**Initial Prompt**:
+
+```
+Welcome to Number Slide!
+
+Initial Sequence: [1] [2] [3] [4] [5] [6] [7] [8] [9]
+
+Player 1 Total: 0
+Player 2 Total: 0
+
+Player 1, it's your turn.
+Choose a number from the ends: 1 or 9
+```
+
+**Player 1 Input**:
+
+```
+I choose 9 and will add it to my total.
+```
+
+**Output**:
+
+```
+Player 1 selected 9 and added it to their total.
+Player 1 Total: 9
+
+Updated Sequence: [1] [2] [3] [4] [5] [6] [7] [8]
+
+Player 2, it's your turn.
+Choose a number from the ends: 1 or 8
+```
+
+**Player 2 Input**:
+
+```
+I choose 1 and will add it to my total.
+```
+
+_(Continue the game following the same pattern...)_
+
+---
+
+## Strategy Tips
+
+- **Balance Addition and Subtraction**: Consider both adding and subtracting numbers to reach the target score of 15 efficiently.
+
+- **Anticipate Opponent's Moves**: Pay attention to the sequence and strategize to limit your opponent's options or force them into undesirable moves.
+
+- **Sequence Control**: By choosing certain numbers, you can manipulate the sequence to your advantage, potentially controlling which numbers will be available on your next turn.
+
+- **Avoid Overshooting**: Be cautious about increasing your total score too quickly, as it may limit your options in later turns.
+
+---
+
+## Conclusion
+
+**Number Slide** is a simple yet strategic game that combines numerical operations with foresight and planning. It is easy to code and ideal for a command-line interface. The game is designed to end quickly, with no possibility of a draw, ensuring an engaging experience where a skilled player can consistently outmaneuver an unskilled opponent. Enjoy honing your strategic thinking and may the best player win!

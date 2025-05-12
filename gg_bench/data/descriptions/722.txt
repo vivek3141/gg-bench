@@ -1,0 +1,262 @@
+# **Restricted Removal** — Rule Book
+
+## **Objective**
+
+**Be the player to remove the last available number from the list.**
+
+In **Restricted Removal**, two players strategically remove numbers from a shared list. Each move affects which numbers remain available, as removing a number locks out certain other numbers based on specified rules. The primary goal is to be the player who removes the last remaining number, thus securing victory.
+
+## **Setup**
+
+1. **Initialize the Game List**: Create a list of consecutive integers starting from **2** up to a chosen maximum number **N**. For a quick game, it's recommended to set **N = 10**. The initial game list will be:
+
+   ```
+   [2, 3, 4, 5, 6, 7, 8, 9, 10]
+   ```
+
+2. **Determine Player Order**: Decide which player will take the first turn. This can be done by mutual agreement or by any random method such as a coin toss.
+
+## **Game Components**
+
+- **Game List**: A shared list containing consecutive integers from **2** to **N**.
+- **Locked Numbers**: Numbers that become unavailable for removal due to the game rules. They are not removed from the list but are marked as locked.
+- **Players**: Two participants who will take turns removing numbers from the game list.
+
+## **Turns**
+
+- Players alternate turns throughout the game.
+- On each turn, a player performs the following actions:
+  1. **Select a Number**: Choose one available (unlocked) number from the game list to remove.
+  2. **Lock Affected Numbers**: Following the selection, identify and lock all numbers that are multiples or factors of the removed number (excluding the removed number itself).
+  3. **End Turn**: The turn ends after removing the chosen number and locking the affected numbers.
+
+## **Rules and Mechanics**
+
+1. **Removing Numbers**:
+   - On your turn, you **must** remove **one** available number from the game list.
+   - The chosen number must be **unlocked** (i.e., not previously removed or locked).
+
+2. **Locking Mechanism**:
+   - After removing a number, **immediately lock** all numbers in the game list that are either:
+     - **Multiples** of the removed number.
+     - **Factors** of the removed number.
+   - **Exclusion**: Do not lock the number you just removed.
+   - Locked numbers cannot be removed in subsequent turns.
+
+3. **Available Numbers**:
+   - Only numbers that are **unlocked** are available for removal.
+   - Players must choose from the current list of available numbers on their turn.
+
+4. **Winning the Game**:
+   - The player who removes the **last available number** from the game list **wins** the game.
+   - If a player has no valid moves on their turn (i.e., no available numbers remain), they **lose** the game.
+
+## **Scoring**
+
+- **Victory Condition**: There is no point scoring system. The game is won by the player who removes the last available number according to the game rules.
+- **Game Outcome**:
+  - **Winner**: The player who successfully removes the last number.
+  - **Loser**: The player who has no available numbers to remove on their turn.
+
+## **Examples**
+
+### **Example Game Play**
+
+**Initial Game List**:
+
+```
+[2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+**Players**:
+
+- **Alice** (Player 1)
+- **Bob** (Player 2)
+
+---
+
+**Turn 1: Alice**
+
+- **Available Numbers**: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+- **Alice Removes**: **5**
+- **Locking Process**:
+  - **Multiples of 5**: 10
+  - **Factors of 5**: (excluding 1 and 5) None
+- **Numbers Locked**: **10**
+- **Updated Game List**:
+  - Available: [2, 3, 4, 6, 7, 8, 9]
+  - Locked: [10]
+  
+---
+
+**Turn 2: Bob**
+
+- **Available Numbers**: [2, 3, 4, 6, 7, 8, 9]
+- **Bob Removes**: **2**
+- **Locking Process**:
+  - **Multiples of 2**: 4, 6, 8
+  - **Factors of 2**: (excluding 1 and 2) None
+- **Numbers Locked**: **4, 6, 8**
+- **Updated Game List**:
+  - Available: [3, 7, 9]
+  - Locked: [4, 6, 8, 10]
+
+---
+
+**Turn 3: Alice**
+
+- **Available Numbers**: [3, 7, 9]
+- **Alice Removes**: **9**
+- **Locking Process**:
+  - **Multiples of 9**: (beyond the initial list)
+  - **Factors of 9**: 3
+- **Numbers Locked**: **3**
+- **Updated Game List**:
+  - Available: [7]
+  - Locked: [3, 4, 6, 8, 9, 10]
+
+---
+
+**Turn 4: Bob**
+
+- **Available Numbers**: [7]
+- **Bob Removes**: **7**
+- **Locking Process**:
+  - **Multiples of 7**: (beyond the initial list)
+  - **Factors of 7**: (excluding 1 and 7) None
+- **Numbers Locked**: None
+- **Updated Game List**:
+  - Available: []
+  - Locked: [3, 4, 6, 7, 8, 9, 10]
+  
+---
+
+**Game End**:
+
+- **No Available Numbers Remain**.
+- **Bob** removed the last available number.
+- **Bob Wins** the game.
+
+---
+
+### **Alternative Strategies**
+
+**Scenario**:
+
+- **Initial Game List**:
+
+  ```
+  [2, 3, 4, 5, 6, 7, 8, 9, 10]
+  ```
+
+- **Players**: Alice (Player 1), Bob (Player 2)
+
+---
+
+**Turn 1: Alice**
+
+- Alice removes **3**.
+- Locks numbers:
+  - Multiples of 3: 6, 9
+  - Factors of 3: (excluding 1 and 3) None
+- Locked: **6, 9**
+- Available: [2, 4, 5, 7, 8, 10]
+
+---
+
+**Turn 2: Bob**
+
+- Bob removes **5**.
+- Locks numbers:
+  - Multiples of 5: 10
+  - Factors of 5: (excluding 1 and 5) None
+- Locked: **10**
+- Available: [2, 4, 7, 8]
+
+---
+
+**Turn 3: Alice**
+
+- Alice removes **2**.
+- Locks numbers:
+  - Multiples of 2: 4, 8
+  - Factors of 2: (excluding 1 and 2) None
+- Locked: **4, 8**
+- Available: [7]
+
+---
+
+**Turn 4: Bob**
+
+- Bob removes **7**.
+- No additional numbers to lock.
+- Available: []
+
+---
+
+**Game End**:
+
+- **Bob** removed the last available number.
+- **Bob Wins** the game.
+
+---
+
+**Strategic Note**: Players must carefully choose which numbers to remove to limit their opponent's options while ensuring they do not inadvertently set themselves up for a loss.
+
+## **Command-Line Interaction Example**
+
+Here's how a sample game might unfold in a command-line interface:
+
+```
+Game Start!
+Initial Numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+Player 1 (Alice), it's your turn.
+Available Numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+Enter the number you want to remove: 5
+
+You removed 5.
+Locked Numbers due to 5: [10]
+Updated Available Numbers: [2, 3, 4, 6, 7, 8, 9]
+
+Player 2 (Bob), it's your turn.
+Available Numbers: [2, 3, 4, 6, 7, 8, 9]
+Enter the number you want to remove: 2
+
+You removed 2.
+Locked Numbers due to 2: [4, 6, 8]
+Updated Available Numbers: [3, 7, 9]
+
+Player 1 (Alice), it's your turn.
+Available Numbers: [3, 7, 9]
+Enter the number you want to remove: 9
+
+You removed 9.
+Locked Numbers due to 9: [3]
+Updated Available Numbers: [7]
+
+Player 2 (Bob), it's your turn.
+Available Numbers: [7]
+Enter the number you want to remove: 7
+
+You removed 7.
+Locked Numbers due to 7: []
+Updated Available Numbers: []
+
+Game Over!
+Player 2 (Bob) wins by removing the last number.
+```
+
+## **Game Tips**
+
+- **Plan Ahead**: Anticipate which numbers will become locked based on your choice, and how that will affect future turns.
+- **Control High Impact Numbers**: Removing numbers with many multiples or factors can significantly reduce your opponent's options.
+- **Observe Patterns**: Keep track of which numbers remain and which are locked to strategize effectively.
+
+## **Conclusion**
+
+**Restricted Removal** combines simplicity with strategic depth, making it an engaging game that tests players' foresight and planning abilities. It's easy to learn and quick to play, ensuring an enjoyable experience for both new and seasoned players.
+
+---
+
+Enjoy the game, and may the most strategic player win!

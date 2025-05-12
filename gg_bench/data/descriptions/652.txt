@@ -1,0 +1,239 @@
+# Operation Reach 100
+
+## Objective
+
+**Operation Reach 100** is a strategic two-player, turn-based game. The primary goal is to be the first player to reach exactly **100** by applying mathematical operations to a shared current number. Players take turns performing one of the allowed operations to incrementally build up the current number. The player who reaches the target number of **100** on their turn wins the game. If a player cannot make a valid move without exceeding **100**, they lose.
+
+## Setup
+
+- **Starting Number**: The game begins with the current number set to **1**.
+- **Players**: Two players participate, deciding who goes first (e.g., by coin toss).
+- **Operations**: Players are informed of the two allowed operations they can apply to the current number:
+  - **Addition (+1)**
+  - **Multiplication (×2)**
+
+## Game Components
+
+- **Current Number**: A shared variable that holds the game's current number, starting at **1**.
+- **Operations**:
+  - **Add 1 (+1)**: Increments the current number by one.
+  - **Multiply by 2 (×2)**: Multiplies the current number by two.
+- **Target Number**: The goal is to reach exactly **100**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions**:
+  - On their turn, a player must choose and perform **one** of the allowed operations on the current number.
+  - The operation is applied, and the result becomes the new current number.
+- **Turn Progression**:
+  - The game continues with players alternating turns until one player wins or loses according to the game rules.
+
+## Rules and Mechanics
+
+1. **Allowed Operations**:
+   - **Addition (+1)**:
+     - The player adds **1** to the current number.
+     - Formula: `current_number = current_number + 1`
+   - **Multiplication (×2)**:
+     - The player multiplies the current number by **2**.
+     - Formula: `current_number = current_number × 2`
+2. **Valid Moves**:
+   - A player **must** perform an operation that results in a current number of **100** or less.
+   - If both operations would cause the current number to exceed **100**, the player loses.
+3. **Winning the Game**:
+   - The first player to reach a current number of **exactly 100** on their turn wins the game.
+4. **Losing the Game**:
+   - If a player is unable to perform a valid operation without surpassing **100**, they lose the game.
+
+## Scoring
+
+- **Victory**: Achieved by reaching the target number of **100** exactly.
+- **Defeat**: Occurs if a player cannot make a valid move on their turn.
+
+## Examples
+
+### Example Game Play
+
+Below is an example of how a game might progress, including sample command-line interactions.
+
+#### Starting the Game
+
+- **Current Number**: 1
+- **Player 1** and **Player 2** decide who goes first. Let's assume **Player 1** starts.
+
+#### Turn 1
+
+**Player 1's Turn**:
+
+- **Current Number**: 1
+- **Choice**:
+  - Operation: **Multiply by 2**
+- **Calculation**:
+  - `1 × 2 = 2`
+- **New Current Number**: 2
+- **Command-Line Interaction**:
+  ```
+  Current Number: 1
+  Player 1, choose operation (+1 or *2): *2
+  You chose to multiply by 2.
+  New Current Number: 2
+  ```
+
+#### Turn 2
+
+**Player 2's Turn**:
+
+- **Current Number**: 2
+- **Choice**:
+  - Operation: **Multiply by 2**
+- **Calculation**:
+  - `2 × 2 = 4`
+- **New Current Number**: 4
+- **Command-Line Interaction**:
+  ```
+  Current Number: 2
+  Player 2, choose operation (+1 or *2): *2
+  You chose to multiply by 2.
+  New Current Number: 4
+  ```
+
+#### Turn 3
+
+**Player 1's Turn**:
+
+- **Current Number**: 4
+- **Choice**:
+  - Operation: **Multiply by 2**
+- **Calculation**:
+  - `4 × 2 = 8`
+- **New Current Number**: 8
+- **Command-Line Interaction**:
+  ```
+  Current Number: 4
+  Player 1, choose operation (+1 or *2): *2
+  You chose to multiply by 2.
+  New Current Number: 8
+  ```
+
+#### Turn 4
+
+**Player 2's Turn**:
+
+- **Current Number**: 8
+- **Choice**:
+  - Operation: **Multiply by 2**
+- **Calculation**:
+  - `8 × 2 = 16`
+- **New Current Number**: 16
+- **Command-Line Interaction**:
+  ```
+  Current Number: 8
+  Player 2, choose operation (+1 or *2): *2
+  You chose to multiply by 2.
+  New Current Number: 16
+  ```
+
+#### Turn 5
+
+**Player 1's Turn**:
+
+- **Current Number**: 16
+- **Choice**:
+  - Operation: **Multiply by 2**
+- **Calculation**:
+  - `16 × 2 = 32`
+- **New Current Number**: 32
+- **Command-Line Interaction**:
+  ```
+  Current Number: 16
+  Player 1, choose operation (+1 or *2): *2
+  You chose to multiply by 2.
+  New Current Number: 32
+  ```
+
+#### Turn 6
+
+**Player 2's Turn**:
+
+- **Current Number**: 32
+- **Choice**:
+  - Operation: **Add 1**
+- **Calculation**:
+  - `32 + 1 = 33`
+- **New Current Number**: 33
+- **Command-Line Interaction**:
+  ```
+  Current Number: 32
+  Player 2, choose operation (+1 or *2): +1
+  You chose to add 1.
+  New Current Number: 33
+  ```
+
+#### Subsequent Turns
+
+Players continue in this manner, always ensuring their moves keep the current number at or below **100**.
+
+#### Reaching the Endgame
+
+**Example of Final Moves**:
+
+- **Current Number**: 99
+- **Player 1's Turn**:
+  - **Choice**:
+    - Operation: **Add 1**
+  - **Calculation**:
+    - `99 + 1 = 100`
+  - **New Current Number**: 100
+  - **Player 1 Wins**
+  - **Command-Line Interaction**:
+    ```
+    Current Number: 99
+    Player 1, choose operation (+1 or *2): +1
+    You chose to add 1.
+    New Current Number: 100
+    Congratulations, Player 1! You've reached 100 and won the game!
+    ```
+
+### Strategic Considerations
+
+- **Planning Ahead**: Skilled players will anticipate future moves to ensure they can reach **100** on their turn.
+- **Forcing Moves**: By carefully choosing when to add or multiply, a player can force their opponent into a position where they cannot avoid exceeding **100**.
+- **Example Strategy**:
+  - When the current number is **63**, a player can choose to add **1** to make it **64**, preventing the opponent from multiplying by **2** (which would exceed **100**) and limiting their options.
+
+## Command-Line Interaction Sample
+
+Below is a condensed sample of command-line interactions between players and the system:
+
+```
+Current Number: 1
+Player 1, choose operation (+1 or *2): *2
+New Current Number: 2
+
+Current Number: 2
+Player 2, choose operation (+1 or *2): *2
+New Current Number: 4
+
+Current Number: 4
+Player 1, choose operation (+1 or *2): *2
+New Current Number: 8
+
+Current Number: 8
+Player 2, choose operation (+1 or *2): +1
+New Current Number: 9
+
+...
+
+Current Number: 99
+Player 1, choose operation (+1 or *2): +1
+New Current Number: 100
+
+Player 1 wins by reaching 100!
+```
+
+## Conclusion
+
+**Operation Reach 100** is a simple yet strategically rich game that challenges players to think ahead and outmaneuver their opponent. With straightforward rules and minimal components, it's easy to code and play in a command-line interface. The game ensures a definitive outcome with no possibility of a draw, and skilled players can consistently leverage strategies to improve their chances of winning.
+
+Enjoy the game and may the best strategist win!

@@ -1,0 +1,139 @@
+# Division Duel
+
+## Objective
+
+**Division Duel** is a two-player, turn-based mathematical strategy game. The primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns dividing a shared number by valid divisors, and the player who cannot perform a division on their turn loses the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared positive integer called the **Current Number**. The default starting number is **100**, but players can agree on any positive integer greater than **1** to start the game.
+- **Player Order**: Decide which player goes first. This can be determined randomly or by agreement.
+
+## Game Components
+
+- **Current Number**: A positive integer that both players manipulate during the game. It is updated after each turn.
+- **Valid Divisors**: Integers greater than **1** and less than the **Current Number** that exactly divide the **Current Number** (i.e., leave no remainder).
+- **Command-Line Interface**: The game is played via a command-line interface where players input their chosen divisors on their turn.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Display Current Number**: At the start of a player's turn, the **Current Number** is displayed.
+  2. **Input Divisor**: The player selects a **Valid Divisor** of the **Current Number** and inputs it.
+  3. **Update Current Number**: The **Current Number** is updated by dividing it by the chosen **Valid Divisor**.
+  4. **Turn Ends**: The turn passes to the other player.
+
+- **Valid Actions**:
+  - A player must select a **Valid Divisor** of the **Current Number**.
+  - Divisors must be greater than **1** and less than the **Current Number**.
+  - The divisor must exactly divide the **Current Number** (no remainders).
+
+## Rules and Mechanics
+
+- **Valid Divisors**:
+  - On each turn, players can only choose divisors that meet the following criteria:
+    - **Greater than 1**: Divisors must be at least **2**.
+    - **Less than Current Number**: Divisors cannot be equal to the **Current Number**.
+    - **Exact Division**: Dividing the **Current Number** by the divisor must result in an integer with no remainder.
+
+- **Updating Current Number**:
+  - After a valid divisor is chosen, divide the **Current Number** by this divisor.
+  - The result becomes the new **Current Number** for the next player's turn.
+
+- **Winning the Game**:
+  - A player **loses** if, on their turn, there are no valid divisors available for the **Current Number**.
+  - The opponent is then declared the **winner**.
+
+- **No Repetition Rule**:
+  - Divisors can be reused in subsequent turns as long as they are valid for the current **Current Number**.
+
+## Scoring
+
+- **Single-Round Victory**: The game is typically played in single rounds where the winner is the player who forces their opponent into a position with no valid moves.
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds.
+  - Keep track of victories, and the player with the most wins after a set number of rounds is the overall winner.
+
+## Examples
+
+### Example Game
+
+**Starting Number**: 100
+
+#### Turn 1:
+- **Player 1's Turn**
+  - **Current Number**: 100
+  - **Valid Divisors**: 2, 4, 5, 10, 20, 25, 50
+  - **Player 1 Chooses**: 2
+  - **New Current Number**: 100 ÷ 2 = **50**
+
+#### Turn 2:
+- **Player 2's Turn**
+  - **Current Number**: 50
+  - **Valid Divisors**: 2, 5, 10, 25
+  - **Player 2 Chooses**: 5
+  - **New Current Number**: 50 ÷ 5 = **10**
+
+#### Turn 3:
+- **Player 1's Turn**
+  - **Current Number**: 10
+  - **Valid Divisors**: 2, 5
+  - **Player 1 Chooses**: 2
+  - **New Current Number**: 10 ÷ 2 = **5**
+
+#### Turn 4:
+- **Player 2's Turn**
+  - **Current Number**: 5
+  - **Valid Divisors**: (None, since divisors must be greater than 1 and less than 5, and 5 is prime)
+  - **Player 2 has no valid moves and loses**
+- **Player 1 Wins**
+
+### Command-Line Interaction Sample
+
+```
+Starting Number: 100
+Player 1's Turn:
+Current Number is 100
+Valid Divisors are: 2, 4, 5, 10, 20, 25, 50
+Enter your divisor: 2
+
+Player 1 divides 100 by 2
+Current Number is now 50
+
+Player 2's Turn:
+Current Number is 50
+Valid Divisors are: 2, 5, 10, 25
+Enter your divisor: 5
+
+Player 2 divides 50 by 5
+Current Number is now 10
+
+Player 1's Turn:
+Current Number is 10
+Valid Divisors are: 2, 5
+Enter your divisor: 2
+
+Player 1 divides 10 by 2
+Current Number is now 5
+
+Player 2's Turn:
+Current Number is 5
+No valid divisors available.
+Player 2 cannot make a move. Player 1 wins!
+```
+
+## Strategic Depth
+
+- **Prime Numbers**: Reducing the **Current Number** to a prime number can be a strategic move, limiting the opponent's options.
+- **Divisor Choices**: Selecting divisors that result in unfavorable numbers for your opponent adds depth to the game.
+- **Anticipation**: Skilled players will anticipate future moves and plan several steps ahead to force a win.
+
+## Tips for Players
+
+- **Plan Ahead**: Consider the possible resulting numbers after each potential divisor to predict your opponent's options.
+- **Avoid Small Numbers Early**: Reducing the **Current Number** too quickly can backfire if it gives your opponent the advantage.
+- **Use Larger Divisors When Advantageous**: Sometimes using a larger divisor can force the **Current Number** into a prime or unfavorable number for your opponent.
+
+---
+
+**Enjoy playing Division Duel and may the best strategist win!**

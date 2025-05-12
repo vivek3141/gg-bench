@@ -1,0 +1,231 @@
+# Number Duel
+
+## Objective
+
+Be the first player to accumulate **exactly 50 points** by strategically selecting numbers from a shared pool and choosing whether to add or multiply them with your current score.
+
+---
+
+## Setup
+
+1. **Shared Number Pool**: Create a pool containing the numbers **1** through **10**, with each number appearing **twice**. This results in a total of **20 number tokens** in the pool.
+
+2. **Player Scores**: Both players start with a score of **0**.
+
+---
+
+## Game Components
+
+- **Number Tokens**:
+  - **Numbers**: Integers from **1** to **10**.
+  - **Quantity**: Each number appears **twice** in the pool.
+  - **Representation**: Can be displayed as a list or array in the command-line interface.
+  
+- **Player Scores**:
+  - **Initial Score**: Both players start at **0**.
+  - **Tracking**: Scores are updated and displayed after each turn.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately. Decide who goes first by mutual agreement or a random method.
+   
+2. **Actions per Turn**:
+   - **Select a Number**: Choose any available number from the shared pool.
+   - **Choose an Operation**: Decide to **add** or **multiply** the selected number with your current score.
+   - **Update Score**: Calculate and update your score based on the chosen operation.
+   - **Remove Number**: The selected number is removed from the pool and cannot be used again.
+
+3. **Turn Progression**: After a player completes their turn, the next player proceeds with their turn following the same steps.
+
+---
+
+## Rules and Mechanics
+
+### Selecting Numbers
+
+- **Availability**: You may select any number that remains in the pool.
+- **Removal**: Once a number is selected, it is removed from the pool for the remainder of the game.
+
+### Operations
+
+1. **Addition**:
+   - **Formula**: `New Score = Current Score + Selected Number`
+   - **Usage**: Can always be used, regardless of current score.
+
+2. **Multiplication**:
+   - **Formula**: `New Score = Current Score × Selected Number`
+   - **Special Considerations**:
+     - **Zero Score**: If your current score is **0**, multiplying will result in a score of **0**.
+     - **Strategic Use**: Multiplication can rapidly increase your score but may risk overshooting the target.
+
+### Scoring Rules
+
+- **Exact Target**: The goal is to reach a score of **exactly 50**.
+- **Overshooting**:
+  - If your score exceeds **50**, your score is reset to **0**.
+  - Example: Current Score = 45, Selected Number = 6, Operation = Add; New Score = 51 ➔ Score resets to **0**.
+- **Score Reset**:
+  - Occurs **immediately** upon exceeding 50.
+  - The game continues with your new score of **0** on your next turn.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to reach a score of **exactly 50 points** wins the game.
+- **No Draws**: There are no draw conditions; the game continues until one player wins.
+
+### Additional Rules
+
+- **Unavailable Operations**: You must be able to perform the chosen operation without breaking game rules (e.g., not exceeding 50 without score reset if that is your strategy).
+- **End of Number Pool**:
+  - If all numbers are used and no player has reached 50, the player **closest to 50 without exceeding it** wins.
+  - If both players have the same score, the **last player to have taken a turn loses**.
+
+---
+
+## Scoring Example
+
+- **Player Scores**: Track each player's score after every turn.
+- **Display Format**: Show current scores and remaining numbers in the pool.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Setup**:
+
+- **Number Pool**: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
+- **Player 1 Score**: 0
+- **Player 2 Score**: 0
+
+---
+
+**Turn 1**:
+
+- **Player 1**:
+  - **Selects Number**: 5
+  - **Chooses Operation**: Add
+  - **Calculation**: 0 + 5 = **5**
+  - **Updated Score**: **5**
+  - **Number Pool** (updated): [1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
+
+---
+
+**Turn 2**:
+
+- **Player 2**:
+  - **Selects Number**: 10
+  - **Chooses Operation**: Add
+  - **Calculation**: 0 + 10 = **10**
+  - **Updated Score**: **10**
+  - **Number Pool** (updated): [1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10]
+
+---
+
+**Turn 3**:
+
+- **Player 1**:
+  - **Selects Number**: 10
+  - **Chooses Operation**: Multiply
+  - **Calculation**: 5 × 10 = **50**
+  - **Updated Score**: **50**
+  - **Number Pool** (updated): [1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+
+**Result**: **Player 1 wins by reaching exactly 50 points!**
+
+---
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction illustrating how the game might proceed in a command-line interface.
+
+---
+
+#### Game Start
+
+```
+Welcome to Number Duel!
+
+Number Pool:
+1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10
+
+Player 1 Score: 0
+Player 2 Score: 0
+```
+
+---
+
+#### Turn 1: Player 1
+
+```
+Player 1's Turn:
+Available Numbers: 1, 1, 2, ..., 10, 10
+Select a number: 5
+Choose an operation (add/multiply): add
+
+Player 1 adds 5 to their score.
+Player 1's New Score: 5
+
+Number Pool (updated):
+1, 1, 2, ..., 10, 10 (5 is removed)
+```
+
+---
+
+#### Turn 2: Player 2
+
+```
+Player 2's Turn:
+Available Numbers: 1, 1, 2, ..., 10, 10
+Select a number: 10
+Choose an operation (add/multiply): add
+
+Player 2 adds 10 to their score.
+Player 2's New Score: 10
+
+Number Pool (updated):
+1, 1, 2, ..., 10 (one 10 is removed)
+```
+
+---
+
+#### Turn 3: Player 1
+
+```
+Player 1's Turn:
+Available Numbers: 1, 1, 2, ..., 9, 9, 10
+Select a number: 10
+Choose an operation (add/multiply): multiply
+
+Player 1 multiplies their score by 10.
+Calculation: 5 * 10 = 50
+Player 1's New Score: 50
+
+Player 1 has reached 50 points and wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Early Multiplication**: Multiplying when your score is low may not be beneficial due to minimal gain.
+- **Avoiding Overshoot**: Be cautious when your score is near 50; plan to avoid exceeding 50 and resetting your score.
+- **Blocking Opponent**: Anticipate your opponent's moves. You may select numbers they need to prevent them from winning.
+- **Optimal Numbers**: Higher numbers can help you reach 50 faster but carry a risk of overshooting.
+
+---
+
+## Recap of Key Rules
+
+- **Objective**: Reach **exactly 50 points** first.
+- **Operations**: Choose to **add** or **multiply** the selected number with your current score.
+- **Score Reset**: If you exceed 50, your score resets to **0**.
+- **Number Usage**: Numbers are removed from the pool once selected.
+- **No Draws**: The game continues until one player achieves the objective.
+
+---
+
+Enjoy playing **Number Duel**! May the best strategist win.

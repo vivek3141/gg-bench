@@ -1,0 +1,268 @@
+# Factor Field
+
+## Objective
+
+Be the **first player** to accumulate **10 points** by selecting numbers with the highest number of **unique prime factors** from a common number pool.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization:**
+   - The game uses all integers from **2 to 50**, inclusive.
+   - All numbers are initially **available** for selection.
+
+2. **Player Assignment:**
+   - Two players are required: **Player A** and **Player B**.
+   - Decide who will take the **first turn** (e.g., by coin toss or mutual agreement).
+
+3. **Scoreboard:**
+   - A simple scoreboard to keep track of each player's **cumulative points**.
+
+---
+
+## Game Components
+
+- **Number Pool:**
+  - A list of numbers from **2 to 50** that players can select from.
+  - Numbers are **removed** from the pool once selected.
+
+- **Scoreboard:**
+  - Tracks each player's **current score** after every turn.
+  - Displays the **remaining numbers** in the number pool.
+
+- **Prime Factors:**
+  - Knowledge of prime numbers and factorization is essential.
+  - Understanding that factors are the prime numbers that multiply to give the selected number.
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns throughout the game.
+   - The player who goes first is **Player A**, followed by **Player B**.
+
+2. **Player Actions During a Turn:**
+   - **Select a Number:**
+     - Choose any **available number** from the number pool.
+   - **Calculate Points:**
+     - Determine the **unique prime factors** of the selected number.
+     - **Points Gained** = Number of unique prime factors.
+   - **Update Scoreboard:**
+     - Add the points gained to the player's **cumulative score**.
+     - Remove the selected number from the number pool.
+     - Display updated scores and remaining numbers.
+
+3. **Turn Progression:**
+   - The turn ends after the player's score is updated.
+   - The next player then takes their turn following the same process.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- Players can select **any number** from the number pool on their turn.
+- Each number can be selected **only once** during the game.
+
+### 2. Calculating Prime Factors
+
+- **Prime Factors** are the prime numbers that multiply together to equal the selected number.
+- **Multiplicity** (the number of times a prime factor appears) is **ignored**.
+  - For example, the number **18** has prime factors **2 × 3 × 3**, but only **2** and **3** are counted as unique prime factors.
+- Use prime factorization methods to determine the unique prime factors.
+
+### 3. Scoring Points
+
+- **Points Gained** per turn = Number of **unique prime factors** of the selected number.
+- Points are **cumulative** over turns.
+- Example Points for Sample Numbers:
+  - **6** (factors: 2, 3) → **2 points**
+  - **8** (factors: 2) → **1 point**
+  - **30** (factors: 2, 3, 5) → **3 points**
+
+### 4. Winning the Game
+
+- The game continues until a player reaches **10 or more points** at the **end of their turn**.
+- **Victory Conditions:**
+  - If a player reaches 10 or more points and has a **higher score** than the opponent, they **win**.
+  - If both players reach 10 or more points in the same round, the player with the **higher score** wins.
+  - If scores are **tied** at 10 or more points, the game proceeds until the tie is broken.
+
+### 5. Strategic Considerations
+
+- **Maximize Points:**
+  - Choose numbers with the **highest number of unique prime factors**.
+- **Deny Opponent Opportunities:**
+  - Anticipate which numbers the opponent might select and choose strategically to limit their options.
+- **Number Awareness:**
+  - Keep track of remaining numbers to plan future moves.
+
+---
+
+## Scoring
+
+- **Scoreboard Updates:**
+  - After each turn, the scoreboard displays:
+    - **Player A's Score**
+    - **Player B's Score**
+    - **Numbers Remaining** in the pool
+- **Points Tracking:**
+  - Ensure accurate calculation of points by carefully determining the unique prime factors.
+- **Winning Announcement:**
+  - Once a player wins, announce the **winner** and display the **final scores**.
+
+---
+
+## Examples
+
+### Example Turn Sequence
+
+**Initial State:**
+
+- Numbers available: **2-50**
+- Player A: **0 points**
+- Player B: **0 points**
+
+**Player A's Turn:**
+
+1. **Selection:**
+   - Chooses **14**.
+2. **Prime Factors:**
+   - Factors are **2** and **7**.
+3. **Points Gained:**
+   - **2 points**
+4. **Score Update:**
+   - Player A: **2 points**
+   - Numbers remaining: **2-13, 15-50**
+
+**Player B's Turn:**
+
+1. **Selection:**
+   - Chooses **15**.
+2. **Prime Factors:**
+   - Factors are **3** and **5**.
+3. **Points Gained:**
+   - **2 points**
+4. **Score Update:**
+   - Player B: **2 points**
+   - Numbers remaining: **2-13, 16-50**
+
+**Player A's Turn:**
+
+1. **Selection:**
+   - Chooses **30**.
+2. **Prime Factors:**
+   - Factors are **2**, **3**, and **5**.
+3. **Points Gained:**
+   - **3 points**
+4. **Score Update:**
+   - Player A: **5 points**
+   - Numbers remaining: **2-13, 16-29, 31-50**
+
+### Example of Winning the Game
+
+**Scores Before Turn:**
+
+- Player A: **7 points**
+- Player B: **9 points**
+
+**Player A's Turn:**
+
+1. **Selection:**
+   - Chooses **21**.
+2. **Prime Factors:**
+   - Factors are **3** and **7**.
+3. **Points Gained:**
+   - **2 points**
+4. **Score Update:**
+   - Player A: **9 points**
+
+**Player B's Turn:**
+
+1. **Selection:**
+   - Chooses **22**.
+2. **Prime Factors:**
+   - Factors are **2** and **11**.
+3. **Points Gained:**
+   - **2 points**
+4. **Score Update:**
+   - Player B: **11 points**
+
+**Result:**
+
+- **Player B wins** with **11 points**.
+- Player A has **9 points**.
+
+---
+
+## Command-Line Interaction Example
+
+**Game Start:**
+```
+Welcome to Factor Field!
+Numbers available: 2-50
+Player A: 0 points
+Player B: 0 points
+Player A's turn.
+Enter a number to select: 18
+```
+
+**After Player A's Turn:**
+```
+You selected 18.
+Prime factors: 2, 3
+Points gained: 2
+Numbers remaining: 2-17, 19-50
+Player A: 2 points
+Player B: 0 points
+Player B's turn.
+Enter a number to select: 35
+```
+
+**After Player B's Turn:**
+```
+You selected 35.
+Prime factors: 5, 7
+Points gained: 2
+Numbers remaining: 2-17, 19-34, 36-50
+Player A: 2 points
+Player B: 2 points
+Player A's turn.
+Enter a number to select: 44
+```
+
+**After Player A's Turn:**
+```
+You selected 44.
+Prime factors: 2, 2, 11
+Points gained: 2
+Numbers remaining: 2-17, 19-34, 36-43, 45-50
+Player A: 4 points
+Player B: 2 points
+```
+
+---
+
+## Additional Notes
+
+- **Ease of Coding:**
+  - The game is designed for simple implementation in a command-line interface, requiring basic input/output and list manipulation.
+- **Skill-Based Play:**
+  - Players with a good grasp of prime numbers and factorization have a strategic advantage.
+  - Encourages players to **think ahead** and plan their moves.
+- **Game Duration:**
+  - The limited number pool (2-50) ensures the game progresses quickly.
+  - No possibility of a draw due to the scoring system and finite number of selections.
+
+---
+
+# Summary
+
+**Factor Field** is a unique and engaging two-player game that combines basic arithmetic with strategic planning. By selecting numbers with the most unique prime factors, players race to accumulate points while attempting to outmaneuver their opponent. The game is ideal for quick matches and enhances numerical proficiency in a fun and competitive environment.
+
+---
+
+Enjoy the game and may the best factor finder win!

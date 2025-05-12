@@ -1,0 +1,245 @@
+# **Chain Reaction**
+
+Welcome to **Chain Reaction**, a strategic two-player turn-based game designed for the command-line interface. This game challenges players to outwit their opponent through careful planning and foresight. Simple to code and quick to play, **Chain Reaction** ensures that skill prevails over chance, providing an engaging experience where a skilled player can consistently triumph over an unskilled one.
+
+---
+
+## **Objective**
+
+The primary goal of **Chain Reaction** is to be the last player able to make a valid move. Players achieve victory by strategically selecting numbers from a shared pool and causing a "chain reaction" that limits the opponent's options. A player loses if they cannot make a valid move on their turn.
+
+---
+
+## **Setup**
+
+- **Number Pool**: A list of integers from **2 to 20**.
+- Both players have access to the shared number pool.
+- **Starting Conditions**: No numbers are removed or modified at the beginning.
+
+---
+
+## **Game Components**
+
+- **Number Pool**: The central element of the game, displayed as a sequence of numbers available for selection.
+
+  ```
+  Number Pool: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  ```
+
+- **Prime Numbers**: Numbers that have exactly two distinct natural number divisors: 1 and themselves. Primes play a strategic role in **Chain Reaction**.
+
+---
+
+## **Turns**
+
+- **Turn Order**: Players take turns alternately, starting with Player 1.
+- **Turn Actions**:
+  - **Select a Number**: On their turn, a player selects any one number from the current number pool.
+  - **Trigger Chain Reaction**: After selecting a number, specific numbers are removed from the pool based on the selection (see Rules and Mechanics).
+
+---
+
+## **Rules and Mechanics**
+
+### **Number Selection**
+
+1. **Valid Choices**: A player may select any number from the current number pool on their turn.
+
+### **Chain Reaction Mechanics**
+
+1. **Removing Multiples**:
+   - When a player selects a **prime number**, all multiples of that prime number are removed from the number pool, including the prime itself.
+   - **Example**: Selecting **3** removes 3, 6, 9, 12, 15, and 18.
+   
+2. **Removing Factors**:
+   - When a player selects a **composite number** (a non-prime number), all of its prime factors are removed from the number pool.
+   - **Example**: Selecting **12** (which has prime factors 2 and 3) removes the primes **2** and **3**.
+
+3. **Invalid Moves**:
+   - If a player cannot make a valid selection because no numbers remain in the pool, they lose the game.
+
+### **End of Game**
+
+- The game continues with players alternating turns and making selections according to the rules until one player cannot make a valid move on their turn.
+- The last player to make a valid move wins the game.
+
+---
+
+## **Scoring**
+
+- **Winning the Game**: Victory is achieved by being the last player to make a valid move.
+- **No Point System**: **Chain Reaction** does not use a point-based scoring system; the outcome is simply win or loss based on the gameplay.
+
+---
+
+## **Example Gameplay**
+
+### **Initial Number Pool**
+
+```
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+### **Sample Turns**
+
+#### **Turn 1: Player 1**
+
+- **Selection**: 5 (a prime number).
+- **Chain Reaction**: Remove 5, 10, 15, and 20 (multiples of 5).
+- **Updated Number Pool**:
+
+  ```
+  [2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19]
+  ```
+
+#### **Turn 2: Player 2**
+
+- **Selection**: 4 (a composite number).
+- **Chain Reaction**: Remove prime factors of 4, which are 2.
+- **Updated Number Pool**:
+
+  ```
+  [3, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19]
+  ```
+
+#### **Turn 3: Player 1**
+
+- **Selection**: 3 (a prime number).
+- **Chain Reaction**: Remove 3, 6, 9, 12, 15, and 18.
+- **Updated Number Pool**:
+
+  ```
+  [7, 8, 11, 13, 14, 16, 17, 19]
+  ```
+
+#### **Turn 4: Player 2**
+
+- **Selection**: 14 (a composite number).
+- **Chain Reaction**: Remove prime factors of 14, which are 7 and 2 (2 is already removed).
+- **Updated Number Pool**:
+
+  ```
+  [8, 11, 13, 16, 17, 19]
+  ```
+
+#### **Turn 5: Player 1**
+
+- **Selection**: 13 (a prime number).
+- **Chain Reaction**: Remove 13 (since it has no multiples left).
+- **Updated Number Pool**:
+
+  ```
+  [8, 11, 16, 17, 19]
+  ```
+
+#### **Turn 6: Player 2**
+
+- **Selection**: 8 (a composite number).
+- **Chain Reaction**: Remove prime factors of 8, which is 2 (already removed).
+- **No primes to remove; the number pool remains the same.**
+- **Updated Number Pool**:
+
+  ```
+  [11, 16, 17, 19]
+  ```
+
+#### **Turn 7: Player 1**
+
+- **Selection**: 11 (a prime number).
+- **Chain Reaction**: Remove 11.
+- **Updated Number Pool**:
+
+  ```
+  [16, 17, 19]
+  ```
+
+#### **Turn 8: Player 2**
+
+- **Selection**: 16 (a composite number).
+- **Chain Reaction**: Remove prime factors of 16, which is 2 (already removed).
+- **No primes to remove; the number pool remains the same.**
+- **Updated Number Pool**:
+
+  ```
+  [17, 19]
+  ```
+
+#### **Turn 9: Player 1**
+
+- **Selection**: 17 (a prime number).
+- **Chain Reaction**: Remove 17.
+- **Updated Number Pool**:
+
+  ```
+  [19]
+  ```
+
+#### **Turn 10: Player 2**
+
+- **Selection**: 19 (a prime number).
+- **Chain Reaction**: Remove 19.
+- **Updated Number Pool**:
+
+  ```
+  []
+  ```
+
+#### **Turn 11: Player 1**
+
+- **Cannot make a move**: No numbers remain.
+- **Result**: **Player 2 wins**.
+
+---
+
+## **Command-Line Interaction Example**
+
+### **Starting the Game**
+
+```
+Welcome to Chain Reaction!
+Player 1 and Player 2, take turns selecting numbers according to the rules.
+Current Number Pool: [2, 3, 4, 5, ..., 20]
+```
+
+### **Player Turns**
+
+#### **Player 1's Turn**
+
+```
+Player 1, select a number: 5
+You selected 5 (prime). Removing multiples of 5.
+Numbers removed: 5, 10, 15, 20
+Updated Number Pool: [2, 3, 4, 6, 7, 8, 9, 11, ..., 19]
+```
+
+#### **Player 2's Turn**
+
+```
+Player 2, select a number: 4
+You selected 4 (composite). Removing its prime factors.
+Prime factors removed: 2
+Updated Number Pool: [3, 6, 7, 8, 9, 11, ..., 19]
+```
+
+*(Continue as per the sample turns above.)*
+
+### **End of Game**
+
+```
+Player 1, no valid moves remaining. Player 2 wins!
+Thank you for playing Chain Reaction.
+```
+
+---
+
+## **Strategic Depth**
+
+**Chain Reaction** offers strategic depth through:
+
+- **Prime vs. Composite Selection**: Deciding when to remove primes or composite numbers to limit the opponent's options.
+- **Anticipation**: Predicting the consequences of each move on future turns.
+- **Resource Management**: Balancing the immediate impact against long-term control of the number pool.
+
+---
+
+Enjoy playing **Chain Reaction**, where every move counts, and skillful planning leads to victory!

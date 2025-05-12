@@ -1,0 +1,200 @@
+# Factor Clash - Rule Book
+
+## Objective
+
+The primary goal of **Factor Clash** is to be the last player able to make a valid move. Players take turns selecting numbers from a shared list under specific rules. A player wins by forcing their opponent into a position where they cannot select a valid number on their turn.
+
+## Setup
+
+- **Number Range**: The game uses a list of integers from **2 to 20**.
+- **Initial List**: All numbers from 2 to 20 are listed and available for selection.
+- **Player Order**: Decide which player goes first (Player 1 and Player 2).
+
+## Game Components
+
+- **Number List**: A shared list of available numbers (integers from 2 to 20).
+  - Example starting list: `2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+- **Players**: Two players who will alternate turns.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Selection Phase**: The current player selects a valid number from the available list.
+  2. **Update Phase**: The selected number is removed from the list.
+- **Turn Progression**:
+  - Players alternate turns starting with Player 1.
+  - The game continues until a player cannot make a valid selection on their turn.
+
+## Rules and Mechanics
+
+1. **First Move**:
+   - Player 1 may select **any number** from the initial list.
+
+2. **Subsequent Moves**:
+   - On their turn, a player must select a number that **shares a common factor greater than 1** with the **last number selected** by the opponent.
+   - The selected number must be from the current list of available numbers.
+
+3. **Validity of Moves**:
+   - A move is valid if:
+     - The number is available in the list.
+     - The number shares a common factor greater than 1 with the last number selected by the opponent.
+   - If no valid moves are available, the player loses.
+
+4. **Common Factors**:
+   - Factors are integers greater than 1 that divide both numbers without leaving a remainder.
+   - Examples of common factors:
+     - Numbers 8 and 12 share common factors 2 and 4.
+     - Numbers 15 and 5 share a common factor of 5.
+     - Numbers 7 and 9 have no common factors greater than 1.
+
+5. **Ending the Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The last player who made a valid move is declared the **winner**.
+
+## Scoring
+
+- **Winning the Game**: The player who forces their opponent into a position with no valid moves **wins the game**.
+- **No Point System**: There is no point or score tracking; the outcome is solely based on winning or losing.
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Initial Number List**:
+`2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+**Turn-by-Turn Play**:
+
+1. **Player 1's Turn**:
+   - Selects **15**.
+   - **Explanation**: First move; any number can be selected.
+   - **Updated Number List**: `2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20`
+
+2. **Player 2's Turn**:
+   - Must select a number sharing a common factor with **15**.
+   - Options: Numbers that share a factor with 15 (factors of 15 are 3 and 5).
+   - **Possible Selections**: `3, 5, 6 (factor 3), 9 (factor 3), 10 (factor 5), 12 (factor 3), 18 (factor 3), 20 (factor 5)`
+   - Selects **5**.
+   - **Explanation**: 5 shares a common factor of 5 with 15.
+   - **Updated Number List**: `2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20`
+
+3. **Player 1's Turn**:
+   - Must select a number sharing a common factor with **5**.
+   - Factors of 5 are 5.
+   - **Possible Selections**: `10 (factor 5), 15 (already selected), 20 (factor 5)`
+   - Selects **10**.
+   - **Explanation**: 10 shares a common factor of 5 with 5.
+   - **Updated Number List**: `2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 20`
+
+4. **Player 2's Turn**:
+   - Must select a number sharing a common factor with **10**.
+   - Factors of 10 are 2 and 5.
+   - **Possible Selections**: `2, 4, 6, 8, 12, 14, 16, 18, 20 (factor 2)`
+   - Selects **12**.
+   - **Explanation**: 12 shares a factor of 2 with 10.
+   - **Updated Number List**: `2, 3, 4, 6, 7, 8, 9, 11, 13, 14, 16, 17, 18, 19, 20`
+
+5. **Player 1's Turn**:
+   - Must select a number sharing a common factor with **12**.
+   - Factors of 12 are 2 and 3.
+   - **Possible Selections**: `2, 3, 4, 6, 8, 9, 14, 16, 18, 20`
+   - Selects **9**.
+   - **Explanation**: 9 shares a factor of 3 with 12.
+   - **Updated Number List**: `2, 3, 4, 6, 7, 8, 11, 13, 14, 16, 17, 18, 19, 20`
+
+6. **Player 2's Turn**:
+   - Must select a number sharing a common factor with **9**.
+   - Factors of 9 are 3.
+   - **Possible Selections**: `3, 6, 12 (already selected), 18`
+   - Selects **6**.
+   - **Explanation**: 6 shares a factor of 3 with 9.
+   - **Updated Number List**: `2, 3, 4, 7, 8, 11, 13, 14, 16, 17, 18, 19, 20`
+
+7. **Player 1's Turn**:
+   - Must select a number sharing a common factor with **6**.
+   - Factors of 6 are 2 and 3.
+   - **Possible Selections**: `2, 3, 4, 8, 14, 16, 18, 20`
+   - Selects **18**.
+   - **Explanation**: 18 shares a factor of 3 with 6.
+   - **Updated Number List**: `2, 3, 4, 7, 8, 11, 13, 14, 16, 17, 19, 20`
+
+8. **Player 2's Turn**:
+   - Must select a number sharing a common factor with **18**.
+   - Factors of 18 are 2 and 3.
+   - **Possible Selections**: `2, 3, 4, 8, 14, 16, 20`
+   - Selects **14**.
+   - **Explanation**: 14 shares a factor of 2 with 18.
+   - **Updated Number List**: `2, 3, 4, 7, 8, 11, 13, 16, 17, 19, 20`
+
+9. **Player 1's Turn**:
+   - Must select a number sharing a common factor with **14**.
+   - Factors of 14 are 2 and 7.
+   - **Possible Selections**: `2, 4, 7, 8, 16, 20`
+   - Selects **7**.
+   - **Explanation**: 7 shares a factor of 7 with 14.
+   - **Updated Number List**: `2, 3, 4, 8, 11, 13, 16, 17, 19, 20`
+
+10. **Player 2's Turn**:
+    - Must select a number sharing a common factor with **7**.
+    - Factors of 7 are 7.
+    - **Possible Selections**: No available numbers share a factor of 7.
+    - **Result**: Player 2 cannot make a valid move and **loses**.
+
+**Winner**: Player 1
+
+### Command-Line Interaction Sample
+
+**Game Start**
+
+- Available Numbers: `2-20`
+
+**Player 1's Turn**
+
+- Input: `15`
+- Output:
+  ```
+  Player 1 selects 15.
+  ```
+
+**Player 2's Turn**
+
+- Available Numbers: `2-14, 16-20`
+- Prompt: "Select a number that shares a common factor with 15:"
+- Input: `5`
+- Output:
+  ```
+  Player 2 selects 5.
+  ```
+
+**Player 1's Turn**
+
+- Available Numbers: `2-4,6-14,16-20`
+- Prompt: "Select a number that shares a common factor with 5:"
+- Input: `10`
+- Output:
+  ```
+  Player 1 selects 10.
+  ```
+
+*(The game continues as per the example above.)*
+
+**End of Game**
+
+- Output:
+  ```
+  Player 2 cannot make a valid move.
+  Player 1 wins the game!
+  ```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate which numbers will be available on your next turn based on your current selection.
+- **Control the Factors**: Choose numbers with uncommon factors to limit your opponent's options.
+- **Block Moves**: Force your opponent into positions where they have minimal or no valid moves.
+- **Memorize Factors**: Familiarity with factors of numbers 2-20 will give you a strategic advantage.
+
+## Summary
+
+Factor Clash is a simple yet strategic game that requires players to think ahead and utilize their knowledge of number factors. It's easy to learn and quick to play, making it perfect for a command-line interface implementation. The clear rules and straightforward mechanics ensure that a skilled player can consistently outperform an unskilled opponent.
+
+Enjoy the challenge of Factor Clash and may the best strategist win!

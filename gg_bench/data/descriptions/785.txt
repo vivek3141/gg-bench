@@ -1,0 +1,214 @@
+# Number Tower
+
+## Objective
+
+The goal of **Number Tower** is to be the last player to successfully place a number on the tower without violating the stacking rules. Players take turns placing numbers on a virtual tower, adhering to specific divisibility rules. The player who forces their opponent into a position where they cannot make a valid move wins the game.
+
+## Setup
+
+1. **Number Pool**: A shared pool of numbers from **1** to **9**.
+2. **Tower**: An initially empty virtual tower where numbers will be stacked vertically.
+3. **Players**: Two players designated as **Player 1** and **Player 2**. Decide who goes first (e.g., by a coin toss).
+
+## Game Components
+
+- **Number Pool**: A list containing numbers **1** through **9**. Each number can be used only once during the game.
+- **Tower Levels**: The virtual levels of the tower where numbers are placed. The tower grows upwards with each number placed.
+- **Command-Line Interface**: Players input their moves through the command line, selecting numbers from the pool and placing them on the tower.
+
+## Turns
+
+- Players take turns in an alternating fashion.
+- **Turn Structure**:
+  1. **Display Status**: Before each move, display the current tower and the remaining numbers in the pool.
+  2. **Select Number**: The active player selects a number from the pool.
+  3. **Place Number**: The player attempts to place the selected number on the tower, following the stacking rules.
+  4. **Update Pool**: Remove the used number from the number pool.
+  5. **Check for Victory**: Determine if the move ends the game.
+
+## Rules and Mechanics
+
+### Stacking Rules
+
+1. **First Number**:
+   - If the tower is empty, any number from **1** to **9** can be placed as the base.
+2. **Subsequent Numbers**:
+   - A number can be placed on top of the tower if it is either a **divisor** or a **multiple** of the number immediately below it.
+   - **Divisor**: The number below divided by the current number leaves no remainder.
+   - **Multiple**: The current number divided by the number below leaves no remainder.
+3. **Number Usage**:
+   - Each number from the pool can be used only once. Once placed on the tower, it is no longer available.
+
+### Valid Moves
+
+- On their turn, a player must select a number from the pool that adheres to the stacking rules.
+- If a player has no valid numbers to place, they lose the game.
+
+### Game End Conditions
+
+- **Victory**: A player wins if they successfully place a number and their opponent cannot make a valid move on their subsequent turn.
+- **Loss**: A player loses if they cannot place a valid number on their turn according to the stacking rules.
+
+## Scoring
+
+- **Winning the Game**: The winning player earns one point for the game.
+- **Match Play (Optional)**: Players can agree to play a series of games, keeping track of points to determine an overall winner.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Number Pool**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- **Tower**: Empty
+
+#### Turn 1: Player 1
+
+- **Tower**: Empty
+- **Player 1** selects **6**.
+- **Action**: Places **6** as the base of the tower.
+- **Updated Number Pool**: `[1, 2, 3, 4, 5, 7, 8, 9]`
+- **Tower**: `[6]`
+
+#### Turn 2: Player 2
+
+- **Tower**: `[6]`
+- **Possible Numbers**: Numbers that are divisors or multiples of **6** from the pool.
+  - Divisors of **6**: **1**, **2**, **3**
+  - Multiples of **6**: Since the highest number is **9**, no multiples other than **6** itself (which is already used).
+- **Available Divisors in Pool**: `[1, 2, 3]`
+- **Player 2** selects **3**.
+- **Action**: Places **3** on top of **6**.
+- **Updated Number Pool**: `[1, 2, 4, 5, 7, 8, 9]`
+- **Tower**: `[6, 3]`
+
+#### Turn 3: Player 1
+
+- **Tower**: `[6, 3]`
+- **Possible Numbers** (divisors or multiples of **3**):
+  - Divisors of **3**: **1**
+  - Multiples of **3**: **9**
+- **Available Numbers in Pool**: `[1, 2, 4, 5, 7, 8, 9]`
+- **Available Choices**: `[1, 9]`
+- **Player 1** selects **9**.
+- **Action**: Places **9** on top of **3**.
+- **Updated Number Pool**: `[1, 2, 4, 5, 7, 8]`
+- **Tower**: `[6, 3, 9]`
+
+#### Turn 4: Player 2
+
+- **Tower**: `[6, 3, 9]`
+- **Possible Numbers** (divisors or multiples of **9**):
+  - Divisors of **9**: **1**, **3** (used), **9** (used)
+  - Multiples of **9**: None within 1-9 range.
+- **Available Numbers in Pool**: `[1, 2, 4, 5, 7, 8]`
+- **Available Choices**: `[1]`
+- **Player 2** selects **1**.
+- **Action**: Places **1** on top of **9**.
+- **Updated Number Pool**: `[2, 4, 5, 7, 8]`
+- **Tower**: `[6, 3, 9, 1]`
+
+#### Turn 5: Player 1
+
+- **Tower**: `[6, 3, 9, 1]`
+- **Possible Numbers** (divisors or multiples of **1**):
+  - Divisors of **1**: **1** (used)
+  - Multiples of **1**: **2**, **4**, **5**, **7**, **8**
+- **Available Numbers in Pool**: `[2, 4, 5, 7, 8]`
+- **Available Choices**: `[2, 4, 5, 7, 8]`
+- **Player 1** selects **8**.
+- **Action**: Places **8** on top of **1**.
+- **Updated Number Pool**: `[2, 4, 5, 7]`
+- **Tower**: `[6, 3, 9, 1, 8]`
+
+#### Turn 6: Player 2
+
+- **Tower**: `[6, 3, 9, 1, 8]`
+- **Possible Numbers** (divisors or multiples of **8**):
+  - Divisors of **8**: **1**, **2**, **4** (available)
+  - Multiples of **8**: None within 1-9 range.
+- **Available Numbers in Pool**: `[2, 4, 5, 7]`
+- **Available Choices**: `[2, 4]`
+- **Player 2** selects **4**.
+- **Action**: Places **4** on top of **8**.
+- **Updated Number Pool**: `[2, 5, 7]`
+- **Tower**: `[6, 3, 9, 1, 8, 4]`
+
+#### Turn 7: Player 1
+
+- **Tower**: `[6, 3, 9, 1, 8, 4]`
+- **Possible Numbers** (divisors or multiples of **4**):
+  - Divisors of **4**: **1**, **2** (available)
+  - Multiples of **4**: **None**
+- **Available Numbers in Pool**: `[2, 5, 7]`
+- **Available Choices**: `[2]`
+- **Player 1** selects **2**.
+- **Action**: Places **2** on top of **4**.
+- **Updated Number Pool**: `[5, 7]`
+- **Tower**: `[6, 3, 9, 1, 8, 4, 2]`
+
+#### Turn 8: Player 2
+
+- **Tower**: `[6, 3, 9, 1, 8, 4, 2]`
+- **Possible Numbers** (divisors or multiples of **2**):
+  - Divisors of **2**: **1** (used)
+  - Multiples of **2**: **None** within available numbers.
+- **Available Numbers in Pool**: `[5, 7]`
+- **Available Choices**: No valid moves.
+- **Outcome**: Player 2 cannot place a number and loses the game.
+- **Winner**: Player 1
+
+### Sample Command-Line Interaction
+
+#### Game Start
+
+```
+Welcome to Number Tower!
+
+Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Tower is empty.
+
+Player 1's turn.
+Select a number to place on the tower: 6
+```
+
+#### After Player 1's Move
+
+```
+Number Pool: [1, 2, 3, 4, 5, 7, 8, 9]
+Tower: [6]
+
+Player 2's turn.
+Valid numbers to place: [1, 2, 3]
+Select a number to place on the tower: 3
+```
+
+#### Continuing the Game
+
+```
+Number Pool: [1, 2, 4, 5, 7, 8, 9]
+Tower: [6, 3]
+
+Player 1's turn.
+Valid numbers to place: [1, 9]
+Select a number to place on the tower: 9
+```
+
+#### Game End
+
+```
+Number Pool: [5, 7]
+Tower: [6, 3, 9, 1, 8, 4, 2]
+
+Player 2's turn.
+No valid numbers to place.
+Player 2 cannot make a move. Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which numbers have been used and which remain in the pool.
+- **Force Moves**: Try to leave numbers on the tower that limit your opponent's options.
+- **Number Selection**: Choosing numbers with fewer divisors or multiples can create challenging situations for your opponent.
+- **Avoid Low Divisibility Numbers**: Placing a prime number on the tower may reduce your own future options if not timed correctly.

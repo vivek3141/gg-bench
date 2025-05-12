@@ -1,0 +1,242 @@
+**Game Name:** Bit Flip
+
+---
+
+### **Objective**
+
+Be the first player to flip bits in an 8-bit binary number to change it from all zeros (`00000000`) to all ones (`11111111`). The player who flips the bits that result in the binary number being `11111111` wins the game.
+
+---
+
+### **Setup**
+
+- **Binary Number Initialization:**
+  - The game starts with an 8-bit binary number set to `00000000`.
+  - Bits are numbered from **1** (leftmost bit) to **8** (rightmost bit).
+
+- **Player Positions:**
+  - Two players are required.
+  - Decide who will be **Player 1** and **Player 2** (e.g., through mutual agreement or a coin toss).
+
+- **Starting Conditions:**
+  - No bits are flipped at the beginning.
+  - Both players are aware of the initial state of the binary number.
+
+---
+
+### **Game Components**
+
+- **Binary Number:**
+  - An 8-bit binary number displayed on the command line.
+  - Initial state: `0 0 0 0 0 0 0 0`
+  - Bits are displayed with their corresponding numbers for easy reference:
+    ```
+    Positions: [1][2][3][4][5][6][7][8]
+    Bits:      [0][0][0][0][0][0][0][0]
+    ```
+
+- **Flipping Mechanism:**
+  - Players input the bit number(s) they wish to flip during their turn.
+  - Input is handled via the command line.
+
+---
+
+### **Turns**
+
+- **Turn Structure:**
+  - Players alternate turns, starting with **Player 1**.
+  - On each turn, a player must flip **exactly one or two bits** according to the rules.
+
+- **Actions Per Turn:**
+  - **Flipping One Bit:**
+    - The player can choose any single bit (1 to 8) that is currently set to `0`.
+  - **Flipping Two Bits:**
+    - The player can flip **two adjacent bits** (e.g., bits 3 and 4).
+    - Both bits must be currently set to `0`.
+    - Non-adjacent bits cannot be flipped together.
+
+- **Progression of Turns:**
+  - After each turn, the updated binary number is displayed.
+  - The game continues until one player achieves the objective.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Flipping Bits:**
+   - Flipping a bit changes its value from `0` to `1` or from `1` to `0`.
+   - In this game, since all bits start at `0`, flipping will set bits to `1`.
+
+2. **Valid Moves:**
+   - **Available Bits:**
+     - Only bits currently set to `0` can be flipped.
+     - Bits already set to `1` cannot be flipped again.
+   - **Adjacent Bits:**
+     - When flipping two bits, they must be adjacent in position (e.g., bits 5 and 6).
+     - Non-adjacent bits cannot be flipped in the same turn.
+
+3. **Winning the Game:**
+   - The player who flips bit(s) resulting in the binary number being `11111111` (all bits set to `1`) wins.
+   - If a player cannot make a valid move (no bits left to flip), they lose.
+
+4. **Ending the Game:**
+   - The game ends immediately when the binary number is `11111111`.
+   - The final state is displayed, and the winner is announced.
+
+---
+
+### **Scoring**
+
+- **Winning Conditions:**
+  - **Victory:** Achieved by flipping bits that complete the binary number to `11111111`.
+  - **Loss:** Occurs if a player cannot make a valid move on their turn.
+
+- **No Draws:**
+  - The game is designed to always produce a winner; draws are not possible.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial State:**
+
+```
+Positions: [1][2][3][4][5][6][7][8]
+Bits:      [0][0][0][0][0][0][0][0]
+```
+
+**Player 1's Turn:**
+
+- Chooses to flip **bit 3**.
+- **Bits Flipped:** 3
+- Updated Bits:
+  ```
+  Positions: [1][2][3][4][5][6][7][8]
+  Bits:      [0][0][1][0][0][0][0][0]
+  ```
+
+**Player 2's Turn:**
+
+- Chooses to flip **bits 5 and 6**.
+- **Bits Flipped:** 5, 6
+- Updated Bits:
+  ```
+  Positions: [1][2][3][4][5][6][7][8]
+  Bits:      [0][0][1][0][1][1][0][0]
+  ```
+
+**Player 1's Turn:**
+
+- Chooses to flip **bit 7**.
+- **Bits Flipped:** 7
+- Updated Bits:
+  ```
+  Positions: [1][2][3][4][5][6][7][8]
+  Bits:      [0][0][1][0][1][1][1][0]
+  ```
+
+**Player 2's Turn:**
+
+- Chooses to flip **bits 1 and 2**.
+- **Bits Flipped:** 1, 2
+- Updated Bits:
+  ```
+  Positions: [1][2][3][4][5][6][7][8]
+  Bits:      [1][1][1][0][1][1][1][0]
+  ```
+
+**Player 1's Turn:**
+
+- Chooses to flip **bit 4**.
+- **Bits Flipped:** 4
+- Updated Bits:
+  ```
+  Positions: [1][2][3][4][5][6][7][8]
+  Bits:      [1][1][1][1][1][1][1][0]
+  ```
+
+**Player 2's Turn:**
+
+- Chooses to flip **bit 8**.
+- **Bits Flipped:** 8
+- Updated Bits:
+  ```
+  Positions: [1][2][3][4][5][6][7][8]
+  Bits:      [1][1][1][1][1][1][1][1]
+  ```
+
+**Result:** Player 2 wins the game by completing the binary number to `11111111`.
+
+---
+
+### **Command-Line Interaction**
+
+**Game Start:**
+
+```
+Welcome to Bit Flip!
+
+Initial Binary Number:
+Positions: [1][2][3][4][5][6][7][8]
+Bits:      [0][0][0][0][0][0][0][0]
+
+Player 1, it's your turn.
+Available bits to flip: 1 2 3 4 5 6 7 8
+Enter the bit number(s) you wish to flip (separate by space if flipping two bits):
+```
+
+**Player Input:**
+
+```
+Player 1 inputs: 3
+```
+
+**Game Continues:**
+
+- The game updates the binary number.
+- Displays the new state.
+- Moves to **Player 2**'s turn.
+- Repeats the process until the game ends.
+
+---
+
+### **Additional Rules and Clarifications**
+
+- **Adjacency Criteria:**
+  - Bits are considered adjacent if their positions differ by 1 (e.g., bits 4 and 5).
+
+- **Invalid Moves:**
+  - Attempting to flip bits already set to `1` is not allowed.
+  - Attempting to flip non-adjacent bits when flipping two bits is invalid.
+  - If an invalid move is made, the player should be prompted to try again.
+
+- **No Remaining Moves:**
+  - If a player cannot flip any bits on their turn (all bits are set to `1`), they lose the game.
+
+---
+
+### **Strategies**
+
+- **Plan Ahead:**
+  - Anticipate the opponent's possible moves.
+  - Aim to force the opponent into a position where they have limited options.
+
+- **Control Key Bits:**
+  - Flipping certain bits can influence the flow of the game.
+  - Be mindful of which bits remain and whether they can be flipped together.
+
+- **Parity Considerations:**
+  - Keeping track of the number of remaining bits can help in planning.
+  - Use parity (odd or even number of bits left) to your advantage.
+
+---
+
+### **Conclusion**
+
+Bit Flip is a simple yet strategic game that challenges players to think ahead and make tactical decisions. With straightforward rules and quick gameplay, it offers an engaging experience that tests each player's foresight and planning abilities.
+
+Enjoy the game, and may the best strategist win!
+
+---

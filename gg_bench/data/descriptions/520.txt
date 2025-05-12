@@ -1,0 +1,178 @@
+# Subtraction Square
+
+## Objective
+
+Subtraction Square is a strategic two-player turn-based game where the goal is to be the first player to reduce the shared total to exactly zero. Players take turns subtracting square numbers from the shared total, aiming to force their opponent into a position where they cannot make a valid move without going below zero.
+
+## Setup
+
+- **Shared Total**: The game begins with a shared total number of **20**.
+- **Players**: Two players compete against each other. There are no additional starting conditions or positions to set up.
+
+## Game Components
+
+- **Shared Total Tracker**: A simple counter or variable to keep track of the current shared total (starting at 20).
+- **Square Numbers**: The valid numbers that can be subtracted from the shared total are the perfect squares less than or equal to the current total. These are:
+  - 1 (1×1)
+  - 4 (2×2)
+  - 9 (3×3)
+  - 16 (4×4)
+
+_Visualization Example_ (optional for command-line interface):
+
+```
+Current Total: 20
+Available Square Numbers: 1, 4, 9, 16
+```
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., by coin toss). Turns alternate between the two players.
+- **Player Actions**: On their turn, a player must subtract one of the available square numbers from the shared total.
+- **Turn Progression**: After a player makes a move, the shared total is updated, and the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On each turn, a player can subtract **only one** of the square numbers (1, 4, 9, or 16) from the shared total.
+   - The chosen square number must be **less than or equal to** the current shared total.
+
+2. **Updating the Total**:
+   - After subtracting the square number, update the shared total to reflect the new value.
+   - Example: If the current total is 20 and a player subtracts 4, the new total becomes 16.
+
+3. **Winning the Game**:
+   - The player who reduces the shared total to **exactly zero** wins the game.
+   - If a player cannot make a valid move (i.e., no available square number can be subtracted without the total going below zero), that player **loses** the game.
+
+4. **Invalid Moves**:
+   - If a player attempts to subtract a square number that would reduce the total below zero, this is an invalid move, and the player must choose a different number.
+   - If no valid moves are available, the player loses as per Rule 3.
+
+5. **No Draws**:
+   - There is no possibility of a draw in Subtraction Square; the game will always result in a win for one player.
+
+## Scoring
+
+- **Winning**: The winner is the player who successfully reduces the shared total to zero.
+- **Losing**: The loser is the player who either cannot make a valid move on their turn or whose move reduces the total below zero.
+
+_Scoring is binary_: A player either wins or loses. There are no points or other forms of scoring tracked beyond determining the winner of the game.
+
+## Examples
+
+### Example 1: A Complete Game
+
+**Starting Total**: 20
+
+**Turn 1**:
+- **Player 1's Move**:
+  - Chooses to subtract **16**.
+  - Calculation: 20 - 16 = **4**.
+  - **Shared Total** is now **4**.
+  
+**Turn 2**:
+- **Player 2's Move**:
+  - Available square numbers: 1, 4.
+  - Chooses to subtract **4**.
+  - Calculation: 4 - 4 = **0**.
+  - **Shared Total** is now **0**.
+  - **Player 2 wins!**
+
+### Example 2: Strategic Play
+
+**Starting Total**: 20
+
+**Turn 1**:
+- **Player 1's Move**:
+  - Chooses to subtract **9**.
+  - Calculation: 20 - 9 = **11**.
+  - **Shared Total** is now **11**.
+
+**Turn 2**:
+- **Player 2's Move**:
+  - Available square numbers: 1, 4, 9.
+  - Chooses to subtract **9**.
+  - Calculation: 11 - 9 = **2**.
+  - **Shared Total** is now **2**.
+
+**Turn 3**:
+- **Player 1's Move**:
+  - Available square numbers: 1.
+  - Chooses to subtract **1**.
+  - Calculation: 2 - 1 = **1**.
+  - **Shared Total** is now **1**.
+
+**Turn 4**:
+- **Player 2's Move**:
+  - Available square numbers: 1.
+  - Chooses to subtract **1**.
+  - Calculation: 1 - 1 = **0**.
+  - **Shared Total** is now **0**.
+  - **Player 2 wins!**
+
+### Example 3: No Valid Move Scenario
+
+**Starting Total**: 5
+
+**Turn 1**:
+- **Player 1's Move**:
+  - Chooses to subtract **4**.
+  - Calculation: 5 - 4 = **1**.
+  - **Shared Total** is now **1**.
+
+**Turn 2**:
+- **Player 2's Move**:
+  - Available square numbers: 1.
+  - Chooses to subtract **1**.
+  - Calculation: 1 - 1 = **0**.
+  - **Shared Total** is now **0**.
+  - **Player 2 wins!**
+
+### Command-Line Interaction Example
+
+**Starting Total**: 20
+
+```
+Player 1's turn.
+Current Total: 20
+Available squares to subtract: 1, 4, 9, 16
+Enter the square number to subtract: 9
+
+Player 1 subtracts 9. New total is 11.
+
+Player 2's turn.
+Current Total: 11
+Available squares to subtract: 1, 4, 9
+Enter the square number to subtract: 9
+
+Player 2 subtracts 9. New total is 2.
+
+Player 1's turn.
+Current Total: 2
+Available squares to subtract: 1
+Enter the square number to subtract: 1
+
+Player 1 subtracts 1. New total is 1.
+
+Player 2's turn.
+Current Total: 1
+Available squares to subtract: 1
+Enter the square number to subtract: 1
+
+Player 2 subtracts 1. New total is 0.
+
+Player 2 wins!
+```
+
+## Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate future moves and consider how their choice will limit the opponent's options.
+- **Controlling the Total**: Aim to leave the shared total at a number where the opponent has fewer advantageous moves.
+- **Key Numbers**: Be aware of totals that force a win, such as leaving the total at 1 after your turn when only 1 can be subtracted.
+
+## Summary
+
+Subtraction Square is a simple yet strategic game that challenges players to think ahead and make calculated decisions. With its straightforward rules and quick gameplay, it provides an engaging experience where skillful play is rewarded. The game's simplicity makes it easy to code for a command-line interface, while the strategic depth ensures that skilled players can consistently outperform less experienced opponents.
+
+Enjoy the challenge of Subtraction Square and may the best strategist win!

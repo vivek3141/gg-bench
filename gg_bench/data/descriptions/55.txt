@@ -1,0 +1,203 @@
+**Game Name:** Sequence Builder
+
+---
+
+### **Objective**
+
+Be the first player to complete a sequence of **four numbers** where each number is greater than the previous one by **exactly 1, 2, or 3**. Utilize strategic number selection to build your sequence while blocking your opponent from completing theirs.
+
+---
+
+### **Setup**
+
+- **Number Pool:** Create a shared pool containing numbers from **1 to 20**.
+- **Initial State:** Both players start with an **empty sequence**.
+- **Determine First Player:** Decide who takes the first turn (e.g., coin toss, mutual agreement).
+
+---
+
+### **Game Components**
+
+1. **Number Pool (Numbers 1-20):**
+   - Represents the available numbers players can select.
+   - Each number can be selected **only once** during the game.
+
+2. **Player Sequences:**
+   - Each player builds their own sequence of numbers.
+   - Sequences are used to track progress toward the objective.
+
+---
+
+### **Turns**
+
+- Players take turns **alternately**.
+- **Turn Structure:**
+  1. **Select a Number:**
+     - Choose any available number from the number pool.
+  2. **Update Sequence:**
+     - Add the selected number to the **end** of your sequence.
+  3. **Check Sequence Validity:**
+     - Ensure the new number follows the sequence rule (difference of 1, 2, or 3).
+
+- **Turn Progression:**
+  - The game continues with players alternating turns until one player wins or no valid moves remain.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection:**
+
+   - On your turn, you may select **any unselected number** from the pool.
+   - Once a number is selected, it is **removed** from the pool and is **unavailable** for both players.
+
+2. **Sequence Building Rules:**
+
+   - **Starting Your Sequence:**
+     - If your sequence is empty, you may start with **any number** from the pool.
+   - **Adding to Your Sequence:**
+     - Each new number must be **greater than** your last number by **exactly 1, 2, or 3**.
+       - Example: If your last number is 5, your next number must be **6, 7, or 8**.
+     - If no such number is available, you **cannot add** to your sequence that turn.
+
+3. **Winning the Game:**
+
+   - **Primary Win Condition:**
+     - Be the **first player** to construct a valid sequence of **four numbers**.
+   - **Secondary Win Condition:**
+     - If neither player can complete a sequence of four numbers due to exhausted options, the player with the **longer valid sequence** wins.
+     - If both sequences are of equal length and no more valid moves can be made, the game is a **draw**.
+
+4. **Blocking Strategy:**
+
+   - Players may select numbers that their opponent might need, hindering their progress.
+   - Strategic selection is crucial for both advancing your sequence and impeding your opponent.
+
+5. **Invalid Moves:**
+
+   - If a player selects a number that does not satisfy the sequence rule, they must **choose again**.
+   - If no valid numbers are available on your turn, you **skip** your turn.
+
+---
+
+### **Scoring**
+
+- No points are awarded during the game.
+- Victory is achieved by fulfilling the sequence objective.
+
+---
+
+### **Examples**
+
+#### **Example 1: Basic Gameplay**
+
+**Initial Number Pool:** 1-20
+
+**Turn 1:**
+
+- **Player 1** selects **5**.
+  - Sequence: [5]
+  - Available Numbers: 1-4, 6-20
+
+**Turn 2:**
+
+- **Player 2** selects **7**.
+  - Sequence: [7]
+  - Available Numbers: 1-4, 6, 8-20
+
+**Turn 3:**
+
+- **Player 1** attempts to select **7**, but it's unavailable.
+- Chooses **6** instead.
+  - Sequence: [5, 6]
+  - Available Numbers: 1-4, 8-20
+
+**Turn 4:**
+
+- **Player 2** selects **10** (difference of 3 from 7).
+  - Sequence: [7, 10]
+  - Available Numbers: 1-4, 8, 9, 11-20
+
+**Turn 5:**
+
+- **Player 1** selects **9** (difference of 3 from 6).
+  - Sequence: [5, 6, 9]
+  - Available Numbers: 1-4, 8, 11-20
+
+**Turn 6:**
+
+- **Player 2** selects **13** (difference of 3 from 10).
+  - Sequence: [7, 10, 13]
+  - Available Numbers: 1-4, 8, 11, 12, 14-20
+
+**Turn 7:**
+
+- **Player 1** selects **12** (difference of 3 from 9).
+  - Sequence: [5, 6, 9, 12]
+- **Player 1 wins!**
+
+#### **Example 2: Command-Line Interaction**
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 1, select your number: 5
+Player 1's sequence: [5]
+Available Numbers: 1 2 3 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 2, select your number: 6
+Player 2's sequence: [6]
+Available Numbers: 1 2 3 4 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 1, select your number: 8
+Player 1's sequence: [5, 8]
+Invalid move! The number 8 is too great a difference from 5.
+Please select a number that is greater by exactly 1, 2, or 3.
+Player 1, select your number: 7
+Player 1's sequence: [5, 7]
+Available Numbers: 1 2 3 4 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 2, select your number: 9
+Player 2's sequence: [6, 9]
+Available Numbers: 1 2 3 4 8 10 11 12 13 14 15 16 17 18 19 20
+
+Player 1, select your number: 10
+Player 1's sequence: [5, 7, 10]
+Available Numbers: 1 2 3 4 8 11 12 13 14 15 16 17 18 19 20
+
+Player 2, select your number: 12
+Player 2's sequence: [6, 9, 12]
+Available Numbers: 1 2 3 4 8 11 13 14 15 16 17 18 19 20
+
+Player 1, select your number: 13
+Player 1's sequence: [5, 7, 10, 13]
+Player 1 wins! Sequence: [5, 7, 10, 13]
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead:**
+  - Anticipate which numbers you'll need and whether they're likely to be available on your future turns.
+- **Monitor Your Opponent:**
+  - Pay attention to your opponent's sequence and consider selecting numbers they may need.
+- **Flexibility:**
+  - Have alternative numbers in mind in case your preferred choice is taken.
+- **Resource Management:**
+  - Remember that the number pool is limited; use your selections wisely.
+
+---
+
+### **Game Variations**
+
+- **Longer Sequences:**
+  - Increase the required sequence length for a more challenging game.
+- **Different Increments:**
+  - Change the allowed differences between numbers (e.g., only 2 or 3).
+- **Smaller Number Pool:**
+  - Use numbers from 1 to 15 for a quicker game.
+
+---
+
+Enjoy strategizing and may the best sequence builder win!

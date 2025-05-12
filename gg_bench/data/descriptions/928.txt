@@ -1,0 +1,122 @@
+# Sum Quest: Race to 23
+
+## Objective
+
+Sum Quest is a two-player turn-based game where the primary goal is to be the first player to reach a cumulative sum of **exactly 23** without exceeding it. Players take turns adding numbers to a shared cumulative sum, strategically selecting numbers to reach the target while limiting the opponent's options.
+
+## Setup
+
+- **Cumulative Sum**: Start at **0**.
+- **Available Numbers**: Digits from **1** to **9**.
+- **Starting Player**: Decide who goes first (e.g., coin toss, mutual agreement).
+
+## Game Components
+
+- **Cumulative Sum**: A shared total that both players contribute to during their turns.
+- **Numbers (1-9)**: The digits players can select on their turns. Each number can be chosen multiple times throughout the game.
+
+## Turns
+
+- Players alternate turns.
+- **During a Turn**:
+  - **Number Selection**: Choose a number between **1** and **9**, excluding the number your opponent selected on their **immediate previous turn**.
+  - **Update Sum**: Add the chosen number to the cumulative sum.
+  - **Announce Move**: Declare the chosen number and the new cumulative sum.
+
+## Rules and Mechanics
+
+1. **Number Selection Constraints**:
+   - You **cannot** choose the number your opponent selected on their **previous turn**.
+   - All other numbers between **1** and **9** are available, even if previously used.
+
+2. **Cumulative Sum Limit**:
+   - The cumulative sum must not exceed **23**.
+   - Selecting a number that causes the sum to exceed **23** results in an **immediate loss**.
+
+3. **Winning the Game**:
+   - The first player to bring the cumulative sum to **exactly 23** **wins**.
+   - If a player cannot make a valid move (no legal numbers to choose without exceeding 23), they **lose**.
+
+## Scoring
+
+- **Victory**: Achieved by reaching a cumulative sum of exactly **23** on your turn.
+- **Defeat**: Occurs if:
+  - You exceed a cumulative sum of **23**.
+  - You have no valid numbers to choose without exceeding **23**.
+
+## Examples
+
+### Example Game Play
+
+**Starting Cumulative Sum**: 0
+
+**Player 1's Turn**:
+- Opponent's Last Number: N/A
+- **Choice**: 5
+- **Cumulative Sum**: 0 + 5 = **5**
+- **Announcement**: "I choose 5. Sum is now 5."
+
+**Player 2's Turn**:
+- Opponent's Last Number: 5
+- **Unavailable Number**: 5
+- **Choice**: 7
+- **Cumulative Sum**: 5 + 7 = **12**
+- **Announcement**: "I choose 7. Sum is now 12."
+
+**Player 1's Turn**:
+- Opponent's Last Number: 7
+- **Unavailable Number**: 7
+- **Choice**: 6
+- **Cumulative Sum**: 12 + 6 = **18**
+- **Announcement**: "I choose 6. Sum is now 18."
+
+**Player 2's Turn**:
+- Opponent's Last Number: 6
+- **Unavailable Number**: 6
+- **Choices**: 1-5, 7-9 (excluding 6)
+- **Choice**: 5
+- **Cumulative Sum**: 18 + 5 = **23**
+- **Announcement**: "I choose 5. Sum is now 23."
+- **Result**: **Player 2 Wins!**
+
+### Invalid Move Example
+
+**Cumulative Sum**: 22
+
+**Player 1's Turn**:
+- Opponent's Last Number: 1
+- **Unavailable Number**: 1
+- **Available Numbers**: 2-9 (excluding 1)
+- **Options**:
+  - Choosing **2** (22 + 2 = 24) **exceeds 23**.
+  - Choosing **1** is not allowed.
+- **Result**: Player 1 has no valid moves that won't exceed 23.
+- **Outcome**: **Player 1 Loses!**
+
+## Command-Line Interaction Example
+
+```
+System: The current sum is 12. Player 1, it's your turn. Your opponent's last number was 5. Choose a number between 1 and 9, excluding 5.
+Player 1 Input: 7
+System: Player 1 chooses 7. The cumulative sum is now 19.
+
+System: The current sum is 19. Player 2, it's your turn. Your opponent's last number was 7. Choose a number between 1 and 9, excluding 7.
+Player 2 Input: 4
+System: Player 2 chooses 4. The cumulative sum is now 23.
+System: Player 2 reaches 23 and wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which numbers will be unavailable on your next turn.
+- **Control Key Numbers**: Try to force your opponent into a position where they cannot win without exceeding 23.
+- **Avoid High Sums Early**: Keep the cumulative sum low to maintain more number options later.
+- **Track Used Numbers**: Remember which numbers have been recently played to inform your strategy.
+
+## Summary
+
+Sum Quest: Race to 23 is a simple yet strategic game where players race to reach a cumulative sum of 23 without exceeding it. By carefully selecting numbers and anticipating the opponent's moves, skilled players can consistently outperform their opponents. The game is easy to code and perfect for a command-line interface, ensuring quick and engaging gameplay without the possibility of a draw.
+
+---
+
+Enjoy playing Sum Quest and may the best strategist win!

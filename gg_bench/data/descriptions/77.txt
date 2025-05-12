@@ -1,0 +1,196 @@
+# Grid Snatchers: Rule Book
+
+## Objective
+
+Be the first player to **capture the opponent's token** by moving onto its position on a 5x5 grid.
+
+---
+
+## Setup
+
+- **Game Board**: A 5x5 grid with coordinates ranging from **(1,1)** to **(5,5)**.
+  
+- **Player Tokens**:
+  - **Player 1**:
+    - Starts at the **top-left corner** of the grid at position **(1,1)**.
+  - **Player 2**:
+    - Starts at the **bottom-right corner** of the grid at position **(5,5)**.
+
+---
+
+## Game Components
+
+- **Grid**:
+  - Represents the game board.
+  - Each cell is identified by coordinates **(x, y)** where **1 ≤ x, y ≤ 5**.
+
+- **Tokens**:
+  - Each player has one token.
+  - **Appearance**: Tokens can be represented by unique symbols or colors in the interface (e.g., `P1` for Player 1 and `P2` for Player 2).
+  
+- **Movement Options**:
+  - Tokens can move in the four cardinal directions:
+    - **Up**
+    - **Down**
+    - **Left**
+    - **Right**
+  - Movement is in **straight lines** only, and **diagonal moves are not allowed**.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, starting with **Player 1**.
+
+- **Player Actions During a Turn**:
+  1. **Select Direction**:
+     - Choose one of the four directions: up, down, left, or right.
+  2. **Select Number of Spaces**:
+     - Move the token **1 or 2 spaces** in the chosen direction.
+  3. **Move Token**:
+     - Update the token's position on the grid accordingly.
+     - Ensure the move stays within the grid bounds.
+  
+- **Turn Progression**:
+  - After a player completes their move, control passes to the other player.
+  - The game continues until one player captures the opponent's token.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Valid Moves**:
+  - A token may move **up to two spaces** per turn.
+  - Moves must be in a **straight line** along a row or column.
+  - The token cannot move **outside the grid bounds**.
+  
+- **Blocking and Occupying Cells**:
+  - Tokens **cannot pass through** or **occupy the same space** as the opponent's token unless capturing.
+  - **No Skipping**:
+    - There are no obstacles; tokens can move freely unless the opponent's token blocks the path.
+
+### Capture Mechanism
+
+- **Capturing the Opponent's Token**:
+  - A player **captures** the opponent's token by moving their token **onto the cell occupied** by the opponent.
+  - The player who performs the capture **immediately wins** the game.
+
+### Winning Conditions
+
+- **Victory**:
+  - Capture the opponent's token by landing on their position.
+- **No Draws**:
+  - The game continues until one player wins; there are **no draw conditions**.
+
+---
+
+## Scoring
+
+- **Win**:
+  - The player who captures the opponent's token is declared the **winner**.
+- **Game End**:
+  - The game ends immediately upon a successful capture.
+
+---
+
+## Examples
+
+### Example Turn Sequence
+
+**Initial Setup**:
+
+- **Player 1** is at position **(1,1)**.
+- **Player 2** is at position **(5,5)**.
+
+---
+
+**Turn 1 (Player 1)**:
+
+- **Action**: Move **up** 2 spaces.
+- **Movement**: From **(1,1)** to **(1,3)**.
+- **Comment**: Player 1 advances toward the center.
+
+---
+
+**Turn 2 (Player 2)**:
+
+- **Action**: Move **left** 2 spaces.
+- **Movement**: From **(5,5)** to **(3,5)**.
+- **Comment**: Player 2 mirrors the movement toward the center.
+
+---
+
+**Turn 3 (Player 1)**:
+
+- **Action**: Move **right** 2 spaces.
+- **Movement**: From **(1,3)** to **(3,3)**.
+- **Comment**: Player 1 positions towards the center to anticipate Player 2.
+
+---
+
+**Turn 4 (Player 2)**:
+
+- **Action**: Move **up** 2 spaces.
+- **Movement**: From **(3,5)** to **(3,3)**.
+- **Outcome**: Player 2 captures Player 1's token.
+- **Result**: **Player 2 wins the game**.
+
+---
+
+## Command-Line Interactions
+
+**Player 1's Turn**:
+
+```
+Player 1, enter your move:
+Direction (up/down/left/right): up
+Number of spaces (1 or 2): 2
+You moved to position (1,3).
+```
+
+**Player 2's Turn**:
+
+```
+Player 2, enter your move:
+Direction (up/down/left/right): left
+Number of spaces (1 or 2): 2
+You moved to position (3,5).
+```
+
+**Subsequent Turns** follow similar input patterns, with the game providing feedback on the token's new position and checking for capture conditions.
+
+---
+
+## Strategic Considerations
+
+- **Anticipation**:
+  - Predict the opponent's potential moves and plan to counter or avoid them.
+  
+- **Control the Center**:
+  - Occupying central positions increases your movement options and ability to intercept the opponent.
+  
+- **Movement Choices**:
+  - Deciding between moving 1 or 2 spaces can set up offensive or defensive positions.
+  
+- **Cutting Off Paths**:
+  - Position your token to limit the opponent's movement options, potentially forcing them into a capture.
+
+---
+
+## Game Summary
+
+- **Simple Mechanics**:
+  - Easy to learn and quick to play, suitable for a command-line interface.
+  
+- **Skill-Based Outcomes**:
+  - Encourages strategic thinking; skilled players can consistently outperform less experienced opponents.
+  
+- **Unique Gameplay**:
+  - Offers a distinct experience not directly resembling classic games like Go, Nim, Tic-Tac-Toe, or Chess.
+
+---
+
+Enjoy playing **Grid Snatchers**, and may the best strategist win!

@@ -1,0 +1,256 @@
+# Quantum Leap: Rule Book
+
+Welcome to **Quantum Leap**, a two-player turn-based strategy game of mathematical prowess and foresight. Navigate through a sequence of numbered nodes by leveraging factors and multiples to outmaneuver your opponent. The first player to reach the end node wins the game. Sharpen your number theory skills and prepare for an engaging battle of wits!
+
+---
+
+## Objective
+
+**Primary Goal:**  
+Be the first player to reach **Node 30** by moving your token along a linear sequence of numbered nodes using strategic jumps based on factors and multiples.
+
+**Victory Condition:**  
+- **Win:** Successfully move your token to **Node 30**.
+- **Loss:** If you cannot make a valid move on your turn, you lose the game.
+
+---
+
+## Setup
+
+1. **Game Board Initialization:**
+   - Create a linear sequence of nodes numbered from **1** to **30**.
+   - Represented in the command-line interface as a list or array.
+
+2. **Player Positions:**
+   - Both players start with their tokens on **Node 1**.
+
+3. **Starting Conditions:**
+   - Determine who takes the first turn (e.g., by agreement or random selection).
+
+---
+
+## Game Components
+
+- **Nodes:**
+  - **Numbered Nodes (1-30):** Sequential positions players move through.
+  - Each node is identified by a unique integer from **1** to **30**.
+
+- **Player Tokens:**
+  - Represented by player names or identifiers (e.g., `Player1`, `Player2`).
+  - Tokens track each player's current position on the node sequence.
+
+- **Command-Line Interface:**
+  - Players input their moves by specifying the target node number.
+  - The interface displays the current game state after each turn.
+
+---
+
+## Turns
+
+**Turn Structure:**
+
+1. **Current Position Announcement:**
+   - The game displays the player's current node.
+
+2. **Available Moves Display:**
+   - The game calculates and shows all valid nodes the player can move to based on the rules.
+
+3. **Player Action:**
+   - The player selects a node from the available moves.
+   - Input is entered via the command-line interface.
+
+4. **Move Execution:**
+   - The game updates the player's token to the new node.
+   - The move is validated to ensure it follows game rules.
+
+5. **Turn Progression:**
+   - The turn passes to the opposing player.
+
+---
+
+## Rules and Mechanics
+
+### Core Movement Rules
+
+On your turn, you can move your token forward along the nodes based on the following rules:
+
+1. **Multiples Rule:**
+   - **Move to a Node** that is a **multiple** of your **current node number**.
+   - Example: From Node 2, you can move to Nodes 4, 6, 8, etc.
+
+2. **Factors Rule:**
+   - **Move to a Node** that is a **factor** of your **current node number** (excluding the current node).
+   - Example: From Node 6, you can move to Nodes 1, 2, 3.
+
+3. **Movement Restrictions:**
+   - **Forward Movement Only:** You may only move to nodes with a higher number than your current node.
+   - **Unoccupied Nodes:** You cannot move to a node occupied by your opponent's token.
+   - **Within Bounds:** Moves must be within the node sequence (Nodes 1-30).
+
+### Victory Conditions
+
+- **Winning the Game:**  
+  - The first player to move their token to **Node 30** wins.
+- **Losing the Game:**  
+  - If you have no valid moves on your turn (cannot move to any node following the rules), you lose.
+
+### Additional Rules
+
+- **Starting Node Special Rule:**  
+  - From **Node 1**, since all numbers are multiples of 1, you can move to any unoccupied node ahead.
+- **Occupied Nodes:**  
+  - Players cannot occupy the same node. If a calculated move lands on an occupied node, that move is invalid.
+- **No Skipping Turns:**  
+  - Players must make a valid move if one is available; skipping turns is not allowed.
+
+---
+
+## Scoring
+
+- **Win/Loss Outcome:**  
+  - The game is binary—there are no points or cumulative scoring.
+  - The outcome is solely based on reaching Node 30 or forcing the opponent into a position with no valid moves.
+
+---
+
+## Example Gameplay
+
+### Initial Game State
+
+- **Player1** and **Player2** both start on **Node 1**.
+- It's **Player1's** turn.
+
+### Sample Turns
+
+**Turn 1: Player1**
+
+- **Current Node:** 1
+- **Available Moves:** Nodes 2-30 (all nodes ahead are multiples of 1)
+- **Player1's Action:** Moves to **Node 2**
+
+**Turn 2: Player2**
+
+- **Current Node:** 1
+- **Available Moves:** Nodes 2-30 (Node 2 is occupied)
+- **Valid Moves:** Nodes 3-30 (excluding Node 2)
+- **Player2's Action:** Moves to **Node 3**
+
+**Turn 3: Player1**
+
+- **Current Node:** 2
+- **Available Moves:** Multiples and factors of 2
+  - **Multiples of 2:** Nodes 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30
+  - **Factors of 2:** Node 1 (cannot move backward)
+- **Occupied Nodes:** None of the available nodes are occupied
+- **Player1's Action:** Moves to **Node 4**
+
+**Turn 4: Player2**
+
+- **Current Node:** 3
+- **Available Moves:** Multiples and factors of 3
+  - **Multiples of 3:** Nodes 6, 9, 12, 15, 18, 21, 24, 27, 30
+  - **Factors of 3:** Node 1 (cannot move backward)
+- **Player2's Action:** Moves to **Node 6**
+
+**Turn 5: Player1**
+
+- **Current Node:** 4
+- **Available Moves:**
+  - **Multiples of 4:** Nodes 8, 12, 16, 20, 24, 28
+  - **Factors of 4:** Nodes 1, 2 (cannot move backward)
+- **Player1's Action:** Moves to **Node 8**
+
+**Turn 6: Player2**
+
+- **Current Node:** 6
+- **Available Moves:**
+  - **Multiples of 6:** Nodes 12, 18, 24, 30
+  - **Factors of 6:** Nodes 1, 2, 3 (cannot move backward)
+- **Player2's Action:** Moves to **Node 9** (Invalid move)
+
+**Invalid Move Explanation:**
+
+- Node 9 is not a multiple or factor of 6.
+- The game prompts **Player2** to choose a valid move.
+
+**Player2's Corrected Action:**
+
+- **Player2's Action:** Moves to **Node 12**
+
+**Game Progression:**
+
+- Players continue in this manner, strategically choosing nodes that advance them towards **Node 30**.
+
+**Possible Game Conclusion:**
+
+- **Player1** reaches **Node 30** first by planning moves that lead directly to the end node.
+
+---
+
+## Command-Line Interaction Example
+
+**Game Start:**
+
+```
+Player1 and Player2 are both at Node 1.
+Player1's turn.
+Available moves: 2-30
+Enter the node number you wish to move to:
+```
+
+**Player1 Input:**
+
+```
+2
+```
+
+**Game Output:**
+
+```
+Player1 moves to Node 2.
+Player2's turn.
+Available moves: 3-30 (Node 2 is occupied)
+Enter the node number you wish to move to:
+```
+
+**Player2 Input:**
+
+```
+3
+```
+
+**Game Output:**
+
+```
+Player2 moves to Node 3.
+Player1's turn.
+Current Node: 2
+Available moves: 4,6,8,10,12,14,16,18,20,22,24,26,28,30
+Enter the node number you wish to move to:
+```
+
+**...**
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:**  
+  - Look at the multiples and factors of potential landing nodes to anticipate future moves.
+  
+- **Block Opponent:**  
+  - Occupy nodes that are critical for your opponent's progression.
+
+- **Optimal Path:**  
+  - Aim for nodes whose multiples lead directly to **Node 30**.
+
+- **Avoid Isolation:**  
+  - Don't move to a node with limited future moves unless it leads directly to victory.
+
+---
+
+## Conclusion
+
+**Quantum Leap** combines mathematical strategy with tactical planning, offering depth and replayability. With simple rules and a focus on number relationships, it's easy to learn but challenging to master. Enjoy the game and may the best strategist win!
+
+---

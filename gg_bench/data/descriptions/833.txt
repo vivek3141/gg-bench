@@ -1,0 +1,193 @@
+# Balance
+
+## Objective
+
+**Balance** is a strategic two-player, turn-based game where players compete to avoid exceeding a numerical limit on a shared balance scale. The primary goal is to force your opponent to cause the balance to exceed its limits of +20 or -20 on their turn. Players take turns adding positive or negative integers to a cumulative total (the "balance"). The player who causes the balance to surpass these limits loses the game.
+
+---
+
+## Setup
+
+1. **Starting Balance**: The game begins with the balance set to **0**.
+2. **Player Order**: Decide which player goes first. This can be determined randomly or by mutual agreement.
+3. **Game Interface**: The game is played in a command-line interface where players input their chosen numbers when prompted.
+
+---
+
+## Game Components
+
+- **Balance**: An integer value representing the cumulative total of all moves made by both players. It starts at **0**.
+- **Allowed Numbers**: Integers from **-10** to **+10**, excluding **0**. These numbers are used by players to adjust the balance during their turns.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns throughout the game.
+   - On each turn, the active player performs the following actions:
+     1. **Input Move**: Select and input an integer between **-10** and **+10** (excluding **0**).
+     2. **Update Balance**: The chosen number is added to the current balance to form a new balance.
+     3. **Display Balance**: The new balance is displayed to both players.
+     4. **Check for Win/Loss Condition**: Determine if the new balance exceeds the limits of +20 or -20.
+
+2. **Progression of Turns**:
+   - The game continues with players taking turns until one player causes the balance to exceed the limits.
+
+---
+
+## Rules and Mechanics
+
+### 1. Allowed Moves
+
+- **Valid Numbers**: On their turn, a player must choose an integer between **-10** and **+10**, excluding **0**.
+- **Invalid Inputs**: If an invalid number is input (e.g., 0 or any number outside the allowed range), the game will prompt the player to enter a valid number.
+
+### 2. Updating the Balance
+
+- **Calculating New Balance**: The chosen number is added to the current balance.
+  - *Example*: If the current balance is **5** and the player adds **-7**, the new balance becomes **5 + (-7) = -2**.
+
+### 3. Balance Limits
+
+- **Maximum and Minimum**: The balance must stay within the inclusive range of **-20** to **+20**.
+- **Exceeding Limits**:
+  - If a player's move causes the balance to become **greater than +20** or **less than -20**, that player **loses** the game immediately.
+  - Reaching exactly **+20** or **-20** is allowed and the game continues.
+
+### 4. Winning the Game
+
+- **Victory Condition**: You win if your opponent causes the balance to exceed the limits on their turn.
+- **No Draws**: The game cannot end in a draw; a winner is always determined.
+
+### 5. No Skipping Turns
+
+- Players must take their turn when it is their turn; skipping is not permitted.
+
+---
+
+## Scoring
+
+- **Simple Outcome**: The game is won by the last player to make a valid move without exceeding the balance limits.
+- **No Points System**: There are no points or cumulative scoring; the focus is on strategic play to outmaneuver your opponent.
+
+---
+
+## Examples
+
+### Example 1: Strategic Play
+
+**Starting Balance**: 0
+
+1. **Player 1's Turn**:
+   - Chooses **+7**.
+   - New balance: **0 + 7 = 7**.
+2. **Player 2's Turn**:
+   - Chooses **+10**.
+   - New balance: **7 + 10 = 17**.
+3. **Player 1's Turn**:
+   - Chooses **+3**.
+   - New balance: **17 + 3 = 20**.
+4. **Player 2's Turn**:
+   - Must be cautious; adding any positive number would exceed +20.
+   - Chooses **-10**.
+   - New balance: **20 + (-10) = 10**.
+5. **Player 1's Turn**:
+   - Chooses **+10**.
+   - New balance: **10 + 10 = 20**.
+6. **Player 2's Turn**:
+   - Again must avoid exceeding +20.
+   - Chooses **-10**.
+   - New balance: **20 + (-10) = 10**.
+7. **Player 1's Turn**:
+   - Recognizing the pattern, chooses **+10**.
+   - New balance: **10 + 10 = 20**.
+8. **Player 2's Turn**:
+   - Options are running out; forced to choose **-9**.
+   - New balance: **20 + (-9) = 11**.
+9. **Player 1's Turn**:
+   - Seizes the opportunity, chooses **+10**.
+   - New balance: **11 + 10 = 21**.
+   - Since the balance is now **21**, which exceeds **+20**, **Player 1** loses the game.
+
+**Winner**: **Player 2**
+
+### Example 2: Forced Error
+
+**Starting Balance**: 0
+
+1. **Player 1's Turn**:
+   - Chooses **-8**.
+   - New balance: **0 + (-8) = -8**.
+2. **Player 2's Turn**:
+   - Chooses **-10**.
+   - New balance: **-8 + (-10) = -18**.
+3. **Player 1's Turn**:
+   - Must avoid causing balance to go below -20.
+   - Chooses **+10**.
+   - New balance: **-18 + 10 = -8**.
+4. **Player 2's Turn**:
+   - Chooses **-10**.
+   - New balance: **-8 + (-10) = -18**.
+5. **Player 1's Turn**:
+   - Limited safe moves remaining.
+   - Chooses **+7**.
+   - New balance: **-18 + 7 = -11**.
+6. **Player 2's Turn**:
+   - Chooses **-10**.
+   - New balance: **-11 + (-10) = -21**.
+   - Since the balance is now **-21**, which is less than **-20**, **Player 2** loses the game.
+
+**Winner**: **Player 1**
+
+---
+
+## Command-Line Interaction
+
+The game progresses through simple text prompts and inputs. Below is an example of how the command-line interaction might look during gameplay.
+
+### Sample Turn:
+
+```
+Current balance: 5
+Player 1's turn. Enter a number between -10 and +10 (excluding 0): -7
+New balance: 5 + (-7) = -2
+```
+
+### Sample Game Start:
+
+```
+Welcome to Balance!
+
+Starting balance is 0.
+Player 1 goes first.
+
+Current balance: 0
+Player 1's turn. Enter a number between -10 and +10 (excluding 0): 8
+New balance: 0 + 8 = 8
+
+Current balance: 8
+Player 2's turn. Enter a number between -10 and +10 (excluding 0): 10
+New balance: 8 + 10 = 18
+
+Current balance: 18
+Player 1's turn. Enter a number between -10 and +10 (excluding 0): 3
+New balance: 18 + 3 = 21
+
+Balance exceeded +20!
+Player 1 loses.
+Player 2 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Monitor the Balance Closely**: Keep track of how your moves will affect the balance and consider the possible responses from your opponent.
+- **Force Your Opponent's Hand**: Try to set up the balance so that your opponent has no choice but to exceed the limit on their turn.
+- **Use Negative Numbers Wisely**: Don't solely rely on positive numbers; sometimes decreasing the balance can give you an advantage.
+- **Anticipate Moves**: Think ahead about the possible sequences of moves and how they could lead to victory or defeat.
+
+---
+
+Enjoy the game, and may the best strategist win!

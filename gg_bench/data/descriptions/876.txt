@@ -1,0 +1,222 @@
+# Number Duel: Rule Book
+
+---
+
+## Objective
+
+**Number Duel** is a strategic two-player command-line game where the goal is to reduce your opponent's Health Points (HP) from **100** to **0** before they do the same to you. Players achieve victory by outsmarting their opponent through clever selection of attack numbers, dealing damage based on the difference between their chosen numbers.
+
+---
+
+## Setup
+
+1. **Health Points Initialization**:
+   - Both players start with **100 Health Points (HP)**.
+2. **Attack Options**:
+   - Players have access to attack numbers ranging from **1** to **10**.
+3. **No Repeat Rule Initialization**:
+   - Players cannot select the same attack number in two consecutive turns.
+
+---
+
+## Game Components
+
+1. **Health Points (HP)**:
+   - Represents the player's vitality.
+   - Starts at **100 HP** for each player.
+   - Decreases when the player takes damage.
+2. **Attack Numbers**:
+   - Integers from **1** to **10**.
+   - Used to determine the amount of damage dealt to the opponent.
+3. **No Repeat Rule Tracker**:
+   - Keeps track of each player's previously used attack number to enforce the no repeat rule.
+
+---
+
+## Turns
+
+1. **Simultaneous Selection**:
+   - Both players **secretly choose** an attack number from **1** to **10**.
+2. **Reveal and Resolve**:
+   - Chosen numbers are revealed **simultaneously**.
+   - Damage calculations are performed based on the revealed numbers.
+3. **Update Health Points**:
+   - Players' HP are adjusted according to the damage dealt.
+4. **Enforce No Repeat Rule**:
+   - Players update their attack history to ensure they do not repeat the same attack number in the next turn.
+5. **Progression**:
+   - Steps 1-4 are repeated in each turn until a player's HP is reduced to **0** or below.
+
+---
+
+## Rules and Mechanics
+
+1. **Choosing Attack Numbers**:
+   - On each turn, players select an attack number (**1** to **10**) without knowledge of the opponent's choice.
+   - Players **cannot** choose the **same attack number they used in the immediate previous turn**.
+2. **Damage Calculation**:
+   - If one player's attack number is **higher** than the opponent's, they deal damage equal to the **difference between the numbers**.
+   - If both players choose the **same number**, **no damage** is dealt.
+3. **Health Points Reduction**:
+   - Damage is **subtracted** from the opponent's HP.
+   - HP cannot go below **0**; once it reaches **0**, the player loses.
+4. **No Repeat Rule**:
+   - Players must select a **different attack number** from their previous turn.
+   - Violation of this rule results in an **automatic forfeit** of the game.
+5. **Winning the Game**:
+   - The game ends when a player's HP is reduced to **0** or below.
+   - The opposing player is declared the **winner**.
+6. **Game Integrity**:
+   - Players must make honest selections and follow the rules to ensure fair play.
+
+---
+
+## Scoring
+
+- **Health Points (HP)**:
+  - Each player starts with **100 HP**.
+  - HP decreases based on damage received each turn.
+- **Damage Dealt**:
+  - Calculated as the **difference** between the higher and lower attack numbers when they are not equal.
+- **Victory Condition**:
+  - Reduce the opponent's HP to **0** or below to win the game.
+
+---
+
+## Examples
+
+### Example Game Turn-by-Turn
+
+**Initial State**:
+- Player A HP: 100
+- Player B HP: 100
+
+---
+
+**Turn 1**:
+
+- **Player A** chooses **7**.
+- **Player B** chooses **5**.
+- **Reveal**:
+  - Player A's attack: 7
+  - Player B's attack: 5
+- **Damage Calculation**:
+  - Player A deals **7 - 5 = 2** damage to Player B.
+- **Update HP**:
+  - Player A HP: **100**
+  - Player B HP: **100 - 2 = 98**
+
+---
+
+**Turn 2**:
+
+- **Player A** cannot choose **7** (used in previous turn). Chooses **6**.
+- **Player B** cannot choose **5** (used in previous turn). Chooses **8**.
+- **Reveal**:
+  - Player A's attack: 6
+  - Player B's attack: 8
+- **Damage Calculation**:
+  - Player B deals **8 - 6 = 2** damage to Player A.
+- **Update HP**:
+  - Player A HP: **100 - 2 = 98**
+  - Player B HP: **98**
+
+---
+
+**Turn 3**:
+
+- **Player A** cannot choose **6**. Chooses **9**.
+- **Player B** cannot choose **8**. Chooses **7**.
+- **Reveal**:
+  - Player A's attack: 9
+  - Player B's attack: 7
+- **Damage Calculation**:
+  - Player A deals **9 - 7 = 2** damage to Player B.
+- **Update HP**:
+  - Player A HP: **98**
+  - Player B HP: **98 - 2 = 96**
+
+---
+
+**Turn 4**:
+
+- **Player A** cannot choose **9**. Chooses **5**.
+- **Player B** cannot choose **7**. Chooses **6**.
+- **Reveal**:
+  - Player A's attack: 5
+  - Player B's attack: 6
+- **Damage Calculation**:
+  - Player B deals **6 - 5 = 1** damage to Player A.
+- **Update HP**:
+  - Player A HP: **98 - 1 = 97**
+  - Player B HP: **96**
+
+---
+
+**...Game Continues Until a Player's HP Reaches 0...**
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their attack numbers:
+
+```
+=== Turn 1 ===
+Player A, enter your attack number (1-10, not repeating previous number): 7
+Player B, enter your attack number (1-10, not repeating previous number): 5
+
+Result:
+- Player A's attack: 7
+- Player B's attack: 5
+- Player A deals 2 damage to Player B.
+
+Health Points:
+- Player A HP: 100
+- Player B HP: 98
+
+=== Turn 2 ===
+Player A, enter your attack number (cannot be 7): 6
+Player B, enter your attack number (cannot be 5): 8
+
+Result:
+- Player A's attack: 6
+- Player B's attack: 8
+- Player B deals 2 damage to Player A.
+
+Health Points:
+- Player A HP: 98
+- Player B HP: 98
+
+=== Turn 3 ===
+Player A, enter your attack number (cannot be 6): 9
+Player B, enter your attack number (cannot be 8): 7
+
+Result:
+- Player A's attack: 9
+- Player B's attack: 7
+- Player A deals 2 damage to Player B.
+
+Health Points:
+- Player A HP: 98
+- Player B HP: 96
+
+...and so on until one player's HP reaches 0.
+```
+
+---
+
+## Strategic Tips
+
+- **Predict Opponent's Moves**:
+  - Try to anticipate which numbers your opponent might choose based on their previous choices.
+- **Vary Your Attack Numbers**:
+  - Avoid patterns in your number selection to prevent the opponent from predicting your moves.
+- **Manage High Numbers**:
+  - Higher numbers can deal more damage if the opponent chooses a much lower number, but they may also leave you vulnerable if the opponent chooses an even higher number.
+- **Use No Repeat Rule to Your Advantage**:
+  - Keep track of numbers your opponent cannot use in the next turn to narrow down their possible choices.
+
+---
+
+Enjoy the game and may the best strategist win!

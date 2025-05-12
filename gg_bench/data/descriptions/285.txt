@@ -1,0 +1,177 @@
+# Split and Choose
+
+## Objective
+
+Be the player to force your opponent into a position where they cannot make a valid move, thereby winning the game.
+
+## Setup
+
+1. **Starting Number**: Agree on an initial positive integer called the *Current Number* (e.g., 20). This number should be significantly larger than 1 to allow for strategic play.
+2. **First Player**: Decide who will take the first turn. Players can flip a coin or agree between themselves.
+
+## Game Components
+
+- **Current Number**: The shared positive integer that changes throughout the game based on players' actions.
+- **No Physical Components Required**: The game is played entirely through command-line inputs and outputs, tracking the Current Number.
+
+## Turns
+
+### Turn Structure
+
+1. **Split Phase (Active Player)**:
+   - The active player splits the *Current Number* into two smaller positive integers that sum up to the *Current Number*.
+2. **Choose Phase (Opponent)**:
+   - The opponent selects one of the two numbers resulting from the split to become the new *Current Number*.
+
+### Order of Actions
+
+- Players alternate turns, each performing the Split Phase when it is their turn and the Choose Phase when it is their opponent's turn.
+
+## Rules and Mechanics
+
+1. **Splitting the Current Number**:
+   - The active player must **split** the *Current Number* into two **positive integers**, both less than the *Current Number*, whose sum equals the *Current Number*.
+   - Example: If the *Current Number* is 10, valid splits include (9,1), (8,2), (7,3), (6,4), and (5,5).
+
+2. **Choosing the New Current Number**:
+   - The opponent selects one of the two numbers provided.
+   - The selected number becomes the new *Current Number* for the next turn.
+
+3. **Invalid Moves and Losing Condition**:
+   - If a player is faced with a *Current Number* of **1** during their Split Phase, they cannot make a valid split (since 1 cannot be split into positive integers greater than zero that sum to 1).
+   - The player unable to make a valid split on their turn **loses** the game.
+
+4. **Gameplay Continuation**:
+   - The game continues with players alternating turns, following the Split and Choose phases, until one player cannot make a valid move and thus loses.
+
+## Scoring
+
+- The game is a **win/loss** format with no point scoring system.
+- **Victory Condition**: Force your opponent into a position where they must split a *Current Number* of 1, which is impossible, resulting in their loss.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup:**
+
+- *Current Number*: 15
+- **Player 1** and **Player 2** agree that **Player 1** will start.
+
+---
+
+**Turn 1**
+
+- **Player 1's Split Phase**:
+  - Splits 15 into **9** and **6**.
+- **Player 2's Choose Phase**:
+  - Chooses **6**.
+- *New Current Number*: 6
+
+---
+
+**Turn 2**
+
+- **Player 2's Split Phase**:
+  - Splits 6 into **4** and **2**.
+- **Player 1's Choose Phase**:
+  - Chooses **2**.
+- *New Current Number*: 2
+
+---
+
+**Turn 3**
+
+- **Player 1's Split Phase**:
+  - Splits 2 into **1** and **1**.
+- **Player 2's Choose Phase**:
+  - Chooses **1**.
+- *New Current Number*: 1
+
+---
+
+**Turn 4**
+
+- **Player 2's Split Phase**:
+  - Cannot split 1 (no valid moves).
+- **Player 2** loses the game.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample interaction illustrating how the game might proceed in a command-line interface:
+
+```plaintext
+Game Start!
+Starting Number: 20
+Player 1 will begin.
+
+---------------------------
+Player 1's Turn
+Current Number: 20
+Enter your split (e.g., '12 8'): 12 8
+
+Player 2, choose a number:
+1. 12
+2. 8
+Enter choice (1 or 2): 2
+
+Player 2 selected 8.
+New Current Number is 8.
+
+---------------------------
+Player 2's Turn
+Current Number: 8
+Enter your split (e.g., '5 3'): 5 3
+
+Player 1, choose a number:
+1. 5
+2. 3
+Enter choice (1 or 2): 1
+
+Player 1 selected 5.
+New Current Number is 5.
+
+---------------------------
+Player 1's Turn
+Current Number: 5
+Enter your split (e.g., '2 3'): 2 3
+
+Player 2, choose a number:
+1. 2
+2. 3
+Enter choice (1 or 2): 1
+
+Player 2 selected 2.
+New Current Number is 2.
+
+---------------------------
+Player 2's Turn
+Current Number: 2
+Enter your split (e.g., '1 1'): 1 1
+
+Player 1, choose a number:
+1. 1
+2. 1
+Enter choice (1 or 2): 1
+
+Player 1 selected 1.
+New Current Number is 1.
+
+---------------------------
+Player 1's Turn
+Current Number: 1
+No valid splits possible.
+Player 1 loses the game.
+```
+
+## Strategic Tips
+
+- **Force Key Numbers**: Aim to leave your opponent with a *Current Number* that is a power of 2 (e.g., 2, 4, 8), which can be advantageous.
+- **Plan Ahead**: Anticipate the possible splits and choices your opponent can make to guide the game toward a favorable outcome.
+- **Balance Splits**: Sometimes offering two uneven options forces your opponent into a difficult decision.
+
+## Conclusion
+
+"Split and Choose" is a simple yet strategically rich game that challenges players to think ahead and anticipate their opponent's moves. Its minimalistic design makes it perfect for command-line play and easy to code, ensuring quick and decisive gameplay where skill prevails over chance.

@@ -1,0 +1,231 @@
+# Energy Duel
+
+## Objective
+
+Be the first player to reduce your opponent's Energy Points (EP) to zero while maintaining at least one EP yourself.
+
+## Setup
+
+- Each player starts with **10 Energy Points (EP)**.
+- Determine who goes first (e.g., flip a coin or let the program decide randomly).
+
+## Game Components
+
+- **Energy Points (EP):** Represents a player's vitality. Each player starts with 10 EP.
+- **Actions:**
+  - **Attack**
+  - **Defend**
+  - **Recharge**
+
+## Turns
+
+Players take turns performing one action per turn. The game progresses in rounds, where each round consists of both players taking one turn each.
+
+### Order of Actions
+
+1. **Player 1's Turn:**
+   - Choose an action: Attack, Defend, or Recharge.
+2. **Player 2's Turn:**
+   - Choose an action: Attack, Defend, or Recharge.
+
+## Rules and Mechanics
+
+### Actions
+
+1. **Attack**
+   - **Effect:** Deals 3 damage to the opponent.
+   - **Cost:** Reduces your EP by **2** due to exertion.
+   - **Conditions:** You must have at least **3 EP** to perform an Attack.
+   - **Opponent's Defend Effect:** If the opponent chose Defend on their previous turn, your Attack deals only **1 damage**.
+
+2. **Defend**
+   - **Effect:** Reduces damage from the next Attack received by **2**.
+   - **Cost:** Reduces your EP by **1**.
+   - **Duration:** The defense effect lasts until the start of your next turn.
+   - **Stacking:** Defense effects do not stack. Reusing Defend before it expires will refresh the effect.
+
+3. **Recharge**
+   - **Effect:** Restores your EP by **3**.
+   - **Cost:** Skip dealing damage this turn.
+   - **Maximum EP:** Your EP cannot exceed **10**.
+
+### Additional Rules
+
+- **Energy Points (EP):** 
+  - A player's EP cannot go below **0** or above **10**.
+  - If a player's EP drops to **0**, they lose immediately.
+- **Defend Mechanics:**
+  - The Defend action must be chosen **before** an opponent's Attack to reduce damage.
+  - Defend reduces damage from a single Attack only.
+- **No Passing Turns:** Players must choose one of the three actions on their turn.
+
+## Scoring
+
+- **Victory Condition:** Reduce your opponent's EP to **0** while you have at least **1 EP** remaining.
+- **Tracking EP:** Keep a running total of both players' EP after each turn.
+
+## Example Gameplay
+
+### Starting the Game
+
+- **Player 1 EP:** 10
+- **Player 2 EP:** 10
+
+### Round 1
+
+#### Player 1's Turn
+
+- **Action:** Attack
+- **EP Cost:** -2 EP (now at 8 EP)
+- **Damage to Player 2:** 3 damage
+- **Player 1 EP:** 8
+- **Player 2 EP:** Pending damage
+
+#### Player 2's Turn
+
+- **EP after Damage:** 10 - 3 = **7 EP**
+- **Action:** Defend
+- **EP Cost:** -1 EP (now at 6 EP)
+- **Defense Effect:** Will reduce next Attack damage by 2
+- **Player 2 EP:** 6
+
+### Round 2
+
+#### Player 1's Turn
+
+- **Action:** Attack
+- **EP Cost:** -2 EP (now at 6 EP)
+- **Damage Calculation:**
+  - Base Damage: 3
+  - Player 2's Defense: -2
+  - **Total Damage:** 1
+- **Player 2 EP:** 6 - 1 = **5 EP**
+
+#### Player 2's Turn
+
+- **Action:** Recharge
+- **EP Gain:** +3 EP (now at 8 EP)
+- **Player 2 EP:** 8
+
+### Round 3
+
+#### Player 1's Turn
+
+- **Action:** Attack
+- **EP Cost:** -2 EP (now at 4 EP)
+- **Damage to Player 2:** 3 damage
+- **Player 2 EP:** 8 - 3 = **5 EP**
+
+#### Player 2's Turn
+
+- **Action:** Attack
+- **EP Cost:** -2 EP (now at 3 EP)
+- **Damage to Player 1:** 3 damage
+- **Player 1 EP:** 4 - 3 = **1 EP**
+
+### Round 4
+
+#### Player 1's Turn
+
+- **Action:** Recharge
+- **EP Gain:** +3 EP (now at 4 EP)
+- **Player 1 EP:** 4
+
+#### Player 2's Turn
+
+- **Action:** Attack
+- **EP Cost:** -2 EP (now at 1 EP)
+- **Damage to Player 1:** 3 damage
+- **Player 1 EP:** 4 - 3 = **1 EP**
+
+### Round 5
+
+#### Player 1's Turn
+
+- **Action:** Attack
+- **EP Cost:** -2 EP (now at 2 EP)
+- **Damage to Player 2:** 3 damage
+- **Player 2 EP:** 1 - 3 = **0 EP**
+
+- **Victory:** Player 1 wins as Player 2's EP has dropped to 0.
+
+## Command-Line Interaction Example
+
+Below is a sample of how the game might proceed in a command-line interface.
+
+### Game Start
+
+```
+Welcome to Energy Duel!
+Player 1 and Player 2 both start with 10 EP.
+Player 1 goes first.
+```
+
+### Turn Sequence
+
+#### Player 1's Turn
+
+```
+Player 1's EP: 10
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+Enter the number of your action: 1
+
+You chose to Attack.
+You spend 2 EP and deal 3 damage to Player 2.
+Player 1's EP: 8
+```
+
+#### Player 2's Turn
+
+```
+Player 2's EP before damage: 10
+Player 2 takes 3 damage and now has 7 EP.
+
+Player 2's EP: 7
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+Enter the number of your action: 2
+
+You chose to Defend.
+You spend 1 EP. Damage from the next Attack will be reduced by 2.
+Player 2's EP: 6
+```
+
+#### Player 1's Next Turn
+
+```
+Player 1's EP: 8
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+Enter the number of your action: 1
+
+You chose to Attack.
+You spend 2 EP and attempt to deal 3 damage to Player 2.
+Player 1's EP: 6
+
+Player 2 has an active Defense!
+Damage reduced by 2.
+Player 2 takes 1 damage and now has 5 EP.
+```
+
+#### And so on...
+
+## Strategy Tips
+
+- **Balance Attacking and Recharging:** Constant Attacks will deplete your EP quickly. Remember to Recharge to keep enough EP for future actions.
+- **Use Defend Wisely:** Anticipate your opponent's Attacks. Using Defend right before an expected Attack can significantly reduce damage.
+- **Monitor Opponent's EP:** Keep track of the opponent's EP to predict their possible actions. For example, if they have low EP, they may be forced to Recharge.
+- **Plan Ahead:** Consider the EP costs of your actions to avoid being left without enough EP to Attack or Defend when needed.
+
+## Summary
+
+Energy Duel is a game of resource management, prediction, and strategic planning. By carefully choosing when to Attack, Defend, or Recharge, and by anticipating your opponent's moves, you can outmaneuver them and claim victory. The simplicity of the rules allows for quick gameplay, while the depth of strategy ensures that skillful play is rewarded.
+
+Enjoy the duel!

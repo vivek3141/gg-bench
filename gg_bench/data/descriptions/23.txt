@@ -1,0 +1,221 @@
+# Number Bind: A Strategic Two-Player Game
+
+## Objective
+
+**Number Bind** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the last player able to make a valid move by selecting numbers based on divisibility rules. Players achieve victory by carefully choosing numbers that limit their opponent's options while maximizing their own.
+
+## Setup
+
+- **Number Pool**: A shared list of integers from **1** to **20**.
+- **Starting Conditions**: Both players begin with no numbers selected.
+- **Player Designation**: Players decide who goes first (Player 1 and Player 2).
+
+## Game Components
+
+- **Number Pool**: Displays the available numbers for selection.
+- **Selected Numbers**: A record of numbers each player has chosen during the game.
+- **Command-Line Interface**: Players interact by entering the numbers they wish to select.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **During a Turn**:
+  - The player selects an available number from the Number Pool that adheres to the divisibility rules.
+  - The selected number is removed from the Number Pool.
+- **Turn Progression**: The game continues with players taking turns until one cannot make a valid move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - Player 1 selects any number from the Number Pool.
+
+2. **Subsequent Moves**:
+   - A player must select a number that is either:
+     - **Divisible by** the last number selected by the opponent, or
+     - **A divisor of** the last number selected by the opponent.
+   - The number must be present in the current Number Pool.
+
+3. **Valid Moves**:
+   - Numbers share a divisor relationship with the opponent's last selected number.
+   - Examples of valid selections include numbers where:
+     - `Opponent's Number % Your Number == 0`, or
+     - `Your Number % Opponent's Number == 0`.
+
+4. **Invalid Moves**:
+   - Selecting a number that does not meet the divisibility criteria.
+   - Selecting a number not present in the Number Pool.
+
+5. **No Available Moves**:
+   - If a player cannot make a valid move on their turn, they lose the game.
+
+### Special Conditions
+
+- **Unique Selection**: Each number can be selected only once and is then removed from the Number Pool.
+- **Forced Moves**: Players must make a valid move if one is available; passing is not allowed.
+
+## Scoring
+
+- **Winning the Game**: The player who makes the last valid move wins.
+- **No Draws**: The game cannot end in a tie due to the divisibility rules and finite Number Pool.
+- **Skill Factor**: Strategic selection can force the opponent into a position with no valid moves.
+
+## Examples
+
+### Example Game Play
+
+**Initial Number Pool**: `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Selects **6**.
+- **Reason**: Any number can be chosen on the first move.
+- **Number Pool**: `1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+#### Turn 2: Player 2
+
+- **Opponent's Last Number**: **6**
+- **Valid Choices**: Numbers that are divisible by 6 or divide 6: `1, 2, 3, 6 (already taken)`
+- **Action**: Selects **3**.
+- **Number Pool**: `1, 2, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+#### Turn 3: Player 1
+
+- **Opponent's Last Number**: **3**
+- **Valid Choices**: Numbers divisible by or dividing 3: `1, 3 (taken), 6 (taken), 9, 12, 15, 18`
+- **Action**: Selects **9**.
+- **Number Pool**: `1, 2, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+#### Turn 4: Player 2
+
+- **Opponent's Last Number**: **9**
+- **Valid Choices**: `1, 3 (taken), 9 (taken), 18`
+- **Action**: Selects **18**.
+- **Number Pool**: `1, 2, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+#### Turn 5: Player 1
+
+- **Opponent's Last Number**: **18**
+- **Valid Choices**: `1, 2, 3 (taken), 6 (taken), 9 (taken), 18 (taken)`
+- **Action**: Selects **2**.
+- **Number Pool**: `1, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+#### Turn 6: Player 2
+
+- **Opponent's Last Number**: **2**
+- **Valid Choices**: Numbers divisible by or dividing 2: `1, 2 (taken), 4, 6 (taken), 8, 10, 12, 14, 16, 18 (taken), 20`
+- **Action**: Selects **4**.
+- **Number Pool**: `1, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+#### Turn 7: Player 1
+
+- **Opponent's Last Number**: **4**
+- **Valid Choices**: `1, 2 (taken), 4 (taken), 8, 12, 16, 20`
+- **Action**: Selects **8**.
+- **Number Pool**: `1, 5, 7, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+#### Turn 8: Player 2
+
+- **Opponent's Last Number**: **8**
+- **Valid Choices**: `1, 2 (taken), 4 (taken), 8 (taken), 16`
+- **Action**: Selects **16**.
+- **Number Pool**: `1, 5, 7, 10, 11, 12, 13, 14, 15, 17, 19, 20`
+
+---
+
+#### Turn 9: Player 1
+
+- **Opponent's Last Number**: **16**
+- **Valid Choices**: `1, 2 (taken), 4 (taken), 8 (taken), 16 (taken)`
+- **Action**: Selects **1**.
+- **Number Pool**: `5, 7, 10, 11, 12, 13, 14, 15, 17, 19, 20`
+
+---
+
+#### Turn 10: Player 2
+
+- **Opponent's Last Number**: **1**
+- **Valid Choices**: Any remaining number (since all numbers are divisible by 1).
+- **Action**: Selects **5**.
+- **Number Pool**: `7, 10, 11, 12, 13, 14, 15, 17, 19, 20`
+
+---
+
+#### Turn 11: Player 1
+
+- **Opponent's Last Number**: **5**
+- **Valid Choices**: `1 (taken), 5 (taken), 10, 15, 20`
+- **Action**: Selects **10**.
+- **Number Pool**: `7, 11, 12, 13, 14, 15, 17, 19, 20`
+
+---
+
+#### Turn 12: Player 2
+
+- **Opponent's Last Number**: **10**
+- **Valid Choices**: `1 (taken), 2 (taken), 5 (taken), 10 (taken), 20`
+- **Action**: Selects **20**.
+- **Number Pool**: `7, 11, 12, 13, 14, 15, 17, 19`
+
+---
+
+#### Turn 13: Player 1
+
+- **Opponent's Last Number**: **20**
+- **Valid Choices**: `1 (taken), 2 (taken), 4 (taken), 5 (taken), 10 (taken), 20 (taken)`
+- **Action**: No valid moves available.
+
+**Player 1 cannot make a valid move and loses. Player 2 wins the game.**
+
+## Command-Line Interaction Sample
+
+```
+Welcome to Number Bind!
+
+Available Numbers: 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+
+Player 1, it's your turn.
+Select a number: 6
+
+Available Numbers: 1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+
+Player 2, it's your turn.
+Opponent's last number: 6
+Valid choices: 1,2,3
+Select a number: 3
+
+Available Numbers: 1,2,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+
+...
+
+Player 1 cannot make a valid move.
+Player 2 wins the game!
+```
+
+## Tips for Strategic Play
+
+- **Plan Ahead**: Anticipate possible numbers your opponent can choose based on your selection.
+- **Control the Game**: Choose numbers that limit your opponent's valid moves.
+- **Number Awareness**: Be aware of the divisibility relationships among the remaining numbers.
+- **Force No Moves**: Aim to leave your opponent with no valid moves on their turn.
+
+---
+
+**Number Bind** offers a simple yet strategically rich gameplay experience that rewards planning and numerical insight. Enjoy outsmarting your opponent in this battle of divisibility!

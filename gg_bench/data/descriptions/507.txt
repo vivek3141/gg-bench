@@ -1,0 +1,189 @@
+# Capture Squares: A Two-Player Tactical Grid Game
+
+## Objective
+
+Be the first player to claim a majority of the cells on a 5x5 grid. The player who controls more than half of the grid (at least 13 out of 25 cells) wins the game.
+
+## Setup
+
+- **Grid Initialization**: A 5x5 grid is initialized with all cells unclaimed and identified by their coordinates ranging from (1,1) to (5,5).
+- **Player Symbols**: Each player is assigned a unique symbol for marking cells:
+  - Player 1: `X`
+  - Player 2: `O`
+- **Starting Player**: Decide randomly or amicably who takes the first turn.
+
+## Game Components
+
+- **Grid**: A 5x5 matrix representing the game board. Each cell is identified by a row and column number.
+- **Symbols**: Each player uses their assigned symbol (`X` or `O`) to mark claimed cells on the grid.
+- **Command-Line Interface**: Players input their moves through text commands specifying grid coordinates.
+
+## Turns
+
+- Players alternate turns, starting with Player 1.
+- During a turn, a player may perform one of the following actions:
+  - **Claim a Cell**: Mark an unclaimed cell with their symbol.
+  - **Chain Claim** (if eligible): Claim an additional adjacent cell.
+
+## Rules and Mechanics
+
+### Claiming Cells
+
+1. **Initial Claim**:
+   - On your turn, you may claim any one unclaimed cell on the grid by marking it with your symbol.
+
+2. **Chain Claim Rule**:
+   - If the cell you claim is adjacent (vertically or horizontally) to a cell you have previously claimed, you may immediately claim **one additional** unclaimed adjacent cell.
+   - Diagonal adjacency does not count for chain claims.
+   - The additional cell must be adjacent to the first cell claimed during that turn.
+
+3. **Adjacency Definition**:
+   - Two cells are adjacent if they share a common edge.
+   - Cells on the edges and corners have fewer adjacent cells due to the grid boundaries.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The game ends immediately when a player has claimed a majority of the cells (at least 13 cells).
+  - That player is declared the winner.
+
+- **Game Continuation**:
+  - If all cells are claimed and no player has achieved a majority, the player with the most claimed cells wins.
+  - Since there are 25 cells, a tie is impossible.
+
+### Additional Rules
+
+- **Invalid Moves**:
+  - If a player attempts to claim an already claimed cell, they must choose a different cell.
+  - If a player attempts a chain claim without having a valid adjacent cell, they forfeit the additional claim for that turn.
+
+- **Forfeiting Turns**:
+  - Players cannot skip their turn. If there is at least one unclaimed cell, they must make a move.
+
+## Scoring
+
+- **Tracking Claims**:
+  - Keep a running count of the number of cells each player has claimed.
+  - Update the grid display after each turn to reflect newly claimed cells.
+
+- **Determining Majority**:
+  - Continually check if a player has reached 13 claimed cells at the end of their turn.
+
+## Examples
+
+### Example Turn Sequence
+
+**Initial Grid**:
+
+All cells are unclaimed (`.` represents an unclaimed cell).
+
+```
+(1,1) .  (1,2) .  (1,3) .  (1,4) .  (1,5) .
+(2,1) .  (2,2) .  (2,3) .  (2,4) .  (2,5) .
+(3,1) .  (3,2) .  (3,3) .  (3,4) .  (3,5) .
+(4,1) .  (4,2) .  (4,3) .  (4,4) .  (4,5) .
+(5,1) .  (5,2) .  (5,3) .  (5,4) .  (5,5) .
+```
+
+**Player 1's Turn**:
+
+- **Action**: Player 1 claims cell (3,3).
+- **Chain Claim Eligibility**: No previously claimed cells, so no chain claim.
+- **Grid Update**:
+
+```
+(1,1) .  ...  (1,5) .
+...
+(3,1) .  (3,2) .  (3,3) X  (3,4) .  (3,5) .
+...
+(5,1) .  ...  (5,5) .
+```
+
+**Player 2's Turn**:
+
+- **Action**: Player 2 claims cell (3,4).
+- **Chain Claim Eligibility**:
+  - Adjacent to (3,3) which is claimed by Player 1, not Player 2.
+  - No chain claim allowed.
+- **Grid Update**:
+
+```
+(1,1) .  ...  (1,5) .
+...
+(3,1) .  (3,2) .  (3,3) X  (3,4) O  (3,5) .
+...
+(5,1) .  ...  (5,5) .
+```
+
+**Player 1's Next Turn**:
+
+- **Action**: Player 1 claims cell (3,2).
+- **Chain Claim Eligibility**:
+  - (3,2) is adjacent to (3,3), which Player 1 has claimed.
+  - Eligible for chain claim.
+- **Chain Claim**: Player 1 also claims cell (2,2) (adjacent to (3,2)).
+- **Grid Update**:
+
+```
+(1,1) .  (1,2) .  ...  (1,5) .
+(2,1) .  (2,2) X  (2,3) .  (2,4) .  (2,5) .
+(3,1) .  (3,2) X  (3,3) X  (3,4) O  (3,5) .
+...
+(5,1) .  ...  (5,5) .
+```
+
+### Sample Command-Line Interaction
+
+**Player 1's Turn**:
+
+```
+Player 1 (X), enter the row and column of the cell you want to claim (e.g., "3 3"): 3 3
+You have claimed cell (3,3).
+
+You have no adjacent claimed cells for a chain claim.
+Turn ends.
+
+[Display updated grid]
+```
+
+**Player 2's Turn**:
+
+```
+Player 2 (O), enter the row and column of the cell you want to claim: 3 4
+You have claimed cell (3,4).
+
+You have no adjacent claimed cells for a chain claim.
+Turn ends.
+
+[Display updated grid]
+```
+
+**Player 1's Next Turn**:
+
+```
+Player 1 (X), enter the row and column of the cell you want to claim: 3 2
+You have claimed cell (3,2).
+
+This cell is adjacent to one of your previously claimed cells.
+You are eligible for a chain claim.
+
+Enter the row and column of the adjacent cell you want to claim: 2 2
+You have claimed cell (2,2).
+
+Turn ends.
+
+[Display updated grid]
+```
+
+## Strategy Tips
+
+- **Establish a Territory**: Focus on claiming adjacent cells early to maximize opportunities for chain claims.
+- **Block Opponent**: Claim cells that could allow your opponent to perform chain claims.
+- **Plan Ahead**: Look for positions that open up future chain claims.
+- **Control the Center**: Controlling central cells increases your adjacency options.
+
+## Conclusion
+
+"Capture Squares" is a simple yet strategic game that challenges players to think ahead and control territory. With its straightforward mechanics and quick gameplay, it offers an engaging experience that rewards strategic planning and adaptation.
+
+Enjoy the game and may the most strategic player win!

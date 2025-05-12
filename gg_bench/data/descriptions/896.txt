@@ -1,0 +1,262 @@
+# Pathway Pursuit
+
+## Objective
+
+In **Pathway Pursuit**, two players compete on a 5x5 grid to be the first to reach the opponent's starting side. Players strategically move their tokens and place obstacles to block their opponent while navigating toward victory. The primary goal is to traverse the grid and occupy any cell on the opponent's edge before they do the same.
+
+## Setup
+
+- **Grid Layout**: The game is played on a 5x5 grid labeled as follows:
+
+  ```
+    A   B   C   D   E
+  1 . | . | . | . | .
+    ---+---+---+---+---
+  2 . | . | . | . | .
+    ---+---+---+---+---
+  3 . | . | . | . | .
+    ---+---+---+---+---
+  4 . | . | . | . | .
+    ---+---+---+---+---
+  5 . | . | . | . | .
+  ```
+
+- **Starting Positions**:
+  - **Player 1 (P1)** starts on cell `A3` (left-middle cell).
+  - **Player 2 (P2)** starts on cell `E3` (right-middle cell).
+
+- **Initial Conditions**:
+  - No obstacles (`X`) are placed on the grid at the start.
+  - Players decide who goes first (can be random or predetermined).
+
+## Game Components
+
+- **Grid Cells**: Identified by column letters (A-E) and row numbers (1-5), e.g., `B2`.
+- **Player Tokens**:
+  - **P1**: Represents Player 1's position on the grid.
+  - **P2**: Represents Player 2's position on the grid.
+- **Obstacles (X)**:
+  - Can be placed on the grid to block movement.
+  - Once placed, obstacles remain for the duration of the game.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **On Each Turn, a Player Must Choose One of Two Actions**:
+  1. **Move Token**:
+     - Move your player token to an adjacent cell (up, down, left, or right).
+     - Diagonal movements are not allowed.
+  2. **Place Obstacle**:
+     - Place an obstacle (`X`) on any empty cell not adjacent to your opponent's current position.
+
+- **Turn Progression**:
+  - Players must perform one of the above actions.
+  - The turn ends after the action is completed.
+  - The game proceeds to the other player's turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Adjacent Cells**: Cells directly above, below, or beside your current position.
+- **Restrictions**:
+  - You cannot move into a cell occupied by an obstacle (`X`) or the other player's token.
+  - Movement is limited to one cell per turn.
+
+### Obstacle Placement Rules
+
+- **Placement Conditions**:
+  - Obstacles can only be placed on empty cells.
+  - You cannot place an obstacle on a cell adjacent (up, down, left, right) to your opponent's current position.
+- **Permanent Blocks**:
+  - Once an obstacle is placed, it remains on the grid for the rest of the game.
+- **Strategy**:
+  - Use obstacles to block your opponent's path or channel them into specific routes.
+
+### Special Conditions
+
+- **No Diagonal Actions**:
+  - Both movement and obstacle placement are limited to vertical and horizontal directions.
+- **Edge Cells**:
+  - Reaching any cell on your opponent's starting edge (Player 1 reaching column `E`; Player 2 reaching column `A`) constitutes a win.
+
+## Scoring
+
+- **Winning the Game**:
+  - The first player to move their token onto any cell on the opponent's starting side wins the game.
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player wins.
+- **Skill Advantage**:
+  - Strategic placement of obstacles and smart movement can give a skilled player a consistent advantage over an unskilled player.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Initial Grid:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | .
+  ---+---+---+---+---
+2 | . | . | . | . | .
+  ---+---+---+---+---
+3 |P1 | . | . | . |P2
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Moves token to the right (`A3` to `B3`).
+
+**Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | .
+  ---+---+---+---+---
+2 | . | . | . | . | .
+  ---+---+---+---+---
+3 | . |P1 | . | . |P2
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Places obstacle at `D3` to block Player 1's path.
+
+**Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | .
+  ---+---+---+---+---
+2 | . | . | . | . | .
+  ---+---+---+---+---
+3 | . |P1 | . | X |P2
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+*(Note: Player 2 cannot place the obstacle adjacent to P1's position at `B3`, so `D3` is acceptable.)*
+
+#### Turn 3: Player 1
+
+- **Action**: Moves token up (`B3` to `B2`).
+
+**Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | .
+  ---+---+---+---+---
+2 | . |P1 | . | . | .
+  ---+---+---+---+---
+3 | . | . | . | X |P2
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Moves token left (`E3` to `D3`).
+
+**Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | .
+  ---+---+---+---+---
+2 | . |P1 | . | . | .
+  ---+---+---+---+---
+3 | . | . | . |P2 | X
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+*(Player 2 now occupies `D3` where the obstacle was previously placed? This indicates an error; obstacles cannot be moved onto. Let's correct this example.)*
+
+#### Correction:
+
+Since `D3` is occupied by an obstacle (`X`), Player 2 cannot move there.
+
+#### Revised Turn 4: Player 2
+
+- **Action**: Moves token up (`E3` to `E2`).
+
+**Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | .
+  ---+---+---+---+---
+2 | . |P1 | . | . |P2
+  ---+---+---+---+---
+3 | . | . | . | X | .
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+#### Turn 5: Player 1
+
+- **Action**: Places obstacle at `E1` to block Player 2's path.
+
+**Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | X
+  ---+---+---+---+---
+2 | . |P1 | . | . |P2
+  ---+---+---+---+---
+3 | . | . | . | X | .
+  ---+---+---+---+---
+4 | . | . | . | . | .
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+#### Subsequent Turns
+
+Players continue to move and place obstacles, strategizing to reach the opponent's edge while blocking their path.
+
+### Winning Scenario
+
+Assume after several turns, Player 1 reaches cell `E3`.
+
+**Final Grid**:
+
+```
+    A   B   C   D   E
+1 | . | . | . | . | X
+  ---+---+---+---+---
+2 | . | . | . | . | .
+  ---+---+---+---+---
+3 | . | . | . | X |P1
+  ---+---+---+---+---
+4 | . | . | . | . |P2
+  ---+---+---+---+---
+5 | . | . | . | . | .
+```
+
+- **Outcome**: Player 1 wins by reaching the opponent's starting side at `E3`.
+
+## Conclusion
+
+**Pathway Pursuit** is a dynamic and strategic game that requires players to balance offensive moves with defensive tactics. The simplicity of the rules makes it easy to learn and code within a command-line interface, while the depth of strategy ensures engaging and competitive gameplay. With clear objectives and mechanics, players can focus on developing skills that will consistently give them an edge over less experienced opponents.
+
+Enjoy the game, and may the best strategist win!

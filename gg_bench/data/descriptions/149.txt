@@ -1,0 +1,271 @@
+**Game Title:** Island Conquest
+
+---
+
+### **Objective**
+
+Be the last player with remaining island units by strategically managing sea level rises and defenses. Force your opponent's island units to reduce to zero before yours.
+
+---
+
+### **Setup**
+
+- **Players:** Two (Player 1 and Player 2)
+- **Initial Island Units:** Both players start with **30 island units**.
+- **Sea Level:** The shared sea level starts at **1 unit**.
+
+---
+
+### **Game Components**
+
+1. **Island Units**
+   - Represents the size of each player's island.
+   - Starts at **30 units** for each player.
+   - Cannot be negative; minimum is **0 units**.
+
+2. **Sea Level**
+   - A shared value affecting both players' islands equally.
+   - Starts at **1 unit**.
+   - Increases during the game based on player actions.
+   - There's no maximum limit, but practical gameplay keeps it moderate.
+
+3. **Defense Tokens**
+   - Each player has **2 defense tokens**.
+   - Can be used to **fortify** the island, reducing sea level impact temporarily.
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players alternate turns, starting with **Player 1**.
+- **Turn Structure:**
+  1. **Optionally** use a defense token to fortify your island.
+  2. **Increase** the sea level by choosing a rise amount.
+  3. **Apply** the sea level impact to both islands.
+  4. **Check** for end-of-game conditions.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Sea Level Rise**
+   - On your turn, **increase** the sea level by choosing an integer between **1 and 5** (inclusive).
+   - The chosen amount is **added** to the current sea level.
+   - Example: If the current sea level is 3 and you choose to increase it by 4, the new sea level becomes **7**.
+
+2. **Defense Tokens (Fortification)**
+   - Before increasing the sea level, you may **use a defense token** to fortify your island.
+   - Fortification **reduces the sea level impact by 2 units** for **your island only** on that turn.
+   - Each player has **only 2 defense tokens** for the entire game.
+   - You may choose **not** to use a defense token.
+
+3. **Applying Sea Level Impact**
+   - After the sea level is increased, **both islands are reduced** by the **current sea level value**.
+   - If a player used a defense token, subtract **2 units** from the sea level impact **for that player only** (sea level impact cannot be less than zero).
+   - Example: If the sea level is 5 and a player fortified their island, their island is reduced by **5 - 2 = 3 units**.
+
+4. **Island Units**
+   - Island units are reduced after each sea level rise.
+   - Island units **cannot go below zero**.
+   - Keep track of the remaining island units after each turn.
+
+5. **Winning the Game**
+   - The game ends when a player's island units reach **zero or less**.
+   - The player whose island units are **above zero** at the end of the game **wins**.
+   - There is **no draw**; the game cannot end in a tie.
+
+---
+
+### **Scoring**
+
+- **Victory Condition:** Be the last player with any remaining island units.
+- **Lose Condition:** Your island units reach zero or less.
+
+---
+
+### **Examples**
+
+#### **Example Game Playthrough**
+
+**Initial Setup:**
+
+- Player 1 Island Units: **30**
+- Player 2 Island Units: **30**
+- Sea Level: **1**
+- Player 1 Defense Tokens: **2**
+- Player 2 Defense Tokens: **2**
+
+---
+
+**Turn 1: Player 1**
+
+- **Decision:**
+  - Does **not** use a defense token.
+  - Increases sea level by **3**.
+- **Sea Level Update:**
+  - Old Sea Level: 1
+  - Increase: +3
+  - **New Sea Level: 4**
+- **Island Units Reduction:**
+  - Player 1 Island Units: 30 - 4 = **26**
+  - Player 2 Island Units: 30 - 4 = **26**
+
+---
+
+**Turn 2: Player 2**
+
+- **Decision:**
+  - **Uses** a defense token (1 remaining).
+  - Increases sea level by **5**.
+- **Sea Level Update:**
+  - Old Sea Level: 4
+  - Increase: +5
+  - **New Sea Level: 9**
+- **Island Units Reduction:**
+  - Player 1 (no defense): 26 - 9 = **17**
+  - Player 2 (defended): 26 - (9 - 2) = 26 - 7 = **19**
+
+---
+
+**Turn 3: Player 1**
+
+- **Decision:**
+  - **Uses** a defense token (1 remaining).
+  - Increases sea level by **4**.
+- **Sea Level Update:**
+  - Old Sea Level: 9
+  - Increase: +4
+  - **New Sea Level: 13**
+- **Island Units Reduction:**
+  - Player 1 (defended): 17 - (13 - 2) = 17 - 11 = **6**
+  - Player 2 (no defense): 19 - 13 = **6**
+
+---
+
+**Turn 4: Player 2**
+
+- **Decision:**
+  - Does **not** use a defense token.
+  - Increases sea level by **5**.
+- **Sea Level Update:**
+  - Old Sea Level: 13
+  - Increase: +5
+  - **New Sea Level: 18**
+- **Island Units Reduction:**
+  - Player 1: 6 - 18 = **-12** (reaches zero or less)
+  - Player 2: 6 - 18 = **-12** (reaches zero or less)
+
+---
+
+**End of Game:**
+
+- Both players' island units are below zero.
+- Since **Player 2** made the last move, and both islands reached zero, **Player 2 loses** as their island units reached zero **after** their turn.
+- **Winner:** **Player 1**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Notation:**
+
+- `>` indicates player input.
+- Text without `>` is game output.
+
+---
+
+**Starting the Game**
+
+```
+Welcome to Island Conquest!
+Both players start with 30 island units.
+Sea level starts at 1 unit.
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1:
+You have 2 defense tokens.
+Do you want to use a defense token? (yes/no)
+> no
+Choose sea level rise amount (1-5):
+> 3
+Sea level increased to 4 units.
+Player 1 island units reduced to 26.
+Player 2 island units reduced to 26.
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2:
+You have 2 defense tokens.
+Do you want to use a defense token? (yes/no)
+> yes
+Choose sea level rise amount (1-5):
+> 5
+Sea level increased to 9 units.
+Player 1 island units reduced to 17.
+Player 2 island units reduced to 19.
+Defense tokens remaining: 1
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1:
+You have 2 defense tokens.
+Do you want to use a defense token? (yes/no)
+> yes
+Choose sea level rise amount (1-5):
+> 4
+Sea level increased to 13 units.
+Player 1 island units reduced to 6.
+Player 2 island units reduced to 6.
+Defense tokens remaining: 1
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2:
+You have 1 defense token.
+Do you want to use a defense token? (yes/no)
+> no
+Choose sea level rise amount (1-5):
+> 5
+Sea level increased to 18 units.
+Player 1 island units reduced to -12.
+Player 2 island units reduced to -12.
+Player 1's island has sunk!
+Player 2's island has sunk!
+Player 1 wins!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Defense Timing:** Use defense tokens strategically to minimize sea level impact when it's most damaging.
+- **Sea Level Management:** Increasing the sea level aggressively can backfire; consider the impact on your own island.
+- **Predict Opponent Moves:** Anticipate when your opponent might use defense tokens to plan your sea level increases.
+- **Endgame Strategy:** Be mindful of island unit totals to avoid mutual destruction.
+
+---
+
+### **Conclusion**
+
+Island Conquest is a game of strategic choices and risk management. It combines offensive tactics (increasing sea level) with defensive maneuvers (using defense tokens) to outlast your opponent. Mastering the balance between aggression and preservation is key to victory.
+
+---
+
+Enjoy the battle for survival in Island Conquest!

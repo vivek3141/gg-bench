@@ -1,0 +1,161 @@
+# Pattern Builder
+
+## Objective
+
+Be the first player to collect a set of three numbers that form either an arithmetic or geometric sequence. Players must strategically select numbers from a shared pool to create a valid sequence while preventing their opponent from doing the same.
+
+## Setup
+
+- **Shared Number Pool**: Numbers from **1** to **9**, inclusive.
+- **Player Sets**: Each player has their own set of collected numbers, initially empty.
+- **Starting the Game**: Decide who will take the first turn (e.g., coin toss).
+
+## Game Components
+
+- **Shared Number Pool**:
+  - Contains the numbers **1** through **9**.
+  - Numbers are removed from the pool once selected.
+
+- **Player Sets**:
+  - Each player collects numbers from the shared pool.
+  - A player's set is visible to both players.
+
+## Turns
+
+- Players alternate turns.
+- **On Your Turn**:
+  - Choose **one** number from the shared number pool.
+  - Add the chosen number to your set.
+  - Remove the chosen number from the shared pool.
+- Once a number is selected, it cannot be chosen again by either player.
+
+## Rules and Mechanics
+
+1. **Collecting Numbers**:
+   - Aim to collect three numbers that can form an arithmetic sequence (a sequence with a common difference) or a geometric sequence (a sequence with a common ratio).
+   - The sequence can be in any order; you can rearrange your numbers to form the sequence.
+
+2. **Winning the Game**:
+   - The first player to have **three numbers** in their set that form a valid arithmetic or geometric sequence wins the game.
+   - A sequence must consist of exactly **three numbers** from your set.
+   - You can declare victory immediately upon completing such a sequence on your turn.
+
+3. **Preventing Opponent's Victory**:
+   - Players should also strategize to block their opponent from completing a sequence.
+   - Be mindful of the numbers you leave available in the shared pool.
+
+4. **Sequence Definitions**:
+   - **Arithmetic Sequence**: A sequence of numbers with a common difference between consecutive numbers. For example, **2, 4, 6** (common difference of 2).
+   - **Geometric Sequence**: A sequence where each number after the first is found by multiplying the previous one by a constant called the common ratio. For example, **2, 4, 8** (common ratio of 2).
+
+5. **No Draws**:
+   - Since there are 9 unique numbers and each player can collect at most 5 numbers, a win is always possible.
+   - The game continues until one player wins; there are no draws.
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who first forms a valid sequence of three numbers wins the game.
+  - No points are accumulated; it's a win/loss outcome per game.
+
+## Examples
+
+### Example Game Play
+
+**Shared Number Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+#### Turn 1:
+
+- **Player 1** selects **5**.
+  - **Player 1's Set**: 5
+  - **Shared Pool**: 1, 2, 3, 4, 6, 7, 8, 9
+
+#### Turn 2:
+
+- **Player 2** selects **4**.
+  - **Player 2's Set**: 4
+  - **Shared Pool**: 1, 2, 3, 6, 7, 8, 9
+
+#### Turn 3:
+
+- **Player 1** selects **7**.
+  - **Player 1's Set**: 5, 7
+  - **Shared Pool**: 1, 2, 3, 6, 8, 9
+
+#### Turn 4:
+
+- **Player 2** selects **6**.
+  - **Player 2's Set**: 4, 6
+  - **Shared Pool**: 1, 2, 3, 8, 9
+
+#### Turn 5:
+
+- **Player 1** selects **9**.
+  - **Player 1's Set**: 5, 7, 9
+  - **Shared Pool**: 1, 2, 3, 8
+
+- **Player 1** checks for a sequence:
+  - **5, 7, 9** is an arithmetic sequence (common difference of 2).
+  - **Player 1** declares victory.
+
+### Command-Line Interaction
+
+#### Turn 1:
+
+- **Player 1's Prompt**:
+  ```
+  Available Numbers: 1 2 3 4 5 6 7 8 9
+  Your Set: 
+  Choose a number: 5
+  ```
+- **System Updates**:
+  ```
+  Player 1 selected 5.
+  ```
+
+#### Turn 2:
+
+- **Player 2's Prompt**:
+  ```
+  Available Numbers: 1 2 3 4 6 7 8 9
+  Your Set: 
+  Choose a number: 4
+  ```
+- **System Updates**:
+  ```
+  Player 2 selected 4.
+  ```
+
+...and so on, until **Player 1** declares victory.
+
+## Strategy Tips
+
+- **Offensive Play**:
+  - Identify possible sequences you can create and prioritize picking those numbers.
+  - Think ahead to assemble numbers that can form multiple sequences.
+
+- **Defensive Play**:
+  - Keep track of your opponent's numbers.
+  - Deny your opponent critical numbers needed to complete their sequence.
+
+- **Balance**:
+  - Balance between building your sequence and blocking your opponent.
+  - Sometimes it's worth sacrificing a potential number for you to prevent an immediate loss.
+
+## Additional Rules
+
+- **Verification**:
+  - Upon declaring victory, the sequence must be presented.
+  - Both players verify that the sequence is valid (correct common difference or ratio).
+
+- **Disputes**:
+  - If there's a disagreement on the validity of a sequence, players can consult a common resource (like a calculator or predefined rules) to resolve it.
+
+- **Time Limits**:
+  - To keep the game progressing quickly, consider implementing a time limit per turn (e.g., 30 seconds).
+
+## Conclusion
+
+Pattern Builder is a simple yet strategic game that challenges players to think ahead and adapt to their opponent's moves. With straightforward mechanics suitable for a command-line interface, it's quick to play and emphasizes skill over chance.
+
+Enjoy the game, and may the best strategist win!

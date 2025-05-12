@@ -1,0 +1,204 @@
+# Codebreaker Duel: A Two-Player Strategic Guessing Game
+
+## Objective
+
+Be the first player to correctly guess your opponent's secret 3-digit code using logic and deduction based on feedback from each guess.
+
+## Setup
+
+- **Secret Code Selection**:
+  - Each player secretly chooses a unique 3-digit code.
+  - Digits can range from 1 to 5 (inclusive).
+  - Repetition of digits **is allowed** (e.g., codes like 1-1-5 or 3-3-3 are valid).
+
+- **Starting Conditions**:
+  - Players keep their codes hidden from their opponent.
+  - Decide who takes the first turn (flip a coin or mutual agreement).
+
+## Game Components
+
+- **Secret Codes**: The 3-digit numbers each player has selected.
+- **Guess Records**: Both players maintain a record of guesses made and feedback received.
+  - This can be as simple as writing them down on paper or tracking within the command-line interface.
+- **Feedback Mechanism**: After each guess, feedback is provided to help players deduce the opponent's code.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Guessing**: The active player makes a guess of their opponent's code by entering a 3-digit number using digits 1-5.
+  2. **Feedback**: The opponent provides feedback based on the guess.
+  3. **Record Keeping**: Both players update their records with the new guess and feedback.
+  4. **Turn Ends**: The next player takes their turn following the same structure.
+
+- **Turn Progression**:
+  - Players alternate turns until one player successfully guesses the opponent's code.
+
+## Rules and Mechanics
+
+- **Guessing Rules**:
+  - Guesses must be 3-digit numbers using digits from 1 to 5.
+  - Digits can be repeated in a guess.
+  - Players should use previous feedback to inform their new guesses.
+
+- **Feedback Rules**:
+  - After a guess is made, the opponent must provide feedback in the following format:
+    - **Correct Digit and Correct Position (CDCP)**: Number of digits that are correct and in the correct position.
+    - **Correct Digit but Incorrect Position (CDIP)**: Number of digits that are correct but in the wrong position.
+  - Feedback must be accurate and honest.
+
+- **Winning the Game**:
+  - The first player to receive feedback indicating **3 Correct Digits in Correct Positions (CDCP)** wins the game.
+  - If both players guess the opponent's code on the same turn, the game continues until one player correctly guesses the code on their own turn.
+
+- **No Draws**:
+  - The game continues until one player wins; there are no draws.
+  - In the extremely rare case of an endless loop, players may mutually agree to restart the game with new codes.
+
+## Scoring
+
+- **Tracking Progress**:
+  - No points are awarded during the game.
+  - The primary objective is to be the first to correctly guess the opponent's code.
+  - Players keep personal notes to track possible code combinations based on feedback.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Setup:
+
+- **Player 1** secretly chooses the code: **2-3-5**
+- **Player 2** secretly chooses the code: **5-1-4**
+
+#### Turn-by-Turn Example:
+
+1. **Player 1's Turn**:
+   - **Guess**: `1-2-3`
+   - **Player 2's Feedback**:
+     - **CDCP**: 0 (no digits are correct and in the correct position)
+     - **CDIP**: 2 (digits `2` and `3` are correct but in the wrong positions)
+   - **Player Notes**:
+     - Player 1 notes that digits `2` and `3` are in the code but not where they guessed them.
+
+2. **Player 2's Turn**:
+   - **Guess**: `3-5-1`
+   - **Player 1's Feedback**:
+     - **CDCP**: 0
+     - **CDIP**: 1 (digit `5` is correct but in the wrong position)
+   - **Player Notes**:
+     - Player 2 notes that digit `5` is in the code but not in the guessed position.
+
+3. **Player 1's Turn**:
+   - **Guess**: `4-3-2`
+   - **Player 2's Feedback**:
+     - **CDCP**: 1 (`3` is correct and in the correct position)
+     - **CDIP**: 1 (`2` is correct but in the wrong position)
+   - **Player Notes**:
+     - Player 1 narrows down possible positions for `2` and confirms `3` is in the correct position.
+
+4. **Player 2's Turn**:
+   - **Guess**: `5-2-4`
+   - **Player 1's Feedback**:
+     - **CDCP**: 1 (`5` is correct and in the correct position)
+     - **CDIP**: 0
+   - **Player Notes**:
+     - Player 2 confirms `5` is in the correct position, eliminates `2` and `4` from other positions.
+
+5. **Player 1's Turn**:
+   - **Guess**: `2-3-5`
+   - **Player 2's Feedback**:
+     - **CDCP**: 2 (`2` and `3` are correct and in the correct positions)
+     - **CDIP**: 1 (`5` is correct but in the wrong position)
+   - **Player Notes**:
+     - Player 1 deduces that `5` is in the code but not in position 3.
+
+6. **Player 2's Turn**:
+   - **Guess**: `5-1-4`
+   - **Player 1's Feedback**:
+     - **CDCP**: 1 (`5` is correct and in the correct position)
+     - **CDIP**: 0
+   - **Player Notes**:
+     - Player 2 realizes the need to adjust the other digits.
+
+7. **Player 1's Turn**:
+   - **Guess**: `2-3-5` (same as previous guess)
+   - **Player 2's Feedback**:
+     - **CDCP**: 2
+     - **CDIP**: 1
+   - **Player Notes**:
+     - Confirms previous feedback; may need to consider swapping positions of `5`.
+
+8. **Player 2's Turn**:
+   - **Guess**: `5-4-1`
+   - **Player 1's Feedback**:
+     - **CDCP**: 0
+     - **CDIP**: 2 (`5` and `1` are in the code but in wrong positions)
+   - **Player Notes**:
+     - Positions of `5` and `1` need to be adjusted.
+
+9. **Player 1's Turn**:
+   - **Guess**: `2-5-3`
+   - **Player 2's Feedback**:
+     - **CDCP**: 3
+   - **Player 1 Wins the Game!**
+
+### Command-Line Interaction Sample
+
+Here's how the game might look in a command-line interface:
+
+- **Player 1's Turn**:
+  ```
+  Player 1, enter your guess (three digits between 1-5, separated by spaces): 1 2 3
+  Player 2's Feedback:
+  Correct Digits in Correct Positions (CDCP): 0
+  Correct Digits but Incorrect Positions (CDIP): 2
+  ```
+
+- **Player 2's Turn**:
+  ```
+  Player 2, enter your guess (three digits between 1-5, separated by spaces): 3 5 1
+  Player 1's Feedback:
+  Correct Digits in Correct Positions (CDCP): 0
+  Correct Digits but Incorrect Positions (CDIP): 1
+  ```
+
+- **...continuing turns...**
+
+- **Final Turn (Player 1's Winning Guess)**:
+  ```
+  Player 1, enter your guess (three digits between 1-5, separated by spaces): 2 5 3
+  Player 2's Feedback:
+  Correct Digits in Correct Positions (CDCP): 3
+  Congratulations, Player 1! You've guessed the correct code and won the game!
+  ```
+
+## Ensure Fair Play
+
+- **Honesty is Crucial**: Since the game relies on accurate feedback, both players must be honest when providing feedback.
+- **Verification**: If there is a dispute, players can agree to reveal their codes to verify the accuracy of feedback.
+
+## Strategic Depth
+
+- **Deductive Reasoning**: Use the feedback from each guess to eliminate impossible combinations.
+- **Record Keeping**: Keeping a detailed record of all guesses and feedback will significantly enhance your ability to deduce the opponent's code.
+- **Pattern Recognition**: Look for patterns in the feedback to narrow down the possibilities.
+- **Psychological Strategy**: Consider the opponent's previous guesses and feedback to anticipate their code choice.
+
+## Tips for Coding the Game
+
+- **Data Structures**:
+  - Use arrays or lists to store the digits of the codes and guesses.
+  - Use loops to compare guesses to the secret code and calculate feedback.
+- **Input Validation**:
+  - Ensure guesses are three digits long and contain only numbers between 1 and 5.
+- **Game Loop**:
+  - Implement a loop that alternates turns between players until one wins.
+- **Feedback Mechanism**:
+  - Create a function to calculate and return the number of CDCP and CDIP based on the guess and the secret code.
+- **User Interface**:
+  - Keep prompts clear and informative.
+  - Display previous guesses and feedback if tracking within the interface.
+
+## Conclusion
+
+Codebreaker Duel is a simple yet strategically deep game that challenges players' deductive reasoning and memory. Its straightforward mechanics make it easy to code and play in a command-line interface while offering engaging and competitive gameplay. Enjoy the battle of wits as you outsmart your opponent and become the ultimate codebreaker!

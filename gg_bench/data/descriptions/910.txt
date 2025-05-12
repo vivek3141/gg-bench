@@ -1,0 +1,127 @@
+# Square Attack: A Two-Player Command-Line Game
+
+## Objective
+
+**Square Attack** is a strategic two-player turn-based game where players take turns reducing a shared number by subtracting perfect squares. The primary goal is to be the player who reduces the shared number to exactly zero. The player who achieves this wins the game. If a player cannot make a valid move on their turn (because the shared number is zero), they lose.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared number, **N = 100**.
+- **Players**: Two players, Player 1 and Player 2, will alternate turns.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players manipulate during the game. It starts at 100 and decreases as players subtract perfect squares.
+- **Perfect Squares**: Numbers that are squares of integers (e.g., 1, 4, 9, 16, 25, 36, 49, 64, 81, 100).
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Player Actions**: On their turn, a player must:
+  1. **Choose a Perfect Square**: Select a perfect square that is less than or equal to the current value of N.
+  2. **Subtract**: Reduce N by the chosen perfect square (N = N - chosen square).
+- **Turn Progression**: After a player completes their turn, the updated value of N is communicated, and the next player takes their turn.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On each turn, players can only subtract a perfect square from N.
+   - The chosen perfect square must be **less than or equal to** the current N.
+2. **Winning the Game**:
+   - The player who reduces N to **exactly zero** wins the game.
+3. **Losing the Game**:
+   - If a player cannot subtract any perfect square because N is zero at the start of their turn, they lose.
+4. **No Draws**:
+   - The game cannot end in a draw; a winner is always determined based on the above conditions.
+5. **Strategy Considerations**:
+   - Players must plan ahead to avoid setting up the opponent for a winning move.
+   - Choosing larger or smaller perfect squares can impact the flow of the game strategically.
+
+## Scoring
+
+- **Victory Condition**: The game is won by the player who reduces N to zero during their turn.
+- **No Point Tracking**: There is no point or score tracking beyond the current value of N.
+- **Match Play (Optional)**: For extended play, players can play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Starting N = 100**
+
+1. **Player 1's Turn**:
+   - Chooses to subtract **36** (since 36 ≤ 100 and 36 is a perfect square).
+   - N becomes 100 - 36 = **64**.
+2. **Player 2's Turn**:
+   - Chooses to subtract **64**.
+   - N becomes 64 - 64 = **0**.
+   - Player 2 wins the game by reducing N to zero.
+
+---
+
+**Alternate Scenario**
+
+**Starting N = 100**
+
+1. **Player 1's Turn**:
+   - Chooses to subtract **25**.
+   - N becomes 100 - 25 = **75**.
+2. **Player 2's Turn**:
+   - Chooses to subtract **49**.
+   - N becomes 75 - 49 = **26**.
+3. **Player 1's Turn**:
+   - Chooses to subtract **25**.
+   - N becomes 26 - 25 = **1**.
+4. **Player 2's Turn**:
+   - Only valid perfect square ≤ 1 is **1**.
+   - Chooses to subtract **1**.
+   - N becomes 1 - 1 = **0**.
+   - Player 2 wins the game.
+
+---
+
+### Sample Command-Line Interaction
+
+```plaintext
+Starting Game: N = 100
+
+Player 1's turn.
+Available perfect squares ≤ 100: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+Enter the perfect square to subtract: 16
+N is now: 84
+
+Player 2's turn.
+Available perfect squares ≤ 84: 1, 4, 9, 16, 25, 36, 49, 64, 81
+Enter the perfect square to subtract: 81
+N is now: 3
+
+Player 1's turn.
+Available perfect squares ≤ 3: 1
+Enter the perfect square to subtract: 1
+N is now: 2
+
+Player 2's turn.
+Available perfect squares ≤ 2: 1
+Enter the perfect square to subtract: 1
+N is now: 1
+
+Player 1's turn.
+Available perfect squares ≤ 1: 1
+Enter the perfect square to subtract: 1
+N is now: 0
+
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the possible perfect squares your opponent can use based on your current move.
+- **Control the Game**: Aim to leave N as a number where the opponent has fewer advantageous moves.
+- **Avoid Leaving Perfect Squares**: Be cautious about leaving N as a perfect square on your turn, as the opponent can reduce N significantly.
+- **Memorize Key Numbers**: Recognize numbers that, if left for the opponent, will allow them to win (e.g., leaving N as 1 can often lead to a win for the next player).
+
+## Summary
+
+Square Attack is a simple yet strategic game that requires players to think ahead and make calculated decisions. With easy-to-understand rules and quick gameplay, it's perfect for a command-line interface and ensures that a skilled player can consistently outperform an unskilled one.
+
+Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,175 @@
+# Path to Victory
+
+## Objective
+
+**Primary Goal**: Be the first player to navigate a shared token from the center of a 5x5 grid to your opponent's starting corner.
+
+- **Victory Condition**: Move the shared token to your opponent's starting position before they reach yours.
+- **Win**: Successfully direct the token to your opponent's corner following the game's movement rules.
+- **Loss**: Your opponent moves the token to your starting corner before you do.
+
+## Setup
+
+1. **Grid Creation**: Generate a 5x5 grid, with coordinates ranging from `(0,0)` to `(4,4)`.
+2. **Starting Positions**:
+   - **Player 1 (P1)** starts at the top-left corner `(0,0)`.
+   - **Player 2 (P2)** starts at the bottom-right corner `(4,4)`.
+3. **Token Placement**: Place a shared token at the center of the grid at position `(2,2)`.
+
+The initial grid setup:
+
+```
+[P1] .  .  .  .
+ .   .  .  .  .
+ .   . [T] .  .
+ .   .  .  .  .
+ .   .  .  . [P2]
+```
+
+- `[P1]`: Player 1's starting corner.
+- `[P2]`: Player 2's starting corner.
+- `[T]`: Token's starting position.
+- `.`: Empty grid spaces.
+
+## Game Components
+
+1. **Grid**: A 5x5 two-dimensional grid representing the game board.
+   - Each cell identified by `(row, column)` coordinates.
+2. **Shared Token**: A single token that both players move.
+   - **Appearance**: Represented by `[T]` in the grid display.
+3. **Players**:
+   - **Player 1**:
+     - **Symbol**: `[P1]`
+     - **Starting Position**: `(0,0)`
+   - **Player 2**:
+     - **Symbol**: `[P2]`
+     - **Starting Position**: `(4,4)`
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with Player 1.
+2. **Player Actions**:
+   - On your turn, move the shared token one space in any cardinal direction (North, South, East, West).
+3. **Turn Progression**:
+   - The game continues with players alternating turns until one player wins.
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - **Token Movement**:
+     - The token can move one space per turn.
+     - Allowed directions: Up (`U`), Down (`D`), Left (`L`), Right (`R`).
+     - The token cannot move diagonally.
+   - **Grid Boundaries**:
+     - The token cannot move outside the grid. Moves that would exit the grid are invalid.
+   - **Prohibited Moves**:
+     - You cannot move the token back to the cell just occupied in your opponent's previous turn (no immediate backtracking).
+2. **Winning the Game**:
+   - The first player to move the token onto their opponent's starting position (`[P1]` for Player 2, `[P2]` for Player 1) wins.
+3. **Invalid Moves**:
+   - If a player attempts an invalid move, they must choose a different move.
+   - Continual invalid move attempts may result in forfeiting the game (at the discretion of game rules enforcement).
+
+## Scoring
+
+- **Victory**: Winning the game by reaching the opponent's starting corner.
+- **No Point System**: The game is won by achieving the objective; no points are tracked.
+- **Game End**: The game ends immediately when a player wins.
+
+## Examples
+
+### Example Scenario
+
+**Initial Positions**:
+
+- Token at `(2,2)`.
+- Player 1 aims to move the token to `(4,4)`.
+- Player 2 aims to move the token to `(0,0)`.
+
+### Sample Turn Sequence
+
+#### Turn 1: Player 1
+
+- **Action**: Moves token Down (`D`).
+- **Token Position**: `(3,2)`.
+- **Command**: `D`
+
+#### Turn 2: Player 2
+
+- **Action**: Moves token Right (`R`).
+- **Token Position**: `(3,3)`.
+- **Command**: `R`
+
+#### Turn 3: Player 1
+
+- **Action**: Moves token Down (`D`).
+- **Token Position**: `(4,3)`.
+- **Command**: `D`
+
+#### Turn 4: Player 2
+
+- **Action**: Invalid Move Attempted. Tries to move token to `(3,3)` (the cell Player 1 just moved from), which is prohibited.
+- **Alternate Action**: Moves token Right (`R`).
+- **Token Position**: `(4,4)`.
+- **Command**: `R`
+- **Result**: Player 2 wins by moving the token to Player 1's starting position.
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Welcome to Path to Victory!
+Player 1 starts at (0,0).
+Player 2 starts at (4,4).
+The token is at (2,2).
+
+Player 1's turn.
+Enter move (U/D/L/R): D
+Token moved Down to (3,2).
+
+Player 2's turn.
+Enter move (U/D/L/R): R
+Token moved Right to (3,3).
+
+Player 1's turn.
+Enter move (U/D/L/R): D
+Token moved Down to (4,3).
+
+Player 2's turn.
+Enter move (U/D/L/R): R
+Token moved Right to (4,4).
+Player 2 has reached Player 1's starting position and wins the game!
+```
+
+**Explanation**:
+
+- **Turn 1**:
+  - Player 1 moves Down. Token moves to `(3,2)`.
+- **Turn 2**:
+  - Player 2 moves Right. Token moves to `(3,3)`.
+- **Turn 3**:
+  - Player 1 moves Down. Token moves to `(4,3)`.
+- **Turn 4**:
+  - Player 2 attempts an invalid move back to `(3,3)`, which is prohibited.
+  - Player 2 chooses to move Right instead.
+  - Token moves to `(4,4)` (Player 1's starting position).
+  - Player 2 wins.
+
+## Strategy Tips
+
+- **Anticipate Opponent Moves**: Try to predict the opponent's strategy to block their optimal path.
+- **Control the Center**: Maintain positions that allow multiple movement options.
+- **Avoid Backtracking**: Remember you cannot reverse the opponent's last move; plan accordingly.
+- **Edge Advantage**: Utilize the edges of the grid to limit your opponent's movement options.
+
+## Implementation Notes
+
+- **Simple Coding**: The game mechanics involve basic movement and boundary checks, suitable for command-line programming.
+- **No Draws**: The game continues until a player wins; there is no possibility of a tie.
+- **Quick Gameplay**: With each move bringing the token closer to a corner, games are typically short.
+- **Skill-Based Outcome**: Strategic planning and foresight give skilled players a consistent edge.
+
+---
+
+Enjoy playing **Path to Victory** and may the best strategist win!

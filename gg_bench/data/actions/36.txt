@@ -1,0 +1,11 @@
+In the game environment, each action is represented by an index in the range of 0 to 35, corresponding to combinations of arithmetic operations and numbers. The actions are structured as follows:
+
+- The action index is divided into two components: `op_index` and `number_index`.
+  - `op_index`: Determines the arithmetic operation and is obtained by integer division of the action index by 9 (`op_index = action // 9`). The operations are mapped as follows:
+    - 0: Addition (`+`)
+    - 1: Subtraction (`-`)
+    - 2: Multiplication (`*`)
+    - 3: Division (`/`)
+  - `number_index`: Defines the number used in the operation, computed using the modulus operation with 9 (`number_index = action % 9`). The numbers are mapped as 1 through 9 (i.e., `number_index + 1`).
+
+Thus, the action at each index is a unique combination of one arithmetic operation and one number (from 1 to 9) applied to the running total. For example, an action index of 0 corresponds to the operation `+1`, and an action index of 35 corresponds to the operation `/9`.

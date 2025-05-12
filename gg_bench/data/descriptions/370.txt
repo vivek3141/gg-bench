@@ -1,0 +1,227 @@
+# Cross Over
+
+**A strategic two-player game played on a linear board, where the objective is to capture your opponent's token by strategic movement.**
+
+---
+
+## Objective
+
+Be the first player to **capture your opponent's token** by landing on their position on the board. The game ends when one player successfully moves onto the space occupied by the opponent's token, thereby capturing it and winning the game.
+
+---
+
+## Setup
+
+- **Board Layout:**
+  - The game is played on a **linear board** consisting of **7 positions** arranged in a straight line.
+  - The positions are **numbered from 1 to 7** from left to right:
+
+    ```
+    [1] [2] [3] [4] [5] [6] [7]
+    ```
+
+- **Player Tokens:**
+  - **Player 1** uses a token represented as **`P1`**.
+  - **Player 2** uses a token represented as **`P2`**.
+
+- **Starting Positions:**
+  - **Player 1's token (`P1`)** starts on **position 1**.
+  - **Player 2's token (`P2`)** starts on **position 7**.
+
+- **Determine Starting Player:**
+  - Players decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by flipping a coin.
+  - **Player 1 moves first**.
+
+---
+
+## Game Components
+
+- **Linear Board:**
+  - A simple linear arrangement of positions numbered from **1** to **7**.
+  - Can be represented in the command-line interface as a series of brackets with numbers inside.
+
+- **Player Tokens:**
+  - **`P1`** for Player 1.
+  - **`P2`** for Player 2.
+  - Tokens indicate the current position of each player on the board.
+
+- **Command-Line Interface:**
+  - Text-based representation of the board and positions.
+  - Players input commands to move their tokens.
+
+---
+
+## Turns
+
+- **Turn Order:**
+  - Players take turns alternately.
+  - **Player 1** takes the first turn.
+
+- **Turn Structure:**
+  - On your turn, you must move your token according to the movement rules.
+  - Players cannot skip a turn or pass; a move must be made each turn.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Direction of Movement:**
+   - **Player 1** moves **forward** from lower to higher numbered positions (toward **position 7**).
+   - **Player 2** moves **forward** from higher to lower numbered positions (toward **position 1**).
+
+2. **Distance of Movement:**
+   - On your turn, you may move your token **either 1 or 2 positions forward**.
+
+3. **Movement Constraints:**
+   - You **cannot move backwards**.
+   - You **cannot move beyond the board** (positions 1 to 7).
+   - You **cannot skip over the opponent's token**.
+
+### Capturing the Opponent's Token
+
+- **Capturing Mechanism:**
+  - If you move your token onto the position currently occupied by your opponent's token, you **capture** their token.
+  - Capturing the opponent's token results in an **immediate win**.
+
+### Winning the Game
+
+- The game is won by the player who **captures the opponent's token** by landing on their position.
+
+### No Draws or Stalemates
+
+- Due to the movement rules and the finite length of the board, the game cannot end in a draw.
+- Players must move forward each turn, ensuring the game progresses towards a conclusion.
+
+---
+
+## Scoring
+
+- There is **no point-based scoring**.
+- The outcome is based on **winning or losing**:
+  - **Win:** Successfully capture the opponent's token.
+  - **Loss:** Have your token captured by the opponent.
+
+---
+
+## Examples
+
+### Initial Board Setup
+
+```
+[P1] [ ]  [ ]  [ ]  [ ]  [ ]  [P2]
+ (1) (2) (3) (4) (5) (6)  (7)
+```
+
+### Sample Game Playthrough
+
+**Turn 1: Player 1**
+
+- **Action:** Moves **2 positions** from position 1 to position 3.
+- **Command-Line Input:** `2`
+- **Board:**
+
+  ```
+  [ ]  [ ]  [P1] [ ]  [ ]  [ ]  [P2]
+   (1) (2)  (3) (4) (5) (6)  (7)
+  ```
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Moves **1 position** from position 7 to position 6.
+- **Command-Line Input:** `1`
+- **Board:**
+
+  ```
+  [ ]  [ ]  [P1] [ ]  [ ] [P2] [ ]
+   (1) (2)  (3) (4) (5) (6)  (7)
+  ```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Moves **1 position** from position 3 to position 4.
+- **Command-Line Input:** `1`
+- **Board:**
+
+  ```
+  [ ]  [ ]  [ ] [P1] [ ] [P2] [ ]
+   (1) (2) (3)  (4) (5) (6)  (7)
+  ```
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Moves **2 positions** from position 6 to position 4 (**attempting to capture**).
+- **Command-Line Input:** `2`
+- **Result:** Player 2 moves to position 4, where Player 1 is located.
+- **Outcome:** **Player 2 captures Player 1's token and wins the game.**
+
+- **Final Board:**
+
+  ```
+  [ ]  [ ]  [ ] [P2] [ ] [ ] [ ]
+   (1) (2) (3)  (4) (5) (6)(7)
+  ```
+
+---
+
+## Command-Line Interaction Example
+
+**Player 1's Turn:**
+
+- **Prompt:** `Player 1 (P1), you are at position 1. Enter your move (1 or 2 positions forward):`
+- **Player Input:** `2`
+- **Game Response:**
+
+  ```
+  Player 1 moves from position 1 to position 3.
+
+  Current Board:
+  [ ]  [ ]  [P1] [ ]  [ ]  [ ]  [P2]
+   (1) (2)  (3) (4) (5) (6)  (7)
+  ```
+
+---
+
+**Player 2's Turn:**
+
+- **Prompt:** `Player 2 (P2), you are at position 7. Enter your move (1 or 2 positions forward):`
+- **Player Input:** `1`
+- **Game Response:**
+
+  ```
+  Player 2 moves from position 7 to position 6.
+
+  Current Board:
+  [ ]  [ ]  [P1] [ ]  [ ] [P2] [ ]
+   (1) (2)  (3) (4) (5) (6)  (7)
+  ```
+
+---
+
+## Strategy Tips
+
+- **Anticipate Opponent's Moves:**
+  - Try to predict whether your opponent will move 1 or 2 positions and plan your moves to counteract.
+  
+- **Control the Center:**
+  - Occupying central positions (positions 3, 4, 5) can give you strategic advantages and limit your opponent's options.
+
+- **Force Engagement:**
+  - Move in a way that forces your opponent into a position where they have limited safe moves.
+
+---
+
+## Summary
+
+"Cross Over" is a simple yet strategically rich game that is easy to code and play in a command-line interface. With clear rules and a straightforward objective, it challenges players to think ahead and outmaneuver their opponent. The game's design ensures quick play sessions and a definitive outcome, making it an engaging choice for players seeking a tactical duel.
+
+---
+
+Enjoy the game and may the best strategist win!

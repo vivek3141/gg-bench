@@ -1,0 +1,179 @@
+# Sum Slinger
+
+## Objective
+
+Sum Slinger is a strategic two-player turn-based game played in a command-line interface. The primary goal is to be the first player to reach the target sum exactly by selecting numbers from a shared pool. Players must carefully choose numbers to add to their own cumulative sum without exceeding the target. The first player to reach the target sum exactly wins the game. If a player exceeds the target sum, they immediately lose. There is no draw mechanism, ensuring each game ends decisively and quickly. Skilled players can consistently outmaneuver their opponents through strategic number selection.
+
+## Setup
+
+1. **Initialize the Target Sum**: At the start of the game, a target sum is randomly selected. The target sum is a whole number between **15** and **25**, inclusive.
+   
+2. **Prepare the Number Pool**: Create a shared pool containing numbers from **1** to **9**, with **two copies** of each number. This results in a total of **18 numbers** in the pool.
+
+3. **Set Player Sums to Zero**: Both players start with a personal cumulative sum of **0**.
+
+4. **Determine the First Player**: Decide which player goes first. This can be done randomly or by mutual agreement.
+
+## Game Components
+
+- **Target Sum**: A randomly selected number between **15** and **25**. This is the sum players aim to reach exactly.
+
+- **Number Pool**: A shared collection containing two of each number from **1** to **9**:
+  ```
+  [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+  ```
+  
+- **Player Sums**: Each player has their own cumulative sum, starting at **0**.
+
+- **Command-Line Interface**: The game is played through text-based inputs and outputs, making it simple to code and play.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the first player determined during setup.
+
+- **Actions During a Turn**:
+  1. **View Available Numbers**: At the start of their turn, a player can see the available numbers in the pool and their current cumulative sum.
+  
+  2. **Select a Number**: The player selects one number from the pool to add to their cumulative sum.
+  
+  3. **Update the Pool and Sum**: The chosen number is removed from the pool, and the player's cumulative sum is increased by that number.
+  
+  4. **Check for Win/Loss Conditions**: 
+     - If the player's cumulative sum **equals** the target sum, they **win** the game.
+     - If the player's cumulative sum **exceeds** the target sum, they **lose** the game immediately.
+     - If neither condition is met, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must select **one** number from the pool on their turn.
+   - Only numbers available in the pool can be selected.
+   
+2. **Cumulative Sum**:
+   - Each player's cumulative sum is personal and updates independently.
+   - The sum increases by the value of the number selected on their turn.
+   
+3. **Winning the Game**:
+   - A player wins by reaching the target sum **exactly**.
+   - The game ends immediately when a player reaches the target sum.
+   
+4. **Losing the Game**:
+   - If a player's cumulative sum **exceeds** the target sum after their turn, they **lose** the game.
+   - The opposing player wins by default in this case.
+   
+5. **Exhausting the Pool**:
+   - If all numbers in the pool are exhausted without any player reaching the target sum, the player with the **sum closest to the target without exceeding it** wins.
+   - This scenario is rare due to the game design aiming for a decisive win or loss before the pool is emptied.
+
+6. **No Skipping Turns**:
+   - Players **cannot** skip their turn or pass; they must select a number if one is available.
+
+7. **Game End Conditions**:
+   - The game ends when a player reaches the target sum exactly, exceeds it, or when the pool is exhausted.
+
+## Scoring
+
+- **Victory**: The winning player is the one who reaches the target sum exactly or who has not exceeded the target sum when the opponent does.
+- **Tracking Scores for Multiple Games**:
+  - Players can keep a tally of wins over multiple games to determine overall performance.
+  - This can highlight the skill level over time, as skilled players will accumulate more wins.
+
+## Examples
+
+### Example Game Play
+
+**Setup**:
+- Target Sum: **20**
+- Number Pool: `[1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]`
+- Player A Sum: **0**
+- Player B Sum: **0**
+
+**Turn 1**: *Player A*
+- Available Numbers: `[1, 1, 2, 2, ..., 9, 9]`
+- Player A selects **9**
+- Player A Sum: `0 + 9 = 9`
+- Number Pool updates: `[1, 1, 2, 2, ..., 8, 8, 9]`
+
+**Turn 2**: *Player B*
+- Available Numbers: `[1, 1, 2, 2, ..., 8, 8, 9]`
+- Player B selects **8**
+- Player B Sum: `0 + 8 = 8`
+- Number Pool updates: `[1, 1, 2, 2, ..., 7, 7, 8, 9]`
+
+**Turn 3**: *Player A*
+- Available Numbers: `[1, 1, 2, 2, ..., 7, 7, 8, 9]`
+- Player A selects **7**
+- Player A Sum: `9 + 7 = 16`
+- Number Pool updates: `[1, 1, 2, 2, ..., 7, 8, 9]`
+
+**Turn 4**: *Player B*
+- Available Numbers: `[1, 1, 2, 2, ..., 7, 8, 9]`
+- Player B selects **9**
+- Player B Sum: `8 + 9 = 17`
+- Number Pool updates: `[1, 1, 2, 2, ..., 7, 8]`
+
+**Turn 5**: *Player A*
+- Available Numbers: `[1, 1, 2, 2, ..., 7, 8]`
+- Player A needs **4** to reach 20, but since **4** is available, they plan ahead.
+- Player A selects **4**
+- Player A Sum: `16 + 4 = 20`
+- Player A reaches the target sum (**20**) exactly.
+- **Player A wins the game.**
+
+### Command-Line Interaction Sample
+
+**Game Start**
+```
+Welcome to Sum Slinger!
+The target sum is: 20
+Available numbers: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9]
+Player A's turn.
+Your current sum is: 0
+Select a number from the pool: 9
+```
+**After Player A's Turn**
+```
+You selected: 9
+Your new sum is: 9
+Available numbers: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9]
+Player B's turn.
+Your current sum is: 0
+Select a number from the pool: 8
+```
+**After Player B's Turn**
+```
+You selected: 8
+Your new sum is: 8
+Available numbers: [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,9]
+Player A's turn.
+Your current sum is: 9
+Select a number from the pool: 7
+```
+**Continued Turns...**
+
+**Winning Turn**
+```
+Player A's turn.
+Your current sum is: 16
+Select a number from the pool: 4
+You selected: 4
+Your new sum is: 20
+Congratulations! You have reached the target sum.
+Player A wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which numbers are still in the pool to plan future moves.
+
+- **Watch Opponent's Sum**: Be aware of your opponent's cumulative sum to anticipate their potential moves and block them by taking numbers they may need.
+
+- **Avoid Exceeding the Target**: If you're close to the target sum, choose smaller numbers to avoid exceeding it.
+
+- **Force Opponent's Hand**: Sometimes selecting a certain number can force your opponent into a position where they might have to exceed the target sum on their next turn.
+
+## Conclusion
+
+Sum Slinger is a simple yet strategic game that challenges players to think ahead and make calculated decisions. Its straightforward mechanics make it easy to code and play in a command-line interface, while the strategic depth allows skilled players to consistently outperform less experienced opponents. With no possibility of a draw and quick gameplay, it's an engaging game for those who enjoy numbers and strategy.
+
+Enjoy the battle of sums, and may the best sum slinger win!

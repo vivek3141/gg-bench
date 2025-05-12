@@ -1,0 +1,290 @@
+# **Sequence Capture - Game Rulebook**
+
+---
+
+## **Objective**
+
+Sequence Capture is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to outmaneuver your opponent by selecting numbers in a sequence such that your opponent is unable to pick a valid number on their turn. Victory is achieved when your opponent cannot make a valid move according to the game's rules, thereby forcing them into a loss.
+
+---
+
+## **Setup**
+
+At the beginning of the game:
+
+- A shared pool of **integers from 1 to 20** is available to both players.
+- No numbers have been selected yet.
+- Player 1 and Player 2 are determined (you may decide who goes first by agreement or random selection).
+
+---
+
+## **Game Components**
+
+- **Number Pool**: A list of integers from **1** to **20** inclusive.
+  - Example: `[1, 2, 3, ..., 20]`
+- **Selected Numbers Log**: A record of numbers that have been picked during the game.
+  - Initially empty.
+- **Current Number**: The last number picked, which determines the valid options for the next player.
+  - Initially undefined until Player 1 makes the first move.
+
+---
+
+## **Turns**
+
+- Players alternate turns starting with **Player 1**.
+- During their turn, a player must:
+  1. Review the **Current Number** (unless it's the first turn).
+  2. Choose a valid number from the **Number Pool** according to the game rules.
+  3. Remove the selected number from the **Number Pool** and add it to the **Selected Numbers Log**.
+  4. Update the **Current Number** to the number they selected.
+- The turn then passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+1. **First Turn Rule**:
+   - Player 1 may select **any number** from the **Number Pool** on their first turn.
+
+2. **Number Selection Rule**:
+   - On subsequent turns, a player must select a number that is **either a factor or a multiple** of the **Current Number**.
+   - The selected number must be **available** in the **Number Pool** (i.e., not previously selected).
+
+3. **Valid Moves**:
+   - A valid move is selecting a number that satisfies the **Number Selection Rule**.
+   - If no valid numbers are available, the player loses the game.
+
+4. **Factors and Multiples**:
+   - A **factor** is a number that divides the **Current Number** without leaving a remainder.
+     - For example, factors of 6 are 1, 2, 3, and 6.
+   - A **multiple** is a number that the **Current Number** divides into without leaving a remainder.
+     - For example, multiples of 6 (within 1-20) are 6, 12, and 18.
+
+5. **Loss Condition**:
+   - If a player cannot make a valid move on their turn, they **lose** the game.
+
+6. **Prohibited Actions**:
+   - Players **cannot** select a number that has already been chosen (no repeats).
+   - Players **must** follow the Number Selection Rule; selecting an invalid number results in an immediate loss.
+
+---
+
+## **Scoring**
+
+- **Winning the Game**: Achieved by forcing your opponent into a position where they cannot make a valid move on their turn.
+- **No Point System**: The game does not track points; victory is determined solely by the win condition.
+- **Game Duration**: The game continues until one player cannot make a valid move.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+#### **Initial Setup**
+
+- Number Pool: `[1, 2, 3, ..., 20]`
+- Selected Numbers Log: `[]`
+- Current Number: `None`
+
+#### **Turn 1: Player 1**
+
+- **Action**: Chooses **6** (any number from 1-20 is valid on the first turn).
+- **Reasoning**: 6 has several factors and multiples within 1-20, offering strategic options.
+- **Updates**:
+  - Number Pool: `[1, 2, 3, 4, 5, 7, 8, 9, ..., 20]` (6 is removed)
+  - Selected Numbers Log: `[6]`
+  - Current Number: `6`
+
+#### **Turn 2: Player 2**
+
+- **Current Number**: `6`
+- **Available Numbers**: Numbers that are factors or multiples of 6 and have not been selected.
+  - **Factors of 6**: 1, 2, 3
+  - **Multiples of 6**: 12, 18
+- **Action**: Chooses **3**.
+- **Updates**:
+  - Number Pool: `[1, 2, 4, 5, 7, 8, 9, ..., 20]` (3 is removed)
+  - Selected Numbers Log: `[6, 3]`
+  - Current Number: `3`
+
+#### **Turn 3: Player 1**
+
+- **Current Number**: `3`
+- **Available Numbers**: Factors or multiples of 3 not yet selected.
+  - **Factors of 3**: 1
+  - **Multiples of 3**: 9, 12, 15, 18
+- **Action**: Chooses **9**.
+- **Updates**:
+  - Number Pool: `[1, 2, 4, 5, 7, 8, 10, ..., 20]` (9 is removed)
+  - Selected Numbers Log: `[6, 3, 9]`
+  - Current Number: `9`
+
+#### **Turn 4: Player 2**
+
+- **Current Number**: `9`
+- **Available Numbers**:
+  - **Factors of 9**: 1
+  - **Multiples of 9**: 18
+- **Action**: Chooses **18**.
+- **Updates**:
+  - Number Pool: `[1, 2, 4, 5, 7, 8, 10, 11, ..., 20]` (18 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18]`
+  - Current Number: `18`
+
+#### **Turn 5: Player 1**
+
+- **Current Number**: `18`
+- **Available Numbers**:
+  - **Factors of 18**: 1, 2
+  - **Multiples of 18**: None within 1-20 other than 18 (already selected)
+- **Action**: Chooses **2**.
+- **Updates**:
+  - Number Pool: `[1, 4, 5, 7, 8, 10, 11, ..., 20]` (2 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2]`
+  - Current Number: `2`
+
+#### **Turn 6: Player 2**
+
+- **Current Number**: `2`
+- **Available Numbers**:
+  - **Factors of 2**: 1
+  - **Multiples of 2**: 4, 8, 10, 12, 14, 16, 20
+- **Action**: Chooses **4**.
+- **Updates**:
+  - Number Pool: `[1, 5, 7, 8, 10, 11, ..., 20]` (4 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4]`
+  - Current Number: `4`
+
+#### **Turn 7: Player 1**
+
+- **Current Number**: `4`
+- **Available Numbers**:
+  - **Factors of 4**: 1
+  - **Multiples of 4**: 8, 12, 16, 20
+- **Action**: Chooses **8**.
+- **Updates**:
+  - Number Pool: `[1, 5, 7, 10, 11, ..., 20]` (8 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4, 8]`
+  - Current Number: `8`
+
+#### **Turn 8: Player 2**
+
+- **Current Number**: `8`
+- **Available Numbers**:
+  - **Factors of 8**: 1
+  - **Multiples of 8**: 16
+- **Action**: Chooses **16**.
+- **Updates**:
+  - Number Pool: `[1, 5, 7, 10, 11, 12, 13, 14, 15, 17, 19, 20]` (16 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4, 8, 16]`
+  - Current Number: `16`
+
+#### **Turn 9: Player 1**
+
+- **Current Number**: `16`
+- **Available Numbers**:
+  - **Factors of 16**: 1
+  - **Multiples of 16**: None within 1-20 not already selected
+- **Action**: Chooses **1**.
+- **Updates**:
+  - Number Pool: `[5, 7, 10, 11, 12, 13, 14, 15, 17, 19, 20]` (1 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4, 8, 16, 1]`
+  - Current Number: `1`
+
+#### **Turn 10: Player 2**
+
+- **Current Number**: `1`
+- **Available Numbers**:
+  - **Factors of 1**: 1 (already selected)
+  - **Multiples of 1**: All remaining numbers `[5, 7, 10, 11, 12, 13, 14, 15, 17, 19, 20]`
+- **Action**: Chooses **5**.
+- **Updates**:
+  - Number Pool: `[7, 10, 11, 12, 13, 14, 15, 17, 19, 20]` (5 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4, 8, 16, 1, 5]`
+  - Current Number: `5`
+
+#### **Turn 11: Player 1**
+
+- **Current Number**: `5`
+- **Available Numbers**:
+  - **Factors of 5**: 1 (already selected), 5 (already selected)
+  - **Multiples of 5**: 10, 15, 20
+- **Action**: Chooses **10**.
+- **Updates**:
+  - Number Pool: `[7, 11, 12, 13, 14, 15, 17, 19, 20]` (10 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4, 8, 16, 1, 5, 10]`
+  - Current Number: `10`
+
+#### **Turn 12: Player 2**
+
+- **Current Number**: `10`
+- **Available Numbers**:
+  - **Factors of 10**: 1 (already selected), 2 (already selected), 5 (already selected), 10 (already selected)
+  - **Multiples of 10**: 20
+- **Action**: Chooses **20**.
+- **Updates**:
+  - Number Pool: `[7, 11, 12, 13, 14, 15, 17, 19]` (20 is removed)
+  - Selected Numbers Log: `[6, 3, 9, 18, 2, 4, 8, 16, 1, 5, 10, 20]`
+  - Current Number: `20`
+
+#### **Turn 13: Player 1**
+
+- **Current Number**: `20`
+- **Available Numbers**:
+  - **Factors of 20**: 1 (already selected), 2 (already selected), 4 (already selected), 5 (already selected), 10 (already selected), 20 (already selected)
+  - **Multiples of 20**: None within 1-20
+- **Action**: Player 1 cannot make a valid move.
+
+#### **Result**
+
+- **Player 1 loses** as they cannot make a valid move according to the rules.
+- **Player 2 wins** the game.
+
+---
+
+## **Strategy Tips**
+
+- **Plan Ahead**: Keep track of which numbers have been used to anticipate your opponent's options.
+- **Control the Current Number**: Choose numbers that limit the valid options for your opponent's next move.
+- **Avoid Low Factors**: Selecting numbers like `1` can give your opponent many options since all numbers are multiples of `1`.
+- **Use High Multiples**: Picking higher numbers with fewer factors can corner your opponent.
+
+---
+
+## **Command-Line Interaction Sample**
+
+Below is a sample interaction between two players in a command-line interface:
+
+```
+Welcome to Sequence Capture!
+
+Available Numbers: [1-20]
+
+Player 1's turn.
+Current Number: None
+Please select a number from the available numbers.
+Player 1 selects: 6
+
+Available Numbers: [1-5,7-20]
+Current Number: 6
+
+Player 2's turn.
+Current Number: 6
+Valid options: Factors or multiples of 6 within available numbers.
+Player 2 selects: 3
+
+Available Numbers: [1-2,4-5,7-20]
+Current Number: 3
+
+Player 1's turn.
+Current Number: 3
+Valid options: Factors or multiples of 3 within available numbers.
+Player 1 selects: 9
+
+... (Game continues in this fashion until a player cannot make a valid move.)
+```
+
+---
+
+Enjoy playing **Sequence Capture** and may the most strategic player win!

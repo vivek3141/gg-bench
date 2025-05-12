@@ -1,0 +1,182 @@
+# Capture the Flag
+
+---
+
+## Objective
+
+"Capture the Flag" is a strategic, turn-based game for two players. The primary goal is to be the first to reach and capture the flag placed at the center of a linear battlefield. Players advance towards the flag from opposite ends of the battlefield, and the first player to land on the flag's position wins the game.
+
+---
+
+## Setup
+
+- **Battlefield Grid**: A straight line of seven positions, numbered from 1 to 7.
+- **Flag Position**: The flag is placed at the central position, which is position **4**.
+- **Player Positions**:
+  - **Player 1 (P1)** starts at **position 1**.
+  - **Player 2 (P2)** starts at **position 7**.
+- **Initial Arrangement**:
+
+  ```
+  [P1][ ][ ][Flag][ ][ ][P2]
+   (1) (2)(3) (4)  (5)(6) (7)
+  ```
+
+---
+
+## Game Components
+
+- **Battlefield Grid**:
+  - A linear grid with positions numbered from 1 to 7.
+  - Represents the path players travel to reach the flag.
+- **Tokens**:
+  - Each player has a token representing their position on the grid.
+  - **Player 1 Token**: `P1`
+  - **Player 2 Token**: `P2`
+- **Flag**:
+  - Represented as `Flag` or `F`.
+  - Placed at position 4 at the game's start.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, with **Player 1 starting first**.
+- **Turn Actions**:
+  - On their turn, a player **moves their token** towards the flag.
+- **Movement Options**:
+  - A player can move **1 or 2 positions** forward per turn.
+  - Movement is only **towards the flag** (higher-numbered positions for P1, lower-numbered positions for P2).
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Advancing**:
+  - Players choose to move their token **1 or 2 positions** closer to the flag.
+- **Direction**:
+  - **Player 1** moves from lower to higher positions (1 → 4).
+  - **Player 2** moves from higher to lower positions (7 → 4).
+- **Restrictions**:
+  - A player **cannot move past the flag**.
+  - Players **cannot skip a turn** or move **zero positions**.
+
+### Capturing the Flag
+
+- A player captures the flag by **landing exactly on position 4**.
+- The game **ends immediately** when a player captures the flag.
+- **Winning Condition**:
+  - **First player** to land on position 4 **wins the game**.
+
+### Collision Rule
+
+- Players **cannot occupy the same position** simultaneously, except for the flag position.
+- If a move would result in both players occupying the same non-flag position, the move is **invalid**.
+
+### No Draws
+
+- The game is designed to **always produce a winner**.
+- With strategic play, one player can force a win.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - Achieved by capturing the flag.
+- **No Point System**:
+  - The game does not track points.
+- **Match Play**:
+  - Players can play multiple rounds and track wins for match play if desired.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**:
+
+```
+Positions:  [1] [2] [3] [4] [5] [6] [7]
+Contents:  [P1][  ][  ][ F ][  ][  ][P2]
+```
+
+**Turn 1 - Player 1**:
+
+- **Action**: Moves **2 positions** to position **3**.
+- **Board State**:
+
+  ```
+  [ ][ ][P1][ F ][  ][  ][P2]
+   (1)(2) (3) (4) (5)(6) (7)
+  ```
+
+**Turn 2 - Player 2**:
+
+- **Action**: Moves **2 positions** to position **5**.
+- **Board State**:
+
+  ```
+  [ ][ ][P1][ F ][P2][  ][ ]
+   (1)(2) (3) (4) (5)(6) (7)
+  ```
+
+**Turn 3 - Player 1**:
+
+- **Action**: Moves **1 position** to position **4** (captures the flag).
+- **Board State**:
+
+  ```
+  [ ][ ][ ][P1][P2][  ][ ]
+   (1)(2)(3) (4) (5)(6)(7)
+  ```
+
+- **Result**: **Player 1 wins** by capturing the flag.
+
+### Command-Line Interaction
+
+**Player 1's Turn**:
+
+```
+Player 1 (P1) - Current Position: 1
+Choose your move (1 or 2 positions towards the flag): 2
+P1 moves to position 3.
+```
+
+**Player 2's Turn**:
+
+```
+Player 2 (P2) - Current Position: 7
+Choose your move (1 or 2 positions towards the flag): 2
+P2 moves to position 5.
+```
+
+**Player 1's Turn**:
+
+```
+Player 1 (P1) - Current Position: 3
+Choose your move (1 or 2 positions towards the flag): 1
+P1 moves to position 4.
+Congratulations! Player 1 has captured the flag and wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **First-Move Advantage**:
+  - Going first can provide a strategic edge; use it wisely.
+- **Predict Opponent's Moves**:
+  - Anticipate your opponent's possible moves to block their path.
+- **Optimal Moves**:
+  - Plan your moves to ensure you can reach the flag before your opponent.
+- **Control the Pace**:
+  - Decide when to move 1 or 2 positions based on the game state.
+
+---
+
+By understanding the rules and employing strategic thinking, players can enjoy a simple yet competitive game. "Capture the Flag" offers a quick gameplay experience where skill and foresight determine the victor.

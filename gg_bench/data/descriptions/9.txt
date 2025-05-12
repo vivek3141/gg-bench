@@ -1,0 +1,150 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to force your opponent into a position where they cannot make a valid move. This occurs when the current number is either prime or 1 on your opponent's turn. Victory is achieved by skillfully selecting divisors to reduce the shared number, limiting your opponent's options.
+
+---
+
+## Setup
+
+1. **Initial Number Selection**
+   - The game starts with a positive integer **N**, agreed upon by both players before the game begins. It's recommended to choose a number greater than 10 for a longer game (e.g., **N = 16**).
+
+2. **Player Assignment**
+   - Determine who will take the first turn. This can be decided randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Shared Number (N)**
+  - A positive integer that both players will manipulate throughout the game.
+  - Begins at the initial value chosen during setup.
+
+- **Proper Divisors**
+  - Numbers that divide **N** evenly, excluding **1** and **N** itself.
+  - At each turn, players will use these divisors to modify **N**.
+
+---
+
+## Turns
+
+1. **Turn Structure**
+   - Players alternate turns, starting with the player designated during setup.
+
+2. **Actions During a Turn**
+   - **Identify Valid Divisors**: List all proper divisors of the current **N**.
+   - **Select a Divisor**: Choose one proper divisor to divide **N**.
+   - **Update N**: Divide **N** by the chosen divisor to obtain the new **N**.
+   - **Announce Move**: Inform the opponent of the chosen divisor and the new value of **N**.
+
+3. **Turn Progression**
+   - **End of Turn**: Once **N** has been updated and announced, the turn passes to the opponent.
+   - **Unable to Move**: If a player cannot make a valid move on their turn, they lose the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**
+   - On your turn, you must divide **N** by one of its proper divisors (excluding **1** and **N**).
+   - The result must be an integer (no fractions or decimals).
+
+2. **Winning the Game**
+   - If **N** is **prime** or **1** on your opponent's turn, and they have no proper divisors to choose from, they lose.
+   - **Note**: Reducing **N** to a prime number or **1** on your turn is a strategic way to win.
+
+3. **Invalid Moves**
+   - Dividing by **1** or **N** is not allowed.
+   - Choosing a divisor that does not evenly divide **N** is not permitted.
+
+4. **Examples of Proper Divisors**
+   - For **N = 16**, the proper divisors are **2**, **4**, and **8**.
+   - For **N = 10**, the proper divisors are **2** and **5**.
+
+---
+
+## Scoring
+
+- **Winning the Game**
+  - The winning player is awarded **1 point**.
+  
+- **Match Play (Optional)**
+  - Players can agree to play multiple rounds.
+  - Keep track of points across rounds to determine the overall winner.
+  - The player with the most points after the agreed number of rounds wins the match.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**
+
+- **N = 16**
+- **Player 1**: Alice
+- **Player 2**: Bob
+- **Alice** takes the first turn.
+
+---
+
+#### Turn 1: Alice
+
+- **Current N**: 16
+- **Proper Divisors of 16**: 2, 4, 8
+- **Alice's Move**:
+  - Chooses divisor **8**
+  - Calculates new N: 16 ÷ 8 = **2**
+  - Announces: "I divide by 8. N is now 2."
+  
+---
+
+#### Turn 2: Bob
+
+- **Current N**: 2
+- **Proper Divisors of 2**: None (since 2 is prime)
+- **Bob cannot make a move and loses**
+- **Alice wins the game**
+
+---
+
+### Command-Line Interaction Example
+
+```
+Game Start
+Initial N: 16
+Player 1 (Alice) begins.
+
+[Alice's Turn]
+Current N: 16
+Proper Divisors of 16: 2, 4, 8
+Enter your chosen divisor: 8
+You chose to divide by 8.
+New N: 2
+
+[Bob's Turn]
+Current N: 2
+Proper Divisors of 2: None
+Bob has no valid moves. Bob loses.
+Alice wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Aim for Primes**: Try to reduce **N** to a prime number on your opponent's turn, forcing them into a losing position.
+- **Consider Divisors Carefully**: Choosing the largest proper divisor isn't always the best strategy. Think ahead to limit your opponent's options.
+- **Plan Ahead**: Anticipate possible future values of **N** after your move to avoid setting up your opponent for a win.
+
+---
+
+## Summary
+
+**Divisor Duel** is a quick and strategic game that tests your ability to manipulate numbers and anticipate your opponent's moves. By understanding the properties of numbers and their divisors, skilled players can consistently outmaneuver less experienced opponents. Enjoy the challenge and may the best strategist win!
+
+---
+
+Happy Gaming!

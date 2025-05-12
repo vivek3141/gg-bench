@@ -1,0 +1,185 @@
+# Linked Subtract: A Two-Player Command-Line Game
+
+## Objective
+
+**Linked Subtract** is a strategic numerical game for two players. The primary goal is to be the player who reduces the shared number to exactly zero by strategically subtracting numbers according to the game's rules. Victory is achieved by making the last valid move that brings the shared number down to zero. There are no draws in this game; one player will always emerge as the winner.
+
+## Setup
+
+1. **Starting Number (N):** Decide on a starting positive integer for the game. This number should be reasonably large to allow for strategic play (e.g., N = 50).
+
+2. **Player Order:** Determine which player goes first. This can be decided by mutual agreement or by a random method such as a coin toss.
+
+3. **Initial Conditions:** The shared number N is set to the chosen starting number. Both players begin with no individual components—only the shared number is used in gameplay.
+
+## Game Components
+
+- **Shared Number (N):** The central element of the game, which both players manipulate. It starts at the predetermined value and decreases as the game progresses.
+
+- **Subtracted Numbers:** Numbers chosen by players during their turns to subtract from N. These numbers are subject to specific rules based on previous moves.
+
+- **Players:** Two participants who alternate turns manipulating the shared number.
+
+## Turns
+
+### Structure of a Turn
+
+1. **Announcement:** At the beginning of each turn, the current value of N is announced.
+
+2. **Player's Move:** The player selects a valid number to subtract from N according to the game rules.
+
+3. **Subtraction:** The chosen number is subtracted from N, and the new value of N is announced.
+
+4. **Turn Progression:** The turn passes to the next player.
+
+### Order of Actions
+
+- **Player 1** begins the game by selecting a valid number to subtract from N.
+- **Player 2** then takes their turn following the same process.
+- Play alternates between Player 1 and Player 2 until the game ends.
+
+## Rules and Mechanics
+
+1. **First Move:**
+
+   - On the first turn of the game, the starting player may subtract any positive integer less than N.
+
+2. **Subsequent Moves:**
+
+   - On each subsequent turn, the number a player can subtract **must be a divisor or a multiple** of the number subtracted by the opponent on the previous turn.
+   - The chosen number must be a **positive integer less than or equal to the current N**.
+
+3. **Valid Numbers to Subtract:**
+
+   - **Divisors:** Numbers that divide evenly into the previous number subtracted (without leaving a remainder).
+   - **Multiples:** Numbers that the previous number subtracted divides into evenly.
+
+4. **Reducing N:**
+
+   - The chosen number is subtracted from N to produce a new N.
+   - N must always remain a **non-negative integer**. Negative values are not allowed.
+
+5. **Winning the Game:**
+
+   - The player who reduces N to exactly zero wins the game.
+   - If a player cannot make a valid move on their turn (no valid numbers to subtract), they lose the game.
+
+6. **Restrictions:**
+
+   - Players cannot subtract zero or negative numbers.
+   - Players cannot subtract a number greater than the current N.
+   - All subtractions must adhere strictly to the divisor or multiple rule based on the previous move.
+
+## Scoring
+
+- **Victory:** The winner is the player who successfully reduces N to zero on their turn by making a valid move according to the game's rules.
+- **Loss:** The player who either cannot make a valid move or causes N to go negative loses the game.
+
+There is no point system; the outcome is a win or a loss.
+
+## Examples
+
+### Example 1: Strategic Gameplay
+
+**Starting Number (N):** 50
+
+**Game Progression:**
+
+1. **Player 1's Turn:**
+   - N = 50
+   - Player 1 can subtract any positive integer less than 50.
+   - Player 1 chooses to subtract **5**.
+   - New N = 50 - 5 = **45**
+
+2. **Player 2's Turn:**
+   - N = 45
+   - Previous number subtracted: 5
+   - Valid numbers to subtract: divisors or multiples of 5 (excluding numbers greater than 45).
+   - Divisors of 5: 1, 5
+   - Multiples of 5: 5, 10, 15, 20, 25, 30, 35, 40, 45
+   - Player 2 cannot subtract 1 (must be greater than zero and adhere to the rules).
+   - Player 2 chooses to subtract **15**.
+   - New N = 45 - 15 = **30**
+
+3. **Player 1's Turn:**
+   - N = 30
+   - Previous number subtracted: 15
+   - Valid numbers: divisors or multiples of 15 (excluding numbers greater than 30).
+   - Divisors of 15: 1, 3, 5, 15
+   - Multiples of 15: 15, 30
+   - Player 1 chooses to subtract **15**.
+   - New N = 30 - 15 = **15**
+
+4. **Player 2's Turn:**
+   - N = 15
+   - Previous number subtracted: 15
+   - Valid numbers: divisors or multiples of 15 (excluding numbers greater than 15).
+   - Player 2 chooses to subtract **15**.
+   - New N = 15 - 15 = **0**
+
+**Outcome:** Player 2 wins by reducing N to zero.
+
+### Example 2: Forced Loss Due to No Valid Move
+
+**Starting Number (N):** 18
+
+**Game Progression:**
+
+1. **Player 1's Turn:**
+   - N = 18
+   - Player 1 subtracts **9**.
+   - New N = 18 - 9 = **9**
+
+2. **Player 2's Turn:**
+   - N = 9
+   - Previous number subtracted: 9
+   - Valid numbers: divisors or multiples of 9 (excluding numbers greater than 9).
+   - Divisors of 9: 1, 3, 9
+   - Multiples of 9: 9
+   - Cannot subtract 1 (must be greater than zero and adhere to the rules).
+   - Player 2 can subtract **9**.
+   - New N = 9 - 9 = **0**
+
+**Outcome:** Player 2 wins.
+
+### Sample Command-Line Interaction
+
+**Starting Number (N):** 20
+
+```plaintext
+Game Start! The starting number is 20.
+
+Player 1's turn.
+Current N: 20
+Enter a number to subtract: 4
+Player 1 subtracts 4. New N is 16.
+
+Player 2's turn.
+Current N: 16
+Previous number subtracted: 4
+Valid numbers to subtract (divisors/multiples of 4, up to 16): 4, 8, 12, 16
+Enter a number to subtract: 8
+Player 2 subtracts 8. New N is 8.
+
+Player 1's turn.
+Current N: 8
+Previous number subtracted: 8
+Valid numbers to subtract (divisors/multiples of 8, up to 8): 8
+Enter a number to subtract: 8
+Player 1 subtracts 8. New N is 0.
+
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate your opponent's possible moves based on the numbers you choose to subtract.
+- **Control the Game:** Try to force your opponent into positions where they have limited options.
+- **Think About Divisibility:** Choosing numbers with fewer divisors can restrict your opponent's next move.
+- **Avoid Prime Numbers Early:** Subtracting a prime number may give your opponent more options on their turn.
+
+## Summary
+
+**Linked Subtract** is a game of numerical strategy and foresight. By carefully selecting which numbers to subtract and considering the implications for your opponent's next move, you can increase your chances of victory. The simplicity of the rules allows for quick gameplay, while the strategic depth ensures that skilled players can consistently outperform unskilled opponents.
+
+Have fun challenging your friends to a game of Linked Subtract, and may the best strategist win!

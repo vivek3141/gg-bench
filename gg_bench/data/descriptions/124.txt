@@ -1,0 +1,291 @@
+# Battle Numbers: Rule Book
+
+## Objective
+
+**Battle Numbers** is a strategic two-player card game where each player aims to reduce their opponent's health points to zero. Players achieve victory by tactically playing number cards to attack while defending against their opponent's assaults. The game combines strategic hand management with simple arithmetic, allowing a skilled player to consistently outperform an unskilled opponent.
+
+---
+
+## Setup
+
+1. **Health Points**: Each player starts the game with **20 Health Points (HP)**.
+2. **Deck Preparation**:
+   - Each player has an identical deck consisting of number cards from **1** to **10**. There are **two copies of each card** in the deck, totaling **20 cards** per player.
+   - Shuffle your deck thoroughly before starting the game.
+3. **Initial Hand**:
+   - Each player draws **5 cards** from their deck to form their starting hand.
+4. **Determining the First Player**:
+   - Players decide who goes first by mutual agreement or by flipping a coin.
+
+---
+
+## Game Components
+
+- **Number Cards (1-10)**:
+  - Each card is labeled with a number from **1** to **10**.
+  - Cards represent both offensive and defensive capabilities.
+- **Health Points Indicator**:
+  - A simple counter to keep track of each player's HP (starting at 20 for each player).
+- **Deck and Discard Pile**:
+  - Each player manages their own deck and discard pile.
+- **Hand**:
+  - Players maintain a hand of **5 cards**, drawing from their deck.
+
+---
+
+## Turns
+
+The game is played in alternating turns. Each turn consists of the following phases:
+
+1. **Play Phase**:
+   - The active player (**Attacker**) selects one card from their hand to play face-up as an attack against their opponent.
+2. **Defense Phase**:
+   - The opposing player (**Defender**) may choose one card from their hand to play face-up in defense.
+   - **Note**: Defending is optional. The Defender may choose not to play a card, resulting in full damage from the attack.
+3. **Resolution Phase**:
+   - Compare the Attacker's and Defender's cards to determine the outcome.
+4. **Draw Phase**:
+   - Both players draw cards from their decks to refill their hands to **5 cards**.
+5. **Turn End**:
+   - The turn passes to the other player, who now becomes the Attacker.
+
+---
+
+## Rules and Mechanics
+
+### Attack and Defense
+
+- **Attacker**:
+  - Selects one card from their hand to attack.
+  - The card represents the **Attack Value**.
+- **Defender**:
+  - May choose to defend by playing one card from their hand.
+  - The card represents the **Defense Value**.
+
+### Damage Calculation
+
+- **If the Defense Value is less than the Attack Value**:
+  - The **Damage Dealt** is calculated as `Attack Value - Defense Value`.
+  - The Damage Dealt is subtracted from the Defender's HP.
+- **If the Defense Value is equal to or greater than the Attack Value**:
+  - No damage is dealt.
+  - **Successful Block**: The Defender negates the attack.
+
+### Card Use and Discarding
+
+- **Used Cards**:
+  - After the attack is resolved, both the Attacker's and Defender's cards used in the turn are placed face-up in their respective **Discard Piles**.
+- **Hand Replenishment**:
+  - At the end of each turn, both players draw enough cards from their decks to have **5 cards** in hand.
+- **Deck Depletion**:
+  - If a player's deck runs out of cards, shuffle the Discard Pile to form a new deck.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - Reduce the opponent's HP to **0** or below.
+- **Losing Condition**:
+  - If a player's HP drops to **0** or below, they lose immediately.
+
+### Additional Rules
+
+- **No Passing**:
+  - The Attacker must play a card each turn.
+- **Optional Defense**:
+  - The Defender may choose not to defend against an attack.
+- **Tied Attack and Defense Values**:
+  - If the Defense Value equals the Attack Value, the attack is fully blocked.
+- **Face-Up Play**:
+  - All cards are played face-up during the Play and Defense phases.
+- **Information Visibility**:
+  - Players should be aware of the cards in their Discard Piles but not in their opponent's hand or deck.
+
+---
+
+## Scoring
+
+- **Health Points (HP)**:
+  - Each player starts with **20 HP**.
+  - Keep track of HP using a counter or a simple notation.
+- **Damage Tracking**:
+  - Deduct Damage Dealt from the Defender's current HP after each attack.
+- **Victory Declaration**:
+  - Once a player's HP reaches **0** or less, the game ends, and the other player is declared the winner.
+
+---
+
+## Examples
+
+Below are sample command-line interactions illustrating how **Battle Numbers** is played.
+
+### Sample Turn Sequence
+
+**Initial Setup**:
+
+- Both players shuffle their decks and draw 5 cards.
+- **Player 1** and **Player 2** have 20 HP each.
+
+---
+
+**Turn 1: Player 1 Attacks**
+
+- **Player 1's Hand**: 2, 4, 7, 9, 10
+- **Player 1** plays **Card 7** as the Attack Value.
+
+_Command Line_:
+```
+Player 1 plays: 7
+```
+
+- **Player 2's Hand**: 3, 5, 6, 8, 10
+- **Player 2** decides to defend with **Card 5**.
+
+_Command Line_:
+```
+Player 2 defends with: 5
+```
+
+**Damage Calculation**:
+
+- Attack Value (7) - Defense Value (5) = 2 Damage Dealt
+- **Player 2's HP** is reduced from 20 to 18.
+
+_Command Line_:
+```
+Player 2 takes 2 damage. HP is now 18.
+```
+
+- Both used cards (7 and 5) are discarded.
+- Both players draw one card to replenish their hands to 5 cards.
+
+---
+
+**Turn 2: Player 2 Attacks**
+
+- **Player 2's Hand**: 3, 6, 8, 10, 1 (newly drawn)
+- **Player 2** plays **Card 10** as the Attack Value.
+
+_Command Line_:
+```
+Player 2 plays: 10
+```
+
+- **Player 1's Hand**: 2, 4, 9, 10, 5 (newly drawn)
+- **Player 1** decides to defend with **Card 10**.
+
+_Command Line_:
+```
+Player 1 defends with: 10
+```
+
+**Damage Calculation**:
+
+- Defense Value (10) is equal to Attack Value (10).
+- Attack is fully blocked; **Player 1** takes **no damage**.
+
+_Command Line_:
+```
+Player 1 blocks the attack. No damage taken.
+```
+
+- Both used cards (10 and 10) are discarded.
+- Both players draw one card to replenish their hands.
+
+---
+
+**Turn 3: Player 1 Attacks**
+
+- **Player 1's Hand**: 2, 4, 9, 5, 8 (newly drawn)
+- **Player 1** plays **Card 9** as the Attack Value.
+
+_Command Line_:
+```
+Player 1 plays: 9
+```
+
+- **Player 2's Hand**: 3, 6, 8, 1, 2 (newly drawn)
+- **Player 2** decides not to defend.
+
+_Command Line_:
+```
+Player 2 chooses not to defend.
+```
+
+**Damage Calculation**:
+
+- No Defense Value; full Attack Value applies.
+- **Player 2's HP** is reduced by **9** (from 18 to 9).
+
+_Command Line_:
+```
+Player 2 takes 9 damage. HP is now 9.
+```
+
+- Used card (9) is discarded.
+- **Player 1** draws one card to replenish their hand.
+
+---
+
+**Turn 4: Player 2 Attacks**
+
+- **Player 2's Hand**: 3, 6, 8, 1, 2
+- **Player 2** plays **Card 8** as the Attack Value.
+
+_Command Line_:
+```
+Player 2 plays: 8
+```
+
+- **Player 1's Hand**: 2, 4, 5, 8, 7 (newly drawn)
+- **Player 1** decides to defend with **Card 4**.
+
+_Command Line_:
+```
+Player 1 defends with: 4
+```
+
+**Damage Calculation**:
+
+- Attack Value (8) - Defense Value (4) = 4 Damage Dealt
+- **Player 1's HP** is reduced from 20 to 16.
+
+_Command Line_:
+```
+Player 1 takes 4 damage. HP is now 16.
+```
+
+- Both used cards (8 and 4) are discarded.
+- Both players draw one card to replenish their hands.
+
+---
+
+### Continuing the Game
+
+Players continue taking turns in this manner until one player's HP is reduced to zero or below. Strategic decisions include:
+
+- **When to use high-value cards** for maximum damage or defense.
+- **When to conserve certain cards** in anticipation of future moves.
+- **Choosing not to defend** to save cards for a stronger counter-attack.
+
+---
+
+## Strategies and Tips
+
+- **Hand Management**:
+  - Keep track of the cards you've used and those likely remaining in your deck.
+- **Anticipate Opponent's Moves**:
+  - Consider which cards your opponent may have based on what they've played.
+- **Balance Attack and Defense**:
+  - Decide when to prioritize defense over offense to preserve your HP.
+- **Card Value Timing**:
+  - Use higher-value cards when they're likely to cause significant damage or block a strong attack.
+
+---
+
+## Conclusion
+
+**Battle Numbers** is a simple yet strategic game that challenges players to outmaneuver their opponent through tactical card play. With straightforward rules and engaging mechanics, the game is easy to code for a command-line interface and offers depth for players seeking to refine their strategies.
+
+Enjoy the duel, and may the best strategist win!
+
+---

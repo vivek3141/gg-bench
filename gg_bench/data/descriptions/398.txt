@@ -1,0 +1,250 @@
+# **Quantum Edge**
+
+Welcome to **Quantum Edge**, a strategic two-player turn-based game designed for the command-line interface. **Quantum Edge** combines simple mechanics with deep strategic elements, ensuring that a skilled player can consistently outmaneuver an unskilled opponent. The game is unique and offers quick, decisive gameplay with no possibility of a draw.
+
+---
+
+## **Objective**
+
+The primary goal of **Quantum Edge** is to be the first player to collapse the Quantum Grid by strategically claiming quantum nodes. A player wins by forcing the opponent into a position where they have no valid moves left, thereby achieving a quantum collapse in their favor.
+
+---
+
+## **Setup**
+
+- **Quantum Grid Initialization**: The game starts with a linear grid of 11 quantum nodes, labeled positions **1** through **11**.
+- **Starting Conditions**: All nodes are in a quantum state, unclaimed by either player.
+- **Player Assignment**:
+  - **Player 1**: Denoted as `A`
+  - **Player 2**: Denoted as `B`
+- **First Move**: Player 1 (`A`) makes the first move.
+
+---
+
+## **Game Components**
+
+### **Quantum Nodes**
+
+- **Representation**: Each node is represented by its position number when unclaimed, `A` when claimed by Player 1, and `B` when claimed by Player 2.
+- **Quantum State**: Nodes start in a neutral quantum state and collapse to a classical state when claimed.
+
+### **Quantum Grid**
+
+- **Structure**: A one-dimensional array (line) of 11 nodes.
+- **Visualization**: Displayed in the command-line interface as a sequence of characters.
+
+---
+
+## **Turns**
+
+### **Turn Structure**
+
+- **Action**: On their turn, a player must claim one of the quantum nodes according to the movement rules.
+- **Turn Order**: Players alternate turns, starting with Player 1 (`A`).
+
+### **Player Actions**
+
+- **Claiming Nodes**:
+  - A player may claim any unclaimed node that is adjacent (next to) a node already claimed by them.
+  - If a player has not yet claimed any nodes, they may claim any of the end nodes (positions **1** or **11**).
+
+---
+
+## **Rules and Mechanics**
+
+### **Core Rules**
+
+1. **Initial Move**:
+   - Player 1 (`A`) begins by claiming either node **1** or node **11**.
+2. **Claiming Nodes**:
+   - On subsequent turns, players can only claim unclaimed nodes that are adjacent to their already claimed nodes.
+   - Adjacency is defined as positions immediately next to a player's claimed node (either to the left or right).
+3. **No Skipping**:
+   - Players cannot skip their turn. If a player has a valid move, they must make it.
+4. **Blocked Paths**:
+   - Players cannot claim nodes that are only adjacent to nodes claimed by the opponent.
+
+### **Winning the Game**
+
+- **Quantum Collapse**:
+  - A player wins if the opponent has no valid moves on their turn.
+  - This occurs when all nodes adjacent to the opponent's claimed nodes are already claimed.
+
+### **Unique Mechanics**
+
+- **Edge Strategy**:
+  - Since the grid is linear, controlling the edges can trap the opponent.
+- **Node Control**:
+  - Strategic claiming can block the opponent's expansion while maximizing your own.
+
+---
+
+## **Scoring**
+
+There is no point system. Victory is achieved by forcing the opponent into a position with no valid moves, resulting in their inability to continue, and thus, you win the game.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+Let's illustrate a sample game between Player 1 (`A`) and Player 2 (`B`).
+
+#### **Initial Grid**
+
+```
+Positions:  1 2 3 4 5 6 7 8 9 10 11
+Grid:       1 2 3 4 5 6 7 8 9 10 11
+```
+
+#### **Turn 1: Player 1 (`A`)**
+
+- **Action**: Claims node **1**.
+
+```
+Grid:       A 2 3 4 5 6 7 8 9 10 11
+```
+
+#### **Turn 2: Player 2 (`B`)**
+
+- **Action**: Claims node **11**.
+
+```
+Grid:       A 2 3 4 5 6 7 8 9 10 B
+```
+
+#### **Turn 3: Player 1 (`A`)**
+
+- **Possible Moves**: Node **2** (adjacent to node **1**).
+- **Action**: Claims node **2**.
+
+```
+Grid:       A A 3 4 5 6 7 8 9 10 B
+```
+
+#### **Turn 4: Player 2 (`B`)**
+
+- **Possible Moves**: Node **10** (adjacent to node **11**).
+- **Action**: Claims node **10**.
+
+```
+Grid:       A A 3 4 5 6 7 8 9 B B
+```
+
+#### **Turn 5: Player 1 (`A`)**
+
+- **Possible Moves**: Node **3** (adjacent to node **2**).
+- **Action**: Claims node **3**.
+
+```
+Grid:       A A A 4 5 6 7 8 9 B B
+```
+
+#### **Turn 6: Player 2 (`B`)**
+
+- **Possible Moves**: Node **9** (adjacent to node **10**).
+- **Action**: Claims node **9**.
+
+```
+Grid:       A A A 4 5 6 7 8 B B B
+```
+
+#### **Turn 7: Player 1 (`A`)**
+
+- **Action**: Claims node **4**.
+
+```
+Grid:       A A A A 5 6 7 8 B B B
+```
+
+#### **Turn 8: Player 2 (`B`)**
+
+- **Action**: Claims node **8**.
+
+```
+Grid:       A A A A 5 6 7 B B B B
+```
+
+#### **Turn 9: Player 1 (`A`)**
+
+- **Action**: Claims node **5**.
+
+```
+Grid:       A A A A A 6 7 B B B B
+```
+
+#### **Turn 10: Player 2 (`B`)**
+
+- **Possible Moves**: Node **7** (adjacent to node **8**).
+- **Action**: Claims node **7**.
+
+```
+Grid:       A A A A A 6 B B B B B
+```
+
+#### **Turn 11: Player 1 (`A`)**
+
+- **Action**: Claims node **6**.
+
+```
+Grid:       A A A A A A B B B B B
+```
+
+#### **Turn 12: Player 2 (`B`)**
+
+- **No Valid Moves**: All nodes adjacent to Player 2's claimed nodes are occupied.
+- **Result**: Player 2 (`B`) has no valid moves and loses.
+
+---
+
+## **Command-Line Interaction Example**
+
+### **Starting the Game**
+
+```
+Welcome to Quantum Edge!
+
+Initial Grid:
+1 2 3 4 5 6 7 8 9 10 11
+
+Player A, it's your turn.
+Available moves: 1, 11
+Enter the node number you wish to claim: 1
+```
+
+### **Gameplay Progression**
+
+```
+Grid:
+A 2 3 4 5 6 7 8 9 10 11
+
+Player B, it's your turn.
+Available moves: 11
+Enter the node number you wish to claim: 11
+```
+
+*... and so on, following the sample game play above.*
+
+### **End of Game**
+
+```
+Player B, it's your turn.
+Available moves: None
+
+Player B has no valid moves left.
+Player A wins the game!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Expand Early**: Quickly claim adjacent nodes to increase your control over the grid.
+- **Block Opponent**: Anticipate your opponent's moves and block their expansion paths.
+- **Control the Center**: Securing central nodes can limit your opponent's options.
+- **Forced Moves**: Lead your opponent into positions where their choices are limited.
+
+---
+
+Enjoy playing **Quantum Edge**, and may the most strategic mind win!

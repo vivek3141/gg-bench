@@ -1,0 +1,197 @@
+# Divisor Duel
+
+## Rule Book
+
+### Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the last player able to make a valid move. Players take turns selecting numbers from a shared list according to specific rules. To win, force your opponent into a position where they cannot select a valid number on their turn.
+
+### Setup
+
+- **Number List**: Create a list of consecutive integers from **1 to 20** inclusive.
+- **Starting Player**: Determine who goes first (e.g., by mutual agreement or a random method like a coin toss).
+- **Initial Conditions**: All numbers are available at the start of the game.
+
+### Game Components
+
+- **Shared Number List**: Numbers **1** through **20**.
+  - Each number is unique and can be selected only once.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Markers**: No physical markers are needed; track selections and available numbers within the interface.
+
+### Turns
+
+- Players alternate turns throughout the game.
+- **First Turn**:
+  - **Player 1** selects any one number from the available numbers.
+- **Subsequent Turns**:
+  - On your turn, select a number that is either a **divisor** or a **multiple** of the **number chosen by the previous player**.
+- Once a number is selected, it is **removed** from the available number list and cannot be chosen again.
+- The game continues until a player cannot make a valid move on their turn.
+
+### Rules and Mechanics
+
+1. **Valid Moves**:
+   - A **divisor** is a number that divides another number evenly (without a remainder).
+   - A **multiple** is a number that can be divided by another number evenly.
+   - **Example**:
+     - If the previous number is **6**, valid selections are its divisors (**1**, **2**, **3**, **6**) and multiples within the available numbers (**12**, **18**).
+2. **Selection Restrictions**:
+   - The selected number must be **available** (i.e., not previously chosen).
+   - The number must be a **divisor** or **multiple** of the **immediately preceding number**.
+3. **Forced Pass**:
+   - If a player has no valid moves (no available divisors or multiples of the previous number), they **lose** the game.
+4. **Ending the Game**:
+   - The game ends immediately when a player cannot make a valid move on their turn.
+   - The **last player** to make a valid selection is declared the **winner**.
+
+### Scoring
+
+- No points are tracked during the game.
+- The objective is to win by making the last valid move.
+- The player who forces their opponent into having no valid moves wins the game.
+
+### Examples
+
+#### Example Game Play
+
+**Starting Available Numbers**: `1-20`
+
+1. **Player 1's Turn**:
+   - Chooses **6**.
+   - **Available Numbers**: `1-5, 7-20` (6 is removed).
+2. **Player 2's Turn**:
+   - Previous number: **6**
+   - Valid selections (divisors/multiples of 6): **1**, **2**, **3**, **6**, **12**, **18**.
+   - Available and valid: **1**, **2**, **3**, **12**, **18**.
+   - Chooses **3**.
+   - **Available Numbers**: `1-2, 4-5, 7-12, 14-20` (3 and 6 are removed).
+3. **Player 1's Turn**:
+   - Previous number: **3**
+   - Valid selections: **1**, **3**, **6**, **9**, **12**, **15**, **18**.
+   - Available and valid: **1**, **9**, **12**, **15**, **18**.
+   - Chooses **9**.
+   - **Available Numbers**: `1-2, 4-5, 7-8, 10-12, 14-20` (3, 6, 9 are removed).
+4. **Player 2's Turn**:
+   - Previous number: **9**
+   - Valid selections: **1**, **3**, **9**, **18**.
+   - Available and valid: **1**, **18**.
+   - Chooses **18**.
+   - **Available Numbers**: `1-2, 4-5, 7-8, 10-12, 14-17, 19-20` (3, 6, 9, 18 are removed).
+5. **Player 1's Turn**:
+   - Previous number: **18**
+   - Valid selections: **1**, **2**, **3**, **6**, **9**, **18**.
+   - Available and valid: **1**, **2**.
+   - Chooses **2**.
+   - **Available Numbers**: `1, 4-5, 7-8, 10-12, 14-17, 19-20` (2, 3, 6, 9, 18 are removed).
+6. **Player 2's Turn**:
+   - Previous number: **2**
+   - Valid selections: **1**, **2**, **4**, **6**, **8**, **10**, **12**, **14**, **16**, **18**, **20**.
+   - Available and valid: **1**, **4**, **8**, **10**, **12**, **14**, **16**, **20**.
+   - Chooses **12**.
+   - **Available Numbers**: `1, 4-5, 7-8, 10-11, 14-17, 19-20` (2, 3, 6, 9, 12, 18 are removed).
+7. **Player 1's Turn**:
+   - Previous number: **12**
+   - Valid selections: **1**, **2**, **3**, **4**, **6**, **12**, **15**, **16**, **18**, **20**.
+   - Available and valid: **1**, **4**, **15**, **16**, **20**.
+   - Chooses **4**.
+   - **Available Numbers**: `1, 5, 7-8, 10-11, 14-17, 19-20` (2, 3, 4, 6, 9, 12, 18 are removed).
+8. **Player 2's Turn**:
+   - Previous number: **4**
+   - Valid selections: **1**, **2**, **4**, **8**, **12**, **16**, **20**.
+   - Available and valid: **1**, **8**, **16**, **20**.
+   - Chooses **8**.
+   - **Available Numbers**: `1, 5, 7, 10-11, 14-17, 19-20`.
+9. **Player 1's Turn**:
+   - Previous number: **8**
+   - Valid selections: **1**, **2**, **4**, **8**, **16**, **20**.
+   - Available and valid: **1**, **16**, **20**.
+   - Chooses **16**.
+   - **Available Numbers**: `1, 5, 7, 10-11, 14-15, 17, 19-20`.
+10. **Player 2's Turn**:
+    - Previous number: **16**
+    - Valid selections: **1**, **2**, **4**, **8**, **16**, **20**.
+    - Available and valid: **1**, **20**.
+    - Chooses **20**.
+    - **Available Numbers**: `1, 5, 7, 10-11, 14-15, 17, 19`.
+11. **Player 1's Turn**:
+    - Previous number: **20**
+    - Valid selections: **1**, **2**, **4**, **5**, **10**, **20**.
+    - Available and valid: **1**, **5**, **10**.
+    - Chooses **5**.
+    - **Available Numbers**: `1, 7, 10-11, 14-15, 17, 19`.
+12. **Player 2's Turn**:
+    - Previous number: **5**
+    - Valid selections: **1**, **5**, **10**, **15**, **20**.
+    - Available and valid: **1**, **10**, **15**.
+    - Chooses **10**.
+    - **Available Numbers**: `1, 7, 11, 14-15, 17, 19`.
+13. **Player 1's Turn**:
+    - Previous number: **10**
+    - Valid selections: **1**, **2**, **5**, **10**, **15**, **20**.
+    - Available and valid: **1**, **15**.
+    - Chooses **15**.
+    - **Available Numbers**: `1, 7, 11, 14, 17, 19`.
+14. **Player 2's Turn**:
+    - Previous number: **15**
+    - Valid selections: **1**, **3**, **5**, **15**.
+    - Available and valid: **1**.
+    - Chooses **1**.
+    - **Available Numbers**: `7, 11, 14, 17, 19`.
+15. **Player 1's Turn**:
+    - Previous number: **1**
+    - Valid selections: Any remaining number (since all numbers are multiples and divisors of 1).
+    - Available numbers: `7, 11, 14, 17, 19`.
+    - Chooses **7**.
+    - **Available Numbers**: `11, 14, 17, 19`.
+16. **Player 2's Turn**:
+    - Previous number: **7**
+    - Valid selections: **1**, **7**, **14**.
+    - Available and valid: **14**.
+    - Chooses **14**.
+    - **Available Numbers**: `11, 17, 19`.
+17. **Player 1's Turn**:
+    - Previous number: **14**
+    - Valid selections: **1**, **2**, **7**, **14**.
+    - Available and valid: None (all valid numbers are taken).
+    - **Player 1 cannot make a valid move and loses the game**.
+
+### Command-Line Interaction Example
+
+Below is a sample interaction for the first few turns:
+
+```
+Available Numbers: 1-20
+
+Player 1's Turn:
+Select a number: 6
+Remaining Numbers: 1-5, 7-20
+
+Player 2's Turn:
+Previous number was 6
+Valid selections: 1, 2, 3, 12, 18
+Select a number: 3
+Remaining Numbers: 1-2, 4-5, 7-12, 14-20
+
+Player 1's Turn:
+Previous number was 3
+Valid selections: 1, 9, 12, 15, 18
+Select a number: 9
+Remaining Numbers: 1-2, 4-5, 7-8, 10-12, 14-20
+
+Player 2's Turn:
+Previous number was 9
+Valid selections: 1, 18
+Select a number: 18
+Remaining Numbers: 1-2, 4-5, 7-8, 10-12, 14-17, 19-20
+```
+
+### Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the numbers remaining.
+- **Control the Game**: Choosing numbers with fewer divisors and multiples can limit your opponent's options.
+- **Remember Choices**: Keep track of the numbers that have been removed to inform your strategy.
+
+---
+
+Enjoy playing **Divisor Duel** and may the most strategic player win!

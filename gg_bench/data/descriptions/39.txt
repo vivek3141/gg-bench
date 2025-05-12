@@ -1,0 +1,233 @@
+# Blockade Run
+
+## Objective
+
+Be the first player to reach the opposite side of the grid. Player 1 aims to reach the bottom row, while Player 2 aims to reach the top row. Strategically move your piece across the grid and place blocks to impede your opponent. The game ends when a player reaches the opposite side or when a player has no legal moves left, resulting in a win for the opposing player.
+
+## Setup
+
+1. **Grid Configuration**: The game is played on a 5x5 grid, with cells numbered from 1 to 25 in row-major order.
+
+   ```
+   [ 1 ][ 2 ][ 3 ][ 4 ][ 5 ]
+   [ 6 ][ 7 ][ 8 ][ 9 ][10]
+   [11][12][13][14][15]
+   [16][17][18][19][20]
+   [21][22][23][24][25]
+   ```
+
+2. **Initial Positions**:
+   - **Player 1 (P1)**: Starts on cell **3** (top center).
+   - **Player 2 (P2)**: Starts on cell **23** (bottom center).
+
+3. **Blocks**: No blocks are placed on the grid at the start of the game.
+
+4. **Turn Order**: Player 1 takes the first turn.
+
+## Game Components
+
+- **Grid Cells**:
+  - Each cell on the grid can be in one of three states:
+    - **Empty**: No player or block occupies the cell.
+    - **Occupied**: A player is on the cell.
+    - **Blocked**: The cell is blocked and cannot be entered or passed through.
+
+- **Player Pieces**:
+  - Represented by **P1** and **P2** on the grid.
+  - Each player controls one piece.
+
+- **Blocks**:
+  - Represented by **X** on the grid.
+  - Used to prevent movement through specific cells.
+
+## Turns
+
+Each player's turn consists of two actions performed in order:
+
+1. **Movement Phase**:
+   - Move your piece to an adjacent cell.
+     - **Adjacency**: Cells directly above, below, to the left, or to the right.
+     - **Restrictions**:
+       - Cannot move diagonally.
+       - Cannot move onto or through blocked cells.
+       - Cannot move onto a cell occupied by the opponent.
+
+2. **Block Placement Phase**:
+   - Place a block on any empty, unblocked cell.
+     - **Restrictions**:
+       - Cannot place a block on a cell occupied by either player.
+       - Once a cell is blocked, it remains blocked for the rest of the game.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Valid Moves**:
+  - From your current cell, you may move to any adjacent cell that is not blocked or occupied by the opponent.
+- **Edge Wrapping**:
+  - The grid does **not** wrap around; moving off one edge onto the opposite edge is not allowed.
+- **No Passing**:
+  - You must move each turn; if you have no valid moves, you lose the game.
+
+### Block Placement Rules
+
+- **Block Usage**:
+  - After moving, you must place one block on the grid.
+- **Placement Restrictions**:
+  - Blocks can be placed on any empty cell.
+  - Cannot place a block on a cell occupied by yourself or the opponent.
+- **Block Permanence**:
+  - Blocks remain in place for the entirety of the game.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - You win if your piece reaches any cell on the opposite side of the grid:
+    - **Player 1**: Any cell in row 5 (cells 21-25).
+    - **Player 2**: Any cell in row 1 (cells 1-5).
+- **Defeat Condition**:
+  - If you cannot make a valid move on your turn, you lose the game.
+
+## Scoring
+
+There is no points system. The game is won by fulfilling the victory condition or when the opponent cannot move.
+
+## Examples
+
+### Command-Line Interaction and Sample Turns
+
+#### Initial Grid State:
+
+```
+[ 1 ][ 2 ][P1][ 4 ][ 5 ]
+[ 6 ][ 7 ][ 8 ][ 9 ][10]
+[11][12][13][14][15]
+[16][17][18][19][20]
+[21][22][P2][24][25]
+```
+
+- `P1` is at cell **3**.
+- `P2` is at cell **23**.
+
+#### Turn Sequence
+
+**Turn 1: Player 1**
+
+- **Movement**: `P1` moves from **3** to **8**
+
+  Valid adjacent cells from **3** are **2**, **4**, and **8**.
+
+- **Block Placement**: Places a block on cell **4**
+
+  The grid now has a block on cell **4** (`X`).
+
+**Grid State After Turn 1:**
+
+```
+[ 1 ][ 2 ][   ][ X ][ 5 ]
+[ 6 ][ 7 ][P1][ 9 ][10]
+[11][12][13][14][15]
+[16][17][18][19][20]
+[21][22][P2][24][25]
+```
+
+**Turn 2: Player 2**
+
+- **Movement**: `P2` moves from **23** to **18**
+
+  Valid adjacent cells from **23** are **18**, **22**, and **24**.
+
+- **Block Placement**: Places a block on cell **22**
+
+  The grid now has a block on cell **22** (`X`).
+
+**Grid State After Turn 2:**
+
+```
+[ 1 ][ 2 ][   ][ X ][ 5 ]
+[ 6 ][ 7 ][P1][ 9 ][10]
+[11][12][13][14][15]
+[16][17][P2][19][20]
+[21][ X ][   ][24][25]
+```
+
+**Turn 3: Player 1**
+
+- **Movement**: `P1` moves from **8** to **7**
+
+  Valid adjacent cells from **8** are **7**, **9**, and **13**.
+
+- **Block Placement**: Places a block on cell **13**
+
+**Grid State After Turn 3:**
+
+```
+[ 1 ][ 2 ][   ][ X ][ 5 ]
+[ 6 ][P1][   ][ 9 ][10]
+[11][12][ X ][14][15]
+[16][17][P2][19][20]
+[21][ X ][   ][24][25]
+```
+
+**Turn 4: Player 2**
+
+- **Movement**: `P2` moves from **18** to **19**
+
+  Valid adjacent cells from **18** are **13** (blocked), **17**, **19**, and **23**.
+
+- **Block Placement**: Places a block on cell **17**
+
+**Grid State After Turn 4:**
+
+```
+[ 1 ][ 2 ][   ][ X ][ 5 ]
+[ 6 ][P1][   ][ 9 ][10]
+[11][12][ X ][14][15]
+[16][ X ][   ][P2][20]
+[21][ X ][   ][24][25]
+```
+
+**Subsequent Turns**:
+
+Players continue moving their pieces toward the opposite side, strategically placing blocks to hinder the opponent's progress or to block potential escape routes.
+
+**Possible Outcome**:
+
+- **Player 1** reaches row 5 by moving to cell **24** and wins the game.
+
+## Additional Notes
+
+- **Strategy Tips**:
+  - **Balance Offense and Defense**: While advancing toward the goal, consider placing blocks to slow down your opponent.
+  - **Plan Ahead**: Anticipate the opponent's possible moves and block key cells that could facilitate their progress.
+  - **Avoid Corners**: Getting trapped near the edges or corners can limit your movement options.
+
+- **Command-Line Representation**:
+  - Players input their moves and block placements by specifying cell numbers.
+  - The grid can be displayed after each turn to visualize the game state.
+
+**Example Commands**:
+
+- **Moving**: `MOVE 8`
+- **Blocking**: `BLOCK 4`
+- **Full Turn Input**:
+
+  ```
+  MOVE 8
+  BLOCK 4
+  ```
+
+- **Game Output Example**:
+
+  ```
+  Player 1 moved to cell 8.
+  Player 1 blocked cell 4.
+  Updated Grid:
+  [ 1 ][ 2 ][   ][ X ][ 5 ]
+  [ 6 ][ 7 ][P1][ 9 ][10]
+  [11][12][13][14][15]
+  [16][17][18][19][20]
+  [21][22][P2][24][25]
+  ```
+
+With these rules and guidelines, players should have a clear understanding of how to play **Blockade Run** and can enjoy strategic gameplay with depth and complexity in a simple command-line interface.

@@ -1,0 +1,356 @@
+**Grid Clasher: A Two-Player Turn-Based Strategy Game**
+
+---
+
+### **Objective**
+
+Be the first player to move your piece into your opponent's starting cell on the opposite end of the grid. Utilize strategic movement and placement of blocks to navigate the grid while impeding your opponent's progress.
+
+---
+
+### **Setup**
+
+- **Grid Configuration**: A linear grid consisting of 5 cells in a single row, numbered from left to right as Cell 1 to Cell 5.
+  
+- **Player Pieces**:
+  - **Player 1**: Represented by 'A', starts on **Cell 1** (the leftmost cell).
+  - **Player 2**: Represented by 'B', starts on **Cell 5** (the rightmost cell).
+
+- **Initial Conditions**:
+  - All cells are empty except for the players' starting positions.
+  - No blocks are placed on the grid at the start.
+
+---
+
+### **Game Components**
+
+- **Grid Cells**:
+  - **Cells 1 to 5**: Positions on the grid where players can move or place blocks.
+  - **Status Indicators**:
+    - Empty Cell: Represented by '_'.
+    - Player Piece: 'A' for Player 1, 'B' for Player 2.
+    - Blocked Cell: Represented by '#'.
+
+- **Player Pieces**:
+  - **'A'**: Represents Player 1's piece.
+  - **'B'**: Represents Player 2's piece.
+
+- **Blocks**:
+  - Represented by '#'.
+  - Can be placed on empty cells to prevent movement through that cell.
+
+---
+
+### **Turns**
+
+- **Turn Order**:
+  - Player 1 starts the game.
+  - Players alternate turns thereafter.
+
+- **Actions Per Turn**:
+  - On your turn, choose one of the following actions:
+    1. **Move Action**: Move your piece one cell forward toward your opponent's starting cell.
+    2. **Block Action**: Place a block ('#') on any unoccupied and unblocked cell that is not the opponent's starting cell.
+
+- **Turn Progression**:
+  - Players continue to alternate turns, performing one action per turn, until one player wins.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement Rules**:
+   - **Direction**:
+     - Player 1 ('A') moves from left to right (toward Cell 5).
+     - Player 2 ('B') moves from right to left (toward Cell 1).
+   - **Movement Restrictions**:
+     - A player may move only one cell per turn.
+     - A player cannot move into a cell that is:
+       - Occupied by a block ('#').
+       - Occupied by the opponent's piece.
+   - **Winning Move**:
+     - Moving your piece into your opponent's starting cell (Cell 5 for Player 1, Cell 1 for Player 2) results in an immediate win.
+
+2. **Block Placement Rules**:
+   - **Placement Restrictions**:
+     - Blocks can be placed on any empty and unblocked cell except the opponent's starting cell.
+     - A cell occupied by a player piece cannot be blocked.
+   - **Block Effects**:
+     - Blocks prevent both players from moving into or through that cell.
+     - Once placed, blocks remain on the grid for the duration of the game.
+
+3. **General Rules**:
+   - **Blocked Paths**:
+     - If a player has no legal moves (all possible paths are blocked), they must continue placing blocks until a move becomes available or the game ends.
+     - Stalemate is impossible since the game is designed to have finite moves leading to a win.
+
+4. **Interaction Between Components**:
+   - Players must strategize between advancing their piece and hindering their opponent through block placement.
+   - Balancing offensive moves (advancing) with defensive moves (blocking) is key to victory.
+
+---
+
+### **Scoring**
+
+- **Winning the Game**:
+  - The first player to successfully move their piece into the opponent's starting cell wins the game.
+
+- **No Points System**:
+  - There is no point or scoring system; the game is won through strategic play leading to a win condition.
+
+- **Game Length**:
+  - The game is designed to be quick, typically ending within a few minutes.
+
+---
+
+### **Examples**
+
+**Initial Grid State:**
+
+```
+Turn 0:
+Cell 1 | Cell 2 | Cell 3 | Cell 4 | Cell 5
+  A    |   _    |   _    |   _    |   B
+```
+
+---
+
+**Sample Gameplay:**
+
+**Turn 1: Player 1**
+
+- **Action**: Moves piece 'A' from Cell 1 to Cell 2.
+
+**Grid State:**
+
+```
+Turn 1:
+Cell 1 | Cell 2 | Cell 3 | Cell 4 | Cell 5
+  _    |   A    |   _    |   _    |   B
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Places a block ('#') on Cell 3.
+
+**Grid State:**
+
+```
+Turn 2:
+Cell 1 | Cell 2 | Cell 3 | Cell 4 | Cell 5
+  _    |   A    |   #    |   _    |   B
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Places a block ('#') on Cell 4.
+
+**Grid State:**
+
+```
+Turn 3:
+Cell 1 | Cell 2 | Cell 3 | Cell 4 | Cell 5
+  _    |   A    |   #    |   #    |   B
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: Moves piece 'B' from Cell 5 to Cell 4.
+
+- **Note**: Cannot move to Cell 4 as it is blocked. Must choose an alternative action.
+
+- **Alternative Action**: Moves piece 'B' from Cell 5 to Cell 4 is invalid due to block.
+
+- **Action**: Moves piece 'B' from Cell 5 to Cell 5 (no movement possible). Must place a block.
+
+- **Action**: Places a block ('#') on Cell 1.
+
+**Grid State:**
+
+```
+Turn 4:
+Cell 1 | Cell 2 | Cell 3 | Cell 4 | Cell 5
+  #    |   A    |   #    |   #    |   B
+```
+
+---
+
+**Turn 5: Player 1**
+
+- **Action**: Moves piece 'A' from Cell 2 to Cell 3.
+
+- **Note**: Cannot move to Cell 3 (blocked). Cannot move to Cell 1 (blocked). No valid moves.
+
+- **Alternative Action**: Places a block ('#') on Cell 5.
+
+**Grid State:**
+
+```
+Turn 5:
+Cell 1 | Cell 2 | Cell 3 | Cell 4 | Cell 5
+  #    |   A    |   #    |   #    |   B
+```
+
+---
+
+**Turn 6: Player 2**
+
+- **Action**: Moves piece 'B' from Cell 5 to Cell 4.
+
+- **Note**: Cannot move to Cell 4 (blocked). No valid moves.
+
+- **Alternative Action**: No valid moves or blocks to place (all cells blocked).
+
+- **Outcome**: Player 2 cannot perform any action.
+
+---
+
+**Game Conclusion:**
+
+- **Winner**: Player 1 wins by default as Player 2 cannot perform any actions.
+
+---
+
+**Alternate Scenario where Player Reaches Opponent's Starting Cell:**
+
+**Turn 1: Player 1**
+
+- **Action**: Moves piece 'A' from Cell 1 to Cell 2.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Moves piece 'B' from Cell 5 to Cell 4.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Moves piece 'A' from Cell 2 to Cell 3.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: Moves piece 'B' from Cell 4 to Cell 3.
+
+- **Conflict**: Both pieces cannot occupy the same cell.
+
+- **Resolution Rule**: Cells cannot be occupied if already taken by the opponent. Move is invalid.
+
+- **Alternative Action**: Player 2 places a block ('#') on Cell 3.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action**: Cannot move to Cell 3 (blocked). Moves piece 'A' from Cell 2 to Cell 1.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action**: Moves piece 'B' from Cell 4 to Cell 3.
+
+- **Note**: Cannot move to Cell 3 (blocked). Must choose an alternative action.
+
+- **Alternative Action**: Moves piece 'B' from Cell 4 to Cell 5.
+
+- **Note**: Cannot move backward. Must place a block.
+
+- **Action**: Places a block ('#') on Cell 1.
+
+---
+
+**Turn 7: Player 1**
+
+- **Action**: Cannot move forward (Cell 2) or backward (Cell 1 is blocked).
+
+- **Alternative Action**: Places a block ('#') on Cell 4.
+
+---
+
+**Continue Gameplay Until a Player Wins**
+
+---
+
+**Command-Line Interaction Example:**
+
+```
+Welcome to Grid Clasher!
+
+Player 1 (A) starts on Cell 1.
+Player 2 (B) starts on Cell 5.
+
+Turn 1 - Player 1:
+Grid: [_][A][_][_][B]
+Choose your action:
+1. Move forward
+2. Place a block
+Enter action number: 1
+Player 1 moves to Cell 2.
+
+Turn 2 - Player 2:
+Grid: [_][_][A][_][B]
+Choose your action:
+1. Move forward
+2. Place a block
+Enter action number: 2
+Enter cell number to place a block (1-5, excluding opponent's start cell): 3
+Player 2 places a block on Cell 3.
+
+Turn 3 - Player 1:
+Grid: [_][_][A][#][B]
+Choose your action:
+1. Move forward
+2. Place a block
+Enter action number: 1
+Cannot move forward (Cell 3 is blocked).
+Choose your action:
+1. Move backward
+2. Place a block
+Enter action number: 2
+Enter cell number to place a block (1-5, excluding opponent's start cell): 4
+Player 1 places a block on Cell 4.
+
+Turn 4 - Player 2:
+Grid: [_][_][A][#][B]
+Choose your action:
+1. Move forward
+2. Place a block
+Enter action number: 1
+Cannot move forward (Cell 4 is blocked).
+Choose your action:
+1. Move backward
+2. Place a block
+Enter action number: 2
+Enter cell number to place a block (1-5, excluding opponent's start cell): 1
+Player 2 places a block on Cell 1.
+
+...
+
+Game Over: Player 1 wins!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Balance Movement and Blocking**: Weigh the benefits of advancing your piece against hindering your opponent.
+  
+- **Anticipate Opponent's Moves**: Predict possible moves your opponent can make and block critical cells accordingly.
+
+- **Control Key Positions**: Blocking central cells can force your opponent into a longer path.
+
+- **Avoid Self-Blockade**: Ensure your block placements do not hinder your own movement.
+
+---
+
+**Enjoy the challenge of Grid Clasher and may the best strategist win!**

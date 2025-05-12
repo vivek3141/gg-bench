@@ -1,0 +1,164 @@
+# Factor Elimination: A Two-Player Strategy Game
+
+## Objective
+
+**Factor Elimination** is a strategic two-player game where players take turns selecting numbers from a shared list. The primary goal is to force your opponent into a position where they cannot make a valid move. A player wins by making the last valid selection, leaving no available numbers for the opponent.
+
+## Setup
+
+- **Initial Number List**: Create a list of consecutive positive integers starting from 1 up to a predetermined maximum number, typically **10** for a quick game.
+- **Player Positions**: Players decide who will take the first turn. This can be determined randomly or by mutual agreement.
+- **Starting Conditions**: All numbers in the initial list are unmarked and available for selection.
+
+## Game Components
+
+- **Number List**: A shared list of integers (e.g., 1 through 10) displayed in the command-line interface.
+  - **Appearance**: Numbers are displayed in sequence and updated after each turn to show available numbers.
+  - **Functionality**: Represents the pool of numbers players can select from during their turn.
+- **Marked Numbers**: Selected numbers and their associated factors and multiples, which are removed from availability.
+- **Player Indicators**: Denote which player's turn it is, typically as **Player 1** and **Player 2**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions During Turn**:
+  1. **Selection**: Choose one available number from the list.
+  2. **Elimination**: Remove the selected number and all of its factors and multiples from the list of available numbers.
+- **Progression of Turns**: The game continues with players alternating turns until one player cannot make a valid selection.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Selection Rule**: On their turn, a player must select **one** number from the list of available numbers.
+2. **Elimination Rule**: Upon selecting a number:
+   - Remove the **selected number** from the list.
+   - Remove all **factors** of the selected number from the list.
+   - Remove all **multiples** of the selected number from the list.
+3. **Availability**: Only numbers that have not been removed are available for selection.
+4. **End Condition**: If a player cannot select any number because none are available at the start of their turn, they **lose** the game.
+
+### Additional Mechanics
+
+- **Factors and Multiples**:
+  - **Factors**: Numbers that divide evenly into the selected number (excluding the number itself if desired for variation).
+  - **Multiples**: Numbers that the selected number divides evenly into.
+- **Command-Line Interaction**:
+  - Players input the number they wish to select.
+  - The game updates the list and displays the remaining available numbers after each turn.
+
+## Scoring
+
+- **Winning the Game**: The player who successfully makes the last valid selection, leaving the opponent with no available moves, **wins** the game.
+- **Losing the Game**: A player **loses** if:
+  - They start their turn and there are **no available numbers** to select.
+  - They **forfeit** or make an **invalid move** (selecting a number not in the available list).
+
+## Examples
+
+### Example Game
+
+**Initial Number List**: 1 2 3 4 5 6 7 8 9 10
+
+#### Turn 1: Player 1
+
+- **Available Numbers**: 1-10
+- **Player 1 selects**: **7**
+- **Numbers Removed**:
+  - **Selected Number**: 7
+  - **Factors of 7**: 1
+  - **Multiples of 7**: No multiples within 1-10 besides 7
+- **Updated List**: 2 3 4 5 6 8 9 10
+
+#### Turn 2: Player 2
+
+- **Available Numbers**: 2 3 4 5 6 8 9 10
+- **Player 2 selects**: **2**
+- **Numbers Removed**:
+  - **Selected Number**: 2
+  - **Factors of 2**: 1 (already removed)
+  - **Multiples of 2**: 4, 6, 8, 10
+- **Updated List**: 3 5 9
+
+#### Turn 3: Player 1
+
+- **Available Numbers**: 3 5 9
+- **Player 1 selects**: **5**
+- **Numbers Removed**:
+  - **Selected Number**: 5
+  - **Factors of 5**: 1 (already removed)
+  - **Multiples of 5**: 10 (already removed)
+- **Updated List**: 3 9
+
+#### Turn 4: Player 2
+
+- **Available Numbers**: 3 9
+- **Player 2 selects**: **9**
+- **Numbers Removed**:
+  - **Selected Number**: 9
+  - **Factors of 9**: 1, 3 (3 is available and removed)
+  - **Multiples of 9**: None within the range
+- **Updated List**: None
+
+#### End of Game
+
+- **Player 1's Turn**: No available numbers to select.
+- **Result**: **Player 2 wins**; Player 1 loses.
+
+### Command-Line Interaction Sample
+
+#### Game Start
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9 10
+Player 1's turn. Select a number: 7
+```
+
+#### After Turn 1
+
+```
+Player 1 selected 7.
+Numbers removed: 1 7
+Available Numbers: 2 3 4 5 6 8 9 10
+Player 2's turn. Select a number: 2
+```
+
+#### After Turn 2
+
+```
+Player 2 selected 2.
+Numbers removed: 2 4 6 8 10
+Available Numbers: 3 5 9
+Player 1's turn. Select a number: 5
+```
+
+#### After Turn 3
+
+```
+Player 1 selected 5.
+Numbers removed: 5
+Available Numbers: 3 9
+Player 2's turn. Select a number: 9
+```
+
+#### After Turn 4
+
+```
+Player 2 selected 9.
+Numbers removed: 3 9
+Available Numbers: None
+Player 1 has no valid moves left.
+Player 2 wins!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which numbers will be available on your opponent's next turn.
+- **Number Selection**: Choosing numbers with multiple factors or multiples can remove more options for your opponent.
+- **Control the Game**: Aim to force your opponent into a position where only numbers favorable to you remain.
+
+## Conclusion
+
+**Factor Elimination** is a simple yet strategic game that tests players' numerical reasoning and foresight. Its straightforward mechanics make it easy to code and play in a command-line interface, ensuring quick gameplay without the possibility of a draw. Mastery of the game's strategies allows skilled players to consistently outperform less experienced opponents.
+
+Enjoy the challenge and may the best strategist win!

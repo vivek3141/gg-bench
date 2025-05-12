@@ -1,0 +1,124 @@
+# Factor Frenzy
+
+## Objective
+
+**Factor Frenzy** is a two-player, turn-based numerical strategy game. The primary goal is to be the first player to reach **exactly 100** by multiplying a shared current number with allowed factors. Careful planning and strategic foresight are essential, as exceeding the target number results in an immediate loss. The player who reaches exactly 100 first **wins the game**. If a player's move causes the current number to exceed 100, that player **loses the game**.
+
+## Setup
+
+1. **Starting Number**: The game begins with the current number set to **1**.
+2. **Allowed Factors**: Players can choose from the following factors on their turn:
+   - **2**
+   - **3**
+   - **5**
+3. **Players**: Two players are required, referred to as **Player 1** and **Player 2**. Determine who goes first by mutual agreement or a random method.
+
+## Game Components
+
+- **Current Number**: A shared number that starts at **1** and changes as players make moves.
+- **Allowed Factors**: The numbers **2**, **3**, and **5** which players use to multiply the current number.
+- **Target Number**: The number **100**, which players aim to reach exactly.
+- **Command-Line Interface**: Players input their chosen factor during their turn.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with **Player 1**.
+2. **Player Actions**:
+   - On their turn, a player must:
+     - Choose one of the allowed factors (**2**, **3**, or **5**).
+     - Multiply the current number by the chosen factor.
+     - Announce the new current number.
+3. **Progression**:
+   - The new current number becomes the starting point for the next player's turn.
+   - The game continues until a win or loss condition is met.
+
+## Rules and Mechanics
+
+1. **Choosing Factors**:
+   - Players must select one of the allowed factors on their turn.
+   - The chosen factor is used to multiply the current number.
+2. **Updating the Current Number**:
+   - After multiplication, the result becomes the new current number.
+   - Example: If the current number is 3 and the player chooses 5, the new current number is \( 3 \times 5 = 15 \).
+3. **Winning the Game**:
+   - A player wins if their move results in the current number being exactly **100**.
+4. **Losing the Game**:
+   - A player loses if their move causes the current number to exceed **100**.
+   - Example: If the current number is 34 and the player chooses 3, the new current number is \( 34 \times 3 = 102 \), and the player loses.
+5. **Mandatory Moves**:
+   - Players cannot skip their turn; they must choose a factor and make a move.
+6. **Strategy**:
+   - Players should plan ahead to avoid exceeding 100 and to force the opponent into a losing position.
+
+## Scoring
+
+- **Win Condition**: Reaching exactly **100** on your turn.
+- **Loss Condition**: Causing the current number to exceed **100** on your turn.
+- There is no point tracking; the game results in a win or loss based on the above conditions.
+
+## Examples
+
+### Example Game Scenario
+
+**Starting the Game**:
+- Current Number: **1**
+- Player 1 begins.
+
+**Turn 1**:
+- **Player 1** chooses factor **5**.
+- Calculation: \( 1 \times 5 = 5 \).
+- Announces: "Current number is now **5**."
+
+**Turn 2**:
+- **Player 2** chooses factor **3**.
+- Calculation: \( 5 \times 3 = 15 \).
+- Announces: "Current number is now **15**."
+
+**Turn 3**:
+- **Player 1** chooses factor **5**.
+- Calculation: \( 15 \times 5 = 75 \).
+- Announces: "Current number is now **75**."
+
+**Turn 4**:
+- **Player 2** evaluates options:
+  - Multiplying by 2: \( 75 \times 2 = 150 \) (exceeds 100, player would lose).
+  - Multiplying by 3: \( 75 \times 3 = 225 \) (exceeds 100, player would lose).
+  - Multiplying by 5: \( 75 \times 5 = 375 \) (exceeds 100, player would lose).
+- **Player 2** cannot make a move without exceeding 100.
+- **Player 2 loses the game**.
+
+### Sample Command-Line Interaction
+
+```plaintext
+### Factor Frenzy Game Start ###
+
+Current number is 1.
+Player 1, choose a factor (2, 3, or 5): 5
+Player 1 multiplied by 5. Current number is now 5.
+
+Player 2, choose a factor (2, 3, or 5): 3
+Player 2 multiplied by 3. Current number is now 15.
+
+Player 1, choose a factor (2, 3, or 5): 5
+Player 1 multiplied by 5. Current number is now 75.
+
+Player 2, choose a factor (2, 3, or 5): 2
+Player 2 multiplied by 2. Current number is now 150.
+
+Current number exceeded 100.
+Player 2 loses the game. Player 1 wins!
+```
+
+**Note**: In this sample interaction, Player 2 chose to multiply by 2 and exceeded 100, resulting in a loss.
+
+## Strategy Tips
+
+- **Plan Ahead**: Always calculate the potential outcomes of your moves and anticipate your opponent's options.
+- **Avoid Exceeding Traps**: Be wary of moves that leave the current number in a position where all possible factors for the opponent will result in exceeding 100.
+- **Force a Loss**: Try to manipulate the current number so that, no matter what factor the opponent chooses on their turn, they will exceed 100.
+
+## Conclusion
+
+Factor Frenzy is a fast-paced and strategic numerical game that challenges players to think ahead and make calculated decisions. With simple rules and straightforward mechanics, it's easy to learn but offers depth for players who enjoy planning and strategy.
+
+Enjoy the game, and may the best strategist win!

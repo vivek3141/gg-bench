@@ -1,0 +1,161 @@
+# Sum to Zero: Rule Book
+
+## Objective
+
+Be the first player to bring the cumulative sum of selected numbers to exactly **zero** by strategically choosing numbers from a shared pool. The game requires players to think ahead and anticipate their opponent's moves, ensuring that skilled play leads to consistent victories.
+
+## Setup
+
+- **Shared Number Pool**: A set of integers ranging from **-9 to +9**, excluding zero. The numbers are:
+  ```
+  -9, -8, -7, -6, -5, -4, -3, -2, -1,
+   1, 2, 3, 4, 5, 6, 7, 8, 9
+  ```
+- **Cumulative Sum**: Starts at **0**.
+- **Players**: Two players, designated as **Player 1** and **Player 2**.
+- **Starting Player**: Decide who goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Shared Number Pool**: The list of available numbers players can select from.
+- **Cumulative Sum**: The ongoing total sum of all numbers selected by both players.
+- **Players**: Each player takes turns selecting numbers to influence the cumulative sum.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **On Your Turn**:
+  1. **Select a Number**: Choose any one number from the Shared Number Pool.
+  2. **Update the Cumulative Sum**: Add the selected number to the Cumulative Sum.
+  3. **Announce the Move**: State the selected number and the new Cumulative Sum.
+  4. **Remove the Number**: The selected number is removed from the Shared Number Pool and cannot be chosen again.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - You must select one available number from the Shared Number Pool on your turn.
+   - You cannot pass or skip your turn.
+
+2. **Cumulative Sum Calculation**:
+   - The Cumulative Sum is updated by adding the selected number to it.
+   - Example: If the current Cumulative Sum is `5` and you select `-3`, the new Cumulative Sum is `5 + (-3) = 2`.
+
+3. **Winning the Game**:
+   - If your selection causes the Cumulative Sum to become exactly **zero**, you **immediately win** the game.
+   - The game ends upon reaching a Cumulative Sum of zero; no further turns are taken.
+
+4. **End of Available Numbers**:
+   - If all numbers are exhausted without the Cumulative Sum reaching zero, the **last player who made a move** wins the game.
+   - This scenario ensures there is **no draw mechanism**.
+
+5. **Valid Moves**:
+   - A move is valid as long as there are numbers available in the Shared Number Pool.
+   - Even if selecting a number doesn't bring the Cumulative Sum closer to zero, you must select an available number.
+
+## Scoring
+
+- **Victory**: Achieved by being the player who brings the Cumulative Sum to exactly zero.
+- **No Point System**: The game is won through strategic play; there are no points or secondary objectives.
+- **Skilled Play Rewarded**: Consistent application of strategy and foresight allows skilled players to outmaneuver less experienced opponents.
+
+## Examples
+
+### Example 1: Quick Victory
+
+**Initial Setup**:
+- Shared Number Pool:
+  ```
+  -9, -8, -7, -6, -5, -4, -3, -2, -1,
+   1, 2, 3, 4, 5, 6, 7, 8, 9
+  ```
+- Cumulative Sum: `0`
+- Player 1 starts.
+
+**Turn Sequence**:
+
+1. **Player 1**:
+   - Selects `5`.
+   - Cumulative Sum: `0 + 5 = 5`.
+   - Shared Number Pool now excludes `5`.
+
+2. **Player 2**:
+   - Selects `-2`.
+   - Cumulative Sum: `5 + (-2) = 3`.
+   - Shared Number Pool now excludes `-2`.
+
+3. **Player 1**:
+   - Selects `-3`.
+   - Cumulative Sum: `3 + (-3) = 0`.
+   - **Player 1 wins the game!**
+
+### Example 2: Exhausting Numbers
+
+**Initial Setup**:
+- Shared Number Pool:
+  ```
+  -9, -8, -7, -6, -5, -4, -3, -2, -1,
+   1, 2, 3, 4, 5, 6, 7, 8, 9
+  ```
+- Cumulative Sum: `0`
+- Player 1 starts.
+
+**Turn Sequence**:
+
+- Players take turns selecting numbers, but neither brings the Cumulative Sum to zero.
+- All numbers are eventually chosen.
+- The last player to have made a move (Player 2) **wins the game** because the Shared Number Pool is empty.
+
+## Command-Line Interaction Example
+
+```
+Game Start!
+
+Available Numbers: -9 -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 4 5 6 7 8 9
+Cumulative Sum: 0
+
+Player 1's turn.
+Select a number: 4
+Player 1 selects 4.
+Cumulative Sum is now 4.
+
+Available Numbers: -9 -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 5 6 7 8 9
+Player 2's turn.
+Select a number: -1
+Player 2 selects -1.
+Cumulative Sum is now 3.
+
+Available Numbers: -9 -8 -7 -6 -5 -4 -3 -2 1 2 3 5 6 7 8 9
+Player 1's turn.
+Select a number: -3
+Player 1 selects -3.
+Cumulative Sum is now 0.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider how your chosen number will affect future Cumulative Sums.
+- **Anticipate Opponent's Moves**: Keep track of which numbers remain and how your opponent might use them.
+- **Control the Game**: Aim to force the Cumulative Sum into ranges where you have advantageous numbers.
+- **Resource Management**: Be mindful of high-impact numbers (e.g., `-9`, `9`) and use them strategically.
+
+## Game Flow Summary
+
+1. **Start the Game**: Initialize the Shared Number Pool and set the Cumulative Sum to zero.
+2. **Player Turns**: Players alternate turns, selecting numbers and updating the Cumulative Sum.
+3. **Check for Victory**: After each turn, check if the Cumulative Sum is zero.
+   - If **yes**, the current player wins.
+   - If **no**, continue to the next player's turn.
+4. **End of Game**:
+   - If the Cumulative Sum reaches zero, the game ends immediately with a winner.
+   - If all numbers are used without reaching zero, the last player to have made a move wins.
+
+## Additional Considerations
+
+- **No Skipping Turns**: Players must make a move on their turn; passing is not allowed.
+- **No Draws**: The game design ensures that there will always be a winner.
+- **Simple Coding**: The game mechanics are straightforward, making it easy to implement in a command-line interface.
+
+---
+
+Enjoy playing **Sum to Zero** and may the best strategist win!

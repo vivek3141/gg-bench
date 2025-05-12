@@ -1,0 +1,149 @@
+# Pattern Match Duel
+
+## Objective
+
+Be the first player to collect all the numbers in your secret pattern by strategically selecting numbers from a shared pool while preventing your opponent from completing their pattern.
+
+---
+
+## Setup
+
+1. **Shared Number Pool**: A set of numbers from **1 to 20** is displayed and accessible to both players.
+
+2. **Secret Patterns**:
+   - Each player privately selects a sequence of **five unique numbers** from **1 to 20** to form their secret pattern.
+   - The secret pattern should **not be revealed** to the opponent.
+
+---
+
+## Game Components
+
+- **Shared Number Pool**: Numbers **1 through 20**, initially all available.
+- **Player Patterns**: Each player's secret sequence of 5 numbers, known only to that player.
+- **Player Collections**: Numbers each player has collected during the game.
+
+---
+
+## Turns
+
+- Players take turns **alternately**, starting with **Player 1**.
+- On each turn, a player selects **one number** from the shared pool.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- **On their turn**, a player selects **one** number from the shared number pool.
+- The selected number is **removed** from the shared pool and **added to the player's collection**.
+
+### 2. Collection and Tracking
+
+- Players keep track of the numbers they have collected.
+- Players aim to **collect all the numbers** in their secret pattern.
+
+### 3. Blocking
+
+- Since numbers are **removed** from the shared pool once selected, a player can **hinder their opponent** by selecting numbers they suspect are in the opponent's pattern.
+
+### 4. Winning the Game
+
+- The first player to **collect all five numbers** in their secret pattern **wins the game**.
+
+### 5. Game End Condition
+
+- If **all numbers** in the shared pool are exhausted and **neither player** has completed their pattern:
+  - The player who has collected **more numbers** from their pattern **wins**.
+  - If both players have collected the **same number** of their pattern numbers, the game proceeds into a **sudden death round**.
+
+### 6. Sudden Death Round
+
+- Players **reveal their remaining pattern numbers**.
+- Starting with any **remaining numbers** (if available), players take turns selecting, aiming to collect their remaining pattern numbers.
+- The first to collect all their pattern numbers **wins**.
+- If no numbers are left, the game is a **tie**.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Setup**:
+
+- **Shared Number Pool**: Numbers 1 to 20.
+- **Player 1's Secret Pattern**: 3, 8, 12, 17, 19
+- **Player 2's Secret Pattern**: 5, 9, 12, 16, 20
+
+**Game Play**:
+
+1. **Player 1's Turn**:
+   - **Selects**: **12**
+   - **Shared Pool** now excludes 12.
+2. **Player 2's Turn**:
+   - **Selects**: **9**
+   - **Shared Pool** now excludes 9.
+3. **Player 1's Turn**:
+   - **Selects**: **17**
+   - **Shared Pool** now excludes 17.
+4. **Player 2's Turn**:
+   - **Selects**: **16**
+   - **Shared Pool** now excludes 16.
+5. **Player 1's Turn**:
+   - **Selects**: **8**
+   - **Shared Pool** now excludes 8.
+6. **Player 2's Turn**:
+   - **Selects**: **20**
+   - **Shared Pool** now excludes 20.
+7. **Player 1's Turn**:
+   - **Selects**: **3**
+   - **Shared Pool** now excludes 3.
+8. **Player 2's Turn**:
+   - **Selects**: **5**
+   - **Shared Pool** now excludes 5.
+9. **Player 1's Turn**:
+   - **Selects**: **19**
+   - **Shared Pool** now excludes 19.
+   - **Player 1** has now collected **all numbers** in their secret pattern and **wins the game**.
+
+### Command-Line Interaction Examples
+
+**Player 1's Turn**:
+
+- **Shared Pool**: [1, 2, 3, ..., 20]
+- **Your Collection**: []
+- **Select a Number**: `12`
+- **Output**: "You have selected number 12."
+
+**Player 2's Turn**:
+
+- **Shared Pool**: [1, 2, 3, ..., 11, 13, ..., 20]
+- **Your Collection**: []
+- **Select a Number**: `12`
+- **Output**: "Number 12 has already been taken. Please select another number."
+- **Select a Number**: `9`
+- **Output**: "You have selected number 9."
+
+---
+
+## Strategy Tips
+
+- **Prioritize Common Numbers**:
+  - If you have a number likely to be in your opponent's pattern, consider selecting it early.
+- **Observation**:
+  - Pay attention to the numbers your opponent selects to deduce their pattern.
+- **Blocking**:
+  - If you suspect a number is in your opponent's pattern, select it to block them.
+- **Pattern Selection**:
+  - Choose a mix of uncommon numbers to reduce overlap with your opponent.
+
+---
+
+## Conclusion
+
+**Pattern Match Duel** is a strategic and engaging game that combines elements of memory, deduction, and planning. It's quick to play, easy to code for command-line interfaces, and offers depth for skilled players to outperform their opponents.
+
+Enjoy the duel and may the most strategic mind win!
+
+---

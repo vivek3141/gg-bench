@@ -1,0 +1,209 @@
+# Number Knockout Rule Book
+
+## Objective
+
+**Number Knockout** is a strategic two-player turn-based game. The primary goal is to be the last player able to make a valid move by strategically selecting numbers from a shared list. Force your opponent into a position where they cannot select a valid number on their turn, thereby winning the game.
+
+## Setup
+
+1. **Game Start:**
+   - The game uses a shared list of numbers from **1** to **20**.
+   - All numbers are initially **unmarked** and available for selection.
+   - Players decide who will be **Player 1** and **Player 2** (e.g., by coin toss or mutual agreement).
+
+2. **Player Identification:**
+   - **Player 1**: The player who makes the first move.
+   - **Player 2**: The opponent who moves second.
+
+## Game Components
+
+- **Shared Number List:**
+  - A list containing integers from **1** to **20**, displayed in the command-line interface.
+  - Numbers are either **available** (unmarked) or **selected** (marked).
+  
+- **Players:**
+  - **Player 1** and **Player 2**, who take turns selecting numbers.
+
+- **Marking Mechanism:**
+  - When a number is selected, it is marked and removed from the pool of available numbers.
+
+## Turns
+
+- **Turn Structure:**
+  - Players alternate turns, starting with **Player 1**.
+  - Each turn consists of:
+    1. **Input Phase**: The player inputs their chosen number.
+    2. **Validation Phase**: The game checks if the move is valid based on the rules.
+    3. **Update Phase**: If valid, the number is marked as selected.
+
+- **Player Actions:**
+  - On their turn, a player must select an available number following the game's rules.
+  - If unable to make a valid move, the player loses, and the game ends.
+
+## Rules and Mechanics
+
+### 1. First Move
+
+- **Player 1** can select **any one number** from the available numbers on their first turn.
+
+### 2. Subsequent Moves
+
+- On each turn after the first:
+  - A player must select an **available number** that is a **divisor** or a **multiple** of the number selected by their opponent in the previous turn.
+  
+- **Divisors and Multiples:**
+  - **Divisor**: A number that divides another number without leaving a remainder.
+  - **Multiple**: A number that is the product of another number and an integer.
+
+### 3. Valid Moves
+
+- A move is **valid** if:
+  - The selected number is **available** (has not been previously selected).
+  - It is a **divisor** or **multiple** of the opponent's last selected number.
+  
+- **Invalid Moves:**
+  - Selecting a number that is not a divisor or multiple of the opponent's last number.
+  - Selecting a number that has already been selected.
+
+### 4. Winning the Game
+
+- A player **wins** if their opponent cannot make a valid move on their turn.
+- The game ends immediately when a player cannot select a valid number.
+
+### 5. No Draws
+
+- There is **no draw mechanism** in Number Knockout.
+- The game continues until one player wins according to the rules.
+
+## Scoring
+
+- There is **no point-scoring system** in Number Knockout.
+- Victory is determined solely by forcing the opponent into a position where they cannot make a valid move.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup:
+
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+#### Turn-by-Turn Example:
+
+1. **Player 1's Turn:**
+   - **Selection**: 6
+   - **Numbers Marked**: 6
+   - **Reason**: First move; any number can be selected.
+
+2. **Player 2's Turn:**
+   - **Opponent's Last Number**: 6
+   - **Valid Choices**: Divisors or multiples of 6 that are available.
+     - **Divisors of 6**: 1, 2, 3
+     - **Multiples of 6**: 12, 18
+   - **Selection**: 3
+   - **Numbers Marked**: 3, 6
+
+3. **Player 1's Turn:**
+   - **Opponent's Last Number**: 3
+   - **Valid Choices**: Divisors or multiples of 3 that are available.
+     - **Divisors of 3**: 1
+     - **Multiples of 3**: 9, 12, 15, 18
+   - **Selection**: 9
+   - **Numbers Marked**: 3, 6, 9
+
+4. **Player 2's Turn:**
+   - **Opponent's Last Number**: 9
+   - **Valid Choices**: Divisors or multiples of 9 that are available.
+     - **Divisors of 9**: None (1 and 3 are already selected)
+     - **Multiples of 9**: 18
+   - **Selection**: 18
+   - **Numbers Marked**: 3, 6, 9, 18
+
+5. **Player 1's Turn:**
+   - **Opponent's Last Number**: 18
+   - **Valid Choices**: Divisors or multiples of 18 that are available.
+     - **Divisors of 18**: 2
+     - **Multiples of 18**: None
+   - **Selection**: 12
+   - **Numbers Marked**: 3, 6, 9, 12, 18
+
+6. **Player 2's Turn:**
+   - **Opponent's Last Number**: 12
+   - **Valid Choices**: Divisors or multiples of 12 that are available.
+     - **Divisors of 12**: 4
+   - **Selection**: 4
+   - **Numbers Marked**: 3, 4, 6, 9, 12, 18
+
+7. **Player 1's Turn:**
+   - **Opponent's Last Number**: 4
+   - **Valid Choices**: Divisors or multiples of 4 that are available.
+     - **Divisors of 4**: 2
+     - **Multiples of 4**: 8, 16, 20
+   - **Selection**: 8
+   - **Numbers Marked**: 3, 4, 6, 8, 9, 12, 18
+
+8. **Player 2's Turn:**
+   - **Opponent's Last Number**: 8
+   - **Valid Choices**: Divisors or multiples of 8 that are available.
+     - **Divisors of 8**: None (2 and 4 already selected)
+     - **Multiples of 8**: 16
+   - **Selection**: 16
+   - **Numbers Marked**: 3, 4, 6, 8, 9, 12, 16, 18
+
+9. **Player 1's Turn:**
+   - **Opponent's Last Number**: 16
+   - **Valid Choices**: Divisors or multiples of 16 that are available.
+     - **Divisors of 16**: None (2, 4, and 8 already selected)
+     - **Multiples of 16**: None
+   - **Result**: Player 1 cannot make a valid move and **loses the game**.
+
+**Winner**: **Player 2**
+
+## Command-Line Interaction Example
+
+```plaintext
+Game Start: Numbers Available [1-20]
+
+Player 1's Turn:
+Available Numbers: 1-20
+Select a number: 6
+
+Player 1 selected 6.
+
+Player 2's Turn:
+Opponent's Last Number: 6
+Available Numbers: 1-5,7-20 (excluding 6)
+Valid Choices: 1,2,3,12,18
+Select a number: 3
+
+Player 2 selected 3.
+
+Player 1's Turn:
+Opponent's Last Number: 3
+Available Numbers: 1,2,4-5,7-20 (excluding 3,6)
+Valid Choices: 9,12,15,18
+Select a number: 9
+
+Player 1 selected 9.
+
+... [Game continues as per the example above]
+
+Player 1's Turn:
+Opponent's Last Number: 16
+Available Numbers: [List of remaining numbers]
+Valid Choices: None
+
+Player 1 cannot make a valid move.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the numbers that will be available on your next turn based on your opponent's potential choices.
+- **Control the Game**: Choose numbers that limit your opponent's options while leaving yourself with valid moves.
+- **Avoid Common Divisors/Multiples**: Selecting prime numbers or numbers with fewer divisors/multiples can be advantageous.
+- **Monitor Remaining Numbers**: Keep track of which numbers are still available to make informed decisions.
+
+## Conclusion
+
+Number Knockout is a game of strategy and foresight. By understanding the relationships between numbers and anticipating your opponent's moves, you can outmaneuver them and secure victory. Enjoy sharpening your numerical skills in this challenging and engaging game!

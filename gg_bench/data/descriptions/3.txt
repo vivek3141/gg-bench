@@ -1,0 +1,226 @@
+# Gridlock
+
+## Rule Book
+
+### Objective
+
+Gridlock is a two-player, turn-based strategy game played on a 5x5 grid. The primary goal is to force your opponent into a position where they cannot make a valid move on their turn. A player wins by strategically claiming cells to limit the opponent's options, leading to their inability to move. There are no draws in Gridlock; the game continues until one player wins.
+
+### Setup
+
+- **Grid**: The game is played on an empty 5x5 grid, consisting of rows labeled A to E and columns numbered 1 to 5.
+
+  ```
+     1   2   3   4   5
+    ---------------------
+  A |   |   |   |   |   |
+    ---------------------
+  B |   |   |   |   |   |
+    ---------------------
+  C |   |   |   |   |   |
+    ---------------------
+  D |   |   |   |   |   |
+    ---------------------
+  E |   |   |   |   |   |
+    ---------------------
+  ```
+
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Starting Conditions**: The grid is empty, and no cells are claimed at the start.
+
+### Game Components
+
+- **Grid Cells**: Each cell on the grid can be identified by its row letter and column number (e.g., A1, C3, E5).
+- **Markers**: Players use unique markers to claim cells.
+  - **Player 1**: `X`
+  - **Player 2**: `O`
+
+### Turns
+
+1. **First Move**:
+   - Player 1 starts and can claim any unclaimed cell on the grid.
+2. **Subsequent Moves**:
+   - Players alternate turns.
+   - On each turn, a player must claim an unclaimed cell that is **either in the same row or the same column** as the last cell claimed by the opponent.
+3. **Turn Structure**:
+   - **Input**: Player enters the coordinates of the cell they wish to claim.
+   - **Validation**: The game checks if the move is valid (correct row/column and the cell is unclaimed).
+   - **Update**: The grid is updated with the player's marker.
+
+### Rules and Mechanics
+
+1. **Valid Moves**:
+   - The cell must be unclaimed.
+   - The cell must be in the same row or column as the opponent's last move.
+2. **Winning the Game**:
+   - If a player has no valid moves on their turn, they lose.
+   - The opponent is declared the winner.
+3. **No Draws**:
+   - Since the grid has a finite number of cells and moves are constrained, the game cannot end in a draw.
+4. **Game End**:
+   - The game ends immediately when a player cannot make a valid move.
+5. **Command-Line Interaction**:
+   - Players input moves by entering the cell coordinates (e.g., `C3`).
+   - The game provides prompts and updates after each move.
+
+### Scoring
+
+- **Win/Loss**:
+  - Winning a game grants the player one point.
+  - Players can keep track of wins over multiple games to determine the overall victor.
+- **No Point System**:
+  - There is no internal scoring system within a single game; the focus is on winning the match.
+
+### Examples
+
+#### Sample Game Play
+
+1. **Initial Grid**:
+
+   ```
+     1   2   3   4   5
+    ---------------------
+  A |   |   |   |   |   |
+    ---------------------
+  B |   |   |   |   |   |
+    ---------------------
+  C |   |   |   |   |   |
+    ---------------------
+  D |   |   |   |   |   |
+    ---------------------
+  E |   |   |   |   |   |
+    ---------------------
+  ```
+
+2. **Player 1's Turn**:
+   - Chooses to claim cell `C3`.
+   - Grid Update:
+
+     ```
+       1   2   3   4   5
+      ---------------------
+    A |   |   |   |   |   |
+      ---------------------
+    B |   |   |   |   |   |
+      ---------------------
+    C |   |   | X |   |   |
+      ---------------------
+    D |   |   |   |   |   |
+      ---------------------
+    E |   |   |   |   |   |
+      ---------------------
+     ```
+
+3. **Player 2's Turn**:
+   - Must choose a cell in row `C` or column `3`.
+   - Chooses to claim cell `E3`.
+   - Grid Update:
+
+     ```
+       1   2   3   4   5
+      ---------------------
+    A |   |   |   |   |   |
+      ---------------------
+    B |   |   |   |   |   |
+      ---------------------
+    C |   |   | X |   |   |
+      ---------------------
+    D |   |   |   |   |   |
+      ---------------------
+    E |   |   | O |   |   |
+      ---------------------
+     ```
+
+4. **Player 1's Turn**:
+   - Must choose a cell in row `E` or column `3`.
+   - Chooses to claim cell `E5`.
+   - Grid Update:
+
+     ```
+       1   2   3   4   5
+      ---------------------
+    A |   |   |   |   |   |
+      ---------------------
+    B |   |   |   |   |   |
+      ---------------------
+    C |   |   | X |   |   |
+      ---------------------
+    D |   |   |   |   |   |
+      ---------------------
+    E |   |   | O |   | X |
+      ---------------------
+     ```
+
+5. **Gameplay Continues**:
+   - Players continue to alternate turns, following the rules.
+   - They must always choose an unclaimed cell in the same row or column as the opponent's last move.
+   - The grid updates after each turn.
+
+6. **End of Game**:
+   - If a player cannot make a valid move, they lose.
+   - For example, if all cells in the required row and column are claimed, the player has no valid moves.
+
+#### Strategic Moves
+
+- **Limiting Options**: Players can strategize by choosing cells that limit the opponent's subsequent options.
+- **Control Key Rows/Columns**: Occupying central rows or columns can provide more options for future moves.
+- **Anticipate Opponent Moves**: Think ahead to anticipate and block the opponent's potential moves.
+
+### Command-Line Interaction
+
+Below is a sample interaction between the game and the players:
+
+```
+Welcome to Gridlock!
+
+Current Grid:
+  1 2 3 4 5
+A . . . . .
+B . . . . .
+C . . . . .
+D . . . . .
+E . . . . .
+
+Player 1 (X), enter your move: C3
+
+Current Grid:
+  1 2 3 4 5
+A . . . . .
+B . . . . .
+C . . X . .
+D . . . . .
+E . . . . .
+
+Player 2 (O), it's your turn.
+You must choose a cell in row C or column 3.
+Enter your move: E3
+
+Current Grid:
+  1 2 3 4 5
+A . . . . .
+B . . . . .
+C . . X . .
+D . . . . .
+E . . O . .
+
+Player 1 (X), it's your turn.
+You must choose a cell in row E or column 3.
+Enter your move: E5
+
+... [Gameplay continues]
+
+Player 2 (O), it's your turn.
+You have no valid moves. You lose!
+Congratulations Player 1 (X), you win!
+```
+
+### Strategy Tips
+
+- **Plan Ahead**: Always consider the potential options your move will give to your opponent.
+- **Balance**: Avoid focusing on a single area of the grid; spread out to maximize your options.
+- **Control the Center**: Claiming central cells can give you more flexibility in future moves.
+- **Forced Moves**: Try to force your opponent into rows or columns with fewer unclaimed cells.
+
+---
+
+By understanding the objective, rules, and strategies outlined in this rule book, players can engage in Gridlock with clarity and depth. The game's simple mechanics allow for quick play, while strategic possibilities provide complexity for skilled players to consistently outmaneuver their opponents.

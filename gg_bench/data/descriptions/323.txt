@@ -1,0 +1,233 @@
+# GridLock Rule Book
+
+## Objective
+
+**GridLock** is a two-player turn-based strategy game played on a 4x4 grid. The primary goal is to be the first player to block your opponent from making a legal move. A player wins by strategically placing their markers to limit the opponent's options, ultimately forcing them into a position where they cannot place a marker according to the game rules.
+
+## Setup
+
+1. **Game Board**: A 4x4 grid (4 rows and 4 columns) is used as the playing field.
+2. **Markers**:
+   - **Player 1** uses the marker `'X'`.
+   - **Player 2** uses the marker `'O'`.
+3. **Starting the Game**:
+   - Decide who will be Player 1 and Player 2 (e.g., flip a coin).
+   - The grid is initially empty with all cells unmarked.
+
+## Game Components
+
+- **The Grid**:
+  - Represents the playing area with 16 cells arranged in 4 rows and 4 columns.
+  - Cells are identified by their row and column numbers (e.g., Row 1, Column 1).
+- **Markers**:
+  - `'X'` for Player 1.
+  - `'O'` for Player 2.
+  - Markers are placed on the grid to occupy cells.
+- **Command-Line Interface**:
+  - Players input their moves by specifying the row and column numbers.
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- **Structure of a Turn**:
+  1. The player is informed of the last move made.
+  2. The player is presented with available moves based on the rules.
+  3. The player selects a cell by entering the row and column numbers.
+  4. The game updates the grid and checks for a win condition.
+- **Progression of Turns**:
+  - The game continues with players taking turns until a player wins.
+
+## Rules and Mechanics
+
+### 1. First Turn
+
+- **Player 1** can place their `'X'` marker on **any empty cell** on the grid.
+
+### 2. Subsequent Turns
+
+- Starting from **Player 2's turn**, each player must place their marker adjacent to the last marker placed on the grid.
+- **Adjacency Rules**:
+  - A cell is considered adjacent if it is **directly above, below, to the left, or to the right** of the last placed marker.
+  - Diagonal cells are **not** considered adjacent.
+- **Valid Moves**:
+  - The selected cell must be empty.
+  - The cell must be adjacent to the last move.
+
+### 3. Placing Markers
+
+- On their turn, players input the coordinates (row and column) of the cell where they wish to place their marker.
+- If the input is invalid (e.g., cell is not adjacent or already occupied), the player is prompted to enter a different cell.
+
+### 4. Winning the Game
+
+- A player wins if their opponent **cannot make a legal move** on their turn.
+- The game ends immediately when a player has no valid moves according to the adjacency rules.
+
+### 5. Example of Adjacency
+
+- If the last marker was placed at **Row 2, Column 2**, the adjacent cells are:
+  - **Row 1, Column 2**
+  - **Row 3, Column 2**
+  - **Row 2, Column 1**
+  - **Row 2, Column 3**
+- The next player must choose one of these cells if they are empty.
+
+## Scoring
+
+- **Win**: Achieved by blocking the opponent from making a legal move.
+- **Loss**: Occurs when a player cannot make a legal move on their turn.
+- **No Draws**: The game cannot end in a draw; there is always a winner.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Grid**:
+
+```
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+[ ][ ][ ][ ]
+```
+
+**Turn 1**: Player 1's move
+
+- **Move**: Places `'X'` at **Row 2, Column 2**.
+- **Grid**:
+
+  ```
+  [ ][ ][ ][ ]
+  [ ][X][ ][ ]
+  [ ][ ][ ][ ]
+  [ ][ ][ ][ ]
+  ```
+
+**Turn 2**: Player 2's move
+
+- **Last Move**: Row 2, Column 2
+- **Available Moves**:
+  - Row 1, Column 2
+  - Row 3, Column 2
+  - Row 2, Column 1
+  - Row 2, Column 3
+- **Move**: Places `'O'` at **Row 2, Column 3**.
+- **Grid**:
+
+  ```
+  [ ][ ][ ][ ]
+  [ ][X][O][ ]
+  [ ][ ][ ][ ]
+  [ ][ ][ ][ ]
+  ```
+
+**Turn 3**: Player 1's move
+
+- **Last Move**: Row 2, Column 3
+- **Available Moves**:
+  - Row 1, Column 3
+  - Row 3, Column 3
+  - Row 2, Column 2 (occupied)
+  - Row 2, Column 4
+- **Move**: Places `'X'` at **Row 3, Column 3**.
+- **Grid**:
+
+  ```
+  [ ][ ][ ][ ]
+  [ ][X][O][ ]
+  [ ][ ][X][ ]
+  [ ][ ][ ][ ]
+  ```
+
+**Turn 4**: Player 2's move
+
+- **Last Move**: Row 3, Column 3
+- **Available Moves**:
+  - Row 2, Column 3 (occupied)
+  - Row 4, Column 3
+  - Row 3, Column 2
+  - Row 3, Column 4
+- **Move**: Places `'O'` at **Row 4, Column 3**.
+- **Grid**:
+
+  ```
+  [ ][ ][ ][ ]
+  [ ][X][O][ ]
+  [ ][ ][X][ ]
+  [ ][ ][O][ ]
+  ```
+
+**Game Continues** until a player cannot make a legal move.
+
+### Sample Command-Line Interaction
+
+**Player 1's Turn**:
+
+```
+Player 1, it's your turn.
+Enter the row number (1-4): 2
+Enter the column number (1-4): 2
+```
+
+**Player 2's Turn**:
+
+```
+Player 2, it's your turn.
+Last move was at Row 2, Column 2.
+Available adjacent cells:
+- Row 1, Column 2
+- Row 3, Column 2
+- Row 2, Column 1
+- Row 2, Column 3
+Enter the row number (1-4): 2
+Enter the column number (1-4): 3
+```
+
+**Player 1's Next Turn**:
+
+```
+Player 1, it's your turn.
+Last move was at Row 2, Column 3.
+Available adjacent cells:
+- Row 1, Column 3
+- Row 3, Column 3
+- Row 2, Column 2 (occupied)
+- Row 2, Column 4
+Enter the row number (1-4): 3
+Enter the column number (1-4): 3
+```
+
+**Example of Winning Scenario**:
+
+Suppose the grid is almost full, and it's **Player 2's turn**:
+
+```
+Player 2, it's your turn.
+Last move was at Row 4, Column 2.
+Available adjacent cells:
+- Row 3, Column 2 (occupied)
+- Row 4, Column 1 (occupied)
+- Row 4, Column 3 (occupied)
+No legal moves available. You cannot make a move.
+Player 1 wins!
+```
+
+**Final Grid**:
+
+```
+[O][X][O][X]
+[X][X][O][O]
+[O][X][X][X]
+[O][O][X][X]
+```
+
+## Strategic Tips
+
+- **Control the Center**: Placing your markers near the center increases your options for adjacency.
+- **Block Opponent's Moves**: Try to limit the available adjacent cells for your opponent.
+- **Plan Ahead**: Anticipate your opponent's moves and plan to cut off their paths.
+- **Edge Strategy**: Using the edges and corners wisely can trap your opponent.
+
+---
+
+Enjoy playing **GridLock** and may the best strategist win!

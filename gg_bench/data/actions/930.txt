@@ -1,0 +1,18 @@
+In the game environment, the action space is a discrete set with 185 possible actions, corresponding to the movement and special commands each token can perform. Each player has 5 tokens, and each token can take one of 37 possible actions:
+
+1. **Movement Actions (0-3 per token):**
+   - 0: Move Up
+   - 1: Move Down
+   - 2: Move Left
+   - 3: Move Right
+
+2. **Jump Actions (4-28 per token):**
+   - Move to any cell within a Manhattan distance of 2 (there are 25 jump possibilities for each token).
+
+3. **Swap Actions (29-32 per token):**
+   - Swap positions with any other friendly token (4 possibilities for each token, since it can swap with any one of the four other tokens).
+
+4. **Block Actions (33-36 per token):**
+   - Place a block in one of the four cardinal directions around the token.
+
+The action space index is calculated using: `action_index = token_index * 37 + sub_action_index`, where `token_index` is the specific token (0-4 per player) and `sub_action_index` reflects the specific action type and parameters.

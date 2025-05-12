@@ -1,0 +1,179 @@
+# Power Match
+
+## Objective
+
+**Power Match** is a strategic two-player turn-based game where players compete to create the highest numerical value using exponents. Each player constructs an expression in the form of `base^exponent` by selecting numbers from a shared pool. The goal is to outmaneuver your opponent by wisely choosing numbers to maximize your own result while potentially limiting theirs. The player with the higher calculated value wins the game.
+
+## Setup
+
+1. **Number Pool**: Create a shared pool of numbers ranging from **1** to **9**.
+2. **Player Roles**: Decide which player goes first (Player 1) and second (Player 2). This can be determined randomly or by mutual agreement.
+3. **Expressions**: Each player has an empty expression template: `base^exponent`, where they will assign numbers during the game.
+
+## Game Components
+
+- **Number Pool**: A list of available numbers `[1, 2, 3, 4, 5, 6, 7, 8, 9]`.
+- **Expressions**:
+  - **Player 1's Expression**: `__ ^ __`
+  - **Player 2's Expression**: `__ ^ __`
+- **Command-Line Interface**: The game is played in a command-line environment where players input their choices during their turns.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately, starting with Player 1.
+- **Turn Actions**:
+  - On each turn, a player selects a number from the **Number Pool**.
+  - The player assigns the selected number to either the **base** or the **exponent** of their expression.
+- **Turn Progression**:
+  - Once a number is selected, it is removed from the **Number Pool**.
+  - Each player continues to take turns until both the **base** and **exponent** positions in their expression are filled.
+  - If a player's expression is complete, they skip their turn, and the other player continues until their expression is also complete.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players may choose any remaining number from the **Number Pool** on their turn.
+   - Each number can only be used once and is removed from the pool after selection.
+
+2. **Assignment**:
+   - Players must assign the chosen number to either the **base** or the **exponent** in their expression.
+   - Once assigned, a number cannot be moved or changed to a different position.
+
+3. **Expression Completion**:
+   - After both players have filled their **base** and **exponent**, their expressions are complete.
+
+4. **Calculation**:
+   - Each player's expression is calculated using standard mathematical exponentiation.
+   - For example, if a player's expression is `2^3`, the result is `8`.
+
+5. **Victory Condition**:
+   - The player with the higher numerical result from their expression wins the game.
+   - In the event both players have the same result, the player who completed their expression **second** wins (since the first player had the advantage of choice).
+
+## Scoring
+
+- **Result Comparison**:
+  - Calculate each player's expression to obtain their final score.
+  - Example: Player 1 has `2^5 = 32`, Player 2 has `7^2 = 49`.
+
+- **Determining the Winner**:
+  - The player with the higher score (`49` in the example) wins.
+  - There are no draws; if scores are equal, the second player's strategic positioning grants them the win.
+
+## Examples
+
+### Example Game
+
+**Initial Number Pool**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+---
+
+**Turn 1**:
+
+- **Player 1**:
+  - Chooses **7** from the pool.
+  - Assigns **7** as their **base**.
+  - **Player 1's Expression**: `7 ^ __`
+  - **Updated Number Pool**: `[1, 2, 3, 4, 5, 6, 8, 9]`
+
+---
+
+**Turn 2**:
+
+- **Player 2**:
+  - Chooses **9** from the pool.
+  - Assigns **9** as their **base**.
+  - **Player 2's Expression**: `9 ^ __`
+  - **Updated Number Pool**: `[1, 2, 3, 4, 5, 6, 8]`
+
+---
+
+**Turn 3**:
+
+- **Player 1**:
+  - Chooses **2** from the pool.
+  - Assigns **2** as their **exponent**.
+  - **Player 1's Expression**: `7 ^ 2`
+  - **Expression Complete**.
+  - **Updated Number Pool**: `[1, 3, 4, 5, 6, 8]`
+
+---
+
+**Turn 4**:
+
+- **Player 2**:
+  - Chooses **8** from the pool.
+  - Assigns **8** as their **exponent**.
+  - **Player 2's Expression**: `9 ^ 8`
+  - **Expression Complete**.
+  - **Updated Number Pool**: `[1, 3, 4, 5, 6]`
+
+---
+
+**Calculations**:
+
+- **Player 1's Result**: `7 ^ 2 = 49`
+- **Player 2's Result**: `9 ^ 8 = 43,046,721`
+
+---
+
+**Winner**: Player 2 wins with a higher result.
+
+### Command-Line Interaction Sample
+
+```
+Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1's Expression: __ ^ __
+Player 2's Expression: __ ^ __
+
+Player 1's Turn:
+Choose a number from the pool: 7
+Assign 7 to (base/exponent): base
+
+Number Pool: [1, 2, 3, 4, 5, 6, 8, 9]
+Player 1's Expression: 7 ^ __
+
+Player 2's Turn:
+Choose a number from the pool: 9
+Assign 9 to (base/exponent): base
+
+Number Pool: [1, 2, 3, 4, 5, 6, 8]
+Player 2's Expression: 9 ^ __
+
+Player 1's Turn:
+Choose a number from the pool: 2
+Assign 2 to (base/exponent): exponent
+
+Player 1's Expression is complete: 7 ^ 2
+
+Number Pool: [1, 3, 4, 5, 6, 8]
+
+Player 2's Turn:
+Choose a number from the pool: 8
+Assign 8 to (base/exponent): exponent
+
+Player 2's Expression is complete: 9 ^ 8
+
+Calculating results...
+
+Player 1's Result: 49
+Player 2's Result: 43046721
+
+Player 2 wins!
+```
+
+---
+
+### Strategic Considerations
+
+- **Early High Bases**: Choosing a high base early can be advantageous, but be mindful of the available exponents left for your opponent.
+- **Exponents vs. Bases**: A lower base with a high exponent can outperform a high base with a low exponent.
+- **Blocking**: Consider selecting numbers that might benefit your opponent to limit their options.
+- **Turn Order Advantage**: The first player has the advantage of choice, but the second player can adapt their strategy accordingly.
+
+## Conclusion
+
+**Power Match** is a game of mathematical strategy and foresight. Players must analyze the potential outcomes of their choices not only for themselves but also for their opponent. By carefully selecting and assigning numbers, skilled players can consistently outperform less experienced opponents.
+
+Enjoy the challenge and may the best strategist win!

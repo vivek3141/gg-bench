@@ -1,0 +1,229 @@
+# Game Title: Multiples Removal
+
+## Objective
+
+Be the player who removes the last number from the grid by strategically selecting numbers and eliminating them and their multiples from play.
+
+## Setup
+
+- **Grid Size:** A 3x3 grid.
+- **Initial Arrangement:** The grid is filled with the numbers 1 through 9 arranged sequentially.
+
+  ```
+  1 2 3
+  4 5 6
+  7 8 9
+  ```
+
+- **Players:** Two players, referred to as Player 1 and Player 2.
+
+## Game Components
+
+- **Grid:** A simple 3x3 matrix representing the playing field.
+- **Numbers:** The integers from 1 to 9, each occupying a unique cell in the grid.
+
+  - **Appearance:** Each cell displays its corresponding number.
+  - **Functionality:** Numbers are selected and removed based on the game rules.
+  - **Unique Attributes:** Each number, when selected, affects the availability of other numbers (its multiples).
+
+## Turns
+
+- **Turn Order:** Players decide who goes first; turns alternate between Player 1 and Player 2.
+- **Structure of a Turn:**
+  1. **Selection Phase:** The current player selects an available number from the grid.
+  2. **Removal Phase:** The selected number and all its available multiples are removed from the grid.
+  3. **Turn End:** The turn ends, and play passes to the other player.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection:**
+   - On your turn, you must select one available number from the grid.
+   - The number must be among those not yet removed.
+
+2. **Removal of Multiples:**
+   - When a number is selected, it and all of its multiples that are still on the grid are removed from play.
+   - **Example:** If you select `2`, you remove `2`, `4`, `6`, and `8` if they have not been removed already.
+
+3. **Valid Moves:**
+   - A move is valid only if there are numbers remaining on the grid at the start of your turn.
+   - If there are no numbers left, the game ends.
+
+4. **Winning the Game:**
+   - The player who removes the last available number from the grid wins the game.
+
+### Additional Mechanics
+
+- **No Skipping Turns:** Players must make a move on their turn if possible.
+- **No Re-selection:** Removed numbers cannot be selected again.
+- **Visibility:** Both players can see all available numbers on the grid at all times.
+
+## Scoring
+
+- **Victory Condition:** Win by being the player to remove the last number from the grid.
+- **No Points System:** The game does not use a points system; it is a win/loss game.
+- **No Draws:** The game cannot end in a draw due to the finite number of numbers and mandatory move rule.
+
+## Examples
+
+### Example Game Play
+
+**Starting Grid:**
+
+```
+1 2 3
+4 5 6
+7 8 9
+```
+
+**Turn 1: Player 1**
+
+- **Selection:** Chooses `7`.
+- **Removal:** `7` is removed.
+- **Multiples of 7 between 1-9:** None besides `7`.
+- **Grid After Turn:**
+
+  ```
+  1 2 3
+  4 5 6
+  X 8 9
+  ```
+
+**Turn 2: Player 2**
+
+- **Selection:** Chooses `2`.
+- **Removal:** `2`, `4`, `6`, and `8` are removed.
+- **Grid After Turn:**
+
+  ```
+  1 X 3
+  X 5 X
+  X X 9
+  ```
+
+**Turn 3: Player 1**
+
+- **Selection:** Chooses `3`.
+- **Removal:** `3` and `9` are removed.
+- **Grid After Turn:**
+
+  ```
+  1 X X
+  X 5 X
+  X X X
+  ```
+
+**Turn 4: Player 2**
+
+- **Selection:** Chooses `5`.
+- **Removal:** `5` is removed.
+- **Grid After Turn:**
+
+  ```
+  1 X X
+  X X X
+  X X X
+  ```
+
+**Turn 5: Player 1**
+
+- **Selection:** Chooses `1`.
+- **Removal:** `1` is removed.
+- **Grid After Turn:**
+
+  ```
+  X X X
+  X X X
+  X X X
+  ```
+
+- **Result:** Player 1 removes the last number and wins the game.
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Welcome to Multiples Removal!
+
+Current Grid:
+1 2 3
+4 5 6
+7 8 9
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9
+Please select a number:
+```
+
+**Player 1 Input:** `7`
+
+```
+You selected 7.
+Numbers removed: 7
+Remaining numbers: 1 2 3 4 5 6 8 9
+
+Player 2's turn.
+Available numbers: 1 2 3 4 5 6 8 9
+Please select a number:
+```
+
+**Player 2 Input:** `2`
+
+```
+You selected 2.
+Numbers removed: 2 4 6 8
+Remaining numbers: 1 3 5 9
+
+Player 1's turn.
+Available numbers: 1 3 5 9
+Please select a number:
+```
+
+**Player 1 Input:** `3`
+
+```
+You selected 3.
+Numbers removed: 3 9
+Remaining numbers: 1 5
+
+Player 2's turn.
+Available numbers: 1 5
+Please select a number:
+```
+
+**Player 2 Input:** `5`
+
+```
+You selected 5.
+Numbers removed: 5
+Remaining numbers: 1
+
+Player 1's turn.
+Available numbers: 1
+Please select a number:
+```
+
+**Player 1 Input:** `1`
+
+```
+You selected 1.
+Numbers removed: 1
+Remaining numbers: None
+
+Player 1 wins by removing the last number!
+Game Over.
+```
+
+## Strategic Depth and Complexity
+
+- **Planning Ahead:** Players must anticipate the consequences of removing certain numbers, considering how it will affect the opponent's options.
+- **Number Selection:** Choosing numbers with many multiples can greatly reduce the opponent's available moves.
+- **Forcing Moves:** Players can attempt to force their opponent into a position with only undesirable options.
+
+## Additional Notes
+
+- **Ease of Coding:** The game involves simple input/output and straightforward logic for removing numbers and their multiples.
+- **No Random Elements:** The game is deterministic, relying purely on player decisions, allowing skill to be a decisive factor.
+- **Game Duration:** Due to the elimination of multiple numbers in a single turn, games progress quickly.

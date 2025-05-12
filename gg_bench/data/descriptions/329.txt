@@ -1,0 +1,201 @@
+# Number Maze
+
+## Objective
+
+**Number Maze** is a strategic two-player, turn-based game where players navigate from a starting number to a goal number using simple mathematical operations. The primary goal is to be the first player to reach the goal number exactly. Players achieve victory by carefully choosing operations that advance the current number without exceeding the goal. A player wins by reaching the goal number on their turn or causes their opponent to surpass the goal number on theirs. Exceeding the goal number results in an immediate loss.
+
+## Setup
+
+- **Starting Number**: The game begins with the current number set to **1**.
+- **Goal Number**: A predefined positive integer that both players aim to reach exactly (e.g., **20**, **50**, or **100**). The goal number should be agreed upon before the game starts.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Current Number**: A shared number that changes based on players' actions during the game. It starts at the starting number and progresses towards the goal number.
+- **Allowed Operations**:
+  - **Addition (+1)**: Increase the current number by **1**.
+  - **Multiplication (×2)**: Multiply the current number by **2**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Display the Current Number**: At the start of each turn, announce the current number.
+  2. **Choose an Operation**: The active player selects one of the allowed operations.
+  3. **Apply the Operation**: Perform the chosen operation on the current number.
+  4. **Update the Current Number**: The result becomes the new current number.
+  5. **Check for Win/Loss Conditions**: Determine if the game has been won or lost.
+
+## Rules and Mechanics
+
+1. **Operation Selection**:
+   - On their turn, a player must choose one of the two allowed operations to apply to the current number:
+     - **Add 1**: `Current Number + 1`
+     - **Multiply by 2**: `Current Number × 2`
+   - Players cannot skip a turn or pass; an operation must be chosen.
+
+2. **Updating the Current Number**:
+   - Apply the selected operation to the current number to get a new current number.
+   - The new current number is used at the start of the next player's turn.
+
+3. **Winning the Game**:
+   - A player **wins** if they reach the goal number exactly on their turn after applying their chosen operation.
+
+4. **Losing the Game**:
+   - A player **loses** if the current number exceeds the goal number after they apply their chosen operation.
+   - The opponent wins if a player exceeds the goal number on their turn.
+
+5. **Game Continuation**:
+   - If the current number is less than the goal number after a player's turn, the game continues with the next player's turn.
+
+6. **No Draws**:
+   - The game cannot end in a draw. It continues until one player wins or loses according to the rules above.
+
+## Scoring
+
+- **Victory Condition**: The player who reaches the goal number exactly on their turn wins the game.
+- **Loss Condition**: The player who causes the current number to exceed the goal number on their turn loses the game.
+- **No Points or Ties**: There are no points awarded, and the game cannot end in a tie.
+
+## Examples
+
+### Example Scenario 1: Goal Number 10
+
+**Setup**:
+- Starting Number: **1**
+- Goal Number: **10**
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**
+   - Current Number: **1**
+   - Chooses to **Multiply by 2**.
+   - Calculation: `1 × 2 = 2`
+   - New Current Number: **2**
+
+2. **Player 2's Turn**
+   - Current Number: **2**
+   - Chooses to **Multiply by 2**.
+   - Calculation: `2 × 2 = 4`
+   - New Current Number: **4**
+
+3. **Player 1's Turn**
+   - Current Number: **4**
+   - Chooses to **Add 1**.
+   - Calculation: `4 + 1 = 5`
+   - New Current Number: **5**
+
+4. **Player 2's Turn**
+   - Current Number: **5**
+   - Chooses to **Multiply by 2**.
+   - Calculation: `5 × 2 = 10`
+   - New Current Number: **10**
+   - **Player 2 wins** by reaching the goal number exactly.
+
+### Example Scenario 2: Goal Number 15
+
+**Setup**:
+- Starting Number: **1**
+- Goal Number: **15**
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**
+   - Current Number: **1**
+   - Chooses to **Add 1**.
+   - Calculation: `1 + 1 = 2`
+   - New Current Number: **2**
+
+2. **Player 2's Turn**
+   - Current Number: **2**
+   - Chooses to **Multiply by 2**.
+   - Calculation: `2 × 2 = 4`
+   - New Current Number: **4**
+
+3. **Player 1's Turn**
+   - Current Number: **4**
+   - Chooses to **Multiply by 2**.
+   - Calculation: `4 × 2 = 8`
+   - New Current Number: **8**
+
+4. **Player 2's Turn**
+   - Current Number: **8**
+   - Chooses to **Add 1**.
+   - Calculation: `8 + 1 = 9`
+   - New Current Number: **9**
+
+5. **Player 1's Turn**
+   - Current Number: **9**
+   - Chooses to **Multiply by 2**.
+   - Calculation: `9 × 2 = 18`
+   - New Current Number: **18**
+   - **Player 1 exceeds the goal number and loses the game**.
+   - **Player 2 wins**.
+
+## Sample Command-Line Interaction
+
+```
+Welcome to Number Maze!
+Goal Number: 15
+Starting Number: 1
+
+-- Player 1's Turn --
+Current Number: 1
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 1
+Player 1 chose to Add 1.
+New Current Number: 2
+
+-- Player 2's Turn --
+Current Number: 2
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+Player 2 chose to Multiply by 2.
+New Current Number: 4
+
+-- Player 1's Turn --
+Current Number: 4
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+Player 1 chose to Multiply by 2.
+New Current Number: 8
+
+-- Player 2's Turn --
+Current Number: 8
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 1
+Player 2 chose to Add 1.
+New Current Number: 9
+
+-- Player 1's Turn --
+Current Number: 9
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+Player 1 chose to Multiply by 2.
+New Current Number: 18
+
+Player 1 has exceeded the goal number!
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the results of both your and your opponent's moves. Calculating possible future numbers can help you avoid losing moves.
+- **Control the Game**: Try to force the current number into values that limit your opponent's options or push them towards exceeding the goal number.
+- **Stay Below the Goal**: Be cautious when the current number approaches the goal number. Opt for addition if multiplication risks exceeding the goal.
+- **Alternate Operations**: Mixing addition and multiplication judiciously can create more strategic paths to the goal number.
+
+---
+
+Enjoy playing **Number Maze**! It's a game of foresight and strategy, simple to learn but with depth that allows skilled players to excel.

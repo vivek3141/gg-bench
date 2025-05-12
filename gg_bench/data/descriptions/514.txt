@@ -1,0 +1,166 @@
+# Divisor Duel Rulebook
+
+## Objective
+
+**Divisor Duel** is a strategic two-player turn-based numerical game. The primary goal is to force your opponent into a position where they cannot make a valid move, thereby winning the game. Players achieve victory by carefully selecting divisors to reduce the shared number while limiting options for their opponent.
+
+## Setup
+
+1. **Initial Number Selection**:
+   - Agree on an initial positive integer **N** greater than 1 to start the game (e.g., **N = 60**).
+   - This number will serve as the starting point for the game and will be shared between both players.
+
+2. **Determine Player Order**:
+   - Decide which player will take the first turn. This can be done by mutual agreement or by a random method such as flipping a coin.
+
+## Game Components
+
+- **Shared Number (N)**:
+  - A positive integer that changes throughout the game based on player actions.
+  - Initially set to the agreed starting number.
+  - Displayed to both players before each turn.
+
+- **Divisors**:
+  - Proper divisors of the current number **N** (numbers greater than 1 and less than **N** that divide **N** exactly).
+
+## Turns
+
+- Players alternate turns throughout the game.
+- Each turn consists of:
+  1. **Prompt**: The current number **N** is displayed.
+  2. **Decision**: The active player selects a valid divisor **D** of **N**.
+  3. **Action**: The player reduces **N** by dividing it by **D**, resulting in a new **N**.
+  4. **Update**: The new value of **N** is displayed for the next player's turn.
+
+## Rules and Mechanics
+
+1. **Valid Divisors**:
+   - On your turn, you must choose a **proper divisor** of the current number **N**.
+     - A proper divisor **D** satisfies:
+       - **D > 1**
+       - **D < N**
+       - **N mod D == 0** (i.e., **D** divides **N** exactly)
+   - **1** and **N** are not considered proper divisors and cannot be chosen.
+
+2. **Reducing the Number**:
+   - After selecting a valid divisor **D**, divide the current number **N** by **D**:
+     - **N = N / D**
+   - The result **N** must be an integer greater than or equal to 2.
+     - If **N** becomes **1**, the game ends (see Ending the Game).
+
+3. **Invalid Moves**:
+   - If a player cannot find a valid divisor (e.g., **N** is a prime number), they cannot make a move.
+   - Selecting a number that is not a proper divisor is not allowed.
+
+4. **Ending the Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+     - This usually occurs when **N** is a prime number or **N = 1**.
+   - The player unable to make a move loses the game.
+   - The opposing player, who forced this position, is declared the winner.
+
+5. **Example of Valid and Invalid Divisors**:
+   - If **N = 15**:
+     - Valid divisors: **3**, **5**
+     - Invalid divisors: **1** (not allowed), **15** (not a proper divisor), **2**, **4** (do not divide **15** exactly)
+
+## Scoring
+
+- **Winning the Game**:
+  - Victory is achieved by forcing your opponent into a position where they cannot make a valid move.
+  - There is no point scoring; the game is won by the last player able to make a valid move.
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Initial Setup**:
+- **N = 60**
+
+**Player Turns**:
+
+1. **Player 1's Turn**:
+   - **Current N**: 60
+   - **Valid Divisors**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+   - **Player 1 Chooses**: **D = 2**
+   - **Action**: N = 60 / 2 = **30**
+   - **Output**: "Player 1 divides 60 by 2. New N is 30."
+
+2. **Player 2's Turn**:
+   - **Current N**: 30
+   - **Valid Divisors**: 2, 3, 5, 6, 10, 15
+   - **Player 2 Chooses**: **D = 5**
+   - **Action**: N = 30 / 5 = **6**
+   - **Output**: "Player 2 divides 30 by 5. New N is 6."
+
+3. **Player 1's Turn**:
+   - **Current N**: 6
+   - **Valid Divisors**: 2, 3
+   - **Player 1 Chooses**: **D = 2**
+   - **Action**: N = 6 / 2 = **3**
+   - **Output**: "Player 1 divides 6 by 2. New N is 3."
+
+4. **Player 2's Turn**:
+   - **Current N**: 3
+   - **Valid Divisors**: None (since 3 is prime)
+   - **Player 2 Cannot Move**.
+   - **Player 2 Loses**, **Player 1 Wins**.
+
+### Example 2: Strategic Play
+
+**Initial Setup**:
+- **N = 49**
+
+**Player Turns**:
+
+1. **Player 1's Turn**:
+   - **Current N**: 49
+   - **Valid Divisors**: 7
+   - **Player 1 Chooses**: **D = 7**
+   - **Action**: N = 49 / 7 = **7**
+   - **Output**: "Player 1 divides 49 by 7. New N is 7."
+
+2. **Player 2's Turn**:
+   - **Current N**: 7
+   - **Valid Divisors**: None (since 7 is prime)
+   - **Player 2 Cannot Move**.
+   - **Player 2 Loses**, **Player 1 Wins**.
+
+**Strategic Notes**:
+- **Player 1** recognized that choosing **D = 7** would leave **N = 7**, a prime number.
+- **Player 2** was forced into a position with no valid moves.
+
+### Command-Line Interaction Example
+
+**Game Start**:
+- **Starting Number (N)**: 20
+
+**Gameplay**:
+
+- **Player 1's Turn**:
+  - **Prompt**: "Current number is 20. Choose a proper divisor (>1 and <20): "
+  - **Player Input**: `4`
+  - **Action**: N = 20 / 4 = **5**
+  - **Output**: "Player 1 divides 20 by 4. New number is 5."
+
+- **Player 2's Turn**:
+  - **Prompt**: "Current number is 5. Choose a proper divisor (>1 and <5): "
+  - **Player Input**: (No valid divisors)
+  - **Output**: "No valid moves. Player 2 cannot move."
+  - **Result**: "Player 1 wins the game!"
+
+## Additional Considerations
+
+- **Invalid Input Handling**:
+  - If a player selects an invalid divisor, prompt them again for a valid input.
+  - Examples of invalid inputs:
+    - Numbers not dividing **N** exactly.
+    - Numbers less than or equal to 1.
+    - Numbers equal to or greater than **N**.
+
+- **Game Variations**:
+  - **Starting Number Variation**: Players may agree on different starting numbers to increase or decrease game difficulty.
+  - **Time Limit**: Implementing a time limit per turn can add pressure and excitement.
+
+## Conclusion
+
+Divisor Duel is a simple yet strategically rich game that tests players' numerical reasoning and foresight. By carefully choosing divisors, players can control the flow of the game and outmaneuver their opponent. Enjoy the challenge and may the best strategist win!

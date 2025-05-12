@@ -1,0 +1,201 @@
+**Game Name:** Target Sum Duel
+
+---
+
+**Objective:**
+
+Be the first player to reach **exactly** the target sum by strategically selecting numbers to add to your cumulative total without exceeding the target. The player who reaches the target sum on their turn **wins** the game. If a player exceeds the target sum, they **lose**.
+
+---
+
+**Setup:**
+
+1. **Decide on a Target Sum:** Players agree on a target sum to reach. The default target sum is **30**.
+2. **Determine Turn Order:** Choose which player will take the first turn. This can be decided randomly or by mutual agreement.
+3. **Initialize Totals:** Both players start with a cumulative total of **0**.
+
+---
+
+**Game Components:**
+
+- **Number Pool:** The integers from **1** to **9** inclusive. Each number can be selected multiple times by either player throughout the game.
+- **Cumulative Totals:** Each player maintains their own cumulative total, which is updated on each turn.
+
+---
+
+**Turns:**
+
+- Players alternate turns throughout the game.
+- On each turn, a player selects a number from **1** to **9** and adds it to their cumulative total.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Selecting Numbers:**
+   - On your turn, you **must** select an integer between **1** and **9** (inclusive).
+   - Add the selected number to your cumulative total.
+   - There are **no restrictions** on the numbers, and numbers can be reused any number of times.
+
+2. **Cumulative Total Management:**
+   - Keep track of your cumulative total after each turn.
+   - You **cannot** exceed the target sum. If your cumulative total goes over the target sum after adding your selected number, you **lose** immediately.
+   - If your cumulative total is exactly one less than the target sum, you **must** select **1** on your next turn to reach the target sum and win.
+
+3. **Winning the Game:**
+   - If your cumulative total reaches **exactly** the target sum on your turn, you **win** the game.
+
+4. **Losing the Game:**
+   - If your cumulative total **exceeds** the target sum after your turn, you **lose** immediately, and your opponent wins.
+
+5. **Gameplay Continuation:**
+   - The game continues until one player wins by reaching the target sum or loses by exceeding it.
+
+---
+
+**Scoring:**
+
+- **Winning:** The player who reaches the target sum exactly on their turn **wins** the game.
+- **Losing:** The player whose cumulative total exceeds the target sum **loses** the game.
+- In case of multiple rounds or matches, players can keep track of wins, and the player with the most wins is declared the overall winner.
+
+---
+
+**Examples:**
+
+**Example 1:**
+
+*Target Sum is set to 30.*
+
+- **Turn 1:**
+  - **Player 1** selects **5**.
+  - **Player 1's cumulative total:** 0 + 5 = **5**
+
+- **Turn 2:**
+  - **Player 2** selects **7**.
+  - **Player 2's cumulative total:** 0 + 7 = **7**
+
+- **Turn 3:**
+  - **Player 1** selects **9**.
+  - **Player 1's cumulative total:** 5 + 9 = **14**
+
+- **Turn 4:**
+  - **Player 2** selects **8**.
+  - **Player 2's cumulative total:** 7 + 8 = **15**
+
+- **Turn 5:**
+  - **Player 1** selects **6**.
+  - **Player 1's cumulative total:** 14 + 6 = **20**
+
+- **Turn 6:**
+  - **Player 2** selects **9**.
+  - **Player 2's cumulative total:** 15 + 9 = **24**
+
+- **Turn 7:**
+  - **Player 1** selects **9**.
+  - **Player 1's cumulative total:** 20 + 9 = **29**
+
+- **Turn 8:**
+  - **Player 2** can only select numbers between **1** and **6** without exceeding the target sum.
+  - **Player 2** selects **6**.
+  - **Player 2's cumulative total:** 24 + 6 = **30**
+  - **Player 2** reaches the target sum and **wins the game**.
+
+**Example 2:**
+
+*Target Sum is set to 25.*
+
+- **Turn 1:**
+  - **Player 1** selects **9**.
+  - **Player 1's cumulative total:** 0 + 9 = **9**
+
+- **Turn 2:**
+  - **Player 2** selects **8**.
+  - **Player 2's cumulative total:** 0 + 8 = **8**
+
+- **Turn 3:**
+  - **Player 1** selects **9**.
+  - **Player 1's cumulative total:** 9 + 9 = **18**
+
+- **Turn 4:**
+  - **Player 2** selects **9**.
+  - **Player 2's cumulative total:** 8 + 9 = **17**
+
+- **Turn 5:**
+  - **Player 1** must be careful not to exceed the target sum.
+  - **Player 1** selects **7**.
+  - **Player 1's cumulative total:** 18 + 7 = **25**
+  - **Player 1** reaches the target sum and **wins the game**.
+
+---
+
+**Strategic Considerations:**
+
+- **Anticipate Opponent Moves:** Keep track of your opponent's cumulative total and consider which numbers they might select on their next turn.
+- **Force the Opponent's Hand:** Try to position your opponent so that they have no choice but to exceed the target sum on their next turn.
+- **Optimal Number Selection:** Choose numbers that advance you towards the target sum while limiting your opponent's options.
+- **Mathematical Planning:** Calculate future moves and possible sums to plan several turns ahead.
+
+---
+
+**Command-Line Interaction Examples:**
+
+*Below is a sample interaction between the game and players in a command-line interface.*
+
+```
+--- Target Sum Duel ---
+Target Sum: 30
+
+Player 1's Turn
+Current Total: 0
+Select a number between 1 and 9: 5
+Player 1's Total: 5
+
+Player 2's Turn
+Current Total: 0
+Select a number between 1 and 9: 7
+Player 2's Total: 7
+
+Player 1's Turn
+Current Total: 5
+Select a number between 1 and 9: 9
+Player 1's Total: 14
+
+Player 2's Turn
+Current Total: 7
+Select a number between 1 and 9: 8
+Player 2's Total: 15
+
+Player 1's Turn
+Current Total: 14
+Select a number between 1 and 9: 6
+Player 1's Total: 20
+
+Player 2's Turn
+Current Total: 15
+Select a number between 1 and 9: 9
+Player 2's Total: 24
+
+Player 1's Turn
+Current Total: 20
+Select a number between 1 and 9: 9
+Player 1's Total: 29
+
+Player 2's Turn
+Current Total: 24
+Select a number between 1 and 6: 6
+Player 2's Total: 30
+Congratulations, Player 2! You have reached the target sum and win the game!
+```
+
+---
+
+**Summary:**
+
+Target Sum Duel is a simple yet strategic game that requires players to make calculated decisions to reach the target sum before their opponent. The game is easy to code and can be played entirely within a command-line interface. It offers depth and complexity as players must anticipate their opponent's moves and plan several steps ahead to secure a win.
+
+---
+
+**Note on Uniqueness:**
+
+Target Sum Duel is a unique game specifically designed for this purpose. It is not based on traditional games like Nim, Tic-Tac-Toe, or any other well-known games, ensuring a fresh and original experience for players.

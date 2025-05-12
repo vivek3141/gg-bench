@@ -1,0 +1,245 @@
+# Number Factor: A Strategic Sequence Game
+
+---
+
+## Objective
+
+Become the last player able to add a valid number to the shared sequence by following the factor-multiple rule. If you cannot add a valid number on your turn, you lose, and your opponent wins.
+
+---
+
+## Setup
+
+- **Number Range**: The game uses numbers from **1 to 20**.
+- **Shared Sequence**: Begins empty.
+- **Used Numbers**: None at the start.
+
+---
+
+## Game Components
+
+- **Number Pool**: Numbers **1 through 20**.
+- **Shared Sequence**: A list where players add numbers during their turns.
+- **Used Numbers List**: Numbers that have been added to the sequence and cannot be used again.
+
+---
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss).
+- **Alternating Turns**: Players take turns alternately.
+
+### Turn Actions
+
+1. **First Turn**:
+   - The starting player selects any number from **1 to 20** to begin the sequence.
+2. **Subsequent Turns**:
+   - **Identify Valid Numbers**: Determine which unused numbers are valid based on the last number in the sequence.
+   - **Select a Number**: Choose one valid, unused number to add to the sequence.
+   - **Update Used Numbers**: Add the selected number to the used numbers list.
+   
+- **Failure to Play**: If no valid numbers are available, the player loses.
+
+---
+
+## Rules and Mechanics
+
+### Factor-Multiple Rule
+
+- **Valid Numbers**: A number is valid if it is **either a factor or a multiple** of the last number in the sequence and has not been used before.
+
+  - **Factor**: A number that divides evenly into the last number.
+  - **Multiple**: A number that the last number divides evenly into.
+
+### Number Usage
+
+- **Uniqueness**: Once a number is used, it cannot be used again by either player.
+- **Shared Knowledge**: Both players keep track of used numbers.
+
+### Winning the Game
+
+- **Victory Condition**: If your opponent cannot add a valid number on their turn, you win.
+
+---
+
+## Scoring
+
+- **Final Score**: The winner is the player who successfully adds a number when the opponent cannot.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+**Game Start**
+
+- **Number Range**: 1-10 (for simplicity in this example).
+- **Shared Sequence**: `[]`
+- **Used Numbers**: `[]`
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Chooses `6` to start the sequence.
+- **Sequence**: `[6]`
+- **Used Numbers**: `[6]`
+
+---
+
+**Turn 2: Player 2**
+
+- **Last Number**: `6`
+- **Valid Numbers**:
+  - Factors of `6`: `1`, `2`, `3` (excluding `6`, which is used)
+  - Multiples of `6` up to `10`: None (since `6` is already used)
+- **Action**: Chooses `3`.
+- **Sequence**: `[6, 3]`
+- **Used Numbers**: `[6, 3]`
+
+---
+
+**Turn 3: Player 1**
+
+- **Last Number**: `3`
+- **Valid Numbers**:
+  - Factors of `3`: `1` (excluding `3`, which is used)
+  - Multiples of `3` up to `10`: `9`
+- **Action**: Chooses `9`.
+- **Sequence**: `[6, 3, 9]`
+- **Used Numbers**: `[6, 3, 9]`
+
+---
+
+**Turn 4: Player 2**
+
+- **Last Number**: `9`
+- **Valid Numbers**:
+  - Factors of `9`: None (both `3` and `9` are used)
+  - Multiples of `9` up to `10`: None
+- **Action**: Only `1` is valid.
+- **Sequence**: `[6, 3, 9, 1]`
+- **Used Numbers**: `[6, 3, 9, 1]`
+
+---
+
+**Turn 5: Player 1**
+
+- **Last Number**: `1`
+- **Valid Numbers**:
+  - Multiples of `1`: `2`, `4`, `5`, `7`, `8`, `10`
+- **Action**: Chooses `2`.
+- **Sequence**: `[6, 3, 9, 1, 2]`
+- **Used Numbers**: `[6, 3, 9, 1, 2]`
+
+---
+
+**Turn 6: Player 2**
+
+- **Last Number**: `2`
+- **Valid Numbers**:
+  - Factors of `2`: None (both `1` and `2` are used)
+  - Multiples of `2`: `4`, `8`, `10`
+- **Action**: Chooses `4`.
+- **Sequence**: `[6, 3, 9, 1, 2, 4]`
+- **Used Numbers**: `[6, 3, 9, 1, 2, 4]`
+
+---
+
+**Turn 7: Player 1**
+
+- **Last Number**: `4`
+- **Valid Numbers**:
+  - Factors of `4`: None (`1`, `2`, and `4` are used)
+  - Multiples of `4`: `8`
+- **Action**: Chooses `8`.
+- **Sequence**: `[6, 3, 9, 1, 2, 4, 8]`
+- **Used Numbers**: `[6, 3, 9, 1, 2, 4, 8]`
+
+---
+
+**Turn 8: Player 2**
+
+- **Last Number**: `8`
+- **Valid Numbers**:
+  - Factors of `8`: None (all factors used)
+  - Multiples of `8`: None (`8` is used)
+- **Result**: No valid moves. **Player 2 loses.**
+
+---
+
+## Command-Line Interaction Example
+
+**Assuming Number Range 1-10**
+
+---
+
+**Player 1's Turn**
+
+```
+Shared sequence: []
+Used numbers: []
+Available numbers: 1-10
+
+Player 1, enter a starting number (1-10): 6
+
+Shared sequence: [6]
+Used numbers: [6]
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Shared sequence: [6]
+Used numbers: [6]
+Last number: 6
+Valid numbers: 1, 2, 3
+
+Player 2, choose a number from [1, 2, 3]: 3
+
+Shared sequence: [6, 3]
+Used numbers: [6, 3]
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Shared sequence: [6, 3]
+Used numbers: [6, 3]
+Last number: 3
+Valid numbers: 1, 9
+
+Player 1, choose a number from [1, 9]: 9
+
+Shared sequence: [6, 3, 9]
+Used numbers: [6, 3, 9]
+```
+
+---
+
+**Continuation**
+
+The game continues in this fashion until one player cannot make a valid move.
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate which numbers will be available on future turns.
+- **Limit Opponent's Options**: Choose numbers that reduce valid moves for your opponent.
+- **Number Selection**: Prefer numbers with fewer factors and multiples remaining to constrain your opponent.
+
+---
+
+## Conclusion
+
+Number Factor is a simple yet strategic game that requires players to think critically about number relationships. It's easy to learn, quick to play, and each game encourages deeper understanding of factors and multiples.
+
+Enjoy the challenge and may the best strategist win!
+
+---

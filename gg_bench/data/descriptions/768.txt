@@ -1,0 +1,183 @@
+**Game Name:** Number Duo
+
+---
+
+### Objective
+
+Be the first player to reach **exactly 50 points** by strategically selecting and combining numbers from a shared pool through addition or multiplication.
+
+---
+
+### Setup
+
+- **Starting Scores:** Both players begin with a score of 0.
+- **Number Pool:** A shared pool containing the numbers from **1 to 9**, each available for selection at the start of the game.
+
+---
+
+### Game Components
+
+- **Shared Number Pool:** Numbers **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**.
+  - Each number represents a selectable element.
+  - Once a number is used, it is removed from the pool and cannot be selected again.
+- **Player Scores:** Tracks the individual scores of each player.
+
+---
+
+### Turns
+
+- **Turn Order:** Players alternate turns, starting with Player 1.
+- **Turn Actions:**
+  1. **Select Numbers:** Choose **two numbers** from the shared pool.
+     - The numbers can be the same if duplicates are available (initially, all numbers are unique).
+  2. **Choose Operation:** Decide to either **add** or **multiply** the two numbers.
+  3. **Update Score:** Add the result of the operation to your own score.
+  4. **Update Pool:** Remove the selected numbers from the pool.
+
+- **Turn Progression:** The game continues with players alternating turns until one player wins or a player cannot make a valid move.
+
+---
+
+### Rules and Mechanics
+
+1. **Number Selection:**
+   - Players must select **two numbers** from the current pool on their turn.
+   - Once selected, the numbers are **removed** from the pool.
+   - If only one number remains in the pool and it's your turn, you **cannot** select just one number; you **lose** the game if unable to select two numbers.
+
+2. **Operations:**
+   - Players may choose to **add** or **multiply** the two selected numbers.
+   - The operation is chosen **each turn** after selecting the numbers.
+
+3. **Scoring:**
+   - The result of the operation is **added to the player's own score**.
+   - Players aim to reach a score of **exactly 50 points**.
+
+4. **Winning the Game:**
+   - The first player to reach **exactly 50 points** wins.
+   - If a player cannot make a move without causing their score to **exceed 50**, they **lose** the game.
+   - If both players are unable to make a valid move without exceeding 50, the **current player loses**.
+
+5. **Exceeding 50 Points:**
+   - Players must strategize to avoid exceeding 50 points.
+   - If adding the result of your operation to your score would exceed 50, you cannot select that operation; you may try the other operation if valid.
+   - If neither addition nor multiplication results in a valid score (without exceeding 50), you **lose your turn and the game**.
+
+---
+
+### Scoring
+
+- **Score Tracking:** Keep a running total of each player's score after every turn.
+- **Winning Condition:** Achieving a score of **exactly 50 points**.
+- **Losing Condition:** 
+  - Exceeding 50 points.
+  - Being unable to make a valid move on your turn.
+
+---
+
+### Examples
+
+**Initial Setup:**
+
+- Player Scores: Player 1 = 0, Player 2 = 0
+- Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+---
+
+**Example Gameplay:**
+
+**Turn 1 - Player 1:**
+
+- **Select Numbers:** 9 and 1
+- **Operation:** Multiply (9 * 1)
+- **Result:** 9
+- **Update Score:** Player 1 score = 0 + 9 = **9**
+- **Update Pool:** Remove 9 and 1
+- **Remaining Pool:** [2, 3, 4, 5, 6, 7, 8]
+
+**Turn 2 - Player 2:**
+
+- **Select Numbers:** 7 and 3
+- **Operation:** Add (7 + 3)
+- **Result:** 10
+- **Update Score:** Player 2 score = 0 + 10 = **10**
+- **Update Pool:** Remove 7 and 3
+- **Remaining Pool:** [2, 4, 5, 6, 8]
+
+**Turn 3 - Player 1:**
+
+- **Select Numbers:** 6 and 4
+- **Operation:** Multiply (6 * 4)
+- **Result:** 24
+- **Update Score:** Player 1 score = 9 + 24 = **33**
+- **Update Pool:** Remove 6 and 4
+- **Remaining Pool:** [2, 5, 8]
+
+**Turn 4 - Player 2:**
+
+- **Select Numbers:** 8 and 2
+- **Operation:** Multiply (8 * 2)
+- **Result:** 16
+- **Update Score:** Player 2 score = 10 + 16 = **26**
+- **Update Pool:** Remove 8 and 2
+- **Remaining Pool:** [5]
+
+**Turn 5 - Player 1:**
+
+- **Available Numbers:** Only 5 remains.
+- **Cannot select two numbers.**
+- **Outcome:** Player 1 loses the game.
+
+---
+
+**Alternate Ending (if numbers allowed to be reused once pool is exhausted):**
+
+**Note:** Since the rules specify that you **must** select two numbers on your turn and cannot proceed if unable, the game would end as above. However, if we introduce an optional rule where players can proceed when only one number remains (perhaps by reusing discarded numbers), the gameplay would continue differently.
+
+---
+
+### Strategic Tips
+
+- **Plan Ahead:** Keep track of both your score and your opponent's score to anticipate future moves.
+- **Operation Choice:** Decide between addition and multiplication based on which brings you closer to 50 without exceeding it.
+- **Number Selection:** Higher numbers can quickly increase your score but may limit options later in the game.
+- **Prevent Opponent's Win:** Be mindful of the numbers remaining in the pool to avoid providing your opponent with winning moves.
+
+---
+
+### Command-Line Interaction Examples
+
+**Player Prompt:**
+
+```
+Player 1's Turn
+Current Score: 9
+Available Numbers: 2, 5, 8
+Select your first number: 6
+Error: Number 6 is not available.
+Select your first number: 5
+Select your second number: 2
+Choose operation - Add or Multiply (Enter + or *): *
+Result: 5 * 2 = 10
+New Score: 19
+```
+
+**Game Over Prompt:**
+
+```
+Player 1's Turn
+Current Score: 33
+Available Numbers: 5
+Unable to select two numbers. You lose.
+Player 2 wins the game!
+```
+
+---
+
+**Note:** Ensure that the game logic handles cases where a player cannot make a valid move, declaring the opponent as the winner accordingly.
+
+---
+
+### Conclusion
+
+**Number Duo** is a strategic game that combines arithmetic operations with careful planning. Players must thoughtfully select numbers and operations to reach exactly 50 points while also considering the potential moves left for their opponent. The simplicity of the rules makes it easy to code and play in a command-line interface, yet it offers depth and competitiveness that allow skilled players to consistently outperform unskilled opponents.

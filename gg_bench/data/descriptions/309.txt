@@ -1,0 +1,243 @@
+# Number Tower
+
+## Objective
+
+**Goal:** Be the last player able to place a valid number on the tower. Players take turns building a shared tower of numbers. A number can only be placed if it is **not** a divisor or multiple of the number immediately below it. The player who cannot place a valid number on their turn loses the game.
+
+## Setup
+
+1. **Starting the Game:**
+   - Decide who will take the first turn (e.g., coin toss or mutual agreement).
+   - Initialize an empty list or stack to represent the tower.
+
+2. **Initial Conditions:**
+   - There are no numbers in the tower at the start.
+   - Both players have access to numbers **1** through **9**.
+
+## Game Components
+
+- **Number Pool:**
+  - Digits from **1** to **9** are available for both players.
+  - Players can reuse numbers; there is no limitation on the frequency of each number.
+
+- **Tower:**
+  - A single shared stack or list where numbers are placed.
+  - The tower grows as players place numbers on top.
+
+- **Players:**
+  - **Player 1** and **Player 2** alternate turns.
+
+## Turns
+
+1. **Turn Structure:**
+   - **Announcement:** The current state of the tower is displayed.
+   - **Input:** The active player selects a number between **1** and **9**.
+
+2. **Action Order:**
+   - **Validation:** Check if the chosen number is valid according to the rules.
+   - **Placement:** If valid, place the number on top of the tower.
+   - **Invalid Move:** If no valid numbers can be placed, the player loses.
+
+3. **Progression:**
+   - Turns alternate between players until the game ends.
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - On your turn, you may choose any number from **1** to **9**.
+
+2. **Placement Rules:**
+   - **First Move:**
+     - Any number from **1** to **9** can be placed since the tower is empty.
+   - **Subsequent Moves:**
+     - The chosen number must **not** be a **divisor** or a **multiple** of the number immediately below it in the tower.
+     - **Example:** If the number below is **4**, you cannot place **2**, **4**, or **8** (since 2 and 4 are divisors of 4, and 8 is a multiple of 4).
+
+3. **Winning the Game:**
+   - If a player cannot place any valid number on their turn, they lose.
+   - The opponent is declared the winner.
+
+4. **Draws:**
+   - There are no draw conditions in this game.
+
+## Scoring
+
+- **Single Game Win:** The winner is the player who does not lose according to the rules.
+- **Match Play (Optional):**
+  - Players can play multiple rounds.
+  - Keep track of victories, and the player with the most wins after an agreed number of rounds is the overall winner.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- The tower is empty.
+- Player 1 begins.
+
+#### Turn by Turn Breakdown
+
+1. **Player 1's Turn:**
+   - **Tower:** *Empty*
+   - **Action:** Chooses **5**.
+   - **Reasoning:** As the tower is empty, any number is valid.
+   - **Tower After Move:** [5]
+
+2. **Player 2's Turn:**
+   - **Tower:** [5]
+   - **Action:** Chooses **3**.
+   - **Validation:** 
+     - 3 is not a divisor or multiple of 5.
+   - **Tower After Move:** [5, 3]
+
+3. **Player 1's Turn:**
+   - **Tower:** [5, 3]
+   - **Action:** Chooses **4**.
+   - **Validation:** 
+     - 4 is not a divisor or multiple of 3.
+   - **Tower After Move:** [5, 3, 4]
+
+4. **Player 2's Turn:**
+   - **Tower:** [5, 3, 4]
+   - **Action:** Chooses **7**.
+   - **Validation:** 
+     - 7 is not a divisor or multiple of 4.
+   - **Tower After Move:** [5, 3, 4, 7]
+
+5. **Player 1's Turn:**
+   - **Tower:** [5, 3, 4, 7]
+   - **Action:** Chooses **2**.
+   - **Validation:** 
+     - 2 is **not valid** because:
+       - 2 is a divisor of 7? **No**
+       - 2 is a multiple of 7? **No**
+     - So, 2 is valid.
+   - **Tower After Move:** [5, 3, 4, 7, 2]
+
+6. **Player 2's Turn:**
+   - **Tower:** [5, 3, 4, 7, 2]
+   - **Action:** Chooses **6**.
+   - **Validation:**
+     - 6 is not a divisor or multiple of 2 (since 2 is a divisor of 6).
+     - **Invalid Move.**
+   - **Alternate Choice:** Chooses **9**.
+     - 9 is not a divisor or multiple of 2.
+     - **Valid Move.**
+   - **Tower After Move:** [5, 3, 4, 7, 2, 9]
+
+7. **Player 1's Turn:**
+   - **Tower:** [5, 3, 4, 7, 2, 9]
+   - **Action:** Chooses **1**.
+   - **Validation:**
+     - 1 is a divisor of 9 (since 1 divides every integer).
+     - **Invalid Move.**
+   - **Alternate Choice:** Chooses **5**.
+     - 5 is not a divisor or multiple of 9.
+     - **Valid Move.**
+   - **Tower After Move:** [5, 3, 4, 7, 2, 9, 5]
+
+8. **Player 2's Turn:**
+   - **Tower:** [5, 3, 4, 7, 2, 9, 5]
+   - **Action:** Chooses **10**.
+   - **Invalid Move:** Number must be between 1 and 9.
+   - **Alternate Choice:** Chooses **5**.
+     - 5 is the number below; cannot be a divisor or multiple of 5.
+     - 5 is equal to 5 (which is both a divisor and multiple of itself).
+     - **Invalid Move.**
+   - **Alternate Choice:** Chooses **6**.
+     - 6 is not a divisor or multiple of 5.
+     - **Valid Move.**
+   - **Tower After Move:** [5, 3, 4, 7, 2, 9, 5, 6]
+
+9. **Player 1's Turn:**
+   - **Tower:** [5, 3, 4, 7, 2, 9, 5, 6]
+   - **Action:** Chooses **2**.
+   - **Validation:**
+     - 2 is a divisor of 6.
+     - **Invalid Move.**
+   - **Alternate Choices:** Check numbers from 1 to 9.
+     - **1:** Divisor of 6 (Invalid)
+     - **2:** Divisor of 6 (Invalid)
+     - **3:** Divisor of 6 (Invalid)
+     - **6:** Equal to 6 (Invalid)
+     - **9:** Not a divisor or multiple of 6 (Valid)
+   - **Action:** Chooses **9**.
+   - **Tower After Move:** [5, 3, 4, 7, 2, 9, 5, 6, 9]
+
+10. **Player 2's Turn:**
+    - **Tower:** [5, 3, 4, 7, 2, 9, 5, 6, 9]
+    - **Action:** Attempts to find a valid number.
+    - **Validation for Available Numbers:**
+      - **1:** Divisor of 9 (Valid)
+    - **Action:** Chooses **1**.
+    - **Tower After Move:** [5, 3, 4, 7, 2, 9, 5, 6, 9, 1]
+
+11. **Player 1's Turn:**
+    - **Tower:** [5, 3, 4, 7, 2, 9, 5, 6, 9, 1]
+    - **Action:** Attempts to find a valid number.
+    - **Validation for Available Numbers:**
+      - All numbers from **1** to **9** are divisors or multiples of **1** (since any number is a multiple of 1).
+    - **Conclusion:** No valid moves available.
+    - **Result:** Player 1 cannot make a move and loses the game.
+    - **Winner:** Player 2
+
+### Sample Command-Line Interaction
+
+```plaintext
+--- Number Tower Game Start ---
+The tower is empty.
+Player 1's turn.
+Enter a number (1-9): 5
+
+The tower is now: [5]
+Player 2's turn.
+Enter a number (1-9): 3
+
+The tower is now: [5, 3]
+Player 1's turn.
+Enter a number (1-9): 4
+
+The tower is now: [5, 3, 4]
+Player 2's turn.
+Enter a number (1-9): 7
+
+The tower is now: [5, 3, 4, 7]
+Player 1's turn.
+Enter a number (1-9): 2
+
+The tower is now: [5, 3, 4, 7, 2]
+Player 2's turn.
+Enter a number (1-9): 6
+Invalid move. 6 is a multiple or divisor of 2.
+Enter a valid number: 9
+
+The tower is now: [5, 3, 4, 7, 2, 9]
+Player 1's turn.
+Enter a number (1-9): 1
+Invalid move. 1 is a divisor or multiple of 9.
+Enter a valid number: 5
+
+The tower is now: [5, 3, 4, 7, 2, 9, 5]
+Player 2's turn.
+Enter a number (1-9): 6
+
+The tower is now: [5, 3, 4, 7, 2, 9, 5, 6]
+Player 1's turn.
+Enter a number (1-9): 2
+Invalid move. 2 is a multiple or divisor of 6.
+Enter a valid number: 9
+
+The tower is now: [5, 3, 4, 7, 2, 9, 5, 6, 9]
+Player 2's turn.
+Enter a number (1-9): 1
+
+The tower is now: [5, 3, 4, 7, 2, 9, 5, 6, 9, 1]
+Player 1's turn.
+No valid moves available.
+Player 2 wins!
+```
+
+---
+
+**Note to Players:** Strategic thinking involves anticipating which numbers will limit your opponent's options in subsequent turns. Choosing numbers that are primes or have fewer divisors can increase your chances of winning by restricting your opponent's valid moves.

@@ -1,0 +1,280 @@
+# Grid Runner: Rule Book
+
+## Objective
+
+**Primary Goal:**  
+Be the first player to navigate from the starting position at the top-left corner of a 5x5 grid to the ending position at the bottom-right corner.
+
+**Victory Condition:**  
+A player wins by successfully moving their token to the ending position (5,5) without triggering opponent's traps.
+
+## Setup
+
+1. **Grid Initialization:**  
+   - Create a 5x5 grid with coordinates ranging from (1,1) to (5,5).
+   - The grid cells are identified by their row and column numbers.
+
+2. **Starting Positions:**  
+   - Both Player 1 and Player 2 start at position (1,1).
+
+3. **Trap Placement:**  
+   - Each player secretly selects three distinct grid positions to place traps.
+   - Traps cannot be placed on the starting position (1,1) or the ending position (5,5).
+   - Trap positions are kept hidden from the opponent.
+
+## Game Components
+
+- **Grid:**  
+  A 5x5 matrix representing the game board with coordinate positions.
+
+- **Player Tokens:**  
+  - Each player has a token representing their current position on the grid.
+  - Tokens are tracked by their coordinates.
+
+- **Traps:**  
+  - Invisible to the opponent, traps are special markers placed on the grid.
+  - Triggering a trap sends the opponent back to the starting position.
+
+## Turns
+
+1. **Turn Order:**  
+   - Players take alternate turns, starting with Player 1.
+
+2. **Player Actions During a Turn:**  
+   - **Move:**  
+     - Move your token to an adjacent cell (up, down, left, or right).
+     - Diagonal moves are not allowed.
+   - **Check for Traps:**  
+     - After moving, check if the new position is trapped by the opponent.
+
+3. **Turn Progression:**  
+   - After completing the move and resolving any trap effects, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+1. **Movement Rules:**  
+   - Players can move only to adjacent cells (no diagonal moves).
+   - Players cannot move outside the boundaries of the grid.
+
+2. **Trap Mechanics:**  
+   - If a player moves onto a cell containing an opponent's trap:
+     - The player is sent back to the starting position (1,1).
+     - The trap remains active for the rest of the game.
+   - Players cannot trigger their own traps.
+
+3. **Winning the Game:**  
+   - The first player to reach the ending position (5,5) wins the game.
+   - If a player triggers a trap upon reaching (5,5), they are sent back to the start.
+
+4. **Additional Rules:**  
+   - Players must keep track of their own traps and deduce the possible locations of opponent's traps based on gameplay.
+   - Communication between players is limited to declaring moves and cannot include hints or trap locations.
+
+## Scoring
+
+- **Victory:**  
+  - The winning player is the first to reach the ending position (5,5).
+- **No Points System:**  
+  - The game does not use a points system; the focus is on reaching the goal.
+
+## Examples
+
+### Example Scenario
+
+**Initial Setup:**
+
+- Player 1 and Player 2 both start at position (1,1).
+- Players have secretly placed their three traps.
+
+**Sample Turns:**
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Position:** (1,1)
+- **Move:** Right to (1,2)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 1 is now at (1,2).
+
+---
+
+**Turn 1: Player 2**
+
+- **Current Position:** (1,1)
+- **Move:** Down to (2,1)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 2 is now at (2,1).
+
+---
+
+**Turn 2: Player 1**
+
+- **Current Position:** (1,2)
+- **Move:** Down to (2,2)
+- **Trap Check:** Trap triggered! (Assuming Player 2 had placed a trap here.)
+- **Outcome:** Player 1 returns to (1,1).
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Position:** (2,1)
+- **Move:** Right to (2,2)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 2 is now at (2,2).
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Position:** (1,1)
+- **Move:** Down to (2,1)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 1 is now at (2,1).
+
+---
+
+**Turn 3: Player 2**
+
+- **Current Position:** (2,2)
+- **Move:** Down to (3,2)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 2 is now at (3,2).
+
+---
+
+**Turn 4: Player 1**
+
+- **Current Position:** (2,1)
+- **Move:** Right to (2,2)
+- **Trap Check:** Trap triggered! (Same trap as before.)
+- **Outcome:** Player 1 returns to (1,1).
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Position:** (3,2)
+- **Move:** Down to (4,2)
+- **Trap Check:** Trap triggered! (Assuming Player 1 had placed a trap here.)
+- **Outcome:** Player 2 returns to (1,1).
+
+---
+
+**Turn 5: Player 1**
+
+- **Current Position:** (1,1)
+- **Move:** Down to (2,1)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 1 is now at (2,1).
+
+---
+
+**Turn 5: Player 2**
+
+- **Current Position:** (1,1)
+- **Move:** Right to (1,2)
+- **Trap Check:** No trap triggered.
+- **Outcome:** Player 2 is now at (1,2).
+
+---
+
+**Continued Gameplay:**
+
+- Players must navigate the grid, avoid known trap locations, and deduce safe paths to the ending position.
+- Utilizing knowledge of triggered traps and the opponent's movement patterns is key to victory.
+
+### Sample Command-Line Interaction
+
+Assuming a simple command-line interface where players input their moves and the system handles trap checks.
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, enter your move (up/down/left/right): right
+You moved to (1,2).
+No trap triggered.
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, enter your move (up/down/left/right): down
+You moved to (2,1).
+No trap triggered.
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, enter your move (up/down/left/right): down
+You moved to (2,2).
+Oh no! You triggered a trap set by Player 2.
+You return to the starting position (1,1).
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, enter your move (up/down/left/right): right
+You moved to (2,2).
+No trap triggered.
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, enter your move (up/down/left/right): down
+You moved to (2,1).
+No trap triggered.
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, enter your move (up/down/left/right): down
+You moved to (3,2).
+No trap triggered.
+```
+
+---
+
+**Gameplay Notes:**
+
+- The interface informs players of their current position and the result of their move.
+- Trap triggers are announced, but trap locations remain active for the rest of the game.
+- Players must strategize based on the information provided after each move.
+
+## Strategy Tips
+
+- **Avoid Known Traps:**  
+  Keep track of trap locations you've discovered to avoid them in future turns.
+
+- **Predict Opponent's Traps:**  
+  Consider common paths and likely trap placements by your opponent.
+
+- **Diversify Your Path:**  
+  Use different routes to approach the ending position to minimize the risk of hitting a trap.
+
+- **Set Strategic Traps:**  
+  Place traps on likely paths your opponent might take to increase the chances they'll trigger them.
+
+- **Mind Game:**  
+  Sometimes retracing steps or feigning interest in a particular path can mislead your opponent.
+
+---
+
+**Enjoy playing Grid Runner, and may the best strategist win!**

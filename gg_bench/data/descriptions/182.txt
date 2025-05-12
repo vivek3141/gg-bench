@@ -1,0 +1,191 @@
+# Sequence Duel
+
+---
+
+## Objective
+
+**Be the first player to reach or exceed the target score** by strategically selecting numbers from a shared sequence, while limiting your opponent's options.
+
+---
+
+## Setup
+
+- **Number Sequence:** Initialize a shared sequence of numbers from 1 to **N** (e.g., **N = 20**).
+- **Players:** Two players, designated as **Player 1** and **Player 2**.
+- **Scores:** Both players start with a score of **0**.
+- **Target Score:** Decide on a target score to win the game (e.g., **30** points).
+- **First Turn:** Determine who goes first (Player 1 takes the first turn by default).
+
+---
+
+## Game Components
+
+- **Number Sequence:** A list of integers from **1 to N** displayed in order.
+  - Example: `[1, 2, 3, ..., 20]`
+- **Players:** Two participants controlling the game actions.
+- **Score Tracker:** A means to keep track of each player's accumulated points.
+- **Turn Indicator:** Displays whose turn it is during the game.
+
+---
+
+## Turns
+
+- **Turn Order:** Players alternate turns; Player 1 starts first.
+- **Turn Actions:**
+  - **Select a Number:** Choose an available number from the sequence based on the rules.
+  - **Update Score:** Add the chosen number's value to your score.
+  - **Update Sequence:** Remove the chosen number from the sequence.
+- **Turn Progression:** The turn passes to the other player after the actions are completed.
+- **Skipping a Turn:** If a player has no valid moves, they skip their turn.
+
+---
+
+## Rules and Mechanics
+
+### 1. First Turn
+
+- **Player 1:** May select **any number** from the initial sequence.
+
+### 2. Subsequent Turns
+
+- **Valid Choices:** On your turn, you must select a number that is either:
+  - **A multiple** of the **last number** chosen by your opponent, **or**
+  - **A factor** of the **last number** chosen by your opponent.
+- **Available Numbers:** The chosen number must still be in the sequence (not previously selected).
+
+### 3. Definitions
+
+- **Factors:** Numbers that divide evenly into another number without leaving a remainder.
+- **Multiples:** Numbers that are the product of an integer and another integer.
+
+### 4. No Valid Move
+
+- **Skipping Turn:** If no numbers in the sequence satisfy the valid choices criteria, you skip your turn.
+- **Game Continuation:** The game continues until a player reaches the target score.
+
+### 5. Winning the Game
+
+- **Victory Condition:** The first player to **reach or exceed the target score** wins immediately.
+- **No Draws:** There are no draw conditions; the game continues until a player wins.
+
+---
+
+## Scoring
+
+- **Accumulating Points:** Each selected number's value is added to the player's total score.
+- **Score Tracking:** Keep a cumulative tally after each turn.
+- **Strategy:** Balancing high-value picks with strategic plays can accelerate reaching the target score.
+
+---
+
+## Examples
+
+### **Example Game Playthrough**
+
+**Settings:**
+
+- **Number Sequence (N):** 1 to 10
+- **Target Score:** 15 points
+
+**Initial Sequence:** `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
+
+**Scores:**
+
+- **Player 1:** 0
+- **Player 2:** 0
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Available Numbers:** `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
+- **Action:** Chooses **7** (any number is valid on the first turn).
+- **Score Update:** Player 1 score is **7**.
+- **Sequence Update:** `[1, 2, 3, 4, 5, 6, 8, 9, 10]`
+
+#### **Turn 2: Player 2**
+
+- **Opponent's Last Pick:** **7**
+- **Valid Choices:** Numbers that are factors or multiples of **7**.
+  - **Factors of 7:** `[1]`
+  - **Multiples of 7:** None within the sequence.
+- **Available Numbers:** `[1]`
+- **Action:** Chooses **1**.
+- **Score Update:** Player 2 score is **1**.
+- **Sequence Update:** `[2, 3, 4, 5, 6, 8, 9, 10]`
+
+#### **Turn 3: Player 1**
+
+- **Opponent's Last Pick:** **1**
+- **Valid Choices:** Numbers that are factors or multiples of **1**.
+  - **Factors of 1:** `[1]` (already taken)
+  - **Multiples of 1:** `[2, 3, 4, 5, 6, 8, 9, 10]` (all remaining numbers)
+- **Available Numbers:** `[2, 3, 4, 5, 6, 8, 9, 10]`
+- **Action:** Chooses **10**.
+- **Score Update:** Player 1 score is **17**.
+- **Sequence Update:** `[2, 3, 4, 5, 6, 8, 9]`
+- **Victory:** Player 1 has reached the target score and wins the game.
+
+---
+
+## Command-Line Interaction Sample
+
+```
+Welcome to Sequence Duel!
+Number Sequence: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Target Score to Win: 15
+
+Scores -> Player 1: 0 | Player 2: 0
+
+Player 1's turn.
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Choose any number: 7
+
+Player 1 selects 7.
+Updated Scores -> Player 1: 7 | Player 2: 0
+Remaining Numbers: [1, 2, 3, 4, 5, 6, 8, 9, 10]
+
+Player 2's turn.
+Last number selected by Player 1: 7
+Valid choices (factors or multiples of 7): [1]
+Choose a number: 1
+
+Player 2 selects 1.
+Updated Scores -> Player 1: 7 | Player 2: 1
+Remaining Numbers: [2, 3, 4, 5, 6, 8, 9, 10]
+
+Player 1's turn.
+Last number selected by Player 2: 1
+Valid choices (factors or multiples of 1): [2, 3, 4, 5, 6, 8, 9, 10]
+Choose a number: 10
+
+Player 1 selects 10.
+Updated Scores -> Player 1: 17 | Player 2: 1
+Remaining Numbers: [2, 3, 4, 5, 6, 8, 9]
+
+Player 1 has reached the target score and wins the game!
+Congratulations Player 1!
+```
+
+---
+
+## Strategic Tips
+
+- **Limit Opponent's Options:**
+  - Choose numbers with few factors or multiples left in the sequence to restrict your opponent's valid moves.
+- **High-Value Picks:**
+  - Opt for higher numbers to accumulate points faster but be cautious of the factors and multiples they may offer your opponent.
+- **Plan Ahead:**
+  - Anticipate possible responses from your opponent based on the numbers you leave available.
+
+---
+
+## Conclusion
+
+**Sequence Duel** is a simple yet strategic turn-based game that tests numerical reasoning and foresight. By selecting numbers that optimize your score while constraining your opponent's choices, you can gain a competitive edge. The game's mechanics are straightforward to implement in a command-line interface, ensuring quick and engaging gameplay without the possibility of a draw.
+
+Enjoy the challenge and may the best strategist win!
+
+---
+
+**Note:** This game is designed to end quickly, with a clear winner each time. Mastery comes from understanding number relationships and anticipating your opponent's moves.

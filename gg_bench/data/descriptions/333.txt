@@ -1,0 +1,239 @@
+# Quad Block
+
+## Objective
+
+Be the first player to form a connected group of **exactly four** of your own markers on a 5x5 grid. The markers must be orthogonally adjacent (connected horizontally or vertically). Forming a group larger than four does not count towards a win. Strategic placement is key to build your own group while preventing your opponent from forming theirs.
+
+## Setup
+
+1. **Grid Creation**: The game is played on a 5x5 grid, consisting of 25 cells numbered from 1 to 25.
+2. **Marker Assignment**:
+   - **Player 1** uses the marker `'X'`.
+   - **Player 2** uses the marker `'O'`.
+3. **Starting Condition**: The grid starts empty. Players decide who takes the first turn (e.g., by coin toss).
+
+## Game Components
+
+- **Grid**: A 5x5 grid represented in the command-line interface, with cells numbered for easy reference.
+  
+  ```
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  |  7  |  8  |  9  | 10
+  ----+-----+-----+-----+----
+  11  | 12  | 13  | 14  | 15
+  ----+-----+-----+-----+----
+  16  | 17  | 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+- **Markers**:
+  - `'X'` for Player 1.
+  - `'O'` for Player 2.
+  
+- **Turn Indicator**: Keeps track of whose turn it is.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player chosen to go first during setup.
+2. **Action per Turn**: On your turn, place your marker on any empty cell by specifying the cell number.
+3. **Turn Progression**: After placing a marker, check for a winning condition. If none, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+1. **Placing Markers**:
+   - You can place your marker on **any empty cell** by entering the cell's number.
+   - Once placed, markers do not move or get removed (except during sudden-death, see below).
+
+2. **Winning Condition**:
+   - **Form a connected group of exactly four of your own markers**.
+   - Markers must be **orthogonally adjacent** (horizontal or vertical neighbors).
+   - Diagonal adjacency does **not** count.
+   - **Groups larger than four do not qualify** for a win. Be careful not to create a connected group of five or more.
+
+3. **Blocking**:
+   - You can place markers to block your opponent's potential groups.
+   - Strategic placement is essential to prevent your opponent from winning while setting up your own win.
+
+4. **Game End Conditions**:
+   - **Win**: First player to form a valid group of exactly four connected markers wins.
+   - **Draw**: The game is designed to avoid draws. However, if the grid is completely filled without any player forming a valid group, proceed to sudden-death.
+   
+5. **Sudden-Death Phase**:
+   - If no valid groups are formed when the grid is full, players enter sudden-death.
+   - **During Sudden-Death**:
+     - Players take turns **relocating one of their own markers** to an empty cell.
+     - Normal placement rules apply.
+     - The first to form a valid group during this phase wins.
+
+## Scoring
+
+- **Winning the Game**: The player who forms a connected group of exactly four markers wins.
+- **No Points System**: The game is win/loss based with no point tracking.
+
+## Examples
+
+### Sample Game Play
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 places an 'X' on cell **13**.
+
+  ```
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  |  7  |  8  |  9  | 10
+  ----+-----+-----+-----+----
+  11  | 12  | 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 17  | 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 places an 'O' on cell **8**.
+
+  ```
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  |  7  | 'O'|  9  | 10
+  ----+-----+-----+-----+----
+  11  | 12  | 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 17  | 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+#### Turn 3: Player 1
+
+- **Action**: Player 1 places an 'X' on cell **12**.
+
+  ```
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  |  7  | 'O'|  9  | 10
+  ----+-----+-----+-----+----
+  11  | 'X'| 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 17  | 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+#### Turn 4: Player 2
+
+- **Action**: Player 2 places an 'O' on cell **7**.
+
+  ```
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  | 'O'| 'O'|  9  | 10
+  ----+-----+-----+-----+----
+  11  | 'X'| 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 17  | 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+#### Turn 5: Player 1
+
+- **Action**: Player 1 places an 'X' on cell **17**.
+
+  ```
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  | 'O'| 'O'|  9  | 10
+  ----+-----+-----+-----+-----                                      
+  11  | 'X'| 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 'X'| 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+#### Turn 6: Player 2
+
+- **Action**: Player 2 places an 'O' on cell **2**.
+
+  ```
+   1  | 'O'|  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  | 'O'| 'O'|  9  | 10
+  ----+-----+-----+-----+----
+  11  | 'X'| 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 'X'| 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+  ```
+
+#### Turn 7: Player 1
+
+- **Action**: Player 1 places an 'X' on cell **22**.
+
+  ```
+   1  | 'O'|  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  | 'O'| 'O'|  9  | 10
+  ----+-----+-----+-----+----
+  11  | 'X'| 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 'X'| 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 'X'| 23  | 24  | 25
+  ```
+
+#### Checking for Win
+
+- **Player 1** now has a connected group of exactly four 'X's at cells **12, 13, 17,** and **22**.
+- **Connection**: Each of these markers is orthogonally adjacent.
+- **Win Condition Met**: Player 1 wins the game.
+
+### Command-Line Interaction Example
+
+#### Prompt for Turn
+
+```
+Player 1 ('X'), enter the cell number to place your marker: 13
+```
+
+#### After Placing Marker
+
+```
+Current Grid:
+   1  |  2  |  3  |  4  |  5
+  ----+-----+-----+-----+----
+   6  |  7  |  8  |  9  | 10
+  ----+-----+-----+-----+----
+  11  | 12  | 'X'| 14  | 15
+  ----+-----+-----+-----+----
+  16  | 17  | 18  | 19  | 20
+  ----+-----+-----+-----+----
+  21  | 22  | 23  | 24  | 25
+```
+
+#### Next Player's Turn
+
+```
+Player 2 ('O'), enter the cell number to place your marker: 8
+```
+
+#### Continuation
+
+The game continues with each player prompted to enter their move, the grid updating after each move, and checking for the winning condition after each turn.
+
+## Strategic Tips
+
+- **Balance Offense and Defense**: While aiming to connect your own markers, be mindful of your opponent's formations.
+- **Avoid Overconnection**: Be cautious not to create a group larger than four, as it does not count towards a win.
+- **Plan Ahead**: Think multiple moves ahead to set traps and create opportunities for victory.
+- **Control the Center**: Occupying central cells can give you more options for connecting markers.
+
+## Conclusion
+
+Quad Block is a game of strategy and foresight. Quick to learn but with depth for skilled play, it provides a competitive experience where every move counts. Place your markers wisely, and may the best strategist win!

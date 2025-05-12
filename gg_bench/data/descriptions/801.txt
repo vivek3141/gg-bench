@@ -1,0 +1,218 @@
+# Game Name: "Cipher Quest"
+
+---
+
+## Objective:
+
+Cipher Quest is a strategic, turn-based game where two players compete to be the first to decipher a secret target sum. The primary goal is to accumulate numbers that, when combined, match the hidden target sum exactly. The first player to reach the target sum wins the game. If a player exceeds the target sum, they lose, ensuring the game cannot end in a draw.
+
+---
+
+## Setup:
+
+1. **Determine the Target Sum:**
+   - At the start of the game, the system randomly selects a secret target sum between **15** and **25** (inclusive).
+   - The target sum is hidden from both players at the beginning and will be deduced through gameplay and provided clues.
+
+2. **Initialize Player Scores:**
+   - Both players start with a cumulative score of **0**.
+
+3. **Create the Number Pool:**
+   - A shared pool of numbers from **1** to **9** is available.
+   - Each number can only be selected **once** during the game.
+
+---
+
+## Game Components:
+
+- **Number Pool:**
+  - A list of numbers from **1** to **9**.
+  - Represents the available options for players to choose from.
+
+- **Player Scores:**
+  - Each player has a cumulative score that updates with each selected number.
+
+- **Target Sum:**
+  - A hidden sum between **15** and **25** that players aim to reach exactly.
+
+- **Clues System:**
+  - After each turn, the system provides clues to help players deduce the target sum.
+
+---
+
+## Turns:
+
+1. **Turn Order:**
+   - Players decide who goes first (e.g., coin toss, mutual agreement).
+   - Turns alternate between Player 1 and Player 2.
+
+2. **Player Actions During a Turn:**
+   - **Select a Number:**
+     - Choose an available number from the number pool.
+     - The selected number is removed from the pool.
+   - **Update Score:**
+     - Add the selected number to the player's cumulative score.
+   - **Receive a Clue:**
+     - After updating the score, the system provides a clue regarding how the cumulative score compares to the target sum.
+
+---
+
+## Rules and Mechanics:
+
+1. **Number Selection Rules:**
+   - Players can only select numbers that are still available in the number pool.
+   - Each number from **1** to **9** can be selected only once per game.
+
+2. **Scoring Rules:**
+   - Players maintain a cumulative score of their selected numbers.
+   - The cumulative score aims to match the hidden target sum exactly.
+
+3. **Winning the Game:**
+   - **Exact Match Victory:**
+     - The first player to reach the target sum **exactly** wins the game.
+   - **Overreach Loss:**
+     - If a player's cumulative score **exceeds** the target sum, they immediately lose.
+   - **Number Pool Depletion:**
+     - If all numbers are exhausted without a player reaching the target sum, the player **closest** to the target sum without exceeding it wins.
+
+4. **Clues Mechanism:**
+   - Clues are provided after each turn to both players:
+     - **"Your cumulative score is less than the target sum by more than 5."**
+     - **"Your cumulative score is within 5 of the target sum."**
+     - **"Your cumulative score equals the target sum!"**
+     - **"Your cumulative score exceeds the target sum."**
+   - Clues help players strategize without revealing the exact target sum immediately.
+
+---
+
+## Scoring:
+
+- **Tracking Scores:**
+  - Keep a running total of each player's cumulative score.
+  - Update the score after each player's turn.
+
+- **Determining the Winner:**
+  - The winner is the first to reach the target sum exactly.
+  - If a player exceeds the target sum, they lose, and the opponent wins.
+  - If all numbers are used, the player closest to the target sum without exceeding it wins.
+
+---
+
+## Examples:
+
+### Example Gameplay:
+
+*Assuming the secret target sum is **20**.*
+
+**Turn 1:**
+
+- **Player 1:**
+  - Selects number **7**.
+  - Cumulative score: **7**.
+  - Clue: *"Your cumulative score is less than the target sum by more than 5."*
+
+**Turn 2:**
+
+- **Player 2:**
+  - Selects number **8**.
+  - Cumulative score: **8**.
+  - Clue: *"Your cumulative score is less than the target sum by more than 5."*
+
+**Turn 3:**
+
+- **Player 1:**
+  - Selects number **6**.
+  - Cumulative score: **13**.
+  - Clue: *"Your cumulative score is within 5 of the target sum."*
+
+**Turn 4:**
+
+- **Player 2:**
+  - Selects number **9**.
+  - Cumulative score: **17**.
+  - Clue: *"Your cumulative score is within 5 of the target sum."*
+
+**Turn 5:**
+
+- **Player 1:**
+  - Selects number **2**.
+  - Cumulative score: **15**.
+  - Clue: *"Your cumulative score is within 5 of the target sum."*
+
+**Turn 6:**
+
+- **Player 2:**
+  - Needs **3** to reach the target sum.
+  - Selects number **3**.
+  - Cumulative score: **20**.
+  - Clue: *"Your cumulative score equals the target sum!"*
+  - **Player 2 wins the game!**
+
+---
+
+## Command-Line Interaction Example:
+
+```
+[System]: Welcome to Cipher Quest!
+[System]: The number pool contains numbers 1 through 9.
+
+[Player 1's Turn]
+Available numbers: 1,2,3,4,5,6,7,8,9
+Enter your selected number: 7
+
+[System]: Player 1 selected 7.
+[System]: Player 1's cumulative score is 7.
+[System]: Clue: Your cumulative score is less than the target sum by more than 5.
+
+[Player 2's Turn]
+Available numbers: 1,2,3,4,5,6,8,9
+Enter your selected number: 8
+
+[System]: Player 2 selected 8.
+[System]: Player 2's cumulative score is 8.
+[System]: Clue: Your cumulative score is less than the target sum by more than 5.
+
+...
+
+[Player 2's Turn]
+Available numbers: 1,4,5,9
+Enter your selected number: 3
+
+[System]: Player 2 selected 3.
+[System]: Player 2's cumulative score is 20.
+[System]: Clue: Your cumulative score equals the target sum!
+[System]: Congratulations, Player 2 wins the game!
+```
+
+---
+
+## Strategic Depth:
+
+- **Memory and Deduction:**
+  - Keep track of which numbers have been selected.
+  - Use clues to narrow down possibilities for the target sum.
+
+- **Risk Management:**
+  - Decide whether to choose high numbers to reach the target sum quickly or low numbers to avoid overshooting.
+
+- **Opponent Awareness:**
+  - Monitor the opponent's cumulative score and adjust your strategy to block them from winning.
+
+- **Mathematical Calculation:**
+  - Calculate possible combinations of remaining numbers to predict the opponent's potential moves.
+
+---
+
+## Notes:
+
+- **In the Event of a Tie:**
+  - If both players have the same cumulative score closest to the target sum after all numbers are selected, the game proceeds into sudden death. Players continue to play with any remaining unselected numbers until a winner is determined.
+
+- **No Draws:**
+  - The game's structure ensures that a winner is always declared, either by reaching the target sum exactly or by having a closer cumulative score without exceeding it.
+
+---
+
+**Cipher Quest** offers a simple yet strategically rich gameplay experience. It's easy to code for a command-line interface and allows players to engage in deep strategic planning and deduction. The hidden target sum and limited number pool add layers of complexity, ensuring that skilled players can consistently outplay less experienced opponents.
+
+Enjoy the challenge and may the best codebreaker win!

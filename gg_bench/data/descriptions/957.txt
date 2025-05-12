@@ -1,0 +1,517 @@
+# FlipSeven: A Two-Player Command-Line Game
+
+Welcome to **FlipSeven**, an engaging and strategic two-player turn-based game designed specifically for the command-line interface. In FlipSeven, players take turns flipping elements in a shared array, aiming to be the first to turn all elements to zero. The game is easy to code, ends quickly, and offers strategic depth where skilled players can consistently outmaneuver their opponents.
+
+---
+
+## Objective
+
+The primary goal of FlipSeven is to be the first player to flip all the elements of a shared array to zero (`0`). Players achieve victory by strategically selecting positions in the array to flip, turning all elements from their initial value of one (`1`) to zero. The player who flips the last remaining one to zero wins the game.
+
+---
+
+## Setup
+
+- **Shared Array**: The game begins with a shared array of seven elements:
+  ```
+  [1, 1, 1, 1, 1, 1, 1]
+  ```
+- **Players**: Two players participate in the game, designated as **Player 1** and **Player 2**.
+- **Starting Player**: Decide which player goes first. This can be random or predetermined.
+
+---
+
+## Game Components
+
+- **Array Elements**: Seven positions in the array, indexed from `1` to `7`. Each element can be either `1` or `0`.
+  - **Appearance**: Displayed as numbers in a list:
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [1] [1] [1] [1] [1] [1]
+    ```
+- **Player Input**: Players will input the position number they wish to select on their turn.
+- **Game State Display**: After each turn, the current state of the array is displayed.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  1. **Player 1** takes the first turn.
+  2. **Player 2** takes the next turn.
+  3. Turns continue to alternate between the players.
+- **Player Actions During a Turn**:
+  - **Select a Position**: Choose a position in the array to flip (positions `1` to `7`).
+  - **Flip Elements**: When a position is selected, the following elements are flipped (changed from `1` to `0` or from `0` to `1`):
+    - The **selected position**.
+    - The **immediate neighbor(s)** of the selected position:
+      - If selecting position `1`, flip positions `1` and `2`.
+      - If selecting position `7`, flip positions `6` and `7`.
+      - For positions `2` to `6`, flip the selected position and its neighbors on both sides.
+- **Invalid Moves**:
+  - A player must select a valid position number (`1` to `7`).
+  - Positions are always selectable regardless of their current value.
+
+---
+
+## Rules and Mechanics
+
+### Flipping Mechanism
+
+- **Flipping Elements**:
+  - **Value Change**: Flipped elements change value:
+    - If the element is `1`, it becomes `0`.
+    - If the element is `0`, it becomes `1`.
+- **Example of Flipping**:
+  - **Selecting Position 4**:
+    - Flipped Positions: `3`, `4`, and `5`.
+    - If the array was `[1, 1, 1, 1, 1, 1, 1]`, after flipping it becomes `[1, 1, 0, 0, 0, 1, 1]`.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The player who flips the last remaining `1` to `0` wins the game.
+- **Game End**:
+  - Once all elements in the array are `0`, the game ends immediately.
+- **No Draws**:
+  - The game cannot end in a draw; there will always be a winner.
+
+---
+
+## Scoring
+
+- **Win Tracking**:
+  - Players can keep track of the number of games won if playing multiple rounds.
+- **No Point System**:
+  - FlipSeven does not use a point-based scoring system; victory is achieved by winning the game as per the objective.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+Below is an example of how a game of FlipSeven might proceed, including command-line interactions.
+
+#### Initial State
+
+```
+Positions: [1] [2] [3] [4] [5] [6] [7]
+Values:    [1] [1] [1] [1] [1] [1] [1]
+```
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**
+
+   - **Input**: Selects position `4`.
+   - **Flipped Positions**: `3`, `4`, `5`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [1] [1] [0] [0] [0] [1] [1]
+   ```
+
+2. **Player 2's Turn**
+
+   - **Input**: Selects position `6`.
+   - **Flipped Positions**: `5`, `6`, `7`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [1] [1] [0] [0] [1] [0] [0]
+   ```
+
+3. **Player 1's Turn**
+
+   - **Input**: Selects position `5`.
+   - **Flipped Positions**: `4`, `5`, `6`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [1] [1] [0] [1] [0] [1] [0]
+   ```
+
+4. **Player 2's Turn**
+
+   - **Input**: Selects position `2`.
+   - **Flipped Positions**: `1`, `2`, `3`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [0] [0] [1] [1] [0] [1] [0]
+   ```
+
+5. **Player 1's Turn**
+
+   - **Input**: Selects position `3`.
+   - **Flipped Positions**: `2`, `3`, `4`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [0] [1] [0] [0] [0] [1] [0]
+   ```
+
+6. **Player 2's Turn**
+
+   - **Input**: Selects position `6`.
+
+   - **Flipped Positions**: `5`, `6`, `7`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [0] [1] [0] [0] [1] [0] [1]
+   ```
+
+7. **Player 1's Turn**
+
+   - **Input**: Selects position `2`.
+
+   - **Flipped Positions**: `1`, `2`, `3`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [1] [0] [1] [0] [1] [0] [1]
+   ```
+
+8. **Player 2's Turn**
+
+   - **Input**: Selects position `5`.
+
+   - **Flipped Positions**: `4`, `5`, `6`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [1] [0] [1] [1] [0] [1] [1]
+   ```
+
+9. **Player 1's Turn**
+
+   - **Input**: Selects position `7`.
+
+   - **Flipped Positions**: `6`, `7`.
+
+   **Array After Turn**:
+
+   ```
+   Positions: [1] [2] [3] [4] [5] [6] [7]
+   Values:    [1] [0] [1] [1] [0] [0] [0]
+   ```
+
+10. **Player 2's Turn**
+
+    - **Input**: Selects position `4`.
+
+    - **Flipped Positions**: `3`, `4`, `5`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [0] [0] [0] [1] [0] [0]
+    ```
+
+11. **Player 1's Turn**
+
+    - **Input**: Selects position `1`.
+
+    - **Flipped Positions**: `1` and `2`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [0] [0] [1] [0] [0]
+    ```
+
+12. **Player 2's Turn**
+
+    - **Input**: Selects position `2`.
+
+    - **Flipped Positions**: `1`, `2`, `3`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [0] [1] [0] [1] [0] [0]
+    ```
+
+13. **Player 1's Turn**
+
+    - **Input**: Selects position `5`.
+
+    - **Flipped Positions**: `4`, `5`, `6`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [0] [1] [1] [0] [1] [0]
+    ```
+
+14. **Player 2's Turn**
+
+    - **Input**: Selects position `3`.
+
+    - **Flipped Positions**: `2`, `3`, `4`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [1] [0] [0] [0] [1] [0]
+    ```
+
+15. **Player 1's Turn**
+
+    - **Input**: Selects position `2`.
+
+    - **Flipped Positions**: `1`, `2`, `3`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [0] [1] [0] [0] [1] [0]
+    ```
+
+16. **Player 1 Wins**
+
+    - **All elements are not zero yet**, so the game continues.
+
+17. **Player 2's Turn**
+
+    - **Input**: Selects position `3`.
+
+    - **Flipped Positions**: `2`, `3`, `4`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [0] [1] [0] [1] [0]
+    ```
+
+18. **Player 1's Turn**
+
+    - **Input**: Selects position `4`.
+
+    - **Flipped Positions**: `3`, `4`, `5`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [1] [0] [1] [1] [0]
+    ```
+
+19. **Player 2's Turn**
+
+    - **Input**: Selects position `5`.
+
+    - **Flipped Positions**: `4`, `5`, `6`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [1] [1] [0] [0] [0]
+    ```
+
+20. **Player 1's Turn**
+
+    - **Input**: Selects position `2`.
+
+    - **Flipped Positions**: `1`, `2`, `3`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [0] [0] [1] [0] [0] [0]
+    ```
+
+21. **Player 2's Turn**
+
+    - **Input**: Selects position `1`.
+
+    - **Flipped Positions**: `1`, `2`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [0] [1] [0] [0] [0]
+    ```
+
+22. **Player 1's Turn**
+
+    - **Input**: Selects position `3`.
+
+    - **Flipped Positions**: `2`, `3`, `4`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [0] [1] [0] [0] [0] [0]
+    ```
+
+23. **Player 1 Wins**
+
+    - **All elements are now zero, except position 3**.
+    - **Player 2** has no way to prevent **Player 1** from winning on the next turn.
+    - Since no immediate win condition, the game continues.
+
+24. **Player 2's Turn**
+
+    - **Input**: Selects position `3`.
+
+    - **Flipped Positions**: `2`, `3`, `4`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [0] [1] [0] [0] [0]
+    ```
+
+25. **Player 1's Turn**
+
+    - **Input**: Selects position `2`.
+
+    - **Flipped Positions**: `1`, `2`, `3`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [0] [1] [1] [0] [0] [0]
+    ```
+
+26. **Player 2's Turn**
+
+    - **Input**: Selects position `1`.
+
+    - **Flipped Positions**: `1`, `2`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [1] [1] [0] [0] [0]
+    ```
+
+27. **Player 1's Turn**
+
+    - **Input**: Selects position `4`.
+
+    - **Flipped Positions**: `3`, `4`, `5`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [0] [0] [1] [0] [0]
+    ```
+
+28. **Player 1 Wins**
+
+    - **All elements except positions 2 and 5 are zero**.
+    - **Player 2** cannot flip both on the next turn.
+
+29. **Player 2's Turn**
+
+    - **Input**: Selects position `5`.
+
+    - **Flipped Positions**: `4`, `5`, `6`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [0] [1] [0] [1] [0] [1] [0]
+    ```
+
+30. **Player 1's Turn**
+
+    - **Input**: Selects position `2`.
+
+    - **Flipped Positions**: `1`, `2`, `3`.
+
+    **Array After Turn**:
+
+    ```
+    Positions: [1] [2] [3] [4] [5] [6] [7]
+    Values:    [1] [0] [1] [1] [0] [1] [0]
+    ```
+
+31. **Player 1 Wins**
+
+    - The game continues in this manner until one player successfully flips all elements to zero.
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's potential moves and plan your flips to counteract them.
+- **Edge Positions**: Selecting edge positions (`1` or `7`) flips fewer elements, which can be advantageous.
+- **Control the Center**: Flipping central positions affects more elements; use this to create opportunities or disrupt your opponent's strategy.
+- **Parity Consideration**: Keep track of the number of `1`s and `0`s to maintain an advantageous position.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a simplified example of how the game might be implemented in a command-line interface.
+
+```plaintext
+Welcome to FlipSeven!
+
+Initial Array:
+Positions: [1] [2] [3] [4] [5] [6] [7]
+Values:    [1] [1] [1] [1] [1] [1] [1]
+
+Player 1's Turn:
+Enter the position to flip (1-7): 4
+
+You flipped positions 3, 4, 5.
+Current Array:
+Positions: [1] [2] [3] [4] [5] [6] [7]
+Values:    [1] [1] [0] [0] [0] [1] [1]
+
+Player 2's Turn:
+Enter the position to flip (1-7): 6
+
+You flipped positions 5, 6, 7.
+Current Array:
+Positions: [1] [2] [3] [4] [5] [6] [7]
+Values:    [1] [1] [0] [0] [1] [0] [0]
+
+... (game continues)
+
+Player 1 Wins! All elements are zero.
+```
+
+---
+
+## Conclusion
+
+FlipSeven is a simple yet strategically rich game that can be easily implemented in a command-line interface. Its straightforward mechanics ensure quick gameplay, while the depth of strategy allows skilled players to consistently outplay their opponents. Enjoy mastering the flips and may the best strategist win!

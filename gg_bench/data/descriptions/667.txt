@@ -1,0 +1,184 @@
+# Number Morph: A Two-Player Command-Line Game
+
+## Objective
+
+**Number Morph** is a strategic two-player, turn-based game where players manipulate a shared three-digit number. The primary goal is to be the last player to produce a valid number according to the game's rules. A player wins by forcing their opponent into a position where they cannot make a valid move on their turn.
+
+## Setup
+
+- **Initial Number**: The game starts with a randomly selected three-digit number that meets the initial validity criteria (see Rules and Mechanics).
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Turn Order**: Players decide who goes first (e.g., by coin toss). Turns alternate between the players throughout the game.
+- **History Log**: An empty list to keep track of all numbers used during the game to prevent repeats.
+
+## Game Components
+
+- **Three-Digit Number**: The core element of the game, which players alter on their turns.
+- **Digits (0-9)**: Players can manipulate individual digits within the number.
+- **Positions**: Each digit in the three-digit number has a position — hundreds (leftmost), tens (middle), and units (rightmost).
+- **History Log**: A record of all previously used numbers to ensure no repeats.
+
+## Turns
+
+- **Action**: On their turn, a player must change exactly one digit of the current three-digit number to create a new valid number.
+- **Digit Selection**: The player chooses one position (hundreds, tens, or units) and replaces the digit in that position with a different digit from 0-9.
+- **Validity Check**: The new number must satisfy all the rules specified in the Rules and Mechanics section.
+- **Logging**: The new valid number is added to the History Log.
+- **Passing Turn**: After a successful move, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Single-Digit Change**: Players can change only one digit per turn.
+2. **Digit Positions**:
+   - **Hundreds Place**: Can be any digit from 1-9 (cannot be 0; leading zeros are not allowed).
+   - **Tens and Units Places**: Can be any digit from 0-9.
+3. **Valid Numbers**:
+   - The new number must be a **prime number**.
+   - The number must be **odd** (since all primes except 2 are odd, and 2 cannot be a three-digit number).
+   - The number must not have been previously used in the game (no repeats).
+4. **Restrictions**:
+   - Players cannot rearrange digits; only a single-digit substitution is allowed.
+   - Changing a digit to the same digit (no change) is not permitted.
+5. **Winning the Game**:
+   - A player wins if they create a valid number that leaves the opponent with no valid moves on their subsequent turn.
+   - A player loses if they cannot produce a valid number on their turn.
+
+## Scoring
+
+- **Win/Loss Condition**: The game is a zero-sum game with no points system. The outcome is a win for one player and a loss for the other.
+- **No Draws**: The game cannot end in a draw due to the finite number of valid primes and the no-repeat rule.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Starting Number: **211** (a prime number)
+- History Log: [211]
+
+**Turn 1**: Player 1
+
+- **Current Number**: 211
+- **Action**: Changes the units digit from **1** to **3**
+- **New Number**: **213**
+- **Validity Check**: 213 is not prime.
+- **Attempt 2**: Changes the tens digit from **1** to **7**
+- **New Number**: **271**
+- **Validity Check**: 271 is prime.
+- **Update History Log**: [211, 271]
+- **Turn Ends**: Passes turn to Player 2
+
+**Turn 2**: Player 2
+
+- **Current Number**: 271
+- **Action**: Changes the hundreds digit from **2** to **3**
+- **New Number**: **371**
+- **Validity Check**: 371 is not prime.
+- **Attempt 2**: Changes the units digit from **1** to **9**
+- **New Number**: **279**
+- **Validity Check**: 279 is not prime.
+- **Attempt 3**: Changes the tens digit from **7** to **0**
+- **New Number**: **201**
+- **Validity Check**: 201 is not prime.
+- **Attempt 4**: Changes the units digit from **1** to **7**
+- **New Number**: **277**
+- **Validity Check**: 277 is prime.
+- **Update History Log**: [211, 271, 277]
+- **Turn Ends**: Passes turn to Player 1
+
+**Turn 3**: Player 1
+
+- **Current Number**: 277
+- **Action**: Changes the hundreds digit from **2** to **4**
+- **New Number**: **477**
+- **Validity Check**: 477 is not prime.
+- **Attempt 2**: Changes the tens digit from **7** to **3**
+- **New Number**: **237**
+- **Validity Check**: 237 is not prime.
+- **Attempt 3**: Changes the units digit from **7** to **1**
+- **New Number**: **271**
+- **Validity Check**: 271 is prime but already used.
+- **Attempt 4**: Changes the units digit from **7** to **9**
+- **New Number**: **279**
+- **Validity Check**: 279 is not prime.
+- **Attempt 5**: Changes the tens digit from **7** to **9**
+- **New Number**: **297**
+- **Validity Check**: 297 is not prime.
+- **Unable to Find Valid Move**: Player 1 cannot make a valid move.
+- **Game Ends**: Player 2 wins.
+
+### Sample Command-Line Interaction
+
+**Starting the Game**:
+
+```
+Welcome to Number Morph!
+Starting number is: 211
+Player 1, it's your turn.
+```
+
+**Turn 1**: Player 1
+
+```
+Current number: 211
+Enter the position to change (hundreds/tens/units): units
+Enter the new digit (0-9): 3
+New number formed: 213
+213 is not a prime number. Try again.
+Enter the position to change (hundreds/tens/units): tens
+Enter the new digit (0-9): 7
+New number formed: 271
+271 is a prime number. Turn complete.
+```
+
+**Turn 2**: Player 2
+
+```
+Current number: 271
+Enter the position to change (hundreds/tens/units): units
+Enter the new digit (0-9): 7
+New number formed: 277
+277 is a prime number. Turn complete.
+```
+
+**Turn 3**: Player 1
+
+```
+Current number: 277
+Enter the position to change (hundreds/tens/units): hundreds
+Enter the new digit (0-9): 4
+New number formed: 477
+477 is not a prime number. Try again.
+Enter the position to change (hundreds/tens/units): tens
+Enter the new digit (0-9): 3
+New number formed: 237
+237 is not a prime number. Try again.
+Enter the position to change (hundreds/tens/units): units
+Enter the new digit (0-9): 1
+New number formed: 271
+271 has already been used. Try again.
+Enter the position to change (hundreds/tens/units): units
+Enter the new digit (0-9): 9
+New number formed: 279
+279 is not a prime number. Try again.
+Enter the position to change (hundreds/tens/units): tens
+Enter the new digit (0-9): 9
+New number formed: 297
+297 is not a prime number. Try again.
+No valid moves left. Player 2 wins!
+```
+
+## Strategy Tips
+
+- **Knowledge of Primes**: Familiarity with three-digit prime numbers enhances strategic options.
+- **Blocking Moves**: Anticipate your opponent's possible moves and attempt to limit their options.
+- **Digit Variation**: Focus on changing digits that yield the highest number of prime results.
+  
+## Conclusion
+
+**Number Morph** is a game of numerical strategy and prime number knowledge. With simple rules and a clear objective, it provides competitive gameplay that rewards skill and foresight. Enjoy challenging your opponent in this battle of wits and numbers!
+
+---
+
+*End of Rule Book*

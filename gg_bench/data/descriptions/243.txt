@@ -1,0 +1,290 @@
+# Elemental Clash
+
+## Objective
+
+**Elemental Clash** is a strategic two-player turn-based game where each player takes on the role of a powerful mage. The primary goal is to reduce your opponent's Health Points (HP) to zero by casting elemental spells. Utilize your spell elements wisely to overcome your opponent's defenses and emerge victorious.
+
+## Setup
+
+1. **Health Points:**
+   - Each player starts the game with **10 Health Points (HP)**.
+
+2. **Spell Elements:**
+   - Each player has a set of **four spell elements**:
+     - **Fire**
+     - **Water**
+     - **Earth**
+     - **Air**
+   - These spell elements are available at the beginning of the game and can **only be used once**.
+
+3. **Determine Turn Order:**
+   - Decide who will go first (e.g., by coin toss or mutual agreement).
+
+4. **Game Interface:**
+   - The game is played via a command-line interface where players input their choices when prompted.
+
+## Game Components
+
+### Health Points (HP)
+
+- **Representation:** Numerical value starting at 10 for each player.
+- **Functionality:** Represents the player's vitality. HP decreases based on the outcome of spell clashes.
+- **Unique Attribute:** Cannot exceed 10 or go below 0.
+
+### Spell Elements
+
+1. **Fire**
+   - **Strengths:** Beats Earth and Air.
+   - **Weaknesses:** Loses to Water.
+   - **Appearance:** Represented as `"Fire"` in the game.
+
+2. **Water**
+   - **Strengths:** Beats Fire and Earth.
+   - **Weaknesses:** Loses to Air.
+   - **Appearance:** Represented as `"Water"` in the game.
+
+3. **Earth**
+   - **Strengths:** Beats Air and Water.
+   - **Weaknesses:** Loses to Fire.
+   - **Appearance:** Represented as `"Earth"` in the game.
+
+4. **Air**
+   - **Strengths:** Beats Water and Fire.
+   - **Weaknesses:** Loses to Earth.
+   - **Appearance:** Represented as `"Air"` in the game.
+
+**Functionality:**
+
+- Each spell element is used to attack or defend during a player's turn.
+- Once a spell element is used, it is **discarded** and cannot be used again.
+
+### Spell Interaction Chart
+
+This chart determines the outcome of spell clashes:
+
+| Attacker \ Defender | Fire        | Water       | Earth       | Air         |
+|---------------------|-------------|-------------|-------------|-------------|
+| **Fire**            | Tie         | Loses       | Wins        | Wins        |
+| **Water**           | Wins        | Tie         | Wins        | Loses       |
+| **Earth**           | Loses       | Loses       | Tie         | Wins        |
+| **Air**             | Loses       | Wins        | Loses       | Tie         |
+
+## Turns
+
+### Turn Structure
+
+1. **Attack Phase:**
+   - The active player (attacker) selects one of their **remaining spell elements** to cast as an attack.
+   - The chosen spell is declared openly (e.g., `"Player 1 attacks with Fire"`).
+
+2. **Defense Phase:**
+   - The defending player selects one of their **remaining spell elements** to defend.
+   - The defense spell is declared after the attack spell is known (e.g., `"Player 2 defends with Water"`).
+
+3. **Resolution Phase:**
+   - Determine the outcome using the **Spell Interaction Chart**.
+   - Adjust HP based on the result:
+     - **Attacker Wins:** Defender loses **2 HP**.
+     - **Defender Wins:** Attacker loses **1 HP**.
+     - **Tie:** Both players lose **1 HP**.
+
+4. **Discard Used Spells:**
+   - Both used spell elements are discarded and cannot be used again.
+
+5. **Check for Victory:**
+   - If a player's HP is reduced to **0 or below**, the game ends, and the other player wins.
+   - If both players' HP reach **0** simultaneously, the attacker wins.
+
+6. **Next Turn:**
+   - If no victory condition is met, the roles switch, and the next player becomes the attacker.
+
+## Rules and Mechanics
+
+1. **Spell Usage:**
+   - Each spell element can be used **only once per game**.
+   - Players must manage their spells strategically.
+
+2. **Elemental Strengths and Weaknesses:**
+   - Use the **Spell Interaction Chart** to determine outcomes.
+   - The chart is based on traditional elemental relationships (e.g., Water extinguishes Fire).
+
+3. **Health Points Adjustment:**
+   - HP is adjusted **immediately** after each Resolution Phase.
+   - Players cannot have negative HP; if HP drops below 0, it is considered 0.
+
+4. **Victory Conditions:**
+   - A player wins when their opponent's HP reaches **0**.
+   - **No Draws:** The game cannot end in a draw; it continues until one player wins.
+
+5. **Element Availability:**
+   - Keep track of your remaining spell elements.
+   - You cannot select a spell that has already been used.
+
+6. **Game Continuation:**
+   - If a player has no remaining spell elements, they automatically lose on their next turn when they cannot perform an action.
+
+## Scoring
+
+- **Health Points (HP):**
+  - Represents the player's score during the game.
+  - The objective is to reduce your opponent's HP to **0** while maintaining your own.
+- **No Additional Scoring:**
+  - There are no points beyond HP, and no tie-breakers; the game is won by depleting the opponent's HP.
+
+## Examples
+
+### Example Game Flow
+
+**Starting Status:**
+
+- **Player 1:**
+  - HP: 10
+  - Available Spells: Fire, Water, Earth, Air
+- **Player 2:**
+  - HP: 10
+  - Available Spells: Fire, Water, Earth, Air
+
+---
+
+**Turn 1:**
+
+- **Player 1's Attack Phase:**
+  - Chooses to attack with **Fire**.
+  - Declares: `"Player 1 attacks with Fire."`
+- **Player 2's Defense Phase:**
+  - Chooses to defend with **Earth**.
+  - Declares: `"Player 2 defends with Earth."`
+- **Resolution:**
+  - **Fire beats Earth** (Attacker Wins).
+  - **Player 2 loses 2 HP.**
+- **Discard Used Spells:**
+  - Both players discard **Fire** (Player 1) and **Earth** (Player 2).
+- **Post-Turn Status:**
+  - **Player 1 HP:** 10
+  - **Player 2 HP:** 8
+
+---
+
+**Turn 2:**
+
+- **Player 2's Attack Phase:**
+  - Chooses to attack with **Water**.
+  - Declares: `"Player 2 attacks with Water."`
+- **Player 1's Defense Phase:**
+  - Chooses to defend with **Air**.
+  - Declares: `"Player 1 defends with Air."`
+- **Resolution:**
+  - **Air beats Water** (Defender Wins).
+  - **Player 2 loses 1 HP.**
+- **Discard Used Spells:**
+  - Both players discard **Water** (Player 2) and **Air** (Player 1).
+- **Post-Turn Status:**
+  - **Player 1 HP:** 10
+  - **Player 2 HP:** 7
+
+---
+
+**Turn 3:**
+
+- **Player 1's Attack Phase:**
+  - Chooses to attack with **Earth**.
+  - Declares: `"Player 1 attacks with Earth."`
+- **Player 2's Defense Phase:**
+  - Only **Air** remains.
+  - Declares: `"Player 2 defends with Air."`
+- **Resolution:**
+  - **Earth beats Air** (Attacker Wins).
+  - **Player 2 loses 2 HP.**
+- **Discard Used Spells:**
+  - Both players discard **Earth** (Player 1) and **Air** (Player 2).
+- **Post-Turn Status:**
+  - **Player 1 HP:** 10
+  - **Player 2 HP:** 5
+
+---
+
+**Turn 4:**
+
+- **Player 2's Attack Phase:**
+  - Only **Fire** remains.
+  - Declares: `"Player 2 attacks with Fire."`
+- **Player 1's Defense Phase:**
+  - Only **Water** remains.
+  - Declares: `"Player 1 defends with Water."`
+- **Resolution:**
+  - **Water beats Fire** (Defender Wins).
+  - **Player 2 loses 1 HP.**
+- **Discard Used Spells:**
+  - Both players discard **Fire** (Player 2) and **Water** (Player 1).
+- **Post-Turn Status:**
+  - **Player 1 HP:** 10
+  - **Player 2 HP:** 4
+
+---
+
+**Turn 5:**
+
+- **Player 1's Attack Phase:**
+  - No spells remaining (has used Fire, Earth, Air, Water).
+  - Cannot perform an attack.
+- **Outcome:**
+  - **Player 1 cannot attack and loses the game.**
+- **Winner:** Player 2 wins due to Player 1's inability to perform an action.
+
+### Command-Line Interaction Example
+
+```
+Player 1 HP: 10 | Available Spells: Fire, Water, Earth, Air
+Player 2 HP: 10 | Available Spells: Fire, Water, Earth, Air
+
+It's Player 1's turn to attack.
+Select your spell to attack:
+> Fire
+
+Player 1 attacks with Fire.
+
+Player 2, select your spell to defend:
+Available Spells: Fire, Water, Earth, Air
+> Earth
+
+Player 2 defends with Earth.
+
+Outcome: Fire beats Earth.
+Player 2 loses 2 HP.
+
+Player 1 HP: 10
+Player 2 HP: 8
+
+Used Spells:
+Player 1 has used: Fire
+Player 2 has used: Earth
+```
+
+## Strategy Tips
+
+- **Spell Tracking:** Keep note of which spells have been used by both you and your opponent.
+- **Predict Opponent Moves:** Anticipate your opponent's choices based on their remaining spells.
+- **Element Strengths:** Use spells that counter the likely defense spells of your opponent.
+- **Resource Management:** Save certain spells for when they will be most effective.
+- **Risk Assessment:** Decide when to use a strong spell or when to bait your opponent with a weaker one.
+
+## Additional Notes
+
+- **Game Continuation with No Spells:**
+  - If both players have no spells remaining, the game ends. The player with higher HP wins.
+  - If both players have the same HP, the attacker is declared the winner.
+
+- **Fair Play:**
+  - Players should not reveal their remaining spells until they are used.
+  - Honesty is expected in a command-line environment.
+
+- **Game Tracking:**
+  - It is helpful to write down or otherwise keep track of spells used during the game.
+
+- **Extensions:**
+  - For longer gameplay, players can agree to start with more HP or more spell elements.
+  - Custom elements and interaction rules can be added by mutual agreement before the game starts.
+
+---
+
+Enjoy your battle in **Elemental Clash**, where strategy and foresight lead to victory!

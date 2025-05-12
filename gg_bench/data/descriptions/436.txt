@@ -1,0 +1,193 @@
+**Game Name:** Target Twenty
+
+---
+
+**Objective:**
+
+Be the first player to reach exactly **20 points** by strategically choosing numbers without exceeding the target or being blocked by your opponent's previous choices. Victory is achieved when a player's total score equals 20. A loss occurs if a player cannot make a valid move on their turn.
+
+---
+
+**Setup:**
+
+- Both **Player 1** and **Player 2** start with a score of **0**.
+- The numbers **1** through **10** are available for selection each turn.
+- No physical components are required; the game is played through a command-line interface with inputs and outputs reflecting the current game state.
+
+---
+
+**Game Components:**
+
+- **Available Numbers (1-10):** At each turn, players can choose any number from 1 to 10, adhering to the game rules.
+  - **Functionality:** Numbers represent points added to a player's total score.
+  - **Unique Attributes:** Players cannot choose the number their opponent selected on the previous turn.
+
+- **Player Scores:**
+  - **Appearance:** Displayed as a numerical value starting from 0 and increasing based on selections.
+  - **Functionality:** Tracks each player's progress towards the target score of 20.
+
+- **Turn Indicators:**
+  - **Appearance:** Text prompts indicating which player's turn it is.
+  - **Functionality:** Guides players through the game flow.
+
+---
+
+**Turns:**
+
+1. **Turn Order:**
+   - The game begins with **Player 1** and alternates between players each turn.
+
+2. **Turn Structure:**
+   - **Choose a Number:**
+     - Select a number between **1** and **10** inclusive.
+     - **Restrictions:**
+       - Cannot select the number your opponent chose on their last turn.
+       - Cannot choose a number that would increase your total score above **20**.
+   - **Update Score:**
+     - Add the chosen number to your total score.
+     - Announce your new total score.
+
+3. **Progression:**
+   - The game continues with players alternating turns until one player wins or loses according to the game rules.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Number Selection Rules:**
+   - On your turn, you must choose a number from **1** to **10**.
+   - You **cannot** select the same number your opponent chose on their immediate previous turn.
+   - You **cannot** choose a number that causes your total score to exceed **20**.
+
+2. **Scoring Mechanics:**
+   - Add the selected number to your current total score.
+   - Monitor your total score to plan future moves.
+
+3. **Winning the Game:**
+   - If your total score reaches exactly **20** after your turn, you win.
+   - If you cannot make a valid move on your turn, you lose the game.
+
+4. **Invalid Moves:**
+   - If all available numbers either exceed the total score of 20 or are blocked due to the opponent's last selection, and no valid numbers remain, the player loses.
+
+---
+
+**Scoring:**
+
+- **Score Tracking:**
+  - Each player's score is individually tracked and updated after each turn.
+  - Scores are displayed after each move.
+
+- **Winning Condition:**
+  - The first player to reach a total score of **20** points wins the game.
+
+- **Losing Condition:**
+  - If a player cannot make a valid move on their turn, they lose.
+
+---
+
+**Examples:**
+
+*Example Game Playthrough 1:*
+
+- **Initial State:**
+  - Player 1 Score: 0
+  - Player 2 Score: 0
+
+- **Turn 1 - Player 1:**
+  - Available Numbers: 1-10
+  - Player 1 chooses **7**.
+  - Player 1 Score: 0 + 7 = **7**
+  - Output: "Player 1 chooses 7. Total score is now 7."
+
+- **Turn 2 - Player 2:**
+  - Available Numbers: 1-10 (excluding 7, opponent's last choice)
+  - Player 2 chooses **5**.
+  - Player 2 Score: 0 + 5 = **5**
+  - Output: "Player 2 chooses 5. Total score is now 5."
+
+- **Turn 3 - Player 1:**
+  - Cannot choose **5** (opponent's last choice)
+  - Available Numbers: 1-10 (excluding 5)
+  - Player 1 chooses **8**.
+  - Player 1 Score: 7 + 8 = **15**
+  - Output: "Player 1 chooses 8. Total score is now 15."
+
+- **Turn 4 - Player 2:**
+  - Cannot choose **8**
+  - Player 2 chooses **6**.
+  - Player 2 Score: 5 + 6 = **11**
+  - Output: "Player 2 chooses 6. Total score is now 11."
+
+- **Turn 5 - Player 1:**
+  - Cannot choose **6**
+  - Possible choices without exceeding 20: 1, 2, 3, 4, (since 15 + 5 or greater would exceed 20)
+  - Player 1 chooses **5**.
+  - Player 1 Score: 15 + 5 = **20**
+  - Output: "Player 1 chooses 5. Total score is now 20."
+  - **Player 1 wins the game.**
+
+*Example Game Playthrough 2 (Player Loses Due to No Valid Moves):*
+
+- **State Before Turn:**
+  - Player 1 Score: **19**
+  - Player 2 Score: **18**
+  - Last Number Chosen by Player 2: **1**
+
+- **Turn - Player 1:**
+  - Cannot choose **1** (opponent's last choice)
+  - Any number from 2 upwards would exceed 20 (19 + 2 = 21)
+  - No valid numbers to choose.
+  - Output: "Player 1 cannot make a valid move and loses the game."
+  - **Player 2 wins the game.**
+
+---
+
+**Sample Command-Line Interaction:**
+
+*Assuming it's Player 1's Turn and Player 1's Score is 17, Player 2's last chosen number is 8:*
+
+- **Prompt:**
+  ```
+  Player 1, it's your turn.
+  Your current score: 17
+  Opponent's last chosen number: 8
+  Choose a number between 1 and 10, excluding 8, that doesn't cause your total score to exceed 20:
+  ```
+
+- **Player Input:**
+  ```
+  3
+  ```
+
+- **Output:**
+  ```
+  Player 1 chooses 3.
+  Player 1's total score is now 20.
+  Player 1 wins the game!
+  ```
+
+*If Player 1 had no valid moves:*
+
+- **Prompt:**
+  ```
+  Player 1, it's your turn.
+  Your current score: 19
+  Opponent's last chosen number: 1
+  No valid moves available. You cannot choose 1, and selecting any other number exceeds 20.
+  You lose the game.
+  ```
+
+---
+
+**Strategy Tips:**
+
+- **Plan Ahead:** Keep track of which numbers will be unavailable on your next turn based on your opponent's possible choices.
+- **Control the Game:** By choosing certain numbers, you can limit your opponent's options on their following turn.
+- **Avoid High Numbers Late Game:** As your score approaches 20, opt for smaller numbers to avoid exceeding the target.
+
+---
+
+**Conclusion:**
+
+Target Twenty is an engaging and strategic game suitable for players who enjoy numerical challenges and forward-thinking tactics. Its simple rules make it easy to code and play via a command-line interface, yet it offers depth that allows skilled players to consistently outmaneuver less experienced opponents. With no possibility of a draw and quick gameplay, it's an excellent choice for those seeking a unique and competitive gaming experience.

@@ -1,0 +1,200 @@
+# Gravity Duel
+
+**Objective**
+
+Be the first player to move the token exactly onto your goal position by strategically applying force and countering the gravitational pull. The game is a tug-of-war on a linear track where each player aims to bring the token to their own end of the line.
+
+---
+
+**Setup**
+
+1. **Game Track**: A linear track consisting of positions numbered from **0** to **10**.
+2. **Token Position**: Place a token at the **central position (5)** on the track.
+3. **Player Roles**:
+   - **Player 1**: Controls the **Left Goal at position 0**.
+   - **Player 2**: Controls the **Right Goal at position 10**.
+
+---
+
+**Game Components**
+
+- **Linear Track**: Positions numbered **0** to **10** representing the path of the token.
+- **Token**: A marker that indicates the current position on the track.
+- **Force Application**: Numerical values (**1**, **2**, or **3**) representing the strength of the player's move.
+- **Gravity Effect**: An automatic movement of the token **one step towards the center (position 5)** after each player's turn, simulating gravitational pull.
+
+---
+
+**Turns**
+
+1. **Turn Order**:
+   - The game begins with **Player 1**.
+   - Players alternate turns thereafter.
+
+2. **Player Actions on a Turn**:
+   - **Apply Force**: Choose to move the token **1**, **2**, or **3** positions towards your own goal.
+   - **Movement Execution**:
+     - Move the token the chosen number of positions towards your goal.
+     - If the token would move beyond the goal position (below 0 for Player 1 or above 10 for Player 2), you must choose a smaller force or forfeit the game.
+   - **Gravity Effect**:
+     - After moving the token, it automatically moves **1 position towards the center (position 5)**.
+     - If the token is already at position 5, gravity does not affect it.
+     - Gravity cannot move the token beyond positions **0** or **10**.
+
+---
+
+**Rules and Mechanics**
+
+1. **Force Application Limits**:
+   - You must apply a force of **1**, **2**, or **3** on your turn.
+   - The force moves the token towards **your own goal**.
+   - You cannot apply a force that would move the token beyond your goal.
+
+2. **Gravity Effect**:
+   - Represents a constant pull towards the center.
+   - After each player's turn, gravity moves the token **1 position towards position 5**.
+   - If the token is at position 5, gravity has **no effect**.
+   - Gravity is applied **after** the player's move.
+
+3. **Winning the Game**:
+   - You win if you move the token **exactly onto your goal position** (Player 1 to position 0, Player 2 to position 10).
+   - If a player cannot make a valid move without exceeding their goal, they **lose the game**.
+
+4. **Invalid Moves**:
+   - If you attempt to apply a force that would move the token beyond your goal, you must choose a valid force.
+   - If no valid force is available (all possible forces would overshoot the goal), you **lose the game**.
+
+---
+
+**Scoring**
+
+- The game uses a **win/loss system**; there are no points.
+- **First player to reach their goal position wins**.
+- There are **no draws** in Gravity Duel.
+
+---
+
+**Examples**
+
+*Example Game Playthrough*
+
+**Initial Setup**:
+- Token is at position **5**.
+- Player 1 aims for position **0**.
+- Player 2 aims for position **10**.
+
+---
+
+**Turn 1**: *Player 1's Turn*
+
+- **Current Token Position**: 5
+- **Player 1 Applies Force**: 2 (towards position 0)
+- **Token Movement**: 5 → 3
+- **Gravity Effect**: Token moves 1 position towards center (position 5)
+- **Token Position after Gravity**: 3 → 4
+
+---
+
+**Turn 2**: *Player 2's Turn*
+
+- **Current Token Position**: 4
+- **Player 2 Applies Force**: 3 (towards position 10)
+- **Token Movement**: 4 → 7
+- **Gravity Effect**: Token moves 1 position towards center (position 5)
+- **Token Position after Gravity**: 7 → 6
+
+---
+
+**Turn 3**: *Player 1's Turn*
+
+- **Current Token Position**: 6
+- **Player 1 Applies Force**: 3 (cannot apply force of 3 as it would not move towards their goal)
+- **Valid Force Options**: Can only apply force towards position 0
+- **Player 1 Applies Force**: Cannot move token towards their goal from position 6 without negative movement (invalid)
+- **Player 1 Cannot Make a Valid Move**
+- **Player 1 Loses the Game**
+- **Player 2 Wins**
+
+*Explanation*: From position 6, Player 1 cannot move the token towards position 0 using a positive force. Since negative forces are not allowed, Player 1 cannot make a valid move and thus loses.
+
+---
+
+*Alternative Scenario*
+
+**Turn 1**: *Player 1's Turn*
+
+- **Token at Position**: 5
+- **Player 1 Applies Force**: 1 (towards position 0)
+- **Token Movement**: 5 → 4
+- **Gravity Effect**: 4 → 5
+
+---
+
+**Turn 2**: *Player 2's Turn*
+
+- **Token at Position**: 5
+- **Player 2 Applies Force**: 3 (towards position 10)
+- **Token Movement**: 5 → 8
+- **Gravity Effect**: 8 → 7
+
+---
+
+**Turn 3**: *Player 1's Turn*
+
+- **Token at Position**: 7
+- **Player 1 Applies Force**: Cannot move token towards position 0 from position 7
+- **Player 1 Cannot Make a Valid Move**
+- **Player 1 Loses**
+- **Player 2 Wins**
+
+---
+
+**Strategic Considerations**
+
+- **Anticipate Gravity**: Plan your moves by considering the gravity effect after your turn.
+- **Force Selection**: Choosing the right amount of force is crucial; sometimes a smaller force yields a better position after gravity.
+- **Control the Center**: Keeping the token near the center can give you more options and limit your opponent's moves.
+- **Force Your Opponent**: Try to move the token into positions where your opponent has no valid moves.
+
+---
+
+**Command-Line Interaction Example**
+
+*Assuming a simple command-line interface where players input their chosen force.*
+
+**Game Start**
+
+```
+Token is at position 5.
+Player 1's turn.
+Enter force (1, 2, or 3):
+
+Player 1 enters: 2
+Token moves to position 3.
+Gravity moves token to position 4.
+
+Token is at position 4.
+Player 2's turn.
+Enter force (1, 2, or 3):
+
+Player 2 enters: 3
+Token moves to position 7.
+Gravity moves token to position 6.
+
+Token is at position 6.
+Player 1's turn.
+Enter force (1, 2, or 3):
+
+Player 1 cannot make a valid move.
+Player 2 wins!
+```
+
+---
+
+**Summary**
+
+Gravity Duel is a strategic two-player game played on a linear track in a command-line interface. Players must outmaneuver each other by selecting the right amount of force to move the token toward their goal while countering the gravitational pull that favors the center position. With simple rules and deep strategic potential, Gravity Duel offers a quick and engaging gameplay experience where skill triumphs over luck.
+
+---
+
+Enjoy the battle against gravity and may the best strategist win!

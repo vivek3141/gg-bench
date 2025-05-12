@@ -1,0 +1,225 @@
+# Number Clash: A Two-Player Turn-Based Command-Line Game
+
+## Objective
+
+**Primary Goal:**  
+Reduce your opponent's score to zero or below before your own score reaches zero. Use strategic number selection to outmaneuver your opponent and achieve victory.
+
+**Victory Condition:**  
+A player wins when their opponent's score reaches zero or a negative number as a result of the turn actions.
+
+---
+
+## Setup
+
+- **Starting Scores:**  
+  - Both players begin with a score of **100**.
+
+- **Player Identification:**  
+  - Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or a simple random method like a coin toss.
+
+---
+
+## Game Components
+
+- **Scores:**  
+  - Each player has an individual score starting at **100**.
+  
+- **Number Pool:**  
+  - A shared set of numbers from **1** to **10** (inclusive).
+
+- **Turn History:**  
+  - A record of the last number used against each player.
+
+- **Command-Line Interface:**  
+  - Players input their chosen numbers via the command line when prompted.
+
+---
+
+## Turns
+
+- **Turn Order:**  
+  - The game proceeds in alternating turns starting with **Player 1**.
+
+- **Turn Structure:**  
+  1. **Prompt:** The current player is prompted to select a number from **1** to **10**.
+  2. **Restriction Check:** The chosen number **must not** be the same as the last number used against the current player.
+  3. **Validation:**
+     - **Valid Choice:** If the number is valid, it is subtracted from the opponent's score.
+     - **Invalid Choice:** If the number is invalid (same as the last used against them or out of range), the turn is forfeited.
+  4. **Update Scores:** Adjust the opponent's score accordingly.
+  5. **Turn History Update:** Record the number used for reference in the opponent's next turn.
+  6. **Check for Victory:** If a player's score is zero or below, the game ends, and the other player wins.
+  
+- **Example Turn Flow for Player 1:**
+  - Prompt: "Player 1, enter a number between 1 and 10:"
+  - Input: Player enters their chosen number.
+  - Validation and execution follow as per the rules.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - On your turn, select any integer **N** such that **1 ≤ N ≤ 10**.
+   
+2. **Restriction on Number Used Against You:**
+   - You **cannot** select the same number that your opponent used against you on their last turn.
+   - If you do, your turn is forfeited, and no points are subtracted from your opponent's score.
+
+3. **Score Reduction:**
+   - The valid chosen number is subtracted from your opponent's current score.
+
+4. **Tracking Last Number Used:**
+   - Keep track of the last valid number used against you for reference.
+
+5. **Forfeited Turns:**
+   - If a turn is forfeited due to an invalid number choice, the opponent's score remains unchanged.
+
+6. **Winning the Game:**
+   - If your opponent's score reaches **zero or below** after you subtract the number, you win the game.
+
+---
+
+## Scoring
+
+- **Score Tracking:**
+  - Both players' scores are displayed at the end of each turn.
+
+- **Score Calculation Example:**
+  - If Player 1 subtracts **7** from Player 2's score:
+    - Player 2's new score = Previous Score - 7
+
+- **No Negative Subtractions:**
+  - Scores can go negative; the game ends immediately if a score is zero or negative.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial State:**
+- Player 1 Score: 100
+- Player 2 Score: 100
+- Last Number Used Against Player 1: None
+- Last Number Used Against Player 2: None
+
+---
+
+**Turn 1: Player 1**
+
+- **Prompt:** "Player 1, enter a number between 1 and 10:"
+- **Input:** 5
+- **Validation:** Valid (no restrictions on first turn)
+- **Action:** Subtract 5 from Player 2's score.
+- **Updated Scores:**
+  - Player 1 Score: 100
+  - Player 2 Score: 95
+- **Update Turn History:**
+  - Last Number Used Against Player 2: 5
+
+---
+
+**Turn 2: Player 2**
+
+- **Prompt:** "Player 2, enter a number between 1 and 10 (cannot be 5):"
+- **Input:** 5
+- **Validation:** Invalid (cannot use 5)
+- **Action:** Turn forfeited. No changes to scores.
+- **Updated Scores:**
+  - Player 1 Score: 100
+  - Player 2 Score: 95
+- **Update Turn History:**
+  - Last Number Used Against Player 1: None (since turn was forfeited)
+
+---
+
+**Turn 3: Player 1**
+
+- **Prompt:** "Player 1, enter a number between 1 and 10:"
+- **Input:** 7
+- **Validation:** Valid
+- **Action:** Subtract 7 from Player 2's score.
+- **Updated Scores:**
+  - Player 1 Score: 100
+  - Player 2 Score: 88
+- **Update Turn History:**
+  - Last Number Used Against Player 2: 7
+
+---
+
+**Turn 4: Player 2**
+
+- **Prompt:** "Player 2, enter a number between 1 and 10 (cannot be 7):"
+- **Input:** 9
+- **Validation:** Valid
+- **Action:** Subtract 9 from Player 1's score.
+- **Updated Scores:**
+  - Player 1 Score: 91
+  - Player 2 Score: 88
+- **Update Turn History:**
+  - Last Number Used Against Player 1: 9
+
+---
+
+**Game Continues...**
+
+Players continue taking turns following the same rules until one player's score reaches zero or below.
+
+---
+
+### Command-Line Interaction Example
+
+```
+Player 1 Score: 100
+Player 2 Score: 100
+
+Player 1, enter a number between 1 and 10:
+5
+
+Player 1 subtracts 5 from Player 2.
+Player 2's score is now 95.
+
+Player 2 Score: 95
+Player 1 Score: 100
+
+Player 2, enter a number between 1 and 10 (cannot be 5):
+5
+
+Invalid choice! You cannot use the number that was just used against you.
+Your turn is forfeited.
+
+Player 1 Score: 100
+Player 2 Score: 95
+
+Player 1, enter a number between 1 and 10:
+7
+
+Player 1 subtracts 7 from Player 2.
+Player 2's score is now 88.
+```
+
+---
+
+## Strategy Tips
+
+- **Avoid Common Numbers:**
+  - Anticipate which numbers your opponent might want to use and use them to limit their options.
+
+- **Vary Your Choices:**
+  - Changing your number selections can prevent your opponent from predicting your moves.
+
+- **Monitor Scores:**
+  - Keep an eye on both scores to plan when to use higher or lower numbers strategically.
+
+- **Force Forfeits:**
+  - By using numbers you think your opponent might choose next, you increase the chance they might forfeit a turn.
+
+---
+
+## Summary
+
+"Number Clash" is a simple yet strategic game that revolves around number selection and score management. Players must carefully choose numbers to reduce their opponent's score while navigating the restriction of not repeating the last number used against them.
+
+Enjoy the game, and may the best strategist win!

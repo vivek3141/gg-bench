@@ -1,0 +1,195 @@
+**Game Name:** Odd-Even Quest
+
+---
+
+### **Objective**
+
+Be the player who reduces the shared number to **zero** by strategically subtracting divisors of specific parity (odd or even). Victory is achieved by making the last valid move that brings the number down to exactly zero, or by leaving your opponent with no valid moves.
+
+---
+
+### **Setup**
+
+1. **Starting Number (N):** The game begins with a shared positive integer, commonly **15**. Players can agree on a different positive integer to start the game.
+2. **Decide Turn Order:** Players decide who will take the first turn, either by mutual agreement or randomly (e.g., coin toss).
+
+---
+
+### **Game Components**
+
+- **Current Number (N):** A shared positive integer that decreases as the game progresses.
+- **Parity Indicator:** Tracks whether the next move requires an odd or even divisor based on the opponent's previous move.
+- **Players:** Two players taking alternating turns.
+
+---
+
+### **Turns**
+
+- **Turn Structure:**
+  1. **Identify Possible Divisors:** On their turn, a player lists all positive integer divisors of the Current Number.
+  2. **Determine Required Parity:** The parity (odd or even) of the divisor to be subtracted depends on the opponent's previous move.
+     - **First Turn:** No parity restriction; the first player can subtract any positive divisor.
+     - **Subsequent Turns:** If the opponent subtracted an **odd** divisor, the current player must subtract an **even** divisor, and vice versa.
+  3. **Subtract Divisor:** The player subtracts a valid divisor that matches the required parity from the Current Number.
+  4. **Update Game State:** The Current Number is updated, and the parity requirement is set for the next player based on the parity of the divisor just subtracted.
+  5. **Check for Win/Lose Conditions:** If the Current Number is reduced to zero, or if a player cannot make a valid move, the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves:**
+   - **Divisibility:** The number subtracted must be a positive integer divisor of the Current Number.
+   - **Parity Requirement:** The parity of the divisor (odd or even) must be opposite to that of the opponent's previous move.
+     - If the opponent subtracted an **odd** number, you must subtract an **even** number.
+     - If the opponent subtracted an **even** number, you must subtract an **odd** number.
+2. **First Turn Flexibility:**
+   - The first player has no parity restriction and may subtract any positive divisor.
+3. **Updating the Current Number:**
+   - Subtract the chosen divisor from the Current Number to get the new Current Number.
+4. **Winning the Game:**
+   - **Victory by Zero:** If a player reduces the Current Number to exactly zero on their turn with a valid move, they win.
+   - **Victory by Default:** If a player has no valid moves on their turn (no divisors matching the required parity), they lose, and the opponent wins.
+5. **Invalid Moves:**
+   - If a player attempts to subtract a number that is not a valid divisor or doesn't match the required parity, it's considered an invalid move leading to immediate loss.
+
+---
+
+### **Scoring**
+
+- **Winning:** The player who reduces the Current Number to zero or leaves their opponent with no valid moves wins the game.
+- **Tracking Wins:** In a series of games, players can keep track of the number of wins to determine an overall champion.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting with N = 15**
+
+1. **Player 1's Turn:**
+   - **Current Number:** 15
+   - **Divisors of 15:** 1, 3, 5, 15
+   - **No Parity Restriction:** Can subtract any divisor.
+   - **Player 1 subtracts:** **5** (odd)
+   - **New Current Number:** 15 - 5 = **10**
+   - **Next Player Must Subtract:** **Even** divisor (opposite of odd)
+
+2. **Player 2's Turn:**
+   - **Current Number:** 10
+   - **Divisors of 10:** 1, 2, 5, 10
+   - **Required Parity:** Even
+   - **Even Divisors:** 2, 10
+   - **Player 2 subtracts:** **2**
+   - **New Current Number:** 10 - 2 = **8**
+   - **Next Player Must Subtract:** **Even** divisor (opposite of even)
+
+3. **Player 1's Turn:**
+   - **Current Number:** 8
+   - **Divisors of 8:** 1, 2, 4, 8
+   - **Required Parity:** Even
+   - **Even Divisors:** 2, 4, 8
+   - **Player 1 subtracts:** **8**
+   - **New Current Number:** 8 - 8 = **0**
+   - **Player 1 wins** by reducing the number to zero.
+
+---
+
+#### **Alternate Scenario**
+
+**Starting with N = 15**
+
+1. **Player 1's Turn:**
+   - **Subtracts:** **3** (odd)
+   - **New Current Number:** 12
+   - **Next Player Must Subtract:** **Even** divisor
+
+2. **Player 2's Turn:**
+   - **Subtracts:** **4** (even)
+   - **New Current Number:** 8
+   - **Next Player Must Subtract:** **Odd** divisor
+
+3. **Player 1's Turn:**
+   - **Subtracts:** **1** (odd)
+   - **New Current Number:** 7
+   - **Next Player Must Subtract:** **Even** divisor
+
+4. **Player 2's Turn:**
+   - **Divisors of 7:** 1, 7
+   - **Even Divisors:** None
+   - **Player 2 has no valid moves and loses**
+   - **Player 1 wins** by default.
+
+---
+
+### **Command-Line Interaction Examples**
+
+#### **Sample Turn-by-Turn Interaction**
+
+```plaintext
+Game Start!
+Current Number: 15
+
+Player 1's Turn
+Divisors of 15: 1, 3, 5, 15
+No parity restriction.
+Enter a divisor to subtract: 5
+Player 1 subtracts 5.
+New Current Number: 10
+Next player must subtract an even divisor.
+
+Player 2's Turn
+Divisors of 10: 1, 2, 5, 10
+Even divisors: 2, 10
+Enter a divisor to subtract: 2
+Player 2 subtracts 2.
+New Current Number: 8
+Next player must subtract an even divisor.
+
+Player 1's Turn
+Divisors of 8: 1, 2, 4, 8
+Even divisors: 2, 4, 8
+Enter a divisor to subtract: 8
+Player 1 subtracts 8.
+New Current Number: 0
+Player 1 wins!
+```
+
+#### **Invalid Move Example**
+
+```plaintext
+Current Number: 12
+
+Player 1's Turn
+Divisors of 12: 1, 2, 3, 4, 6, 12
+Required parity: Odd
+Odd divisors: 1, 3
+Enter a divisor to subtract: 4
+Invalid move! You must subtract an odd divisor.
+Enter a divisor to subtract: 3
+Player 1 subtracts 3.
+New Current Number: 9
+Next player must subtract an even divisor.
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead:** Anticipate your opponent's possible moves by considering the resulting Current Number and available divisors.
+- **Control Parity:** Use your move to force your opponent into a position with limited or no valid moves.
+- **First Move Advantage:** Depending on the starting number, choosing the right first move can set the tone for the game.
+
+---
+
+### **Game Implementation Notes**
+
+- **Easy to Code:** The game involves basic arithmetic operations and simple game logic, suitable for a command-line interface.
+- **No Draws:** The game design ensures that there is always a winner.
+- **Quick Gameplay:** Games are short, often concluding within a few turns.
+- **Skill-Based Outcome:** Strategic thinking and planning are rewarded, allowing skilled players to consistently win.
+
+---
+
+By carefully selecting which divisors to subtract and strategically manipulating the parity requirements, players engage in a battle of wits in **Odd-Even Quest**. This game offers a unique and enjoyable experience that combines simple rules with deep strategic potential.

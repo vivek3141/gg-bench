@@ -1,0 +1,158 @@
+# Number Clash
+
+## Rule Book
+
+---
+
+### Objective
+
+The primary goal of **Number Clash** is to be the first player to reach a predefined target number by strategically selecting and combining numerical values. Players achieve victory by applying basic arithmetic operations to outmaneuver their opponent and reach the target number while preventing the opponent from doing the same.
+
+### Setup
+
+1. **Target Number**: Agree upon a target number to reach (e.g., 50). This number should be the same for both players.
+2. **Starting Hands**: Each player begins with an identical set of numbers from 1 to 9.
+3. **Initial Score**: Both players start with a score of zero.
+4. **Turn Order**: Decide which player goes first (e.g., by coin toss).
+
+### Game Components
+
+- **Number Tokens**: Digits from 1 to 9. Each player has one of each digit.
+  - **Appearance**: Represented by numbers 1-9 in the command-line interface.
+  - **Functionality**: Used to perform actions during a player's turn.
+- **Operations**: Addition (+) and Multiplication (×).
+  - **Usage**: Players choose which operation to apply with their selected number.
+- **Score Tracker**: Keeps track of each player's current score toward the target number.
+  - **Attributes**: An integer value starting at zero for each player.
+
+### Turns
+
+1. **Select a Number**: On your turn, choose one unused number from your set (1-9).
+2. **Choose an Operation**: Decide to either add (+) or multiply (×) your chosen number with your current score.
+3. **Update Score**: Apply the operation to your current score.
+   - **Addition**: `New Score = Current Score + Chosen Number`
+   - **Multiplication**: `New Score = Current Score × Chosen Number`
+   - If the current score is zero and multiplication is chosen, treat zero × any number as zero.
+4. **Discard Used Number**: Once a number is used, it cannot be used again.
+5. **Turn Progression**: The turn passes to the next player.
+6. **Restrictions**: If no valid moves are available, the player skips their turn.
+
+### Rules and Mechanics
+
+- **Number Usage**: Each number from 1 to 9 can be used only once per player.
+- **Operations**:
+  - **Addition (+)**:
+    - Safe and incremental increase toward the target.
+  - **Multiplication (×)**:
+    - Allows for rapid increases but can overshoot the target if not careful.
+- **Overshooting the Target**:
+  - If a player's score exceeds the target number, their score resets to half of the target number (rounded down).
+    - Example: If the target is 50 and a player reaches 53, their new score is 25.
+- **Winning the Game**:
+  - The first player to reach exactly the target number wins.
+- **Blocking Mechanism**:
+  - Players can anticipate opponents' moves and use numbers strategically to limit their options.
+- **No Draws**:
+  - The game continues until one player reaches the target number.
+
+### Scoring
+
+- **Score Tracking**:
+  - Each player's score is an integer value updated each turn.
+  - Scores are displayed after each move.
+- **Winning Contribution**:
+  - Precisely reaching the target number constitutes a win.
+  - Overshooting penalties encourage careful planning.
+
+### Examples
+
+#### Sample Turn Sequence
+
+**Target Number**: 20
+
+**Players**: Alice and Bob
+
+---
+
+**Starting Scores**:
+
+- Alice: 0
+- Bob: 0
+
+**Available Numbers for Each Player**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+---
+
+**Turn 1: Alice**
+
+- **Chosen Number**: 5
+- **Operation**: Addition (+)
+- **Calculation**: 0 + 5 = 5
+- **New Score**: 5
+- **Numbers Remaining**: 1-4, 6-9
+
+**Turn 2: Bob**
+
+- **Chosen Number**: 3
+- **Operation**: Multiplication (×)
+- **Calculation**: 0 × 3 = 0
+- **New Score**: 0 (no change because 0 × any number is 0)
+- **Numbers Remaining**: 1-2, 4-9
+
+**Turn 3: Alice**
+
+- **Chosen Number**: 4
+- **Operation**: Multiplication (×)
+- **Calculation**: 5 × 4 = 20
+- **New Score**: 20
+- **Numbers Remaining**: 1-3, 6-9
+
+**Result**:
+
+- Alice has reached the target number exactly and wins the game.
+
+---
+
+### Command-Line Interaction Example
+
+**Initial Prompt**:
+
+```
+Target Score: 20
+Alice's Turn. Current Score: 0
+Available Numbers: 1,2,3,4,5,6,7,8,9
+Choose a number: 5
+Choose an operation (+ or *): +
+Alice's new score is 5
+
+Bob's Turn. Current Score: 0
+Available Numbers:1,2,4,5,6,7,8,9
+Choose a number: 3
+Choose an operation (+ or *): *
+Bob's new score is 0
+
+Alice's Turn. Current Score:5
+Available Numbers:1,2,3,6,7,8,9
+Choose a number:4
+Choose an operation (+ or *): *
+Alice's new score is 20
+
+Alice has reached the target score and wins the game!
+```
+
+### Strategic Tips
+
+- **Balance Operations**:
+  - Use addition to make steady progress without risking overshooting.
+  - Use multiplication to make significant leaps when beneficial.
+- **Plan Ahead**:
+  - Keep track of both your and your opponent's remaining numbers.
+  - Anticipate which numbers they might use.
+- **Avoid Overshooting**:
+  - Be cautious when close to the target; overshooting can set you back.
+- **Force Skips**:
+  - Use numbers that limit your opponent's options, potentially causing them to skip a turn.
+
+---
+
+Enjoy testing your numerical strategy and may the best mathematician win!

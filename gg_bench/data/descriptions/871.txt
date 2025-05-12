@@ -1,0 +1,141 @@
+# Mirror Match
+
+## Objective
+
+**Mirror Match** is a two-player turn-based strategy game played in a command-line interface. The primary goal is to be the first player to create a palindromic sequence of numbers. A palindrome is a sequence that reads the same forwards and backwards (e.g., `1-2-3-2-1`). Players achieve victory by strategically placing numbers to form such a sequence while preventing their opponent from doing the same.
+
+## Setup
+
+1. **Initial Sequence**: Start with an empty sequence.
+2. **Number Pool**: Numbers from `1` to `9` are available for both players.
+3. **Player Assignment**: Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by a random method such as a coin toss.
+
+## Game Components
+
+- **Number Pool**: Digits `1` through `9`.
+  - **Appearance**: Represented by their numeric digits.
+  - **Functionality**: Numbers are used to build the shared sequence.
+  - **Unique Attributes**: Each number from `1` to `9` can be used multiple times unless it's already in the sequence.
+
+- **Sequence**: A list where numbers are appended.
+  - **Functionality**: The central element of the game where players add numbers.
+  - **State**: Updated after each turn to reflect the current sequence.
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with **Player 1**.
+- **Actions Per Turn**:
+  1. **Select a Number**: Choose any number from `1` to `9`.
+  2. **Placement**: Decide to place the selected number at the **beginning** or **end** of the sequence.
+- **Progression**: After placing the number, check for a palindrome. If none is formed, the turn passes to the next player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players can select any number between `1` and `9`, regardless of how many times it has been used.
+   - There is no restriction on reusing numbers within the sequence.
+
+2. **Placement Options**:
+   - **Beginning of the Sequence**: Place the number before all existing numbers.
+   - **End of the Sequence**: Place the number after all existing numbers.
+
+3. **Creating a Palindrome**:
+   - A palindrome is formed when the sequence reads the same forwards and backwards.
+   - The sequence must be at least three numbers long to qualify as a palindrome for victory conditions.
+
+4. **Winning the Game**:
+   - If a player creates a palindromic sequence on their turn, they win immediately.
+   - The palindrome must be formed **after** the player's move, not before.
+   - Players must be attentive to both offensive and defensive moves.
+
+5. **Draw Condition**:
+   - There is **no** draw mechanism. The game continues until a player wins.
+
+6. **Invalid Moves**:
+   - If a player does not add a number or tries to add an invalid number (outside `1` to `9`), they forfeit their turn.
+   - Continuously making invalid moves may result in disqualification based on mutual agreement.
+
+## Scoring
+
+- **Win Condition**: Successfully create a palindromic sequence during your turn.
+- **No Points System**: The game does not track points; it operates on a win/loss basis.
+- **Game Length**: Designed to end quickly, typically within a few turns if played strategically.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses number `4` and places it at the **end**.
+- **Sequence**: `4`
+- **Palindrome Check**: Not a palindrome (sequence too short).
+  
+#### Turn 2: Player 2
+
+- **Action**: Chooses number `5` and places it at the **beginning**.
+- **Sequence**: `5 4`
+- **Palindrome Check**: Not a palindrome.
+
+#### Turn 3: Player 1
+
+- **Action**: Chooses number `4` and places it at the **end**.
+- **Sequence**: `5 4 4`
+- **Palindrome Check**: Not a palindrome.
+
+#### Turn 4: Player 2
+
+- **Action**: Chooses number `5` and places it at the **end**.
+- **Sequence**: `5 4 4 5`
+- **Palindrome Check**: The sequence is `5 4 4 5`, which is a palindrome.
+- **Result**: **Player 2 wins**.
+
+### Command-Line Interaction Sample
+
+```plaintext
+[Player 1's Turn]
+Current Sequence: 
+Choose a number (1-9): 3
+Place at the (B)eginning or (E)nd? E
+Updated Sequence: 3
+No palindrome formed.
+
+[Player 2's Turn]
+Current Sequence: 3
+Choose a number (1-9): 7
+Place at the (B)eginning or (E)nd? B
+Updated Sequence: 7 3
+No palindrome formed.
+
+[Player 1's Turn]
+Current Sequence: 7 3
+Choose a number (1-9): 5
+Place at the (B)eginning or (E)nd? E
+Updated Sequence: 7 3 5
+No palindrome formed.
+
+[Player 2's Turn]
+Current Sequence: 7 3 5
+Choose a number (1-9): 3
+Place at the (B)eginning or (E)nd? E
+Updated Sequence: 7 3 5 3
+No palindrome formed.
+
+[Player 1's Turn]
+Current Sequence: 7 3 5 3
+Choose a number (1-9): 7
+Place at the (B)eginning or (E)nd? E
+Updated Sequence: 7 3 5 3 7
+Palindrome formed: 7 3 5 3 7
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Anticipate Opponent's Moves**: Pay attention to the sequence to block potential palindromic setups by your opponent.
+- **Build Symmetry**: Aim to create symmetrical patterns that can lead to a palindrome on your next turn.
+- **Control the Center**: Placing numbers to disrupt the opponent's plans can be as valuable as advancing your own.
+
+## Conclusion
+
+**Mirror Match** combines simple mechanics with strategic depth, ensuring that skilled players can consistently outperform unskilled opponents. Its ease of implementation in a command-line interface makes it an ideal choice for quick and engaging gameplay sessions.

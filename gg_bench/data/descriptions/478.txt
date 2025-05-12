@@ -1,0 +1,247 @@
+# Knight's Blockade: Rule Book
+
+## Objective
+
+**Knight's Blockade** is a strategic two-player turn-based game played on a 5x5 grid. The primary goal is to trap your opponent by blocking their knight's possible moves, forcing them into a position where they cannot make a legal move on their turn. The player who successfully immobilizes the opponent's knight wins the game.
+
+## Setup
+
+1. **Game Board**: A 5x5 grid numbered with coordinates from (0,0) to (4,4).
+2. **Starting Positions**:
+   - **Player 1** places their knight at the top-left corner of the grid at position **(0, 0)**.
+   - **Player 2** places their knight at the bottom-right corner of the grid at position **(4, 4)**.
+3. **Initial Conditions**: All cells on the grid are unblocked at the start of the game.
+
+## Game Components
+
+- **Grid**: A virtual 5x5 board represented by coordinates. Each cell can be empty, occupied by a knight, or blocked.
+  
+- **Knights**:
+  - Represented by symbols:
+    - **Player 1's Knight**: `K1`
+    - **Player 2's Knight**: `K2`
+  - **Functionality**: Knights move in an L-shape (two cells in one direction and then one cell perpendicular) similar to the knight in chess.
+  
+- **Blocked Cells**:
+  - Cells that have been left by a knight after a move become blocked.
+  - Represented by the symbol: `X`
+  - **Attributes**: Knights cannot land on or pass through blocked cells.
+
+## Turns
+
+1. **Turn Order**:
+   - The game begins with **Player 1**.
+   - Players alternate turns thereafter.
+   
+2. **Actions During a Turn**:
+   - **Move Your Knight**:
+     - Must move your knight to a valid position following the knight's movement rules.
+     - Movement is required unless no legal moves are available.
+   - **Block the Previous Cell**:
+     - After moving, the cell your knight vacated becomes blocked (`X`).
+     - This cell cannot be used by either player for the remainder of the game.
+
+3. **Turn Progression**:
+   - Each player moves their knight and blocks the vacated cell.
+   - The game continues until a player cannot make a legal move on their turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Knight's Movement**:
+  - Moves in an L-shape: two steps in one direction and then one step perpendicular.
+  - Possible moves from position (x, y):
+    - (x ± 2, y ± 1)
+    - (x ± 1, y ± 2)
+    
+- **Legal Moves**:
+  - The destination cell must be within the bounds of the 5x5 grid.
+  - The cell must not be blocked (`X`) or occupied by either knight.
+  
+- **Blocked Cells**:
+  - Once a knight leaves a cell, it becomes blocked.
+  - Blocked cells cannot be entered or crossed.
+  
+- **No Passing**:
+  - Players cannot skip their turn unless they have no legal moves.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - A player wins if the opponent cannot make any legal knight moves on their turn.
+  
+- **Loss Condition**:
+  - A player loses if they cannot move their knight because all possible moves are blocked or off the grid.
+
+## Scoring
+
+- **Single-Game Victory**:
+  - The player who traps the opponent's knight wins the game.
+  
+- **Match Play (Optional)**:
+  - Players may agree to play multiple games in a match.
+  - Keep track of wins, and the player with the most victories after an agreed number of games wins the match.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Initial Grid (Coordinates)
+
+```
+[K1][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][K2]
+```
+
+- **Player 1's Knight** (`K1`) is at **(0, 0)**.
+- **Player 2's Knight** (`K2`) is at **(4, 4)**.
+
+#### Turn 1: Player 1
+
+- **Possible Moves** from (0, 0):
+  - (1, 2)
+  - (2, 1)
+- **Player 1 Moves** to **(2, 1)**.
+- **Block** cell **(0, 0)**.
+
+**Grid After Player 1's Move:**
+
+```
+[X ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][K1][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][K2]
+```
+
+#### Turn 2: Player 2
+
+- **Possible Moves** from (4, 4):
+  - (3, 2)
+  - (2, 3)
+- **Player 2 Moves** to **(2, 3)**.
+- **Block** cell **(4, 4)**.
+
+**Grid After Player 2's Move:**
+
+```
+[X ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][K1][  ][K2][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][X ]
+```
+
+#### Turn 3: Player 1
+
+- **Possible Moves** from (2, 1):
+  - (0, 0) - Blocked (`X`)
+  - (0, 2)
+  - (1, 3)
+  - (3, 3)
+  - (4, 0) - Out of bounds
+- **Player 1 Moves** to **(3, 3)**.
+- **Block** cell **(2, 1)**.
+
+**Grid After Player 1's Move:**
+
+```
+[X ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][X ][  ][K2][  ]
+[  ][  ][  ][K1][  ]
+[  ][  ][  ][  ][X ]
+```
+
+#### Turn 4: Player 2
+
+- **Possible Moves** from (2, 3):
+  - (0, 2)
+  - (0, 4)
+  - (1, 1)
+  - (3, 1)
+  - (4, 2)
+  - (4, 4) - Blocked (`X`)
+- **Player 2 Moves** to **(4, 2)**.
+- **Block** cell **(2, 3)**.
+
+**Grid After Player 2's Move:**
+
+```
+[X ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][X ][  ][X ][K2]
+[  ][  ][  ][K1][  ]
+[  ][  ][  ][  ][X ]
+```
+
+#### Game Progression
+
+Players continue to move their knights and block cells. The game becomes increasingly challenging as more cells are blocked, limiting available moves.
+
+#### End Game Scenario
+
+If, on a player's turn, they have no legal moves (all possible destinations are blocked or off the grid), they lose the game.
+
+### Sample Command-Line Interaction
+
+**Notation**:
+- Players input commands to move their knights.
+- Moves are specified by the destination coordinates.
+
+#### Player 1's Turn
+
+```
+Player 1's Knight is at (2, 1).
+Available Moves: (0, 2), (1, 3), (3, 3)
+Enter your move (e.g., 3 3): 3 3
+You moved to (3, 3).
+Cell (2, 1) is now blocked.
+```
+
+#### Player 2's Turn
+
+```
+Player 2's Knight is at (2, 3).
+Available Moves: (0, 2), (0, 4), (1, 1), (3, 1), (4, 2)
+Enter your move: 4 2
+You moved to (4, 2).
+Cell (2, 3) is now blocked.
+```
+
+#### Game Over
+
+```
+Player 1's Turn:
+Your Knight is at (3, 3).
+Available Moves: (1, 2), (1, 4), (2, 1) - Blocked, (4, 1), (4, 5) - Out of bounds
+Enter your move: 4 1
+You moved to (4, 1).
+Cell (3, 3) is now blocked.
+
+Player 2's Turn:
+Your Knight is at (4, 2).
+Available Moves: (2, 1), (2, 3) - Blocked, (3, 0), (5, 1) - Out of bounds
+No legal moves available.
+**Player 1 wins the game!**
+```
+
+## Strategy Tips
+
+- **Control the Center**: Moving towards the center can provide more options for future moves.
+  
+- **Block Key Positions**: Aim to block cells that limit your opponent's mobility.
+  
+- **Predict Opponent's Moves**: Anticipate where your opponent might move and plan your moves to trap them.
+  
+- **Stay Flexible**: Keep your knight in positions where multiple moves are available.
+
+## Conclusion
+
+Knight's Blockade is a game of foresight and strategy. Each move not only advances your position but also reduces the options available to your opponent. With simple rules and deep tactical possibilities, this game offers an engaging experience that challenges players to think ahead and outmaneuver their opponent.
+
+Enjoy the battle of wits, and may the best strategist win!

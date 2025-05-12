@@ -1,0 +1,261 @@
+**Game Name:** Chain Factor
+
+---
+
+## Objective
+
+Chain Factor is a two-player turn-based strategy game where players build a chain of numbers. The primary goal is to be the last player to make a valid move by adding numbers to a shared list according to the chain rule. A player wins by forcing their opponent into a position where they cannot add a number without breaking the chain rule, thus achieving victory.
+
+---
+
+## Setup
+
+1. **Players:** Two players, referred to as **Player 1** and **Player 2**.
+
+2. **Shared List:** The game uses a shared list that both players add numbers to. This list starts empty.
+
+3. **Number Pool:** Players use numbers from **1** to **9**, inclusive. Each number can be used multiple times by either player.
+
+4. **Starting Player:** Decide which player goes first. This can be done by mutual agreement or by a random method such as flipping a coin.
+
+---
+
+## Game Components
+
+- **Shared List:** A visual representation of the chain of numbers, displayed as a sequence within square brackets. For example: `[6, 3, 9]`.
+
+- **Numbers (1-9):** The numbers available for players to use. There is an unlimited supply of each number.
+
+- **Command-Line Interface:** Players will input their moves through textual commands in the command line.
+
+---
+
+## Turns
+
+1. **Turn Structure:**
+   - Players alternate turns, starting with Player 1.
+   - On their turn, a player must add one number to the shared list.
+
+2. **Adding a Number:**
+   - The player chooses a number between **1** and **9**.
+   - The number is added to **either the left or right end** of the shared list.
+   - The chosen number must satisfy the **Chain Rule** with the adjacent number in the list.
+
+3. **Chain Rule:**
+   - The number added must be a **factor or multiple** of the adjacent number it is placed next to.
+   - If the list is empty, any number from **1** to **9** can be added.
+
+4. **Passing:**
+   - A player **cannot pass** their turn. If they have a valid move, they must make it.
+
+5. **Invalid Moves:**
+   - If a player cannot add a number without breaking the Chain Rule, they lose their turn and the game ends.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Chain Rule Details:**
+   - **Factors:** A number `A` is a factor of `B` if `B % A == 0`.
+   - **Multiples:** A number `A` is a multiple of `B` if `A % B == 0`.
+   - When adding a number, it must satisfy one of these conditions with the adjacent number.
+
+2. **Adding to the Left End:**
+   - The new number must satisfy the Chain Rule with the current first number in the list.
+
+3. **Adding to the Right End:**
+   - The new number must satisfy the Chain Rule with the current last number in the list.
+
+4. **Number Reuse:**
+   - Numbers from **1** to **9** can be used multiple times. There is no limit on how many times a particular number can be used.
+
+### Game Mechanics
+
+- **Valid Moves:**
+  - A move is valid if it adheres to the Chain Rule.
+  - Example: If the number `4` is at the end of the list, a player can add `2` next to it because `2` is a factor of `4`.
+
+- **Invalid Moves:**
+  - A move is invalid if the number does not satisfy the Chain Rule with the adjacent number.
+  - Example: Placing a `5` next to a `6` is invalid because `5` and `6` are neither factors nor multiples of each other.
+
+- **Winning the Game:**
+  - If a player cannot make a valid move on their turn, they lose the game, and their opponent wins.
+
+- **Continuing Play:**
+  - The game continues until a player cannot make a valid move.
+
+---
+
+## Scoring
+
+- **Victory:** The player who successfully makes the last valid move wins the game.
+- **No Draws:** There are no draws in Chain Factor. The game always results in a win for one player.
+
+---
+
+## Examples
+
+Below are example scenarios and sample command-line interactions to illustrate how the game is played.
+
+### Example Game
+
+**Initial State:**
+- The shared list is empty: `[]`.
+
+**Player 1's Turn:**
+
+- **Action:** Adds `6` to the list.
+- **Position:** Since the list is empty, they can only add `6` to either end (both ends are the same in this case).
+- **Command:** `add right 6`
+- **Shared List:** `[6]`
+
+**Player 2's Turn:**
+
+- **Possible Numbers to Add Next to `6`:** Factors or multiples of `6` (1, 2, 3, 6).
+- **Action:** Adds `3` to the right end of the list.
+- **Command:** `add right 3`
+- **Shared List:** `[6, 3]`
+
+**Player 1's Turn:**
+
+- **Options for Left End (next to `6`):** 1, 2, 3, 6.
+- **Options for Right End (next to `3`):** 1, 3, 6, 9.
+- **Action:** Adds `9` to the right end.
+- **Command:** `add right 9`
+- **Shared List:** `[6, 3, 9]`
+
+**Player 2's Turn:**
+
+- **Options for Left End (next to `6`):** 1, 2, 3, 6.
+- **Options for Right End (next to `9`):** 1, 3, 9.
+- **Action:** Adds `1` to the right end.
+- **Command:** `add right 1`
+- **Shared List:** `[6, 3, 9, 1]`
+
+**Player 1's Turn:**
+
+- **Options for Left End (next to `6`):** 1, 2, 3, 6.
+- **Options for Right End (next to `1`):** 1 (since every number is a multiple and factor of 1).
+- **Action:** Adds `2` to the left end.
+- **Command:** `add left 2`
+- **Shared List:** `[2, 6, 3, 9, 1]`
+
+**Player 2's Turn:**
+
+- **Options for Left End (next to `2`):** 1, 2, 4, 6, 8.
+- **Options for Right End (next to `1`):** Any number from 1 to 9.
+- **Action:** Adds `4` to the left end.
+- **Command:** `add left 4`
+- **Shared List:** `[4, 2, 6, 3, 9, 1]`
+
+**Player 1's Turn:**
+
+- **Options for Left End (next to `4`):** 1, 2, 4, 8.
+- **Options for Right End (next to `1`):** Any number from 1 to 9.
+- **Action:** Adds `8` to the left end.
+- **Command:** `add left 8`
+- **Shared List:** `[8, 4, 2, 6, 3, 9, 1]`
+
+**Player 2's Turn:**
+
+- **Options for Left End (next to `8`):** 1, 2, 4, 8.
+- **Options for Right End (next to `1`):** Any number from 1 to 9.
+- **Action:** Adds `7` to the right end.
+- **Command:** `add right 7`
+- **Shared List:** `[8, 4, 2, 6, 3, 9, 1, 7]`
+
+**Player 1's Turn:**
+
+- **Options for Left End (next to `8`):** 1, 2, 4, 8.
+- **Options for Right End (next to `7`):** 1, 7.
+- **Action:** Adds `7` to the right end.
+- **Command:** `add right 7`
+- **Shared List:** `[8, 4, 2, 6, 3, 9, 1, 7, 7]`
+
+**Player 2's Turn:**
+
+- **Options for Left End (next to `8`):** 1, 2, 4, 8.
+- **Options for Right End (next to `7`):** 1, 7.
+- **Action:** Attempts to find a valid move.
+
+At this point, suppose Player 2 cannot find a valid move according to the Chain Rule on either end.
+
+- **Outcome:** Player 2 cannot make a valid move and loses the game.
+- **Winner:** Player 1.
+
+---
+
+## Command-Line Interaction Examples
+
+Here is how players might interact with the game using command-line commands.
+
+### Basic Commands
+
+- **Adding a Number:**
+  ```
+  add [left/right] [number]
+  ```
+
+- **Example:**
+  ```
+  add right 6
+  ```
+
+### Sample Game Interaction
+
+**Player 1's Turn:**
+
+- **Command:** `add right 6`
+- **Output:** `Shared List: [6]`
+
+**Player 2's Turn:**
+
+- **Command:** `add right 3`
+- **Output:** `Shared List: [6, 3]`
+
+**Player 1's Turn:**
+
+- **Command:** `add right 9`
+- **Output:** `Shared List: [6, 3, 9]`
+
+**Player 2's Turn:**
+
+- **Command:** `add right 1`
+- **Output:** `Shared List: [6, 3, 9, 1]`
+
+**Player 1's Turn:**
+
+- **Command:** `add left 2`
+- **Output:** `Shared List: [2, 6, 3, 9, 1]`
+
+**Player 2's Turn:**
+
+- **Command:** `add left 4`
+- **Output:** `Shared List: [4, 2, 6, 3, 9, 1]`
+
+**...**
+
+**Game Continues Until a Player Cannot Make a Valid Move**
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate your opponent's possible moves and plan to block them.
+
+- **Control the Ends:** Manipulate the numbers at the ends of the list to limit your opponent's options.
+
+- **Reuse Numbers:** Remember that numbers can be reused. Sometimes adding the same number can be strategic.
+
+- **Use the Number 1 Wisely:** Since 1 is a universal factor and multiple, it can be a powerful tool to extend the chain.
+
+---
+
+## Conclusion
+
+Chain Factor is a simple yet strategic game that challenges players to think ahead and manipulate numerical relationships. With easy-to-understand rules and straightforward gameplay, it's perfect for quick matches while offering depth for those who enjoy planning and strategy.
+
+Enjoy the game, and may the best strategist win!

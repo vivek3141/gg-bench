@@ -1,0 +1,192 @@
+# Zero Sum Duel
+
+## Rule Book
+
+### Objective
+
+Zero Sum Duel is a two-player turn-based game where the goal is to be the first player to reduce your total score to exactly zero. Players strategically subtract numbers from their own scores, aiming to outmaneuver their opponent while adhering to the game's simple rules.
+
+### Setup
+
+- **Initial Scores**: Both players start with a total score of **20**.
+- **Allowed Numbers**: The numbers **1**, **2**, **3**, **4**, and **5** are available for subtraction.
+
+### Game Components
+
+#### Player Scores
+
+- **Player 1 Score**: Begins at **20**.
+- **Player 2 Score**: Begins at **20**.
+
+#### Subtraction Numbers
+
+- A set of integers from **1** to **5**.
+- These numbers represent the values players can subtract from their scores on their turn.
+
+### Turns
+
+- Players decide who goes first through mutual agreement or by a random method (e.g., coin toss).
+- Players alternate turns throughout the game.
+
+#### Structure of a Turn
+
+1. **Choose a Number**: The player selects a number between **1** and **5** to subtract from their total score.
+2. **Apply Restriction**: The chosen number **cannot** be the same as the number subtracted by the opponent on their **immediately preceding turn**.
+3. **Subtract the Number**: The chosen number is subtracted from the player's total score.
+4. **Check for Validity**: If subtracting the chosen number would reduce the score below zero, the player must choose a different number.
+5. **End Turn**: The turn ends, and it becomes the opponent's turn.
+
+### Rules and Mechanics
+
+#### Core Rules
+
+- **Allowed Subtractions**: Only numbers **1** through **5** can be subtracted.
+- **Immediate Restriction**: A player cannot subtract the same number their opponent just subtracted on the previous turn.
+- **Score Limit**: A player's score cannot drop below zero. Moves resulting in a negative score are invalid.
+- **Winning the Game**: The first player to reach a score of **exactly zero** wins the game.
+- **No Draws**: The game continues until one player wins; there are no draws.
+
+#### Special Conditions
+
+- **No Valid Moves**: If a player has no valid numbers to subtract (all would reduce the score below zero or are restricted), that player loses the game.
+
+### Scoring
+
+- **Score Tracking**: Keep a running total of each player's score after every turn.
+- **Victory Condition**: The player who reduces their score to exactly zero first is declared the winner.
+
+### Examples
+
+#### Example Game Playthrough
+
+**Initial State:**
+
+- Player 1 Score: 20
+- Player 2 Score: 20
+
+**Turn 1:**
+
+- **Player 1's Turn**
+  - Chooses to subtract **5**.
+  - New Score: 20 - 5 = **15**.
+- **Restriction for Player 2**: Cannot subtract **5** on the next turn.
+
+**Turn 2:**
+
+- **Player 2's Turn**
+  - Chooses to subtract **4**.
+  - New Score: 20 - 4 = **16**.
+- **Restriction for Player 1**: Cannot subtract **4** on the next turn.
+
+**Turn 3:**
+
+- **Player 1's Turn**
+  - Chooses to subtract **3**.
+  - New Score: 15 - 3 = **12**.
+- **Restriction for Player 2**: Cannot subtract **3** on the next turn.
+
+**Turn 4:**
+
+- **Player 2's Turn**
+  - Chooses to subtract **5** (since **3** is restricted).
+  - New Score: 16 - 5 = **11**.
+- **Restriction for Player 1**: Cannot subtract **5** on the next turn.
+
+**Turn 5:**
+
+- **Player 1's Turn**
+  - Chooses to subtract **2**.
+  - New Score: 12 - 2 = **10**.
+- **Restriction for Player 2**: Cannot subtract **2** on the next turn.
+
+**Turn 6:**
+
+- **Player 2's Turn**
+  - Chooses to subtract **4**.
+  - New Score: 11 - 4 = **7**.
+- **Restriction for Player 1**: Cannot subtract **4** on the next turn.
+
+**Turn 7:**
+
+- **Player 1's Turn**
+  - Chooses to subtract **5**.
+  - New Score: 10 - 5 = **5**.
+- **Restriction for Player 2**: Cannot subtract **5** on the next turn.
+
+**Turn 8:**
+
+- **Player 2's Turn**
+  - Chooses to subtract **3**.
+  - New Score: 7 - 3 = **4**.
+- **Restriction for Player 1**: Cannot subtract **3** on the next turn.
+
+**Turn 9:**
+
+- **Player 1's Turn**
+  - Chooses to subtract **2**.
+  - New Score: 5 - 2 = **3**.
+- **Restriction for Player 2**: Cannot subtract **2** on the next turn.
+
+**Turn 10:**
+
+- **Player 2's Turn**
+  - Chooses to subtract **4** (other options may reduce score below zero or are restricted).
+  - New Score: 4 - 4 = **0**.
+- **Player 2 Wins!**
+
+### Command-Line Interaction Example
+
+Below is a sample of how the game might look in a command-line interface.
+
+```
+Welcome to Zero Sum Duel!
+
+Player 1 Score: 20
+Player 2 Score: 20
+
+Player 1's turn.
+Available numbers to subtract: 1, 2, 3, 4, 5
+Enter a number to subtract: 5
+Player 1 subtracts 5. New score: 15
+
+Player 2's turn.
+Available numbers to subtract: 1, 2, 3, 4 (Cannot use 5)
+Enter a number to subtract: 4
+Player 2 subtracts 4. New score: 16
+
+Player 1's turn.
+Available numbers to subtract: 1, 2, 3, 5 (Cannot use 4)
+Enter a number to subtract: 3
+Player 1 subtracts 3. New score: 12
+
+Player 2's turn.
+Available numbers to subtract: 1, 2, 4, 5 (Cannot use 3)
+Enter a number to subtract: 5
+Player 2 subtracts 5. New score: 11
+
+Player 1's turn.
+Available numbers to subtract: 1, 2, 3, 4 (Cannot use 5)
+Enter a number to subtract: 2
+Player 1 subtracts 2. New score: 10
+
+... (game continues)
+
+Player 2's turn.
+Available numbers to subtract: 1, 3, 5 (Cannot use 2)
+Enter a number to subtract: 4
+Player 2 subtracts 4. New score: 0
+
+Player 2 wins the game! Congratulations!
+```
+
+### Strategic Tips
+
+- **Monitor Restrictions**: Keep track of the numbers you are restricting for your opponent. By choosing certain numbers, you can limit their options.
+- **Plan Ahead**: Anticipate future moves to avoid being forced into a position where you cannot win.
+- **Balance Your Choices**: Use a variety of numbers to avoid predictability and to manipulate the available options for your opponent.
+
+### Conclusion
+
+Zero Sum Duel is a simple yet engaging game that combines basic arithmetic with strategic planning. Its straightforward rules make it easy to learn, while the restriction mechanics provide depth for strategic play. The game is perfect for quick matches and is well-suited for implementation in a command-line interface.
+
+Enjoy sharpening your strategic skills and may the best player win!

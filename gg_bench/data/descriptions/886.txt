@@ -1,0 +1,158 @@
+# Multiplication Mayhem
+
+## Objective
+
+**Multiplication Mayhem** is a two-player, turn-based game where players compete to be the first to reach or exceed a target number by multiplying a running total by integers within a specified range. The primary goal is to strategically choose multipliers to force your opponent into a losing position. The player who reaches or surpasses the target number on their turn wins the game.
+
+## Setup
+
+- **Starting Total**: The game begins with a running total of **1**.
+- **Target Number**: The goal is to reach or exceed a total of **100**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Running Total**: A single number that is updated each turn based on players' actions.
+- **Multiplier Range**: Integers from **2** to **9**, inclusive.
+- **Command-Line Interface**: The game is played in a command-line environment where players input their chosen multipliers.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with **Player 1**.
+2. **Player Action**:
+   - On their turn, a player selects an integer multiplier between **2** and **9**.
+   - The player multiplies the current running total by the chosen multiplier.
+   - The result becomes the new running total.
+3. **Progression**:
+   - The updated running total is displayed.
+   - The turn passes to the next player.
+4. **Winning the Game**:
+   - If a player's action results in the running total being **greater than or equal to 100**, that player **wins the game** immediately.
+   - If the running total is less than 100, the game continues.
+
+## Rules and Mechanics
+
+### Core Rules
+
+- **Valid Multipliers**: On each turn, players must choose an integer between **2** and **9** (inclusive). Choosing a number outside this range is invalid and prompts the player to select again.
+- **Running Total Update**: The running total is updated by multiplying it with the player's chosen multiplier.
+- **Turn Completion**: A turn is complete once the running total is updated and displayed.
+
+### Special Conditions
+
+- **Winning Condition**: The player whose action brings the running total to **100** or more **wins**.
+- **No Draws**: There are no tie games; the gameplay ensures a clear winner.
+- **Invalid Input Handling**:
+  - If a player inputs an invalid multiplier (e.g., a non-integer or a number outside 2-9), they are prompted to enter a valid number.
+  - The turn is not passed until a valid multiplier is entered and processed.
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate possible future totals to avoid giving the opponent a winning opportunity.
+- **Forced Moves**: Skilled players can force their opponents into positions where no matter what multiplier they choose, they cannot prevent the opponent from winning on the next turn.
+
+## Scoring
+
+- **Winning the Game**: The first player to reach or exceed the running total of **100** on their turn wins the game.
+- **No Point System**: The game does not use a point system beyond determining the winner.
+
+## Examples
+
+Below are sample command-line interactions illustrating how the game is played:
+
+### Example Game Playthrough
+
+**Starting the Game**
+
+- Running Total: **1**
+
+---
+
+**Player 1's Turn**
+
+- **Input Prompt**: "Player 1, enter a multiplier (2-9):"
+- **Player 1 Chooses**: `5`
+- **Calculation**: 1 × 5 = **5**
+- **Output**: "Running Total is now 5."
+
+---
+
+**Player 2's Turn**
+
+- **Input Prompt**: "Player 2, enter a multiplier (2-9):"
+- **Player 2 Chooses**: `9`
+- **Calculation**: 5 × 9 = **45**
+- **Output**: "Running Total is now 45."
+
+---
+
+**Player 1's Turn**
+
+- **Input Prompt**: "Player 1, enter a multiplier (2-9):"
+- **Player 1 Chooses**: `2`
+- **Calculation**: 45 × 2 = **90**
+- **Output**: "Running Total is now 90."
+
+---
+
+**Player 2's Turn**
+
+- **Input Prompt**: "Player 2, enter a multiplier (2-9):"
+- **Player 2 Chooses**: `2`
+- **Calculation**: 90 × 2 = **180**
+- **Output**: "Running Total is now 180."
+- **Win Condition Met**: Running Total (180) ≥ 100
+- **Output**: "Player 2 wins the game!"
+
+---
+
+### Strategic Example
+
+**Scenario Setup**
+
+- Running Total: **5**
+
+---
+
+**Player 1's Turn**
+
+- **Possible Moves**:
+  - Multiplying by 2: 5 × 2 = 10
+  - Multiplying by 3: 5 × 3 = 15
+  - ...
+- **Strategic Choice**:
+  - Player 1 wants to avoid setting up Player 2 for a win.
+  - Chooses multiplier `2` to make the running total **10**.
+- **Output**: "Running Total is now 10."
+
+---
+
+**Player 2's Turn**
+
+- **Calculates Best Response**:
+  - Aiming to manipulate the running total to a multiple beneficial for them.
+  - Chooses multiplier `9` to reach **90**, hoping Player 1 cannot reach 100 in the next move without giving Player 2 a winning setup.
+- **Output**: "Running Total is now 90."
+
+---
+
+**Player 1's Turn**
+
+- **Facing a Dilemma**:
+  - Any multiplier will result in reaching or exceeding 100, but since it's their turn, they could win.
+  - Chooses multiplier `2`: 90 × 2 = **180**.
+- **Output**: "Running Total is now 180."
+- **Win Condition Met**: Player 1 wins despite Player 2's strategy.
+
+---
+
+## Additional Notes
+
+- **Game Speed**: The game is designed to progress quickly, often concluding within a few turns.
+- **Skill Factor**: Success relies on players' ability to calculate outcomes and anticipate opponent moves.
+- **No Draws**: The game rules inherently prevent a tie, ensuring each game has a clear winner.
+- **Command-Line Interface**: The simplicity of inputs (choosing a number between 2 and 9) makes the game easy to implement and play in a command-line environment.
+
+## Conclusion
+
+Multiplication Mayhem offers a simple yet strategic gameplay experience where players must outthink their opponent within a minimalistic rule set. Its straightforward mechanics make it easy to code and play, while the strategic depth ensures skilled players can consistently outperform less experienced opponents. Enjoy the challenge of reaching the coveted 100 before your rival does!

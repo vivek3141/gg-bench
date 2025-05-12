@@ -1,0 +1,227 @@
+# Number Grid Battle
+
+## Objective
+
+**Number Grid Battle** is a strategic two-player, turn-based game played on a 3x3 grid filled with numbers. Players take turns claiming cells on the grid to accumulate the highest total sum of numbers. The primary goal is to outscore your opponent by strategically selecting cells with higher numbers while blocking their access to valuable cells. The player with the highest total sum at the end of the game wins. In the event of a tie, the player who took the last turn loses, ensuring there is no draw.
+
+## Setup
+
+1. **Grid Preparation**:
+   - Create a 3x3 grid, representing 3 rows and 3 columns.
+   - Populate each cell of the grid with a unique number from 1 to 9. The numbers should be randomly arranged in the grid without repetition.
+
+2. **Player Assignment**:
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Each player is assigned a unique marker or symbol to claim cells (e.g., `X` for Player 1 and `O` for Player 2).
+
+3. **Starting Conditions**:
+   - The grid with numbers is displayed to both players.
+   - Determine which player goes first (can be decided randomly or by agreement).
+
+## Game Components
+
+- **Grid**:
+  - A 3x3 matrix representing the game board.
+  - Each cell contains a unique number from 1 to 9.
+  - Cells are identified by their row and column indices (e.g., `(0,0)` for the top-left corner).
+
+- **Markers**:
+  - Symbols used by players to claim cells.
+  - **Player 1** uses `X`.
+  - **Player 2** uses `O`.
+
+- **Numbers**:
+  - Digits from 1 to 9 arranged randomly on the grid.
+  - Each number represents the value of the cell.
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns throughout the game.
+  - On each turn, a player must:
+    1. Select an unclaimed cell by specifying its coordinates.
+    2. Place their marker on the chosen cell to claim it.
+
+- **Action Order**:
+  - **Player 1** takes the first turn.
+  - **Player 2** takes the second turn.
+  - The sequence continues until all cells are claimed.
+
+- **Turn Progression**:
+  - After a player completes their turn, control passes to the other player.
+  - Players cannot skip their turn or pass.
+
+## Rules and Mechanics
+
+1. **Claiming Cells**:
+   - A player can claim any unclaimed cell on their turn.
+   - Once a cell is claimed, it cannot be claimed again.
+
+2. **Accumulating Points**:
+   - Each player's score is the sum of the numbers in the cells they have claimed.
+   - Players aim to maximize their total sum while minimizing the opponent's potential sum.
+
+3. **End of Game**:
+   - The game ends when all nine cells have been claimed.
+   - Scores are calculated, and the player with the higher total sum wins.
+
+4. **Winning the Game**:
+   - **Victory Condition**: Have a higher total sum than the opponent at the end of the game.
+   - **Tie-Breaker**: If both players have equal sums, the player who took the **last turn loses** the game. This rule ensures there is no draw.
+
+5. **Strategic Considerations**:
+   - Players must balance between selecting high-value cells and blocking the opponent from accessing cells beneficial to them.
+   - Anticipate the opponent's moves to prevent them from gaining the advantage.
+
+## Scoring
+
+- **Score Tracking**:
+  - Each player's score is updated after they claim a cell.
+  - Scores are the cumulative sum of the numbers from the claimed cells.
+
+- **Final Scoring**:
+  - At the game's end, both players' scores are compared.
+  - The player with the higher total sum is declared the winner.
+
+- **Example**:
+  - **Player 1's Claimed Cells**: Positions `(0,0)` with value `7`, `(1,2)` with value `5`, `(2,1)` with value `6`.
+  - **Player 1's Total Sum**: `7 + 5 + 6 = 18`.
+  - **Player 2's Claimed Cells**: Positions `(0,1)` with value `9`, `(1,0)` with value `4`, `(2,2)` with value `3`.
+  - **Player 2's Total Sum**: `9 + 4 + 3 = 16`.
+  - **Winner**: Player 1 wins with a higher total sum of `18`.
+
+## Example Gameplay
+
+### Initial Grid Display
+
+```
++---+---+---+
+| 7 | 9 | 2 |
++---+---+---+
+| 4 | 1 | 5 |
++---+---+---+
+| 8 | 6 | 3 |
++---+---+---+
+```
+
+### Sample Turns
+
+1. **Player 1's Turn**:
+   - Chooses cell `(0,1)` (Top row, middle cell) with value `9`.
+   - Places `X` on the cell.
+   - **Player 1's Score**: `9`.
+
+2. **Player 2's Turn**:
+   - Chooses cell `(1,2)` (Middle row, right cell) with value `5`.
+   - Places `O` on the cell.
+   - **Player 2's Score**: `5`.
+
+3. **Player 1's Turn**:
+   - Chooses cell `(2,1)` (Bottom row, middle cell) with value `6`.
+   - Places `X` on the cell.
+   - **Player 1's Score**: `9 + 6 = 15`.
+
+4. **Player 2's Turn**:
+   - Chooses cell `(0,0)` (Top row, left cell) with value `7`.
+   - Places `O` on the cell.
+   - **Player 2's Score**: `5 + 7 = 12`.
+
+5. **Player 1's Turn**:
+   - Chooses cell `(2,0)` (Bottom row, left cell) with value `8`.
+   - Places `X` on the cell.
+   - **Player 1's Score**: `15 + 8 = 23`.
+
+6. **Player 2's Turn**:
+   - Chooses cell `(1,0)` (Middle row, left cell) with value `4`.
+   - Places `O` on the cell.
+   - **Player 2's Score**: `12 + 4 = 16`.
+
+7. **Remaining Turns**:
+   - Players continue until all cells are claimed.
+
+### Final Scores
+
+- **Player 1's Claimed Cells**: `(0,1)` with `9`, `(2,1)` with `6`, `(2,0)` with `8`, etc.
+- **Player 1's Total Sum**: `...`.
+- **Player 2's Claimed Cells**: `(1,2)` with `5`, `(0,0)` with `7`, `(1,0)` with `4`, etc.
+- **Player 2's Total Sum**: `...`.
+
+- **Winner Determination**:
+  - Compare total sums.
+  - Declare the player with the higher sum as the winner.
+  - If tied, the player who took the last turn loses.
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Welcome to Number Grid Battle!
+
+Initial Grid:
++---+---+---+
+| 7 | 9 | 2 |
++---+---+---+
+| 4 | 1 | 5 |
++---+---+---+
+| 8 | 6 | 3 |
++---+---+---+
+
+Player 1 (X), it's your turn.
+Enter the row and column of the cell you want to claim (e.g., 0 1 for top-middle):
+```
+
+### Sample Turn Entries
+
+**Player 1 Input**:
+```
+0 1
+```
+
+**System Response**:
+```
+You claimed cell (0,1) with value 9.
+Your current score: 9
+
+Updated Grid:
++---+----+---+
+| 7 | X  | 2 |
++---+----+---+
+| 4 | 1  | 5 |
++---+----+---+
+| 8 | 6  | 3 |
++---+----+---+
+
+Player 2 (O), it's your turn.
+Enter the row and column of the cell you want to claim:
+```
+
+### Game Continuation
+
+- The game continues with the system prompting each player for their move.
+- The grid is updated and displayed after each turn.
+- Scores are updated and shown.
+
+### Game End
+
+**System Response after all cells are claimed**:
+```
+All cells have been claimed!
+
+Final Scores:
+Player 1 (X): 23
+Player 2 (O): 22
+
+Player 1 wins!
+```
+
+## Tips for Strategic Play
+
+- **Prioritize High-Value Cells**: Aim to claim cells with higher numbers early in the game.
+- **Block Opponent**: Anticipate which cells your opponent might target and claim them if it benefits you or forces them into a less advantageous move.
+- **Plan Ahead**: Consider the sum of available cells and plan your moves to ensure you maintain a higher total.
+- **Manage the Tie-Breaker**: Be aware of the tie-breaker rule. If the scores might tie, try to force the opponent into taking the last turn.
+
+## Summary
+
+Number Grid Battle is a simple yet strategic game that tests players' decision-making and planning skills. With straightforward rules and easy implementation in a command-line interface, it's both accessible for new players and deep enough for seasoned strategists. Enjoy the battle of wits and may the best player win!

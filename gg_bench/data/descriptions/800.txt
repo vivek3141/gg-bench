@@ -1,0 +1,209 @@
+# Stack Attack – Rule Book
+
+## Objective
+
+Be the player with the **highest total score** by strategically collecting numbers from the stack. Outwit your opponent by deciding when to take numbers and when to skip, aiming to collect high-value numbers while forcing your opponent to pick low-value ones.
+
+---
+
+## Setup
+
+- **Generate a stack** of **15 random integers** between **1 and 9**.
+- The stack is arranged vertically, with **only the topmost number visible** to the players.
+- Both players start with a **score of zero**.
+
+---
+
+## Game Components
+
+1. **Number Stack**:
+   - A vertical stack containing **15 numbers** ranging from **1 to 9**.
+   - Only the **topmost number** is visible at any time; the rest are hidden.
+
+2. **Player Score Areas**:
+   - Each player has an area to collect numbers they have taken.
+   - Scores are calculated by summing these numbers.
+
+3. **Turn Indicator**:
+   - A simple method to keep track of whose turn it is (e.g., a prompt in the command line).
+
+---
+
+## Turns
+
+- Players take turns in sequence. **Player 1** begins the game.
+- On a player's turn, they have **two options**:
+  1. **Take**: Remove the topmost number from the stack and add it to their score area.
+  2. **Skip**: Pass their turn without taking any action.
+
+---
+
+## Rules and Mechanics
+
+### 1. Taking a Number
+
+- When a player chooses to **Take**:
+  - They remove the **topmost number** from the stack.
+  - Add this number to their **score area**.
+  - The next number in the stack becomes the new topmost number and is now visible.
+
+### 2. Skipping a Turn
+
+- When a player chooses to **Skip**:
+  - They pass their turn without taking any action.
+  - The **topmost number remains the same**.
+- **Consecutive Skips**:
+  - If **both players skip consecutively** (one after the other):
+    - The **topmost number is discarded** from the game.
+    - It does **not** go to either player's score area.
+    - The next number in the stack becomes the new topmost number.
+
+### 3. Turn Sequence
+
+- After a player takes a number or skips, the turn passes to the **other player**.
+- The game continues in this fashion until the stack is **empty**.
+
+### 4. End of Game
+
+- The game ends when **all numbers** have been removed from the stack, either by being **taken** by the players or **discarded** after consecutive skips.
+
+---
+
+## Scoring
+
+- Each player calculates the **total of the numbers** in their score area.
+- The player with the **higher total score wins** the game.
+- In the event of a **tie** (both players have the same total score):
+  - The player who has taken **more numbers** wins.
+- There is **no possibility of a draw**.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+**Initial Stack** (from top to bottom):
+```
+[7, 2, 5, 9, 1, 6, 3, 8, 4, 5, 2, 7, 1, 9, 6]
+```
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Top number is **7**.
+  - Player 1 chooses to **Skip**.
+- **Player 2's Turn**:
+  - Top number remains **7**.
+  - Player 2 decides to **Take**.
+    - Adds **7** to their score area.
+  - Next top number is now **2**.
+
+**Turn 2**:
+- **Player 1's Turn**:
+  - Top number is **2**.
+  - Player 1 chooses to **Take**.
+    - Adds **2** to their score area.
+  - Next top number is now **5**.
+
+**Turn 3**:
+- **Player 2's Turn**:
+  - Top number is **5**.
+  - Player 2 decides to **Skip**.
+- **Player 1's Turn**:
+  - Top number remains **5**.
+  - Player 1 decides to **Take**.
+    - Adds **5** to their score area.
+  - Next top number is now **9**.
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - Top number is **9**.
+  - Player 2 decides to **Take**.
+    - Adds **9** to their score area.
+  - Next top number is now **1**.
+
+**...**
+
+The game continues with players making strategic choices until the stack is empty.
+
+**End of Game Scoring**:
+
+- **Player 1's Score Area**: `[2, 5, 6, 8, 5, 7]`  
+  **Total Score**: 33
+
+- **Player 2's Score Area**: `[7, 9, 3, 4, 2, 1, 9, 6]`  
+  **Total Score**: 41
+
+**Result**: **Player 2 wins** with a total score of **41** to Player 1's **33**.
+
+---
+
+## Command-Line Interaction Example
+
+```
+Game Start!
+The stack has been generated.
+
+Top Number: 6
+
+Player 1's Turn:
+Options:
+1. Take the number (6)
+2. Skip
+
+Enter your choice (1 or 2): 2
+Player 1 skips.
+
+Player 2's Turn:
+Top Number remains: 6
+Options:
+1. Take the number (6)
+2. Skip
+
+Enter your choice (1 or 2): 2
+Player 2 skips.
+
+Both players skipped. Number 6 is discarded.
+Next top number is revealed.
+
+Top Number: 9
+
+Player 1's Turn:
+Options:
+1. Take the number (9)
+2. Skip
+
+Enter your choice (1 or 2): 1
+Player 1 takes the number 9.
+
+Player 1's Score Area: [9]
+Player 2's Score Area: []
+
+Next top number is: 2
+
+Player 2's Turn:
+Options:
+1. Take the number (2)
+2. Skip
+
+Enter your choice (1 or 2): 
+```
+
+Players continue in this manner until the stack is exhausted.
+
+---
+
+## Strategic Tips
+
+- **Assess the Top Number**: Decide if the visible number is beneficial to take or better to skip.
+- **Predict Opponent's Moves**: Anticipate whether your opponent is likely to take the current number if you skip.
+- **Use Skips Wisely**: Skipping can force undesirable numbers onto your opponent or remove valuable numbers from play.
+- **Memory Matters**: Keep track of numbers that have been removed to estimate what might still be in the stack.
+
+---
+
+## Summary
+
+"Stack Attack" is a simple yet strategic two-player game that combines elements of chance and decision-making. It is designed to be played in a command-line interface and can be coded with basic programming constructs. The game is quick to play, has no possibility of a draw, and rewards players who can think ahead and adapt to the evolving state of the game.
+
+Enjoy the challenge and may the best strategist win!

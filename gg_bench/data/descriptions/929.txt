@@ -1,0 +1,183 @@
+# Zero Sum Showdown
+
+---
+
+## Objective
+
+Be the first player to bring the **cumulative sum** of selected numbers to **exactly zero** on your turn. Use strategic number selection from a shared pool to achieve this goal while preventing your opponent from doing the same.
+
+---
+
+## Setup
+
+- **Cumulative Sum**: Start with a cumulative sum of **0**.
+- **Number Pool**: Create a shared pool of numbers ranging from **-10 to -1** and **1 to 10**, excluding zero. This results in the numbers:
+
+  ```
+  -10, -9, -8, -7, -6, -5, -4, -3, -2, -1,
+   1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ```
+
+- **Turn Order**: Decide which player goes first (e.g., by random selection or agreement).
+
+---
+
+## Game Components
+
+- **Number Pool**: A list of available numbers for selection.
+- **Cumulative Sum**: A running total that updates after each turn.
+- **Player Interface**: Command-line prompts for selecting numbers and displaying the current state.
+
+---
+
+## Turns
+
+1. **Player's Turn**:
+   - **Display**:
+     - The current **cumulative sum**.
+     - The **available numbers** in the pool.
+   - **Action**: Select **one** number from the pool.
+
+2. **Update**:
+   - **Cumulative Sum**: Add the selected number to the cumulative sum.
+   - **Number Pool**: Remove the selected number from the pool.
+
+3. **End of Turn**:
+   - **Check for Win**: If the cumulative sum is **exactly zero**, the player wins.
+   - **Next Player**: If not zero, the turn passes to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- On your turn, you **must** select **one** number from the available pool.
+- Once a number is selected, it is **removed** from the pool and cannot be selected again.
+
+### Cumulative Sum Calculation
+
+- The selected number is **added** to the cumulative sum.
+  - *Example*: If the cumulative sum is `-5` and you select `7`, the new cumulative sum is `2`.
+
+### Winning the Game
+
+- **Win Condition**: If, after adding your selected number, the cumulative sum equals **zero**, you **win** the game.
+
+### Game Continuation
+
+- If the cumulative sum is **not zero**, the game continues with the next player's turn.
+- **No Draws**: The game cannot end in a draw. If all numbers are exhausted without reaching zero, the **last player to make a move loses**.
+
+### Strategic Play
+
+- Players must anticipate and prevent opponents from reaching a cumulative sum of zero on their turns.
+- **Planning Ahead**: Consider the impact of your selection on future moves.
+
+---
+
+## Scoring
+
+- **Victory**: Successfully bringing the cumulative sum to zero on your turn.
+- **Defeat**: Failing to prevent the opponent from bringing the cumulative sum to zero, or being the last to move when all numbers are exhausted without reaching zero.
+
+---
+
+## Examples
+
+### Sample Gameplay
+
+*Let's walk through a sample game between Player 1 and Player 2.*
+
+**Initial State**:
+
+- **Cumulative Sum**: `0`
+- **Available Numbers**:
+
+  ```
+  -10, -9, -8, -7, -6, -5, -4, -3, -2, -1,
+   1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ```
+
+**Turn 1: Player 1**
+
+- **Action**: Selects `5`.
+- **Cumulative Sum**: `0 + 5 = 5`
+- **Remaining Numbers**: Remove `5` from the pool.
+
+**Turn 2: Player 2**
+
+- **Action**: Selects `-7`.
+- **Cumulative Sum**: `5 + (-7) = -2`
+- **Remaining Numbers**: Remove `-7` from the pool.
+
+**Turn 3: Player 1**
+
+- **Action**: Selects `2`.
+- **Cumulative Sum**: `-2 + 2 = 0`
+- **Result**: Cumulative sum is zero. **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Current Cumulative Sum: 0
+Available Numbers:
+-10, -9, -8, -7, -6, -5, -4, -3, -2, -1,
+ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+Player 1, select a number: 5
+```
+
+**After Player 1's Turn**
+
+```
+Player 1 chose 5
+New Cumulative Sum: 5
+
+Available Numbers:
+-10, -9, -8, -7, -6, -5, -4, -3, -2, -1,
+ 1, 2, 3, 4, 6, 7, 8, 9, 10
+
+Player 2, select a number: -7
+```
+
+**After Player 2's Turn**
+
+```
+Player 2 chose -7
+New Cumulative Sum: -2
+
+Available Numbers:
+-10, -9, -8, -6, -5, -4, -3, -2, -1,
+ 1, 2, 3, 4, 6, 7, 8, 9, 10
+
+Player 1, select a number: 2
+```
+
+**Player 1 Wins**
+
+```
+Player 1 chose 2
+New Cumulative Sum: 0
+
+Player 1 wins! The cumulative sum is zero.
+```
+
+---
+
+## Strategic Tips
+
+- **Monitor the Cumulative Sum**: Always be aware of the current cumulative sum and how your selection will affect it.
+- **Block Your Opponent**: Anticipate numbers that could allow your opponent to win on their next turn and avoid setting them up.
+- **Plan Ahead**: Think multiple moves ahead to control the flow of the game.
+- **Use Negative Numbers Wisely**: Negative numbers can bring the cumulative sum down quickly but may also help your opponent if not used carefully.
+
+---
+
+Remember, **Zero Sum Showdown** is a game of both calculation and strategy. Each move can open opportunities for victory or create vulnerabilities. Stay sharp and plan your moves thoughtfully to outwit your opponent!
+
+---
+
+Happy gaming!

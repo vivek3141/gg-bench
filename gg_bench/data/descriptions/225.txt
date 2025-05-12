@@ -1,0 +1,284 @@
+# Lock Breaker
+
+## Objective
+
+Be the first player to unlock the final lock by strategically incrementing locks to their unlock values. Players take turns increasing lock values, aiming to unlock locks while preventing their opponent from unlocking the final one. The player who unlocks the fifth and final lock wins the game.
+
+## Setup
+
+1. **Locks Initialization**:
+   - There are **five locks**, labeled **Lock 1** to **Lock 5**.
+   - Each lock is assigned a random **unlock value** between **3** and **5** (inclusive) at the start of the game.
+   - All locks begin with a **current value of 0**.
+
+2. **Starting Player**:
+   - Decide who will take the first turn (e.g., by coin flip or mutual agreement).
+
+3. **Command-Line Display**:
+   - The game displays the status of all locks, showing their current values and unlock values.
+   - Example:
+     ```
+     Lock 1: 0 / 4 (Locked)
+     Lock 2: 0 / 3 (Locked)
+     Lock 3: 0 / 5 (Locked)
+     Lock 4: 0 / 4 (Locked)
+     Lock 5: 0 / 5 (Locked)
+     ```
+
+## Game Components
+
+- **Locks**:
+  - **Labels**: Each lock is uniquely identified by a number from 1 to 5.
+  - **Current Value**: Indicates the lock's current progress towards being unlocked.
+  - **Unlock Value**: A randomly assigned number between 3 and 5 that the current value must reach to unlock the lock.
+  - **Status**: Each lock can be either **Locked** or **Unlocked**.
+
+- **Players**:
+  - **Player 1** and **Player 2** take turns to play the game.
+
+- **Actions**:
+  - **Increment Move**: Players choose a lock to increment and by how much (1 or 2).
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns starting with the designated first player.
+   - On each turn, a player performs the following actions:
+     - **View Lock Status**: Review the current state of all locks.
+     - **Choose a Lock**: Select any **one locked lock** to increment.
+     - **Increment Value**: Decide to increment the lock's current value by **1 or 2**.
+
+2. **Valid Moves**:
+   - Players can only increment locks that are **not yet unlocked**.
+   - The increment must not cause the lock's current value to **exceed its unlock value**.
+     - If the remaining difference between the current value and unlock value is **1**, the player can only increment by **1**.
+
+3. **Lock Unlocking**:
+   - If a lock's current value reaches its unlock value after incrementing, the lock becomes **Unlocked**.
+   - Once unlocked, a lock cannot be selected or incremented further.
+
+4. **Turn Progression**:
+   - After a player completes their move, the turn passes to the other player.
+   - The game continues until all locks are unlocked.
+
+## Rules and Mechanics
+
+- **Incrementing Locks**:
+  - Players must strategically choose which lock to increment.
+  - They must consider not only unlocking locks but also preventing the opponent from unlocking the final lock.
+
+- **Unlock Values**:
+  - The unlock values add variability to each game, requiring players to adapt their strategies accordingly.
+
+- **Lock Selection**:
+  - Only **one lock** can be incremented per turn.
+  - Players cannot skip their turn; an increment move is mandatory.
+
+- **Winning the Game**:
+  - The player who unlocks the **fifth and final lock** is declared the **winner**.
+
+- **No Draws**:
+  - Since there are an odd number of locks and a player must unlock the final lock to win, the game cannot end in a draw.
+
+## Scoring
+
+- **Victory Condition**:
+  - Unlocking the final (fifth) lock results in an immediate win.
+
+- **No Points System**:
+  - The game does not use a point-based scoring system; it is a win/loss game based on unlocking locks.
+
+## Examples
+
+### Example Game Play
+
+**Initial Lock Status**:
+```
+Lock 1: 0 / 3 (Locked)
+Lock 2: 0 / 5 (Locked)
+Lock 3: 0 / 4 (Locked)
+Lock 4: 0 / 3 (Locked)
+Lock 5: 0 / 5 (Locked)
+```
+
+**Players**:
+- **Player 1**
+- **Player 2**
+
+#### Turn 1: Player 1
+
+- **Action**:
+  - Chooses **Lock 1**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 1 current value: **2 / 3** (Locked)
+- **Reasoning**:
+  - Aims to unlock Lock 1 quickly.
+
+#### Turn 2: Player 2
+
+- **Action**:
+  - Chooses **Lock 4**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 4 current value: **2 / 3** (Locked)
+- **Reasoning**:
+  - Counters by progressing on another lock with a low unlock value.
+
+#### Turn 3: Player 1
+
+- **Action**:
+  - Chooses **Lock 1**.
+  - Increments by **1**.
+- **Result**:
+  - Lock 1 current value reaches **3 / 3**.
+  - **Lock 1 is now Unlocked**.
+- **Reasoning**:
+  - Completes unlocking Lock 1.
+
+#### Turn 4: Player 2
+
+- **Action**:
+  - Chooses **Lock 4**.
+  - Increments by **1**.
+- **Result**:
+  - Lock 4 current value reaches **3 / 3**.
+  - **Lock 4 is now Unlocked**.
+- **Reasoning**:
+  - Completes unlocking Lock 4 to keep pace.
+
+#### Turn 5: Player 1
+
+- **Action**:
+  - Chooses **Lock 3**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 3 current value: **2 / 4** (Locked)
+- **Reasoning**:
+  - Starts progress on a lock with a moderate unlock value.
+
+#### Turn 6: Player 2
+
+- **Action**:
+  - Chooses **Lock 2**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 2 current value: **2 / 5** (Locked)
+- **Reasoning**:
+  - Begins working on a lock with a higher unlock value to potentially secure a late-game advantage.
+
+#### Turn 7: Player 1
+
+- **Action**:
+  - Chooses **Lock 3**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 3 current value reaches **4 / 4**.
+  - **Lock 3 is now Unlocked**.
+- **Reasoning**:
+  - Secures Lock 3 to have majority of unlocked locks so far.
+
+#### Turn 8: Player 2
+
+- **Action**:
+  - Chooses **Lock 5**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 5 current value: **2 / 5** (Locked)
+- **Reasoning**:
+  - Starts progress on another high unlock value lock.
+
+#### Turn 9: Player 1
+
+- **Action**:
+  - Chooses **Lock 2**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 2 current value: **4 / 5** (Locked)
+- **Reasoning**:
+  - Attempts to unlock Lock 2 before Player 2 can.
+
+#### Turn 10: Player 2
+
+- **Action**:
+  - Chooses **Lock 2**.
+  - Increments by **1** (since only 1 is needed to reach unlock value).
+- **Result**:
+  - Lock 2 current value reaches **5 / 5**.
+  - **Lock 2 is now Unlocked**.
+- **Reasoning**:
+  - Prevents Player 1 from unlocking Lock 2.
+
+#### Turn 11: Player 1
+
+- **Action**:
+  - Chooses **Lock 5**.
+  - Increments by **2**.
+- **Result**:
+  - Lock 5 current value: **4 / 5** (Locked)
+- **Reasoning**:
+  - Aims to unlock the final lock and win.
+
+#### Turn 12: Player 2
+
+- **Action**:
+  - Chooses **Lock 5**.
+  - Increments by **1** (only 1 is allowed to avoid exceeding unlock value).
+- **Result**:
+  - Lock 5 current value reaches **5 / 5**.
+  - **Lock 5 is now Unlocked**.
+  - **Player 2 wins the game**.
+- **Reasoning**:
+  - Unlocks the final lock to secure victory.
+
+### Command-Line Interaction Example
+
+**Turn 1: Player 1**
+
+```
+Current Lock Status:
+Lock 1: 0 / 3 (Locked)
+Lock 2: 0 / 5 (Locked)
+Lock 3: 0 / 4 (Locked)
+Lock 4: 0 / 3 (Locked)
+Lock 5: 0 / 5 (Locked)
+
+Player 1's Turn:
+Choose a lock to increment (1-5): 1
+Increment by (1 or 2): 2
+
+Lock 1 incremented by 2.
+```
+
+**Turn 2: Player 2**
+
+```
+Current Lock Status:
+Lock 1: 2 / 3 (Locked)
+Lock 2: 0 / 5 (Locked)
+Lock 3: 0 / 4 (Locked)
+Lock 4: 0 / 3 (Locked)
+Lock 5: 0 / 5 (Locked)
+
+Player 2's Turn:
+Choose a lock to increment (1-5): 4
+Increment by (1 or 2): 2
+
+Lock 4 incremented by 2.
+```
+
+*(Subsequent turns continue in this manner.)*
+
+## Strategic Tips
+
+- **Prioritize Low Unlock Values**: Unlocking locks with lower unlock values requires fewer moves.
+
+- **Block Your Opponent**: If you see your opponent is close to unlocking a lock, consider incrementing it yourself to prevent them from unlocking it on their next turn.
+
+- **Plan Ahead**: Keep track of the remaining increments needed for each lock to anticipate your opponent's potential moves.
+
+- **Control the Final Lock**: Monitor progress on the fifth lock closely and time your increments to ensure you're the one to unlock it.
+
+## Summary
+
+Lock Breaker is a strategic two-player game with simple mechanics suitable for a command-line interface. Players must balance advancing their own progress while hindering their opponent. With random unlock values each game, no two games are the same, providing depth and replayability. The clear rules and quick gameplay make it easy to code and play, while still offering strategic complexity for skilled players to consistently outmaneuver less experienced opponents.

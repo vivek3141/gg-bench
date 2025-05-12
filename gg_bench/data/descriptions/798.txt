@@ -1,0 +1,302 @@
+**Trap Runner**
+
+---
+
+### **Objective**
+
+In **Trap Runner**, two players take on opposing roles: the **Runner** and the **Trapper**. The **Runner's** goal is to traverse a linear path of 10 cells, moving from the starting point (cell 0) to the finish line (cell 10) without stepping on hidden traps. The **Trapper's** objective is to strategically place traps along the path to stop the **Runner** from reaching the finish line. The game concludes when either the **Runner** successfully reaches cell 10 (resulting in a win for the **Runner**) or steps on a trap (resulting in a win for the **Trapper**).
+
+---
+
+### **Setup**
+
+1. **Roles**: Assign roles randomly or by mutual agreement. One player becomes the **Runner**, and the other becomes the **Trapper**.
+
+2. **Path Initialization**: 
+
+   - Represent the path as a sequence of cells numbered from **1** to **10**.
+   - The **Runner** starts off the path at **cell 0**.
+
+3. **Trap Placement**:
+
+   - The **Trapper** has **3 traps** to place.
+   - **Before the game begins**, the **Trapper** secretly selects **3 distinct cells** between **1** and **10** to place the traps.
+   - The trap locations are kept hidden from the **Runner**.
+
+---
+
+### **Game Components**
+
+1. **Path Cells (1-10)**:
+
+   - Represented numerically from **1** to **10**.
+   - Each cell may contain a trap (unknown to the **Runner**) or be safe.
+
+2. **Traps**:
+
+   - The **Trapper** has **3 traps**.
+   - Traps are invisible to the **Runner** until they land on a trapped cell.
+
+3. **Player Tokens** (Optional for visualization):
+
+   - A token to represent the **Runner's** current position on the path.
+
+---
+
+### **Turns**
+
+The game proceeds in a series of turns, starting with the **Runner**:
+
+1. **Runner's Turn**:
+
+   - The **Runner** decides how many cells to move forward: **1**, **2**, or **3**.
+   - The **Runner** declares their chosen movement and advances their position accordingly.
+   - If the **Runner** lands on a cell with a trap, the turn ends immediately, and the **Runner** loses.
+
+2. **Trapper's Turn**:
+
+   - The **Trapper** waits for the **Runner's** move.
+   - After the **Runner** moves, if they have not stepped on a trap, the **Trapper** indicates that the **Runner** is safe.
+
+3. **Turn Progression**:
+
+   - Turns repeat with the **Runner** moving each time until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement Rules for the Runner**:
+
+   - On each turn, the **Runner** must move forward by **1**, **2**, or **3** cells.
+   - The **Runner** cannot skip a turn or move backward.
+   - The **Runner** must declare their move before advancing.
+
+2. **Trap Activation**:
+
+   - If the **Runner** lands on a cell containing a trap, the **Trapper** reveals the trap.
+   - The game ends immediately with the **Trapper** winning.
+
+3. **Winning Conditions**:
+
+   - **Runner Wins**: If the **Runner** reaches **cell 10** without landing on a trap.
+   - **Trapper Wins**: If the **Runner** lands on any of the trapped cells.
+
+4. **Path Boundaries**:
+
+   - The **Runner** cannot move beyond **cell 10**.
+   - If the **Runner's** declared move would take them past **cell 10**, they must adjust their move to land exactly on **cell 10**.
+
+5. **Traps**:
+
+   - Traps remain hidden until activated.
+   - The **Trapper** cannot change trap locations once the game begins.
+
+6. **Information Disclosure**:
+
+   - The **Trapper** does not provide any hints or clues about trap positions.
+   - The **Runner** relies on strategy and intuition to avoid traps.
+
+---
+
+### **Scoring**
+
+**Trap Runner** is typically played in rounds, with players alternating roles between the **Runner** and the **Trapper**. After both players have played each role, they can compare results:
+
+- **Single Round Win**: Determined by the outcome of the round (either the **Runner** or **Trapper** wins).
+- **Match Win**:
+
+  - Players can agree on playing a set number of rounds.
+  - Keep track of the number of rounds each player wins as the **Runner** and the **Trapper**.
+  - The player with the most wins after all rounds is the overall winner.
+
+---
+
+### **Examples**
+
+#### **Example Gameplay**
+
+**Setup**:
+
+- **Trapper** secretly places traps on cells **3**, **6**, and **8**.
+- **Runner** starts at **cell 0**.
+
+**Turn-by-Turn Play**:
+
+1. **Runner's Turn**:
+
+   - **Move**: Advances **2 cells** to **cell 2**.
+   - **Trapper's Response**: "You are safe."
+
+2. **Runner's Turn**:
+
+   - **Move**: Decides to advance **1 cell** to **cell 3**.
+   - **Trapper's Response**: "You stepped on a trap at cell 3. Game over."
+   - **Outcome**: **Trapper** wins.
+
+**Alternate Scenario**:
+
+1. **Runner's Turn**:
+
+   - **Move**: Advances **2 cells** to **cell 2**.
+   - **Trapper's Response**: "You are safe."
+
+2. **Runner's Turn**:
+
+   - **Move**: Advances **2 cells** to **cell 4**.
+   - **Trapper's Response**: "You are safe."
+
+3. **Runner's Turn**:
+
+   - **Move**: Advances **3 cells** to **cell 7**.
+   - **Trapper's Response**: "You are safe."
+
+4. **Runner's Turn**:
+
+   - **Move**: Advances **3 cells** to **cell 10**.
+   - **Trapper's Response**: "You have reached the finish line!"
+   - **Outcome**: **Runner** wins.
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is a sample command-line interaction illustrating a game of **Trap Runner**.
+
+**Game Start**
+
+```
+Welcome to Trap Runner!
+Player 1 is the Trapper.
+Player 2 is the Runner.
+Trapper, please place your traps.
+
+[Trapper places traps at cells 4, 7, and 9.]
+
+Runner, you are at cell 0.
+```
+
+**Turn 1**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 3
+You moved to cell 3.
+Trapper says: You are safe.
+```
+
+**Turn 2**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 1
+You moved to cell 4.
+Trapper says: You stepped on a trap at cell 4. Game over.
+Trapper wins!
+```
+
+**Alternate Turn Sequence**
+
+**Game Start**
+
+```
+Welcome to Trap Runner!
+Player 1 is the Trapper.
+Player 2 is the Runner.
+Trapper, please place your traps.
+
+[Trapper places traps at cells 5, 6, and 8.]
+
+Runner, you are at cell 0.
+```
+
+**Turn 1**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 3
+You moved to cell 3.
+Trapper says: You are safe.
+```
+
+**Turn 2**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 2
+You moved to cell 5.
+Trapper says: You stepped on a trap at cell 5. Game over.
+Trapper wins!
+```
+
+**Successful Runner**
+
+**Game Start**
+
+```
+Welcome to Trap Runner!
+Player 1 is the Trapper.
+Player 2 is the Runner.
+Trapper, please place your traps.
+
+[Trapper places traps at cells 2, 5, and 9.]
+
+Runner, you are at cell 0.
+```
+
+**Turn 1**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 3
+You moved to cell 3.
+Trapper says: You are safe.
+```
+
+**Turn 2**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 3
+You moved to cell 6.
+Trapper says: You are safe.
+```
+
+**Turn 3**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 2
+You moved to cell 8.
+Trapper says: You are safe.
+```
+
+**Turn 4**
+
+```
+Runner's turn.
+Enter your move (1, 2, or 3 cells): 2
+You moved to cell 10.
+Trapper says: You have reached the finish line!
+Runner wins!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Runner**:
+
+  - Vary your movement distances to avoid predictable patterns.
+  - Consider the probability of traps being placed on certain cells based on common strategies.
+  - Remember that you cannot overshoot cell 10; plan your moves to land exactly on the finish line.
+
+- **Trapper**:
+
+  - Place traps on cells that are likely to be landed on based on typical movement choices (e.g., cells 3, 6, 9 if runners often move in increments of 3).
+  - Avoid obvious trap placements; consider placing traps on less predictable cells.
+  - Use psychological strategies to anticipate the **Runner's** decisions.
+
+---
+
+By following this rulebook, players can enjoy a game of **Trap Runner** that is simple to code, easy to play, and offers strategic depth to challenge both new and experienced players.

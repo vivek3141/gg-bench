@@ -1,0 +1,228 @@
+# Bit Flip: A Two-Player Strategy Game
+
+Welcome to **Bit Flip**, a simple yet strategic two-player game designed for play in a command-line interface. This game tests your tactical planning and foresight as you compete to outmaneuver your opponent. Easy to learn but challenging to master, **Bit Flip** ensures that a skilled player can consistently outplay an unskilled opponent. There are no draws in this game, and each match is designed to conclude quickly, making it perfect for quick sessions or extended play.
+
+---
+
+## Objective
+
+Be the **last player able to perform a valid move**. Players take turns flipping bits in a binary sequence according to specific rules. The goal is to force your opponent into a position where they cannot make a valid move on their turn, thus securing your victory.
+
+---
+
+## Setup
+
+- **Game Start**: The game begins with a binary sequence of **N bits**, all set to **0**. The value of **N** can be agreed upon by both players before the game starts; a smaller **N** results in a quicker game, while a larger **N** increases strategic complexity. For a standard game, **N = 10**.
+
+- **Player Assignment**: Decide who will take the first turn. This can be determined randomly, or by mutual agreement.
+
+- **Initial Display**: The command-line interface displays the binary sequence with bit positions labeled for clarity.
+
+  ```
+  Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+  Bits:      [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+  ```
+
+---
+
+## Game Components
+
+- **Binary Sequence**: A list of **N bits**, indexed from **0** to **N-1**, each bit initially set to **0**.
+
+- **Bit Positions**: Each bit has a unique position in the sequence, used for selecting which bit to flip.
+
+- **Markers**:
+  - **0**: Represents an unflipped bit.
+  - **1**: Represents a flipped bit.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns, starting with the player who was selected to go first during setup.
+  - On each turn, the active player must perform one valid action: **flip a bit from 0 to 1** following the game rules.
+
+- **Turn Actions**:
+  - **Flip a Bit**: Change a bit's value from **0** to **1**.
+  - **Pass**: If a player cannot perform a valid flip according to the rules, they must pass their turn.
+
+- **Turn Progression**:
+  1. **Display Current State**: The game displays the current binary sequence.
+  2. **Player's Move**: The active player selects a bit to flip.
+  3. **Validation**: The game validates the move according to the rules.
+  4. **Update State**: If valid, the bit is flipped, and the game state updates.
+  5. **Check for Endgame**: The game checks if the opponent has any valid moves remaining.
+  6. **Next Player's Turn**: If the game hasn't ended, the turn passes to the next player.
+
+---
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - On your turn, you **must flip exactly one bit** from **0** to **1**.
+
+2. **Valid Moves**:
+   - **Non-Adjacent Rule**: You can only flip a bit if it is **not adjacent** to any bit already set to **1**.
+     - Bits are considered adjacent if they are immediately next to each other in the sequence (i.e., bit positions **n** and **n+1** are adjacent).
+     - For example, if bits at positions 3 and 5 are set to **1**, you can flip bit 1, 7, etc., but not bits 2, 4, or 6.
+
+3. **Invalid Moves**:
+   - Attempting to flip a bit that is adjacent to a bit set to **1** is invalid and not allowed.
+   - If a player has no valid moves on their turn, they must pass.
+
+4. **Endgame Condition**:
+   - The game ends when a player cannot perform a valid flip on their turn because all remaining bits are either set to **1** or are adjacent to bits set to **1**.
+   - The **last player to perform a valid move wins** the game.
+
+5. **No Reversing Moves**:
+   - Once a bit is flipped from **0** to **1**, it cannot be changed back to **0**.
+
+---
+
+## Scoring
+
+- **Winning the Game**: The player who forces their opponent into a position where they cannot make a valid move is declared the winner.
+
+- **No Draws**: Due to the nature of the game mechanics, there are no possible draw scenarios in **Bit Flip**.
+
+---
+
+## Examples
+
+Below are sample turns to illustrate how the game is played.
+
+### Example Game with N = 10 Bits
+
+#### Initial State
+
+```
+Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+Bits:      [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Flips bit at position **4**.
+
+- **Result**:
+
+  ```
+  Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+  Bits:      [0] [0] [0] [0] [1] [0] [0] [0] [0] [0]
+  ```
+
+#### Turn 2: Player 2
+
+- **Available Moves**: Cannot flip bits **3** or **5** (adjacent to bit **4**). Can flip any other bit.
+
+- **Action**: Flips bit at position **1**.
+
+- **Result**:
+
+  ```
+  Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+  Bits:      [0] [1] [0] [0] [1] [0] [0] [0] [0] [0]
+  ```
+
+#### Turn 3: Player 1
+
+- **Available Moves**: Cannot flip bits **0** or **2** (adjacent to bit **1**), or bits **3** or **5** (adjacent to bit **4**).
+
+- **Action**: Flips bit at position **7**.
+
+- **Result**:
+
+  ```
+  Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+  Bits:      [0] [1] [0] [0] [1] [0] [0] [1] [0] [0]
+  ```
+
+#### Turn 4: Player 2
+
+- **Available Moves**: Cannot flip bits **6** or **8** (adjacent to bit **7**), bits **0** or **2** (adjacent to bit **1**), or bits **3** or **5** (adjacent to bit **4**).
+
+- **Action**: Flips bit at position **9**.
+
+- **Result**:
+
+  ```
+  Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+  Bits:      [0] [1] [0] [0] [1] [0] [0] [1] [0] [1]
+  ```
+
+#### Turn 5: Player 1
+
+- **Available Moves**: Remaining unflipped bits are **positions 0, 2, 5, 6, 8**. Bits **0** and **2** are adjacent to bit **1**, **5** and **6** are adjacent to bits **4** and **7**, **8** is adjacent to bit **7**.
+
+- **Action**: Cannot perform a valid move (all remaining unflipped bits are adjacent to flipped bits).
+
+- **Result**: Player 1 has no valid moves and must pass.
+
+#### Conclusion
+
+- **Winner**: **Player 2** wins as they were the last to perform a valid move.
+
+---
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Welcome to Bit Flip!
+
+Starting game with 10 bits.
+Player 1, you will go first.
+
+Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+Bits:      [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+```
+
+### Turn Sequence
+
+#### Player 1's Turn
+
+```
+Player 1's turn.
+Available positions to flip: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+Enter the position of the bit you want to flip: 4
+
+You flipped bit at position 4.
+
+Updated Bits:
+Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+Bits:      [0] [0] [0] [0] [1] [0] [0] [0] [0] [0]
+```
+
+#### Player 2's Turn
+
+```
+Player 2's turn.
+Available positions to flip: 0, 1, 2, 6, 7, 8, 9
+Enter the position of the bit you want to flip: 1
+
+You flipped bit at position 1.
+
+Updated Bits:
+Positions: [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+Bits:      [0] [1] [0] [0] [1] [0] [0] [0] [0] [0]
+```
+
+#### Subsequent Turns
+
+The game continues in this manner until one player cannot make a valid move.
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the consequences of flipping a particular bit, especially how it limits your opponent's options.
+
+- **Control the Center**: Flipping bits near the center can restrict more adjacent bits, potentially forcing your opponent into a corner.
+
+- **Avoid Isolation**: Be cautious when flipping bits that don't limit your opponent's moves.
+
+---
+
+Enjoy playing **Bit Flip** and may the best strategist win!

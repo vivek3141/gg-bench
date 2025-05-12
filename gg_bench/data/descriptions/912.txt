@@ -1,0 +1,257 @@
+**Capture Squares**
+
+---
+
+### **Objective**
+
+Be the player with the highest total score when the board is full. Players score points by claiming cells on a grid and capturing opponent's cells. The player with the highest combined value of their claimed cells at the end of the game wins.
+
+---
+
+### **Setup**
+
+1. **Game Board**: A 4x4 grid (4 rows and 4 columns) is used for the game.
+2. **Number Assignment**:
+   - Each cell in the grid is assigned a unique number from **1** to **16**.
+   - The numbers are randomly arranged in the grid before the game starts.
+3. **Player Symbols**:
+   - **Player 1** is assigned the symbol **'A'**.
+   - **Player 2** is assigned the symbol **'B'**.
+4. **Starting Condition**:
+   - All cells are initially unclaimed.
+
+---
+
+### **Game Components**
+
+1. **Grid Cells**:
+   - **Appearance**: Each cell displays its assigned number (1-16) and its status (unclaimed, claimed by 'A', or claimed by 'B').
+   - **Functionality**: Cells can be claimed by players and can change ownership through captures.
+2. **Player Symbols**:
+   - **'A'** for Player 1 and **'B'** for Player 2.
+   - Used to mark claimed cells on the grid.
+3. **Scoring System**:
+   - The numbers assigned to the cells represent the point value of each cell.
+   - Players accumulate points based on the numbers of the cells they own at the end of the game.
+
+---
+
+### **Turns**
+
+1. **Turn Order**:
+   - Player 1 starts the game.
+   - Players alternate turns thereafter.
+2. **Actions Per Turn**:
+   - **Claim a Cell**:
+     - The player selects any unclaimed cell on the grid to claim.
+     - The selected cell is marked with the player's symbol ('A' or 'B').
+   - **Capture Mechanism**:
+     - After claiming a cell, the player checks all **adjacent cells** (up, down, left, right) for opponent's cells with **lower numbers**.
+     - Any adjacent opponent's cell with a lower number is **captured** and changes ownership to the current player.
+     - Captured cells are updated with the current player's symbol.
+3. **Turn Progression**:
+   - After completing their action, the turn passes to the other player.
+   - The game continues until all cells on the grid have been claimed.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Claiming Cells**:
+   - On their turn, a player must claim **one** unclaimed cell.
+   - The cell must be unclaimed; players cannot select cells already claimed by either player.
+2. **Capturing Cells**:
+   - **Adjacent Cells**: Cells directly above, below, to the left, or to the right. Diagonal cells are **not** considered adjacent.
+   - **Capture Condition**:
+     - If an adjacent cell is claimed by the opponent and has a **lower number** than the cell just claimed, it is captured.
+     - Multiple adjacent cells meeting the condition can be captured in a single turn.
+   - **Ownership Change**:
+     - Captured cells are immediately changed to the current player's symbol.
+     - This can lead to chain reactions in subsequent turns.
+3. **No Reversing Captures**:
+   - Cells can be captured multiple times throughout the game.
+   - There is no restriction on re-capturing cells that were previously owned by a player.
+4. **End of Game**:
+   - The game ends when all cells have been claimed.
+   - Captures can still occur on the last turn.
+
+---
+
+### **Scoring**
+
+1. **Calculating Scores**:
+   - At the end of the game, each player sums the numbers on all cells they own.
+2. **Determining the Winner**:
+   - The player with the **highest total score** wins the game.
+   - Since the total sum of numbers from 1 to 16 is **136**, and there are no fractional points, a tie is **not possible**.
+3. **Example of Scoring**:
+   - **Player 1** owns cells with numbers: 2, 4, 7, 9, 12.
+   - Total score for Player 1: 2 + 4 + 7 + 9 + 12 = **34**.
+   - **Player 2** owns the remaining cells.
+   - Total score for Player 2: 136 - 34 = **102**.
+   - **Player 2** wins.
+
+---
+
+### **Examples**
+
+#### **Sample Game Play**
+
+**Initial Grid Setup**:
+
+```
++----+----+----+----+
+|  5 | 12 |  3 | 16 |
++----+----+----+----+
+| 10 |  1 | 14 |  6 |
++----+----+----+----+
+| 11 |  8 |  2 | 15 |
++----+----+----+----+
+|  9 | 13 |  4 |  7 |
++----+----+----+----+
+```
+
+**Turn-by-Turn Example**:
+
+- **Turn 1 - Player 1 ('A')**:
+  - Claims cell with number **16** at position (1,4).
+  - No adjacent opponent cells to capture (since it's the first move).
+- **Grid State**:
+
+```
++----+----+----+----+
+|  5 | 12 |  3 | A16|
++----+----+----+----+
+| 10 |  1 | 14 |  6 |
++----+----+----+----+
+| 11 |  8 |  2 | 15 |
++----+----+----+----+
+|  9 | 13 |  4 |  7 |
++----+----+----+----+
+```
+
+- **Turn 2 - Player 2 ('B')**:
+  - Claims cell with number **15** at position (3,4).
+  - Captures adjacent cell:
+    - Checks cell at (1,4): 'A16' (owned by Player 1) with number **16**.
+    - Since **15** (current cell) < **16** (adjacent cell), **no capture** occurs.
+- **Grid State**:
+
+```
++----+----+----+----+
+|  5 | 12 |  3 | A16|
++----+----+----+----+
+| 10 |  1 | 14 |  6 |
++----+----+----+----+
+| 11 |  8 |  2 | B15|
++----+----+----+----+
+|  9 | 13 |  4 |  7 |
++----+----+----+----+
+```
+
+- **Turn 3 - Player 1 ('A')**:
+  - Claims cell with number **14** at position (2,3).
+  - Captures adjacent cells:
+    - Cell at (2,2): number **1**, unclaimed - **no capture**.
+    - Cell at (2,4): number **6**, unclaimed - **no capture**.
+    - Cell at (1,3): number **3**, unclaimed - **no capture**.
+    - Cell at (3,3): number **2**, unclaimed - **no capture**.
+- **Grid State**:
+
+```
++----+----+----+----+
+|  5 | 12 |  3 | A16|
++----+----+----+----+
+| 10 |  1 | A14|  6 |
++----+----+----+----+
+| 11 |  8 |  2 | B15|
++----+----+----+----+
+|  9 | 13 |  4 |  7 |
++----+----+----+----+
+```
+
+- **Turn 4 - Player 2 ('B')**:
+  - Claims cell with number **13** at position (4,2).
+  - Captures adjacent cells:
+    - Cell at (3,2): number **8**, unclaimed - **no capture**.
+    - Cell at (4,1): number **9**, unclaimed - **no capture**.
+    - Cell at (4,3): number **4**, unclaimed - **no capture**.
+- **Grid State**:
+
+```
++----+----+----+----+
+|  5 | 12 |  3 | A16|
++----+----+----+----+
+| 10 |  1 | A14|  6 |
++----+----+----+----+
+| 11 |  8 |  2 | B15|
++----+----+----+----+
+|  9 | B13|  4 |  7 |
++----+----+----+----+
+```
+
+*...Game continues with players claiming cells and capturing opponent cells according to the rules...*
+
+---
+
+### **Command-Line Interaction Example**
+
+**Notation**:
+- Positions are indicated by their row and column numbers: (row,column)
+- Rows and columns are numbered from 1 to 4.
+
+**Sample Turn**:
+
+- **Player 1's Turn**:
+  - **Prompt**: `Player A, enter the position of the cell you want to claim (row,column):`
+  - **Input**: `2,1`
+  - **Program Output**:
+    ```
+    You claimed cell (2,1) with number 10.
+    Capturing adjacent opponent cells...
+    No cells captured.
+    ```
+- **Player 2's Turn**:
+  - **Prompt**: `Player B, enter the position of the cell you want to claim (row,column):`
+  - **Input**: `2,2`
+  - **Program Output**:
+    ```
+    You claimed cell (2,2) with number 1.
+    Capturing adjacent opponent cells...
+    Captured cell (2,1) from Player A.
+    ```
+- **Game Board State**:
+  ```
+  +----+----+----+----+
+  |  5 | 12 |  3 | A16|
+  +----+----+----+----+
+  | B10| B1 | A14|  6 |
+  +----+----+----+----+
+  | 11 |  8 |  2 | B15|
+  +----+----+----+----+
+  |  9 | B13|  4 |  7 |
+  +----+----+----+----+
+  ```
+
+---
+
+### **Strategy Tips**
+
+- **High-Number Cells**:
+  - Claiming high-numbered cells can prevent them from being easily captured.
+  - High numbers contribute more to your total score.
+- **Capturing Opponent Cells**:
+  - Look for opportunities where claiming a cell will capture multiple adjacent opponent cells.
+  - Capturing can swing both the control of the board and the total score in your favor.
+- **Protecting Your Cells**:
+  - Be cautious when your low-numbered cells are adjacent to unclaimed cells that could be taken by the opponent.
+  - Try to claim cells that shield your lower-numbered cells.
+- **Planning Ahead**:
+  - Anticipate your opponent's moves based on the numbers on the board.
+  - Consider the potential captures your opponent might make if you leave certain cells unclaimed.
+
+---
+
+### **Conclusion**
+
+**Capture Squares** is a strategic two-player game that combines territorial control with numerical values. Each decision impacts not only your immediate score but also the dynamic of the board and the opponent's potential moves. The game is designed to be straightforward to learn yet offers depth for players to develop their strategies. Enjoy competing to dominate the grid and achieve the highest score!

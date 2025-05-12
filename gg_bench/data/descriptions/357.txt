@@ -1,0 +1,153 @@
+# Factor Duel
+
+## Objective
+
+**Factor Duel** is a two-player, turn-based mathematical strategy game. The primary goal is to be the player who reduces the shared number to **1** through strategic selection of its factors. The player who successfully reduces the number to 1 on their turn wins the game. A player loses if they cannot make a valid move on their turn.
+
+## Setup
+
+1. **Starting Number**: Choose a positive integer greater than 1 to begin the game. For simplicity, a default starting number of **30** is suggested, but players can agree on any suitable number.
+
+2. **Players**: Two players are required. Decide who takes the first turn (e.g., by flipping a coin or mutual agreement).
+
+3. **Game Interface**: The game is played in a command-line interface where players input their chosen factors when prompted.
+
+## Game Components
+
+- **Shared Number**: An integer value manipulated by both players throughout the game. It starts at the chosen starting number and changes as players select factors.
+
+- **Factors**: Valid factors are integers that divide the current shared number exactly (without leaving a remainder), excluding 1 and the number itself.
+
+- **Players**: Each player takes turns selecting factors and reducing the shared number.
+
+## Turns
+
+### Structure of a Turn:
+
+1. **Display the Current Shared Number**: At the start of each turn, inform the player of the current shared number.
+
+2. **Available Factors**: List the valid factors of the current shared number (excluding 1 and the number itself).
+
+3. **Player's Action**:
+
+   - The player selects one of the available factors.
+   - The shared number is then divided by the chosen factor.
+   - The result becomes the new shared number for the next turn.
+
+4. **Progression of Turns**: Turns alternate between the two players until the game ends (either by a player winning or losing).
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+
+   - On their turn, a player must select a valid factor of the current shared number.
+   - Valid factors are integers greater than 1 and less than the shared number that divide it exactly.
+   - Selecting an invalid factor results in an immediate loss.
+
+2. **Reducing the Shared Number**:
+
+   - After selecting a valid factor, divide the shared number by this factor.
+   - The quotient becomes the new shared number for the game.
+   - The shared number must always remain a positive integer.
+
+3. **Winning the Game**:
+
+   - If a player reduces the shared number to **1** on their turn, they win the game.
+
+4. **Losing the Game**:
+
+   - If a player cannot make a valid move because the current shared number is a prime number (and thus only divisible by 1 and itself), they lose the game.
+
+5. **Illegal Moves**:
+
+   - Selecting a number that is not a valid factor (does not divide the shared number exactly or is 1 or the number itself) results in an immediate loss.
+
+## Scoring
+
+- The game is a win-or-lose scenario with no point tracking.
+- **Winner**: The player who reduces the shared number to 1 on their turn.
+- **Loser**: The player who cannot make a valid move or makes an illegal move.
+
+## Examples
+
+### Example Game Playthrough
+
+**Starting Number**: 30
+
+**Player 1's Turn**:
+
+- **Current Shared Number**: 30
+- **Available Factors** (excluding 1 and 30): 2, 3, 5, 6, 10, 15
+- **Player 1 selects factor**: 5
+- **Calculation**: 30 ÷ 5 = 6
+- **New Shared Number**: 6
+
+**Player 2's Turn**:
+
+- **Current Shared Number**: 6
+- **Available Factors** (excluding 1 and 6): 2, 3
+- **Player 2 selects factor**: 2
+- **Calculation**: 6 ÷ 2 = 3
+- **New Shared Number**: 3
+
+**Player 1's Turn**:
+
+- **Current Shared Number**: 3
+- **Available Factors**: None (since 3 is prime and factors exclude 1 and 3)
+- **Player 1 cannot make a valid move and loses the game.**
+
+**Result**: Player 2 wins!
+
+### Command-Line Interaction Example
+
+```
+Starting Number: 30
+
+Player 1's Turn:
+Current Shared Number: 30
+Available factors (excluding 1 and 30): 2, 3, 5, 6, 10, 15
+Enter your chosen factor: 5
+
+Player 1 selected factor 5.
+New Shared Number is 6.
+
+Player 2's Turn:
+Current Shared Number: 6
+Available factors (excluding 1 and 6): 2, 3
+Enter your chosen factor: 2
+
+Player 2 selected factor 2.
+New Shared Number is 3.
+
+Player 1's Turn:
+Current Shared Number: 3
+Available factors (excluding 1 and 3): None
+No valid moves available. Player 1 loses!
+
+Player 2 wins the game!
+```
+
+## Strategic Depth
+
+- **Anticipate Future Moves**: Players should consider how their chosen factor will affect the next shared number and the available moves for their opponent.
+
+- **Prime Numbers as Traps**: Forcing the shared number to a prime number greater than 1 on your opponent's turn can leave them without a valid move, securing your victory.
+
+- **Optimal Play**: Identify factors that lead to numbers with fewer factors, limiting your opponent's options.
+
+- **Example Strategy**:
+
+  - With starting number 30, selecting factors that bring the shared number down to prime numbers on your opponent's turn can be a winning strategy.
+  - Be cautious of the initial shared number and plan several moves ahead.
+
+## Additional Notes
+
+- **Custom Starting Numbers**: Players can agree to start with different numbers for varied gameplay experiences. Starting with composite numbers offers more strategic options.
+
+- **Time Constraints**: To keep the game fast-paced, consider setting a time limit for each turn.
+
+- **No Draws**: The game is designed to always produce a winner and a loser, ensuring a decisive outcome.
+
+## Conclusion
+
+**Factor Duel** is an engaging and strategic game that combines simple arithmetic with forward-thinking tactics. Easy to learn but challenging to master, it offers players an opportunity to hone their mathematical reasoning in a competitive and entertaining environment. Ideal for quick matches, it can be easily implemented in a command-line interface, making it accessible and enjoyable for players of all skill levels.

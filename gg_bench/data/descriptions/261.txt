@@ -1,0 +1,255 @@
+# Number Split: Rule Book
+
+## Objective
+
+**Primary Goal:**  
+In **Number Split**, two players compete to avoid being the first unable to make a valid move. The objective is to force your opponent into a position where they cannot perform a move according to the game's rules. A player loses if it is their turn and they cannot make a valid move.
+
+**Victory Condition:**  
+- **Win:** You win the game if your opponent cannot make a valid move on their turn.
+- **Loss:** You lose the game if it is your turn and you have no valid moves available.
+
+---
+
+## Setup
+
+1. **Initial Number Selection:**  
+   - The game starts with a single positive integer called the **Initial Number**.
+   - For a quick and engaging game, it is recommended to start with an Initial Number between **15** and **31**. For example, **N = 15**.
+   - This number is placed in a **Shared List** accessible to both players.
+
+2. **Player Positions:**  
+   - **Player 1** and **Player 2** are determined randomly or by mutual agreement.
+   - Players will alternate turns throughout the game.
+
+3. **Game Environment:**  
+   - The game is played in a command-line interface.
+   - Ensure both players can view and interact with the Shared List.
+
+---
+
+## Game Components
+
+### 1. Shared List
+
+- **Description:**  
+  A list that contains all the current numbers in play.
+
+- **Initial State:**  
+  - Starts with the single Initial Number (e.g., `[15]`).
+
+- **Dynamic Updates:**  
+  - Numbers are added to or removed from the list based on player actions.
+
+### 2. Numbers
+
+- **Properties:**
+  - **Positive Integers:** All numbers in the list are positive integers.
+  - **Splittable Numbers:** Numbers greater than 1 can be split.
+  - **Unsplittable Numbers:** The number 1 cannot be split further.
+
+- **Functionality:**
+  - Players select numbers from the Shared List to split during their turns.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Turn Order:**  
+   - Players alternate turns starting with **Player 1**.
+
+2. **Actions During a Turn:**  
+   - **Select a Number to Split:**
+     - Choose any number greater than 1 from the Shared List.
+   - **Split the Number:**
+     - Divide the selected number into **two positive integers** that sum up to the original number.
+     - Both resulting numbers must be at least 1.
+   - **Update the Shared List:**
+     - Remove the original number from the list.
+     - Add the two new numbers to the list.
+
+3. **Turn Progression:**  
+   - After completing the above actions, the turn passes to the other player.
+   - The game continues until one player cannot make a valid move on their turn.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Numbers for Splitting:**  
+   - Only numbers **greater than 1** in the Shared List can be selected for splitting.
+   - The number **1** is considered unsplittable and cannot be chosen.
+
+2. **Splitting a Number:**  
+   - When splitting a number `N`, you must create two positive integers `A` and `B` such that:
+     - `A + B = N`
+     - `A ≥ 1` and `B ≥ 1`
+
+3. **Updating the Shared List:**  
+   - Remove the original number `N` from the list.
+   - Add the new numbers `A` and `B` to the list.
+   - The order of numbers in the list does not affect gameplay.
+
+4. **No Skipping Turns:**  
+   - If a player has at least one valid move, they must make a move.
+   - Players cannot pass or skip their turn if a move is available.
+
+### Winning the Game
+
+- **Loss Condition:**  
+  - If it is your turn and all numbers in the Shared List are **1**, you have no valid moves and you lose the game.
+
+- **Win Condition:**  
+  - If your opponent cannot make a valid move on their turn, you win the game.
+
+### Additional Mechanics
+
+- **No Resplitting in the Same Turn:**  
+  - You cannot split a number that you've just added to the list in the same turn. Splitting only one number per turn is allowed.
+
+- **Command-Line Interaction:**  
+  - Players input commands to select and split numbers.
+  - The game interface updates the Shared List after each move.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial State:**
+
+- Shared List: `[15]`
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Action:**
+  - Selects number **15** to split.
+  - Splits **15** into **8** and **7**.
+- **Update:**
+  - Shared List becomes `[8, 7]`.
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Action:**
+  - Selects number **8** to split.
+  - Splits **8** into **5** and **3**.
+- **Update:**
+  - Shared List becomes `[7, 5, 3]`.
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Action:**
+  - Selects number **7** to split.
+  - Splits **7** into **4** and **3**.
+- **Update:**
+  - Shared List becomes `[5, 3, 4, 3]`.
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Action:**
+  - Selects number **5** to split.
+  - Splits **5** into **2** and **3**.
+- **Update:**
+  - Shared List becomes `[3, 4, 3, 2, 3]`.
+
+---
+
+#### **Turn 5: Player 1**
+
+- **Action:**
+  - Selects number **4** to split.
+  - Splits **4** into **2** and **2**.
+- **Update:**
+  - Shared List becomes `[3, 3, 2, 3, 2, 2]`.
+
+---
+
+#### **Turns Continue Similarly...**
+
+Players continue to take turns splitting numbers greater than 1. The Shared List updates accordingly.
+
+---
+
+#### **Final Turns:**
+
+At some point, the Shared List may look like this:
+
+- Shared List: `[1, 1, 1, 1, 1, 1, 1]`
+
+---
+
+**Player's Turn with No Valid Moves:**
+
+- **Scenario:**
+  - It is **Player 2's** turn.
+  - All numbers in the Shared List are **1**.
+- **Outcome:**
+  - Player 2 has no valid moves.
+  - **Player 2 loses the game.**
+  - **Player 1 wins the game.**
+
+---
+
+### Command-Line Interaction Example
+
+**Game Start:**
+
+```
+Shared List: [15]
+Player 1's Turn:
+Select a number to split: 15
+Enter first split number: 8
+Enter second split number: 7
+Updated Shared List: [8, 7]
+```
+
+---
+
+**Next Turn:**
+
+```
+Shared List: [8, 7]
+Player 2's Turn:
+Select a number to split: 8
+Enter first split number: 5
+Enter second split number: 3
+Updated Shared List: [7, 5, 3]
+```
+
+---
+
+**Game Continues Until a Player Cannot Move**
+
+---
+
+## Strategic Tips
+
+- **Balance Your Splits:**  
+  Aim to create numbers that limit your opponent's options in future turns.
+
+- **Anticipate Moves:**  
+  Think ahead about how the Shared List will look after your move and plan accordingly.
+
+- **Control the Game Pace:**  
+  By choosing how to split the numbers, you can influence the length of the game and steer it toward a win.
+
+---
+
+## Conclusion
+
+**Number Split** is a strategic and engaging game that challenges players to think ahead and outmaneuver their opponent. With simple rules and quick gameplay, it is easy to learn but offers depth for those who wish to master it.
+
+Enjoy the game and may the best strategist win!

@@ -1,0 +1,349 @@
+# Shield and Sword
+
+## Objective
+
+Be the first player to reduce your opponent's **Health Points (HP)** to zero by strategically managing your **Energy Points (EP)** to perform actions: **Attack**, **Defend**, and **Recharge**.
+
+---
+
+## Setup
+
+- **Players:** Two
+- **Starting Health Points (HP):** 10 HP for each player
+- **Starting Energy Points (EP):** 5 EP for each player
+- **Maximum Energy Points (EP):** 5 EP
+- **Turn Order:** Decide who goes first (e.g., by coin toss). Turns alternate between players.
+
+---
+
+## Game Components
+
+### Health Points (HP)
+- Represents a player's life total.
+- **Starts at 10 HP** for each player.
+- **Cannot exceed 10 HP**.
+- **Reduced** by opponent's successful Attacks.
+- **Loss Condition:** When a player's HP reaches zero.
+
+### Energy Points (EP)
+- Represents a player's ability to perform actions.
+- **Starts at 5 EP** for each player.
+- **Maximum EP** is **5 EP**.
+- **Spent** to perform actions:
+  - **Attack:** Costs **1 EP**.
+  - **Defend:** Costs **1 EP**.
+  - **Recharge:** Restores **2 EP** (cannot exceed 5 EP).
+
+---
+
+## Turns
+
+- Players take turns performing **one action** per turn.
+- **Actions Available:**
+  1. **Attack**
+  2. **Defend**
+  3. **Recharge**
+
+---
+
+## Rules and Mechanics
+
+### Actions
+
+#### 1. Attack
+- **Cost:** 1 EP
+- **Effect:** Reduces opponent's HP by **2 HP** unless they have an active Defend.
+- **Conditions:**
+  - Cannot perform if you have less than **1 EP**.
+  - Opponent's Defend negates the damage.
+
+#### 2. Defend
+- **Cost:** 1 EP
+- **Effect:** Negates damage from the opponent's next Attack.
+- **Duration:** Lasts until the start of your next turn.
+- **Conditions:**
+  - Cannot perform if you have less than **1 EP**.
+  - Only blocks one Attack; does not stack.
+
+#### 3. Recharge
+- **Effect:** Restores **2 EP**.
+- **Conditions:**
+  - EP cannot exceed the maximum of **5 EP**.
+  - Can be performed even if EP is already at **5 EP** (no additional EP is gained).
+
+### Additional Rules
+
+- **Insufficient EP:**
+  - If you attempt an action without enough EP, the action fails, and your turn is skipped.
+- **Defend Expiration:**
+  - If not attacked before your next turn, the Defend effect expires.
+- **Victory Condition:**
+  - Reduce your opponent's HP to **zero** to win the game.
+
+---
+
+## Scoring
+
+- **Health Points (HP):**
+  - Starts at **10 HP**.
+  - **Track individually** for each player.
+- **Energy Points (EP):**
+  - Starts at **5 EP**.
+  - **Track individually** for each player.
+- **Win Condition:**
+  - Opponent's HP reaches **zero**.
+
+---
+
+## Examples
+
+### Example Turn Sequence
+
+**Initial State:**
+
+```
+Player 1 - HP: 10, EP: 5
+Player 2 - HP: 10, EP: 5
+```
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Attack
+- **EP Cost:** 1 (EP decreases from 5 to **4**)
+- **Result:** Player 2's HP decreases by 2 (from 10 to **8**)
+
+**Updated State:**
+
+```
+Player 1 - HP: 10, EP: 4
+Player 2 - HP: 8, EP: 5
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Defend
+- **EP Cost:** 1 (EP decreases from 5 to **4**)
+- **Result:** Player 2 is defending against the next Attack.
+
+**Updated State:**
+
+```
+Player 1 - HP: 10, EP: 4
+Player 2 - HP: 8, EP: 4 (Defending)
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Attack
+- **EP Cost:** 1 (EP decreases from 4 to **3**)
+- **Result:** Player 2's Defend negates the Attack. No HP lost.
+
+**Defend Status:** Player 2's Defend expires.
+
+**Updated State:**
+
+```
+Player 1 - HP: 10, EP: 3
+Player 2 - HP: 8, EP: 4
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Attack
+- **EP Cost:** 1 (EP decreases from 4 to **3**)
+- **Result:** Player 1's HP decreases by 2 (from 10 to **8**)
+
+**Updated State:**
+
+```
+Player 1 - HP: 8, EP: 3
+Player 2 - HP: 8, EP: 3
+```
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Defend
+- **EP Cost:** 1 (EP decreases from 3 to **2**)
+- **Result:** Player 1 is defending against the next Attack.
+
+**Updated State:**
+
+```
+Player 1 - HP: 8, EP: 2 (Defending)
+Player 2 - HP: 8, EP: 3
+```
+
+---
+
+**Turn 6: Player 2**
+
+- **Action:** Attack
+- **EP Cost:** 1 (EP decreases from 3 to **2**)
+- **Result:** Player 1's Defend negates the Attack. No HP lost.
+
+**Defend Status:** Player 1's Defend expires.
+
+**Updated State:**
+
+```
+Player 1 - HP: 8, EP: 2
+Player 2 - HP: 8, EP: 2
+```
+
+---
+
+**Turn 7: Player 1**
+
+- **Action:** Recharge
+- **Effect:** Restores 2 EP (EP increases from 2 to **4**)
+- **Result:** Prepared for future actions.
+
+**Updated State:**
+
+```
+Player 1 - HP: 8, EP: 4
+Player 2 - HP: 8, EP: 2
+```
+
+---
+
+**Turn 8: Player 2**
+
+- **Action:** Attack
+- **EP Cost:** 1 (EP decreases from 2 to **1**)
+- **Result:** Player 1's HP decreases by 2 (from 8 to **6**)
+
+**Updated State:**
+
+```
+Player 1 - HP: 6, EP: 4
+Player 2 - HP: 8, EP: 1
+```
+
+---
+
+**Game Continues:**
+
+Players continue to take turns, managing their EP to perform actions, until one player's HP reaches zero.
+
+---
+
+## Command-Line Interaction Examples
+
+**Starting the Game:**
+
+```
+--- Shield and Sword ---
+Player 1 - HP: 10, EP: 5
+Player 2 - HP: 10, EP: 5
+Player 1's turn.
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+```
+
+---
+
+**Sample Turn:**
+
+**Player 1's Turn:**
+
+```
+Player 1's turn.
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+> 1
+You chose to Attack.
+EP decreased by 1. EP is now 4.
+Player 2's HP decreased by 2. HP is now 8.
+```
+
+---
+
+**Player 2's Turn:**
+
+```
+Player 2's turn.
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+> 2
+You chose to Defend.
+EP decreased by 1. EP is now 4.
+You are defending against the next attack.
+```
+
+---
+
+**Player 1's Turn:**
+
+```
+Player 1's turn.
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+> 1
+You chose to Attack.
+EP decreased by 1. EP is now 3.
+Player 2 defended! No damage dealt.
+```
+
+---
+
+**Player 2's Turn:**
+
+```
+Player 2's turn.
+Your Defend has expired.
+Choose your action:
+1. Attack
+2. Defend
+3. Recharge
+> 3
+You chose to Recharge.
+EP increased by 2. EP is now 5.
+```
+
+---
+
+**Status Update:**
+
+```
+Current Status:
+Player 1 - HP: 10, EP: 3
+Player 2 - HP: 8, EP: 5
+```
+
+---
+
+## Strategic Considerations
+
+- **Energy Management:** Balance your EP usage. Avoid running out of EP by incorporating Recharge actions.
+- **Predict Opponent's Moves:** Anticipate attacks and defend accordingly. Watch your opponent's EP to gauge possible actions.
+- **Attack Timing:** Time your attacks when the opponent is low on EP or cannot defend.
+- **Defend Wisely:** Use Defend when you suspect an incoming Attack, but be cautious of wasted defenses if the opponent Recharges instead.
+
+---
+
+## Victory
+
+Continue playing until one player's HP reaches zero. The player whose HP remains above zero is declared the **winner**.
+
+---
+
+Enjoy "Shield and Sword," a game of strategy, prediction, and resource management. May the best strategist win!

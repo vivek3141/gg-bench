@@ -1,0 +1,11 @@
+The action space in the game is defined with indices from 0 to 26:
+
+- **Indices 0 and 1** correspond to movement actions in the movement phase:
+  - **0**: Move Forward
+  - **1**: Move Backward
+
+- **Indices 2 to 26** represent actions during the battle phase:
+  - Each index from 2 to 26 maps to a combination of battle choices for both players, where the index is decoded into two numbers (P1's choice and P2's choice) between 1 and 5:
+    - For index `a`: `p1_choice = (a - 2) // 5 + 1` and `p2_choice = (a - 2) % 5 + 1`.
+
+This encoding captures all possible pairs of choices for both players in a battle, totaling 25 combinations.

@@ -1,0 +1,249 @@
+# Summation Duel Rule Book
+
+## Objective
+
+**Be the first player to bring the total sum to exactly 50 without exceeding it.**
+
+In **Summation Duel**, two players take turns adding unique numbers to a cumulative total. The goal is to strategically select numbers that increase the total sum to exactly 50 on your turn. If you cause the total sum to exceed 50, you lose the game immediately.
+
+---
+
+## Setup
+
+1. **Starting Total Sum**: The game begins with a total sum of **0**.
+2. **Available Numbers**: A list of numbers from **1** to **10** inclusive. All numbers are available to both players at the start of the game.
+3. **Determine First Player**: Decide who goes first (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Total Sum**: A shared cumulative total that starts at **0** and is updated each turn.
+- **Numbers (1-10)**: Unique numbers that can be used once per game by either player.
+  - **Appearance**: Simply represented by their numerical value (1, 2, 3, ..., 10).
+  - **Functionality**: Each number increases the total sum when used.
+  - **Unique Attributes**: Once a number is used, it is removed from the game for both players.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Choose a Number**: Select an unused number between **1** and **10**.
+  2. **Add to Total Sum**: Add the chosen number to the current total sum.
+  3. **Check for Win/Loss Conditions**:
+     - If the total sum is **exactly 50**, you **win**.
+     - If the total sum exceeds **50**, you **lose**.
+  4. **Update Available Numbers**: Remove the chosen number from the list of available numbers.
+  5. **Pass Turn**: The other player now takes their turn.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Valid Choices**: On your turn, you must choose an unused number between **1** and **10**.
+- **Uniqueness**: Once a number is chosen by any player, it cannot be selected again by either player.
+
+### Adding to Total Sum
+
+- **Cumulative Addition**: Add your chosen number to the total sum from the previous turn.
+- **Example**: If the total sum is **15** and you choose **7**, the new total sum is **22**.
+
+### Winning the Game
+
+- **Exact Match**: If your addition brings the total sum to **exactly 50**, you win immediately.
+- **Opponent Exceeds 50**: If your opponent causes the total sum to exceed **50** on their turn, you win.
+
+### Losing the Game
+
+- **Exceeding 50**: If your addition causes the total sum to exceed **50**, you lose immediately.
+
+### Strategy and Planning
+
+- **Forward Thinking**: Anticipate future moves by considering which numbers remain available.
+- **Control the Game**: Aim to force your opponent into a position where any move they make will cause them to lose.
+- **Keep Track**: Maintain a record of numbers used by both players to inform your decisions.
+
+---
+
+## Scoring
+
+- **Single-Round Victory**: The game is won by the player who achieves the objective first in a single round.
+- **Match Play (Optional)**:
+  - Players can compete in multiple rounds.
+  - Keep track of the number of games won to determine an overall champion.
+
+---
+
+## Examples
+
+### Example Scenario 1: Basic Gameplay
+
+**Setup**:
+
+- Total Sum: **0**
+- Available Numbers: **1-10**
+
+**Turn 1**:
+
+- **Player 1** chooses **6**.
+- Total Sum: **0 + 6 = 6**
+- Used Numbers: **6**
+
+**Turn 2**:
+
+- **Player 2** chooses **9**.
+- Total Sum: **6 + 9 = 15**
+- Used Numbers: **6, 9**
+
+**Turn 3**:
+
+- **Player 1** chooses **10**.
+- Total Sum: **15 + 10 = 25**
+- Used Numbers: **6, 9, 10**
+
+**Turn 4**:
+
+- **Player 2** chooses **8**.
+- Total Sum: **25 + 8 = 33**
+- Used Numbers: **6, 8, 9, 10**
+
+**Turn 5**:
+
+- **Player 1** chooses **7**.
+- Total Sum: **33 + 7 = 40**
+- Used Numbers: **6, 7, 8, 9, 10**
+
+**Turn 6**:
+
+- **Player 2** chooses **5**.
+- Total Sum: **40 + 5 = 45**
+- Used Numbers: **5, 6, 7, 8, 9, 10**
+
+**Turn 7**:
+
+- **Player 1** chooses **4**.
+- Total Sum: **45 + 4 = 49**
+- Used Numbers: **4, 5, 6, 7, 8, 9, 10**
+
+**Turn 8**:
+
+- **Player 2** has only numbers **1, 2, 3** left.
+- Any choice will result in exceeding 50 except for **1**.
+- **Player 2** chooses **1**.
+- Total Sum: **49 + 1 = 50**
+- **Player 2 wins the game**.
+
+### Example Scenario 2: Winning Strategy
+
+**Objective**: Demonstrate how strategic play can lead to a win.
+
+**Key Strategy**: Aim to make the total sum reach multiples of **11** on your turn (i.e., 11, 22, 33, 44). This forces the opponent into a losing position.
+
+**Turns**:
+
+1. **Player 1** chooses **1**.
+   - Total Sum: **0 + 1 = 1**
+2. **Player 2** chooses **10**.
+   - Total Sum: **1 + 10 = 11**
+3. **Player 1** chooses **2**.
+   - Total Sum: **11 + 2 = 13**
+4. **Player 2** chooses **9**.
+   - Total Sum: **13 + 9 = 22**
+5. **Player 1** chooses **3**.
+   - Total Sum: **22 + 3 = 25**
+6. **Player 2** chooses **8**.
+   - Total Sum: **25 + 8 = 33**
+7. **Player 1** chooses **4**.
+   - Total Sum: **33 + 4 = 37**
+8. **Player 2** chooses **7**.
+   - Total Sum: **37 + 7 = 44**
+9. **Player 1** chooses **5**.
+   - Total Sum: **44 + 5 = 49**
+10. **Player 2** chooses **1** (already used, must choose from remaining numbers).
+    - Remaining Numbers: **6**
+    - **Player 2** chooses **6**.
+    - Total Sum: **49 + 6 = 55** (exceeds 50)
+    - **Player 2 loses the game**.
+    - **Player 1 wins**.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample of how the game may be played in a command-line interface.
+
+```
+Welcome to Summation Duel!
+
+Total Sum: 0
+Available Numbers: 1,2,3,4,5,6,7,8,9,10
+
+Player 1's Turn:
+Choose a number to add (1-10): 7
+You chose 7.
+Total Sum is now 7.
+Used Numbers: 7
+
+Player 2's Turn:
+Choose a number to add (1-6,8-10): 8
+You chose 8.
+Total Sum is now 15.
+Used Numbers: 7,8
+
+Player 1's Turn:
+Choose a number to add (1-6,9,10): 10
+You chose 10.
+Total Sum is now 25.
+Used Numbers: 7,8,10
+
+Player 2's Turn:
+Choose a number to add (1-6,9): 9
+You chose 9.
+Total Sum is now 34.
+Used Numbers: 7,8,9,10
+
+Player 1's Turn:
+Choose a number to add (1-6): 6
+You chose 6.
+Total Sum is now 40.
+Used Numbers: 6,7,8,9,10
+
+Player 2's Turn:
+Choose a number to add (1-5): 5
+You chose 5.
+Total Sum is now 45.
+Used Numbers: 5,6,7,8,9,10
+
+Player 1's Turn:
+Choose a number to add (1-4): 5
+Invalid choice. Number 5 has already been used.
+
+Player 1's Turn:
+Choose a number to add (1-4): 3
+You chose 3.
+Total Sum is now 48.
+Used Numbers: 3,5,6,7,8,9,10
+
+Player 2's Turn:
+Choose a number to add (1,2,4): 2
+You chose 2.
+Total Sum is now 50.
+Congratulations, Player 2! You reached exactly 50 and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Control Key Totals**: Aim to reach specific total sums (like multiples of 11) that can force your opponent into a disadvantage.
+- **Monitor Remaining Numbers**: Keep track of which numbers have been used to anticipate your opponent's options.
+- **Force the Opponent's Hand**: Position the total sum so that any move by your opponent will either cause them to exceed 50 or allow you to win on your next turn.
+- **Plan Ahead**: Always think one or two moves ahead to set up future turns.
+
+---
+
+This rule book provides all necessary information to begin playing **Summation Duel**. The simplicity of the game mechanics makes it easy to code in a command-line interface, while the strategic depth ensures that skilled players can consistently outmaneuver less experienced opponents. Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,150 @@
+# Reach 27: A Two-Player Turn-Based Game
+
+## Objective
+
+**Reach 27** is a strategic two-player game where the primary goal is to be the player who brings the cumulative total to **exactly 27**. Players take turns adding numbers to a running total, and the game demands foresight and planning to outmaneuver the opponent. A player wins by making the total exactly 27 on their turn. If a player causes the total to exceed 27, they lose immediately.
+
+---
+
+## Setup
+
+1. **Initial Total**: The game begins with a cumulative total of **0**.
+2. **Player Order**: Decide who takes the first turn. This can be determined by mutual agreement or by a random method such as a coin toss.
+3. **Starting Conditions**: No physical components are required; the game is played through command-line inputs and outputs.
+
+---
+
+## Game Components
+
+- **Cumulative Total**: A running total that starts at 0 and increases as players add numbers.
+- **Number Selection**:
+  - Players choose numbers from **1** to **9** (inclusive) on their turn.
+  - Numbers can be used multiple times; there is no removal from a pool.
+- **Command-Line Interface**: Players input their chosen numbers, and the interface displays the cumulative total and game status.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players alternate turns throughout the game.
+2. **Player Actions During a Turn**:
+   - **Select a Number**: Choose a whole number between 1 and 9.
+   - **Update Total**: Add the chosen number to the cumulative total.
+   - **Announce Move**: Input the selected number and receive feedback on the new total.
+3. **Progression of Turns**: The game continues with players alternating turns until one player wins or loses according to the game rules.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Valid Choices**: On their turn, a player must select an integer between **1** and **9** inclusive.
+- **Cumulative Total Limit**: Players may not choose a number that causes the cumulative total to exceed **27**.
+- **Invalid Move**: Attempting to select an invalid number results in an immediate loss.
+
+### Winning the Game
+
+- **Exact Total of 27**: A player wins if they bring the cumulative total to **exactly 27** on their turn.
+- **Forcing a Win**: Strategic selection of numbers can force the opponent into a losing position.
+
+### Losing the Game
+
+- **Exceeding 27**: A player loses immediately if their chosen number causes the cumulative total to exceed **27**.
+- **Invalid Input**: Selecting a number outside the allowed range (less than 1 or greater than 9) results in a loss.
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate future moves to avoid exceeding the total and to force the opponent into a difficult position.
+- **Control the Total**: Keeping track of the cumulative total and calculating the potential outcomes is key to winning.
+
+---
+
+## Scoring
+
+- **Win/Loss**: The game outcome is binary—one player wins, and one player loses.
+- **Match Play**: For extended play, players can compete in multiple rounds and keep score of wins to determine an overall champion.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Starting the Game**:
+
+- Player 1 and Player 2 agree that Player 1 will begin.
+- The cumulative total is **0**.
+
+**Turn 1**:
+
+- **Player 1** selects **5**.
+- Cumulative total: 0 + 5 = **5**.
+- **Command-Line Interaction**:
+  ```
+  Player 1, enter a number between 1 and 9: 5
+  Cumulative total is now 5.
+  ```
+
+**Turn 2**:
+
+- **Player 2** selects **7**.
+- Cumulative total: 5 + 7 = **12**.
+- **Command-Line Interaction**:
+  ```
+  Player 2, enter a number between 1 and 9: 7
+  Cumulative total is now 12.
+  ```
+
+**Turn 3**:
+
+- **Player 1** selects **9**.
+- Cumulative total: 12 + 9 = **21**.
+- **Command-Line Interaction**:
+  ```
+  Player 1, enter a number between 1 and 9: 9
+  Cumulative total is now 21.
+  ```
+
+**Turn 4**:
+
+- **Player 2** must be cautious. The maximum number they can choose without exceeding 27 is **6** (since 21 + 6 = 27).
+- **Player 2** selects **6**, reaching exactly 27.
+- **Player 2 wins the game**.
+- **Command-Line Interaction**:
+  ```
+  Player 2, enter a number between 1 and 6: 6
+  Cumulative total is now 27.
+  Player 2 has reached 27 and wins the game!
+  ```
+
+### Alternate Ending
+
+If **Player 2** had not calculated correctly and selected **7**:
+
+- Cumulative total: 21 + 7 = **28**.
+- **Player 2** exceeds 27 and loses the game.
+- **Command-Line Interaction**:
+  ```
+  Player 2, enter a number between 1 and 6: 7
+  Cumulative total is now 28.
+  Cumulative total exceeds 27.
+  Player 2 loses the game!
+  ```
+
+**Strategy Note**: In this game, careful calculation and control of the cumulative total are essential. Players should aim to set up the total so that they can reach exactly 27 on their turn or force their opponent into a position where any move would cause them to exceed 27.
+
+---
+
+## Command-Line Interaction Tips
+
+- **Input Validation**: Ensure the entered number is within the valid range and does not cause the total to exceed 27.
+- **Displaying Information**: After each turn, display the cumulative total and any important game status updates.
+- **Handling Errors**: If a player attempts an invalid move, inform them of the error and declare the opponent as the winner.
+- **User Prompts**: Clearly prompt each player for their input, specifying the allowed range based on the current total.
+
+---
+
+## Conclusion
+
+**Reach 27** is a simple yet strategic game that can be easily played through a command-line interface. With straightforward rules and quick gameplay, it offers engaging competition where skillful calculation and planning can consistently lead a player to victory. Enjoy challenging your friends and honing your strategic thinking with this exciting numerical duel!

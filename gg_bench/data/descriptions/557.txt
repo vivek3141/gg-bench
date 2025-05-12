@@ -1,0 +1,208 @@
+# Elemental Clash - Rule Book
+
+## Objective
+
+**Elemental Clash** is a two-player turn-based strategy game where players harness elemental powers to defeat their opponent. The primary goal is to reduce your opponent's health points (HP) from 10 to 0 by strategically selecting elements that counter your opponent's choices. Victory is achieved when your opponent's HP drops to zero or below.
+
+## Setup
+
+- **Players**: Two opponents sit opposite each other.
+- **Health Points**: Both players start with **10 HP**.
+- **Elements**: The game involves **five elements**:
+  - **Fire**
+  - **Water**
+  - **Earth**
+  - **Air**
+  - **Lightning**
+
+No physical setup is required beyond the command-line interface, as all game interactions occur through player inputs.
+
+## Game Components
+
+### Elements
+
+Each element has unique strengths and weaknesses against other elements. Understanding these interactions is key to mastering the game.
+
+- **Fire**
+  - **Strengths**: Beats **Earth** and **Air**
+  - **Weaknesses**: Loses to **Water** and **Lightning**
+- **Water**
+  - **Strengths**: Beats **Fire** and **Lightning**
+  - **Weaknesses**: Loses to **Earth** and **Air**
+- **Earth**
+  - **Strengths**: Beats **Water** and **Lightning**
+  - **Weaknesses**: Loses to **Fire** and **Air**
+- **Air**
+  - **Strengths**: Beats **Earth** and **Water**
+  - **Weaknesses**: Loses to **Fire** and **Lightning**
+- **Lightning**
+  - **Strengths**: Beats **Fire** and **Air**
+  - **Weaknesses**: Loses to **Water** and **Earth**
+
+### Health Points (HP)
+
+- Each player has a health pool starting at **10 HP**.
+- HP is reduced when a player takes damage based on the outcome of element clashes.
+
+## Turns
+
+**Elemental Clash** is played in a series of rounds. Each round consists of the following steps:
+
+1. **Element Selection**
+   - Both players **secretly** choose one of the five elements.
+   - In a command-line game, each player inputs their choice without revealing it to the opponent.
+2. **Reveal**
+   - Both players **simultaneously reveal** their chosen elements.
+   - In the command-line interface, the game displays both choices after both players have made their selection.
+3. **Resolution**
+   - Determine the outcome based on the interaction of the chosen elements.
+   - Adjust health points accordingly.
+
+Players continue taking turns until one player's HP is reduced to zero or below.
+
+## Rules and Mechanics
+
+### Element Interactions
+
+The core mechanic revolves around the strengths and weaknesses of the elements:
+
+- **Determining the Outcome**:
+  - **Winning Interaction**: If a player's element **beats** the opponent's element, the opponent takes **3 damage**.
+  - **Draw**: If both players choose the **same element**, **both players take 1 damage**.
+  - **No Damage**: If neither element has an advantage over the other (no direct strength), **no damage is dealt**.
+
+### Damage Calculation
+
+- **Winning Interaction**: Opponent loses **3 HP**.
+- **Draw**: Both players lose **1 HP**.
+- **No Damage**: Health points remain unchanged.
+
+### Health Points
+
+- The game keeps track of each player's HP after every round.
+- A player's HP can never exceed the starting value (10 HP).
+- The game ends immediately when a player's HP reaches **zero or below**.
+
+### Victory Conditions
+
+- **Winning the Game**: Reduce your opponent's HP to **zero or below**.
+- There are **no draws**; the game continues until one player wins.
+
+## Scoring
+
+- **Health Points (HP)** serve as the score.
+- Players start with **10 HP**.
+- The first player to reduce the opponent's HP to **zero or below** wins.
+- The game keeps a record of the number of rounds played, which can be used for match statistics.
+
+## Examples
+
+### Example Scenario
+
+**Starting HP**: Player 1 (10 HP), Player 2 (10 HP)
+
+**Round 1**:
+
+- **Element Selection**:
+  - Player 1 chooses **Fire**.
+  - Player 2 chooses **Earth**.
+- **Reveal**:
+  - Both players reveal their choices.
+- **Resolution**:
+  - **Fire beats Earth**.
+  - Player 2 takes **3 damage**.
+  - **HP Update**: Player 1 (10 HP), Player 2 (**7 HP**).
+
+**Round 2**:
+
+- **Element Selection**:
+  - Player 1 chooses **Water**.
+  - Player 2 chooses **Fire**.
+- **Reveal**:
+  - Both players reveal their choices.
+- **Resolution**:
+  - **Water beats Fire**.
+  - Player 1 deals **3 damage** to Player 2.
+  - **HP Update**: Player 1 (10 HP), Player 2 (**4 HP**).
+
+**Round 3**:
+
+- **Element Selection**:
+  - Player 1 chooses **Earth**.
+  - Player 2 chooses **Lightning**.
+- **Reveal**:
+  - Both players reveal their choices.
+- **Resolution**:
+  - **Earth beats Lightning**.
+  - Player 2 takes **3 damage**.
+  - **HP Update**: Player 1 (10 HP), Player 2 (**1 HP**).
+
+**Round 4**:
+
+- **Element Selection**:
+  - Player 1 chooses **Air**.
+  - Player 2 chooses **Water**.
+- **Reveal**:
+  - Both players reveal their choices.
+- **Resolution**:
+  - **Air beats Water**.
+  - Player 2 takes **3 damage**.
+  - **HP Update**: Player 1 (10 HP), Player 2 (**-2 HP**).
+
+**Outcome**: Player 2's HP has dropped below zero. **Player 1 wins the game**.
+
+### Command-Line Interaction Sample
+
+```
+[Round 1]
+
+Player 1, select your element (Fire, Water, Earth, Air, Lightning): [Input Hidden]
+Player 2, select your element (Fire, Water, Earth, Air, Lightning): [Input Hidden]
+
+Both players have selected their elements.
+
+Player 1 chose: Fire
+Player 2 chose: Earth
+
+Fire beats Earth!
+Player 2 takes 3 damage.
+
+Scores:
+Player 1 HP: 10
+Player 2 HP: 7
+
+[Round 2]
+
+Player 1, select your element (Fire, Water, Earth, Air, Lightning): [Input Hidden]
+Player 2, select your element (Fire, Water, Earth, Air, Lightning): [Input Hidden]
+
+Both players have selected their elements.
+
+Player 1 chose: Water
+Player 2 chose: Fire
+
+Water beats Fire!
+Player 2 takes 3 damage.
+
+Scores:
+Player 1 HP: 10
+Player 2 HP: 4
+
+...
+
+Player 1 wins the game!
+```
+
+## Strategic Depth
+
+While the game mechanics are simple, strategic depth arises from predicting your opponent's choices and countering them. Skilled players can anticipate patterns and select elements that both protect themselves and maximize damage to the opponent. As there are no elements that dominate all others, and each has specific strengths and weaknesses, players must adapt their strategies dynamically.
+
+## Additional Notes
+
+- **Honesty in Element Selection**: Since the game relies on secret selection, honesty is crucial, especially in a command-line environment where inputs may not be truly hidden. It's recommended to implement input masking or agree on trust rules.
+- **No Randomness**: The game lacks random elements, emphasizing player strategy over luck.
+- **No Draws**: The game's mechanics ensure that it cannot end in a draw, fulfilling the requirement for decisive outcomes.
+
+## Conclusion
+
+**Elemental Clash** offers a quick, easy-to-learn, and strategically rich experience suitable for a command-line interface. With simple rules and the need for tactical thinking, players can engage in intense duels where skill and prediction determine the victor.

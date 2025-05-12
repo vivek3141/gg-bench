@@ -1,0 +1,358 @@
+**Prime Sprint: A Two-Player Command-Line Game**
+
+---
+
+### **Objective**
+
+Be the first player to reach **exactly 25 points** by strategically selecting numbers. The primary goal is to accumulate points based on the primality of chosen numbers while managing both your own score and your opponent's.
+
+---
+
+### **Setup**
+
+- **Starting Scores**: Both Player 1 and Player 2 begin with a score of **0**.
+- **Available Numbers**: Numbers from **1 to 9** are available for selection.
+- **Game Start**: Decide which player goes first (e.g., by agreement or a random selection).
+
+---
+
+### **Game Components**
+
+- **Numbers (1-9)**:
+  - **Prime Numbers**: 2, 3, 5, 7
+  - **Composite Numbers**: 4, 6, 8, 9
+  - **Unique Number**: 1 (neither prime nor composite)
+
+---
+
+### **Turns**
+
+- Players take turns selecting numbers.
+- **Turn Structure**:
+  1. **Number Selection**: On your turn, select a number between 1 and 9.
+  2. **Score Adjustment**:
+     - If the number is **prime**, **add** it to **your own score**.
+     - If the number is **composite**, **add** it to **your opponent's score**.
+     - If the number is **1**, **add** 1 point to **your own score**.
+  3. **Score Verification**: Ensure that no score exceeds 25.
+     - If adding the selected number would cause **any player's** score to **exceed 25**, the selection is **invalid**, and the turn is **forfeited**.
+  4. **Win Condition Check**: If a player reaches **exactly 25 points**, the game ends, and that player wins.
+- **Turn Progression**: After completing the above steps, the turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection Constraints**:
+   - You may select any number from 1 to 9 on your turn.
+   - Numbers can be selected multiple times throughout the game.
+2. **Scoring Mechanics**:
+   - **Prime Numbers (2, 3, 5, 7)**:
+     - Added to **your own score**.
+   - **Composite Numbers (4, 6, 8, 9)**:
+     - Added to **your opponent's score**.
+   - **Number 1**:
+     - Added to **your own score**.
+3. **Score Limits**:
+   - **Exact Score Rule**: To win, a player must reach **exactly 25 points**.
+   - **Over-Scoring Penalty**:
+     - If a move would result in **any player's** score exceeding 25:
+       - The move is considered **invalid**.
+       - The player **loses their turn**.
+       - No scores are adjusted.
+4. **Winning the Game**:
+   - The first player to reach **exactly 25 points** wins immediately.
+   - If both players are unable to make valid moves on their turns and no one has reached 25 points, continue passing turns until a valid move is possible.
+
+---
+
+### **Scoring**
+
+- **Tracking Scores**:
+  - Keep a running total of both players' scores after each turn.
+  - Display scores at the end of each turn for clarity.
+- **Strategic Scoring**:
+  - Use composite numbers strategically to increase your opponent's score, potentially forcing them into a position where they cannot make a valid move without exceeding 25.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial State**:
+- Player 1 Score: 0
+- Player 2 Score: 0
+
+---
+
+**Turn 1**:
+
+- **Player 1's Turn**:
+  - **Selects**: 2 (prime)
+  - **Action**: Adds 2 to **own score**.
+  - **Scores**:
+    - Player 1: 2
+    - Player 2: 0
+
+---
+
+**Turn 2**:
+
+- **Player 2's Turn**:
+  - **Selects**: 9 (composite)
+  - **Action**: Adds 9 to **Player 1's score**.
+  - **Scores**:
+    - Player 1: 11
+    - Player 2: 0
+
+---
+
+**Turn 3**:
+
+- **Player 1's Turn**:
+  - **Selects**: 5 (prime)
+  - **Action**: Adds 5 to **own score**.
+  - **Scores**:
+    - Player 1: 16
+    - Player 2: 0
+
+---
+
+**Turn 4**:
+
+- **Player 2's Turn**:
+  - **Selects**: 8 (composite)
+  - **Action**: Adds 8 to **Player 1's score**.
+  - **Scores**:
+    - Player 1: 24
+    - Player 2: 0
+
+---
+
+**Turn 5**:
+
+- **Player 1's Turn**:
+  - **Selects**: 1
+  - **Action**: Adds 1 to **own score**.
+  - **Scores**:
+    - Player 1: **25**
+    - Player 2: 0
+  - **Result**: Player 1 wins by reaching exactly 25 points!
+
+---
+
+#### **Invalid Move Example**
+
+**Situation**:
+- Player 1 Score: 22
+- Player 2 Score: 24
+
+**Player 1's Turn**:
+
+- **Possible Selections**:
+  - **Selecting 3 (prime)**:
+    - Would add 3 to Player 1's score: 22 + 3 = **25** (valid move).
+  - **Selecting 4 (composite)**:
+    - Would add 4 to Player 2's score: 24 + 4 = **28** (invalid, exceeds 25).
+    - **Outcome**: Move is invalid; Player 1's turn is forfeited.
+
+**Strategic Choice**:
+- Player 1 should select 3 to reach exactly 25 and win.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+```
+Welcome to Prime Sprint!
+Player 1 and Player 2 start with 0 points.
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 7
+
+You selected 7 (prime).
+Added 7 to your score.
+
+Scores:
+- Player 1: 7
+- Player 2: 0
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 6
+
+You selected 6 (composite).
+Added 6 to Player 1's score.
+
+Scores:
+- Player 1: 13
+- Player 2: 0
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 5
+
+You selected 5 (prime).
+Added 5 to your score.
+
+Scores:
+- Player 1: 18
+- Player 2: 0
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 9
+
+You selected 9 (composite).
+Adding 9 to Player 1's score would exceed 25.
+Invalid move! You lose your turn.
+
+Scores:
+- Player 1: 18
+- Player 2: 0
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 7
+
+You selected 7 (prime).
+Adding 7 to your score would exceed 25.
+Invalid move! You lose your turn.
+
+Scores:
+- Player 1: 18
+- Player 2: 0
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 3
+
+You selected 3 (prime).
+Added 3 to your score.
+
+Scores:
+- Player 1: 18
+- Player 2: 3
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 5
+
+You selected 5 (prime).
+Added 5 to your score.
+
+Scores:
+- Player 1: **23**
+- Player 2: 3
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 2
+
+You selected 2 (prime).
+Added 2 to your score.
+
+Scores:
+- Player 1: 23
+- Player 2: 5
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available numbers: 1-9
+
+Enter your selection: 2
+
+You selected 2 (prime).
+Added 2 to your score.
+
+Scores:
+- Player 1: **25**
+- Player 2: 5
+
+Player 1 wins by reaching exactly 25 points!
+```
+
+---
+
+### **Strategies and Tips**
+
+- **Monitor Scores Closely**: Always be aware of both your own and your opponent's scores to avoid making invalid moves.
+- **Use Composites Wisely**: Adding composites to your opponent's score can force them into difficult positions but be careful not to inadvertently help them reach 25.
+- **Prime Selections**: Prioritize selecting primes when it benefits you, but watch out for overshooting 25.
+- **Plan Ahead**: Think a few moves ahead to anticipate the opponent's options and limit their viable moves.
+- **Number 1**: Don't underestimate selecting 1, especially when you're close to 25.
+
+---
+
+### **Conclusion**
+
+Prime Sprint is a game of simple rules but deep strategy. By carefully choosing numbers and anticipating your opponent's moves, you can control the flow of the game and secure victory. Enjoy testing your strategic thinking in this numerical race to 25!
+
+---
+
+**Happy Gaming!**

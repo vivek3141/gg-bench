@@ -1,0 +1,220 @@
+**Number Maze**
+
+**Objective**
+
+Be the first player to reach a cumulative total of exactly **15** by moving through a grid of numbers according to the game's movement rules. Strategic planning and foresight are essential, as moving without exceeding a total of 15 while reaching exactly that number before your opponent is key to victory. If a player cannot make a valid move without exceeding a total of 15, they lose the game.
+
+---
+
+**Setup**
+
+1. **Create the Grid**: Prepare a 3x3 grid representing the game board. Each cell in the grid will contain a unique number from 1 to 9.
+
+2. **Populate the Grid**: Randomly assign the numbers 1 through 9 to the cells in the grid, ensuring that each number appears exactly once.
+
+3. **Determine Starting Positions**:
+
+   - Both players start **off the grid**.
+   - Decide which player will take the first turn (you can flip a coin or have the players agree).
+
+---
+
+**Game Components**
+
+- **Grid**: A 3x3 grid composed of 9 cells.
+  
+- **Numbers**: The digits 1 through 9, each placed uniquely in one of the grid's cells.
+
+- **Player Tokens**: Represented in the command-line interface as `P1` and `P2`.
+
+- **Cumulative Total**: Each player tracks their own cumulative total, starting at 0.
+
+---
+
+**Turns**
+
+1. **Starting the Game**:
+
+   - **Player 1** begins by placing their token (`P1`) onto any of the **edge cells** (cells on the outer perimeter of the grid).
+   - **Player 2** then places their token (`P2`) onto any remaining **edge cell** that is **not occupied** by Player 1.
+
+2. **Taking a Turn**:
+
+   - **Movement**: On your turn, move your token to an adjacent cell—horizontally or vertically (not diagonally).
+   - **Cumulative Total**: Add the number in the new cell to your cumulative total.
+   - **Occupied Cells**: You **cannot** move into a cell already occupied by either player's token.
+   - **Visited Cells**: You **cannot** revisit a cell you have previously occupied.
+
+3. **Turn Order**: Players alternate turns throughout the game.
+
+---
+
+**Rules and Mechanics**
+
+1. **Movement Rules**:
+
+   - You may move **only** to cells that are directly **adjacent** (up, down, left, or right).
+   - Diagonal moves are **not allowed**.
+   - You **cannot** move into a cell if it would cause your cumulative total to exceed **15**.
+
+2. **Cumulative Total**:
+
+   - Keep track of the sum of the numbers from each cell you have occupied.
+   - Your cumulative total must be **exactly 15** to win.
+   - If your cumulative total would exceed 15 with any available move, you lose your turn and the game.
+
+3. **Winning the Game**:
+
+   - The first player whose cumulative total reaches exactly **15** wins immediately.
+   - If a player cannot make a valid move without exceeding a cumulative total of 15, they **lose** the game.
+
+4. **Additional Mechanics**:
+
+   - **Blocked Paths**: If all possible moves from your current position either exceed a cumulative total of 15 or are to cells you have already visited, you lose.
+   - **Simultaneous Victory**: If both players reach a cumulative total of 15 on the same turn (possible if Player 2 reaches 15 as a result of Player 1 exceeding 15 and losing), the game is won by the player who reached 15 **first**.
+
+---
+
+**Scoring**
+
+- **Winning the Game**: The player who reaches a cumulative total of exactly **15** first is declared the winner.
+
+- **Losing the Game**: A player loses if:
+
+  - They cannot make a valid move without exceeding a cumulative total of 15.
+  - They have no legal moves remaining due to having visited all possible adjacent cells.
+  
+- **No Draws**: The game cannot end in a draw due to the movement and winning conditions.
+
+---
+
+**Examples**
+
+Below are sample turns to illustrate how the game is played in a command-line interface.
+
+**Sample Grid Setup**:
+
+```
++---+---+---+
+| 4 | 3 | 8 |
++---+---+---+
+| 9 | 5 | 1 |
++---+---+---+
+| 2 | 7 | 6 |
++---+---+---+
+```
+
+**Game Play Example**:
+
+1. **Starting Positions**:
+
+   - Player 1 (`P1`) chooses to start on cell (0,0) containing **4**.
+     - Cumulative Total: `0 + 4 = 4`.
+     
+   - Player 2 (`P2`) chooses to start on cell (2,0) containing **2**.
+     - Cumulative Total: `0 + 2 = 2`.
+
+2. **Player 1's Turn**:
+
+   - Possible Moves from (0,0):
+     - Move to (0,1): Cell contains **3**.
+     - Move to (1,0): Cell contains **9**.
+   - **Decision**: Player 1 moves to (0,1) (**3**).
+     - Cumulative Total: `4 + 3 = 7`.
+     - Cells Visited by `P1`: (0,0), (0,1).
+
+3. **Player 2's Turn**:
+
+   - Possible Moves from (2,0):
+     - Move to (2,1): Cell contains **7**.
+     - Move to (1,0): Cell contains **9**.
+   - **Decision**: Player 2 moves to (2,1) (**7**).
+     - Cumulative Total: `2 + 7 = 9`.
+     - Cells Visited by `P2`: (2,0), (2,1).
+
+4. **Player 1's Turn**:
+
+   - Possible Moves from (0,1):
+     - Move to (0,2): Cell contains **8**.
+     - Move to (1,1): Cell contains **5**.
+     - Move to (0,0): Already visited.
+   - **Decision**: Player 1 moves to (1,1) (**5**).
+     - Cumulative Total: `7 + 5 = 12`.
+     - Cells Visited by `P1`: (0,0), (0,1), (1,1).
+
+5. **Player 2's Turn**:
+
+   - Possible Moves from (2,1):
+     - Move to (2,2): Cell contains **6**.
+     - Move to (1,1): Cell contains **5** (occupied by `P1`).
+     - Move to (2,0): Already visited.
+   - **Decision**: Player 2 moves to (2,2) (**6**).
+     - Cumulative Total: `9 + 6 = 15`.
+     - Cells Visited by `P2`: (2,0), (2,1), (2,2).
+     - **Result**: Player 2 has reached exactly 15 and wins the game.
+
+---
+
+**Command-Line Interaction Example**:
+
+```
+Player 1, choose your starting position (row,col): 0,0
+Player 1 placed on cell (0,0) with number 4. Cumulative Total: 4
+
+Player 2, choose your starting position (row,col): 2,0
+Player 2 placed on cell (2,0) with number 2. Cumulative Total: 2
+
+Player 1's turn.
+Available moves: (0,1), (1,0)
+Choose your move (row,col): 0,1
+Player 1 moved to (0,1) adding 3. Cumulative Total: 7
+
+Player 2's turn.
+Available moves: (2,1), (1,0)
+Choose your move (row,col): 2,1
+Player 2 moved to (2,1) adding 7. Cumulative Total: 9
+
+Player 1's turn.
+Available moves: (0,2), (1,1)
+Choose your move (row,col): 1,1
+Player 1 moved to (1,1) adding 5. Cumulative Total: 12
+
+Player 2's turn.
+Available moves: (2,2)
+Choose your move (row,col): 2,2
+Player 2 moved to (2,2) adding 6. Cumulative Total: 15
+
+Player 2 has reached a cumulative total of 15 and wins the game!
+```
+
+---
+
+**Strategy Tips**
+
+- **Plan Ahead**: Look at the numbers in adjacent cells and calculate potential future sums to avoid getting trapped.
+
+- **Block Your Opponent**: If possible, occupy cells that would help your opponent reach 15.
+
+- **Avoid High Numbers Early**: Taking high numbers too soon may limit your options in subsequent turns.
+
+- **Keep Track of Visited Cells**: Remember which cells you've occupied to avoid accidental backtracking.
+
+- **Monitor Opponent's Total**: Keep an eye on your opponent's cumulative total to predict their moves and counter them.
+
+---
+
+**Game Variations**
+
+For added complexity or replayability, consider the following variations:
+
+- **Different Target Total**: Change the winning cumulative total to another number, like 12 or 20.
+
+- **Larger Grid**: Use a larger grid (e.g., 4x4) with numbers from 1 upwards, adjusting the target total accordingly.
+
+- **Random Starting Positions**: Have both players start from randomly assigned edge cells.
+
+- **Bonus Cells**: Introduce special cells that allow an extra move or other abilities.
+
+---
+
+By adhering to these rules and utilizing strategic planning, players can enjoy a competitive and engaging game of **Number Maze** that is both quick to play and simple to code, perfect for a command-line interface environment.

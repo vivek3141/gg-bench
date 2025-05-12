@@ -1,0 +1,216 @@
+# Game Name: "Cipher Clash"
+
+## Objective
+
+Be the first player to correctly decipher the opponent's secret code word by strategically querying letters and positions. The primary goal is to use logic and deduction to unveil the hidden code before your opponent does. A player achieves victory by correctly guessing all the letters in their proper positions of the opponent's secret code word.
+
+## Setup
+
+1. **Select Code Words**:
+   - Each player secretly chooses a five-letter code word from an agreed-upon dictionary or word list. The words must be valid and contain no repeating letters.
+   - The code word is kept hidden from the opponent.
+
+2. **Game Initialization**:
+   - Decide which player takes the first turn (e.g., by coin toss or mutual agreement).
+   - Prepare a means to track guesses and responses. This can be done on paper or within the command-line interface.
+
+## Game Components
+
+- **Code Words**: Five-letter words with no repeating letters, chosen secretly by each player.
+- **Alphabet Letters**: The standard English alphabet (26 letters), used for making guesses.
+- **Guess Tracker**: A method to record the letters guessed and the feedback provided (can be integrated into the game's interface).
+- **Turns**: Structured opportunities for each player to make guesses and receive feedback.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns. On each turn, the active player performs the following actions:
+     - **Guessing**: Choose a letter and a position (1 to 5) to query from the opponent's code word.
+     - **Receiving Feedback**: The opponent provides feedback based on the guess.
+   - The turn ends after the feedback is provided.
+
+2. **Guessing Rules**:
+   - A player may guess any single letter and specify the position they believe it occupies in the opponent's code word.
+   - Each guess consists of one letter and one position per turn.
+
+3. **Feedback**:
+   - The opponent must respond truthfully with one of the following:
+     - **Correct**: If the guessed letter is in the specified position.
+     - **Present**: If the guessed letter is in the code word but in a different position.
+     - **Absent**: If the guessed letter is not in the code word at all.
+
+## Rules and Mechanics
+
+1. **No Repeating Letters**: Code words must have five unique letters with no repetitions.
+2. **Valid Words**: Code words must be valid English words from the agreed-upon dictionary.
+3. **Guessing Constraints**:
+   - Players cannot guess the same letter-position combination more than once.
+   - Players can keep track of all previous guesses and feedback to inform future guesses.
+4. **Honest Feedback**:
+   - Players must provide accurate feedback to the opponent's guesses.
+   - Misleading or false feedback is not allowed and goes against the game's integrity.
+5. **Winning the Game**:
+   - A player wins by correctly reconstructing the opponent's entire code word with all letters in their correct positions.
+   - The winning player must declare that they are making a full guess of the opponent's code word during their turn.
+6. **Full Word Guessing**:
+   - Instead of a regular guess, a player may choose to guess the opponent's full code word on their turn.
+   - If the guess is correct, they win the game.
+   - If the guess is incorrect, the game continues, and the turn passes to the opponent.
+
+## Scoring
+
+- **Victory Condition**: The first player to correctly guess all letters in their correct positions of the opponent's code word wins the game.
+- **No Point System**: There is no point tracking; the game is won by successful code-breaking.
+- **Skilled Play Rewarded**: Players who use logical deduction and memory effectively will have an advantage, allowing skilled players to consistently outperform less skilled opponents.
+
+## Examples
+
+### Example Scenario
+
+#### Game Start
+
+- **Player 1** secretly chooses the code word: `CLASH`
+- **Player 2** secretly chooses the code word: `BRING`
+- **Player 1** will take the first turn.
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Guess**: Letter `A` at position `3`
+   - **Player 2's Feedback**: `Absent` (Letter `A` is not in `BRING`)
+   - **Game State**:
+     - Player 1 knows `A` is not in Player 2's code word.
+
+2. **Player 2's Turn**:
+   - **Guess**: Letter `L` at position `2`
+   - **Player 1's Feedback**: `Correct` (Letter `L` is at position `2` in `CLASH`)
+   - **Game State**:
+     - Player 2 knows `L` is in position `2`.
+
+3. **Player 1's Turn**:
+   - **Guess**: Letter `B` at position `1`
+   - **Player 2's Feedback**: `Correct` (Letter `B` is at position `1` in `BRING`)
+   - **Game State**:
+     - Player 1 knows `B` is at position `1`.
+
+4. **Player 2's Turn**:
+   - **Guess**: Letter `A` at position `4`
+   - **Player 1's Feedback**: `Correct` (Letter `A` is at position `4` in `CLASH`)
+   - **Game State**:
+     - Player 2 knows `A` is at position `4`.
+
+5. **Player 1's Turn**:
+   - **Guess**: Letter `R` at position `2`
+   - **Player 2's Feedback**: `Present` (Letter `R` is in the word but not at position `2`)
+   - **Game State**:
+     - Player 1 knows `R` is in the word but at a different position.
+
+6. **Player 2's Turn**:
+   - **Guess**: Letter `C` at position `1`
+   - **Player 1's Feedback**: `Correct` (Letter `C` is at position `1` in `CLASH`)
+   - **Game State**:
+     - Player 2 knows `C` is at position `1`.
+
+7. **Player 1's Turn**:
+   - **Guess**: Letter `G` at position `5`
+   - **Player 2's Feedback**: `Correct` (Letter `G` is at position `5` in `BRING`)
+   - **Game State**:
+     - Player 1 knows `G` is at position `5`.
+
+8. **Player 2's Turn**:
+   - **Full Word Guess**: `CLASH`
+   - **Player 1's Feedback**: The guess is correct.
+   - **Outcome**: **Player 2 wins the game.**
+
+### Sample Command-Line Interactions
+
+#### Turn 1
+
+```
+Player 1, enter your guess.
+Letter: A
+Position (1-5): 3
+
+Player 2's Feedback: Absent
+```
+
+#### Turn 2
+
+```
+Player 2, enter your guess.
+Letter: L
+Position (1-5): 2
+
+Player 1's Feedback: Correct
+```
+
+#### Turn 3
+
+```
+Player 1, enter your guess.
+Letter: B
+Position (1-5): 1
+
+Player 2's Feedback: Correct
+```
+
+#### Turn 4
+
+```
+Player 2, enter your guess.
+Letter: A
+Position (1-5): 4
+
+Player 1's Feedback: Correct
+```
+
+#### Turn 5
+
+```
+Player 1, enter your guess.
+Letter: R
+Position (1-5): 2
+
+Player 2's Feedback: Present
+```
+
+#### Turn 6
+
+```
+Player 2, enter your guess.
+Letter: C
+Position (1-5): 1
+
+Player 1's Feedback: Correct
+```
+
+#### Turn 7
+
+```
+Player 1, enter your guess.
+Letter: G
+Position (1-5): 5
+
+Player 2's Feedback: Correct
+```
+
+#### Turn 8 (Winning Move)
+
+```
+Player 2, enter your full word guess: CLASH
+
+Player 1's Feedback: Correct
+
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Elimination**: Use the feedback to eliminate letters and positions progressively.
+- **Memory**: Keep track of all guesses and feedback to avoid repeating ineffective guesses.
+- **Inference**: Deduce the possible letters based on the feedback; a `Present` response narrows down the positions where a letter could be.
+- **Word Patterns**: Consider common word structures to make educated guesses about the opponent's word.
+
+## Conclusion
+
+"Cipher Clash" is a game of logic, memory, and deductive reasoning. It provides strategic depth through simple mechanics, making it easy to code and quick to play in a command-line interface. Skilled players who can effectively utilize the feedback and plan their guesses will consistently outperform less experienced opponents, ensuring a competitive and engaging experience without the possibility of a draw.

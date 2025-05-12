@@ -1,0 +1,165 @@
+# Multiplication Showdown
+
+## Rule Book
+
+### Objective
+
+**Multiplication Showdown** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reach or exceed a target product by strategically selecting numbers from a shared pool. Players take turns multiplying their current product by an available number, aiming to outmaneuver their opponent and achieve victory.
+
+### Setup
+
+1. **Target Product**: Decide on a target product that players aim to reach. The default target is **100**.
+
+2. **Number Pool**: Create a shared pool of numbers from **1** to **9**. Each number can be used only once per game.
+
+3. **Starting Product**: Both players begin with a personal product of **1**.
+
+4. **Determine Turn Order**: Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by a random method such as a coin toss.
+
+### Game Components
+
+- **Shared Number Pool**: A list of numbers from **1** to **9** available for selection.
+- **Player Products**: Each player has a personal running product, starting at **1**.
+- **Target Product**: The predetermined product value that players aim to reach or exceed.
+- **Command-Line Interface**: The game is played through text-based inputs and outputs.
+
+### Turns
+
+1. **Turn Sequence**:
+   - Players alternate turns, starting with **Player 1**.
+   - On each turn, the active player performs the following steps:
+     - **Display Information**: The current state is shown, including available numbers and both players' products.
+     - **Select a Number**: Choose one number from the shared pool.
+     - **Update Product**: Multiply the chosen number by the player's current product.
+     - **Update Number Pool**: Remove the chosen number from the pool.
+     - **Check for Win**: Determine if the new product meets or exceeds the target.
+
+2. **Example Turn Structure**:
+
+   ```
+   Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   Your Current Product: 1
+   Opponent's Product: 1
+   Select a number to multiply: 5
+   You selected 5.
+   Your New Product: 5
+   ```
+
+### Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must choose a number from the **available numbers**.
+   - Each number can only be chosen **once per game**.
+   - If a player attempts to select an unavailable number, they are prompted to choose again.
+
+2. **Product Calculation**:
+   - Players start with a product of **1**.
+   - On their turn, they **multiply** their current product by the chosen number.
+   - Example: If a player's product is **6** and they choose **4**, their new product is **24** (6 × 4).
+
+3. **Winning the Game**:
+   - The first player to **reach or exceed** the **target product** wins the game immediately.
+   - If both players reach or exceed the target product in the same round, the **player with the higher product** wins.
+   - If all numbers are used without either player reaching the target, the player with the **higher product** wins.
+
+4. **Game End Conditions**:
+   - **Victory**: A player wins upon meeting the winning criteria.
+   - **No Draws**: There are no draw conditions; every game ends with a winner.
+
+5. **Strategy Notes**:
+   - Players must balance between selecting high numbers to boost their product and blocking the opponent's potential moves.
+   - Keeping track of the opponent's product can inform strategic choices.
+
+### Scoring
+
+- **Win**: Achieved by reaching or exceeding the target product first.
+- **Tie-Breaker**: If both players exceed the target in the same round, the higher product wins.
+- **Final Products**: Can be used to track performance over multiple games or to set personal bests.
+
+### Examples
+
+#### Example Game Play
+
+**Settings**:
+- **Target Product**: 100
+- **Number Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Starting Products**: Player 1 = 1, Player 2 = 1
+
+**Turn 1 - Player 1**:
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Selects**: 5
+- **Calculates**: 1 × 5 = 5
+- **Updated Products**: Player 1 = 5, Player 2 = 1
+
+**Turn 2 - Player 2**:
+- **Available Numbers**: [1, 2, 3, 4, 6, 7, 8, 9]
+- **Selects**: 7
+- **Calculates**: 1 × 7 = 7
+- **Updated Products**: Player 1 = 5, Player 2 = 7
+
+**Turn 3 - Player 1**:
+- **Available Numbers**: [1, 2, 3, 4, 6, 8, 9]
+- **Selects**: 9
+- **Calculates**: 5 × 9 = 45
+- **Updated Products**: Player 1 = 45, Player 2 = 7
+
+**Turn 4 - Player 2**:
+- **Available Numbers**: [1, 2, 3, 4, 6, 8]
+- **Selects**: 8
+- **Calculates**: 7 × 8 = 56
+- **Updated Products**: Player 1 = 45, Player 2 = 56
+
+**Turn 5 - Player 1**:
+- **Available Numbers**: [1, 2, 3, 4, 6]
+- **Selects**: 6
+- **Calculates**: 45 × 6 = 270
+- **Updated Products**: Player 1 = 270, Player 2 = 56
+- **Result**: Player 1 wins (270 ≥ 100)
+
+#### Sample Command-Line Interaction
+
+```
+--- Turn 1 ---
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Player 1's Product: 1
+Player 2's Product: 1
+Player 1, select a number to multiply: 5
+Player 1 selected 5.
+Player 1's New Product: 5
+
+--- Turn 2 ---
+Available Numbers: [1, 2, 3, 4, 6, 7, 8, 9]
+Player 1's Product: 5
+Player 2's Product: 1
+Player 2, select a number to multiply: 7
+Player 2 selected 7.
+Player 2's New Product: 7
+
+... [Game continues] ...
+
+--- Turn 5 ---
+Available Numbers: [1, 2, 3, 4, 6]
+Player 1's Product: 45
+Player 2's Product: 56
+Player 1, select a number to multiply: 6
+Player 1 selected 6.
+Player 1's New Product: 270
+Player 1 has reached the target product!
+Player 1 wins the game!
+```
+
+### Strategies
+
+- **Early Multipliers**: Selecting higher numbers early can give a significant lead.
+- **Blocking Opponent**: Choose numbers that might benefit your opponent if left unselected.
+- **Product Management**: Avoid overreaching the target by too much, as a minimal win can be strategically safer.
+
+### Variations
+
+- **Adjusted Target**: Changing the target product can alter game length and complexity.
+- **Expanded Number Pool**: Including numbers beyond 9 for a more extended game.
+- **Limited Selection**: Restricting the number of picks to increase difficulty.
+
+---
+
+Enjoy playing **Multiplication Showdown** and may the best strategist win!

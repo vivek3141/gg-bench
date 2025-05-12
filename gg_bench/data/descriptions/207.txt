@@ -1,0 +1,216 @@
+# Bit Flip: A Binary Battle of Wits
+
+## Objective
+
+Be the first player to create a binary number that is **divisible by the target divisor** by strategically flipping bits from `0` to `1`.
+
+---
+
+## Setup
+
+1. **Initialize the Binary Number**: An 8-bit binary number starting at `00000000`.
+2. **Choose the Target Divisor**: Players agree on a target divisor (e.g., `7`) before starting the game.
+3. **Determine Turn Order**: Decide which player goes first (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Binary Number**: An 8-bit binary string representing a number from `0` to `255`.
+  - Positions are numbered from `1` (most significant bit) to `8` (least significant bit).
+- **Bits**: Each bit can be either `0` (unset) or `1` (set).
+- **Target Divisor**: A predetermined positive integer (e.g., `7`) that players aim to make the binary number divisible by.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Bit Selection**: The player selects one bit position (`1-8`) that currently contains a `0`.
+  2. **Bit Flip**: The player flips the selected bit from `0` to `1`.
+  3. **Divisibility Check**:
+     - Convert the binary number to its decimal equivalent.
+     - Check if it is divisible by the target divisor.
+  4. **Win Condition**:
+     - If the number is divisible, the player **immediately wins**.
+     - If not, the turn passes to the next player.
+- **Important Notes**:
+  - Players **cannot** flip bits that are already set to `1`.
+  - Once set to `1`, bits **remain** set for the rest of the game.
+
+---
+
+## Rules and Mechanics
+
+### 1. Bit Selection
+
+- **Valid Moves**:
+  - Choose any bit position from `1` to `8` that is currently `0`.
+- **Invalid Moves**:
+  - Selecting a bit that is already `1`.
+  - Selecting a position outside `1-8`.
+
+### 2. Flipping Bits
+
+- **Changing Bit Value**:
+  - Flip the selected bit from `0` to `1`.
+- **Binary Number Update**:
+  - Update the binary number to reflect the flipped bit.
+
+### 3. Divisibility Check
+
+- **Calculating Decimal Value**:
+  - Convert the binary string to a decimal number.
+- **Checking Divisibility**:
+  - If `Decimal Number % Target Divisor == 0`, the number is divisible.
+
+### 4. Winning the Game
+
+- **Immediate Win**:
+  - If after flipping a bit, the binary number is divisible by the target divisor.
+- **Opponent's Loss**:
+  - If a player cannot make a valid move (no `0` bits left), they lose.
+  - Making an invalid move results in an immediate loss.
+
+### 5. Game End Conditions
+
+- **Victory**:
+  - Achieved by creating a divisible number on your turn.
+- **Defeat**:
+  - Occurs if you have no valid moves or make an invalid move.
+
+---
+
+## Scoring
+
+- **Single Game**: The player who creates a divisible number wins.
+- **Match Play**:
+  - Players can play multiple rounds.
+  - Keep track of wins to determine the overall champion.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Setting**: Target Divisor is `7`.
+
+- **Starting Binary Number**: `00000000` (Decimal `0`).
+
+#### Turn 1: Player 1
+
+- **Bit Selection**: Position `8`.
+- **Flipped Bit**: `0` to `1`.
+- **New Binary Number**: `00000001` (Decimal `1`).
+- **Divisibility Check**: `1 % 7 != 0` -> Not divisible.
+  
+#### Turn 2: Player 2
+
+- **Bit Selection**: Position `7`.
+- **Flipped Bit**: `0` to `1`.
+- **New Binary Number**: `00000011` (Decimal `3`).
+- **Divisibility Check**: `3 % 7 != 0` -> Not divisible.
+
+#### Turn 3: Player 1
+
+- **Bit Selection**: Position `6`.
+- **Flipped Bit**: `0` to `1`.
+- **New Binary Number**: `00000111` (Decimal `7`).
+- **Divisibility Check**: `7 % 7 == 0` -> **Divisible!**
+- **Outcome**: **Player 1 wins!**
+
+### Alternate Scenario
+
+**Setting**: Target Divisor is `5`.
+
+- **Starting Binary Number**: `00000000` (Decimal `0`).
+
+#### Turns 1-7
+
+- Players alternate flipping bits in positions `1` to `7`, none leading to a number divisible by `5`.
+
+#### Turn 8: Player 2
+
+- **Bit Selection**: Position `8`.
+- **Flipped Bit**: `0` to `1`.
+- **New Binary Number**: `11111111` (Decimal `255`).
+- **Divisibility Check**: `255 % 5 == 0` -> **Divisible!**
+- **Outcome**: **Player 2 wins!**
+
+---
+
+## Command-Line Interaction Examples
+
+### Starting the Game
+
+```
+Welcome to Bit Flip!
+Target Divisor is set to 7.
+Current Binary Number: 00000000 (Decimal 0)
+Player 1's turn.
+Select a bit to flip (1-8): 
+```
+
+### Valid Move
+
+```
+Select a bit to flip (1-8): 8
+Bit 8 flipped to 1.
+Current Binary Number: 00000001 (Decimal 1)
+1 is not divisible by 7.
+Turn passes to Player 2.
+```
+
+### Winning Move
+
+```
+Select a bit to flip (1-8): 6
+Bit 6 flipped to 1.
+Current Binary Number: 00000111 (Decimal 7)
+7 is divisible by 7.
+Player 1 wins!
+```
+
+### Invalid Move
+
+```
+Select a bit to flip (1-8): 8
+Error: Bit 8 is already set to 1.
+Invalid move! Player 1 wins by default.
+```
+
+---
+
+## Strategies
+
+### Bit Importance
+
+- **Higher-Order Bits**:
+  - Flipping bits in positions `1-4` significantly increases the decimal value.
+- **Lower-Order Bits**:
+  - Flipping bits in positions `5-8` allows for fine-tuning the decimal value.
+
+### Planning Ahead
+
+- **Calculate Possible Outcomes**:
+  - Before flipping, consider how the move affects the total and potential future moves.
+- **Block Opponent**:
+  - Flip bits that prevent the opponent from easily reaching a divisible number on their next turn.
+
+### Divisibility Patterns
+
+- **Understand Divisibility Rules**:
+  - Familiarize yourself with numbers divisible by the target divisor within the range `0-255`.
+- **Force Opponent's Hand**:
+  - Maneuver the game so the opponent must flip bits that set you up for a win.
+
+---
+
+## Conclusion
+
+"Bit Flip" is a dynamic and strategic game that merges binary numbers and divisibility concepts into an exciting duel. Its simplicity in mechanics makes it easy to play via a command-line interface while offering depth for players who enjoy mathematical strategy.
+
+---
+
+**Enjoy the challenge and may the best tactician win!**

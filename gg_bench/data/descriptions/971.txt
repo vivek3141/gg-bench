@@ -1,0 +1,135 @@
+# Digit Deletion Duel
+
+## Objective
+
+Be the first player to reduce your opponent's number to a **single digit** by strategically removing digits from their number.
+
+## Setup
+
+- **Players**: Two players.
+- **Starting Numbers**: Each player starts with a unique **three-digit number** composed of digits from 1 to 9 (inclusive). Zero is not used in any position.
+  - Players can choose their own starting numbers or have them assigned randomly.
+- **Game Start**: Decide who takes the first turn (e.g., through a coin toss or mutual agreement).
+
+## Game Components
+
+- **Player Numbers**: Each player maintains their current number, initially a three-digit number (e.g., 123, 987).
+- **Digit Positions**:
+  - **Left**: The hundreds place.
+  - **Middle**: The tens place.
+  - **Right**: The ones place.
+- **Turn Indicator**: A simple mechanism to keep track of whose turn it is (e.g., a prompt in the command-line interface).
+
+## Turns
+
+- Players take turns alternately throughout the game.
+- **During a Turn**:
+  1. **Select Digit Position**: The current player chooses one digit position (**left**, **middle**, or **right**) to remove from the opponent's number.
+  2. **Update Opponent's Number**: The opponent's number is updated by removing the chosen digit and shifting the remaining digits to form a new number.
+  3. **Check for Win**: If the opponent's number is reduced to a single digit, the current player wins.
+  4. **Pass Turn**: If the game hasn't ended, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### 1. Digit Removal
+
+- **Valid Choices**: On your turn, you must choose one of the digit positions in your opponent's current number:
+  - **Left** (hundreds place)
+  - **Middle** (tens place)
+  - **Right** (ones place)
+- **Removal Process**:
+  - Remove the selected digit from your opponent's number.
+  - Shift the remaining digits to form the new number without changing their order.
+    - *Example*: If the number is **456** and you remove the **middle** digit (**5**), the new number becomes **46**.
+
+### 2. Turn Progression
+
+- **Mandatory Move**: You cannot skip your turn; you must remove a digit from the opponent's number if it has more than one digit.
+- **Single-Digit Numbers**: If the opponent's number is already a single digit at the start of your turn, you cannot remove any digits.
+
+### 3. Winning the Game
+
+- **Victory Condition**: If your action reduces the opponent's number to a single digit, you win the game immediately.
+- **No Draws**: The game cannot end in a draw; play continues until one player achieves the victory condition.
+
+### 4. Game End
+
+- The game ends when one player's number is reduced to a single digit.
+- Declare the winner and optionally reset for another round.
+
+## Scoring
+
+- **Single-Game Win**: The player who reduces their opponent's number to a single digit wins the game.
+- **Match Play (Optional)**:
+  - Keep track of wins over multiple games to determine an overall champion.
+  - Assign points or simply count the number of games won.
+
+## Examples
+
+### Example Scenario 1
+
+**Initial Setup**:
+
+- Player 1's number: **732**
+- Player 2's number: **865**
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - Chooses to remove the **middle** digit from Player 2's number (**865**).
+   - Player 2's new number: **85** (digits **8** and **5**).
+2. **Player 2's Turn**:
+   - Chooses to remove the **right** digit from Player 1's number (**732**).
+   - Player 1's new number: **73** (digits **7** and **3**).
+3. **Player 1's Turn**:
+   - Chooses to remove the **left** digit from Player 2's number (**85**).
+   - Player 2's new number: **5** (single digit).
+
+**Outcome**:
+
+- Player 2's number is now a single digit.
+- **Player 1 wins the game**.
+
+### Example Scenario 2 (Command-Line Interaction)
+
+**Game Start**:
+
+- Player 1's number: **549**
+- Player 2's number: **876**
+
+**Gameplay**:
+
+- **Turn 1 - Player 1**:
+  ```
+  Player 1, choose a digit position to remove from Player 2's number (left, middle, right): right
+  ```
+  - Player 2's number becomes **87**.
+
+- **Turn 2 - Player 2**:
+  ```
+  Player 2, choose a digit position to remove from Player 1's number (left, middle, right): middle
+  ```
+  - Player 1's number becomes **59**.
+
+- **Turn 3 - Player 1**:
+  ```
+  Player 1, choose a digit position to remove from Player 2's number (left, middle, right): left
+  ```
+  - Player 2's number becomes **7**.
+
+**Outcome**:
+
+- Player 2's number is now a single digit.
+- **Player 1 wins the game**.
+
+## Strategic Depth
+
+- **Anticipate Opponent's Moves**: Consider how your opponent might respond and plan your digit removals to put them at a disadvantage.
+- **Digit Importance**: Sometimes removing a certain digit can leave the opponent with a stronger or weaker number in terms of future options.
+- **Defensive Play**: Plan your moves not only to reduce your opponent's number but also to protect your own number from being reduced quickly.
+
+## Conclusion
+
+Digit Deletion Duel is a straightforward yet strategic game perfect for quick matches on a command-line interface. Its simplicity makes it easy to code and play, while the strategic element ensures that skilled players can consistently outperform their opponents.
+
+Enjoy the duel!

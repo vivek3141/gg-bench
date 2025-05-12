@@ -1,0 +1,202 @@
+# Game Name: Lockdown
+
+## Objective
+
+Be the **first player** to set all three dials of the shared lock to **0-0-0**. Strategically adjust the dials while adhering to move restrictions to outmaneuver your opponent and achieve the winning combination.
+
+## Setup
+
+1. **Initialize the Lock:**
+   - Create a virtual lock with three dials: **Dial 1**, **Dial 2**, and **Dial 3**.
+   - Each dial displays a digit from **0** to **9**.
+
+2. **Set the Initial Combination:**
+   - Randomly assign a digit between **0** and **9** to each dial to form the starting combination.
+     - *Example:* The lock starts at **3-7-4**.
+
+3. **Determine the First Player:**
+   - Decide who goes first by mutual agreement, coin toss, or random selection.
+
+## Game Components
+
+- **Lock Dials:**
+  - **Dial 1**, **Dial 2**, **Dial 3**.
+  - Each dial shows a single digit from **0** to **9**.
+  - Dials can be adjusted incrementally.
+
+- **Player Actions:**
+  - **Increment**: Increase a dial's value by **1** (wraps from **9** to **0**).
+  - **Decrement**: Decrease a dial's value by **1** (wraps from **0** to **9**).
+
+## Turns
+
+- **Turn Structure:**
+  - Players alternate turns throughout the game.
+  - During each turn, a player performs the following actions:
+    1. **Select One Dial** to adjust (**Dial 1**, **Dial 2**, or **Dial 3**).
+    2. **Choose to Increment or Decrement** the selected dial by **1**.
+
+- **Order of Play:**
+  - Player 1 takes the first turn.
+  - Player 2 takes the next turn.
+  - Repeat until the game ends.
+
+## Rules and Mechanics
+
+1. **Adjusting Dials:**
+
+   - **Incrementing a Dial (+1):**
+     - Increases the dial's value by **1**.
+     - If a dial is at **9**, incrementing wraps it around to **0**.
+   - **Decrementing a Dial (-1):**
+     - Decreases the dial's value by **1**.
+     - If a dial is at **0**, decrementing wraps it around to **9**.
+
+2. **Move Restrictions:**
+
+   - **No Reversals of Opponent's Last Move on the Same Dial:**
+     - You **cannot** reverse your opponent's last adjustment on the **same dial**.
+     - If your opponent **increased** a dial on their last turn, you **cannot decrease** that dial on your turn.
+     - If your opponent **decreased** a dial, you **cannot increase** that dial on your turn.
+   - **Allowed Moves:**
+     - You may adjust:
+       - The **same dial in the same direction** as your opponent's last move.
+       - A **different dial** in any direction, regardless of your opponent's last move.
+
+3. **Winning the Game:**
+
+   - The game ends when a player sets the lock combination to **0-0-0**.
+   - The player who achieves this combination on their turn **wins the game**.
+
+## Scoring
+
+- **Winning Condition:**
+  - There is **no point system**.
+  - Victory is achieved by being the first to set all dials to **0-0-0**.
+
+## Examples
+
+### Example Game Play
+
+**Initial Combination:** 3-7-4
+
+**Player 1's Turn:**
+
+- **Action:** Increase Dial 2 by 1.
+- **Explanation:** Dial 2 goes from 7 to 8.
+- **New Combination:** 3-8-4.
+- **Restriction for Player 2:** Cannot decrease Dial 2 on the next turn.
+
+**Player 2's Turn:**
+
+- **Unavailable Move:** Decrease Dial 2 (reversing opponent's last move).
+- **Action:** Decrease Dial 3 by 1.
+- **Explanation:** Dial 3 goes from 4 to 3.
+- **New Combination:** 3-8-3.
+- **Restriction for Player 1:** Cannot increase Dial 3 on the next turn.
+
+**Player 1's Turn:**
+
+- **Unavailable Move:** Increase Dial 3 (reversing opponent's last move).
+- **Action:** Increase Dial 2 by 1.
+- **Explanation:** Dial 2 goes from 8 to 9.
+- **New Combination:** 3-9-3.
+- **Restriction for Player 2:** Cannot decrease Dial 2 on the next turn.
+
+**Player 2's Turn:**
+
+- **Unavailable Move:** Decrease Dial 2.
+- **Action:** Increase Dial 1 by 1.
+- **Explanation:** Dial 1 goes from 3 to 4.
+- **New Combination:** 4-9-3.
+- **Restriction for Player 1:** Cannot decrease Dial 1 on the next turn.
+
+**Player 1's Turn:**
+
+- **Unavailable Move:** Decrease Dial 1.
+- **Action:** Increase Dial 2 by 1.
+- **Explanation:** Dial 2 wraps from 9 to 0.
+- **New Combination:** 4-0-3.
+- **Restriction for Player 2:** Cannot decrease Dial 2 on the next turn.
+
+*The game continues in this manner until one player achieves the combination 0-0-0 and wins.*
+
+### Command-Line Interaction Example
+
+**Starting Combination:** 5-2-9
+
+---
+
+**Player 1's Turn:**
+
+- **Prompt:** "Current combination: 5-2-9. Your move."
+- **Player 1 Input:** `increment dial 1`
+- **System Output:** "You increased Dial 1 to 6. New combination: 6-2-9."
+- **Restriction for Player 2:** Cannot decrease Dial 1 on next turn.
+
+**Player 2's Turn:**
+
+- **Prompt:** "Current combination: 6-2-9. Your move."
+- **Unavailable Move:** Decrease Dial 1.
+- **Player 2 Input:** `increment dial 2`
+- **System Output:** "You increased Dial 2 to 3. New combination: 6-3-9."
+- **Restriction for Player 1:** Cannot decrease Dial 2 on next turn.
+
+**Player 1's Turn:**
+
+- **Prompt:** "Current combination: 6-3-9. Your move."
+- **Unavailable Move:** Decrease Dial 2.
+- **Player 1 Input:** `decrement dial 3`
+- **System Output:** "You decreased Dial 3 to 8. New combination: 6-3-8."
+- **Restriction for Player 2:** Cannot increase Dial 3 on next turn.
+
+**Player 2's Turn:**
+
+- **Prompt:** "Current combination: 6-3-8. Your move."
+- **Unavailable Move:** Increase Dial 3.
+- **Player 2 Input:** `decrement dial 1`
+- **System Output:** "You decreased Dial 1 to 5. New combination: 5-3-8."
+- **Restriction for Player 1:** Cannot increase Dial 1 on next turn.
+
+*Play continues with each player making strategic moves until one sets the combination to 0-0-0.*
+
+---
+
+## Strategy Tips
+
+- **Focus on One Dial:**
+  - Repeatedly adjusting the same dial can pressure your opponent, limiting their options.
+- **Anticipate Restrictions:**
+  - Plan moves that not only advance your position but also impose restrictions on your opponent.
+- **Avoid Immediate Reversals:**
+  - Be cautious when adjusting a dial that your opponent can legally adjust in the same direction, as it may not impede their strategy.
+- **Wrapping Awareness:**
+  - Use the wrapping mechanic to your advantage, especially when a dial is at 9 or 0.
+- **Diversify Moves:**
+  - Switching between dials can create complexities that are harder for your opponent to navigate.
+
+## Game Flow Summary
+
+1. **Game Start:**
+   - Lock combination is randomly set.
+   - Players decide who goes first.
+
+2. **Player Turns:**
+   - On each turn:
+     - Select a dial to adjust.
+     - Choose to increment or decrement by 1.
+     - Ensure the move doesn't reverse the opponent's last move on the same dial.
+     - Update the combination accordingly.
+     - Impose a restriction on the opponent's next move.
+
+3. **Winning the Game:**
+   - Continue alternating turns.
+   - First player to achieve **0-0-0** wins.
+
+4. **Game End:**
+   - Declare the winner.
+   - Optionally, start a new game with roles reversed.
+
+---
+
+**Enjoy the challenge of Lockdown, where every move counts towards cracking the code before your opponent!**

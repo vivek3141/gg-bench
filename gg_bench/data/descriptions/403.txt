@@ -1,0 +1,180 @@
+# Digit Sum Duel
+
+## Objective
+
+Be the first player to construct the largest possible number without exceeding a predetermined digit sum limit. Victory is achieved by strategically selecting and appending digits to build a higher numerical value than your opponent while keeping the sum of your digits within the allowed limit. If a player exceeds the digit sum limit, they lose immediately.
+
+## Setup
+
+1. **Digit Sum Limit**: Agree on a digit sum limit for the game (e.g., 15).
+2. **Starting Numbers**: Both players begin with an empty number (zero digits).
+3. **Available Digits**: Digits from **1** to **9** are available for selection by each player independently.
+
+## Game Components
+
+- **Digits (1-9)**: The building blocks used by players to construct their numbers. Each digit can be used once per player but may be used by both players independently.
+- **Player Numbers**: The numbers constructed by each player by appending selected digits during their turns.
+- **Digit Sum Tracker**: Keeps track of the sum of the digits in each player's number to ensure it does not exceed the digit sum limit.
+
+## Turns
+
+1. **Turn Order**: Players decide who goes first (e.g., coin toss). Turns alternate between Player 1 and Player 2.
+2. **Actions on a Turn**:
+   - **Select a Digit**: Choose any unused digit from **1** to **9**.
+   - **Append the Digit**: Add the selected digit to the **end** of your current number.
+   - **Update Digit Sum**: Add the value of the selected digit to your digit sum total.
+3. **Turn Progression**: The game continues with players alternating turns until neither can make a valid move or a player loses by exceeding the digit sum limit.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Each digit from **1** to **9** can be used **once per player**.
+   - Both players have access to the same set of digits but track usage independently.
+2. **Appending Digits**:
+   - Digits are appended to the **end** of the player's existing number (e.g., appending **5** to **23** results in **235**).
+3. **Digit Sum Limit**:
+   - The sum of the digits in a player's number must **not exceed** the agreed-upon digit sum limit.
+   - If a move would cause the digit sum to exceed the limit, the player **cannot** select that digit.
+4. **Losing the Game**:
+   - If a player exceeds the digit sum limit upon appending a digit, they **lose immediately**.
+5. **Ending the Game**:
+   - The game ends when:
+     - Both players **cannot make a valid move** (no remaining digits that keep the digit sum within the limit).
+     - A player loses by exceeding the digit sum limit.
+6. **Winning the Game**:
+   - The player with the **larger numerical value** of their constructed number wins, provided they have **not exceeded** the digit sum limit.
+   - In case of a tie in numerical value, the player who constructed their number in **fewer turns** wins.
+
+## Scoring
+
+- **Victory**: Achieved by having the larger number without exceeding the digit sum limit.
+- **Immediate Loss**: Exceeding the digit sum limit at any point.
+- **Tie-Breaker**: If numerical values are equal, the player who used **fewer digits** (has taken fewer turns) wins.
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+- **Digit Sum Limit**: 15
+
+**Turn 1**:
+- **Player 1** selects **9**.
+  - Number: **9**
+  - Digit Sum: **9**
+
+- **Player 2** selects **8**.
+  - Number: **8**
+  - Digit Sum: **8**
+
+**Turn 2**:
+- **Player 1** selects **6**.
+  - Number: **96**
+  - Digit Sum: **9 + 6 = 15**
+
+- **Player 2** selects **7**.
+  - Number: **87**
+  - Digit Sum: **8 + 7 = 15**
+
+**Turn 3**:
+- **Player 1** cannot select any digit without exceeding the digit sum limit.
+  - Available digits: **1-5** (but any would exceed the limit)
+  - **Player 1 passes**.
+
+- **Player 2** cannot select any digit without exceeding the digit sum limit.
+  - Available digits: **1-6, 9** (but any would exceed the limit)
+  - **Player 2 passes**.
+
+**Result**:
+- Player 1's number: **96**
+- Player 2's number: **87**
+- **Winner**: **Player 1**
+
+### Example 2: Strategic Play
+
+- **Digit Sum Limit**: 12
+
+**Turn 1**:
+- **Player 1** selects **5**.
+  - Number: **5**
+  - Digit Sum: **5**
+
+- **Player 2** selects **9**.
+  - Number: **9**
+  - Digit Sum: **9**
+
+**Turn 2**:
+- **Player 1** selects **7**.
+  - Number: **57**
+  - Digit Sum: **5 + 7 = 12**
+
+- **Player 2** cannot select any digit without exceeding the digit sum limit.
+  - Available digits: **1-8** (any selection would exceed the limit of 12 when added to current sum of 9)
+  - **Player 2 passes**.
+
+**Turn 3**:
+- **Player 1** cannot select any more digits without exceeding the digit sum limit.
+  - **Player 1 passes**.
+
+**Result**:
+- Player 1's number: **57**
+- Player 2's number: **9**
+- **Winner**: **Player 1**
+
+### Command-Line Interaction Sample
+
+```plaintext
+Digit Sum Duel Game Start!
+Digit Sum Limit: 15
+
+Player 1's Turn
+Available Digits: 1 2 3 4 5 6 7 8 9
+Your Number: 
+Current Digit Sum: 0
+Select a digit to append: 9
+
+Player 2's Turn
+Available Digits: 1 2 3 4 5 6 7 8 9
+Your Number: 
+Current Digit Sum: 0
+Select a digit to append: 8
+
+Player 1's Turn
+Available Digits: 1 2 3 4 5 6 7 8
+Your Number: 9
+Current Digit Sum: 9
+Select a digit to append: 6
+
+Player 2's Turn
+Available Digits: 1 2 3 4 5 6 7 8
+Your Number: 8
+Current Digit Sum: 8
+Select a digit to append: 7
+
+Player 1's Turn
+Available Digits: 1 2 3 4 5 6 7
+Your Number: 96
+Current Digit Sum: 15
+No valid moves available. You pass this turn.
+
+Player 2's Turn
+Available Digits: 1 2 3 4 5 6 9
+Your Number: 87
+Current Digit Sum: 15
+No valid moves available. You pass this turn.
+
+Game Over!
+Player 1's Number: 96
+Player 2's Number: 87
+Winner: Player 1
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of both your digit sum and the remaining digits to avoid being forced to pass.
+- **Balance Value and Sum**: High digits increase your number's value quickly but consume the digit sum limit faster.
+- **Anticipate Opponent Moves**: Observe which digits your opponent has used to predict their possible moves.
+- **Optimize Turns**: Try to construct a larger number in fewer turns to win tie-breakers.
+
+## Summary
+
+Digit Sum Duel is a quick and strategic game perfect for a command-line interface. Players must balance the desire to build a large number with the constraint of a digit sum limit. With simple mechanics and deep strategy, skilled players can consistently outmaneuver less experienced opponents.

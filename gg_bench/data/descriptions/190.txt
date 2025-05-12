@@ -1,0 +1,297 @@
+# GridLock
+
+## Objective
+
+**GridLock** is a strategic two-player game played on a grid. The primary goal is to be the **last player able to place a token on the grid according to the placement rules**. The player who makes the last valid move wins the game, while the other player loses.
+
+## Setup
+
+- **Grid**: The game is played on a **5x5 grid**.
+- **Players**:
+  - **Player 1** uses tokens represented by `'X'`.
+  - **Player 2** uses tokens represented by `'O'`.
+- **Starting Conditions**: All cells in the grid are initially empty. Player 1 takes the first turn.
+
+## Game Components
+
+### Grid
+
+- A 5x5 grid represented as a matrix of cells.
+- Each cell can be in one of three states:
+  - **Empty**: Represented by an underscore (`'_'`).
+  - **Occupied by Player 1**: Contains an `'X'`.
+  - **Occupied by Player 2**: Contains an `'O'`.
+
+### Tokens
+
+- **Player Tokens**:
+  - Player 1 has an unlimited supply of `'X'` tokens.
+  - Player 2 has an unlimited supply of `'O'` tokens.
+- **Functionality**:
+  - Tokens are placed on the grid during a player's turn.
+  - Tokens remain on the grid once placed and cannot be moved or removed.
+
+## Turns
+
+### Turn Structure
+
+1. **Turn Order**: Players alternate turns, starting with Player 1.
+2. **Action**: On their turn, a player places one of their tokens on an empty cell, following the placement rules.
+3. **Turn Progression**: The game continues with players alternating turns until neither player can make a valid move.
+
+### Player Actions
+
+- **Place a Token**: Place your token on an empty cell that adheres to the placement rules.
+- **Pass**: If no valid moves are available, the player passes their turn.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+- **Non-Adjacency Rule**: You cannot place your token on a cell that is adjacent (including diagonally) to any of your own tokens already on the grid.
+  - **Adjacent Cells**: Any cell that is directly horizontal, vertical, or diagonal to a given cell.
+- **Opponent Tokens**: You may place your token adjacent to your opponent's tokens without restriction.
+- **Valid Moves**: If at least one valid cell is available, you must make a move.
+- **Passing**: If no valid moves are available, you must pass your turn.
+
+### Winning the Game
+
+- **Victory Condition**: The game ends when both players have no valid moves remaining. The player who made the **last valid move** wins the game.
+- **Loss Condition**: If you cannot make a valid move and your opponent made the last valid move, you lose the game.
+
+## Scoring
+
+- **No Points System**: There is no scoring or points system in GridLock.
+- **Win/Loss Outcome**: The game outcome is simply a win for one player and a loss for the other based on the ability to make the last valid move.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid
+
+```
+_ _ _ _ _
+_ _ _ _ _
+_ _ _ _ _
+_ _ _ _ _
+_ _ _ _ _
+```
+
+#### Turn 1: Player 1 (X)
+
+- **Action**: Places `'X'` at **row 3, column 3**.
+- **Grid**:
+
+```
+_ _ _ _ _
+_ _ _ _ _
+_ _ X _ _
+_ _ _ _ _
+_ _ _ _ _
+```
+
+#### Turn 2: Player 2 (O)
+
+- **Action**: Places `'O'` at **row 2, column 2**.
+- **Grid**:
+
+```
+_ _ _ _ _
+_ O _ _ _
+_ _ X _ _
+_ _ _ _ _
+_ _ _ _ _
+```
+
+#### Turn 3: Player 1 (X)
+
+- **Invalid Positions**: Cannot place next to their own `'X'` at (3,3). Adjacent cells are:
+
+  ```
+  (2,2), (2,3), (2,4)
+  (3,2),       (3,4)
+  (4,2), (4,3), (4,4)
+  ```
+- **Action**: Places `'X'` at **row 1, column 5**.
+- **Grid**:
+
+```
+_ _ _ _ X
+_ O _ _ _
+_ _ X _ _
+_ _ _ _ _
+_ _ _ _ _
+```
+
+#### Turn 4: Player 2 (O)
+
+- **Invalid Positions**: Cannot place next to their own `'O'` at (2,2). Adjacent cells are:
+
+  ```
+  (1,1), (1,2), (1,3)
+  (2,1),       (2,3)
+  (3,1), (3,2), (3,3)
+  ```
+- **Action**: Places `'O'` at **row 5, column 1**.
+- **Grid**:
+
+```
+_ _ _ _ X
+_ O _ _ _
+_ _ X _ _
+_ _ _ _ _
+O _ _ _ _
+```
+
+#### Continuing the Game
+
+Players continue to alternate turns, placing their tokens on valid positions until one or both players cannot make a valid move.
+
+### Endgame Scenario
+
+#### Grid Before Player 1's Turn
+
+```
+X _ _ _ X
+_ O _ _ _
+_ _ X _ _
+_ _ _ _ _
+O _ _ _ O
+```
+
+#### Player 1 (X)
+
+- **Invalid Positions**: All remaining empty cells are adjacent to Player 1's tokens.
+- **Action**: Cannot make a valid move and must **pass**.
+
+#### Player 2 (O)
+
+- **Valid Positions**: Checks for any valid moves.
+- **Action**: If able to place an `'O'`, does so. If not, must pass.
+
+#### Determining the Winner
+
+- **Last Player to Make a Valid Move**: If Player 2 was the last to place a token, **Player 2 wins**.
+- **Outcome**: Player 1 loses, and Player 2 wins the game.
+
+## Command-Line Interaction Example
+
+### Turn Sequence
+
+#### Game Start
+
+- **Display Grid**:
+
+  ```
+  _ _ _ _ _
+  _ _ _ _ _
+  _ _ _ _ _
+  _ _ _ _ _
+  _ _ _ _ _
+  ```
+
+#### Turn 1: Player 1 (X)
+
+- **Prompt**:
+
+  ```
+  Player 1 (X), enter your move (row column): 3 3
+  ```
+
+- **Grid Update**:
+
+  ```
+  _ _ _ _ _
+  _ _ _ _ _
+  _ _ X _ _
+  _ _ _ _ _
+  _ _ _ _ _
+  ```
+
+#### Turn 2: Player 2 (O)
+
+- **Prompt**:
+
+  ```
+  Player 2 (O), enter your move (row column): 2 2
+  ```
+
+- **Grid Update**:
+
+  ```
+  _ _ _ _ _
+  _ O _ _ _
+  _ _ X _ _
+  _ _ _ _ _
+  _ _ _ _ _
+  ```
+
+#### Turn 3: Player 1 (X)
+
+- **Prompt**:
+
+  ```
+  Player 1 (X), enter your move (row column): 1 5
+  ```
+
+- **Grid Update**:
+
+  ```
+  _ _ _ _ X
+  _ O _ _ _
+  _ _ X _ _
+  _ _ _ _ _
+  _ _ _ _ _
+  ```
+
+#### Turn 4: Player 2 (O)
+
+- **Prompt**:
+
+  ```
+  Player 2 (O), enter your move (row column): 5 1
+  ```
+
+- **Grid Update**:
+
+  ```
+  _ _ _ _ X
+  _ O _ _ _
+  _ _ X _ _
+  _ _ _ _ _
+  O _ _ _ _
+  ```
+
+### Passing a Turn
+
+If a player cannot make a valid move:
+
+- **Prompt**:
+
+  ```
+  Player [N], no valid moves available. Passing turn.
+  ```
+
+### Game Conclusion
+
+- **Announcement**:
+
+  ```
+  Neither player can make a valid move.
+  The last player to place a token was Player [N].
+  Congratulations, Player [N] wins the game!
+  ```
+
+## Additional Notes
+
+- **Strategic Depth**:
+  - Blocking opponent's options while maximizing your own is key.
+  - Anticipate future moves based on the current state of the grid.
+- **Gameplay Tips**:
+  - Try to spread your tokens out to have more placement options.
+  - Consider forcing your opponent into positions where they have limited moves.
+
+---
+
+**GridLock** offers a simple set of rules but allows for deep strategic planning. By focusing on placement strategy and anticipating your opponent's moves, you can master the game and consistently outperform less experienced players.

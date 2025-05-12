@@ -1,0 +1,140 @@
+# **Digit Duel**
+
+## **Objective**
+
+Be the first player to reduce your target number to exactly zero by strategically subtracting digits from your opponent's current number. Utilize the digits available in your opponent's number to decrement your own, aiming to reach zero before they do. Victory is achieved by careful planning and anticipation of your opponent's moves.
+
+## **Setup**
+
+1. **Starting Target Number**: Each player begins with the same positive integer as their target number. By default, this number is **25**, but players can agree on a different starting number to adjust game length or difficulty.
+2. **Player Assignment**: Decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+## **Game Components**
+
+- **Target Numbers**: Each player has their own target number, which is visible to both players throughout the game.
+- **Digits Available for Subtraction**: On each turn, the digits that can be subtracted are the individual digits of the opponent's current target number.
+
+## **Turns**
+
+1. **Turn Order**: Players take turns alternately. The player designated to go first will make the initial move.
+2. **Actions During a Turn**:
+   - **Inspect Opponent's Number**: Review the current digits in your opponent's target number.
+   - **Choose Digit to Subtract**: Select one digit from your opponent's number.
+   - **Subtract Digit**: Subtract the chosen digit from your own target number.
+   - **Update Numbers**: Adjust your target number to reflect the subtraction. The opponent's number remains unchanged during your turn.
+3. **Turn Progression**: After completing your turn, the opponent takes their turn following the same steps.
+
+## **Rules and Mechanics**
+
+1. **Valid Digits for Subtraction**:
+   - You may only subtract **one digit** per turn.
+   - The digit must be present in your opponent's current target number at the **start** of your turn.
+   - If the opponent's number has repeating digits, each occurrence is considered separately, but you can still only subtract one instance per turn.
+2. **Subtraction**:
+   - Subtract the chosen digit's **numerical value** (0-9) from your target number.
+   - The result must be a **non-negative integer** (you cannot have a negative target number).
+3. **Winning the Game**:
+   - The first player to reduce their target number to **exactly zero** wins the game.
+4. **Invalid Moves**:
+   - If a player cannot make a valid move on their turn (no available digits to subtract without resulting in a negative number), they **lose** the game.
+5. **Additional Rules**:
+   - Players must perform a subtraction if a valid move is available.
+   - Players cannot skip their turn or pass.
+   - The opponent's target number is not altered during your turn.
+
+## **Scoring**
+
+No points are tracked in this game. Victory is determined by being the first to reach a target number of zero under the game's rules.
+
+## **Examples**
+
+### **Example Game Play**
+
+**Starting Target Number**: 25 for both players.
+
+**Player 1's Turn**:
+
+- **Opponent's Number**: 25 (digits 2 and 5).
+- **Available Digits**: 2 and 5.
+- **Choice**: Subtract **2** from 25.
+- **Player 1's New Number**: 25 - 2 = **23**.
+
+**Player 2's Turn**:
+
+- **Opponent's Number**: 23 (digits 2 and 3).
+- **Available Digits**: 2 and 3.
+- **Choice**: Subtract **3** from 25.
+- **Player 2's New Number**: 25 - 3 = **22**.
+
+**Player 1's Turn**:
+
+- **Opponent's Number**: 22 (digits 2 and 2).
+- **Available Digits**: 2.
+- **Choice**: Subtract **2** from 23.
+- **Player 1's New Number**: 23 - 2 = **21**.
+
+**Player 2's Turn**:
+
+- **Opponent's Number**: 21 (digits 2 and 1).
+- **Available Digits**: 2 and 1.
+- **Choice**: Subtract **2** from 22.
+- **Player 2's New Number**: 22 - 2 = **20**.
+
+**Play continues** with each player strategically choosing digits to subtract.
+
+### **Strategic Considerations**
+
+- **Anticipate Opponent's Moves**: By observing which digits your opponent will have after your turn, you can plan to limit their options.
+- **Minimize Opponent's Available Digits**: Subtracting digits that will leave your opponent with fewer or less beneficial digits can give you an advantage.
+- **Balance Subtraction Choices**: Choosing when to subtract larger digits versus smaller ones can affect the endgame.
+
+### **Sample Endgame Scenario**
+
+Suppose later in the game:
+
+**Player 1's Number**: 4
+
+**Player 2's Number**: 5
+
+**Player 1's Turn**:
+
+- **Opponent's Number**: 5 (digit 5).
+- **Available Digit**: 5.
+- **Choice**: Cannot subtract **5** from **4** (would result in a negative number).
+- **Outcome**: Player 1 cannot make a valid move and **loses** the game.
+
+**Player 2 Wins!**
+
+## **Command-Line Interaction Example**
+
+Assuming the game is played via a command-line interface, here's how a sample interaction might look:
+
+```
+Game Start!
+Both players have a target number of 25.
+
+Player 1's turn:
+Opponent's number is 25.
+Available digits to subtract: 2, 5
+Enter the digit to subtract: 2
+You subtracted 2. Your new number is 23.
+
+Player 2's turn:
+Opponent's number is 23.
+Available digits to subtract: 2, 3
+Enter the digit to subtract: 3
+You subtracted 3. Your new number is 22.
+
+...
+
+Player 1's turn:
+Opponent's number is 5.
+Available digits to subtract: 5
+Enter the digit to subtract: 5
+Cannot subtract 5 from 4. No valid moves.
+Player 1 loses. Player 2 wins!
+```
+
+## **Conclusion**
+
+**Digit Duel** is a game of strategic subtraction and foresight. By carefully choosing which digits to subtract and anticipating the resultant digits available to your opponent, you can outmaneuver them and achieve victory. The simplicity of the rules allows for quick gameplay, while the strategic depth ensures a skilled player can consistently win.

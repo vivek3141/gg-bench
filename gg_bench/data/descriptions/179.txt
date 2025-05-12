@@ -1,0 +1,161 @@
+# Grid Runner
+
+## Objective
+
+**Grid Runner** is a two-player, turn-based strategy game played on a 5x5 grid. The primary goal is to be the first player to reach your opponent's starting square. Players navigate the grid by moving their markers, strategically blocking their opponent's path while advancing toward the goal. Victory is achieved by successfully moving your marker onto the opponent's starting position.
+
+## Setup
+
+- **Grid Layout**: A 5x5 grid is used, with rows labeled 1 to 5 from top to bottom and columns labeled A to E from left to right.
+- **Starting Positions**:
+  - **Player 1** starts at the top-left corner (square A1).
+  - **Player 2** starts at the bottom-right corner (square E5).
+- **Markers**: Each player has a unique marker to represent their position on the grid.
+- **Blocked Squares**: Initially, no squares are blocked except for the starting squares occupied by the players.
+
+## Game Components
+
+- **Grid**: A 5x5 grid represented in the command-line interface as a matrix of squares.
+- **Markers**:
+  - **Player 1's Marker**: Represented by "P1".
+  - **Player 2's Marker**: Represented by "P2".
+- **Blocked Squares**: Squares that cannot be entered by a player, represented by "XX" once blocked.
+- **Empty Squares**: Represented by "--".
+
+Example of Initial Grid:
+
+```
+   A   B   C   D   E
+1 [P1][--][--][--][--]
+2 [--][--][--][--][--]
+3 [--][--][--][--][--]
+4 [--][--][--][--][--]
+5 [--][--][--][--][P2]
+```
+
+## Turns
+
+- **Turn Order**: Player 1 begins the game, and players alternate turns thereafter.
+- **Actions Per Turn**:
+  1. **Move**: The player moves their marker to an adjacent square.
+  2. **Block**: After moving, the square the player just left becomes a blocked square for the opponent.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Adjacent Moves**: Players can move to any horizontally or vertically adjacent square (no diagonal moves).
+- **Valid Moves**: A player may move to any empty square that is not blocked or occupied by the opponent.
+- **No Revisiting**: Players cannot move onto squares they have previously blocked.
+
+### Blocking Mechanics
+
+- **Blocking Squares**: After a player moves, the square they vacated becomes blocked for their opponent.
+- **Representation**: Blocked squares are denoted by "XX" on the grid.
+- **Self-Passage**: A player can pass through their own blocked squares but cannot end their turn on them.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to move their marker onto the opponent's starting square wins the game.
+- **No Draws**: If a player is unable to move because all adjacent squares are blocked, they lose the game.
+
+## Scoring
+
+- **Win/Loss**: The game is won by the first player to reach the opponent's starting square or by immobilizing the opponent.
+- **No Points System**: There is no point tracking; the outcome is either a win or a loss.
+
+## Examples
+
+### Sample Turn
+
+**Initial State**: Player 1 at A1, Player 2 at E5.
+
+**Player 1's Turn**:
+
+1. **Move**: Player 1 moves from A1 to A2.
+2. **Block**: Square A1 becomes blocked for Player 2.
+
+**Grid After Player 1's Turn**:
+
+```
+   A   B   C   D   E
+1 [XX][--][--][--][--]
+2 [P1][--][--][--][--]
+3 [--][--][--][--][--]
+4 [--][--][--][--][--]
+5 [--][--][--][--][P2]
+```
+
+**Player 2's Turn**:
+
+1. **Move**: Player 2 moves from E5 to E4.
+2. **Block**: Square E5 becomes blocked for Player 1.
+
+**Grid After Player 2's Turn**:
+
+```
+   A   B   C   D   E
+1 [XX][--][--][--][--]
+2 [P1][--][--][--][--]
+3 [--][--][--][--][--]
+4 [--][--][--][--][P2]
+5 [--][--][--][--][XX]
+```
+
+### Sample Game Progression
+
+Let's consider a few more turns to illustrate strategy.
+
+**Player 1's Second Turn**:
+
+1. **Move**: Player 1 moves from A2 to B2.
+2. **Block**: Square A2 becomes blocked for Player 2.
+
+**Player 2's Second Turn**:
+
+1. **Move**: Player 2 moves from E4 to D4.
+2. **Block**: Square E4 becomes blocked for Player 1.
+
+**Grid**:
+
+```
+   A   B   C   D   E
+1 [XX][--][--][--][--]
+2 [XX][P1][--][--][--]
+3 [--][--][--][--][--]
+4 [--][--][--][P2][XX]
+5 [--][--][--][--][XX]
+```
+
+**Strategic Considerations**:
+
+- **Blocking Paths**: Players should aim to block potential routes for their opponent.
+- **Creating Openings**: Players can move in such a way to open paths for themselves by reusing their own blocked squares.
+- **Forced Moves**: By strategic blocking, a player can force the opponent into unfavorable moves.
+
+### Winning Scenario
+
+Assuming several more turns have passed, and Player 1 reaches E5.
+
+**Player 1's Final Turn**:
+
+1. **Move**: Player 1 moves onto square E5 (the opponent's starting position).
+2. **Victory**: Player 1 wins the game.
+
+## Command-Line Interaction
+
+### Sample Commands
+
+- **Move**: The player inputs the coordinate of the square they wish to move to.
+  - Example: `move B2`
+- **Invalid Moves**: The game will prompt the player if the move is invalid due to blocking or revisiting rules.
+  - Example: `Invalid move. The square is blocked or not adjacent.`
+
+### Turn Feedback
+
+- **Game State Display**: After each turn, the grid is displayed showing the current positions, blocked squares, and empty squares.
+- **Victory Notification**: When a player wins, the game announces the winner.
+
+## Conclusion
+
+**Grid Runner** combines simple rules with strategic depth, making it easy to learn but challenging to master. The game's structure ensures that there are no draws, and each match concludes quickly as players navigate the grid. Success depends on a player's ability to anticipate the opponent's moves, effectively block paths, and find the optimal route to the goal. Whether you're a casual player or a strategic thinker, **Grid Runner** offers an engaging and competitive experience in a straightforward command-line interface.

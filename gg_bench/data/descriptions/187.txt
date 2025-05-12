@@ -1,0 +1,233 @@
+# Number Circle Duel
+
+## Objective
+
+Be the last player able to make a valid move by strategically selecting numbers from a circular arrangement. Players take turns selecting numbers, with each selection impacting the available options for the next turn. The player who forces their opponent into a position where they cannot make a move wins the game.
+
+## Setup
+
+- **Number Circle Creation**: Arrange numbers from **1** to **10** in a circle in sequential order. Each number is adjacent to two other numbers, forming a closed loop (e.g., 1 is adjacent to 2 and 10).
+- **Starting Conditions**: All numbers are unclaimed at the beginning of the game.
+- **Player Positions**: Decide which player goes first. This can be done by agreement or a simple random method like flipping a coin.
+
+## Game Components
+
+- **Numbers**: Integers from **1** to **10**.
+- **Number Circle**: A circular arrangement where each number is connected to its immediate neighbors:
+
+  ```
+  10 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10
+     \______________________________________/
+  ```
+
+- **Markers**: Indicators (in code) to show whether a number is still available or has been claimed.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Actions per Turn**:
+
+  1. **Select a Number**: Choose an available number that is adjacent to the last number selected (except on the first turn).
+  2. **Update the Circle**: Remove the selected number from the circle, making it unavailable for future turns.
+
+- **Progression**: The game continues with players taking turns until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+1. **First Turn**:
+   - The first player can select **any** number from the circle.
+2. **Subsequent Turns**:
+   - Each player must select a number that is **adjacent** to the **last number chosen**.
+   - **Adjacency**: Two numbers are adjacent if they are next to each other in the circle. Due to the circular nature, **1** is adjacent to both **2** and **10**.
+3. **Number Removal**:
+   - Once a number is selected, it is removed from the circle and cannot be selected again.
+4. **Valid Moves**:
+   - A move is valid if there is at least one unclaimed number adjacent to the last number selected.
+5. **Winning the Game**:
+   - If a player has no valid moves on their turn (no adjacent unclaimed numbers), they **lose**, and the other player **wins**.
+
+## Scoring
+
+- **Victory Condition**: The winner is the player who successfully forces their opponent into a position with no valid moves.
+- **No Points System**: The game is a win-or-lose scenario with no points or scores accumulated.
+
+## Examples
+
+### Example Game Play
+
+**Initial Circle State**:
+
+```
+[1] - [2] - [3] - [4] - [5] - [6] - [7] - [8] - [9] - [10]
+ \                                             /
+  ---------------------------------------------
+```
+
+**Turn 1**:
+- **Player 1** selects **number 4**.
+- **Circle Update**: Number 4 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]     [5] - [6] - [7] - [8] - [9] - [10]
+ \                                  /
+  ----------------------------------
+```
+
+**Turn 2**:
+- **Last Number Chosen**: 4
+- **Adjacent Numbers to 4**: 3 and 5
+- **Player 2** selects **number 5**.
+- **Circle Update**: Number 5 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]     [6] - [7] - [8] - [9] - [10]
+ \                           /
+  ---------------------------
+```
+
+**Turn 3**:
+- **Last Number Chosen**: 5
+- **Adjacent Numbers to 5**: 4 (claimed) and 6
+- **Player 1** selects **number 6**.
+- **Circle Update**: Number 6 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]     [7] - [8] - [9] - [10]
+ \                        /
+  ------------------------
+```
+
+**Turn 4**:
+- **Last Number Chosen**: 6
+- **Adjacent Numbers to 6**: 5 (claimed) and 7
+- **Player 2** selects **number 7**.
+- **Circle Update**: Number 7 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]     [8] - [9] - [10]
+ \                     /
+  ---------------------
+```
+
+**Turn 5**:
+- **Last Number Chosen**: 7
+- **Adjacent Numbers to 7**: 6 (claimed) and 8
+- **Player 1** selects **number 8**.
+- **Circle Update**: Number 8 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]     [9] - [10]
+ \                  /
+  ------------------
+```
+
+**Turn 6**:
+- **Last Number Chosen**: 8
+- **Adjacent Numbers to 8**: 7 (claimed) and 9
+- **Player 2** selects **number 9**.
+- **Circle Update**: Number 9 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]     [10]
+ \              /
+  ---------------
+```
+
+**Turn 7**:
+- **Last Number Chosen**: 9
+- **Adjacent Numbers to 9**: 8 (claimed) and 10
+- **Player 1** selects **number 10**.
+- **Circle Update**: Number 10 is removed.
+
+**Circle State**:
+
+```
+[1] - [2] - [3]
+ \            /
+  -------------
+```
+
+**Turn 8**:
+- **Last Number Chosen**: 10
+- **Adjacent Numbers to 10**: 9 (claimed) and 1
+- **Player 2** selects **number 1**.
+- **Circle Update**: Number 1 is removed.
+
+**Circle State**:
+
+```
+[2] - [3]
+ \     /
+  -----
+```
+
+**Turn 9**:
+- **Last Number Chosen**: 1
+- **Adjacent Numbers to 1**: 10 (claimed) and 2
+- **Player 1** selects **number 2**.
+- **Circle Update**: Number 2 is removed.
+
+**Circle State**:
+
+```
+[3]
+```
+
+**Turn 10**:
+- **Last Number Chosen**: 2
+- **Adjacent Numbers to 2**: 1 (claimed) and 3
+- **Player 2** selects **number 3**.
+- **Circle Update**: Number 3 is removed.
+
+**Circle State**:
+
+_All numbers have been claimed._
+
+**Result**:
+- **Player 1** has no valid move.
+- **Player 2** wins the game.
+
+### Command-Line Interaction Sample
+
+**Turn 1**:
+```
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10
+Select a number: 4
+
+Number 4 selected.
+```
+
+**Turn 2**:
+```
+Player 2's turn.
+Last number selected: 4
+Available adjacent numbers: 3 5
+Select a number: 5
+
+Number 5 selected.
+```
+
+*...and so on, following the sequence from the example above.*
+
+## Strategy Tips
+
+- **Control the Flow**: Try to steer the game toward numbers that limit your opponent's options.
+- **Think Ahead**: Anticipate the consequences of your move on future turns.
+- **Edge Play**: Moving towards the "edges" of the circle (e.g., numbers where the next adjacent numbers are already claimed) can corner your opponent.
+
+## Conclusion
+
+Number Circle Duel is a simple yet strategic game that challenges players to think ahead and make tactical decisions. Its straightforward rules make it easy to code and play in a command-line interface, while the strategic depth ensures that skilled players can consistently outperform less experienced opponents.

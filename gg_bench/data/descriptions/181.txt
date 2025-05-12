@@ -1,0 +1,216 @@
+# Number Claim - Rule Book
+
+---
+
+## Objective
+
+**Number Claim** is a two-player, turn-based strategy game played on a 3x3 grid filled with the numbers 1 through 9. The primary goal is for players to accumulate a higher total score than their opponent by strategically claiming numbers from the grid. Each player takes turns selecting numbers, aiming to maximize their own total while minimizing their opponent's potential score. The player with the higher total score at the end of the game wins.
+
+---
+
+## Setup
+
+1. **Game Board**: Prepare a 3x3 grid representing the game board.
+2. **Number Placement**: Randomly assign the numbers 1 through 9 to the nine cells of the grid, ensuring each number is used exactly once.
+3. **Display**: The initial state of the grid with all numbers visible should be displayed to both players.
+4. **Determine First Player**: Decide which player goes first (Player 1) by mutual agreement or a random method (e.g., coin toss).
+
+*Example Initial Grid:*
+
+```
+[5] [3] [8]
+[1] [9] [4]
+[7] [2] [6]
+```
+
+---
+
+## Game Components
+
+- **Grid**: A 3x3 grid representing the game board.
+- **Numbers**: Digits from 1 to 9, each occupying one cell of the grid.
+- **Markers**: Symbols or initials used to indicate claimed numbers (e.g., 'P1' for Player 1 and 'P2' for Player 2).
+
+---
+
+## Turns
+
+1. **Alternating Turns**: Players alternate turns, starting with Player 1.
+2. **Selecting a Number**:
+   - On their turn, a player selects any unclaimed number from the grid.
+   - The selected number is claimed and marked with the player's marker.
+3. **Updating Score**:
+   - Add the value of the selected number to the player's total score.
+4. **Turn Completion**: The turn ends after a number is claimed and scores are updated.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**: Players can choose any unclaimed number on the grid during their turn.
+2. **Claiming Numbers**:
+   - Once a number is claimed, it is marked and cannot be selected again.
+   - Use clear markers to indicate which player has claimed each number.
+3. **Scoring**:
+   - Each player maintains a running total of the numbers they have claimed.
+4. **Game End Condition**:
+   - The game concludes after all nine numbers have been claimed.
+5. **Winning Condition**:
+   - The player with the higher total score at the end of the game wins.
+   - **No Draws**: Since the total sum of numbers 1 through 9 is 45 (an odd number), a tie is impossible.
+
+---
+
+## Scoring
+
+- **Running Total**: Keep a cumulative score for each player as they claim numbers.
+- **Final Score**: At the game's end, each player's final score is the sum of all numbers they have claimed.
+- **Victory**: The player with the higher final score is declared the winner.
+
+*Example Scoring Table:*
+
+| Turn | Player | Chosen Number | Player's Total Score |
+|------|--------|---------------|----------------------|
+| 1    | P1     | 9             | 9                    |
+| 2    | P2     | 8             | 8                    |
+| 3    | P1     | 7             | 16                   |
+| ...  | ...    | ...           | ...                  |
+| 9    | P2     | 1             | 20                   |
+
+---
+
+## Examples
+
+### Sample Game Play
+
+*Initial Grid:*
+
+```
+[2] [7] [6]
+[9] [5] [1]
+[4] [3] [8]
+```
+
+**Turn 1:**
+
+- **Player 1's Turn**:
+  - Selects **9**.
+  - Marks the cell with 'P1'.
+  - Player 1's Total Score: **9**
+
+*Updated Grid:*
+
+```
+[2] [7] [6]
+[P1] [5] [1]
+[4] [3] [8]
+```
+
+**Turn 2:**
+
+- **Player 2's Turn**:
+  - Selects **8**.
+  - Marks the cell with 'P2'.
+  - Player 2's Total Score: **8**
+
+*Updated Grid:*
+
+```
+[2] [7] [6]
+[P1] [5] [1]
+[4] [3] [P2]
+```
+
+**Turn 3:**
+
+- **Player 1's Turn**:
+  - Selects **7**.
+  - Marks the cell with 'P1'.
+  - Player 1's Total Score: **9 + 7 = 16**
+
+**Turn 4:**
+
+- **Player 2's Turn**:
+  - Selects **6**.
+  - Marks the cell with 'P2'.
+  - Player 2's Total Score: **8 + 6 = 14**
+
+**Turns Continue Until All Numbers Are Claimed**
+
+*Final Scores:*
+
+- **Player 1**: **25**
+- **Player 2**: **20**
+
+**Winner**: **Player 1**
+
+---
+
+### Command-Line Interaction Example
+
+```
+--- Number Claim Game Start ---
+
+Initial Grid:
+[2] [7] [6]
+[9] [5] [1]
+[4] [3] [8]
+
+Player 1, select a number: 9
+You have claimed number 9.
+Your total score is now 9.
+
+Updated Grid:
+[2] [7] [6]
+[P1] [5] [1]
+[4] [3] [8]
+
+Player 2, select a number: 8
+You have claimed number 8.
+Your total score is now 8.
+
+Updated Grid:
+[2] [7] [6]
+[P1] [5] [1]
+[4] [3] [P2]
+
+...
+
+[Game Continues Until All Numbers Are Claimed]
+
+Final Scores:
+Player 1's Total Score: 25
+Player 2's Total Score: 20
+
+Winner: Player 1
+
+--- Game Over ---
+```
+
+---
+
+## Strategic Considerations
+
+- **Priority of High Numbers**: Claiming higher numbers early can give a significant lead.
+- **Blocking Strategy**: Anticipate your opponent's potential choices and claim numbers that could help them catch up or overtake your score.
+- **Balancing Choices**: Sometimes choosing a lower number might prevent your opponent from accessing a combination of numbers that could surpass your total score.
+- **Turn Order**: Being the first player allows you to claim the highest available number. Second players must strategize to mitigate this advantage.
+
+---
+
+## Variations
+
+- **Fixed Number Arrangement**: For increased challenge, use a fixed grid where numbers are arranged in a specific pattern known to both players.
+- **Larger Grids**: Expand the grid to 4x4 or larger with consecutive numbers to increase game length and complexity.
+- **Special Cells**: Introduce cells with special properties (e.g., bonus points, extra turns) for added strategic depth.
+- **Hidden Numbers**: For a twist, start with numbers hidden and reveal them when claimed, adding an element of chance.
+
+---
+
+## Conclusion
+
+**Number Claim** is a simple yet strategically rich game that is easy to learn and quick to play. It challenges players to think ahead and make tactical decisions to outscore their opponent. Ideal for command-line interface implementation, it offers both accessibility for beginners and depth for seasoned players seeking a quick strategic duel.
+
+---
+
+Enjoy the game!

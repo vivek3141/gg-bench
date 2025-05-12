@@ -1,0 +1,223 @@
+# Operation Reach
+
+## Objective
+
+Be the first player to reach the **target number** exactly by strategically applying mathematical operations to a shared **current number**. Avoid exceeding the target number, as doing so results in an immediate loss.
+
+## Setup
+
+1. **Current Number**: Start with an initial number, typically **1**.
+2. **Target Number**: Agree upon a target number that players aim to reach, such as **31**.
+3. **Allowed Operations**: Decide on a set of mathematical operations that can be used during the game. For example:
+   - Addition: **`+1`**, **`+2`**, **`+3`**
+   - Multiplication: **`x2`**
+
+## Game Components
+
+- **Current Number**: A shared integer that is updated each turn based on players' actions.
+- **Target Number**: The predetermined integer that players aim to reach exactly.
+- **Allowed Operations**: The mathematical operations that players can apply to the current number. These are consistent throughout the game.
+- **Players**: Two players who alternate turns.
+
+## Turns
+
+- **Turn Structure**:
+  1. The active player selects one operation from the allowed operations.
+  2. They apply this operation to the current number.
+  3. The result becomes the new current number.
+  4. The turn passes to the other player.
+
+- **Order of Play**: Players decide who goes first (e.g., by coin toss or mutual agreement) and then alternate turns.
+
+## Rules and Mechanics
+
+1. **Applying Operations**:
+   - On their turn, a player must choose **one** of the allowed operations.
+   - The chosen operation is applied to the current number to generate a new current number.
+
+2. **Winning the Game**:
+   - The player who reaches the target number **exactly** wins the game.
+
+3. **Exceeding the Target**:
+   - If a player's move results in the current number exceeding the target number, that player **loses** immediately.
+
+4. **Allowed Operations**:
+   - Only the predefined operations agreed upon at the start may be used.
+   - Players cannot skip their turn or pass; an operation must be applied each turn.
+
+5. **Gameplay Limitations**:
+   - Players cannot perform more than one operation per turn.
+   - Modifying the operations or current number outside of the allowed mechanics is prohibited.
+
+6. **No Draws**:
+   - The game cannot end in a draw due to the rules governing exceeding the target number.
+
+## Scoring
+
+- **Victory Condition**:
+  - **Win**: Achieved by reaching the target number exactly.
+  - **Loss**: Occurs if a player's move causes the current number to exceed the target number.
+
+- **Tracking Progress**:
+  - The current number is updated and announced after each turn.
+  - Players should keep track of the sequence of moves to plan strategically.
+
+## Examples
+
+### Example Game
+
+**Settings**:
+- Current Number: **1**
+- Target Number: **31**
+- Allowed Operations: **`+1`**, **`+2`**, **`+3`**, **`x2`**
+
+**Players**: Player 1 and Player 2
+
+---
+
+#### Turn 1
+
+- **Player 1's Turn**:
+  - Current Number: **1**
+  - Chooses operation: **`+3`**
+  - Calculation: **1 + 3 = 4**
+  - New Current Number: **4**
+
+#### Turn 2
+
+- **Player 2's Turn**:
+  - Current Number: **4**
+  - Chooses operation: **`x2`**
+  - Calculation: **4 x 2 = 8**
+  - New Current Number: **8**
+
+#### Turn 3
+
+- **Player 1's Turn**:
+  - Current Number: **8**
+  - Chooses operation: **`+3`**
+  - Calculation: **8 + 3 = 11**
+  - New Current Number: **11**
+
+#### Turn 4
+
+- **Player 2's Turn**:
+  - Current Number: **11**
+  - Chooses operation: **`x2`**
+  - Calculation: **11 x 2 = 22**
+  - New Current Number: **22**
+
+#### Turn 5
+
+- **Player 1's Turn**:
+  - Current Number: **22**
+  - Chooses operation: **`+3`**
+  - Calculation: **22 + 3 = 25**
+  - New Current Number: **25**
+
+#### Turn 6
+
+- **Player 2's Turn**:
+  - Current Number: **25**
+  - Chooses operation: **`+3`**
+  - Calculation: **25 + 3 = 28**
+  - New Current Number: **28**
+
+#### Turn 7
+
+- **Player 1's Turn**:
+  - Current Number: **28**
+  - Chooses operation: **`+3`**
+  - Calculation: **28 + 3 = 31**
+  - New Current Number: **31**
+
+**Result**: **Player 1 wins** by reaching the target number exactly.
+
+---
+
+### Command-Line Interaction Example
+
+```
+Game Start:
+Current Number: 1
+Target Number: 31
+Allowed Operations: +1, +2, +3, x2
+------------------------------------
+
+Player 1's Turn:
+Current Number: 1
+Choose an operation to apply (+1, +2, +3, x2): +3
+You chose: +3
+New Current Number: 4
+
+------------------------------------
+
+Player 2's Turn:
+Current Number: 4
+Choose an operation to apply (+1, +2, +3, x2): x2
+You chose: x2
+New Current Number: 8
+
+------------------------------------
+
+Player 1's Turn:
+Current Number: 8
+Choose an operation to apply (+1, +2, +3, x2): +3
+You chose: +3
+New Current Number: 11
+
+------------------------------------
+
+Player 2's Turn:
+Current Number: 11
+Choose an operation to apply (+1, +2, +3, x2): x2
+You chose: x2
+New Current Number: 22
+
+------------------------------------
+
+Player 1's Turn:
+Current Number: 22
+Choose an operation to apply (+1, +2, +3, x2): +3
+You chose: +3
+New Current Number: 25
+
+------------------------------------
+
+Player 2's Turn:
+Current Number: 25
+Choose an operation to apply (+1, +2, +3, x2): +3
+You chose: +3
+New Current Number: 28
+
+------------------------------------
+
+Player 1's Turn:
+Current Number: 28
+Choose an operation to apply (+1, +2, +3, x2): +3
+You chose: +3
+New Current Number: 31
+
+------------------------------------
+
+Congratulations, Player 1! You have reached the target number 31 and won the game!
+```
+
+## Strategic Considerations
+
+- **Anticipate Opponent Moves**: Think ahead about how your operation will affect the current number and what options it will leave for your opponent.
+- **Control the Game Flow**: Use multiplication to make large jumps when advantageous, but be cautious not to overshoot the target.
+- **Force the Opponent's Hand**: Set the current number such that the opponent has limited safe operations, increasing the chance they might exceed the target.
+- **Avoid Risky Moves**: As the current number approaches the target, prefer smaller additions to fine-tune your position.
+
+## Additional Variations
+
+- **Varying the Target Number**: Changing the target number can adjust the game's difficulty and length.
+- **Changing Allowed Operations**: Modify the set of allowed operations to include subtraction or division for added complexity.
+- **Multiple Rounds**: Play a series of rounds with different target numbers and operations, keeping score over time.
+
+## Conclusion
+
+**Operation Reach** is a simple yet strategic game that challenges players to think ahead and make calculated moves. Easy to implement in a command-line interface, it provides quick gameplay with clear win conditions, ensuring that a skilled player can consistently outperform an unskilled opponent.
+
+Enjoy the challenge and may the best strategist win!

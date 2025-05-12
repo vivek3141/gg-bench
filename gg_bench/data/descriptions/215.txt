@@ -1,0 +1,206 @@
+**Game Name:** Divisor Duel
+
+---
+
+### **Objective**
+
+Be the player who forces your opponent into a position where they cannot make a valid move. This occurs when the current number is either 1 or a prime number with no proper divisors (excluding 1 and itself).
+
+---
+
+### **Setup**
+
+- **Starting Number:** The game begins with a positive integer greater than 1. Players can agree on a starting number or choose one randomly within a specified range (e.g., between 10 and 50).
+
+- **Players:** Two players participate, alternating turns.
+
+- **Command-Line Interface:** The game is played in a command-line environment where players input their moves.
+
+---
+
+### **Game Components**
+
+- **Numbers:** Positive integers from the starting number down to 1.
+
+- **Proper Divisors:** For any given number, the integers (excluding 1 and the number itself) that divide it evenly.
+
+- **No Physical Components:** All interactions occur through the command line; no physical pieces, tokens, boards, or cards are required.
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players decide who goes first by mutual agreement or random selection.
+
+- **Structure of a Turn:**
+
+  1. **Identify Proper Divisors:** The current player lists all proper divisors of the current number (excluding 1 and the number itself).
+
+  2. **Select a Divisor:** The player chooses one of the proper divisors to subtract.
+
+  3. **Subtract the Divisor:** The chosen divisor is subtracted from the current number to form a new current number.
+
+  4. **Announce the Move:** The player declares their chosen divisor and the new current number.
+
+- **Progression of Turns:** Players alternate turns following the same structure until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves:**
+
+   - The chosen number to subtract must be a proper divisor of the current number (excluding 1 and the number itself).
+   - Only one proper divisor can be subtracted per turn.
+
+2. **Calculating Proper Divisors:**
+
+   - Proper divisors are numbers that divide the current number evenly without leaving a remainder.
+   - For example, the proper divisors of 12 are 2, 3, 4, and 6.
+
+3. **Updating the Current Number:**
+
+   - The new current number is calculated by subtracting the chosen divisor from the current number.
+   - The current number must always remain a positive integer greater than 0.
+
+4. **Winning the Game:**
+
+   - A player loses if they cannot make a valid move on their turn because the current number has no proper divisors (i.e., it is prime or 1).
+   - The opponent wins the game when a player cannot make a valid move.
+
+5. **No Skipping Turns:**
+
+   - Players must make a valid move if one is available; skipping a turn is not allowed.
+
+6. **No Draws:**
+
+   - The game continues until one player wins; there are no draw conditions.
+
+---
+
+### **Scoring**
+
+- **Winning:** The player who forces the opponent into a position with no valid moves wins the game.
+
+- **Tracking Progress:** No points are tracked during the game; the focus is on strategic play to win.
+
+---
+
+### **Examples**
+
+#### **Example 1**
+
+- **Starting Number:** 18
+
+**Game Play:**
+
+1. **Player 1's Turn:**
+   - Proper divisors of 18: 2, 3, 6, 9
+   - Chooses to subtract 9.
+   - New current number: 18 - 9 = 9
+   - Announces: "Subtract 9, new number is 9."
+
+2. **Player 2's Turn:**
+   - Proper divisors of 9: 3
+   - Chooses to subtract 3.
+   - New current number: 9 - 3 = 6
+   - Announces: "Subtract 3, new number is 6."
+
+3. **Player 1's Turn:**
+   - Proper divisors of 6: 2, 3
+   - Chooses to subtract 3.
+   - New current number: 6 - 3 = 3
+   - Announces: "Subtract 3, new number is 3."
+
+4. **Player 2's Turn:**
+   - Current number is 3 (a prime number).
+   - No proper divisors; cannot make a valid move.
+   - Announces: "No valid moves. I lose."
+
+**Result:** Player 1 wins.
+
+---
+
+#### **Example 2**
+
+- **Starting Number:** 15
+
+**Game Play:**
+
+1. **Player 1's Turn:**
+   - Proper divisors of 15: 3, 5
+   - Chooses to subtract 5.
+   - New current number: 15 - 5 = 10
+   - Announces: "Subtract 5, new number is 10."
+
+2. **Player 2's Turn:**
+   - Proper divisors of 10: 2, 5
+   - Chooses to subtract 2.
+   - New current number: 10 - 2 = 8
+   - Announces: "Subtract 2, new number is 8."
+
+3. **Player 1's Turn:**
+   - Proper divisors of 8: 2, 4
+   - Chooses to subtract 4.
+   - New current number: 8 - 4 = 4
+   - Announces: "Subtract 4, new number is 4."
+
+4. **Player 2's Turn:**
+   - Proper divisors of 4: 2
+   - Chooses to subtract 2.
+   - New current number: 4 - 2 = 2
+   - Announces: "Subtract 2, new number is 2."
+
+5. **Player 1's Turn:**
+   - Current number is 2 (a prime number).
+   - No proper divisors; cannot make a valid move.
+   - Announces: "No valid moves. I lose."
+
+**Result:** Player 2 wins.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Starting Number:** 12
+
+```plaintext
+Player 1's turn.
+Current number is 12.
+Proper divisors (excluding 1 and 12): 2, 3, 4, 6
+Enter the divisor to subtract: 6
+You subtract 6. New current number is 6.
+
+Player 2's turn.
+Current number is 6.
+Proper divisors (excluding 1 and 6): 2, 3
+Enter the divisor to subtract: 2
+You subtract 2. New current number is 4.
+
+Player 1's turn.
+Current number is 4.
+Proper divisors (excluding 1 and 4): 2
+Enter the divisor to subtract: 2
+You subtract 2. New current number is 2.
+
+Player 2's turn.
+Current number is 2.
+No proper divisors. You cannot make a move.
+Player 2 loses. Player 1 wins!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead:** Anticipate your opponent's possible moves based on the current number and aim to force them into a prime number or 1.
+
+- **Reduce Options:** Choose divisors that reduce the current number to one with fewer proper divisors, limiting your opponent's choices.
+
+- **Balance the Numbers:** Be cautious when the current number is low; avoid leaving your opponent with a number that gives them a winning move.
+
+- **Know Your Numbers:** Familiarity with prime numbers and their role in the game can give you a strategic advantage.
+
+---
+
+**Enjoy playing Divisor Duel and may the best strategist win!**

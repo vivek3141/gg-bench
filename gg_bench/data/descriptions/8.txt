@@ -1,0 +1,169 @@
+# Number Stack: A Two-Player Command-Line Game
+
+## Objective
+
+**Number Stack** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the player who places a number on the stack that causes the collective sum to reach or exceed **50**. By carefully selecting numbers and anticipating your opponent's moves, you aim to force the final move that hits the target sum.
+
+## Setup
+
+- **Starting Condition**: The game begins with an empty stack and a sum of **0**.
+- **Player Roles**: Decide which player goes first, either by mutual agreement or a random method (e.g., coin toss).
+
+## Game Components
+
+- **Stack**: A virtual stack where numbers are placed sequentially.
+- **Numbers**: Integers from **1** to **9**.
+  - **Available Numbers**: Each player can use numbers from **1** to **9** on their turn.
+  - **Stack Limit**: The sum of the numbers on the stack cannot exceed **50**.
+
+## Turns
+
+- Players take turns in an alternating fashion.
+- **Turn Structure**:
+  1. **Choose a Number**: Select a number between **1** and **9**.
+  2. **Place Number on Stack**: Add the chosen number to the top of the stack.
+     - The number must be **equal to or greater than** the last number placed on the stack (if any).
+  3. **Update Sum**: Add the chosen number to the current sum.
+  4. **Announce Move**: Display the chosen number and the new total sum.
+- **Turn Progression**: The game continues with players alternating turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, you may choose any number between **1** and **9**.
+   - The chosen number must be **equal to or greater than** the number placed by the previous player.
+     - If you are the first player, you may choose any number between **1** and **9**.
+2. **Stack Sum Limit**:
+   - The cumulative sum of the stack must not exceed **50** before a number is placed.
+   - If placing a number causes the sum to **reach or exceed 50**, the game ends.
+3. **Winning the Game**:
+   - The player who places a number that causes the sum to **reach or exactly hit 50** **wins** the game.
+   - If a player's move causes the sum to **exceed 50**, that player **loses** the game.
+4. **Invalid Moves**:
+   - If a player cannot make a valid move (e.g., cannot select a number that adheres to the rules), they **lose** their turn, and the opponent continues.
+   - If both players cannot make a valid move, the player who last placed a number **wins**.
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who successfully brings the total sum to **50** without exceeding it.
+
+- **No Point Tracking**: There is no point system; victory is determined by meeting the winning condition.
+
+## Examples
+
+### Example Game Play
+
+**Initial State**:
+
+- Stack: Empty
+- Sum: 0
+- Player 1's Turn
+
+**Turn 1**:
+
+- **Player 1** chooses **3** (any number between 1 and 9).
+- Stack: [3]
+- Sum: 3
+- Announces: "Player 1 places 3. Total sum is now 3."
+
+**Turn 2**:
+
+- **Player 2** must choose a number **≥ 3** (the last number placed).
+- **Player 2** chooses **5**.
+- Stack: [3, 5]
+- Sum: 8
+- Announces: "Player 2 places 5. Total sum is now 8."
+
+**Turn 3**:
+
+- **Player 1** chooses **5** (number ≥ 5).
+- Stack: [3, 5, 5]
+- Sum: 13
+- Announces: "Player 1 places 5. Total sum is now 13."
+
+**Turn 4**:
+
+- **Player 2** chooses **7** (number ≥ 5).
+- Stack: [3, 5, 5, 7]
+- Sum: 20
+- Announces: "Player 2 places 7. Total sum is now 20."
+
+**Turn 5**:
+
+- **Player 1** chooses **8** (number ≥ 7).
+- Stack: [3, 5, 5, 7, 8]
+- Sum: 28
+- Announces: "Player 1 places 8. Total sum is now 28."
+
+**Turn 6**:
+
+- **Player 2** chooses **9** (number ≥ 8).
+- Stack: [3, 5, 5, 7, 8, 9]
+- Sum: 37
+- Announces: "Player 2 places 9. Total sum is now 37."
+
+**Turn 7**:
+
+- **Player 1** chooses **9**.
+- Stack: [3, 5, 5, 7, 8, 9, 9]
+- Sum: 46
+- Announces: "Player 1 places 9. Total sum is now 46."
+
+**Turn 8**:
+
+- **Player 2** must choose a number ≥ 9.
+- The only valid number is **9**.
+- Placing **9** would make the sum **55**, which exceeds **50**.
+- **Player 2** cannot make a move without exceeding **50** and thus **loses** the game.
+- **Player 1** **wins**.
+
+### Command-Line Interaction Sample
+
+```
+Game Start: The stack is empty. Total sum is 0.
+Player 1's turn.
+Choose a number between 1 and 9: 4
+Player 1 places 4. Total sum is now 4.
+
+Player 2's turn.
+Choose a number between 4 and 9: 6
+Player 2 places 6. Total sum is now 10.
+
+Player 1's turn.
+Choose a number between 6 and 9: 7
+Player 1 places 7. Total sum is now 17.
+
+Player 2's turn.
+Choose a number between 7 and 9: 8
+Player 2 places 8. Total sum is now 25.
+
+Player 1's turn.
+Choose a number between 8 and 9: 9
+Player 1 places 9. Total sum is now 34.
+
+Player 2's turn.
+Choose a number between 9 and 9: 9
+Player 2 places 9. Total sum is now 43.
+
+Player 1's turn.
+Choose a number between 9 and 9: 9
+Player 1 places 9. Total sum is now 52.
+
+Total sum exceeds 50! Player 1 loses.
+Player 2 wins the game!
+```
+
+In this example, **Player 1** exceeded the sum limit and therefore **loses**, making **Player 2** the winner.
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the cumulative sum after each move to avoid exceeding **50** on your turn.
+- **Control the Game**: Aim to force your opponent into a position where any valid move would cause them to lose.
+- **Number Selection**: Early in the game, consider playing lower numbers to keep options open later.
+- **Mirror Moves**: Match your opponent's numbers to maintain control over the available moves.
+
+## Conclusion
+
+Number Stack is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With uncomplicated rules and quick gameplay, it's perfect for a command-line setting and provides a consistent way for skilled players to prevail.
+
+Enjoy the game and may the best strategist win!

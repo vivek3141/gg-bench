@@ -1,0 +1,246 @@
+# Factor Duel Rule Book
+
+## Introduction
+
+Welcome to **Factor Duel**, an exciting two-player turn-based game of mathematical strategy and cunning. In this game, players take turns dividing a shared number by its prime factors, racing to be the first to reduce the number to exactly 1. Simple to learn yet rich in strategic depth, Factor Duel challenges your number theory skills and strategic planning. Dive in and see if you have what it takes to outsmart your opponent and claim victory!
+
+---
+
+## Objective
+
+The primary goal of Factor Duel is to be the player who reduces the shared number, **N**, to exactly **1** by strategically dividing it by its prime factors. The player who successfully accomplishes this feat wins the game.
+
+---
+
+## Setup
+
+1. **Starting Number (N):**
+   - Agree on a starting number **N** with your opponent. This number should be a positive integer greater than 1. For a quick game, you might start with a smaller number like **30**; for a longer, more challenging game, you might choose a larger number like **210**.
+   
+2. **Determine Turn Order:**
+   - Decide who will take the first turn. This can be done by mutual agreement, a coin toss, or any random method of your choice.
+
+3. **Initial Conditions:**
+   - Both players start with no pieces or physical tokens. All gameplay is conducted through manipulating the shared number **N** according to the rules.
+
+---
+
+## Game Components
+
+- **Shared Number (N):**
+  - The central element of the game. Both players will manipulate this number during their turns.
+  - **N** changes throughout the game as players divide it by prime factors.
+
+- **Prime Factors:**
+  - The prime numbers that exactly divide **N** without leaving a remainder.
+  - Players use these prime factors to reduce **N** on their turns.
+
+- **Command-Line Interface (CLI):**
+  - The game is played in a command-line environment where players input their moves and receive updates.
+
+---
+
+## Turns
+
+### Structure of a Turn
+
+1. **Identify Valid Prime Factors:**
+   - At the beginning of your turn, determine all prime numbers that are factors of the current **N**.
+
+2. **Choose a Prime Factor:**
+   - Select one prime factor from the list of valid options.
+
+3. **Divide N:**
+   - Divide **N** by the chosen prime factor.
+   - The result must be an integer (no fractions or decimals).
+
+4. **Update N:**
+   - The new value of **N** becomes the starting point for the next player's turn.
+
+5. **Announce Move:**
+   - In the CLI, input your chosen prime factor.
+   - The system will display the updated value of **N**.
+
+### Example Turn
+
+- **Current N:** 60
+- **Valid Prime Factors:** 2, 3, 5
+- **Player's Choice:** 3
+- **Calculation:** 60 ÷ 3 = 20
+- **Updated N:** 20
+- **CLI Input:** `Divide by 3`
+- **CLI Output:** `N is now 20`
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves:**
+   - On your turn, you must divide **N** by a prime factor of **N**.
+   - The prime factor must be a prime number greater than 1 (since 1 is not a prime number).
+
+2. **Updating N:**
+   - After division, **N** is updated to the new value.
+   - The updated **N** is used by the next player on their turn.
+
+3. **Winning the Game:**
+   - If you reduce **N** to exactly **1** on your turn, you win the game.
+
+4. **Losing the Game:**
+   - If you cannot make a valid move because **N** has no prime factors (e.g., **N** is 1), you lose the game.
+
+5. **No Draws:**
+   - The game cannot end in a draw; a winner will always be determined.
+
+### Additional Rules
+
+- **Invalid Moves:**
+  - If you attempt to divide **N** by a number that is not a valid prime factor of **N**, it is considered an invalid move.
+  - The system will prompt you to choose again.
+
+- **Time Limits:**
+   - To keep the game flowing, you may set a time limit per move (e.g., 30 seconds). This is optional but recommended.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The first player to reduce **N** to exactly **1** wins the game.
+  - No points are tallied; victory is determined solely by achieving the objective.
+
+- **Losing the Game:**
+  - If you cannot make a valid move on your turn, you lose, and your opponent wins.
+
+---
+
+## Examples
+
+### Example Game 1
+
+**Starting N:** 30
+
+**Prime Factors of 30:** 2, 3, 5
+
+**Turn Sequence:**
+
+1. **Player 1's Turn:**
+   - Chooses prime factor **5**.
+   - **Calculation:** 30 ÷ 5 = 6
+   - **Updated N:** 6
+   - **CLI Input:** `Divide by 5`
+   - **CLI Output:** `N is now 6`
+
+2. **Player 2's Turn:**
+   - Chooses prime factor **2**.
+   - **Calculation:** 6 ÷ 2 = 3
+   - **Updated N:** 3
+   - **CLI Input:** `Divide by 2`
+   - **CLI Output:** `N is now 3`
+
+3. **Player 1's Turn:**
+   - Chooses prime factor **3**.
+   - **Calculation:** 3 ÷ 3 = 1
+   - **Updated N:** 1
+   - **CLI Input:** `Divide by 3`
+   - **CLI Output:** `N is now 1. Player 1 wins!`
+
+### Example Game 2
+
+**Starting N:** 105
+
+**Prime Factors of 105:** 3, 5, 7
+
+**Turn Sequence:**
+
+1. **Player 1's Turn:**
+   - Chooses prime factor **7**.
+   - **Calculation:** 105 ÷ 7 = 15
+   - **Updated N:** 15
+   - **CLI Input:** `Divide by 7`
+   - **CLI Output:** `N is now 15`
+
+2. **Player 2's Turn:**
+   - Chooses prime factor **5**.
+   - **Calculation:** 15 ÷ 5 = 3
+   - **Updated N:** 3
+   - **CLI Input:** `Divide by 5`
+   - **CLI Output:** `N is now 3`
+
+3. **Player 1's Turn:**
+   - Chooses prime factor **3**.
+   - **Calculation:** 3 ÷ 3 = 1
+   - **Updated N:** 1
+   - **CLI Input:** `Divide by 3`
+   - **CLI Output:** `N is now 1. Player 1 wins!`
+
+---
+
+## Strategies
+
+### Plan Ahead
+
+- **Anticipate Opponent's Moves:**
+  - Consider how your move will affect the available options for your opponent.
+  - Try to leave **N** in a state where your opponent has fewer favorable moves.
+
+- **Prime Factorization:**
+  - Quickly factorize **N** at the start of your turn to know all your options.
+
+### Control the Game
+
+- **Dominant Prime Factors:**
+  - Use larger prime factors when advantageous to reduce **N** more significantly.
+  - Save certain prime factors for strategic moments.
+
+- **Force Errors:**
+  - Aim to push your opponent into a position where they have no valid moves.
+
+---
+
+## Command-Line Interaction Examples
+
+**Example Interaction 1:**
+
+- **Starting N:** 50
+
+**Player 1's Turn:**
+
+- **Input:** `Divide by 5`
+- **Output:** `N is now 10`
+
+**Player 2's Turn:**
+
+- **Input:** `Divide by 2`
+- **Output:** `N is now 5`
+
+**Player 1's Turn:**
+
+- **Input:** `Divide by 5`
+- **Output:** `N is now 1. Player 1 wins!`
+
+---
+
+## Frequently Asked Questions
+
+**Q:** What if a player tries to divide **N** by a number that is not a prime factor?
+
+**A:** The move is invalid. The player will be prompted to choose a valid prime factor of **N**.
+
+**Q:** Can we start with any number?
+
+**A:** Yes, as long as **N** is a positive integer greater than 1. Starting with a larger **N** will generally result in a longer game.
+
+**Q:** What happens if **N** becomes a prime number?
+
+**A:** If **N** is prime, the only valid move is to divide **N** by itself, leading to **N** becoming **1**. The player making this move wins the game.
+
+---
+
+## Conclusion
+
+Factor Duel is a game of wit, strategy, and a bit of mathematical prowess. It's easy to learn but offers layers of depth as you plan your moves and anticipate your opponent's strategies. Whether you're a math enthusiast or just love a good strategic challenge, Factor Duel provides a quick and engaging experience. So grab a friend, fire up your command line, and see who will emerge victorious in this battle of numbers!
+
+**Happy Gaming!**

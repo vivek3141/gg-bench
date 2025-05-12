@@ -1,0 +1,234 @@
+# Game Title: Code Conquest
+
+## Objective
+
+In **Code Conquest**, two players compete to be the first to conquer the command-line grid by capturing a predefined number of cells through strategic placement and movement. The primary goal is to be the first player to accumulate **10 points** by capturing cells, blocking the opponent, and utilizing special commands.
+
+## Setup
+
+- The game is played on a virtual **5x5 grid** represented in the command-line interface.
+- Each cell in the grid is identified by coordinates `(row, column)` ranging from `(1,1)` to `(5,5)`.
+- Both players start with a set of **5 tokens** each, labeled `A1` to `A5` for Player 1 and `B1` to `B5` for Player 2.
+- Initial positions:
+  - Player 1's tokens are placed on row 1, columns 1 to 5.
+  - Player 2's tokens are placed on row 5, columns 1 to 5.
+
+## Game Components
+
+### Tokens
+
+- **Player Tokens**: Each player has 5 tokens (`A1`-`A5` and `B1`-`B5`).
+  - **Appearance**: Represented by their labels (`A1`, `A2`, ..., `B5`).
+  - **Functionality**: Used to move around the grid to capture cells.
+  - **Unique Attributes**: Each token can perform standard moves and special commands once per game.
+
+### Grid
+
+- **5x5 Grid**: Represents the game board.
+  - **Cells**: Each can be captured by occupying them with a token.
+  - **Status of Cells**: Empty (`.`), occupied by Player 1 (`A`), or occupied by Player 2 (`B`).
+
+## Turns
+
+- Players alternate turns starting with **Player 1**.
+- **Turn Structure**:
+  1. **Action Phase**:
+     - Move a token to an adjacent cell (up, down, left, or right; no diagonals).
+     - Or perform a **Special Command** (once per token per game).
+  2. **Capture Phase**:
+     - If the moved token lands on an empty cell, the player captures it.
+     - If it lands on an opponent's token, it captures that token.
+- **Turn Progression**: After completing both phases, the turn passes to the other player.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- Tokens move one cell per turn in one of the four cardinal directions.
+- Tokens cannot move diagonally.
+- Tokens cannot move off the grid.
+- A token can only move if the destination cell is within the grid bounds.
+
+### Capturing Cells
+
+- Landing on an empty cell captures it, and it's marked with the player's identifier (`A` or `B`).
+- Landing on an opponent's token captures the token and removes it from the game.
+- Captured opponent tokens are worth **2 points**.
+
+### Special Commands
+
+Each token can perform a special command **once per game**:
+
+1. **Jump**:
+   - **Description**: Move the token to any unoccupied cell within two cells away.
+   - **Usage**: Type `jump A3 (3,3)` to move token `A3` to cell `(3,3)`.
+
+2. **Swap**:
+   - **Description**: Swap positions with any friendly token on the grid.
+   - **Usage**: Type `swap A1 A4` to swap positions of tokens `A1` and `A4`.
+
+3. **Block**:
+   - **Description**: Place a block on an adjacent empty cell, preventing any token from entering it for 2 turns.
+   - **Usage**: Type `block A2 up` to place a block above `A2`.
+
+### Interaction Rules
+
+- **Blocking**:
+  - Blocks last for **2 turns** and then are removed.
+  - Blocks cannot be placed on occupied cells.
+- **Removing Tokens**:
+  - When a token is captured, it's removed from the game, and the captor gains **2 points**.
+- **Winning the Game**:
+  - The first player to reach **10 points** wins immediately.
+  - If both players reach 10 points in the same turn, the player with more points wins.
+  - If tied, the player who reached 10 points first wins.
+
+## Scoring
+
+- **Capturing an Empty Cell**: **1 point**.
+- **Capturing an Opponent's Token**: **2 points**.
+- **Special Command Bonus**: Successfully using a special command grants **1 extra point** (once per token).
+
+Points are tracked throughout the game, and the score is displayed after each turn.
+
+## Examples
+
+### Example Turn
+
+**Player 1's Turn**
+
+- **Current Position**: Token `A1` is at `(1,1)`.
+
+**Action Phase**:
+
+- Player types: `move A1 down`.
+- Token `A1` moves to `(2,1)`.
+
+**Capture Phase**:
+
+- Cell `(2,1)` is empty.
+- Player 1 captures cell `(2,1)` and gains **1 point**.
+
+**Scores**:
+
+- Player 1: 1 point
+- Player 2: 0 points
+
+**Next Turn**: Player 2's turn.
+
+### Using a Special Command
+
+**Player 2's Turn**
+
+- **Current Position**: Token `B3` is at `(5,3)`.
+
+**Action Phase**:
+
+- Player types: `jump B3 (3,3)`.
+- Token `B3` moves to `(3,3)`.
+
+**Capture Phase**:
+
+- Cell `(3,3)` is empty.
+- Player 2 captures cell `(3,3)` and gains **1 point**.
+- Special Command Bonus: Gains an extra **1 point**.
+
+**Scores**:
+
+- Player 1: 1 point
+- Player 2: 2 points
+
+**Next Turn**: Player 1's turn.
+
+### Capturing an Opponent's Token
+
+**Player 1's Turn**
+
+- **Current Position**: Token `A2` is at `(1,2)`.
+
+**Action Phase**:
+
+- Player types: `move A2 down`.
+- Token `A2` moves to `(2,2)`.
+
+**Capture Phase**:
+
+- Cell `(2,2)` is occupied by `B2`.
+- Player 1 captures token `B2`.
+- Gains **2 points** for capturing the token.
+- Token `B2` is removed from the game.
+
+**Scores**:
+
+- Player 1: 3 points
+- Player 2: 2 points
+
+**Next Turn**: Player 2's turn.
+
+## Command-Line Interaction Sample
+
+**Game Start**
+
+```
+Welcome to Code Conquest!
+
+Player 1 Tokens: A1, A2, A3, A4, A5
+Player 2 Tokens: B1, B2, B3, B4, B5
+
+Scores:
+Player 1: 0
+Player 2: 0
+
+Player 1's turn.
+```
+
+**Player 1's Turn**
+
+```
+Enter command: move A1 down
+
+Token A1 moves to (2,1).
+You captured cell (2,1)!
+
+Scores:
+Player 1: 1
+Player 2: 0
+
+Player 2's turn.
+```
+
+**Player 2's Turn**
+
+```
+Enter command: jump B3 (3,3)
+
+Token B3 jumps to (3,3).
+You captured cell (3,3)!
+Special Command used! Extra point awarded.
+
+Scores:
+Player 1: 1
+Player 2: 2
+
+Player 1's turn.
+```
+
+**Player 1's Turn**
+
+```
+Enter command: move A2 down
+
+Token A2 moves to (2,2).
+You captured opponent's token B2!
+Token B2 has been removed from the game.
+
+Scores:
+Player 1: 3
+Player 2: 2
+
+Player 2's turn.
+```
+
+## Conclusion
+
+**Code Conquest** is a fast-paced, strategic game that rewards planning and skillful use of special commands. With no possibility of a draw and the game's quick pace, players must think ahead to outmaneuver their opponent and reach 10 points first. The combination of movement, capturing, and special abilities creates depth and replayability, ensuring that a more skilled player can consistently secure victory.

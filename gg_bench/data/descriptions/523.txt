@@ -1,0 +1,249 @@
+# Number Hurdle Duel
+
+## Objective
+
+**Be the first player to reach the finish line at position 10 on the track.** Navigate the track by moving forward while avoiding hidden hurdles placed by your opponent. Strategically place your hurdles to impede your opponent's progress. The first player to reach position 10 wins the game.
+
+---
+
+## Setup
+
+1. **Game Board:** Represent the track as positions numbered from **0 to 10**.
+2. **Starting Position:** Both players begin at **position 0**.
+3. **Hurdles:**
+   - Each player has **three hurdles** to place.
+   - Hurdles can be placed on any positions from **3 to 9**.
+4. **Secret Placement:** Before the game begins, players **secretly place** their three hurdles on the track.
+
+---
+
+## Game Components
+
+- **Positions (0-10):** The track consists of 11 positions numbered sequentially.
+- **Player Tokens:** Represent each player's current position on the track.
+- **Hurdles:** Obstacles that can cause a player to lose a turn if landed upon. Hurdles are not visible to the opponent until encountered.
+- **Command-Line Interface:** The game is played via text input and output, displaying positions and receiving player commands.
+
+---
+
+## Turns
+
+1. **Turn Order:** Players take turns alternately. Decide who goes first randomly or by mutual agreement.
+2. **Actions Per Turn:**
+   - **Movement:** On your turn, choose to move forward **1, 2, or 3 positions**.
+3. **Turn Progression:** After a player completes their move (and any hurdle interactions), it's the other player's turn.
+
+---
+
+## Rules and Mechanics
+
+### Hurdle Placement
+
+- Before the game starts, each player secretly selects **three positions** between **3 and 9** to place their hurdles.
+- Players cannot place more than one hurdle on the same position.
+- Hurdles are **hidden** from the opponent and revealed only when the opponent lands on them.
+
+### Movement
+
+- On your turn, you may move your token forward by **1, 2, or 3 positions**.
+- Movement is always forward; you cannot move backward.
+
+### Encountering Hurdles
+
+- If you land on a position that contains a hurdle placed by your opponent:
+  - You **remain on your previous position** (before the move).
+  - Your turn ends.
+  - The hurdle is revealed and **removed** from the game.
+- If there is no hurdle, you successfully move to the new position.
+
+### Winning the Game
+
+- The first player to reach **position 10** wins the game.
+- You must land exactly on position 10; if your move would take you past 10, the move is invalid, and you must choose a different number of steps.
+  
+### Additional Rules
+
+- **Invalid Moves:** If you have no valid moves (e.g., all possible moves land beyond position 10), you **lose your turn**.
+- **Hurdle Limit:** Once placed, hurdles cannot be moved or placed again after being triggered.
+- **Revealing Hurdles:** When a hurdle is encountered, inform the opponent, and remove the hurdle from play.
+
+---
+
+## Scoring
+
+- **Victory:** The game ends when a player reaches position 10. The victorious player is the one who successfully navigates the track and overcomes or avoids hurdles.
+- **No Point System:** There is no point scoring; the focus is on strategic movement and hurdle placement.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup:**
+
+- Both players secretly place their hurdles.
+  - **Player 1 Hurdles:** Positions 4, 7, 9
+  - **Player 2 Hurdles:** Positions 5, 6, 8
+
+**Turn 1:**
+
+- **Player 1's Turn:**
+  - Chooses to move **3 steps** (from position 0 to position 3).
+  - No hurdle encountered.
+  
+- **Player 2's Turn:**
+  - Chooses to move **2 steps** (from position 0 to position 2).
+  - No hurdle encountered.
+
+**Turn 2:**
+
+- **Player 1's Turn:**
+  - Chooses to move **1 step** (from position 3 to position 4).
+  - Lands on **Player 2's hurdle** at position 4 (no hurdle, but let's assume for this example to illustrate the mechanics).
+  - No hurdle encountered (because Player 2 did not place a hurdle at position 4).
+  - Moves successfully to position 4.
+
+- **Player 2's Turn:**
+  - Chooses to move **3 steps** (from position 2 to position 5).
+  - Lands on **Player 1's hurdle** at position 5.
+  - **Hurdle Encountered:**
+    - Player 2 returns to position 2.
+    - The hurdle at position 5 is revealed and removed.
+  
+**Turn 3:**
+
+- **Player 1's Turn:**
+  - Chooses to move **3 steps** (from position 4 to position 7).
+  - Lands on **Player 2's hurdle** at position 7.
+  - **Hurdle Encountered:**
+    - Player 1 returns to position 4.
+    - The hurdle at position 7 is revealed and removed.
+
+- **Player 2's Turn:**
+  - Chooses to move **2 steps** (from position 2 to position 4).
+  - No hurdle encountered.
+  - Moves successfully to position 4.
+
+**Turn 4:**
+
+- **Player 1's Turn:**
+  - Chooses to move **2 steps** (from position 4 to position 6).
+  - Lands on **Player 2's hurdle** at position 6.
+  - **Hurdle Encountered:**
+    - Player 1 returns to position 4.
+    - The hurdle at position 6 is revealed and removed.
+
+- **Player 2's Turn:**
+  - Chooses to move **3 steps** (from position 4 to position 7).
+  - No hurdle encountered (Player 1's hurdle at position 7 was already revealed and removed).
+  - Moves successfully to position 7.
+
+**Turn 5:**
+
+- **Player 1's Turn:**
+  - Chooses to move **3 steps** (from position 4 to position 7).
+  - No hurdle encountered.
+  - Moves successfully to position 7.
+
+- **Player 2's Turn:**
+  - Chooses to move **3 steps** (from position 7 to position 10).
+  - Move is **invalid** (would go beyond position 10).
+  - Chooses to move **2 steps** instead (from position 7 to position 9).
+  - Lands on **Player 1's hurdle** at position 9.
+  - **Hurdle Encountered:**
+    - Player 2 returns to position 7.
+    - The hurdle at position 9 is revealed and removed.
+
+**Turn 6:**
+
+- **Player 1's Turn:**
+  - Chooses to move **3 steps** (from position 7 to position 10).
+  - Moves successfully to position 10.
+  - **Player 1 Wins the Game!**
+
+---
+
+## Command-Line Interaction Example
+
+**Game Start:**
+
+```
+Welcome to Number Hurdle Duel!
+
+Player 1 and Player 2, please place your hurdles.
+(Remember, choose positions between 3 and 9.)
+
+Player 1 has placed their hurdles.
+Player 2 has placed their hurdles.
+
+Let the game begin!
+```
+
+**Turn Sequence:**
+
+```
+Player 1's turn:
+Your current position: 0
+Available moves: 1, 2, or 3 steps
+Enter the number of steps to move: 3
+
+You moved to position 3.
+
+Player 2's turn:
+Your current position: 0
+Available moves: 1, 2, or 3 steps
+Enter the number of steps to move: 2
+
+You moved to position 2.
+
+Player 1's turn:
+Your current position: 3
+Available moves: 1, 2, or 3 steps
+Enter the number of steps to move: 1
+
+You moved to position 4.
+
+Player 2's turn:
+Your current position: 2
+Available moves: 1, 2, or 3 steps
+Enter the number of steps to move: 3
+
+You moved to position 5.
+Oh no! You hit a hurdle at position 5.
+Returning to position 2.
+
+Player 1's turn:
+Your current position: 4
+Available moves: 1, 2, or 3 steps
+Enter the number of steps to move: 3
+
+You moved to position 7.
+Oh no! You hit a hurdle at position 7.
+Returning to position 4.
+
+... [Continues as per gameplay]
+```
+
+---
+
+## Strategy Tips
+
+- **Hurdle Placement:**
+  - Place hurdles on positions that are likely to be landing spots based on common move totals (e.g., positions 4, 7).
+  - Avoid placing hurdles too early on the track, as opponents may take small steps to avoid risks.
+
+- **Movement Choices:**
+  - Early in the game, taking larger steps can be advantageous to get ahead, but may risk hitting hurdles.
+  - As hurdles are revealed, plan your moves to avoid known hurdle positions.
+  - If the opponent's hurdles are mostly revealed, you can adjust your strategy to move more confidently.
+
+- **Observing Opponent's Moves:**
+  - Pay attention to when opponents land on hurdles to deduce where their hurdles might not be.
+  - Use the information of revealed hurdles to predict safer paths.
+
+---
+
+## Conclusion
+
+Number Hurdle Duel is a game of strategy, memory, and deduction. It combines the thrill of racing to the finish line with the suspense of hidden obstacles. Each decision can change the course of the game, making every move critical. Enjoy the duel, and may the best strategist win!

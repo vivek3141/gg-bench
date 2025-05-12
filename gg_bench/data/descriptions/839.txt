@@ -1,0 +1,171 @@
+**Game Name:** Number Split Duel
+
+---
+
+### **Objective**
+
+Be the player to perform the last valid split by reducing composite numbers in a shared list to prime numbers. The player who makes the final move, leaving a list of only prime numbers, wins the game.
+
+---
+
+### **Setup**
+
+1. **Starting Number:** The game begins with a single composite number. By default, this number is **15**, but players can agree on any composite number greater than 2.
+
+2. **Initial List:** Create a list containing just the starting number. For example:
+   ```
+   Numbers List: [15]
+   ```
+
+3. **Player Order:** Decide which player goes first. This can be determined by a coin toss or mutual agreement.
+
+---
+
+### **Game Components**
+
+- **Numbers List:** A shared list that contains the current set of numbers in play. It starts with the single starting composite number and gets updated each turn.
+
+- **Composite Numbers:** Numbers in the list that are not prime and greater than 1. These can be split on a player's turn.
+
+- **Prime Numbers:** Numbers greater than 1 that have no positive divisors other than 1 and themselves. Once a number becomes prime, it remains in the list unchanged.
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players alternate turns throughout the game.
+
+- **Player Actions:** On their turn, a player must:
+
+  1. **Select a Composite Number:** Choose any composite number from the Numbers List.
+
+  2. **Split the Number:** Divide the chosen composite number into two positive integers that sum up to the original number. Both integers must be at least 1.
+
+  3. **Update the List:** Remove the chosen composite number from the list and add the two new numbers to the end of the list.
+
+- **Example Turn Structure:**
+  ```
+  Player 1's Turn:
+  - Numbers List before move: [15]
+  - Player 1 selects number: 15
+  - Player 1 splits 15 into: 7 and 8
+  - Numbers List after move: [7, 8]
+  ```
+
+---
+
+### **Rules and Mechanics**
+
+1. **Splitting Rules:**
+
+   - **Composite Selection:** Only composite numbers in the Numbers List can be selected for splitting. Prime numbers cannot be chosen.
+
+   - **Splitting Constraints:** A composite number must be split into two positive integers greater than zero, and their sum must equal the original number.
+
+   - **Valid Splits:** The two new numbers can be any combination of positive integers that meet the above criteria. They do not need to be factors of the original number.
+
+2. **Updating the Numbers List:**
+
+   - **Removal and Addition:** After a split, remove the original composite number from the list and append the two new numbers to the end of the list.
+
+   - **Prime Numbers:** Once a number in the list is prime, it remains unchanged for the rest of the game.
+
+3. **Winning the Game:**
+
+   - **Last Valid Move:** The game continues until there are no composite numbers left in the Numbers List.
+
+   - **Victory Condition:** The player who performs the last valid split (leaving only prime numbers in the list) wins the game.
+
+   - **No Valid Moves:** If a player has no valid composite numbers to split on their turn, they lose the game.
+
+4. **Additional Rules:**
+
+   - **No Skipping Turns:** Players must make a move if a valid move is available.
+
+   - **No Zero or Negative Numbers:** All numbers involved must be positive integers greater than zero.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting the Game:**
+
+- **Starting Number:** 15
+- **Numbers List:** [15]
+
+**Turn 1: Player 1**
+
+- **Numbers List before move:** [15]
+- **Player 1 selects number:** 15
+- **Player 1 splits 15 into:** 7 and 8
+- **Numbers List after move:** [7, 8]
+
+**Turn 2: Player 2**
+
+- **Numbers List before move:** [7, 8]
+- **Composite Numbers available:** 8
+- **Player 2 selects number:** 8
+- **Player 2 splits 8 into:** 3 and 5
+- **Numbers List after move:** [7, 3, 5]
+
+**Turn 3: Player 1**
+
+- **Numbers List before move:** [7, 3, 5]
+- **Composite Numbers available:** None
+- **Player 1 has no valid moves and loses.**
+- **Winner:** Player 2
+
+#### **Command-Line Interaction Example**
+
+```
+Starting Number: 15
+Numbers List: [15]
+
+Player 1's Turn:
+Available Composite Numbers: [15]
+Select a number to split: 15
+Enter two numbers that sum to 15:
+First number: 7
+Second number: 8
+Numbers List after move: [7, 8]
+
+Player 2's Turn:
+Available Composite Numbers: [8]
+Select a number to split: 8
+Enter two numbers that sum to 8:
+First number: 3
+Second number: 5
+Numbers List after move: [7, 3, 5]
+
+Player 1's Turn:
+Available Composite Numbers: []
+No composite numbers left to split.
+Player 1 has no valid moves.
+Player 2 wins the game!
+```
+
+---
+
+### **Strategic Considerations**
+
+- **Plan Ahead:** Anticipate the possible splits and aim to force your opponent into a position with no valid moves.
+
+- **Number Choices:** Choose splits that minimize the composite numbers left for your opponent.
+
+- **Prime Awareness:** Be aware of prime numbers to avoid wasting moves on numbers that cannot be split.
+
+---
+
+### **Game Variations**
+
+- **Different Starting Numbers:** Players can agree on a different starting composite number to adjust the game's difficulty and complexity.
+
+- **Multiple Starting Numbers:** Begin with a list of multiple composite numbers for a longer game.
+
+---
+
+### **Conclusion**
+
+Number Split Duel is a strategic, turn-based game that challenges players to think ahead and make optimal splits to outmaneuver their opponent. Easy to play and code in a command-line interface, it offers depth and replayability, ensuring that skilled players can consistently excel.

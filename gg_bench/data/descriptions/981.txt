@@ -1,0 +1,143 @@
+# Equation Conquest: Rule Book
+
+## Objective
+
+**Equation Conquest** is a two-player, turn-based game where players take turns adding numbers to a shared sequence. The primary goal is to be the first player to create a valid arithmetic equation using the last three numbers in the sequence. An equation is considered valid if it uses basic arithmetic operators (`+`, `-`, `*`, `/`) and an equal sign `=`, without reordering the numbers. The game requires strategic thinking to set up opportunities for victory while preventing the opponent from winning.
+
+## Setup
+
+- **Initial Sequence**: The game begins with an empty shared sequence.
+- **Number Availability**: Players can use any number from **1** to **9** on their turn.
+- **Operator Usage**: Arithmetic operators are implied and are not part of the sequence; they are used to form equations with the last three numbers.
+
+## Game Components
+
+- **Shared Sequence**: A list that holds the numbers played by both players, starting empty.
+- **Numbers**: Digits from **1** to **9**. Players can choose any number on their turn, and numbers can be reused multiple times.
+- **Operators**: Standard arithmetic operators (`+`, `-`, `*`, `/`, `=`). Operators are not selected by players but are used to form equations with the numbers in the sequence.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., by coin toss). Turns alternate between the two players.
+- **Player Actions**: On a player's turn, they must:
+  1. **Select a Number**: Choose a number between **1** and **9**.
+  2. **Append to Sequence**: Add the chosen number to the end of the shared sequence.
+- **Turn Completion**: After adding the number, the turn ends, and the next player takes their turn.
+
+## Rules and Mechanics
+
+1. **Adding Numbers**:
+   - Players can select any number from **1** to **9** on their turn.
+   - Numbers are **appended** to the end of the shared sequence.
+   - Numbers can be used multiple times; there is no limit on how often a number can be chosen.
+
+2. **Forming Equations**:
+   - After a number is added, check if the **last three numbers** in the sequence can form a valid arithmetic equation **without reordering** them.
+   - **Operators** are inserted between the numbers to attempt to create a valid equation.
+   - **Valid Equations**:
+     - Must use the last three numbers **in order**.
+     - Can use any combination of the four basic arithmetic operators between the numbers.
+     - Must include an equal sign `=` in the appropriate position.
+     - **Parentheses are not allowed**.
+     - The equation must be mathematically correct.
+
+3. **Winning the Game**:
+   - If a player successfully creates a valid equation with the last three numbers after their turn, they **win the game immediately**.
+   - The equation must be identified and stated correctly by the player who added the last number.
+   - If no valid equation can be formed, the game continues.
+
+4. **Example of Valid Equations**:
+   - Given the last three numbers `[3, 4, 7]`, a valid equation is `3 + 4 = 7`.
+   - Given `[6, 2, 3]`, a valid equation is `6 / 2 = 3`.
+
+5. **Invalid Moves**:
+   - Rearranging the order of the last three numbers is not allowed.
+   - Using more than the last three numbers to form an equation is not permitted.
+   - Incorporating operators not listed (e.g., exponentiation) is not allowed.
+   - Using parentheses to alter the order of operations is prohibited.
+
+## Scoring
+
+- **Win Condition**: The first player to create and correctly identify a valid equation using the last three numbers in the sequence wins the game.
+- **No Point System**: There is no scoring or point tracking; the outcome is a win or loss based on the above condition.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+- **Sequence**: `[]` (empty)
+
+#### Turn 1: Player 1
+
+- **Action**: Adds `2` to the sequence.
+- **Sequence Now**: `[2]`
+- **Check for Equation**: Not enough numbers to form an equation (need at least three).
+
+#### Turn 2: Player 2
+
+- **Action**: Adds `3` to the sequence.
+- **Sequence Now**: `[2, 3]`
+- **Check for Equation**: Not enough numbers to form an equation.
+
+#### Turn 3: Player 1
+
+- **Action**: Adds `5` to the sequence.
+- **Sequence Now**: `[2, 3, 5]`
+- **Check for Equation**:
+  - Attempt to form an equation with `2`, `3`, and `5`: `2 + 3 = 5` (Valid).
+- **Outcome**: Player 1 wins by forming the equation `2 + 3 = 5`.
+
+### Command-Line Interaction Example
+
+```
+Game Start! The sequence is empty.
+
+Player 1's turn.
+Enter a number (1-9): 2
+Sequence: [2]
+No equation formed. Game continues.
+
+Player 2's turn.
+Enter a number (1-9): 3
+Sequence: [2, 3]
+No equation formed. Game continues.
+
+Player 1's turn.
+Enter a number (1-9): 5
+Sequence: [2, 3, 5]
+Equation formed: 2 + 3 = 5
+Player 1 wins!
+```
+
+### Additional Scenarios
+
+#### Scenario 1: No Equation Formed
+
+- Sequence Progression: `[4]`, `[4, 7]`, `[4, 7, 9]`
+- Last Three Numbers: `4`, `7`, `9`
+- Possible Equations:
+  - `4 + 7 = 9` (Invalid, because `4 + 7 = 11`)
+  - `4 * 7 = 9` (Invalid)
+
+- **Result**: No valid equation. Game continues.
+
+#### Scenario 2: Multiple Operation Possibilities
+
+- Sequence Progression: `[6]`, `[6, 2]`, `[6, 2, 3]`
+- Last Three Numbers: `6`, `2`, `3`
+- Possible Equations:
+  - `6 / 2 = 3` (Valid)
+  - `6 - 2 = 3` (Invalid, because `6 - 2 = 4`)
+- **Result**: If the player identifies `6 / 2 = 3`, they win.
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which numbers could lead to a valid equation in your favor.
+- **Block Opponent**: Avoid adding numbers that could help your opponent form an equation on their next turn.
+- **Know Basic Equations**: Familiarize yourself with simple arithmetic equations involving numbers 1-9.
+- **Sequence Control**: Manipulate the sequence to set up opportunities for yourself while limiting options for your opponent.
+
+## Conclusion
+
+**Equation Conquest** is a simple yet strategically rich game that challenges players to think ahead and apply basic arithmetic creatively. With straightforward rules and quick gameplay, it's perfect for a command-line interface and offers a satisfying experience for both novice and skilled players.

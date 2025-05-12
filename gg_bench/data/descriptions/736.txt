@@ -1,0 +1,206 @@
+# Divider Game Rule Book
+
+## Objective
+
+The **Divider Game** is a two-player, turn-based strategy game played in a command-line interface. The primary goal of the game is to be the player who reduces the shared total to **exactly zero**, thereby forcing your opponent into a position where they cannot make a valid move. Victory is achieved by skillfully selecting numbers that divide the current total, strategically planning ahead to outmaneuver your opponent.
+
+## Setup
+
+1. **Initial Total**: The game starts with a shared total number, typically **100**, but any positive integer greater than 1 can be used to vary the game's length and difficulty.
+2. **Player Order**: Determine which player goes first. This can be decided randomly or by mutual agreement.
+
+## Game Components
+
+- **Total Number**: A shared integer value that both players will manipulate throughout the game. It starts at the initial total (e.g., 100) and decreases as players subtract numbers from it.
+- **Divisors**: Positive integers less than the current total that divide evenly into the current total.
+  
+  - **Example**: If the current total is 50, the valid divisors are 1, 2, 5, 10, 25 (excluding the total itself).
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns alternately.
+   - On their turn, a player must perform the following actions:
+     - **Select a Number**: Choose a valid positive integer divisor of the current total, excluding the total itself.
+     - **Subtract the Number**: Reduce the current total by the chosen number.
+2. **Progression of Turns**:
+   - The game continues with players alternating turns until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves**:
+   - On your turn, you must **subtract a positive integer** that is:
+     - A **divisor** of the current total (it divides evenly into the total with no remainder).
+     - **Less than** the current total (you cannot subtract the total itself).
+2. **Subtracting the Number**:
+   - Update the current total by subtracting the chosen number:
+     - `New Total = Current Total - Chosen Number`
+3. **Winning the Game**:
+   - The game ends when the current total reaches **zero**, and the player who made the last valid move **wins**.
+4. **Losing the Game**:
+   - If it's your turn and there are **no valid divisors** to subtract (i.e., the only divisor is the total itself), you **lose** the game.
+
+### Additional Mechanics
+
+- **No Reuse Limitation**:
+  - Numbers can be reused if they are valid divisors of the current total on a player's turn.
+- **Mandatory Moves**:
+  - If a player has a valid move, they must make it. Passing or skipping a turn is not allowed.
+
+## Scoring
+
+- **Victory**: The winning player is the one who reduces the total to zero on their turn, leaving the opponent without a valid move.
+- **No Draws**: The game is designed with no draw mechanism; every game will result in a win or loss.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Starting Conditions
+
+- **Initial Total**: 100
+- **Player 1**: Starts first.
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**
+   - **Current Total**: 100
+   - **Valid Divisors** (excluding 100): 1, 2, 4, 5, 10, 20, 25, 50
+   - **Chosen Number**: 25
+   - **New Total**: 100 - 25 = 75
+   - **Explanation**: 25 divides evenly into 100 (100 ÷ 25 = 4).
+
+2. **Player 2's Turn**
+   - **Current Total**: 75
+   - **Valid Divisors** (excluding 75): 1, 3, 5, 15, 25
+   - **Chosen Number**: 25
+   - **New Total**: 75 - 25 = 50
+   - **Explanation**: 25 divides evenly into 75 (75 ÷ 25 = 3).
+
+3. **Player 1's Turn**
+   - **Current Total**: 50
+   - **Valid Divisors** (excluding 50): 1, 2, 5, 10, 25
+   - **Chosen Number**: 10
+   - **New Total**: 50 - 10 = 40
+   - **Explanation**: 10 divides evenly into 50 (50 ÷ 10 = 5).
+
+4. **Player 2's Turn**
+   - **Current Total**: 40
+   - **Valid Divisors** (excluding 40): 1, 2, 4, 5, 8, 10, 20
+   - **Chosen Number**: 20
+   - **New Total**: 40 - 20 = 20
+   - **Explanation**: 20 divides evenly into 40 (40 ÷ 20 = 2).
+
+5. **Player 1's Turn**
+   - **Current Total**: 20
+   - **Valid Divisors** (excluding 20): 1, 2, 4, 5, 10
+   - **Chosen Number**: 10
+   - **New Total**: 20 - 10 = 10
+   - **Explanation**: 10 divides evenly into 20 (20 ÷ 10 = 2).
+
+6. **Player 2's Turn**
+   - **Current Total**: 10
+   - **Valid Divisors** (excluding 10): 1, 2, 5
+   - **Chosen Number**: 5
+   - **New Total**: 10 - 5 = 5
+   - **Explanation**: 5 divides evenly into 10 (10 ÷ 5 = 2).
+
+7. **Player 1's Turn**
+   - **Current Total**: 5
+   - **Valid Divisors** (excluding 5): 1
+   - **Chosen Number**: 1
+   - **New Total**: 5 - 1 = 4
+   - **Explanation**: 1 divides evenly into 5.
+
+8. **Player 2's Turn**
+   - **Current Total**: 4
+   - **Valid Divisors** (excluding 4): 1, 2
+   - **Chosen Number**: 2
+   - **New Total**: 4 - 2 = 2
+   - **Explanation**: 2 divides evenly into 4 (4 ÷ 2 = 2).
+
+9. **Player 1's Turn**
+   - **Current Total**: 2
+   - **Valid Divisors** (excluding 2): 1
+   - **Chosen Number**: 1
+   - **New Total**: 2 - 1 = 1
+   - **Explanation**: 1 divides evenly into 2.
+
+10. **Player 2's Turn**
+    - **Current Total**: 1
+    - **Valid Divisors**: None (since 1 only divides by 1, and subtracting the total itself is not allowed).
+    - **Outcome**: Player 2 has no valid moves and **loses**.
+
+#### Winner
+
+- **Player 1** wins by reducing the total to 1 and leaving Player 2 without a valid move.
+
+### Command-Line Interaction Example
+
+Below is a sample interaction between the players and the game in a command-line interface.
+
+```
+Starting the Divider Game!
+Initial total is 100.
+Player 1's turn.
+Current total: 100
+Enter a divisor to subtract: 25
+You subtracted 25. New total is 75.
+
+Player 2's turn.
+Current total: 75
+Enter a divisor to subtract: 25
+You subtracted 25. New total is 50.
+
+Player 1's turn.
+Current total: 50
+Enter a divisor to subtract: 10
+You subtracted 10. New total is 40.
+
+Player 2's turn.
+Current total: 40
+Enter a divisor to subtract: 20
+You subtracted 20. New total is 20.
+
+Player 1's turn.
+Current total: 20
+Enter a divisor to subtract: 10
+You subtracted 10. New total is 10.
+
+Player 2's turn.
+Current total: 10
+Enter a divisor to subtract: 5
+You subtracted 5. New total is 5.
+
+Player 1's turn.
+Current total: 5
+Enter a divisor to subtract: 1
+You subtracted 1. New total is 4.
+
+Player 2's turn.
+Current total: 4
+Enter a divisor to subtract: 2
+You subtracted 2. New total is 2.
+
+Player 1's turn.
+Current total: 2
+Enter a divisor to subtract: 1
+You subtracted 1. New total is 1.
+
+Player 2's turn.
+Current total: 1
+No valid divisors to subtract. You lose!
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the divisors of future totals.
+- **Control the Totals**: Aim to leave totals that have limited divisors, forcing your opponent into difficult positions.
+- **Avoid Leaving 1**: Reducing the total to 1 on your turn typically forces a win, as your opponent will have no valid moves.
+
+## Conclusion
+
+The Divider Game combines basic arithmetic with strategic planning, offering depth and complexity within a simple framework suitable for command-line play. Mastery of divisibility rules and foresight will allow skilled players to consistently outperform less experienced opponents. Enjoy the challenge of outsmarting your opponent in this unique and engaging numerical duel!

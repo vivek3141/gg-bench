@@ -1,0 +1,257 @@
+# **Factor Frenzy** Rule Book
+
+Welcome to **Factor Frenzy**, a strategic two-player turn-based game designed for the command-line interface. In this game, players compete to collect numbers with the highest count of unique prime factors to reach the target score. Quick thinking and a good understanding of prime numbers will give you the edge over your opponent. Let the frenzy begin!
+
+---
+
+## **Objective**
+
+The primary goal of **Factor Frenzy** is to be the first player to reach or exceed **10 points** by collecting numbers with the highest count of unique prime factors from a shared list. Each number's point value is determined by the number of its unique prime factors. The player who reaches or surpasses the target score first wins the game.
+
+---
+
+## **Setup**
+
+1. **Shared Number Pool**: The game begins with a shared list of numbers ranging from **2 to 30**. All numbers are available for both players to select.
+
+2. **Player Scores**: Both players start with a score of **0 points**.
+
+3. **Player Turn Order**: Decide which player goes first. This can be done by mutual agreement or by any random method (e.g., coin toss).
+
+---
+
+## **Game Components**
+
+- **Shared Number List**:
+
+  ```
+  [2, 3, 4, 5, 6, 7, 8, 9, 10, 
+   11, 12, 13, 14, 15, 16, 17, 
+   18, 19, 20, 21, 22, 23, 24, 
+   25, 26, 27, 28, 29, 30]
+  ```
+
+- **Player Scores**:
+
+  - **Player 1 Score**: Starts at 0 points.
+  - **Player 2 Score**: Starts at 0 points.
+
+- **Game Interface**:
+
+  - Command-line prompts for player actions.
+  - Display of the shared number list and current scores after each turn.
+
+---
+
+## **Turns**
+
+1. **Turn Order**: Players alternate turns starting with **Player 1**.
+
+2. **Player Actions During a Turn**:
+
+   - **Select a Number**: Choose any one number from the shared number list that has not been previously selected.
+   - **Earn Points**: Calculate the points earned by determining the count of unique prime factors of the selected number.
+   - **Update Score**: Add the earned points to your total score.
+   - **Update Number List**: Remove the selected number from the shared list.
+
+3. **End of Turn**:
+
+   - The turn ends after the player's score and the shared number list have been updated.
+   - Display the updated scores and remaining numbers to both players.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Selection**:
+
+   - On your turn, you must select one available number from the shared list.
+   - You cannot skip your turn or select more than one number.
+
+2. **Calculating Points**:
+
+   - The points earned are equal to the number of **unique prime factors** of the selected number.
+   - **Example**:
+     - Selecting **6** (prime factors 2 and 3) earns **2 points**.
+     - Selecting **12** (prime factors 2 and 3) also earns **2 points** (since 2 and 3 are the unique primes).
+     - Selecting **30** (prime factors 2, 3, and 5) earns **3 points**.
+
+3. **Prime Factors**:
+
+   - Only **unique prime factors** are counted for points.
+   - Repeated prime factors are not counted multiple times.
+     - **Example**: Selecting **8** (prime factors 2, 2, 2) earns **1 point** because 2 is the only unique prime factor.
+
+4. **Winning the Game**:
+
+   - The first player to reach or exceed **10 points** immediately wins the game.
+   - If both players reach or exceed 10 points in the same round, the player with the higher score wins.
+   - If scores are tied after both players have reached or exceeded 10 points, the game continues until the tie is broken in subsequent turns.
+
+5. **Game End Condition**:
+
+   - The game ends when a player wins by reaching the target score.
+   - If all numbers are exhausted without any player reaching 10 points, the player with the higher score wins.
+   - There are no draws; play continues until a winner is determined.
+
+---
+
+## **Scoring**
+
+- **Scoring Formula**:
+
+  ```
+  Points Earned = Number of Unique Prime Factors of Selected Number
+  ```
+
+- **Examples**:
+
+  - **Number 2**: Prime factors [2]; Points = 1
+  - **Number 15**: Prime factors [3, 5]; Points = 2
+  - **Number 28**: Prime factors [2, 2, 7]; Points = 2
+  - **Number 18**: Prime factors [2, 3, 3]; Points = 2
+  - **Number 30**: Prime factors [2, 3, 5]; Points = 3
+
+- **Prime Factors Reference**:
+
+  - Use a prime factorization method or reference table to determine the unique prime factors of numbers.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+**Initial Shared Number List**:
+
+```
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 
+11, 12, 13, 14, 15, 16, 17, 
+18, 19, 20, 21, 22, 23, 24, 
+25, 26, 27, 28, 29, 30]
+```
+
+**Player 1 Turn**:
+
+- **Action**: Chooses **30** from the list.
+- **Prime Factors of 30**: [2, 3, 5]
+- **Points Earned**: **3**
+- **Player 1 Score**: **3**
+- **Updated Number List**: 30 is removed.
+
+**Player 2 Turn**:
+
+- **Action**: Chooses **28** from the list.
+- **Prime Factors of 28**: [2, 7]
+- **Points Earned**: **2**
+- **Player 2 Score**: **2**
+- **Updated Number List**: 28 is removed.
+
+**Player 1 Turn**:
+
+- **Action**: Chooses **18** from the list.
+- **Prime Factors of 18**: [2, 3]
+- **Points Earned**: **2**
+- **Player 1 Score**: **5**
+- **Updated Number List**: 18 is removed.
+
+**Player 2 Turn**:
+
+- **Action**: Chooses **27** from the list.
+- **Prime Factors of 27**: [3, 3, 3]
+- **Points Earned**: **1**
+- **Player 2 Score**: **3**
+- **Updated Number List**: 27 is removed.
+
+**Player 1 Turn**:
+
+- **Action**: Chooses **20** from the list.
+- **Prime Factors of 20**: [2, 2, 5]
+- **Points Earned**: **2**
+- **Player 1 Score**: **7**
+- **Updated Number List**: 20 is removed.
+
+**Player 2 Turn**:
+
+- **Action**: Chooses **21** from the list.
+- **Prime Factors of 21**: [3, 7]
+- **Points Earned**: **2**
+- **Player 2 Score**: **5**
+- **Updated Number List**: 21 is removed.
+
+**Player 1 Turn**:
+
+- **Action**: Chooses **14** from the list.
+- **Prime Factors of 14**: [2, 7]
+- **Points Earned**: **2**
+- **Player 1 Score**: **9**
+- **Updated Number List**: 14 is removed.
+
+**Player 2 Turn**:
+
+- **Action**: Chooses **24** from the list.
+- **Prime Factors of 24**: [2, 2, 2, 3]
+- **Points Earned**: **2**
+- **Player 2 Score**: **7**
+- **Updated Number List**: 24 is removed.
+
+**Player 1 Turn**:
+
+- **Action**: Chooses **22** from the list.
+- **Prime Factors of 22**: [2, 11]
+- **Points Earned**: **2**
+- **Player 1 Score**: **11**
+- **Updated Number List**: 22 is removed.
+
+**Game End**:
+
+- **Player 1** has reached **11 points**, surpassing the target score of **10**.
+- **Player 1 Wins**!
+
+### **Command-Line Interaction Sample**
+
+```
+Shared Numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10, 
+                 11, 12, 13, 14, 15, 16, 17, 
+                 18, 19, 20, 21, 22, 23, 24, 
+                 25, 26, 27, 28, 29, 30]
+
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1, select a number: 30
+You selected 30.
+Prime factors: [2, 3, 5]
+Points earned: 3
+Player 1 Score: 3
+
+Shared Numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10, 
+                 11, 12, 13, 14, 15, 16, 17, 
+                 18, 19, 20, 21, 22, 23, 24, 
+                 25, 26, 27, 28, 29]
+
+Player 2, select a number: 28
+You selected 28.
+Prime factors: [2, 7]
+Points earned: 2
+Player 2 Score: 2
+
+[...Continues as above until a player wins...]
+
+```
+
+---
+
+## **Strategy Tips**
+
+- **Aim for High Factor Numbers**: Select numbers with more unique prime factors to earn more points per turn.
+
+- **Block Opponent**: Be aware of high-value numbers remaining and consider selecting them to prevent your opponent from gaining those points.
+
+- **Plan Ahead**: Keep track of the numbers your opponent might select next and adjust your strategy accordingly.
+
+- **Efficient Scoring**: Sometimes selecting two medium-value numbers over two turns can be better than waiting for a high-value number that might be taken by your opponent.
+
+---
+
+Enjoy playing **Factor Frenzy** and may the most strategic player win!

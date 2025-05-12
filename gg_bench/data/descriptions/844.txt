@@ -1,0 +1,149 @@
+# Multiplication Showdown
+
+## Objective
+
+Be the first player to **reach or exceed the target number** by strategically multiplying the shared current number using available multipliers.
+
+## Setup
+
+1. **Shared Current Number**: Set the starting number to **1**.
+2. **Target Number**: Decide on a target number that players aim to reach or exceed. The default target is **100**.
+3. **Available Multipliers**: Create a list of multipliers from **2** to **9**. All multipliers are initially available to both players.
+4. **Player Order**: Determine who takes the first turn (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Shared Current Number**: The central number that players manipulate during the game, starting at **1**.
+- **Multipliers (2-9)**: A set of numbers each player can choose from to multiply the current number. Once a multiplier is used, it becomes unavailable to both players.
+- **Target Number**: The goal that players strive to reach or exceed. This number can be agreed upon before the game starts (default is **100**).
+
+## Turns
+
+- Players take turns alternately.
+- **On Your Turn**:
+  1. **Choose a Multiplier**: Select an available multiplier from the list (numbers **2** to **9** that have not been used yet).
+  2. **Multiply**: Multiply the shared current number by your chosen multiplier.
+  3. **Update the Shared Number**: Replace the current number with the result of your multiplication.
+  4. **Remove Multiplier**: Mark the chosen multiplier as used; it is no longer available for either player.
+- **Turn Progression**: Continue alternating turns until one player wins by reaching or exceeding the target number.
+
+## Rules and Mechanics
+
+1. **Valid Multipliers**: On your turn, you must choose an unused multiplier between **2** and **9**.
+2. **Single Use**: Once a multiplier has been used by either player, it cannot be used again in the game.
+3. **Winning the Game**: The first player to reach or exceed the target number during their turn wins the game.
+4. **No Skipping**: Players cannot skip their turn; a multiplier must be chosen if any are available.
+5. **Draws**: The game cannot end in a draw due to the finite number of multipliers and the nature of the target number.
+
+## Scoring
+
+- **Victory Condition**: Reach or exceed the target number first.
+- **No Points System**: The game is based on a win/loss outcome rather than accumulating points.
+
+## Examples
+
+### Example Game
+
+**Players**: Alice and Bob
+**Target Number**: 100
+**Available Multipliers at Start**: 2, 3, 4, 5, 6, 7, 8, 9
+
+---
+
+**Turn 1: Alice**
+
+- **Current Number**: 1
+- **Available Multipliers**: 2-9
+- **Alice chooses** **5**.
+- **Calculation**: 1 × 5 = **5**
+- **Updated Current Number**: **5**
+- **Used Multipliers**: **5**
+
+**Turn 2: Bob**
+
+- **Current Number**: 5
+- **Available Multipliers**: 2, 3, 4, 6, 7, 8, 9
+- **Bob chooses** **9**.
+- **Calculation**: 5 × 9 = **45**
+- **Updated Current Number**: **45**
+- **Used Multipliers**: 5, **9**
+
+**Turn 3: Alice**
+
+- **Current Number**: 45
+- **Available Multipliers**: 2, 3, 4, 6, 7, 8
+- **Alice chooses** **2**.
+- **Calculation**: 45 × 2 = **90**
+- **Updated Current Number**: **90**
+- **Used Multipliers**: **2**, 5, 9
+
+**Turn 4: Bob**
+
+- **Current Number**: 90
+- **Available Multipliers**: 3, 4, 6, 7, 8
+- **Bob chooses** **4**.
+- **Calculation**: 90 × 4 = **360**
+- **Updated Current Number**: **360**
+- **Used Multipliers**: 2, 4, 5, 9
+- **Result**: Bob has exceeded the target number.
+- **Winner**: **Bob**
+
+---
+
+## Command-Line Interaction Example
+
+```
+Welcome to Multiplication Showdown!
+Target Number: 100
+
+Available Multipliers: 2, 3, 4, 5, 6, 7, 8, 9
+Current Number: 1
+
+It's Alice's turn.
+Choose an available multiplier: 5
+Alice chose multiplier 5.
+New Current Number: 1 x 5 = 5
+Used Multipliers: 5
+
+Available Multipliers: 2, 3, 4, 6, 7, 8, 9
+Current Number: 5
+
+It's Bob's turn.
+Choose an available multiplier: 9
+Bob chose multiplier 9.
+New Current Number: 5 x 9 = 45
+Used Multipliers: 5, 9
+
+Available Multipliers: 2, 3, 4, 6, 7, 8
+Current Number: 45
+
+It's Alice's turn.
+Choose an available multiplier: 2
+Alice chose multiplier 2.
+New Current Number: 45 x 2 = 90
+Used Multipliers: 2, 5, 9
+
+Available Multipliers: 3, 4, 6, 7, 8
+Current Number: 90
+
+It's Bob's turn.
+Choose an available multiplier: 4
+Bob chose multiplier 4.
+New Current Number: 90 x 4 = 360
+Used Multipliers: 2, 4, 5, 9
+
+Bob has reached the target number!
+Bob wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Think about how your choice of multiplier will affect the next turn and limit your opponent's options.
+- **Multiplier Selection**: Using high multipliers early can get you closer to the target faster but may leave you with lower options later.
+- **Resource Denial**: Choose multipliers that might benefit your opponent to prevent them from using those numbers.
+
+## Summary
+
+Multiplication Showdown is a simple yet strategic game that requires players to think ahead and make calculated decisions. The diminishing pool of multipliers adds an extra layer of complexity, ensuring that each game is unique and engaging. It's easy to code for a command-line interface, making it perfect for programmers looking to implement a quick but challenging game.
+
+Enjoy the game, and may the best multiplier win!

@@ -1,0 +1,231 @@
+# Equation Duel: Rule Book
+
+## Objective
+
+Equation Duel is a two-player, turn-based game where players compete to create the highest possible numerical result using a shared set of digits and mathematical operations. By strategically placing digits into an equation template, players aim to outscore their opponent. The primary goal is to construct an equation that yields a higher result than your opponent's equation. The player with the higher result at the end of the game wins.
+
+## Setup
+
+1. **Equation Templates**: Determine the equation templates to be used in the game. Each player uses the same template. For simplicity, the default template is:
+
+   ```
+   __ + __ × __
+   ```
+
+   This template has three slots for digits.
+
+2. **Digit Pool**: Create a shared pool of digits from 1 to 9. Each digit can only be used once across both players.
+
+3. **Starting Player**: Decide who will take the first turn. This can be done by a coin toss, random selection, or mutual agreement.
+
+4. **Scoreboard**: Prepare a way to track the digits selected by each player and the resulting equations (optional but helpful).
+
+## Game Components
+
+- **Digits (1-9)**: The game uses the digits 1 through 9. These are shared between players and are removed from the pool once selected.
+- **Equation Template**: A predefined mathematical expression with empty slots for digits. The default template is `__ + __ × __`.
+- **Turn Tracker**: Keeps track of whose turn it is.
+- **Results Calculator**: Calculates the numerical result of the completed equations.
+
+## Turns
+
+- Players alternate turns, starting with the player chosen during the setup phase.
+- On each turn, a player performs the following actions:
+  1. **Select a Digit**: Choose an available digit from the shared digit pool.
+  2. **Place the Digit**: Assign the selected digit to any empty slot in **either** player's equation template.
+- Turns continue until all slots in both players' equations are filled.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Players can select any remaining digit from 1 to 9 that has not yet been chosen.
+   - Each digit can only be used once in the entire game.
+
+2. **Digit Placement**:
+   - Players can place the selected digit into **any** empty slot in **either** player's equation.
+   - Once placed, a digit cannot be moved or replaced.
+
+3. **Equation Completion**:
+   - The game ends when all slots in both equations are filled.
+   - Each player will have an equation in the format `A + B × C`, where `A`, `B`, and `C` are digits from the digit pool.
+
+4. **Calculation Order**:
+   - Follow standard mathematical order of operations (PEMDAS/BODMAS):
+     - Multiplication before Addition.
+     - Example: In the equation `2 + 3 × 4`, calculate `3 × 4` first to get `12`, then add `2` to get a result of `14`.
+
+5. **Winning Conditions**:
+   - The player whose equation yields the higher numerical result wins the game.
+   - If both equations result in the same value, the game is won by the **second** player (the one who did not start the game). This incentivizes the first player to avoid a tie.
+
+## Scoring
+
+- **Equation Result**: The numerical result of each player's equation is their score.
+- **Victory Determination**:
+  - **Higher Score Wins**: The player with the higher result from their equation wins the game.
+  - **Tie-breaker**: In case of a tie, the second player is declared the winner.
+
+## Examples
+
+### Example Game Walkthrough
+
+#### Initial Setup
+
+- **Digit Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Equation Template for Both Players**: `__ + __ × __`
+- **Starting Player**: Player 1
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Selects Digit**: 9
+   - **Places Digit**: Puts `9` in their own equation's first slot.
+   - **Equation States**:
+     - *Player 1*: `9 + __ × __`
+     - *Player 2*: `__ + __ × __`
+   - **Remaining Digits**: 1, 2, 3, 4, 5, 6, 7, 8
+
+2. **Player 2's Turn**:
+   - **Selects Digit**: 8
+   - **Places Digit**: Puts `8` in their own equation's first slot.
+   - **Equation States**:
+     - *Player 1*: `9 + __ × __`
+     - *Player 2*: `8 + __ × __`
+   - **Remaining Digits**: 1, 2, 3, 4, 5, 6, 7
+
+3. **Player 1's Turn**:
+   - **Selects Digit**: 7
+   - **Places Digit**: Places `7` in **Player 2's** multiplication slot.
+   - **Equation States**:
+     - *Player 1*: `9 + __ × __`
+     - *Player 2*: `8 + __ × 7`
+   - **Remaining Digits**: 1, 2, 3, 4, 5, 6
+
+4. **Player 2's Turn**:
+   - **Selects Digit**: 6
+   - **Places Digit**: Places `6` in **Player 1's** multiplication slot.
+   - **Equation States**:
+     - *Player 1*: `9 + __ × 6`
+     - *Player 2*: `8 + __ × 7`
+   - **Remaining Digits**: 1, 2, 3, 4, 5
+
+5. **Player 1's Turn**:
+   - **Selects Digit**: 5
+   - **Places Digit**: Places `5` in their own equation's addition slot.
+   - **Equation States**:
+     - *Player 1*: `9 + 5 × 6`
+     - *Player 2*: `8 + __ × 7`
+   - **Remaining Digits**: 1, 2, 3, 4
+
+6. **Player 2's Turn**:
+   - **Selects Digit**: 4
+   - **Places Digit**: Places `4` in their own equation's addition slot.
+   - **Equation States**:
+     - *Player 1*: `9 + 5 × 6`
+     - *Player 2*: `8 + 4 × 7`
+   - **Remaining Digits**: 1, 2, 3
+
+7. **Player 1's Turn**:
+   - **Selects Digit**: 3
+   - **Places Digit**: Places `3` in **Player 2's** multiplication slot (already filled). Since all slots are filled in both equations, the game moves to scoring.
+   - **Equation States**:
+     - *Player 1*: `9 + 5 × 6`
+     - *Player 2*: `8 + 4 × 7` (unchanged)
+   - **Remaining Digits**: 1, 2
+
+#### Calculation and Result
+
+- **Player 1's Equation**: `9 + 5 × 6`
+  - Calculate multiplication first: `5 × 6 = 30`
+  - Add: `9 + 30 = 39`
+- **Player 2's Equation**: `8 + 4 × 7`
+  - Calculate multiplication first: `4 × 7 = 28`
+  - Add: `8 + 28 = 36`
+
+- **Winner**: **Player 1**, because `39` (Player 1) > `36` (Player 2).
+
+### Sample Command-Line Interaction
+
+```
+Welcome to Equation Duel!
+Available digits: 1 2 3 4 5 6 7 8 9
+
+Player 1's equation: __ + __ × __
+Player 2's equation: __ + __ × __
+
+Player 1, it's your turn.
+Available digits: 1 2 3 4 5 6 7 8 9
+Select a digit: 9
+Choose a slot to place the digit (e.g., P1 Slot 1, P2 Slot 2): P1 Slot 1
+
+Player 1's equation: 9 + __ × __
+Player 2's equation: __ + __ × __
+
+Player 2, it's your turn.
+Available digits: 1 2 3 4 5 6 7 8
+Select a digit: 8
+Choose a slot to place the digit: P2 Slot 1
+
+Player 1's equation: 9 + __ × __
+Player 2's equation: 8 + __ × __
+
+Player 1, it's your turn.
+Available digits: 1 2 3 4 5 6 7
+Select a digit: 7
+Choose a slot to place the digit: P2 Slot 3
+
+Player 1's equation: 9 + __ × __
+Player 2's equation: 8 + __ × 7
+
+...
+
+[Turns continue until all slots are filled]
+
+Calculating results...
+Player 1's result: 39
+Player 2's result: 36
+
+Player 1 wins!
+```
+
+## Additional Rules and Variations
+
+- **Equation Templates**:
+  - Players may agree to use different templates to increase variety and strategic depth. Examples include:
+    - `(__ + __) × __`
+    - `__ × __ - __`
+    - `__ × (__ + __)`
+  - Ensure both players use the same template.
+
+- **Advanced Digit Pool**:
+  - Include digits 0 through 9 for more options.
+  - Allow each digit to be used twice for longer equations.
+
+- **Operations**:
+  - Introduce additional operations such as division (`÷`) and subtraction (`-`).
+  - Be cautious of division by zero. Establish rules to handle invalid equations.
+
+- **Scoring Multiple Rounds**:
+  - Play multiple rounds, keeping a cumulative score.
+  - The first player to win a set number of rounds wins the match.
+
+- **Time Limits**:
+  - Implement a time limit per turn to increase the challenge.
+
+## Strategy Tips
+
+- **Blocking**:
+  - Place low digits in your opponent's high-impact slots (e.g., the multiplier) to lower their potential result.
+- **Maximizing Your Equation**:
+  - Save high digits for your own high-impact slots.
+  - Plan ahead to ensure you have the digits you need for your equation.
+- **Digit Denial**:
+  - Select digits your opponent may need, even if they don't immediately benefit you.
+- **Equation Balance**:
+  - Consider the impact of each slot. In `__ + __ × __`, the multiplication slot has a greater impact on the final result due to the order of operations.
+
+## Conclusion
+
+Equation Duel combines numerical strategy with competitive gameplay, offering depth and replayability in a simple, easy-to-code format suitable for a command-line interface. By carefully selecting and placing digits, players can outmaneuver their opponent and achieve victory through higher mathematical prowess.
+
+Good luck, and may the best mathematician win!

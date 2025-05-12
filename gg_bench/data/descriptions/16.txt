@@ -1,0 +1,307 @@
+**Game Name:** Odd or Even Chase
+
+---
+
+### **Objective**
+
+Be the last player able to make a legal move by strategically selecting numbers from a sequence according to specific adjacency and parity rules. The player who forces their opponent into a position where they cannot make a legal move wins the game.
+
+---
+
+### **Setup**
+
+1. **Number Line Creation:**
+   - Create a linear sequence of consecutive integers from **1** to **12**. This sequence represents the number line for the game.
+   - All numbers are initially unclaimed and available for selection.
+
+2. **Player Positions:**
+   - There are two players: **Player 1** and **Player 2**.
+   - No physical positions are needed as the game is turn-based and played via command-line interface.
+
+3. **Starting Conditions:**
+   - Determine which player will take the first turn (Player 1). This can be decided randomly or by mutual agreement.
+
+---
+
+### **Game Components**
+
+- **Number Line:**
+  - A list of integers from **1** to **12**:  
+    `1 2 3 4 5 6 7 8 9 10 11 12`
+
+- **Claimed Numbers:**
+  - A record of numbers that have been selected and are no longer available.
+  
+- **Parity Rules:**
+  - **Odd Numbers:** 1, 3, 5, 7, 9, 11
+  - **Even Numbers:** 2, 4, 6, 8, 10, 12
+
+- **Adjacency:**
+  - Numbers that are directly adjacent on the number line (numerically consecutive):
+    - For any number `n`, the adjacent numbers are `n-1` and `n+1`, if they exist within the range of 1 to 12.
+
+---
+
+### **Turns**
+
+1. **Player 1's First Turn:**
+   - Player 1 selects **any** unclaimed number from the number line.
+
+2. **Subsequent Turns:**
+   - Players alternate turns.
+   - On each turn, the player must select an unclaimed number that:
+     - Is **adjacent** (numerically) to the **last number** picked by their opponent.
+     - Has the **opposite parity** to the last number picked by their opponent (i.e., if the opponent picked an odd number, the player must pick an even number, and vice versa).
+
+3. **Turn Actions:**
+   - **Select Number:** The player chooses a valid number based on the rules.
+   - **Update Claimed Numbers:** The selected number is marked as claimed and removed from the list of available numbers.
+
+4. **Turn Progression:**
+   - The game continues with players alternating turns until one player cannot make a legal move.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection Rules:**
+   - **Adjacency Requirement:**
+     - The number must be directly adjacent to the last number selected by the opponent. That is, it must be either one less or one more than the opponent's last pick.
+     - Only unclaimed numbers are considered.
+   - **Parity Requirement:**
+     - The number must be of the opposite parity to the opponent's last pick.
+       - If the opponent picked an **odd** number, the player must pick an **even** number.
+       - If the opponent picked an **even** number, the player must pick an **odd** number.
+
+2. **Legal Moves:**
+   - A move is legal if it satisfies both the adjacency and the parity requirements.
+   - If there are multiple legal options, the player may choose any of them.
+
+3. **Unavailable Moves:**
+   - If a player cannot make a move because there are no unclaimed numbers that meet both criteria, they lose the game.
+
+4. **Number Claiming:**
+   - Once a number is selected, it is claimed and cannot be chosen again by either player.
+
+5. **Game End:**
+   - The game ends immediately when a player cannot make a legal move on their turn.
+
+---
+
+### **Scoring**
+
+- **Winning the Game:**
+  - The player who makes the last legal move is declared the **winner**.
+  - The opponent who cannot make a legal move on their turn **loses**.
+
+- **No Draws:**
+  - The game is designed so that a draw is impossible under the rules provided.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Number Line:**
+```
+1 2 3 4 5 6 7 8 9 10 11 12
+```
+
+**Game Progression:**
+
+- **Turn 1:** *Player 1's Turn*
+  - **Action:** Player 1 selects **5** (an odd number).
+  - **Claimed Numbers:** 5
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 6 7 8 9 10 11 12
+    ```
+
+- **Turn 2:** *Player 2's Turn*
+  - **Opponent's Last Number:** 5 (odd)
+  - **Requirement:** Select an **even** number adjacent to **5**.
+  - **Options:** 4 or 6 (both even and adjacent).
+  - **Action:** Player 2 selects **6**.
+  - **Claimed Numbers:** 5, 6
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 7 8 9 10 11 12
+    ```
+
+- **Turn 3:** *Player 1's Turn*
+  - **Opponent's Last Number:** 6 (even)
+  - **Requirement:** Select an **odd** number adjacent to **6**.
+  - **Options:** 7 (since 5 is already claimed).
+  - **Action:** Player 1 selects **7**.
+  - **Claimed Numbers:** 5, 6, 7
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 8 9 10 11 12
+    ```
+
+- **Turn 4:** *Player 2's Turn*
+  - **Opponent's Last Number:** 7 (odd)
+  - **Requirement:** Select an **even** number adjacent to **7**.
+  - **Options:** 8
+  - **Action:** Player 2 selects **8**.
+  - **Claimed Numbers:** 5, 6, 7, 8
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 9 10 11 12
+    ```
+
+- **Turn 5:** *Player 1's Turn*
+  - **Opponent's Last Number:** 8 (even)
+  - **Requirement:** Select an **odd** number adjacent to **8**.
+  - **Options:** 9
+  - **Action:** Player 1 selects **9**.
+  - **Claimed Numbers:** 5, 6, 7, 8, 9
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 10 11 12
+    ```
+
+- **Turn 6:** *Player 2's Turn*
+  - **Opponent's Last Number:** 9 (odd)
+  - **Requirement:** Select an **even** number adjacent to **9**.
+  - **Options:** 10
+  - **Action:** Player 2 selects **10**.
+  - **Claimed Numbers:** 5, 6, 7, 8, 9, 10
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 11 12
+    ```
+
+- **Turn 7:** *Player 1's Turn*
+  - **Opponent's Last Number:** 10 (even)
+  - **Requirement:** Select an **odd** number adjacent to **10**.
+  - **Options:** 9 (already claimed), **11**
+  - **Action:** Player 1 selects **11**.
+  - **Claimed Numbers:** 5, 6, 7, 8, 9, 10, 11
+  - **Updated Number Line:**
+    ```
+    1 2 3 4 12
+    ```
+
+- **Turn 8:** *Player 2's Turn*
+  - **Opponent's Last Number:** 11 (odd)
+  - **Requirement:** Select an **even** number adjacent to **11**.
+  - **Options:** 12
+  - **Action:** Player 2 selects **12**.
+  - **Claimed Numbers:** 5, 6, 7, 8, 9, 10, 11, 12
+  - **Updated Number Line:**
+    ```
+    1 2 3 4
+    ```
+
+- **Turn 9:** *Player 1's Turn*
+  - **Opponent's Last Number:** 12 (even)
+  - **Requirement:** Select an **odd** number adjacent to **12**.
+  - **Options:** 11 (already claimed, so no options).
+  - **Result:** Player 1 cannot make a legal move.
+
+**Outcome:**
+- **Player 2 Wins** because Player 1 cannot make a legal move.
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is a sample command-line interaction illustrating the gameplay:
+
+```
+Welcome to Odd or Even Chase!
+
+Number Line: 1 2 3 4 5 6 7 8 9 10 11 12
+
+Player 1's Turn:
+Available Numbers: 1 2 3 4 5 6 7 8 9 10 11 12
+Enter a number to select: 5
+
+Player 1 selected 5.
+
+Player 2's Turn:
+Opponent's last number: 5 (Odd)
+You must select an EVEN number adjacent to 5.
+Available Options: 4, 6
+Enter a number to select: 6
+
+Player 2 selected 6.
+
+Player 1's Turn:
+Opponent's last number: 6 (Even)
+You must select an ODD number adjacent to 6.
+Available Options: 7
+Enter a number to select: 7
+
+Player 1 selected 7.
+
+Player 2's Turn:
+Opponent's last number: 7 (Odd)
+You must select an EVEN number adjacent to 7.
+Available Options: 8
+Enter a number to select: 8
+
+Player 2 selected 8.
+
+Player 1's Turn:
+Opponent's last number: 8 (Even)
+You must select an ODD number adjacent to 8.
+Available Options: 9
+Enter a number to select: 9
+
+Player 1 selected 9.
+
+Player 2's Turn:
+Opponent's last number: 9 (Odd)
+You must select an EVEN number adjacent to 9.
+Available Options: 10
+Enter a number to select: 10
+
+Player 2 selected 10.
+
+Player 1's Turn:
+Opponent's last number: 10 (Even)
+You must select an ODD number adjacent to 10.
+Available Options: 11
+Enter a number to select: 11
+
+Player 1 selected 11.
+
+Player 2's Turn:
+Opponent's last number: 11 (Odd)
+You must select an EVEN number adjacent to 11.
+Available Options: 12
+Enter a number to select: 12
+
+Player 2 selected 12.
+
+Player 1's Turn:
+Opponent's last number: 12 (Even)
+You must select an ODD number adjacent to 12.
+Available Options: None
+
+Player 1 cannot make a legal move.
+Player 2 Wins!
+```
+
+---
+
+### **Strategic Depth and Complexity**
+
+- **Planning Ahead:**
+  - Players must anticipate future moves and attempt to force their opponent into a position with no legal moves.
+  
+- **Move Selection:**
+  - Choosing between multiple options can affect the flow of the game. Players should consider which choice limits their opponent's future moves.
+
+- **Parity Awareness:**
+  - Keeping track of the parity requirements is crucial for legal moves.
+  
+- **Adjacency Constraints:**
+  - Understanding the number line structure helps players visualize possible moves and plan accordingly.
+
+---
+
+Enjoy playing **Odd or Even Chase**! This game offers a blend of strategy and foresight, ensuring that each match is engaging and challenging. May the most strategic player win!

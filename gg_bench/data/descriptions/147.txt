@@ -1,0 +1,283 @@
+# Factor Chain Duel Rule Book
+
+## Objective
+
+**Factor Chain Duel** is a two-player, turn-based strategy game. The primary goal is to be the last player able to add a valid number to the chain. Players take turns selecting numbers from a shared pool to build a chain where each new number is either a factor or a multiple of the previous number played. The player who cannot make a valid move on their turn loses the game.
+
+---
+
+## Setup
+
+1. **Game Initialization:**
+   - The game uses a shared pool of integers ranging from **2** to **50**.
+   - All numbers in this range are available at the start and can only be used once.
+   
+2. **Starting the Game:**
+   - Decide which player goes first (e.g., by coin toss or mutual agreement).
+   - There is no initial number in the chain; the first player starts by choosing any number from the pool.
+
+---
+
+## Game Components
+
+- **Shared Number Pool:**
+  - Integers from **2** to **50**, inclusive.
+  - Once a number is selected by a player, it is removed from the pool and cannot be chosen again.
+
+- **Number Chain:**
+  - A sequential list of numbers played by both players.
+  - Each new number must be a factor or multiple of the last number in the chain.
+
+- **Players:**
+  - Two players alternate turns.
+  - Each player aims to strategically select numbers to extend the chain while limiting the opponent's options.
+
+---
+
+## Turns
+
+### Turn Structure:
+
+1. **Prompt:**
+   - At the start of each turn, the game displays:
+     - The **current chain** of numbers.
+     - The **last number** played.
+     - The **available numbers** in the pool.
+
+2. **Action:**
+   - The current player selects a valid number from the pool.
+   - A valid number is one that is **either a factor or a multiple** of the last number in the chain.
+
+3. **Validation:**
+   - The game checks the selected number for validity:
+     - **Is the number in the pool?**
+     - **Is it a factor or multiple of the last number?**
+   - If valid, the number is added to the chain and removed from the pool.
+   - If invalid, the player is prompted to choose again.
+
+4. **Turn Progression:**
+   - The turn ends after a valid move is made.
+   - The next player takes their turn following the same structure.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules:
+
+1. **Number Selection:**
+   - On your turn, you must select a number from the pool that is **a factor or a multiple** of the last number in the chain.
+   - **Example:** If the last number is **12**, valid selections include its factors (**2, 3, 4, 6**) and multiples within the pool (**24, 36, 48**).
+
+2. **Number Usage:**
+   - Each number from **2** to **50** can be used **only once**.
+   - Once a number is played, it is removed from the pool and cannot be selected again.
+
+3. **Valid Moves:**
+   - A move is valid if the selected number:
+     - Is in the **available numbers** pool.
+     - Is a **factor or multiple** of the last number in the chain.
+   - If no valid numbers are available on a player's turn, the game ends, and that player loses.
+
+### Winning the Game:
+
+- The **first player** who cannot make a valid move on their turn **loses**.
+- The opponent is declared the **winner**.
+- There is **no draw**; the game always results in a win or loss.
+
+---
+
+## Scoring
+
+- **Victory Condition:**
+  - The game does not use a point-based scoring system.
+  - Winning is achieved by forcing your opponent into a position where they cannot play a valid number.
+
+- **Tracking Progress:**
+  - The chain of numbers serves as a record of the game's progress.
+  - Players can strategize by observing the chain and the remaining numbers in the pool.
+
+---
+
+## Examples
+
+### Example Game Play:
+
+#### Starting the Game:
+
+- **Available Numbers:** 2–50 (all numbers in this range).
+- **Chain:** Empty.
+
+#### Turn 1:
+
+- **Player 1's Turn:**
+  - **Chain:** Empty.
+  - **Action:** Player 1 selects **15**.
+  - **Reasoning:** Any number is valid as the chain is empty.
+  - **Chain after Move:** 15.
+  - **Available Numbers:** All numbers except 15.
+
+#### Turn 2:
+
+- **Player 2's Turn:**
+  - **Last Number:** 15.
+  - **Action Choices:** Factors/multiples of 15.
+    - **Factors:** 3, 5.
+    - **Multiples:** 30, 45.
+  - **Action:** Player 2 selects **5**.
+  - **Chain after Move:** 15 → 5.
+  - **Available Numbers:** All numbers except 15 and 5.
+
+#### Turn 3:
+
+- **Player 1's Turn:**
+  - **Last Number:** 5.
+  - **Action Choices:** Factors/multiples of 5.
+    - **Factors:** 1 (not in pool), 5 (already used).
+    - **Multiples:** 10, 15 (already used), 20, 25, 30, 35, 40, 45, 50.
+  - **Action:** Player 1 selects **25**.
+  - **Chain after Move:** 15 → 5 → 25.
+  - **Available Numbers:** All numbers except 15, 5, 25.
+
+#### Turn 4:
+
+- **Player 2's Turn:**
+  - **Last Number:** 25.
+  - **Action Choices:** Factors/multiples of 25.
+    - **Factors:** 5 (used), 25 (used).
+    - **Multiples:** 50.
+  - **Action:** Player 2 selects **50**.
+  - **Chain after Move:** 15 → 5 → 25 → 50.
+  - **Available Numbers:** Exclude 15, 5, 25, 50.
+
+#### Turn 5:
+
+- **Player 1's Turn:**
+  - **Last Number:** 50.
+  - **Action Choices:** Factors/multiples of 50.
+    - **Factors:** 2, 5, 10, 25 (some already used).
+    - **Multiples:** None within 2–50 range.
+  - **Available Factors in Pool:** 2, 10.
+  - **Action:** Player 1 selects **10**.
+  - **Chain after Move:** 15 → 5 → 25 → 50 → 10.
+  - **Available Numbers:** Exclude 15, 5, 25, 50, 10.
+
+#### Turn 6:
+
+- **Player 2's Turn:**
+  - **Last Number:** 10.
+  - **Action Choices:** Factors/multiples of 10.
+    - **Factors:** 2, 5 (used).
+    - **Multiples:** 20, 30, 40.
+  - **Available Numbers:** 2, 20, 30, 40.
+  - **Action:** Player 2 selects **20**.
+  - **Chain after Move:** 15 → 5 → 25 → 50 → 10 → 20.
+  - **Available Numbers:** Exclude 15, 5, 25, 50, 10, 20.
+
+#### Turn 7:
+
+- **Player 1's Turn:**
+  - **Last Number:** 20.
+  - **Action Choices:** Factors/multiples of 20.
+    - **Factors:** 2, 4, 5, 10 (some used).
+    - **Multiples:** 40.
+  - **Available Numbers:** 2, 4, 40.
+  - **Action:** Player 1 selects **4**.
+  - **Chain after Move:** 15 → 5 → 25 → 50 → 10 → 20 → 4.
+  - **Available Numbers:** Exclude 15, 5, 25, 50, 10, 20, 4.
+
+#### Turn 8:
+
+- **Player 2's Turn:**
+  - **Last Number:** 4.
+  - **Action Choices:** Factors/multiples of 4.
+    - **Factors:** 2.
+    - **Multiples:** 8, 12, 16, 20 (used), 24, 28, 32, 36, 40, 44, 48.
+  - **Available Numbers:** 2, 8, 12, 16, 24, 28, 32, 36, 40, 44, 48.
+  - **Action:** Player 2 selects **16**.
+  - **Chain after Move:** 15 → 5 → 25 → 50 → 10 → 20 → 4 → 16.
+  - **Available Numbers:** Exclude prior numbers and 16.
+
+#### Turn 9:
+
+- **Player 1's Turn:**
+  - **Last Number:** 16.
+  - **Action Choices:** Factors/multiples of 16.
+    - **Factors:** 2, 4 (used), 8.
+    - **Multiples:** None within the pool.
+  - **Available Numbers:** 2, 8.
+  - **Action:** Player 1 selects **8**.
+  - **Chain after Move:** 15 → 5 → 25 → 50 → 10 → 20 → 4 → 16 → 8.
+  - **Available Numbers:** Exclude prior numbers and 8.
+
+#### Turn 10:
+
+- **Player 2's Turn:**
+  - **Last Number:** 8.
+  - **Action Choices:** Factors/multiples of 8.
+    - **Factors:** 2.
+    - **Multiples:** 24, 32, 40, 48.
+  - **Available Numbers:** 2, 24, 28, 32, 36, 40, 44, 48.
+  - **Action:** Player 2 selects **24**.
+  - **Chain after Move:** 15 → 5 → 25 → 50 → 10 → 20 → 4 → 16 → 8 → 24.
+  - **Available Numbers:** Exclude prior numbers and 24.
+
+#### The game continues until a player cannot make a valid move.
+
+---
+
+## Command-Line Interaction
+
+### Sample Turn Interaction:
+
+1. **Game State Display:**
+
+   ```
+   Current Chain: 15 → 5 → 25 → 50 → 10 → 20 → 4 → 16 → 8 → 24
+   Last Number Played: 24
+   Available Numbers: [2, 3, 6, 7, 9, 11, 12, 13, 14, 17, 18, 19, 21, 22, 23, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+   ```
+
+2. **Player Prompt:**
+
+   ```
+   Player 1, it's your turn.
+   Select a number that is a factor or multiple of 24:
+   ```
+
+3. **Player Input:**
+
+   - **Player 1 enters:** `12`
+
+4. **Validation and Update:**
+
+   - The game checks if `12` is a valid move:
+     - Is `12` in the available numbers? **Yes**
+     - Is `12` a factor or multiple of `24`? **Yes** (since `24 ÷ 12 = 2`)
+   - The move is valid.
+   - The chain is updated, and `12` is removed from the available numbers.
+
+5. **Updated Game State:**
+
+   ```
+   Current Chain: 15 → 5 → 25 → 50 → 10 → 20 → 4 → 16 → 8 → 24 → 12
+   Last Number Played: 12
+   Available Numbers (after move): [2, 3, 6, 7, 9, 11, 13, 14, 17, 18, 19, 21, 22, 23, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+   ```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Keep track of the numbers your opponent might use and guide the chain to limit their options.
+- **Control the Chain:** Select numbers that have fewer available factors or multiples remaining in the pool.
+- **Avoid Low Factors:** Playing numbers like `2` early can leave you with fewer options later since many numbers are multiples of `2`.
+- **Force Moves:** Try to force your opponent into a position where they have only one valid move or none at all.
+
+---
+
+## Conclusion
+
+Factor Chain Duel is a simple yet strategically deep game that challenges players to think ahead and outmaneuver their opponent by controlling the flow of the number chain. By understanding the factors and multiples of numbers and anticipating the opponent's possible moves, a skilled player can consistently secure victory.
+
+Enjoy the duel, and may the sharpest strategist win!

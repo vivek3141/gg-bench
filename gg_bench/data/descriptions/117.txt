@@ -1,0 +1,251 @@
+# Number Duel
+
+## Objective
+
+Be the first player to **capture all of your opponent's numbers**. Utilize strategic selection and timing to outmaneuver your opponent. Victory is achieved when your opponent has no numbers remaining in their set.
+
+---
+
+## Setup
+
+1. **Number Range Selection**:
+   - Determine the value of **N**, the maximum number in each player's set. A recommended starting value is **N = 10**.
+   
+2. **Initial Number Sets**:
+   - Each player receives a set of unique numbers ranging from **1 to N** inclusive.
+   - Example for **N = 10**:
+     - Player 1's Numbers: `{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}`
+     - Player 2's Numbers: `{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}`
+
+3. **Determine First Attacker**:
+   - Decide randomly or mutually agree on which player will take on the role of **attacker** in the first round.
+
+---
+
+## Game Components
+
+- **Number Sets**:
+  - Each player has their own set of numbers from **1 to N**.
+  - Numbers represent the strength of an **attack** or **defense**.
+  - Used numbers are **removed** from the player's set according to the game rules.
+
+- **Roles**:
+  - **Attacker**: The player initiating the challenge in a round.
+  - **Defender**: The player responding to the attack in a round.
+
+- **Captured Numbers**:
+  - Numbers that have been lost during the game and are no longer available for play.
+
+---
+
+## Turns
+
+1. **Round Structure**:
+   - The game proceeds in rounds, with each round consisting of:
+     - **Attacker's Turn**: The attacker selects a number to use for the attack.
+     - **Defender's Turn**: The defender selects a number to use for defense.
+   
+2. **Role Alternation**:
+   - After each round, roles switch:
+     - The previous defender becomes the new attacker.
+     - The previous attacker becomes the new defender.
+
+3. **Simultaneous Selection**:
+   - Both players select their numbers **privately and simultaneously**.
+   - Selections are revealed at the same time to ensure fairness.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Attacker**:
+  - Chooses any one number from their remaining set to initiate an attack.
+- **Defender**:
+  - Chooses any one number from their remaining set to defend against the attack.
+
+### Reveal and Outcome
+
+1. **Reveal**:
+   - Both players reveal their selected numbers simultaneously.
+
+2. **Outcome Determination**:
+   - **Attack Success**:
+     - If the attacker's number is **greater than** the defender's number, the attack is successful.
+   - **Defense Success**:
+     - If the defender's number is **greater than or equal to** the attacker's number, the defense is successful.
+
+### Number Resolution
+
+- **Successful Attack**:
+  - The defender's number is **captured** and removed from their set.
+  - The attacker's number **remains** in their set and can be used again.
+- **Successful Defense**:
+  - The attacker's number is **captured** and removed from their set.
+  - The defender's number **remains** in their set and can be used again.
+
+### Captured Numbers
+
+- **Removal**:
+  - Captured numbers are permanently removed from the game.
+- **Availability**:
+  - Remaining numbers can be reused in future rounds unless captured.
+
+### Victory Condition
+
+- **Winning the Game**:
+  - A player wins when their opponent has **no numbers remaining** in their set after the numbers have been resolved at the end of a round.
+
+### Special Cases
+
+- **Last Numbers Used**:
+  - If both players have only one number left and both numbers are captured in the same round, the **defender wins the game**.
+- **No Valid Moves**:
+  - If a player cannot select a number because they have none remaining at the start of their turn, they **lose the game**.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - The winner is the player who captures all of their opponent's numbers.
+- **No Point System**:
+  - The game does not track points; victory is achieved through elimination.
+
+---
+
+## Examples
+
+### Example Game Setup
+
+- **N = 5**
+- **Player 1's Numbers**: `{1, 2, 3, 4, 5}`
+- **Player 2's Numbers**: `{1, 2, 3, 4, 5}`
+- **First Attacker**: Player 1
+
+### Round 1
+
+- **Player 1** (Attacker) selects **3**.
+- **Player 2** (Defender) selects **2**.
+- **Reveal**:
+  - Player 1: **3**
+  - Player 2: **2**
+- **Outcome**:
+  - 3 (Attacker) > 2 (Defender): Attack successful.
+  - **Player 2's number 2 is captured**.
+  - Player 1's number **3 remains** in their set.
+
+### Round 2
+
+- **Roles Switch**:
+  - **Player 2** becomes the Attacker.
+  - **Player 1** becomes the Defender.
+- **Player 2** (Attacker) selects **5**.
+- **Player 1** (Defender) selects **4**.
+- **Reveal**:
+  - Player 2: **5**
+  - Player 1: **4**
+- **Outcome**:
+  - 5 (Attacker) > 4 (Defender): Attack successful.
+  - **Player 1's number 4 is captured**.
+  - Player 2's number **5 remains** in their set.
+
+### Round 3
+
+- **Roles Switch**:
+  - **Player 1** becomes the Attacker.
+  - **Player 2** becomes the Defender.
+- **Player 1** (Attacker) selects **5**.
+- **Player 2** (Defender) selects **5**.
+- **Reveal**:
+  - Player 1: **5**
+  - Player 2: **5**
+- **Outcome**:
+  - 5 (Attacker) = 5 (Defender): Defense successful.
+  - **Player 1's number 5 is captured**.
+  - Player 2's number **5 remains** in their set.
+
+### Subsequent Rounds
+
+- Players continue alternating roles and selecting numbers strategically.
+- The game proceeds until one player has all their numbers captured.
+
+### Endgame Scenario
+
+- **Player 1** has remaining numbers: `{1, 2, 3}`
+- **Player 2** has remaining numbers: `{1, 3, 4, 5}`
+- If **Player 1** loses all remaining numbers, **Player 2 wins**.
+
+---
+
+## Command-Line Interactions
+
+### Sample Turn Interaction
+
+1. **Prompt for Number Selection**:
+   - Attacker's turn:
+     ```
+     [Attacker] Select your number from your remaining numbers {1, 2, 3}:
+     ```
+   - Defender's turn:
+     ```
+     [Defender] Select your number from your remaining numbers {1, 3, 4, 5}:
+     ```
+2. **Input Handling**:
+   - Players input their chosen numbers privately.
+   - Ensure inputs are valid and from the player's remaining set.
+3. **Reveal and Outcome Display**:
+   ```
+   Attacker selected: 3
+   Defender selected: 4
+   Outcome: Defense successful! Attacker's number 3 is captured.
+   ```
+4. **Update Remaining Numbers**:
+   - Display updated sets for each player.
+     ```
+     Attacker's remaining numbers: {1, 2}
+     Defender's remaining numbers: {1, 3, 4, 5}
+     ```
+5. **Role Switch Notice**:
+   ```
+   Roles have switched. It is now the Defender's turn to attack.
+   ```
+
+### Game End
+
+- When a player has no numbers remaining:
+  ```
+  Player 1 has no numbers left. Player 2 wins the game!
+  ```
+
+---
+
+## Strategic Tips
+
+- **Predict Opponent's Moves**:
+  - Pay attention to the numbers your opponent has used and which ones remain.
+- **Conserve High Numbers**:
+  - Save your higher numbers for critical moments or when defending against expected strong attacks.
+- **Bluffing**:
+  - Use lower numbers when you suspect your opponent might use a lower number, conserving higher numbers for future rounds.
+- **Role Strategy**:
+  - Adjust your strategy based on whether you're the attacker or defender. Defenders have the advantage when numbers are equal.
+
+---
+
+## Additional Notes
+
+- **Game Variations**:
+  - For a shorter game, use a smaller N (e.g., N = 5).
+  - For more complexity, increase N or introduce special numbers with unique properties.
+  
+- **Fair Play**:
+  - Ensure that both players cannot see each other's selections until both have made their choices.
+
+- **Game Balance**:
+  - The rules are designed to prevent draws and ensure that skillful play leads to victory.
+
+---
+
+Enjoy the challenge of the **Number Duel** and may the best strategist win!

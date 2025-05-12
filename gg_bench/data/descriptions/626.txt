@@ -1,0 +1,231 @@
+# Prime Duel
+
+## Objective
+
+Be the first player to reach **exactly 100 points** by strategically selecting numbers from a shared pool. Utilize prime numbers to gain extra turns and outmaneuver your opponent. The player who reaches exactly 100 points first **wins** the game. If a player exceeds 100 points, their score resets to 50, adding a layer of strategic planning to prevent overshooting the target.
+
+## Setup
+
+1. **Number Pool**: Create a shared pool of numbers ranging from **1 to 50**. All numbers are available at the start and can only be chosen once during the game.
+2. **Player Scores**: Both players start with a score of **0 points**.
+3. **Turn Order**: Decide which player goes first (e.g., by coin toss or agreement).
+
+## Game Components
+
+- **Number Pool (1-50)**: A list of numbers from which players select during their turns. Each number can be chosen only once.
+- **Player Score Tracker**: A means to keep track of each player's current score (e.g., paper and pencil, or digital display).
+- **Prime Numbers**: Special numbers within the pool that grant an immediate extra turn when selected.
+
+## Turns
+
+1. **Selection Phase**:
+   - On their turn, a player selects an **available number** from the number pool.
+   - The chosen number is **removed** from the pool and **added** to the player's total score.
+2. **Prime Number Bonus**:
+   - If the selected number is a **prime number**, the player receives **an immediate extra turn**.
+   - The player continues to take turns as long as they keep selecting prime numbers.
+3. **Turn Progression**:
+   - Once a player selects a non-prime number, and any awarded extra turns are completed, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players may choose **any remaining number** from the pool on their turn.
+   - Each number can be selected **only once** during the game.
+2. **Scoring**:
+   - The selected number's value is **added** to the player's total score.
+   - **Prime numbers** grant an **extra turn** immediately after being selected.
+3. **Winning the Game**:
+   - The first player to reach **exactly 100 points** wins the game.
+   - If a player's score exceeds 100 points, their score is **reset to 50 points**, and the game continues.
+4. **Score Reset Mechanics**:
+   - Overshooting 100 points penalizes the player by resetting their score to 50.
+   - This rule encourages careful planning to avoid exceeding the target score.
+5. **Game End Conditions**:
+   - A player reaches exactly 100 points (win).
+   - All numbers in the pool are exhausted without a player reaching 100 (in this rare case, the player with the score closest to 100 wins).
+
+## Scoring
+
+- **Adding Points**: Players continually add the value of selected numbers to their total score.
+- **Prime Number Advantage**: Selecting prime numbers (e.g., 2, 3, 5, 7, 11, etc.) provides extra turns, allowing for potential rapid score increases.
+- **Score Reset**: Exceeding 100 points resets the player's score to 50, which can be a strategic setback.
+
+## Examples
+
+### Sample Turn Sequence
+
+**Initial State**:
+
+- Player 1 Score: 0
+- Player 2 Score: 0
+- Number Pool: 1-50
+
+---
+
+**Player 1's Turn**:
+
+- Chooses **7** (prime).
+- Adds 7 to their score: **0 + 7 = 7**.
+- Since 7 is prime, Player 1 gets an **extra turn**.
+
+**Player 1's Extra Turn**:
+
+- Chooses **13** (prime).
+- Adds 13 to their score: **7 + 13 = 20**.
+- Since 13 is prime, Player 1 gets another **extra turn**.
+
+**Player 1's Extra Turn**:
+
+- Chooses **10** (not prime).
+- Adds 10 to their score: **20 + 10 = 30**.
+- 10 is not prime, so turn passes to Player 2.
+
+---
+
+**Player 2's Turn**:
+
+- Chooses **11** (prime).
+- Adds 11 to their score: **0 + 11 = 11**.
+- Since 11 is prime, Player 2 gets an **extra turn**.
+
+**Player 2's Extra Turn**:
+
+- Chooses **17** (prime).
+- Adds 17 to their score: **11 + 17 = 28**.
+- Since 17 is prime, Player 2 gets another **extra turn**.
+
+**Player 2's Extra Turn**:
+
+- Chooses **25** (not prime).
+- Adds 25 to their score: **28 + 25 = 53**.
+- 25 is not prime, so turn passes to Player 1.
+
+---
+
+**Continuation**:
+
+Players continue in this manner, strategically selecting numbers to reach exactly 100 points while leveraging primes for extra turns and avoiding exceeding 100.
+
+### Strategic Decision-Making
+
+- **Avoiding Overshoot**: If a player has 95 points, they should avoid selecting numbers higher than 5 to prevent resetting their score.
+- **Prime Utilization**: Players may prioritize remaining prime numbers to gain extra turns, especially when trailing.
+- **Blocking Strategy**: A player may select a number that their opponent needs to reach 100 to block their path to victory.
+
+## Command-Line Interaction Example
+
+**Game Start**:
+
+```
+Welcome to Prime Duel!
+
+Player 1 Score: 0
+Player 2 Score: 0
+
+Numbers Remaining: 1-50
+```
+
+---
+
+**Player 1's Turn**:
+
+```
+Player 1, it's your turn.
+Available numbers: [List of numbers]
+
+Enter the number you wish to select: 23
+
+You selected 23.
+
+23 is a prime number! You get an extra turn.
+
+Your new score is 23.
+```
+
+**Player 1's Extra Turn**:
+
+```
+Player 1, it's your extra turn.
+
+Available numbers: [Updated list]
+
+Enter the number you wish to select: 15
+
+You selected 15.
+
+15 is not a prime number.
+
+Your new score is 38.
+
+Turn passes to Player 2.
+```
+
+---
+
+**Player 2's Turn**:
+
+```
+Player 2, it's your turn.
+
+Available numbers: [Updated list]
+
+Enter the number you wish to select: 29
+
+You selected 29.
+
+29 is a prime number! You get an extra turn.
+
+Your new score is 29.
+```
+
+**Player 2's Extra Turn**:
+
+```
+Player 2, it's your extra turn.
+
+Available numbers: [Updated list]
+
+Enter the number you wish to select: 10
+
+You selected 10.
+
+10 is not a prime number.
+
+Your new score is 39.
+
+Turn passes to Player 1.
+```
+
+---
+
+**Approaching Victory**:
+
+```
+Player 1's Turn.
+
+Your current score: 95
+
+Available numbers: [Numbers less than or equal to 5]
+
+Enter the number you wish to select: 5
+
+You selected 5.
+
+5 is a prime number! You get an extra turn.
+
+Your new score is 100.
+
+Congratulations! You've reached exactly 100 points and won the game!
+```
+
+## Notes and Tips
+
+- **Prime Numbers**: Keep a list of prime numbers between 1 and 50 handy to plan your moves and maximize extra turns.
+- **Score Management**: Be cautious when your score is near 100. Plan your selections to avoid exceeding 100 and resetting to 50.
+- **Opponent Observation**: Pay attention to your opponent's score and the numbers they might need. Strategically select those numbers to hinder their progress.
+- **Extra Turns**: Use the advantage of extra turns wisely to leap ahead in points or to secure the exact number needed to win.
+
+## Conclusion
+
+Prime Duel is a game of numerical strategy and foresight. By effectively leveraging prime numbers and carefully managing your score, you can outpace your opponent and reach the coveted 100-point mark. Whether you're a math enthusiast or just enjoy strategic competition, Prime Duel offers a quick and engaging challenge that sharpens both mathematical and tactical skills.

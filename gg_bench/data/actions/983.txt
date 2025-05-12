@@ -1,0 +1,6 @@
+The action space in the game is represented by an integer between 0 and 24, inclusive. This corresponds to one of the 25 possible combinations of attacking and defending soldier pairs, as each player has five soldiers (numbered 1 to 5). The action index is decoded into moves as follows:
+
+1. **Attacking Soldier**: The integer division of the action index by 5, plus 1 (`action // 5 + 1`), determines the attacking soldier's number.
+2. **Defending Soldier**: The modulo operation of the action index by 5, plus 1 (`action % 5 + 1`), determines the defending soldier's number.
+
+This maps each unique action index to a specific pair of attacking and defending soldiers, ensuring a one-to-one correspondence between actions and possible moves in the game.

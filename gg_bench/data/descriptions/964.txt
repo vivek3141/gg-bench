@@ -1,0 +1,180 @@
+# Divide and Conquer: Game Rule Book
+
+## Objective
+
+**Divide and Conquer** is a strategic two-player, turn-based game. The primary goal is to be the first player to reduce the **Current Number (N)** to **1** through strategic division. Victory is achieved by making the final move that sets the Current Number to 1, thereby winning the game. A player loses if they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+1. **Starting the Game**:
+   - The game begins with a positive integer called the **Current Number (N)**.
+   - By default, N is set to **100**, but players may agree on a different starting number before the game begins.
+
+2. **Player Order**:
+   - Decide which player will take the first turn (Player 1). This can be determined randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+1. **Current Number (N)**:
+   - A positive integer that changes as the game progresses.
+   - It is updated after each valid move by dividing it by a chosen divisor.
+
+2. **Allowed Divisors (D)**:
+   - Integers greater than **1** and less than **N** that divide **N** exactly (i.e., no remainder).
+   - Divisors change as N changes and are critical to the progression of the game.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns, starting with Player 1.
+   - On a player's turn:
+     - Review the list of **Allowed Divisors (D)** for the current N.
+     - **Select** one valid Divisor D that was not used in the immediately preceding turn.
+     - **Divide** the Current Number N by the chosen Divisor D.
+     - **Update** N to the new value (N = N / D).
+     - **Announce** the chosen Divisor and the new N.
+
+2. **Progression of Turns**:
+   - The game continues with players alternating turns and following the same structure until the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Selecting a Divisor**:
+   - **Valid Divisors** must meet the following criteria:
+     - D > 1
+     - D < N
+     - N mod D == 0 (D divides N exactly)
+     - D is **not the same** as the Divisor used in the immediately preceding turn.
+
+2. **Making a Move**:
+   - If a player has at least one valid Divisor, they must select one and perform the division.
+   - If a player cannot select a valid Divisor (no Divisors meet the criteria), they lose the game.
+
+3. **Winning the Game**:
+   - The player who reduces N to **exactly 1** wins the game.
+   - If a player cannot make a valid move on their turn, they **lose**, and the other player wins.
+
+4. **Invalid Moves**:
+   - Selecting a Divisor that does not meet the criteria is an invalid move.
+   - Reusing the Divisor from the previous turn is prohibited.
+   - If an invalid move is attempted, the player must choose another Divisor.
+
+---
+
+## Scoring
+
+- **Win Condition**: Reducing N to 1 on your turn.
+- **Loss Condition**: Being unable to make a valid move on your turn.
+- There is no point system; the game is won by meeting the win condition.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Starting Number N = 100
+
+---
+
+**Player 1's Turn**:
+
+- **Current N**: 100
+- **Allowed Divisors (excluding previous Divisor)**: Since it's the first turn, all valid Divisors are available.
+- **Valid Divisors D**: 2, 4, 5, 10, 20, 25, 50
+- **Action**: Player 1 chooses D = **2**.
+- **Calculation**: N = 100 / 2 = **50**
+- **Announcement**:
+  - "Player 1 selects Divisor 2."
+  - "Current Number is now 50."
+
+---
+
+**Player 2's Turn**:
+
+- **Current N**: 50
+- **Last Divisor Used**: 2
+- **Allowed Divisors**: Cannot use D = 2.
+- **Valid Divisors D**: 5, 10, 25
+- **Action**: Player 2 chooses D = **5**.
+- **Calculation**: N = 50 / 5 = **10**
+- **Announcement**:
+  - "Player 2 selects Divisor 5."
+  - "Current Number is now 10."
+
+---
+
+**Player 1's Turn**:
+
+- **Current N**: 10
+- **Last Divisor Used**: 5
+- **Allowed Divisors**: Cannot use D = 5.
+- **Valid Divisors D**: 2
+- **Action**: Player 1 chooses D = **2**.
+- **Calculation**: N = 10 / 2 = **5**
+- **Announcement**:
+  - "Player 1 selects Divisor 2."
+  - "Current Number is now 5."
+
+---
+
+**Player 2's Turn**:
+
+- **Current N**: 5
+- **Last Divisor Used**: 2
+- **Allowed Divisors**: Cannot use D = 2.
+- **Valid Divisors D**: None (since 5 is a prime number greater than 2)
+- **Action**: Player 2 has no valid Divisors.
+- **Result**:
+  - "Player 2 cannot make a valid move."
+  - "Player 1 wins the game!"
+
+---
+
+## Command-Line Interaction Example
+
+```
+Game Start! Current Number N = 100
+
+Player 1's turn.
+Available Divisors: 2, 4, 5, 10, 20, 25, 50
+Enter your divisor: 2
+> Player 1 selects Divisor 2.
+> Current Number is now 50.
+
+Player 2's turn.
+Available Divisors (excluding 2): 5, 10, 25
+Enter your divisor: 5
+> Player 2 selects Divisor 5.
+> Current Number is now 10.
+
+Player 1's turn.
+Available Divisors (excluding 5): 2
+Enter your divisor: 2
+> Player 1 selects Divisor 2.
+> Current Number is now 5.
+
+Player 2's turn.
+No valid Divisors available. You cannot make a move.
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your divisors to limit their options.
+- **Avoid Primes**: Try not to leave the Current Number as a prime number greater than 2 on your opponent's turn, as this may force them into a losing position.
+- **Control the Divisors**: By selecting certain divisors, you can manipulate the possible divisors available to your opponent on their next turn.
+
+---
+
+Enjoy the challenge of **Divide and Conquer**, and may the most strategic player win!

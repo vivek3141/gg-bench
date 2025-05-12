@@ -1,0 +1,210 @@
+# Game Title: Equation Duel
+
+## Objective
+
+**Primary Goal:**  
+In Equation Duel, two players compete to form a valid arithmetic equation using three unique numbers they collect from a shared pool. The first player to successfully create an equation of the form `A + B = C`, using the numbers they've collected, wins the game.
+
+**Victory Condition:**  
+- **Win:** A player wins by being the first to collect numbers that satisfy the equation `A + B = C`.
+- **Loss:** A player loses if the opponent achieves the victory condition first.
+
+There is no draw mechanism; the game continues until a player wins.
+
+## Setup
+
+1. **Number Pool Initialization:**  
+   Create a shared pool of integers from **1** to **9**.
+
+2. **Starting Conditions:**  
+   - Both players start with an empty hand.
+   - All numbers in the pool are unclaimed and available for selection.
+
+3. **Player Assignment:**  
+   Decide which player goes first (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Number Pool:**  
+  A list of available numbers from **1** to **9**.
+
+- **Player Hands:**  
+  Each player has a hand (collection) where they hold the numbers they've selected.
+
+- **Numbers (1-9):**  
+  - **Appearance:** Represented by their numerical value (e.g., `1`, `2`, `3`, ..., `9`).
+  - **Functionality:** Numbers are used to form the equation `A + B = C`.
+  - **Unique Attributes:** Once a number is selected by a player, it is no longer available in the number pool.
+
+## Turns
+
+### Turn Structure
+
+1. **Turn Order:**  
+   Players take turns alternately, starting with Player 1.
+
+2. **Actions During a Turn:**  
+   - **Select a Number:**
+     - Choose any one available number from the number pool.
+     - Add the selected number to your hand.
+     - Remove the selected number from the number pool.
+   - **Check for Victory:**  
+     After adding the number to your hand, check if you can form a valid equation `A + B = C` with the numbers in your hand.
+
+3. **Progression of Turns:**  
+   - The game continues with players alternately taking turns until one player achieves the victory condition.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection:**
+   - On your turn, you **must** select one number from the number pool.
+   - You **cannot** skip a turn or select multiple numbers.
+
+2. **Hand Limitations:**
+   - There is no limit to the number of numbers you can hold in your hand.
+   - Numbers in your hand remain until the game ends.
+
+3. **Forming Equations:**
+   - You are trying to collect numbers that satisfy `A + B = C`, using **three distinct numbers** from your hand.
+   - Each number **must be unique**; you cannot use the same number more than once in the equation.
+   - The equation must be arithmetically correct.
+
+4. **Victory Declaration:**
+   - If you can form a valid equation on your turn **after** selecting a number, you **immediately** declare victory.
+   - Provide the equation to demonstrate your win (e.g., `2 + 3 = 5`).
+
+### Special Mechanics
+
+- **Blocking Strategy:**  
+  Players can select numbers not only to build their equations but also to prevent the opponent from obtaining certain numbers they might need.
+
+- **No Reuse of Numbers:**  
+  Since numbers are removed from the pool once selected, they cannot be used by both players.
+
+## Scoring
+
+There is no point scoring system. The game is a race to achieve the victory condition.
+
+- **Winning the Game:**  
+  The player who first forms a valid `A + B = C` equation wins the game.
+
+- **Tracking Progress:**  
+  Players keep track of the numbers in their own hands and the numbers remaining in the pool.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial State
+
+- **Number Pool:** `1, 2, 3, 4, 5, 6, 7, 8, 9`
+- **Player 1 Hand:** Empty
+- **Player 2 Hand:** Empty
+
+#### Turn by Turn Breakdown
+
+1. **Player 1's Turn:**
+   - **Action:** Selects number `5`.
+   - **Player 1 Hand:** `5`
+   - **Number Pool:** `1, 2, 3, 4, 6, 7, 8, 9`
+   - **Checks for Victory:** Cannot form an equation yet.
+
+2. **Player 2's Turn:**
+   - **Action:** Selects number `2`.
+   - **Player 2 Hand:** `2`
+   - **Number Pool:** `1, 3, 4, 6, 7, 8, 9`
+   - **Checks for Victory:** Cannot form an equation yet.
+
+3. **Player 1's Turn:**
+   - **Action:** Selects number `3`.
+   - **Player 1 Hand:** `5, 3`
+   - **Number Pool:** `1, 4, 6, 7, 8, 9`
+   - **Checks for Victory:** Cannot form an equation yet.
+
+4. **Player 2's Turn:**
+   - **Action:** Selects number `7`.
+   - **Player 2 Hand:** `2, 7`
+   - **Number Pool:** `1, 4, 6, 8, 9`
+   - **Checks for Victory:** Cannot form an equation yet.
+
+5. **Player 1's Turn:**
+   - **Action:** Selects number `2`.
+   - **Player 1 Hand:** `5, 3, 2`
+   - **Number Pool:** `1, 4, 6, 8, 9`
+     - Note: Number `2` was already selected by Player 2 and is unavailable.
+     - **Correction:** Number `2` is unavailable. Player 1 must choose a different number.
+   - **Action:** Selects number `8`.
+   - **Player 1 Hand:** `5, 3, 8`
+   - **Number Pool:** `1, 4, 6, 9`
+   - **Checks for Victory:** Cannot form an equation yet.
+
+6. **Player 2's Turn:**
+   - **Action:** Selects number `6`.
+   - **Player 2 Hand:** `2, 7, 6`
+   - **Number Pool:** `1, 4, 9`
+   - **Checks for Victory:**
+     - Can form `2 + 6 = 8`. But `8` is not in hand.
+     - Cannot form an equation yet.
+
+7. **Player 1's Turn:**
+   - **Action:** Selects number `4`.
+   - **Player 1 Hand:** `5, 3, 8, 4`
+   - **Number Pool:** `1, 9`
+   - **Checks for Victory:**
+     - **Forms Equation:** `4 + 5 = 9`
+     - **But** `9` is not in hand.
+     - **Forms Equation:** `3 + 5 = 8`
+     - **Victory Declared!**
+
+### Command-Line Interaction
+
+#### Starting the Game
+
+```
+Welcome to Equation Duel!
+
+Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1, it's your turn.
+Select a number from the pool: 5
+```
+
+#### Progressing Turns
+
+```
+Number Pool: [1, 2, 3, 4, 6, 7, 8, 9]
+Player 2, it's your turn.
+Select a number from the pool: 2
+
+Number Pool: [1, 3, 4, 6, 7, 8, 9]
+Player 1, it's your turn.
+Select a number from the pool: 3
+```
+
+#### Attempting Victory
+
+```
+Number Pool: [1, 4, 6, 8, 9]
+Player 1, it's your turn.
+Select a number from the pool: 4
+
+Number Pool: [1, 9]
+Player 1's Hand: [5, 3, 8, 4]
+Checking for victory...
+You have formed the equation: 3 + 5 = 8
+Player 1 wins the game!
+```
+
+### Strategic Considerations
+
+- **Blocking:**  
+  Player 2 could have selected `8` to prevent Player 1 from forming `3 + 5 = 8`.
+
+- **Prediction:**  
+  Players should pay attention to the numbers the opponent is collecting and anticipate possible equations they might form.
+
+## Conclusion
+
+Equation Duel is a simple yet strategic game that can be easily implemented in a command-line interface. It requires players to think ahead and adjust their strategy based on their opponent's moves. The game is quick, ensures a clear winner, and allows skilled players to consistently outplay unskilled opponents through strategic number selection and prediction.

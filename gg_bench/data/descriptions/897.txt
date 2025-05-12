@@ -1,0 +1,157 @@
+# Isolation: A Two-Player Strategy Game
+
+## Objective
+
+**Isolation** is a turn-based strategy game where two players compete to be the last to make a valid move. The primary goal is to strategically claim positions on a linear board while isolating your opponent and limiting their available moves. Victory is achieved by forcing your opponent into a position where they cannot make a valid move on their turn.
+
+## Setup
+
+- **Game Board**: A linear board consisting of **13 consecutively numbered squares** ranging from 1 to 13.
+- **Player Tokens**: No physical tokens are necessary as the game can be played in a command-line interface by tracking claimed squares.
+- **Starting Condition**: All 13 squares are unclaimed at the beginning of the game. Players decide who will take the first turn (Player 1 and Player 2).
+
+## Game Components
+
+- **Linear Board**: Represents the playing field with squares numbered from 1 to 13.
+- **Claimed Squares**: Squares that have been selected by the players during the game.
+- **Unclaimed Squares**: Squares that are still available for players to claim.
+- **Adjacency Rule**: Squares are considered adjacent if their numbers are consecutive (e.g., squares 5 and 6).
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with Player 1.
+- **Player Actions**: On their turn, a player must:
+  1. **Select a Square**: Choose any unclaimed square that is **not adjacent** to any already claimed square.
+  2. **Claim the Square**: Mark the chosen square as claimed by themselves.
+- **Turn Progression**: After a player claims a square, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Claiming Squares**:
+   - A player may claim **any unclaimed square** that is **not adjacent** to any claimed square.
+   - **Adjacency Definition**: Squares are adjacent if their numbers differ by exactly 1.
+   - **Example**: If square 5 is claimed, squares 4 and 6 are considered adjacent and cannot be claimed on subsequent turns.
+2. **Valid Moves**:
+   - A move is valid if there is at least one unclaimed square that is not adjacent to any claimed square.
+   - If no valid moves are available on a player's turn, the player loses the game.
+3. **Winning the Game**:
+   - The **last player** to successfully claim a square wins the game.
+   - A player **loses** if they have no valid moves on their turn.
+4. **No Draws**:
+   - The game is designed with an odd number of squares (13) to ensure that a draw is impossible.
+
+## Scoring
+
+- **Victory Condition**: Winning the game by being the last player to make a valid move.
+- **No Point System**: The game does not utilize a point or scoring system; the outcome is a win or loss based on the players' strategic moves.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial State:
+
+All squares are unclaimed:
+
+`[ ] 1 [ ] 2 [ ] 3 [ ] 4 [ ] 5 [ ] 6 [ ] 7 [ ] 8 [ ] 9 [ ] 10 [ ] 11 [ ] 12 [ ] 13 [ ]`
+
+#### Turn 1 - Player 1:
+
+- **Action**: Claims square 7.
+- **Command**: `Player1: claim 7`
+- **Result**:
+
+`[ ] 1 [ ] 2 [ ] 3 [ ] 4 [ ] 5 [ ] 6 [P1] 7 [ ] 8 [ ] 9 [ ] 10 [ ] 11 [ ] 12 [ ] 13 [ ]`
+
+#### Turn 2 - Player 2:
+
+- **Available Squares**: All except squares 6, 7, and 8 (since square 7 is claimed, squares 6 and 8 are adjacent and unavailable).
+- **Action**: Claims square 4.
+- **Command**: `Player2: claim 4`
+- **Result**:
+
+`[ ] 1 [ ] 2 [ ] 3 [P2] 4 [ ] 5 [ ] 6 [P1] 7 [ ] 8 [ ] 9 [ ] 10 [ ] 11 [ ] 12 [ ] 13 [ ]`
+
+#### Turn 3 - Player 1:
+
+- **Available Squares**: Squares not adjacent to claimed squares (excluding squares 3,4,5,6,7,8).
+- **Action**: Claims square 10.
+- **Command**: `Player1: claim 10`
+- **Result**:
+
+`[ ] 1 [ ] 2 [ ] 3 [P2] 4 [ ] 5 [ ] 6 [P1] 7 [ ] 8 [ ] 9 [P1] 10 [ ] 11 [ ] 12 [ ] 13 [ ]`
+
+#### Turn 4 - Player 2:
+
+- **Available Squares**: Squares 1, 2, 12, 13 (squares 9,10,11 are adjacent to claimed square 10).
+- **Action**: Claims square 1.
+- **Command**: `Player2: claim 1`
+- **Result**:
+
+`[P2] 1 [ ] 2 [ ] 3 [P2] 4 [ ] 5 [ ] 6 [P1] 7 [ ] 8 [ ] 9 [P1] 10 [ ] 11 [ ] 12 [ ] 13 [ ]`
+
+#### Turn 5 - Player 1:
+
+- **Available Squares**: Squares 12 and 13.
+- **Action**: Claims square 12.
+- **Command**: `Player1: claim 12`
+- **Result**:
+
+`[P2] 1 [ ] 2 [ ] 3 [P2] 4 [ ] 5 [ ] 6 [P1] 7 [ ] 8 [ ] 9 [P1] 10 [P1] 12 [ ] 13 [ ]`
+
+#### Turn 6 - Player 2:
+
+- **Available Squares**: Square 13 (since square 12 is claimed, square 13 is adjacent and unavailable).
+- **Action**: No valid moves available.
+- **Result**:
+
+`Player2 has no valid moves. Player1 wins the game!`
+
+### Sample Command-Line Interaction
+
+```plaintext
+--- Isolation Game Starts ---
+Available squares: 1-13
+
+Player1's turn.
+Available squares to claim: 1-13
+Enter the square number you want to claim: 7
+Player1 claims square 7.
+
+Player2's turn.
+Available squares to claim: 1-5,9-13
+Enter the square number you want to claim: 4
+Player2 claims square 4.
+
+Player1's turn.
+Available squares to claim: 1-3,9-13
+Enter the square number you want to claim: 10
+Player1 claims square 10.
+
+Player2's turn.
+Available squares to claim: 1-3,9,12,13
+Enter the square number you want to claim: 1
+Player2 claims square 1.
+
+Player1's turn.
+Available squares to claim: 2,9,12,13
+Enter the square number you want to claim: 12
+Player1 claims square 12.
+
+Player2's turn.
+Available squares to claim: 2,9
+No valid squares to claim. Player2 cannot make a move.
+
+Game Over: Player1 wins!
+```
+
+## Strategic Tips
+
+- **Control the Center**: Claiming central squares can block larger sections of the board from your opponent.
+- **Plan Ahead**: Anticipate which squares will remain available after your move to avoid limiting your own options.
+- **Force Isolation**: Aim to isolate sections of the board to restrict your opponent's future moves.
+- **Avoid Early Corners**: Claiming edge squares early might limit your own moves more than your opponent's.
+
+---
+
+Enjoy the challenge of Isolation, where every move counts, and strategy is key to outmaneuvering your opponent!

@@ -1,0 +1,141 @@
+# Code Breaker Duel
+
+## Objective
+
+Be the first player to change the safe's code to **"777"** by strategically incrementing the digits during your turns. The safe code starts at "000", and players take turns increasing the digits to reach the target code. Skillful planning and anticipation of your opponent's moves are key to securing victory.
+
+## Setup
+
+- **Safe Code Initialization**: The game begins with the safe code set to **"0 0 0"** (hundreds, tens, units).
+- **Player Roles**: Two players decide who will take the first turn. This can be determined by mutual agreement or a simple method like a coin toss.
+- **Game Interface**: The game is played in a command-line interface where the current code and prompts are displayed textually.
+
+## Game Components
+
+- **Safe Code Display**: Shows the current three-digit code, separated by spaces for clarity (e.g., "4 5 6").
+  - **Hundreds Digit**: The leftmost digit.
+  - **Tens Digit**: The middle digit.
+  - **Units Digit**: The rightmost digit.
+- **Player Input**: Players interact by typing their choice of digit to increment (hundreds, tens, or units).
+- **Digit Values**: Each digit ranges from **0** to **9**. Incrementing a **9** wraps it around to **0**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions**: On each turn, a player must:
+  1. **Select a Digit to Increment**: Choose one of the three digits—hundreds, tens, or units.
+  2. **Increment the Digit**: Increase the chosen digit by **1** (modulo 10).
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Players must choose exactly one digit to increment on their turn.
+   - Valid inputs are "hundreds", "tens", or "units".
+
+2. **Incrementing Digits**:
+   - Incrementing a digit increases its value by **1**.
+   - If a digit is at **9**, incrementing it wraps it around to **0** (e.g., incrementing **9** results in **0**).
+
+3. **Winning the Game**:
+   - The first player to change the safe code to **"7 7 7"** wins the game immediately.
+
+4. **Mandatory Moves**:
+   - Players cannot skip their turn or pass; an increment must occur on every turn.
+
+5. **Valid Inputs**:
+   - The game accepts only the specified digit names ("hundreds", "tens", "units"). Any invalid input prompts an error and a chance to input again.
+
+## Example Gameplay
+
+### Starting the Game
+
+- **Initial Safe Code**: "0 0 0"
+- **Players**: Player 1 and Player 2
+
+### Gameplay Progression
+
+1. **Player 1's Turn**:
+   - Chooses to increment **hundreds**.
+   - Safe code changes to **"1 0 0"**.
+
+2. **Player 2's Turn**:
+   - Chooses to increment **tens**.
+   - Safe code changes to **"1 1 0"**.
+
+3. **Player 1's Turn**:
+   - Chooses to increment **units**.
+   - Safe code changes to **"1 1 1"**.
+
+4. **Player 2's Turn**:
+   - Chooses to increment **hundreds**.
+   - Safe code changes to **"2 1 1"**.
+
+5. **Player 1's Turn**:
+   - Chooses to increment **tens**.
+   - Safe code changes to **"2 2 1"**.
+
+6. **Player 2's Turn**:
+   - Chooses to increment **units**.
+   - Safe code changes to **"2 2 2"**.
+
+### Continuing the Game
+
+Players continue in this manner, strategically choosing which digits to increment to approach the target code "7 7 7" while trying to prevent their opponent from doing the same.
+
+### Winning the Game
+
+- **Final Moves**:
+
+  1. **Safe Code Before Winning Move**: "7 6 6"
+  
+  2. **Player 1's Winning Turn**:
+     - Chooses to increment **units**.
+     - Units digit changes from **6** to **7**.
+     - Safe code changes to **"7 7 7"**.
+     - **Player 1 wins the game**.
+
+## Command-Line Interaction Example
+
+### Initial State
+
+```
+Current Safe Code: 0 0 0
+Player 1's turn.
+Select digit to increment (hundreds/tens/units): hundreds
+You incremented the hundreds digit.
+New Safe Code: 1 0 0
+```
+
+### Subsequent Turn
+
+```
+Current Safe Code: 1 0 0
+Player 2's turn.
+Select digit to increment (hundreds/tens/units): tens
+You incremented the tens digit.
+New Safe Code: 1 1 0
+```
+
+### Winning Turn
+
+```
+Current Safe Code: 7 6 6
+Player 1's turn.
+Select digit to increment (hundreds/tens/units): units
+You incremented the units digit.
+New Safe Code: 7 7 7
+Congratulations! Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Think several moves in advance to control which player will reach the critical digits first.
+- **Control the Sevens**: Aim to be the player who increments a digit from **6** to **7** on the final approach.
+- **Force Wrapping**: Manipulate digits so your opponent is forced to wrap a **9** to **0**, setting them back.
+- **Balance Your Moves**: Avoid focusing on a single digit; balance your increments to steadily approach "7 7 7".
+
+## Summary
+
+Code Breaker Duel is a simple yet strategic game that challenges players to outthink their opponent while incrementally advancing towards the winning code. With straightforward rules and quick gameplay, it's perfect for testing your strategic planning in a head-to-head command-line battle.
+
+Enjoy the duel, and may the best code breaker win!

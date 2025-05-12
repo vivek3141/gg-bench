@@ -1,0 +1,169 @@
+# Line Battle: A Two-Player Command-Line Game
+
+## Objective
+
+The goal of **Line Battle** is to be the player who brings the two opposing markers to meet at the same position on a linear track. Players take turns moving the markers towards each other, and the first player to move a marker such that both markers occupy the same position wins the game.
+
+## Setup
+
+- **Game Board**: A linear track consisting of 7 sequentially numbered positions from **1** to **7**.
+- **Markers**:
+  - **Marker A**: Starts at position **1**.
+  - **Marker B**: Starts at position **7**.
+- Both players can see the positions of the markers at all times.
+
+## Game Components
+
+- **Linear Track**: Represents the game board with positions numbered from 1 to 7.
+- **Markers**:
+  - **Marker A**: Represents one player's piece, initially placed at position 1.
+  - **Marker B**: Represents the other player's piece, initially placed at position 7.
+- **Positions**:
+  - Numbered slots from **1** to **7** where markers can be placed.
+- The game can be represented in the command line using numbers and letters to indicate positions and markers.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **On a Player's Turn**:
+  - Choose one of the markers (**A** or **B**) to move.
+  - Move the selected marker **one position closer** to the opposing marker.
+- **Turn Order**:
+  - **Player 1** moves first.
+  - **Player 2** moves second.
+- **Turn Actions**:
+  - Only one marker can be moved per turn.
+  - Markers can only move towards each other (towards the center of the track).
+
+## Rules and Mechanics
+
+1. **Marker Movement**:
+   - A marker can only move to an **adjacent position** closer to the opposing marker.
+   - Markers cannot skip positions or move away from the opposing marker.
+2. **Markers Cannot Pass**:
+   - Markers cannot pass over or bypass each other.
+   - Once markers are adjacent (next to each other), the only possible moves are into the unoccupied position between them.
+3. **Winning the Game**:
+   - The player who moves a marker into the position occupied by the opposing marker wins the game.
+   - This occurs when both markers occupy the **same position** after a move.
+4. **End of Game**:
+   - The game ends immediately when a player wins.
+   - There are no draws or ties.
+
+## Scoring
+
+- **Victory**: The player who successfully moves a marker to meet the opposing marker in the same position wins the game.
+- **No Points System**: There is no point accumulation; the outcome is a win or loss.
+- **No Draws**: The game cannot end in a draw due to the mechanics of movement.
+
+## Examples
+
+### Example Gameplay
+
+#### Initial Setup
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:   A           B
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Move **Marker A** from position 1 to position 2.
+- **State**:
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:     A         B
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Move **Marker B** from position 7 to position 6.
+- **State**:
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:     A       B
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Move **Marker A** from position 2 to position 3.
+- **State**:
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:       A     B
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Move **Marker B** from position 6 to position 5.
+- **State**:
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:       A   B
+```
+
+#### Turn 5: Player 1
+
+- **Action**: Move **Marker A** from position 3 to position 4.
+- **State**:
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:         A B
+```
+
+#### Turn 6: Player 2
+
+- **Markers are adjacent** at positions 4 and 5.
+- **Action**: Move **Marker B** from position 5 to position 4.
+- **Result**: Both markers are now at position 4.
+- **Game Over**: Player 2 wins.
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:         AB
+```
+
+### Command-Line Interaction Example
+
+#### Initial Prompt
+
+```
+Game Start!
+Positions: 1 2 3 4 5 6 7
+Markers:   A           B
+
+Player 1's turn.
+Select marker to move (A/B): A
+Marker A moved to position 2.
+```
+
+#### Updated State
+
+```
+Positions: 1 2 3 4 5 6 7
+Markers:     A         B
+
+Player 2's turn.
+Select marker to move (A/B): B
+Marker B moved to position 6.
+```
+
+#### Continued Gameplay
+
+*(Gameplay continues as per the example above, with command-line prompts for each player's turn.)*
+
+## Strategic Tips
+
+- **Control the Center**: Aim to control the central positions to limit your opponent's options.
+- **Force Moves**: Anticipate your opponent's moves and force them into a position where you can win on your next turn.
+- **Even and Odd Positions**: Pay attention to the parity of positions to plan your moves strategically.
+
+## Conclusion
+
+**Line Battle** is a simple yet strategic game that tests players' foresight and planning skills. With straightforward rules and quick gameplay, it's perfect for a command-line interface and ensures that a skilled player can consistently triumph over an unskilled one. Enjoy the challenge and may the best strategist win!

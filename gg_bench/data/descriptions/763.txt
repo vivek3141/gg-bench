@@ -1,0 +1,214 @@
+# Rule Book for "Divide and Conquer"
+
+## Objective
+
+**Divide and Conquer** is a strategic two-player turn-based game. The primary goal is to be the player who reduces the **Current Number** to exactly **1** on your turn. Players take turns dividing the Current Number by valid divisors. Victory is achieved by making calculated moves that force your opponent into a position where they cannot win.
+
+---
+
+## Setup
+
+1. **Initial Current Number**: Decide on a starting positive integer for the Current Number. This number should be greater than 1. For a standard game, it is recommended to start with **100**.
+
+2. **Determine Turn Order**: Players decide who will take the first turn. This can be done by mutual agreement or randomly (e.g., flipping a coin).
+
+3. **Game Interface**: The game is played via a command-line interface where players input their chosen divisors when prompted.
+
+---
+
+## Game Components
+
+- **Current Number**: A shared positive integer that changes as the game progresses. It starts at the initial value set during setup (e.g., 100).
+
+- **Valid Divisors**: Integers that meet the following criteria:
+  - Greater than **1**.
+  - Less than the Current Number.
+  - Divides the Current Number evenly (no remainder).
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Announcement**: The game displays the Current Number and indicates which player's turn it is.
+  2. **Player Action**: The active player selects a Valid Divisor and inputs it into the command-line interface.
+  3. **Validation**: The game checks if the chosen divisor is valid.
+     - If valid: The game proceeds to update the Current Number.
+     - If invalid: The game prompts the player to choose a different divisor.
+  4. **Update**: The Current Number is divided by the Valid Divisor, and the result becomes the new Current Number.
+  5. **Turn End**: The turn ends, and control passes to the other player.
+
+- **Passing a Turn**:
+  - If a player cannot make a valid move because there are no Valid Divisors (e.g., the Current Number is prime), they pass their turn.
+  - The opponent then takes their turn as usual.
+
+---
+
+## Rules and Mechanics
+
+1. **Making a Move**:
+   - On your turn, you **must** choose a Valid Divisor of the Current Number.
+   - The divisor must satisfy all criteria of Valid Divisors.
+   - Dividing the Current Number by the chosen divisor updates the Current Number.
+
+2. **Valid Divisors**:
+   - Must be an integer greater than 1 and less than the Current Number.
+   - Must divide the Current Number evenly (without a remainder).
+   - Example: If the Current Number is 18, valid divisors include 2, 3, 6, and 9.
+
+3. **Invalid Moves**:
+   - Selecting a divisor that does not meet the Valid Divisor criteria is not allowed.
+   - If an invalid divisor is chosen, the game will prompt the player to select again.
+
+4. **Passing**:
+   - If no Valid Divisors are available, the player must pass.
+   - The opponent gets the opportunity to make the next move.
+
+5. **Winning the Game**:
+   - The game is won by the player who reduces the Current Number to exactly **1** on their turn.
+   - Reducing the Current Number below 1 is not possible due to the rules.
+
+6. **No Draws**:
+   - The game cannot end in a draw.
+   - Play continues until one player reduces the Current Number to 1.
+
+7. **Extra Turns**:
+   - It is possible for a player to have multiple consecutive turns if the opponent has to pass.
+
+---
+
+## Scoring
+
+- **Single Match Victory**:
+  - The winner is the player who reduces the Current Number to 1.
+
+- **Multiple Rounds**:
+  - Players may choose to play multiple rounds.
+  - Keep track of the number of games won by each player.
+  - The player with the most victories after the decided number of rounds is the overall winner.
+
+- **Tiebreakers**:
+  - If playing multiple rounds and both players have the same number of victories, additional rounds can be played until a winner is determined.
+
+---
+
+## Examples
+
+### Example 1: Standard Gameplay
+
+**Initial Current Number**: 100
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - Current Number: 100
+   - Valid Divisors: 2, 4, 5, 10, 20, 25, 50
+   - Player 1 chooses **25**.
+   - Current Number is updated: 100 / 25 = **4**
+
+2. **Player 2's Turn**:
+   - Current Number: 4
+   - Valid Divisors: 2
+   - Player 2 chooses **2**.
+   - Current Number is updated: 4 / 2 = **2**
+
+3. **Player 1's Turn**:
+   - Current Number: 2
+   - No Valid Divisors (2 is prime, and there are no integers greater than 1 and less than 2).
+   - Player 1 passes.
+
+4. **Player 2's Turn**:
+   - Current Number: 2
+   - Valid Divisors: 2
+   - Player 2 chooses **2**.
+   - Current Number is updated: 2 / 2 = **1**
+
+- **Result**: Player 2 wins by reducing the Current Number to 1.
+
+### Example 2: Forced Passing
+
+**Initial Current Number**: 15
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - Current Number: 15
+   - Valid Divisors: 3, 5
+   - Player 1 chooses **5**.
+   - Current Number is updated: 15 / 5 = **3**
+
+2. **Player 2's Turn**:
+   - Current Number: 3
+   - No Valid Divisors (3 is prime).
+   - Player 2 passes.
+
+3. **Player 1's Turn**:
+   - Current Number: 3
+   - Valid Divisors: 3
+   - Player 1 chooses **3**.
+   - Current Number is updated: 3 / 3 = **1**
+
+- **Result**: Player 1 wins by reducing the Current Number to 1.
+
+---
+
+## Command-Line Interaction Examples
+
+### Example of a Game Session
+
+**Game Start**
+
+```
+Current Number is 100.
+Player 1's turn.
+Enter a Valid Divisor of 100: 25
+Valid move. Current Number is now 4.
+
+Current Number is 4.
+Player 2's turn.
+Enter a Valid Divisor of 4: 2
+Valid move. Current Number is now 2.
+
+Current Number is 2.
+Player 1's turn.
+No valid moves available. Player 1 passes.
+
+Current Number is 2.
+Player 2's turn.
+Enter a Valid Divisor of 2: 2
+Valid move. Current Number is now 1.
+
+Player 2 wins the game!
+```
+
+### Invalid Move Handling
+
+```
+Current Number is 30.
+Player 1's turn.
+Enter a Valid Divisor of 30: 7
+Invalid divisor. Please choose a Valid Divisor.
+
+Enter a Valid Divisor of 30: 5
+Valid move. Current Number is now 6.
+```
+
+---
+
+## Strategic Tips
+
+- **Prime Awareness**: Keep track of prime numbers. Forcing the Current Number to a prime on your opponent's turn can force them to pass.
+
+- **Divisor Selection**: Choose divisors that lead to numbers with fewer Valid Divisors for your opponent.
+
+- **Planning Ahead**: Anticipate your opponent's possible moves based on the Current Number you leave them.
+
+- **Avoiding Passes**: Try not to reduce the Current Number to a prime unless it benefits you.
+
+---
+
+By understanding the rules and employing strategic thinking, players can enjoy a game that is easy to learn but offers depth and complexity. **Divide and Conquer** is perfect for quick matches and helps develop logical reasoning skills in a fun and competitive environment.
+
+---
+
+Happy gaming!

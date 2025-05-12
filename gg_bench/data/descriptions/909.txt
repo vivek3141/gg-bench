@@ -1,0 +1,266 @@
+# Number Reach: A Two-Player Turn-Based Game
+
+## Objective
+
+Be the first player to reach the **target number** exactly by strategically applying allowed mathematical operations to the **shared current number**. Careful planning and foresight are essential, as exceeding the target number results in an immediate loss.
+
+## Setup
+
+1. **Determine the Target Number**: Agree on a target number to reach. For a quick game, a number between 15 and 31 is recommended (e.g., **23**).
+2. **Initialize the Game**: Set the **current number** to **1**.
+3. **Assign Operation Limits**: Each player has a limited number of times they can use each allowed operation:
+   - **Add 1**: Up to **5** times per player.
+   - **Multiply by 2**: Up to **4** times per player.
+4. **Decide the Turn Order**: Choose who goes first (coin toss, mutual agreement, etc.).
+
+## Game Components
+
+- **Current Number**: A shared number that starts at **1** and changes based on players' moves.
+- **Target Number**: The agreed-upon number that players aim to reach exactly.
+- **Operations**:
+  - **Add 1** (`+1`): Increases the current number by 1.
+  - **Multiply by 2** (`*2`): Multiplies the current number by 2.
+- **Operation Limits**:
+  - Each player can use **Add 1** up to **5 times**.
+  - Each player can use **Multiply by 2** up to **4 times**.
+- **Command-Line Interface**: Players input commands to perform operations during their turns.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Display Information**: At the start of each turn, display the current number, remaining operation counts for both players, and the target number.
+  2. **Player Action**: The current player chooses one allowed operation to apply to the current number.
+  3. **Validation**: The game checks if the operation is valid (operation limits and not exceeding the target number).
+  4. **Update State**: Apply the operation, update the current number, and decrement the player's operation count for that operation.
+  5. **Turn Progression**: The turn passes to the other player.
+
+- **Turn Order**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Allowed Operations**: On your turn, you must choose one of the following operations to apply to the current number:
+   - **Add 1** (`+1`): Increases the current number by 1.
+   - **Multiply by 2** (`*2`): Multiplies the current number by 2.
+
+2. **Operation Limits**:
+   - **Add 1**: Can be used up to **5 times per player**.
+   - **Multiply by 2**: Can be used up to **4 times per player**.
+
+3. **Applying Operations**:
+   - The chosen operation is applied to the current number to produce a new current number.
+   - **Example**: If the current number is 6 and you choose `*2`, the new current number is 12.
+
+4. **Winning the Game**:
+   - **Exact Match**: If your operation brings the current number to **exactly match the target number**, you win.
+   - **Exceeding the Target**: If your operation causes the current number to **exceed the target number**, you lose immediately.
+   
+5. **Valid Moves**:
+   - You cannot perform an operation if you have exhausted its usage limit.
+   - You cannot make a move that would cause the current number to exceed the target number.
+
+6. **Draws**: There are no draw conditions in this game.
+
+7. **Running Out of Operations**:
+   - If both players run out of allowed operations without reaching the target number, the **last player to make a valid move wins**.
+
+8. **Game Over**:
+   - The game ends when one player wins or loses according to the rules above.
+
+## Scoring
+
+- **Victory**: The player who reaches the target number exactly wins the game.
+- **Defeat**: A player loses if:
+  - They apply an operation that causes the current number to exceed the target number.
+  - They have no valid operations left, and it's their turn to play.
+- **No Draws**: The game cannot end in a draw due to the structure of the rules.
+
+## Examples
+
+### Example Game Playthrough
+
+**Target Number**: 23
+
+**Operation Limits per Player**:
+- **Add 1**: 5 uses
+- **Multiply by 2**: 4 uses
+
+**Initial State**:
+- Current Number: 1
+
+**Player Operation Counts**:
+- Player 1: `+1` (5), `*2` (4)
+- Player 2: `+1` (5), `*2` (4)
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Current Number**: 1
+   - **Action**: `*2` (uses 1 of 4)
+   - **New Current Number**: 2
+   - **Remaining Operations**:
+     - `+1`: 5
+     - `*2`: 3
+
+2. **Player 2's Turn**:
+   - **Current Number**: 2
+   - **Action**: `*2` (uses 1 of 4)
+   - **New Current Number**: 4
+   - **Remaining Operations**:
+     - `+1`: 5
+     - `*2`: 3
+
+3. **Player 1's Turn**:
+   - **Current Number**: 4
+   - **Action**: `*2` (uses 2 of 4)
+   - **New Current Number**: 8
+   - **Remaining Operations**:
+     - `+1`: 5
+     - `*2`: 2
+
+4. **Player 2's Turn**:
+   - **Current Number**: 8
+   - **Action**: `+1` (uses 1 of 5)
+   - **New Current Number**: 9
+   - **Remaining Operations**:
+     - `+1`: 4
+     - `*2`: 3
+
+5. **Player 1's Turn**:
+   - **Current Number**: 9
+   - **Action**: `*2` (uses 3 of 4)
+   - **New Current Number**: 18
+   - **Remaining Operations**:
+     - `+1`: 5
+     - `*2`: 1
+
+6. **Player 2's Turn**:
+   - **Current Number**: 18
+   - **Action**: `+1` (uses 2 of 5)
+   - **New Current Number**: 19
+   - **Remaining Operations**:
+     - `+1`: 3
+     - `*2`: 3
+
+7. **Player 1's Turn**:
+   - **Current Number**: 19
+   - **Action**: `+1` (uses 1 of 5)
+   - **New Current Number**: 20
+   - **Remaining Operations**:
+     - `+1`: 4
+     - `*2`: 1
+
+8. **Player 2's Turn**:
+   - **Current Number**: 20
+   - **Action**: `+1` (uses 3 of 5)
+   - **New Current Number**: 21
+   - **Remaining Operations**:
+     - `+1`: 2
+     - `*2`: 3
+
+9. **Player 1's Turn**:
+   - **Current Number**: 21
+   - **Action**: `+1` (uses 2 of 5)
+   - **New Current Number**: 22
+   - **Remaining Operations**:
+     - `+1`: 3
+     - `*2`: 1
+
+10. **Player 2's Turn**:
+    - **Current Number**: 22
+    - **Action**: `+1` (uses 4 of 5)
+    - **New Current Number**: 23 (matches the target number)
+    - **Remaining Operations**:
+      - `+1`: 1
+      - `*2`: 3
+    - **Outcome**: Player 2 wins by reaching the target number exactly.
+
+### Sample Command-Line Interaction
+
+#### Game Start
+
+```
+Welcome to Number Reach!
+
+Target Number: 23
+Starting Number: 1
+
+Each player can use:
+- Add 1 [+1]: 5 times
+- Multiply by 2 [*2]: 4 times
+
+Player 1 will go first.
+```
+
+#### Turn Example
+
+```
+------------
+
+Current Number: 9
+
+Player 2's Turn:
+Remaining Operations:
+- Add 1 [+1]: 4 uses left
+- Multiply by 2 [*2]: 3 uses left
+
+Choose an operation ([+1] or [*2]): +1
+
+You chose to Add 1.
+New Current Number: 10
+
+------------
+
+Current Number: 10
+
+Player 1's Turn:
+Remaining Operations:
+- Add 1 [+1]: 5 uses left
+- Multiply by 2 [*2]: 2 uses left
+
+Choose an operation ([+1] or [*2]): *2
+
+You chose to Multiply by 2.
+New Current Number: 20
+
+------------
+
+(Current number and operations continue as per game progression.)
+
+```
+
+#### Winning Move
+
+```
+------------
+
+Current Number: 22
+
+Player 2's Turn:
+Remaining Operations:
+- Add 1 [+1]: 1 use left
+- Multiply by 2 [*2]: 3 uses left
+
+Choose an operation ([+1] or [*2]): +1
+
+You chose to Add 1.
+New Current Number: 23
+
+Congratulations, Player 2! You have reached the target number and win the game!
+
+Game Over.
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of both your and your opponent's remaining operations.
+- **Operation Limits**: Use your multiplication operations wisely; they have a greater impact but are limited.
+- **Avoid Overstepping**: Be cautious not to exceed the target number, especially as you get closer to it.
+- **Predict Opponent Moves**: Anticipate your opponent's possible actions based on their remaining operations.
+
+## Summary
+
+Number Reach is a simple yet strategic game that challenges players to think ahead and manage limited resources. By combining basic arithmetic operations within a structured rule set, players engage in a battle of wits to reach the target number first. Whether you're looking for a quick diversion or a test of strategic planning, Number Reach offers an enjoyable experience in a command-line format.
+
+Enjoy the game, and may the best strategist win!

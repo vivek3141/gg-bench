@@ -1,0 +1,237 @@
+**Number Path**
+
+---
+
+### **Objective**
+
+Be the first player to reach exactly **Space 20** on the numerical path by strategically choosing mathematical operations to advance your position. The game requires players to add or multiply their current space number by **1**, **2**, or **3**. Skillful selection of operations and foresight are key to victory. Overshooting Space 20 results in an immediate loss, so plan your moves carefully!
+
+---
+
+### **Setup**
+
+1. **Game Board**: A linear numerical path with spaces numbered from **1** to **20**.
+2. **Starting Position**: Both players begin off the path at **Space 0**.
+3. **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+---
+
+### **Game Components**
+
+- **Numerical Path**: Spaces numbered from **1** to **20** arranged sequentially.
+- **Player Tokens**: Represented in the command-line interface by player names and their current space number.
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Player 1 takes the first turn, followed by Player 2. Turns alternate thereafter.
+2. **Actions per Turn**:
+   - **Choose an Operation**: On your turn, select one of the following operations to apply to your current space number:
+     - **Addition (+)**: Add **1**, **2**, or **3**.
+     - **Multiplication (×)**: Multiply by **1**, **2**, or **3**.
+   - **Advance Position**: Apply the chosen operation to your current space number to determine your new space.
+   - **Declare Move**: Announce your operation and new space number.
+3. **Turn Progression**: After completing your move, it becomes the other player's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement Rules**:
+   - **Allowed Operations**:
+     - **Addition**: You may add **1**, **2**, or **3** to your current space number.
+     - **Multiplication**: You may multiply your current space number by **1**, **2**, or **3**.
+   - **Operation Selection**:
+     - You must choose **one** operation (**addition** or **multiplication**) per turn.
+     - You must choose **one** number (**1**, **2**, or **3**) to use in your operation.
+   - **Advancing Spaces**:
+     - Calculate your new space by applying the chosen operation.
+     - Example: If you are on Space **4** and choose to multiply by **2**, you move to Space **8**.
+
+2. **Winning the Game**:
+   - The first player to land **exactly** on **Space 20** wins the game.
+   - If a move would take you beyond Space 20, the move is **invalid**, and you **lose your turn**.
+   - **Immediate Loss**: If you are forced to make an invalid move because no valid moves are available on your turn, you **lose the game**.
+
+3. **Valid Moves**:
+   - You must always move to a higher-numbered space.
+   - You cannot remain on the same space (moving to the same space is not allowed).
+   - You cannot skip your turn; a move must be attempted if possible.
+
+4. **Strategy Considerations**:
+   - Plan ahead to avoid being forced into an invalid move.
+   - Anticipate your opponent's possible moves and adjust your strategy accordingly.
+   - Choose operations that not only advance you but also limit your opponent's options.
+
+---
+
+### **Scoring**
+
+- **Victory**: Achieved by landing exactly on Space 20 through valid moves.
+- **Defeat**:
+  - Occurs if you cannot make a valid move on your turn (no available operations without overshooting Space 20).
+  - Occurs if you attempt an invalid move (overshooting Space 20).
+
+---
+
+### **Examples**
+
+**Example Game Play**
+
+*Initial Setup*:
+
+- Both players start at Space **0**.
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Space**: 0
+- **Operation**: Add **3**
+- **Calculation**: 0 + 3 = **3**
+- **Move**: Advance to Space **3**
+- **Announcement**: "Player 1 adds 3 to move to Space 3."
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Space**: 0
+- **Operation**: Add **2**
+- **Calculation**: 0 + 2 = **2**
+- **Move**: Advance to Space **2**
+- **Announcement**: "Player 2 adds 2 to move to Space 2."
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Space**: 3
+- **Operation**: Multiply by **2**
+- **Calculation**: 3 × 2 = **6**
+- **Move**: Advance to Space **6**
+- **Announcement**: "Player 1 multiplies by 2 to move to Space 6."
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Space**: 2
+- **Operation**: Multiply by **3**
+- **Calculation**: 2 × 3 = **6**
+- **Move**: Advance to Space **6**
+- **Announcement**: "Player 2 multiplies by 3 to move to Space 6."
+
+---
+
+**Turn 5: Player 1**
+
+- **Current Space**: 6
+- **Operation**: Add **3**
+- **Calculation**: 6 + 3 = **9**
+- **Move**: Advance to Space **9**
+- **Announcement**: "Player 1 adds 3 to move to Space 9."
+
+---
+
+**Turn 6: Player 2**
+
+- **Current Space**: 6
+- **Operation**: Multiply by **2**
+- **Calculation**: 6 × 2 = **12**
+- **Move**: Advance to Space **12**
+- **Announcement**: "Player 2 multiplies by 2 to move to Space 12."
+
+---
+
+**Turn 7: Player 1**
+
+- **Current Space**: 9
+- **Operation**: Multiply by **2**
+- **Calculation**: 9 × 2 = **18**
+- **Move**: Advance to Space **18**
+- **Announcement**: "Player 1 multiplies by 2 to move to Space 18."
+
+---
+
+**Turn 8: Player 2**
+
+- **Current Space**: 12
+- **Operation**: Add **3**
+- **Calculation**: 12 + 3 = **15**
+- **Move**: Advance to Space **15**
+- **Announcement**: "Player 2 adds 3 to move to Space 15."
+
+---
+
+**Turn 9: Player 1**
+
+- **Current Space**: 18
+- **Operation**: Add **2**
+- **Calculation**: 18 + 2 = **20**
+- **Move**: Advance to Space **20**
+- **Announcement**: "Player 1 adds 2 to move to Space 20 and wins the game!"
+
+---
+
+### **Command-Line Interaction Sample**
+
+**Player 1's Turn**:
+
+```
+Current Space: 18
+Choose operation:
+1. Add
+2. Multiply
+Enter 1 or 2: 1
+Enter number to add (1, 2, or 3): 2
+Calculating: 18 + 2 = 20
+You move to Space 20.
+Congratulations! You have reached Space 20 and won the game!
+```
+
+---
+
+**Player 2's Turn (Invalid Move Example)**:
+
+```
+Current Space: 19
+Choose operation:
+1. Add
+2. Multiply
+Enter 1 or 2: 1
+Enter number to add (1, 2, or 3): 2
+Calculating: 19 + 2 = 21
+Invalid move! You cannot move beyond Space 20.
+You lose your turn.
+```
+
+---
+
+### **Additional Rules Clarifications**
+
+- **Invalid Moves**:
+  - If an operation results in moving beyond Space 20, the move is invalid.
+  - An invalid move causes the player to **lose their turn**, not the game (unless no valid moves are possible).
+- **Forced Loss**:
+  - If on your turn, all possible operations result in invalid moves (overshooting Space 20), you **lose the game**.
+- **Operation Details**:
+  - **Adding 1**: Moves you to the next consecutive space.
+  - **Multiplying by 1**: Keeps you on the same space (thus, not allowed as you must advance).
+  - **Multiplying by 2 or 3**:
+    - Can quickly advance your position but may limit future options.
+    - Example: Multiplying a higher space number may cause you to overshoot Space 20.
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Consider the outcomes of your move on both your position and your opponent's potential responses.
+- **Control the Pace**: Use multiplication to make large jumps when advantageous but be cautious of limiting your future moves.
+- **Avoid Traps**: Be wary of positions that force you into a loss on your next turn due to lack of valid moves.
+- **Anticipate Moves**: Predict your opponent's options and aim to force them into a position with fewer valid moves.
+
+---
+
+**Enjoy the challenge of **Number Path**, where every move counts, and strategic thinking leads the way to victory!**

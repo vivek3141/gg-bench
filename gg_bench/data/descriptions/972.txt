@@ -1,0 +1,270 @@
+# Chain Reaction
+
+## Objective
+
+**Be the last player able to make a valid move by selecting numbers based on divisibility rules.** Players take turns choosing numbers from a shared pool, adhering to specific divisibility criteria. The player who makes the last valid selection wins the game, while their opponent loses.
+
+## Setup
+
+1. **Number Pool Initialization**: Create a list of numbers from **1 to 20**. These numbers constitute the shared pool from which players will select during the game.
+2. **Determine First Player**: Decide which player goes first. This can be done by a coin toss, random selection, or mutual agreement.
+
+## Game Components
+
+- **Number Pool**: A list of integers from **1 to 20** that are available for selection.
+- **Players**: Two participants who will alternate turns.
+- **Current Number**: The most recently selected number, starting as `None` at the game's beginning.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the first player determined during setup.
+- **Action During Turn**:
+  - The player selects a valid number from the number pool following the game's rules.
+  - The selected number becomes the **Current Number**.
+  - The chosen number is removed from the number pool.
+- **Turn Progression**: The turn passes to the other player after a valid number is selected.
+
+## Rules and Mechanics
+
+1. **First Turn**:
+   - The first player can select **any number** from the number pool as there is no Current Number yet.
+2. **Subsequent Turns**:
+   - Players must select a number that is either a **factor or a multiple** of the Current Number.
+   - The selected number must be **available** in the number pool.
+3. **Valid Moves**:
+   - A number is **valid** if:
+     - It is a factor of the Current Number (i.e., the Current Number divided by the selected number leaves no remainder).
+     - It is a multiple of the Current Number (i.e., the selected number divided by the Current Number leaves no remainder).
+4. **Number Removal**:
+   - Once a number is selected, it is **removed** from the number pool and cannot be chosen again.
+5. **Winning the Game**:
+   - If a player cannot make a valid move on their turn (no numbers in the pool satisfy the divisibility criteria), they **lose**, and the other player **wins**.
+6. **No Draws**:
+   - The game continues until one player wins; there are **no draw** conditions.
+
+## Scoring
+
+- **Winning**: The player who makes the last valid move is declared the **winner**.
+- **Losing**: The player who cannot make a valid move on their turn **loses** the game.
+- **No Points Accumulation**: The game does not use a point or scoring system beyond determining the winner.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Number Pool**:
+
+`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+**Game Start**:
+
+- **Player 1's Turn**:
+  - Since there is no Current Number, Player 1 can pick any number.
+  - **Player 1 selects `8`**.
+  - Current Number is now `8`.
+  - Number Pool is updated (8 is removed).
+
+- **Number Pool**:
+
+  `1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+- **Player 2's Turn**:
+  - Must select a number that is a factor or multiple of `8`.
+  - Valid choices: `1, 2, 4, 16, 20` (since 8 × 2.5 = 20, but 20 is multiple of 4 not 8; so actually only multiples or factors directly).
+  - **Player 2 selects `4`** (a factor of 8).
+  - Current Number is now `4`.
+  - Number Pool is updated (4 is removed).
+
+- **Number Pool**:
+
+  `1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+- **Player 1's Turn**:
+  - Must select a number that is a factor or multiple of `4`.
+  - Valid choices: `1, 2, 8, 12, 16, 20` (Note: 8 and 4 already taken).
+  - **Player 1 selects `2`** (a factor of 4).
+  - Current Number is now `2`.
+  - Number Pool is updated (2 is removed).
+
+- **Number Pool**:
+
+  `1, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+- **Player 2's Turn**:
+  - Must select a number that is a factor or multiple of `2`.
+  - Valid choices: `1, 4 (already taken), 6, 10, 12, 14, 16, 18, 20`.
+  - **Player 2 selects `6`** (a multiple of 2).
+  - Current Number is now `6`.
+  - Number Pool is updated (6 is removed).
+
+- **Number Pool**:
+
+  `1, 3, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+- **Player 1's Turn**:
+  - Must select a number that is a factor or multiple of `6`.
+  - Valid choices: `1, 2 (taken), 3, 12, 18`.
+  - **Player 1 selects `3`** (a factor of 6).
+  - Current Number is now `3`.
+  - Number Pool is updated (3 is removed).
+
+- **Number Pool**:
+
+  `1, 5, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+- **Player 2's Turn**:
+  - Must select a number that is a factor or multiple of `3`.
+  - Valid choices: `1, 6 (taken), 9, 12, 15, 18`.
+  - **Player 2 selects `9`** (a multiple of 3).
+  - Current Number is now `9`.
+  - Number Pool is updated (9 is removed).
+
+- **Number Pool**:
+
+  `1, 5, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+---
+
+- **Player 1's Turn**:
+  - Must select a number that is a factor or multiple of `9`.
+  - Valid choices: `1, 3 (taken),  18`.
+  - **Player 1 selects `18`** (a multiple of 9).
+  - Current Number is now `18`.
+  - Number Pool is updated (18 is removed).
+
+- **Number Pool**:
+
+  `1, 5, 7, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+- **Player 2's Turn**:
+  - Must select a number that is a factor or multiple of `18`.
+  - Valid choices: `1, 6 (taken), 9 (taken), 12`.
+  - **Player 2 selects `12`** (a factor of 18, since 18 ÷ 6 = 3, but 6 is taken, but 18 ÷ 12 is 1.5, not integer; so perhaps only `1` is valid).
+  - Oops, correction, possible factors or multiples of 18 are `1, 9 (taken), 6 (taken), 12`, but 12 is not a factor of 18.
+
+- So valid choices are `1`.
+
+- **Player 2 selects `1`**.
+  - Current Number is now `1`.
+  - Number Pool is updated (1 is removed).
+
+- **Number Pool**:
+
+  `5, 7, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+- **Player 1's Turn**:
+  - Must select a number that is a factor or multiple of `1`.
+  - Since every number is a multiple of 1, Player 1 can select any remaining number.
+  - **Player 1 selects `5`**.
+  - Current Number is now `5`.
+  - Number Pool is updated (5 is removed).
+
+- **Number Pool**:
+
+  `7, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of `5`.
+  - Valid choices: `10, 15, 20`.
+  - **Player 2 selects `10`**.
+  - Current Number is now `10`.
+  - Number Pool is updated (10 is removed).
+
+- **Number Pool**:
+
+  `7, 11, 12, 13, 14, 15, 16, 17, 19, 20`
+
+---
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of `10`.
+  - Valid choices: `5 (taken), 20`.
+  - **Player 1 selects `20`**.
+  - Current Number is now `20`.
+  - Number Pool is updated (20 is removed).
+
+- **Number Pool**:
+
+  `7, 11, 12, 13, 14, 15, 16, 17, 19`
+
+---
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of `20`.
+  - Valid choices: `None of the remaining numbers are factors or multiples of 20`.
+  - **Player 2 has no valid moves and loses the game**.
+
+**Outcome**:
+
+- **Player 1 wins** by making the last valid move.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample interaction as it might appear in a command-line interface:
+
+```
+Welcome to Chain Reaction!
+
+Number Pool: 1-20
+
+Player 1, it's your turn.
+Current Number: None
+Available Numbers: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+Enter your selection: 8
+
+Player 1 selected 8.
+
+Player 2, it's your turn.
+Current Number: 8
+Available Numbers: 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 17 18 19 20
+Valid selections are factors or multiples of 8.
+Enter your selection: 4
+
+Player 2 selected 4.
+
+Player 1, it's your turn.
+Current Number: 4
+Available Numbers: 1 2 3 5 6 7 9 10 11 12 13 14 15 16 17 18 19 20
+Valid selections are factors or multiples of 4.
+Enter your selection: 2
+
+Player 1 selected 2.
+
+...
+
+Player 2, it's your turn.
+Current Number: 20
+Available Numbers: 7 11 12 13 14 15 16 17 19
+No valid moves available.
+Player 2 cannot make a valid move. Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of which numbers have been used to anticipate your opponent's options.
+- **Control the Current Number**: Choose numbers that limit your opponent's possible moves.
+- **Avoid Giving Options**: Select numbers that have fewer factors or multiples remaining in the pool.
+  
+By understanding the relationships between the numbers and strategically selecting them, skilled players can increase their chances of winning.
+
+---
+
+Enjoy playing **Chain Reaction**, and may the most strategic player win!

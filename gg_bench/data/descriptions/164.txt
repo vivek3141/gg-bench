@@ -1,0 +1,265 @@
+# Rule Book for "Pathway"
+
+---
+
+**Objective:**
+
+Be the first player to create an unbroken path connecting your designated sides of a 5x5 grid by strategically claiming cells. Block your opponent's progress while advancing your own to achieve victory.
+
+---
+
+**Setup:**
+
+1. **Grid Initialization:**
+   - The game is played on a 5x5 grid consisting of 25 cells.
+   - Rows are numbered from 1 to 5, starting from the bottom (row 1) to the top (row 5).
+   - Columns are numbered from 1 to 5, starting from the left (column 1) to the right (column 5).
+   - All cells are initially unclaimed and are identified by their coordinates (row, column).
+
+2. **Player Assignment:**
+   - **Player 1** is assigned the task of creating a vertical path connecting the bottom row to the top row.
+   - **Player 2** is assigned the task of creating a horizontal path connecting the leftmost column to the rightmost column.
+
+3. **Starting Conditions:**
+   - Decide who takes the first turn (e.g., by coin toss or mutual agreement).
+   - Both players have no claimed cells at the start.
+
+---
+
+**Game Components:**
+
+1. **Grid Cells:**
+   - Each cell can be in one of three states:
+     - **Unclaimed (Empty):** Available for either player to claim.
+     - **Claimed by Player 1:** Marked with 'X' or another distinct symbol.
+     - **Claimed by Player 2:** Marked with 'O' or a different distinct symbol.
+
+2. **Player Markers:**
+   - Symbols or identifiers used to mark claimed cells on the grid.
+   - **Player 1:** Uses 'X'.
+   - **Player 2:** Uses 'O'.
+
+3. **Grid Coordinates:**
+   - Used for identifying and selecting cells during gameplay.
+   - Format: (row, column), e.g., (3,2).
+
+---
+
+**Turns:**
+
+1. **Turn Order:**
+   - Players alternate turns throughout the game.
+   - The player designated to go first makes the initial move.
+
+2. **Turn Actions:**
+   - On your turn, perform the following steps:
+     1. **Input Selection:**
+        - Enter the coordinates of an unclaimed cell you wish to claim.
+     2. **Validation:**
+        - Ensure the selected cell is within the grid and unclaimed.
+        - If the cell is already claimed or invalid, you must choose a different cell.
+     3. **Claiming the Cell:**
+        - Mark the cell with your designated symbol on the grid.
+     4. **Grid Update:**
+        - Display the updated grid to both players.
+
+3. **Turn Progression:**
+   - The turn passes to the other player after a valid cell has been claimed and the grid updated.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Claiming Cells:**
+   - Only one cell may be claimed per turn.
+   - A cell, once claimed, cannot be claimed again or changed.
+
+2. **Path Formation:**
+   - **Player 1's Objective (Vertical Path):**
+     - Create a continuous path of vertically or horizontally adjacent cells connecting any cell in the bottom row (row 1) to any cell in the top row (row 5).
+   - **Player 2's Objective (Horizontal Path):**
+     - Create a continuous path of vertically or horizontally adjacent cells connecting any cell in the leftmost column (column 1) to any cell in the rightmost column (column 5).
+   - **Adjacency Rules:**
+     - Cells are considered adjacent if they are directly above, below, or beside each other (no diagonal connections).
+
+3. **Blocking:**
+   - Players may claim cells that could be used by their opponent to block their path.
+   - Strategic blocking is a key element of gameplay.
+
+4. **Winning the Game:**
+   - The first player to complete their respective path wins immediately.
+   - A completed path must be continuous and unbroken, following the adjacency rules.
+
+5. **Continuous Play:**
+   - If neither player has completed their path and unclaimed cells remain, the game continues.
+   - The game cannot end in a draw due to the grid size and path requirements.
+
+---
+
+**Scoring:**
+
+- **Victory:** Achieved by forming the required continuous path before your opponent.
+- **No Points System:** The game is won outright; no point tracking is necessary.
+- **Strategic Depth:** Success depends on strategic claiming and blocking rather than accumulating points.
+
+---
+
+**Examples:**
+
+*Example Game Playthrough:*
+
+1. **Initial Grid State:**
+
+   ```
+     5 [ ][ ][ ][ ][ ]
+     4 [ ][ ][ ][ ][ ]
+     3 [ ][ ][ ][ ][ ]
+     2 [ ][ ][ ][ ][ ]
+     1 [ ][ ][ ][ ][ ]
+        1  2  3  4  5
+   ```
+
+2. **Player Turns:**
+
+   - **Player 1's Turn:**
+     - Claims cell (1,3).
+     - Grid Updates:
+       ```
+         5 [ ][ ][ ][ ][ ]
+         4 [ ][ ][ ][ ][ ]
+         3 [ ][ ][ ][ ][ ]
+         2 [ ][ ][ ][ ][ ]
+         1 [ ][ ][X][ ][ ]
+            1  2  3  4  5
+       ```
+
+   - **Player 2's Turn:**
+     - Claims cell (3,1).
+     - Grid Updates:
+       ```
+         5 [ ][ ][ ][ ][ ]
+         4 [ ][ ][ ][ ][ ]
+         3 [O][ ][ ][ ][ ]
+         2 [ ][ ][ ][ ][ ]
+         1 [ ][ ][X][ ][ ]
+            1  2  3  4  5
+       ```
+
+   - **Player 1's Turn:**
+     - Claims cell (2,3).
+     - Grid Updates:
+       ```
+         5 [ ][ ][ ][ ][ ]
+         4 [ ][ ][ ][ ][ ]
+         3 [O][ ][ ][ ][ ]
+         2 [ ][ ][X][ ][ ]
+         1 [ ][ ][X][ ][ ]
+            1  2  3  4  5
+       ```
+
+   - **Player 2's Turn:**
+     - Claims cell (3,2).
+     - Grid Updates:
+       ```
+         5 [ ][ ][ ][ ][ ]
+         4 [ ][ ][ ][ ][ ]
+         3 [O][O][ ][ ][ ]
+         2 [ ][ ][X][ ][ ]
+         1 [ ][ ][X][ ][ ]
+            1  2  3  4  5
+       ```
+
+   - **Player 1's Turn:**
+     - Claims cell (3,3).
+     - Grid Updates:
+       ```
+         5 [ ][ ][ ][ ][ ]
+         4 [ ][ ][ ][ ][ ]
+         3 [O][O][X][ ][ ]
+         2 [ ][ ][X][ ][ ]
+         1 [ ][ ][X][ ][ ]
+            1  2  3  4  5
+       ```
+
+   - **Player 1 now has a connected path from row 1 to row 3 in column 3.**
+
+   - **Game Continues:**
+     - **Players continue claiming cells, blocking and advancing their paths.**
+
+3. **Endgame Scenario:**
+
+   - **Player 1's Winning Move:**
+     - Claims cell (5,3).
+     - Grid Updates:
+       ```
+         5 [ ][ ][X][ ][ ]
+         4 [ ][ ][ ][ ][ ]
+         3 [O][O][X][ ][ ]
+         2 [ ][ ][X][ ][ ]
+         1 [ ][ ][X][ ][ ]
+            1  2  3  4  5
+       ```
+
+   - **Player 1 has completed a continuous vertical path from the bottom row to the top row in column 3 and wins the game.**
+
+---
+
+**Command-Line Interaction Examples:**
+
+- **Prompting the Player:**
+  ```
+  Player 1 (X), enter the coordinates of the cell to claim (row column): 1 3
+  ```
+
+- **Invalid Move Handling:**
+  ```
+  Player 2 (O), enter the coordinates of the cell to claim (row column): 1 3
+  Error: Cell (1,3) is already claimed. Please select a different cell.
+  Player 2 (O), enter the coordinates of the cell to claim (row column): 3 1
+  ```
+
+- **Displaying the Grid:**
+  ```
+  Current Grid:
+     5 [ ][ ][ ][ ][ ]
+     4 [ ][ ][ ][ ][ ]
+     3 [O][ ][ ][ ][ ]
+     2 [ ][ ][ ][ ][ ]
+     1 [ ][ ][X][ ][ ]
+        1  2  3  4  5
+  ```
+
+---
+
+**Strategic Tips:**
+
+- **Balancing Offense and Defense:**
+  - While focusing on building your path, keep an eye on your opponent's progress.
+  - Use turns to block key cells that your opponent needs for their path.
+
+- **Key Positions:**
+  - Control of central cells can offer more options for expansion and blocking.
+  - Corners and edges can be strategic for blocking your opponent's paths.
+
+- **Planning Ahead:**
+  - Think several moves ahead to anticipate your opponent's strategy.
+  - Reserve critical cells for future turns if they are not immediately threatened.
+
+---
+
+**Game Variations:**
+
+- **Increased Grid Size:**
+  - For a longer game with more complexity, use a larger grid (e.g., 7x7).
+  
+- **Diagonal Connections:**
+  - Allow diagonal connections to increase the number of possible paths.
+
+- **Random Obstacles:**
+  - Introduce randomly placed blocked cells at the start of the game to add unpredictability.
+
+---
+
+By following these rules and guidelines, players can enjoy a competitive and strategic game of "Pathway," testing their tactical planning and foresight in a race to connect their path before their opponent. The simplicity of the rules combined with the depth of strategy makes "Pathway" an engaging game that can be easily implemented in a command-line interface.
+
+---

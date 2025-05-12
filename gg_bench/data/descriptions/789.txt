@@ -1,0 +1,230 @@
+# Game Title: Double or Nothing
+
+## Objective
+
+Be the first player to reach the exact target number **31** by applying allowed operations to a shared cumulative number. Players take turns performing operations to the cumulative number, aiming to be the player who reaches the target number exactly.
+
+---
+
+## Setup
+
+- **Starting Number**: The game begins with a shared cumulative number set to **1**.
+- **Target Number**: The goal is to reach the cumulative number **31**.
+- **Players**: Two players participate, taking turns alternately.
+
+---
+
+## Game Components
+
+- **Cumulative Number**: A shared number that starts at **1** and is modified by players during their turns.
+- **Allowed Operations**:
+  - **Double**: Multiply the cumulative number by 2.
+  - **Add One**: Add 1 to the cumulative number.
+
+---
+
+## Turns
+
+1. **Determine the First Player**: Players decide who goes first (e.g., by coin toss or mutual agreement).
+2. **Turn Structure**:
+   - **Player's Turn**:
+     - The player is informed of the current cumulative number.
+     - The player chooses one of the allowed operations.
+     - The chosen operation is applied to the cumulative number.
+     - The updated cumulative number is announced.
+   - **Turn Progression**: Turns alternate between the two players until the game ends.
+
+---
+
+## Rules and Mechanics
+
+### Allowed Operations
+
+- **Double**:
+  - Multiply the cumulative number by 2.
+  - Example: If the cumulative number is 5, doubling results in 10.
+- **Add One**:
+  - Add 1 to the cumulative number.
+  - Example: If the cumulative number is 5, adding one results in 6.
+
+### Valid Moves
+
+- **Within Target**: The resulting cumulative number must **not exceed** the target number (31).
+- **No Moves Available**: If both operations would result in exceeding the target number, the player **cannot make a valid move** and loses the game.
+
+### Winning the Game
+
+- **Exact Match**: The player whose move results in the cumulative number being exactly **31** wins the game.
+- **Forced Loss**: If a player cannot make a valid move on their turn, they lose, and the other player wins.
+
+---
+
+## Scoring
+
+- **Victory**: The winner is the player who reaches the target number of 31 or who forces the opponent into a position with no valid moves.
+- **No Point System**: There is no point accumulation. Each game results in a win or loss.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Starting State**:
+
+- Cumulative Number: **1**
+- Target Number: **31**
+
+**Turn 1**:
+
+- **Player 1's Turn**:
+  - Current Number: 1
+  - Options:
+    - 1. Double (1 x 2 = 2)
+    - 2. Add One (1 + 1 = 2)
+  - Player 1 chooses to **Double**.
+  - New Cumulative Number: **2**
+
+**Turn 2**:
+
+- **Player 2's Turn**:
+  - Current Number: 2
+  - Options:
+    - 1. Double (2 x 2 = 4)
+    - 2. Add One (2 + 1 = 3)
+  - Player 2 chooses to **Double**.
+  - New Cumulative Number: **4**
+
+**Turn 3**:
+
+- **Player 1's Turn**:
+  - Current Number: 4
+  - Options:
+    - 1. Double (4 x 2 = 8)
+    - 2. Add One (4 + 1 = 5)
+  - Player 1 chooses to **Add One**.
+  - New Cumulative Number: **5**
+
+*(Game continues with players making strategic choices.)*
+
+**Winning Turn**:
+
+- **Player 2's Turn**:
+  - Current Number: 30
+  - Options:
+    - 1. Double (Invalid – exceeds 31)
+    - 2. Add One (30 + 1 = 31)
+  - Player 2 chooses to **Add One**.
+  - New Cumulative Number: **31**
+  - **Player 2 wins the game!**
+
+### Example Command-Line Interactions
+
+**Starting the Game**:
+
+```
+Welcome to Double or Nothing!
+Starting number is 1. Target number is 31.
+
+Player 1, it's your turn.
+Current number: 1
+Choose an operation:
+1. Double
+2. Add One
+Enter your choice (1 or 2):
+```
+
+**Sample Turn by Player 1**:
+
+```
+Player 1, it's your turn.
+Current number: 1
+Choose an operation:
+1. Double
+2. Add One
+Enter your choice (1 or 2): 1
+You chose to double the number.
+New number is 2.
+```
+
+**Sample Turn by Player 2**:
+
+```
+Player 2, it's your turn.
+Current number: 2
+Choose an operation:
+1. Double
+2. Add One
+Enter your choice (1 or 2): 2
+You chose to add one.
+New number is 3.
+```
+
+**Winning Turn**:
+
+```
+Player 2, it's your turn.
+Current number: 30
+Choose an operation:
+1. Double (Not valid – would exceed target number)
+2. Add One
+Enter your choice (1 or 2): 2
+You chose to add one.
+New number is 31.
+Congratulations, Player 2! You reached the target number and won the game!
+```
+
+**Invalid Move Scenario**:
+
+```
+Player 1, it's your turn.
+Current number: 29
+Choose an operation:
+1. Double (Not valid – would exceed target number)
+2. Add One
+Enter your choice (1 or 2): 1
+Invalid choice. Doubling the number would exceed the target number.
+Please choose a valid operation.
+Choose an operation:
+2. Add One
+Enter your choice (2): 2
+You chose to add one.
+New number is 30.
+```
+
+**No Valid Moves Scenario**:
+
+```
+Player 1, it's your turn.
+Current number: 31
+You have no valid moves. Any operation would exceed the target number.
+Player 1 loses. Player 2 wins the game!
+```
+
+---
+
+## Strategic Considerations
+
+- **Plan Ahead**: Anticipate the results of both your and your opponent's possible moves.
+- **Control Key Numbers**: Aim to force the cumulative number onto values from which you can control the game's outcome.
+- **Avoid Trap Numbers**: Be wary of numbers that give your opponent a winning advantage on their next turn.
+
+---
+
+## Additional Rules
+
+- **Fair Play**: Players must choose valid operations. Invalid choices must be corrected immediately.
+- **Dispute Resolution**: In case of disputes, review the sequence of moves based on the rules to determine the correct outcome.
+- **Adjustable Difficulty**:
+  - **Target Number Variation**: Players can agree to change the target number to adjust the game's difficulty or length.
+  - **Operation Modification**: Players can introduce new allowed operations to add complexity (e.g., subtract one, multiply by three).
+
+---
+
+## Conclusion
+
+Double or Nothing is a simple yet strategic game that requires players to think ahead and make calculated decisions based on the current cumulative number and the target. It's easy to play in a command-line interface and ensures a quick game with a clear winner, allowing skilled players to consistently outmaneuver their opponents.
+
+---
+
+Enjoy the game and may the best strategist win!

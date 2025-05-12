@@ -1,0 +1,6 @@
+In the `Grid Conquest` game environment, the action space indices correspond to specific positions on the grid using a flattened index system. For a grid of size `N x N`, an action space index represents a move to claim a cell at position `(row, column)` on the grid. The mapping from an index `action` to grid coordinates `(row, column)` is given by:
+
+- `row = action // N` (integer division to find the row index).
+- `column = action % N` (modulo operation to find the column index).
+
+This approach enables players to select any unclaimed cell on the grid by inputting an action index ranging from `0` to `N*N - 1`, where the index corresponds to cell positions in row-major order, starting from the top-left corner of the grid.

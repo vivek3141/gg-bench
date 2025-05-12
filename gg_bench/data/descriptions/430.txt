@@ -1,0 +1,180 @@
+# Divisor Duel
+
+## Objective
+
+Be the player who reduces the shared positive integer **N** to exactly **1** by strategically dividing or subtracting according to the game's rules. The player who performs the action that results in **N** becoming **1** wins the game.
+
+## Setup
+
+1. **Starting Number Selection**: Both players agree on a starting positive integer **N**, where **N > 1**. This number will be used as the initial shared number for the game.
+2. **Determine Turn Order**: Decide which player will take the first turn. This can be done by mutual agreement, flipping a coin, or any other random method.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer greater than **1** that both players will manipulate during their turns. The value of **N** changes as the game progresses.
+- **Proper Divisors**: Integers **d** such that **1 < d < N** and **d** evenly divides **N** (i.e., **N** mod **d** equals **0**).
+- **Players**: Two participants who will take turns modifying the shared number **N** according to the game's rules.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns, starting with the player determined during setup.
+   - On each turn, the active player must perform one of the allowed actions based on the current value of **N**.
+
+2. **Player Actions**:
+   - **If N is Composite (Non-Prime and Greater Than 1)**:
+     - The player must choose a proper divisor **d** of **N**.
+     - Then, divide **N** by **d** (**N = N / d**).
+   - **If N is Prime**:
+     - The player must subtract **1** from **N** (**N = N - 1**).
+
+3. **Updating N**:
+   - After the player's action, **N** is updated to the new value.
+   - The updated **N** is used by the next player on their turn.
+
+## Rules and Mechanics
+
+- **Proper Divisors**:
+  - A proper divisor of **N** is any integer **d** where **1 < d < N** and **d** divides **N** without leaving a remainder.
+  - The player cannot choose **1** or **N** as a divisor when **N** is composite.
+
+- **Composite and Prime Numbers**:
+  - **Composite Number**: A positive integer greater than **1** that has at least one positive divisor other than **1** and itself.
+  - **Prime Number**: A positive integer greater than **1** that has no positive divisors other than **1** and itself.
+
+- **Valid Moves**:
+  - **Division Move**: When **N** is composite, dividing **N** by a proper divisor is the only allowed action.
+  - **Subtraction Move**: When **N** is prime, subtracting **1** is the only allowed action.
+
+- **Game End Condition**:
+  - The game ends when **N** is reduced to exactly **1**.
+  - The player whose action results in **N = 1** is declared the winner.
+
+- **Invalid Moves**:
+  - If a player cannot perform a valid action on their turn (which should not occur if rules are followed), they forfeit the game.
+  - Players must ensure that after their move, **N** remains a positive integer greater than or equal to **1**.
+
+## Scoring
+
+- **Winning the Game**: The primary goal is to win the game by being the player who reduces **N** to **1** on their turn.
+- **No Points System**: There is no point or scoring system beyond determining the winner of each game.
+- **Match Play (Optional)**:
+  - Players may decide to play multiple rounds.
+  - Keep track of the number of games each player wins.
+  - The player with the most game wins after a set number of rounds is the overall winner.
+
+## Examples
+
+Below are example scenarios to illustrate how the game is played in practice.
+
+### Example 1: Starting with N = 12
+
+#### Initial Setup
+
+- **N = 12**
+- **Player 1** starts the game.
+
+#### Game Play
+
+1. **Player 1's Turn**:
+   - **N is 12**, which is composite.
+   - Proper divisors of 12 (excluding 1 and 12): **2, 3, 4, 6**.
+   - Player 1 chooses **d = 6**.
+   - **N = 12 / 6 = 2**.
+
+2. **Player 2's Turn**:
+   - **N is 2**, which is prime.
+   - Player 2 must subtract **1**.
+   - **N = 2 - 1 = 1**.
+   - **Player 2 wins** by reducing **N** to **1**.
+
+### Example 2: Starting with N = 15
+
+#### Initial Setup
+
+- **N = 15**
+- **Player 1** starts the game.
+
+#### Game Play
+
+1. **Player 1's Turn**:
+   - **N is 15**, which is composite.
+   - Proper divisors of 15: **3, 5**.
+   - Player 1 chooses **d = 5**.
+   - **N = 15 / 5 = 3**.
+
+2. **Player 2's Turn**:
+   - **N is 3**, which is prime.
+   - Player 2 subtracts **1**.
+   - **N = 3 - 1 = 2**.
+
+3. **Player 1's Turn**:
+   - **N is 2**, which is prime.
+   - Player 1 subtracts **1**.
+   - **N = 2 - 1 = 1**.
+   - **Player 1 wins** by reducing **N** to **1**.
+
+### Example 3: Starting with N = 18
+
+#### Initial Setup
+
+- **N = 18**
+- **Player 1** starts the game.
+
+#### Game Play
+
+1. **Player 1's Turn**:
+   - **N is 18**, which is composite.
+   - Proper divisors of 18: **2, 3, 6, 9**.
+   - Player 1 chooses **d = 9**.
+   - **N = 18 / 9 = 2**.
+
+2. **Player 2's Turn**:
+   - **N is 2**, which is prime.
+   - Player 2 subtracts **1**.
+   - **N = 2 - 1 = 1**.
+   - **Player 2 wins** by reducing **N** to **1**.
+
+### Command-Line Interaction Example
+
+Here's how the game might look in a command-line interface:
+
+```
+Game Start!
+Enter starting number N (>1): 15
+
+Player 1's turn.
+Current N: 15
+N is composite.
+Available divisors: 3, 5
+Enter a proper divisor of N: 5
+N is now: 3
+
+Player 2's turn.
+Current N: 3
+N is prime.
+Subtracting 1 from N.
+N is now: 2
+
+Player 1's turn.
+Current N: 2
+N is prime.
+Subtracting 1 from N.
+N is now: 1
+
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Choosing Proper Divisors Wisely**: When **N** is composite, consider the resulting **N** after division. Aim to force your opponent into a position where they have to face a prime **N**, limiting their options.
+- **Anticipate Prime Numbers**: If you can foresee that dividing **N** by a certain proper divisor will leave a prime number for your opponent, it might be advantageous.
+- **Endgame Planning**: Keep track of the sequence of moves that will lead **N** to **1** and try to control the flow so that you make the final move.
+
+## Game Complexity
+
+While the rules are simple, the game offers strategic depth. Players must analyze the factors of the current **N**, anticipate subsequent prime numbers, and plan ahead to control the game's progression. Mastery comes with understanding number properties and predicting the opponent's potential moves.
+
+---
+
+Enjoy the challenge of **Divisor Duel**, and may the best strategist win!

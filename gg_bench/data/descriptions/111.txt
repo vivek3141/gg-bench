@@ -1,0 +1,181 @@
+# Bit Battle Rule Book
+
+## Objective
+
+**Bit Battle** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to manipulate a shared 4-bit binary number so that its decimal equivalent is a multiple of 5. The player who achieves this wins the game.
+
+---
+
+## Setup
+
+1. **Players**: Two players, referred to as **Player 1** and **Player 2**.
+2. **Initial State**: A shared 4-bit binary number initialized to `0000`.
+3. **Turn Order**: Decide who takes the first turn (e.g., by a coin toss). Players then alternate turns.
+
+---
+
+## Game Components
+
+- **Shared Binary Number**:
+  - A 4-bit number represented as `b3 b2 b1 b0`, where each `b` is a bit that can be `0` or `1`.
+  - **Bit Positions**: From left to right, the bits are in positions 3 to 0.
+  - **Initial Value**: All bits start at `0`, so the initial binary number is `0000`.
+
+- **Command-Line Interface**:
+  - Players interact with the game by inputting commands to flip bits.
+  - The game displays the current state of the binary number after each turn.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Bit Selection**:
+   - On your turn, choose one bit in the shared binary number that is currently set to `0`.
+   - Bits are identified by their positions (3, 2, 1, 0).
+
+2. **Action**:
+   - Flip the selected bit from `0` to `1`.
+   - You cannot flip a bit that is already set to `1`.
+
+3. **Result Evaluation**:
+   - After flipping the bit, the binary number is converted to its decimal equivalent.
+   - Check if the decimal number is a multiple of 5.
+
+4. **Turn Progression**:
+   - If the decimal number is not a multiple of 5, the turn passes to the other player.
+   - If the decimal number is a multiple of 5, the player who made the move wins the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Bit Flipping**:
+   - You must flip exactly one bit from `0` to `1` on your turn.
+   - Bits remain `1` once flipped; you cannot flip a bit back to `0`.
+
+2. **Winning the Game**:
+   - **Immediate Win**: If after your move the decimal equivalent is divisible by 5, you win.
+   - **Forced Loss**: If you have no valid moves on your turn (no bits set to `0`), you lose, and your opponent wins.
+
+3. **No Draws**:
+   - The game cannot end in a draw. With only four bits and mandatory moves, a winner will always be determined.
+
+4. **Invalid Moves**:
+   - Attempting to flip a bit that is already `1` is invalid.
+   - If an invalid move is made, the player must choose a valid move instead.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - The winner is the player who first creates a binary number that is a multiple of 5 after flipping a bit on their turn.
+  - Alternatively, if a player cannot make a valid move, they lose, and the other player wins.
+
+- **Losing**:
+  - The player who fails to create a multiple of 5 and has no bits left to flip on their turn loses.
+
+---
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Initial State**: `0000` (Decimal 0)
+
+**Turn 1: Player 1**
+
+- **Action**: Flips bit at position 2.
+- **Binary Number**: `0100` (Decimal 4)
+- **Result**: 4 is not divisible by 5.
+
+**Turn 2: Player 2**
+
+- **Action**: Flips bit at position 3.
+- **Binary Number**: `1100` (Decimal 12)
+- **Result**: 12 is not divisible by 5.
+
+**Turn 3: Player 1**
+
+- **Action**: Flips bit at position 0.
+- **Binary Number**: `1101` (Decimal 13)
+- **Result**: 13 is not divisible by 5.
+
+**Turn 4: Player 2**
+
+- **Action**: Flips bit at position 1.
+- **Binary Number**: `1111` (Decimal 15)
+- **Result**: 15 is divisible by 5.
+
+**Outcome**: Player 2 wins.
+
+---
+
+### Example 2: Strategic Play
+
+**Initial State**: `0000` (Decimal 0)
+
+**Turn 1: Player 1**
+
+- **Action**: Flips bit at position 0.
+- **Binary Number**: `0001` (Decimal 1)
+- **Result**: 1 is not divisible by 5.
+
+**Turn 2: Player 2**
+
+- **Action**: Flips bit at position 2.
+- **Binary Number**: `0101` (Decimal 5)
+- **Result**: 5 is divisible by 5.
+
+**Outcome**: Player 2 wins.
+
+**Explanation**: Player 2 saw an opportunity to create a multiple of 5 by flipping bit 2, resulting in a decimal value of 5.
+
+---
+
+### Command-Line Interaction Sample
+
+```
+Current Binary Number: 0000 (Decimal 0)
+
+Player 1's turn.
+Available bits to flip: 3, 2, 1, 0
+Enter bit position to flip: 1
+
+Binary Number after Player 1's move: 0010 (Decimal 2)
+2 is not divisible by 5.
+
+---
+
+Player 2's turn.
+Available bits to flip: 3, 2, 0
+Enter bit position to flip: 3
+
+Binary Number after Player 2's move: 1010 (Decimal 10)
+10 is divisible by 5.
+
+Player 2 wins!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider the decimal value after each possible move and anticipate your opponent's options.
+- **Forced Moves**: Try to force your opponent into a position where they cannot avoid setting up a win for you.
+- **Binary to Decimal Conversion**:
+  - Understand how flipping certain bits affects the decimal value.
+  - Bit positions represent the following decimal values:
+    - Position 3: 8
+    - Position 2: 4
+    - Position 1: 2
+    - Position 0: 1
+- **Key Decimal Targets**: Aim for intermediate decimal values that give you a winning opportunity on your next turn.
+
+---
+
+## Conclusion
+
+**Bit Battle** is a fast-paced game combining simplicity and strategic depth. With only four bits and straightforward rules, it's easy to learn and quick to play. Players who develop strategies based on binary numbers and anticipate their opponent's moves will excel. Enjoy the challenge of flipping bits and racing to reach a multiple of 5 before your opponent does!

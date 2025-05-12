@@ -1,0 +1,206 @@
+# Sequence Capture
+
+## Objective
+
+**Sequence Capture** is a strategic two-player game where the objective is to be the first player to collect three numbers that form a valid arithmetic sequence. An arithmetic sequence is a set of numbers where the difference between consecutive numbers is consistent. The sequence can be in any order within your collection, and the common difference can be positive or negative.
+
+## Setup
+
+1. **Number Pool**: Arrange the numbers **1** through **9** in ascending order in the center of the playing area (or display them in the command-line interface).
+
+    ```
+    Number Pool: 1 2 3 4 5 6 7 8 9
+    ```
+
+2. **Player Collections**: Each player has an empty collection to store their selected numbers.
+
+3. **Determine First Player**: Decide who will take the first turn (e.g., by agreement or a random method).
+
+## Game Components
+
+- **Number Pool**: A shared list of numbers from **1** to **9**.
+  
+- **Player Collections**: Individual lists where each player's selected numbers are stored.
+
+- **Command-Line Interface**: Players interact with the game by entering commands to select numbers.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+
+- **Player Actions**: On your turn, select **one number** from the Number Pool that has not been previously chosen.
+
+- **Updating the Game State**:
+  - Remove the selected number from the Number Pool.
+  - Add the selected number to your collection.
+  - Display the updated Number Pool and both players' collections.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+
+   - Only numbers present in the Number Pool can be selected.
+   - Each number can be selected **only once** during the game.
+   - Players cannot skip their turn or pass; a number must be selected if available.
+
+2. **Arithmetic Sequence Criteria**:
+
+   - A valid arithmetic sequence consists of **three numbers** where the difference between consecutive numbers is the same.
+   - The common difference can be positive or negative.
+   - The numbers in your collection do not need to be in any specific order.
+   - Examples of valid sequences:
+     - **2, 4, 6** (common difference of **+2**)
+     - **9, 6, 3** (common difference of **-3**)
+     - **5, 5, 5** (common difference of **0**)
+
+3. **Winning the Game**:
+
+   - The first player to have **three numbers** in their collection that form a valid arithmetic sequence **wins immediately**.
+   - If all numbers from the Number Pool are exhausted and neither player has achieved this, the game continues until a valid sequence is formed from existing collections (this will always be possible before all numbers are exhausted).
+
+4. **Observation and Strategy**:
+
+   - Players can see which numbers their opponent has selected.
+   - Strategic blocking is allowed; you may select a number to prevent your opponent from completing their sequence.
+
+## Scoring
+
+- **Victory**: Achieving a valid arithmetic sequence of three numbers results in an immediate win.
+- There is no point scoring system; the game is won by satisfying the winning condition before your opponent.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial State
+
+```
+Number Pool: 1 2 3 4 5 6 7 8 9
+Player 1 Collection: (empty)
+Player 2 Collection: (empty)
+```
+
+#### Turns
+
+1. **Player 1's Turn**:
+
+   - Selects **5**.
+   - Updates:
+     ```
+     Number Pool: 1 2 3 4 6 7 8 9
+     Player 1 Collection: 5
+     Player 2 Collection: (empty)
+     ```
+
+2. **Player 2's Turn**:
+
+   - Selects **3**.
+   - Updates:
+     ```
+     Number Pool: 1 2 4 6 7 8 9
+     Player 1 Collection: 5
+     Player 2 Collection: 3
+     ```
+
+3. **Player 1's Turn**:
+
+   - Selects **7**.
+   - Updates:
+     ```
+     Number Pool: 1 2 4 6 8 9
+     Player 1 Collection: 5 7
+     Player 2 Collection: 3
+     ```
+
+4. **Player 2's Turn**:
+
+   - Selects **6**.
+   - Updates:
+     ```
+     Number Pool: 1 2 4 8 9
+     Player 1 Collection: 5 7
+     Player 2 Collection: 3 6
+     ```
+
+5. **Player 1's Turn**:
+
+   - Selects **9**.
+   - Updates:
+     ```
+     Number Pool: 1 2 4 8
+     Player 1 Collection: 5 7 9
+     Player 2 Collection: 3 6
+     ```
+
+   - **Player 1 checks for an arithmetic sequence**:
+     - Sequence: **5, 7, 9** (common difference of **+2**).
+     - **Player 1 wins**.
+
+### Winning Scenario Explanation
+
+- **Player 1's Numbers**: 5, 7, 9
+- **Arithmetic Sequence**: Yes (common difference of +2)
+- **Conclusion**: Player 1 wins by forming the sequence 5-7-9.
+
+## Command-Line Interaction Example
+
+Below is an example of how the game might be played in a command-line interface.
+
+### Starting the Game
+
+```
+Welcome to Sequence Capture!
+
+Number Pool: 1 2 3 4 5 6 7 8 9
+Player 1 Collection: 
+Player 2 Collection: 
+
+Player 1, select a number from the pool: 5
+```
+
+### After Each Turn
+
+```
+Number Pool: 1 2 3 4 6 7 8 9
+Player 1 Collection: 5
+Player 2 Collection: 
+
+Player 2, select a number from the pool: 3
+
+Number Pool: 1 2 4 6 7 8 9
+Player 1 Collection: 5
+Player 2 Collection: 3
+
+Player 1, select a number from the pool: 7
+
+Number Pool: 1 2 4 6 8 9
+Player 1 Collection: 5 7
+Player 2 Collection: 3
+
+... (game continues) ...
+
+Player 1, select a number from the pool: 9
+
+Number Pool: 1 2 4 8
+Player 1 Collection: 5 7 9
+Player 2 Collection: 3 6
+
+Congratulations, Player 1! You've formed an arithmetic sequence: 5, 7, 9.
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of which numbers you need to complete your sequence.
+
+- **Block Opponent**: Pay attention to your opponent's selections and pick numbers they may need.
+
+- **Flexibility**: Since sequences can have positive or negative common differences, consider multiple sequence possibilities with your numbers.
+
+- **Common Differences**: Remember that a common difference of 0 (e.g., 4, 4, 4) is valid if multiple instances of a number are available in the pool.
+
+## Conclusion
+
+Sequence Capture is a quick and engaging game that tests your strategic planning and observational skills. By anticipating your opponent's moves and carefully selecting numbers that advance your goals while hindering theirs, you can gain a competitive edge and secure victory.
+
+Happy gaming!

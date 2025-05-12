@@ -1,0 +1,152 @@
+# Factor Chain
+
+## Objective
+
+**Be the last player able to add a number to the Factor Chain.**
+
+In *Factor Chain*, two players take turns adding numbers to a chain following specific mathematical rules. The goal is to be the last player to make a valid move by strategically selecting numbers that extend the chain while limiting your opponent's options.
+
+## Setup
+
+1. **Starting Chain**: Begin the game with the chain containing only the number **1**.
+2. **Number Pool**: Prepare a pool of numbers from **2** to **20**. Each number can be used only once in the game.
+3. **Determine First Player**: Decide who will take the first turn (e.g., by flipping a coin).
+
+## Game Components
+
+- **Chain**: A sequence of numbers that grows as players add valid numbers.
+- **Number Pool**: Numbers **2** through **20**, available for players to select during their turns.
+- **Players**: Two participants who alternate turns, referred to as Player 1 and Player 2.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with Player 1.
+2. **Action on Turn**:
+   - **Select a Number**: Choose an unused number from the number pool.
+   - **Valid Move**: The selected number must be either a **factor** or a **multiple** of the **last number** in the chain.
+   - **Add to Chain**: Place the selected number at the end of the chain.
+3. **Proceeding Turns**: The next player repeats the action, using the updated chain and available numbers.
+
+## Rules and Mechanics
+
+- **Valid Numbers**:
+  - **Factors**: Numbers that divide evenly into the last number of the chain (excluding 1 and the number itself if already used).
+  - **Multiples**: Numbers that the last number of the chain divides evenly into.
+- **Number Usage**:
+  - **Single Use**: Once a number is added to the chain, it is removed from the number pool and cannot be selected again.
+- **Ending the Game**:
+  - **No Valid Moves**: If a player cannot find a valid number to add on their turn, they lose.
+  - **Winning the Game**: The opposing player wins when their opponent cannot make a valid move.
+
+## Scoring
+
+- **Victory**: The player who successfully adds a number when their opponent cannot make a valid move wins the game.
+- **No Points System**: There are no points; the game outcome is win or loss per round.
+- **Match Play**: Players can decide to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Example Gameplay
+
+**Initial Setup**:
+
+- Chain: `[1]`
+- Number Pool: `{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}`
+
+### Turn-by-Turn Example
+
+1. **Player 1's Turn**:
+   - **Last Number in Chain**: `1`
+   - **Possible Choices**: Any number (since all numbers are multiples of 1)
+   - **Selects**: `2`
+   - **Chain Now**: `[1, 2]`
+   - **Updated Number Pool**: `{3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}`
+
+2. **Player 2's Turn**:
+   - **Last Number in Chain**: `2`
+   - **Possible Choices**:
+     - **Factors of 2**: `2` (used), `1` (ignored)
+     - **Multiples of 2**: `4, 6, 8, 10, 12, 14, 16, 18, 20`
+   - **Selects**: `4`
+   - **Chain Now**: `[1, 2, 4]`
+   - **Updated Number Pool**: `{3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}`
+
+3. **Player 1's Turn**:
+   - **Last Number in Chain**: `4`
+   - **Possible Choices**:
+     - **Factors of 4**: `2` (used), `4` (used)
+     - **Multiples of 4**: `8, 12, 16, 20`
+   - **Selects**: `8`
+   - **Chain Now**: `[1, 2, 4, 8]`
+   - **Updated Number Pool**: `{3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}`
+
+4. **Player 2's Turn**:
+   - **Last Number in Chain**: `8`
+   - **Possible Choices**:
+     - **Factors of 8**: `2` (used), `4` (used), `8` (used)
+     - **Multiples of 8**: `16`
+   - **Selects**: `16`
+   - **Chain Now**: `[1, 2, 4, 8, 16]`
+   - **Updated Number Pool**: `{3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20}`
+
+5. **Player 1's Turn**:
+   - **Last Number in Chain**: `16`
+   - **Possible Choices**:
+     - **Factors of 16**: `2` (used), `4` (used), `8` (used), `16` (used)
+     - **Multiples of 16**: None within 2-20 that are unused
+   - **No Valid Moves**: Player 1 cannot make a move and loses.
+   - **Winner**: **Player 2**
+
+## Command-Line Interaction Example
+
+Below is a sample interaction illustrating how the game might proceed in a command-line interface:
+
+```
+Welcome to Factor Chain!
+
+Starting Chain: [1]
+Available Numbers: 2-20
+
+Player 1, it's your turn.
+Last Number: 1
+Choose a number to add to the chain: 2
+
+Chain: [1, 2]
+Available Numbers: 3-20 (excluding 2)
+
+Player 2, it's your turn.
+Last Number: 2
+Choose a number to add to the chain: 4
+
+Chain: [1, 2, 4]
+Available Numbers: 3,5-20 (excluding 2,4)
+
+Player 1, it's your turn.
+Last Number: 4
+Choose a number to add to the chain: 8
+
+Chain: [1, 2, 4, 8]
+Available Numbers: 3,5-7,9-20 (excluding 2,4,8)
+
+Player 2, it's your turn.
+Last Number: 8
+Choose a number to add to the chain: 16
+
+Chain: [1, 2, 4, 8, 16]
+Available Numbers: 3,5-7,9-15,17-20 (excluding 2,4,8,16)
+
+Player 1, it's your turn.
+Last Number: 16
+No valid moves available. You have no valid numbers to play.
+Player 2 wins the game!
+```
+
+## Strategic Considerations
+
+- **Plan Ahead**: Anticipate which numbers will be available on your next turn based on the current chain.
+- **Limit Opponent's Options**: Choose numbers that reduce the factors and multiples available for your opponent.
+- **Control the Chain**: Aim to end your turn on a number with few factors or multiples remaining.
+
+## Summary
+
+*Factor Chain* is a strategic game that combines elements of mathematics and foresight. By carefully selecting numbers and considering the consequences of each move, players can outmaneuver their opponent and secure a victory. Quick to learn and play, *Factor Chain* offers depth and challenge, making it an engaging choice for players who enjoy strategic thinking.
+
+Happy gaming!

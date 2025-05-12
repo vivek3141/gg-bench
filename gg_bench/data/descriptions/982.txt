@@ -1,0 +1,193 @@
+**Arithmetic Sequence Game**
+
+---
+
+### **Objective**
+
+The goal of the Arithmetic Sequence Game is for a player to be the first to collect any three numbers that can form an arithmetic sequence. An arithmetic sequence is a sequence of numbers where the difference between consecutive numbers is constant. Players take turns selecting numbers from a shared pool, aiming to create such a sequence with their chosen numbers. If all numbers are chosen and neither player forms an arithmetic sequence, the last player to pick a number loses.
+
+---
+
+### **Setup**
+
+1. **Number Pool**: Create a shared pool of numbers ranging from **1** to **9**, inclusive. These numbers are available for selection by both players.
+2. **Player Designation**: Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by any random method such as flipping a coin.
+3. **Starting Player**: **Player 1** will take the first turn.
+
+---
+
+### **Game Components**
+
+- **Number Pool**: The numbers **1** through **9** form the core components of the game. Each number is unique and can only be selected once.
+- **Player Holdings**: Each player has a personal collection of numbers they've selected from the pool. These numbers are visible to both players throughout the game.
+
+---
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns starting with **Player 1**.
+- **Action on Turn**:
+  - **Select a Number**: On their turn, a player selects one available number from the shared pool.
+  - **Update Holdings**: The selected number is added to the player's personal collection and removed from the pool.
+- **Turn Progression**: After a player selects a number and updates their holdings, it becomes the other player's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+   - Players can only select numbers that are currently available in the shared pool.
+   - Each number from **1** to **9** can only be selected once during the game.
+
+2. **Forming an Arithmetic Sequence**:
+   - An **arithmetic sequence** consists of three numbers where the difference between consecutive numbers is the same. For example, **[2, 4, 6]** or **[5, 5, 5]**.
+   - **Order doesn't matter**: The three numbers forming the sequence can be in any order in a player's holdings.
+   - **Example Sequences**:
+     - **Increasing**: 3, 5, 7 (common difference of 2)
+     - **Decreasing**: 9, 6, 3 (common difference of -3)
+     - **Constant**: 4, 4, 4 (common difference of 0)
+
+3. **Winning the Game**:
+   - The first player to collect any three numbers that form an arithmetic sequence wins immediately.
+   - The sequence must consist of numbers from the player's own holdings only.
+
+4. **Game End Conditions**:
+   - **Win Condition**: A player forms an arithmetic sequence with three of their selected numbers.
+   - **Loss Condition**: If all numbers have been selected and neither player has formed an arithmetic sequence, the **last player to pick a number loses**.
+
+5. **Visibility**:
+   - Players' holdings are **public knowledge**. After each turn, both players should be aware of the numbers selected by each player.
+
+6. **No Repetition**:
+   - Once a number is selected by a player, it cannot be selected again by either player.
+
+---
+
+### **Scoring**
+
+- **Victory**: Winning the game by forming an arithmetic sequence counts as a single win.
+- **Match Play**: Players may agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+### **Example Gameplay**
+
+#### **Example 1: Winning by Forming an Arithmetic Sequence**
+
+1. **Starting Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+2. **Player 1's Turn**:
+   - Selects **5**
+   - **Player 1's Holdings**: [5]
+3. **Player 2's Turn**:
+   - Selects **3**
+   - **Player 2's Holdings**: [3]
+4. **Player 1's Turn**:
+   - Selects **7**
+   - **Player 1's Holdings**: [5, 7]
+5. **Player 2's Turn**:
+   - Selects **1**
+   - **Player 2's Holdings**: [3, 1]
+6. **Player 1's Turn**:
+   - Selects **9**
+   - **Player 1's Holdings**: [5, 7, 9]
+   - **Player 1** checks for an arithmetic sequence:
+     - **Sequence**: 5, 7, 9 (common difference of 2)
+     - **Player 1 Wins!**
+
+#### **Example 2: Winning by Opponent's Last Pick**
+
+1. **Starting Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+2. **Players take turns selecting numbers but neither forms an arithmetic sequence**.
+3. **Final Holdings**:
+   - **Player 1**: [2, 5, 8, 9]
+   - **Player 2**: [1, 3, 4, 6, 7]
+4. **All numbers have been selected**.
+5. **Since neither player has an arithmetic sequence**, the player who picked the last number loses.
+   - **Player 2** picked the last number (**7**).
+   - **Player 2 Loses**, **Player 1 Wins**.
+
+---
+
+### **Command-Line Interaction Example**
+
+#### **Starting the Game**
+
+```
+Welcome to the Arithmetic Sequence Game!
+Numbers available: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Player 1, it's your turn. Please select a number from the available numbers.
+```
+
+#### **Player Turns**
+
+**Player 1's Turn**:
+
+```
+Player 1 selects: 5
+Numbers remaining: 1, 2, 3, 4, 6, 7, 8, 9
+Player 1's numbers: [5]
+Player 2's numbers: []
+```
+
+**Player 2's Turn**:
+
+```
+Player 2 selects: 3
+Numbers remaining: 1, 2, 4, 6, 7, 8, 9
+Player 1's numbers: [5]
+Player 2's numbers: [3]
+```
+
+**Player 1's Turn**:
+
+```
+Player 1 selects: 7
+Numbers remaining: 1, 2, 4, 6, 8, 9
+Player 1's numbers: [5, 7]
+Player 2's numbers: [3]
+```
+
+**Player 2's Turn**:
+
+```
+Player 2 selects: 1
+Numbers remaining: 2, 4, 6, 8, 9
+Player 1's numbers: [5, 7]
+Player 2's numbers: [3, 1]
+```
+
+**Player 1's Turn**:
+
+```
+Player 1 selects: 9
+Numbers remaining: 2, 4, 6, 8
+Player 1's numbers: [5, 7, 9]
+Player 2's numbers: [3, 1]
+Player 1 has formed an arithmetic sequence: 5, 7, 9
+Player 1 Wins!
+```
+
+#### **Game Over**
+
+```
+Congratulations Player 1! You have won the game by forming an arithmetic sequence.
+```
+
+---
+
+### **Strategy Tips**
+
+- **Block Your Opponent**: Keep track of the numbers your opponent selects and anticipate potential sequences they might be forming. If possible, select numbers that prevent them from completing their sequence.
+- **Plan Ahead**: Aim to select numbers that can form multiple sequences. For example, picking numbers like 5 allows for sequences with common differences of both 2 and -2.
+- **Prioritize Middle Numbers**: Middle-range numbers (like 4, 5, 6) are more flexible for forming sequences with different common differences.
+- **Force a Win**: If you can't form a sequence, try to force your opponent into a position where they can't either, ensuring you don't pick the last number.
+
+---
+
+### **Game Summary**
+
+The Arithmetic Sequence Game is a strategic and engaging two-player game that challenges players to think ahead and anticipate their opponent's moves. With simple rules and straightforward gameplay, it's easy to learn but offers depth for those looking to develop winning strategies. The game is quick to play, making it perfect for a brief challenge, and is ideally suited for implementation in a command-line interface.
+
+---
+
+Enjoy the game, and may the best strategist win!

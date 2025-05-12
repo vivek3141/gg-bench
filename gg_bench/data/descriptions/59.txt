@@ -1,0 +1,230 @@
+# Cat and Mouse: A Strategic Chase on the Grid
+
+## Objective
+
+**Cat and Mouse** is a two-player turn-based strategy game played on a 5x5 grid. One player controls the **Cat**, and the other controls the **Mouse**. The primary goal varies depending on the role:
+
+- **Mouse Player**: Navigate the Mouse from its starting position to reach the **Cheese** located at the bottom-right corner of the grid (position 5,5).
+- **Cat Player**: Catch the Mouse before it reaches the Cheese by moving onto the same grid square as the Mouse.
+
+Victory is achieved by:
+
+- **Mouse Player**: Successfully moving the Mouse to the Cheese at position (5,5).
+- **Cat Player**: Moving the Cat onto the Mouse's current position, thereby catching it.
+
+There are no draws in this game; one player will always win by fulfilling their objective.
+
+## Setup
+
+1. **Game Grid**: A 5x5 grid with coordinates ranging from (1,1) at the top-left corner to (5,5) at the bottom-right corner.
+2. **Starting Positions**:
+   - **Mouse**: Begins at the top-left corner at position (1,1).
+   - **Cat**: Begins at the bottom-left corner at position (1,5).
+3. **Cheese**: Placed at the bottom-right corner at position (5,5). This is the Mouse's destination.
+
+## Game Components
+
+1. **Grid**: A virtual 5x5 grid represented in the command-line interface. Each cell is identified by its (x,y) coordinates.
+2. **Mouse** (`M`): Represents the Mouse's current position on the grid.
+3. **Cat** (`C`): Represents the Cat's current position on the grid.
+4. **Cheese** (`X`): The goal position for the Mouse, located at (5,5).
+5. **Empty Cells**: Represented by `.` (dot), indicating unoccupied positions on the grid.
+
+## Turns
+
+- Players alternate turns starting with the **Mouse Player**.
+- During each turn, the active player moves their character according to the movement rules.
+- The game continues until one player achieves their objective.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+#### Mouse Movement:
+
+- The Mouse can move to any **adjacent cell** (including diagonals), meaning it can move horizontally, vertically, or diagonally.
+- The Mouse moves **one cell per turn**.
+- The Mouse cannot move off the grid.
+
+#### Cat Movement:
+
+- The Cat can move to any **adjacent cell**, but only horizontally and vertically (no diagonal movement).
+- The Cat moves **one or two cells per turn**. If moving two cells, the Cat cannot change direction between the two moves; it must move in a straight line.
+- The Cat cannot move off the grid.
+
+### Additional Rules
+
+- **Collision**: If the Cat moves onto the Mouse's current position, the Cat catches the Mouse, and the Cat Player wins.
+- **Objective Completion**:
+   - If the Mouse moves onto the Cheese at position (5,5), the Mouse Player wins.
+- **Blocked Paths**: There are no obstacles on the grid. All cells are accessible unless occupied by the Cat or Mouse.
+- **Occupied Cells**: Players cannot move onto a cell occupied by their own character but can move onto a cell occupied by the opponent as per the collision rule.
+
+## Scoring
+
+There is no point-based scoring system in **Cat and Mouse**. The game is won by fulfilling the victory conditions outlined in the Objective section. Winning contributes to the player's overall skill ranking if tracking multiple game sessions.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Grid:**
+
+```
+M . . . .
+. . . . .
+. . . . .
+. . . . .
+C . . . X
+```
+
+- `M` at (1,1)
+- `C` at (1,5)
+- `X` at (5,5)
+
+### Turn-by-Turn Example
+
+**Turn 1: Mouse Player Moves**
+
+- **Action**: Mouse moves diagonally to (2,2).
+- **Command**: `move mouse to 2 2`
+- **Resulting Grid**:
+
+```
+. . . . .
+. M . . .
+. . . . .
+. . . . .
+C . . . X
+```
+
+**Turn 2: Cat Player Moves**
+
+- **Action**: Cat moves horizontally two cells to (3,5).
+- **Command**: `move cat to 3 5`
+- **Resulting Grid**:
+
+```
+. . . . .
+. M . . .
+. . . . .
+. . . . .
+. . C . X
+```
+
+**Turn 3: Mouse Player Moves**
+
+- **Action**: Mouse moves diagonally to (3,3).
+- **Command**: `move mouse to 3 3`
+- **Resulting Grid**:
+
+```
+. . . . .
+. . . . .
+. . M . .
+. . . . .
+. . C . X
+```
+
+**Turn 4: Cat Player Moves**
+
+- **Action**: Cat moves vertically one cell to (3,4).
+- **Command**: `move cat to 3 4`
+- **Resulting Grid**:
+
+```
+. . . . .
+. . . . .
+. . M . .
+. . C . .
+. . . . X
+```
+
+**Turn 5: Mouse Player Moves**
+
+- **Action**: Mouse moves diagonally to (4,4).
+- **Command**: `move mouse to 4 4`
+- **Resulting Grid**:
+
+```
+. . . . .
+. . . . .
+. . . . .
+. . C M .
+. . . . X
+```
+
+**Turn 6: Cat Player Moves**
+
+- **Action**: Cat moves horizontally one cell to (4,4) where the Mouse is located.
+- **Command**: `move cat to 4 4`
+- **Result**: The Cat catches the Mouse. **Cat Player Wins**.
+
+## Command-Line Interaction Example
+
+```plaintext
+--- Cat and Mouse Game Start ---
+
+Positions:
+Mouse (M) at (1,1)
+Cat (C) at (1,5)
+Cheese (X) at (5,5)
+
+Player Mouse, it's your turn.
+Enter your move (destination x y): move mouse to 2 2
+
+Positions updated:
+Mouse (M) at (2,2)
+Cat (C) at (1,5)
+
+Player Cat, it's your turn.
+Enter your move (destination x y): move cat to 3 5
+
+Positions updated:
+Mouse (M) at (2,2)
+Cat (C) at (3,5)
+
+Player Mouse, it's your turn.
+Enter your move (destination x y): move mouse to 3 3
+
+Positions updated:
+Mouse (M) at (3,3)
+Cat (C) at (3,5)
+
+Player Cat, it's your turn.
+Enter your move (destination x y): move cat to 3 4
+
+Positions updated:
+Mouse (M) at (3,3)
+Cat (C) at (3,4)
+
+Player Mouse, it's your turn.
+Enter your move (destination x y): move mouse to 4 4
+
+Positions updated:
+Mouse (M) at (4,4)
+Cat (C) at (3,4)
+
+Player Cat, it's your turn.
+Enter your move (destination x y): move cat to 4 4
+
+Cat has caught the Mouse! Cat Player wins!
+
+--- Game Over ---
+```
+
+## Strategy Tips
+
+- **Mouse Player**:
+  - Utilize diagonal movements to create unexpected paths.
+  - Aim to stay out of the Cat's immediate horizontal and vertical reach.
+  - Plan several moves ahead to avoid traps.
+
+- **Cat Player**:
+  - Use your ability to move two cells to close the distance quickly.
+  - Control central positions to limit the Mouse's movement options.
+  - Anticipate the Mouse's path to the Cheese and intercept.
+
+## Conclusion
+
+**Cat and Mouse** is a game of strategy and foresight. With simple rules and a clear objective, players must outthink their opponent to win. Whether playing as the cunning Mouse or the swift Cat, every move counts. Enjoy the chase!

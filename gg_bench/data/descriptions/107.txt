@@ -1,0 +1,211 @@
+# Chain Factor
+
+## Objective
+
+**Chain Factor** is a strategic two-player turn-based game where players take turns removing numbers from a shared list. The primary goal is to be the **last player to make a valid move**. A player wins by forcing their opponent into a position where they cannot remove any number according to the game's rules.
+
+## Setup
+
+- A shared list of numbers from **1 to 9** is presented.
+- Both players begin the game with the shared list fully populated.
+
+## Game Components
+
+- **Number List**: The numbers **1** through **9** displayed in sequence:
+  ```
+  [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  ```
+- **Players**: Two players who will interact with the number list by removing numbers according to the rules.
+
+## Turns
+
+- Players decide who goes first (this can be random or predetermined).
+- Players alternate turns throughout the game.
+- **On their turn, a player must**:
+  1. **Select and remove a valid number** from the shared list according to the rules.
+  2. **Ensure the move follows the Rules and Mechanics** described below.
+
+## Rules and Mechanics
+
+### 1. Selecting a Number
+
+- On their turn, a player **selects a number (N)** from the remaining numbers in the shared list.
+- The selected number is **removed from the list** and cannot be chosen again.
+
+### 2. Validity of Next Moves
+
+- The next player (opponent) is **prohibited from removing any remaining number that shares a common factor greater than 1** with the number (N) just removed by the previous player.
+- In other words, the next player **cannot remove any number that is a multiple or factor of (N)**, excluding the number **1**.
+
+### 3. Common Factors
+
+- **Common factors greater than 1** are numbers that divide both numbers evenly, excluding 1.
+  - For example, **6** and **9** share a common factor of **3**.
+
+### 4. Game Progression
+
+- Players continue to take turns removing valid numbers according to the above rules.
+- If a player **cannot make a valid move**, they **lose the game**.
+
+### 5. Winning the Game
+
+- A player **wins** if their opponent **cannot make a valid move** on their turn.
+- The game ends immediately when a player has no valid moves left.
+
+### 6. Special Notes
+
+- The number **1**:
+  - Since **1** only has one factor (itself), it **does not share common factors greater than 1** with any other number.
+  - **1** can be removed unless specifically prohibited by the previous move.
+
+## Scoring
+
+- As this is a win/lose game with no point system, **scoring is based on game outcomes**.
+- Players may choose to play multiple rounds, keeping track of wins and losses to determine an overall winner.
+
+## Examples
+
+### Initial Number List
+
+```
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+### Example Gameplay
+
+1. **Player 1's Turn**
+   - Removes **7**.
+   - **Updated List**: `[1, 2, 3, 4, 5, 6, 8, 9]`.
+
+2. **Player 2's Turn**
+   - **Cannot remove numbers sharing common factors with 7** (which is prime), so only **7** is excluded (already removed).
+   - Removes **6**.
+   - **Updated List**: `[1, 2, 3, 4, 5, 8, 9]`.
+
+3. **Player 1's Turn**
+   - **Cannot remove numbers sharing common factors with 6** (common factors: 2 and 3).
+   - **Excluded Numbers**: 2, 3, 4, 6, 8, 9.
+   - Valid options: **1** and **5**.
+   - Removes **5**.
+   - **Updated List**: `[1, 2, 3, 4, 8, 9]`.
+
+4. **Player 2's Turn**
+   - **Cannot remove numbers sharing common factors with 5** (which is prime), so only **5** is excluded (already removed).
+   - Removes **9**.
+   - **Updated List**: `[1, 2, 3, 4, 8]`.
+
+5. **Player 1's Turn**
+   - **Cannot remove numbers sharing common factors with 9** (common factor: 3).
+   - **Excluded Numbers**: 3, 6, 9.
+   - Valid options: **1**, **2**, **4**, **8**.
+   - Removes **8**.
+   - **Updated List**: `[1, 2, 3, 4]`.
+
+6. **Player 2's Turn**
+   - **Cannot remove numbers sharing common factors with 8** (common factors: 2 and 4).
+   - **Excluded Numbers**: 2, 4, 8 (already removed).
+   - Valid options: **1** and **3**.
+   - Removes **3**.
+   - **Updated List**: `[1, 2, 4]`.
+
+7. **Player 1's Turn**
+   - **Cannot remove numbers sharing common factors with 3** (common factor: 3).
+   - **Excluded Numbers**: 3 (already removed), 6, 9.
+   - Valid options: **1**, **2**, **4**.
+   - Removes **4**.
+   - **Updated List**: `[1, 2]`.
+
+8. **Player 2's Turn**
+   - **Cannot remove numbers sharing common factors with 4** (common factors: 2 and 4).
+   - **Excluded Numbers**: 2, 4 (already removed), 8.
+   - Valid option: **1**.
+   - Removes **1**.
+   - **Updated List**: `[2]`.
+
+9. **Player 1's Turn**
+   - **Cannot remove numbers sharing common factors with 1** (no common factors greater than 1).
+   - Valid option: **2**.
+   - Removes **2**.
+   - **Updated List**: `[]`.
+
+10. **Player 2's Turn**
+    - The list is **empty**.
+    - **No valid moves** left.
+    - **Player 1 wins the game**.
+
+## Command-Line Interaction Example
+
+```
+Starting Number List: [1,2,3,4,5,6,7,8,9]
+
+Player 1's turn.
+Available numbers: [1,2,3,4,5,6,7,8,9]
+Enter number to remove: 7
+
+Player 2's turn.
+Available numbers: [1,2,3,4,5,6,8,9]
+Previous number removed: 7
+Numbers excluded (common factors with 7): [7]
+Enter number to remove: 6
+
+Player 1's turn.
+Available numbers: [1,2,3,4,5,8,9]
+Previous number removed: 6
+Numbers excluded (common factors with 6): [2,3,4,6,8,9]
+Enter number to remove: 5
+
+Player 2's turn.
+Available numbers: [1,2,3,4,8,9]
+Previous number removed: 5
+Numbers excluded (common factors with 5): [5]
+Enter number to remove: 9
+
+Player 1's turn.
+Available numbers: [1,2,3,4,8]
+Previous number removed: 9
+Numbers excluded (common factors with 9): [3,6,9]
+Enter number to remove: 8
+
+Player 2's turn.
+Available numbers: [1,2,3,4]
+Previous number removed: 8
+Numbers excluded (common factors with 8): [2,4,8]
+Enter number to remove: 3
+
+Player 1's turn.
+Available numbers: [1,2,4]
+Previous number removed: 3
+Numbers excluded (common factors with 3): [3,6,9]
+Enter number to remove: 4
+
+Player 2's turn.
+Available numbers: [1,2]
+Previous number removed: 4
+Numbers excluded (common factors with 4): [2,4,8]
+Enter number to remove: 1
+
+Player 1's turn.
+Available numbers: [2]
+Previous number removed: 1
+Numbers excluded (common factors with 1): []
+Enter number to remove: 2
+
+Player 2's turn.
+Available numbers: []
+No valid moves left. Player 1 wins!
+```
+
+## Strategic Depth and Complexity
+
+- **Planning Ahead**: Players must anticipate how their moves will limit their opponent's options in future turns.
+- **Number Theory Knowledge**: Understanding prime numbers, factors, and multiples provides a strategic advantage.
+- **Blocking Strategies**: Players can use their turns to block key numbers that could benefit the opponent.
+- **Endgame Scenarios**: As the number list diminishes, each choice becomes more critical, and one misstep can lead to a loss.
+
+## Conclusion
+
+**Chain Factor** is a simple yet strategic game that challenges players to think critically and apply basic mathematical concepts. It's easy to code in a command-line interface and offers sufficient depth for skilled players to consistently outperform less experienced opponents. With no possibility of a draw and quick gameplay, it's an engaging and unique experience for those seeking an intellectual challenge.
+
+---
+
+Enjoy playing **Chain Factor**, and may the smartest strategist win!

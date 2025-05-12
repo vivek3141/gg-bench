@@ -1,0 +1,216 @@
+# **"Prime Time" Game Rule Book**
+
+---
+
+## **Objective**
+
+Be the first player to construct a sequence of numbers whose cumulative sum is a **prime number greater than 50 but not exceeding 100**. Strategize your number selections to reach the prime sum before your opponent does, while ensuring your total does not surpass 100.
+
+---
+
+## **Setup**
+
+1. **Starting the Game:**
+   - The game is designed for two players.
+   - Decide who will be **Player 1** and **Player 2**. Player 1 takes the first turn.
+   
+2. **Initial Conditions:**
+   - Both players start with:
+     - An **empty sequence** of numbers.
+     - A **cumulative sum** starting at **zero**.
+   - A **common pool** of numbers from **1 to 10** is available for both players.
+   
+3. **Game Interface:**
+   - The game is played in a **command-line interface (CLI)**.
+   - Players input their choices when prompted during their turn.
+
+---
+
+## **Game Components**
+
+1. **Number Pool:**
+   - **Numbers 1 through 10**.
+   - All numbers are **always available** and can be selected **multiple times** by both players.
+
+2. **Player Sequences:**
+   - Each player maintains their own sequence of chosen numbers.
+   - Sequences are **private**; opponents do not see each other's sequences.
+
+3. **Cumulative Sum:**
+   - The **total sum** of a player's sequence.
+   - Players must keep track of their own cumulative sum.
+
+---
+
+## **Turns**
+
+1. **Turn Order:**
+   - Players **alternate turns**, starting with **Player 1**.
+
+2. **Player Actions During a Turn:**
+   - **Select a Number:**
+     - Choose any number between **1 and 10** (inclusive) from the number pool.
+     - Add the chosen number to your **sequence** and **cumulative sum**.
+   - **No Passes:**
+     - Players must select a number on their turn; passing is not allowed.
+   
+3. **Turn Progression:**
+   - After a player completes their turn, the game prompts the next player.
+   - The game continues until a **win** or **loss** condition is met.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Selection Rules:**
+   - Players may select **any number** from **1 to 10** during their turn.
+   - Numbers are **not removed** from the pool after selection; they can be reused.
+
+2. **Cumulative Sum Rules:**
+   - The chosen number is added to the player's **cumulative sum**.
+   - Players must ensure their cumulative sum does **not exceed 100**.
+   - Keeping track of the cumulative sum is the **player's responsibility**.
+
+3. **Win Conditions:**
+   - **Immediate Victory:** Achieved when your cumulative sum becomes a **prime number greater than 50** (i.e., 53, 59, 61, 67, 71, 73, 79, 83, 89, 97).
+   - The victory occurs **as soon as** the cumulative sum meets the condition, even if it happens on the opponent's turn as a result of their error.
+
+4. **Loss Conditions:**
+   - **Exceeding 100:** If a player's cumulative sum exceeds **100**, they **immediately lose** the game.
+   - **No Valid Moves:** If a player cannot select any number without exceeding 100, they lose.
+
+5. **Information Disclosure:**
+   - Players' sequences and cumulative sums are **private**.
+   - Players may **voluntarily disclose** their cumulative sum, but are **not required** to do so.
+   - Players should use **strategy and deduction** based on the gameplay.
+
+6. **Fair Play:**
+   - Players must **honestly track** and report their cumulative sums.
+   - Cheating or misreporting sums is against the rules and results in an immediate loss.
+
+---
+
+## **Scoring**
+
+- **Winning the Game:**
+  - Victory is achieved by reaching a cumulative sum that is a **prime number greater than 50**.
+  - No additional scoring is tracked; the focus is on meeting the win condition.
+
+- **Losing the Game:**
+  - A player loses if their cumulative sum **exceeds 100**.
+  - A player loses if they have **no valid moves** (cannot select any number without exceeding 100).
+
+---
+
+## **Examples**
+
+### **Sample Gameplay**
+
+**Turn 1:**
+
+- **Player 1:**
+  - Chooses **7**.
+  - Cumulative sum: **0 + 7 = 7**.
+- **Player 2:**
+  - Chooses **10**.
+  - Cumulative sum: **0 + 10 = 10**.
+
+**Turn 2:**
+
+- **Player 1:**
+  - Chooses **8**.
+  - Cumulative sum: **7 + 8 = 15**.
+- **Player 2:**
+  - Chooses **9**.
+  - Cumulative sum: **10 + 9 = 19**.
+
+**Turn 3:**
+
+- **Player 1:**
+  - Chooses **10**.
+  - Cumulative sum: **15 + 10 = 25**.
+- **Player 2:**
+  - Chooses **10**.
+  - Cumulative sum: **19 + 10 = 29**.
+
+**Turn 4:**
+
+- **Player 1:**
+  - Chooses **9**.
+  - Cumulative sum: **25 + 9 = 34**.
+- **Player 2:**
+  - Chooses **8**.
+  - Cumulative sum: **29 + 8 = 37**.
+
+**Turn 5:**
+
+- **Player 1:**
+  - Chooses **7**.
+  - Cumulative sum: **34 + 7 = 41**.
+- **Player 2:**
+  - Chooses **10**.
+  - Cumulative sum: **37 + 10 = 47**.
+
+**Turn 6:**
+
+- **Player 1:**
+  - Chooses **7**.
+  - Cumulative sum: **41 + 7 = 48**.
+- **Player 2:**
+  - Chooses **6**.
+  - Cumulative sum: **47 + 6 = 53**.
+
+**Outcome:**
+
+- **Player 2** wins by reaching a cumulative sum of **53**, which is a prime number greater than 50.
+
+### **Command-Line Interaction Example**
+
+**Player 1's Turn:**
+
+- **Prompt:** "Player 1, enter a number between 1 and 10:"
+- **Input:** `7`
+- **Output:** "You added 7 to your sequence. Your cumulative sum is now 7."
+
+**Player 2's Turn:**
+
+- **Prompt:** "Player 2, enter a number between 1 and 10:"
+- **Input:** `10`
+- **Output:** "You added 10 to your sequence. Your cumulative sum is now 10."
+
+*(Game continues with players inputting their choices as in the sample gameplay.)*
+
+---
+
+## **Strategy Tips**
+
+- **Prime Number Awareness:**
+  - Familiarize yourself with prime numbers greater than 50 up to 100 (53, 59, 61, 67, 71, 73, 79, 83, 89, 97).
+  - Aim to plan your sequence to reach one of these primes.
+
+- **Cumulative Sum Management:**
+  - Keep track of your cumulative sum carefully to avoid exceeding 100.
+  - Consider the possible sums resulting from your choices and how they align with prime numbers.
+
+- **Anticipate Opponent Moves:**
+  - While you cannot see the opponent's sum, consider common strategies and numbers they might select.
+  - Use deduction to estimate their cumulative sum based on the pace of the game.
+
+- **Balancing Risk and Reward:**
+  - Weigh the benefits of adding larger numbers to reach the prime sum sooner against the risk of exceeding 100.
+  - Sometimes selecting smaller numbers can prolong the game, giving you more control.
+
+---
+
+## **Game End**
+
+- The game ends immediately when a player **wins** by reaching the prime sum or **loses** by exceeding 100.
+- Celebratory or concluding messages can be displayed to acknowledge the winner.
+
+---
+
+## **Conclusion**
+
+"**Prime Time**" is a strategic and engaging game that challenges players to use arithmetic skills and forward-thinking. Its simple rules make it easy to code and play in a command-line interface, while the strategic depth ensures that skilled players can consistently outperform less experienced opponents. Enjoy sharpening your math skills and may the best strategist win!
+
+---

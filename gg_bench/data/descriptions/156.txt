@@ -1,0 +1,230 @@
+**Sequence Duel**
+
+---
+
+### **Objective**
+
+Sequence Duel is a two-player, turn-based game where players construct a shared sequence of numbers. The primary goal is to avoid creating a sequence that contains any three consecutive numbers forming an increasing, decreasing, or constant pattern. The player who cannot make a legal move on their turn loses the game. Victory is achieved by skillfully selecting numbers to extend the sequence while forcing your opponent into an impossible move.
+
+---
+
+### **Setup**
+
+- **Starting Condition**: The game begins with an empty sequence.
+- **Players**: Two players are designated as Player 1 and Player 2. Determine who goes first by agreement or a random method such as a coin toss.
+- **Number Pool**: Both players have access to numbers from **1** to **9**. Numbers can be used multiple times.
+
+---
+
+### **Game Components**
+
+- **Shared Sequence**: A list that both players contribute to, extended one number at a time.
+- **Number Options**: Integers from **1** to **9**. These numbers serve as the building blocks for the sequence.
+
+---
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Player Actions**:
+  - On their turn, a player must:
+    1. **Select a Number**: Choose any number between **1** and **9** (inclusive).
+    2. **Extend the Sequence**: Add the selected number to the **end** of the shared sequence.
+- **Turn Progression**: After a player adds a number to the sequence, the turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Legal Moves**:
+   - A player **must not** add a number that results in the last **three** numbers of the sequence forming any of the following patterns:
+     - **Increasing Sequence**: Each subsequent number is higher than the previous (e.g., 2, 3, 4).
+     - **Decreasing Sequence**: Each subsequent number is lower than the previous (e.g., 5, 4, 3).
+     - **Constant Sequence**: All three numbers are the same (e.g., 7, 7, 7).
+   - The sequence is examined **only** for the **last three numbers** after each move.
+2. **Illegal Moves**:
+   - If a player cannot add any number without creating one of the prohibited patterns, they have no legal moves.
+   - Making an illegal move is not permitted; the player must concede if no legal moves are available.
+3. **Ending the Game**:
+   - The game ends when a player cannot make a legal move on their turn.
+   - The player who **made the last legal move** wins the game.
+4. **Strategy**:
+   - Players should aim to extend the sequence in a way that limits the opponent's options on their subsequent turn.
+   - Anticipate possible sequences and plan moves to avoid setting up losing positions.
+
+---
+
+### **Scoring**
+
+- **Winning the Game**: The player who forces their opponent into a position with no legal moves wins.
+- **No Points System**: Sequence Duel is based on winning or losing individual games rather than accumulating points.
+- **Match Play (Optional)**:
+  - Players can agree to play a series of games.
+  - Keep track of wins to determine an overall champion after a set number of games.
+
+---
+
+### **Examples**
+
+Below are sample turns illustrating how the rules are applied in practice, including command-line interactions.
+
+---
+
+#### **Example Game**
+
+**Starting Sequence**: []
+
+---
+
+**Turn 1**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 5
+  - **Sequence Becomes**: [5]
+  - **Reasoning**: No risk of forming a pattern since less than three numbers.
+
+---
+
+**Turn 2**
+
+- **Player 2's Turn**:
+  - **Selects Number**: 6
+  - **Sequence Becomes**: [5, 6]
+  - **Reasoning**: Still less than three numbers; no patterns formed.
+
+---
+
+**Turn 3**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 7
+  - **Sequence Becomes**: [5, 6, 7]
+  - **Outcome**: Illegal move.
+  - **Explanation**: The last three numbers form an increasing sequence (5, 6, 7).
+  - **Action**: Player 1 must choose a different number.
+
+- **Alternate Number Selection**:
+  - **Selects Number**: 5
+  - **Sequence Becomes**: [5, 6, 5]
+  - **Reasoning**: The last three numbers are (6, 5, 5), which do not form a prohibited pattern.
+
+---
+
+**Turn 4**
+
+- **Player 2's Turn**:
+  - **Selects Number**: 4
+  - **Sequence Becomes**: [5, 6, 5, 4]
+  - **Reasoning**: Last three numbers are (5, 5, 4); not a prohibited pattern.
+
+---
+
+**Turn 5**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 3
+  - **Sequence Becomes**: [5, 6, 5, 4, 3]
+  - **Outcome**: Illegal move.
+  - **Explanation**: The last three numbers are (5, 4, 3), forming a decreasing sequence.
+  - **Alternate Number Selection**:
+    - **Selects Number**: 6
+    - **Sequence Becomes**: [5, 6, 5, 4, 6]
+    - **Reasoning**: Last three numbers are (4, 6, 6); no prohibited pattern.
+
+---
+
+**Turn 6**
+
+- **Player 2's Turn**:
+  - **Selects Number**: 6
+  - **Sequence Becomes**: [5, 6, 5, 4, 6, 6]
+  - **Outcome**: Illegal move.
+  - **Explanation**: The last three numbers are (6, 6, 6), forming a constant sequence.
+  - **Alternate Number Selection**:
+    - **Selects Number**: 7
+    - **Sequence Becomes**: [5, 6, 5, 4, 6, 7]
+    - **Reasoning**: Last three numbers are (4, 6, 7); not a prohibited pattern.
+
+---
+
+**Turn 7**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 8
+  - **Sequence Becomes**: [5, 6, 5, 4, 6, 7, 8]
+  - **Outcome**: Illegal move.
+  - **Explanation**: The last three numbers are (6, 7, 8), forming an increasing sequence.
+  - **Alternate Number Selection**:
+    - **Selects Number**: 5
+    - **Sequence Becomes**: [5, 6, 5, 4, 6, 7, 5]
+    - **Reasoning**: Last three numbers are (7, 5, 5); no prohibited pattern.
+
+---
+
+**Turn 8**
+
+- **Player 2's Turn**:
+  - **Possible Numbers to Choose**: Review each number from 1 to 9 to see if any can be legally played.
+  - **Analysis**:
+    - Selecting 4: Last three numbers would be (5, 5, 4) - not prohibited.
+    - Selecting 6: Last three numbers would be (5, 5, 6) - not prohibited.
+    - Selecting 5: Last three numbers would be (5, 5, 5) - forms a constant sequence (Illegal).
+    - Continue checking other numbers.
+  - **Selects Number**: 4
+  - **Sequence Becomes**: [5, 6, 5, 4, 6, 7, 5, 4]
+  - **Reasoning**: Last three numbers are (5, 5, 4); legal move.
+
+---
+
+**Turn 9**
+
+- **Player 1's Turn**:
+  - **Repeat the process of checking available numbers.**
+  - **Potential Moves**:
+    - Must avoid creating prohibited patterns.
+  - **Selects Number**: After analysis, if no legal numbers can be added without forming a prohibited pattern, Player 1 has no legal moves.
+
+- **Outcome**:
+  - **Player 1 has no legal moves and loses the game.**
+  - **Winner**: Player 2.
+
+---
+
+**Command-Line Interaction Example**
+
+```
+Game Start: The sequence is empty.
+
+Player 1's Turn:
+Enter a number between 1 and 9: 5
+Sequence: [5]
+
+Player 2's Turn:
+Enter a number between 1 and 9: 6
+Sequence: [5, 6]
+
+Player 1's Turn:
+Enter a number between 1 and 9: 7
+Invalid move - forms an increasing sequence.
+Enter a different number: 5
+Sequence: [5, 6, 5]
+...
+(Player turns continue as in the example above)
+...
+Player 1's Turn:
+No legal moves available.
+Player 2 wins the game!
+```
+
+---
+
+### **Tips for Players**
+
+- **Plan Ahead**: Always consider how your chosen number affects the sequence and what options it leaves for your opponent.
+- **Avoid Obvious Patterns**: Be cautious not to set up a sequence where your opponent can force you into a losing position.
+- **Monitor Last Three Numbers**: Focus on the last two numbers in the sequence to predict which numbers are safe to play.
+- **Force the Opponent's Hand**: Try to limit the options available to your opponent, increasing the chance that they will have no legal moves.
+
+---
+
+**Sequence Duel** offers strategic depth through simple mechanics, making it easy to learn but challenging to master. With careful planning and foresight, skilled players can consistently outmaneuver their opponents to secure victory.

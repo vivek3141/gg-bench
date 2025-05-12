@@ -1,0 +1,286 @@
+# Minefield Navigator: Rule Book
+
+---
+
+## Objective
+
+In **Minefield Navigator**, two players race to be the first to successfully cross a 10-step minefield. Players must strategically use limited resources to navigate safely. The first player to reach the end of the minefield at step 10 without triggering a mine wins the game. Caution and strategy are key, as stepping on a mined location without proper preparation results in an immediate loss.
+
+---
+
+## Setup
+
+1. **Game Board Initialization**:
+   - The game consists of a linear path with steps numbered from **1** to **10**.
+   - At the beginning of the game, the system randomly places mines on **three** of the ten steps.
+   - The mine locations are hidden from both players and remain consistent for both throughout the game.
+
+2. **Player Positions**:
+   - Both players start off the minefield at position **0**.
+   - Players take turns in navigating through the minefield.
+
+3. **Detectors**:
+   - Each player is allotted **two detectors** at the start of the game.
+   - Detectors are used to check for mines ahead and can diffuse them if present.
+
+---
+
+## Game Components
+
+1. **Minefield Path**:
+   - A straight path with steps numbered from **1** to **10**.
+   - Each step can either be **safe** or contain a **mine**.
+
+2. **Player Tokens**:
+   - Represented in the command-line interface by player names or symbols.
+   - Tokens move from step **0** to step **10** as the game progresses.
+
+3. **Detectors**:
+   - Limited-use tools that allow players to scan for mines.
+   - Each player has exactly **two detectors** for the entire game.
+
+4. **Mines**:
+   - Hidden dangers placed randomly on the minefield steps.
+   - When a mine is diffused using a detector, it becomes a **safe step** for both players.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., coin toss, mutual agreement).
+   - Turns alternate between players.
+
+2. **Player Actions**:
+
+   During a turn, a player must choose one of the following actions:
+
+   - **Move Forward**:
+     - Advance your token by **one step** (e.g., from step 3 to step 4).
+     - Risk stepping on a mine if the step is not verified or diffused.
+  
+   - **Use a Detector**:
+     - Deploy a detector to scan a specific step ahead for mines.
+     - Detectors can only scan steps **ahead** of the player's current position.
+     - If a mine is present on the scanned step, it is diffused and becomes safe.
+     - If no mine is present, the detector is still consumed.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - Players can only move forward **one step at a time**.
+   - Skipping steps is not allowed.
+   - A player cannot occupy the same step as the opponent; however, passing over is permitted.
+
+2. **Detector Usage**:
+   - Each player has **two detectors** for the entire game.
+   - Detectors are used to scan for mines on upcoming steps.
+   - Using a detector consumes one detector, regardless of whether a mine is found.
+
+3. **Mine Detection and Diffusion**:
+   - When a detector is used on a step with a mine:
+     - The mine is diffused.
+     - The step becomes safe for both players.
+   - When a detector is used on a safe step:
+     - The step is confirmed safe.
+     - No mines are found, and the detector is still consumed.
+
+4. **Stepping on Mines**:
+   - If a player moves onto a step containing a mine without having diffused it:
+     - The mine is triggered.
+     - The player immediately **loses the game**.
+   - The opponent is declared the winner.
+
+5. **Winning the Game**:
+   - The first player to reach **step 10** without triggering a mine wins.
+   - If a player triggers a mine, the opponent wins by default.
+
+---
+
+## Scoring
+
+- **Victory Condition**:
+  - Reach **step 10** safely before your opponent.
+  - Alternatively, win if your opponent steps on a mine.
+
+- **Tracking Progress**:
+  - Player positions are updated each turn.
+  - Remaining detectors are tracked for each player.
+
+---
+
+## Examples
+
+### Example Scenario
+
+Let's illustrate a sample game between **Player 1** and **Player 2**.
+
+**Initial Setup**:
+
+- Mines are randomly placed on steps **3**, **6**, and **9** (hidden from players).
+- Both players have **2 detectors** each.
+- Both players start at **step 0**.
+
+**Game Progression**:
+
+1. **Player 1's Turn**:
+   - **Action**: Moves to **step 1**.
+   - **Outcome**: Safe (no mine on step 1).
+
+2. **Player 2's Turn**:
+   - **Action**: Uses a detector on **step 3**.
+   - **Outcome**: Mine found and diffused on step 3. Detectors remaining: 1.
+
+3. **Player 1's Turn**:
+   - **Action**: Moves to **step 2**.
+   - **Outcome**: Safe (no mine on step 2).
+
+4. **Player 2's Turn**:
+   - **Action**: Moves to **step 1**.
+   - **Outcome**: Safe.
+
+5. **Player 1's Turn**:
+   - **Action**: Moves to **step 3**.
+   - **Outcome**: Safe (mine was diffused by Player 2).
+
+6. **Player 2's Turn**:
+   - **Action**: Moves to **step 2**.
+   - **Outcome**: Safe.
+
+7. **Player 1's Turn**:
+   - **Action**: Uses a detector on **step 4**.
+   - **Outcome**: No mine found. Detectors remaining: 1.
+
+8. **Player 2's Turn**:
+   - **Action**: Uses a detector on **step 6**.
+   - **Outcome**: Mine found and diffused on step 6. Detectors remaining: 0.
+
+9. **Player 1's Turn**:
+   - **Action**: Moves to **step 4**.
+   - **Outcome**: Safe.
+
+10. **Player 2's Turn**:
+    - **Action**: Moves to **step 3**.
+    - **Outcome**: Safe.
+
+11. **Player 1's Turn**:
+    - **Action**: Moves to **step 5**.
+    - **Outcome**: Safe.
+
+12. **Player 2's Turn**:
+    - **Action**: Moves to **step 4**.
+    - **Outcome**: Safe.
+
+13. **Player 1's Turn**:
+    - **Action**: Moves to **step 6**.
+    - **Outcome**: Safe (mine was diffused by Player 2).
+
+14. **Player 2's Turn**:
+    - **Action**: Moves to **step 5**.
+    - **Outcome**: Safe.
+
+15. **Player 1's Turn**:
+    - **Action**: Uses a detector on **step 9**.
+    - **Outcome**: Mine found and diffused. Detectors remaining: 0.
+
+16. **Player 2's Turn**:
+    - **Action**: Moves to **step 6**.
+    - **Outcome**: Safe.
+
+17. **Player 1's Turn**:
+    - **Action**: Moves to **step 7**.
+    - **Outcome**: Safe.
+
+18. **Player 2's Turn**:
+    - **Action**: Moves to **step 7**.
+    - **Outcome**: Safe.
+
+19. **Player 1's Turn**:
+    - **Action**: Moves to **step 8**.
+    - **Outcome**: Safe.
+
+20. **Player 2's Turn**:
+    - **Action**: Moves to **step 8**.
+    - **Outcome**: Safe.
+
+21. **Player 1's Turn**:
+    - **Action**: Moves to **step 9**.
+    - **Outcome**: Safe (mine was diffused by Player 1).
+
+22. **Player 2's Turn**:
+    - **Action**: Moves to **step 9**.
+    - **Outcome**: Safe.
+
+23. **Player 1's Turn**:
+    - **Action**: Moves to **step 10**.
+    - **Outcome**: Reached the end safely.
+
+**Result**: **Player 1 wins** by reaching step 10 first.
+
+---
+
+### Command-Line Interaction Sample
+
+Below is a simplified example of how the game might play out in a command-line interface.
+
+**Game Start**
+
+```plaintext
+Welcome to Minefield Navigator!
+Player 1 and Player 2, prepare to navigate the minefield.
+
+Both players have 2 detectors.
+```
+
+**Player 1's Turn**
+
+```plaintext
+Player 1's Turn:
+You are at step 0.
+Actions:
+1. Move forward to step 1.
+2. Use a detector.
+
+Enter your choice (1 or 2): 1
+Moved to step 1. Safe!
+```
+
+**Player 2's Turn**
+
+```plaintext
+Player 2's Turn:
+You are at step 0.
+Actions:
+1. Move forward to step 1.
+2. Use a detector.
+
+Enter your choice (1 or 2): 2
+Enter step number to scan (1-10): 3
+Scanning step 3...
+Mine detected and diffused!
+Detectors remaining: 1
+```
+
+*...and so on, following the progression outlined in the example scenario.*
+
+---
+
+## Strategy Tips
+
+- **Use Detectors Wisely**: With only two detectors, decide carefully when to use them. Early detection of mines can provide a safer path but may leave you vulnerable later.
+
+- **Monitor Opponent's Moves**: Pay attention to where your opponent uses detectors and moves. If they safely move onto a step, it's likely safe for you as well.
+
+- **Risk vs. Reward**: Sometimes, advancing without using a detector can save resources but comes with the risk of triggering a mine.
+
+- **Plan Ahead**: Consider the probabilities based on remaining mines and steps to determine your safest path forward.
+
+---
+
+## Conclusion
+
+**Minefield Navigator** is a game of strategy, memory, and calculated risk. With limited resources and hidden dangers, players must outthink their opponent to safely traverse the minefield. The simplicity of the rules combined with the depth of strategic possibilities ensures a quick yet engaging experience where skill is rewarded.
+
+Good luck, and may the safest path lead you to victory!

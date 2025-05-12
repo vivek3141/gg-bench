@@ -1,0 +1,230 @@
+# **Balance Game** Rule Book
+
+## **Objective**
+
+Be the first player to balance your side of the scale by reaching **exactly 15 units** of weight. Use strategic selection of weights to accumulate the target weight on your side while preventing your opponent from doing the same.
+
+---
+
+## **Setup**
+
+- **Virtual Balance Scale**: The game features a balance scale with two sides:
+  - **Left Side**: Represents **Player 1**.
+  - **Right Side**: Represents **Player 2**.
+- **Weight Tokens**: A shared pool of weight tokens numbered from **1** to **9** units.
+- **Target Weight**: Both players aim to accumulate exactly **15 units** on their side of the scale.
+
+**Initial Arrangement**:
+
+1. Place the virtual balance scale at the center, indicating the two sides for each player.
+2. Lay out the weight tokens numbered **1** to **9** in the shared pool, accessible to both players.
+
+---
+
+## **Game Components**
+
+- **Balance Scale**:
+  - A conceptual scale with two sides (left and right), representing each player's accumulation of weights.
+- **Weight Tokens**:
+  - **Nine tokens** labeled with weights from **1** to **9** units.
+  - Each token is unique and can only be used once during the game.
+- **Player Indicators**:
+  - **Player 1**: Left side of the scale.
+  - **Player 2**: Right side of the scale.
+
+---
+
+## **Turns**
+
+- **Turn Order**:
+  - **Player 1** takes the first turn.
+  - Players alternate turns thereafter.
+- **Actions on a Turn**:
+  - Choose an available weight token from the shared pool.
+  - Place the chosen weight on your side of the balance scale.
+- **Turn Progression**:
+  - After placing the weight, update the total weight on your side.
+  - Check for a win condition or if the game should continue.
+  - Proceed to the next player's turn.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Selecting Weights**:
+   - On your turn, you **must** select one weight token from the available pool.
+   - Weights are numbered **1** through **9** and each can be selected only once.
+2. **Placing Weights**:
+   - Add the selected weight to your side's total weight on the balance scale.
+3. **Weight Limits**:
+   - You **cannot** exceed the target weight of **15 units**.
+   - If adding a weight would cause your side to surpass **15 units**, you **lose your turn** (you cannot make an invalid move).
+4. **Winning the Game**:
+   - The first player to reach **exactly 15 units** on their side wins the game.
+   - If neither player can make a valid move without exceeding **15 units**, the player with the higher total weight **below 15** wins.
+5. **Preventing Opponent's Win**:
+   - Players may choose weights strategically to limit the opponent's options.
+6. **No Reusing Weights**:
+   - Once a weight token is placed on either side, it is **removed** from the shared pool and cannot be used again.
+
+---
+
+## **Scoring**
+
+- **Winning the Game**:
+  - Achieving exactly **15 units** on your side grants you victory.
+- **In Case of Stalemate**:
+  - If no valid moves remain for both players and neither side has reached **15 units**, the player with the **highest total weight** below **15 units** wins.
+- **Tracking the Game**:
+  - Keep a running total of the weights on each side after every turn.
+  - Record the weights used to prevent reuse.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Starting the Game**:
+
+- Shared Weight Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- Player 1 Total: 0
+- Player 2 Total: 0
+
+---
+
+**Turn 1: Player 1**
+
+- **Available Weights**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Action**: Player 1 selects weight **7**.
+- **Updates**:
+  - Player 1 Total: 0 + 7 = **7**
+  - Available Weights: [1, 2, 3, 4, 5, 6, 8, 9]
+
+---
+
+**Turn 2: Player 2**
+
+- **Available Weights**: [1, 2, 3, 4, 5, 6, 8, 9]
+- **Action**: Player 2 selects weight **8**.
+- **Updates**:
+  - Player 2 Total: 0 + 8 = **8**
+  - Available Weights: [1, 2, 3, 4, 5, 6, 9]
+
+---
+
+**Turn 3: Player 1**
+
+- **Available Weights**: [1, 2, 3, 4, 5, 6, 9]
+- **Action**: Player 1 selects weight **9**.
+- **Updates**:
+  - Player 1 Total: 7 + 9 = **16**
+  - Exceeds 15! Invalid move.
+  - **Correction**: Player 1 must choose a valid weight.
+- **Action**: Player 1 selects weight **6** instead.
+- **Updates**:
+  - Player 1 Total: 7 + 6 = **13**
+  - Available Weights: [1, 2, 3, 4, 5, 9]
+
+---
+
+**Turn 4: Player 2**
+
+- **Available Weights**: [1, 2, 3, 4, 5, 9]
+- **Action**: Player 2 considers options.
+  - Adding weight **9** would make total 8 + 9 = **17** (Invalid).
+  - Selects weight **5**.
+- **Updates**:
+  - Player 2 Total: 8 + 5 = **13**
+  - Available Weights: [1, 2, 3, 4, 9]
+
+---
+
+**Turn 5: Player 1**
+
+- **Available Weights**: [1, 2, 3, 4, 9]
+- **Action**: Player 1 needs **2** to reach 15 but **2** is available.
+- **Action**: Player 1 selects weight **2**.
+- **Updates**:
+  - Player 1 Total: 13 + 2 = **15**
+  - Available Weights: [1, 3, 4, 9]
+- **Result**: Player 1 reaches exactly **15 units** and **wins** the game!
+
+---
+
+## **Command-Line Interaction Example**
+
+### **Starting Prompt**
+
+```
+Welcome to the Balance Game!
+Target Weight: 15 units
+Available Weights: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Player 1 Total: 0
+Player 2 Total: 0
+Player 1, it's your turn.
+Select a weight to add to your side:
+```
+
+### **Player Inputs and Game Progression**
+
+**Player 1 Turn**:
+
+```
+Player 1 selects: 7
+Player 1 Total: 7
+Available Weights: 1, 2, 3, 4, 5, 6, 8, 9
+```
+
+**Player 2 Turn**:
+
+```
+Player 2 selects: 8
+Player 2 Total: 8
+Available Weights: 1, 2, 3, 4, 5, 6, 9
+```
+
+**Player 1 Turn**:
+
+```
+Player 1 selects: 6
+Player 1 Total: 13
+Available Weights: 1, 2, 3, 4, 5, 9
+```
+
+**Player 2 Turn**:
+
+```
+Player 2 selects: 5
+Player 2 Total: 13
+Available Weights: 1, 2, 3, 4, 9
+```
+
+**Player 1 Turn**:
+
+```
+Player 1 selects: 2
+Player 1 Total: 15
+Congratulations, Player 1! You've reached exactly 15 units and won the game!
+```
+
+---
+
+## **Tips for Strategic Play**
+
+- **Planning Ahead**: Keep track of which weights are still available and calculate potential future moves.
+- **Blocking Strategy**: Select weights that your opponent may need to reach 15 units.
+- **Optimal Choices**: Aim for combinations that reach the target weight efficiently without leaving openings for your opponent.
+- **Avoid Overstepping**: Be cautious not to exceed the target weight, as this limits your options and may hand victory to your opponent.
+
+---
+
+## **Game Variations**
+
+- **Different Target Weight**: Adjust the target weight (e.g., 12, 20) to change the difficulty and strategy.
+- **Expanded Weight Pool**: Include additional weights or duplicate weights to increase complexity.
+- **Limited Visibility**: Make the available weights hidden, revealing them only when selected.
+
+---
+
+Enjoy the **Balance Game** and may the best strategist win!

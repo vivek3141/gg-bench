@@ -1,0 +1,361 @@
+# **Attack and Defend: A Two-Player Turn-Based Strategy Game**
+
+## **Objective**
+
+Become the first player to reduce your opponent's health points from 10 to 0 by strategically choosing to attack or defend. Utilize your ability to predict your opponent's moves and select optimal action values to outmaneuver them. Victory is achieved when your opponent's health points drop to zero or below.
+
+---
+
+## **Setup**
+
+1. **Initialize Player Health:**
+   - Both players start with **10 Health Points (HP)**.
+
+2. **Action Options:**
+   - Players have access to two actions:
+     - **Attack** with a value from **1 to 5**.
+     - **Defend** with a value from **1 to 5**.
+
+3. **Game Start:**
+   - Decide who takes the first turn (e.g., randomly or by mutual agreement).
+
+---
+
+## **Game Components**
+
+1. **Health Points (HP):**
+   - Numerical value representing each player's remaining vitality.
+   - Starts at **10 HP** for both players.
+
+2. **Action Values:**
+   - **Attack Values:** Numbers **1 to 5**, representing the strength of an attack.
+   - **Defense Values:** Numbers **1 to 5**, representing the strength of a defense.
+
+3. **Command-Line Interface (CLI):**
+   - Players input their chosen actions and values via a text-based interface.
+
+---
+
+## **Turns**
+
+1. **Simultaneous Selection:**
+   - **Both players** secretly select an action (**Attack** or **Defend**) and an associated value (**1 to 5**).
+
+2. **Input Format:**
+   - Players input their choice in the format: `action value` (e.g., `attack 3` or `defend 5`).
+
+3. **Action Revelation:**
+   - After both players have entered their choices, the actions and values are revealed simultaneously.
+
+4. **Turn Progression:**
+   - The game proceeds in rounds, repeating the selection and resolution steps until a player's HP reaches zero or below.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Action Resolution:**
+   - **Attack vs. Attack:**
+     - Both players deal damage to each other equal to their chosen **attack values**.
+   - **Attack vs. Defend:**
+     - If **defense value ≥ attack value**:
+       - The defender **blocks** the attack; **no damage** is taken.
+     - If **attack value > defense value**:
+       - The defender takes damage equal to **(attack value - defense value)**.
+   - **Defend vs. Defend:**
+     - No damage is dealt; the round ends without changes to HP.
+
+2. **Health Reduction:**
+   - Damage is subtracted from the player's current HP.
+   - Players' HP can never exceed the starting value (**10 HP**).
+
+3. **Invalid Inputs:**
+   - If a player enters an invalid action or value (e.g., an attack value of 6), they receive a warning, and the turn may be forfeited based on agreed-upon rules.
+
+4. **Victory Condition:**
+   - The first player to reduce the opponent's HP to **zero or below** wins the game.
+
+---
+
+## **Scoring**
+
+- **Health Tracking:**
+  - Players keep track of their own and their opponent's HP after each round.
+- **No Point System:**
+  - The game uses HP as the sole metric for determining the winner.
+- **Winning the Game:**
+  - Victory is achieved solely by depleting the opponent's HP to zero or below.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+**Initial State:**
+
+- **Player A HP:** 10
+- **Player B HP:** 10
+
+---
+
+### **Round 1**
+
+**Players Choose Actions:**
+
+- **Player A:** `attack 4`
+- **Player B:** `defend 3`
+
+**Action Revelation:**
+
+- **Player A** attacks with a value of **4**.
+- **Player B** defends with a value of **3**.
+
+**Resolution:**
+
+- **Attack Value (4) > Defense Value (3)**.
+- **Player B** takes damage: **4 - 3 = 1 HP**.
+
+**Updated HP:**
+
+- **Player A HP:** 10
+- **Player B HP:** 9
+
+---
+
+### **Round 2**
+
+**Players Choose Actions:**
+
+- **Player A:** `defend 2`
+- **Player B:** `attack 5`
+
+**Action Revelation:**
+
+- **Player A** defends with a value of **2**.
+- **Player B** attacks with a value of **5**.
+
+**Resolution:**
+
+- **Attack Value (5) > Defense Value (2)**.
+- **Player A** takes damage: **5 - 2 = 3 HP**.
+
+**Updated HP:**
+
+- **Player A HP:** 7
+- **Player B HP:** 9
+
+---
+
+### **Round 3**
+
+**Players Choose Actions:**
+
+- **Player A:** `attack 3`
+- **Player B:** `attack 2`
+
+**Action Revelation:**
+
+- Both players attack.
+
+**Resolution:**
+
+- **Player A** takes damage: **2 HP** (Player B's attack value).
+- **Player B** takes damage: **3 HP** (Player A's attack value).
+
+**Updated HP:**
+
+- **Player A HP:** 5
+- **Player B HP:** 6
+
+---
+
+### **Round 4**
+
+**Players Choose Actions:**
+
+- **Player A:** `defend 4`
+- **Player B:** `attack 3`
+
+**Action Revelation:**
+
+- **Player A** defends with a value of **4**.
+- **Player B** attacks with a value of **3**.
+
+**Resolution:**
+
+- **Defense Value (4) ≥ Attack Value (3)**.
+- **Player A** successfully defends; **no damage taken**.
+
+**Updated HP:**
+
+- **Player A HP:** 5
+- **Player B HP:** 6
+
+---
+
+### **Round 5**
+
+**Players Choose Actions:**
+
+- **Player A:** `attack 5`
+- **Player B:** `defend 2`
+
+**Action Revelation:**
+
+- **Player A** attacks with a value of **5**.
+- **Player B** defends with a value of **2**.
+
+**Resolution:**
+
+- **Attack Value (5) > Defense Value (2)**.
+- **Player B** takes damage: **5 - 2 = 3 HP**.
+
+**Updated HP:**
+
+- **Player A HP:** 5
+- **Player B HP:** 3
+
+---
+
+### **Round 6**
+
+**Players Choose Actions:**
+
+- **Player A:** `attack 2`
+- **Player B:** `attack 4`
+
+**Action Revelation:**
+
+- Both players attack.
+
+**Resolution:**
+
+- **Player A** takes damage: **4 HP**.
+- **Player B** takes damage: **2 HP**.
+
+**Updated HP:**
+
+- **Player A HP:** 1
+- **Player B HP:** 1
+
+---
+
+### **Round 7**
+
+**Players Choose Actions:**
+
+- **Player A:** `attack 3`
+- **Player B:** `attack 3`
+
+**Action Revelation:**
+
+- Both players attack.
+
+**Resolution:**
+
+- **Player A** takes damage: **3 HP** (drops to **-2 HP**).
+- **Player B** takes damage: **3 HP** (drops to **-2 HP**).
+
+**Result:**
+
+- Both players have HP below zero.
+- **Tie Resolution:** Based on the "no draw" condition, rules should specify handling simultaneous defeat.
+- **Suggested Rule:** In the event both players reach zero HP in the same round, the player who initiated the attack with the higher value wins.
+  - **Player A** and **Player B** both attacked with the same value.
+  - **Alternate Rule:** If tied, the player with the higher remaining HP before the round wins.
+    - **Both players had 1 HP**, so the game is a true tie.
+- **Final Decision:** To ensure no draws, adjust the rules to prevent simultaneous defeat or establish a tiebreaker mechanism.
+
+---
+
+## **Command-Line Interaction Example**
+
+**Game Start:**
+
+```
+Welcome to Attack and Defend!
+
+Player A HP: 10
+Player B HP: 10
+
+Let the battle begin!
+```
+
+---
+
+**Round 1**
+
+**Player A Turn:**
+
+```
+Player A, enter your action (attack or defend) and value (1-5):
+
+> attack 4
+```
+
+**Player B Turn:**
+
+```
+Player B, enter your action (attack or defend) and value (1-5):
+
+> defend 3
+```
+
+**Round Result:**
+
+```
+Player A attacks with a value of 4.
+Player B defends with a value of 3.
+
+Result:
+Player B takes 1 damage.
+
+Player A HP: 10
+Player B HP: 9
+```
+
+---
+
+**Subsequent Rounds:**
+
+*(Repeat the action input and result display as in Round 1, updating HP accordingly.)*
+
+---
+
+**Victory Announcement:**
+
+```
+Player B has been defeated!
+Player A wins the game!
+```
+
+---
+
+## **Strategic Depth and Complexity**
+
+- **Predictive Play:** Anticipate whether your opponent will attack or defend to choose the optimal action.
+- **Resource Management:** Decide when to use high attack or defense values, as choosing a high value might leave you vulnerable in subsequent rounds.
+- **Risk vs. Reward:** Balancing aggressive attacks with necessary defenses to protect your HP.
+
+---
+
+## **Additional Rules and Clarifications**
+
+- **No Draw Mechanism:**
+  - To adhere to the "no draw" condition, implement a tiebreaker:
+    - **Simultaneous Defeat Resolution:** In the rare case both players reach zero or negative HP in the same round, the player who dealt the higher damage in that round wins.
+    - If damage is equal, the player with higher HP before the round wins.
+    - If still tied, the player who has attacked with higher total attack values throughout the game wins.
+    - As a last resort, the first player to reach zero HP loses.
+
+- **Invalid Input Handling:**
+  - If a player inputs an invalid action or value:
+    - **First Offense:** Issue a warning and allow the player to re-enter their action.
+    - **Subsequent Offenses:** The player forfeits the round, and the opponent may choose their action after seeing the invalid input.
+
+---
+
+## **Conclusion**
+
+Attack and Defend is a game of wits and strategy, requiring players to outthink their opponent through prediction and tactical decision-making. Its simple mechanics make it easy to code and play via a command-line interface, while the depth of strategy ensures skilled players can consistently outperform novices. Enjoy the battle, and may the best strategist win!

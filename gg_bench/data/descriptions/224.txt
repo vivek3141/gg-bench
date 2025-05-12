@@ -1,0 +1,150 @@
+# Sequence Duel Rule Book
+
+## Objective
+
+**Sequence Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to collect three numbers that form an arithmetic sequence. An arithmetic sequence is a set of three numbers where the difference between consecutive numbers is consistent (e.g., 2, 4, 6 or 5, 5, 5). The game is designed to ensure a skilled player can consistently outperform an unskilled player, with quick gameplay and no possibility of a draw.
+
+## Setup
+
+1. **Number Pool Initialization**: Create a shared pool of numbers ranging from **1** to **9**. Each number is unique and can be selected only once during the game.
+2. **Player Assignment**: Determine which player will take the first turn. This can be decided randomly or by mutual agreement.
+3. **Empty Hands**: Both players start with an empty collection (hand) of numbers.
+
+## Game Components
+
+- **Number Pool (1-9)**: A set of single-digit numbers from which players select during their turns. Each number has the following attributes:
+  - **Value**: An integer from **1** to **9**.
+  - **Availability**: Initially available; once selected by a player, the number is removed from the pool and cannot be selected again.
+- **Player Hands**: A personal collection for each player where their selected numbers are stored.
+- **Arithmetic Sequence Criteria**: A sequence where the difference (`d`) between consecutive numbers is the same:
+  - **First Number (a₁)**
+  - **Second Number (a₂) = a₁ + d**
+  - **Third Number (a₃) = a₂ + d**
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player designated to go first during setup.
+2. **Actions During a Turn**:
+   - **Select a Number**: Choose one available number from the number pool.
+   - **Update Hands**: Add the selected number to your hand.
+   - **Remove Number**: The selected number is removed from the number pool and is no longer available.
+3. **Turn Progression**: After a player completes their turn, control passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players **must** select one number from the available numbers in the pool on their turn.
+   - Numbers cannot be skipped, passed, or deferred.
+2. **Building Sequences**:
+   - The objective is to collect any three numbers that can form an arithmetic sequence.
+   - The sequence does **not** need to be in the order they were picked.
+   - The common difference `d` can be positive, negative, or zero.
+   - Examples of valid sequences:
+     - **Positive Difference**: 2, 4, 6 (common difference `d` = 2)
+     - **Negative Difference**: 9, 6, 3 (common difference `d` = -3)
+     - **Zero Difference**: 5, 5, 5 (common difference `d` = 0)
+3. **Winning the Game**:
+   - The first player to have any three numbers in their hand that form an arithmetic sequence immediately wins the game.
+4. **No Draws - Endgame Condition**:
+   - If all numbers from the pool have been selected and **neither player** has formed an arithmetic sequence:
+     - The **last player to pick a number loses the game**. This rule ensures there is always a winner and eliminates the possibility of a draw.
+5. **Strategy Considerations**:
+   - Players should not only focus on forming their own sequence but also anticipate and block potential sequences that their opponent might be forming.
+   - Selecting numbers that prevent the opponent from completing a sequence can be a key tactic.
+
+## Scoring
+
+- **Victory**: Achieved by forming an arithmetic sequence with three numbers in your hand.
+- **Defeat**: Occurs if:
+  - The opponent forms an arithmetic sequence before you.
+  - You are the last player to select a number without either player forming a sequence.
+- **No Point System**: There are no points; the outcome is a win or loss based on fulfilling the objective.
+
+## Examples
+
+### Example 1: Winning by Forming a Sequence
+
+**Turn Progression**:
+
+1. **Player 1** picks **4**.
+2. **Player 2** picks **6**.
+3. **Player 1** picks **5**.
+4. **Player 2** picks **7**.
+5. **Player 1** picks **3**.
+
+**Player 1's Hand**: 4, 5, 3
+
+- **Sequence Formed**: 3, 4, 5 (common difference `d` = 1)
+- **Result**: **Player 1 wins** by forming an arithmetic sequence.
+
+### Example 2: Winning by Opponent's Last Pick
+
+**Turn Progression**:
+
+1. **Player 1** picks **2**.
+2. **Player 2** picks **5**.
+3. **Player 1** picks **4**.
+4. **Player 2** picks **7**.
+5. **Player 1** picks **6**.
+6. **Player 2** picks **1**.
+7. **Player 1** picks **8**.
+8. **Player 2** picks **3**.
+9. **Player 1** picks **9**.
+
+**All numbers have been selected. Neither player has an arithmetic sequence.**
+
+- **Last Player to Pick**: **Player 1**
+- **Result**: **Player 1 loses**, **Player 2 wins**.
+
+### Sample Command-Line Interaction
+
+**Game Start**:
+
+- Number Pool: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- Player 1's Turn.
+
+**Player 1's Turn**:
+
+- Command: `pick 4`
+- Output:
+  - "Player 1 picked 4."
+  - "Available Numbers: 1, 2, 3, 5, 6, 7, 8, 9"
+  - "Player 1's Numbers: 4"
+
+**Player 2's Turn**:
+
+- Command: `pick 5`
+- Output:
+  - "Player 2 picked 5."
+  - "Available Numbers: 1, 2, 3, 6, 7, 8, 9"
+  - "Player 2's Numbers: 5"
+
+**Subsequent Turns**:
+
+- Players continue to pick numbers, with the system updating and displaying the game state after each turn.
+
+**Winning Announcement**:
+
+- If a player forms an arithmetic sequence, the system outputs:
+  - "Player X has formed an arithmetic sequence with numbers A, B, C."
+  - "Player X wins the game!"
+
+**Endgame Without Sequence**:
+
+- If all numbers are picked without a sequence:
+  - "All numbers have been selected."
+  - "Player X was the last to pick."
+  - "Player X loses the game."
+  - "Player Y wins the game!"
+
+## Strategy Tips
+
+- **Offensive Play**: Focus on selecting numbers that help you form potential sequences. Plan ahead by identifying possible sequences based on available numbers.
+- **Defensive Play**: Observe the numbers your opponent picks. If you identify a potential sequence they might be forming, pick numbers that block their sequence.
+- **Balancing Choices**: Weigh the importance of advancing your sequence against the need to prevent your opponent's progress.
+
+## Conclusion
+
+**Sequence Duel** is a simple yet strategically rich game that can be played quickly in a command-line environment. By combining number selection with pattern recognition and strategic blocking, players engage in a battle of wits to outmaneuver their opponent and achieve victory.
+
+Enjoy the game, and may the best strategist win!

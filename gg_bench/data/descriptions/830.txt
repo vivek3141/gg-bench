@@ -1,0 +1,254 @@
+# Numeric Maze
+
+## Objective
+
+Be the first player to navigate through the numeric maze and reach **exactly position 20**. Use strategic planning to avoid traps and outmaneuver your opponent to achieve victory.
+
+## Setup
+
+- The game consists of a linear maze with positions numbered from **0** to **20**.
+- Both players start at position **0**.
+- **Traps** are located at positions **5**, **10**, and **15**.
+- Players decide who takes the first turn (e.g., by flipping a coin).
+
+## Game Components
+
+- **Maze Positions**: Numbers from **0** to **20** representing steps in the maze.
+- **Player Tokens**: Represent each player's current position in the maze (denoted as `Player 1` and `Player 2`).
+- **Traps**: Fixed positions (**5**, **10**, **15**) that send players back to the start.
+
+## Turns
+
+- Players alternate turns.
+- During a turn, a player decides how many positions to move forward: **1**, **2**, or **3**.
+- The chosen move is added to the player's current position.
+- The turn ends after the player's position is updated (and any trap effects are applied).
+
+## Rules and Mechanics
+
+### Movement
+
+- **Move Options**: On your turn, you may move forward **1**, **2**, or **3** positions.
+- **Exact Landing**: You must land **exactly** on position **20** to win. Overshooting is not allowed.
+- **Legal Moves**: If a move would take you past position **20**, it is invalid, and you must choose a smaller number.
+
+### Traps
+
+- **Trap Positions**: Positions **5**, **10**, and **15** are traps.
+- **Trap Effect**: Landing **exactly** on a trap sends your token back to the start (position **0**).
+- **Skipping Traps**: You can safely pass over a trap without penalty; traps only activate when you land on them.
+- **Strategy**: Plan your moves to avoid landing on trap positions.
+
+### Victory Condition
+
+- **Winning the Game**: The first player to reach **exactly position 20** wins.
+- **No Draws**: The game cannot end in a tie. Play continues until one player wins.
+
+### Turn Progression
+
+- **No Skipping Turns**: Players must take a turn if they have any legal moves available.
+- **No Forced Moves**: Players choose their move freely among the valid options (1, 2, or 3 spaces).
+
+## Scoring
+
+- **No Points**: This game does not use a scoring system.
+- **Win Condition**: Victory is achieved by reaching position **20** exactly.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Positions
+
+- **Player 1 (P1)**: Position **0**
+- **Player 2 (P2)**: Position **0**
+
+#### Turn 1
+
+- **P1's Turn**:
+  - Chooses to move **3** spaces.
+  - Moves from **0** to **3**.
+  
+- **P2's Turn**:
+  - Chooses to move **2** spaces.
+  - Moves from **0** to **2**.
+
+#### Turn 2
+
+- **P1's Turn**:
+  - At position **3**, chooses to move **2** spaces.
+  - Moves to **5** (**trap**).
+  - Lands on a trap; returns to **0**.
+
+- **P2's Turn**:
+  - At position **2**, chooses to move **3** spaces.
+  - Moves to **5** (**trap**).
+  - Lands on a trap; returns to **0**.
+
+#### Turn 3
+
+- **P1's Turn**:
+  - At position **0**, chooses to move **1** space.
+  - Moves to **1**.
+
+- **P2's Turn**:
+  - At position **0**, chooses to move **2** spaces.
+  - Moves to **2**.
+
+#### Turn 4
+
+- **P1's Turn**:
+  - At position **1**, chooses to move **3** spaces.
+  - Moves to **4**.
+
+- **P2's Turn**:
+  - At position **2**, chooses to move **3** spaces.
+  - Moves to **5** (**trap**).
+  - Lands on a trap; returns to **0**.
+
+#### Turn 5
+
+- **P1's Turn**:
+  - At position **4**, chooses to move **3** spaces.
+  - Moves to **7**.
+
+- **P2's Turn**:
+  - At position **0**, chooses to move **1** space.
+  - Moves to **1**.
+
+#### Turn 6
+
+- **P1's Turn**:
+  - At position **7**, chooses to move **3** spaces.
+  - Moves to **10** (**trap**).
+  - Lands on a trap; returns to **0**.
+
+- **P2's Turn**:
+  - At position **1**, chooses to move **3** spaces.
+  - Moves to **4**.
+
+#### Turn 7
+
+- **P1's Turn**:
+  - At position **0**, chooses to move **2** spaces.
+  - Moves to **2**.
+
+- **P2's Turn**:
+  - At position **4**, chooses to move **3** spaces.
+  - Moves to **7**.
+
+#### Turn 8
+
+- **P1's Turn**:
+  - At position **2**, chooses to move **3** spaces.
+  - Moves to **5** (**trap**).
+  - Lands on a trap; returns to **0**.
+
+- **P2's Turn**:
+  - At position **7**, chooses to move **3** spaces.
+  - Moves to **10** (**trap**).
+  - Lands on a trap; returns to **0**.
+
+#### Turn 9
+
+- **P1's Turn**:
+  - At position **0**, chooses to move **2** spaces.
+  - Moves to **2**.
+
+- **P2's Turn**:
+  - At position **0**, chooses to move **3** spaces.
+  - Moves to **3**.
+
+#### Turn 10
+
+- **P1's Turn**:
+  - At position **2**, chooses to move **1** space.
+  - Moves to **3**.
+
+- **P2's Turn**:
+  - At position **3**, chooses to move **3** spaces.
+  - Moves to **6**.
+
+#### Continuing the Game
+
+Players continue taking turns, carefully choosing moves to avoid traps and aiming to reach position **20** exactly. Strategic decision-making is key to victory.
+
+### Sample Command-Line Interaction
+
+#### Game Start
+
+```
+Welcome to Numeric Maze!
+Player 1 and Player 2 are both at position 0.
+Traps are at positions: 5, 10, 15.
+First to reach position 20 wins!
+
+Player 1's turn.
+You're at position 0.
+Choose your move (1, 2, or 3 spaces): 3
+Player 1 moves to position 3.
+
+Player 2's turn.
+You're at position 0.
+Choose your move (1, 2, or 3 spaces): 2
+Player 2 moves to position 2.
+```
+
+#### Mid-Game
+
+```
+Player 1's turn.
+You're at position 3.
+Choose your move (1, 2, or 3 spaces): 2
+Player 1 moves to position 5.
+Oh no! You landed on a trap! Return to start.
+Player 1 is now at position 0.
+
+Player 2's turn.
+You're at position 2.
+Choose your move (1, 2, or 3 spaces): 3
+Player 2 moves to position 5.
+Oh no! You landed on a trap! Return to start.
+Player 2 is now at position 0.
+```
+
+#### Approaching the End
+
+```
+Player 1's turn.
+You're at position 17.
+Allowed moves: 1, 2 (cannot move 3 spaces; would exceed position 20).
+Choose your move (1 or 2 spaces): 3
+Invalid move. You cannot move beyond position 20.
+Choose your move (1 or 2 spaces): 2
+Player 1 moves to position 19.
+
+Player 2's turn.
+You're at position 16.
+Allowed moves: 1, 2, 3.
+Choose your move (1, 2, or 3 spaces): 3
+Player 2 moves to position 19.
+```
+
+#### Winning the Game
+
+```
+Player 1's turn.
+You're at position 19.
+Allowed moves: 1 (must land exactly on 20).
+Choose your move (1 space): 1
+Player 1 moves to position 20.
+Congratulations! Player 1 has reached position 20 and wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of your current position relative to traps. Calculate your moves to avoid landing on them.
+- **Anticipate Opponent Moves**: Consider where your opponent might land and adjust your strategy accordingly.
+- **Control the Pace**: Decide whether to move aggressively or cautiously based on your position and risk of hitting traps.
+
+---
+
+By following these rules and employing strategic thinking, players can enjoy a quick and competitive game that tests decision-making skills. The **Numeric Maze** is easy to learn, simple to code for a command-line interface, and offers depth for players to develop and refine strategies.

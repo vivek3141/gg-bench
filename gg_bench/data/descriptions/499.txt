@@ -1,0 +1,248 @@
+# **Boundary**
+
+## **Objective**
+
+The objective of _Boundary_ is to be the first player to navigate your token across a 5x5 grid and reach your opponent's starting position on the opposite side. Utilize strategic movement and placement of blocks to obstruct your opponent while creating a path for yourself. Victory is achieved by either reaching the opponent's starting point or immobilizing your opponent so they cannot make a legal move on their turn.
+
+## **Setup**
+
+- **Game Board**: A 5x5 grid represented by rows (1 to 5) and columns (1 to 5).
+- **Starting Positions**:
+  - **Player 1** starts with their token at position **(1, 3)** (first row, third column).
+  - **Player 2** starts with their token at position **(5, 3)** (fifth row, third column).
+- **Initial Conditions**:
+  - All other grid spaces are empty.
+  - No blocks are placed on the grid at the start.
+
+## **Game Components**
+
+- **Grid**: A 5x5 grid that serves as the game board. Each cell can be identified by its row and column numbers.
+  
+  ```
+  (1,1) (1,2) (1,3) (1,4) (1,5)
+  (2,1) (2,2) (2,3) (2,4) (2,5)
+  (3,1) (3,2) (3,3) (3,4) (3,5)
+  (4,1) (4,2) (4,3) (4,4) (4,5)
+  (5,1) (5,2) (5,3) (5,4) (5,5)
+  ```
+  
+- **Tokens**:
+  - **Player Tokens**: Each player has a unique token that represents their position on the grid.
+    - **Player 1 Token**: Represented by `P1`.
+    - **Player 2 Token**: Represented by `P2`.
+- **Blocks**:
+  - **Blocks**: Markers placed on the grid to create impassable spaces. Represented by `X`.
+  - **Attributes**:
+    - Once placed, blocks remain on the grid for the remainder of the game.
+    - Blocks are impassable for both players.
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns. Player 1 makes the first move.
+- **Turn Structure**:
+  1. **Movement Phase**:
+     - Move your token to an adjacent space.
+     - Movement can be in any **orthogonal direction**: up, down, left, or right.
+     - Diagonal moves are **not** allowed.
+     - You **cannot** move into a space occupied by the opponent's token or a block (`X`).
+  2. **Blocking Phase**:
+     - After moving, you may place a single block (`X`) on any empty grid space.
+     - You **cannot** place a block on a space occupied by either token or another block.
+     - Blocks remain permanently once placed.
+- **Turn Progression**: After completing both phases, the turn passes to the opponent.
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+- **Legal Moves**:
+  - You must move your token to an adjacent orthogonal space.
+  - If no legal moves are available, you lose the game.
+- **Impassable Spaces**:
+  - You cannot move onto a space with a block (`X`) or the opponent's token.
+  
+### **Blocking Rules**
+
+- **Placement**:
+  - You may place one block per turn immediately after moving.
+  - Blocks can be placed on any empty space except the starting positions.
+- **Restrictions**:
+  - You cannot block a space currently occupied by any token.
+  - Blocks cannot be removed once placed.
+
+### **Winning the Game**
+
+- **Victory Conditions**:
+  - **Reaching the Opponent's Starting Position**:
+    - If you move your token onto the opponent's starting position (Player 1 reaching `(5,3)` or Player 2 reaching `(1,3)`), you win the game.
+  - **Immobilizing the Opponent**:
+    - If your opponent has no legal moves on their turn due to being completely surrounded by blocks and/or the edge of the grid, you win the game.
+  
+### **Additional Rules**
+
+- **No Skipping Turns**: Players must perform both movement and blocking phases on their turn if possible.
+- **No Passing**: You cannot forfeit your move or block placement; you must take an action unless no legal moves are available.
+
+## **Scoring**
+
+- **Victory Tracking**: The game is won by meeting one of the victory conditions. There is no point scoring system.
+- **Game Length**: The game is designed to end quickly, often within a few turns, due to the limited grid size and strategic block placements.
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Initial Grid**
+
+```
+[ ] [ ] [P1] [ ] [ ]
+[ ] [ ] [ ]  [ ] [ ]
+[ ] [ ] [ ]  [ ] [ ]
+[ ] [ ] [ ]  [ ] [ ]
+[ ] [ ] [P2] [ ] [ ]
+```
+- `[ ]` represents an empty space.
+- `P1` is Player 1's token at position `(1,3)`.
+- `P2` is Player 2's token at position `(5,3)`.
+
+#### **Turn-by-Turn Example**
+
+1. **Player 1's Turn**
+   - **Movement**: Moves `P1` from `(1,3)` to `(2,3)`.
+   - **Blocking**: Places a block at `(2,4)`.
+   - **Grid After Turn**:
+     ```
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [P1] [X] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [P2] [ ] [ ]
+     ```
+2. **Player 2's Turn**
+   - **Movement**: Moves `P2` from `(5,3)` to `(4,3)`.
+   - **Blocking**: Places a block at `(4,2)`.
+   - **Grid After Turn**:
+     ```
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [P1] [X] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [X] [P2] [ ] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     ```
+3. **Player 1's Turn**
+   - **Movement**: Moves `P1` from `(2,3)` to `(3,3)`.
+   - **Blocking**: Places a block at `(3,4)`.
+   - **Grid After Turn**:
+     ```
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [ ]  [X] [ ]
+     [ ] [ ] [P1] [ ] [ ]
+     [ ] [X] [P2] [ ] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     ```
+4. **Player 2's Turn**
+   - **Movement**: Attempts to move `P2` to `(3,3)` but space is occupied by `P1`.
+   - **Alternative Movement**: Moves `P2` from `(4,3)` to `(4,4)`.
+   - **Blocking**: Places a block at `(3,2)`.
+   - **Grid After Turn**:
+     ```
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [ ]  [X] [ ]
+     [ ] [X] [P1] [ ] [ ]
+     [ ] [X] [ ]  [P2] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     ```
+5. **Player 1's Turn**
+   - **Movement**: Moves `P1` from `(3,3)` to `(4,3)`.
+   - **Blocking**: Places a block at `(4,2)`, but already occupied. Must choose another space.
+   - **Alternate Blocking**: Places a block at `(2,3)`.
+   - **Grid After Turn**:
+     ```
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [X]  [X] [ ]
+     [ ] [X] [ ]  [ ] [ ]
+     [ ] [X] [P1] [P2] [ ]
+     [ ] [ ] [ ]  [ ] [ ]
+     ```
+6. **Player 2's Turn**
+   - **Movement**: Moves `P2` from `(4,4)` to `(4,5)`.
+   - **Blocking**: Places a block at `(3,5)`.
+   - **Grid After Turn**:
+     ```
+     [ ] [ ] [ ]  [ ] [ ]
+     [ ] [ ] [X]  [X] [ ]
+     [ ] [X] [ ]  [ ] [X]
+     [ ] [X] [P1] [ ] [P2]
+     [ ] [ ] [ ]  [ ] [ ]
+     ```
+
+7. **Player 1's Turn**
+   - **Movement**: Moves `P1` from `(4,3)` to `(5,3)` (Player 2's starting position).
+   - **Blocking**: Not necessary as victory condition is met.
+   - **Game Over**: Player 1 wins by reaching Player 2's starting position.
+
+## **Command-Line Interaction Example**
+
+### **Notation**
+
+- **Commands**:
+  - Movement: `MOVE row column`
+  - Blocking: `BLOCK row column`
+- **Prompt**: Indicates which player's turn it is.
+
+### **Sample Interaction**
+
+```
+Player 1's Turn
+Enter your move:
+> MOVE 2 3
+Enter block position:
+> BLOCK 2 4
+
+Player 2's Turn
+Enter your move:
+> MOVE 4 3
+Enter block position:
+> BLOCK 4 2
+
+Player 1's Turn
+Enter your move:
+> MOVE 3 3
+Enter block position:
+> BLOCK 3 4
+
+Player 2's Turn
+Enter your move:
+> MOVE 4 4
+Enter block position:
+> BLOCK 3 2
+
+Player 1's Turn
+Enter your move:
+> MOVE 4 3
+Enter block position:
+> BLOCK 2 3
+
+Player 2's Turn
+Enter your move:
+> MOVE 4 5
+Enter block position:
+> BLOCK 3 5
+
+Player 1's Turn
+Enter your move:
+> MOVE 5 3
+
+Congratulations, Player 1! You have reached the opponent's starting position and won the game.
+```
+
+## **Strategy Tips**
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and block critical paths.
+- **Control the Center**: Occupying central positions can give you more movement options.
+- **Block Wisely**: Use blocks to create barriers without limiting your own movement.
+- **Force Moves**: Try to drive your opponent toward the edges where their movement options are limited.
+
+## **Conclusion**
+
+_Boundary_ is a fast-paced, strategic game that challenges players to outmaneuver their opponent through clever movement and tactical blocking. Its simple rules and compact grid make it easy to learn and quick to play, while offering depth for skilled players to consistently outperform less experienced opponents. Enjoy testing your strategic thinking and may the best player win!

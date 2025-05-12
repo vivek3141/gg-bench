@@ -1,0 +1,317 @@
+# Energy Capture
+
+## Objective
+
+Become the first player to accumulate a total energy score of **15 or more** by capturing Energy Cells scattered across a 5x5 grid. Strategically navigate the grid to collect Energy Cells while blocking your opponent from doing the same.
+
+---
+
+## Setup
+
+1. **Grid Initialization**:
+   - The game is played on a **5x5 grid** with cells labeled by their coordinates `(row, column)`, ranging from `(1,1)` in the top-left corner to `(5,5)` in the bottom-right corner.
+
+2. **Player Positions**:
+   - **Player 1** starts at the **top-left corner** at position `(1,1)`.
+   - **Player 2** starts at the **bottom-right corner** at position `(5,5)`.
+
+3. **Energy Cells Placement**:
+   - A total of **8 Energy Cells** are randomly placed on the grid at the beginning of the game.
+   - Energy Cells have random energy values ranging from **1 to 5**.
+   - Energy Cells cannot be placed on the starting positions `(1,1)` or `(5,5)` or occupy the same cell.
+   - Each Energy Cell's position and energy value are visible to both players.
+
+4. **Starting Conditions**:
+   - Both players begin with an energy score of **0**.
+   - Players cannot occupy the same cell at any time.
+
+---
+
+## Game Components
+
+1. **Grid Cells**:
+   - **Empty Cells**: Cells with no Energy Cells or player markers.
+   - **Energy Cells**: Contain an energy value (**1-5**). Represented as `E[value]` (e.g., `E3` for an energy value of 3).
+   - **Player Markers**: Indicate the current position of each player on the grid. Represented as `P1` for Player 1 and `P2` for Player 2.
+
+2. **Players**:
+   - Each player controls a single marker on the grid.
+   - Players can move their marker to collect Energy Cells.
+
+3. **Energy Score**:
+   - A tally of the energy values from captured Energy Cells.
+   - The objective is to reach an energy score of **15 or more**.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Player Actions During a Turn**:
+   - **Movement**:
+     - Move your marker to an adjacent cell (up, down, left, or right).
+     - Diagonal movements are **not** allowed.
+     - You **cannot** move onto a cell occupied by the opponent's marker.
+     - You **cannot** revisit a cell you have previously occupied during the game.
+
+   - **Capturing Energy Cells**:
+     - If you move onto a cell containing an Energy Cell, you immediately capture it.
+     - Add the Energy Cell's value to your energy score.
+     - Remove the Energy Cell from the grid.
+
+   - **Blocking**:
+     - While you cannot occupy the same cell as your opponent, you can position yourself to block their path to an Energy Cell.
+
+3. **Turn Progression**:
+   - After completing your movement and any applicable actions (like capturing an Energy Cell), your turn ends.
+   - The opponent then begins their turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Restrictions**:
+   - **Adjacent Cells Only**: You can only move to cells directly next to your current position (no skipping cells).
+   - **No Revisiting Cells**: Once you have moved away from a cell, you cannot return to it later in the game.
+   - **Opponent's Cell**: You cannot move into the cell occupied by your opponent.
+
+2. **Energy Cells**:
+   - **Visibility**: All Energy Cells and their values are visible to both players at all times.
+   - **Capture**: Moving onto a cell with an Energy Cell automatically captures it.
+   - **Removal**: Once captured, the Energy Cell is removed from the grid.
+
+3. **Winning the Game**:
+   - **Victory Condition**: The first player to reach an energy score of **15 or more** wins immediately.
+   - **No Draws**: The game continues until one player achieves the victory condition.
+
+4. **Adjacent Energy Cells**:
+   - If both players are adjacent to the same Energy Cell, the player whose turn it is can capture it during their turn.
+
+5. **Energy Score Tie**:
+   - If both players exceed an energy score of 15 on the same turn, the player with the **higher energy score** wins.
+   - If tied, the player who captured the most Energy Cells wins.
+   - If still tied, the player who captured the highest value Energy Cell wins.
+
+---
+
+## Scoring
+
+- **Energy Score Tracking**:
+  - Keep a running total of your energy score after each capture.
+  - Example: If you first capture an Energy Cell with value 4, your energy score is now 4.
+
+- **Victory Threshold**:
+  - Aim to accumulate an energy score of **15 or more** as quickly as possible.
+
+---
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Initial Grid Setup**:
+
+```
+[P1 ][    ][    ][    ][    ]
+[    ][E3 ][    ][E2 ][    ]
+[    ][    ][E5 ][    ][    ]
+[    ][E1 ][    ][E4 ][    ]
+[    ][    ][    ][    ][P2 ]
+```
+
+- **Energy Cells**:
+  - `E1` at position `(4,2)` with value **1**
+  - `E2` at position `(2,4)` with value **2**
+  - `E3` at position `(2,2)` with value **3**
+  - `E4` at position `(4,4)` with value **4**
+  - `E5` at position `(3,3)` with value **5**
+
+#### Turn Progression:
+
+1. **Player 1's Turn**:
+   - Moves from `(1,1)` to `(1,2)`.
+   - No Energy Cell to capture.
+
+2. **Player 2's Turn**:
+   - Moves from `(5,5)` to `(5,4)`.
+   - No Energy Cell to capture.
+
+3. **Player 1's Turn**:
+   - Moves from `(1,2)` to `(2,2)`.
+   - Captures `E3` (value **3**).
+   - Energy score is now **3**.
+
+4. **Player 2's Turn**:
+   - Moves from `(5,4)` to `(4,4)`.
+   - Captures `E4` (value **4**).
+   - Energy score is now **4**.
+
+5. **Player 1's Turn**:
+   - Moves from `(2,2)` to `(2,3)`.
+   - No Energy Cell to capture.
+
+6. **Player 2's Turn**:
+   - Moves from `(4,4)` to `(3,4)`.
+   - No Energy Cell to capture.
+
+7. **Player 1's Turn**:
+   - Moves from `(2,3)` to `(2,4)`.
+   - Captures `E2` (value **2**).
+   - Energy score is now **5**.
+
+8. **Player 2's Turn**:
+   - Moves from `(3,4)` to `(3,3)`.
+   - Captures `E5` (value **5**).
+   - Energy score is now **9**.
+
+9. **Player 1's Turn**:
+   - Moves from `(2,4)` to `(3,4)`.
+   - No Energy Cell to capture.
+
+10. **Player 2's Turn**:
+    - Moves from `(3,3)` to `(2,3)`.
+    - No Energy Cell to capture.
+
+11. **Player 1's Turn**:
+    - Moves from `(3,4)` to `(4,4)`.
+    - Cannot revisit, as `E4` was previously captured by Player 2 and cell was occupied.
+
+12. **Player 1 chooses an alternative path**:
+    - Moves from `(3,4)` to `(3,5)`.
+
+13. **Gameplay Continues**:
+    - Players continue moving strategically to capture remaining Energy Cells.
+    - **Player 2** reaches an energy score of **15** first and **wins the game**.
+
+---
+
+### Example 2: Strategic Blocking and Winning
+
+**Scenario**:
+
+- Both players are near an Energy Cell `E5` at position `(3,3)` with value **5**.
+- **Player 1** is at `(2,3)`.
+- **Player 2** is at `(3,2)`.
+
+#### Turn Progression:
+
+1. **Player 1's Turn**:
+   - Moves from `(2,3)` to `(3,3)`.
+   - Captures `E5` (value **5**).
+   - Energy score increases to **10**.
+   - Now closer to winning.
+
+2. **Player 2's Turn**:
+   - Cannot move to `(3,3)` (occupied by Player 1).
+   - Moves to `(4,2)` attempting to reach another Energy Cell.
+
+3. **Player 1's Turn**:
+   - Moves from `(3,3)` to `(4,3)`.
+   - Blocks Player 2's path to the next Energy Cell.
+
+4. **Player 2's Turn**:
+   - Forced to take a longer route.
+   - Moves from `(4,2)` to `(5,2)`.
+
+5. **Player 1's Turn**:
+   - Moves from `(4,3)` to `(5,3)`.
+   - Captures an Energy Cell with value **5**.
+   - Energy score increases to **15**.
+   - **Player 1 wins the game**.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming the game is played via a command-line interface with inputs and outputs as follows.
+
+### Game Start
+
+```
+Welcome to Energy Capture!
+
+Player 1 starts at position (1,1).
+Player 2 starts at position (5,5).
+
+Energy Cells placed:
+- E1 (Value: 2) at (2,1)
+- E2 (Value: 3) at (3,3)
+- E3 (Value: 4) at (4,5)
+
+Player 1's energy score: 0
+Player 2's energy score: 0
+```
+
+### Player Turns
+
+**Player 1's Turn**:
+
+```
+Player 1, it's your turn.
+Your current position: (1,1)
+Available moves: (1,2), (2,1)
+Enter your move (row,column): 2,1
+
+You moved to (2,1).
+You captured E1 with value 2.
+Your energy score is now 2.
+```
+
+**Player 2's Turn**:
+
+```
+Player 2, it's your turn.
+Your current position: (5,5)
+Available moves: (5,4), (4,5)
+Enter your move (row,column): 4,5
+
+You moved to (4,5).
+You captured E3 with value 4.
+Your energy score is now 4.
+```
+
+**Player 1's Next Turn**:
+
+```
+Player 1, it's your turn.
+Your current position: (2,1)
+Available moves: (2,2), (3,1)
+Enter your move (row,column): 2,2
+
+You moved to (2,2).
+No Energy Cell to capture.
+```
+
+### Continuing the Game
+
+Players continue to take turns, moving strategically to capture Energy Cells and block each other. The game keeps track of positions and energy scores after each turn.
+
+### Winning the Game
+
+**Later in the Game**:
+
+```
+Player 1, it's your turn.
+Your current position: (3,3)
+Your energy score: 12
+Available moves: (2,3), (4,3), (3,2), (3,4)
+Enter your move (row,column): 4,3
+
+You moved to (4,3).
+You captured an Energy Cell with value 3.
+Your energy score is now 15.
+
+Congratulations, Player 1! You have reached 15 energy points and won the game!
+```
+
+---
+
+## Summary
+
+"**Energy Capture**" is a strategic two-player game that combines movement and resource collection on a grid-based board. By planning your moves and anticipating your opponent's actions, you can capture valuable Energy Cells and reach the victory threshold before your opponent does. The game is designed for quick play and can be easily implemented in a command-line interface, providing both simplicity and depth for an engaging gameplay experience.
+
+---
+
+Enjoy the game and may the most strategic player win!

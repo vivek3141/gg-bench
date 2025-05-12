@@ -1,0 +1,125 @@
+# Divider
+
+## Objective
+
+The objective of **Divider** is to force your opponent into a position where they cannot make a legal move. Players take turns subtracting proper divisors from a shared number. The player who cannot make a move on their turn loses the game.
+
+---
+
+## Setup
+
+- **Starting Number (N):** The game begins with a positive integer greater than 1. The default starting number is **100**, but players can agree on any starting number to adjust the game's difficulty and length.
+- **Players:** Two players participate, deciding who goes first through mutual agreement or randomly.
+
+---
+
+## Game Components
+
+- **Shared Number (N):** A positive integer that is updated throughout the game.
+- **Proper Divisors:** For any number N, these are all positive integers greater than 1 and less than N that divide N exactly (without leaving a remainder).
+
+---
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure:**
+  1. **Identify Proper Divisors:** On your turn, determine all proper divisors of the current number N.
+  2. **Select Divisor to Subtract:** Choose one proper divisor to subtract from N.
+  3. **Subtract and Update N:** Subtract the chosen divisor from N to get the new N.
+  4. **Announce Move:** State the chosen divisor and the new value of N.
+
+---
+
+## Rules and Mechanics
+
+1. **Legal Moves:**
+   - On your turn, you must subtract a proper divisor of N from N.
+   - **Proper Divisors** exclude 1 and N itself.
+   - If N has no proper divisors (i.e., N is prime or N equals 1), you cannot make a move and lose the game.
+
+2. **Subtraction Rules:**
+   - Only one proper divisor can be subtracted per turn.
+   - The chosen divisor must divide N exactly.
+   - After subtraction, N is updated for the next player's turn.
+
+3. **Winning the Game:**
+   - If your opponent cannot make a legal move on their turn, you win.
+   - The game ends immediately when a player cannot make a move.
+
+4. **Invalid Moves:**
+   - Selecting a number that is not a proper divisor of N is an invalid move.
+   - If an invalid move is made, the player must choose a valid divisor or concede the game if no valid moves are available.
+
+---
+
+## Scoring
+
+- There is no point system.
+- The outcome is a win or a loss.
+- **Winner:** The player who forces their opponent into a position with no legal moves.
+
+---
+
+## Examples
+
+### Example Game:
+
+**Starting Number (N):** 15
+
+- **Player 1's Turn:**
+  - Proper divisors of 15: 3, 5
+  - Player 1 chooses to subtract 5.
+  - New N: 15 - 5 = **10**
+  
+- **Player 2's Turn:**
+  - Proper divisors of 10: 2, 5
+  - Player 2 chooses to subtract 5.
+  - New N: 10 - 5 = **5**
+  
+- **Player 1's Turn:**
+  - Proper divisors of 5: None (5 is prime)
+  - Player 1 cannot make a move.
+  - **Player 2 wins the game!**
+
+### Command-Line Interaction Example:
+
+```plaintext
+Game Start! Starting number (N): 15
+
+Player 1's turn.
+Current N: 15
+Proper divisors of 15: 3, 5
+Enter the divisor to subtract: 5
+Player 1 subtracts 5 from 15. New N is 10.
+
+Player 2's turn.
+Current N: 10
+Proper divisors of 10: 2, 5
+Enter the divisor to subtract: 5
+Player 2 subtracts 5 from 10. New N is 5.
+
+Player 1's turn.
+Current N: 5
+Proper divisors of 5: None
+Player 1 cannot make a legal move.
+Player 2 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Try to anticipate the results of your move on the next turn.
+- **Aim for Primes:** Leave your opponent with a prime number or 1 to limit their options.
+- **Divisor Choice:** Choose divisors that result in numbers with fewer proper divisors.
+
+---
+
+## Conclusion
+
+**Divider** is a simple yet strategic numerical game that challenges players to think ahead and use basic arithmetic skills. The straightforward rules make it easy to play in a command-line interface, and the game typically concludes quickly. Mastery comes from recognizing patterns and planning several moves in advance, allowing skilled players to consistently outperform less experienced opponents.
+
+---
+
+Enjoy playing **Divider** and may the best strategist win!

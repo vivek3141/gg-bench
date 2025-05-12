@@ -1,0 +1,254 @@
+# Gridlock: A Two-Player Command-Line Strategy Game
+
+## Objective
+
+**Gridlock** is a strategic two-player, turn-based game played on a grid. The primary goal is to trap your opponent such that they have no legal moves remaining. The last player able to move wins the game. There are no draws—every game concludes with a win or loss.
+
+---
+
+## Setup
+
+1. **Game Board**: A 5x5 grid is used as the game board. Each cell in the grid can be identified by its row and column coordinates (e.g., `(1,1)` for the top-left corner).
+
+2. **Player Tokens**: 
+   - **Player 1** uses the token `P1`.
+   - **Player 2** uses the token `P2`.
+
+3. **Initial Positions**:
+   - Players decide who goes first (e.g., by mutual agreement or random selection).
+   - Starting with Player 1, each player places their token on any unoccupied cell on the grid. Players cannot choose the same starting cell.
+
+---
+
+## Game Components
+
+- **Grid Cells**: Represented in the command-line interface as a 5x5 matrix. Empty cells are indicated with `.`, occupied cells with `P1` or `P2`, and removed cells with `X`.
+
+- **Player Tokens**:
+  - `P1`: Represents Player 1's current position on the grid.
+  - `P2`: Represents Player 2's current position on the grid.
+
+- **Removed Cells**: Cells that have been removed from play are marked with `X` and cannot be occupied or moved through.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with Player 1.
+
+2. **Turn Structure**:
+   - **Movement Phase**:
+     - The player moves their token to an adjacent cell. Adjacent cells are any of the eight surrounding cells, including diagonals.
+     - Movement is only allowed to empty cells (`.`). Players cannot move onto removed cells (`X`) or the opponent's current position.
+   - **Removal Phase**:
+     - After moving, the player must remove any empty cell from the grid by marking it with an `X`.
+     - The removed cell cannot be the one currently occupied by either player.
+     - Players cannot remove a cell adjacent (including diagonals) to the opponent's current position.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - A player must move to an adjacent cell during their movement phase.
+   - If a player has no legal moves (i.e., all adjacent cells are removed or occupied), they lose the game.
+
+2. **Cell Removal Rules**:
+   - After moving, the player removes one empty cell from the grid.
+   - The cell to be removed:
+     - Cannot be the cell currently occupied by either player.
+     - Cannot be any of the eight cells adjacent (including diagonals) to the opponent's current position.
+   - Removed cells are permanently out of play and marked with an `X`.
+
+3. **Victory Conditions**:
+   - A player wins if the opponent cannot make a legal move on their turn.
+   - Since players must remove a cell on their turn, the game progresses towards a conclusion with no possibility of a draw.
+
+4. **Forbidden Actions**:
+   - Skipping a turn is not allowed; players must move and remove a cell if possible.
+   - Moving onto or through removed cells (`X`) is prohibited.
+   - Removing a cell adjacent to the opponent's position is not allowed.
+
+---
+
+## Scoring
+
+- **Winning the Game**: The player who successfully traps their opponent, leaving them with no legal moves, wins the game.
+
+- **No Point System**: There are no point tallies or scores beyond the win/loss outcome.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial Setup
+
+- **Grid**:
+
+  ```
+  .  .  .  .  .
+  .  .  .  .  .
+  .  .  .  .  .
+  .  .  .  .  .
+  .  .  .  .  .
+  ```
+
+- **Player Positions**:
+  - Player 1 places `P1` at position `(1,1)`.
+  - Player 2 places `P2` at position `(5,5)`.
+
+- **Updated Grid**:
+
+  ```
+  P1 .  .  .  .
+  .  .  .  .  .
+  .  .  .  .  .
+  .  .  .  .  .
+  .  .  .  . P2
+  ```
+
+#### Turn-by-Turn Gameplay
+
+**Turn 1: Player 1**
+
+- **Movement Phase**:
+  - Player 1 moves from `(1,1)` to `(2,2)`.
+
+- **Removal Phase**:
+  - Player 1 removes cell `(3,3)` (marked with `X`).
+
+- **Grid After Turn 1**:
+
+  ```
+  .   .   .   .   .
+  .  P1   .   .   .
+  .   .   X   .   .
+  .   .   .   .   .
+  .   .   .   .  P2
+  ```
+
+**Turn 2: Player 2**
+
+- **Movement Phase**:
+  - Player 2 moves from `(5,5)` to `(4,4)`.
+
+- **Removal Phase**:
+  - Player 2 removes cell `(4,5)` (marked with `X`).
+
+- **Grid After Turn 2**:
+
+  ```
+  .   .   .   .   .
+  .  P1   .   .   .
+  .   .   X   .   .
+  .   .   .  P2   X
+  .   .   .   .   .
+  ```
+
+**Turn 3: Player 1**
+
+- **Movement Phase**:
+  - Player 1 moves from `(2,2)` to `(2,3)`.
+
+- **Removal Phase**:
+  - Player 1 attempts to remove cell `(3,4)`, which is not adjacent to Player 2.
+
+- **Grid After Turn 3**:
+
+  ```
+  .   .   .   .   .
+  .   .  P1  .   .
+  .   .   X   X  .
+  .   .   .  P2   X
+  .   .   .   .   .
+  ```
+
+**Turn 4: Player 2**
+
+- **Movement Phase**:
+  - Player 2 moves from `(4,4)` to `(3,3)`.
+
+- **Removal Phase**:
+  - Player 2 cannot remove cell `(2,2)` or any cells adjacent to Player 1.
+  - Player 2 removes cell `(5,5)`.
+
+- **Grid After Turn 4**:
+
+  ```
+  .   .   .   .   .
+  .   .  P1  .   .
+  .   .  P2   X  .
+  .   .   .   .   X
+  .   .   .   .   X
+  ```
+
+**Turn 5: Player 1**
+
+- **Movement Phase**:
+  - Player 1 moves from `(2,3)` to `(1,4)`.
+
+- **Removal Phase**:
+  - Player 1 removes cell `(1,5)`.
+
+- **Grid After Turn 5**:
+
+  ```
+  .   .   .  P1   X
+  .   .   .   .   .
+  .   .  P2   X  .
+  .   .   .   .   X
+  .   .   .   .   X
+  ```
+
+**Turn 6: Player 2**
+
+- **Movement Phase**:
+  - Player 2 attempts to move but finds all adjacent cells are either removed or occupied.
+
+- **Result**:
+  - Player 2 has no legal moves and loses the game.
+  - **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their moves and removals by specifying coordinates.
+
+**Player 1's Turn:**
+
+```
+Player 1's move:
+Enter new position (row, column): 2,2
+Enter cell to remove (row, column): 3,3
+```
+
+**Player 2's Turn:**
+
+```
+Player 2's move:
+Enter new position (row, column): 4,4
+Enter cell to remove (row, column): 4,5
+```
+
+**Continued gameplay** follows the interactions as shown in the sample playthrough.
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and aim to limit their options by removing strategic cells.
+
+- **Control the Center**: Occupying central positions can give you more movement options while potentially restricting your opponent.
+
+- **Avoid Isolation**: Be cautious of moving too close to the edges or corners of the grid, where you might have fewer escape routes.
+
+- **Cell Removal Choice**: Always consider which cell to remove; sometimes it's more advantageous to remove a cell that limits your opponent's future movements rather than one that's immediately close to you.
+
+---
+
+## Conclusion
+
+**Gridlock** is a game of strategic movement and foresight. Its simple rules and quick gameplay make it easy to learn but challenging to master. Players must balance offensive tactics with defensive positioning to outmaneuver their opponent and secure victory.
+
+Enjoy the game, and may the best strategist win!

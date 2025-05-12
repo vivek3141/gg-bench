@@ -1,0 +1,198 @@
+# Tower Builder: A Strategic Stacking Game
+
+## Objective
+
+Be the first player to build a tower that reaches **exactly 20 units in height** using a limited set of blocks. The player who achieves this goal wins the game. Strategic planning and resource management are key, as players must decide which blocks to use while preventing their opponent from reaching the target height first.
+
+## Setup
+
+- **Players**: 2
+- **Starting Condition**: Each player begins with an empty tower of height 0 units.
+- **Block Inventory**: Each player has an identical set of blocks of various sizes.
+
+## Game Components
+
+### Blocks
+
+Each player has the following blocks:
+
+- **Size 1 Unit Blocks**: Quantity **5**
+- **Size 2 Units Blocks**: Quantity **4**
+- **Size 3 Units Blocks**: Quantity **3**
+- **Size 4 Units Blocks**: Quantity **2**
+- **Size 5 Units Blocks**: Quantity **1**
+
+All blocks are identical in appearance except for their size, which corresponds to their height in units.
+
+### Towers
+
+- Each player's tower is a vertical stack where blocks are placed one on top of another.
+- The tower's **height** is the sum of the sizes of the blocks placed.
+
+## Turns
+
+- Players alternate turns, with Player 1 starting the game.
+- **On Each Turn**:
+  - A player selects one block from their remaining inventory.
+  - The selected block is placed on top of their tower.
+  - The tower's new height is calculated by adding the size of the placed block.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Block Placement**:
+   - Players can only place one block per turn.
+   - Once a block is placed, it cannot be removed or replaced.
+2. **Tower Height Limit**:
+   - A player's tower must **not exceed 20 units** in height.
+   - If placing a block would cause the tower to exceed 20 units, the player **cannot** place that block.
+3. **Limited Resources**:
+   - Each block size has a limited quantity.
+   - Players must manage their blocks wisely to reach exactly 20 units.
+4. **Winning the Game**:
+   - The **first player** to reach a tower height of exactly **20 units** wins.
+   - The game ends immediately when a player reaches 20 units.
+
+### Special Conditions
+
+- **No Legal Move**:
+  - If a player cannot make a legal move (i.e., cannot place any of their remaining blocks without exceeding 20 units), they **pass** their turn.
+- **Both Players Pass**:
+  - If both players pass consecutively, the game ends.
+  - The player with the **taller tower** wins.
+  - **Tie-Breaker**: If both towers are the same height, the player who used **fewer blocks** wins.
+  - **Second Tie-Breaker**: If still tied, the player who **placed the last block** wins.
+
+## Scoring
+
+- **Tower Height**:
+  - Keep track of the cumulative height of each player's tower after each turn.
+- **Blocks Used**:
+  - Record the number of blocks each player has used.
+- **Remaining Blocks**:
+  - Monitor the quantities of each block size remaining in each player's inventory.
+
+## Example Gameplay
+
+### Turn-by-Turn Example
+
+#### Initial Inventories
+
+- **Player 1 and Player 2 each have**:
+  - Size 1 Unit Blocks: 5
+  - Size 2 Units Blocks: 4
+  - Size 3 Units Blocks: 3
+  - Size 4 Units Blocks: 2
+  - Size 5 Units Blocks: 1
+
+#### Game Progression
+
+1. **Player 1's Turn**:
+   - Places a **Size 5** block.
+   - Tower Height: **5 units**
+2. **Player 2's Turn**:
+   - Places a **Size 4** block.
+   - Tower Height: **4 units**
+3. **Player 1's Turn**:
+   - Places a **Size 4** block.
+   - Tower Height: **9 units** (5 + 4)
+4. **Player 2's Turn**:
+   - Places a **Size 5** block.
+   - Tower Height: **9 units** (4 + 5)
+5. **Player 1's Turn**:
+   - Places a **Size 3** block.
+   - Tower Height: **12 units** (9 + 3)
+6. **Player 2's Turn**:
+   - Attempts to place a **Size 4** block.
+   - Not allowed (would exceed 20 units if future moves are considered).
+   - Chooses a **Size 3** block instead.
+   - Tower Height: **12 units** (9 + 3)
+7. **Player 1's Turn**:
+   - Places a **Size 3** block.
+   - Tower Height: **15 units** (12 + 3)
+8. **Player 2's Turn**:
+   - Places a **Size 2** block.
+   - Tower Height: **14 units** (12 + 2)
+9. **Player 1's Turn**:
+   - Places a **Size 5** block.
+   - **Cannot place** (only had one Size 5 block, already used).
+   - Chooses a **Size 2** block instead.
+   - Tower Height: **17 units** (15 + 2)
+10. **Player 2's Turn**:
+    - Places a **Size 3** block.
+    - Tower Height: **17 units** (14 + 3)
+11. **Player 1's Turn**:
+    - Needs **3 units** to reach 20.
+    - Places a **Size 3** block.
+    - Tower Height: **20 units** (17 + 3)
+    - **Player 1 wins!**
+
+## Command-Line Interaction Example
+
+Assuming a simple text-based interface:
+
+### Start of Game
+
+```
+Welcome to Tower Builder!
+Player 1 and Player 2, prepare your strategies.
+Target Tower Height: 20 units
+
+Each player has the following blocks:
+Size 1 units - Quantity: 5
+Size 2 units - Quantity: 4
+Size 3 units - Quantity: 3
+Size 4 units - Quantity: 2
+Size 5 units - Quantity: 1
+
+Player 1's turn. Current Tower Height: 0 units
+Available Blocks: [Size 1:5, Size 2:4, Size 3:3, Size 4:2, Size 5:1]
+Enter the size of the block to place:
+```
+
+### Sample Turn
+
+#### Player 1's Input
+
+```
+Player 1 selects block of Size 5 units.
+Player 1's Tower Height is now 5 units.
+
+Player 2's turn. Current Tower Height: 0 units
+Available Blocks: [Size 1:5, Size 2:4, Size 3:3, Size 4:2, Size 5:1]
+Enter the size of the block to place:
+```
+
+#### Player 2's Input
+
+```
+Player 2 selects block of Size 4 units.
+Player 2's Tower Height is now 4 units.
+
+Player 1's turn. Current Tower Height: 5 units
+Available Blocks: [Size 1:5, Size 2:4, Size 3:3, Size 4:2, Size 5:0]
+Enter the size of the block to place:
+```
+
+### End of Game
+
+```
+Player 1 selects block of Size 3 units.
+Player 1's Tower Height is now 20 units.
+
+Congratulations, Player 1! You have reached exactly 20 units and won the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of both your and your opponent's tower heights to anticipate future moves.
+- **Resource Management**: Use larger blocks early to reach higher heights quickly, but be mindful of the exact combinations needed to reach 20 units.
+- **Block Availability**: Pay attention to the blocks you've already used and those remaining.
+- **Force Errors**: Try to reach a height that makes it difficult for your opponent to reach 20 units without going over.
+
+## Summary
+
+**Tower Builder** is a simple yet strategic game that challenges players to outthink their opponent through careful planning and resource management. By selecting the right blocks at the right time, you can build your tower to the perfect height and claim victory.
+
+Now, gather a friend, start your command-line interface, and may the best architect win!

@@ -1,0 +1,208 @@
+# Number Duel
+
+## Objective
+
+**Number Duel** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reach the **Target Number** exactly by strategically applying mathematical operations using your set of numbers, called **Action Numbers**. The player who reaches the Target Number first wins the game. Be careful not to exceed the Target Number; doing so results in an immediate loss.
+
+## Setup
+
+1. **Choose the Target Number**: Both players agree on a positive integer to serve as the Target Number (e.g., 15). This is the number players aim to reach.
+
+2. **Select Action Numbers**:
+   - Each player independently selects **three unique positive integers** between 1 and 9 (inclusive). These are their **Action Numbers**.
+   - Players should keep their Action Numbers secret until revealed during the game.
+
+3. **Initialize the Current Number**: The game starts with a shared **Current Number** set to **0**.
+
+4. **Determine Turn Order**: Decide who will take the first turn. This can be done by mutual agreement or by a random method such as a coin toss.
+
+## Game Components
+
+- **Current Number**: A shared integer value updated by players' moves, starting at 0.
+- **Target Number**: The agreed-upon positive integer that players aim to reach.
+- **Action Numbers**: Each player's set of three unique numbers between 1 and 9.
+- **Operations**: The four basic arithmetic operations—addition (+), subtraction (-), multiplication (*), and integer division (/).
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **During a Turn**, a player:
+  1. **Reveals and Uses an Action Number**: Chooses one of their unused Action Numbers.
+  2. **Selects an Operation**: Chooses one of the four arithmetic operations.
+  3. **Performs the Calculation**: Applies the operation to the Current Number using the chosen Action Number.
+  4. **Updates the Current Number**: The result becomes the new Current Number.
+- **Ending a Turn**: Once the Current Number is updated, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Action Numbers**:
+   - Each Action Number can be used **only once** per player.
+   - Once used, mark the Action Number as spent.
+  
+2. **Operations**:
+   - Available operations are **addition (+)**, **subtraction (-)**, **multiplication (*)**, and **integer division (/)**.
+   - **Integer Division (/)**:
+     - Division by zero is **not allowed**.
+     - The result of the division is the integer quotient; any remainder is discarded (e.g., 7 / 3 = 2).
+   - The operation combines the Current Number (on the left) with the Action Number (on the right).
+
+3. **Valid Moves**:
+   - On each turn, players must use an unused Action Number and a valid operation.
+   - The operation is applied as: `Current Number [operation] Action Number`.
+
+4. **Winning the Game**:
+   - The first player to update the Current Number to exactly match the Target Number wins immediately.
+   - If a player's move causes the Current Number to **exceed** the Target Number, they **lose** immediately.
+   - If both players have used all their Action Numbers without reaching the Target Number, the player **closest** to the Target Number without exceeding it wins.
+   - If both players are equally close, the **second player** wins (to balance the advantage of going first).
+
+5. **Game End Conditions**:
+   - **Victory**: Current Number equals Target Number.
+   - **Defeat**: Current Number exceeds Target Number.
+   - **End of Numbers**: All Action Numbers used; closest player to Target Number wins.
+
+6. **Strategic Considerations**:
+   - **Planning**: Anticipate future moves and the opponent's possible actions.
+   - **Operations**: Choose operations that advance you toward the Target Number without risking an overshoot.
+   - **Action Numbers Management**: Decide the optimal order to use your Action Numbers.
+
+## Scoring
+
+- **Winning a Round**: There is no point system; the objective is to win individual rounds.
+- **Match Play**:
+  - Players can compete in multiple rounds.
+  - Keep track of rounds won to determine an overall winner.
+  - Alternate who goes first in each new round for fairness.
+
+## Examples
+
+### Example Game
+
+**Target Number**: 15
+
+**Player 1's Action Numbers**: 2, 3, 5  
+**Player 2's Action Numbers**: 1, 4, 6
+
+**Current Number**: 0
+
+#### Turn 1: Player 1
+
+- **Action Number**: 5
+- **Operation**: +
+- **Calculation**: `0 + 5 = 5`
+- **Current Number**: 5
+
+#### Turn 2: Player 2
+
+- **Action Number**: 6
+- **Operation**: *
+- **Calculation**: `5 * 6 = 30`
+- **Current Number**: 30
+- **Result**: **Player 2 loses** (Current Number exceeds Target Number).
+
+**Player 1 wins the game.**
+
+---
+
+### Alternate Scenario
+
+#### Turn 1: Player 1
+
+- **Action Number**: 3
+- **Operation**: +
+- **Calculation**: `0 + 3 = 3`
+- **Current Number**: 3
+
+#### Turn 2: Player 2
+
+- **Action Number**: 4
+- **Operation**: *
+- **Calculation**: `3 * 4 = 12`
+- **Current Number**: 12
+
+#### Turn 3: Player 1
+
+- **Action Number**: 5
+- **Operation**: +
+- **Calculation**: `12 + 5 = 17`
+- **Current Number**: 17
+- **Result**: **Player 1 loses** (Current Number exceeds Target Number).
+
+**Player 2 wins the game.**
+
+---
+
+### Sample Command-Line Interaction
+
+```plaintext
+Welcome to Number Duel!
+Target Number: 15
+
+Player 1, enter your three Action Numbers (between 1 and 9, unique):
+> 2 3 5
+
+Player 2, enter your three Action Numbers (between 1 and 9, unique):
+> 1 4 6
+
+Starting the game. Current Number is 0.
+
+--- Turn 1: Player 1 ---
+Available Action Numbers: 2, 3, 5
+Choose an Action Number to use:
+> 5
+Choose an operation (+, -, *, /):
+> +
+Calculating: 0 + 5 = 5
+Current Number updated to 5.
+
+--- Turn 2: Player 2 ---
+Available Action Numbers: 1, 4, 6
+Choose an Action Number to use:
+> 4
+Choose an operation (+, -, *, /):
+> +
+Calculating: 5 + 4 = 9
+Current Number updated to 9.
+
+--- Turn 3: Player 1 ---
+Available Action Numbers: 2, 3
+Choose an Action Number to use:
+> 3
+Choose an operation (+, -, *, /):
+> +
+Calculating: 9 + 3 = 12
+Current Number updated to 12.
+
+--- Turn 4: Player 2 ---
+Available Action Numbers: 1, 6
+Choose an Action Number to use:
+> 1
+Choose an operation (+, -, *, /):
+> +
+Calculating: 12 + 1 = 13
+Current Number updated to 13.
+
+--- Turn 5: Player 1 ---
+Available Action Numbers: 2
+Choose an Action Number to use:
+> 2
+Choose an operation (+, -, *, /):
+> +
+Calculating: 13 + 2 = 15
+Current Number updated to 15.
+
+Congratulations, Player 1! You have reached the Target Number and win the game!
+```
+
+---
+
+## Tips for Strategic Play
+
+- **Avoid Overshooting**: Keep track of how close you are to the Target Number to avoid accidental losses.
+- **Use Multiplication and Division Wisely**: These operations can cause large jumps; ensure they won't cause you to exceed the Target Number.
+- **Predict Opponent's Moves**: Pay attention to the Action Numbers your opponent has used to anticipate their options.
+- **Order of Operations**: Plan the sequence of your Action Numbers and operations to optimize your path to the Target Number.
+
+## Summary
+
+Number Duel is a simple yet strategic game that tests your arithmetic skills and strategic planning. With straightforward rules and quick gameplay, it's perfect for a fun challenge between two players in a command-line environment. Remember, every move counts—plan ahead and may the best strategist win!

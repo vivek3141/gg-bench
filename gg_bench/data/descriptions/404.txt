@@ -1,0 +1,192 @@
+# Multiplier Showdown
+
+## Objective
+
+Be the first player to reach exactly the **target number** by strategically multiplying numbers from a shared pool with your current product. Achieve the target without exceeding it to win. If a player exceeds the target number, they lose immediately.
+
+---
+
+## Setup
+
+1. **Choose the Target Number:**
+   - Default target number is **100**.
+   - Players can agree on a different target number before starting.
+
+2. **Initialize the Shared Pool of Numbers:**
+   - The pool contains the numbers **2** through **9** inclusive.
+   - Numbers represent the multipliers available to both players.
+
+3. **Set Player Products:**
+   - Each player starts with a **current product of 1**.
+
+4. **Determine Turn Order:**
+   - Decide randomly or mutually agree on which player takes the first turn.
+
+---
+
+## Game Components
+
+- **Target Number:** The specific number players aim to reach (e.g., **100**).
+- **Shared Pool of Numbers:** The list `[2, 3, 4, 5, 6, 7, 8, 9]`.
+- **Player's Current Product:** The cumulative product of numbers a player has selected, starting at **1**.
+- **Used Numbers List:** A record of numbers that have been selected and are no longer available.
+
+---
+
+## Turns
+
+1. **Player Action:**
+   - On your turn, **select one number** from the shared pool.
+
+2. **Update Current Product:**
+   - Multiply your current product by the selected number.
+   - Example: If your current product is **5** and you select **4**, your new product is **20**.
+
+3. **Update Shared Pool:**
+   - Remove the selected number from the shared pool; it cannot be chosen again.
+
+4. **Check for Win/Loss Conditions:**
+   - **Win:** If your new product equals the target number, you win the game.
+   - **Loss:** If your new product exceeds the target number, you lose immediately.
+
+5. **End Turn:**
+   - Pass play to the other player.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- You may only select numbers **currently available** in the shared pool.
+- Each number can be selected **only once** per game.
+
+### Product Calculation
+
+- Always multiply; addition, subtraction, and division are not allowed.
+- Keep track of your current product throughout the game.
+
+### Winning the Game
+
+- **Exact Match Required:** You must reach the target number exactly to win.
+- **First to Target Wins:** The game ends when a player wins or loses on their turn.
+
+### Losing the Game
+
+- **Exceeding Target:** If your product exceeds the target number, you lose immediately.
+- **No Available Moves:** If no legal moves remain that won't cause you to exceed the target, and it's your turn, you lose.
+
+### No Draws
+
+- Due to the game's structure, a draw is impossible under normal play conditions.
+
+---
+
+## Scoring
+
+- **Victory:** Achieved by reaching the target number exactly.
+- **Defeat:** Occurs when a player's product exceeds the target number.
+- **No Point System:** The game is won by meeting the objective, not by accumulating points.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup:**
+
+- **Target Number:** 100
+- **Shared Pool:** [2, 3, 4, 5, 6, 7, 8, 9]
+- **Player 1 Product:** 1
+- **Player 2 Product:** 1
+
+**Turn 1 - Player 1:**
+
+- **Selects:** 5
+- **Calculates Product:** 1 × 5 = **5**
+- **Updates Pool:** [2, 3, 4, 6, 7, 8, 9]
+
+**Turn 2 - Player 2:**
+
+- **Selects:** 4
+- **Calculates Product:** 1 × 4 = **4**
+- **Updates Pool:** [2, 3, 6, 7, 8, 9]
+
+**Turn 3 - Player 1:**
+
+- **Selects:** 3
+- **Calculates Product:** 5 × 3 = **15**
+- **Updates Pool:** [2, 6, 7, 8, 9]
+
+**Turn 4 - Player 2:**
+
+- **Selects:** 6
+- **Calculates Product:** 4 × 6 = **24**
+- **Updates Pool:** [2, 7, 8, 9]
+
+**Turn 5 - Player 1:**
+
+- **Selects:** 7
+- **Calculates Product:** 15 × 7 = **105**
+- **Result:** Exceeds target number.
+- **Outcome:** Player 1 loses immediately.
+
+**Turn 5 - Outcome:**
+
+- **Player 2 Wins** by default.
+
+### Command-Line Interaction Example
+
+**Player 1's Turn:**
+
+```
+----------------------------------------
+It's Player 1's turn.
+Current Product: 1
+Available Numbers: [2, 3, 4, 5, 6, 7, 8, 9]
+Select a number to multiply with your current product: 5
+You selected 5.
+Your new product is 5.
+Updated Pool: [2, 3, 4, 6, 7, 8, 9]
+----------------------------------------
+```
+
+**Player 2's Turn:**
+
+```
+----------------------------------------
+It's Player 2's turn.
+Current Product: 1
+Available Numbers: [2, 3, 4, 6, 7, 8, 9]
+Select a number to multiply with your current product: 4
+You selected 4.
+Your new product is 4.
+Updated Pool: [2, 3, 6, 7, 8, 9]
+----------------------------------------
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Consider the impact of each available number on your future turns.
+- **Monitor Opponent's Product:** Anticipate their possible moves and adjust your strategy accordingly.
+- **Avoid Early High Multipliers:** Selecting large numbers too soon may limit your options later.
+- **Force Opponent Over the Target:** You can win by leaving your opponent with no safe options.
+
+---
+
+## Variations
+
+- **Different Target Number:** Agree on a different target (e.g., 50 or 200) to adjust difficulty.
+- **Expanded Number Pool:** Include larger or smaller numbers to increase complexity.
+- **More Players:** Adapt the game for more than two players by adjusting the pool and turn sequence.
+
+---
+
+## Conclusion
+
+**Multiplier Showdown** is a strategic, turn-based game that challenges players to think ahead and outmaneuver their opponent by carefully selecting multipliers to reach the target number. Its simplicity makes it easy to code and play in a command-line interface, while its depth offers a competitive experience where skillful play is rewarded.
+
+Have fun and may the best strategist win!

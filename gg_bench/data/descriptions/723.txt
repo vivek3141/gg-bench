@@ -1,0 +1,198 @@
+# Hidden Number Duel
+
+## Objective
+
+Be the first player to correctly guess your opponent's hidden number.
+
+## Setup
+
+1. **Players**: Two participants.
+2. **Number Selection**:
+   - Each player privately chooses a secret integer between **1** and **10** (inclusive).
+   - Players should write down their chosen number to ensure honesty.
+3. **Starting Player**:
+   - Decide who will take the first turn (e.g., by mutual agreement or a random method).
+
+## Game Components
+
+- **Numbers**: Integers from **1** to **10**.
+- **Questions**: Yes-or-no questions about mathematical properties of the numbers.
+- **Guesses**: Attempts to identify the opponent's secret number.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns starting with the designated first player.
+   - On a turn, a player may choose to:
+     - **Ask a Question**: Pose a mathematical yes-or-no question about the opponent's number.
+     - **Make a Guess**: Attempt to guess the opponent's number.
+2. **Asking Questions**:
+   - Questions must be answerable with "Yes" or "No."
+   - Only one question per turn is allowed.
+3. **Making Guesses**:
+   - Instead of asking a question, a player may use their turn to guess the opponent's number.
+   - An incorrect guess results in an immediate loss.
+
+## Rules and Mechanics
+
+### Questions
+
+- **Valid Questions**:
+  - Must relate to mathematical properties (e.g., parity, magnitude, divisibility).
+  - Examples:
+    - "Is your number greater than 5?"
+    - "Is your number an even number?"
+    - "Is your number a prime number?"
+    - "Is your number divisible by 3?"
+- **Invalid Questions**:
+  - Cannot be non-mathematical or require more than a yes-or-no answer.
+  - Cannot directly ask for the number (e.g., "What is your number?").
+  - Examples:
+    - "What is your number?"
+    - "Does your number rhyme with 'heaven'?"
+    - "Is your number 4?" (This is a guess, not a question.)
+
+### Answering Questions
+
+- **Honesty**:
+  - Players must answer all questions truthfully.
+- **Answer Format**:
+  - Responses must be either "Yes" or "No."
+
+### Making Guesses
+
+- **Guessing the Number**:
+  - A player may forego asking a question to guess the opponent's number.
+- **Winning and Losing**:
+  - **Correct Guess**: The player wins the game.
+  - **Incorrect Guess**: The player loses the game immediately.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - Correctly guess the opponent's hidden number.
+- **Loss Condition**:
+  - Make an incorrect guess about the opponent's number.
+
+### Game End
+
+- The game concludes immediately upon a correct guess or an incorrect guess.
+
+## Scoring
+
+- **Winning**: The player who correctly guesses the opponent's number is declared the winner.
+- **No Points System**: There are no points; the focus is on deducing the opponent's number.
+
+## Examples
+
+### Sample Game Play
+
+---
+
+**Players**:
+
+- Player 1
+- Player 2
+
+**Secret Numbers**:
+
+- Player 1 chooses **7**.
+- Player 2 chooses **4**.
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Asks, "Is your number greater than 5?"
+- **Player 2 Answers**: "No."
+
+**Turn 2: Player 2**
+
+- **Action**: Asks, "Is your number odd?"
+- **Player 1 Answers**: "Yes."
+
+**Turn 3: Player 1**
+
+- **Action**: Asks, "Is your number even?"
+- **Player 2 Answers**: "Yes."
+
+**Turn 4: Player 2**
+
+- **Action**: Asks, "Is your number greater than 7?"
+- **Player 1 Answers**: "No."
+
+**Turn 5: Player 1**
+
+- **Action**: Asks, "Is your number less than 3?"
+- **Player 2 Answers**: "No."
+
+**Turn 6: Player 2**
+
+- **Action**: Asks, "Is your number equal to 7?"
+- **Player 1 Answers**: "Yes."
+- **Outcome**: Player 2 wins the game.
+
+---
+
+**Analysis**:
+
+- **Player 2** deduced that Player 1's number is odd and not greater than 7.
+- Possible numbers for Player 1 were **1**, **3**, **5**, and **7**.
+- Player 2 took a risk by guessing **7**, which led to victory.
+
+---
+
+## Strategy Tips
+
+- **Narrow the Range**: Start with broad questions to eliminate half the possibilities (e.g., greater than 5, even or odd).
+- **Use Mathematical Properties**: Ask about divisibility, primality, or specific multiples to further narrow down possibilities.
+- **Track Information**: Keep note of all answers to deduce the remaining possible numbers.
+- **Decide When to Guess**: Weigh the risk of an incorrect guess against the possibility of the opponent winning on their next turn.
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their actions:
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Enter 'Q' to ask a question or 'G' to guess the number: Q
+Enter your question: Is your number greater than 5?
+Player 2 answers: Yes
+```
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Enter 'Q' to ask a question or 'G' to guess the number: Q
+Enter your question: Is your number even?
+Player 1 answers: No
+```
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Enter 'Q' to ask a question or 'G' to guess the number: G
+Enter your guess: 9
+Player 2 says: No
+Player 1 has guessed incorrectly and loses the game.
+Player 2 wins!
+```
+
+**Explanation**:
+
+- Player 1 took a risk by guessing **9** after deducing that Player 2's number is greater than 5.
+- Since Player 1 guessed incorrectly, Player 2 wins by default.
+
+---
+
+## Conclusion
+
+"Hidden Number Duel" is a game of deduction and strategic questioning. It challenges players to use logical reasoning and mathematical understanding to outwit their opponent. The simplicity of the game mechanics makes it easy to code and play in a command-line environment, while the strategic depth ensures that skilled players can consistently outperform less experienced opponents.
+
+Enjoy the duel!

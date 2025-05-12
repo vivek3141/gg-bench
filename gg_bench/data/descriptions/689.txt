@@ -1,0 +1,185 @@
+# Binary Division Duel
+
+## Objective
+
+Become the first player to create a binary sequence that represents a number divisible by **3** when read from left to right. Victory is achieved by strategically appending bits to a shared binary sequence, forcing the resulting number to meet the divisibility condition on your turn.
+
+## Setup
+
+- **Starting Condition**: The game begins with an empty binary sequence.
+- **Players**: Two players are required.
+- **Divisor**: The divisor for the game is **3** (this can be agreed upon by both players before starting the game for variation).
+
+## Game Components
+
+- **Binary Sequence**: A shared sequence of bits (`0`s and `1`s), initially empty.
+- **Bits**: The digits `0` and `1` are the only elements used in the game.
+- **Turn Indicator**: Keeps track of whose turn it is to append a bit.
+
+## Turns
+
+- **Turn Order**: Players alternate turns. Decide who starts first by mutual agreement or by a random method (e.g., coin toss).
+- **Player Actions**: On their turn, a player must perform the following:
+  1. **Select a Bit**: Choose either `0` or `1`.
+  2. **Append the Bit**: Add the chosen bit to the **end** of the current binary sequence.
+  3. **Announce the Sequence**: State the updated binary sequence and its decimal equivalent.
+
+## Rules and Mechanics
+
+1. **Appending Bits**:
+   - Players can only add one bit (`0` or `1`) per turn.
+   - The bit is always added to the **end** of the sequence.
+
+2. **Winning Condition**:
+   - After appending a bit, if the binary number formed by the sequence is divisible by **3**, the player who just played **wins** the game.
+   - The divisibility check is performed after each turn.
+
+3. **Valid Moves**:
+   - There are no restrictions on which bit (`0` or `1`) a player can choose on their turn.
+   - Players must always append a bit; passing a turn is not allowed.
+
+4. **Sequence Legality**:
+   - Leading zeros are allowed in the binary sequence.
+   - The binary sequence can be of any length.
+
+5. **Game Continuation**:
+   - If the newly formed number is not divisible by **3**, the game continues with the next player's turn.
+
+6. **No Draws**:
+   - The game continues indefinitely until a player wins.
+   - Since the binary number grows each turn and there are infinitely many numbers divisible by **3**, the game cannot end in a draw.
+
+## Scoring
+
+- **Winning the Game**: Successfully create a binary sequence divisible by **3** on your turn.
+- **No Points System**: The game is won outright by meeting the winning condition; no points are tallied.
+
+## Examples
+
+### Example 1
+
+- **Initial Sequence**: (empty)
+  
+**Turn 1**  
+*Player 1*:
+- Chooses to append `1`.
+- **Sequence**: `1`
+- **Decimal Equivalent**: `1` (not divisible by 3)
+  
+**Turn 2**  
+*Player 2*:
+- Chooses to append `1`.
+- **Sequence**: `11`
+- **Decimal Equivalent**: `3` (divisible by 3)
+- *Player 2 wins!*
+
+### Example 2
+
+- **Initial Sequence**: (empty)
+  
+**Turn 1**  
+*Player 1*:
+- Appends `0`.
+- **Sequence**: `0`
+- **Decimal Equivalent**: `0` (divisible by 3)
+- *Player 1 wins immediately!*
+
+### Example 3
+
+- **Initial Sequence**: (empty)
+  
+**Turn 1**  
+*Player 1*:
+- Appends `1`.
+- **Sequence**: `1`
+- **Decimal Equivalent**: `1` (not divisible by 3)
+  
+**Turn 2**  
+*Player 2*:
+- Appends `0`.
+- **Sequence**: `10`
+- **Decimal Equivalent**: `2` (not divisible by 3)
+  
+**Turn 3**  
+*Player 1*:
+- Appends `1`.
+- **Sequence**: `101`
+- **Decimal Equivalent**: `5` (not divisible by 3)
+  
+**Turn 4**  
+*Player 2*:
+- Appends `1`.
+- **Sequence**: `1011`
+- **Decimal Equivalent**: `11` (not divisible by 3)
+  
+**Turn 5**  
+*Player 1*:
+- Appends `0`.
+- **Sequence**: `10110`
+- **Decimal Equivalent**: `22` (not divisible by 3)
+  
+**Turn 6**  
+*Player 2*:
+- Appends `1`.
+- **Sequence**: `101101`
+- **Decimal Equivalent**: `45` (divisible by 3)
+- *Player 2 wins!*
+
+## Strategy Tips
+
+- **Understanding Divisibility by 3**:
+  - A number is divisible by 3 if the sum of its digits is divisible by 3.
+  - In binary, devising a strategy based on this rule requires careful planning.
+
+- **Planning Ahead**:
+  - Anticipate your opponent's possible moves and plan your bits to avoid setting up their win.
+  - Try to force the sequence into a state where no matter what bit your opponent adds, they cannot win on their next turn.
+
+- **Defensive Play**:
+  - Sometimes it's better to prevent your opponent from winning than to try to win immediately.
+  - Be cautious when the sequence is close to a number divisible by 3; adding certain bits might hand the victory to your opponent.
+
+- **First Move Advantage**:
+  - Analyze whether going first or second offers a strategic advantage.
+  - Practice different opening moves to see their impact on the game's progression.
+
+## Command-Line Interaction Example
+
+Below is a sample interaction in a command-line interface:
+
+```plaintext
+Game Start!
+Divisor is set to 3.
+
+Player 1's turn.
+Current Sequence: (empty)
+Enter bit to append (0 or 1): 1
+Updated Sequence: 1
+Decimal Value: 1
+1 is not divisible by 3.
+
+Player 2's turn.
+Current Sequence: 1
+Enter bit to append (0 or 1): 1
+Updated Sequence: 11
+Decimal Value: 3
+3 is divisible by 3.
+Player 2 wins!
+```
+
+## Implementation Notes
+
+- **Ease of Coding**: The game can be implemented with simple input/output commands and basic arithmetic operations.
+- **Data Handling**:
+  - Store the sequence as a string or array for easy concatenation.
+  - Convert the binary string to a decimal integer for divisibility checks.
+  
+- **Input Validation**:
+  - Ensure players only input valid bits (`0` or `1`).
+  - Handle incorrect inputs gracefully with prompts for re-entry.
+
+## Conclusion
+
+Binary Division Duel is a simple yet strategic game that challenges players to think ahead and use basic arithmetic skills. Its minimal components and straightforward rules make it easy to learn and play, while the strategic depth offers engaging gameplay for both new and experienced players.
+
+Have fun and may the best strategist win!

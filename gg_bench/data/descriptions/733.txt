@@ -1,0 +1,248 @@
+---
+
+# Divisor Duel Rule Book
+
+## Objective
+
+Divisor Duel is a strategic, two-player, turn-based game played in a command-line interface. The primary goal of the game is to force your opponent into a position where they cannot make a valid move under the game's rules. Players achieve victory by reducing a shared number to a state where the opponent has no valid proper divisors to subtract, thereby winning the game. There is no draw mechanism; the game continues until one player wins.
+
+---
+
+## Setup
+
+1. **Initialize the Game:**
+   - The shared number, known as the **Current Number**, is initialized to **100** at the start of the game.
+
+2. **Determine the First Player:**
+   - Players decide who goes first by mutual agreement or through a random method, such as flipping a coin or generating a random number.
+
+3. **Player Identification:**
+   - Assign players as **Player 1** and **Player 2** for clarity during gameplay.
+
+4. **No Physical Components:**
+   - Since the game is played in a command-line interface, there are no physical boards, pieces, or cards required.
+
+---
+
+## Game Components
+
+- **Current Number:**
+  - A shared integer value that players manipulate during the game.
+  - Initialized to **100** at the start.
+  - Updated after each player's turn.
+
+- **Players:**
+  - **Player 1** and **Player 2**, who take turns altering the Current Number according to the game rules.
+
+- **Valid Moves:**
+  - Proper divisors of the Current Number (excluding 1 and the number itself).
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns, starting with the player determined during the setup phase.
+
+2. **Player Actions:**
+   - On their turn, a player must:
+     - Identify all proper divisors of the Current Number (excluding 1 and the Current Number itself).
+     - Choose one proper divisor to subtract from the Current Number.
+     - Perform the subtraction to obtain a new Current Number.
+     - Announce their chosen divisor and the new Current Number.
+
+3. **Progression of Turns:**
+   - After a player completes their turn, control passes to the other player.
+   - The game continues in this alternating fashion until a win condition is met.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves:**
+   - Players can only subtract proper divisors of the Current Number from the Current Number.
+   - **Proper Divisors** are positive integers that exactly divide the Current Number, excluding 1 and the Current Number itself.
+   - **Example:** If the Current Number is 28, valid proper divisors are 2, 4, 7, and 14.
+
+2. **Invalid Moves:**
+   - Players cannot subtract 1 or the Current Number itself.
+   - If a player attempts to subtract an invalid number, they must choose a valid proper divisor instead.
+
+3. **No Available Moves:**
+   - If a player's turn begins and the Current Number has no proper divisors (i.e., it is a prime number or 1), that player loses the game.
+
+4. **Winning the Game:**
+   - A player wins by reducing the Current Number to **0** on their turn.
+   - Alternatively, a player wins if the opponent has no valid moves on their turn due to the Current Number being prime or 1.
+
+5. **Losing the Game:**
+   - A player loses if they cannot make a valid move on their turn.
+   - This occurs when the Current Number is a prime number or 1, leaving no proper divisors to subtract.
+
+### Special Conditions
+
+- **Negative Numbers:**
+  - The Current Number must always be a non-negative integer.
+  - If a move would result in a negative Current Number, it is invalid, and the player must choose a different proper divisor.
+
+- **Zero as Current Number:**
+  - If a player reduces the Current Number to **0**, they win the game immediately.
+
+---
+
+## Scoring
+
+- **Victory Determination:**
+  - The game does not employ a points-based scoring system.
+  - The winner is determined solely by achieving the game's objective as outlined in the rules.
+
+- **No Draws:**
+  - The game is designed with no draw mechanism; play continues until one player wins.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Starting Current Number:** 100
+
+---
+
+#### Turn 1: Player 1
+
+- **Current Number:** 100
+- **Proper Divisors (excluding 1 and 100):** 2, 4, 5, 10, 20, 25, 50
+- **Player 1's Move:**
+  - Chooses to subtract **50**.
+  - Calculation: 100 - 50 = **50**
+- **New Current Number:** 50
+
+---
+
+#### Turn 2: Player 2
+
+- **Current Number:** 50
+- **Proper Divisors (excluding 1 and 50):** 2, 5, 10, 25
+- **Player 2's Move:**
+  - Chooses to subtract **25**.
+  - Calculation: 50 - 25 = **25**
+- **New Current Number:** 25
+
+---
+
+#### Turn 3: Player 1
+
+- **Current Number:** 25
+- **Proper Divisors (excluding 1 and 25):** 5
+- **Player 1's Move:**
+  - Chooses to subtract **5**.
+  - Calculation: 25 - 5 = **20**
+- **New Current Number:** 20
+
+---
+
+#### Turn 4: Player 2
+
+- **Current Number:** 20
+- **Proper Divisors (excluding 1 and 20):** 2, 4, 5, 10
+- **Player 2's Move:**
+  - Chooses to subtract **10**.
+  - Calculation: 20 - 10 = **10**
+- **New Current Number:** 10
+
+---
+
+#### Turn 5: Player 1
+
+- **Current Number:** 10
+- **Proper Divisors (excluding 1 and 10):** 2, 5
+- **Player 1's Move:**
+  - Chooses to subtract **5**.
+  - Calculation: 10 - 5 = **5**
+- **New Current Number:** 5
+
+---
+
+#### Turn 6: Player 2
+
+- **Current Number:** 5
+- **Proper Divisors (excluding 1 and 5):** None (5 is prime)
+- **Player 2's Situation:**
+  - No valid moves available.
+  - **Player 2 loses the game.**
+
+---
+
+### Command-Line Interaction Example
+
+Below is an example of how the game might look in a command-line interface:
+
+```
+--- Divisor Duel ---
+
+Starting Current Number: 100
+
+Player 1's turn.
+Current Number: 100
+Available Divisors: 2, 4, 5, 10, 20, 25, 50
+Enter the divisor to subtract: 50
+You subtracted 50. New Current Number is 50.
+
+Player 2's turn.
+Current Number: 50
+Available Divisors: 2, 5, 10, 25
+Enter the divisor to subtract: 25
+You subtracted 25. New Current Number is 25.
+
+Player 1's turn.
+Current Number: 25
+Available Divisors: 5
+Enter the divisor to subtract: 5
+You subtracted 5. New Current Number is 20.
+
+Player 2's turn.
+Current Number: 20
+Available Divisors: 2, 4, 5, 10
+Enter the divisor to subtract: 10
+You subtracted 10. New Current Number is 10.
+
+Player 1's turn.
+Current Number: 10
+Available Divisors: 2, 5
+Enter the divisor to subtract: 5
+You subtracted 5. New Current Number is 5.
+
+Player 2's turn.
+Current Number: 5
+Available Divisors: None
+No valid moves available. Player 2 loses!
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Depth
+
+Divisor Duel, while simple to learn and program, offers strategic depth and complexity:
+
+- **Planning Ahead:**
+  - Players must consider the possible outcomes of their moves, anticipating the opponent's responses.
+
+- **Divisor Selection:**
+  - Choosing which proper divisor to subtract can alter the game's trajectory significantly.
+
+- **Prime Numbers:**
+  - Forcing the Current Number into a prime value can trap an opponent, leading to a strategic advantage.
+
+---
+
+## Conclusion
+
+Divisor Duel is an engaging and strategic game that challenges players to think critically about number properties and anticipate their opponent's moves. Its simplicity makes it easy to code and play in a command-line interface, while the strategic elements ensure that skilled players can consistently outperform unskilled ones. The game ends quickly and does not allow for draws, making it an excellent choice for a quick and competitive match between two players.
+
+---
+
+Happy playing!

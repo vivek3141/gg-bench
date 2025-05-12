@@ -1,0 +1,199 @@
+**Game Name: Equation Duel**
+
+---
+
+### **Objective**
+
+Equation Duel is a two-player turn-based game where players compete to create valid mathematical equations using numbers from a shared pool. The primary goal is to force your opponent into a position where they cannot create a valid equation on their turn. The last player to successfully form a valid equation wins the game.
+
+---
+
+### **Setup**
+
+1. **Number Pool**:
+   - The game uses a shared pool of numbers consisting of digits from **1 to 9**, with **each number appearing twice**, resulting in a total of **18 numbers**.
+   - The initial number pool is displayed to both players at the start:
+     ```
+     Number Pool: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+     ```
+
+2. **Determine Player Order**:
+   - Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by any random method.
+
+---
+
+### **Game Components**
+
+- **Number Pool**:
+  - Shared between both players.
+  - Contains numbers **1** through **9**, each appearing **twice**.
+  
+- **Operators**:
+  - Allowed operators are **addition (+)**, **subtraction (-)**, **multiplication (*)**, and **division (/)**.
+
+- **Equation Format**:
+  - Equations must be in the format **A op B = C**, where:
+    - **A**, **B**, and **C** are numbers taken from the number pool.
+    - **op** is one of the allowed operators.
+
+---
+
+### **Turns**
+
+1. **Turn Structure**:
+   - Players take turns alternately, starting with **Player 1**.
+   - On a player's turn, they attempt to create a valid equation using numbers from the number pool.
+
+2. **Actions During a Turn**:
+   - **Select Three Numbers** from the current number pool.
+   - Choose an **Operator** to use between the numbers.
+   - Form a **Valid Equation** in the format **A op B = C**.
+
+3. **Post-Turn Updates**:
+   - If the equation is valid, **remove the three used numbers** from the number pool.
+   - Update the number pool display for both players.
+
+4. **Turn Progression**:
+   - The game proceeds to the other player after each turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Equation Formation Rules**:
+   - **All three numbers** must be available in the current number pool.
+   - The equation must be **mathematically correct**.
+   - **Operators**:
+     - **Addition (+)**: \( A + B = C \)
+     - **Subtraction (-)**: \( A - B = C \)
+     - **Multiplication (*)**: \( A \times B = C \)
+     - **Division (/)**:
+       - **Division by zero is not allowed**.
+       - The result must be an **integer** (no fractions or decimals).
+
+2. **Number Usage**:
+   - Each number used in an equation is **removed** from the pool after a valid equation.
+   - **Numbers cannot be reused** once removed.
+
+3. **Invalid Equations**:
+   - If a player proposes an **invalid equation** (incorrect math or using unavailable numbers), they **lose the game**.
+
+4. **Ending the Game**:
+   - A player **loses** if they **cannot form a valid equation** on their turn.
+   - The last player who successfully created a valid equation is declared the **winner**.
+
+---
+
+### **Scoring**
+
+- There is **no point system**; the game is **win or lose**.
+- The **winner** is the player who forces their opponent into a position where no valid equations can be formed.
+
+---
+
+### **Examples**
+
+#### **Initial Number Pool**
+
+```
+Number Pool: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+```
+
+#### **Sample Turn Sequence**
+
+1. **Turn 1 (Player 1)**:
+   - **Action**: Selects **2**, **3**, **5**.
+   - **Equation**: \( 2 + 3 = 5 \)
+   - **Result**: Valid.
+   - **Updated Number Pool**:
+     ```
+     Number Pool: [1, 1, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+     ```
+
+2. **Turn 2 (Player 2)**:
+   - **Action**: Selects **8**, **2**, **6**.
+   - **Equation**: \( 8 - 2 = 6 \)
+   - **Result**: Valid.
+   - **Updated Number Pool**:
+     ```
+     Number Pool: [1, 1, 3, 4, 4, 5, 6, 7, 7, 8, 9, 9]
+     ```
+
+3. **Turn 3 (Player 1)**:
+   - **Action**: Selects **4**, **5**, **9**.
+   - **Equation**: \( 4 + 5 = 9 \)
+   - **Result**: Valid.
+   - **Updated Number Pool**:
+     ```
+     Number Pool: [1, 1, 3, 4, 6, 7, 7, 8, 9]
+     ```
+
+4. **Turn 4 (Player 2)**:
+   - **Action**: Selects **7**, **1**, **8**.
+   - **Equation**: \( 8 - 1 = 7 \)
+   - **Result**: Valid.
+   - **Updated Number Pool**:
+     ```
+     Number Pool: [1, 3, 4, 6, 7, 9]
+     ```
+
+5. **Turn 5 (Player 1)**:
+   - **Action**: Selects **1**, **6**, **7**.
+   - **Equation**: \( 6 + 1 = 7 \)
+   - **Result**: Valid.
+   - **Updated Number Pool**:
+     ```
+     Number Pool: [3, 4, 9]
+     ```
+
+6. **Turn 6 (Player 2)**:
+   - **Action**: Attempts to form an equation but cannot.
+   - **Result**: Player 2 loses.
+   - **Winner**: Player 1.
+
+---
+
+### **Command-Line Interaction Examples**
+
+#### **Start of Turn**
+
+```
+[Game State]
+Current Number Pool: 1, 1, 2, 3, 4, 6, 7, 9
+
+[Player 1's Turn]
+Enter your equation (format: A op B = C):
+```
+
+#### **Player Input**
+
+```
+6 + 1 = 7
+```
+
+#### **Game Response**
+
+```
+Valid equation! Numbers 1, 6, and 7 have been removed from the pool.
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead**:
+  - Keep track of which numbers remain to anticipate future equations.
+- **Limit Opponent's Options**:
+  - Use numbers that, if left, could help your opponent.
+- **Use High-Value Numbers Wisely**:
+  - Numbers like **9** and **8** are versatile; using them effectively can be advantageous.
+
+---
+
+### **Conclusion**
+
+Equation Duel is a game of arithmetic skill and strategic planning. By creating valid equations and managing the shared number pool effectively, players can outmaneuver their opponent and secure victory.
+
+---
+
+Remember, the key to winning is not just forming valid equations but also thinking ahead to limit your opponent's possibilities. Enjoy the challenge of Equation Duel!

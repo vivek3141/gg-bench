@@ -1,0 +1,232 @@
+**Number Chain**
+
+---
+
+### **Objective**
+
+Be the last player able to extend the number chain according to the game's rules. Players aim to strategically add numbers to the chain, forcing their opponent into a position where they cannot make a valid move, thus securing a win.
+
+### **Setup**
+
+1. **Players**: Two players are required.
+
+2. **Starting Number**:
+   - The game begins with a single starting number between **1** and **9**, inclusive.
+   - This number can be agreed upon by both players or selected at random.
+   - Example starting number: **5**.
+
+3. **Initial Number Chain**:
+   - The number chain initially contains only the starting number.
+   - Example: `[5]`.
+
+### **Game Components**
+
+- **Number Chain**:
+  - A sequence of numbers forming the core of the game.
+  - Begins with the starting number and grows as players add numbers.
+
+- **Available Numbers**:
+  - Digits from **1** to **9**, inclusive.
+  - Each number can be used **only once** in the game.
+  - Numbers are removed from the available pool once used.
+
+### **Turns**
+
+- **Turn Order**:
+  - Players alternate turns throughout the game.
+  - Decide randomly or mutually who takes the first turn.
+
+- **Player Actions During a Turn**:
+  1. **Review** the last number in the current number chain.
+  2. **Determine** all possible valid numbers that can be added next.
+  3. **Choose** one valid number and add it to the end of the number chain.
+
+- **Turn Progression**:
+  - The game continues with players alternating turns until one player cannot make a valid move.
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - On their turn, a player **must** add a number that meets the following conditions:
+     - **Unused**: The number has not been previously used in the number chain.
+     - **Within Range**: The number is between **1** and **9**, inclusive.
+     - **Valid Relation**: The number has a specific mathematical relationship with the last number in the chain, being **one of** the following:
+       - **One More**: The new number is the last number **plus one**.
+       - **One Less**: The new number is the last number **minus one**.
+       - **Double**: The new number is **twice** the last number.
+       - **Half**: The new number is **half** of the last number (only if the last number is even and the result is an integer).
+
+2. **Invalid Moves**:
+   - **Repetition**: Using a number already present in the number chain is not allowed.
+   - **Out of Range**: Numbers less than **1** or greater than **9** cannot be used.
+   - **Invalid Relation**: Numbers that do not have the required relationship with the last number are not permitted.
+   - **Non-integer Results**: Results that are not whole numbers (e.g., half of an odd number) are invalid.
+
+3. **Winning the Game**:
+   - A player wins if their opponent cannot add a valid number to the chain on their turn.
+   - The game ends immediately when a player cannot make a move.
+
+4. **Examples of Valid and Invalid Moves**:
+
+   - **Valid Move Example**:
+     - Last number: **4**
+     - Possible valid additions: **3** (one less), **5** (one more), **8** (double), **2** (half)
+   - **Invalid Move Example**:
+     - Last number: **9**
+     - Attempting to add **10** (invalid—out of range)
+     - Attempting to add **7** (invalid—no valid relation with 9)
+
+### **Scoring**
+
+- **Win/Loss Outcome**:
+  - The game does not track points.
+  - Victory is determined solely by the ability to make valid moves.
+  - The player who cannot make a valid move on their turn **loses**.
+  - The opposing player is declared the **winner**.
+
+### **Examples**
+
+#### **Game Playthrough**
+
+**Starting Number**: `5`
+
+**Number Chain**: `[5]`
+
+---
+
+1. **Player 1's Turn**:
+   - **Last Number**: `5`
+   - **Available Numbers**: `[1, 2, 3, 4, 6, 7, 8, 9]`
+   - **Possible Moves**:
+     - **One More**: `6` (valid)
+     - **One Less**: `4` (valid)
+     - **Double**: `10` (invalid—out of range)
+     - **Half**: `2.5` (invalid—not an integer)
+   - **Chosen Number**: `6`
+   - **Number Chain**: `[5, 6]`
+
+2. **Player 2's Turn**:
+   - **Last Number**: `6`
+   - **Available Numbers**: `[1, 2, 3, 4, 7, 8, 9]`
+   - **Possible Moves**:
+     - **One More**: `7` (valid)
+     - **One Less**: `5` (invalid—already used)
+     - **Double**: `12` (invalid—out of range)
+     - **Half**: `3` (valid)
+   - **Chosen Number**: `7`
+   - **Number Chain**: `[5, 6, 7]`
+
+3. **Player 1's Turn**:
+   - **Last Number**: `7`
+   - **Available Numbers**: `[1, 2, 3, 4, 8, 9]`
+   - **Possible Moves**:
+     - **One More**: `8` (valid)
+     - **One Less**: `6` (invalid—already used)
+     - **Double**: `14` (invalid—out of range)
+     - **Half**: `3.5` (invalid—not an integer)
+   - **Chosen Number**: `8`
+   - **Number Chain**: `[5, 6, 7, 8]`
+
+4. **Player 2's Turn**:
+   - **Last Number**: `8`
+   - **Available Numbers**: `[1, 2, 3, 4, 9]`
+   - **Possible Moves**:
+     - **One More**: `9` (valid)
+     - **One Less**: `7` (invalid—already used)
+     - **Double**: `16` (invalid—out of range)
+     - **Half**: `4` (valid)
+   - **Chosen Number**: `4`
+   - **Number Chain**: `[5, 6, 7, 8, 4]`
+
+5. **Player 1's Turn**:
+   - **Last Number**: `4`
+   - **Available Numbers**: `[1, 2, 3, 9]`
+   - **Possible Moves**:
+     - **One More**: `5` (invalid—already used)
+     - **One Less**: `3` (valid)
+     - **Double**: `8` (invalid—already used)
+     - **Half**: `2` (valid)
+   - **Chosen Number**: `3`
+   - **Number Chain**: `[5, 6, 7, 8, 4, 3]`
+
+6. **Player 2's Turn**:
+   - **Last Number**: `3`
+   - **Available Numbers**: `[1, 2, 9]`
+   - **Possible Moves**:
+     - **One More**: `4` (invalid—already used)
+     - **One Less**: `2` (valid)
+     - **Double**: `6` (invalid—already used)
+     - **Half**: `1.5` (invalid—not an integer)
+   - **Chosen Number**: `2`
+   - **Number Chain**: `[5, 6, 7, 8, 4, 3, 2]`
+
+7. **Player 1's Turn**:
+   - **Last Number**: `2`
+   - **Available Numbers**: `[1, 9]`
+   - **Possible Moves**:
+     - **One More**: `3` (invalid—already used)
+     - **One Less**: `1` (valid)
+     - **Double**: `4` (invalid—already used)
+     - **Half**: `1` (valid)
+   - **Chosen Number**: `1`
+   - **Number Chain**: `[5, 6, 7, 8, 4, 3, 2, 1]`
+
+8. **Player 2's Turn**:
+   - **Last Number**: `1`
+   - **Available Numbers**: `[9]`
+   - **Possible Moves**:
+     - **One More**: `2` (invalid—already used)
+     - **One Less**: `0` (invalid—out of range)
+     - **Double**: `2` (invalid—already used)
+     - **Half**: `0.5` (invalid—not an integer)
+   - **No valid moves available**.
+   - **Player 2 loses**.
+   - **Player 1 wins the game**.
+
+#### **Command-Line Interaction Example**
+
+*Assuming players are entering their moves in a command-line interface.*
+
+---
+
+**Game Start**
+
+```
+Starting Number: 5
+Number Chain: [5]
+Available Numbers: [1,2,3,4,6,7,8,9]
+```
+
+**Player 1's Turn**
+
+```
+Current Chain: [5]
+Available Numbers: [1,2,3,4,6,7,8,9]
+Last Number: 5
+Possible Moves: [4,6]
+Enter your number: 6
+```
+
+**Player 2's Turn**
+
+```
+Current Chain: [5,6]
+Available Numbers: [1,2,3,4,7,8,9]
+Last Number: 6
+Possible Moves: [3,7]
+Enter your number: 7
+```
+
+*The game continues in this manner until a player cannot make a valid move.*
+
+---
+
+### **Strategic Depth**
+
+- **Planning Ahead**: Players can look ahead to anticipate which numbers will be available in future turns, allowing them to make moves that limit their opponent's options.
+- **Number Usage**: Deciding when to use certain numbers can be crucial. For example, withholding a number that could be a critical move for the opponent later.
+- **Forcing Moves**: Players can attempt to force their opponent into a position with only one valid move, which may lead to a loss in subsequent turns.
+
+### **Conclusion**
+
+**Number Chain** is a simple yet strategic game that challenges players to think ahead and make calculated decisions. With easy-to-understand rules and minimal components, it is well-suited for quick gameplay sessions in a command-line environment, providing both enjoyment and a test of strategic planning.

@@ -1,0 +1,174 @@
+# Target Twenty-One: Rule Book
+
+Welcome to **Target Twenty-One**, a strategic two-player turn-based game designed for play in a command-line interface. This game combines simple arithmetic operations with tactical decision-making, ensuring quick gameplay where skill prevails over chance. 
+
+## Objective
+
+The primary goal of **Target Twenty-One** is to be the first player to make the shared value exactly **21** through a series of additions or multiplications. Players take turns performing allowable operations on the shared value, starting from zero. The player who successfully brings the value to **21** on their turn wins the game. However, if a player's move causes the value to exceed **21**, they immediately lose.
+
+## Setup
+
+- **Starting Value**: The game begins with a shared value of **0**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Turn Order**: Determine who goes first randomly or by mutual agreement.
+
+## Game Components
+
+The game requires minimal components:
+
+- **Shared Value Tracker**: A variable to keep track of the current shared value (an integer starting at 0).
+- **Operations**: The allowable operations are addition and multiplication using the numbers **1**, **2**, or **3**.
+
+As the game is played in a command-line interface, players will input their chosen operation and number during their turns.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Current Value**: At the start of each turn, the current shared value is displayed.
+2. **Player's Move**: The active player chooses one of the following actions:
+   - **Addition**: Add **1**, **2**, or **3** to the current value.
+   - **Multiplication**: Multiply the current value by **1**, **2**, or **3**.
+3. **Update Value**: The chosen operation is performed, and the shared value is updated accordingly.
+4. **Check for Win/Loss Conditions**:
+   - If the new value is exactly **21**, the active player wins.
+   - If the new value exceeds **21**, the active player loses.
+5. **Next Turn**: If the game hasn't ended, the turn passes to the other player.
+
+### Example of Turn Progression
+
+- **Current Value**: 15
+- **Player's Move**:
+  - **Operation**: Multiply
+  - **Number**: 2
+- **Calculation**: 15 * 2 = 30
+- **Outcome**: Value exceeds 21; active player loses.
+
+## Rules and Mechanics
+
+### Allowable Operations
+
+- **Addition**: Players may add **1**, **2**, or **3** to the current value.
+- **Multiplication**: Players may multiply the current value by **1**, **2**, or **3**.
+  
+### Restrictions
+
+- **Operation Selection**:
+  - Only one operation (either addition or multiplication) can be performed per turn.
+  - The number used in the operation must be **1**, **2**, or **3**.
+- **Value Limits**:
+  - The shared value must not exceed **21** after any operation.
+- **Winning the Game**:
+  - To win, a player must make the shared value exactly **21** on their turn.
+  
+### Special Notes
+
+- **Multiplying by 1**: This operation does not change the value and is allowed as a strategic pass.
+- **Addition of 0 or Multiplication by 0**: Not allowed. Only the numbers **1**, **2**, or **3** may be used.
+
+## Scoring
+
+- **Winning**: The player who makes the shared value exactly **21** wins the game.
+- **Losing**: If a player's move causes the shared value to exceed **21**, they immediately lose.
+- **No Draws**: The game cannot end in a draw due to the game's design and win/loss conditions.
+
+## Examples
+
+### Sample Game Play
+
+#### Turn 1
+- **Current Value**: 0
+- **Player 1's Move**:
+  - **Operation**: Add
+  - **Number**: 3
+- **Calculation**: 0 + 3 = 3
+- **New Value**: 3
+
+#### Turn 2
+- **Current Value**: 3
+- **Player 2's Move**:
+  - **Operation**: Multiply
+  - **Number**: 2
+- **Calculation**: 3 * 2 = 6
+- **New Value**: 6
+
+#### Turn 3
+- **Current Value**: 6
+- **Player 1's Move**:
+  - **Operation**: Add
+  - **Number**: 2
+- **Calculation**: 6 + 2 = 8
+- **New Value**: 8
+
+#### Turn 4
+- **Current Value**: 8
+- **Player 2's Move**:
+  - **Operation**: Multiply
+  - **Number**: 2
+- **Calculation**: 8 * 2 = 16
+- **New Value**: 16
+
+#### Turn 5
+- **Current Value**: 16
+- **Player 1's Move**:
+  - **Operation**: Add
+  - **Number**: 3
+- **Calculation**: 16 + 3 = 19
+- **New Value**: 19
+
+#### Turn 6
+- **Current Value**: 19
+- **Player 2's Move**:
+  - **Operation**: Add
+  - **Number**: 2
+- **Calculation**: 19 + 2 = 21
+- **New Value**: 21
+- **Outcome**: Player 2 wins by reaching exactly 21.
+
+### Command-Line Interaction
+
+Below is a sample of how the game might proceed in a command-line interface:
+
+```
+Current Value: 0
+Player 1, choose operation (add/multiply): add
+Choose a number (1-3): 3
+New Value: 3
+
+Current Value: 3
+Player 2, choose operation (add/multiply): multiply
+Choose a number (1-3): 2
+New Value: 6
+
+Current Value: 6
+Player 1, choose operation (add/multiply): add
+Choose a number (1-3): 2
+New Value: 8
+
+Current Value: 8
+Player 2, choose operation (add/multiply): multiply
+Choose a number (1-3): 2
+New Value: 16
+
+Current Value: 16
+Player 1, choose operation (add/multiply): add
+Choose a number (1-3): 3
+New Value: 19
+
+Current Value: 19
+Player 2, choose operation (add/multiply): add
+Choose a number (1-3): 2
+New Value: 21
+
+Player 2 wins!
+```
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate possible future moves to avoid forcing themselves into a loss.
+- **Controlling the Value**: Keeping the shared value within a certain range can limit the opponent's options.
+- **Multiplying Wisely**: Multiplication can rapidly increase the value; use it to reach 21 or to force the opponent into a difficult position.
+
+## Conclusion
+
+**Target Twenty-One** is a game of foresight and strategy. With simple rules and quick gameplay, it provides an engaging challenge where skillful planning can consistently lead to victory. Enjoy outsmarting your opponent in this battle of arithmetic wits!

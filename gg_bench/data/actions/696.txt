@@ -1,0 +1,11 @@
+The action space indices in the environment correspond to a combination of four components: scan option, entangle option, guess position, and guess label. The calculation involves the following steps:
+
+1. **Scan Option (0-9)**: Corresponds to the choice to scan one of the 10 possible 3x3 areas on the 5x5 grid.
+2. **Entangle Option (0-10)**: Represents whether to use entanglement (1-10 for valid pairs) or opt not to (0).
+3. **Guess Position (0-24)**: Indicates one of the 25 grid cells to target for capturing an opponent's particle.
+4. **Guess Label (0-4)**: Refers to which of the 5 possible opponent particle labels (numbered 1-5) the guess asserts is at the chosen position.
+
+The index calculation is:  
+\( \text{action} = (((\text{scan\_option} \times 11 + \text{entangle\_option}) \times 25 + \text{guess\_position}) \times 5 + \text{guess\_label} \). 
+
+This ensures each combination of actions is uniquely mapped to an index from 0 to 13,749 in the action space.

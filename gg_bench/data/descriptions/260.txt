@@ -1,0 +1,202 @@
+# Firewall Breach
+
+## Objective
+
+Be the first player to breach the opponent's firewall by reducing their firewall strength to zero.
+
+- **Victory Condition**: Reduce your opponent's firewall strength to exactly zero before they reduce yours.
+
+## Setup
+
+- **Players**: 2
+- **Starting Firewall Strength**: Each player begins with a firewall strength of **10**.
+- **Actions Available**: 
+  - **Attack**
+  - **Bypass**
+
+## Game Components
+
+### Firewall Strength
+
+- Represented by an integer value starting at **10** for each player.
+- This number indicates the health of a player's firewall.
+- Firewall strength cannot fall below zero.
+
+### Actions
+
+1. **Attack**:
+   - **Risky action** with the potential for high damage.
+   - Involves a virtual dice roll to determine success.
+   - **Success**: Reduces opponent's firewall by **3** points.
+   - **Failure**: No damage dealt.
+
+2. **Bypass**:
+   - **Safe action** with guaranteed but low damage.
+   - **Effect**: Reduces opponent's firewall by **1** point.
+
+### Dice Roll (for Attack)
+
+- A virtual six-sided die generating a random integer between **1** and **6**.
+  - **Successful Attack**: Roll a **4**, **5**, or **6**.
+  - **Failed Attack**: Roll a **1**, **2**, or **3**.
+
+## Turns
+
+- **Turn Order**: Decide randomly or by mutual agreement who goes first.
+- **Structure of a Turn**:
+  1. **Status Update**: Display both players' current firewall strengths.
+  2. **Choose Action**: The active player selects **Attack** or **Bypass**.
+  3. **Resolve Action**:
+     - **Attack**:
+       - Perform a virtual dice roll.
+       - Apply results based on the roll.
+     - **Bypass**:
+       - Reduce opponent's firewall by 1.
+  4. **Update Firewall Strengths**: Adjust the firewall strengths accordingly.
+
+- **Turn Progression**: Players alternate turns until one player's firewall strength reaches zero.
+
+## Rules and Mechanics
+
+1. **Action Selection**:
+   - Players must choose to either **Attack** or **Bypass** on their turn.
+   - The choice should be strategic, weighing risk versus reward.
+
+2. **Attack Mechanics**:
+   - **Dice Roll Success**:
+     - If the roll is **4**, **5**, or **6**:
+       - Opponent's firewall is reduced by **3**.
+   - **Dice Roll Failure**:
+     - If the roll is **1**, **2**, or **3**:
+       - No damage is dealt.
+   - **Example**:
+     - Player rolls a **5** → Attack successful.
+     - Player rolls a **2** → Attack fails.
+
+3. **Bypass Mechanics**:
+   - Automatically reduces the opponent's firewall by **1** point.
+   - No chance of failure.
+
+4. **Firewall Strength Limits**:
+   - Cannot go below **0**.
+   - Any excess damage is ignored.
+
+## Scoring
+
+- **Winning the Game**: The first player to reduce the opponent's firewall strength to **0** wins.
+- **No Draws**: The game continues until one firewall reaches zero; there are no ties.
+
+## Examples
+
+### Example Gameplay
+
+#### Initial State
+
+- **Player 1 Firewall**: 10
+- **Player 2 Firewall**: 10
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - Chooses to **Attack**.
+   - Rolls a **5** → Attack successful.
+   - **Player 2 Firewall**: 7
+
+2. **Player 2's Turn**:
+   - Chooses to **Attack**.
+   - Rolls a **2** → Attack fails.
+   - **Player 1 Firewall**: 10
+
+3. **Player 1's Turn**:
+   - Chooses to **Bypass**.
+   - **Player 2 Firewall**: 6
+
+4. **Player 2's Turn**:
+   - Chooses to **Attack**.
+   - Rolls a **6** → Attack successful.
+   - **Player 1 Firewall**: 7
+
+5. **Player 1's Turn**:
+   - Chooses to **Attack**.
+   - Rolls a **4** → Attack successful.
+   - **Player 2 Firewall**: 3
+
+6. **Player 2's Turn**:
+   - Chooses to **Bypass**.
+   - **Player 1 Firewall**: 6
+
+7. **Player 1's Turn**:
+   - Chooses to **Bypass**.
+   - **Player 2 Firewall**: 2
+
+8. **Player 2's Turn**:
+   - Chooses to **Bypass**.
+   - **Player 1 Firewall**: 5
+
+9. **Player 1's Turn**:
+   - Chooses to **Bypass**.
+   - **Player 2 Firewall**: 1
+
+10. **Player 2's Turn**:
+    - Chooses to **Bypass**.
+    - **Player 1 Firewall**: 4
+
+11. **Player 1's Turn**:
+    - Chooses to **Bypass**.
+    - **Player 2 Firewall**: 0
+
+#### Result
+
+- **Player 2's Firewall** has reached zero.
+- **Player 1 Wins!**
+
+### Command-Line Interaction Example
+
+```
+[Game Start]
+
+Player 1's Turn:
+Your Firewall: 10
+Opponent's Firewall: 10
+Choose your action ('attack' or 'bypass'): attack
+You chose to Attack.
+Rolling dice...
+You rolled a 5.
+Attack successful! Opponent's firewall reduced by 3.
+
+Player 2's Turn:
+Your Firewall: 10
+Opponent's Firewall: 7
+Opponent chose to Attack.
+Opponent rolled a 2.
+Attack failed! Your firewall remains the same.
+
+Player 1's Turn:
+Your Firewall: 10
+Opponent's Firewall: 7
+Choose your action ('attack' or 'bypass'): bypass
+You chose to Bypass.
+Opponent's firewall reduced by 1.
+
+[Game continues...]
+```
+
+## Strategies
+
+- **Risk Assessment**:
+  - Use **Attack** when you're willing to risk a turn for potential high damage.
+  - Use **Bypass** when consistent, guaranteed damage is preferable.
+- **Firewall Strength Consideration**:
+  - When the opponent's firewall is low, **Bypass** may be sufficient to finish the game without risk.
+- **Probability Awareness**:
+  - **Attack** has a 50% chance of success.
+  - Assess whether the potential reward outweighs the risk based on the current game state.
+
+## Game End
+
+- The game concludes when a player's firewall strength is reduced to **zero**.
+- Declare the winner and optionally offer a rematch.
+
+---
+
+This rule book provides all the necessary information to understand and play **Firewall Breach**. The game combines elements of luck and strategy, allowing skilled players to make informed decisions while still incorporating chance through dice rolls. The simple mechanics make it easy to code and play in a command-line interface, ensuring quick gameplay without the possibility of a draw.

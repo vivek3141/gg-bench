@@ -1,0 +1,219 @@
+# Game Name: Double Up
+
+## Objective
+
+The objective of **Double Up** is to be the last player able to make a valid move by strategically selecting numbers to build a sequence without repeating numbers. Players take turns adding numbers to a shared sequence, aiming to force their opponent into a position where they cannot make a valid selection according to the game's rules.
+
+## Setup
+
+- **Starting Number**: The game begins with the number **1** as the initial element in the sequence.
+- **Sequence List**: A list that records all numbers chosen during the game. Initially, it contains only the starting number `[1]`.
+- **Players**: Two players participate, alternating turns throughout the game.
+
+## Game Components
+
+- **Sequence List**: A shared list that tracks the sequence of numbers selected by the players.
+- **Numbers Used**: A record of all numbers that have been selected to prevent repetition.
+- **Players**: Identified as **Player 1** and **Player 2**, they take turns according to the game's rules.
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- On their turn, a player must select a valid number based on the rules and add it to the sequence.
+
+## Rules and Mechanics
+
+### 1. Number Selection Rules
+
+On your turn, you must select a number (**M**) that satisfies all the following conditions:
+
+- **Condition A**: **M** is greater than the last number in the sequence (**N**).
+  - **M > N**
+- **Condition B**: **M** is less than or equal to twice the last number in the sequence.
+  - **M ≤ 2 × N**
+- **Condition C**: **M** has not been previously selected in the sequence.
+  - **M** is not in the **Numbers Used** list.
+
+### 2. Updating the Sequence
+
+- Add the chosen number **M** to the end of the **Sequence List**.
+- Update the **Numbers Used** list to include **M**.
+- Announce your selected number and display the updated sequence to your opponent.
+
+### 3. Winning the Game
+
+- **Cannot Make a Valid Move**: If a player cannot select any valid number on their turn (due to all possible options being previously used or no numbers satisfying the conditions), they lose the game.
+- **Victory**: The last player to make a valid move wins the game.
+
+## Scoring
+
+- **Win**: The player who forces their opponent into a position with no valid moves wins the game.
+- **No Draws**: The game cannot end in a draw; there is always a clear winner.
+
+## Examples
+
+Below are sample turns to illustrate how the game is played:
+
+### Example Game
+
+**Initial State**:
+- Sequence: `[1]`
+- Numbers Used: `{1}`
+
+---
+
+**Player 1's Turn**:
+- **Last Number (N)**: 1
+- **Valid Numbers (M)**: Greater than 1 and less than or equal to 2 (2 × 1)
+  - Valid options: `2`
+- **Selection**: Player 1 chooses **2**
+- **Sequence Updated**: `[1, 2]`
+- **Numbers Used Updated**: `{1, 2}`
+
+---
+
+**Player 2's Turn**:
+- **Last Number (N)**: 2
+- **Valid Numbers (M)**: Greater than 2 and ≤ 4 (2 × 2)
+  - Valid options: `3, 4`
+- **Selection**: Player 2 chooses **3**
+- **Sequence Updated**: `[1, 2, 3]`
+- **Numbers Used Updated**: `{1, 2, 3}`
+
+---
+
+**Player 1's Turn**:
+- **Last Number (N)**: 3
+- **Valid Numbers (M)**: Greater than 3 and ≤ 6 (2 × 3)
+  - Valid options: `4, 5, 6`
+- **Selection**: Player 1 chooses **5**
+- **Sequence Updated**: `[1, 2, 3, 5]`
+- **Numbers Used Updated**: `{1, 2, 3, 5}`
+
+---
+
+**Player 2's Turn**:
+- **Last Number (N)**: 5
+- **Valid Numbers (M)**: Greater than 5 and ≤ 10 (2 × 5)
+  - Valid options: `6, 7, 8, 9, 10`
+- **Selection**: Player 2 chooses **6**
+- **Sequence Updated**: `[1, 2, 3, 5, 6]`
+- **Numbers Used Updated**: `{1, 2, 3, 5, 6}`
+
+---
+
+**Player 1's Turn**:
+- **Last Number (N)**: 6
+- **Valid Numbers (M)**: Greater than 6 and ≤ 12 (2 × 6)
+  - Valid options: `7, 8, 9, 10, 11, 12`
+- **Selection**: Player 1 chooses **9**
+- **Sequence Updated**: `[1, 2, 3, 5, 6, 9]`
+- **Numbers Used Updated**: `{1, 2, 3, 5, 6, 9}`
+
+---
+
+**Player 2's Turn**:
+- **Last Number (N)**: 9
+- **Valid Numbers (M)**: Greater than 9 and ≤ 18 (2 × 9)
+  - Valid options: `10, 11, 12, 13, 14, 15, 16, 17, 18`
+- **Selection**: Player 2 chooses **10**
+- **Sequence Updated**: `[1, 2, 3, 5, 6, 9, 10]`
+- **Numbers Used Updated**: `{1, 2, 3, 5, 6, 9, 10}`
+
+---
+
+**Player 1's Turn**:
+- **Last Number (N)**: 10
+- **Valid Numbers (M)**: Greater than 10 and ≤ 20 (2 × 10)
+  - Valid options: `11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+- **Selection**: Player 1 chooses **19**
+- **Sequence Updated**: `[1, 2, 3, 5, 6, 9, 10, 19]`
+- **Numbers Used Updated**: `{1, 2, 3, 5, 6, 9, 10, 19}`
+
+---
+
+**Player 2's Turn**:
+- **Last Number (N)**: 19
+- **Valid Numbers (M)**: Greater than 19 and ≤ 38 (2 × 19)
+  - Valid options: `20, 21, 22, ..., 38`
+- **Selection**: Player 2 chooses **20**
+- **Sequence Updated**: `[1, 2, 3, 5, 6, 9, 10, 19, 20]`
+- **Numbers Used Updated**: `{1, 2, 3, 5, 6, 9, 10, 19, 20}`
+
+---
+
+**Continuation**: The game continues in this manner until a player cannot make a valid move on their turn. That player loses, and their opponent wins.
+
+## Command-Line Interaction Example
+
+Below is a sample interaction showing how the game might proceed in a command-line interface.
+
+```
+Starting Number: 1
+Sequence: [1]
+Numbers Used: {1}
+
+Player 1's Turn:
+Last Number (N): 1
+Valid Numbers to Choose From: [2]
+Enter your selection: 2
+Sequence Updated: [1, 2]
+Numbers Used Updated: {1, 2}
+
+Player 2's Turn:
+Last Number (N): 2
+Valid Numbers to Choose From: [3, 4]
+Enter your selection: 4
+Sequence Updated: [1, 2, 4]
+Numbers Used Updated: {1, 2, 4}
+
+Player 1's Turn:
+Last Number (N): 4
+Valid Numbers to Choose From: [5, 6, 7, 8]
+Enter your selection: 8
+Sequence Updated: [1, 2, 4, 8]
+Numbers Used Updated: {1, 2, 4, 8}
+
+Player 2's Turn:
+Last Number (N): 8
+Valid Numbers to Choose From: [9, 10, 11, 12, 13, 14, 15, 16]
+Enter your selection: 16
+Sequence Updated: [1, 2, 4, 8, 16]
+Numbers Used Updated: {1, 2, 4, 8, 16}
+
+Player 1's Turn:
+Last Number (N): 16
+Valid Numbers to Choose From: [17, 18, ..., 32]
+Enter your selection: 17
+Sequence Updated: [1, 2, 4, 8, 16, 17]
+Numbers Used Updated: {1, 2, 4, 8, 16, 17}
+
+Player 2's Turn:
+Last Number (N): 17
+Valid Numbers to Choose From: [18, 19, ..., 34]
+Enter your selection: 34
+Sequence Updated: [1, 2, 4, 8, 16, 17, 34]
+Numbers Used Updated: {1, 2, 4, 8, 16, 17, 34}
+
+Player 1's Turn:
+Last Number (N): 34
+Valid Numbers to Choose From: [35, 36, ..., 68]
+Enter your selection: 50
+Sequence Updated: [1, 2, 4, 8, 16, 17, 34, 50]
+Numbers Used Updated: {1, 2, 4, 8, 16, 17, 34, 50}
+
+... (Game continues)
+
+Player X cannot make a valid move.
+Player Y wins the game!
+```
+
+## Strategy Tips
+
+- **Forward Planning**: Anticipate the range of numbers your opponent will have to choose from after your move to limit their options.
+- **Number Management**: By selecting numbers that create less favorable ranges for your opponent, you can increase your chances of winning.
+- **Avoiding Repetition**: Keep track of all numbers that have been used to ensure you do not attempt to select an invalid number.
+
+## Summary
+
+**Double Up** is a simple yet strategic game that challenges players to think ahead and make tactical decisions based on numerical sequences. Its straightforward rules make it easy to code and play in a command-line interface, and the game's design ensures that there is always a clear winner, with no possibility of a draw. Players who master the strategy can consistently outperform less experienced opponents, adding depth and competitiveness to the gameplay.

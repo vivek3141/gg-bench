@@ -1,0 +1,184 @@
+# Divisor Duel Rule Book
+
+## Objective
+
+Divisor Duel is a competitive two-player, turn-based game where players take turns adding digits to form a number. The primary goal is to be the first player to create a number that is divisible by a predetermined target divisor. Strategic selection of digits and foresight are key, as each move can bring you closer to victory or set up your opponent for a win.
+
+## Setup
+
+1. **Determine the Target Divisor**: Before the game begins, players agree upon a target divisor (e.g., 3, 7, 11). This number should be a positive integer greater than 1.
+2. **Initialize the Digit Pool**: Create a shared pool containing the digits **1** through **9**. Each digit is available for selection once.
+3. **Initialize the Number**: Start with an empty number. As the game progresses, digits will be appended to this number to form a multi-digit integer.
+
+## Game Components
+
+- **Digit Pool**: A list of available digits from **1** to **9**. Digits are removed from the pool once selected.
+- **Current Number**: The number being formed by appending selected digits. It starts empty and grows with each turn.
+- **Target Divisor**: The agreed-upon number that players aim to divide the current number by without a remainder.
+
+## Turns
+
+1. **Starting the Game**: Decide which player goes first (e.g., flip a coin).
+2. **Player Actions**: On your turn, perform the following steps:
+   - **Select a Digit**: Choose any available digit from the digit pool.
+   - **Append the Digit**: Add the chosen digit to the *right end* of the current number.
+   - **Update the Digit Pool**: Remove the selected digit from the digit pool.
+   - **Check for Victory**: Determine if the new current number is divisible by the target divisor.
+
+3. **End of Turn**: If no win condition is met, the turn passes to the other player.
+4. **Turn Progression**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Players can only choose from the digits currently available in the digit pool.
+   - Each digit (1-9) can be used only once in the game.
+
+2. **Number Formation**:
+   - The current number is formed by appending digits to the right end.
+   - No rearrangement of digits is allowed once they are placed.
+
+3. **Victory Conditions**:
+   - **Immediate Win**: If after your turn, the current number is divisible evenly by the target divisor (i.e., the remainder is zero), you win the game.
+   - **Forced Loss**: If all digits have been used without creating a number divisible by the target divisor, the last player to have moved loses the game.
+
+4. **Example of Divisibility**:
+   - A number is divisible by the target divisor if there is no remainder when dividing.
+   - For example, if the target divisor is **7**, and the current number is **14**, since 14 ÷ 7 = 2 with no remainder, the number is divisible by 7.
+
+5. **Prohibited Actions**:
+   - You cannot skip your turn.
+   - You cannot select a digit not present in the digit pool.
+   - You cannot remove or change the order of previously placed digits.
+
+## Scoring
+
+- **Winning the Game**: Successfully creating a number divisible by the target divisor results in an immediate win.
+- **Losing the Game**: If all digits are used and the current number is not divisible by the target divisor, the player who made the last move loses.
+- **No Draws**: The game is designed to always produce a winner; draws are not possible.
+
+## Examples
+
+### Example 1: Target Divisor is 7
+
+**Setup**:
+- **Digit Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Current Number**: (empty)
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - **Selects Digit**: 1
+   - **Current Number**: 1
+   - **Digit Pool**: 2-9
+   - **Check**: 1 ÷ 7 → Remainder ≠ 0 (no win)
+  
+2. **Player 2's Turn**:
+   - **Selects Digit**: 4
+   - **Current Number**: 1**4**
+   - **Digit Pool**: 2,3,5-9
+   - **Check**: 14 ÷ 7 = 2 (no remainder)
+   - **Result**: Player 2 wins.
+
+### Example 2: Target Divisor is 5
+
+**Setup**:
+- **Digit Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Current Number**: (empty)
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - **Selects Digit**: 2
+   - **Current Number**: 2
+   - **Digit Pool**: 1,3-9
+   - **Check**: 2 ÷ 5 → Remainder ≠ 0 (no win)
+
+2. **Player 2's Turn**:
+   - **Selects Digit**: 3
+   - **Current Number**: 2**3**
+   - **Digit Pool**: 1,4-9
+   - **Check**: 23 ÷ 5 → Remainder ≠ 0 (no win)
+
+3. **Player 1's Turn**:
+   - **Selects Digit**: 1
+   - **Current Number**: 2**3**1
+   - **Digit Pool**: 4-9
+   - **Check**: 231 ÷ 5 → Remainder = 1 (no win)
+
+4. **Player 2's Turn**:
+   - **Selects Digit**: 9
+   - **Current Number**: 231**9**
+   - **Digit Pool**: 4-8
+   - **Check**: 2319 ÷ 5 = 463.8 (remainder 4) (no win)
+
+5. **Player 1's Turn**:
+   - **Selects Digit**: 5
+   - **Current Number**: 2319**5**
+   - **Digit Pool**: 4,6-8
+   - **Check**: 23195 ÷ 5 = 4639 (no remainder)
+   - **Result**: Player 1 wins.
+
+### Command-Line Interaction Example
+
+```
+Target Divisor: 7
+Available Digits: 1 2 3 4 5 6 7 8 9
+Current Number: 
+
+Player 1's turn.
+Select a digit: 5
+Current Number: 5
+Available Digits: 1 2 3 4 6 7 8 9
+5 is not divisible by 7.
+
+Player 2's turn.
+Select a digit: 2
+Current Number: 5**2**
+Available Digits: 1 3 4 6 7 8 9
+52 is not divisible by 7.
+
+Player 1's turn.
+Select a digit: 1
+Current Number: 52**1**
+Available Digits: 3 4 6 7 8 9
+521 is not divisible by 7.
+
+Player 2's turn.
+Select a digit: 4
+Current Number: 521**4**
+Available Digits: 3 6 7 8 9
+5214 ÷ 7 = 744.857 (remainder ≠ 0)
+
+Player 1's turn.
+Select a digit: 7
+Current Number: 5214**7**
+Available Digits: 3 6 8 9
+52147 ÷ 7 = 7449.571 (remainder ≠ 0)
+
+Player 2's turn.
+Select a digit: 3
+Current Number: 52147**3**
+Available Digits: 6 8 9
+521473 ÷ 7 = 74496.142 (remainder ≠ 0)
+
+... [Game continues]
+
+Assuming all digits are used without forming a number divisible by 7:
+
+Final Digit Pool: Empty
+Current Number: 521473689
+No player has created a number divisible by 7.
+**Result**: The last player to move (Player 2) loses. Player 1 wins.
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate which digits could lead to a win in subsequent turns and try to block your opponent.
+- **Avoid Immediate Loss**: Be cautious not to set up the current number in a way that allows your opponent to win on their next turn.
+- **Digit Importance**: Some digits may be more advantageous based on the target divisor. Identify and prioritize these digits.
+- **Mathematical Calculation**: Quickly calculating the divisibility of potential numbers can give you a strategic edge.
+
+## Conclusion
+
+Divisor Duel combines simple arithmetic with strategic foresight, offering an engaging and competitive experience. The straightforward rules make it easy to learn, while the depth of strategy ensures that skilled players are rewarded. Enjoy the duel and may the best strategist win!

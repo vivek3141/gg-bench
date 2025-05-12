@@ -1,0 +1,247 @@
+# Number Chain Duel
+
+## Objective
+
+Be the first player to successfully add a number to your chain when your opponent cannot. Players create a chain of numbers where each new number added is either a **divisor** or a **multiple** of the previous number. The game tests strategic planning and number sense, with the aim of outmaneuvering your opponent by leaving them without valid moves.
+
+## Setup
+
+1. **Shared Number Pool**: A list of numbers from **1 to 50** is available to both players. Each number can only be used once in the game.
+2. **Starting Chains**: Both players begin with an **empty chain**.
+3. **Determine First Player**: Decide who takes the first turn (e.g., by agreement or random selection).
+
+## Game Components
+
+- **Number Pool**: A shared list containing numbers **1 through 50**.
+- **Player Chains**: Each player has their own chain, which is a sequence of numbers they build during the game.
+- **Turns**: Alternating opportunities for players to add numbers to their chains.
+
+## Turns
+
+1. **Select a Number**: On your turn, choose a number from the **Number Pool**.
+2. **Add to Chain**: Add the selected number to the **end of your chain**, ensuring it follows the **Chain Rule**.
+3. **Update Number Pool**: Remove the selected number from the **Number Pool**.
+4. **Pass Turn**: The turn passes to the other player.
+5. **Unable to Move**: If a player cannot add a valid number to their chain on their turn, the game ends.
+
+## Rules and Mechanics
+
+### Chain Rule
+
+- **First Number**: Can be **any number** from the Number Pool.
+- **Subsequent Numbers**: Each new number added must be a **divisor** or a **multiple** of the **previous number** in your chain.
+  - **Divisor**: A number that divides the previous number evenly (e.g., 2 is a divisor of 4).
+  - **Multiple**: A number that is a product of the previous number and an integer (e.g., 6 is a multiple of 3).
+
+### Valid Moves
+
+- **Number Availability**: Only numbers remaining in the **Number Pool** can be selected.
+- **Chain Continuity**: The selected number must satisfy the **Chain Rule** with respect to the last number in your chain.
+- **No Repeats**: Each number can be used **only once** in the entire game.
+
+### Ending the Game
+
+- The game ends when a player cannot make a valid move **on their turn**.
+- The **other player** (the last one to add a valid number) is declared the **winner**.
+
+## Scoring
+
+- **Victory**: The player who successfully adds a number to their chain when their opponent cannot is the **winner**.
+- **No Points System**: The game is win-loss only; there are no cumulative points.
+
+## Examples
+
+Below are sample turns illustrating how the game is played in a command-line interface.
+
+### Example Game
+
+#### Initial State
+
+- **Number Pool**: 1 to 50
+- **Player 1 Chain**: Empty
+- **Player 2 Chain**: Empty
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**
+   - **Selects Number**: 15
+   - **Adds to Chain**: 15
+   - **Number Pool**: Numbers 1-50 excluding 15
+
+2. **Player 2's Turn**
+   - **Selects Number**: 5 (divisor of 15)
+   - **Adds to Chain**: 5
+   - **Number Pool**: Numbers 1-50 excluding 15 and 5
+
+3. **Player 1's Turn**
+   - **Last Number in Chain**: 15
+   - **Possible Moves**: Numbers that are divisors or multiples of 15 from the pool (e.g., 3, 45, 30)
+   - **Selects Number**: 45 (multiple of 15)
+   - **Adds to Chain**: 15 -> 45
+   - **Number Pool**: Excludes 15, 5, 45
+
+4. **Player 2's Turn**
+   - **Last Number in Chain**: 5
+   - **Possible Moves**: Numbers that are divisors or multiples of 5 (e.g., 10, 20, 25)
+   - **Selects Number**: 25 (multiple of 5)
+   - **Adds to Chain**: 5 -> 25
+   - **Number Pool**: Excludes 15, 5, 45, 25
+
+5. **Player 1's Turn**
+   - **Last Number in Chain**: 45
+   - **Possible Moves**: Divisors or multiples of 45 (e.g., 9, 90)
+   - **Selects Number**: 9 (divisor of 45)
+   - **Adds to Chain**: 15 -> 45 -> 9
+   - **Number Pool**: Excludes 15, 5, 45, 25, 9
+
+6. **Player 2's Turn**
+   - **Last Number in Chain**: 25
+   - **Possible Moves**: Divisors or multiples of 25 (e.g., 5, 50)
+   - **Selects Number**: 50 (multiple of 25)
+   - **Adds to Chain**: 5 -> 25 -> 50
+   - **Number Pool**: Excludes 15, 5, 45, 25, 9, 50
+
+7. **Player 1's Turn**
+   - **Last Number in Chain**: 9
+   - **Possible Moves**: Divisors or multiples of 9 (e.g., 3, 18, 27)
+   - **Selects Number**: 27 (multiple of 9)
+   - **Adds to Chain**: 15 -> 45 -> 9 -> 27
+   - **Number Pool**: Excludes 15, 5, 45, 25, 9, 50, 27
+
+8. **Player 2's Turn**
+   - **Last Number in Chain**: 50
+   - **Possible Moves**: Divisors or multiples of 50 (e.g., 10, 100)
+   - **Available Numbers**: 10 (since 100 is beyond 50)
+   - **Selects Number**: 10 (divisor of 50)
+   - **Adds to Chain**: 5 -> 25 -> 50 -> 10
+   - **Number Pool**: Excludes 15, 5, 45, 25, 9, 50, 27, 10
+
+9. **Player 1's Turn**
+   - **Last Number in Chain**: 27
+   - **Possible Moves**: Divisors or multiples of 27 (e.g., 3, 9, 54)
+   - **Available Numbers**: 3 (since 9 and 27 are used, 54 is beyond 50)
+   - **Selects Number**: 3 (divisor of 27)
+   - **Adds to Chain**: 15 -> 45 -> 9 -> 27 -> 3
+   - **Number Pool**: Excludes 15, 5, 45, 25, 9, 50, 27, 10, 3
+
+10. **Player 2's Turn**
+    - **Last Number in Chain**: 10
+    - **Possible Moves**: Divisors or multiples of 10 (e.g., 5, 20)
+    - **Available Numbers**: 20 (5 and 10 are used)
+    - **Selects Number**: 20 (multiple of 10)
+    - **Adds to Chain**: 5 -> 25 -> 50 -> 10 -> 20
+    - **Number Pool**: Excludes 15, 5, 45, 25, 9, 50, 27, 10, 3, 20
+
+11. **Player 1's Turn**
+    - **Last Number in Chain**: 3
+    - **Possible Moves**: Divisors or multiples of 3 (e.g., 6, 12, 21)
+    - **Available Numbers**: 6, 12, 21
+    - **Selects Number**: 21 (multiple of 3)
+    - **Adds to Chain**: 15 -> 45 -> 9 -> 27 -> 3 -> 21
+    - **Number Pool**: Excludes previous numbers and 21
+
+12. **Player 2's Turn**
+    - **Last Number in Chain**: 20
+    - **Possible Moves**: Divisors or multiples of 20 (e.g., 4, 40)
+    - **Available Numbers**: 4, 40
+    - **Selects Number**: 40 (multiple of 20)
+    - **Adds to Chain**: 5 -> 25 -> 50 -> 10 -> 20 -> 40
+    - **Number Pool**: Excludes previous numbers and 40
+
+13. **Player 1's Turn**
+    - **Last Number in Chain**: 21
+    - **Possible Moves**: Divisors or multiples of 21 (e.g., 7, 42)
+    - **Available Numbers**: 7 (since 42 exceeds 50)
+    - **Selects Number**: 7 (divisor of 21)
+    - **Adds to Chain**: 15 -> 45 -> 9 -> 27 -> 3 -> 21 -> 7
+    - **Number Pool**: Excludes previous numbers and 7
+
+14. **Player 2's Turn**
+    - **Last Number in Chain**: 40
+    - **Possible Moves**: Divisors or multiples of 40 (e.g., 8, 80)
+    - **Available Numbers**: 8 (80 exceeds 50)
+    - **Selects Number**: 8 (divisor of 40)
+    - **Adds to Chain**: 5 -> 25 -> 50 -> 10 -> 20 -> 40 -> 8
+    - **Number Pool**: Excludes previous numbers and 8
+
+15. **Player 1's Turn**
+    - **Last Number in Chain**: 7
+    - **Possible Moves**: Divisors or multiples of 7 (e.g., 14, 49)
+    - **Available Numbers**: 14, 49
+    - **Selects Number**: 14 (multiple of 7)
+    - **Adds to Chain**: 15 -> ... -> 7 -> 14
+    - **Number Pool**: Excludes previous numbers and 14
+
+16. **Player 2's Turn**
+    - **Last Number in Chain**: 8
+    - **Possible Moves**: Divisors or multiples of 8 (e.g., 4, 16, 24)
+    - **Available Numbers**: 16, 24 (4 was previously used)
+    - **Selects Number**: 16 (multiple of 8)
+    - **Adds to Chain**: 5 -> ... -> 8 -> 16
+    - **Number Pool**: Excludes previous numbers and 16
+
+17. **Player 1's Turn**
+    - **Last Number in Chain**: 14
+    - **Possible Moves**: Divisors or multiples of 14 (e.g., 2, 28)
+    - **Available Numbers**: 28
+    - **Selects Number**: 28 (multiple of 14)
+    - **Adds to Chain**: 15 -> ... -> 14 -> 28
+    - **Number Pool**: Excludes previous numbers and 28
+
+18. **Player 2's Turn**
+    - **Last Number in Chain**: 16
+    - **Possible Moves**: Divisors or multiples of 16 (e.g., 32)
+    - **Available Numbers**: 32
+    - **Selects Number**: 32 (multiple of 16)
+    - **Adds to Chain**: 5 -> ... -> 16 -> 32
+    - **Number Pool**: Excludes previous numbers and 32
+
+19. **Player 1's Turn**
+    - **Last Number in Chain**: 28
+    - **Possible Moves**: Divisors or multiples of 28 (e.g., 7, 56)
+    - **Available Numbers**: None (7 and 14 used, 56 exceeds 50)
+    - **No Valid Move**: Player 1 cannot make a valid move.
+
+#### Conclusion
+
+- **Winner**: **Player 2**, as Player 1 could not make a valid move on their turn.
+- **Final Chains**:
+  - **Player 1**: 15 -> 45 -> 9 -> 27 -> 3 -> 21 -> 7 -> 14 -> 28
+  - **Player 2**: 5 -> 25 -> 50 -> 10 -> 20 -> 40 -> 8 -> 16 -> 32
+
+### Command-Line Interaction Example
+
+```plaintext
+--- Number Chain Duel ---
+
+Numbers Available: [1, 2, 3, ..., 50]
+
+Player 1's Turn:
+- Select a number to start your chain: 15
+- Player 1's Chain: [15]
+- Numbers Available: [1-14, 16-50]
+
+Player 2's Turn:
+- Last number in your chain: None (starting chain)
+- Select a number to start your chain: 5
+- Player 2's Chain: [5]
+- Numbers Available: [1-4, 6-14, 16-50]
+
+Player 1's Turn:
+- Last number in your chain: 15
+- Select a number that is a divisor or multiple of 15: 45
+- Player 1's Chain: [15, 45]
+- Numbers Available: [1-4, 6-14, 16-44, 46-50]
+
+... [Game continues as in the example above] ...
+
+Player 1's Turn:
+- Last number in your chain: 28
+- No valid moves available.
+- Player 1 cannot make a move.
+- Player 2 wins the game!
+```
+
+---
+
+This rule book provides all the necessary information to understand and play **Number Chain Duel**. The game combines simple arithmetic relationships with strategic depth, ensuring that a skilled player who plans ahead will have a consistent advantage.

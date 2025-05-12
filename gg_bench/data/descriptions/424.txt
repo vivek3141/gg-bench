@@ -1,0 +1,239 @@
+**Trail Blazer**
+
+---
+
+### **Objective**
+
+Be the first player to navigate your Trail Blazer from your base to your opponent's base on a shared 5x5 grid. Strategically block your opponent while carving a unique path to victory. The first player to reach the opponent's base wins the game. If a player has no legal moves remaining, they lose the game.
+
+---
+
+### **Setup**
+
+1. **Game Board Initialization**
+   - The game is played on a 5x5 grid represented in the command-line interface.
+   - The grid coordinates are as follows:
+     - Rows are numbered from `0` to `4` top to bottom.
+     - Columns are numbered from `0` to `4` left to right.
+
+2. **Player Bases and Starting Positions**
+   - **Player A (Trail Blazer A)**
+     - Base located at the top-left corner `(0,0)`.
+     - Starts with their Trail Blazer on their base at `(0,0)`.
+   - **Player B (Trail Blazer B)**
+     - Base located at the bottom-right corner `(4,4)`.
+     - Starts with their Trail Blazer on their base at `(4,4)`.
+
+3. **Initial Grid State**
+   - All grid cells are empty except for the starting positions of the players' Trail Blazers.
+   - No trails have been created yet.
+
+---
+
+### **Game Components**
+
+1. **Grid Board**
+   - A 5x5 grid that serves as the game board.
+   - Each cell on the grid can be in one of the following states:
+     - **Empty (`.`)**: The cell has not been occupied.
+     - **Trail Blazer A (`A`)**: Occupied by Player A's Trail Blazer.
+     - **Trail Blazer B (`B`)**: Occupied by Player B's Trail Blazer.
+     - **Trail of A (`a`)**: A cell previously occupied by Player A's Trail Blazer.
+     - **Trail of B (`b`)**: A cell previously occupied by Player B's Trail Blazer.
+
+2. **Trail Blazers**
+   - Each player controls one Trail Blazer.
+   - The Trail Blazer leaves a permanent trail on the grid as it moves.
+
+---
+
+### **Turns**
+
+1. **Turn Order**
+   - Players take turns alternately.
+   - **Player A** takes the first turn.
+
+2. **Player Actions During a Turn**
+   - **Move the Trail Blazer**:
+     - Move your Trail Blazer to an adjacent unoccupied cell.
+     - Allowed movements include horizontal, vertical, and diagonal directions.
+     - The destination cell must be empty (not occupied by any trail or Trail Blazer).
+   - **Trail Creation**:
+     - After moving, the cell you leave becomes part of your trail.
+     - Mark your trail on the grid (`a` for Player A, `b` for Player B).
+
+3. **Movement Restrictions**
+   - You cannot move onto a cell that is occupied by your own trail (`a` or `b`), your opponent's trail, or either Trail Blazer.
+   - You must move each turn if a legal move is available.
+
+4. **No Pass Rule**
+   - Passing a turn is not allowed.
+   - If you have at least one legal move, you must make a move.
+
+5. **Turn Progression**
+   - After completing your move and updating the grid, it becomes the opponent's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Winning the Game**
+   - **Victory Condition**:
+     - Reach the opponent's base with your Trail Blazer.
+     - For Player A, reach cell `(4,4)`.
+     - For Player B, reach cell `(0,0)`.
+
+2. **Losing the Game**
+   - **No Legal Moves**:
+     - If it's your turn and you have no legal moves (all adjacent cells are occupied), you lose the game.
+
+3. **Trail Mechanics**
+   - Trails are permanent and block movement.
+   - Neither player can occupy a cell that is part of a trail (their own or the opponent's).
+
+4. **Movement Directions**
+   - A Trail Blazer can move to any of the eight adjacent cells (including diagonals) provided they are unoccupied.
+
+5. **Grid Boundaries**
+   - The grid edges represent the boundaries.
+   - Movement off the grid is not allowed.
+
+---
+
+### **Scoring**
+
+- **Win Condition**:
+  - The first player to reach the opponent's base wins.
+- **Lose Condition**:
+  - A player loses if they have no legal moves on their turn.
+- **Game Conclusion**:
+  - The game ends immediately when either win or lose condition is met.
+
+---
+
+### **Examples**
+
+#### **Sample Game Playthrough**
+
+**Initial Grid State**
+
+```
+A . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . B
+```
+
+**Turn 1: Player A**
+
+- **Current Position**: `(0,0)`
+- **Possible Moves**: `(0,1)`, `(1,0)`, `(1,1)`
+- **Player A Moves to**: `(1,1)`
+- **Grid Update**:
+  - Mark `(0,0)` as part of Player A's trail (`a`).
+  - Place `A` at `(1,1)`.
+
+**Grid After Turn 1**
+
+```
+a . . . .
+. A . . .
+. . . . .
+. . . . .
+. . . . B
+```
+
+---
+
+**Turn 2: Player B**
+
+- **Current Position**: `(4,4)`
+- **Possible Moves**: `(3,3)`, `(3,4)`, `(4,3)`
+- **Player B Moves to**: `(3,3)`
+- **Grid Update**:
+  - Mark `(4,4)` as part of Player B's trail (`b`).
+  - Place `B` at `(3,3)`.
+
+**Grid After Turn 2**
+
+```
+a . . . .
+. A . . .
+. . . . .
+. . . B .
+. . . . b
+```
+
+---
+
+**Turn 3: Player A**
+
+- **Current Position**: `(1,1)`
+- **Possible Moves**: Adjacent empty cells
+- Assume Player A moves strategically towards Player B's base.
+
+---
+
+#### **Command-Line Interaction Example**
+
+**Player A's Turn**
+
+```
+Player A, it's your turn.
+Your current position: (1,1)
+Enter your move (row and column): 2 2
+```
+
+- **Validation**:
+  - Check if `(2,2)` is a valid move.
+  - Confirm it's adjacent and unoccupied.
+- **Update**:
+  - Move Trail Blazer to `(2,2)`.
+  - Mark `(1,1)` as part of the trail.
+
+**Player B's Turn**
+
+```
+Player B, it's your turn.
+Your current position: (3,3)
+Enter your move (row and column): 2 2
+```
+
+- **Validation**:
+  - `(2,2)` is occupied by Player A's Trail Blazer.
+  - Inform Player B to choose another move.
+
+**Player B Chooses an Available Cell**
+
+---
+
+**Endgame Scenario**
+
+If Player A reaches `(4,4)`:
+
+```
+Player A has reached Player B's base at (4,4).
+Player A wins the game!
+```
+
+If Player B has no legal moves:
+
+```
+Player B has no legal moves remaining.
+Player B loses the game.
+Player A wins by default!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Anticipate your opponent's moves and block their paths when possible.
+- **Balance Offense and Defense**: While advancing towards the opponent's base, be mindful of protecting your own.
+- **Control the Center**: Dominating the center of the grid provides more movement options.
+- **Avoid Traps**: Be cautious not to corner yourself without legal moves.
+
+---
+
+**Enjoy your game of Trail Blazer! May the best strategist win.**

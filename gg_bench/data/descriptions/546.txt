@@ -1,0 +1,209 @@
+# Grid Conquest
+
+Welcome to **Grid Conquest**, a strategic two-player turn-based game designed for play in a command-line interface. Outsmart your opponent by claiming cells on a hidden grid to accumulate the highest score. Use strategy to maximize your points while diminishing your opponent's opportunities. May the best strategist win!
+
+---
+
+## Objective
+
+The primary goal of **Grid Conquest** is to accumulate a higher total score than your opponent by the end of the game. Players achieve victory by strategically selecting cells from a hidden grid, revealing their values, and claiming them to add to their score. The game ends when all cells have been claimed, and the player with the highest total score wins.
+
+---
+
+## Setup
+
+1. **Grid Generation**: A square grid of size *N x N* is created. The default size is **4x4**, but players can agree on a different size before the game starts.
+   
+2. **Cell Value Assignment**: Each cell in the grid is assigned a hidden integer value between **1** and **10**, inclusive. These values are randomly generated and remain hidden until a player selects a cell.
+
+3. **Initial Scores**: Both players start with a score of **0**.
+
+4. **Player Roles**: Determine which player goes first. This can be decided randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Grid Cells**: Each cell in the grid has the following attributes:
+  - **Position**: Identified by row and column indices (e.g., (1,1) for the top-left corner).
+  - **Hidden Value**: An integer between **1** and **10**.
+  - **Status**:
+    - **Unclaimed**: The cell has not been selected by any player.
+    - **Claimed**: The cell has been selected and is owned by a player.
+
+- **Player Scores**: A running total of each player's accumulated points from claimed cells.
+
+- **Adjacency**: Cells are adjacent if they are directly above, below, left, or right (not diagonal) of a given cell.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately, starting with the player determined during setup.
+
+2. **Selecting a Cell**:
+   - On your turn, choose any **unclaimed** cell by specifying its grid position.
+   - The cell's hidden value is revealed and added to your score.
+   - The cell is marked as **claimed** and cannot be selected again.
+
+3. **Adjusting Adjacent Cells**:
+   - After claiming a cell, **all unclaimed adjacent cells** lose **1 point** from their hidden values due to the influence of your claim.
+   - If an adjacent cell's value drops below **1**, it is set to **0**.
+   - The hidden values of non-adjacent cells remain unaffected.
+
+4. **End of Turn**: Once you have claimed a cell and adjusted adjacent cells, your turn ends, and it becomes the opponent's turn.
+
+---
+
+## Rules and Mechanics
+
+### Cell Selection
+
+- You **must** select an unclaimed cell on your turn.
+- You **cannot** skip your turn or pass.
+
+### Hidden Values
+
+- Cell values remain hidden until selected.
+- Players are **not** informed of the values of unclaimed cells, including those that have been decreased due to adjacency effects.
+
+### Scoring Mechanics
+
+- **Claimed Cell Value**: When you claim a cell, its current value is added to your total score.
+- **Adjacent Cell Reduction**:
+  - Only **unclaimed** and **adjacent** cells are affected.
+  - The reduction is **1 point** per adjacent claimed cell.
+  - Cells are not reduced below **0**.
+  - Cells already at **0** remain unaffected.
+
+### Game End
+
+- The game ends when **all cells** on the grid have been claimed.
+- The player with the **higher total score** wins the game.
+- In the unlikely event of a tie, the game declares a **draw**.
+
+---
+
+## Scoring
+
+- **Total Score**: The sum of all values from cells a player has claimed.
+- Scores are tracked continuously and can be displayed after each turn.
+- The player with the higher total score at the end wins.
+
+---
+
+## Examples
+
+### Sample Game Play on a 4x4 Grid
+
+#### Grid Positions Reference:
+
+```
+(1,1) (1,2) (1,3) (1,4)
+(2,1) (2,2) (2,3) (2,4)
+(3,1) (3,2) (3,3) (3,4)
+(4,1) (4,2) (4,3) (4,4)
+```
+
+### Turn-by-Turn Example:
+
+#### Initial State:
+
+- All cell values are hidden.
+- Both players' scores are at **0**.
+
+#### Player 1's Turn:
+
+1. **Selects Cell (2,2)**.
+2. **Reveals Value**: Suppose the hidden value is **8**.
+3. **Updates Score**: Player 1's score becomes **8**.
+4. **Adjusts Adjacent Cells**:
+   - Cells affected: (1,2), (2,1), (2,3), (3,2).
+   - Each loses **1 point** from their hidden values.
+
+#### Player 2's Turn:
+
+1. **Selects Cell (2,1)**.
+2. **Reveals Value**: Original value was **5**, reduced by **1** previously, so current value is **4**.
+3. **Updates Score**: Player 2's score becomes **4**.
+4. **Adjusts Adjacent Cells**:
+   - Cells affected: (1,1), (2,2) [already claimed], (3,1).
+   - (2,2) is already claimed; no effect.
+   - Remaining unclaimed adjacent cells each lose **1 point**.
+
+#### Player 1's Next Turn:
+
+1. **Selects Cell (1,3)**.
+2. **Reveals Value**: Suppose the hidden value is **6**.
+3. **Updates Score**: Player 1's score becomes **14** (8 + 6).
+4. **Adjusts Adjacent Cells**:
+   - Cells affected: (1,2), (1,4), (2,3).
+   - Each loses **1 point** from their hidden values.
+
+#### Ongoing Gameplay:
+
+- Players continue to take turns, selecting cells, revealing values, updating scores, and affecting adjacent cells.
+- Players must consider the impact of their moves on both their score and the opponent's options.
+
+#### End of Game:
+
+- After all cells are claimed, suppose the final scores are:
+  - **Player 1**: 38
+  - **Player 2**: 35
+- **Winner**: Player 1 wins the game with a higher score.
+
+### Command-Line Interaction Sample:
+
+```plaintext
+--- Grid Conquest ---
+
+Player 1's Turn.
+Current Score: Player 1 = 0, Player 2 = 0
+Available Cells: (list of unclaimed cells)
+Enter the row and column of the cell you wish to claim (e.g., 2 2): 2 2
+
+You have claimed cell (2,2) with a value of 8.
+Your new score is 8.
+
+Adjusting adjacent cells...
+Cells (1,2), (2,1), (2,3), (3,2) have been reduced by 1 point.
+
+---
+
+Player 2's Turn.
+Current Score: Player 1 = 8, Player 2 = 0
+Available Cells: (list of unclaimed cells)
+Enter the row and column of the cell you wish to claim (e.g., 2 1): 2 1
+
+You have claimed cell (2,1) with a value of 4.
+Your new score is 4.
+
+Adjusting adjacent cells...
+Cells (1,1), (3,1) have been reduced by 1 point.
+
+---
+
+... (game continues)
+
+---
+
+Game Over!
+Final Scores:
+Player 1: 38
+Player 2: 35
+
+Congratulations, Player 1! You have won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Try to anticipate which cells your opponent might select and adjust your strategy accordingly.
+- **High-Value Targets**: Early in the game, aim for central cells; they have more adjacent cells, which can impact your opponent more.
+- **Edge Consideration**: Selecting edge or corner cells may be strategic if you wish to minimize the impact on adjacent cells.
+- **Balancing Act**: Weigh the benefits of claiming a high-value cell against the possibility of setting up your opponent for an even better move.
+
+---
+
+Enjoy the game, and may your strategies lead you to victory in **Grid Conquest**!

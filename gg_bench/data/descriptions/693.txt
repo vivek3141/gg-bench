@@ -1,0 +1,218 @@
+**Game Title:** **Path Pursuit**
+
+---
+
+**Objective:**
+
+Be the first player to reach your opponent's home node by moving your token strategically along a linear path while blocking or capturing the opponent's token.
+
+---
+
+**Setup:**
+
+- **Game Board:** A linear path consisting of 11 sequentially numbered nodes arranged in a straight line from Node 1 to Node 11.
+- **Player Tokens:** Each player has a unique token representing their position on the path.
+  - **Player 1's Token:** Starts on **Node 1** (Player 1's home node).
+  - **Player 2's Token:** Starts on **Node 11** (Player 2's home node).
+- **Starting Conditions:** Players decide who goes first (e.g., by coin toss). Turns alternate between players.
+
+---
+
+**Game Components:**
+
+1. **Path Nodes (1-11):**
+   - Visualized as a straight line with positions numbered from 1 to 11.
+   - Represents the spaces along which players move their tokens.
+
+2. **Player Tokens:**
+   - **Appearance:** Unique identifiers for each player (e.g., "P1" for Player 1 and "P2" for Player 2).
+   - **Functionality:** Indicates the current position of each player on the path.
+   - **Attributes:** Cannot occupy the same node unless capturing the opponent's token.
+
+---
+
+**Turns:**
+
+- **Turn Structure:**
+  - The game proceeds in alternate turns starting with the designated first player.
+  - During a turn, the active player performs the following steps:
+    1. **Determine Maximum Move Distance:**
+       - Based on the rules, calculate the maximum number of nodes the player can move.
+    2. **Choose Movement:** 
+       - Decide how many nodes to move (must be at least 1 and no more than 6).
+    3. **Move Token:**
+       - Advance the token towards the opponent's home node according to the chosen movement.
+    4. **Check for Win Conditions:**
+       - Determine if the move results in capturing the opponent's token or reaching the opponent's home node.
+    5. **End Turn:**
+       - If the game hasn't been won, pass the turn to the opponent.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Movement Rules:**
+   - Players move their tokens towards the opponent's home node.
+     - **Player 1** moves from lower to higher numbered nodes (Node 1 ➔ Node 11).
+     - **Player 2** moves from higher to lower numbered nodes (Node 11 ➔ Node 1).
+   - On each turn, a player may move their token forward **1 to 6 nodes**.
+
+2. **Maximum Movement Restriction:**
+   - A player **cannot move past** the opponent's current position.
+   - The maximum move distance is calculated as the number of nodes up to (but not including) the opponent's node.
+     - Example: If Player 1 is on Node 3 and Player 2 is on Node 6, Player 1 can move a maximum of 2 nodes (to Node 5).
+
+3. **Capturing the Opponent's Token:**
+   - If a player **lands on** the node occupied by the opponent's token, they **capture** the opponent's token and **win** the game immediately.
+
+4. **Winning the Game:**
+   - A player wins by either:
+     - **Reaching the Opponent's Home Node:** Landing on the opponent's starting node.
+     - **Capturing the Opponent's Token:** Landing on the node currently occupied by the opponent's token.
+
+5. **Blocked Movement:**
+   - If a player cannot move forward because the opponent's token is immediately ahead (no available nodes to advance), they must **pass their turn**.
+
+6. **No Backward Movement:**
+   - Players cannot move their tokens backward along the path.
+
+---
+
+**Scoring:**
+
+- This game is a **win/loss** game without a point system.
+- The player who successfully reaches the opponent's home node or captures the opponent's token wins.
+- There are no draws in this game.
+
+---
+
+**Examples:**
+
+**Example Scenario 1:**
+
+*Initial Positions:*
+- Player 1 is on Node 1.
+- Player 2 is on Node 11.
+
+---
+
+*Turn-by-Turn Play:*
+
+1. **Player 1's Turn:**
+   - Opponent's Position: Node 11
+   - Maximum Move: 6 nodes (since Nodes 2-11 are unoccupied).
+   - Player 1 chooses to move **6 nodes** to Node **7**.
+
+2. **Player 2's Turn:**
+   - Opponent's Position: Node 7
+   - Maximum Move: 4 nodes (cannot move past Node 7).
+   - Player 2 chooses to move **4 nodes** to Node **7**.
+   - Player 2 lands on Node 7, occupied by Player 1.
+   - **Player 2 captures Player 1's token and wins the game.**
+
+---
+
+**Example Scenario 2:**
+
+1. **Player 1's Turn:**
+   - Opponent's Position: Node 11
+   - Maximum Move: 6 nodes
+   - Player 1 moves **5 nodes** to Node **6**.
+
+2. **Player 2's Turn:**
+   - Opponent's Position: Node 6
+   - Maximum Move: 5 nodes
+   - Player 2 moves **5 nodes** to Node **6**.
+   - Player 2 lands on Node 6, occupied by Player 1.
+   - **Player 2 captures Player 1's token and wins the game.**
+
+---
+
+**Example Scenario 3 (Defensive Play):**
+
+1. **Player 1's Turn:**
+   - Player 1 moves **3 nodes** to Node **4**.
+
+2. **Player 2's Turn:**
+   - Player 2 moves **6 nodes** to Node **5**.
+
+3. **Player 1's Turn:**
+   - Opponent's Position: Node 5
+   - Maximum Move: 0 nodes (cannot move to or past Node 5)
+   - **Player 1 must pass their turn.**
+
+4. **Player 2's Turn:**
+   - Player 2 moves **1 node** to Node **4**.
+   - **Player 2 captures Player 1's token and wins the game.**
+
+---
+
+**Command-Line Interaction:**
+
+*Sample Turn:*
+
+```
+Player 1's Turn
+----------------
+Your Position: Node 1
+Opponent's Position: Node 11
+Maximum Move Distance: 6
+Enter number of nodes to move (1-6): 6
+
+Player 1 moves to Node 7.
+
+Player 2's Turn
+----------------
+Your Position: Node 11
+Opponent's Position: Node 7
+Maximum Move Distance: 4
+Enter number of nodes to move (1-4): 4
+
+Player 2 moves to Node 7.
+Player 2 lands on Node 7 and captures Player 1's token.
+
+Player 2 wins the game!
+```
+
+---
+
+**Strategic Depth and Complexity:**
+
+- **Anticipate Opponent's Moves:**
+  - Predict the opponent's possible movements to avoid being captured.
+  
+- **Control Key Nodes:**
+  - Occupy strategic nodes to limit the opponent's movement options.
+
+- **Balance Risk and Reward:**
+  - Decide when to advance aggressively or play defensively.
+
+- **Movement Calculation:**
+  - Carefully calculate maximum movement based on both positions to optimize your strategy.
+
+---
+
+**Strategic Tips:**
+
+1. **Avoid Immediate Confrontation:**
+   - Be cautious about moving to nodes where the opponent can capture you on their next turn.
+
+2. **Force Opponent to Pass:**
+   - Position yourself to restrict the opponent’s movement, potentially forcing them to skip their turn.
+
+3. **Maximize Distance When Safe:**
+   - Advance the maximum allowed nodes when the opponent cannot immediately reach you.
+
+4. **Predictive Blocking:**
+   - Anticipate the opponent’s maximum movement and position yourself accordingly.
+
+---
+
+**Notes on Fair Play:**
+
+- Players should ensure their inputs adhere to the rules.
+- Invalid moves (e.g., moving beyond the maximum allowed nodes) should prompt an error and a chance to re-enter a valid move.
+
+---
+
+This rule book provides all necessary information to players, ensuring the game is easy to understand while offering strategic depth and complexity suitable for both new and experienced players.

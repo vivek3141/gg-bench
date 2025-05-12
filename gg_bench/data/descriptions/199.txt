@@ -1,0 +1,179 @@
+# Sequence Duel
+
+## Objective
+
+Sequence Duel is a strategic two-player turn-based game played in a command-line interface. The primary goal is to be the first player to collect three numbers that form an arithmetic sequence from a shared pool of numbers. An arithmetic sequence consists of numbers with a constant difference between consecutive numbers (e.g., 2, 4, 6 or 3, 5, 7). Victory is achieved by successfully collecting such a sequence before your opponent.
+
+## Setup
+
+- **Shared Pool**: The game begins with a shared pool of numbers ranging from **1** to **9**.
+- **Player Hands**: Both players start with empty hands.
+- **Turn Order**: Decide which player goes first (e.g., by mutual agreement or a random method).
+
+## Game Components
+
+- **Numbers (1-9)**: These are the core elements of the game. Each number is unique and can only be selected once. They are displayed in the shared pool for both players to see.
+- **Player Hands**: Each player has a hand where they collect their chosen numbers. The contents of each player's hand are visible to both players to maintain transparency and strategic planning.
+
+## Turns
+
+- Players take turns alternately.
+- **During a Turn**:
+  - The player selects **any remaining number** from the shared pool.
+  - The chosen number is added to the player's hand.
+  - The selected number is **removed** from the shared pool.
+- **Turn Progression**:
+  - The game continues with players selecting numbers one after the other until a player achieves victory.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players can choose any number from the shared pool on their turn.
+   - Each number can only be selected once and is then unavailable for the rest of the game.
+
+2. **Forming an Arithmetic Sequence**:
+   - The primary objective is to collect **three numbers** that can form an arithmetic sequence.
+   - The sequence does **not** need to be in the order the numbers were picked.
+   - The difference between the numbers can be positive or negative but must be consistent.
+   - Examples of valid sequences:
+     - 2, 4, 6 (common difference of 2)
+     - 9, 6, 3 (common difference of -3)
+     - 1, 4, 7 (common difference of 3)
+
+3. **Winning the Game**:
+   - The first player to have three numbers in their hand that form an arithmetic sequence wins immediately.
+   - The game ends upon a victory condition being met.
+
+4. **Game End without Immediate Victory**:
+   - If all numbers have been selected and neither player has formed an arithmetic sequence:
+     - The player with the **highest sum** of numbers in their hand wins.
+     - If the sums are equal, the player who **picked second** (the player who took the last turn) wins the game.
+
+5. **Transparency**:
+   - Players' hands are visible to both players at all times.
+   - This allows for strategic planning and anticipation of the opponent's moves.
+
+## Scoring
+
+- **Victory by Sequence**:
+  - Achieved by forming an arithmetic sequence of three numbers.
+  - This is the primary method of winning.
+
+- **Victory by Sum**:
+  - If no arithmetic sequence is formed, victory is determined by the highest total sum of numbers in a player's hand.
+  - This secondary condition ensures that every game ends decisively with no draws.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial Setup
+
+- **Shared Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Player 1's Hand**: []
+- **Player 2's Hand**: []
+
+#### Turn 1
+
+- **Player 1's Turn**:
+  - Picks **5** from the shared pool.
+  - **Player 1's Hand**: [5]
+  - **Shared Pool**: [1, 2, 3, 4, 6, 7, 8, 9]
+
+#### Turn 2
+
+- **Player 2's Turn**:
+  - Picks **3** from the shared pool.
+  - **Player 2's Hand**: [3]
+  - **Shared Pool**: [1, 2, 4, 6, 7, 8, 9]
+
+#### Turn 3
+
+- **Player 1's Turn**:
+  - Picks **7** from the shared pool.
+  - **Player 1's Hand**: [5, 7]
+  - **Shared Pool**: [1, 2, 4, 6, 8, 9]
+
+#### Turn 4
+
+- **Player 2's Turn**:
+  - Picks **6** from the shared pool.
+  - **Player 2's Hand**: [3, 6]
+  - **Shared Pool**: [1, 2, 4, 8, 9]
+
+#### Turn 5
+
+- **Player 1's Turn**:
+  - Picks **9** from the shared pool.
+  - **Player 1's Hand**: [5, 7, 9]
+  - **Shared Pool**: [1, 2, 4, 8]
+  - **Victory Condition**: Player 1 has numbers **5, 7, 9**, which form an arithmetic sequence with a common difference of **2**.
+  - **Result**: **Player 1 wins the game**.
+
+### Command-Line Interaction Example
+
+Below is an example of how the game might be played out in a command-line interface.
+
+```plaintext
+Welcome to Sequence Duel!
+
+Shared Pool: 1 2 3 4 5 6 7 8 9
+
+Player 1's Hand:
+Player 2's Hand:
+
+Player 1's turn.
+Select a number from the shared pool: 5
+
+Shared Pool: 1 2 3 4 6 7 8 9
+Player 1's Hand: 5
+Player 2's Hand:
+
+Player 2's turn.
+Select a number from the shared pool: 3
+
+Shared Pool: 1 2 4 6 7 8 9
+Player 1's Hand: 5
+Player 2's Hand: 3
+
+Player 1's turn.
+Select a number from the shared pool: 7
+
+Shared Pool: 1 2 4 6 8 9
+Player 1's Hand: 5 7
+Player 2's Hand: 3
+
+Player 2's turn.
+Select a number from the shared pool: 6
+
+Shared Pool: 1 2 4 8 9
+Player 1's Hand: 5 7
+Player 2's Hand: 3 6
+
+Player 1's turn.
+Select a number from the shared pool: 9
+
+Shared Pool: 1 2 4 8
+Player 1's Hand: 5 7 9
+Player 2's Hand: 3 6
+
+Player 1 has formed an arithmetic sequence: 5, 7, 9
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Blocking**: Pay attention to the numbers your opponent is collecting and pick numbers that might prevent them from forming a sequence.
+- **Prioritizing**: Select numbers that can contribute to multiple potential sequences to increase your chances of winning.
+- **Awareness**: Keep track of the remaining numbers in the shared pool to anticipate possible moves.
+
+## Game Variations
+
+- **Extended Range**: Increase the shared pool to numbers from 1 to 11 to allow for longer sequences and more complex strategies.
+- **Sequence Length**: Change the required sequence length to four numbers for a more challenging game.
+
+## Conclusion
+
+Sequence Duel is a quick and engaging game that combines elements of strategy, planning, and foresight. It's simple to learn but offers depth for players to develop their skills. With no possibility of a draw, each game concludes decisively, allowing skilled players to consistently demonstrate their prowess.
+
+Happy dueling!

@@ -1,0 +1,191 @@
+# Divide and Conquer
+
+---
+
+## Objective
+
+Be the first player to reduce the shared number to exactly **1** on your turn by dividing it by a chosen divisor and rounding down to the nearest whole number.
+
+---
+
+## Setup
+
+1. **Starting Number**: Decide on a starting positive integer greater than 1. A common choice is **100**.
+2. **Player Order**: Determine who will be **Player 1** and **Player 2**. You can flip a coin or agree amicably.
+3. **Game Interface**: Use a command-line interface to input moves and display the game's progress.
+
+---
+
+## Game Components
+
+- **Shared Number**: An integer that both players manipulate throughout the game. It starts at the chosen starting number.
+- **Divisors**: Players can choose any integer between **2** and **9** (inclusive) as a divisor on their turn.
+- **No Physical Pieces**: The game requires only the shared number and the available divisors. All tracking is done via the command-line interface.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Current Shared Number Display**: The game announces the current shared number.
+2. **Player's Choice of Divisor**:
+   - The active player chooses a divisor between **2** and **9** (inclusive).
+3. **Calculation**:
+   - Divide the shared number by the chosen divisor.
+   - If the result is not a whole number, round it down to the nearest whole number (use floor division).
+4. **Update Shared Number**:
+   - The result becomes the new shared number for the next turn.
+5. **Turn Ends**:
+   - The turn passes to the other player.
+
+### Progression of Turns
+
+- Players alternate turns following the above structure until the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Choosing Divisors**:
+   - On your turn, you must select a divisor between **2** and **9**.
+   - You can choose any valid divisor on each turn, regardless of previous choices.
+2. **Division and Rounding**:
+   - Perform integer division of the shared number by your chosen divisor.
+   - If the division results in a decimal, round down to the nearest whole number.
+     - For example, **7 ÷ 3** equals **2** (since 7/3 ≈ 2.33, which rounds down to 2).
+3. **Updating the Shared Number**:
+   - The result after rounding down becomes the new shared number.
+   - This new number is used by the next player on their turn.
+4. **Winning the Game**:
+   - The player who reduces the shared number to exactly **1** on their turn **wins** the game.
+5. **Invalid Moves**:
+   - If a player attempts to use a divisor not between **2** and **9**, they must choose a valid divisor.
+6. **No Skipping Turns**:
+   - Players cannot skip their turn; a valid divisor must be chosen each turn.
+
+---
+
+## Scoring
+
+- There is no point system.
+- The first player to reduce the shared number to **1** wins the game.
+- The game is quick, focusing on strategic choices rather than accumulated scoring.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Starting Shared Number**: 100
+
+#### Turn 1: Player 1
+
+- **Current Number**: 100
+- **Player 1's Divisor Choice**: 2
+- **Calculation**: 100 ÷ 2 = 50
+- **New Shared Number**: 50
+
+#### Turn 2: Player 2
+
+- **Current Number**: 50
+- **Player 2's Divisor Choice**: 3
+- **Calculation**: 50 ÷ 3 ≈ 16.66... → 16 (after rounding down)
+- **New Shared Number**: 16
+
+#### Turn 3: Player 1
+
+- **Current Number**: 16
+- **Player 1's Divisor Choice**: 2
+- **Calculation**: 16 ÷ 2 = 8
+- **New Shared Number**: 8
+
+#### Turn 4: Player 2
+
+- **Current Number**: 8
+- **Player 2's Divisor Choice**: 3
+- **Calculation**: 8 ÷ 3 ≈ 2.66... → 2 (after rounding down)
+- **New Shared Number**: 2
+
+#### Turn 5: Player 1
+
+- **Current Number**: 2
+- **Player 1's Divisor Choice**: 2
+- **Calculation**: 2 ÷ 2 = 1
+- **New Shared Number**: 1
+
+**Result**: **Player 1 wins** by reducing the shared number to **1**.
+
+---
+
+## Command-Line Interaction Example
+
+```plaintext
+Welcome to Divide and Conquer!
+Starting number is 100.
+
+Player 1's turn.
+Current number: 100
+Choose a divisor between 2 and 9: 2
+You chose to divide by 2.
+Calculation: 100 / 2 = 50
+New number is 50.
+
+Player 2's turn.
+Current number: 50
+Choose a divisor between 2 and 9: 3
+You chose to divide by 3.
+Calculation: 50 / 3 = 16 (after rounding down)
+New number is 16.
+
+Player 1's turn.
+Current number: 16
+Choose a divisor between 2 and 9: 2
+You chose to divide by 2.
+Calculation: 16 / 2 = 8
+New number is 8.
+
+Player 2's turn.
+Current number: 8
+Choose a divisor between 2 and 9: 3
+You chose to divide by 3.
+Calculation: 8 / 3 = 2 (after rounding down)
+New number is 2.
+
+Player 1's turn.
+Current number: 2
+Choose a divisor between 2 and 9: 2
+You chose to divide by 2.
+Calculation: 2 / 2 = 1
+New number is 1.
+
+Congratulations, Player 1! You have reduced the number to 1 and won the game!
+```
+
+---
+
+## Strategic Depth and Complexity
+
+- **Anticipate Opponent's Moves**: Plan your divisor choices to control the shared number, forcing your opponent into a losing position.
+- **Key Numbers**: Recognize certain numbers that, when reached, can guarantee a win if played correctly.
+- **Divisor Selection**: Choosing higher divisors reduces the shared number more significantly but may open opportunities for your opponent. Balancing your choices is crucial.
+- **Forced Moves**: Try to force the opponent into a position where no matter what divisor they choose, you can win on your next turn.
+
+---
+
+## Tips for Players
+
+- **Think Ahead**: Always consider how your move will affect the next turn.
+- **Control the Pace**: Manipulate the shared number to limit your opponent's options.
+- **Practice**: Familiarize yourself with different starting numbers to develop winning strategies.
+
+---
+
+## Conclusion
+
+Divide and Conquer is a fast-paced, strategic game that challenges players to think ahead and make calculated decisions. With simple rules and minimal requirements, it's perfect for quick matches and easy to implement in a command-line interface. Mastery comes from understanding the mathematical implications of each move, ensuring that skillful play is rewarded.
+
+---
+
+Enjoy the game and may the best strategist win!

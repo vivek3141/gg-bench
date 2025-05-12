@@ -1,0 +1,212 @@
+# Conquer: Rule Book
+
+## Objective
+
+**Conquer** is a two-player, turn-based strategy game played on a linear map of territories. The primary goal is to be the first player to claim three adjacent territories. Players take turns selecting territories to claim, aiming to create an unbroken chain of three while preventing their opponent from doing the same. Victory is achieved by strategically choosing territories to establish your own chain of three before your opponent does.
+
+---
+
+## Setup
+
+- **Game Map**: A linear sequence of **seven territories**, numbered from **1** to **7**.
+- **Starting Conditions**:
+  - No territories are claimed at the beginning of the game.
+  - Both players start with no territories.
+
+---
+
+## Game Components
+
+- **Territories**:
+  - Represented by numbers **1** through **7**.
+  - Each territory can be in one of three states:
+    - **Unclaimed**: No player has claimed the territory.
+    - **Claimed by Player 1**: Marked with `P1`.
+    - **Claimed by Player 2**: Marked with `P2`.
+- **Players**:
+  - **Player 1** and **Player 2**.
+  - Each has a unique identifier (`P1` or `P2`) used to mark claimed territories.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Player 1 takes the first turn.
+  - Players alternate turns thereafter.
+- **Actions During a Turn**:
+  - **Select a Territory**:
+    - Choose any **unclaimed territory** numbered **1** to **7**.
+  - **Claim the Territory**:
+    - Mark the selected territory with your player identifier (`P1` or `P2`).
+
+---
+
+## Rules and Mechanics
+
+1. **Claiming Territories**:
+   - On your turn, you must claim **one unclaimed territory**.
+   - You cannot claim a territory that has already been claimed by either player.
+2. **Objective Completion**:
+   - The first player to have **three claimed territories that are numerically adjacent** wins the game.
+     - Adjacent territories are consecutive numbers (e.g., territories 2, 3, 4).
+3. **Preventing Opponent's Victory**:
+   - Players can select territories tactically to block their opponent from forming a chain of three.
+4. **Game End Conditions**:
+   - **Immediate Victory**:
+     - Occurs when a player claims their third territory that forms an unbroken chain of three.
+   - **All Territories Claimed**:
+     - If all territories are claimed and neither player has three adjacent territories:
+       - The player with the **longest chain of adjacent territories** wins.
+       - If tied, the player with the **most total territories claimed** wins.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - **Primary Victory**: Achieved by being the first to claim **three adjacent territories**.
+  - **Secondary Victory**:
+    - If no player achieves the primary victory:
+      - **Longest Chain Wins**: The player with the longest sequence of adjacent claimed territories wins.
+      - **Total Territories**: If both players have chains of equal length, the player with more territories claimed wins.
+
+---
+
+## Examples
+
+### Example 1: Quick Victory
+
+**Turn 1**:
+- **Player 1** claims territory **4**.
+
+**Turn 2**:
+- **Player 2** claims territory **7**.
+
+**Turn 3**:
+- **Player 1** claims territory **3**.
+
+**Turn 4**:
+- **Player 2** claims territory **5**.
+
+**Turn 5**:
+- **Player 1** claims territory **2**.
+- **Player 1** now has territories **2**, **3**, and **4**.
+- **Player 1 wins** by forming three adjacent territories.
+
+**Command-Line Interaction**:
+```
+Player 1's turn.
+Available territories: 1, 2, 3, 4, 5, 6, 7
+Enter the territory number to claim: 4
+
+Player 2's turn.
+Available territories: 1, 2, 3, 5, 6, 7
+Enter the territory number to claim: 7
+
+Player 1's turn.
+Available territories: 1, 2, 3, 5, 6
+Enter the territory number to claim: 3
+
+Player 2's turn.
+Available territories: 1, 2, 5, 6
+Enter the territory number to claim: 5
+
+Player 1's turn.
+Available territories: 1, 2, 6
+Enter the territory number to claim: 2
+
+Player 1 has claimed territories 2, 3, 4.
+Player 1 wins!
+```
+
+---
+
+### Example 2: Game Continues Until All Territories Are Claimed
+
+**Turn Sequence**:
+1. Player 1 claims territory 1.
+2. Player 2 claims territory 4.
+3. Player 1 claims territory 7.
+4. Player 2 claims territory 3.
+5. Player 1 claims territory 5.
+6. Player 2 claims territory 2.
+7. Player 1 claims territory 6.
+
+**Analysis**:
+- All territories are claimed.
+- **Player 1**'s claimed territories: 1, 5, 6, 7.
+  - Longest chain: territories 5, 6, 7 (length 3).
+- **Player 2**'s claimed territories: 2, 3, 4.
+  - Longest chain: territories 2, 3, 4 (length 3).
+- Both players have a chain of length 3.
+- **Player 1** has claimed 4 territories.
+- **Player 2** has claimed 3 territories.
+- **Player 1 wins** due to claiming more territories.
+
+---
+
+### Example 3: Blocking Opponent
+
+**Turn Sequence**:
+1. Player 1 claims territory 3.
+2. Player 2 claims territory 4.
+3. Player 1 claims territory 5.
+4. Player 2 claims territory 2.
+5. Player 1 claims territory 6.
+6. Player 2 claims territory 1.
+7. Player 1 claims territory 7.
+
+**Analysis**:
+- Player 1 attempted to form a chain with territories 3, 5, 6.
+- Player 2 effectively blocked by claiming adjacent territories.
+- All territories claimed, longest chains are analyzed.
+- **Player 1**'s chain: territories 5, 6, 7 (length 3).
+- **Player 2**'s chain: territories 1, 2 (length 2).
+- **Player 1 wins** with the longest chain.
+
+---
+
+## Command-Line Interaction Template
+
+- **Display Available Territories**:
+  ```
+  Available territories: [list of unclaimed territory numbers]
+  ```
+- **Prompt for Player Input**:
+  ```
+  Player [1 or 2]'s turn.
+  Enter the territory number to claim: [player inputs number]
+  ```
+- **Invalid Input Handling**:
+  - If a player selects an already claimed or invalid territory:
+    ```
+    Invalid choice. Please select an unclaimed territory.
+    ```
+- **Victory Announcement**:
+  ```
+  Player [1 or 2] has claimed territories [list of territories].
+  Player [1 or 2] wins!
+  ```
+- **Game End without Immediate Victory**:
+  ```
+  All territories have been claimed.
+  Player [1 or 2] wins with the longest chain of adjacent territories.
+  ```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**:
+  - Anticipate your opponent's moves and block potential chains.
+- **Control the Center**:
+  - Claiming central territories (3, 4, 5) offers more opportunities for creating chains.
+- **Balance Offense and Defense**:
+  - While aiming to build your chain, don't neglect to disrupt your opponent's plans.
+- **Territory Value**:
+  - Some territories are more critical due to their position. Prioritize them accordingly.
+
+---
+
+Enjoy playing **Conquer** and may the best strategist win!

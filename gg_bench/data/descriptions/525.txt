@@ -1,0 +1,379 @@
+# **Trap and Treasure**
+
+## **Objective**
+
+Be the first player to retrieve the Treasure from the center of the grid and return it to your starting position. Utilize strategic movement and trap placement to hinder your opponent while advancing toward victory.
+
+---
+
+## **Setup**
+
+1. **Game Board**: A 5x5 grid is used as the game board.
+   
+2. **Starting Positions**:
+   - **Player A**: Starts at the **top-left corner** of the grid (position **(0, 0)**).
+   - **Player B**: Starts at the **bottom-right corner** of the grid (position **(4, 4)**).
+
+3. **Treasure Placement**:
+   - The **Treasure** is placed at the **center cell** of the grid (position **(2, 2)**).
+
+4. **Traps**:
+   - Each player has **3 Traps** at their disposal at the beginning of the game.
+
+---
+
+## **Game Components**
+
+1. **Game Board (5x5 Grid)**:
+   - Cells are identified by their coordinates `(x, y)`, where `x` is the column number (0 to 4) and `y` is the row number (0 to 4).
+
+2. **Player Pieces**:
+   - **Player A's piece** is represented by `'A'`.
+   - **Player B's piece** is represented by `'B'`.
+
+3. **Treasure**:
+   - Represented by `'T'` and initially placed at `(2, 2)`.
+
+4. **Traps**:
+   - Represented by `'X'`.
+   - Can be placed on any empty cell that doesn't contain a player or the Treasure.
+
+5. **Empty Cells**:
+   - Represented by `' '` (a space).
+
+---
+
+## **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns, starting with **Player A**.
+
+2. **Actions per Turn**:
+   - On each turn, a player must choose **one** of the following actions:
+     - **Move** their piece to an adjacent cell.
+     - **Place a Trap** on the grid (if they have Traps remaining).
+
+3. **Movement Rules**:
+   - A player can move their piece to an **adjacent cell** that is:
+     - Directly **above**, **below**, **to the left**, or **to the right** of their current position.
+     - **Within the bounds** of the grid.
+     - **Not occupied** by a Trap, the opponent's piece, or outside the grid.
+
+4. **Trap Placement Rules**:
+   - A Trap can be placed on **any empty cell** that:
+     - Does not currently contain the **Treasure**.
+     - Does not contain **either player's piece**.
+     - Is **within the bounds** of the grid.
+   - Players have a limited number of Traps (**3 per player**).
+
+---
+
+## **Rules and Mechanics**
+
+1. **Collecting the Treasure**:
+   - A player **collects the Treasure** by moving their piece onto the cell containing the Treasure `(2, 2)`.
+   - Once collected:
+     - The Treasure is **removed from the board**.
+     - The player is now **carrying the Treasure**.
+
+2. **Winning the Game**:
+   - To win, a player must:
+     - **Collect the Treasure**.
+     - **Return to their starting position** while carrying the Treasure.
+
+3. **Traps Effects**:
+   - If a player moves onto a cell containing a Trap:
+     - The player is **'trapped'** and must **skip their next turn**.
+     - The Trap remains on the board after activation.
+   - A player **cannot collect the Treasure** or **win the game** while trapped.
+   - If a trapped player is carrying the Treasure:
+     - They **continue to carry the Treasure** after the trap effect ends.
+
+4. **Movement Restrictions**:
+   - Players **cannot move onto**:
+     - A cell **occupied by the opponent**.
+     - A cell **outside the grid bounds**.
+
+5. **Trap Limitations**:
+   - Players have a **maximum of 3 Traps** for the entire game.
+   - Traps **cannot be moved or removed** once placed.
+
+6. **Simultaneous Actions**:
+   - If both players move onto the Treasure cell at the same time:
+     - The player whose turn it is **collects the Treasure**.
+     - The other player remains on their current cell.
+
+7. **Skipping Turns**:
+   - A player **must skip their turn** if:
+     - They are trapped (due to landing on a Trap in the previous turn).
+     - **No possible moves** are available (this is unlikely due to the grid size unless completely surrounded by Traps).
+
+---
+
+## **Scoring**
+
+- **Victory Condition**:
+  - The first player to **collect the Treasure** and **return to their starting position** wins the game.
+
+- **Draws**:
+  - There are **no draw mechanisms** in the game. The game continues until one player wins.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+#### **Initial Setup**
+
+- **Grid Positions**:
+  ```
+  [A][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][T][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][B]
+  ```
+- **Player A** at position `(0, 0)`.
+- **Player B** at position `(4, 4)`.
+- **Treasure (T)** at position `(2, 2)`.
+- Both players have **3 Traps**.
+
+#### **Turn Sequence**
+
+1. **Turn 1 - Player A**:
+   - **Action**: Moves to `(1, 0)`.
+   - **Grid**:
+     ```
+     [ ][A][ ][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][T][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][B]
+     ```
+
+2. **Turn 1 - Player B**:
+   - **Action**: Moves to `(3, 4)`.
+   - **Grid**:
+     ```
+     [ ][A][ ][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][T][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][ ][B][ ]
+     ```
+
+3. **Turn 2 - Player A**:
+   - **Action**: Places a Trap at `(1, 1)`.
+     - Traps remaining: **2**.
+   - **Grid**:
+     ```
+     [ ][A][ ][ ][ ]
+     [ ][X][ ][ ][ ]
+     [ ][ ][T][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][ ][B][ ]
+     ```
+
+4. **Turn 2 - Player B**:
+   - **Action**: Moves to `(2, 4)`.
+   - **Grid**:
+     ```
+     [ ][A][ ][ ][ ]
+     [ ][X][ ][ ][ ]
+     [ ][ ][T][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][B][ ][ ]
+     ```
+
+5. **Turn 3 - Player A**:
+   - **Action**: Moves to `(1, 0)` to `(1, 1)`.
+     - Steps on a **Trap** at `(1, 1)`.
+     - Must **skip the next turn**.
+   - **Grid**:
+     ```
+     [ ][ ][ ][ ][ ]
+     [ ][A/X][ ][ ][ ]
+     [ ][ ][T][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][B][ ][ ]
+     ```
+
+6. **Turn 3 - Player B**:
+   - **Action**: Moves to `(2, 3)`.
+   - **Grid**:
+     ```
+     [ ][ ][ ][ ][ ]
+     [ ][A/X][ ][ ][ ]
+     [ ][ ][T][ ][ ]
+     [ ][ ][B][ ][ ]
+     [ ][ ][ ][ ][ ]
+     ```
+
+7. **Turn 4 - Player A**:
+   - **Action**: **Skips turn** due to Trap.
+
+8. **Turn 4 - Player B**:
+   - **Action**: Moves to `(2, 2)` and **collects the Treasure**.
+     - Now carrying the Treasure.
+   - **Grid**:
+     ```
+     [ ][ ][ ][ ][ ]
+     [ ][A/X][ ][ ][ ]
+     [ ][ ][B][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][ ]
+     ```
+
+9. **Turn 5 - Player A**:
+   - **Action**: Moves to `(1, 2)`.
+   - **Grid**:
+     ```
+     [ ][ ][ ][ ][ ]
+     [ ][A][ ][ ][ ]
+     [ ][ ][B][ ][ ]
+     [ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][ ]
+     ```
+
+10. **Turn 5 - Player B**:
+    - **Action**: Moves to `(3, 2)`.
+    - **Grid**:
+      ```
+      [ ][ ][ ][ ][ ]
+      [ ][A][ ][ ][ ]
+      [ ][ ][ ][B][ ]
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][ ][ ]
+      ```
+
+11. **Turn 6 - Player A**:
+    - **Action**: Places a Trap at `(3, 2)`.
+      - Traps remaining: **1**.
+    - **Grid**:
+      ```
+      [ ][ ][ ][ ][ ]
+      [ ][A][ ][ ][ ]
+      [ ][ ][ ][X][ ]
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][ ][ ]
+      ```
+
+12. **Turn 6 - Player B**:
+    - **Action**: Moves to `(4, 2)`.
+    - **Grid**:
+      ```
+      [ ][ ][ ][ ][ ]
+      [ ][A][ ][ ][ ]
+      [ ][ ][ ][ ][B]
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][ ][ ]
+      ```
+
+13. **Turn 7 - Player A**:
+    - **Action**: Moves to `(1, 3)`.
+    - **Grid**:
+      ```
+      [ ][ ][ ][ ][ ]
+      [ ][ ][A][ ][ ]
+      [ ][ ][ ][ ][B]
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][ ][ ]
+      ```
+
+14. **Turn 7 - Player B**:
+    - **Action**: Moves to `(4, 3)`.
+    - **Grid**:
+      ```
+      [ ][ ][ ][ ][ ]
+      [ ][ ][A][ ][ ]
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][ ][B]
+      [ ][ ][ ][ ][ ]
+      ```
+
+15. **Turn 8 - Player A**:
+    - **Action**: Moves to `(1, 4)`.
+    - **Grid**:
+      ```
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][A][ ]
+      [ ][ ][ ][ ][ ]
+      [ ][ ][ ][ ][B]
+      [ ][ ][ ][ ][ ]
+      ```
+
+16. **Turn 8 - Player B**:
+    - **Action**: Moves to `(4, 4)` (**starting position**), carrying the Treasure.
+    - **Player B wins the game**.
+
+---
+
+## **Command-Line Interaction Example**
+
+Here's a sample of how the game might play out in a command-line interface.
+
+#### **Starting the Game**
+
+```
+Welcome to Trap and Treasure!
+
+Player A starts at (0, 0).
+Player B starts at (4, 4).
+Treasure is at (2, 2).
+
+Player A, you have 3 Traps remaining.
+Enter your move (M for move, T for trap): M
+Enter your move coordinates (x y): 1 0
+
+[ ][A][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][T][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][B]
+```
+
+#### **Subsequent Turns**
+
+```
+Player B, you have 3 Traps remaining.
+Enter your move (M for move, T for trap): M
+Enter your move coordinates (x y): 3 4
+
+[ ][A][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][T][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][B][ ]
+```
+
+*(Gameplay continues with players entering commands, moving pieces, and placing traps as per the rules.)*
+
+#### **Ending the Game**
+
+```
+Player B moves to (4, 4) and returns to the starting position with the Treasure.
+Congratulations Player B! You have won the game!
+```
+
+---
+
+## **Strategy Tips**
+
+- **Balance Movement and Trap Placement**:
+  - Use Traps strategically to hinder your opponent's progress, but don't neglect advancing toward the Treasure.
+
+- **Predict Opponent's Path**:
+  - Anticipate where your opponent might move and place Traps accordingly.
+
+- **Conserve Traps**:
+  - You have a limited number of Traps, so use them wisely throughout the game.
+
+- **Avoid Traps**:
+  - Be cautious of potential Trap placements by your opponent, especially on cells that are on your direct path to the Treasure or back to your starting position.
+
+---
+
+## **Conclusion**
+
+Trap and Treasure is a game of strategic movement and anticipation. Quick thinking and careful planning can outmaneuver your opponent and secure victory. Enjoy the challenge and may the best strategist win!

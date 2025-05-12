@@ -1,0 +1,167 @@
+# Number Flip Duel
+
+## Objective
+
+Be the first player to change all numbers on the board to your target number by strategically incrementing positions on the shared number line. This involves both advancing your own progress and potentially disrupting your opponent's. Victory is achieved when every position on the board displays your target number.
+
+## Setup
+
+1. **Players**: Two players participate in the game.
+2. **Board Initialization**:
+   - A linear board is created with **7 positions**, numbered from **0** to **6**.
+   - Each position on the board starts with the number **0**.
+3. **Target Numbers**:
+   - **Player 1 (Player A)** is assigned the target number **1**.
+   - **Player 2 (Player B)** is assigned the target number **2**.
+
+The initial state of the board is:
+
+```
+Position: [0][1][2][3][4][5][6]
+Number:   [0][0][0][0][0][0][0]
+```
+
+## Game Components
+
+1. **Players**:
+   - **Player A**: Assigned target number **1**.
+   - **Player B**: Assigned target number **2**.
+2. **Board**:
+   - A simple array or list representing positions **0** to **6**.
+   - Each position holds a number that can be **0**, **1**, or **2**.
+3. **Numbers**:
+   - The numbers at each position can increment cyclically: **0 → 1 → 2 → 0**.
+4. **Turn Indicator**:
+   - Keeps track of whose turn it is.
+
+## Turns
+
+- **Turn Sequence**:
+  - Players alternate turns, starting with **Player A**.
+- **Actions Per Turn**:
+  - On their turn, a player must choose **one position** on the board to increment.
+- **Incrementing Rules**:
+  - Selecting a position increases its number by **1**.
+  - If the number increments past **2**, it wraps around to **0** (i.e., **0 → 1 → 2 → 0**).
+  
+## Rules and Mechanics
+
+1. **Objective**:
+   - Players aim to set **all positions** on the board to their **assigned target number**.
+2. **Incrementing Positions**:
+   - **Only one position** can be incremented per turn.
+   - **Any position** can be chosen, regardless of its current number.
+3. **Number Wrapping**:
+   - Numbers at each position cycle in the order: **0 → 1 → 2 → 0**.
+4. **Winning the Game**:
+   - The first player to have **all positions** display their target number **simultaneously** wins the game.
+5. **Strategic Play**:
+   - Players can increment positions showing the opponent's target number to disrupt their progress.
+   - Deciding whether to advance one's own positions or interfere with the opponent is key to victory.
+
+## Scoring
+
+- **Winning Condition**:
+  - No points are awarded; the game is won by achieving the objective.
+  - The game ends immediately when a player fulfills the winning condition.
+  
+## Example Gameplay
+
+### Initial Board State
+
+```
+Position: [0][1][2][3][4][5][6]
+Number:   [0][0][0][0][0][0][0]
+```
+
+### Turn-by-Turn Example
+
+1. **Player A's Turn**:
+   - **Action**: Increments position **0**.
+   - **Board State**: `[1][0][0][0][0][0][0]`
+2. **Player B's Turn**:
+   - **Action**: Increments position **0**.
+   - **Board State**: `[2][0][0][0][0][0][0]`
+3. **Player A's Turn**:
+   - **Action**: Increments position **0** (since 2 wraps to 0 and then to 1).
+   - **Wrap Around**: Position **0** changes from **2** to **0**, then to **1**.
+   - **Board State**: `[0][0][0][0][0][0][0]` → `[1][0][0][0][0][0][0]`
+4. **Player B's Turn**:
+   - **Action**: Increments position **1**.
+   - **Board State**: `[1][1][0][0][0][0][0]`
+5. **Player A's Turn**:
+   - **Action**: Increments position **1**.
+   - **Board State**: `[1][2][0][0][0][0][0]`
+6. **Player B's Turn**:
+   - **Action**: Increments position **2**.
+   - **Board State**: `[1][2][1][0][0][0][0]`
+7. **Player A's Turn**:
+   - **Action**: Increments position **2**.
+   - **Board State**: `[1][2][2][0][0][0][0]`
+8. **Player B's Turn**:
+   - **Action**: Increments position **1**.
+   - **Wrap Around**: Position **1** changes from **2** to **0**, then to **1**.
+   - **Board State**: `[1][0][2][0][0][0][0]` → `[1][1][2][0][0][0][0]`
+
+### Strategic Considerations
+
+- **Interfering Moves**:
+  - Players may choose to increment positions showing the opponent's target number to prevent them from winning.
+- **Advancing Moves**:
+  - Focusing on incrementing positions displaying neither player's target number can help advance towards victory.
+- **Example**:
+  - If **Player A** notices **Player B** is close to winning, they might increment one of **Player B's** target numbers to reset it.
+
+### Winning the Game
+
+- **Continuing the Example**, if **Player B** manages to have all positions show **2** before **Player A** gets all positions to **1**, **Player B** wins.
+
+## Command-Line Interaction Sample
+
+Assuming players input the position number they wish to increment:
+
+```
+Starting Number Flip Duel!
+Player A (Target: 1) vs. Player B (Target: 2)
+
+Initial Board:
+Positions: [0][1][2][3][4][5][6]
+Numbers:   [0][0][0][0][0][0][0]
+
+Player A's Turn:
+Enter position to increment (0-6): 0
+Board after Player A's move:
+Numbers: [1][0][0][0][0][0][0]
+
+Player B's Turn:
+Enter position to increment (0-6): 0
+Board after Player B's move:
+Numbers: [2][0][0][0][0][0][0]
+
+Player A's Turn:
+Enter position to increment (0-6): 0
+Board after Player A's move:
+Numbers: [0][0][0][0][0][0][0]
+
+Player B's Turn:
+Enter position to increment (0-6): 1
+Board after Player B's move:
+Numbers: [0][1][0][0][0][0][0]
+
+... (game continues)
+
+Congratulations! Player B has all positions showing their target number 2 and wins the game!
+```
+
+## Tips for Players
+
+- **Balance Offense and Defense**:
+  - While advancing your own numbers is important, don't neglect opportunities to reset your opponent's progress.
+- **Plan Ahead**:
+  - Anticipate your opponent's moves and consider which positions are critical to control.
+- **Position Prioritization**:
+  - Focus on positions that are easiest to maintain or that are key to your opponent's strategy.
+
+## Conclusion
+
+Number Flip Duel is a simple yet strategically rich game that challenges players to think ahead and make tactical decisions each turn. By incrementing numbers and managing both offensive and defensive moves, skilled players can consistently outmaneuver their opponents and secure victory.

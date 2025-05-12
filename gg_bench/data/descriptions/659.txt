@@ -1,0 +1,210 @@
+# Number Quest: A Strategic Grid Game
+
+## Objective
+
+**Number Quest** is a two-player, turn-based strategy game played on a 3x3 grid. Each cell in the grid hides a unique number from 1 to 9. Players take turns selecting cells to reveal these numbers, aiming to reach a total score of **exactly 15**. The first player to accumulate a total score of **exactly 15** wins the game. However, if a player's total score exceeds 15 at any point, they **immediately lose**. The game requires careful planning and memory, allowing skilled players to consistently outperform unskilled opponents.
+
+## Setup
+
+1. **Grid Preparation**:
+   - Create a 3x3 grid representing the game board.
+   - Label the rows as 1 to 3 from top to bottom and the columns as 1 to 3 from left to right.
+   - The cells are identified by their row and column numbers (e.g., cell (2,3) is in row 2, column 3).
+
+2. **Number Assignment**:
+   - Randomly shuffle the numbers from 1 to 9.
+   - Assign one number to each cell in the grid, keeping them hidden from both players.
+
+3. **Player Setup**:
+   - Decide which player goes first (Player 1 and Player 2) by mutual agreement or a random method.
+   - Both players start with a total score of **0**.
+
+## Game Components
+
+- **Game Board**: A 3x3 grid with hidden numbers in each cell.
+- **Numbers**: Integers from 1 to 9, each used exactly once.
+- **Player Scores**: Each player maintains a running total of the numbers they have revealed.
+- **Markers**: Indicate which cells have been selected (can be as simple as an 'X' for selected cells).
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns starting with Player 1.
+
+2. **Turn Actions**:
+   - **Select a Cell**: On your turn, choose an unselected cell by specifying its row and column numbers.
+   - **Reveal the Number**: Uncover the hidden number in the chosen cell.
+   - **Update Score**: Add the revealed number to your total score.
+   - **Mark the Cell**: Indicate that the cell has been selected to prevent it from being chosen again.
+
+3. **End of Turn**:
+   - Check for a winning or losing condition (reaching exactly 15 or exceeding 15).
+   - If the game has not ended, pass the turn to the other player.
+
+## Rules and Mechanics
+
+1. **Cell Selection**:
+   - Players can only select cells that have not been previously chosen.
+   - Once a cell is selected, its number is revealed and cannot be selected again.
+
+2. **Scoring**:
+   - Players maintain their own total score, which is the sum of the numbers they have revealed.
+   - The score is updated immediately after revealing a new number.
+
+3. **Winning the Game**:
+   - The first player to reach a total score of **exactly 15** wins the game.
+   - If a player exceeds a total score of 15, they **immediately lose**, and the other player wins.
+
+4. **Game End Conditions**:
+   - **Winning**: Achieving a score of exactly 15.
+   - **Losing**: Exceeding a score of 15.
+   - **No Possible Moves**: If all cells have been selected and no player has won or lost as per the above conditions, the player with the total score closest to 15 without exceeding it wins.
+   - **Tie-Breaker**: If both players have the same total score closest to 15, the player who was last to play loses.
+
+5. **Strategic Considerations**:
+   - Players should remember which numbers have been revealed to calculate probabilities and plan future moves.
+   - It is crucial to avoid exceeding a total score of 15 while preventing the opponent from reaching exactly 15.
+
+## Scoring
+
+- **Player Total Score**: Sum of all numbers the player has revealed during the game.
+- **Winning Score**: Exactly 15.
+- **Losing Score**: Any total exceeding 15.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**:
+
+- Grid with hidden numbers:
+
+  ```
+  [ ][ ][ ]
+  [ ][ ][ ]
+  [ ][ ][ ]
+  ```
+
+- Players' total scores:
+  - Player 1: 0
+  - Player 2: 0
+
+**Turn 1**:
+
+- **Player 1** selects cell (2,2).
+- Revealed number: **5**
+- Updated score:
+  - Player 1: 5
+- Grid update:
+
+  ```
+  [ ][ ][ ]
+  [ ][5][ ]
+  [ ][ ][ ]
+  ```
+
+**Turn 2**:
+
+- **Player 2** selects cell (1,3).
+- Revealed number: **3**
+- Updated score:
+  - Player 2: 3
+- Grid update:
+
+  ```
+  [ ][ ][3]
+  [ ][5][ ]
+  [ ][ ][ ]
+  ```
+
+**Turn 3**:
+
+- **Player 1** selects cell (3,1).
+- Revealed number: **9**
+- Updated score:
+  - Player 1: 5 + 9 = **14**
+- Grid update:
+
+  ```
+  [ ][ ][3]
+  [ ][5][ ]
+  [9][ ][ ]
+  ```
+
+**Turn 4**:
+
+- **Player 2** realizes that selecting a high number could risk exceeding 15.
+- **Player 2** selects cell (2,1).
+- Revealed number: **1**
+- Updated score:
+  - Player 2: 3 + 1 = **4**
+- Grid update:
+
+  ```
+  [ ][ ][3]
+  [1][5][ ]
+  [9][ ][ ]
+  ```
+
+**Turn 5**:
+
+- **Player 1** needs exactly 1 to win (since 14 + 1 = 15) but 1 has already been taken.
+- **Player 1** carefully selects cell (1,2).
+- Revealed number: **2**
+- Updated score:
+  - Player 1: 14 + 2 = **16** (Player 1's total score exceeds 15)
+- **Player 1 loses**, **Player 2 wins**.
+
+**Explanation**:
+
+- Player 1 exceeded a total score of 15 by reaching 16, thus immediately losing the game.
+
+### Command-Line Interaction Sample
+
+**Game Start**
+
+```
+Welcome to Number Quest!
+
+Player 1, it's your turn.
+Current Score: 0
+Select a cell (row,column): 2,2
+
+You revealed number: 5
+Your new total score: 5
+
+Player 2, it's your turn.
+Current Score: 0
+Select a cell (row,column): 1,3
+
+You revealed number: 3
+Your new total score: 3
+
+Player 1, it's your turn.
+Current Score: 5
+Select a cell (row,column): 3,1
+
+You revealed number: 9
+Your new total score: 14
+
+Player 2, it's your turn.
+Current Score: 3
+Select a cell (row,column): 2,1
+
+You revealed number: 1
+Your new total score: 4
+
+Player 1, it's your turn.
+Current Score: 14
+Select a cell (row,column): 1,2
+
+You revealed number: 2
+Your new total score: 16
+
+Oh no! You exceeded 15.
+Player 2 wins the game!
+```
+
+## Summary
+
+**Number Quest** is a simple yet strategic game that tests players' arithmetic skills and memory. By carefully selecting cells and calculating potential outcomes, skilled players can consistently outperform their opponents. The game's unique mechanics and quick gameplay make it an engaging choice for command-line interfaces.

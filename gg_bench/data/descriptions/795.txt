@@ -1,0 +1,233 @@
+# Number Removal Duel
+
+## Objective
+
+**Number Removal Duel** is a two-player turn-based strategy game played on a numerical grid. The primary goal is to strategically remove numbers from the grid to force your opponent's total sum of removed numbers to reach or exceed **34**. The player whose total sum reaches or exceeds **34** loses the game. Skilled players can use strategic foresight to manipulate the available options and outmaneuver their opponent.
+
+## Setup
+
+1. **Grid Creation**: Create a 4x4 grid representing the game board.
+2. **Number Placement**: Fill the grid with numbers from **1** to **16** in sequential order, starting from the top-left cell and moving row by row to the bottom-right cell.
+   ```
+   [ 1 ][ 2 ][ 3 ][ 4 ]
+   [ 5 ][ 6 ][ 7 ][ 8 ]
+   [ 9 ][10 ][11 ][12 ]
+   [13 ][14 ][15 ][16 ]
+   ```
+3. **Initial Conditions**: Both players start with a total sum of **0**.
+
+## Game Components
+
+- **Game Grid**: A 4x4 grid containing the numbers **1** to **16**.
+- **Player Sums**: Each player keeps track of the sum of the numbers they have removed from the grid.
+- **Available Numbers**: A visual or textual representation of the remaining numbers on the grid after each turn.
+
+## Turns
+
+1. **Turn Order**: Decide which player goes first (Player 1) by mutual agreement or random selection.
+2. **Player Actions**:
+   - On their turn, a player selects **one** available number from the grid to remove.
+   - The selected number is added to the player's total sum.
+   - The number is then removed from the grid and is no longer available for future turns.
+3. **Turn Progression**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players can choose **any** available number from the grid on their turn.
+   - Each number can be removed only **once**.
+2. **Sum Tracking**:
+   - Each player maintains their own total sum of removed numbers.
+   - The sums are updated after each turn.
+3. **Winning Condition**:
+   - **Loss Condition**: If a player's total sum reaches or exceeds **34** at the end of their turn, they **lose** the game.
+   - **Winning Condition**: The opposing player wins if their own total sum is **less than 34** when the other player loses.
+4. **No Draws**:
+   - The game cannot end in a draw. With careful play, one player will inevitably force the other to reach or exceed **34**.
+5. **Strategic Considerations**:
+   - Players should aim to keep their own sum low while forcing the opponent to pick higher numbers.
+   - Anticipate future moves to avoid being left with only high numbers.
+
+## Scoring
+
+- **Player Sum**: The score is the cumulative total of numbers a player has removed from the grid.
+- **Victory Determination**: The player whose sum remains **below 34** when the opponent reaches or exceeds **34** is declared the **winner**.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial Grid
+```
+[ 1 ][ 2 ][ 3 ][ 4 ]
+[ 5 ][ 6 ][ 7 ][ 8 ]
+[ 9 ][10 ][11 ][12 ]
+[13 ][14 ][15 ][16 ]
+```
+#### Starting Sums
+- Player 1 Sum: 0
+- Player 2 Sum: 0
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Removes **1** from the grid.
+- **Player 1 Sum**: 0 + 1 = **1**
+
+#### Updated Grid
+```
+[ X ][ 2 ][ 3 ][ 4 ]
+[ 5 ][ 6 ][ 7 ][ 8 ]
+[ 9 ][10 ][11 ][12 ]
+[13 ][14 ][15 ][16 ]
+```
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Removes **16** from the grid.
+- **Player 2 Sum**: 0 + 16 = **16**
+
+#### Updated Grid
+```
+[ X ][ 2 ][ 3 ][ 4 ]
+[ 5 ][ 6 ][ 7 ][ 8 ]
+[ 9 ][10 ][11 ][12 ]
+[13 ][14 ][15 ][ X ]
+```
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Removes **2** from the grid.
+- **Player 1 Sum**: 1 + 2 = **3**
+
+#### Updated Grid
+```
+[ X ][ X ][ 3 ][ 4 ]
+[ 5 ][ 6 ][ 7 ][ 8 ]
+[ 9 ][10 ][11 ][12 ]
+[13 ][14 ][15 ][ X ]
+```
+
+---
+
+#### Turn 4: Player 2
+
+- **Action**: Removes **15** from the grid.
+- **Player 2 Sum**: 16 + 15 = **31**
+
+#### Updated Grid
+```
+[ X ][ X ][ 3 ][ 4 ]
+[ 5 ][ 6 ][ 7 ][ 8 ]
+[ 9 ][10 ][11 ][12 ]
+[13 ][14 ][ X ][ X ]
+```
+
+---
+
+#### Turn 5: Player 1
+
+- **Action**: Removes **3** from the grid.
+- **Player 1 Sum**: 3 + 3 = **6**
+
+#### Updated Grid
+```
+[ X ][ X ][ X ][ 4 ]
+[ 5 ][ 6 ][ 7 ][ 8 ]
+[ 9 ][10 ][11 ][12 ]
+[13 ][14 ][ X ][ X ]
+```
+
+---
+
+#### Turn 6: Player 2
+
+- **Action**: Removes **14** from the grid.
+- **Player 2 Sum**: 31 + 14 = **45**
+
+- **Result**: Player 2's sum is now **45**, which exceeds **34**.
+
+---
+
+#### Game End
+
+- **Winner**: **Player 1**
+- **Reason**: Player 2's total sum reached **45**, exceeding the limit of **34**.
+
+---
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input the number they wish to remove.
+
+#### Game Start
+```
+Welcome to Number Removal Duel!
+
+Initial Grid:
+[1][2][3][4]
+[5][6][7][8]
+[9][10][11][12]
+[13][14][15][16]
+
+Player 1 Sum: 0
+Player 2 Sum: 0
+
+Player 1, choose a number to remove:
+```
+
+#### Player 1 Input
+```
+> 1
+
+Player 1 removed 1.
+
+Updated Grid:
+[X][2][3][4]
+[5][6][7][8]
+[9][10][11][12]
+[13][14][15][16]
+
+Player 1 Sum: 1
+Player 2 Sum: 0
+
+Player 2, choose a number to remove:
+```
+
+#### Player 2 Input
+```
+> 16
+
+Player 2 removed 16.
+
+Updated Grid:
+[X][2][3][4]
+[5][6][7][8]
+[9][10][11][12]
+[13][14][15][X]
+
+Player 1 Sum: 1
+Player 2 Sum: 16
+
+Player 1, choose a number to remove:
+```
+
+*(The game continues in this manner until one player's sum reaches or exceeds 34.)*
+
+---
+
+## Strategic Tips
+
+- **Control High Numbers**: Try to remove low numbers early, forcing your opponent to take higher numbers later in the game.
+- **Plan Ahead**: Anticipate which numbers will be left for your opponent on future turns.
+- **Balance**: While keeping your sum low is important, sometimes removing a moderate number can prevent your opponent from accessing a low number on their next turn.
+- **Forcing Moves**: Leave the grid in a state where only high numbers are available to your opponent.
+
+---
+
+Enjoy playing **Number Removal Duel**, and may the best strategist win!

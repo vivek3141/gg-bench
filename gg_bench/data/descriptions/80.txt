@@ -1,0 +1,243 @@
+**Game Name:** Divisor Subtractor
+
+---
+
+### **Objective**
+
+Be the last player to make a valid move by strategically selecting divisors of a shared number. Successfully reduce the shared number to zero or force your opponent into a position where they cannot make a valid move to win the game.
+
+---
+
+### **Setup**
+
+1. **Choose the Starting Number (N):**
+
+   - Both players agree on a positive integer to start the game. For simplicity, you can begin with **N = 30**.
+   - Alternatively, players can take turns choosing the starting number in different rounds.
+
+2. **Decide Turn Order:**
+
+   - Flip a coin, or have one player choose to go first. Players alternate turns throughout the game.
+
+---
+
+### **Game Components**
+
+- **Shared Number (N):**
+  - A positive integer that both players manipulate during the game.
+  - It starts at the agreed-upon value and changes as players subtract divisors.
+
+- **Divisors:**
+  - Integers greater than 1 that evenly divide the current N without leaving a remainder.
+
+- **Players:**
+  - Two participants, referred to as **Player 1** and **Player 2**.
+
+- **Command-Line Interface:**
+  - Players interact with the game by entering commands in the terminal or console.
+  - All necessary information, such as current N and available divisors, is displayed to the players.
+
+---
+
+### **Turns**
+
+- **Turn Structure:**
+
+  1. **Display Current State:**
+     - The game shows the current value of N and lists all valid divisors.
+  
+  2. **Player Action:**
+     - The active player selects a valid divisor D of N (D > 1 and N mod D == 0).
+  
+  3. **Update N:**
+     - Subtract D from N to get the new N: _N = N - D_.
+
+  4. **Announce Move:**
+     - The game displays the chosen divisor and the new value of N.
+
+  5. **Check for Win Condition:**
+     - If N reaches zero, the player who made the last move wins.
+     - If no valid divisors remain and N is not zero, the player who cannot move loses.
+
+- **Turn Progression:**
+
+  - Players alternate turns until the game ends with a win or loss.
+  - There are no skips or additional turns unless specified by the rules.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Divisors:**
+
+   - On each turn, a player must choose an integer D such that:
+     - **D > 1**
+     - **D divides N evenly** (N mod D == 0)
+     - **D < N**
+
+2. **Subtracting Divisors:**
+
+   - After selecting D, subtract it from N:
+     - New N = N - D
+
+3. **Winning the Game:**
+
+   - **Reducing N to Zero:**
+     - If a player reduces N to exactly zero on their turn, they win the game.
+
+   - **No Valid Moves:**
+     - If a player cannot find any valid divisor of N on their turn (excluding D=1 and D=N), they lose the game.
+
+4. **No Repeats or Restrictions:**
+
+   - Divisors can be reused in subsequent turns as long as they are valid for the current N.
+
+5. **No Draws:**
+
+   - The game cannot end in a draw; there is always a winner.
+
+---
+
+### **Scoring**
+
+- **Win/Loss Outcome:**
+
+  - **Winner:** The player who reduces N to zero or forces the opponent into a position with no valid moves.
+  - **Loser:** The player who cannot make a valid move on their turn.
+
+- **No Point Tracking:**
+
+  - The game focuses on strategic play rather than accumulating points.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting N:** 30
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 30
+- **Available Divisors:** 2, 3, 5, 6, 10, 15
+- **Action:**
+  - Chooses D = 5
+  - Calculates new N: 30 - 5 = 25
+- **Announcement:**
+  - "I subtract 5 from 30. New N is 25."
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** 25
+- **Available Divisors:** 5
+- **Action:**
+  - Chooses D = 5
+  - Calculates new N: 25 - 5 = 20
+- **Announcement:**
+  - "I subtract 5 from 25. New N is 20."
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 20
+- **Available Divisors:** 2, 4, 5, 10
+- **Action:**
+  - Chooses D = 10
+  - Calculates new N: 20 - 10 = 10
+- **Announcement:**
+  - "I subtract 10 from 20. New N is 10."
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** 10
+- **Available Divisors:** 2, 5
+- **Action:**
+  - Chooses D = 5
+  - Calculates new N: 10 - 5 = 5
+- **Announcement:**
+  - "I subtract 5 from 10. New N is 5."
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 5
+- **Available Divisors:** 5
+- **Action:**
+  - Chooses D = 5
+  - Calculates new N: 5 - 5 = 0
+- **Announcement:**
+  - "I subtract 5 from 5. New N is 0."
+- **Result:**
+  - N has been reduced to zero. **Player 1 wins!**
+
+---
+
+#### **Command-Line Interaction Sample**
+
+```
+Current N: 30
+Available divisors: 2, 3, 5, 6, 10, 15
+Player 1, enter your divisor: 5
+You subtracted 5 from 30. New N is 25.
+
+Current N: 25
+Available divisors: 5
+Player 2, enter your divisor: 5
+You subtracted 5 from 25. New N is 20.
+
+Current N: 20
+Available divisors: 2, 4, 5, 10
+Player 1, enter your divisor: 10
+You subtracted 10 from 20. New N is 10.
+
+Current N: 10
+Available divisors: 2, 5
+Player 2, enter your divisor: 5
+You subtracted 5 from 10. New N is 5.
+
+Current N: 5
+Available divisors: 5
+Player 1, enter your divisor: 5
+You subtracted 5 from 5. New N is 0.
+Player 1 wins the game!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead:**
+  - Anticipate future moves by considering how your choice will affect the available divisors for your opponent.
+  
+- **Limit Opponent's Options:**
+  - Aim to leave N as a number with few divisors, forcing your opponent into a difficult position.
+
+- **Control the Game Flow:**
+  - Use larger divisors when advantageous to reduce N more significantly.
+
+---
+
+### **Notes**
+
+- **Adjusting Difficulty:**
+  - For a shorter game, start with a smaller N.
+  - For a more challenging game, choose a larger N or agree to avoid certain divisors.
+
+- **Multiple Rounds:**
+  - Players can play multiple rounds, alternating who chooses N or who goes first.
+
+- **Programming Simplicity:**
+  - The game is easy to code in a command-line interface using basic input/output and arithmetic operations.
+
+---
+
+**Enjoy playing Divisor Subtractor, and may the best strategist win!**

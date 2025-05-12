@@ -1,0 +1,185 @@
+# Factor Frenzy Rule Book
+
+## Objective
+
+**Factor Frenzy** is a two-player, turn-based strategy game played in a command-line interface. The primary goal of the game is to force your opponent into a position where they cannot make a valid move according to the game's rules. Victory is achieved when your opponent is unable to select a number from the available pool that is neither a factor nor a multiple of the last number you chose.
+
+## Setup
+
+1. **Number Pool Initialization**: The game starts with a shared pool of integers ranging from **2 to 10**, inclusive.
+2. **Starting Conditions**: Both players begin with no numbers selected.
+3. **Player Designation**: Determine which player will take the first turn. This can be decided randomly or by mutual agreement.
+
+## Game Components
+
+- **Number Pool**: A shared list of integers from **2 to 10** that players will choose from during the game. Each number in the pool is unique and can only be selected once.
+- **Player Choices**: Each player keeps track of the numbers they have selected during the game. This can be displayed as a list next to each player's name.
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately, starting with the designated first player.
+2. **Action on Turn**:
+   - The player selects one number from the available number pool.
+   - The chosen number must not be a **factor** or a **multiple** of the opponent's **last selected number**.
+   - If it's the first turn of the game, the player may choose any number from the pool.
+3. **Updating the Pool**: Once a number is selected, it is removed from the number pool and cannot be chosen again.
+4. **Turn Progression**: The turn passes to the next player after a valid number is chosen.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A number is a **valid choice** if it is not a factor or multiple of the opponent's last selected number.
+   - For example, if the opponent's last number was 4, you cannot choose 2 (factor of 4), 4 (same number), or 8 (multiple of 4).
+2. **Invalid Moves**:
+   - Selecting a number that is a factor or multiple of the opponent's last chosen number is **not allowed**.
+   - Attempting to select a number not in the pool or already chosen is also invalid.
+3. **Forced Loss**:
+   - If a player has no valid moves on their turn (i.e., all remaining numbers are factors or multiples of the opponent's last number), they lose the game.
+4. **Winning the Game**:
+   - A player wins by forcing their opponent into a position where the opponent cannot make a valid move on their turn.
+5. **Number Relationships**:
+   - **Factors**: A number `a` is a factor of `b` if `b % a == 0` (where `%` is the modulo operator).
+   - **Multiples**: A number `a` is a multiple of `b` if `a % b == 0`.
+
+## Scoring
+
+- **Victory**: The winning player is the one who successfully forces their opponent into having no valid moves according to the rules.
+- **No Points System**: There is no point or scoring system; the game outcome is a win or loss based on gameplay.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+- **Number Pool**: `[2, 3, 4, 5, 6, 7, 8, 9, 10]`
+- **Player 1 Choices**: `[]`
+- **Player 2 Choices**: `[]`
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 selects **5** from the number pool.
+- **Reasoning**: It's the first turn; any number can be chosen.
+- **Updated Number Pool**: `[2, 3, 4, 6, 7, 8, 9, 10]`
+- **Player 1 Choices**: `[5]`
+
+#### Turn 2: Player 2
+
+- **Opponent's Last Number**: `5`
+- **Invalid Choices**: Numbers that are factors or multiples of `5` (i.e., `5`, `10`)
+- **Available Choices**: `[2, 3, 4, 6, 7, 8, 9]`
+- **Action**: Player 2 selects **6**.
+- **Updated Number Pool**: `[2, 3, 4, 7, 8, 9]`
+- **Player 2 Choices**: `[6]`
+
+#### Turn 3: Player 1
+
+- **Opponent's Last Number**: `6`
+- **Invalid Choices**: Factors or multiples of `6` (i.e., `2`, `3`, `4`, `6`, `9`)
+- **Available Choices**: `[7, 8]`
+- **Action**: Player 1 selects **7**.
+- **Updated Number Pool**: `[2, 3, 4, 8, 9]`
+- **Player 1 Choices**: `[5, 7]`
+
+#### Turn 4: Player 2
+
+- **Opponent's Last Number**: `7`
+- **Invalid Choices**: Factors or multiples of `7` (i.e., `7`)
+- **Available Choices**: `[2, 3, 4, 8, 9]`
+- **Action**: Player 2 selects **2**.
+- **Updated Number Pool**: `[3, 4, 8, 9]`
+- **Player 2 Choices**: `[6, 2]`
+
+#### Turn 5: Player 1
+
+- **Opponent's Last Number**: `2`
+- **Invalid Choices**: Factors or multiples of `2` (i.e., `2`, `4`, `8`)
+- **Available Choices**: `[3, 9]`
+- **Action**: Player 1 selects **3**.
+- **Updated Number Pool**: `[4, 8, 9]`
+- **Player 1 Choices**: `[5, 7, 3]`
+
+#### Turn 6: Player 2
+
+- **Opponent's Last Number**: `3`
+- **Invalid Choices**: Factors or multiples of `3` (i.e., `3`, `6`, `9`)
+- **Available Choices**: `[4, 8]`
+- **Action**: Player 2 selects **4**.
+- **Updated Number Pool**: `[8, 9]`
+- **Player 2 Choices**: `[6, 2, 4]`
+
+#### Turn 7: Player 1
+
+- **Opponent's Last Number**: `4`
+- **Invalid Choices**: Factors or multiples of `4` (i.e., `2`, `4`, `8`)
+- **Available Choices**: `[9]`
+- **Action**: Player 1 selects **9**.
+- **Updated Number Pool**: `[8]`
+- **Player 1 Choices**: `[5, 7, 3, 9]`
+
+#### Turn 8: Player 2
+
+- **Opponent's Last Number**: `9`
+- **Invalid Choices**: Factors or multiples of `9` (i.e., `3`, `9`)
+- **Available Choices**: `[8]`
+- **Action**: Player 2 selects **8**.
+- **Updated Number Pool**: `[]`
+- **Player 2 Choices**: `[6, 2, 4, 8]`
+
+#### Turn 9: Player 1
+
+- **Opponent's Last Number**: `8`
+- **Invalid Choices**: Factors or multiples of `8` (i.e., `2`, `4`, `8`)
+- **Available Choices**: `[]`
+- **Action**: No valid moves remaining.
+
+**Result**: Player 1 cannot make a move. **Player 2 wins the game!**
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction of how the game might proceed in a command-line interface.
+
+```
+=== Factor Frenzy ===
+
+Number Pool: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+Player 1, it's your turn.
+Available Numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+Enter your selection: 5
+
+Player 1 selected 5.
+
+Number Pool: [2, 3, 4, 6, 7, 8, 9, 10]
+
+Player 2, it's your turn.
+Opponent's Last Number: 5
+Invalid Choices (factors/multiples of 5): [5, 10]
+Available Numbers: [2, 3, 4, 6, 7, 8, 9]
+Enter your selection: 6
+
+Player 2 selected 6.
+
+Number Pool: [2, 3, 4, 7, 8, 9]
+
+Player 1, it's your turn.
+Opponent's Last Number: 6
+Invalid Choices (factors/multiples of 6): [2, 3, 4, 6, 9]
+Available Numbers: [7, 8]
+Enter your selection: 7
+
+Player 1 selected 7.
+
+... [Game continues as in the example above] ...
+
+Player 1, it's your turn.
+Opponent's Last Number: 8
+Invalid Choices (factors/multiples of 8): [2, 4, 8]
+Available Numbers: []
+No valid moves available. You lose!
+
+Player 2 wins the game!
+```
+
+## Summary
+
+Factor Frenzy is a strategic game that requires players to think ahead and consider the numerical relationships between the remaining numbers in the pool and the opponent's last move. By carefully selecting numbers and anticipating the opponent's options, skilled players can consistently outmaneuver unskilled players, ensuring a quick and decisive game without the possibility of a draw.

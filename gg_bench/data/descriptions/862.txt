@@ -1,0 +1,165 @@
+# Divisibility Duel Rule Book
+
+---
+
+## Objective:
+
+Become the first player to create a number divisible by **7** by sequentially appending digits from **1** to **9** to a shared number. Players take turns selecting unused digits and adding them to the end of the current number. The player who, on their turn, forms a number divisible by **7** wins the game.
+
+---
+
+## Setup:
+
+- **Shared Number**: Initialize the shared number to **0**.
+- **Available Digits**: Create a list of digits from **1** to **9**. All digits are initially unused.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+---
+
+## Game Components:
+
+- **Shared Number**: A number that builds up as players append digits; starts at **0**.
+- **Available Digits**: The digits **1** through **9**, each of which can be used only once.
+- **Players**: Two participants who alternate turns.
+
+---
+
+## Turns:
+
+### Turn Order:
+
+- Players decide who takes the first turn, e.g., by coin toss or mutual agreement.
+- Turns alternate between Player 1 and Player 2.
+
+### Turn Structure:
+
+1. **Display Status**:
+   - Show the current shared number.
+   - List the available unused digits.
+
+2. **Select Digit**:
+   - The player chooses an unused digit from **1** to **9**.
+
+3. **Append Digit**:
+   - Append the selected digit to the end of the shared number.
+
+4. **Update Shared Number**:
+   - The shared number is updated to reflect the appended digit.
+
+5. **Divisibility Check**:
+   - Check if the new shared number is divisible by **7**.
+   - If it is divisible, the player wins the game.
+
+6. **Proceed to Next Turn**:
+   - If the game hasn't been won, proceed to the next player's turn.
+
+---
+
+## Rules and Mechanics:
+
+### Digit Selection:
+
+- **Unused Digits Only**: Players must select from the pool of unused digits.
+- **One Digit per Turn**: Only one digit may be selected and appended per turn.
+- **No Skipping**: Players cannot pass their turn; a digit must be selected.
+
+### Appending Digits:
+
+- The selected digit is concatenated to the right end of the shared number.
+  - E.g., If the shared number is **12** and the player selects **3**, the new shared number becomes **123**.
+- Leading zeros are allowed only at the very beginning (e.g., appending **0** to **0**).
+
+### Divisibility Check:
+
+- After each turn, check if the updated shared number is divisible by **7**.
+- Use standard mathematical divisibility checks or modulo operation.
+
+### Winning the Game:
+
+- **Immediate Win**: If a player creates a number divisible by **7** on their turn, they win immediately.
+- **Fallback Victory**:
+  - If all digits are used and no player has formed a number divisible by **7**, the player whose final number is **closest** to a multiple of **7** wins.
+  - If there is a tie (both players are equally close), the **last player** to have moved **loses**.
+
+---
+
+## Scoring:
+
+- **Win Condition**: Forming a number divisible by **7** on your turn.
+- **Fallback Win**: Closest final number to a multiple of **7** if all digits are used without a direct win.
+- **Tie-Breaker**: In case of an equal distance to the nearest multiple of **7**, the player who did **not** make the last move wins.
+
+---
+
+## Examples:
+
+### Example Game:
+
+**Game Start**:
+
+- Shared Number: **0**
+- Available Digits: **1 2 3 4 5 6 7 8 9**
+
+**Turn 1 (Player 1)**:
+
+- Selects digit **1**.
+- New Shared Number: **1**
+- **1 % 7 = 1** (Not divisible by 7)
+- Available Digits: **2 3 4 5 6 7 8 9**
+
+**Turn 2 (Player 2)**:
+
+- Selects digit **4**.
+- New Shared Number: **14**
+- **14 % 7 = 0** (Divisible by 7)
+- **Player 2 wins the game.**
+
+---
+
+### Command-Line Interaction Example:
+
+**Game Start**:
+```
+Starting Number: 0
+Available Digits: 1 2 3 4 5 6 7 8 9
+```
+
+**Player 1's Turn**:
+```
+Player 1, select a digit to append: 1
+New Number: 1
+Available Digits: 2 3 4 5 6 7 8 9
+1 is not divisible by 7.
+```
+
+**Player 2's Turn**:
+```
+Player 2, select a digit to append: 4
+New Number: 14
+Available Digits: 2 3 5 6 7 8 9
+14 is divisible by 7!
+Player 2 wins!
+```
+
+---
+
+## Strategic Considerations:
+
+- **Plan Ahead**: Consider how your chosen digit affects future possibilities for both players.
+- **Divisibility Rules**: Familiarity with divisibility rules for **7** can guide better decision-making.
+- **Digit Management**: Keep track of remaining digits to anticipate potential moves by your opponent.
+- **Block Opponent**: Choose digits that may prevent your opponent from creating a number divisible by **7** on their next turn.
+
+---
+
+## Additional Notes:
+
+- **Game Duration**: The game will last a maximum of **9 turns** since each digit from **1** to **9** is used once.
+- **Fair Play**: Both players should have equal opportunities; consider alternating who goes first in multiple games.
+- **Variations**:
+  - Change the target divisor (e.g., use **13** or **17** for a different challenge).
+  - Allow or disallow leading zeros based on preference.
+
+---
+
+Enjoy playing **Divisibility Duel** and may the keenest strategist win!

@@ -1,0 +1,254 @@
+# Leap to Twenty: Rule Book
+
+## Objective
+
+**Leap to Twenty** is a two-player, turn-based strategy game played on a command-line interface. The primary goal is to be the first player to reach exactly position 20 on the number line. Players must use strategic planning to navigate the number line while avoiding positions that could hinder their progress. There are no draws in this game; a skilled player can consistently beat an unskilled player with the right strategy.
+
+---
+
+## Setup
+
+- **Number Line**: A virtual number line ranging from positions **1** to **20**.
+- **Starting Position**: Both players begin at position **0**, which is just before position 1.
+- **Players**: Two players, designated as **Player 1** and **Player 2**.
+
+---
+
+## Game Components
+
+### Number Line
+
+- **Positions 1-20**: Each position on the number line represents a possible spot a player can occupy.
+- **Special Positions**:
+  - **Multiples of 5**: Positions **5**, **10**, **15**, and **20** are special and have unique rules associated with them.
+
+### Player Tokens
+
+- In a command-line interface, players are represented by their player numbers (**1** or **2**) and their current position on the number line.
+
+---
+
+## Turns
+
+- **Turn Order**: The game starts with **Player 1**, and players alternate turns thereafter.
+- **Actions Per Turn**:
+  - On their turn, a player must move their token forward along the number line.
+  - **Movement Options**: A player can move forward by **1**, **2**, or **4** positions.
+- **Turn Progression**:
+  1. **Select Movement**: The player chooses how many positions to move (1, 2, or 4).
+  2. **Update Position**: The player's position is updated based on their chosen movement.
+  3. **Special Position Check**: If the player lands on a multiple of 5, special rules apply.
+  4. **Check for Win Condition**: If a player reaches position 20 exactly, the game ends, and that player wins.
+  5. **Next Player's Turn**: If the game hasn't ended, it's the other player's turn.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Valid Moves**: On each turn, a player can choose to move forward by **1**, **2**, or **4** positions.
+- **Exact Landing**: Players must choose a move that lands them on or before position 20. Moves that would take them past position 20 are not allowed.
+
+### Special Positions
+
+- **Multiples of 5**:
+  - **Positions**: **5**, **10**, **15**, and **20**.
+  - **Rule**: If a player lands exactly on one of these positions (except for position 20), they must **skip their next turn**.
+  - **Position 20 Exception**: Landing on position 20 does not require skipping a turn as it results in an immediate win.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to land **exactly** on position **20** wins the game.
+- **No Overstepping**: Players cannot make a move that would take them beyond position 20.
+
+### Example of Illegal Moves
+
+- **Invalid Move**: If a player is on position 18, they cannot move forward by 4 positions because position 22 does not exist on the number line.
+- **Consequence**: The player must choose a valid move (either 1 or 2 positions in this case).
+
+---
+
+## Scoring
+
+- **Win Condition**: The game does not use a point system. The objective is to **win** by reaching position 20.
+- **No Draws**: The game is designed to always produce a winner.
+- **Tracking Positions**: Players should keep track of their current positions after each turn.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Game Start
+- **Player 1 Position**: 0
+- **Player 2 Position**: 0
+
+#### Turn 1: Player 1
+- **Decision**: Moves forward **4** positions.
+- **New Position**: 0 + 4 = **4**
+- **Special Position**: **No** (4 is not a multiple of 5)
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 2: Player 2
+- **Decision**: Moves forward **1** position.
+- **New Position**: 0 + 1 = **1**
+- **Special Position**: **No**
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 3: Player 1
+- **Decision**: Moves forward **1** position.
+- **New Position**: 4 + 1 = **5**
+- **Special Position**: **Yes** (Landed on 5)
+- **Penalty**: Must **skip next turn**.
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 4: Player 2
+- **Decision**: Moves forward **4** positions.
+- **New Position**: 1 + 4 = **5**
+- **Special Position**: **Yes** (Landed on 5)
+- **Penalty**: Must **skip next turn**.
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 5: Player 1
+- **Status**: **Skipped Turn** due to landing on 5.
+- **Outcome**: Turn passes to Player 2.
+
+#### Turn 6: Player 2
+- **Status**: **Skipped Turn** due to landing on 5.
+- **Outcome**: Turn passes to Player 1.
+
+#### Turn 7: Player 1
+- **Decision**: Moves forward **4** positions.
+- **New Position**: 5 + 4 = **9**
+- **Special Position**: **No**
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 8: Player 2
+- **Decision**: Moves forward **2** positions.
+- **New Position**: 5 + 2 = **7**
+- **Special Position**: **No**
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 9: Player 1
+- **Decision**: Moves forward **1** position.
+- **New Position**: 9 + 1 = **10**
+- **Special Position**: **Yes** (Landed on 10)
+- **Penalty**: Must **skip next turn**.
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 10: Player 2
+- **Decision**: Moves forward **4** positions.
+- **New Position**: 7 + 4 = **11**
+- **Special Position**: **No**
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 11: Player 1
+- **Status**: **Skipped Turn** due to landing on 10.
+- **Outcome**: Turn passes to Player 2.
+
+#### Turn 12: Player 2
+- **Decision**: Moves forward **4** positions.
+- **New Position**: 11 + 4 = **15**
+- **Special Position**: **Yes** (Landed on 15)
+- **Penalty**: Must **skip next turn**.
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 13: Player 1
+- **Decision**: Moves forward **4** positions.
+- **New Position**: 10 + 4 = **14**
+- **Special Position**: **No**
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 14: Player 2
+- **Status**: **Skipped Turn** due to landing on 15.
+- **Outcome**: Turn passes to Player 1.
+
+#### Turn 15: Player 1
+- **Decision**: Moves forward **1** position.
+- **New Position**: 14 + 1 = **15**
+- **Special Position**: **Yes** (Landed on 15)
+- **Penalty**: Must **skip next turn**.
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 16: Player 2
+- **Decision**: Moves forward **2** positions.
+- **New Position**: 15 + 2 = **17**
+- **Special Position**: **No**
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 17: Player 1
+- **Status**: **Skipped Turn** due to landing on 15.
+- **Outcome**: Turn passes to Player 2.
+
+#### Turn 18: Player 2
+- **Decision**: Moves forward **2** positions.
+- **New Position**: 17 + 2 = **19**
+- **Special Position**: **No**
+- **Outcome**: Player 2's turn ends.
+
+#### Turn 19: Player 1
+- **Decision**: Moves forward **1** position.
+- **New Position**: 15 + 1 = **16**
+- **Special Position**: **No**
+- **Outcome**: Player 1's turn ends.
+
+#### Turn 20: Player 2
+- **Decision**: Moves forward **1** position.
+- **New Position**: 19 + 1 = **20**
+- **Special Position**: **Yes** (Landed on 20)
+- **Outcome**: **Player 2 wins** by reaching position 20.
+
+---
+
+### Command-Line Interaction Sample
+
+#### Starting the Game
+
+```
+Welcome to Leap to Twenty!
+Player 1 and Player 2 start at position 0.
+```
+
+#### Turn 1: Player 1
+
+```
+Player 1's turn.
+Current position: 0
+Choose your move (1, 2, or 4 spaces): 4
+You moved to position 4.
+```
+
+#### Turn 2: Player 2
+
+```
+Player 2's turn.
+Current position: 0
+Choose your move (1, 2, or 4 spaces): 1
+You moved to position 1.
+```
+
+*... Subsequent turns follow the gameplay as described in the sample playthrough ...*
+
+#### Final Turn: Player 2
+
+```
+Player 2's turn.
+Current position: 19
+Choose your move (1, 2, or 4 spaces): 1
+You moved to position 20.
+Congratulations, Player 2! You have reached position 20 and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Avoid Multiples of 5**: Plan your moves to avoid landing on positions 5, 10, and 15 to prevent losing a turn.
+- **Counting Ahead**: Anticipate your opponent's possible moves and position yourself to take advantage when they have to skip a turn.
+- **Reaching 20**: Try to calculate your moves so you can land exactly on 20 without overstepping.
+
+---
+
+Enjoy playing **Leap to Twenty** and may the best strategist win!

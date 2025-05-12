@@ -1,0 +1,6 @@
+In the `CustomEnv` gym environment for the Number Duel game, each action space index from 0 to 35 maps to a specific move consisting of an Action Number and an Operation. The 36 indices represent combinations of 9 Action Numbers (1 to 9) with 4 Operations (+, -, *, /). The mapping is done as follows:
+
+- **Action Number**: Calculated by `(action // 4) + 1`. This distributes indices into groups of four for each Action Number (e.g., 0-3 for 1, 4-7 for 2, etc.).
+- **Operation**: Determined by `action % 4`, giving an operation index (0 for +, 1 for -, 2 for *, 3 for /) within each group.
+
+Thus, each `action` in the range 0 to 35 corresponds to a unique combination of an Action Number (1-9) and an Operation (+, -, *, /).

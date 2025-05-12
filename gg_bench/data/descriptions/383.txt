@@ -1,0 +1,185 @@
+# **Prime Deplete**
+
+Prime Deplete is a strategic two-player, turn-based game designed for command-line interfaces. Players take turns removing numbers from a shared list according to specific mathematical rules. The game is easy to code, ends quickly with no possibility of a draw, and rewards strategic planning, allowing a skilled player to consistently outperform an unskilled opponent.
+
+---
+
+## **Objective**
+
+Be the player who removes the last number from the shared list. Players aim to outmaneuver their opponent by strategically removing numbers and their associated divisors, ultimately being the one to deplete the list completely.
+
+---
+
+## **Setup**
+
+1. **Shared List Initialization**:
+   - Create a list of consecutive integers starting from 2 up to a chosen maximum number **N** (e.g., N = 20).
+   - Example starting list: `[2, 3, 4, 5, 6, 7, 8, 9, 10]`.
+
+2. **Player Designation**:
+   - Two players are identified as **Player 1** and **Player 2**.
+   - Determine randomly or by agreement who will take the first turn.
+
+---
+
+## **Game Components**
+
+- **Number List**:
+  - A dynamic list containing integers from 2 to **N**.
+  - Numbers in the list are available for selection and removal.
+  
+- **Proper Divisors**:
+  - For any number **n**, its proper divisors are all positive integers less than **n** that divide **n** exactly.
+  - Example: Proper divisors of 6 are 1, 2, and 3.
+
+*Note: In this game, we consider proper divisors greater than 1 to align with gameplay mechanics.*
+
+---
+
+## **Turns**
+
+1. **Turn Structure**:
+   - Players alternate turns, starting with **Player 1**.
+   - On each turn, a player executes the following actions:
+     - **Select** a number from the current list.
+     - **Remove** the selected number and its proper divisors (excluding 1) from the list.
+
+2. **Action Details**:
+   - **Selection**:
+     - Choose any remaining number in the list.
+   - **Removal**:
+     - Remove the selected number.
+     - Also remove all proper divisors (greater than 1) of the selected number that are still in the list.
+     - If a divisor has already been removed, it is simply ignored.
+
+3. **Turn Progression**:
+   - The turn ends after the selected number and its proper divisors are removed.
+   - Control passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - A player must select a number from the current list on their turn.
+   - If no numbers remain, the game ends.
+
+2. **Number Removal**:
+   - When a number is selected, it and its proper divisors are removed from the list.
+   - Proper divisors are calculated as all numbers less than the selected number that divide it without a remainder (excluding 1).
+
+3. **Game End Condition**:
+   - The game ends when all numbers have been removed from the list.
+   - The player who performed the last valid move (i.e., removed the last number(s)) wins the game.
+
+4. **Winning the Game**:
+   - There is no possibility of a draw.
+   - The last player to successfully remove numbers from the list is declared the winner.
+
+5. **Invalid Moves**:
+   - If a player cannot make a valid move because the list is empty, they lose the game.
+   - Players must select a number on their turn if at least one number remains.
+
+---
+
+## **Scoring**
+
+- **Win Condition**:
+  - The game is won by the player who removes the last number(s) from the list.
+- **No Points System**:
+  - There is no point scoring; victory is determined solely by meeting the win condition.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Initial List**: `[2, 3, 4, 5, 6, 7, 8, 9, 10]`
+
+**Player 1's Turn**:
+- **Selects**: 6
+- **Proper Divisors of 6**: 2 and 3 (excluding 1)
+- **Removes**: 6, 2, 3
+- **Updated List**: `[4, 5, 7, 8, 9, 10]`
+
+**Player 2's Turn**:
+- **Selects**: 9
+- **Proper Divisors of 9**: 3 (already removed)
+- **Removes**: 9
+- **Updated List**: `[4, 5, 7, 8, 10]`
+
+**Player 1's Turn**:
+- **Selects**: 8
+- **Proper Divisors of 8**: 2 and 4 (2 already removed)
+- **Removes**: 8, 4
+- **Updated List**: `[5, 7, 10]`
+
+**Player 2's Turn**:
+- **Selects**: 10
+- **Proper Divisors of 10**: 2 and 5 (2 already removed)
+- **Removes**: 10, 5
+- **Updated List**: `[7]`
+
+**Player 1's Turn**:
+- **Selects**: 7
+- **Proper Divisors of 7**: None (excluding 1)
+- **Removes**: 7
+- **Updated List**: `[]`
+
+**Game Ends**:
+- **Player 1** removed the last number and **wins** the game.
+
+### **Command-Line Interaction Sample**
+
+Assuming a prompt-based command-line interface:
+
+```
+Game Start!
+Initial List: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+Player 1's turn.
+Available numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+Enter the number you wish to remove: 6
+You removed 6 and its proper divisors: [2, 3]
+Updated List: [4, 5, 7, 8, 9, 10]
+
+Player 2's turn.
+Available numbers: [4, 5, 7, 8, 9, 10]
+Enter the number you wish to remove: 9
+You removed 9 and its proper divisors: []
+Updated List: [4, 5, 7, 8, 10]
+
+Player 1's turn.
+Available numbers: [4, 5, 7, 8, 10]
+Enter the number you wish to remove: 8
+You removed 8 and its proper divisors: [4]
+Updated List: [5, 7, 10]
+
+Player 2's turn.
+Available numbers: [5, 7, 10]
+Enter the number you wish to remove: 10
+You removed 10 and its proper divisors: [5]
+Updated List: [7]
+
+Player 1's turn.
+Available numbers: [7]
+Enter the number you wish to remove: 7
+You removed 7 and its proper divisors: []
+Updated List: []
+
+No numbers remain.
+Player 1 wins the game!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Target Numbers with Many Divisors**: Removing numbers that have multiple proper divisors can eliminate more options for your opponent.
+- **Anticipate Opponent's Moves**: Pay attention to which numbers and divisors remain to block your opponent's potential moves.
+- **Control the Endgame**: Aim to force the opponent into a position where they have limited or disadvantageous choices in their next turn.
+
+---
+
+By following these rules and understanding the mechanics, players can engage in a quick, strategic battle of numerical prowess in Prime Deplete.

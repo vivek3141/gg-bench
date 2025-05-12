@@ -1,0 +1,238 @@
+# GridLock: A Strategic Two-Player Command-Line Game
+
+## Objective
+
+**GridLock** is a turn-based strategy game played on a 3x3 grid. The primary goal is to outmaneuver your opponent by placing your markers in such a way that they cannot make a valid move on their turn. A player wins by forcing the opponent into a position where no legal placements are available, thereby "locking" them out of the grid.
+
+## Setup
+
+- **Game Board**: A 3x3 grid comprising 9 cells, initially all empty.
+- **Players**: Two players, assigned markers:
+  - Player 1: `X`
+  - Player 2: `O`
+- **Starting Conditions**: Player 1 begins the game by placing the first marker on any cell of the grid.
+
+## Game Components
+
+- **Grid Cells**: Each cell in the grid can be identified by its row and column numbers (ranging from 1 to 3).
+  ```
+   (1,1) | (1,2) | (1,3)
+  -------+-------+-------
+   (2,1) | (2,2) | (2,3)
+  -------+-------+-------
+   (3,1) | (3,2) | (3,3)
+  ```
+- **Player Markers**:
+  - `X`: Represents Player 1's markers.
+  - `O`: Represents Player 2's markers.
+- **Command-Line Interface**: Players input their moves by specifying the row and column of the desired cell.
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, starting with Player 1.
+- **Player Actions During a Turn**:
+  1. **Select a Cell**: Choose an empty cell that is not adjacent (including diagonally) to the last marker placed by the opponent.
+  2. **Place Marker**: Place your marker (`X` or `O`) in the chosen cell.
+- **Turn Progression**:
+  - After a player places their marker, the turn passes to the opponent.
+  - The game continues until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Legal Moves**:
+   - A player may place their marker on any empty cell **not adjacent** to the last marker placed by the opponent.
+   - Adjacent cells include horizontal, vertical, and diagonal neighbors.
+2. **Invalid Moves**:
+   - A player cannot place a marker on an occupied cell.
+   - A player cannot place a marker on a cell adjacent to the last opponent's marker.
+3. **Forcing a Lock**:
+   - If a player has no legal moves on their turn, they lose the game.
+4. **No Skipping Turns**:
+   - Players must make a move if at least one legal move is available.
+5. **Unique Marker Placement**:
+   - Once placed, markers remain on the grid and cannot be moved or removed.
+
+### Special Conditions
+
+- **First Move Exception**:
+  - Player 1 has no restrictions on the first move and may place their `X` on any cell.
+- **Subsequent Moves**:
+  - From the second move onward, players must consider the position of the last marker placed by the opponent to determine legal moves.
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who successfully locks the opponent, leaving them with no legal moves, wins the game.
+- **No Draws**:
+  - The game cannot end in a draw, as there will always be a win condition met when a player cannot make a move.
+- **Match Play (Optional)**:
+  - Players may agree to play multiple rounds.
+  - A match score can be kept, awarding one point per game won.
+  - The player with the most points at the end of the match is the overall winner.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid
+```
+   (1,1) | (1,2) | (1,3)
+  -------+-------+-------
+   (2,1) | (2,2) | (2,3)
+  -------+-------+-------
+   (3,1) | (3,2) | (3,3)
+```
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn:**
+   - Places `X` at **(2,2)**.
+   - Grid:
+     ```
+        (1,1) |  (1,2) | (1,3)
+      -------+--------+-------
+        (2,1) |   X    | (2,3)
+      -------+--------+-------
+        (3,1) |  (3,2) | (3,3)
+     ```
+2. **Player 2's Turn:**
+   - Cannot place `O` on any cell adjacent to **(2,2)**.
+   - Available cells: **(1,1), (1,3), (3,1), (3,3)**
+   - Chooses to place `O` at **(1,1)**.
+   - Grid:
+     ```
+         O    |  (1,2) | (1,3)
+      -------+--------+-------
+        (2,1) |   X    | (2,3)
+      -------+--------+-------
+        (3,1) |  (3,2) | (3,3)
+     ```
+3. **Player 1's Turn:**
+   - Cannot place `X` adjacent to **(1,1)**.
+   - Available cells: **(1,3), (2,3), (3,1), (3,2), (3,3)**
+   - Chooses to place `X` at **(3,3)**.
+   - Grid:
+     ```
+         O    |  (1,2) | (1,3)
+      -------+--------+-------
+        (2,1) |   X    | (2,3)
+      -------+--------+-------
+        (3,1) |  (3,2) |   X
+     ```
+4. **Player 2's Turn:**
+   - Cannot place `O` adjacent to **(3,3)**.
+   - Available cells: **(1,3), (2,3), (3,1)**
+   - Chooses to place `O` at **(1,3)**.
+   - Grid:
+     ```
+         O    |  (1,2) |   O
+      -------+--------+-------
+        (2,1) |   X    | (2,3)
+      -------+--------+-------
+        (3,1) |  (3,2) |   X
+     ```
+5. **Player 1's Turn:**
+   - Cannot place `X` adjacent to **(1,3)**.
+   - Available cells: **(2,3), (3,1)**
+   - Chooses to place `X` at **(2,3)**.
+   - Grid:
+     ```
+         O    |  (1,2) |   O
+      -------+--------+-------
+        (2,1) |   X    |   X
+      -------+--------+-------
+        (3,1) |  (3,2) |   X
+     ```
+6. **Player 2's Turn:**
+   - Cannot place `O` adjacent to **(2,3)**.
+   - Available cells: **(3,1)**
+   - Places `O` at **(3,1)**.
+   - Grid:
+     ```
+         O    |  (1,2) |   O
+      -------+--------+-------
+        (2,1) |   X    |   X
+      -------+--------+-------
+         O    |  (3,2) |   X
+     ```
+7. **Player 1's Turn:**
+   - Cannot place `X` adjacent to **(3,1)**.
+   - Available cells: **(1,2), (3,2)**
+   - Chooses to place `X` at **(3,2)**.
+   - Grid:
+     ```
+         O    |  (1,2) |   O
+      -------+--------+-------
+        (2,1) |   X    |   X
+      -------+--------+-------
+         O    |   X    |   X
+     ```
+8. **Player 2's Turn:**
+   - Cannot place `O` adjacent to **(3,2)**.
+   - Available cells: **(1,2)**
+   - Places `O` at **(1,2)**.
+   - Grid:
+     ```
+         O    |   O    |   O
+      -------+--------+-------
+        (2,1) |   X    |   X
+      -------+--------+-------
+         O    |   X    |   X
+     ```
+9. **Player 1's Turn:**
+   - Cannot place `X` adjacent to **(1,2)**.
+   - Available cells: **(2,1)**
+   - Places `X` at **(2,1)**.
+   - Grid:
+     ```
+         O    |   O    |   O
+      -------+--------+-------
+          X   |   X    |   X
+      -------+--------+-------
+         O    |   X    |   X
+     ```
+10. **Player 2's Turn:**
+    - Cannot place `O` adjacent to **(2,1)**.
+    - No available cells remain.
+    - **Player 2 cannot make a move and loses the game.**
+   
+### Command-Line Interaction Example
+
+- **Player 1's Turn:**
+  ```
+  Player 1 (X), enter your move (row and column): 2 2
+  ```
+- **Player 2's Turn:**
+  ```
+  Player 2 (O), enter your move (row and column): 1 1
+  ```
+- **Validation Message:**
+  ```
+  Invalid move. Cell is adjacent to the opponent's last marker. Try again.
+  ```
+  *(If an invalid move is attempted)*
+
+- **Game Over Message:**
+  ```
+  No valid moves remaining for Player 2. Player 1 wins!
+  ```
+
+## Additional Notes
+
+- **Input Validation**:
+  - The game should validate player inputs to ensure moves are legal.
+  - Inform players of invalid moves and prompt for a valid input.
+- **Strategic Tips**:
+  - Control the center to limit opponent's options.
+  - Anticipate opponent's possible moves based on available cells.
+  - Force the opponent into positions where their choices are limited.
+- **Game Extensions (Optional)**:
+  - **Different Grid Sizes**: Experiment with larger grids (e.g., 4x4 or 5x5) for increased complexity.
+  - **Alternative Starting Rules**: Randomize which player starts or allow the second player to make the first move.
+
+---
+
+By following this rule book, players can engage in a game of GridLock that is easy to learn but offers strategic depth. The simplicity of the grid and the movement restrictions create a challenging environment where skilled players can consistently outperform unskilled players. Enjoy your game of GridLock!

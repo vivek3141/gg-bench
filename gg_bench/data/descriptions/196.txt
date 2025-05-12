@@ -1,0 +1,257 @@
+# Secret Path
+
+## Objective
+
+Be the first player to reach your opponent's base by moving your token along a number line while avoiding hidden traps set by your opponent. Victory is achieved by landing **exactly** on the opponent's starting position without triggering a trap.
+
+---
+
+## Setup
+
+1. **Game Board**: A number line with positions numbered from **1** to **15**.
+2. **Player Bases**:
+   - **Player 1's base** is at position **1**.
+   - **Player 2's base** is at position **15**.
+3. **Tokens**:
+   - Each player has a token that starts on their respective base (Player 1 on position **1**, Player 2 on position **15**).
+4. **Traps**:
+   - Each player secretly selects **three** different positions between **2** and **14** (inclusive) to place traps. These positions are recorded privately and are not revealed to the opponent.
+
+---
+
+## Game Components
+
+- **Number Line**: Positions numbered from **1** to **15**, representing the path between the two bases.
+- **Player Tokens**: Represent the players' positions on the number line.
+- **Traps**: Hidden traps set by each player on specific positions of the number line. Traps are only revealed when an opponent lands on them.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players take turns alternately.
+   - Decide who goes first by mutual agreement or a random method (e.g., coin toss).
+2. **Movement**:
+   - On your turn, you may move your token **forward** or **backward** along the number line.
+   - You may move **1** or **2** positions per turn.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Movement Range**:
+  - Tokens must stay within positions **1** to **15**.
+  - You cannot move beyond the number line boundaries.
+- **Continuous Movement**:
+  - You cannot skip over positions; movement must be to adjacent positions based on your move (1 or 2 steps).
+
+### Encountering Traps
+
+- **Triggering a Trap**:
+  - If you land on a position that your opponent has trapped, the trap is sprung.
+  - When a trap is sprung:
+    - Your token is returned to your **base** (starting position).
+    - The position of the trap is now **revealed** and becomes safe for future moves.
+- **Passing Over Traps**:
+  - If you pass over a trapped position without landing on it, the trap is **not** triggered.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The first player to land **exactly** on the opponent's **base** wins the game.
+  - You must plan your moves to land precisely on the opponent's base position (**1** for Player 2, **15** for Player 1).
+- **Boundary Rule**:
+  - You cannot move beyond the opponent's base; any move that would take you past it is invalid.
+
+### Additional Rules
+
+- **Trap Confidentiality**:
+  - Players cannot reveal or change the positions of their traps after they have been set at the beginning of the game.
+- **Token Interaction**:
+  - If both players' tokens occupy the same position (other than the starting positions), they coexist without any effect on each other.
+
+---
+
+## Scoring
+
+- The game does not use a point-based scoring system.
+- **Victory** is achieved by successfully reaching the opponent's base without being sent back by traps.
+- There is always a clear winner; no draws are possible.
+
+---
+
+## Examples
+
+### Example Scenario
+
+**Setup**:
+
+- **Player 1** secretly sets traps at positions **5**, **8**, and **12**.
+- **Player 2** secretly sets traps at positions **4**, **7**, and **11**.
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**:
+   - Current position: **1**.
+   - Decides to move forward **2** steps to position **3**.
+   - **No trap** is triggered.
+
+2. **Player 2's Turn**:
+   - Current position: **15**.
+   - Decides to move backward **1** step to position **14**.
+   - **No trap** is triggered.
+
+3. **Player 1's Turn**:
+   - Current position: **3**.
+   - Moves forward **2** steps to position **5**.
+   - **Player 2** reveals a trap at position **5**!
+   - **Player 1**'s token is sent back to position **1**.
+   - Trap at position **5** is now revealed and safe.
+
+4. **Player 2's Turn**:
+   - Current position: **14**.
+   - Moves backward **2** steps to position **12**.
+   - **Player 1** reveals a trap at position **12**!
+   - **Player 2**'s token is sent back to position **15**.
+   - Trap at position **12** is now revealed and safe.
+
+5. **Player 1's Turn**:
+   - Current position: **1**.
+   - Moves forward **1** step to position **2**.
+   - **No trap** is triggered.
+
+6. **Player 2's Turn**:
+   - Current position: **15**.
+   - Moves backward **1** step to position **14**.
+   - **No trap** is triggered.
+
+7. **Player 1's Turn**:
+   - Current position: **2**.
+   - Moves forward **2** steps to position **4**.
+   - **Player 2** reveals a trap at position **4**!
+   - **Player 1**'s token is sent back to position **1**.
+   - Trap at position **4** is now revealed and safe.
+
+8. **Player 2's Turn**:
+   - Current position: **14**.
+   - Moves backward **2** steps to position **12** (already revealed trap).
+   - **No trap** is triggered since the trap at **12** is revealed.
+
+9. **Player 1's Turn**:
+   - Current position: **1**.
+   - Moves forward **2** steps to position **3**.
+   - **No trap** is triggered.
+
+10. **Player 2's Turn**:
+    - Current position: **12**.
+    - Moves backward **1** step to position **11**.
+    - **Player 1** reveals a trap at position **11**!
+    - **Player 2**'s token is sent back to position **15**.
+    - Trap at position **11** is now revealed and safe.
+
+### Example Command-Line Interaction
+
+```
+=== Secret Path ===
+Player 1 and Player 2, place your traps secretly.
+
+[Player 1's Turn]
+Your current position: 1
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): 2
+You move to position 3.
+No trap triggered.
+
+[Player 2's Turn]
+Your current position: 15
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): -1
+You move to position 14.
+No trap triggered.
+
+[Player 1's Turn]
+Your current position: 3
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): 2
+You move to position 5.
+Opponent: Trap triggered at position 5!
+You return to your base at position 1.
+
+[Player 2's Turn]
+Your current position: 14
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): -2
+You move to position 12.
+Opponent: Trap triggered at position 12!
+You return to your base at position 15.
+
+[Player 1's Turn]
+Your current position: 1
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): 1
+You move to position 2.
+No trap triggered.
+
+...
+
+[Player 1's Turn]
+Your current position: 7
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): 2
+You move to position 9.
+No trap triggered.
+
+[Player 1's Turn]
+Your current position: 9
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): 2
+You move to position 11.
+Opponent: Trap triggered at position 11!
+You return to your base at position 1.
+
+[Player 2's Turn]
+Your current position: 15
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): -2
+You move to position 13.
+No trap triggered.
+
+...
+
+[Player 2's Turn]
+Your current position: 2
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): -2
+You move to position 0.
+Invalid move. Cannot move beyond the number line.
+
+[Player 2's Turn]
+Your current position: 2
+Enter your move (enter 1 or 2 for forward, -1 or -2 for backward): -1
+You move to position 1.
+Congratulations! Player 2 wins by reaching Player 1's base!
+```
+
+---
+
+## Strategy Tips
+
+- **Trap Placement**:
+  - Place traps on positions that are likely to be landed upon based on common movement patterns.
+  - Consider trapping positions that are exactly 1 or 2 steps away from your opponent's base, as they may make a final move to these positions.
+
+- **Movement Decisions**:
+  - Vary your movement to avoid predictable patterns.
+  - Occasionally move backward to avoid traps and confuse your opponent.
+
+- **Memory and Observation**:
+  - Keep track of revealed traps to plan safe routes.
+  - Pay attention to your opponent's movements for clues about trap placements.
+
+- **Risk Management**:
+  - Weigh the risk of moving forward rapidly against the possibility of triggering a trap.
+  - Sometimes a cautious approach yields better results.
+
+---
+
+## Conclusion
+
+**Secret Path** is a game of strategy, deception, and anticipation. Players must carefully plan their movements while considering the potential locations of their opponent's traps. With simple rules and deep strategic elements, **Secret Path** offers an engaging and quick gameplay experience suitable for a command-line interface.
+
+Whether you're aiming to outsmart your opponent with clever trap placements or outmaneuver them through savvy movements, **Secret Path** provides an exciting challenge where skill triumphs over luck.
+
+Enjoy the game, and may the best strategist win!

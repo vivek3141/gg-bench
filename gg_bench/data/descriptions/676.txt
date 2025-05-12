@@ -1,0 +1,195 @@
+# **Factor Duel**
+
+## **Objective**
+
+Be the first player to force your opponent into a position where they cannot make a valid move. This occurs when the current number **N** becomes a prime number or reaches **1** on your opponent's turn, leaving them without any proper divisors to choose from.
+
+---
+
+## **Setup**
+
+1. **Starting Number**: The game begins with a positive integer **N**. The default starting value is **100**, but players can agree on any suitable positive integer to begin the game.
+2. **Player Order**: Decide which player goes first (Player 1 and Player 2). This can be determined by a coin toss or mutual agreement.
+
+---
+
+## **Game Components**
+
+- **Current Number (N)**: A shared number that changes throughout the game based on player actions.
+  - **Initial Value**: Set at the beginning of the game (e.g., **100**).
+  - **Range**: N is a positive integer greater than or equal to **1**.
+- **Proper Divisors**: Numbers used by players to reduce **N**.
+  - **Definition**: A proper divisor of **N** is a positive integer greater than **1** and less than **N** that divides **N** exactly (no remainder).
+
+---
+
+## **Turns**
+
+1. **Turn Order**: Players alternate turns starting with Player 1.
+2. **Player Actions**:
+   - **Choose a Proper Divisor**:
+     - Select a proper divisor of the current number **N**.
+     - The divisor must be greater than **1** and less than **N**.
+     - The divisor must divide **N** exactly (no remainder).
+   - **Subtract the Divisor**:
+     - Subtract the chosen divisor from **N**.
+     - Update **N** to this new value.
+3. **Turn Progression**:
+   - After updating **N**, it becomes the next player's turn.
+   - The new **N** is used by the opponent on their turn.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - A move is valid if the player can find at least one proper divisor of the current **N**.
+2. **Forced Moves**:
+   - Players must choose a proper divisor; skipping a turn or choosing an invalid number is not allowed.
+3. **Winning the Game**:
+   - If a player reduces **N** to a prime number or **1** on their turn, the opponent loses.
+   - The opponent loses because they cannot find a proper divisor (since prime numbers have no proper divisors other than **1** and themselves).
+4. **Invalid Moves**:
+   - If a player cannot make a valid move on their turn (no proper divisors exist), they lose the game.
+5. **Example of Proper Divisors**:
+   - For **N = 100**, the proper divisors are: 2, 4, 5, 10, 20, 25, 50.
+
+---
+
+## **Scoring**
+
+- **Win Condition**: The game is won by forcing the opponent into a position where they have no valid moves.
+- **No Point System**: The game does not use points; it is a win/loss outcome based on gameplay.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Starting Number (N): 100**
+
+---
+
+**Player 1's Turn**
+
+- **Current N**: 100
+- **Proper Divisors of N**: 2, 4, 5, 10, 20, 25, 50
+- **Action**: Choose divisor **50**.
+- **Calculation**: 100 - 50 = **50**
+- **New N**: 50
+
+---
+
+**Player 2's Turn**
+
+- **Current N**: 50
+- **Proper Divisors of N**: 2, 5, 10, 25
+- **Action**: Choose divisor **25**.
+- **Calculation**: 50 - 25 = **25**
+- **New N**: 25
+
+---
+
+**Player 1's Turn**
+
+- **Current N**: 25
+- **Proper Divisors of N**: 5
+- **Action**: Choose divisor **5**.
+- **Calculation**: 25 - 5 = **20**
+- **New N**: 20
+
+---
+
+**Player 2's Turn**
+
+- **Current N**: 20
+- **Proper Divisors of N**: 2, 4, 5, 10
+- **Action**: Choose divisor **10**.
+- **Calculation**: 20 - 10 = **10**
+- **New N**: 10
+
+---
+
+**Player 1's Turn**
+
+- **Current N**: 10
+- **Proper Divisors of N**: 2, 5
+- **Action**: Choose divisor **5**.
+- **Calculation**: 10 - 5 = **5**
+- **New N**: 5
+
+---
+
+**Player 2's Turn**
+
+- **Current N**: 5
+- **Proper Divisors of N**: None (since 5 is a prime number)
+- **Outcome**: Player 2 cannot make a valid move and loses the game.
+
+---
+
+## **Command-Line Interaction Example**
+
+Below is a sample interaction as it might appear in a command-line interface:
+
+```
+Welcome to Factor Duel!
+
+Starting Number (N): 100
+
+Player 1's Turn:
+Current N: 100
+Proper Divisors: 2, 4, 5, 10, 20, 25, 50
+Enter your chosen divisor: 50
+New N is now 50.
+
+Player 2's Turn:
+Current N: 50
+Proper Divisors: 2, 5, 10, 25
+Enter your chosen divisor: 25
+New N is now 25.
+
+Player 1's Turn:
+Current N: 25
+Proper Divisors: 5
+Enter your chosen divisor: 5
+New N is now 20.
+
+Player 2's Turn:
+Current N: 20
+Proper Divisors: 2, 4, 5, 10
+Enter your chosen divisor: 10
+New N is now 10.
+
+Player 1's Turn:
+Current N: 10
+Proper Divisors: 2, 5
+Enter your chosen divisor: 5
+New N is now 5.
+
+Player 2's Turn:
+Current N: 5
+Proper Divisors: None
+No valid moves left! Player 2 loses.
+
+Player 1 wins the game!
+```
+
+---
+
+## **Strategies and Tips**
+
+- **Plan Ahead**: Consider the consequences of your moves on future turns.
+- **Avoid Leaving Prime Numbers**: Try not to reduce **N** to a prime number on your turn unless it guarantees a win.
+- **Control the Game Flow**: Manipulate **N** to numbers where the opponent has fewer proper divisors to choose from.
+
+---
+
+## **Conclusion**
+
+Factor Duel is a simple yet strategic game that challenges players to think ahead and use their knowledge of divisors and prime numbers. It's easy to code and perfect for a quick, engaging match in a command-line interface. May the best strategist win!
+
+---
+
+Enjoy the game!

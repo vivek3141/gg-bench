@@ -1,0 +1,307 @@
+# Rule Book for "Grid Lock"
+
+---
+
+## Objective
+
+The objective of **Grid Lock** is to immobilize your opponent's token by strategically moving your own token and placing walls on the grid. A player wins by trapping the opponent's token such that it cannot make any legal moves on their turn.
+
+---
+
+## Setup
+
+1. **Game Grid:**
+   - The game is played on a square grid of size **5x5**.
+   - The grid cells are identified by their coordinates `(x, y)`, where `x` (row) and `y` (column) range from **1 to 5**.
+
+2. **Token Placement:**
+   - Each player has a unique token:
+     - **Player 1:** `X`
+     - **Player 2:** `O`
+   - Players decide who will be **Player 1** and **Player 2**.
+   - **Player 1** places their token on any empty cell on the grid.
+   - **Player 2** then places their token on any other empty cell.
+   - Tokens cannot be placed on the same cell.
+
+---
+
+## Game Components
+
+1. **Game Grid:**
+   - A 5x5 grid representing the playing area.
+   - Cells are marked as empty `.` unless occupied by a token or a wall.
+
+2. **Player Tokens:**
+   - **Player 1 Token (`X`):** Represents Player 1's position on the grid.
+   - **Player 2 Token (`O`):** Represents Player 2's position on the grid.
+
+3. **Walls (`#`):**
+   - Obstacles that can be placed on the grid to block movement.
+   - Once placed, walls remain fixed for the rest of the game.
+
+---
+
+## Turns
+
+- Players alternate turns starting with **Player 1**.
+- On each turn, a player must choose **one** of the following actions:
+  1. **Move Token:**
+     - Move your token to an adjacent empty cell (up, down, left, or right).
+  2. **Place Wall:**
+     - Place a wall on any empty cell on the grid.
+
+- **Turn Structure:**
+  1. **Action Selection:**
+     - Choose to move your token or place a wall.
+  2. **Execution:**
+     - Perform the chosen action.
+  3. **Turn End:**
+     - Pass the turn to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Adjacency:**
+  - Tokens can move to any of the four adjacent cells (no diagonal movements).
+- **Legal Moves:**
+  - A move is legal if:
+    - The destination cell is within the grid bounds.
+    - The destination cell is empty (not occupied by a token or a wall).
+- **Restrictions:**
+  - Tokens cannot move onto or over walls.
+  - Tokens cannot occupy the same cell as another token.
+
+### Wall Placement Rules
+
+- **Placement:**
+  - Walls can be placed on any empty cell on the grid.
+- **Permanence:**
+  - Once placed, walls cannot be moved or removed.
+- **Restrictions:**
+  - Walls cannot be placed on cells occupied by tokens.
+  - There is no limit to the number of walls a player can place during the game (one per turn).
+
+### Winning the Game
+
+- **Objective Fulfillment:**
+  - A player wins if the opponent's token cannot make any legal moves on their turn.
+- **No Draws:**
+  - The game cannot end in a draw.
+- **Game End:**
+  - The game ends immediately when a player achieves the objective.
+
+### Additional Mechanics
+
+- **Blocked Cells:**
+  - The edges of the grid act as walls; tokens cannot move beyond the grid boundaries.
+- **Turn Timing:**
+  - Players must complete their turn within a reasonable time frame to keep the game flowing.
+
+---
+
+## Scoring
+
+- **Victory Conditions:**
+  - The game is won by immobilizing the opponent's token.
+- **Tracking Wins:**
+  - Players may keep track of the number of games won for competitive play.
+- **No Point System:**
+  - There are no points awarded during the game; victory is the primary goal.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Player 1** places `X` at position `(2, 2)`.
+- **Player 2** places `O` at position `(4, 4)`.
+
+#### Turn Sequence
+
+1. **Player 1's Turn:**
+   - **Action:** Move Token.
+   - **Move:** `X` moves from `(2, 2)` to `(2, 3)`.
+
+2. **Player 2's Turn:**
+   - **Action:** Place Wall.
+   - **Placement:** Wall `#` placed at `(3, 3)`.
+
+3. **Player 1's Turn:**
+   - **Action:** Place Wall.
+   - **Placement:** Wall `#` placed at `(4, 4)`.
+
+4. **Player 2's Turn:**
+   - **Action:** Move Token.
+   - **Move:** `O` moves from `(4, 4)` to `(4, 5)`.
+
+5. **Player 1's Turn:**
+   - **Action:** Place Wall.
+   - **Placement:** Wall `#` placed at `(4, 5)`.
+
+6. **Player 2's Turn:**
+   - **Action:** Move Token.
+   - **Result:** No legal moves available; all adjacent cells are blocked.
+   - **Outcome:** **Player 1 wins** as Player 2 cannot make a move.
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Welcome to Grid Lock!
+
+Player 1, place your token (X):
+> Enter coordinates (x y): 2 2
+
+Player 2, place your token (O):
+> Enter coordinates (x y): 4 4
+
+The game begins!
+
+Current Grid:
+  1 2 3 4 5
+1 . . . . .
+2 . X . . .
+3 . . . . .
+4 . . . O .
+5 . . . . .
+```
+
+#### Turns
+
+**Player 1's Turn:**
+
+```
+Player 1 (X), choose your action:
+1. Move token
+2. Place wall
+> Enter choice: 1
+> Enter move direction (up/down/left/right): right
+
+Moved X to position (2, 3).
+
+Current Grid:
+  1 2 3 4 5
+1 . . . . .
+2 . . X . .
+3 . . . . .
+4 . . . O .
+5 . . . . .
+```
+
+**Player 2's Turn:**
+
+```
+Player 2 (O), choose your action:
+1. Move token
+2. Place wall
+> Enter choice: 2
+> Enter coordinates to place wall (x y): 3 3
+
+Placed wall at position (3, 3).
+
+Current Grid:
+  1 2 3 4 5
+1 . . . . .
+2 . . X . .
+3 . . # . .
+4 . . . O .
+5 . . . . .
+```
+
+**Player 1's Turn:**
+
+```
+Player 1 (X), choose your action:
+1. Move token
+2. Place wall
+> Enter choice: 2
+> Enter coordinates to place wall (x y): 4 4
+
+Placed wall at position (4, 4).
+
+Current Grid:
+  1 2 3 4 5
+1 . . . . .
+2 . . X . .
+3 . . # . .
+4 . . . # .
+5 . . . . .
+```
+
+**Player 2's Turn:**
+
+```
+Player 2 (O), choose your action:
+1. Move token
+2. Place wall
+> Enter choice: 1
+> Enter move direction (up/down/left/right): right
+
+Moved O to position (4, 5).
+
+Current Grid:
+  1 2 3 4 5
+1 . . . . .
+2 . . X . .
+3 . . # . .
+4 . . . # O
+5 . . . . .
+```
+
+**Player 1's Turn:**
+
+```
+Player 1 (X), choose your action:
+1. Move token
+2. Place wall
+> Enter choice: 2
+> Enter coordinates to place wall (x y): 4 5
+
+Placed wall at position (4, 5).
+
+Current Grid:
+  1 2 3 4 5
+1 . . . . .
+2 . . X . .
+3 . . # . .
+4 . . . # #
+5 . . . . .
+```
+
+**Player 2's Turn:**
+
+```
+Player 2 (O), choose your action:
+1. Move token
+2. Place wall
+> Enter choice: 1
+> No legal moves available!
+
+Player 2 cannot move. Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Balance Offense and Defense:**
+  - Decide when to move towards your opponent versus when to place walls to block them.
+- **Control the Center:**
+  - Occupying central positions can give you more options to move and place walls effectively.
+- **Predict Opponent's Moves:**
+  - Anticipate where your opponent might move and plan your wall placements accordingly.
+- **Avoid Self-Trapping:**
+   - Be cautious not to limit your own movement while trying to trap your opponent.
+- **Resource Management:**
+   - Since walls are unlimited, focus on strategic placement rather than quantity.
+
+---
+
+By understanding these rules and employing strategic thinking, players can enjoy a competitive and engaging experience with **Grid Lock**. The game is simple to code and play on a command-line interface, providing quick matches where skillful play is rewarded with victory.

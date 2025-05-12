@@ -1,0 +1,315 @@
+# Number Duel Rule Book
+
+## Objective
+
+**Be the first player to reduce your opponent's Health Points (HP) to zero** by strategically selecting numbers to attack while managing your own HP. Predict your opponent's moves to maximize damage and avoid self-harm.
+
+---
+
+## Setup
+
+- **Health Points (HP):** Each player starts with **10 HP**.
+- **Number Choices:** The numbers **1**, **2**, and **3** are available for selection each round.
+- **Players:**
+  - **Player 1**
+  - **Player 2**
+
+---
+
+## Game Components
+
+1. **Health Point (HP) Tracker:**
+   - A simple counter for each player that records their current HP.
+2. **Number Selection Mechanism:**
+   - Players choose a number from **1** to **3** each turn.
+3. **Command-Line Interface:**
+   - Players input their chosen numbers.
+   - The interface displays results and updates HP after each round.
+
+---
+
+## Turns
+
+- **Rounds:**
+  - The game progresses in rounds.
+  - Each round consists of both players taking their turn simultaneously.
+- **Turn Structure:**
+  1. **Secret Selection:**
+     - Each player **privately** chooses a number (**1**, **2**, or **3**).
+  2. **Reveal:**
+     - Both players reveal their chosen numbers at the same time.
+  3. **Resolve Actions:**
+     - Apply the rules to adjust HP based on the chosen numbers.
+  4. **Update HP:**
+     - Players' HP are updated accordingly.
+  5. **Check for Game End:**
+     - If a player's HP is reduced to zero or below, the game ends.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- **Available Numbers:** Each player can choose an integer between **1** and **3** (inclusive) each turn.
+- **Secret Choice:** Players make their selections without revealing them to the opponent until both have chosen.
+
+### 2. Revealing Choices
+
+- After both players have made their selections, they **simultaneously reveal** their chosen numbers.
+
+### 3. Resolving Actions
+
+#### a. Different Numbers Chosen
+
+- **Higher Number Attacks:**
+  - The player who chose the **higher number** becomes the attacker.
+  - The attacker reduces the opponent's HP by the value of **their own chosen number**.
+- **Example:**
+  - Player 1 chooses **2**, Player 2 chooses **3**.
+  - Player 2 attacks; Player 1 loses **3 HP**.
+
+#### b. Same Numbers Chosen
+
+- **Mutual Damage:**
+  - Both players take damage equal to the number they chose.
+  - Each player reduces their own HP by that amount.
+- **Example:**
+  - Both players choose **2**.
+  - Both players lose **2 HP**.
+
+### 4. Health Points (HP)
+
+- **HP Reduction:**
+  - HP is reduced according to the outcome of each round.
+- **No HP Overflow:**
+  - Players' HP cannot exceed the starting value of **10 HP**.
+- **Elimination:**
+  - If a player's HP drops to **zero or below**, they are eliminated, and the opponent wins.
+
+### 5. Game End Conditions
+
+- **Victory:**
+  - The game ends immediately when a player's HP reaches **zero or below**.
+  - The opponent is declared the winner.
+- **No Draws:**
+  - The game cannot end in a draw; there will always be a winner.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - Reduce your opponent's HP to **zero or below**.
+- **Losing the Game:**
+  - If your own HP is reduced to **zero or below**, you lose.
+- **No Point Tracking:**
+  - The game outcome is solely based on the remaining HP; no additional scoring system is required.
+
+---
+
+## Examples
+
+### Example Scenario
+
+**Initial HP:**
+- Player 1: **10 HP**
+- Player 2: **10 HP**
+
+#### Round 1
+
+- **Selections:**
+  - Player 1 chooses **2**.
+  - Player 2 chooses **3**.
+- **Reveal:**
+  - Both players reveal their numbers.
+- **Outcome:**
+  - Numbers are different; Player 2 has the higher number.
+  - Player 2 attacks; Player 1 loses **3 HP**.
+- **Updated HP:**
+  - Player 1: **7 HP**
+  - Player 2: **10 HP**
+
+#### Round 2
+
+- **Selections:**
+  - Player 1 chooses **3**.
+  - Player 2 chooses **3**.
+- **Reveal:**
+  - Both players reveal their numbers.
+- **Outcome:**
+  - Numbers are the same.
+  - Both players take **3 HP** damage.
+- **Updated HP:**
+  - Player 1: **4 HP**
+  - Player 2: **7 HP**
+
+#### Round 3
+
+- **Selections:**
+  - Player 1 chooses **1**.
+  - Player 2 chooses **2**.
+- **Reveal:**
+  - Both players reveal their numbers.
+- **Outcome:**
+  - Numbers are different; Player 2 has the higher number.
+  - Player 2 attacks; Player 1 loses **2 HP**.
+- **Updated HP:**
+  - Player 1: **2 HP**
+  - Player 2: **7 HP**
+
+#### Round 4
+
+- **Selections:**
+  - Player 1 chooses **3**.
+  - Player 2 chooses **1**.
+- **Reveal:**
+  - Both players reveal their numbers.
+- **Outcome:**
+  - Numbers are different; Player 1 has the higher number.
+  - Player 1 attacks; Player 2 loses **3 HP**.
+- **Updated HP:**
+  - Player 1: **2 HP**
+  - Player 2: **4 HP**
+
+#### Round 5
+
+- **Selections:**
+  - Player 1 chooses **2**.
+  - Player 2 chooses **2**.
+- **Reveal:**
+  - Both players reveal their numbers.
+- **Outcome:**
+  - Numbers are the same.
+  - Both players take **2 HP** damage.
+- **Updated HP:**
+  - Player 1: **0 HP**
+  - Player 2: **2 HP**
+- **Game Over:**
+  - Player 1's HP has reached zero.
+  - **Player 2 wins the game!**
+
+---
+
+## Command-Line Interaction Example
+
+Below is an example of how the game could play out in a command-line interface.
+
+### Sample Game Play
+
+```
+--- Number Duel ---
+
+Both players start with 10 HP.
+
+[Round 1]
+Player 1, enter your number (1-3): *secretly enters 2*
+Player 2, enter your number (1-3): *secretly enters 3*
+Both players have chosen.
+
+Revealing numbers...
+Player 1 chose: 2
+Player 2 chose: 3
+
+Player 2 attacks! Player 1 loses 3 HP.
+
+Current HP:
+Player 1: 7 HP
+Player 2: 10 HP
+
+Press Enter to continue to the next round...
+
+[Round 2]
+Player 1, enter your number (1-3): *secretly enters 3*
+Player 2, enter your number (1-3): *secretly enters 3*
+Both players have chosen.
+
+Revealing numbers...
+Player 1 chose: 3
+Player 2 chose: 3
+
+Both players chose the same number.
+Both players take 3 HP damage.
+
+Current HP:
+Player 1: 4 HP
+Player 2: 7 HP
+
+Press Enter to continue to the next round...
+
+[Round 3]
+Player 1, enter your number (1-3): *secretly enters 1*
+Player 2, enter your number (1-3): *secretly enters 2*
+Both players have chosen.
+
+Revealing numbers...
+Player 1 chose: 1
+Player 2 chose: 2
+
+Player 2 attacks! Player 1 loses 2 HP.
+
+Current HP:
+Player 1: 2 HP
+Player 2: 7 HP
+
+Press Enter to continue to the next round...
+
+[Round 4]
+Player 1, enter your number (1-3): *secretly enters 3*
+Player 2, enter your number (1-3): *secretly enters 1*
+Both players have chosen.
+
+Revealing numbers...
+Player 1 chose: 3
+Player 2 chose: 1
+
+Player 1 attacks! Player 2 loses 3 HP.
+
+Current HP:
+Player 1: 2 HP
+Player 2: 4 HP
+
+Press Enter to continue to the next round...
+
+[Round 5]
+Player 1, enter your number (1-3): *secretly enters 2*
+Player 2, enter your number (1-3): *secretly enters 2*
+Both players have chosen.
+
+Revealing numbers...
+Player 1 chose: 2
+Player 2 chose: 2
+
+Both players chose the same number.
+Both players take 2 HP damage.
+
+Current HP:
+Player 1: 0 HP
+Player 2: 2 HP
+
+Game Over!
+Player 2 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Predict Opponent's Moves:**
+  - Try to anticipate the number your opponent will choose based on previous rounds.
+- **Manage Risk:**
+  - Choosing a higher number can deal more damage but risks taking self-damage if the opponent chooses the same number.
+- **Use Bluffing:**
+  - Vary your choices to keep your opponent guessing.
+- **Monitor HP Levels:**
+  - Adjust your strategy based on remaining HP; play more cautiously when HP is low.
+
+---
+
+## Conclusion
+
+**Number Duel** is a quick, strategic game that combines elements of prediction, risk management, and psychological warfare. It's simple to learn and easy to code, making it ideal for a command-line interface. Skilled players who can read their opponent and make calculated choices will consistently come out on top.
+
+---
+
+Enjoy the game and may the best strategist win!

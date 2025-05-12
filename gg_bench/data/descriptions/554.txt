@@ -1,0 +1,216 @@
+# Prime Claim: A Strategic Number Game
+
+## Objective
+
+**Prime Claim** is a two-player turn-based strategy game where players compete to accumulate the highest total score by claiming numbers from a shared pool. Players must strategically choose numbers to maximize their own score while minimizing their opponent's potential gains. The player with the highest total score at the end of the game wins.
+
+---
+
+## Setup
+
+1. **Number Pool**: Create a list of consecutive integers from **1** to **25**. These numbers are unclaimed at the start of the game.
+
+2. **Scoreboard**: Initialize both players' scores to **0**.
+
+3. **Player Assignment**: Decide which player goes first. This can be done by mutual agreement or by a random method such as flipping a coin.
+
+---
+
+## Game Components
+
+- **Numbers (1-25)**: The core elements available for claiming. Each number has unique properties:
+  - **Prime Numbers**: Numbers greater than 1 that have no positive divisors other than 1 and themselves.
+  - **Composite Numbers**: Numbers greater than 1 that are not prime and can be factored into smaller positive integers.
+
+- **Scoreboard**: A running tally of each player's accumulated points.
+
+---
+
+## Turns
+
+- The game is played in **alternating turns**.
+- **Turn Structure**:
+  1. **Claiming a Number**: The active player selects any unclaimed number from the number pool.
+  2. **Scoring**:
+     - **If a Prime Number is Claimed**:
+       - The player **adds the value of the prime number** to their own score.
+     - **If a Composite Number is Claimed**:
+       - The player **adds the value of the composite number** to their own score.
+       - **Their opponent** receives points equal to the **sum of the prime factors** of the claimed composite number.
+  3. **Update the Number Pool**: Remove the claimed number from the list of available numbers.
+- The turn then passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Claiming Numbers**:
+   - Players can **only claim unclaimed numbers** from the number pool.
+   - **All numbers from 1 to 25** are available at the start.
+
+2. **Scoring Details**:
+   - **Prime Numbers**:
+     - When a player claims a prime number (e.g., 2, 3, 5, 7, 11, etc.), they **receive points equal to that number**.
+     - The opponent **receives no points**.
+   - **Composite Numbers**:
+     - When a player claims a composite number (e.g., 4, 6, 8, 9, 10, etc.), they **receive points equal to that number**.
+     - The opponent **receives points equal to the sum of all prime factors** of that composite number.
+     - **Example**: Claiming **6**
+       - Active player gains **6 points**.
+       - Opponent gains **5 points** (since 6 = 2 × 3; 2 + 3 = 5).
+
+3. **Special Cases**:
+   - **Number 1**:
+     - The number 1 is neither prime nor composite.
+     - Claiming **1** gives **no points** to either player.
+     - It may be strategically claimed to deny the opponent certain moves.
+
+4. **End of the Game**:
+   - The game ends when **all numbers have been claimed**.
+   - The player with the **highest total score** wins the game.
+
+5. **Winning the Game**:
+   - There are **no draws** in Prime Claim. If both players have the same score at the end, the **last player to have claimed a number** is declared the winner, encouraging players to strategize throughout the game.
+
+---
+
+## Scoring
+
+- **Player's Score**:
+  - **Accumulates** throughout the game based on the numbers they claim.
+- **Opponent's Score**:
+  - Increases when the active player claims a composite number.
+
+- **Example Scoring Breakdown**:
+
+  | Number Claimed | Number Type     | Claimer's Gain | Opponent's Gain | Prime Factors            |
+  |----------------|-----------------|----------------|-----------------|--------------------------|
+  | 7              | Prime           | +7             | +0              | N/A                      |
+  | 9              | Composite       | +9             | +6              | 3 × 3 (3 + 3 = 6)        |
+  | 15             | Composite       | +15            | +8             | 3 × 5 (3 + 5 = 8)        |
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Initial State**:
+- Number Pool: 1 to 25
+- Player 1's Score: 0
+- Player 2's Score: 0
+
+**Turn 1**:
+- **Player 1** claims **13** (a prime number).
+  - **Player 1's Score**: 0 + 13 = **13**
+  - **Player 2's Score**: **0**
+  - Number Pool: 1-12, 14-25
+
+**Turn 2**:
+- **Player 2** claims **15** (a composite number).
+  - Prime factors of 15 are 3 and 5.
+  - **Player 2's Score**: 0 + 15 = **15**
+  - **Player 1's Score**: 13 + (3 + 5) = **21**
+  - Number Pool: 1-12, 14, 16-25
+
+**Turn 3**:
+- **Player 1** claims **7** (a prime number).
+  - **Player 1's Score**: 21 + 7 = **28**
+  - **Player 2's Score**: **15**
+  - Number Pool: 1-6, 8-12, 14, 16-25
+
+**Turn 4**:
+- **Player 2** claims **8** (a composite number).
+  - Prime factors of 8 are 2, 2, and 2 (since 8 = 2 × 2 × 2).
+  - Sum of prime factors: 2 + 2 + 2 = 6
+  - **Player 2's Score**: 15 + 8 = **23**
+  - **Player 1's Score**: 28 + 6 = **34**
+  - Number Pool: 1-6, 9-12, 14, 16-25
+
+**Game Continues Until All Numbers Are Claimed**
+
+---
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line implementation:
+
+#### Game Start:
+
+```
+Welcome to Prime Claim!
+
+Numbers available to claim: 1 to 25
+Player 1's Score: 0
+Player 2's Score: 0
+
+Player 1, it's your turn.
+Enter a number to claim:
+```
+
+#### Player Input:
+
+```
+>> 13
+```
+
+#### System Response:
+
+```
+Player 1 claimed 13 (Prime).
+Player 1 gains 13 points.
+Player 2 gains 0 points.
+
+Scores:
+Player 1: 13
+Player 2: 0
+
+Numbers remaining: [1-12, 14-25]
+
+Player 2, it's your turn.
+Enter a number to claim:
+```
+
+#### Player 2 Input:
+
+```
+>> 15
+```
+
+#### System Response:
+
+```
+Player 2 claimed 15 (Composite).
+Player 2 gains 15 points.
+Player 1 gains 8 points from prime factors of 15 (3 + 5).
+
+Scores:
+Player 1: 13 + 8 = 21
+Player 2: 0 + 15 = 15
+
+Numbers remaining: [1-12, 14, 16-25]
+
+Player 1, it's your turn.
+Enter a number to claim:
+```
+
+#### Game Continues...
+
+---
+
+## Strategic Considerations
+
+- **Prioritize Prime Numbers**: Claiming prime numbers gives you points without benefiting your opponent.
+- **Composite Numbers as Tactical Moves**:
+  - **High-Value Composites**: Weigh the points you gain against the points your opponent will receive from the prime factors.
+  - **Denying Primes**: Sometimes it's beneficial to claim a composite number if its prime factors are low, denying the opponent access to future moves.
+- **Monitoring Remaining Numbers**: Keep track of which numbers remain unclaimed to plan your strategy effectively.
+- **Endgame Planning**: Anticipate the scores towards the end of the game to make moves that secure your lead or overcome a deficit.
+
+---
+
+## Conclusion
+
+Prime Claim is a battle of wits and strategy, where every move can tip the scales. By carefully selecting which numbers to claim, players can maximize their own scores while influencing their opponent's gains. With simple rules and deep strategic potential, Prime Claim offers an engaging and competitive experience in a command-line setting.
+
+Enjoy the game, and may the best strategist win!

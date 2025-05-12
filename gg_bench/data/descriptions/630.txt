@@ -1,0 +1,185 @@
+# Binary Battle: Rule Book
+
+## Objective
+
+**Binary Battle** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to change your own 4-bit binary number to match a predetermined target binary number. Players achieve victory by skillfully flipping bits in their own and their opponent's binary numbers while anticipating and countering their opponent's moves. There are no draws in Binary Battle; the game continues until one player wins.
+
+## Setup
+
+1. **Initialize Players' Binary Numbers**: Both players start with their own 4-bit binary number set to `0000`.
+2. **Determine Target Binary Number**: Secretly agree upon or randomly generate a 4-bit target binary number (e.g., `1010`). This number remains constant throughout the game and is known to both players.
+3. **Decide Turn Order**: Choose who will take the first turn. This can be decided by a coin toss or any mutual agreement.
+
+## Game Components
+
+- **Players' Binary Numbers**: Each player has their own 4-bit binary number, displayed as a sequence of four bits (e.g., `0110`). Bits are indexed from left to right as positions 1 to 4.
+- **Target Binary Number**: A 4-bit binary number that players aim to match with their own binary number to win the game.
+- **Bit Positions**:
+  - **Position 1**: Leftmost bit
+  - **Position 2**: Second bit from the left
+  - **Position 3**: Third bit from the left
+  - **Position 4**: Rightmost bit
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player chosen during setup.
+2. **Actions During a Turn**:
+   - **Select a Binary Number to Modify**: Choose either your own or your opponent's binary number to modify.
+   - **Flip a Bit**: Select one bit at any position (1 to 4) in the chosen binary number and flip it. Flipping changes a `0` to a `1` or a `1` to a `0`.
+3. **Announce the Move**: Clearly state which binary number you're modifying, the bit position you're flipping, and the new state of the binary number after the flip.
+4. **Check for Victory**: After the move, check if your own binary number matches the target binary number. If it does, you win the game.
+5. **End of Turn**: If no victory is achieved, the turn passes to the other player.
+
+## Rules and Mechanics
+
+- **Flipping Bits**:
+  - You may flip **only one bit** per turn.
+  - You can choose to flip a bit in **either** your own binary number or your opponent's.
+- **Valid Moves**:
+  - Flipping must occur within the 4-bit range (positions 1 to 4).
+  - Only existing bits can be flipped (no adding or removing bits).
+- **Victory Condition**:
+  - A player wins immediately when their **own** binary number exactly matches the target binary number after their turn.
+  - Matching the target with the opponent's binary number does not result in a win.
+- **No Skipping Turns**:
+  - Players must make a move on their turn; skipping is not allowed.
+- **No Draws**:
+  - The game continues indefinitely until a player wins.
+
+## Scoring
+
+- **Winning the Game**: Victory is achieved by being the first to match your own binary number to the target binary number.
+- **No Points System**: There is no points or scoring system beyond achieving the objective.
+
+## Examples
+
+### Example Game Playthrough
+
+**Setup**:
+
+- Target Binary Number: `1010`
+- Player 1's Binary Number: `0000`
+- Player 2's Binary Number: `0000`
+
+**Turn 1**:
+
+- **Player 1's Move**:
+  - Chooses to flip their own binary number.
+  - Flips bit at position 1 (from `0` to `1`).
+  - Player 1's Binary Number is now `1000`.
+  - Checks for victory: `1000` vs. `1010` → No match.
+- **Announces**: "I flip my bit at position 1. My number is now 1000."
+
+**Turn 2**:
+
+- **Player 2's Move**:
+  - Chooses to flip Player 1's binary number to hinder progress.
+  - Flips bit at position 1 of Player 1's number (from `1` to `0`).
+  - Player 1's Binary Number is now `0000`.
+  - Checks for victory: Player 2's own number has not changed.
+- **Announces**: "I flip your bit at position 1. Your number is now 0000."
+
+**Turn 3**:
+
+- **Player 1's Move**:
+  - Chooses to flip their own binary number again.
+  - Flips bit at position 2 (from `0` to `1`).
+  - Player 1's Binary Number is now `0100`.
+  - Checks for victory: `0100` vs. `1010` → No match.
+- **Announces**: "I flip my bit at position 2. My number is now 0100."
+
+**Turn 4**:
+
+- **Player 2's Move**:
+  - Decides to advance their own binary number.
+  - Flips bit at position 1 (from `0` to `1`).
+  - Player 2's Binary Number is now `1000`.
+  - Checks for victory: `1000` vs. `1010` → No match.
+- **Announces**: "I flip my bit at position 1. My number is now 1000."
+
+**Turn 5**:
+
+- **Player 1's Move**:
+  - Chooses to flip their own binary number.
+  - Flips bit at position 3 (from `0` to `1`).
+  - Player 1's Binary Number is now `0110`.
+  - Checks for victory: `0110` vs. `1010` → No match.
+- **Announces**: "I flip my bit at position 3. My number is now 0110."
+
+**Turn 6**:
+
+- **Player 2's Move**:
+  - Chooses to flip their own binary number.
+  - Flips bit at position 3 (from `0` to `1`).
+  - Player 2's Binary Number is now `1010`.
+  - Checks for victory: `1010` vs. `1010` → Match!
+- **Announces**: "I flip my bit at position 3. My number is now 1010. I win!"
+
+**Result**: Player 2 wins the game by matching their binary number to the target `1010`.
+
+### Strategic Considerations
+
+- **Offense vs. Defense**:
+  - Decide when to advance your own number or hinder your opponent.
+  - Flipping your own bits moves you toward victory but may leave you vulnerable.
+  - Flipping your opponent's bits can slow them down but doesn't advance your own progress.
+- **Predicting Opponent's Moves**:
+  - Anticipate which bits your opponent needs to flip and counteract them.
+  - Monitor both binary numbers to plan effectively.
+- **Optimal Paths**:
+  - Plan the minimum number of moves required to reach the target number.
+  - Balance between speed and preventing your opponent's progress.
+
+## Command-Line Interactions
+
+### Input Format
+
+Players will input their moves in a consistent format:
+
+```
+[Player Number] [Target Player's Number] [Bit Position to Flip]
+```
+
+- **Player Number**: Indicates whose turn it is (`1` or `2`).
+- **Target Player's Number**: The binary number to modify (`1` for your own, `2` for opponent's).
+- **Bit Position to Flip**: A number from `1` to `4`.
+
+### Example Commands
+
+- Player 1 flips their own bit at position 1:
+
+  ```
+  1 1 1
+  ```
+
+- Player 2 flips Player 1's bit at position 2:
+
+  ```
+  2 1 2
+  ```
+
+### Sample Turn Interaction
+
+**Player 1's Turn**:
+
+- **Input**: `1 1 1`
+- **Output**:
+  ```
+  Player 1 flips bit 1 of their own number.
+  Player 1's number is now: 1000
+  ```
+
+**Player 2's Turn**:
+
+- **Input**: `2 1 1`
+- **Output**:
+  ```
+  Player 2 flips bit 1 of Player 1's number.
+  Player 1's number is now: 0000
+  ```
+
+## Conclusion
+
+Binary Battle is a simple yet strategically rich game that tests players' ability to think ahead and anticipate their opponent's moves. With straightforward rules and quick gameplay, it's perfect for command-line interface play and can be easily coded for practice or entertainment.
+
+Enjoy the battle of bits!

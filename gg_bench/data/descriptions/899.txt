@@ -1,0 +1,302 @@
+**Game Name:** Divisor Duel
+
+---
+
+### **Objective**
+
+Become the first player to manipulate a shared number so that it is exactly divisible by the target divisor. Players achieve victory by strategically choosing mathematical operations to reach a number divisible by the specified target, thereby demonstrating foresight and planning to outmaneuver their opponent.
+
+---
+
+### **Setup**
+
+- **Starting Number (N):** The game begins with a shared positive integer set to **1**.
+- **Target Divisor (D):** A positive integer chosen before the game starts (e.g., **13**). This is the number that players aim to make `N` divisible by.
+- **Players:** Two players participate, alternating turns.
+
+---
+
+### **Game Components**
+
+- **Shared Number (N):** A positive integer visible to both players, updated each turn based on player actions.
+- **Operations:**
+  - **Addition (+1):** Increase `N` by 1.
+  - **Multiplication (×2):** Multiply `N` by 2.
+- **Display:** A command-line interface displaying the current value of `N`, available operations, and prompts for player input.
+
+---
+
+### **Turns**
+
+1. **Turn Order:** Players take turns alternately, starting with Player 1.
+2. **Player Actions:** On their turn, a player must choose one of the two available operations to perform on `N`:
+   - **Add 1:** `N = N + 1`
+   - **Multiply by 2:** `N = N × 2`
+3. **Updating `N`:** After the player selects an operation, `N` is updated immediately.
+4. **End of Turn:** The turn ends after `N` has been updated and checked for divisibility by `D`.
+
+---
+
+### **Rules and Mechanics**
+
+- **Allowed Operations:**
+  - Players can only choose **one** operation per turn.
+  - Operations must result in `N` remaining a positive integer.
+- **Winning the Game:**
+  - If, after a player's turn, the updated `N` is exactly divisible by `D` (i.e., `N % D == 0`), that player wins the game.
+- **Continuation:**
+  - If `N` is not divisible by `D`, the game continues, and the next player takes their turn.
+- **Prohibitions:**
+  - No operation other than the two specified is allowed.
+  - Players cannot skip their turn or pass; an operation must be performed.
+- **No Draws:**
+  - The game continues until one player wins; there is no mechanism for a draw.
+
+---
+
+### **Scoring**
+
+- **Victory:** The winner is the player who first makes `N` divisible by `D`.
+- **No Point System:** There is no point tracking beyond determining the winner of each game.
+- **Match Play (Optional):**
+  - Players may choose to play multiple rounds.
+  - Keep track of wins to determine an overall champion over several games.
+
+---
+
+### **Examples**
+
+#### **Example Game**
+
+- **Target Divisor (D):** 13
+- **Starting Number (N):** 1
+
+**Turn 1: Player 1**
+
+- **Current `N`:** 1
+- **Choices:**
+  - Add 1 → `N = 1 + 1 = 2`
+  - Multiply by 2 → `N = 1 × 2 = 2`
+- **Decision:** Adds 1 (arbitrary choice since both operations result in 2)
+- **Updated `N`:** 2
+- **Check for Win:** 2 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 2: Player 2**
+
+- **Current `N`:** 2
+- **Choices:**
+  - Add 1 → `N = 2 + 1 = 3`
+  - Multiply by 2 → `N = 2 × 2 = 4`
+- **Decision:** Multiplies by 2
+- **Updated `N`:** 4
+- **Check for Win:** 4 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 3: Player 1**
+
+- **Current `N`:** 4
+- **Choices:**
+  - Add 1 → `N = 4 + 1 = 5`
+  - Multiply by 2 → `N = 4 × 2 = 8`
+- **Decision:** Adds 1
+- **Updated `N`:** 5
+- **Check for Win:** 5 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 4: Player 2**
+
+- **Current `N`:** 5
+- **Choices:**
+  - Add 1 → `N = 5 + 1 = 6`
+  - Multiply by 2 → `N = 5 × 2 = 10`
+- **Decision:** Multiplies by 2
+- **Updated `N`:** 10
+- **Check for Win:** 10 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 5: Player 1**
+
+- **Current `N`:** 10
+- **Choices:**
+  - Add 1 → `N = 10 + 1 = 11`
+  - Multiply by 2 → `N = 10 × 2 = 20`
+- **Decision:** Adds 1
+- **Updated `N`:** 11
+- **Check for Win:** 11 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 6: Player 2**
+
+- **Current `N`:** 11
+- **Choices:**
+  - Add 1 → `N = 11 + 1 = 12`
+  - Multiply by 2 → `N = 11 × 2 = 22`
+- **Decision:** Multiplies by 2
+- **Updated `N`:** 22
+- **Check for Win:** 22 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 7: Player 1**
+
+- **Current `N`:** 22
+- **Choices:**
+  - Add 1 → `N = 22 + 1 = 23`
+  - Multiply by 2 → `N = 22 × 2 = 44`
+- **Decision:** Multiplies by 2
+- **Updated `N`:** 44
+- **Check for Win:** 44 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 8: Player 2**
+
+- **Current `N`:** 44
+- **Choices:**
+  - Add 1 → `N = 44 + 1 = 45`
+  - Multiply by 2 → `N = 44 × 2 = 88`
+- **Decision:** Adds 1
+- **Updated `N`:** 45
+- **Check for Win:** 45 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 9: Player 1**
+
+- **Current `N`:** 45
+- **Choices:**
+  - Add 1 → `N = 45 + 1 = 46`
+  - Multiply by 2 → `N = 45 × 2 = 90`
+- **Decision:** Adds 1
+- **Updated `N`:** 46
+- **Check for Win:** 46 % 13 == 0 (Since 46 ÷ 13 = 3.538..., but actually 46 ÷13 = 3.538, so this is incorrect; 46 % 13 = 7, so N is not divisible by 13).
+
+Correction: 46 % 13 = 7 (Not divisible). So let's adjust the example.
+
+---
+
+**Turn 9: Player 1**
+
+- **Current `N`:** 45
+- **Choices:**
+  - Add 1 → `N = 45 + 1 = 46`
+  - Multiply by 2 → `N = 45 × 2 = 90`
+- **Decision:** Multiplies by 2
+- **Updated `N`:** 90
+- **Check for Win:** 90 % 13 ≠ 0 → Game continues.
+
+---
+
+**Turn 10: Player 2**
+
+- **Current `N`:** 90
+- **Choices:**
+  - Add 1 → `N = 90 + 1 = 91`
+  - Multiply by 2 → `N = 90 × 2 = 180`
+- **Decision:** Adds 1
+- **Updated `N`:** 91
+- **Check for Win:** 91 % 13 == 0 (Since 91 ÷ 13 = 7)
+
+**Result:** Player 2 wins by making `N` equal to 91, which is divisible by 13.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+```
+Welcome to Divisor Duel!
+
+Target Divisor (D): 13
+Starting Number (N): 1
+
+Player 1's turn.
+Current N: 1
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 
+```
+
+**Sample Turns**
+
+**Player 1:**
+
+```
+Enter choice (1 or 2): 1
+You chose to add 1.
+Updated N: 2
+
+N is not divisible by 13. Game continues.
+
+----------------------------------------
+```
+
+**Player 2:**
+
+```
+Player 2's turn.
+Current N: 2
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+You chose to multiply by 2.
+Updated N: 4
+
+N is not divisible by 13. Game continues.
+
+----------------------------------------
+```
+
+_(Subsequent turns continue in this pattern.)_
+
+**Winning Turn:**
+
+```
+Player 2's turn.
+Current N: 90
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 1
+You chose to add 1.
+Updated N: 91
+
+Congratulations! N is divisible by 13.
+Player 2 wins the game!
+```
+
+---
+
+### **Strategies for Players**
+
+- **Planning Ahead:** Consider the possible results of both operations to avoid setting up your opponent for a win.
+- **Counting Moves:** Keep track of the multiples of the target divisor to aim for a winning number.
+- **Forcing Moves:** Manipulate `N` to limit your opponent's options, potentially forcing them into moves that allow you to win on your next turn.
+
+---
+
+### **Ensuring Fair Play**
+
+- **Input Validation:** The game should validate player inputs to ensure they are selecting valid options.
+- **Visible Information:** Both players should always be aware of the current value of `N` and the target divisor `D`.
+- **Turn Indicators:** Clearly indicate which player's turn it is to prevent confusion.
+
+---
+
+### **Customization Options**
+
+- **Changing Target Divisor:** Players can agree to use a different target divisor for variety or increased difficulty.
+- **Starting Number:** For advanced play, start with a different initial `N` to change the game's dynamics.
+
+---
+
+**Divisor Duel** offers a simple yet strategic experience perfect for a command-line interface. By combining basic arithmetic operations with strategic planning, players engage in a battle of wits where foresight and calculation determine the victor. Enjoy the challenge and may the best strategist win!

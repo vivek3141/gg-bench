@@ -1,0 +1,261 @@
+# Digit Conquest: Rule Book
+
+## Objective
+
+**Digit Conquest** is a strategic two-player, turn-based game where players compete to be the first to reach **exactly 50 points**. Players accumulate points by drawing digits and deciding whether to add to their score or subtract from their opponent's score. Strategic choices and foresight are key to victory.
+
+## Setup
+
+1. **Shared Deck**: Create a shared deck consisting of digits from **1 to 9**, with each digit appearing **four times**. This results in a deck of **36 cards**.
+2. **Player Scores**: Both players start with a personal score of **0**.
+3. **Game Start**: Decide which player goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Deck of Digits (1-9)**: Each digit (1 through 9) appears four times, totaling 36 cards.
+  - **Appearance**: Each card simply displays a single digit from 1 to 9.
+  - **Functionality**: Digits are used to adjust player scores.
+- **Player Scores**: A numerical value representing each player's current total, starting at 0.
+- **Command-Line Interface**: Players interact with the game by entering commands to draw cards and adjust scores.
+
+## Turns
+
+1. **Drawing a Card**:
+   - At the beginning of your turn, **draw a digit** from the shared deck.
+   - The draw can be **random** or, if coding allows, the player can **choose** from available digits.
+2. **Action Options**:
+   - **Option 1**: **Add** the drawn digit to your own score.
+   - **Option 2**: **Subtract** the drawn digit from your opponent's score.
+     - Your opponent's score **cannot go below zero**.
+3. **End of Turn**:
+   - After performing one of the above actions, the turn passes to the other player.
+4. **Deck Depletion**:
+   - If the deck runs out of cards before either player reaches 50, reshuffle the discard pile to form a new deck.
+
+## Rules and Mechanics
+
+- **Valid Moves**:
+  - You **cannot** make a move that would cause your own score to exceed **50**.
+  - If adding a digit to your score would exceed 50, you **must** subtract it from your opponent's score.
+  - If neither adding to your score nor subtracting from your opponent's score is possible (e.g., both scores are in positions where they cannot be adjusted with the drawn digit), **discard** the digit and end your turn.
+- **Score Limits**:
+  - A player's score **cannot exceed 50**.
+  - A player's score **cannot go below 0**.
+- **Winning the Game**:
+  - The first player to reach **exactly 50 points** wins the game.
+- **No Draws**:
+  - The game continues until one player reaches exactly 50 points; there are no draws.
+- **Strategic Play**:
+  - Players must decide when it's more advantageous to boost their own score or hinder their opponent's progress.
+
+## Scoring
+
+- **Tracking Scores**:
+  - Keep a running total of each player's score after every turn.
+  - Scores should be clearly displayed after each action for both players.
+- **Victory Condition**:
+  - Monitor each player's score to check for the winning condition (exactly 50 points) at the **end of every turn**.
+
+## Examples
+
+### Example Game Play
+
+**Starting the Game**:
+
+- Both players start with **0 points**.
+- The deck is shuffled.
+
+---
+
+**Turn 1**:
+
+- **Player 1** draws a **7**.
+  - Options:
+    - Add 7 to own score (0 + 7 = **7**).
+    - Subtract 7 from opponent's score (not useful as opponent's score is 0).
+  - **Action**: Adds 7 to own score.
+  - **Scores**: Player 1 = 7, Player 2 = 0.
+
+---
+
+**Turn 2**:
+
+- **Player 2** draws a **5**.
+  - Options:
+    - Add 5 to own score (0 + 5 = **5**).
+    - Subtract 5 from opponent's score (7 - 5 = **2**).
+  - **Action**: Adds 5 to own score.
+  - **Scores**: Player 1 = 7, Player 2 = 5.
+
+---
+
+**Turn 3**:
+
+- **Player 1** draws an **8**.
+  - Options:
+    - Add 8 to own score (7 + 8 = **15**).
+    - Subtract 8 from opponent's score (5 - 8 = negative value, cannot go below 0).
+  - **Action**: Adds 8 to own score.
+  - **Scores**: Player 1 = 15, Player 2 = 5.
+
+---
+
+**Turn 4**:
+
+- **Player 2** draws a **9**.
+  - Options:
+    - Add 9 to own score (5 + 9 = **14**).
+    - Subtract 9 from opponent's score (15 - 9 = **6**).
+  - **Action**: Subtracts 9 from Player 1's score.
+  - **Scores**: Player 1 = 6, Player 2 = 5.
+
+---
+
+**Turn 5**:
+
+- **Player 1** draws a **6**.
+  - Options:
+    - Add 6 to own score (6 + 6 = **12**).
+    - Subtract 6 from opponent's score (5 - 6 = negative value).
+  - **Action**: Adds 6 to own score.
+  - **Scores**: Player 1 = 12, Player 2 = 5.
+
+---
+
+**Turn 6**:
+
+- **Player 2** draws a **3**.
+  - Options:
+    - Add 3 to own score (5 + 3 = **8**).
+    - Subtract 3 from opponent's score (12 - 3 = **9**).
+  - **Action**: Adds 3 to own score.
+  - **Scores**: Player 1 = 12, Player 2 = 8.
+
+---
+
+**Gameplay Continues**:
+
+- Players continue drawing digits and deciding strategically whether to add to their own score or subtract from their opponent's score.
+
+---
+
+**Final Turns**:
+
+- **Player 1** has a score of **47**.
+- **Player 1** draws a **3**.
+  - Options:
+    - Add 3 to own score (47 + 3 = **50**).
+    - Subtract 3 from opponent's score.
+  - **Action**: Adds 3 to own score.
+  - **Scores**: Player 1 = **50**, Player 2 = X.
+- **Player 1** wins the game by reaching exactly 50 points.
+
+## Command-Line Interaction Sample
+
+**Game Start**:
+
+```
+Welcome to Digit Conquest!
+Player 1 and Player 2 start with 0 points.
+```
+
+---
+
+**Player 1's Turn**:
+
+```
+Player 1's turn.
+Drawing a card...
+You drew: 7
+Choose an action:
+1. Add 7 to your score.
+2. Subtract 7 from your opponent's score.
+Enter 1 or 2: 1
+You added 7 to your score.
+Current Scores - Player 1: 7, Player 2: 0
+```
+
+---
+
+**Player 2's Turn**:
+
+```
+Player 2's turn.
+Drawing a card...
+You drew: 5
+Choose an action:
+1. Add 5 to your score.
+2. Subtract 5 from your opponent's score.
+Enter 1 or 2: 1
+You added 5 to your score.
+Current Scores - Player 1: 7, Player 2: 5
+```
+
+---
+
+**Player 1's Turn**:
+
+```
+Player 1's turn.
+Drawing a card...
+You drew: 8
+Choose an action:
+1. Add 8 to your score.
+2. Subtract 8 from your opponent's score.
+Enter 1 or 2: 1
+You added 8 to your score.
+Current Scores - Player 1: 15, Player 2: 5
+```
+
+---
+
+**Player 2's Turn**:
+
+```
+Player 2's turn.
+Drawing a card...
+You drew: 9
+Choose an action:
+1. Add 9 to your score.
+2. Subtract 9 from your opponent's score.
+Enter 1 or 2: 2
+You subtracted 9 from Player 1's score.
+Current Scores - Player 1: 6, Player 2: 5
+```
+
+---
+
+**Game Continues...**
+
+---
+
+**Winning the Game**:
+
+```
+Player 1's turn.
+Drawing a card...
+You drew: 3
+Choose an action:
+1. Add 3 to your score.
+2. Subtract 3 from your opponent's score.
+Enter 1 or 2: 1
+You added 3 to your score.
+Congratulations! You reached exactly 50 points.
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Monitor Scores**: Keep a close eye on both scores to decide the most strategic move.
+- **Prevent Opponent's Progress**: If your opponent is close to 50, prioritize subtracting points from their score.
+- **Optimal Use of High Digits**: Use higher digits to subtract from your opponent when they have more points to lose.
+- **Avoid Overloading**: Be cautious not to exceed 50; plan your additions accordingly.
+- **Card Counting**: Keep track of which digits have been used to anticipate upcoming draws.
+
+## Conclusion
+
+**Digit Conquest** is a game of balance between advancing your score and impeding your opponent. It combines simple arithmetic with strategic decision-making, ensuring an engaging and competitive experience. May the most strategic player win!
+
+---
+
+Enjoy the game!

@@ -1,0 +1,234 @@
+# Knight's Duel
+
+## Objective
+
+Be the last player able to make a legal knight move. By strategically moving your knight across the board, you aim to limit your opponent's options until they have no valid moves remaining, thereby securing victory.
+
+---
+
+## Setup
+
+- **Game Board**: An 8x8 grid representing a standard chessboard.
+- **Starting Positions**:
+  - **Player 1 (White)**: Knight starts at position **(1, 1)** (bottom-left corner of the board).
+  - **Player 2 (Black)**: Knight starts at position **(8, 8)** (top-right corner of the board).
+- **Board Status**: All squares are initially **active** and available for movement.
+
+---
+
+## Game Components
+
+- **8x8 Grid (Chessboard)**:
+  - Represented by coordinates from **(1, 1)** to **(8, 8)**.
+  - Rows are numbered from **1** at the bottom to **8** at the top.
+  - Columns are numbered from **1** on the left to **8** on the right.
+
+- **Knights**:
+  - Each player controls one knight.
+  - Knights move in an **'L'-shaped** pattern (as in chess).
+
+- **Square Status**:
+  - **Active**: Squares that knights can move to.
+  - **Removed**: Squares that have been previously occupied by a knight and cannot be used again.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, with **Player 1** moving first.
+  
+- **Player Actions on a Turn**:
+  1. **Determine Legal Moves**:
+     - Identify all active squares your knight can legally move to.
+  2. **Move the Knight**:
+     - Select one of the legal moves and move your knight to the new position.
+  3. **Update Board Status**:
+     - The square your knight lands on becomes **removed** and cannot be used again.
+  4. **End Turn**:
+     - Pass control to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Knight's Move**:
+  - The knight moves in an **'L'-shape**:
+    - Two squares in one direction (vertical or horizontal), then one square perpendicular.
+    - Or one square in one direction, then two squares perpendicular.
+  - Example Moves from position **(4, 4)**:
+    - To **(6, 5)**, **(6, 3)**, **(2, 5)**, **(2, 3)**, **(5, 6)**, **(3, 6)**, **(5, 2)**, **(3, 2)**.
+
+- **Legal Moves**:
+  - A move is legal if:
+    - The destination square is within the bounds of the board (coordinates between **1** and **8**).
+    - The destination square is **active** (not removed).
+    - The destination square is **not occupied** by the opponent's knight.
+
+- **Square Removal**:
+  - After moving, the destination square becomes **removed**.
+  - Removed squares cannot be landed on for the remainder of the game.
+
+- **Occupied Squares**:
+  - Knights **cannot** move to a square occupied by the opponent's knight.
+  - Knights **can** move over removed or occupied squares but cannot land on them.
+
+### Additional Rules
+
+- **Mandatory Movement**:
+  - Players **must** move their knight on their turn if a legal move exists.
+  - If a player has no legal moves, they **lose** the game.
+
+- **No Passing**:
+  - Players **cannot** pass their turn; they must move if possible.
+
+- **Victory Condition**:
+  - The game ends when a player cannot make a legal move on their turn.
+  - The opposing player is declared the **winner**.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who forces their opponent into a position with no legal moves **wins**.
+  
+- **No Points System**:
+  - There is no point tracking; the game is won by immobilizing the opponent's knight.
+
+---
+
+## Example Gameplay
+
+### Initial Setup
+
+- **Player 1's Knight**: Starts at **(1, 1)**.
+- **Player 2's Knight**: Starts at **(8, 8)**.
+- All squares are **active**.
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Available Moves** from **(1, 1)**:
+  - **(2, 3)**
+  - **(3, 2)**
+- **Player 1** moves knight to **(2, 3)**.
+- **Square (2, 3)** becomes **removed**.
+
+#### Turn 2: Player 2
+
+- **Available Moves** from **(8, 8)**:
+  - **(6, 7)**
+  - **(7, 6)**
+- **Player 2** moves knight to **(6, 7)**.
+- **Square (6, 7)** becomes **removed**.
+
+#### Turn 3: Player 1
+
+- **Available Moves** from **(2, 3)**:
+  - **(1, 5)**
+  - **(3, 5)**
+  - **(4, 2)**
+  - **(4, 4)**
+- **Player 1** moves knight to **(4, 4)**.
+- **Square (4, 4)** becomes **removed**.
+
+#### Turn 4: Player 2
+
+- **Available Moves** from **(6, 7)**:
+  - **(5, 5)**
+  - **(7, 5)**
+  - **(4, 6)**
+  - **(8, 6)**
+- **Player 2** moves knight to **(5, 5)**.
+- **Square (5, 5)** becomes **removed**.
+
+#### Turn 5: Player 1
+
+- **Available Moves** from **(4, 4)**:
+  - **(2, 3)** (already removed)
+  - **(2, 5)**
+  - **(3, 6)**
+  - **(5, 6)**
+  - **(6, 3)**
+  - **(6, 5)**
+- **Player 1** moves knight to **(5, 6)**.
+- **Square (5, 6)** becomes **removed**.
+
+#### Turn 6: Player 2
+
+- **Available Moves** from **(5, 5)**:
+  - **(3, 4)**
+  - **(3, 6)**
+  - **(4, 3)**
+  - **(4, 7)**
+  - **(6, 3)**
+  - **(6, 7)**
+- **Player 2** notices that **(6, 7)** is removed.
+- **Player 2** moves knight to **(3, 4)**.
+- **Square (3, 4)** becomes **removed**.
+
+### Game Continuation
+
+- Players continue in this manner, strategically selecting moves to maximize their options while limiting the opponent's movements.
+- The game progresses until one player has no legal moves on their turn.
+
+### Endgame Scenario
+
+- Suppose **Player 1** moves to a position where all possible moves for **Player 2** lead to squares that are either removed or off the board.
+- **Player 2** has no legal moves on their turn.
+- **Player 1** is declared the **winner**.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface, here's how players might interact with the game:
+
+### Displaying the Board
+
+- The board is displayed with coordinates for each square.
+- Active squares are marked with `.`.
+- Removed squares are marked with `X`.
+- Player 1's knight is marked with `N1`.
+- Player 2's knight is marked with `N2`.
+
+### Sample Turn
+
+**Player 1's Turn**:
+
+- **Prompt**: "Player 1, your knight is at (4, 4)."
+- **Display Legal Moves**: "(2, 3), (2, 5), (3, 2), (3, 6), (5, 2), (5, 6), (6, 3), (6, 5)"
+- **Player Input**: `Move to (5,6)`
+
+**System Response**:
+
+- "Player 1 moves to (5, 6)."
+- "Square (5, 6) is now removed."
+- Updates the board display.
+
+**Player 2's Turn**:
+
+- **Prompt**: "Player 2, your knight is at (5, 5)."
+- **Display Legal Moves**: (list of legal moves)
+- And so on.
+
+---
+
+## Strategy Tips
+
+- **Control the Center**: Moving your knight toward the center can increase your options while limiting your opponent's.
+- **Anticipate Moves**: Try to predict where your opponent can move and cut off those paths.
+- **Conserve Squares**: Avoid unnecessary moves that remove vital squares needed for future moves.
+- **Forced Moves**: Put your opponent in positions where their moves are limited to a few options, making it easier to trap them.
+
+---
+
+## Conclusion
+
+"Knight's Duel" is a game of foresight and strategy. By mastering the knight's movement and planning several moves ahead, skilled players can consistently outmaneuver their opponents. The simple rules combined with the depth of possible moves make it an engaging and competitive game suitable for quick matches in a command-line interface.
+
+Have fun dueling!

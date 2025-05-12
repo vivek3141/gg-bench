@@ -1,0 +1,211 @@
+# Digits Duel: Rule Book
+
+## Objective
+
+**Digits Duel** is a strategic two-player turn-based game played in a command-line interface. The primary goal is to construct a three-digit number closest to, but not exceeding, a randomly generated target number between 100 and 999. Players take turns selecting digits and strategically assigning them to build their number. The player whose final number meets the objective wins the game.
+
+## Setup
+
+1. **Generate Target Number**: At the start of the game, a target number between 100 and 999 is randomly generated and displayed to both players. This is the number players aim to approach with their own three-digit numbers without exceeding it.
+
+2. **Available Digits**: Digits from **1** to **9** are made available for selection. Each digit can only be used once during the game, and once selected, it is removed from the pool of available digits.
+
+3. **Player Assignment**: Decide which player will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Target Number**: A randomly generated number between 100 and 999 that players aim to approach.
+- **Available Digits Pool**: Digits **1** through **9**, each usable only once during the game.
+- **Player's Number Slots**: Each player has three slots representing the hundreds, tens, and ones places of their final three-digit number.
+- **Game Interface**: Command-line prompts and displays that show the target number, available digits, players' number slots, and turn information.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns one after the other.
+   - On each turn, a player performs two actions:
+     - **Select a Digit**: Choose a digit from the available digits pool.
+     - **Assign the Digit**: Place the selected digit in one of the unfilled slots (hundreds, tens, or ones) of their three-digit number.
+
+2. **Turn Order Example**:
+   - **Player 1's Turn**:
+     - Selects a digit from the pool.
+     - Assigns it to a slot in their number.
+   - **Player 2's Turn**:
+     - Selects a digit from the remaining pool.
+     - Assigns it to a slot in their number.
+
+3. **Completion of Number**:
+   - The process continues until both players have filled all three slots of their numbers.
+   - Once a digit is assigned to a slot, it cannot be changed in later turns.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Only digits **1** through **9** are available.
+   - Each digit can be selected only once during the game.
+   - If a digit has been selected by one player, it is no longer available to either player.
+
+2. **Digit Assignment**:
+   - Players must assign the selected digit to one of their unfilled slots immediately.
+   - Slots correspond to the positions in the three-digit number:
+     - **Hundreds Place**
+     - **Tens Place**
+     - **Ones Place**
+   - Once assigned, a digit cannot be moved to a different slot.
+
+3. **Objective Condition**:
+   - After all slots are filled, each player will have a complete three-digit number.
+   - The goal is to have a number as close as possible to the target number without exceeding it.
+   - **Winning the Game**:
+     - The player whose number is **closest to the target number without exceeding it** wins.
+     - If both players have numbers exceeding the target, the player with the **lower number** loses.
+     - If both numbers are equal in proximity without exceeding or both exceed by the same amount, the player who completed their number **first** wins.
+
+4. **Exceeded Target Scenario**:
+   - If a player's number exceeds the target number:
+     - They are still in the game unless both players exceed the target.
+     - The comparison at the end will determine the winner based on who didn't exceed or who exceeded by less.
+
+5. **Unavailable Moves**:
+   - If a player cannot make a valid move (no digits left or no slots remaining), they must pass their turn.
+
+## Scoring
+
+- **Winning**: The player who meets the objective condition wins the game.
+- **No Ongoing Scoring System**: There is no point system; the game is won by achieving the objective in a single round.
+- **Draws**: The game is designed to prevent draws by including the rule that the player who completed their number first wins in the case of a tie.
+
+## Examples
+
+### Example Game Playthrough
+
+**Setup**:
+
+- **Target Number**: 450
+- **Available Digits**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1** and **Player 2** have empty slots for their three-digit numbers.
+
+**Turn-by-Turn Play**:
+
+1. **Player 1's Turn**:
+   - **Available Digits**: 1-9
+   - **Action**: Selects digit **5**.
+   - **Assignment**: Places **5** in the **Hundreds Place**.
+   - **Player 1's Number**: 5 _ _
+
+2. **Player 2's Turn**:
+   - **Available Digits**: 1-4, 6-9
+   - **Action**: Selects digit **4**.
+   - **Assignment**: Places **4** in the **Hundreds Place**.
+   - **Player 2's Number**: 4 _ _
+
+3. **Player 1's Turn**:
+   - **Available Digits**: 1-3, 6-9
+   - **Action**: Selects digit **9**.
+   - **Assignment**: Places **9** in the **Tens Place**.
+   - **Player 1's Number**: 5 9 _
+
+4. **Player 2's Turn**:
+   - **Available Digits**: 1-3, 6-8
+   - **Action**: Selects digit **8**.
+   - **Assignment**: Places **8** in the **Tens Place**.
+   - **Player 2's Number**: 4 8 _
+
+5. **Player 1's Turn**:
+   - **Available Digits**: 1-3, 6-7
+   - **Action**: Selects digit **1**.
+   - **Assignment**: Places **1** in the **Ones Place**.
+   - **Player 1's Number**: 5 9 1
+   - **Player 1** has completed their number first.
+
+6. **Player 2's Turn**:
+   - **Available Digits**: 2-3, 6-7
+   - **Action**: Selects digit **7**.
+   - **Assignment**: Places **7** in the **Ones Place**.
+   - **Player 2's Number**: 4 8 7
+
+**Final Numbers**:
+
+- **Player 1's Number**: 591
+- **Player 2's Number**: 487
+
+**Outcome Determination**:
+
+- **Player 1's Number**: 591 (exceeds target 450)
+- **Player 2's Number**: 487 (also exceeds target 450)
+- Both players have exceeded the target number.
+- **Player 1** exceeded by 141 (591 - 450 = 141).
+- **Player 2** exceeded by 37 (487 - 450 = 37).
+- **Winner**: **Player 2**, because they exceeded the target by a smaller margin.
+
+### Sample Command-Line Interaction
+
+```
+--- Digits Duel Game Start ---
+Target Number: 650
+Available Digits: 1 2 3 4 5 6 7 8 9
+
+Player 1's Turn:
+Available Digits: 1 2 3 4 5 6 7 8 9
+Enter digit to select: 6
+Assign digit 6 to slot (Hundreds, Tens, Ones): Hundreds
+Player 1's Number: 6 _ _
+
+Player 2's Turn:
+Available Digits: 1 2 3 4 5 7 8 9
+Enter digit to select: 9
+Assign digit 9 to slot (Hundreds, Tens, Ones): Hundreds
+Player 2's Number: 9 _ _
+
+Player 1's Turn:
+Available Digits: 1 2 3 4 5 7 8
+Enter digit to select: 8
+Assign digit 8 to slot (Hundreds, Tens, Ones): Tens
+Player 1's Number: 6 8 _
+
+Player 2's Turn:
+Available Digits: 1 2 3 4 5 7
+Enter digit to select: 7
+Assign digit 7 to slot (Hundreds, Tens, Ones): Tens
+Player 2's Number: 9 7 _
+
+Player 1's Turn:
+Available Digits: 1 2 3 4 5
+Enter digit to select: 5
+Assign digit 5 to slot (Hundreds, Tens, Ones): Ones
+Player 1's Number: 6 8 5
+Player 1 has completed their number.
+
+Player 2's Turn:
+Available Digits: 1 2 3 4
+Enter digit to select: 4
+Assign digit 4 to slot (Hundreds, Tens, Ones): Ones
+Player 2's Number: 9 7 4
+Player 2 has completed their number.
+
+--- Final Numbers ---
+Player 1's Number: 685
+Player 2's Number: 974
+
+Calculating Results...
+- Player 1's Number: 685 (Exceeds target by 35)
+- Player 2's Number: 974 (Exceeds target by 324)
+
+Winner: Player 1
+```
+
+## Strategy Tips
+
+- **Hundreds Place Priority**: Carefully consider which digit to assign to the hundreds place, as it has the most significant impact on the final number.
+- **Monitor Available Digits**: Keep track of the digits your opponent might choose and plan accordingly.
+- **Avoid Exceeding the Target**: It's better to aim slightly lower than the target than to exceed it and risk losing.
+- **Order of Completion**: Finishing your number first can be advantageous in the case of a tie.
+
+## Additional Notes
+
+- **Unique Gameplay**: "Digits Duel" combines elements of strategy and probability, requiring players to think ahead and make calculated decisions.
+- **Replaying the Game**: Players can play multiple rounds, potentially keeping score of wins over several games for extended competition.
+- **Simple Implementation**: The game is designed to be easily coded in a command-line interface, making it accessible and quick to play.
+
+Enjoy playing **Digits Duel** and may the best strategist win!

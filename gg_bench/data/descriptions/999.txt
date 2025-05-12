@@ -1,0 +1,230 @@
+# Factor Frenzy
+
+## Objective
+
+The primary goal of **Factor Frenzy** is to be the last player able to make a valid move according to the game rules. Players take turns selecting numbers from a shared pool based on mathematical relationships with the current number. A player wins by forcing their opponent into a position where they cannot select a valid number on their turn.
+
+---
+
+## Setup
+
+1. **Shared Number Pool**: Create a list of numbers from **2** to **50** inclusive. This is the pool of numbers available for selection during the game.
+
+2. **Current Number**: Initialize the current number to **1** at the start of the game.
+
+3. **Players**: Two players are required. Decide which player goes first (e.g., by agreement or random selection).
+
+---
+
+## Game Components
+
+- **Shared Number Pool**: A collection of integers `[2, 3, 4, ..., 50]`. Each number can be selected only once and is removed from the pool after selection.
+
+- **Current Number**: The number that dictates valid moves. It changes after each valid turn based on the last selected number.
+
+- **Players**: Two participants alternating turns, referred to as **Player 1** and **Player 2**.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players alternate turns throughout the game, starting with the designated first player.
+
+2. **Player Actions**:
+
+   - On your turn, **select a number** from the shared number pool that is either:
+     - A **factor** of the current number, **or**
+     - A **multiple** of the current number.
+
+   - **Update** the current number to the number you selected.
+
+   - **Remove** the selected number from the shared number pool.
+
+3. **Valid Moves**:
+
+   - A move is valid if the selected number is available in the pool and satisfies the factor or multiple condition with the current number.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Selection**:
+
+   - **Factor**: A number `N` is a factor of the current number `C` if `C % N == 0`.
+
+   - **Multiple**: A number `N` is a multiple of the current number `C` if `N % C == 0`.
+
+2. **Number Usage**:
+
+   - Each number from the shared pool can be used **only once**.
+
+   - Once a number is selected and removed, it cannot be chosen again by either player.
+
+3. **Winning the Game**:
+
+   - A player **wins** if their opponent cannot make a valid move on their turn.
+
+   - There is **no possibility of a draw**; the game always results in a win or loss.
+
+### Additional Rules
+
+- **Invalid Moves**:
+
+  - If a player selects an invalid number (not a factor or multiple, or not in the pool), they **lose their turn**, and the opponent gets a chance to win on their next turn.
+
+- **No Skipping**:
+
+  - Players **cannot skip** their turn. If a valid move is available, it must be made.
+
+- **End of Game**:
+
+  - The game ends immediately when a player cannot make a valid move, declaring the other player the winner.
+
+---
+
+## Scoring
+
+- **Victory**: There is no point-based scoring system. Winning the game is based on the ability to make valid moves and strategically limit the opponent's options.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+**Starting the Game**
+
+- **Current Number**: 1
+- **Shared Number Pool**: [2, 3, 4, 5, ..., 50]
+
+---
+
+**Player 1's Turn**
+
+- **Possible Moves**: Any number from the pool (since all numbers are multiples of 1).
+- **Action**: Player 1 selects **5**.
+- **Reason**: 5 is a multiple of 1.
+- **Update**:
+  - **Current Number**: 5
+  - **Remove 5** from the pool.
+
+**Shared Number Pool**: [2, 3, 4, 6, 7, ..., 50]
+
+---
+
+**Player 2's Turn**
+
+- **Current Number**: 5
+- **Possible Moves**: Numbers that are factors or multiples of 5.
+- **Available Options**: 10, 15, 20, 25, 30, 35, 40, 45, 50 (multiples), **or** none of the factors (since 1 is not in the pool and 5 is already used).
+- **Action**: Player 2 selects **10**.
+- **Reason**: 10 is a multiple of 5.
+- **Update**:
+  - **Current Number**: 10
+  - **Remove 10** from the pool.
+
+**Shared Number Pool**: [2, 3, 4, 6, 7, 8, 9, 11, ..., 50 (excluding 5 and 10)]
+
+---
+
+**Player 1's Next Turn**
+
+- **Current Number**: 10
+- **Possible Moves**: Numbers that are factors or multiples of 10.
+- **Available Options**: Factors (2) and multiples (20, 30, 40, 50).
+- **Action**: Player 1 selects **2**.
+- **Reason**: 2 is a factor of 10.
+- **Update**:
+  - **Current Number**: 2
+  - **Remove 2** from the pool.
+
+**Shared Number Pool**: [3, 4, 6, 7, 8, 9, 11, ..., 50 (excluding 2, 5, 10)]
+
+---
+
+**Example of Invalid Move**
+
+**Player 2's Turn**
+
+- **Current Number**: 2
+- **Possible Moves**: Numbers that are factors or multiples of 2.
+- **Available Options**: 4, 6, 8, etc. (multiples of 2).
+- **Invalid Action**: Player 2 selects **9**.
+- **Reason**: 9 is neither a factor nor a multiple of 2.
+- **Outcome**: Invalid move. Player 2 loses the game. Player 1 wins.
+
+---
+
+## Command-Line Interaction Example
+
+```
+Welcome to Factor Frenzy!
+
+Starting Number: 1
+Shared Number Pool: [2, 3, 4, ..., 50]
+
+---
+
+Player 1's Turn
+Current Number: 1
+Available Numbers: [2, 3, 4, ..., 50]
+Enter your chosen number: 7
+You selected 7.
+7 is a valid move.
+Current Number is now 7.
+Numbers remaining: [2, 3, 4, 5, 6, 8, 9, ..., 50 (excluding 7)]
+
+---
+
+Player 2's Turn
+Current Number: 7
+Available Numbers: [2, 3, 4, 5, 6, 8, 9, ..., 50 (excluding 7)]
+Possible Moves: Factors or multiples of 7.
+Enter your chosen number: 14
+You selected 14.
+14 is a valid move.
+Current Number is now 14.
+Numbers remaining: [2, 3, 4, 5, 6, 8, 9, 10, 11, ..., 50 (excluding 7 and 14)]
+
+---
+
+Player 1's Turn
+Current Number: 14
+Available Numbers: [2, 3, 4, 5, 6, 8, 9, 10, 11, ..., 50 (excluding 7 and 14)]
+Possible Moves: Factors or multiples of 14.
+Enter your chosen number: 7
+Error: 7 has already been used. Choose another number.
+Enter your chosen number: 28
+You selected 28.
+28 is a valid move.
+Current Number is now 28.
+Numbers remaining: [2, 3, 4, 5, 6, 8, 9, 10, 11, ..., 50 (excluding 7, 14, 28)]
+
+---
+
+*Game continues until a player cannot make a valid move.*
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate future moves by considering which numbers will be available after your selection.
+
+- **Limit Opponent's Options**: Choose numbers that reduce the valid moves for your opponent.
+
+- **Prime Numbers**: Selecting a prime number as the current number can limit your opponent's options, as primes have fewer factors.
+
+- **Stay Aware**: Keep track of the numbers already used to avoid invalid selections.
+
+---
+
+## Conclusion
+
+**Factor Frenzy** combines mathematical reasoning with strategic planning. By carefully selecting numbers that both advance your position and limit your opponent's options, you can gain a competitive edge. Enjoy the challenge of outsmarting your opponent in this exciting numerical duel!
+
+---
+
+*Happy Gaming!*

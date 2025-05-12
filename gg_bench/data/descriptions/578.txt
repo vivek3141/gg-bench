@@ -1,0 +1,251 @@
+# Divisor Challenge: Rule Book
+
+## Objective
+
+**Primary Goal:**  
+Be the last player able to make a valid move by strategically selecting numbers that are divisors or multiples of the previously chosen number. Force your opponent into a position where they cannot make a valid move on their turn.
+
+**Victory Conditions:**
+
+- **Win:** You win if your opponent is unable to select a valid number on their turn.
+- **Loss:** You lose if you cannot select a valid number on your turn.
+
+---
+
+## Setup
+
+1. **Number Pool:** Prepare a shared pool of numbers ranging from **2** to **50**. All numbers within this range are available for selection unless they have been previously chosen during the game.
+   
+2. **Determine First Player:** Decide who takes the first turn. This can be done by mutual agreement or by any random method (e.g., coin toss).
+
+3. **Starting the Game:** The first player begins by selecting any one number from the number pool.
+
+---
+
+## Game Components
+
+- **Number Pool (2-50):** A list of integers from **2** to **50**, representing the available numbers players can choose from. Each number can be selected only once during the game.
+
+- **Selected Numbers List:** A record of numbers that have already been chosen by both players, ensuring no repeats.
+
+- **Players:** Two participants, referred to as **Player 1** and **Player 2**.
+
+---
+
+## Turns
+
+1. **Turn Order:** Players alternate turns, starting with the player determined during setup.
+
+2. **Turn Actions:**
+
+   - **First Turn:** The first player selects any number from the number pool.
+   
+   - **Subsequent Turns:** On each turn after the first, the player must:
+     - Choose a number from the number pool that is either a **divisor** or a **multiple** of the **last number selected**.
+     - Ensure the chosen number has not been previously selected.
+
+3. **Turn Progression:** The game continues with players alternating turns until one player cannot make a valid move.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+
+   - A move is valid if the selected number:
+     - Is either a **divisor** or a **multiple** of the last number chosen.
+     - Has not been previously selected by either player.
+     - Is within the number pool (2-50).
+
+2. **Divisors and Multiples:**
+
+   - **Divisor:** A number that divides the last number selected without leaving a remainder.
+     - Example: If the last number is **18**, its divisors include **2**, **3**, **6**, and **9**.
+   
+   - **Multiple:** A number that is a product of the last number selected and an integer.
+     - Example: If the last number is **5**, its multiples include **10**, **15**, **20**, etc., up to **50**.
+
+3. **Invalid Moves:**
+
+   - Selecting a number that is neither a divisor nor a multiple of the last number.
+   - Choosing a number that has already been selected.
+   - Picking a number outside the 2-50 range.
+
+4. **Forfeiture:**
+
+   - If a player cannot make a valid move on their turn, they lose the game.
+
+5. **End of Game:**
+
+   - The game ends immediately when a player cannot make a valid move.
+   - The last player who made a valid move is declared the winner.
+
+---
+
+## Scoring
+
+- **Win:** The winning player earns a victory for that round.
+- **Loss:** The losing player records a loss for that round.
+- **Match Play (Optional):** Players can agree to play multiple rounds, keeping track of wins and losses to determine an overall winner after a set number of games.
+
+---
+
+## Examples
+
+### Example Scenario
+
+**Starting the Game:**
+
+1. **Player 1's Turn:**
+   - Selects **24** from the number pool.
+   - The selected numbers list is now: **[24]**.
+
+**Subsequent Turns:**
+
+2. **Player 2's Turn:**
+   - Possible valid choices (divisors or multiples of **24**): **2, 3, 4, 6, 8, 12, 48**.
+   - Chooses **12**.
+   - Selected numbers list: **[24, 12]**.
+
+3. **Player 1's Turn:**
+   - Possible valid choices related to **12**: **2, 3, 4, 6, 24, 36, 48**.
+   - **Note:** **2, 3, 4, 6, 24** are available; **12** is already chosen.
+   - Chooses **6**.
+   - Selected numbers list: **[24, 12, 6]**.
+
+4. **Player 2's Turn:**
+   - Possible valid choices related to **6**: **2, 3, 12, 18, 24, 30, 42, 48**.
+   - Chooses **18**.
+   - Selected numbers list: **[24, 12, 6, 18]**.
+
+5. **Player 1's Turn:**
+   - Possible valid choices related to **18**: **2, 3, 6, 9, 36**.
+   - Chooses **9**.
+   - Selected numbers list: **[24, 12, 6, 18, 9]**.
+
+6. **Player 2's Turn:**
+   - Possible valid choices related to **9**: **3, 18, 27, 36, 45**.
+   - Chooses **27**.
+   - Selected numbers list: **[24, 12, 6, 18, 9, 27]**.
+
+7. **Player 1's Turn:**
+   - Possible valid choices related to **27**: **3, 9, 18, 45**.
+   - Chooses **45**.
+   - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45]**.
+
+8. **Player 2's Turn:**
+   - Possible valid choices related to **45**: **5, 9, 15, 27**.
+   - Chooses **15**.
+   - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15]**.
+
+9. **Player 1's Turn:**
+   - Possible valid choices related to **15**: **3, 5, 45**.
+   - Chooses **5**.
+   - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5]**.
+
+10. **Player 2's Turn:**
+    - Possible valid choices related to **5**: **10, 15, 20, 25, 30, 35, 40, 45, 50**.
+    - Chooses **10**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10]**.
+
+11. **Player 1's Turn:**
+    - Possible valid choices related to **10**: **2, 5, 20, 30, 40, 50**.
+    - Chooses **20**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10, 20]**.
+
+12. **Player 2's Turn:**
+    - Possible valid choices related to **20**: **2, 4, 5, 10, 40**.
+    - All these numbers have been chosen or are not valid (e.g., **4** hasn't been chosen but is valid).
+    - Chooses **4**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10, 20, 4]**.
+
+13. **Player 1's Turn:**
+    - Possible valid choices related to **4**: **2, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48**.
+    - Chooses **8**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10, 20, 4, 8]**.
+
+14. **Player 2's Turn:**
+    - Possible valid choices related to **8**: **2, 4, 16, 24, 32, 40, 48**.
+    - Chooses **16**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10, 20, 4, 8, 16]**.
+
+15. **Player 1's Turn:**
+    - Possible valid choices related to **16**: **2, 4, 8, 32, 48**.
+    - Chooses **32**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10, 20, 4, 8, 16, 32]**.
+
+16. **Player 2's Turn:**
+    - Possible valid choices related to **32**: **2, 4, 8, 16, 48**.
+    - Chooses **48**.
+    - Selected numbers list: **[24, 12, 6, 18, 9, 27, 45, 15, 5, 10, 20, 4, 8, 16, 32, 48]**.
+
+17. **Player 1's Turn:**
+    - Possible valid choices related to **48**: **2, 3, 4, 6, 8, 12, 16, 24, 36**.
+    - All these have been chosen or are not in the number pool.
+    - **Player 1 cannot make a valid move and loses the game.**
+
+**Winner:** **Player 2**
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample interaction demonstrating how the game might proceed in a command-line interface.
+
+```
+--- Divisor Challenge ---
+
+Number Pool: 2-50
+Available Numbers: [All numbers from 2 to 50]
+
+Player 1, please select your starting number:
+> 24
+
+Selected Numbers: [24]
+Last Number Chosen: 24
+
+Player 2, select a divisor or multiple of 24:
+Available Numbers: [2-50 excluding 24]
+
+> 12
+
+Selected Numbers: [24, 12]
+Last Number Chosen: 12
+
+Player 1, select a divisor or multiple of 12:
+Available Numbers: [2-50 excluding 12 and 24]
+
+> 6
+
+Selected Numbers: [24, 12, 6]
+Last Number Chosen: 6
+
+Player 2, select a divisor or multiple of 6:
+Available Numbers: [2-50 excluding 6, 12, 24]
+
+> 18
+
+Selected Numbers: [24, 12, 6, 18]
+Last Number Chosen: 18
+
+... [Game continues as in the example above]
+
+Player 1, no valid moves remaining. You lose!
+Winner: Player 2
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate possible numbers your opponent can play in response to your moves.
+
+- **Control the Game Flow:** Choose numbers that limit the available options for your opponent on their next turn.
+
+- **Avoid Common Divisors and Multiples:** Selecting prime numbers or numbers with fewer divisors can strategically disadvantage your opponent.
+
+- **Memorize Selected Numbers:** Keep track of all numbers that have been played to avoid attempting to select them again.
+
+---
+
+By understanding these rules and strategies, players can enjoy a challenging and strategic game of **Divisor Challenge** while honing their numerical skills and strategic thinking.

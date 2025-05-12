@@ -1,0 +1,172 @@
+# Number Circle
+
+## Objective
+
+Be the first player to reach the **Target Number** exactly by strategically adding or subtracting numbers on a circular number line. The primary goal is to navigate through numbers and operations to land precisely on the Target Number, thereby securing a win.
+
+## Setup
+
+1. **Target Number**: Determine a Target Number between 10 and 20 (e.g., 15).
+2. **Number Circle**: Create a circular number line consisting of numbers from 1 to 9 arranged in a circle.
+3. **Starting Position**: Both players start at number **1**.
+4. **Player Roles**: Decide which player goes first (Player 1 and Player 2).
+
+## Game Components
+
+- **Number Circle**: A circle of numbers from **1** to **9**, in sequential order.
+    ```
+    9
+    / \
+    8   2
+    |     |
+    7   3
+    \ /
+     6---4 
+        |
+        5
+    ```
+- **Player Markers**: Each player has a marker indicating their current position on the Number Circle (both start at **1**).
+- **Operations**: Players can perform **addition (+)** or **subtraction (-)** with the numbers on the circle.
+
+## Turns
+
+- **Turn Structure**:
+    1. **Movement**: Move your marker to an adjacent number on the Number Circle (numbers are connected sequentially in the circle, and 9 connects back to 1).
+    2. **Operation**: Choose to either **add** or **subtract** the number you land on from your **Current Total**.
+- **Order of Play**: Players alternate turns starting from Player 1.
+- **Current Total**: Begins at **0** for both players and is updated each turn based on their operations.
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+    - You may move to any **adjacent number** (numbers directly connected on the circle).
+    - Only one move per turn.
+2. **Operation Rules**:
+    - After moving, you must choose to **add** or **subtract** the number you land on to your Current Total.
+    - The operation is mandatory and cannot be skipped.
+3. **Landing on the Same Number**:
+    - Both players can occupy the same number without any penalty.
+4. **Winning the Game**:
+    - The first player to make their Current Total exactly equal to the Target Number wins.
+5. **Overshooting the Target**:
+    - If a move would result in a Current Total exceeding the Target Number, the player cannot perform that operation and must choose the alternative operation or a different move.
+6. **No Backtracking**:
+    - You cannot return to the number you occupied in your immediate previous turn.
+
+## Scoring
+
+- **Winning Condition**: Achieve a Current Total exactly equal to the Target Number.
+- **Losing Condition**: If you cannot make any valid moves without overshooting the Target Number, you lose your turn (but not the game).
+- **No Draws**: The game continues until one player reaches the Target Number.
+
+## Examples
+
+### Example Game Play
+
+**Setup**:
+- Target Number: **15**
+- Both players start with Current Total **0** at number **1**.
+
+**Turn 1**:
+- **Player 1** moves to number **2**.
+- Chooses to **add 2**.
+- Current Total: **0 + 2 = 2**.
+
+**Turn 2**:
+- **Player 2** moves to number **9** (adjacent to 1).
+- Chooses to **add 9**.
+- Current Total: **0 + 9 = 9**.
+
+**Turn 3**:
+- **Player 1** moves to number **3**.
+- Chooses to **add 3**.
+- Current Total: **2 + 3 = 5**.
+
+**Turn 4**:
+- **Player 2** moves to number **8**.
+- Chooses to **add 8**.
+- Anticipates exceeding the Target Number (**9 + 8 = 17**, which is over 15).
+- Chooses to **subtract 8** instead.
+- Current Total: **9 - 8 = 1**.
+
+**Turn 5**:
+- **Player 1** moves to number **4**.
+- Chooses to **add 4**.
+- Current Total: **5 + 4 = 9**.
+
+**Turn 6**:
+- **Player 2** moves to number **7**.
+- Chooses to **add 7**.
+- Current Total: **1 + 7 = 8**.
+
+**Turn 7**:
+- **Player 1** moves to number **5**.
+- Chooses to **add 5**.
+- Current Total: **9 + 5 = 14**.
+
+**Turn 8**:
+- **Player 2** moves to number **6**.
+- Cannot **add 6** (would be **8 + 6 = 14**, acceptable).
+- Chooses to **add 6**.
+- Current Total: **8 + 6 = 14**.
+
+**Turn 9**:
+- **Player 1** moves to number **6**.
+- Cannot **add 6** (would be **14 + 6 = 20**, exceeds 15).
+- Chooses to **subtract 6**.
+- Current Total: **14 - 6 = 8**.
+
+**Turn 10**:
+- **Player 2** cannot return to number **6** (was just there).
+- Moves to number **5**.
+- Chooses to **add 5**.
+- Current Total: **14 + 5 = 19**, exceeds Target Number.
+- Must choose to **subtract 5**.
+- Current Total: **14 - 5 = 9**.
+
+**Turn 11**:
+- **Player 1** moves to number **7**.
+- Chooses to **add 7**.
+- Current Total: **8 + 7 = 15**.
+- **Player 1 wins!**
+
+### Command-Line Interaction
+
+- **Player 1's Turn**:
+  ```
+  Current Total: 2
+  Available Moves: 2 <-> 3
+  Choose your move: Move to 3
+  Choose operation (+/-): +
+  You added 3. New Total: 5
+  ```
+
+- **Player 2's Turn**:
+  ```
+  Current Total: 9
+  Available Moves: 9 <-> 8
+  Choose your move: Move to 8
+  Choose operation (+/-): -
+  You subtracted 8. New Total: 1
+  ```
+
+- **Player 1's Winning Move**:
+  ```
+  Current Total: 8
+  Available Moves: 6, 7
+  Choose your move: Move to 7
+  Choose operation (+/-): +
+  You added 7. New Total: 15
+  Congratulations! You reached the Target Number. You win!
+  ```
+
+## Summary
+
+- **Strategic Depth**: Players must plan moves ahead, considering both the numbers they land on and the operations, while also anticipating the opponent's potential moves.
+- **No Draws**: The game is designed to always have a winner.
+- **Simple to Code**: The game mechanics are straightforward, suitable for a command-line interface.
+- **Skill-Based Outcome**: Players with better strategic planning are more likely to win.
+
+---
+
+Enjoy playing **Number Circle** and may the best strategist win!

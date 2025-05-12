@@ -1,0 +1,251 @@
+# Number Tower
+
+## Objective
+
+**Number Tower** is a strategic two-player, turn-based game where players compete to be the last one able to place a number on a shared tower without violating the ascending order rule. The primary goal is to outmaneuver your opponent by carefully selecting numbers to limit their available moves. A player wins by either placing the last valid number on the tower or by forcing their opponent into a position where they cannot make a legal move.
+
+## Setup
+
+1. **Number Pool**: A shared pool of numbers from **1** to **30** is available for both players. Each number can only be used once during the game.
+2. **The Tower**: The game begins with an empty tower where numbers will be stacked in ascending order according to the game rules.
+3. **Player Roles**: Decide which player will go first. Players can flip a coin or agree among themselves.
+
+## Game Components
+
+- **Number Pool (1-30)**: The set of numbers available for selection. Each number has the following attributes:
+  - **Value**: An integer from 1 to 30.
+  - **Availability**: Once a number is placed on the tower, it is no longer available for selection.
+
+- **The Tower**: Represents the stack of numbers placed by the players during the game.
+  - **Current Top Number**: The number at the top of the tower, which dictates the allowable range for the next move.
+
+## Turns
+
+Players alternate turns throughout the game. Each turn consists of the following steps:
+
+1. **Determine Allowable Range**:
+   - If the tower is empty, any number from **1** to **30** can be played.
+   - If the tower has numbers, calculate the allowable range for the next number:
+     - The next number must be **greater than** the current top number.
+     - The next number must **not exceed** the current top number by more than **5**.
+
+2. **Select a Number**:
+   - Choose an available number from the number pool that fits within the allowable range.
+   - Remove the selected number from the number pool.
+
+3. **Place the Number on the Tower**:
+   - Add the selected number to the top of the tower.
+
+4. **End Turn**:
+   - Pass the turn to the opponent.
+
+## Rules and Mechanics
+
+- **Ascending Order Rule**: Each new number placed on the tower must satisfy:
+  - **Greater Than**: It must be greater than the number immediately below it on the tower.
+  - **Within Limit**: It must not be greater than the number below plus **5**.
+
+- **Number Availability**:
+  - Numbers from **1** to **30** are available at the game's start.
+  - Each number can only be used **once**. Once placed on the tower, it cannot be selected again.
+
+- **Legal Moves**:
+  - A move is legal if there is at least one available number that fits within the allowable range.
+  - If a player has no legal moves on their turn, they **lose** the game.
+
+- **Winning the Game**:
+  - A player wins by:
+    - Placing the last possible valid number on the tower.
+    - Forcing their opponent into a position where no legal moves are available on their turn.
+
+## Scoring
+
+No points are tracked in **Number Tower**. The game is won by meeting the winning conditions outlined above. However, players may keep track of wins over multiple games to determine overall performance or skill levels.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Player 1** and **Player 2** agree that Player 1 will start.
+
+#### Turn 1: Player 1
+
+- **Tower is Empty**: Any number from **1** to **30** can be played.
+- **Player 1** selects **7**.
+- **7** is placed on the tower.
+- **Number Pool** now excludes **7**.
+
+#### Turn 2: Player 2
+
+- **Current Top Number**: **7**
+- **Allowable Range**: Numbers **8** to **12** (greater than 7 and not exceeding 7 + 5).
+- **Available Numbers in Range**: 8, 9, 10, 11, 12
+- **Player 2** selects **10**.
+- **10** is placed on the tower.
+- **Number Pool** now excludes **10**.
+
+#### Turn 3: Player 1
+
+- **Current Top Number**: **10**
+- **Allowable Range**: Numbers **11** to **15**.
+- **Available Numbers in Range**: 11, 12, 13, 14, 15
+- **Player 1** selects **13**.
+- **13** is placed on the tower.
+- **Number Pool** now excludes **13**.
+
+#### Turn 4: Player 2
+
+- **Current Top Number**: **13**
+- **Allowable Range**: Numbers **14** to **18**.
+- **Available Numbers in Range**: 14, 15, 16, 17, 18
+- **Player 2** selects **16**.
+- **16** is placed on the tower.
+- **Number Pool** now excludes **16**.
+
+#### Turn 5: Player 1
+
+- **Current Top Number**: **16**
+- **Allowable Range**: Numbers **17** to **21**.
+- **Available Numbers in Range**: 17, 18, 19, 20, 21
+- **Player 1** selects **17**.
+- **17** is placed on the tower.
+- **Number Pool** now excludes **17**.
+
+#### Turn 6: Player 2
+
+- **Current Top Number**: **17**
+- **Allowable Range**: Numbers **18** to **22**.
+- **Available Numbers in Range**: 18, 19, 20, 21, 22
+- **Player 2** selects **20**.
+- **20** is placed on the tower.
+- **Number Pool** now excludes **20**.
+
+#### Turn 7: Player 1
+
+- **Current Top Number**: **20**
+- **Allowable Range**: Numbers **21** to **25**.
+- **Available Numbers in Range**: 21, 22, 23, 24, 25
+- **Player 1** checks available numbers.
+- **Player 1** selects **23**.
+- **23** is placed on the tower.
+- **Number Pool** now excludes **23**.
+
+#### Turn 8: Player 2
+
+- **Current Top Number**: **23**
+- **Allowable Range**: Numbers **24** to **28**.
+- **Available Numbers in Range**: 24, 25, 26, 27, 28
+- **Player 2** checks available numbers.
+- **Available Numbers**: Suppose **24**, **25**, and **26** have been previously used (hypothetical for this example).
+- **Available Numbers** in range: **27**, **28**
+- **Player 2** selects **27**.
+- **27** is placed on the tower.
+- **Number Pool** now excludes **27**.
+
+#### Turn 9: Player 1
+
+- **Current Top Number**: **27**
+- **Allowable Range**: Numbers **28** to **30**.
+- **Available Numbers in Range**: **28**, **29**, **30**
+- **Player 1** selects **28**.
+- **28** is placed on the tower.
+- **Number Pool** now excludes **28**.
+
+#### Turn 10: Player 2
+
+- **Current Top Number**: **28**
+- **Allowable Range**: Numbers **29** to **30** (since 28 + 5 = 33, but highest number is 30).
+- **Available Numbers**: **29**, **30**
+- **Player 2** selects **29**.
+- **29** is placed on the tower.
+- **Number Pool** now excludes **29**.
+
+#### Turn 11: Player 1
+
+- **Current Top Number**: **29**
+- **Allowable Range**: Numbers **30** to **30**.
+- **Available Numbers**: **30**
+- **Player 1** selects **30**.
+- **30** is placed on the tower.
+- **Number Pool** now excludes **30**.
+
+#### Turn 12: Player 2
+
+- **Current Top Number**: **30**
+- **Allowable Range**: Numbers **31** to **35**.
+- **Available Numbers**: None (maximum number is 30).
+- **Player 2** has no legal moves.
+
+#### Result
+
+- **Player 1 Wins**: Player 2 cannot make a legal move on their turn.
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Welcome to Number Tower!
+
+Numbers available: 1-30
+The tower is currently empty.
+
+Player 1's turn.
+Enter a number to place on the tower: 7
+```
+
+#### Game Progression
+
+```
+Number 7 placed on the tower.
+
+Numbers remaining: [1-6, 8-30]
+Current top of the tower: 7
+
+Player 2's turn.
+You must choose a number between 8 and 12.
+Available numbers in this range: [8,9,10,11,12]
+Enter a number to place on the tower: 10
+
+Number 10 placed on the tower.
+
+Numbers remaining: [1-6,8,9,11,12,13-30]
+Current top of the tower: 10
+
+Player 1's turn.
+You must choose a number between 11 and 15.
+Available numbers in this range: [11,12,13,14,15]
+Enter a number to place on the tower: 13
+
+Number 13 placed on the tower.
+
+*... [Game continues as per the example above] ...*
+
+Player 1's turn.
+You must choose a number between 30 and 30.
+Available number in this range: [30]
+Enter a number to place on the tower: 30
+
+Number 30 placed on the tower.
+
+Numbers remaining: [1-6,8,9,11,12,14,15,18,19,21,22,24-26]
+
+Player 2's turn.
+You must choose a number between 31 and 35.
+Available numbers in this range: None
+
+No legal moves available. Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of the numbers that have been used to anticipate your opponent's options.
+- **Control the Range**: By carefully selecting your numbers, you can limit the allowable range for your opponent, potentially forcing them into a position with no legal moves.
+- **Resource Management**: Remember that each number is only available once. Be mindful of which numbers you might need later in the game.
+- **Opponent's Perspective**: Consider which numbers your opponent might be aiming for and try to block them by using those numbers when possible.
+
+## Conclusion
+
+**Number Tower** is a simple yet strategic game that challenges players to think ahead and outsmart their opponent. Its straightforward rules make it easy to learn and quick to play, while the strategic depth ensures that skillful play is rewarded. Enjoy the game and may the best strategist win!

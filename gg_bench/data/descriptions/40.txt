@@ -1,0 +1,230 @@
+# Prime Sum Duel
+
+Welcome to **Prime Sum Duel**, a strategic two-player, turn-based game designed for command-line play. Outsmart your opponent by carefully selecting numbers to reach a prime total before they do. Simple to code and quick to play, this game ensures that skill and strategy lead to consistent victories.
+
+---
+
+## Objective
+
+Be the first player to achieve a total sum of selected numbers that equals a prime number **greater than** or **equal to** the **target sum**. Victory is achieved by strategically choosing numbers that, when combined, meet the prime sum condition before your opponent. There are no draws; the game continues until one player meets the winning condition.
+
+---
+
+## Setup
+
+1. **Target Sum**: Decide on a target sum to aim for, typically a prime number such as **17**. This number should be agreed upon by both players before the game starts.
+
+2. **Number Pool**: Initialize a shared pool of numbers ranging from **1** to **9**. All numbers are unclaimed at the start.
+
+3. **Player Collections**: Each player has their own collection area to hold the numbers they select during the game. These collections start empty.
+
+4. **Turn Order**: Determine which player goes first. This can be decided by a coin toss or mutual agreement.
+
+---
+
+## Game Components
+
+- **Number Pool (1-9)**: A list of integers from 1 to 9, representing the available numbers players can select.
+
+- **Player Collections**: Two separate lists or arrays where each player's selected numbers are stored.
+
+- **Target Sum**: A predetermined prime number that players aim to reach through the sum of their selected numbers.
+
+- **Command-Line Interface**: The game is played via text commands entered into a command-line interface, displaying the available numbers, player collections, and current totals.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns, starting with the player who was selected to go first during setup.
+  - On each turn, a player performs the following actions:
+    1. **View Available Numbers**: Display the current unclaimed numbers from the number pool.
+    2. **Select a Number**: Choose one available number from the pool.
+    3. **Update Collections**: Add the selected number to their own collection.
+    4. **Calculate Total Sum**: Update their total sum and check for a win condition.
+
+- **Turn Progression**: The game continues with players alternating turns until one player wins by meeting the objective.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On each turn, a player must select **one** available number from the number pool.
+   - Once a number is selected, it is **removed** from the pool and cannot be selected again by either player.
+
+2. **Total Sum Calculation**:
+   - Each player's total sum is the sum of the numbers in their collection.
+   - After each selection, players update their total sum.
+
+3. **Winning Condition**:
+   - The first player to reach a total sum that is **exactly** a prime number **greater than or equal to** the target sum wins the game.
+   - The target sum itself should be a prime number to ensure it's achievable.
+
+4. **Ending the Game**:
+   - If all numbers are selected and **neither player** has achieved a prime total sum **greater than or equal to** the target, the player with the **higher prime total sum** wins.
+   - If both players have the **same prime total sum**, the **last player who made a selection loses**, thus eliminating the possibility of a draw.
+
+5. **Invalid Moves**:
+   - Players **must** select a number on their turn if there are numbers available.
+   - Skipping a turn or refusing to select a number is not allowed.
+
+6. **Prime Numbers**:
+   - Players should be familiar with prime numbers, especially those within the range of possible sums (e.g., primes between the target sum and the maximum possible sum).
+   - Common prime numbers to consider are 17, 19, 23, 29, and 31.
+
+---
+
+## Scoring
+
+- **Victory**: Winning the game by reaching the prime sum first grants the player one victory point.
+
+- **Match Play**: Players can compete in multiple rounds, keeping track of victories to determine an overall winner.
+
+- **No Point System**: There is no point accumulation beyond the win condition; the focus is on strategic selection to meet the objective.
+
+---
+
+## Examples
+
+### Example 1: Player A Wins
+
+**Target Sum**: 17
+
+**Available Numbers**: 1-9
+
+**Turns**:
+
+1. **Player A** selects **9**
+   - Player A's collection: [9]
+   - Total Sum: 9
+2. **Player B** selects **8**
+   - Player B's collection: [8]
+   - Total Sum: 8
+3. **Player A** selects **5**
+   - Player A's collection: [9, 5]
+   - Total Sum: 14
+4. **Player B** selects **7**
+   - Player B's collection: [8, 7]
+   - Total Sum: 15
+5. **Player A** selects **3**
+   - Player A's collection: [9, 5, 3]
+   - Total Sum: 17
+   - Since 17 is a prime number **equal to** the target sum, **Player A wins**.
+
+### Example 2: Player B Wins After All Numbers Are Picked
+
+**Target Sum**: 19
+
+**Available Numbers**: 1-9
+
+**Turns**:
+
+1. **Player A** selects **9**
+   - Player A's collection: [9]
+   - Total Sum: 9
+2. **Player B** selects **8**
+   - Player B's collection: [8]
+   - Total Sum: 8
+3. **Player A** selects **7**
+   - Player A's collection: [9, 7]
+   - Total Sum: 16
+4. **Player B** selects **6**
+   - Player B's collection: [8, 6]
+   - Total Sum: 14
+5. **Player A** selects **5**
+   - Player A's collection: [9, 7, 5]
+   - Total Sum: 21
+6. **Player B** selects **4**
+   - Player B's collection: [8, 6, 4]
+   - Total Sum: 18
+7. **Player A** selects **3**
+   - Player A's collection: [9, 7, 5, 3]
+   - Total Sum: 24
+8. **Player B** selects **2**
+   - Player B's collection: [8, 6, 4, 2]
+   - Total Sum: 20
+9. **Player A** selects **1**
+   - Player A's collection: [9, 7, 5, 3, 1]
+   - Total Sum: 25
+   - All numbers have been picked.
+
+**Winning Determination**:
+
+- **Player A's Total Sum**: 25 (Non-prime)
+- **Player B's Total Sum**: 20 (Non-prime)
+- Neither player reached a prime number **greater than or equal to** the target sum.
+
+- Since all numbers are picked and no player achieved the prime sum, the player with the **higher prime total sum** wins.
+
+- Checking for highest prime totals less than their sums:
+
+  - **Player A**: Closest prime less than 25 is 23 (Player A's sum is higher than 23)
+  - **Player B**: Closest prime less than 20 is **19** (Player B's sum is greater than 19)
+
+- **Player B** has the higher prime total sum less than their total sum, so **Player B wins**.
+
+---
+
+## Command-Line Interaction Example
+
+### Start of Game
+
+```
+Welcome to Prime Sum Duel!
+
+Target Sum: 17
+
+Available Numbers: 1 2 3 4 5 6 7 8 9
+
+Player A, it's your turn.
+Select a number: 9
+
+Available Numbers: 1 2 3 4 5 6 7 8
+
+Player B, it's your turn.
+Select a number: 8
+```
+
+### Mid-Game Status
+
+```
+Available Numbers: 1 2 3 4 5 6 7
+
+Player A's Collection: 9
+Total Sum: 9
+
+Player B's Collection: 8
+Total Sum: 8
+
+Player A, it's your turn.
+Select a number: 5
+```
+
+### End of Game
+
+```
+Player A's Collection: 9 5 3
+Total Sum: 17
+
+Congratulations, Player A! You've reached the prime sum of 17.
+
+Player A wins!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which numbers are available and calculate possible sums your opponent might be aiming for.
+
+- **Block Opponent**: If possible, select numbers that may prevent your opponent from reaching the target prime sum.
+
+- **Prime Awareness**: Be familiar with prime numbers within the range to make informed decisions.
+
+- **Sum Control**: Manage your total sum to avoid surpassing the target with non-prime numbers.
+
+---
+
+Enjoy playing **Prime Sum Duel** and may the most strategic player win!

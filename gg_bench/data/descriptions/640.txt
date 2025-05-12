@@ -1,0 +1,208 @@
+# Number Bridge: A Two-Player Strategic Game
+
+## Objective
+
+**Primary Goal:**  
+Be the first player to construct a "Number Bridge" by collecting numbers that sum up exactly to **30**.
+
+**How to Achieve Victory:**  
+- Strategically select numbers from a shared pool to add to your collection.
+- Prevent your opponent from reaching the target sum by tactically choosing numbers they may need.
+- The first player whose collected numbers total exactly **30** wins the game.
+
+**Win Condition:**  
+- **Win:** Successfully accumulate numbers that sum to **30** before your opponent.
+- **Loss:** Your opponent reaches the sum of **30** before you do.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization:**
+   - Create a shared pool containing numbers from **1** to **20**.
+   - All numbers are available at the start of the game.
+
+2. **Player Preparation:**
+   - Each player has an empty collection at the beginning.
+   - Decide who will take the first turn (can be random or by agreement).
+
+3. **Starting Conditions:**
+   - Both players begin with a total sum of **0** in their collections.
+   - The target sum to reach is **30**.
+
+---
+
+## Game Components
+
+1. **Shared Number Pool:**
+   - **Numbers:** Integers from **1** to **20**.
+   - **Availability:** Once a number is selected by a player, it is removed from the pool.
+
+2. **Player Collections:**
+   - Each player has their own collection where they accumulate selected numbers.
+   - The collection keeps track of the numbers chosen and the current total sum.
+
+3. **Sum Tracker:**
+   - **Function:** Keeps track of the total sum of numbers in each player's collection.
+   - **Visibility:** Both players can view each other's total sums, but not the individual numbers if secrecy is preferred.
+
+---
+
+## Turns
+
+1. **Turn Structure:**
+   - Players alternate turns throughout the game.
+   - On each turn, a player must perform the following actions:
+     - **Action Phase:** Select one available number from the shared pool.
+     - **Collection Update:** Add the selected number to their collection.
+     - **Pool Update:** Remove the selected number from the shared pool.
+
+2. **Turn Progression:**
+   - After a player completes their turn, the next player proceeds with their turn.
+   - The game continues in this alternating fashion until a win condition is met.
+
+3. **Turn Actions:**
+   - **Selection Constraints:**
+     - A player cannot select a number if adding it to their total sum would exceed **30**.
+     - If no valid numbers are available to select, the player must pass their turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - **Valid Choices:** Players can choose any number from the shared pool that does not cause their total sum to exceed **30**.
+   - **Invalid Choices:** If adding all available numbers would exceed **30**, the player must pass.
+
+2. **Total Sum Calculation:**
+   - After each selection, the new total sum of the player's collection is calculated.
+   - The total sum is the accumulation of all numbers the player has selected.
+
+3. **Winning the Game:**
+   - **Exact Match Required:** A player must reach exactly **30** to win.
+   - **Overshooting Prohibited:** If a player's total sum exceeds **30**, they lose immediately.
+   - **No Draws:** The game cannot end in a draw due to the finite number of combinations to reach **30** within the constraints.
+
+4. **Blocking Mechanic:**
+   - Players can strategically select numbers that they anticipate the opponent may need.
+   - This adds a layer of strategy, allowing skilled players to control the flow of the game.
+
+5. **Passing a Turn:**
+   - If a player cannot make a valid move without exceeding **30**, they must pass.
+   - The opponent continues to play until they can reach **30** or also have to pass.
+
+6. **End of Game Conditions:**
+   - **Victory:** First player to reach a total sum of **30** wins.
+   - **Defeat by Overshooting:** If a player's total sum exceeds **30**, they lose immediately.
+   - **Forced Passing:** If both players must pass consecutively without reaching **30**, the player with the total sum closest to **30** wins.
+
+---
+
+## Scoring
+
+- **Winning Player:** Achieves a total sum of exactly **30** in their collection.
+- **Losing Player:** Fails to reach **30** before the opponent or exceeds **30**.
+- **No Points System:** The game is won by meeting the objective, not by accumulating points.
+- **Tracking Progress:** Players keep track of their total sums throughout the game to strategize their next moves.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup:**
+- Shared Number Pool: [1, 2, 3, 4, 5, ..., 20]
+- Both players' collections are empty.
+
+**Turn 1: Player 1**
+- **Action:** Selects **15**.
+- **Collection Update:** [15]
+- **Total Sum:** 15
+- **Pool:** Numbers 1-14, 16-20 remain.
+
+**Turn 2: Player 2**
+- **Action:** Selects **14**.
+- **Collection Update:** [14]
+- **Total Sum:** 14
+- **Pool:** Numbers 1-13, 15, 16-20 remain.
+
+**Turn 3: Player 1**
+- **Action:** Selects **10**.
+- **Collection Update:** [15, 10]
+- **Total Sum:** 25
+- **Pool:** Numbers 1-9, 11-13, 16-20 remain.
+
+**Turn 4: Player 2**
+- **Action:** Selects **16**.
+- **Collection Update:** [14, 16]
+- **Total Sum:** 30
+- **Outcome:** Player 2 wins by reaching exactly 30.
+
+### Command-Line Interaction Sample
+
+**Start of Game**
+
+```
+Shared Pool: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+
+Player 1's turn.
+Your total sum: 0
+Select a number from the pool: 12
+
+Player 1 selects 12.
+Player 1's total sum is now 12.
+Shared Pool: [1-11,13-20]
+
+Player 2's turn.
+Your total sum: 0
+Select a number from the pool: 15
+
+Player 2 selects 15.
+Player 2's total sum is now 15.
+Shared Pool: [1-11,13,14,16-20]
+
+Player 1's turn.
+Your total sum: 12
+Select a number from the pool: 18
+
+Error: Selecting 18 would exceed the total sum of 30.
+Please select a valid number.
+
+Select a number from the pool: 13
+
+Player 1 selects 13.
+Player 1's total sum is now 25.
+Shared Pool: [1-11,14,16-20]
+
+Player 2's turn.
+Your total sum: 15
+Select a number from the pool: 14
+
+Player 2 selects 14.
+Player 2's total sum is now 29.
+Shared Pool: [1-11,16-20]
+
+Player 1's turn.
+Your total sum: 25
+Select a number from the pool: 5
+
+Player 1 selects 5.
+Player 1's total sum is now 30.
+Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Keep track of which numbers are available and how they can combine to reach **30**.
+- **Block Opponent:** Anticipate which numbers your opponent may need and consider selecting them first.
+- **Avoid Overshooting:** Be cautious not to exceed the total sum of **30**, which would result in an immediate loss.
+- **Force Passing:** If you can't make a move without exceeding **30**, consider which numbers to leave for your opponent.
+
+---
+
+## Conclusion
+
+**Number Bridge** is a simple yet strategic game that emphasizes planning and foresight. It's easy to code for a command-line interface and provides a quick gameplay experience where skill and strategy can consistently lead to victory. Enjoy building your number bridge!

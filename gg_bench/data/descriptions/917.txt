@@ -1,0 +1,255 @@
+# Last Digit Standing
+
+## Objective
+
+**Last Digit Standing** is a two-player turn-based strategy game. The primary goal is to be the last player able to make a valid move by strategically removing digits from a shared sequence according to the game rules. A player wins by forcing their opponent into a position where they cannot remove a digit on their turn.
+
+## Setup
+
+- **Initial Sequence**: The game begins with a shared sequence of digits:
+  ```
+  1 2 3 4 5 6 7 8 9
+  ```
+- **Starting Conditions**: Both players have access to the same sequence and there are no additional components or pieces required.
+- **Player Roles**: Decide which player goes first (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Digit Sequence**: A list of digits from 1 to 9 arranged in ascending order.
+  - Appearance: Displayed in a single line, separated by spaces.
+  - Functionality: Digits are removed from this sequence during the game.
+  - Unique Attributes: Each digit can only be removed once and must satisfy specific removal conditions based on the last digit removed.
+
+## Turns
+
+- **Turn Structure**:
+  1. The current player analyzes the sequence and identifies possible digits they can remove based on the game rules.
+  2. The player chooses one valid digit to remove.
+  3. The chosen digit is removed from the sequence.
+  4. The turn passes to the opponent.
+- **Order of Actions**:
+  - Players alternate turns, starting with Player 1.
+- **Player Actions During Turn**:
+  - Remove one valid digit from the sequence.
+  - Update the sequence to reflect the removal.
+- **Turn Progression**:
+  - The game continues with players alternating turns until a player cannot make a valid move on their turn.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**: On the first turn, Player 1 may remove any one digit from the sequence.
+2. **Subsequent Moves**:
+   - On their turn, a player must remove a digit that is either a **divisor** or a **multiple** of the **last digit removed** by their opponent.
+3. **Valid Moves**:
+   - A digit can only be removed if it satisfies the divisor/multiple condition relative to the last removed digit.
+   - If there is no valid digit to remove, the player loses the game.
+
+### Movement and Actions
+
+- **Removing Digits**:
+  - To remove a digit, the player enters the digit they wish to remove.
+  - The digit must be present in the current sequence and meet the removal criteria.
+- **Updating the Sequence**:
+  - After a valid digit is removed, the sequence is updated and displayed to both players.
+
+### Special Conditions
+
+- **No Valid Moves**:
+  - If a player cannot find any digit that satisfies the removal conditions on their turn, they lose the game.
+- **Digits Can't Be Reused**:
+  - Once a digit is removed from the sequence, it cannot be selected again.
+
+### Examples of Divisors and Multiples
+
+- **Divisors**:
+  - A number `a` is a divisor of number `b` if `b % a == 0`.
+  - Example: `2` is a divisor of `4` because `4 % 2 == 0`.
+- **Multiples**:
+  - A number `a` is a multiple of number `b` if `a % b == 0`.
+  - Example: `6` is a multiple of `3` because `6 % 3 == 0`.
+
+## Scoring
+
+- **Winning the Game**:
+  - A player wins by being the last player able to make a valid move.
+- **Losing the Game**:
+  - A player loses if they cannot remove a valid digit on their turn according to the rules.
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player wins.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Sequence
+
+```
+1 2 3 4 5 6 7 8 9
+```
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Action**: Removes `3` (since it's the first move, any digit can be removed).
+   - **Sequence Update**:
+     ```
+     1 2 4 5 6 7 8 9
+     ```
+
+2. **Player 2's Turn**:
+   - **Removal Condition**: Must remove a digit that is a divisor or multiple of `3`.
+   - **Valid Options**: `6`, `9` (both are multiples of `3`).
+   - **Action**: Removes `6`.
+   - **Sequence Update**:
+     ```
+     1 2 4 5 7 8 9
+     ```
+
+3. **Player 1's Turn**:
+   - **Removal Condition**: Must remove a digit that is a divisor or multiple of `6`.
+   - **Valid Options**: `2` (divisor), `4` (divisor).
+   - **Action**: Removes `2`.
+   - **Sequence Update**:
+     ```
+     1 4 5 7 8 9
+     ```
+
+4. **Player 2's Turn**:
+   - **Removal Condition**: Must remove a digit that is a divisor or multiple of `2`.
+   - **Valid Options**: `4`, `8` (both are multiples of `2`).
+   - **Action**: Removes `4`.
+   - **Sequence Update**:
+     ```
+     1 5 7 8 9
+     ```
+
+5. **Player 1's Turn**:
+   - **Removal Condition**: Must remove a digit that is a divisor or multiple of `4`.
+   - **Valid Options**: `8` (multiple of `4`).
+   - **Action**: Removes `8`.
+   - **Sequence Update**:
+     ```
+     1 5 7 9
+     ```
+
+6. **Player 2's Turn**:
+   - **Removal Condition**: Must remove a digit that is a divisor or multiple of `8`.
+   - **Valid Options**: None (no remaining digits are a divisor or multiple of `8`).
+   - **Action**: Cannot make a move.
+   - **Result**: Player 2 loses the game.
+
+#### Conclusion
+
+- **Winner**: Player 1
+- **Reason**: Player 2 had no valid moves on their turn.
+
+### Command-Line Interaction Sample
+
+Below is a simulated command-line interaction between two players.
+
+#### Game Start
+
+```
+Welcome to Last Digit Standing!
+
+Initial Sequence:
+1 2 3 4 5 6 7 8 9
+
+Player 1, it's your turn.
+Enter a digit to remove:
+```
+
+#### Player 1's Turn
+
+```
+> 3
+
+You removed 3.
+
+Updated Sequence:
+1 2 4 5 6 7 8 9
+
+Player 2, it's your turn.
+You must remove a digit that is a divisor or multiple of 3.
+Available digits: 1 2 4 5 6 7 8 9
+Enter a digit to remove:
+```
+
+#### Player 2's Turn
+
+```
+> 6
+
+You removed 6.
+
+Updated Sequence:
+1 2 4 5 7 8 9
+
+Player 1, it's your turn.
+You must remove a digit that is a divisor or multiple of 6.
+Available digits: 1 2 4 5 7 8 9
+Enter a digit to remove:
+```
+
+#### Player 1's Turn
+
+```
+> 2
+
+You removed 2.
+
+Updated Sequence:
+1 4 5 7 8 9
+
+Player 2, it's your turn.
+You must remove a digit that is a divisor or multiple of 2.
+Available digits: 1 4 5 7 8 9
+Enter a digit to remove:
+```
+
+#### Player 2's Turn
+
+```
+> 4
+
+You removed 4.
+
+Updated Sequence:
+1 5 7 8 9
+
+Player 1, it's your turn.
+You must remove a digit that is a divisor or multiple of 4.
+Available digits: 1 5 7 8 9
+Enter a digit to remove:
+```
+
+#### Player 1's Turn
+
+```
+> 8
+
+You removed 8.
+
+Updated Sequence:
+1 5 7 9
+
+Player 2, it's your turn.
+You must remove a digit that is a divisor or multiple of 8.
+Available digits: 1 5 7 9
+
+No valid moves available.
+Player 2, you cannot make a valid move.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the digits remaining in the sequence.
+- **Control the Game**: Remove digits that limit your opponent's options on their next turn.
+- **Memorize Multiples and Divisors**: Familiarity with basic multiplication and division can give you a strategic advantage.
+
+## Summary
+
+**Last Digit Standing** is a simple yet strategic game that tests players' mathematical reasoning and foresight. The game progresses quickly, with each move directly affecting the opponent's options, ensuring that skilled players can consistently outmaneuver their opponents. Enjoy the challenge and may the best strategist win!

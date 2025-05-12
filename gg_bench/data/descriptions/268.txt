@@ -1,0 +1,206 @@
+# Game Title: **Elemental Duel**
+
+## Objective
+
+Become the first player to combine elemental forces to create the "Master Element." Players achieve victory by strategically selecting and combining elements to reach the predefined Master Element value before their opponent.
+
+## Setup
+
+- **Element Pool**: A shared list of elemental values ranging from 1 to 9.
+- **Players**: Two players, each starting with an empty hand.
+- **Master Element**: A target value predetermined at the start of the game (e.g., 15).
+- **Starting Conditions**:
+  - The Element Pool is displayed to both players.
+  - Players decide who goes first (can be randomized or agreed upon).
+
+## Game Components
+
+- **Element Pool**: Numbers 1 through 9 representing different elemental forces.
+  - **Appearance**: Simply numbers 1-9 listed in the command line.
+  - **Functionality**: Elements are picked from the pool and added to a player's hand.
+  - **Unique Attributes**: Once an element is picked, it is no longer available in the pool.
+
+- **Player Hands**: Each player's collection of elements.
+  - **Appearance**: A list of numbers the player has selected.
+  - **Functionality**: Players combine elements in their hand to reach the Master Element.
+  - **Unique Attributes**: Players can only use elements they have picked.
+
+## Turns
+
+- **Turn Order**: Players alternate turns.
+- **Turn Structure**:
+  1. **Element Selection Phase**:
+     - The player selects one element (a number from 1 to 9) from the Element Pool.
+     - The chosen element is added to their hand and removed from the pool.
+  2. **Combination Phase (Optional)**:
+     - The player may attempt to combine elements in their hand to reach the Master Element value.
+     - If successful, the player declares victory.
+  - **End of Turn**: The turn passes to the other player.
+
+## Rules and Mechanics
+
+### Element Selection
+
+- On their turn, a player must select one available element from the Element Pool.
+- Elements are unique; once selected, they cannot be chosen again by either player.
+
+### Combining Elements
+
+- Players aim to combine elements in their hand so that their sum equals the Master Element.
+- There is no limit to the number of elements a player can hold.
+- Players can only combine elements during their own turn.
+
+### Winning the Game
+
+- The first player to combine elements from their hand that exactly total the Master Element value wins the game.
+- If no elements remain in the Element Pool and neither player has achieved the Master Element, the player with the highest total sum of elements in their hand loses (since there are no draws, the lower total wins).
+
+### Additional Mechanics
+
+- **Strategic Blocking**:
+  - Players may select elements not only to aid their own strategy but also to prevent their opponent from accessing certain elements.
+- **No Duplicate Elements**:
+  - Each element is unique and can only be selected once per game.
+
+## Scoring
+
+- **Victory Condition**: Achieving the Master Element by combining elements to reach the exact target value.
+- **Secondary Victory Condition**:
+  - If the Element Pool is exhausted without either player reaching the Master Element, the player with the lower total sum of elements wins.
+  - This encourages players to balance the risk of accumulating high-value elements.
+
+## Examples
+
+### Sample Turn Sequence
+
+**Master Element**: 15
+
+**Element Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Player 1's Turn**:
+
+1. **Element Selection**:
+   - Chooses element **8**.
+   - **Element Pool** now: [1, 2, 3, 4, 5, 6, 7, 9]
+   - **Player 1's Hand**: [8]
+
+2. **Combination Phase**:
+   - Cannot combine elements yet (only one element).
+   - Ends turn.
+
+**Player 2's Turn**:
+
+1. **Element Selection**:
+   - Chooses element **7**.
+   - **Element Pool** now: [1, 2, 3, 4, 5, 6, 9]
+   - **Player 2's Hand**: [7]
+
+2. **Combination Phase**:
+   - Cannot combine elements yet.
+   - Ends turn.
+
+**Player 1's Turn**:
+
+1. **Element Selection**:
+   - Chooses element **6**.
+   - **Element Pool** now: [1, 2, 3, 4, 5, 9]
+   - **Player 1's Hand**: [8, 6]
+
+2. **Combination Phase**:
+   - Attempts to combine **8** + **6** = 14 (does not equal 15).
+   - Ends turn.
+
+**Player 2's Turn**:
+
+1. **Element Selection**:
+   - Chooses element **9**.
+   - **Element Pool** now: [1, 2, 3, 4, 5]
+   - **Player 2's Hand**: [7, 9]
+
+2. **Combination Phase**:
+   - Attempts to combine **7** + **9** = 16 (does not equal 15).
+   - Ends turn.
+
+**Player 1's Turn**:
+
+1. **Element Selection**:
+   - Chooses element **1**.
+   - **Element Pool** now: [2, 3, 4, 5]
+   - **Player 1's Hand**: [8, 6, 1]
+
+2. **Combination Phase**:
+   - Attempts to combine **8** + **6** + **1** = 15.
+   - **Success!** Player 1 declares victory.
+
+### Command-Line Interaction Example
+
+```
+Master Element to achieve: 15
+Available Elements: 1 2 3 4 5 6 7 8 9
+
+Player 1's Turn:
+Available Elements: 1 2 3 4 5 6 7 8 9
+Your Hand: 
+Select an element: 8
+
+You have selected element 8.
+Your Hand: 8
+Do you want to combine elements to reach 15? (yes/no): no
+
+Player 2's Turn:
+Available Elements: 1 2 3 4 5 6 7 9
+Your Hand: 
+Select an element: 7
+
+You have selected element 7.
+Your Hand: 7
+Do you want to combine elements to reach 15? (yes/no): no
+
+Player 1's Turn:
+Available Elements: 1 2 3 4 5 6 9
+Your Hand: 8
+Select an element: 6
+
+You have selected element 6.
+Your Hand: 8 6
+Do you want to combine elements to reach 15? (yes/no): yes
+Select elements to combine (separate numbers with spaces): 8 6
+
+The total is 14. This does not equal 15.
+End of your turn.
+
+Player 2's Turn:
+Available Elements: 1 2 3 4 5 9
+Your Hand: 7
+Select an element: 9
+
+You have selected element 9.
+Your Hand: 7 9
+Do you want to combine elements to reach 15? (yes/no): yes
+Select elements to combine (separate numbers with spaces): 7 9
+
+The total is 16. This does not equal 15.
+End of your turn.
+
+Player 1's Turn:
+Available Elements: 1 2 3 4 5
+Your Hand: 8 6
+Select an element: 1
+
+You have selected element 1.
+Your Hand: 8 6 1
+Do you want to combine elements to reach 15? (yes/no): yes
+Select elements to combine (separate numbers with spaces): 8 6 1
+
+The total is 15. Congratulations! You have achieved the Master Element and won the game!
+```
+
+## Strategic Depth
+
+- **Element Denial**: Selecting elements that your opponent may need.
+- **Hand Management**: Balancing the number of elements in your hand to avoid losing by having a higher total if the pool is exhausted.
+- **Calculation and Foresight**: Planning several moves ahead to set up the winning combination.
+  
+## Conclusion
+
+"Elemental Duel" is a strategic, turn-based game that is simple to code and play in a command-line interface. It combines elements of resource management and strategic planning, ensuring that skilled players can consistently outperform less experienced opponents. The game is unique in its mechanics and provides quick gameplay with depth and complexity.

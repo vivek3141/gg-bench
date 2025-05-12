@@ -1,0 +1,282 @@
+# Last Digit Duel
+
+## Objective
+
+**Be the player to force your opponent into a position where they cannot make a valid move.** In *Last Digit Duel*, players take turns selecting numbers based on specific rules. The primary goal is to strategically choose numbers that limit your opponent's options, ultimately preventing them from making a move on their turn, which constitutes a win for you.
+
+## Setup
+
+1. **Number Pool Initialization**: Create a shared list of integers from **1** to **100**. This list represents the available numbers that players can choose from during the game.
+2. **Determine First Player**: Decide which player will take the first turn. This can be done through mutual agreement or by a simple random method such as flipping a coin.
+
+## Game Components
+
+- **Number Pool**: A list of numbers ranging from **1** to **100**. These numbers are the central elements of the game.
+- **Player Turns**: Two players engage in alternating turns, selecting numbers from the number pool based on the game's rules.
+- **Command-Line Interface**: The game is played in a command-line environment where players input their chosen numbers, and the game displays necessary information for each turn.
+
+## Turns
+
+### Structure of a Turn
+
+1. **Current Player's Move**:
+   - The player selects an available number from the number pool that satisfies the selection criteria outlined in the rules.
+   - The chosen number is then removed from the number pool.
+2. **Display Updates**:
+   - The game updates and displays the last number played.
+   - The game shows the remaining numbers in the number pool (optional for added difficulty).
+3. **Turn Progression**:
+   - The turn passes to the next player, who now becomes the current player.
+
+### Order of Actions
+
+- **First Turn**:
+  - The first player can select any number from **1** to **100** as there is no previous number.
+- **Subsequent Turns**:
+  - Each player must select a number whose first digit matches the last digit of the number previously chosen by their opponent.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection**:
+   - On their turn, a player must select an available number from the number pool.
+   - The first digit of the chosen number must match the last digit of the number selected in the previous turn by the opponent.
+2. **Validity of Moves**:
+   - If a player cannot find a valid number to choose (i.e., no numbers in the pool satisfy the selection criteria), they lose the game.
+   - If a player makes an invalid move (selects a number that doesn't meet the criteria or is no longer in the pool), they forfeit their turn (optional rule) or lose the game (strict rule).
+3. **Number Usage**:
+   - Numbers, once selected, are removed from the number pool and cannot be used again by either player.
+
+### Special Conditions
+
+- **Leading Zeros**:
+  - Numbers do not have leading zeros. For example, the number **07** is considered **7**.
+- **Single-Digit Numbers**:
+  - For single-digit numbers, the first and last digit are the same.
+
+### Interaction Between Components
+
+- The game relies on the sequence of numbers chosen. Each move directly influences the opponent's options.
+- Players must pay attention to both the available numbers and the potential numbers that their opponent could play in response.
+
+## Scoring
+
+- **Winning the Game**:
+  - A player wins by forcing their opponent into a position where they cannot make a valid move on their turn.
+- **No Point System**:
+  - The game does not track points. Victory is achieved by strategic number selection leading to the opponent's inability to play.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Setup
+
+- **Number Pool**: 1 to 100
+- **First Player**: Player 1
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Action**: Chooses **23** (can pick any number on the first turn).
+   - **Reasoning**: Starts with a number ending in **3**.
+   - **Number Pool Update**: **23** is removed.
+2. **Player 2's Turn**:
+   - **Last Number's Last Digit**: **3** (from **23**).
+   - **Action**: Must pick a number starting with **3** (e.g., ** thirty-something numbers**).
+   - **Options**: 30-39 (excluding numbers already taken).
+   - **Chooses**: **35**.
+   - **Number Pool Update**: **35** is removed.
+3. **Player 1's Turn**:
+   - **Last Number's Last Digit**: **5** (from **35**).
+   - **Action**: Must pick a number starting with **5**.
+   - **Options**: 50-59.
+   - **Chooses**: ** fifty-two** (**52**).
+   - **Number Pool Update**: **52** is removed.
+4. **Player 2's Turn**:
+   - **Last Number's Last Digit**: **2** (from **52**).
+   - **Action**: Must pick a number starting with **2**.
+   - **Options**: 20-29.
+   - **Chooses**: ** twenty-seven** (**27**).
+   - **Number Pool Update**: **27** is removed.
+5. **Player 1's Turn**:
+   - **Last Number's Last Digit**: **7** (from **27**).
+   - **Action**: Must pick a number starting with **7**.
+   - **Options**: 70-79.
+   - **Chooses**: ** seventy-one** (**71**).
+   - **Number Pool Update**: **71** is removed.
+6. **Player 2's Turn**:
+   - **Last Number's Last Digit**: **1** (from **71**).
+   - **Action**: Must pick a number starting with **1**.
+   - **Options**: 10-19.
+   - **Chooses**: ** eighteen** (**18**).
+   - **Number Pool Update**: **18** is removed.
+7. **Player 1's Turn**:
+   - **Last Number's Last Digit**: **8** (from **18**).
+   - **Action**: Must pick a number starting with **8**.
+   - **Options**: 80-89.
+   - **Chooses**: ** eighty-four** (**84**).
+   - **Number Pool Update**: **84** is removed.
+8. **Player 2's Turn**:
+   - **Last Number's Last Digit**: **4** (from **84**).
+   - **Action**: Must pick a number starting with **4**.
+   - **Options**: 40-49.
+   - **Chooses**: ** forty-six** (**46**).
+   - **Number Pool Update**: **46** is removed.
+9. **Player 1's Turn**:
+   - **Last Number's Last Digit**: **6** (from **46**).
+   - **Action**: Must pick a number starting with **6**.
+   - **Options**: 60-69.
+   - **Chooses**: ** sixty-three** (**63**).
+   - **Number Pool Update**: **63** is removed.
+10. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **3** (from **63**).
+    - **Action**: Must pick a number starting with **3**.
+    - **Options**: Remaining numbers starting with **3**.
+    - **Chooses**: ** thirty-one** (**31**).
+    - **Number Pool Update**: **31** is removed.
+11. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **1** (from **31**).
+    - **Action**: Must pick a number starting with **1**.
+    - **Options**: Remaining numbers starting with **1**.
+    - **Chooses**: ** thirteen** (**13**).
+    - **Number Pool Update**: **13** is removed.
+12. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **3** (from **13**).
+    - **Action**: Must pick a number starting with **3**.
+    - **Options**: Remaining numbers starting with **3**.
+    - **Chooses**: ** thirty-eight** (**38**).
+    - **Number Pool Update**: **38** is removed.
+13. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **8** (from **38**).
+    - **Action**: Must pick a number starting with **8**.
+    - **Options**: Remaining numbers starting with **8**.
+    - **Chooses**: ** eighty-six** (**86**).
+    - **Number Pool Update**: **86** is removed.
+14. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **6** (from **86**).
+    - **Action**: Must pick a number starting with **6**.
+    - **Options**: Remaining numbers starting with **6**.
+    - **Chooses**: ** sixty-four** (**64**).
+    - **Number Pool Update**: **64** is removed.
+15. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **4** (from **64**).
+    - **Action**: Must pick a number starting with **4**.
+    - **Options**: Remaining numbers starting with **4**.
+    - **Chooses**: ** forty-nine** (**49**).
+    - **Number Pool Update**: **49** is removed.
+16. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **9** (from **49**).
+    - **Action**: Must pick a number starting with **9**.
+    - **Options**: **90-99** (numbers starting with **9**).
+    - **Chooses**: ** ninety-two** (**92**).
+    - **Number Pool Update**: **92** is removed.
+17. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **2** (from **92**).
+    - **Action**: Must pick a number starting with **2**.
+    - **Options**: Remaining numbers starting with **2**.
+    - **Chooses**: ** twenty-four** (**24**).
+    - **Number Pool Update**: **24** is removed.
+18. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **4** (from **24**).
+    - **Action**: Must pick a number starting with **4**.
+    - **Options**: Remaining numbers starting with **4**.
+    - **Chooses**: ** forty-two** (**42**).
+    - **Number Pool Update**: **42** is removed.
+19. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **2** (from **42**).
+    - **Action**: Must pick a number starting with **2**.
+    - **Options**: Remaining numbers starting with **2**.
+    - **Chooses**: ** twenty-one** (**21**).
+    - **Number Pool Update**: **21** is removed.
+20. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **1** (from **21**).
+    - **Action**: Must pick a number starting with **1**.
+    - **Options**: Remaining numbers starting with **1**.
+    - **Chooses**: ** eleven** (**11**).
+    - **Number Pool Update**: **11** is removed.
+21. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **1** (from **11**).
+    - **Action**: Must pick a number starting with **1**.
+    - **Options**: Remaining numbers starting with **1**.
+    - **Chooses**: ** seventeen** (**17**).
+    - **Number Pool Update**: **17** is removed.
+22. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **7** (from **17**).
+    - **Action**: Must pick a number starting with **7**.
+    - **Options**: Remaining numbers starting with **7**.
+    - **Chooses**: ** seventy-seven** (**77**).
+    - **Number Pool Update**: **77** is removed.
+23. **Player 1's Turn**:
+    - **Last Number's Last Digit**: **7** (from **77**).
+    - **Action**: Must pick a number starting with **7**.
+    - **Options**: Remaining numbers starting with **7**.
+    - **Chooses**: ** seventy** (**70**).
+    - **Number Pool Update**: **70** is removed.
+24. **Player 2's Turn**:
+    - **Last Number's Last Digit**: **0** (from **70**).
+    - **Action**: Must pick a number starting with **0**.
+    - **Options**: There are no numbers starting with **0**.
+    - **Outcome**: **Player 2 cannot make a valid move and loses the game.**
+
+### Command-Line Interaction Example
+
+Below is a simplified example of how the game might proceed in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to Last Digit Duel!
+
+Numbers Available: [1-100]
+
+Player 1, it's your turn.
+Enter a number to start the game: 23
+```
+
+#### Subsequent Turns
+
+```
+Player 1 chose 23.
+
+Numbers Available: [1-22, 24-100]
+Last Number Played: 23
+
+Player 2, it's your turn.
+You must choose a number starting with 3.
+Available numbers: [30,31,32,33,34,35,36,37,38,39]
+
+Enter your number: 35
+```
+
+*(The game continues with similar prompts for each player.)*
+
+#### Final Turn
+
+```
+Player 1 chose 70.
+
+Numbers Available: [Remaining numbers...]
+Last Number Played: 70
+
+Player 2, it's your turn.
+You must choose a number starting with 0.
+No available numbers start with 0.
+
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Try to anticipate which numbers will force your opponent into a difficult position in future turns.
+- **Control the Ending Digit**: Selecting numbers that end with less common starting digits (like 0) can limit your opponent's options.
+- **Number Awareness**: Keep track of which numbers have been played to avoid selecting numbers that give your opponent an advantage.
+- **Force Moves**: Whenever possible, choose numbers that will force your opponent to select from a limited set of numbers.
+
+## Conclusion
+
+*Last Digit Duel* is a game of numeric strategy and foresight. With a simple set of rules and a finite pool of numbers, players engage in a battle of wits to outmaneuver each other. The game is easy to learn but offers depth for players who enjoy planning and strategy.
+
+Happy dueling!

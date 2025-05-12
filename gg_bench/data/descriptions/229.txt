@@ -1,0 +1,315 @@
+# Number Runner: Rule Book
+
+## Objective
+
+**Primary Goal**: The objective of *Number Runner* is to be the first player to reach your opponent's base position on a linear board. Each player must strategically navigate the board while placing obstacles to hinder the opponent's progress. The first player to successfully move their piece onto the opponent's starting position wins the game.
+
+## Setup
+
+1. **Board Layout**: Imagine a linear board represented by positions numbered from 1 to 9.
+
+   ```
+   Positions: 1 2 3 4 5 6 7 8 9
+   ```
+
+2. **Starting Positions**:
+
+   - **Player 1**: Starts at position **1**.
+   - **Player 2**: Starts at position **9**.
+
+3. **Initial Conditions**:
+
+   - Both players have zero obstacles placed on the board at the start.
+   - No positions are occupied by obstacles initially.
+
+## Game Components
+
+1. **Board Positions**:
+
+   - Positions are integer numbers from **1** to **9**.
+   - Represents the spots where players can move or place obstacles.
+
+2. **Player Pieces**:
+
+   - **Player 1**: Represented by `'P1'`.
+   - **Player 2**: Represented by `'P2'`.
+
+3. **Obstacles**:
+
+   - Represented by an `'X'` on the board.
+   - Once placed, obstacles remain on the board for the duration of the game.
+
+4. **Empty Positions**:
+
+   - Positions not occupied by player pieces or obstacles are considered empty.
+
+## Turns
+
+1. **Turn Order**:
+
+   - Players alternate turns.
+   - **Player 1** makes the first move.
+
+2. **Actions per Turn**:
+
+   On their turn, a player must choose one of the following actions:
+
+   a) **Move Forward**:
+   
+   - Move their piece **one position forward** towards the opponent's base.
+     - **Player 1** moves from a lower-numbered position to a higher-numbered position (e.g., from 1 to 2).
+     - **Player 2** moves from a higher-numbered position to a lower-numbered position (e.g., from 9 to 8).
+
+   b) **Place an Obstacle**:
+
+   - Place an obstacle (`'X'`) on **any empty position** that is not currently occupied by either player's piece.
+   - Obstacles can be placed on any position except the starting positions (1 and 9) if they are occupied.
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+
+   - Players can only move **one position forward** per turn.
+   - A player cannot move onto a position occupied by an obstacle.
+     - If a move would result in landing on an obstacle, the player's piece is **returned to their starting position**, and their turn ends.
+
+2. **Obstacle Placement Rules**:
+
+   - Obstacles remain on the board once placed and cannot be moved or removed.
+   - Players cannot place an obstacle on:
+     - A position occupied by a player piece.
+     - A position already occupied by an obstacle.
+   - Obstacles can be placed on any other position, including positions between and beyond the players.
+
+3. **Winning Condition**:
+
+   - The first player to move their piece onto the opponent's starting position (Player 1 reaching position 9 or Player 2 reaching position 1) **wins the game**.
+
+4. **No Skipping Turns**:
+
+   - Players **must** take an action on their turn; skipping a turn is not allowed.
+
+5. **No Draws**:
+
+   - The game cannot end in a draw due to the finite number of positions and the rules preventing infinite play.
+
+## Scoring
+
+*Number Runner* is a win-loss game with no point scoring system. Victory is achieved by reaching the opponent's base position first. There are no draws or ties.
+
+## Examples
+
+### Example Scenario
+
+#### Initial Board State:
+
+```
+Positions: 1 2 3 4 5 6 7 8 9
+           P1                      P2
+```
+
+- `P1` is at position **1**.
+- `P2` is at position **9**.
+- No obstacles on the board.
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+
+   - **Action**: Moves forward from position 1 to position 2.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                     P1           P2
+     ```
+
+2. **Player 2's Turn**:
+
+   - **Action**: Places an obstacle on position 3.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                     P1  X        P2
+     ```
+
+3. **Player 1's Turn**:
+
+   - **Action**: Attempts to move from position 2 to position 3 but cannot (obstacle present).
+   - **Alternative Action**: Places an obstacle on position 8.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                     P1  X     X  P2
+     ```
+
+4. **Player 2's Turn**:
+
+   - **Action**: Moves forward from position 9 to position 8 but cannot (obstacle at position 8).
+   - **Result**: Player 2's piece returns to starting position 9.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                     P1  X     X  P2
+     ```
+
+   - **Note**: Since Player 2 attempted to move onto an obstacle, their piece remains at position 9.
+
+5. **Player 1's Turn**:
+
+   - **Action**: Moves forward from position 2 to position 4 (skipping position 3 due to obstacle).
+   - **Rule Clarification**: Players can only move one position forward; therefore, Player 1 cannot skip a position.
+   - **Correction**: Player 1 cannot move forward and must choose another action.
+   - **Alternative Action**: Places an obstacle on position 7.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                     P1  X     X  P2
+                              X
+     ```
+
+6. **Player 2's Turn**:
+
+   - **Action**: Places an obstacle on position 2 to block Player 1's only available move.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                   X P1  X     X  P2
+                              X
+     ```
+
+7. **Player 1's Turn**:
+
+   - **Action**: Cannot move forward (positions 3 and 2 have obstacles).
+   - **Alternative Action**: Places an obstacle on position 6.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                   X P1  X  X  X  P2
+                              X
+     ```
+
+8. **Player 2's Turn**:
+
+   - **Action**: Moves forward from position 9 to position 8 but cannot (obstacle at position 8).
+   - **Result**: Player 2's piece returns to starting position 9.
+   - **Alternative Action**: Places an obstacle on position 1.
+   - **Board State**:
+
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9
+                 X X P1  X  X  X  P2
+                              X
+     ```
+
+9. **Player 1's Turn**:
+
+   - **Action**: Cannot move forward or backward (blocked by obstacles).
+   - **Alternative Action**: No valid moves or obstacle placements.
+   - **Rule Clarification**: Players cannot skip their turn, but if no valid action is available, the turn passes.
+
+10. **Player 2's Turn**:
+
+    - **Action**: Moves forward from position 9 to position 7 (positions 8 is blocked, but they can only move one position forward).
+    - **Rule Clarification**: Cannot skip over positions; thus, cannot move.
+    - **Alternative Action**: No valid moves forward.
+    - **Result**: Both players are at a stalemate.
+
+#### Conclusion
+
+In this scenario, due to obstacles blocking all possible moves, neither player can progress, but since the game cannot end in a draw, players must strategize earlier in the game to prevent this situation.
+
+### Command-Line Interaction Example
+
+Below is a sample interaction between the players and the game in a command-line interface.
+
+```
+--- Number Runner Game Start ---
+
+Positions: 1 2 3 4 5 6 7 8 9
+
+Player 1 ('P1') is at position 1.
+Player 2 ('P2') is at position 9.
+
+No obstacles on the board.
+
+It's Player 1's turn.
+Choose an action:
+1) Move forward
+2) Place an obstacle
+
+Player 1 selects: 1
+
+Player 1 moves from position 1 to position 2.
+
+Updated Positions: 1 2 3 4 5 6 7 8 9
+                   P1              P2
+
+---
+
+It's Player 2's turn.
+Choose an action:
+1) Move forward
+2) Place an obstacle
+
+Player 2 selects: 2
+
+Enter position to place an obstacle (1-9):
+
+Player 2 places an obstacle at position 3.
+
+Updated Positions: 1 2 3 4 5 6 7 8 9
+                   P1  X           P2
+
+---
+
+It's Player 1's turn.
+Choose an action:
+1) Move forward
+2) Place an obstacle
+
+Player 1 selects: 1
+
+Player 1 attempts to move from position 2 to position 3.
+
+Position 3 has an obstacle. Player 1 returns to starting position 1.
+
+Updated Positions: 1 2 3 4 5 6 7 8 9
+                   P1  X           P2
+
+---
+
+It's Player 2's turn.
+Choose an action:
+1) Move forward
+2) Place an obstacle
+
+Player 2 selects: 1
+
+Player 2 moves from position 9 to position 8.
+
+Updated Positions: 1 2 3 4 5 6 7 8 9
+                   P1  X          P2
+
+---
+
+[Continue the game following the rules...]
+
+```
+
+## Strategic Tips
+
+- **Obstacle Placement**: Use obstacles strategically to block your opponent's path, but be mindful of not blocking your own path.
+- **Predict Opponent Moves**: Anticipate where your opponent wants to move and place obstacles accordingly.
+- **Balancing Actions**: Decide when to advance your piece and when to hinder your opponent.
+- **Avoiding Stalemate**: Be cautious of overusing obstacles in a way that may block all possible moves for both players.
+
+---
+
+Enjoy playing *Number Runner* and may the best strategist win!

@@ -1,0 +1,186 @@
+# Even Sum Duel
+
+## Objective
+
+Be the first player to achieve an **even cumulative total greater than 15** by selecting numbers from a shared pool. Players aim to strategically choose numbers to reach the target sum while blocking their opponent's progress.
+
+## Setup
+
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Initial Setup**:
+  - A shared pool of **numbers from 1 to 10**.
+  - Both players start with a cumulative total of **0**.
+
+## Game Components
+
+- **Number Pool**:
+  - **Numbers**: Integers from **1** to **10** inclusive.
+  - **Availability**: Each number can be selected **only once** per game.
+- **Player Totals**:
+  - Each player maintains their own **cumulative total**.
+  - Totals are updated after each turn based on the selected number.
+
+## Turns
+
+- **Turn Order**:
+  - Players decide who goes first (e.g., by coin toss).
+  - Players take **alternating turns** throughout the game.
+- **Turn Actions**:
+  - On their turn, a player must:
+    1. **Select a Number**: Choose an available number from the pool.
+    2. **Update Total**: Add the selected number to their cumulative total.
+- **Progression**:
+  - The selected number is removed from the pool, making it unavailable for future turns.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players can only choose from numbers that are still available in the pool.
+   - Each number can be selected only once in the game.
+
+2. **Cumulative Total**:
+   - Players maintain a running total of the numbers they have selected.
+   - The total is updated after each selection.
+
+3. **Winning the Game**:
+   - The first player to reach an **even cumulative total greater than 15** wins the game.
+   - **Even totals** are numbers divisible by 2 (e.g., 16, 18, 20).
+
+4. **Exceeding 20**:
+   - If a player's cumulative total exceeds **20** without achieving an even total greater than 15, they remain in the game but cannot win unless their opponent also fails to meet the winning condition.
+
+5. **End of Game Without a Winner**:
+   - If all numbers have been selected and neither player has achieved an even cumulative total greater than 15:
+     - The player with the **highest cumulative total** wins.
+     - If both players have the same cumulative total, the **last player to take a turn loses**.
+
+6. **Example of Even Totals Greater Than 15**:
+   - Valid winning totals: **16**, **18**, **20**.
+   - Totals like **14** or **15** do not qualify, as they are not both even and greater than 15.
+
+## Scoring
+
+- **Cumulative Total Tracking**:
+  - Players should keep track of their totals after each turn.
+- **Winning Condition**:
+  - No traditional scoring system; the game is won by meeting the objective conditions.
+- **Tiebreaker**:
+  - Highest total when all numbers are exhausted wins if no player met the primary objective.
+
+## Examples
+
+### Example Game Playthrough
+
+**Starting Pool**: Numbers 1 to 10.
+
+### Turn 1
+
+- **Player 1** selects **9**.
+  - **Player 1 Total**: 9
+  - **Remaining Numbers**: 1-8, 10
+
+### Turn 2
+
+- **Player 2** selects **8**.
+  - **Player 2 Total**: 8
+  - **Remaining Numbers**: 1-7, 10
+
+### Turn 3
+
+- **Player 1** selects **6**.
+  - **Player 1 Total**: 9 + 6 = **15**
+  - **Remaining Numbers**: 1-5, 7, 10
+
+### Turn 4
+
+- **Player 2** selects **7**.
+  - **Player 2 Total**: 8 + 7 = **15**
+  - **Remaining Numbers**: 1-5, 10
+
+### Turn 5
+
+- **Player 1** selects **2**.
+  - **Player 1 Total**: 15 + 2 = **17**
+  - **Remaining Numbers**: 1, 3-5, 10
+  - **Note**: Total is 17 (odd), so Player 1 has not met the winning condition.
+
+### Turn 6
+
+- **Player 2** selects **4**.
+  - **Player 2 Total**: 15 + 4 = **19**
+  - **Remaining Numbers**: 1, 3, 5, 10
+  - **Note**: Total is 19 (odd), so Player 2 has not met the winning condition.
+
+### Turn 7
+
+- **Player 1** selects **10**.
+  - **Player 1 Total**: 17 + 10 = **27**
+  - **Remaining Numbers**: 1, 3, 5
+  - **Note**: Total exceeds 20 but Player 1 is still in the game.
+
+### Turn 8
+
+- **Player 2** selects **5**.
+  - **Player 2 Total**: 19 + 5 = **24**
+  - **Remaining Numbers**: 1, 3
+  - **Note**: Total is 24 (even and greater than 15).
+
+**Result**: **Player 2 wins** by reaching an even total greater than 15.
+
+### Command-Line Interaction Sample
+
+Here's how the game might look in a command-line interface:
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9 10
+Player 1 Total: 0
+Player 2 Total: 0
+
+Player 1, select a number: 9
+You selected 9.
+Player 1 Total: 9
+
+Available Numbers: 1 2 3 4 5 6 7 8 10
+Player 2 Total: 0
+
+Player 2, select a number: 8
+You selected 8.
+Player 2 Total: 8
+
+Available Numbers: 1 2 3 4 5 6 7 10
+Player 1 Total: 9
+
+Player 1, select a number: 6
+You selected 6.
+Player 1 Total: 15
+
+Available Numbers: 1 2 3 4 5 7 10
+Player 2 Total: 8
+
+Player 2, select a number: 7
+You selected 7.
+Player 2 Total: 15
+
+Available Numbers: 1 2 3 4 5 10
+Player 1 Total: 15
+
+Player 1, select a number: 2
+You selected 2.
+Player 1 Total: 17
+
+... [game continues] ...
+
+Player 2 Total: 24
+Congratulations Player 2! You have reached an even total greater than 15 and win the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which numbers are available and how they can affect both your total and your opponent's options.
+- **Monitor Opponent's Total**: Be aware of your opponent's cumulative total to anticipate their potential to win.
+- **Number Selection**: Choosing higher even numbers can help you reach the winning condition faster.
+- **Blocking**: Select numbers that might help your opponent reach an even total greater than 15 to prevent them from winning.
+
+## Summary
+
+"Even Sum Duel" is a strategic and engaging game that challenges players to think ahead and make tactical decisions. With simple rules and quick gameplay, it's perfect for a command-line interface and offers depth for players seeking a competitive experience. Enjoy the duel!

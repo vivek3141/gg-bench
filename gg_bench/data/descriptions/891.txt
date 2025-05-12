@@ -1,0 +1,221 @@
+# Light Out Duel - Rule Book
+
+## Objective
+
+**Primary Goal:**  
+Be the player who turns off the last remaining light on the board.
+
+**Victory Condition:**  
+- **Win:** You win the game if you turn off the last light during your turn.
+- **Loss:** You lose the game if it's your turn and there are no lights left to turn off.
+
+## Setup
+
+**Initial Arrangement:**
+- The game features a straight line of **seven lights**, numbered **1** to **7**.
+- **Starting State:** All seven lights are initially **ON**.
+- **Player Positions:** There are no physical positions; players interact with the lights during their turns.
+- **Starting Player:** Decide who goes first (e.g., flip a coin).
+
+**Visual Representation:**
+
+```
+Lights: 1 2 3 4 5 6 7
+States: O O O O O O O
+```
+(O represents a light that is ON.)
+
+## Game Components
+
+- **Lights Board:**
+  - A linear board displaying seven numbered lights.
+  - Each light has two states: **ON** or **OFF**.
+- **Light Indicators:**
+  - **ON State:** Represented by `O` or any indicator showing the light is on.
+  - **OFF State:** Represented by `X` or any indicator showing the light is off.
+
+**Functionality and Attributes:**
+- Lights are identified by their numbers (1-7).
+- Players interact directly with the lights by toggling them between ON and OFF states.
+
+## Turns
+
+**Structure of a Turn:**
+1. **Action Selection:**
+   - On your turn, choose to toggle lights according to the rules.
+2. **Valid Actions:**
+   - **Option 1:** Turn **OFF** any **one** light that is currently **ON**.
+   - **Option 2:** Turn **OFF** any **two adjacent** lights that are both currently **ON**.
+3. **Action Execution:**
+   - Apply your chosen action to the board.
+4. **Turn Completion:**
+   - Your turn ends after performing your action.
+   - The next player takes their turn.
+
+**Turn Progression:**
+- Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Toggling Lights:**
+   - **Single Light Toggle:**
+     - You may turn **OFF** one light that is **ON**.
+   - **Double Light Toggle:**
+     - You may turn **OFF** two **adjacent** lights that are both **ON**.
+     - **Adjacency:** Two lights are adjacent if their numbers are consecutive (e.g., lights 3 and 4).
+
+2. **Light States:**
+   - **ON Lights:** Can be toggled **OFF**.
+   - **OFF Lights:** Cannot be toggled; they remain off for the rest of the game.
+
+3. **Valid Moves:**
+   - You cannot skip your turn.
+   - If there are no valid moves (no lights are **ON**), the game ends, and you lose your turn.
+
+### Winning the Game
+
+- **Victory Condition:** You win if you turn **OFF** the last remaining **ON** light.
+- **Forced Loss:** If it's your turn and all lights are **OFF**, you lose because you have no valid moves.
+
+### Special Considerations
+
+- **No Skipping:** You must perform an action on your turn if possible.
+- **Action Limits:** You cannot turn OFF more than two lights in a single turn.
+- **Light Selection:** You cannot turn OFF non-adjacent lights when choosing to toggle two lights.
+
+## Scoring
+
+- **Win/Loss Outcome:** The game is won by achieving the objective; there is no point scoring.
+- **No Draws:** The game cannot end in a draw due to the structure of turns and the finite number of lights.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+```
+Lights: 1 2 3 4 5 6 7
+States: O O O O O O O
+```
+
+#### Turn 1 - Player 1
+
+- **Action:** Turns OFF lights **1** and **2**.
+- **Reason:** Both lights are ON and adjacent.
+
+**Board After Turn:**
+
+```
+Lights: 1 2 3 4 5 6 7
+States: X X O O O O O
+```
+
+#### Turn 2 - Player 2
+
+- **Action:** Turns OFF light **4**.
+- **Reason:** Chooses to turn off a single light.
+
+**Board After Turn:**
+
+```
+Lights: 1 2 3 4 5 6 7
+States: X X O X O O O
+```
+
+#### Turn 3 - Player 1
+
+- **Action:** Attempts to turn OFF lights **3** and **5**.
+- **Result:** Invalid move (lights **3** and **5** are not adjacent).
+- **Corrected Action:** Turns OFF light **3**.
+
+**Board After Turn:**
+
+```
+Lights: 1 2 3 4 5 6 7
+States: X X X X O O O
+```
+
+#### Turn 4 - Player 2
+
+- **Action:** Turns OFF lights **5** and **6**.
+- **Reason:** Both lights are ON and adjacent.
+
+**Board After Turn:**
+
+```
+Lights: 1 2 3 4 5 6 7
+States: X X X X X X O
+```
+
+#### Turn 5 - Player 1
+
+- **Action:** Turns OFF light **7**.
+- **Reason:** Only remaining ON light.
+
+**Board After Turn:**
+
+```
+Lights: 1 2 3 4 5 6 7
+States: X X X X X X X
+```
+
+#### Outcome
+
+- **Winner:** Player 1 wins by turning OFF the last light.
+- **Game End:** All lights are OFF; the game concludes.
+
+### Command-Line Interaction Sample
+
+**Notation:**
+- `>` denotes a player prompt.
+- `States:` shows the current state of lights.
+- `Player 1` and `Player 2` indicate which player's turn it is.
+
+#### Game Start
+
+```
+States: O O O O O O O
+```
+
+#### Player 1 Turn
+
+```
+Player 1, choose your action:
+1. Turn OFF one light.
+2. Turn OFF two adjacent lights.
+> 2
+Enter the number of the first light to turn OFF:
+> 1
+Turning OFF lights 1 and 2.
+
+States: X X O O O O O
+```
+
+#### Player 2 Turn
+
+```
+Player 2, choose your action:
+1. Turn OFF one light.
+2. Turn OFF two adjacent lights.
+> 1
+Enter the number of the light to turn OFF:
+> 4
+Turning OFF light 4.
+
+States: X X O X O O O
+```
+
+[...and so on, following the gameplay from the previous example.]
+
+## Strategy Tips
+
+- **Plan Ahead:** Consider the implications of turning off single vs. multiple lights.
+- **Control the Board:** Try to force your opponent into a position where they have limited options.
+- **Prevent Opponent's Win:** Be aware of the remaining lights to avoid setting up your opponent for a win.
+
+## Conclusion
+
+"Light Out Duel" offers a simple yet strategic gameplay experience suitable for a command-line interface. Understanding the rules and planning your moves carefully will enhance your chances of victory. Enjoy the challenge of outsmarting your opponent in this game of wits and strategy!

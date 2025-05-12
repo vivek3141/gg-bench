@@ -1,0 +1,175 @@
+# Number Capture
+
+## Objective
+
+Be the **first player to capture the last remaining number** from a shared list by following the capture rules, thereby winning the game.
+
+## Setup
+
+- **Shared Number List**: Create a shared list of numbers from **1 to 9**.
+- **Players**: Two players are required. Decide randomly who will be **Player 1** and **Player 2**.
+- **Initial Captures**: Both players start with an empty list of captured numbers.
+
+## Game Components
+
+### Shared Number List
+
+- **Description**: A list containing the integers from **1** to **9** inclusive.
+- **Appearance**: Displayed in numerical order, e.g., `[1, 2, 3, 4, 5, 6, 7, 8, 9]`.
+- **Functionality**: Represents the pool of numbers available for capture by the players.
+
+### Captured Numbers
+
+- **Description**: Each player has their own collection of numbers they have captured during the game.
+- **Functionality**: Keeps track of the numbers each player has captured.
+- **Initial State**: Empty at the start of the game for both players.
+
+## Turns
+
+### Turn Order
+
+- Players take turns alternately, starting with **Player 1**.
+
+### Turn Structure
+
+1. **Selection Phase**:
+   - The player selects a number from the **Shared Number List** following the **Capture Rule**.
+2. **Capture Phase**:
+   - The selected number is **removed** from the Shared Number List.
+   - The number is added to the player's list of **Captured Numbers**.
+3. **End of Turn**:
+   - The turn ends, and control passes to the other player.
+
+## Rules and Mechanics
+
+### Capture Rule
+
+- **First Turn Exception**:
+  - On the very first turn of the game, Player 1 may capture **any number** from the Shared Number List.
+- **Subsequent Turns**:
+  - A player **cannot** capture a number that is **numerically adjacent** to the **last number captured** by **either player**.
+- **Numerically Adjacent Numbers**:
+  - Numbers that differ by exactly 1.
+  - For number `N`, the adjacent numbers are `N - 1` and `N + 1`.
+- **Example**:
+  - If the last captured number is **5**, the numbers **4** and **6** are considered adjacent and cannot be captured on the next turn.
+
+### Valid Moves
+
+- A move is valid if:
+  - The selected number is in the Shared Number List.
+  - The selected number is **not numerically adjacent** to the last captured number by either player.
+
+### Winning the Game
+
+- The game continues with players **alternating turns** and capturing numbers according to the Capture Rule.
+- **Victory Condition**:
+  - The player who captures the **last remaining number** from the Shared Number List **wins the game**.
+
+### Skipping Turns
+
+- If a player has **no valid numbers** to capture on their turn (all remaining numbers are adjacent to the last captured number), they **skip their turn**.
+- The game continues with the other player.
+
+- **Note**: Due to the finite set of numbers and capture rules, the game cannot result in an infinite loop and will always conclude with a winner.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Game Start
+
+- **Shared Number List**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- **Player 1's Captured Numbers**: `[]`
+- **Player 2's Captured Numbers**: `[]`
+
+#### Player 1's Turn
+
+- **Capture**: Player 1 captures **5** (any number is allowed on the first turn).
+- **Shared Number List**: `[1, 2, 3, 4, 6, 7, 8, 9]`
+- **Player 1's Captured Numbers**: `[5]`
+- **Last Captured Number**: `5`
+
+#### Player 2's Turn
+
+- **Unavailable Numbers**: Cannot capture numbers adjacent to `5`, so **4** and **6** are not allowed.
+- **Available Numbers**: `[1, 2, 3, 7, 8, 9]`
+- **Capture**: Player 2 captures **9**.
+- **Shared Number List**: `[1, 2, 3, 4, 6, 7, 8]`
+- **Player 2's Captured Numbers**: `[9]`
+- **Last Captured Number**: `9`
+
+#### Player 1's Turn
+
+- **Unavailable Numbers**: Cannot capture numbers adjacent to `9`, so **8** is not allowed.
+- **Available Numbers**: `[1, 2, 3, 4, 6, 7]`
+- **Capture**: Player 1 captures **6**.
+- **Shared Number List**: `[1, 2, 3, 4, 7, 8]`
+- **Player 1's Captured Numbers**: `[5, 6]`
+- **Last Captured Number**: `6`
+
+#### Player 2's Turn
+
+- **Unavailable Numbers**: Cannot capture numbers adjacent to `6`, so **7** is not allowed.
+- **Available Numbers**: `[1, 2, 3, 4, 8]`
+- **Capture**: Player 2 captures **2**.
+- **Shared Number List**: `[1, 3, 4, 7, 8]`
+- **Player 2's Captured Numbers**: `[9, 2]`
+- **Last Captured Number**: `2`
+
+#### Continuing the Game
+
+- Players continue to alternate turns, following the capture rules, until all numbers have been captured.
+- The player who captures the **last number** wins the game.
+
+## Command-Line Interaction Example
+
+```
+Shared List: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Player 1's Captures: []
+Player 2's Captures: []
+
+Player 1, select a number to capture: 5
+
+Shared List: [1, 2, 3, 4, 6, 7, 8, 9]
+Player 1's Captures: [5]
+Player 2's Captures: []
+
+Player 2, select a number to capture.
+Unavailable numbers (adjacent to 5): [4, 6]
+Available numbers: [1, 2, 3, 7, 8, 9]
+Your selection: 9
+
+Shared List: [1, 2, 3, 4, 6, 7, 8]
+Player 1's Captures: [5]
+Player 2's Captures: [9]
+
+Player 1, select a number to capture.
+Unavailable numbers (adjacent to 9): [8]
+Available numbers: [1, 2, 3, 4, 6, 7]
+Your selection: 6
+
+Shared List: [1, 2, 3, 4, 7, 8]
+Player 1's Captures: [5, 6]
+Player 2's Captures: [9]
+
+...
+
+Game Over.
+Player 1 captured the last number and wins the game!
+```
+
+## Strategic Considerations
+
+- **Planning Ahead**: Anticipate which numbers will be unavailable on your next turn based on the current captures.
+- **Blocking Moves**: Capture numbers that limit your opponent's options, potentially forcing them to skip a turn.
+- **Endgame Strategy**: Pay attention to the remaining numbers and plan to be the one to capture the last number.
+
+## Ensuring a Skilled Player's Advantage
+
+- The game requires players to think ahead and strategize to control the flow of available numbers.
+- A skilled player can consistently anticipate the effects of their captures on future turns, giving them an advantage over less experienced players.
+
+---
+
+This rule book provides all the necessary information to understand and play **Number Capture**. The game is designed to be simple to code and play in a command-line interface, yet offers strategic depth to keep players engaged.

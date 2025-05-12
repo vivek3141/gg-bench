@@ -1,0 +1,316 @@
+**Game Name:** Laser Bounce
+
+---
+
+**Objective:**
+
+Be the first player to hit your opponent's base with a laser beam by strategically placing and orienting mirrors on a shared grid. Victory is achieved when your laser beam reaches the opponent's base during your turn.
+
+---
+
+**Setup:**
+
+- **Grid:** The game is played on a 5x5 grid.
+- **Bases:**
+  - **Player 1's base** is located at position **(1,3)** (left center of the grid).
+  - **Player 2's base** is located at position **(5,3)** (right center of the grid).
+- **Mirrors:** Each player starts with **three mirrors**.
+- **Initial State:** The grid is empty except for the bases.
+
+---
+
+**Game Components:**
+
+1. **Grid:**
+   - A 5x5 grid represented by coordinates `(x,y)`, where `x` and `y` range from 1 to 5.
+   - Positions are addressed as `(column, row)`.
+
+2. **Bases:**
+   - Fixed positions where lasers originate.
+   - Represented by `B1` for Player 1 and `B2` for Player 2.
+
+3. **Mirrors:**
+   - Each player has three mirrors.
+   - Mirrors can be placed on empty squares.
+   - **Orientations:**
+     - **Forward Slash (`/`):** Reflects lasers coming from left or right upward or downward, respectively.
+     - **Backslash (`\`):** Reflects lasers coming from left or right downward or upward, respectively.
+
+4. **Laser Beams:**
+   - Fired from a player's base horizontally towards the opponent's side.
+   - Changes direction when interacting with mirrors.
+
+---
+
+**Turns:**
+
+Players alternate turns, with each turn consisting of:
+
+1. **Action Phase:**
+   - **Option 1:** Place one mirror on an empty square with a chosen orientation (`/` or `\`).
+   - **Option 2:** Rotate one of your existing mirrors on the grid to the opposite orientation.
+   
+2. **Laser Firing Phase:**
+   - Fire a laser from your base in the horizontal direction towards the opponent's side.
+   - The laser travels and interacts with mirrors according to the rules.
+   
+3. **End of Turn:**
+   - If the laser hits the opponent's base, you win.
+   - If not, the turn passes to the opponent.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Mirror Placement and Rotation:**
+   - Mirrors cannot be placed on the bases or occupied squares.
+   - You cannot have more than three mirrors on the grid at any time.
+   - You can only rotate your own mirrors.
+   
+2. **Laser Movement and Interaction:**
+   - **Movement:**
+     - The laser moves one square at a time in its current direction.
+     - Possible directions: left, right, up, down.
+   - **Interaction with Mirrors:**
+     - **Forward Slash (`/`) Mirror:**
+       - If the laser hits from the left, it is deflected upward.
+       - If the laser hits from the right, it is deflected downward.
+     - **Backslash (`\`) Mirror:**
+       - If the laser hits from the left, it is deflected downward.
+       - If the laser hits from the right, it is deflected upward.
+   - **Laser Path Termination:**
+     - The laser continues until it exits the grid or hits a base.
+     - The laser cannot pass through bases or mirrors.
+   
+3. **Winning the Game:**
+   - Hit the opponent's base with your laser during your turn.
+   - There is no draw mechanism; play continues until one player wins.
+
+---
+
+**Scoring:**
+
+- **Victory Condition:** The first player to successfully direct their laser to hit the opponent's base wins the game.
+- There are no points; the game is won outright when the objective is achieved.
+
+---
+
+**Examples:**
+
+**Grid Coordinate System:**
+
+```
+(1,5) (2,5) (3,5) (4,5) (5,5)
+(1,4) (2,4) (3,4) (4,4) (5,4)
+(1,3) (2,3) (3,3) (4,3) (5,3)
+(1,2) (2,2) (3,2) (4,2) (5,2)
+(1,1) (2,1) (3,1) (4,1) (5,1)
+```
+
+**Sample Game Play:**
+
+*Initial Setup:*
+
+- Player 1's base at **(1,3)**.
+- Player 2's base at **(5,3)**.
+- The grid is empty except for the bases.
+
+---
+
+**Turn 1: Player 1**
+
+- **Action Phase:**
+  - Places a mirror at **(2,3)** with orientation `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(1,3)** moving **right**.
+  - Laser path:
+    - Moves to **(2,3)**, encounters mirror `/`.
+    - Deflected **upward**, moves to **(2,4)**.
+    - Continues upward to **(2,5)**.
+    - Exits grid at **(2,6)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action Phase:**
+  - Places a mirror at **(4,3)** with orientation `\`.
+- **Laser Firing Phase:**
+  - Fires laser from **(5,3)** moving **left**.
+  - Laser path:
+    - Moves to **(4,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(4,2)**.
+    - Continues downward to **(4,1)**.
+    - Exits grid at **(4,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action Phase:**
+  - Rotates mirror at **(2,3)** from `/` to `\`.
+- **Laser Firing Phase:**
+  - Fires laser from **(1,3)** moving **right**.
+  - Laser path:
+    - Moves to **(2,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(2,2)**.
+    - Continues downward to **(2,1)**.
+    - Exits grid at **(2,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action Phase:**
+  - Places a mirror at **(3,2)** with orientation `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(5,3)** moving **left**.
+  - Laser path:
+    - Moves to **(4,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(4,2)**.
+    - Continues downward to **(4,1)**.
+    - Exits grid at **(4,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action Phase:**
+  - Places a mirror at **(3,3)** with orientation `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(1,3)** moving **right**.
+  - Laser path:
+    - Moves to **(2,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(2,2)**.
+    - Continues downward to **(2,1)**.
+    - Exits grid at **(2,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action Phase:**
+  - Rotates mirror at **(3,2)** from `/` to `\`.
+- **Laser Firing Phase:**
+  - Fires laser from **(5,3)** moving **left**.
+  - Laser path:
+    - Moves to **(4,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(4,2)**.
+    - Continues downward to **(4,1)**.
+    - Exits grid at **(4,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 7: Player 1**
+
+- **Action Phase:**
+  - Places a mirror at **(4,3)** with orientation `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(1,3)** moving **right**.
+  - Laser path:
+    - Moves to **(2,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(2,2)**.
+    - Continues downward to **(2,1)**.
+    - Exits grid at **(2,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 8: Player 2**
+
+- **Action Phase:**
+  - Places a mirror at **(3,3)** with orientation `\`.
+- **Laser Firing Phase:**
+  - Fires laser from **(5,3)** moving **left**.
+  - Laser path:
+    - Moves to **(4,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(4,2)**.
+    - Continues downward to **(4,1)**.
+    - Exits grid at **(4,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 9: Player 1**
+
+- **Action Phase:**
+  - Rotates mirror at **(3,3)** from `\` to `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(1,3)** moving **right**.
+  - Laser path:
+    - Moves to **(2,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(2,2)**.
+    - Continues downward to **(2,1)**.
+    - Exits grid at **(2,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 10: Player 2**
+
+- **Action Phase:**
+  - Places a mirror at **(3,4)** with orientation `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(5,3)** moving **left**.
+  - Laser path:
+    - Moves to **(4,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(4,2)**.
+    - Continues downward to **(4,1)**.
+    - Exits grid at **(4,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 11: Player 1**
+
+- **Action Phase:**
+  - Places a mirror at **(4,3)** with orientation `\`.
+- **Laser Firing Phase:**
+  - Fires laser from **(1,3)** moving **right**.
+  - Laser path:
+    - Moves to **(2,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(2,2)**.
+    - Continues downward to **(2,1)**.
+    - Exits grid at **(2,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+**Turn 12: Player 2**
+
+- **Action Phase:**
+  - Rotates mirror at **(3,3)** from `\` to `/`.
+- **Laser Firing Phase:**
+  - Fires laser from **(5,3)** moving **left**.
+  - Laser path:
+    - Moves to **(4,3)**, encounters mirror `\`.
+    - Deflected **downward**, moves to **(4,2)**.
+    - Continues downward to **(4,1)**.
+    - Exits grid at **(4,0)**.
+- **End of Turn:** Laser did not hit opponent's base.
+
+---
+
+*The game continues in this fashion until one player successfully directs their laser to hit the opponent's base, achieving victory.*
+
+---
+
+**Note:**
+
+- This game requires strategic placement and rotation of mirrors to manipulate the laser's path.
+- Players must anticipate their opponent's moves and plan accordingly.
+- The simplicity of the grid and components makes it easy to implement in a command-line interface, while the mechanics offer depth for skilled players to outmaneuver less experienced opponents.
+
+---
+
+**Conclusion:**
+
+**Laser Bounce** is a unique two-player, turn-based strategy game that combines spatial reasoning and tactical foresight. The game's simple rules and mechanics make it easy to learn and code, yet it offers significant strategic depth. There is no possibility of a draw, ensuring the game ends quickly with a clear winner. Skilled players can develop advanced strategies involving mirror placement and laser paths, allowing them to consistently outperform less experienced opponents.
+
+---

@@ -1,0 +1,222 @@
+# Sum Challenge: A Two-Player Turn-Based Game
+
+Welcome to **Sum Challenge**, a strategic and engaging two-player turn-based game designed for play in a command-line interface. Simple to code and quick to play, Sum Challenge tests your numerical strategy skills as you and your opponent vie to outmaneuver each other without falling into multiples of five. The game is easy to learn but offers depth for those who wish to master it.
+
+---
+
+## Objective
+
+Be the first player to force your opponent into a position where they cannot make a valid move without their personal sum becoming a multiple of five. Alternatively, win immediately if your opponent's personal sum becomes a multiple of five on their turn.
+
+---
+
+## Setup
+
+- **Central Pool**: A shared pool of numbers ranging from **1** to **9**.
+- **Personal Sums**: Each player starts with a personal sum of **0**.
+
+---
+
+## Game Components
+
+- **Numbers (1-9)**: A set of integers from **1** to **9** available in the central pool.
+  - **Appearance**: Each number is displayed as a simple integer.
+  - **Functionality**: Players select numbers from this pool to add to their personal sums.
+- **Personal Sum Tracker**: Keeps track of each player's current sum.
+  - **Unique Attributes**: The sum must not be a multiple of five after a player's turn.
+
+---
+
+## Turns
+
+1. **Starting the Game**: Determine who goes first (e.g., coin toss, random selection).
+2. **Turn Structure**:
+   - **Number Selection**: On your turn, select **one** available number from the central pool.
+   - **Sum Update**: Add the selected number to your personal sum.
+   - **Check Sum**: Verify that your new personal sum is **not a multiple of five**.
+     - If it is a multiple of five, you **lose immediately**.
+   - **End Turn**: The selected number is removed from the central pool, and the turn passes to your opponent.
+3. **Turn Progression**: Players alternate turns until the game ends.
+
+---
+
+## Rules and Mechanics
+
+- **Number Selection Rules**:
+  - You **must** select one number from the central pool on your turn.
+  - You **cannot** skip a turn or pass.
+- **Personal Sum Rules**:
+  - After adding the selected number, your personal sum must **not** be a multiple of five (e.g., 5, 10, 15).
+  - If no available number allows you to avoid a multiple of five, you lose.
+- **Winning the Game**:
+  - **Immediate Win**: Your opponent's personal sum becomes a multiple of five on their turn.
+  - **Forced Loss**: Your opponent cannot make a valid move without their personal sum becoming a multiple of five.
+
+---
+
+## Scoring
+
+- **Win Condition**: The game does not use a point-based scoring system. Victory is achieved by the conditions outlined above.
+- **Tracking Progress**:
+  - Keep track of both players' personal sums after each turn.
+  - Monitor the central pool to see which numbers remain available.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Central Pool: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- Player 1 Sum: `0`
+- Player 2 Sum: `0`
+
+---
+
+**Turn 1**:
+
+- **Player 1** selects `2`.
+- **Player 1 Sum**: `0 + 2 = 2` (Not a multiple of 5)
+- **Central Pool**: `[1, 3, 4, 5, 6, 7, 8, 9]`
+
+---
+
+**Turn 2**:
+
+- **Player 2** selects `3`.
+- **Player 2 Sum**: `0 + 3 = 3` (Not a multiple of 5)
+- **Central Pool**: `[1, 4, 5, 6, 7, 8, 9]`
+
+---
+
+**Turn 3**:
+
+- **Player 1** selects `4`.
+- **Player 1 Sum**: `2 + 4 = 6` (Not a multiple of 5)
+- **Central Pool**: `[1, 5, 6, 7, 8, 9]`
+
+---
+
+**Turn 4**:
+
+- **Player 2** selects `1`.
+- **Player 2 Sum**: `3 + 1 = 4` (Not a multiple of 5)
+- **Central Pool**: `[5, 6, 7, 8, 9]`
+
+---
+
+**Turn 5**:
+
+- **Player 1** selects `7`.
+- **Player 1 Sum**: `6 + 7 = 13` (Not a multiple of 5)
+- **Central Pool**: `[5, 6, 8, 9]`
+
+---
+
+**Turn 6**:
+
+- **Player 2** evaluates options:
+  - Selecting `5` would make sum `4 + 5 = 9` (Not a multiple of 5).
+  - Selecting `6` would make sum `4 + 6 = 10` (**Multiple of 5**, Player 2 would lose).
+  - Selecting `8` would make sum `4 + 8 = 12` (Not a multiple of 5).
+  - Selecting `9` would make sum `4 + 9 = 13` (Not a multiple of 5).
+- **Player 2** selects `5`.
+- **Player 2 Sum**: `4 + 5 = 9` (Not a multiple of 5)
+- **Central Pool**: `[6, 8, 9]`
+
+---
+
+**Turn 7**:
+
+- **Player 1** evaluates options:
+  - Selecting `6` would make sum `13 + 6 = 19` (Not a multiple of 5).
+  - Selecting `8` would make sum `13 + 8 = 21` (Not a multiple of 5).
+  - Selecting `9` would make sum `13 + 9 = 22` (Not a multiple of 5).
+- **Player 1** selects `6`.
+- **Player 1 Sum**: `13 + 6 = 19` (Not a multiple of 5)
+- **Central Pool**: `[8, 9]`
+
+---
+
+**Turn 8**:
+
+- **Player 2** evaluates options:
+  - Selecting `8` would make sum `9 + 8 = 17` (Not a multiple of 5).
+  - Selecting `9` would make sum `9 + 9 = 18` (Not a multiple of 5).
+- **Player 2** selects `8`.
+- **Player 2 Sum**: `9 + 8 = 17` (Not a multiple of 5)
+- **Central Pool**: `[9]`
+
+---
+
+**Turn 9**:
+
+- **Player 1** selects `9`.
+- **Player 1 Sum**: `19 + 9 = 28` (Not a multiple of 5)
+- **Central Pool**: `[]`
+
+---
+
+**End of Game**:
+
+- No numbers remain in the central pool.
+- **Player 2** cannot take a turn.
+- **Player 1** wins!
+
+---
+
+## Command-Line Interaction Sample
+
+Below is a simplified example of how the game might look in a command-line interface.
+
+```plaintext
+Welcome to Sum Challenge!
+
+Numbers available: 1 2 3 4 5 6 7 8 9
+
+Player 1 Sum: 0
+Player 2 Sum: 0
+
+Player 1's turn.
+Select a number: 2
+
+Numbers available: 1 3 4 5 6 7 8 9
+
+Player 1 Sum: 2
+Player 2 Sum: 0
+
+Player 2's turn.
+Select a number: 3
+
+Numbers available: 1 4 5 6 7 8 9
+
+Player 1 Sum: 2
+Player 2 Sum: 3
+
+...
+
+Player 1's turn.
+Select a number: 9
+
+Numbers available:
+
+Player 1 Sum: 28
+Player 2 Sum: 17
+
+No numbers remain. Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Avoid Multiples of Five**: Always calculate the potential sum before selecting a number.
+- **Track Opponent's Sum**: Pay attention to your opponent's sum to anticipate their moves.
+- **Control the Central Pool**: Be strategic in the numbers you leave available for your opponent.
+- **Force the Opponent's Hand**: Aim to leave numbers that will compel your opponent into a multiple of five.
+
+---
+
+Enjoy testing your numerical wits in **Sum Challenge**! May the smartest strategist win.

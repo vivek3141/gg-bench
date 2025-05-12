@@ -1,0 +1,206 @@
+# Number Tower Duel
+
+## Objective
+
+Build a tower of numbered blocks by strategically placing them according to specific rules. The primary goal is to outmaneuver your opponent by being the last player able to place a block on the tower. The player who successfully places a block when their opponent cannot is declared the winner. There are no draws in this game—play continues until one player wins.
+
+## Setup
+
+1. **Game Blocks:** A shared set of numbered blocks from **1** to **9**.
+2. **Tower Base:** Start with an empty tower space where blocks will be stacked.
+3. **Player Order:** Decide which player goes first (Player 1) and which goes second (Player 2). This can be determined by a coin toss or mutual agreement.
+4. **Starting Conditions:** All blocks numbered **1** to **9** are available and placed in a shared pool accessible to both players.
+
+## Game Components
+
+- **Numbered Blocks (1-9):** Each block has a unique number from **1** to **9**.
+  - **Appearance:** In the command-line interface, blocks are represented by their numerical value.
+  - **Functionality:** Blocks are used to build the tower and must be placed according to placement rules.
+  - **Unique Attributes:** Each block can only be used once; once placed, it cannot be moved or reused.
+
+## Turns
+
+- **Turn Structure:**
+  1. **Block Selection:** On their turn, a player selects one available block from the shared pool.
+  2. **Placement Attempt:** The player attempts to place the block on top of the tower according to the placement rules.
+  3. **Turn Completion:** The turn ends after the player places a block or cannot make a valid move.
+
+- **Order of Actions:**
+  - Players alternate turns, starting with Player 1.
+  - Each turn consists of selecting and attempting to place one block.
+
+- **Player Actions During Turn:**
+  - **Valid Action:** Select and place a block according to the rules.
+  - **Invalid Action:** If no valid moves are available, the player must pass, and the game ends.
+
+- **Turn Progression:**
+  - The game continues with players alternating turns until a winner is determined.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **First Block Placement:**
+   - The first player can place any number from **1** to **9** as the base of the tower.
+
+2. **Subsequent Block Placement:**
+   - A block can be placed on top of the tower only if it meets **one** of the following conditions with the block immediately below it:
+     - **Divisor Rule:** The number is a **divisor** of the block below.
+     - **Multiple Rule:** The number is a **multiple** of the block below.
+
+3. **Available Blocks:**
+   - Only blocks not yet used (remaining in the shared pool) can be selected.
+
+4. **Valid Moves:**
+   - If a player has at least one block that can legally be placed on the tower, they must place it.
+   - If a player has no valid moves (no blocks can be placed according to the rules), they lose the game.
+
+### Special Conditions
+
+- **No Skipping Turns:** Players cannot skip their turn if a valid move is available.
+- **No Rearranging:** Once a block is placed, it cannot be moved or removed.
+- **Winning the Game:** The game is won by the player who places a block when their opponent cannot.
+
+## Scoring
+
+- **Tracking Progress:**
+  - The height of the tower represents the progress.
+  - No numerical score is kept; the game is won by strategic placement leading to the opponent's inability to move.
+
+- **Victory Conditions:**
+  - **Win:** A player wins if their opponent cannot place a block on their turn.
+  - **Loss:** A player loses if they cannot place a block on their turn.
+  - **No Draws:** The game cannot end in a draw; play continues until one player wins.
+
+## Examples
+
+### Example Scenario
+
+**Shared Pool of Blocks:** [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Tower:** Empty
+
+#### Turn-by-Turn Playthrough
+
+1. **Player 1's Turn:**
+   - **Available Blocks:** [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   - **Action:** Chooses to place **6** as the first block.
+   - **Tower Now:** [6]
+   - **Reasoning:** Chooses a number with multiple divisors and multiples to increase future options.
+
+2. **Player 2's Turn:**
+   - **Available Blocks:** [1, 2, 3, 4, 5, 7, 8, 9]
+   - **Possible Blocks to Place on 6:**
+     - Divisors of 6: **1**, **2**, **3**
+     - Multiples of 6: **None** (since numbers are 1-9)
+     - **Available Options:** [1, 2, 3]
+   - **Action:** Chooses to place **3**.
+   - **Tower Now:** [6, 3]
+   - **Reasoning:** Aims to limit Player 1's next moves.
+
+3. **Player 1's Turn:**
+   - **Available Blocks:** [1, 2, 4, 5, 7, 8, 9]
+   - **Possible Blocks to Place on 3:**
+     - Divisors of 3: **1**
+     - Multiples of 3: **6** (already used), **9**
+     - **Available Options:** [1, 9]
+   - **Action:** Chooses to place **9**.
+   - **Tower Now:** [6, 3, 9]
+   - **Reasoning:** Continues the game and tries to force Player 2 into a position with fewer options.
+
+4. **Player 2's Turn:**
+   - **Available Blocks:** [1, 2, 4, 5, 7, 8]
+   - **Possible Blocks to Place on 9:**
+     - Divisors of 9: **1**, **3** (already used)
+     - Multiples of 9: **None**
+     - **Available Options:** [1]
+   - **Action:** Chooses to place **1**.
+   - **Tower Now:** [6, 3, 9, 1]
+   - **Reasoning:** Has no other option but to place **1**.
+
+5. **Player 1's Turn:**
+   - **Available Blocks:** [2, 4, 5, 7, 8]
+   - **Possible Blocks to Place on 1:**
+     - Divisors of 1: **1**
+     - Multiples of 1: **2**, **4**, **5**, **7**, **8**
+     - **Available Options:** [2, 4, 5, 7, 8]
+   - **Action:** Chooses to place **5**.
+   - **Tower Now:** [6, 3, 9, 1, 5]
+   - **Reasoning:** Attempts to limit Player 2's next move options.
+
+6. **Player 2's Turn:**
+   - **Available Blocks:** [2, 4, 7, 8]
+   - **Possible Blocks to Place on 5:**
+     - Divisors of 5: **1** (already used), **5** (already used)
+     - Multiples of 5: **None**
+     - **Available Options:** None
+   - **Action:** Cannot place any block.
+   - **Result:** **Player 1 Wins**
+
+### Command-Line Interaction Sample
+
+```plaintext
+--- Number Tower Duel ---
+
+Available Blocks: [1,2,3,4,5,6,7,8,9]
+Current Tower: [Empty]
+
+Player 1's Turn
+Select a block to place: 6
+Placed 6 on the tower.
+---
+
+Available Blocks: [1,2,3,4,5,7,8,9]
+Current Tower: [6]
+
+Player 2's Turn
+Possible blocks to place on 6: [1,2,3]
+Select a block to place: 3
+Placed 3 on the tower.
+---
+
+Available Blocks: [1,2,4,5,7,8,9]
+Current Tower: [6,3]
+
+Player 1's Turn
+Possible blocks to place on 3: [1,9]
+Select a block to place: 9
+Placed 9 on the tower.
+---
+
+Available Blocks: [1,2,4,5,7,8]
+Current Tower: [6,3,9]
+
+Player 2's Turn
+Possible blocks to place on 9: [1]
+Select a block to place: 1
+Placed 1 on the tower.
+---
+
+Available Blocks: [2,4,5,7,8]
+Current Tower: [6,3,9,1]
+
+Player 1's Turn
+Possible blocks to place on 1: [2,4,5,7,8]
+Select a block to place: 5
+Placed 5 on the tower.
+---
+
+Available Blocks: [2,4,7,8]
+Current Tower: [6,3,9,1,5]
+
+Player 2's Turn
+Possible blocks to place on 5: []
+No valid moves available.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Think Ahead:** Consider which blocks will be available after your turn and how they might benefit or hinder your opponent.
+- **Limit Opponent's Options:** Place blocks that reduce the number of valid moves for your opponent.
+- **Use Multiples and Divisors Wisely:** Remember which numbers have more divisors or multiples to maximize your options.
+
+## Conclusion
+
+"Number Tower Duel" is a simple yet strategic game that challenges players to think ahead and make calculated decisions. With easy-to-understand rules and quick gameplay, it offers competitive fun suitable for a command-line interface. By mastering the placement rules and planning your moves, you can consistently outplay less experienced opponents.

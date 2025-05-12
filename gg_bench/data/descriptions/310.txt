@@ -1,0 +1,170 @@
+# Prime Decomposer
+
+## Objective
+
+**Prime Decomposer** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the player who reduces the shared composite number **N** to **1** by strategically dividing it by its prime factors. The player who successfully reduces **N** to **1** on their turn wins the game.
+
+## Setup
+
+- **Starting Number**: Choose a composite positive integer **N** greater than **1** to start the game. This number should have at least two prime factors.
+  - *Example Starting Numbers*: 30, 60, 100, 144.
+- **Players**: Two players, Player 1 and Player 2.
+- **Turn Order**: Decide which player goes first (e.g., by mutual agreement or random selection).
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players will manipulate during the game.
+  - **Initial Value**: Set at the beginning of the game (e.g., **N = 60**).
+  - **Updated Value**: Changes as players divide **N** by its prime factors.
+- **Prime Factors**: Prime numbers that divide **N** without leaving a remainder.
+  - Players will select from these primes on their turn.
+- **No Physical Pieces or Boards**: All interactions occur via command-line inputs and outputs.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Current N**: At the beginning of a player's turn, the current value of **N** is displayed.
+2. **Determine Prime Factors**: The player identifies all prime factors of **N**.
+3. **Select a Prime Factor (p)**: The player chooses one prime factor **p** of **N**.
+4. **Divide N by p**: The player divides **N** by **p** to get a new value of **N**.
+5. **Update N**: The shared number **N** is updated to this new value.
+6. **Check for Win Condition**: If **N** is now **1**, the player who made the move wins the game.
+7. **Pass Turn**: If **N** is greater than **1**, the turn passes to the other player.
+
+### Example Turn
+
+- **Before Turn**: **N = 18**
+- **Player's Action**:
+  - Prime factors of 18 are 2 and 3.
+  - Player selects **p = 3**.
+  - **N** is updated: 18 ÷ 3 = **6**.
+- **After Turn**: **N = 6**
+- The turn passes to the next player.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Prime Factor Selection**: On their turn, a player must select a prime number **p** that divides the current **N** without leaving a remainder.
+   - **Valid Moves**: Only prime numbers that are factors of **N** are allowed.
+   - **Invalid Moves**: Choosing a number that is not a prime factor of **N** is not permitted.
+
+2. **Division Operation**: The player divides **N** by their chosen prime factor **p**.
+   - **Calculation**: \( N_{\text{new}} = \frac{N_{\text{current}}}{p} \)
+   - **Update**: **N** is updated to the new value for the next turn.
+
+3. **Winning the Game**: 
+   - If a player reduces **N** to **1** on their turn after division, they win the game.
+   - The player must be the one who performs the division resulting in **N = 1**.
+
+4. **No Valid Moves**:
+   - Since **N** is always reduced by a prime factor greater than **1**, the game cannot stall; there will always be a valid move unless **N = 1**.
+   - If **N** is **1** at the start of a player's turn (which should not occur if rules are followed), that player loses.
+
+### Additional Mechanics
+
+- **Visibility**: Both players can see the current value of **N** at all times.
+- **Prime Identification**: Players must correctly identify the prime factors of **N** without computational assistance.
+- **Time Limit (Optional)**: To add pressure and prevent stalling, players may agree on a time limit per turn.
+
+## Scoring
+
+- **Win Condition**: The player who reduces **N** to **1** on their turn wins the game.
+- **No Points System**: The game is won by achieving the objective rather than accumulating points.
+- **Match Play (Optional)**: Players can play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Starting Number**: **N = 60**
+
+#### Turn 1: Player 1
+
+- **Current N**: 60
+- **Prime Factors**: 2, 3, 5
+- **Player 1 Chooses p = 5**
+- **Calculation**: 60 ÷ 5 = **12**
+- **Updated N**: **12**
+- Turn passes to Player 2.
+
+#### Turn 2: Player 2
+
+- **Current N**: 12
+- **Prime Factors**: 2, 3
+- **Player 2 Chooses p = 3**
+- **Calculation**: 12 ÷ 3 = **4**
+- **Updated N**: **4**
+- Turn passes to Player 1.
+
+#### Turn 3: Player 1
+
+- **Current N**: 4
+- **Prime Factors**: 2
+- **Player 1 Chooses p = 2**
+- **Calculation**: 4 ÷ 2 = **2**
+- **Updated N**: **2**
+- Turn passes to Player 2.
+
+#### Turn 4: Player 2
+
+- **Current N**: 2
+- **Prime Factors**: 2
+- **Player 2 Chooses p = 2**
+- **Calculation**: 2 ÷ 2 = **1**
+- **Updated N**: **1**
+- **Player 2 Wins**: N has been reduced to 1.
+
+### Command-Line Interaction Example
+
+#### Turn Prompt
+
+```
+Current N: 60
+Player 1's Turn
+Prime factors of 60: 2, 3, 5
+Select a prime factor to divide N: 5
+N is now 12
+```
+
+#### Next Turn
+
+```
+Current N: 12
+Player 2's Turn
+Prime factors of 12: 2, 3
+Select a prime factor to divide N: 3
+N is now 4
+```
+
+#### Subsequent Turns
+
+```
+Current N: 4
+Player 1's Turn
+Prime factors of 4: 2
+Select a prime factor to divide N: 2
+N is now 2
+```
+
+```
+Current N: 2
+Player 2's Turn
+Prime factors of 2: 2
+Select a prime factor to divide N: 2
+N is now 1
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the remaining prime factors.
+- **Control the Game**: Try to force **N** into values where you have the advantage on your next turn.
+- **Prime Awareness**: Familiarize yourself with prime numbers and factorization to make quick decisions.
+
+## Conclusion
+
+"Prime Decomposer" is a simple yet strategic game that tests players' abilities to think ahead and understand prime factorization. The game is quick to play, with each match ending in a decisive victory—no draws are possible. By leveraging mathematical skills and strategic planning, a skilled player can consistently outperform an unskilled opponent.
+
+Enjoy the challenge of decomposing numbers and may the best mathematician win!

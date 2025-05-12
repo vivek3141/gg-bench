@@ -1,0 +1,197 @@
+# Divide and Conquer
+
+## Objective
+
+Be the first player to reduce the **shared number** to exactly **1** by strategically dividing it by its prime factors. The game is a test of strategy and understanding of prime numbers.
+
+## Setup
+
+- **Starting Number**: Choose a positive integer greater than 1 with at least two prime factors (e.g., 48). This will be the **shared number**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Turn Order**: Decide who takes the first turn (e.g., flip a coin).
+
+## Game Components
+
+- **Shared Number**: An integer that both players will manipulate during the game.
+- **Prime Factors**: Prime numbers that are factors of the current shared number.
+- **Command-Line Interface**: The game is played using text input and output in a command-line environment.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Current Shared Number**: At the start of each turn, the current shared number is displayed.
+2. **Determine Prime Factors**: List the prime factors of the shared number.
+3. **Player's Action**: The current player chooses one of the prime factors to divide the shared number by.
+4. **Update Shared Number**: The shared number is updated to the quotient of the division.
+5. **Display Result**: Show the result of the division and the new shared number.
+
+### Player Actions
+
+- **Valid Actions**: On their turn, a player must:
+  - Choose a prime factor of the shared number that is greater than 1.
+  - Divide the shared number by this prime factor.
+- **Invalid Actions**:
+  - Choosing a number that is not a prime factor of the shared number.
+  - Passing their turn or refusing to make a move.
+  - Dividing by 1 or any number less than 1.
+
+### Progression of Turns
+
+- Players alternate turns until one player wins the game.
+- The game continues even if the shared number becomes a prime number.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Dividing the Shared Number**:
+   - Players must divide the shared number by one of its prime factors greater than 1.
+   - The division must result in an integer quotient (no remainders).
+2. **Winning the Game**:
+   - The player who reduces the shared number to exactly **1** on their turn **wins the game**.
+3. **Forced Moves**:
+   - If only one valid prime factor exists, the player must divide by that prime factor.
+4. **Invalid Inputs**:
+   - Players must input valid prime factors. Invalid inputs require the player to try again.
+5. **No Skipping Turns**:
+   - Players cannot skip their turn or pass; they must make a valid move if possible.
+
+### Special Cases
+
+- **Shared Number is Prime**:
+  - If the shared number is prime, the only valid move is to divide it by itself, resulting in **1**, and the player wins.
+- **No Valid Moves**:
+  - If a player cannot make a valid move (which should not happen if rules are followed), they lose the game by default.
+
+## Scoring
+
+- **Winning**: The first player to reduce the shared number to exactly **1** wins the game.
+- **No Points System**: There is no points system; the game is won by achieving the objective.
+
+## Examples
+
+### Example Game 1: Starting Number 48
+
+#### Turn 1: Player 1
+
+- **Shared Number**: 48
+- **Prime Factors**: 2, 3
+- **Player 1 Chooses**: Divide by 2
+- **Calculation**: 48 ÷ 2 = 24
+- **New Shared Number**: 24
+
+#### Turn 2: Player 2
+
+- **Shared Number**: 24
+- **Prime Factors**: 2, 3
+- **Player 2 Chooses**: Divide by 3
+- **Calculation**: 24 ÷ 3 = 8
+- **New Shared Number**: 8
+
+#### Turn 3: Player 1
+
+- **Shared Number**: 8
+- **Prime Factors**: 2
+- **Player 1 Chooses**: Divide by 2
+- **Calculation**: 8 ÷ 2 = 4
+- **New Shared Number**: 4
+
+#### Turn 4: Player 2
+
+- **Shared Number**: 4
+- **Prime Factors**: 2
+- **Player 2 Chooses**: Divide by 2
+- **Calculation**: 4 ÷ 2 = 2
+- **New Shared Number**: 2
+
+#### Turn 5: Player 1
+
+- **Shared Number**: 2
+- **Prime Factors**: 2
+- **Player 1 Chooses**: Divide by 2
+- **Calculation**: 2 ÷ 2 = 1
+- **New Shared Number**: 1
+
+**Player 1 Wins!**
+
+### Example Game 2: Starting Number 30
+
+#### Turn 1: Player 1
+
+- **Shared Number**: 30
+- **Prime Factors**: 2, 3, 5
+- **Player 1 Chooses**: Divide by 5
+- **Calculation**: 30 ÷ 5 = 6
+- **New Shared Number**: 6
+
+#### Turn 2: Player 2
+
+- **Shared Number**: 6
+- **Prime Factors**: 2, 3
+- **Player 2 Chooses**: Divide by 3
+- **Calculation**: 6 ÷ 3 = 2
+- **New Shared Number**: 2
+
+#### Turn 3: Player 1
+
+- **Shared Number**: 2
+- **Prime Factors**: 2
+- **Player 1 Chooses**: Divide by 2
+- **Calculation**: 2 ÷ 2 = 1
+- **New Shared Number**: 1
+
+**Player 1 Wins!**
+
+## Command-Line Interaction Examples
+
+### Starting the Game
+
+```
+Welcome to Divide and Conquer!
+Starting number is 48.
+Player 1 will go first.
+```
+
+### Sample Turn
+
+```
+--------------------------------
+Player 1's Turn
+Current shared number: 48
+Prime factors: 2, 3
+Enter a prime factor to divide by: 2
+48 divided by 2 is 24.
+New shared number is 24.
+```
+
+### Invalid Input Handling
+
+```
+--------------------------------
+Player 2's Turn
+Current shared number: 24
+Prime factors: 2, 3
+Enter a prime factor to divide by: 4
+Invalid input. 4 is not a prime factor of 24.
+Please enter a valid prime factor: 3
+24 divided by 3 is 8.
+New shared number is 8.
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's moves and plan your strategy several turns in advance.
+- **Control the Game**: Try to leave the shared number in a state where your opponent has fewer prime factors to choose from.
+- **Prime Awareness**: Familiarity with prime numbers and factorization enhances decision-making.
+- **Force the Win**: When possible, reduce the shared number to a prime number on your turn, forcing your opponent into a position where you can win on your next turn.
+
+## Additional Rules
+
+- **Fair Play**: Players should not use calculators or external tools that give them an unfair advantage.
+- **Time Limit** (Optional): To keep the game moving quickly, impose a time limit per turn (e.g., 30 seconds).
+- **Rematches**: Players can agree to play multiple rounds, possibly with varying starting numbers, to determine an overall winner.
+
+## Summary
+
+"Divide and Conquer" is a quick, engaging game that combines arithmetic practice with strategic planning. The simplicity of its rules makes it easy to learn and play in a command-line interface, while the depth of strategy ensures that skilled players can consistently triumph over less experienced opponents. Enjoy testing your wits in this battle of numbers!

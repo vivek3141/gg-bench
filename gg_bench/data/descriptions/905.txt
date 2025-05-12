@@ -1,0 +1,239 @@
+# Factor Frenzy
+
+## Objective
+
+**Factor Frenzy** is a two-player, turn-based game played in a command-line interface. The primary goal is to be the last player to make a valid move by selecting numbers from a shared pool according to specific mathematical rules. A player wins by forcing their opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization:**
+   - Create a shared pool of integers ranging from **2 to 30** (inclusive).
+   - The numbers are available for both players to select during their turns.
+
+2. **Starting Number Selection:**
+   - Randomly select a **starting number** from the number pool to begin the game.
+   - Remove the starting number from the pool—it cannot be selected again.
+   - This number becomes the **current number** for the first turn.
+
+3. **Player Assignment:**
+   - Decide who will be **Player 1** and **Player 2**.
+   - Player 1 will take the first turn after the starting number is selected.
+
+---
+
+## Game Components
+
+- **Number Pool:**
+  - A list of integers from **2 to 30** inclusive.
+  - Numbers are removed from the pool once selected and cannot be used again.
+
+- **Current Number:**
+  - The last number that was selected and is used to determine valid moves for the next player.
+
+- **Players:**
+  - **Player 1** and **Player 2** alternate turns.
+  - Each player aims to select numbers that limit their opponent's options.
+
+---
+
+## Turns
+
+### Turn Structure:
+
+1. **Display Information:**
+   - Show the **current number**.
+   - List the **available numbers** in the number pool.
+
+2. **Player Action:**
+   - The player selects a **valid number** from the pool (see Rules and Mechanics for validity).
+   - The selected number is removed from the pool.
+   - Update the **current number** to the player's selected number.
+
+3. **Turn Progression:**
+   - The turn passes to the next player.
+   - Repeat the turn structure steps.
+
+4. **End of Turn:**
+   - If a player cannot select a valid number on their turn, the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - On your turn, you must select a number from the pool that is either:
+     - A **factor** of the current number (excluding 1 and the number itself).
+     - A **multiple** of the current number.
+   - The selected number must be **available** in the number pool.
+
+2. **Number Selection:**
+   - You cannot select a number that has already been removed from the pool.
+   - You must choose a number that meets the valid move criteria relative to the current number.
+
+3. **Winning the Game:**
+   - If your opponent cannot make a valid move on their turn, you **win**.
+   - A player loses when there are no valid numbers for them to select on their turn.
+
+4. **Examples of Factors and Multiples:**
+   - **Factors:** Numbers that divide evenly into the current number (excluding 1 and the number itself).
+     - Factors of 10: 2 and 5.
+   - **Multiples:** Numbers that the current number divides evenly into.
+     - Multiples of 5: 10, 15, 20, 25, etc.
+
+---
+
+## Scoring
+
+- **Win/Loss Outcome:**
+  - The game is won by the last player to make a valid move.
+  - No points are tracked; each game results in a win or loss.
+
+- **Match Play (Optional):**
+  - Players can compete in multiple games.
+  - Keep track of total wins to determine the overall champion.
+
+---
+
+## Examples
+
+### Example Gameplay:
+
+**Initial Setup:**
+
+- **Number Pool:** `[2, 3, 4, 5, 6, ..., 30]`
+- **Starting Number:** `15` (removed from the pool)
+- **Current Number:** `15`
+- **Player 1** starts.
+
+---
+
+**Player 1's Turn:**
+
+- **Current Number:** `15`
+- **Available Numbers:** `[2, 3, 4, 5, 6, ..., 30]`
+- **Valid Options (Factors or Multiples of 15):**
+  - **Factors:** `3`, `5`
+  - **Multiples:** `30`
+- **Action:**
+  - Player 1 selects `5`.
+  - Removes `5` from the pool.
+  - **Current Number** is now `5`.
+
+---
+
+**Player 2's Turn:**
+
+- **Current Number:** `5`
+- **Available Numbers:** `[2, 3, 4, 6, 7, ..., 30]`
+- **Valid Options (Factors or Multiples of 5):**
+  - **Factors:** None (excluding 1)
+  - **Multiples:** `10`, `15` (already used), `20`, `25`, `30`
+- **Action:**
+  - Player 2 selects `10`.
+  - Removes `10` from the pool.
+  - **Current Number** is now `10`.
+
+---
+
+**Player 1's Turn:**
+
+- **Current Number:** `10`
+- **Available Numbers:** `[2, 3, 4, 6, 7, 8, ..., 30]`
+- **Valid Options (Factors or Multiples of 10):**
+  - **Factors:** `2`, `5` (already used)
+  - **Multiples:** `20`, `30`
+- **Action:**
+  - Player 1 selects `2`.
+  - Removes `2` from the pool.
+  - **Current Number** is now `2`.
+
+---
+
+**Player 2's Turn:**
+
+- **Current Number:** `2`
+- **Available Numbers:** `[3, 4, 6, 7, 8, 9, ..., 30]`
+- **Valid Options (Factors or Multiples of 2):**
+  - **Multiples:** `4`, `6`, `8`, `10` (used), `12`, `14`, `16`, `18`, `20`, `22`, `24`, `26`, `28`, `30`
+- **Action:**
+  - Player 2 selects `4`.
+  - Removes `4` from the pool.
+  - **Current Number** is now `4`.
+
+---
+
+**Game Continues:**
+
+Players continue taking turns, selecting valid numbers based on the current number. The game progresses until one player cannot make a valid move.
+
+---
+
+**Game Conclusion:**
+
+- If a player cannot select a valid number on their turn, they lose.
+- The last player to make a valid move wins the game.
+
+### Sample Command-Line Interaction:
+
+```
+--- Factor Frenzy ---
+
+Starting Number: 15
+Removed 15 from the number pool.
+Player 1's turn.
+Current Number: 15
+Available Numbers: [2, 3, 4, 5, 6, ..., 30]
+Valid Moves: [3, 5, 30]
+Enter your move: 5
+You selected 5.
+Removed 5 from the number pool.
+
+Player 2's turn.
+Current Number: 5
+Available Numbers: [2, 3, 4, 6, 7, ..., 30]
+Valid Moves: [10, 15 (used), 20, 25, 30]
+Enter your move: 10
+You selected 10.
+Removed 10 from the number pool.
+
+Player 1's turn.
+Current Number: 10
+Available Numbers: [2, 3, 4, 6, 7, 8, ..., 30]
+Valid Moves: [2, 20, 30]
+Enter your move: 2
+You selected 2.
+Removed 2 from the number pool.
+
+Player 2's turn.
+Current Number: 2
+Available Numbers: [3, 4, 6, 7, 8, 9, ..., 30]
+Valid Moves: [4, 6, 8, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
+Enter your move: 4
+You selected 4.
+Removed 4 from the number pool.
+
+...
+
+```
+
+---
+
+## Strategic Tips
+
+- **Limit Opponent's Options:**
+  - Choose numbers that have fewer factors or multiples remaining in the pool to restrict your opponent's valid moves.
+
+- **Plan Ahead:**
+  - Anticipate which numbers your opponent might select and how it will affect your future moves.
+
+- **Control the Game Flow:**
+  - By carefully selecting numbers, you can steer the game toward numbers that favor your strategy.
+
+- **Avoid Trap Numbers:**
+  - Be cautious of selecting numbers that leave powerful options for your opponent.
+
+---
+
+Enjoy the game of **Factor Frenzy** and may the most strategic player win!

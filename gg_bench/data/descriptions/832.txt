@@ -1,0 +1,195 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+**Divisor Duel** is a two-player, turn-based mathematical strategy game played in a command-line interface. The primary goal of the game is to force your opponent into a position where they cannot make a valid move. Players take turns reducing a shared number by its proper divisors, and the player who makes the last valid move wins the game. There is no possibility of a draw, and skilled players can consistently outmaneuver unskilled players through strategic choices.
+
+## Setup
+
+1. **Starting Number**: The game begins with a positive integer \( N \). By default, \( N = 16 \), but players can agree on any suitable starting number greater than 1.
+
+2. **Determine Turn Order**: Decide which player will take the first turn. This can be done by mutual agreement or by a random method such as a coin toss.
+
+3. **Initial Display**: The current value of \( N \) is displayed to both players at the start of the game.
+
+## Game Components
+
+- **Shared Number \( N \)**: A positive integer that both players will manipulate throughout the game.
+
+- **Proper Divisors**: For any given \( N \), its proper divisors are all positive integers less than \( N \) that divide \( N \) exactly (i.e., without leaving a remainder).
+
+- **Command-Line Interface**: Players will input their chosen divisors and receive updates on the game state through text-based prompts and outputs.
+
+## Turns
+
+1. **Turn Structure**: Players alternate turns, starting with the player determined during setup.
+
+2. **Player Actions**: On their turn, a player must:
+
+   - **Select a Divisor**: Choose any proper divisor of the current \( N \).
+
+   - **Subtract the Divisor**: Reduce \( N \) by the chosen divisor (\( N = N - \text{divisor} \)).
+
+3. **Announce Move**: The player announces their chosen divisor and the new value of \( N \).
+
+4. **Turn Progression**: The updated \( N \) is displayed, and the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+
+   - **Proper Divisors Only**: Players can only subtract proper divisors of the current \( N \).
+
+   - **Positive Integers**: All numbers involved must be positive integers.
+
+2. **Invalid Moves**:
+
+   - **Non-Divisors**: Choosing a number that is not a proper divisor of \( N \) is not allowed.
+
+   - **Zero or Negative Results**: Moves that would reduce \( N \) to zero or a negative number are invalid.
+
+3. **Winning the Game**:
+
+   - **Last Valid Move**: The player who reduces \( N \) to 1 with a valid move wins the game.
+
+   - **No Available Moves**: If a player cannot make a valid move on their turn (i.e., \( N = 1 \)), they lose.
+
+4. **Example of Proper Divisors**:
+
+   - If \( N = 8 \):
+
+     - Proper divisors are 1, 2, and 4.
+
+   - If \( N = 7 \):
+
+     - Proper divisors are 1 (since 7 is prime).
+
+5. **Game End Condition**:
+
+   - The game ends when \( N \) has been reduced to 1, and no further moves are possible.
+
+## Scoring
+
+- **Win**: The player who makes the last valid move (reducing \( N \) to 1) wins the game.
+
+- **Loss**: The player who cannot make a valid move on their turn loses the game.
+
+- **No Points System**: The game does not utilize a point-based scoring system; victory is determined solely by the game's end condition.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Starting number \( N = 16 \).
+- Player 1: Alice
+- Player 2: Bob
+- Alice will take the first turn.
+
+**Turn 1**:
+
+- **Alice's Turn**:
+  - Current \( N = 16 \).
+  - Proper divisors of 16: 1, 2, 4, 8.
+  - Alice chooses to subtract 8.
+  - Calculation: \( N = 16 - 8 = 8 \).
+  - Alice announces: "I subtract 8. New N is 8."
+
+**Turn 2**:
+
+- **Bob's Turn**:
+  - Current \( N = 8 \).
+  - Proper divisors of 8: 1, 2, 4.
+  - Bob chooses to subtract 4.
+  - Calculation: \( N = 8 - 4 = 4 \).
+  - Bob announces: "I subtract 4. New N is 4."
+
+**Turn 3**:
+
+- **Alice's Turn**:
+  - Current \( N = 4 \).
+  - Proper divisors of 4: 1, 2.
+  - Alice chooses to subtract 2.
+  - Calculation: \( N = 4 - 2 = 2 \).
+  - Alice announces: "I subtract 2. New N is 2."
+
+**Turn 4**:
+
+- **Bob's Turn**:
+  - Current \( N = 2 \).
+  - Proper divisors of 2: 1.
+  - Bob chooses to subtract 1.
+  - Calculation: \( N = 2 - 1 = 1 \).
+  - Bob announces: "I subtract 1. New N is 1."
+
+**Turn 5**:
+
+- **Alice's Turn**:
+  - Current \( N = 1 \).
+  - Proper divisors of 1: None (since no positive integer less than 1 divides it).
+  - Alice cannot make a valid move.
+  - Alice announces: "I have no valid moves. I lose."
+  - **Bob wins the game.**
+
+### Command-Line Interaction Sample
+
+**Game Start**:
+
+```
+Welcome to Divisor Duel!
+Starting number (N): 16
+Player 1 (Alice) will start first.
+
+-------------------------
+Current N: 16
+Alice's Turn.
+Proper divisors of 16: 1, 2, 4, 8
+Enter a proper divisor of 16 to subtract: 8
+
+Alice subtracts 8 from N.
+New N is 8.
+-------------------------
+Current N: 8
+Bob's Turn.
+Proper divisors of 8: 1, 2, 4
+Enter a proper divisor of 8 to subtract: 4
+
+Bob subtracts 4 from N.
+New N is 4.
+-------------------------
+Current N: 4
+Alice's Turn.
+Proper divisors of 4: 1, 2
+Enter a proper divisor of 4 to subtract: 2
+
+Alice subtracts 2 from N.
+New N is 2.
+-------------------------
+Current N: 2
+Bob's Turn.
+Proper divisors of 2: 1
+Enter a proper divisor of 2 to subtract: 1
+
+Bob subtracts 1 from N.
+New N is 1.
+-------------------------
+Current N: 1
+Alice's Turn.
+No proper divisors left. Alice cannot make a move.
+Bob wins the game!
+```
+
+### Strategy Tips
+
+- **Aim for Control**: Try to reduce \( N \) to numbers where your opponent has limited options.
+
+- **Prime Numbers**: Leaving \( N \) as a prime number (greater than 2) limits your opponent to only subtracting 1.
+
+- **Force the Loss**: Plan ahead to force your opponent into a position where \( N = 1 \) on their turn.
+
+## Conclusion
+
+Divisor Duel is a simple yet strategic game that combines basic arithmetic with forward-thinking. Its minimal components and straightforward rules make it easy to code and play in a command-line interface. With no possibility of a draw and the potential for deep strategy, it offers an engaging challenge where skillful play is rewarded with consistent victories.
+
+Enjoy the game, and may the best strategist win!

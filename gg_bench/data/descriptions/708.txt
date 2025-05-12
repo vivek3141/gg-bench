@@ -1,0 +1,269 @@
+# Factor Chain Challenge
+
+## Objective
+
+Be the last player able to make a valid move by selecting numbers connected through factors and multiples. Force your opponent into a position where they cannot make a valid move. The player who cannot make a valid move on their turn loses the game.
+
+## Setup
+
+- **Number Pool**: A shared pool containing the numbers **1** through **10**.
+- **Current Number**: Starts as **None** before the first move.
+
+## Game Components
+
+- **Players**: Two players take turns in the game.
+- **Number Pool**: Numbers from **1** to **10** available for selection.
+- **Current Number**: The number selected in the previous turn, used to determine valid moves.
+
+## Turns
+
+1. **Determine First Player**: Flip a coin or use any random method to decide who goes first.
+2. **Player's Turn**:
+   - **First Turn**:
+     - The first player selects any number from the number pool.
+   - **Subsequent Turns**:
+     - The player must select a number from the number pool that is a **factor** or **multiple** of the current number.
+   - **Actions**:
+     - **Select Number**: Choose a valid number.
+     - **Update Number Pool**: Remove the selected number from the pool.
+     - **Update Current Number**: The selected number becomes the new current number.
+3. **Turn Progression**: Players alternate turns until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+### Valid Moves
+
+- **First Move**: Any number from **1** to **10** can be selected.
+- **Factors and Multiples**:
+  - A **factor** divides the current number evenly (no remainder).
+  - A **multiple** is divisible by the current number evenly.
+- **Available Numbers**: Only numbers remaining in the number pool can be selected.
+
+### Number Pool Management
+
+- **Removal**: Once a number is selected, it is removed from the number pool and cannot be selected again.
+- **Visibility**: Both players can see the current state of the number pool.
+
+### Winning the Game
+
+- **Victory Condition**: If a player cannot make a valid move on their turn, they lose. The other player is declared the winner.
+- **No Draws**: The game cannot end in a draw.
+
+## Scoring
+
+- **Winner**: The player who successfully forces the opponent into a position with no valid moves.
+- **No Point System**: The game is won by gameplay outcome rather than points.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Number Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+#### Turn 1:
+
+- **Player 1's Turn**:
+  - **Current Number**: None
+  - **Selection**: Chooses **6**
+  - **Reason**: Any number is valid on the first turn.
+  - **Updated Number Pool**: 1, 2, 3, 4, 5, 7, 8, 9, 10
+  - **New Current Number**: **6**
+
+#### Turn 2:
+
+- **Player 2's Turn**:
+  - **Current Number**: **6**
+  - **Possible Choices**: Factors and multiples of 6 from the number pool.
+    - **Factors**: 1, 2, 3
+    - **Multiples**: 6 (already taken)
+  - **Available Choices**: 1, 2, 3
+  - **Selection**: Chooses **3**
+  - **Updated Number Pool**: 1, 2, 4, 5, 7, 8, 9, 10
+  - **New Current Number**: **3**
+
+#### Turn 3:
+
+- **Player 1's Turn**:
+  - **Current Number**: **3**
+  - **Possible Choices**: Factors and multiples of 3.
+    - **Factors**: 1
+    - **Multiples**: 6, 9
+  - **Available Choices**: 1, 9
+  - **Selection**: Chooses **9**
+  - **Updated Number Pool**: 1, 2, 4, 5, 7, 8, 10
+  - **New Current Number**: **9**
+
+#### Turn 4:
+
+- **Player 2's Turn**:
+  - **Current Number**: **9**
+  - **Possible Choices**: Factors and multiples of 9.
+    - **Factors**: 1, 3
+    - **Multiples**: 9 (already taken)
+  - **Available Choices**: 1
+  - **Selection**: Chooses **1**
+  - **Updated Number Pool**: 2, 4, 5, 7, 8, 10
+  - **New Current Number**: **1**
+
+#### Turn 5:
+
+- **Player 1's Turn**:
+  - **Current Number**: **1**
+  - **Possible Choices**: Factors and multiples of 1 (all remaining numbers).
+  - **Available Choices**: 2, 4, 5, 7, 8, 10
+  - **Selection**: Chooses **5**
+  - **Updated Number Pool**: 2, 4, 7, 8, 10
+  - **New Current Number**: **5**
+
+#### Turn 6:
+
+- **Player 2's Turn**:
+  - **Current Number**: **5**
+  - **Possible Choices**: Factors and multiples of 5.
+    - **Factors**: 1 (already taken), 5 (already taken)
+    - **Multiples**: 10
+  - **Available Choices**: 10
+  - **Selection**: Chooses **10**
+  - **Updated Number Pool**: 2, 4, 7, 8
+  - **New Current Number**: **10**
+
+#### Turn 7:
+
+- **Player 1's Turn**:
+  - **Current Number**: **10**
+  - **Possible Choices**: Factors and multiples of 10.
+    - **Factors**: 1 (taken), 2, 5 (taken), 10 (taken)
+  - **Available Choices**: 2
+  - **Selection**: Chooses **2**
+  - **Updated Number Pool**: 4, 7, 8
+  - **New Current Number**: **2**
+
+#### Turn 8:
+
+- **Player 2's Turn**:
+  - **Current Number**: **2**
+  - **Possible Choices**: Factors and multiples of 2.
+    - **Factors**: 1 (taken), 2 (taken)
+    - **Multiples**: 4, 6 (taken), 8
+  - **Available Choices**: 4, 8
+  - **Selection**: Chooses **4**
+  - **Updated Number Pool**: 7, 8
+  - **New Current Number**: **4**
+
+#### Turn 9:
+
+- **Player 1's Turn**:
+  - **Current Number**: **4**
+  - **Possible Choices**: Factors and multiples of 4.
+    - **Factors**: 1 (taken), 2 (taken), 4 (taken)
+    - **Multiples**: 8
+  - **Available Choices**: 8
+  - **Selection**: Chooses **8**
+  - **Updated Number Pool**: 7
+  - **New Current Number**: **8**
+
+#### Turn 10:
+
+- **Player 2's Turn**:
+  - **Current Number**: **8**
+  - **Possible Choices**: Factors and multiples of 8.
+    - **Factors**: 1 (taken), 2 (taken), 4 (taken), 8 (taken)
+  - **Available Choices**: None
+  - **Outcome**: Player 2 cannot make a valid move.
+
+**Winner**: **Player 1**
+
+## Command-Line Interaction Example
+
+```plaintext
+Initial Number Pool: 1,2,3,4,5,6,7,8,9,10
+Current Number: None
+
+Player 1's turn.
+Available Numbers: 1,2,3,4,5,6,7,8,9,10
+Select a number: 6
+Player 1 selects 6.
+Updated Number Pool: 1,2,3,4,5,7,8,9,10
+Current Number is now 6.
+
+Player 2's turn.
+Available Numbers: 1,2,3,4,5,7,8,9,10
+Connected Numbers to 6: 1,2,3
+Select a number: 3
+Player 2 selects 3.
+Updated Number Pool: 1,2,4,5,7,8,9,10
+Current Number is now 3.
+
+Player 1's turn.
+Available Numbers: 1,2,4,5,7,8,9,10
+Connected Numbers to 3: 1,9
+Select a number: 9
+Player 1 selects 9.
+Updated Number Pool: 1,2,4,5,7,8,10
+Current Number is now 9.
+
+Player 2's turn.
+Available Numbers: 1,2,4,5,7,8,10
+Connected Numbers to 9: 1
+Select a number: 1
+Player 2 selects 1.
+Updated Number Pool: 2,4,5,7,8,10
+Current Number is now 1.
+
+Player 1's turn.
+Available Numbers: 2,4,5,7,8,10
+Connected Numbers to 1: 2,4,5,7,8,10
+Select a number: 5
+Player 1 selects 5.
+Updated Number Pool: 2,4,7,8,10
+Current Number is now 5.
+
+Player 2's turn.
+Available Numbers: 2,4,7,8,10
+Connected Numbers to 5: 10
+Select a number: 10
+Player 2 selects 10.
+Updated Number Pool: 2,4,7,8
+Current Number is now 10.
+
+Player 1's turn.
+Available Numbers: 2,4,7,8
+Connected Numbers to 10: 2
+Select a number: 2
+Player 1 selects 2.
+Updated Number Pool: 4,7,8
+Current Number is now 2.
+
+Player 2's turn.
+Available Numbers: 4,7,8
+Connected Numbers to 2: 4,8
+Select a number: 4
+Player 2 selects 4.
+Updated Number Pool: 7,8
+Current Number is now 4.
+
+Player 1's turn.
+Available Numbers: 7,8
+Connected Numbers to 4: 8
+Select a number: 8
+Player 1 selects 8.
+Updated Number Pool: 7
+Current Number is now 8.
+
+Player 2's turn.
+Available Numbers: 7
+Connected Numbers to 8: None
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of the numbers your opponent is likely to select and plan your moves to limit their options.
+- **Control Key Numbers**: Selecting numbers that have fewer connections can corner your opponent.
+- **Deny Resources**: Remove numbers that would give your opponent an advantage in their next turn.
+- **Flexibility**: Stay flexible with your choices to adapt to the changing number pool.
+
+---
+
+Enjoy playing **Factor Chain Challenge**! This game tests your strategic planning and foresight. May the best strategist win!

@@ -1,0 +1,247 @@
+**Game Name:** Sum Fifteen Challenge
+
+---
+
+### **Objective**
+
+The primary goal of Sum Fifteen Challenge is to be the first player to reach a cumulative total sum of **exactly 15** by selecting numbers from 1 to 9. Players take turns choosing numbers, aiming to add them to their personal total without exceeding 15. 
+
+A player **wins** by:
+- Reaching a total sum of exactly 15 on their turn.
+
+A player **loses** by:
+- Exceeding a total sum of 15 on their turn.
+- If all numbers from 1 to 9 have been picked and no player has reached exactly 15, the player with the highest total not exceeding 15 wins.
+- In case of a tie in totals, the player who has selected **fewer numbers** wins.
+- If still tied, the **second player** (the one who moved second) wins.
+
+---
+
+### **Setup**
+
+1. **Number Pool Creation**: A shared pool containing the numbers **1 through 9** is established. Each number can only be chosen once during the game.
+2. **Player Assignment**: Determine which player will be **Player 1** and **Player 2**. This can be decided randomly or by agreement.
+3. **Initial Totals**: Both players start with a cumulative total sum of **0**.
+
+---
+
+### **Game Components**
+
+- **Number Pool**: A set of integers from **1 to 9**.
+  - *Representation*: In a command-line interface, this can be displayed as a list of available numbers.
+- **Player Totals**: Each player maintains their own cumulative total sum.
+  - *Representation*: A numerical value representing the sum of numbers a player has chosen so far.
+
+---
+
+### **Turns**
+
+1. **Turn Order**:
+   - The game proceeds in turns, starting with **Player 1**, followed by **Player 2**, and so on alternately.
+2. **Actions During a Turn**:
+   - **Select a Number**: The player selects an **available number** from the number pool.
+   - **Update Total**: Add the chosen number to the player's cumulative total sum.
+   - **Check for Win/Loss Conditions**: After updating the total, check if the player has reached **exactly 15** (win) or **exceeded 15** (loss).
+3. **Progression of Turns**:
+   - After a player completes their turn, the next player takes their turn following the same structure.
+   - The game continues until a win or loss condition is met.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+   - On their turn, a player must select **one** available number from the number pool.
+   - The selected number is removed from the pool and cannot be chosen again by either player.
+2. **Cumulative Total Sum**:
+   - Each player maintains a cumulative total sum of the numbers they have selected.
+   - The cumulative sum is updated each time a player selects a number.
+3. **Winning the Game**:
+   - **Immediate Win**: If a player's cumulative total sum reaches **exactly 15** on their turn, they win the game immediately.
+4. **Losing the Game**:
+   - **Immediate Loss**: If a player's cumulative total sum **exceeds 15** on their turn, they lose the game immediately.
+5. **End of Number Pool**:
+   - If all numbers from **1 to 9** have been selected and no player has reached exactly 15, the game proceeds to determine the winner based on totals.
+6. **Determining the Winner at Game End**:
+   - **Highest Total Not Exceeding 15**: The player with the highest cumulative total sum not exceeding 15 wins.
+   - **Tie-Breaker**:
+     - If both players have the same total, the player who selected **fewer numbers** wins.
+     - If still tied, the player who moved **second** (Player 2) wins.
+
+---
+
+### **Scoring**
+
+- There is no point-based scoring system.
+- The key metric is the player's **cumulative total sum**.
+- The objective is to reach a total sum of **exactly 15** without exceeding it.
+
+---
+
+### **Examples**
+
+#### **Example Scenario 1: Player 1 Wins by Reaching 15**
+
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1 Total**: 0
+- **Player 2 Total**: 0
+
+**Turn Progression**:
+
+1. **Player 1's Turn**:
+   - Chooses **7**
+   - Player 1 Total: **0 + 7 = 7**
+   - Available Numbers: 1, 2, 3, 4, 5, 6, 8, 9
+
+2. **Player 2's Turn**:
+   - Chooses **8**
+   - Player 2 Total: **0 + 8 = 8**
+   - Available Numbers: 1, 2, 3, 4, 5, 6, 9
+
+3. **Player 1's Turn**:
+   - Chooses **6**
+   - Player 1 Total: **7 + 6 = 13**
+   - Available Numbers: 1, 2, 3, 4, 5, 9
+
+4. **Player 2's Turn**:
+   - Chooses **2**
+   - Player 2 Total: **8 + 2 = 10**
+   - Available Numbers: 1, 3, 4, 5, 9
+
+5. **Player 1's Turn**:
+   - Chooses **2** (Not available, must choose from available numbers)
+   - Chooses **2** => Invalid choice, number not available.
+   - Corrects and chooses **2**
+   - Since **2** is already chosen, must select from available numbers.
+   - Chooses **2** => Invalid.
+   - Realizes mistake and chooses **^5^**
+   - Player 1 Total: **13 + 5 = 18**
+   - Player 1 has **exceeded 15** and **loses** immediately.
+   - **Player 2 wins.**
+
+*Note*: In this case, Player 1 made an error and exceeded 15.
+
+#### **Example Scenario 2: Player 2 Wins by Having Higher Total**
+
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1 Total**: 0
+- **Player 2 Total**: 0
+
+**Turn Progression**:
+
+1. **Player 1's Turn**:
+   - Chooses **5**
+   - Player 1 Total: **0 + 5 = 5**
+   - Available Numbers: 1, 2, 3, 4, 6, 7, 8, 9
+
+2. **Player 2's Turn**:
+   - Chooses **9**
+   - Player 2 Total: **0 + 9 = 9**
+   - Available Numbers: 1, 2, 3, 4, 6, 7, 8
+
+3. **Player 1's Turn**:
+   - Chooses **6**
+   - Player 1 Total: **5 + 6 = 11**
+   - Available Numbers: 1, 2, 3, 4, 7, 8
+
+4. **Player 2's Turn**:
+   - Chooses **4**
+   - Player 2 Total: **9 + 4 = 13**
+   - Available Numbers: 1, 2, 3, 7, 8
+
+5. **Player 1's Turn**:
+   - Chooses **3**
+   - Player 1 Total: **11 + 3 = 14**
+   - Available Numbers: 1, 2, 7, 8
+
+6. **Player 2's Turn**:
+   - Chooses **2**
+   - Player 2 Total: **13 + 2 = 15**
+   - **Player 2 wins** by reaching exactly **15**.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+- Available Numbers: `1 2 3 4 5 6 7 8 9`
+- Player 1 Total: `0`
+- Player 2 Total: `0`
+
+**Player 1's Turn**
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Your Total: 0
+Choose a number: 6
+```
+
+- Player 1 chooses `6`
+- Player 1 Total: `0 + 6 = 6`
+- Available Numbers updated: `1 2 3 4 5 7 8 9`
+
+**Player 2's Turn**
+
+```
+Available Numbers: 1 2 3 4 5 7 8 9
+Your Total: 0
+Choose a number: 9
+```
+
+- Player 2 chooses `9`
+- Player 2 Total: `0 + 9 = 9`
+- Available Numbers updated: `1 2 3 4 5 7 8`
+
+**Player 1's Turn**
+
+```
+Available Numbers: 1 2 3 4 5 7 8
+Your Total: 6
+Choose a number: 8
+```
+
+- Player 1 chooses `8`
+- Player 1 Total: `6 + 8 = 14`
+- Available Numbers updated: `1 2 3 4 5 7`
+
+**Player 2's Turn**
+
+```
+Available Numbers: 1 2 3 4 5 7
+Your Total: 9
+Choose a number: 5
+```
+
+- Player 2 chooses `5`
+- Player 2 Total: `9 + 5 = 14`
+- Available Numbers updated: `1 2 3 4 7`
+
+**Player 1's Turn**
+
+```
+Available Numbers: 1 2 3 4 7
+Your Total: 14
+Choose a number: 1
+```
+
+- Player 1 chooses `1`
+- Player 1 Total: `14 + 1 = 15`
+- **Player 1 wins** by reaching exactly **15**.
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Keep track of both your total and your opponent's total to anticipate their moves.
+- **Number Selection**: Choose numbers that help you reach 15 exactly, but be cautious not to exceed it.
+- **Blocking**: Prevent your opponent from reaching 15 by selecting numbers they may need.
+- **Efficiency**: Aim to reach 15 using the fewest numbers possible to have an advantage in tie-breaker situations.
+
+---
+
+**Note**: Sum Fifteen Challenge is a game of strategy and foresight. Players must balance between advancing their own position and hindering their opponent's progress. With careful planning and critical thinking, a skilled player can consistently outperform an unskilled player.
+
+---
+
+Enjoy the game and may the best strategist win!

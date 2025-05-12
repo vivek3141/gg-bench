@@ -1,0 +1,156 @@
+# Zero Sum Game
+
+## Objective
+
+Be the first player to create a shared mathematical expression that evaluates to **zero**. Players build the expression collaboratively, using numbers and operators strategically to steer the total towards zero while preventing their opponent from doing the same.
+
+## Setup
+
+- **Numbers Available**: Digits from **1** to **9**.
+- **Operators Available**: Addition (**'+'**) and Subtraction (**'-'**).
+- **Initial Expression**: Starts at **0**.
+- **Number Usage**: Each number from 1 to 9 can be used **only once** throughout the game.
+
+## Game Components
+
+- **Shared Expression**: A mathematical expression built incrementally by both players during their turns.
+- **Numbers List**: A list of numbers from **1** to **9**, tracking which numbers have been used.
+- **Operators**: Symbols **'+'** and **'-'** used to modify the shared expression.
+- **Command-Line Interface**: Players input their choices via the command line, and the current state of the game is displayed after each turn.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, with Player 1 starting the game.
+2. **Action Sequence**:
+   - **Choose an Operator**: '+' or '-'.
+   - **Choose a Number**: Any unused number from **1** to **9**.
+   - **Update Expression**: Append the operator and number to the shared expression.
+3. **Post-Turn Update**:
+   - The game displays the updated expression and the current total value.
+   - The used number is removed from the list of available numbers.
+
+## Rules and Mechanics
+
+- **Number Restrictions**:
+  - Each number from **1** to **9** can be used only once in the game.
+  - Once a number is used, it cannot be selected again by either player.
+- **Operators**:
+  - Players can use **'+'** or **'-'** on any turn, regardless of prior choices.
+- **Expression Evaluation**:
+  - After each turn, the shared expression is evaluated.
+  - If the expression evaluates to **zero**, the player who made the last move **wins** the game.
+- **Winning the Game**:
+  - **Victory Condition**: Create an expression that evaluates to **zero** on your turn.
+  - **Exhaustion Rule**: If all numbers are used and the expression does not equal zero, the last player who made a move **loses**, and the opponent **wins**.
+- **Prohibited Actions**:
+  - Players cannot skip their turn.
+  - Players must choose both an operator and an unused number on each turn.
+- **Strategic Considerations**:
+  - Players should aim to manipulate the total towards zero.
+  - Anticipate the opponent's moves and block potential winning strategies by using critical numbers.
+
+## Scoring
+
+- The game outcome is determined by victory or loss—there is no point system.
+- Players may choose to play multiple rounds and keep track of wins for extended gameplay.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Game Start
+
+- **Shared Expression**: `0`
+- **Available Numbers**: `1, 2, 3, 4, 5, 6, 7, 8, 9`
+
+#### Turn 1: Player 1
+
+- **Operator Chosen**: `+`
+- **Number Chosen**: `5`
+- **Expression Update**: `0 + 5`
+- **Current Total**: `5`
+- **Available Numbers**: `1, 2, 3, 4, 6, 7, 8, 9`
+
+#### Turn 2: Player 2
+
+- **Operator Chosen**: `-`
+- **Number Chosen**: `3`
+- **Expression Update**: `0 + 5 - 3`
+- **Current Total**: `2`
+- **Available Numbers**: `1, 2, 4, 6, 7, 8, 9`
+
+#### Turn 3: Player 1
+
+- **Operator Chosen**: `+`
+- **Number Chosen**: `4`
+- **Expression Update**: `0 + 5 - 3 + 4`
+- **Current Total**: `6`
+- **Available Numbers**: `1, 2, 6, 7, 8, 9`
+
+#### Turn 4: Player 2
+
+- **Operator Chosen**: `-`
+- **Number Chosen**: `6`
+- **Expression Update**: `0 + 5 - 3 + 4 - 6`
+- **Current Total**: `0`
+- **Result**: **Player 2 Wins!**
+
+### Command-Line Interaction Sample
+
+```
+Game Start
+Shared Expression: 0
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1's Turn:
+Choose an operator ('+' or '-'): +
+Choose a number from available numbers: 5
+Updated Expression: 0 + 5
+Current Total: 5
+Available Numbers: 1, 2, 3, 4, 6, 7, 8, 9
+
+Player 2's Turn:
+Choose an operator ('+' or '-'): -
+Choose a number from available numbers: 3
+Updated Expression: 0 + 5 - 3
+Current Total: 2
+Available Numbers: 1, 2, 4, 6, 7, 8, 9
+
+Player 1's Turn:
+Choose an operator ('+' or '-'): +
+Choose a number from available numbers: 4
+Updated Expression: 0 + 5 - 3 + 4
+Current Total: 6
+Available Numbers: 1, 2, 6, 7, 8, 9
+
+Player 2's Turn:
+Choose an operator ('+' or '-'): -
+Choose a number from available numbers: 6
+Updated Expression: 0 + 5 - 3 + 4 - 6
+Current Total: 0
+
+Player 2 has created an expression that evaluates to zero.
+Player 2 Wins!
+```
+
+## Strategies and Tips
+
+- **Number Selection**: Choose numbers that can help you manipulate the total towards zero or prevent your opponent from doing so.
+- **Operator Use**: Consider how adding or subtracting a number will impact the total. Sometimes adding a negative value may be more beneficial.
+- **Anticipate Opponent Moves**: Keep track of unused numbers and anticipate how your opponent might use them.
+- **Control Key Numbers**: Utilize critical numbers that could allow your opponent to win if left available.
+- **Plan Ahead**: Think multiple moves in advance to set up a path to zero while blocking your opponent.
+
+## Game Flow Summary
+
+1. **Initiate Game**: Start with a shared expression of 0 and a list of numbers from 1 to 9.
+2. **Alternate Turns**: Players take turns selecting an operator and a number, updating the expression.
+3. **Update and Evaluate**: After each turn, update the expression and evaluate the total.
+4. **Check for Victory**:
+   - If the total is zero, the last player to move wins.
+   - If all numbers are used and the total is not zero, the last player to move loses.
+5. **End Game**: Declare the winner and reset for another round if desired.
+
+---
+
+Enjoy strategizing and may the best mathematician win!

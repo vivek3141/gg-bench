@@ -1,0 +1,15 @@
+The action space indices in the game map to actions as follows:
+
+- **Movement actions** (indices 0 to 3):
+  - `0`: Move runner up.
+  - `1`: Move runner down.
+  - `2`: Move runner left.
+  - `3`: Move runner right.
+
+- **Barrier placement actions** (indices 4 to 28):
+  - Indices `4` to `28` correspond to placing a barrier at grid positions `A1` to `E5`.
+  - Calculate the specific position by treating index `n` as follows:
+    - Row: `(n - 4) // 5`
+    - Column: `(n - 4) % 5`
+
+Thus, index `4` places a barrier at `A1`, index `5` at `A2`, continuing until index `28` at `E5`.

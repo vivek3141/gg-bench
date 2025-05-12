@@ -1,0 +1,206 @@
+# Last Digit Zero - A Two-Player Strategic Number Game
+
+## Objective
+
+Be the **first player** to achieve a cumulative total whose **last digit is zero** by strategically selecting numbers from a shared list.
+
+## Setup
+
+- **Players**: Two players (Player 1 and Player 2).
+- **Starting Totals**: Both players begin with a cumulative total of **0**.
+- **Number Pool**: A shared list of numbers from **1** to **9**.
+
+## Game Components
+
+1. **Shared Number Pool**:
+
+   - Numbers available: **1, 2, 3, 4, 5, 6, 7, 8, 9**.
+   - Each number can be selected **only once** during the game.
+
+2. **Player Cumulative Totals**:
+
+   - Each player maintains their own cumulative total.
+   - Totals start at **0** for both players.
+   - Totals are updated by adding selected numbers during the game.
+
+## Turns
+
+- Players take turns in an **alternating fashion**, starting with **Player 1**.
+- On a player's turn:
+  - **Select** one available number from the shared number pool.
+  - **Add** the selected number to your cumulative total.
+  - **Remove** the selected number from the shared number pool.
+  - **Announce** your new cumulative total.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+
+   - You may choose **any one number** from the available numbers in the shared pool.
+   - Once a number is selected, it is **removed** from the pool and **cannot be selected again**.
+
+2. **Cumulative Total Calculation**:
+
+   - Add the selected number to your current cumulative total.
+   - Keep track of your cumulative total after each turn.
+
+3. **Winning the Game**:
+
+   - **Immediate Win**: If, after your turn, your cumulative total **ends with the digit zero** (e.g., 10, 20, 30), you **immediately win** the game.
+   - **End of Game Without Immediate Win**: If all numbers have been selected and **no player's cumulative total ends with zero**, proceed to the tiebreaker.
+
+4. **Tiebreaker Conditions**:
+
+   - **Closest to Zero**: The player whose cumulative total's **last digit is closer to zero** wins.
+     - For example, a total ending with 1 is closer to zero than a total ending with 9.
+   - **Equal Proximity**: If both players are **equally close** to zero (e.g., totals ending with 1 and 9), the player with the **lower cumulative total** wins.
+
+5. **Strategic Considerations**:
+
+   - Be mindful of which numbers remain in the pool and how they can affect both your own and your opponent's cumulative totals.
+   - Consider both offensive (reaching a total ending with zero) and defensive (preventing your opponent from doing so) strategies.
+
+## Scoring
+
+- **Victory**: Achieved by being the first player to reach a cumulative total ending with **zero**.
+- **Tiebreaker Victory**: If neither player achieves a cumulative total ending with zero, the winner is determined based on the **tiebreaker conditions** above.
+- **No Draws**: The game is designed to avoid draws; a winner will always be determined through the tiebreaker if necessary.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1 Total**: 0
+- **Player 2 Total**: 0
+
+---
+
+**Turn 1: Player 1**
+
+- **Chooses**: 7
+- **Calculation**: 0 + 7 = **7**
+- **Player 1 Total**: 7
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 8, 9
+
+---
+
+**Turn 2: Player 2**
+
+- **Chooses**: 3
+- **Calculation**: 0 + 3 = **3**
+- **Player 2 Total**: 3
+- **Available Numbers**: 1, 2, 4, 5, 6, 8, 9
+
+---
+
+**Turn 3: Player 1**
+
+- **Chooses**: 8
+- **Calculation**: 7 + 8 = **15**
+- **Player 1 Total**: 15
+- **Available Numbers**: 1, 2, 4, 5, 6, 9
+
+---
+
+**Turn 4: Player 2**
+
+- **Chooses**: 6
+- **Calculation**: 3 + 6 = **9**
+- **Player 2 Total**: 9
+- **Available Numbers**: 1, 2, 4, 5, 9
+
+---
+
+**Turn 5: Player 1**
+
+- **Chooses**: 5
+- **Calculation**: 15 + 5 = **20**
+- **Player 1 Total**: 20
+- **Available Numbers**: 1, 2, 4, 9
+
+---
+
+**Result**:
+
+- **Player 1's cumulative total ends with zero (20)**.
+- **Player 1 wins the game!**
+
+### Tiebreaker Scenario
+
+If neither player achieves a cumulative total ending with zero after all numbers are selected:
+
+- **Player 1 Total**: 32 (ends with 2)
+- **Player 2 Total**: 37 (ends with 7)
+
+**Determining the Winner**:
+
+- The last digits are **2** and **7**.
+- The digit **2** is closer to zero than **7**.
+- **Player 1 wins** based on the tiebreaker condition.
+
+If both totals had last digits equally distant from zero:
+
+- For example, Player 1 Total ends with **1**, and Player 2 Total ends with **9**.
+- Both are equally distant from zero.
+- The player with the **lower cumulative total** (**Player 1**) wins.
+
+## Command-Line Interaction Example
+
+```plaintext
+Welcome to Last Digit Zero!
+
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1 Total: 0
+Player 2 Total: 0
+
+Player 1, choose a number: 7
+
+Available Numbers: 1 2 3 4 5 6 8 9
+Player 1 Total: 7
+Player 2 Total: 0
+
+Player 2, choose a number: 3
+
+Available Numbers: 1 2 4 5 6 8 9
+Player 1 Total: 7
+Player 2 Total: 3
+
+Player 1, choose a number: 8
+
+Available Numbers: 1 2 4 5 6 9
+Player 1 Total: 15
+Player 2 Total: 3
+
+Player 2, choose a number: 6
+
+Available Numbers: 1 2 4 5 9
+Player 1 Total: 15
+Player 2 Total: 9
+
+Player 1, choose a number: 5
+
+Available Numbers: 1 2 4 9
+Player 1 Total: 20
+Player 2 Total: 9
+
+Player 1's cumulative total ends with zero!
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Anticipate Opponent's Moves**: Consider which numbers your opponent may choose and plan accordingly to block their path to victory.
+- **Calculate Ahead**: Keep track of potential cumulative totals based on the remaining numbers.
+- **Balance High and Low Numbers**: High numbers can help you reach the target quickly but may leave limited options later.
+
+## Game Variations (Optional)
+
+- **Extended Range**: Increase the range of available numbers (e.g., 1 to 15) for a longer game with more strategic possibilities.
+- **Alternate Winning Digit**: Change the target last digit from zero to another digit (e.g., aiming for totals ending with the digit 5).
+
+---
+
+Enjoy challenging your opponent in **Last Digit Zero** and may the best strategist win!

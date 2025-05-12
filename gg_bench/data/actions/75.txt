@@ -1,0 +1,9 @@
+The action space indices in the game environment map to game moves as follows:
+
+- The action space consists of 16 discrete actions, represented by numbers 0 through 15.
+- These actions correspond to the 8 possible split positions in the sequence, each allowing for two choices in parts: left or right.
+- Each action index, `i`, represents a combination of a split position and a part choice:
+  - The split position is determined by `i // 2 + 1`. This converts the index into a split position from 1 to 8, indicating where the sequence is divided.
+  - The part choice (left or right) is determined by `i % 2`. A result of 0 means selecting the left part, and a result of 1 means selecting the right part.
+  
+Thus, action space indices uniquely determine both the split position and which part of the sequence is chosen by the player.

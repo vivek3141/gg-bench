@@ -1,0 +1,332 @@
+# Energy Capture
+
+---
+
+## Objective
+
+**Energy Capture** is a two-player, turn-based strategy game where players allocate limited energy units to capture energy nodes. The primary goal is to capture a majority of the energy nodes (at least 3 out of 5). The player who first achieves this wins the game.
+
+---
+
+## Setup
+
+- **Energy Nodes:** There are five energy nodes labeled **Node 1** to **Node 5**.
+- **Energy Units:** Each player starts with **15 energy units**.
+- **Hidden Allocations:** Players will allocate their energy units to nodes secretly during their turns.
+
+---
+
+## Game Components
+
+### 1. Energy Nodes
+
+- **Quantity:** Five nodes (Node 1, Node 2, Node 3, Node 4, Node 5).
+- **Functionality:** Each node can be captured by a player based on energy allocation.
+- **Attributes:** Represented numerically in the command-line interface.
+
+### 2. Energy Units
+
+- **Quantity per Player:** 15 units.
+- **Functionality:** Used to bid for control over energy nodes.
+- **Attributes:** Represented as numerical values.
+
+### 3. Allocation Chart
+
+- **Purpose:** A private record for each player to keep track of their energy allocations.
+- **Functionality:** In the command-line interface, this is handled by prompting each player for inputs without revealing them to the opponent.
+
+---
+
+## Turns
+
+### Allocation Phase
+
+1. **Turn Order:**
+
+   - Players decide who goes first (e.g., coin toss or agreement).
+   - Players alternate turns.
+
+2. **Player's Turn Actions:**
+
+   - **Allocate Energy Units:**
+     - Allocate any number of remaining energy units to one or more nodes.
+     - Allocations are cumulative and cannot be changed once made.
+   - **Pass:**
+     - A player may choose to pass if they do not wish to allocate more energy units.
+     - Once a player passes, they cannot make any more allocations for the rest of the Allocation Phase.
+
+3. **Hidden Allocations:**
+
+   - All allocations are made secretly.
+   - Opponent does not see the allocations until the Reveal Phase.
+
+4. **Allocation Restrictions:**
+
+   - Players cannot allocate more energy units than they have remaining.
+   - Players may allocate to any node, regardless of previous allocations.
+
+### Reveal Phase
+
+1. **Reveal Allocations:**
+
+   - After both players have passed, all energy allocations are revealed.
+   - The energy units allocated to each node by both players are compared.
+
+2. **Node Capture Determination:**
+
+   - **Higher Allocation Wins:** The player who allocated more energy units to a node captures it.
+   - **Tie:** If both players allocated the same number of energy units to a node, it remains neutral and is not captured by either player.
+
+---
+
+## Rules and Mechanics
+
+### Energy Allocation Rules
+
+- **Energy Management:** Each player has a total of 15 energy units to allocate.
+- **Allocation Strategy:** Players must decide how to distribute their energy units across the nodes to outbid their opponent.
+- **No Reallocation:** Once energy units are allocated to a node, they cannot be moved or removed.
+
+### Node Capture
+
+- **Capturing Nodes:** Nodes are captured based on who allocated more energy units to them.
+- **Neutral Nodes:** Nodes with equal allocations remain unclaimed.
+
+### Winning the Game
+
+- **Majority Capture:** The first player to capture at least **three nodes** wins the game.
+- **No Majority:** If neither player captures a majority, the player with the most nodes wins.
+- **Tie Scenario:** If both players capture the same number of nodes, proceed to the **Sudden Death Round**.
+
+### Sudden Death Round
+
+1. **Setup:**
+
+   - Only the unclaimed (neutral) nodes are contested.
+   - Each player receives an additional **5 energy units**.
+
+2. **Allocation Phase:**
+
+   - Players allocate their additional energy units to the neutral nodes.
+   - The same allocation rules apply.
+   - Allocations are made secretly and cannot exceed the available energy units.
+
+3. **Reveal Phase:**
+
+   - Allocations are revealed.
+   - Nodes are awarded based on higher allocations.
+
+4. **Winning Condition:**
+
+   - The player who captures a majority of the nodes after the Sudden Death Round wins.
+
+---
+
+## Scoring
+
+- **Captured Nodes:**
+
+  - Each captured node counts as **one point**.
+
+- **Winning the Game:**
+
+  - **Immediate Win:** Capture at least three nodes in the initial round.
+  - **Sudden Death Victory:** Win additional nodes during the Sudden Death Round to achieve a majority.
+
+- **Tie Breaker:**
+
+  - If a tie persists after the Sudden Death Round, repeat the Sudden Death Round until a winner is determined.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Allocations:**
+
+- **Player 1's Turn:**
+
+  - Allocates **5 units** to Node 1.
+
+- **Player 2's Turn:**
+
+  - Allocates **6 units** to Node 1.
+
+- **Player 1's Turn:**
+
+  - Allocates **7 units** to Node 2.
+
+- **Player 2's Turn:**
+
+  - Allocates **5 units** to Node 2.
+
+- **Player 1's Turn:**
+
+  - Allocates **2 units** to Node 3.
+
+- **Player 2's Turn:**
+
+  - Allocates **4 units** to Node 3.
+
+- **Player 1's Turn:**
+
+  - Allocates **1 unit** to Node 4.
+
+- **Player 2's Turn:**
+
+  - Passes (no energy units remaining).
+
+**Energy Units Remaining:**
+
+- **Player 1:** 0 units
+- **Player 2:** 0 units
+
+### Reveal Phase:
+
+1. **Node 1:**
+
+   - Player 1: 5 units
+   - Player 2: 6 units
+   - **Winner:** Player 2 captures Node 1.
+
+2. **Node 2:**
+
+   - Player 1: 7 units
+   - Player 2: 5 units
+   - **Winner:** Player 1 captures Node 2.
+
+3. **Node 3:**
+
+   - Player 1: 2 units
+   - Player 2: 4 units
+   - **Winner:** Player 2 captures Node 3.
+
+4. **Node 4:**
+
+   - Player 1: 1 unit
+   - Player 2: 0 units
+   - **Winner:** Player 1 captures Node 4.
+
+5. **Node 5:**
+
+   - Neither player allocated units.
+   - **Status:** Neutral.
+
+**Scoring:**
+
+- **Player 1:** Captured Nodes 2 and 4 (2 points).
+- **Player 2:** Captured Nodes 1 and 3 (2 points).
+- **Node 5:** Neutral.
+
+### Sudden Death Round:
+
+**Additional Energy Units:**
+
+- Each player receives **5 energy units**.
+
+**Allocations:**
+
+- **Player 1:** Allocates **5 units** to Node 5.
+- **Player 2:** Allocates **3 units** to Node 5.
+
+**Reveal:**
+
+- **Node 5:**
+
+  - Player 1: 5 units
+  - Player 2: 3 units
+  - **Winner:** Player 1 captures Node 5.
+
+**Final Scoring:**
+
+- **Player 1:** Captured Nodes 2, 4, and 5 (3 points).
+- **Player 2:** Captured Nodes 1 and 3 (2 points).
+
+**Winner:** **Player 1** wins by capturing a majority of the nodes.
+
+---
+
+## Command-Line Interaction Example
+
+**Allocation Phase:**
+
+- **Player 1's Turn:**
+
+  ```
+  Player 1, allocate your energy units:
+  - Energy units remaining: 15
+  - Enter allocation (e.g., Node1:5, Node2:3): Node1:5
+  ```
+
+- **Player 2's Turn:**
+
+  ```
+  Player 2, allocate your energy units:
+  - Energy units remaining: 15
+  - Enter allocation: Node1:6
+  ```
+
+- **Player 1's Turn:**
+
+  ```
+  Player 1, allocate your energy units:
+  - Energy units remaining: 10
+  - Enter allocation: Node2:7
+  ```
+
+- **Player 2's Turn:**
+
+  ```
+  Player 2, allocate your energy units:
+  - Energy units remaining: 9
+  - Enter allocation: Node2:5
+  ```
+
+- **...**
+
+**Reveal Phase:**
+
+- The game displays the allocations for each node and announces the winner of each node.
+
+  ```
+  Node 1:
+    - Player 1: 5 units
+    - Player 2: 6 units
+    - Winner: Player 2
+
+  Node 2:
+    - Player 1: 7 units
+    - Player 2: 5 units
+    - Winner: Player 1
+
+  ...
+  ```
+
+---
+
+## Strategy Tips
+
+- **Energy Management:**
+
+  - **Balance Allocations:** Don't overspend on a single node unless necessary.
+  - **Reserve Units:** Keep some energy units for later turns to respond to your opponent's moves.
+
+- **Predict Opponent's Moves:**
+
+  - **Observation:** Consider which nodes your opponent might prioritize.
+  - **Counterplay:** Allocate enough units to outbid your opponent on key nodes.
+
+- **Decoy Tactics:**
+
+  - **Misdirection:** Allocate a small number of units to a node to bait your opponent into overspending.
+  - **Stealth:** Save your largest allocations for later turns to surprise your opponent.
+
+- **Securing Nodes:**
+
+  - **Guarantee Capture:** Allocate more units than necessary to ensure you win crucial nodes.
+  - **Avoid Ties:** Even numbers can lead to ties; aim for allocations that outmatch potential equal splits.
+
+---
+
+By mastering energy allocation and anticipating your opponent's strategy, you can dominate the energy nodes and secure victory in **Energy Capture**. Enjoy the duel!

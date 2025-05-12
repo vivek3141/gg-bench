@@ -1,0 +1,251 @@
+# Base Battle - Rulebook
+
+## Objective
+
+**Be the first player to reach your opponent's base at the opposite end of the path.** 
+
+Players navigate a linear path, strategically moving toward their opponent's base while employing tactical maneuvers to hinder their opponent's progress.
+
+---
+
+## Setup
+
+1. **Game Board**: A linear path consisting of 11 positions, numbered from `0` to `10`.
+2. **Player Positions**:
+   - **Player 1** starts at **Position 0** (their own base).
+   - **Player 2** starts at **Position 10** (their own base).
+3. **Initial State**:
+   - Positions `1` through `9` are initially empty.
+4. **Turn Order**:
+   - Decide who takes the first turn (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Linear Path**: Represents the game board with positions numbered from `0` to `10`.
+- **Player Tokens**: Symbols representing each player's position on the path.
+  - **Player 1**: Represented as `P1`.
+  - **Player 2**: Represented as `P2`.
+- **Command-Line Interface**: Players input their moves using simple text commands.
+
+**Example of Initial Game State**:
+
+```
+[ P1 ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][ P2 ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns throughout the game.
+   - On a player's turn, they perform one movement action.
+2. **Player Actions**:
+   - **Move Forward**: Advance your token toward the opponent's base.
+
+---
+
+## Rules and Mechanics
+
+### 1. Movement
+
+- On your turn, you may move your token forward by **1**, **2**, or **3** positions.
+- Movement must always be toward the opponent's base (increasing position numbers for Player 1, decreasing for Player 2).
+- **Example**:
+  - If Player 1 is at position `3`, they may move to position `4`, `5`, or `6`.
+
+### 2. Occupied Positions
+
+- You **cannot** move to a position currently occupied by your opponent.
+- If your desired move lands on the opponent's position, choose a different valid move.
+- **Example**:
+  - If Player 2 is at position `7`, Player 1 cannot move to position `7`.
+
+### 3. Pushing the Opponent
+
+- If you land **exactly one position ahead** of your opponent, you **push** them back by **one position**.
+- The opponent's token moves one position backward toward their own base.
+- If the opponent is at their own base, they cannot be pushed back further.
+- **Example**:
+  - Player 1 moves to position `5` while Player 2 is at position `4`.
+  - Player 2 is pushed back to position `5` (since Player 2 moves in decreasing order).
+
+### 4. Winning the Game
+
+- The first player to **exactly reach** their opponent's base wins.
+- You must land on the opponent's base number (`10` for Player 1, `0` for Player 2).
+- You cannot move beyond the opponent's base.
+- If no valid moves allow you to land exactly on the opponent's base, you must take a lesser move.
+
+---
+
+## Scoring
+
+- The game is won by reaching the opponent's base according to the rules.
+- There are no points; victory is achieved through strategic movement and tactics.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Positions**:
+
+```
+[ P1 ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][ P2 ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Move forward **3** positions to position `3`.
+- **State**:
+
+```
+[  _ ][  _ ][  _ ][ P1 ][  _ ][  _ ][  _ ][  _ ][  _ ][  _ ][ P2 ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Move forward **2** positions to position `8`.
+- **State**:
+
+```
+[  _ ][  _ ][  _ ][ P1 ][  _ ][  _ ][  _ ][  _ ][ P2 ][  _ ][  _ ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Move forward **2** positions to position `5`.
+- **State**:
+
+```
+[  _ ][  _ ][  _ ][  _ ][  _ ][ P1 ][  _ ][  _ ][ P2 ][  _ ][  _ ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: Attempt to move **3** positions to position `5`.
+- **Issue**: Position `5` is occupied by Player 1.
+- **Alternative Action**: Move **2** positions to position `6`.
+- **State**:
+
+```
+[  _ ][  _ ][  _ ][  _ ][  _ ][ P1 ][ P2 ][  _ ][  _ ][  _ ][  _ ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 5: Player 1**
+
+- **Action**: Move forward **1** position to position `6`.
+- **Issue**: Position `6` is occupied by Player 2.
+- **Alternative Action**: Move **2** positions to position `7`.
+- **Pushing Opponent**:
+  - Player 1 is now one position ahead of Player 2.
+  - Player 2 is pushed back to position `5`.
+- **State After Move and Push**:
+
+```
+[  _ ][  _ ][  _ ][  _ ][  _ ][ P2 ][  _ ][ P1 ][  _ ][  _ ][  _ ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 6: Player 2**
+
+- **Action**: Move forward **3** positions to position `8`.
+- **State**:
+
+```
+[  _ ][  _ ][  _ ][  _ ][  _ ][ P2 ][  _ ][ P1 ][ P2 ][  _ ][  _ ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+**Turn 7: Player 1**
+
+- **Action**: Move forward **3** positions to position `10` (Player 2's base).
+- **Victory**: Player 1 reaches the opponent's base and wins the game.
+- **Final State**:
+
+```
+[  _ ][  _ ][  _ ][  _ ][  _ ][ P2 ][  _ ][  _ ][ P2 ][  _ ][ P1 ]
+  0     1     2     3     4     5     6     7     8     9     10
+```
+
+---
+
+## Command-Line Interaction Examples
+
+### Input Format
+
+- Players input their move as the number of positions they wish to move forward (`1`, `2`, or `3`).
+- **Example**: `Enter your move (1-3): 2`
+
+### Sample Turn
+
+**Prompt**:
+
+```
+Player 1, you are at position 3.
+Player 2 is at position 8.
+Enter your move (1-3): 
+```
+
+**Player Input**:
+
+```
+2
+```
+
+**System Response**:
+
+```
+Player 1 moves 2 positions to position 5.
+```
+
+---
+
+**Prompt After Move**:
+
+```
+Player 2, you are at position 8.
+Player 1 is at position 5.
+Enter your move (1-3): 
+```
+
+---
+
+## Strategic Depth and Complexity
+
+- **Planning Moves**: Players must anticipate the opponent's possible moves and plan accordingly.
+- **Pushing Mechanic**: Use pushing to slow down the opponent while advancing toward their base.
+- **Limited Movement Options**: Deciding between moving quickly or positioning for a push adds strategic choices.
+- **Endgame Strategy**: Players must calculate precise moves to land exactly on the opponent's base.
+
+---
+
+## Summary
+
+**Base Battle** is a fast-paced, strategic game that combines simple mechanics with tactical depth. Players must balance aggressive advancement with defensive maneuvers to outwit their opponent and claim victory.
+
+Enjoy the battle, and may the best strategist win!

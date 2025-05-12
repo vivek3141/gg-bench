@@ -1,0 +1,247 @@
+**Swap Nine**
+
+---
+
+**Rule Book**
+
+---
+
+### **Objective**
+
+Be the player with the **majority of markers** on a 3x3 grid when all cells are filled. Achieve victory by strategically placing and swapping markers to control more cells than your opponent by the end of the game.
+
+---
+
+### **Setup**
+
+- **Players**: Two players take part in the game.
+  - **Player 1** uses marker **'X'**.
+  - **Player 2** uses marker **'O'**.
+- **Grid**: A 3x3 grid is used, displayed in the command-line interface.
+- **Starting Conditions**:
+  - The grid starts empty.
+  - Decide who takes the first turn (e.g., by coin toss or agreement).
+
+---
+
+### **Game Components**
+
+- **Grid Cells**:
+  - There are 9 cells in a 3x3 configuration.
+  - Cells are numbered for reference:
+
+    ```
+     1 | 2 | 3
+    -----------
+     4 | 5 | 6
+    -----------
+     7 | 8 | 9
+    ```
+- **Markers**:
+  - **Player 1 ('X')**.
+  - **Player 2 ('O')**.
+- **Empty Cells**:
+  - Represented by a hyphen **'-'** or cell number if unoccupied.
+
+---
+
+### **Turns**
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Place Marker**:
+     - Choose any empty cell to place your marker.
+  2. **Swap Option** *(Optional)*:
+     - Immediately after placing your marker, you may swap an adjacent opponent's marker with your own.
+     - Only one swap per turn is allowed.
+- **Adjacency Rules**:
+  - Adjacent cells are those directly **above, below, left, or right** of the placed marker.
+  - Diagonal cells are **not** considered adjacent.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Placing Markers**:
+   - A marker can be placed in any empty cell.
+   - Once placed, a marker remains unless it is swapped by the opponent.
+
+2. **Swapping Markers**:
+   - After placing a marker, you may swap one **adjacent opponent's marker**.
+   - Replace the opponent's marker with your own in that cell.
+   - Swapping is **optional** and can only occur **immediately** after placing your marker.
+
+3. **End of Game Conditions**:
+   - The game ends when all 9 cells are filled.
+   - **Victory**: The player with **more markers** on the grid wins.
+   - **Tie-Breaker**: In case of an equal number of markers:
+     - The **player who did not take the last turn** wins.
+     - This rule ensures that there is **no draw**.
+
+---
+
+### **Scoring**
+
+- **No cumulative score** is kept.
+- **Winner Determination**:
+  - Simply count the number of markers for each player at the end of the game.
+  - The player with the higher count wins.
+
+---
+
+### **Examples**
+
+#### **Example Turn**
+
+- **Current Grid**:
+
+  ```
+   - | - | -
+  -----------
+   - | - | -
+  -----------
+   - | - | -
+  ```
+
+- **Player 1's Turn**:
+  - **Action**: Places 'X' in cell **5**.
+  - **Swap Option**: No adjacent opponent markers to swap.
+- **Updated Grid**:
+
+  ```
+   - | - | -
+  -----------
+   - | X | -
+  -----------
+   - | - | -
+  ```
+
+#### **Example with Swap**
+
+- **Current Grid**:
+
+  ```
+   X | - | -
+  -----------
+   - | O | -
+  -----------
+   - | - | -
+  ```
+
+- **Player 1's Turn**:
+  - **Action**: Places 'X' in cell **2**.
+  - **Swap Option**: 'O' in cell **5** is adjacent.
+  - **Swap Decision**: Swaps 'O' in cell **5** with 'X'.
+- **Updated Grid**:
+
+  ```
+   X | X | -
+  -----------
+   - | X | -
+  -----------
+   - | - | -
+  ```
+
+#### **Game Conclusion**
+
+- **Final Grid**:
+
+  ```
+   X | X | O
+  -----------
+   O | X | X
+  -----------
+   O | O | X
+  ```
+
+- **Marker Count**:
+  - **Player 1 ('X')**: 5 markers.
+  - **Player 2 ('O')**: 4 markers.
+- **Result**: Player 1 wins with the majority.
+
+---
+
+### **Command-Line Interaction Examples**
+
+#### **Starting the Game**
+
+- **Display Grid**:
+
+  ```
+   1 | 2 | 3
+  -----------
+   4 | 5 | 6
+  -----------
+   7 | 8 | 9
+  ```
+
+#### **Player Turns**
+
+- **Player 1's Turn**:
+  - **Prompt**: "Player 1 (X), enter the number of the cell where you want to place your marker:"
+  - **Input**: `5`
+  - **Swap Option**: None.
+- **Updated Grid**:
+
+  ```
+   1 | 2 | 3
+  -----------
+   4 | X | 6
+  -----------
+   7 | 8 | 9
+  ```
+
+- **Player 2's Turn**:
+  - **Prompt**: "Player 2 (O), enter the number of the cell where you want to place your marker:"
+  - **Input**: `2`
+  - **Swap Option**: 'X' in cell **5** is adjacent.
+  - **Swap Decision**: Swaps 'X' in cell **5** with 'O'.
+- **Updated Grid**:
+
+  ```
+   1 | O | 3
+  -----------
+   4 | O | 6
+  -----------
+   7 | 8 | 9
+  ```
+
+#### **Continuing the Game**
+
+- Players continue to alternate turns, following the same procedure.
+- Each turn involves placing a marker and optionally swapping an adjacent opponent's marker.
+
+---
+
+### **Strategy Tips**
+
+- **Early Control**: Occupying the center cell early can increase swapping opportunities.
+- **Defensive Play**: Be cautious when placing markers adjacent to your opponent's markers to avoid immediate swaps.
+- **Swap Wisely**: Use the swap option to reclaim key positions and disrupt your opponent's plans.
+- **Think Ahead**: Anticipate your opponent's moves to maintain the majority.
+
+---
+
+### **Additional Rules**
+
+- **Invalid Moves**:
+  - If a player selects an occupied cell, they must choose again.
+  - If a player attempts to swap a non-adjacent marker, the swap is not allowed.
+- **Enforcement**:
+  - The game should validate moves and swaps to ensure compliance with the rules.
+  - Invalid inputs prompt the player to retry.
+
+---
+
+### **Game End and Winning**
+
+- **Majority Rule**:
+  - After the last cell is filled, count each player's markers.
+  - **Winner**: The player with more markers.
+- **Tie-Breaker Rule**:
+  - If both players have 4 markers each, the player who **did not** place the last marker wins.
+  - This ensures there is always a clear winner.
+
+---
+
+**Enjoy your game of Swap Nine! Use strategy and cunning to outmaneuver your opponent and dominate the grid.**

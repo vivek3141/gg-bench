@@ -1,0 +1,162 @@
+# Power Play: A Strategic Two-Player Command-Line Game
+
+## Objective
+
+**Power Play** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to reach a cumulative total of **100** or more without exceeding it. Players achieve victory by carefully choosing to either **add** or **multiply** their current total by numbers ranging from **2 to 5**. Skillful calculation and foresight are key, as an unskilled player can be consistently outmaneuvered.
+
+## Setup
+
+- **Players**: Two participants, referred to as **Player 1** and **Player 2**.
+- **Starting Total**: Both players begin with a cumulative total of **1**.
+- **Turn Order**: Decide randomly or mutually who will take the first turn.
+
+## Game Components
+
+- **Cumulative Total**: Each player has their own running total, starting at **1**.
+- **Operations**:
+  - **Addition (+)**: Players can add a number to their total.
+  - **Multiplication (×)**: Players can multiply their total by a number.
+- **Number Choices**: On each turn, players may choose any integer from **2 to 5** inclusive for their operation.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Operation Selection**: The player chooses either to **add** **or** **multiply** their cumulative total.
+  2. **Number Selection**: The player selects a number between **2 and 5**.
+  3. **Calculation**: The chosen operation is performed with the selected number on the player's cumulative total.
+  4. **Total Update**: The new total is recorded.
+- **Turn Progression**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Operation Choices**:
+   - **Addition**: Add an integer from **2 to 5** to your total.
+   - **Multiplication**: Multiply your total by an integer from **2 to 5**.
+2. **Valid Moves**:
+   - The chosen number must be between **2 and 5** inclusive.
+   - The operation must keep the cumulative total at or below **100**.
+3. **Winning the Game**:
+   - **Victory**: The first player to reach a cumulative total of exactly **100** wins the game.
+   - **Exceeding 100**: If a player's operation causes their total to exceed **100**, they **lose** immediately.
+4. **Strategy**:
+   - Players must anticipate the opponent's moves.
+   - Choosing between addition and multiplication impacts the pace and potential totals.
+5. **No Draws**: The game cannot end in a draw due to the rules of reaching or exceeding the target total.
+
+## Scoring
+
+- **Tracking Totals**: Players must keep track of their cumulative totals after each turn.
+- **Winning Condition**: No points are assigned; the game is won by achieving the objective.
+- **Game End**: The game ends immediately when a player reaches **100** or when a player's total exceeds **100**.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Player 1 Total**: 1
+- **Player 2 Total**: 1
+
+#### Turn-by-Turn Example
+
+1. **Player 1's Turn**:
+   - **Operation**: Multiply
+   - **Number**: 5
+   - **Calculation**: 1 × 5 = **5**
+   - **New Total**: 5
+   - **Output**: "Player 1 multiplies by 5. Total is now 5."
+
+2. **Player 2's Turn**:
+   - **Operation**: Multiply
+   - **Number**: 5
+   - **Calculation**: 1 × 5 = **5**
+   - **New Total**: 5
+   - **Output**: "Player 2 multiplies by 5. Total is now 5."
+
+3. **Player 1's Turn**:
+   - **Operation**: Multiply
+   - **Number**: 4
+   - **Calculation**: 5 × 4 = **20**
+   - **New Total**: 20
+   - **Output**: "Player 1 multiplies by 4. Total is now 20."
+
+4. **Player 2's Turn**:
+   - **Operation**: Multiply
+   - **Number**: 5
+   - **Calculation**: 5 × 5 = **25**
+   - **New Total**: 25
+   - **Output**: "Player 2 multiplies by 5. Total is now 25."
+
+5. **Player 1's Turn**:
+   - **Operation**: Add
+   - **Number**: 5
+   - **Calculation**: 20 + 5 = **25**
+   - **New Total**: 25
+   - **Output**: "Player 1 adds 5. Total is now 25."
+
+6. **Player 2's Turn**:
+   - **Operation**: Multiply
+   - **Number**: 4
+   - **Calculation**: 25 × 4 = **100**
+   - **New Total**: 100
+   - **Output**: "Player 2 multiplies by 4. Total is now 100."
+   - **Result**: Player 2 wins by reaching exactly 100.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Player 1's turn.
+Current total: 1
+Choose operation (add/multiply): multiply
+Choose a number between 2 and 5: 5
+You chose to multiply by 5.
+New total: 5
+
+Player 2's turn.
+Current total: 1
+Choose operation (add/multiply): multiply
+Choose a number between 2 and 5: 5
+You chose to multiply by 5.
+New total: 5
+
+Player 1's turn.
+Current total: 5
+Choose operation (add/multiply): multiply
+Choose a number between 2 and 5: 4
+You chose to multiply by 4.
+New total: 20
+
+Player 2's turn.
+Current total: 5
+Choose operation (add/multiply): multiply
+Choose a number between 2 and 5: 5
+You chose to multiply by 5.
+New total: 25
+
+Player 1's turn.
+Current total: 20
+Choose operation (add/multiply): add
+Choose a number between 2 and 5: 5
+You chose to add 5.
+New total: 25
+
+Player 2's turn.
+Current total: 25
+Choose operation (add/multiply): multiply
+Choose a number between 2 and 5: 4
+You chose to multiply by 4.
+New total: 100
+
+Player 2 wins by reaching exactly 100!
+```
+
+### Strategy Notes
+
+- **Balancing Operations**: Multiplication can quickly increase the total but risks overshooting 100.
+- **Anticipation**: Players should estimate future moves to avoid setting up the opponent for a win.
+- **Limiting Opponent's Options**: Strategic additions may force the opponent into a position where any move would cause them to exceed 100.
+
+## Conclusion
+
+**Power Play** combines simple arithmetic with strategic planning, making it easy to code and quick to play. Its unique mechanics ensure that skilled players can consistently outperform less experienced opponents without resulting in a draw. The game emphasizes foresight and mathematical strategy, providing depth within a straightforward framework ideal for a command-line interface.

@@ -1,0 +1,230 @@
+# Divisor Duel
+
+## Objective
+
+Divisor Duel is a strategic two-player turn-based game played in a command-line interface. The primary goal is to be the first player to reduce a shared positive integer to exactly **1** by sequentially dividing it by its proper divisors. Players take turns choosing proper divisors of the current number, and the player who successfully brings the number down to **1** wins the game. If a player is unable to make a valid move on their turn, they lose.
+
+---
+
+## Setup
+
+1. **Starting Number Selection**:
+   - The game begins with the selection of a starting positive integer, referred to as the **Current Number**.
+   - The starting number should be an integer between **10** and **100**, inclusive. This can be randomly generated or agreed upon by both players before the game starts.
+
+2. **Player Assignment**:
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Determine which player goes first. This can be decided randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Current Number**:
+  - A shared positive integer that changes throughout the game based on players' moves.
+  - Initially set to the starting number selected during the setup phase.
+
+- **Players**:
+  - **Player 1** and **Player 2** take alternating turns.
+  - No additional pieces, tokens, boards, or cards are required.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Announcement**:
+     - The game displays the **Current Number** at the beginning of each turn.
+  2. **Action**:
+     - The active player selects a **Proper Divisor** of the Current Number.
+     - The player then divides the Current Number by the chosen divisor.
+  3. **Update**:
+     - The result of the division becomes the new Current Number.
+  4. **Turn Progression**:
+     - The turn ends, and it becomes the other player's turn.
+
+- **Order of Play**:
+  - Players alternate turns until the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Proper Divisors**:
+   - A **Proper Divisor** of a positive integer **N** is a positive integer less than **N** that divides **N** without leaving a remainder.
+   - **1** is considered a proper divisor of any integer greater than **1**.
+
+2. **Valid Moves**:
+   - On their turn, a player must:
+     - Choose a proper divisor of the Current Number.
+     - Divide the Current Number by this divisor.
+     - The division must result in an integer (no fractions or decimals).
+
+3. **Winning the Game**:
+   - The player who reduces the Current Number to exactly **1** wins the game.
+
+4. **Losing the Game**:
+   - If a player cannot make a valid move on their turn (i.e., the Current Number is **1** or a prime number greater than **1** with no proper divisors other than **1**), they lose the game.
+
+5. **Additional Rules**:
+   - **No Passing**: Players cannot skip their turn; they must make a valid move if possible.
+   - **No Reversing Moves**: Once the Current Number has been updated, previous numbers and moves cannot be revisited or undone.
+   - **No Reusing Divisors**: Divisors can be reused in subsequent turns as long as they are valid proper divisors of the Current Number at that point.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - The winning player is the one who successfully reduces the Current Number to **1** on their turn.
+- **Defeat**:
+  - The player who cannot make a valid move on their turn loses the game.
+
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player wins or loses according to the rules.
+
+---
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Starting Number**: 60
+
+#### Turn-by-Turn Breakdown
+
+1. **Current Number**: 60
+   - **Player 1's Turn**:
+     - Proper divisors of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+     - **Player 1 chooses 5**
+     - 60 ÷ 5 = **12**
+     - **New Current Number**: 12
+
+2. **Current Number**: 12
+   - **Player 2's Turn**:
+     - Proper divisors of 12: 1, 2, 3, 4, 6
+     - **Player 2 chooses 6**
+     - 12 ÷ 6 = **2**
+     - **New Current Number**: 2
+
+3. **Current Number**: 2
+   - **Player 1's Turn**:
+     - Proper divisors of 2: 1
+     - **Player 1 chooses 1**
+     - 2 ÷ 1 = **2** (Number remains the same)
+     - **New Current Number**: 2
+
+4. **Current Number**: 2
+   - **Player 2's Turn**:
+     - Proper divisors of 2: 1
+     - **Player 2 chooses 1**
+     - 2 ÷ 1 = **2**
+     - **New Current Number**: 2
+
+   *At this point, both players can only choose 1, which does not change the Current Number. Since the number remains the same and no progress is made, the game could continue indefinitely. However, according to the rules, players must make a valid move if possible.*
+
+5. **Resolution**:
+   - Since neither player can reduce the Current Number to **1**, and the only proper divisor is **1**, which doesn't change the number, the game continues until a player concedes.
+   - To avoid indefinite play, a rule amendment can be made: **If the Current Number remains unchanged after both players' consecutive turns, the player who made the last valid change wins by default**.
+
+   - **In this case, Player 2 made the last valid change (12 to 2), so Player 2 wins by default**.
+
+### Example 2: Winning Move
+
+**Starting Number**: 45
+
+#### Turn-by-Turn Breakdown
+
+1. **Current Number**: 45
+   - **Player 1's Turn**:
+     - Proper divisors of 45: 1, 3, 5, 9, 15
+     - **Player 1 chooses 5**
+     - 45 ÷ 5 = **9**
+     - **New Current Number**: 9
+
+2. **Current Number**: 9
+   - **Player 2's Turn**:
+     - Proper divisors of 9: 1, 3
+     - **Player 2 chooses 3**
+     - 9 ÷ 3 = **3**
+     - **New Current Number**: 3
+
+3. **Current Number**: 3
+   - **Player 1's Turn**:
+     - Proper divisors of 3: 1
+     - **Player 1 chooses 1**
+     - 3 ÷ 1 = **3** (Number remains the same)
+     - **New Current Number**: 3
+
+4. **Current Number**: 3
+   - **Player 2's Turn**:
+     - Proper divisors of 3: 1
+     - **Player 2 chooses 1**
+     - 3 ÷ 1 = **3**
+     - **New Current Number**: 3
+
+   *Similar to Example 1, the number remains unchanged. According to the amended rule:*
+
+5. **Resolution**:
+   - **Player 2** made the last valid change (9 to 3).
+   - **Player 2 wins by default**.
+
+### Command-Line Interaction Example
+
+**Starting Number**: 24
+
+#### Game Play
+
+```
+Game Start! The starting number is 24.
+
+Player 1's Turn.
+Current Number: 24
+Proper Divisors: 1, 2, 3, 4, 6, 8, 12
+Enter your chosen divisor: 4
+You chose 4.
+24 ÷ 4 = 6
+New Current Number: 6
+
+Player 2's Turn.
+Current Number: 6
+Proper Divisors: 1, 2, 3
+Enter your chosen divisor: 3
+You chose 3.
+6 ÷ 3 = 2
+New Current Number: 2
+
+Player 1's Turn.
+Current Number: 2
+Proper Divisors: 1
+Enter your chosen divisor: 1
+You chose 1.
+2 ÷ 1 = 2
+New Current Number: 2
+
+Player 2's Turn.
+Current Number: 2
+Proper Divisors: 1
+Enter your chosen divisor: 1
+You chose 1.
+2 ÷ 1 = 2
+New Current Number: 2
+
+No change in Current Number after both players' turns.
+Player 2 made the last valid change.
+Player 2 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Aim for Prime Numbers**: Try to reduce the Current Number to a prime number on your turn, leaving your opponent with fewer options (only divisor **1**).
+
+- **Avoid Stagnation**: Be cautious when the Current Number is small. Repeatedly dividing by **1** doesn't change the number and can lead to a loss if your opponent made the last valid change.
+
+- **Plan Ahead**: Consider the possible divisors your opponent will have after your move. Avoid leaving them with advantageous numbers.
+
+---
+
+**Enjoy playing Divisor Duel, and may the most strategic player win!**

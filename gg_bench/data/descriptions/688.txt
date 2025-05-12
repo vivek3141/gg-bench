@@ -1,0 +1,214 @@
+# Digit Challenge
+
+## Objective
+
+**Digit Challenge** is a strategic two-player turn-based game designed for play in a command-line interface. The primary goal is to be the first player to reach **exactly 100 points** without exceeding it. Players accumulate points by selecting numbers and applying a unique multiplication rule. Strategic selection and foresight are crucial, allowing skilled players to consistently outperform their opponents.
+
+---
+
+## Setup
+
+- **Player Scores**: Both players start with a score of **0** points.
+- **Number Counts**: Each number from **1** to **9** has an initial count of **0** selections.
+- **First Turn**: Determine which player goes first (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Numbers Pool**: Digits from **1** to **9** inclusive. Numbers can be selected multiple times.
+- **Player Scores**: Individual scores for each player, starting at **0**.
+- **Number Counts**: A shared count for each number indicating how many times it has been selected during the game.
+
+---
+
+## Turns
+
+Players take turns alternately. Each turn consists of the following steps:
+
+1. **Select a Number**:
+   - Choose any number between **1** and **9** (inclusive).
+   - Ensure that selecting this number will not cause your score to exceed **100** points.
+
+2. **Calculate Points**:
+   - **Points Gained** = **Chosen Number** × **Total Selections of That Number**.
+   - The total selections include the current selection.
+
+3. **Update Score**:
+   - Add the **Points Gained** to your total score.
+
+4. **Update Number Count**:
+   - Increment the count for the chosen number by **1**.
+
+5. **Check for Win/Loss Conditions**:
+   - If your score is exactly **100**, you win.
+   - If your score exceeds **100**, you lose immediately.
+   - If no valid moves are possible on your turn, you lose.
+
+---
+
+## Rules and Mechanics
+
+- **Number Selection**:
+  - You may choose any number from **1** to **9** on your turn.
+  - Numbers can be selected multiple times throughout the game.
+  - The **Number Count** increases each time a number is selected.
+
+- **Calculating Points**:
+  - Use the formula: **Points Gained** = **Chosen Number** × **Total Selections of That Number**.
+  - Example: If the number **5** has been selected **2** times before, choosing **5** now (the 3rd selection) yields **5 × 3 = 15** points.
+
+- **Valid Moves**:
+  - You must select a number that does not cause your score to exceed **100**.
+  - If no such number exists on your turn, you lose the game.
+
+- **Winning the Game**:
+  - **Win**: Be the first player to reach exactly **100** points.
+  - **Lose**: Exceed **100** points or have no valid moves on your turn.
+
+---
+
+## Scoring
+
+- **Track Player Scores**:
+  - Update each player's score after every turn.
+
+- **Maintain Number Counts**:
+  - Keep a tally of how many times each number (**1**–**9**) has been selected.
+
+- **Example of Number Counts**:
+  - If **3** has been selected **4** times, its count is **4**.
+  - The next selection of **3** will count as the **5th** selection.
+
+---
+
+## Examples
+
+### Sample Gameplay
+
+**Starting Counts**: All numbers from **1** to **9** have a count of **0**.
+
+1. **Player 1's Turn**:
+   - Chooses **Number 5**.
+   - **Count for 5**: **1**
+   - **Points Gained**: **5 × 1 = 5**
+   - **Player 1's Score**: **0 + 5 = 5**
+
+2. **Player 2's Turn**:
+   - Chooses **Number 5**.
+   - **Count for 5**: **2**
+   - **Points Gained**: **5 × 2 = 10**
+   - **Player 2's Score**: **0 + 10 = 10**
+
+3. **Player 1's Turn**:
+   - Chooses **Number 3**.
+   - **Count for 3**: **1**
+   - **Points Gained**: **3 × 1 = 3**
+   - **Player 1's Score**: **5 + 3 = 8**
+
+4. **Player 2's Turn**:
+   - Chooses **Number 5**.
+   - **Count for 5**: **3**
+   - **Points Gained**: **5 × 3 = 15**
+   - **Player 2's Score**: **10 + 15 = 25**
+
+5. **Player 1's Turn**:
+   - Chooses **Number 5**.
+   - **Count for 5**: **4**
+   - **Points Gained**: **5 × 4 = 20**
+   - **Player 1's Score**: **8 + 20 = 28**
+
+6. **Player 2's Turn**:
+   - Chooses **Number 9**.
+   - **Count for 9**: **1**
+   - **Points Gained**: **9 × 1 = 9**
+   - **Player 2's Score**: **25 + 9 = 34**
+
+7. **Player 1's Turn**:
+   - Chooses **Number 5**.
+   - **Count for 5**: **5**
+   - **Points Gained**: **5 × 5 = 25**
+   - **Player 1's Score**: **28 + 25 = 53**
+
+8. **Player 2's Turn**:
+   - Chooses **Number 9**.
+   - **Count for 9**: **2**
+   - **Points Gained**: **9 × 2 = 18**
+   - **Player 2's Score**: **34 + 18 = 52**
+
+9. **Player 1's Turn**:
+   - Chooses **Number 5**.
+   - **Count for 5**: **6**
+   - **Points Gained**: **5 × 6 = 30**
+   - **Player 1's Score**: **53 + 30 = 83**
+
+10. **Player 2's Turn**:
+     - Chooses **Number 9**.
+     - **Count for 9**: **3**
+     - **Points Gained**: **9 × 3 = 27**
+     - **Player 2's Score**: **52 + 27 = 79**
+
+11. **Player 1's Turn**:
+     - Chooses **Number 1**.
+     - **Count for 1**: **1**
+     - **Points Gained**: **1 × 1 = 1**
+     - **Player 1's Score**: **83 + 1 = 84**
+
+12. **Player 2's Turn**:
+     - Chooses **Number 1**.
+     - **Count for 1**: **2**
+     - **Points Gained**: **1 × 2 = 2**
+     - **Player 2's Score**: **79 + 2 = 81**
+
+13. **Player 1's Turn**:
+     - Chooses **Number 5**.
+     - **Count for 5**: **7**
+     - **Points Gained**: **5 × 7 = 35**
+     - **Player 1's Score**: **84 + 35 = 119**
+     - **Player 1 exceeds 100 and loses.**
+     - **Player 2 wins the game.**
+
+### Command-Line Interaction Example
+
+#### **Player 1's Turn**
+
+```plaintext
+Current Scores: Player 1 - 5, Player 2 - 10
+Number Counts: 1(0), 2(0), 3(0), 4(0), 5(2), 6(0), 7(0), 8(0), 9(0)
+Player 1, it's your turn.
+Enter the number you wish to select (1-9): 3
+You selected number 3.
+Total selections of number 3: 1
+Points gained this turn: 3 × 1 = 3
+Your new total score: 5 + 3 = 8
+```
+
+#### **Player 2's Turn**
+
+```plaintext
+Current Scores: Player 1 - 8, Player 2 - 10
+Number Counts: 1(0), 2(0), 3(1), 4(0), 5(2), 6(0), 7(0), 8(0), 9(0)
+Player 2, it's your turn.
+Enter the number you wish to select (1-9): 5
+You selected number 5.
+Total selections of number 5: 3
+Points gained this turn: 5 × 3 = 15
+Your new total score: 10 + 15 = 25
+```
+
+---
+
+## Strategy Tips
+
+- **Monitor Number Counts**: Keep track of how many times each number has been selected to anticipate the potential points for you and your opponent.
+- **Plan Ahead**: Consider the impact of increasing a number's count, as it might benefit your opponent more on their next turn.
+- **Avoid Exceeding 100**: As scores approach 100, carefully choose numbers that will not push your total over the limit.
+- **Force a Loss**: Position yourself to force your opponent into a move where any available selection would make them exceed 100 points.
+
+---
+
+## Conclusion
+
+"Digit Challenge" offers a simple yet strategically rich gaming experience. Its straightforward mechanics make it easy to code and play in a command-line interface, while the depth of strategy ensures engaging gameplay. The absence of a draw mechanism and the clear win/loss conditions guarantee a decisive outcome in each game.
+
+Enjoy the challenge, and may the most strategic player win!

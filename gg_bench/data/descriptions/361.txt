@@ -1,0 +1,252 @@
+# **Flag Chase**
+
+## **Objective**
+
+The primary goal of **Flag Chase** is to be the first player to reach and capture the flag located at the center of a linear track. Players move their tokens toward the flag, strategically planning their moves to outmaneuver their opponent and secure victory.
+
+---
+
+## **Setup**
+
+- **Game Board**: A simple linear track consisting of **five consecutive cells** numbered from **1** to **5**.
+  
+- **Initial Positions**:
+  - **Player 1**:
+    - Starts on **cell 1** at one end of the track.
+  - **Player 2**:
+    - Starts on **cell 5** at the opposite end of the track.
+  
+- **Flag**:
+  - Placed on the **center cell (cell 3)**.
+
+**Visual Representation**:
+
+```
+[1][2][3][4][5]
+[P1][ ][F][ ][P2]
+```
+
+---
+
+## **Game Components**
+
+- **Linear Track**:
+  - A representation of **five consecutive cells** where the game takes place.
+  - Displayed in the command-line interface as `[1][2][3][4][5]`.
+
+- **Player Tokens**:
+  - Each player has a unique token representing their position on the track.
+    - **Player 1**: `P1`
+    - **Player 2**: `P2`
+
+- **Flag**:
+  - Represented by `F`, placed on **cell 3** at the start of the game.
+
+---
+
+## **Turns**
+
+- **Turn Order**:
+  - **Player 1** takes the **first turn**.
+  - Turns alternate between players.
+
+- **Turn Structure**:
+  - On each turn, a player moves their token according to the movement rules.
+
+---
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+- **Movement Options**:
+  - On their turn, a player can **move forward** toward the flag by **1 or 2 cells**.
+  - Players **cannot move backward**.
+
+- **Occupied Cells**:
+  - **No two players** can occupy the **same cell**.
+  - If a player's move would land them on a cell **occupied by the opponent**, they must **stop one cell before** the opponent's cell.
+
+- **Boundary Constraints**:
+  - Players **cannot move beyond cell 3** (the flag's position).
+
+### **Capturing the Flag**
+
+- The first player to **reach cell 3** where the flag is located **captures the flag and wins** the game.
+
+- If **both players** would reach cell 3 on the **same turn** due to movement constraints, the **player whose turn it is** wins the game.
+
+### **Interaction Rules**
+
+- **Blocking**:
+  - Players cannot **pass over** the opponent's token.
+  - Strategic positioning can be used to **block** the opponent's progress.
+
+- **Adjusting Movement**:
+  - If unable to move the desired number of cells due to the opponent's position, a player must **adjust their movement** to the maximum allowable distance.
+
+---
+
+## **Scoring**
+
+- **Victory Condition**:
+  - Capturing the flag by reaching **cell 3**.
+
+- There is **no point-based scoring system**; the game is won by achieving the objective.
+
+---
+
+## **Examples**
+
+### **Example Scenario 1**
+
+**Initial Setup**:
+
+```
+[1][2][3][4][5]
+[P1][ ][F][ ][P2]
+```
+
+**Turn 1**: *Player 1*
+
+- **Move**: Forward **2 cells** from cell 1 to cell 3 (the flag).
+- **Result**:
+  ```
+  [ ][ ][P1/F][ ][P2]
+  ```
+- **Outcome**: **Player 1 captures the flag and wins**.
+
+### **Example Scenario 2**
+
+**Initial Setup**:
+
+```
+[1][2][3][4][5]
+[P1][ ][F][ ][P2]
+```
+
+**Turn 1**: *Player 1*
+
+- **Move**: Forward **1 cell** to cell 2.
+- **Result**:
+  ```
+  [ ][P1][F][ ][P2]
+  ```
+
+**Turn 2**: *Player 2*
+
+- **Move**: Forward **2 cells** to cell 3 (the flag).
+- **Result**:
+  ```
+  [ ][P1][P2/F][ ][ ]
+  ```
+- **Outcome**: **Player 2 captures the flag and wins**.
+
+### **Example Scenario 3**
+
+**Initial Setup**:
+
+```
+[1][2][3][4][5]
+[P1][ ][F][ ][P2]
+```
+
+**Turn 1**: *Player 1*
+
+- **Move**: Forward **1 cell** to cell 2.
+- **Result**:
+  ```
+  [ ][P1][F][ ][P2]
+  ```
+
+**Turn 2**: *Player 2*
+
+- **Move**: Forward **1 cell** to cell 4.
+- **Result**:
+  ```
+  [ ][P1][F][P2][ ]
+  ```
+
+**Turn 3**: *Player 1*
+
+- **Move Attempt**: Forward **2 cells** to cell 4.
+- **Adjustment**:
+  - Cell 4 is **occupied by Player 2**.
+  - Player 1 must **stop at cell 3** (the flag).
+- **Result**:
+  ```
+  [ ][ ][P1/F][P2][ ]
+  ```
+- **Outcome**: **Player 1 captures the flag and wins**.
+
+---
+
+## **Command-Line Interaction Example**
+
+**Game Start**:
+
+```
+Welcome to Flag Chase!
+
+Initial Track:
+[1][2][3][4][5]
+[P1][ ][F][ ][P2]
+```
+
+**Player 1's Turn**:
+
+```
+Player 1, you are at position 1.
+Enter your move (1 or 2 cells forward): 1
+
+Updated Track:
+[ ][P1][F][ ][P2]
+```
+
+**Player 2's Turn**:
+
+```
+Player 2, you are at position 5.
+Enter your move (1 or 2 cells forward): 2
+
+Updated Track:
+[ ][P1][F][P2][ ]
+```
+
+**Player 1's Turn**:
+
+```
+Player 1, you are at position 2.
+Enter your move (1 or 2 cells forward): 2
+
+Cannot move 2 cells forward. Cell 4 is occupied by Player 2.
+You move 1 cell forward to cell 3 and capture the flag!
+
+Player 1 wins!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Plan Ahead**: Anticipate your opponent's possible moves to block them or reach the flag first.
+
+- **Control the Center**: Reaching the center quickly can pressure your opponent and limit their options.
+
+- **Blocking**: Use your position to block your opponent, forcing them to adjust their moves.
+
+---
+
+## **Game Development Notes**
+
+- **Simplicity**: The game is designed to be **easy and simple to code**, suitable for a command-line interface.
+
+- **No Draws**: The game cannot end in a draw, ensuring a quick conclusion.
+
+- **Skill-Based**: Strategic planning allows a skilled player to **consistently beat** an unskilled player.
+
+- **Uniqueness**: **Flag Chase** is a unique game with mechanics distinct from classic games like Go, Nim, Tic-Tac-Toe, or Chess.
+
+---
+
+Enjoy playing **Flag Chase**, and may the best strategist win!

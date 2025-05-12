@@ -1,0 +1,238 @@
+# GridLock: A Strategic Grid Occupation Game
+
+## Objective
+
+**Primary Goal:**  
+Be the last player able to make a valid move on the grid. Players take turns placing their symbols on a shared grid following specific placement rules. The player who forces their opponent into a position where they cannot make a valid move wins the game.
+
+**Victory Condition:**  
+- **Win:** You win if your opponent cannot place their symbol on the grid according to the rules on their turn.
+- **Loss:** You lose if you cannot make a valid move when it's your turn.
+
+## Setup
+
+1. **Grid Preparation:**  
+   - Use a square grid of size 5x5. The grid consists of 25 cells identified by their row and column numbers (from 1 to 5).
+   - All cells are empty at the start of the game.
+
+2. **Player Symbols:**  
+   - Player 1 uses the symbol `'A'`.
+   - Player 2 uses the symbol `'B'`.
+
+3. **Starting Player:**  
+   - Decide who will take the first turn (e.g., coin toss or mutual agreement). Turns will alternate between players.
+
+## Game Components
+
+- **Grid:**  
+  A 5x5 two-dimensional grid that represents the game board. Each cell can be empty or contain a player's symbol.
+
+- **Player Symbols:**  
+  - `'A'` for Player 1.
+  - `'B'` for Player 2.
+
+- **Coordinates:**  
+  - Each cell is identified by a coordinate pair `(row, column)`, where `row` and `column` range from 1 to 5.
+
+## Turns
+
+1. **Turn Structure:**  
+   - Players alternate turns, starting with the designated first player.
+
+2. **Player Actions on Their Turn:**  
+   - **Select a Cell:** Choose an empty cell on the grid where placement is valid according to the game rules.
+   - **Place Symbol:** Place your symbol (`'A'` or `'B'`) in the selected cell.
+
+3. **Turn Progression:**  
+   - After placing the symbol, the turn passes to the other player.
+   - The game continues until a player cannot make a valid move on their turn.
+
+## Rules and Mechanics
+
+1. **Placement Rules:**
+   - **Valid Placement:**  
+     - You may place your symbol in any empty cell that is **not adjacent** to any of your opponent's symbols.
+     - **Adjacency** includes horizontal, vertical, and diagonal neighboring cells.
+   - **Invalid Placement:**  
+     - You cannot place your symbol in an empty cell if it is adjacent to one or more of your opponent's symbols.
+
+2. **Adjacency Definition:**
+   - A cell `(x1, y1)` is adjacent to cell `(x2, y2)` if:
+     - `abs(x1 - x2) ≤ 1` and `abs(y1 - y2) ≤ 1`
+     - And `(x1, y1)` ≠ `(x2, y2)`
+
+3. **Making a Move:**
+   - On your turn:
+     1. Review the grid to find all empty cells that are not adjacent to your opponent's symbols.
+     2. Select one of these cells.
+     3. Place your symbol in the chosen cell.
+
+4. **Unable to Move:**
+   - If there are no valid cells where you can place your symbol according to the rules, you lose the game.
+
+5. **Game End:**
+   - The game ends immediately when a player cannot make a valid move on their turn.
+
+## Scoring
+
+- **Winning:**  
+  - The winner is the player who successfully prevents their opponent from making a valid move.
+- **No Points System:**  
+  - There is no point tracking. The game outcome is win or loss based on the ability to make valid moves.
+
+## Examples
+
+### Example Game Play
+
+**Initial Grid:**
+
+All cells are empty.
+
+```
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+```
+
+**Player 1's Turn (Player 'A'):**
+
+- **Action:** Places 'A' at cell (3, 3).
+- **Grid:**
+
+```
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [A] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+```
+
+**Player 2's Turn (Player 'B'):**
+
+- **Valid Moves:**  
+  - Can place 'B' in any cell not adjacent to (3, 3).
+- **Action:** Places 'B' at cell (1, 1).
+- **Grid:**
+
+```
+[B] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [A] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+```
+
+**Player 1's Turn:**
+
+- **Valid Moves:**  
+  - Must not place adjacent to 'B' at (1, 1) or 'A' at (3, 3).
+- **Action:** Places 'A' at cell (5, 5).
+- **Grid:**
+
+```
+[B] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [A] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [A]
+```
+
+**Player 2's Turn:**
+
+- **Valid Moves:**  
+  - Cannot be adjacent to 'B' at (1, 1) or 'A's at (3, 3) and (5, 5).
+- **Action:** Places 'B' at cell (1, 5).
+- **Grid:**
+
+```
+[B] [ ] [ ] [ ] [B]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [A] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [A]
+```
+
+**Gameplay Continues:**
+
+Players continue to place their symbols following the rules until one cannot make a valid move.
+
+### Command-Line Interaction Sample
+
+**Notation:**
+- Rows and columns are numbered from 1 to 5.
+- Input format for moves: `row,column`
+
+**Sample Turn:**
+
+**Player 1's Turn:**
+
+```
+Current Grid:
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+
+Player A, enter your move (row,column): 3,3
+```
+
+**Player 2's Turn:**
+
+```
+Current Grid:
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [A] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+
+Player B, enter your move (row,column): 1,1
+```
+
+**Invalid Move Example:**
+
+If Player 1 attempts to place adjacent to Player 2's symbol:
+
+```
+Current Grid:
+[B] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [A] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+[ ] [ ] [ ] [ ] [ ]
+
+Player A, enter your move (row,column): 1,2
+
+Invalid move! The cell is adjacent to an opponent's symbol.
+Please choose a different cell.
+```
+
+**Game End:**
+
+If Player 2 cannot move:
+
+```
+Player B, you have no valid moves left.
+Player A wins the game!
+```
+
+## Strategy Tips
+
+- **Control the Center:**  
+  Placing symbols in central positions can limit your opponent's options more effectively.
+
+- **Plan Ahead:**  
+  Anticipate your opponent's possible moves and aim to restrict their placement options.
+
+- **Avoid Corners Early:**  
+  Corners provide fewer adjacency opportunities. Save them for later when options are limited.
+
+- **Create Safe Zones:**  
+  Try to create areas on the grid where you can make multiple moves without interference.
+
+## Conclusion
+
+**GridLock** is a simple yet strategic game that requires players to think ahead and make moves that limit their opponent's options. With straightforward rules and easy command-line implementation, it's perfect for quick matches that challenge your tactical skills.

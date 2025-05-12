@@ -1,0 +1,178 @@
+# Multiplication Duel: Rule Book
+
+## Objective
+
+Multiplication Duel is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to avoid being the player who causes the shared number to reach or exceed a predefined target number. Players take turns multiplying the shared number by an integer within a specified range. The player who forces the shared number to reach or surpass the target number loses the game. Victory requires careful calculation and foresight to outmaneuver your opponent.
+
+---
+
+## Setup
+
+- **Starting Number**: The game begins with a shared number set to **1**.
+- **Target Number**: A predefined target number, typically **100**, is set before the game starts.
+- **Player Order**: Determine which player goes first (Player 1 and Player 2). This can be decided randomly or by agreement.
+
+---
+
+## Game Components
+
+- **Shared Number**: A single integer that both players manipulate during the game, starting at **1**.
+- **Multipliers**: Integers from **2** to **9** inclusive. These are the numbers players can choose to multiply the shared number.
+- **Target Number**: The number that players must avoid reaching or exceeding; default is **100**.
+
+---
+
+## Turns
+
+- **Turn Structure**: Players alternate turns, starting with Player 1.
+- **Player Actions**:
+  - On their turn, a player must:
+    1. Choose a multiplier between **2** and **9**.
+    2. Multiply the shared number by the chosen multiplier.
+    3. Update the shared number with the new value.
+- **End of Turn**: After updating the shared number, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Choosing a Multiplier**:
+   - Players must select an integer multiplier between **2** and **9** inclusive.
+   - Only integers within this range are valid; choosing an invalid multiplier results in losing the game by default.
+
+2. **Updating the Shared Number**:
+   - Multiply the current shared number by the chosen multiplier.
+   - For example, if the shared number is **5** and the player chooses **3**, the new shared number is **15**.
+
+3. **Winning and Losing Conditions**:
+   - The player whose action causes the shared number to reach or exceed the target number (e.g., **100**) **loses** the game.
+   - The opposing player is declared the **winner**.
+   - If a player inputs an invalid multiplier, they automatically lose.
+
+4. **No Draws**:
+   - The game cannot end in a draw. It will always result in a win or loss based on the above conditions.
+
+5. **Example Valid Turn**:
+   - Shared number is **4**.
+   - Player chooses multiplier **5**.
+   - New shared number is **4 × 5 = 20**.
+
+6. **Example Losing Turn**:
+   - Shared number is **51**.
+   - Player chooses multiplier **2**.
+   - New shared number is **51 × 2 = 102**.
+   - Since **102** exceeds the target **100**, the player loses.
+
+---
+
+## Scoring
+
+- **Win/Loss Tracking**:
+  - A single point is awarded for each game won.
+  - Players can keep track of total wins over multiple games to determine overall proficiency.
+- **No Point System Within a Game**:
+  - There is no incremental scoring within a single game; it is a win/lose outcome.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Game Start
+
+- **Shared Number**: 1
+- **Target Number**: 100
+- **Player Order**:
+  - Player 1
+  - Player 2
+
+---
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Shared Number**: 1
+   - **Action**: Chooses multiplier **9**
+   - **Calculation**: 1 × 9 = **9**
+   - **New Shared Number**: 9
+
+2. **Player 2's Turn**:
+   - **Shared Number**: 9
+   - **Action**: Chooses multiplier **6**
+   - **Calculation**: 9 × 6 = **54**
+   - **New Shared Number**: 54
+
+3. **Player 1's Turn**:
+   - **Shared Number**: 54
+   - **Action**: Chooses multiplier **2**
+   - **Calculation**: 54 × 2 = **108**
+   - **New Shared Number**: 108
+   - **Outcome**: Shared number **108** exceeds target **100**.
+   - **Result**: Player 1 loses, Player 2 wins.
+
+---
+
+### Command-Line Interaction Example
+
+#### Prompt Sequence
+
+1. **Game Initialization**:
+
+   ```
+   Welcome to Multiplication Duel!
+   Starting number: 1
+   Target number: 100
+   Player 1 begins.
+   ```
+
+2. **Player 1's Turn**:
+
+   ```
+   Shared number is 1.
+   Player 1, choose your multiplier (2-9): 3
+   New shared number is 3.
+   ```
+
+3. **Player 2's Turn**:
+
+   ```
+   Shared number is 3.
+   Player 2, choose your multiplier (2-9): 9
+   New shared number is 27.
+   ```
+
+4. **Player 1's Turn**:
+
+   ```
+   Shared number is 27.
+   Player 1, choose your multiplier (2-9): 3
+   New shared number is 81.
+   ```
+
+5. **Player 2's Turn**:
+
+   ```
+   Shared number is 81.
+   Player 2, choose your multiplier (2-9): 2
+   New shared number is 162.
+   Shared number has reached or exceeded 100.
+   Player 2 loses. Player 1 wins!
+   ```
+
+---
+
+### Strategic Notes
+
+- **Avoid Dangerous Multipliers**:
+  - Be cautious when the shared number is close to the target. Selecting a high multiplier may force you to lose.
+- **Force Your Opponent's Hand**:
+  - Try to leave the shared number at a value where any multiplier they choose will cause them to exceed the target.
+- **Calculation and Prediction**:
+  - Anticipate future shared numbers based on possible multipliers your opponent can choose.
+  
+---
+
+## Conclusion
+
+Multiplication Duel is a simple yet strategically rich game that requires players to think ahead and make calculated decisions. By understanding the impact of each multiplier and anticipating your opponent's moves, you can increase your chances of winning. Enjoy the challenge, and may the best strategist prevail!

@@ -1,0 +1,240 @@
+# Number Line Blockade
+
+## Objective
+
+**Number Line Blockade** is a two-player, turn-based strategy game played on a virtual number line. The primary goal is to be the last player able to make a valid move by strategically selecting numbers and blocking your opponent's options. Victory is achieved by forcing your opponent into a position where they cannot select any remaining numbers on their turn.
+
+## Setup
+
+- **Number Line:** Create a sequential number line containing all integers from **1** to **21**. This number line represents the playing field.
+  
+  ```
+  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21
+  ```
+
+- **Initial State:** At the start of the game, all numbers are unclaimed and available for selection by either player.
+
+- **Players:** Two players designated as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Number Line Positions (1-21):** These are the selectable spots on the number line. Each position can be in one of three states:
+  - **Unclaimed:** The number is available for selection.
+  - **Claimed:** The number has been selected by a player.
+  - **Blocked:** The number is adjacent to a claimed number and is unavailable for selection.
+
+- **Markers:**
+  - Each player will use a unique marker to indicate claimed numbers:
+    - **Player 1:** `X`
+    - **Player 2:** `O`
+
+- **Game Board Representation:**
+  - The game board is displayed on the command line, showing the current state of each number (unclaimed, claimed by Player 1, claimed by Player 2, or blocked).
+
+## Turns
+
+- **Turn Order:** Player 1 begins the game. Players alternate turns thereafter.
+
+- **Turn Structure:**
+  1. **Display Board:** The current state of the number line is displayed.
+  2. **Player Action:** The active player selects an unclaimed and unblocked number from the number line.
+  3. **Validation:** The game validates the selection to ensure it is legal.
+  4. **Update Board:**
+     - Mark the selected number with the player's marker (`X` or `O`).
+     - Block the adjacent unclaimed numbers (both immediate lower and higher numbers) by marking them as blocked (`-`).
+  5. **Check for Game End:** Determine if the opponent has any valid moves remaining.
+  6. **Switch Turns:** If the game is not over, switch to the other player.
+
+## Rules and Mechanics
+
+- **Number Selection:**
+  - On their turn, a player must select any **unclaimed** and **unblocked** number from the number line.
+  - Numbers can be selected in any order, provided they meet the above criteria.
+
+- **Blocking Mechanism:**
+  - When a number is claimed, both adjacent numbers (the immediate lower and higher numbers) become blocked and cannot be selected in future turns.
+    - For example, if number `5` is claimed:
+      - Number `4` (immediate lower number) becomes blocked.
+      - Number `6` (immediate higher number) becomes blocked.
+  - If the adjacent number is already claimed or blocked, no additional action is needed.
+
+- **Winning the Game:**
+  - The game ends when a player cannot make a valid move on their turn.
+  - The player who made the **last valid move** wins the game.
+
+- **Invalid Moves:**
+  - If a player attempts to select an invalid number (claimed or blocked), they are prompted to choose again.
+  - Repeated invalid attempts may result in forfeiture of the game at the discretion of the game rules enforcement (optional in coding).
+
+## Scoring
+
+- **Victory Condition:** Winning is achieved by being the last player to make a valid move.
+
+- **No Points System:** There is no point scoring; the game is won by strategic play leading to the opponent's inability to move.
+
+- **Match Play (Optional):** Players may opt to play multiple rounds, tracking wins to determine an overall champion after a set number of games.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial State
+
+```
+1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21
+```
+
+All numbers are unclaimed.
+
+#### Turn 1: Player 1
+
+- **Action:** Player 1 selects number **11**.
+- **Board Update:**
+  - Number **11** is marked with `X`.
+  - Numbers **10** and **12** are blocked (`-`).
+
+**Board State:**
+
+```
+1  2  3  4  5  6  7  8  9  10(-) 11(X) 12(-) 13  14  15  16  17  18  19  20  21
+```
+
+#### Turn 2: Player 2
+
+- **Action:** Player 2 selects number **7**.
+- **Board Update:**
+  - Number **7** is marked with `O`.
+  - Numbers **6** and **8** are blocked (`-`).
+
+**Board State:**
+
+```
+1  2  3  4  5  6(-) 7(O) 8(-) 9  10(-) 11(X) 12(-) 13  14  15  16  17  18  19  20  21
+```
+
+#### Turn 3: Player 1
+
+- **Action:** Player 1 selects number **14**.
+- **Board Update:**
+  - Number **14** is marked with `X`.
+  - Numbers **13** and **15** are blocked (`-`).
+
+**Board State:**
+
+```
+1  2  3  4  5  6(-) 7(O) 8(-) 9  10(-) 11(X) 12(-) 13(-) 14(X) 15(-) 16  17  18  19  20  21
+```
+
+#### Turn 4: Player 2
+
+- **Action:** Player 2 selects number **17**.
+- **Board Update:**
+  - Number **17** is marked with `O`.
+  - Numbers **16** and **18** are blocked (`-`).
+
+**Board State:**
+
+```
+1  2  3  4  5  6(-) 7(O) 8(-) 9  10(-) 11(X) 12(-) 13(-) 14(X) 15(-) 16(-) 17(O) 18(-) 19  20  21
+```
+
+#### Subsequent Turns
+
+Players continue taking turns, selecting numbers and blocking adjacent numbers. The game progresses as the pool of available numbers diminishes.
+
+#### End Game Scenario
+
+Assume the board reaches a state where only number **21** is available:
+
+**Board State:**
+
+```
+1(-) 2(-) 3(-) 4(-) 5(-) 6(-) 7(O) 8(-) 9(-) 10(-) 11(X) 12(-) 13(-) 14(X) 15(-) 16(-) 17(O) 18(-) 19(-) 20(-) 21
+```
+
+- **Player 1's Turn:**
+  - **Action:** Player 1 selects number **21**.
+  - **Board Update:**
+    - Number **21** is marked with `X`.
+    - Number **20** is already blocked.
+
+**Board State:**
+
+```
+1(-) 2(-) 3(-) 4(-) 5(-) 6(-) 7(O) 8(-) 9(-) 10(-) 11(X) 12(-) 13(-) 14(X) 15(-) 16(-) 17(O) 18(-) 19(-) 20(-) 21(X)
+```
+
+- **Player 2's Turn:**
+  - No unclaimed and unblocked numbers remain.
+  - **Player 2 cannot make a valid move.**
+
+**Result:** **Player 1 wins** as the last player to make a valid move.
+
+## Command-Line Interaction Example
+
+### Starting the Game
+
+```
+Welcome to Number Line Blockade!
+Player 1: X
+Player 2: O
+
+Initial Number Line:
+1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21
+```
+
+### Turn Sequence
+
+#### Player 1's Turn
+
+```
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+Enter the number you want to claim: 11
+
+You have claimed number 11.
+Blocked numbers: 10, 12
+
+Current Number Line:
+1  2  3  4  5  6  7  8  9  10(-) 11(X) 12(-) 13  14  15  16  17  18  19  20  21
+```
+
+#### Player 2's Turn
+
+```
+Player 2's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 13 14 15 16 17 18 19 20 21
+Enter the number you want to claim: 7
+
+You have claimed number 7.
+Blocked numbers: 6, 8
+
+Current Number Line:
+1  2  3  4  5  6(-) 7(O) 8(-) 9  10(-) 11(X) 12(-) 13  14  15  16  17  18  19  20  21
+```
+
+### Continuing the Game
+
+The players continue entering their moves as prompted, with the game updating the number line and displaying the current state after each turn.
+
+### Game End
+
+```
+Player 2's turn.
+No valid moves remaining.
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Control Central Numbers:** Selecting numbers near the center can block more potential moves for your opponent due to the higher density of adjacent unclaimed numbers.
+
+- **Plan Ahead:** Anticipate which numbers will become available or blocked based on your selections and plan your moves to limit your opponent's options.
+
+- **Force Isolation:** Try to create isolated clusters of unclaimed numbers that you can control in subsequent turns.
+
+- **Time Your Moves:** Sometimes it's advantageous to leave certain numbers unclaimed until later to prevent opening opportunities for your opponent.
+
+## Conclusion
+
+Number Line Blockade is a simple yet strategically rich game that tests players' foresight and tactical planning. With its straightforward rules and quick gameplay, it offers an engaging experience accessible through a command-line interface. Mastery comes from understanding the impact of each move and anticipating your opponent's strategy, ensuring that skilled players can consistently outmaneuver less experienced ones.

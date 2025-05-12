@@ -1,0 +1,260 @@
+# Blockade Runner
+
+### Rule Book
+
+---
+
+## Objective
+
+Be the first player to move your token from your starting position to your opponent's starting position on a linear board. Achieve victory by strategically moving your token forward and placing blockades to hinder your opponent's progress. You win by either reaching the opponent's starting space or by blocking your opponent so they cannot make a legal move.
+
+---
+
+## Setup
+
+- **Board Layout**: A linear board consisting of **11 consecutive spaces**, numbered from **0** to **10**.
+  - **Space 0**: Player 1's starting position.
+  - **Space 10**: Player 2's starting position.
+  - **Spaces 1-9**: Neutral spaces that can be occupied, moved through, or blocked.
+- **Player Tokens**:
+  - **Player 1**: Starts on **Space 0**.
+  - **Player 2**: Starts on **Space 10**.
+- **Blockades**: No blockades are on the board at the start.
+
+---
+
+## Game Components
+
+- **Linear Board**: A simple representation of 11 spaces in a straight line.
+- **Player Tokens**:
+  - **Player 1 Token**: Represented as `P1`.
+  - **Player 2 Token**: Represented as `P2`.
+- **Blockades**: Represented as `X` on the board.
+- **Command-Line Interface**: The game is played via a CLI that displays the board and accepts player inputs.
+
+---
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- **Each turn consists of two actions in order**:
+  1. **Move Action**:
+     - Move your token **1 or 2 spaces forward** toward your opponent's starting position.
+     - Movement is only allowed onto unoccupied and unblocked spaces.
+  2. **Blockade Action**:
+     - Place a blockade (`X`) on any unoccupied and unblocked space **except the starting spaces (0 and 10)**.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Legal Moves**:
+  - You may move **1** or **2** spaces forward.
+  - You cannot move onto or past a space occupied by a blockade or the opponent's token.
+- **Blocked Movement**:
+  - If you have no legal moves (both options blocked), you lose the game.
+  - You cannot skip your move; you must move if possible.
+
+### Blockade Placement Rules
+
+- **Placing Blockades**:
+  - After moving, you must place a blockade on any valid space.
+  - Valid spaces are unoccupied, unblocked, and not the starting positions.
+- **Blockade Restrictions**:
+  - Once placed, blockades remain for the rest of the game.
+  - You cannot remove or move blockades.
+
+### Winning the Game
+
+You win by:
+
+- **Reaching the Opponent's Starting Space**:
+  - Successfully moving your token onto space **10** (for Player 1) or space **0** (for Player 2).
+- **Blocking Your Opponent**:
+  - If your opponent has no legal moves on their turn due to blockades and your token's position, they lose.
+
+### Special Conditions
+
+- **No Backward Movement**:
+  - Players cannot move backward; only forward movement is allowed.
+- **Occupied Spaces**:
+  - Players cannot occupy the same space.
+- **End of Game Scenarios**:
+  - If neither player can move, the **last player who moved** wins.
+
+---
+
+## Scoring
+
+- There are no points or scoring system.
+- The game outcome is simply a win or loss based on the objective.
+
+---
+
+## Examples
+
+### Example Board Representation
+
+```
+Positions: 0   1   2   3   4   5   6   7   8   9  10
+           P1  .   .   .   .   .   .   .   .   .  P2
+```
+
+- `P1`: Player 1's token.
+- `P2`: Player 2's token.
+- `X`: Blockade.
+- `.`: Empty space.
+
+### Sample Game Playthrough
+
+#### Turn 1: Player 1
+
+- **Move Action**:
+  - Moves **2 spaces** from position **0** to position **2**.
+- **Blockade Action**:
+  - Places a blockade on position **3**.
+
+**Board State**:
+
+```
+Positions: 0   1   2   3   4   5   6   7   8   9  10
+           .   .  P1   X   .   .   .   .   .   .  P2
+```
+
+#### Turn 2: Player 2
+
+- **Move Action**:
+  - Moves **2 spaces** from position **10** to position **8**.
+- **Blockade Action**:
+  - Places a blockade on position **7**.
+
+**Board State**:
+
+```
+Positions: 0   1   2   3   4   5   6   7   8   9  10
+           .   .  P1   X   .   .   .   X  P2   .   .
+```
+
+#### Turn 3: Player 1
+
+- **Move Action**:
+  - Attempts to move **2 spaces** to position **4**, which is unblocked.
+  - Moves to position **4**.
+- **Blockade Action**:
+  - Places a blockade on position **5**.
+
+**Board State**:
+
+```
+Positions: 0   1   2   3   4   5   6   7   8   9  10
+           .   .   .   X  P1   X   .   X  P2   .   .
+```
+
+#### Turn 4: Player 2
+
+- **Move Action**:
+  - Can only move **1 space** forward to position **7**.
+  - Position **7** is blocked.
+  - Cannot move **2 spaces** to position **6** because it's beyond the blockade and would be moving backward.
+- **Result**:
+  - Player 2 has no legal moves and **loses the game**.
+
+---
+
+## Command-Line Interaction Examples
+
+### Starting the Game
+
+```
+Welcome to Blockade Runner!
+
+Player 1 (P1) starts at position 0.
+Player 2 (P2) starts at position 10.
+
+Let the game begin!
+```
+
+### Player 1's Turn
+
+```
+--- Player 1's Turn ---
+Your current position: 0
+
+Available moves:
+1. Move 1 space to position 1
+2. Move 2 spaces to position 2
+
+Enter the number of spaces to move (1 or 2): 2
+
+You moved to position 2.
+
+Available blockade positions: 1,3,4,5,6,7,8,9
+Enter the position to place a blockade: 3
+
+Blockade placed on position 3.
+
+Current Board:
+Positions: 0   1   2   3   4   5   6   7   8   9  10
+           .   .  P1   X   .   .   .   .   .   .  P2
+```
+
+### Player 2's Turn
+
+```
+--- Player 2's Turn ---
+Your current position: 10
+
+Available moves:
+1. Move 1 space to position 9
+2. Move 2 spaces to position 8
+
+Enter the number of spaces to move (1 or 2): 2
+
+You moved to position 8.
+
+Available blockade positions: 1,4,5,6,7,9
+Enter the position to place a blockade: 7
+
+Blockade placed on position 7.
+
+Current Board:
+Positions: 0   1   2   3   4   5   6   7   8   9  10
+           .   .  P1   X   .   .   .   X  P2   .   .
+```
+
+### Subsequent Turns
+
+- Players continue to move and place blockades as per the rules.
+- The command-line interface updates the board and available options each turn.
+
+### Ending the Game
+
+```
+--- Player 2's Turn ---
+Your current position: 8
+
+Available moves:
+- No legal moves available.
+
+Player 2 cannot move.
+
+Player 1 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Advance Wisely**: Decide when to move 1 or 2 spaces based on your opponent's position and potential blockade placements.
+- **Block Effectively**: Place blockades to limit your opponent's future moves, especially on spaces they might need to progress.
+- **Plan Ahead**: Anticipate your opponent's options and set traps by blocking critical spaces.
+
+---
+
+## Summary
+
+"Blockade Runner" is a strategic, turn-based game that is simple to play yet offers depth for players who think ahead. The linear board and straightforward rules make it easy to implement in a command-line interface, ensuring quick gameplay without compromising on strategy. There are no draws, and skilled players can consistently outmaneuver less experienced opponents by effectively balancing movement and blockade placement.
+
+Enjoy the challenge and may the best strategist win!

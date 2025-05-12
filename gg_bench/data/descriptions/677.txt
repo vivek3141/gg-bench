@@ -1,0 +1,265 @@
+# **Switch It: A Game of Tactical Flips**
+
+## **Objective**
+
+Be the first player to set all switches to your target state. Players compete to manipulate a series of switches, aiming to align them all to either **On** or **Off**, depending on their assigned target state. Victory is achieved when all switches match a player's target state at the end of their turn.
+
+---
+
+## **Setup**
+
+1. **Game Initialization**:
+   - The game consists of a row of **7 switches**, each of which can be in one of two states: **On** (`1`) or **Off** (`0`).
+   - The initial state of each switch is set randomly. For example: `1 0 1 0 0 1 0`.
+
+2. **Player Assignment**:
+   - This is a **two-player** game.
+   - **Player 1** is assigned the target state **On** (`1`).
+   - **Player 2** is assigned the target state **Off** (`0`).
+
+---
+
+## **Game Components**
+
+- **Switches**:
+  - Represented as a sequence of binary values (`1`s and `0`s).
+  - Each switch can be toggled between **On** (`1`) and **Off** (`0`).
+
+- **Players**:
+  - Each player has a specific target state:
+    - **Player 1**: Aim to turn all switches **On** (`1`).
+    - **Player 2**: Aim to turn all switches **Off** (`0`).
+
+---
+
+## **Turns**
+
+- **Turn Order**:
+  - **Player 1** makes the first move.
+  - Players alternate turns thereafter.
+
+- **Actions During a Turn**:
+  - A player can perform **one** of the following actions:
+    1. **Flip a Single Switch**:
+       - Toggle the state of any one switch in the sequence.
+    2. **Flip Two Adjacent Switches**:
+       - Toggle the states of any two switches that are next to each other.
+
+- **Progression of Turns**:
+  - After a player makes their move, the game checks for victory conditions.
+  - If no player has won, the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Switch Flipping**:
+   - **Flipping a Switch**:
+     - Changing a switch from **On** (`1`) to **Off** (`0`), or vice versa.
+   - **Legal Moves**:
+     - Flipping any one switch.
+     - Flipping two switches, provided they are adjacent in the sequence.
+
+2. **Victory Condition**:
+   - A player wins if, after their turn, **all switches** are in their target state.
+     - **Player 1** wins if all switches are **On** (`1`).
+     - **Player 2** wins if all switches are **Off** (`0`).
+
+3. **No Draws**:
+   - The game cannot end in a draw.
+   - Due to the finite number of possible states and the alternating turns, a player will inevitably reach their target state given optimal play.
+
+4. **Strategy**:
+   - Players must anticipate their opponent's moves and plan accordingly.
+   - Deciding whether to flip one switch or two can change the game's outcome.
+
+---
+
+## **Scoring**
+
+- **Winning the Game**:
+  - The player who successfully turns all switches to their target state wins the game.
+  - No point system is used; the outcome is win or loss.
+
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds.
+  - Keep track of wins to determine an overall champion after a set number of games.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Initial Switch State**:  
+`1 0 1 0 0 1 0`  
+(Generated randomly at the start)
+
+**Player Assignments**:
+- **Player 1**: Target state **On** (`1`)
+- **Player 2**: Target state **Off** (`0`)
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Flip switches at positions 2 and 3 (adjacent switches).
+- **Switches Flipped**: Positions 2 and 3.
+- **Switch State After Move**:  
+  `1 1 0 0 0 1 0`
+
+**Victory Check**:
+- Switches: `1 1 0 0 0 1 0`
+- Not all switches are **On** (`1`).
+- Game continues.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Flip switch at position 6.
+- **Switch Flipped**: Position 6.
+- **Switch State After Move**:  
+  `1 1 0 0 0 0 0`
+
+**Victory Check**:
+- Switches: `1 1 0 0 0 0 0`
+- Not all switches are **Off** (`0`).
+- Game continues.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Flip switch at position 4.
+- **Switch Flipped**: Position 4.
+- **Switch State After Move**:  
+  `1 1 0 1 0 0 0`
+
+**Victory Check**:
+- Switches: `1 1 0 1 0 0 0`
+- Not all switches are **On** (`1`).
+- Game continues.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: Flip switches at positions 1 and 2.
+- **Switches Flipped**: Positions 1 and 2.
+- **Switch State After Move**:  
+  `0 0 0 1 0 0 0`
+
+**Victory Check**:
+- Switches: `0 0 0 1 0 0 0`
+- Not all switches are **Off** (`0`).
+- Game continues.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action**: Flip switches at positions 3 and 4.
+- **Switches Flipped**: Positions 3 and 4.
+- **Switch State After Move**:  
+  `0 0 1 0 0 0 0`
+
+**Victory Check**:
+- Switches: `0 0 1 0 0 0 0`
+- Not all switches are **On** (`1`).
+- Game continues.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action**: Flip switch at position 3.
+- **Switch Flipped**: Position 3.
+- **Switch State After Move**:  
+  `0 0 0 0 0 0 0`
+
+**Victory Check**:
+- Switches: `0 0 0 0 0 0 0`
+- All switches are **Off** (`0`).
+
+**Winner**: **Player 2**
+
+---
+
+### **Sample Command-Line Interaction**
+
+Assuming positions are numbered from 1 to 7 from left to right.
+
+**Game Start**
+
+- Initial Switch State: `1 0 1 0 0 1 0`
+- Player 1's Target: `1` (On)
+- Player 2's Target: `0` (Off)
+
+---
+
+**Player 1's Turn**
+
+```
+Current Switches: 1 0 1 0 0 1 0
+Player 1, choose your action:
+1. Flip one switch
+2. Flip two adjacent switches
+Enter 1 or 2: 2
+Enter the positions of the two adjacent switches to flip (1-7):
+Positions: 2 3
+Switches after move: 1 1 0 0 0 1 0
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Current Switches: 1 1 0 0 0 1 0
+Player 2, choose your action:
+1. Flip one switch
+2. Flip two adjacent switches
+Enter 1 or 2: 1
+Enter the position of the switch to flip (1-7):
+Position: 6
+Switches after move: 1 1 0 0 0 0 0
+```
+
+---
+
+*(The game continues with players making strategic moves. After Player 2's winning move:)*
+
+---
+
+**End of Game**
+
+```
+Current Switches: 0 0 0 0 0 0 0
+All switches are Off.
+Player 2 wins!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Anticipate Opponent Moves**:
+  - Keep track of which switches your opponent is likely to flip.
+  - Plan your moves to counteract or preempt their strategy.
+
+- **Optimal Use of Double Flips**:
+  - Flipping two adjacent switches can be powerful but consider the consequences.
+  - Sometimes flipping a single crucial switch is more effective.
+
+- **Control the Center**:
+  - Focus on the middle switches as they can influence the game more significantly.
+  - Controlling central switches can make it harder for your opponent to achieve their goal.
+
+---
+
+## **Conclusion**
+
+"Switch It" is a game of simple rules but deep strategy. Each decision can significantly impact the path to victory. Will you focus on advancing your own objective or disrupting your opponent's plans? The choice is yours in this tactical battle of wits.
+
+Enjoy the game and may the best strategist win!

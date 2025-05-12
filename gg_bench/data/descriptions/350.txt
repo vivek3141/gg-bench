@@ -1,0 +1,227 @@
+# Capture the Prime
+
+## Objective
+
+**Capture the Prime** is a strategic two-player turn-based game played in a command-line interface. The primary goal is to be the **first player to reach or exceed 50 points** by strategically selecting numbers from a common pool, following specific rules based on factors and multiples. The game emphasizes foresight and planning, allowing skilled players to consistently outmaneuver their opponents.
+
+## Setup
+
+1. **Number Pool**: A common pool of numbers ranging from **2 to 20**, inclusive.
+2. **Player Assignment**: Determine who will be **Player 1** and **Player 2** (e.g., by coin toss).
+3. **Starting Scores**: Both players begin with a score of **0**.
+4. **Command-Line Interface**: The game will prompt players for inputs and display the current game state after each turn.
+
+## Game Components
+
+- **Number Pool**: The list of available numbers (2-20) that players can select from.
+- **Player Scores**: Each player's cumulative score, updated after each turn.
+- **Turn Indicator**: Keeps track of whose turn it is.
+- **Selection Rules**: Guidelines determining which numbers can be chosen on each turn.
+
+## Turns
+
+1. **Player 1's First Turn**:
+   - May select **any number** from the number pool.
+2. **Subsequent Turns**:
+   - Players alternate turns.
+   - Must select a number that is a **factor or multiple** of the **opponent's last chosen number**.
+   - If no valid numbers are available, the player **passes** their turn.
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Valid Choices**:
+  - On your turn, select a number that is either a factor or multiple of the **last number chosen by your opponent**.
+  - The number must be **present in the number pool**.
+- **Removing Numbers**:
+  - Once a number is selected, it is **removed** from the pool and **cannot be selected again**.
+
+### Scoring
+
+- **Points**:
+  - The chosen number is **added** to your cumulative score.
+- **Winning the Game**:
+  - The first player to reach a score of **50 or more points** **wins**.
+  - If both players reach 50 points in the same round, the player with the **higher score** wins.
+  - In case of a tie, the game continues until the tie is broken.
+
+### Passing a Turn
+
+- If you have **no valid moves** (no numbers in the pool are factors or multiples of your opponent's last number), you must **pass** your turn.
+- Passing does **not** affect your score.
+
+### Game End Conditions
+
+- **Victory**:
+  - Achieved when a player's cumulative score is **50 points or higher** at the end of their turn.
+- **No Available Moves**:
+  - If both players cannot make a valid move and no one has reached 50 points, the player with the **higher score** wins.
+  - If scores are tied, the game continues until the tie is broken.
+
+## Scoring
+
+- **Tracking Scores**:
+  - Keep a running total of each player's score after their turn.
+  - Scores are displayed after each player's move.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Number Pool
+
+```
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+#### Gameplay
+
+1. **Player 1's Turn**:
+   - **Selects**: **5** (any number is allowed on the first turn).
+   - **Score**: 5
+   - **Number Pool**:
+     ```
+     [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+     ```
+2. **Player 2's Turn**:
+   - **Opponent's Last Number**: 5
+   - **Valid Choices** (factors or multiples of 5 in the pool): **10**, **15**, **20**
+   - **Selects**: **15**
+   - **Score**: 15
+   - **Number Pool**:
+     ```
+     [2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19]
+     ```
+3. **Player 1's Turn**:
+   - **Opponent's Last Number**: 15
+   - **Valid Choices**: **3** (factor of 15)
+   - **Selects**: **3**
+   - **Score**: 5 + 3 = 8
+   - **Number Pool**:
+     ```
+     [2, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19]
+     ```
+4. **Player 2's Turn**:
+   - **Opponent's Last Number**: 3
+   - **Valid Choices**: **6**, **9**, **12**, **18** (multiples of 3)
+   - **Selects**: **18**
+   - **Score**: 15 + 18 = 33
+   - **Number Pool**:
+     ```
+     [2, 4, 7, 8, 11, 12, 13, 14, 16, 17, 19]
+     ```
+5. **Player 1's Turn**:
+   - **Opponent's Last Number**: 18
+   - **Valid Choices**: **2**, **6**, **9**, **12** (factors of 18)
+   - **Selects**: **12**
+   - **Score**: 8 + 12 = 20
+   - **Number Pool**:
+     ```
+     [2, 4, 7, 8, 11, 13, 14, 16, 17, 19]
+     ```
+6. **Player 2's Turn**:
+   - **Opponent's Last Number**: 12
+   - **Valid Choices**: **4**, **6**, **3**, **2** (removed), **18** (removed)
+   - **Selects**: **4**
+   - **Score**: 33 + 4 = 37
+   - **Number Pool**:
+     ```
+     [2, 7, 8, 11, 13, 14, 16, 17, 19]
+     ```
+7. **Player 1's Turn**:
+   - **Opponent's Last Number**: 4
+   - **Valid Choices**: **2**, **8**, **16**
+   - **Selects**: **16**
+   - **Score**: 20 + 16 = 36
+   - **Number Pool**:
+     ```
+     [2, 7, 8, 11, 13, 14, 17, 19]
+     ```
+8. **Player 2's Turn**:
+   - **Opponent's Last Number**: 16
+   - **Valid Choices**: **8** (factor of 16)
+   - **Selects**: **8**
+   - **Score**: 37 + 8 = 45
+   - **Number Pool**:
+     ```
+     [2, 7, 11, 13, 14, 17, 19]
+     ```
+9. **Player 1's Turn**:
+   - **Opponent's Last Number**: 8
+   - **Valid Choices**: **2** (factor of 8)
+   - **Selects**: **2**
+   - **Score**: 36 + 2 = 38
+   - **Number Pool**:
+     ```
+     [7, 11, 13, 14, 17, 19]
+     ```
+10. **Player 2's Turn**:
+    - **Opponent's Last Number**: **2**
+    - **Valid Choices**: **14** (multiple of 2)
+    - **Selects**: **14**
+    - **Score**: 45 + 14 = **59**
+    - **Number Pool**:
+      ```
+      [7, 11, 13, 17, 19]
+      ```
+
+**Player 2 wins** by reaching 59 points, exceeding the 50-point goal.
+
+## Command-Line Interactions
+
+### Sample Turn
+
+1. **System Output**:
+   ```
+   Current Scores - Player 1: 5, Player 2: 0
+   Available Numbers: [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+   Player 1's turn.
+   Please select a number from the available numbers: 
+   ```
+2. **Player 1 Input**:
+   ```
+   5
+   ```
+3. **System Output**:
+   ```
+   Player 1 selected 5.
+
+   Current Scores - Player 1: 5, Player 2: 0
+   Available Numbers: [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+   Player 2's turn.
+   You must select a factor or multiple of 5.
+   Available Numbers: [10, 15, 20]
+   ```
+4. **Player 2 Input**:
+   ```
+   15
+   ```
+5. **System Output**:
+   ```
+   Player 2 selected 15.
+
+   Current Scores - Player 1: 5, Player 2: 15
+   Available Numbers: [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19]
+
+   Player 1's turn.
+   You must select a factor or multiple of 15.
+   Available Numbers: [3]
+   ```
+
+And so on.
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which numbers will be available to your opponent after your turn.
+- **Limit Opponent's Options**: Choose numbers that restrict your opponent's valid moves.
+- **Maximize Your Score**: Balance between high-value numbers and strategic positioning.
+- **Remember the Pool**: Keep track of which numbers have been removed to inform your strategy.
+
+## Summary
+
+**Capture the Prime** is a unique and engaging game that combines simple arithmetic with strategic depth. Its straightforward rules make it easy to code and play in a command-line environment, while the factor and multiple mechanics provide complexity that rewards skillful play. With no possibility of a draw and quick gameplay, it's a perfect choice for players looking for a fast-paced and competitive experience.
+
+Enjoy the challenge and may the most strategic player win!

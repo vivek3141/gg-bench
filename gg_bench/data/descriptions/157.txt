@@ -1,0 +1,127 @@
+# Prime Time: A Two-Player Turn-Based Game
+
+## Objective
+
+**Prime Time** is a strategic numerical game where two players compete to be the first to reduce the shared number to exactly **1**. Starting from a larger positive integer, players take turns dividing the current number by one of its prime factors greater than **1**. The player who successfully reduces the number to **1** on their turn **wins** the game. If a player is unable to make a valid move, they **lose**.
+
+## Setup
+
+1. **Starting Number**: Agree on a positive integer **N** greater than **1** to start the game. For a quick game, a number between **50** and **100** is recommended.
+2. **Determine Turn Order**: Decide which player goes first. This can be done by a coin toss or mutual agreement.
+3. **Initialize Game State**:
+   - Set the **current number** to **N**.
+   - Both players should have access to a list of prime numbers or a calculator for factorization.
+
+## Game Components
+
+- **Starting Number (N)**: The initial positive integer greater than **1** from which the game begins.
+- **Current Number**: The number resulting from each division, updated after every turn.
+- **Prime Factors**: Prime numbers greater than **1** that divide the current number without leaving a remainder.
+- **Players**: Two participants alternating turns.
+
+## Turns
+
+1. **Player's Action**:
+   - On your turn, **divide** the current number by one of its prime factors greater than **1**.
+   - The chosen prime factor must be a divisor of the current number (i.e., the current number modulo the prime factor equals **0**).
+2. **Update Current Number**:
+   - The result of the division becomes the new **current number**.
+3. **Turn Progression**:
+   - After updating the current number, the turn passes to the other player.
+4. **Example Turn Structure**:
+   - **Before Turn**: Current number is **50**.
+   - **Player's Move**: Choose prime factor **5**, divide **50 ÷ 5 = 10**.
+   - **After Turn**: Current number is **10**, turn passes to the opponent.
+
+## Rules and Mechanics
+
+- **Valid Moves**:
+  - You must choose a prime factor greater than **1** that divides the current number exactly.
+  - If the current number is **prime**, you cannot divide it by itself.
+- **Winning the Game**:
+  - If you reduce the current number to **1** on your turn, you **win**.
+- **Losing the Game**:
+  - If you cannot make a valid move because the current number is prime and greater than **1**, you **lose**.
+- **Forbidden Moves**:
+  - Dividing by **1** or the current number itself when it is prime is not allowed.
+  - Non-integer divisions or divisions resulting in a non-integer are invalid.
+- **Example of an Invalid Move**:
+  - Current number is **7** (a prime number). Attempting to divide **7 ÷ 7** is invalid since dividing by the number itself when it is prime is not permitted.
+
+## Scoring
+
+- **Winning**: The player who reduces the current number to **1** on their turn wins the game.
+- **Losing**: The player who cannot make a valid move loses the game.
+- **No Draws**: The game cannot end in a draw; there is always a winner and a loser.
+
+## Examples
+
+### Example Game Play
+
+**Starting Number (N)**: 60
+
+#### Turn-by-Turn Breakdown:
+
+1. **Player 1**:
+   - **Current Number**: 60
+   - **Available Prime Factors**: 2, 3, 5
+   - **Chooses**: Divide by **5**
+   - **Calculation**: 60 ÷ 5 = **12**
+   - **Updates Current Number**: **12**
+2. **Player 2**:
+   - **Current Number**: 12
+   - **Available Prime Factors**: 2, 3
+   - **Chooses**: Divide by **3**
+   - **Calculation**: 12 ÷ 3 = **4**
+   - **Updates Current Number**: **4**
+3. **Player 1**:
+   - **Current Number**: 4
+   - **Available Prime Factor**: 2
+   - **Chooses**: Divide by **2**
+   - **Calculation**: 4 ÷ 2 = **2**
+   - **Updates Current Number**: **2**
+4. **Player 2**:
+   - **Current Number**: 2 (which is prime)
+   - **Available Moves**: None (cannot divide a prime number by itself)
+   - **Result**: Cannot make a valid move
+   - **Player 2 Loses**, **Player 1 Wins**
+
+### Command-Line Interaction Example
+
+Below is a sample command-line interaction between two players:
+
+```
+Game Start! Starting Number (N): 45
+
+Player 1's Turn:
+Current Number: 45
+Available Prime Factors: 3, 5
+Enter a prime factor to divide by: 5
+You chose to divide by 5.
+New Current Number: 9
+
+Player 2's Turn:
+Current Number: 9
+Available Prime Factors: 3
+Enter a prime factor to divide by: 3
+You chose to divide by 3.
+New Current Number: 3
+
+Player 1's Turn:
+Current Number: 3 (which is prime)
+No valid moves available.
+Player 1 cannot make a move.
+Player 2 Wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves by considering how your move affects the available prime factors on their turn.
+- **Control Prime Numbers**: Try to force the current number into a prime state on your opponent's turn, leaving them with no valid moves.
+- **Prime Factor Selection**: Opt for dividing by larger prime factors when possible to reduce the current number more significantly, but be cautious of how this sets up the next turn.
+
+## Summary
+
+**Prime Time** is a quick and strategic game that combines basic arithmetic with prime factorization. Players must think ahead and use prime factors wisely to emerge victorious. The simplicity of the rules makes it easy to code and play in a command-line interface, while the depth of strategy provides a challenging experience where skill prevails.
+
+Have fun honing your numerical strategies and may the best player win!

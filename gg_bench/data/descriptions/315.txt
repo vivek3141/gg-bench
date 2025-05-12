@@ -1,0 +1,200 @@
+# Binary Clash
+
+**A Two-Player Command-Line Strategy Game**
+
+## Objective
+
+The goal of **Binary Clash** is to be the first player to transform a shared binary number into the target binary pattern by flipping bits strategically. Players take turns flipping bits from 0 to 1, and the player who flips the bit that completes the target pattern wins the game.
+
+## Setup
+
+- **Binary Length**: Decide on the length \( N \) of the binary number (e.g., 8 bits).
+- **Target Pattern**: Choose a target binary pattern of length \( N \) (e.g., `10101100`).
+- **Initial State**: Initialize the shared binary number as a sequence of zeros of length \( N \) (e.g., `00000000`).
+
+*Note: Both players agree on \( N \) and the target pattern before starting. The target pattern is known to both players throughout the game.*
+
+## Game Components
+
+- **Shared Binary Number**: A mutable binary number represented as a list or string of bits (0s and 1s) of length \( N \), starting with all bits set to 0.
+- **Target Binary Pattern**: A fixed binary number of length \( N \) that players aim to match by flipping bits in the shared binary number.
+- **Bit Positions**: Each bit in the binary number is assigned a position from `0` to `N-1`, starting from the leftmost bit.
+
+### Example Components:
+
+- **Binary Length (\( N \))**: 8
+- **Target Pattern**: `1 0 1 0 1 1 0 0`
+- **Initial State**: `0 0 0 0 0 0 0 0`
+- **Bit Positions**:
+  - Position `0`: Leftmost bit
+  - Position `7`: Rightmost bit
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss). Turns alternate between Player 1 and Player 2.
+- **Player Actions**:
+  - On their turn, a player flips one bit from `0` to `1` in the shared binary number.
+  - Players cannot flip a bit that is already set to `1`.
+- **Turn Progression**: After flipping a bit, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - A player selects a bit position between `0` and `N-1`.
+   - The selected bit must currently be `0`.
+   - The bit is flipped to `1`.
+
+2. **Valid Moves**:
+   - Only one bit may be flipped per turn.
+   - Flipping a bit that is already `1` is not allowed.
+
+3. **Winning the Game**:
+   - The game continues until the shared binary number matches the target binary pattern.
+   - The player who flips the bit that causes the shared binary number to match the target pattern wins immediately.
+
+4. **Draws**:
+   - There are no draw conditions in **Binary Clash**. The game will continue until a player wins.
+
+5. **Strategy**:
+   - Players must plan their moves to force a win while blocking their opponent.
+   - Anticipate the opponent's possible moves based on the remaining bits.
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who completes the target binary pattern.
+- **No Point System**: There is no point accumulation. The victory is based on achieving the objective.
+- **Match Series**: Players may choose to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**:
+
+- **Binary Length (\( N \))**: 8
+- **Target Pattern**: `1 0 1 0 1 1 0 0`
+- **Initial State**: `0 0 0 0 0 0 0 0`
+- **Bit Positions**:
+  - Positions `0` to `7`, from left to right.
+
+**Turn-by-Turn Example**:
+
+1. **Player 1's Turn**:
+   - Chooses bit position `0` (leftmost bit) to flip.
+   - Shared binary number becomes: `1 0 0 0 0 0 0 0`.
+
+2. **Player 2's Turn**:
+   - Chooses bit position `3` to flip.
+   - Shared binary number becomes: `1 0 0 1 0 0 0 0`.
+
+3. **Player 1's Turn**:
+   - Chooses bit position `2` to flip.
+   - Shared binary number becomes: `1 0 1 1 0 0 0 0`.
+
+4. **Player 2's Turn**:
+   - Chooses bit position `5` to flip.
+   - Shared binary number becomes: `1 0 1 1 0 1 0 0`.
+
+5. **Player 1's Turn**:
+   - Chooses bit position `4` to flip.
+   - Shared binary number becomes: `1 0 1 1 1 1 0 0`.
+
+6. **Player 1 checks** if the current shared binary number matches the target pattern.
+   - Current pattern: `1 0 1 1 1 1 0 0`
+   - Target pattern:  `1 0 1 0 1 1 0 0`
+   - **Not a match**.
+
+7. **Player 2's Turn**:
+   - Chooses bit position `1` to flip.
+   - Shared binary number becomes: `1 1 1 1 1 1 0 0`.
+
+8. **Player 2 checks** for a match.
+   - Current pattern: `1 1 1 1 1 1 0 0`
+   - Target pattern:  `1 0 1 0 1 1 0 0`
+   - **Not a match**.
+
+9. **Player 1's Turn**:
+   - Chooses bit position `7` to flip.
+   - Shared binary number becomes: `1 1 1 1 1 1 0 1`.
+
+10. **Player 1 checks** for a match.
+    - Current pattern: `1 1 1 1 1 1 0 1`
+    - **Not a match**.
+
+11. **Player 2's Turn**:
+    - Chooses bit position `6` to flip.
+    - Shared binary number becomes: `1 1 1 1 1 1 1 1`.
+
+12. **Player 2 checks** for a match.
+    - Current pattern: `1 1 1 1 1 1 1 1`
+    - **Not a match**.
+
+13. **Player 1's Turn**:
+    - No bits left that match the target pattern and are `0`.
+    - Realizes that no further moves can lead to a win.
+    - **Player 2 wins** since all bits are flipped and the target pattern was not matched by Player 1.
+
+*In this scenario, players must carefully choose which bits to flip to avoid enabling the opponent to complete the target pattern on their turn.*
+
+### Command-Line Interaction Example
+
+**Note**: This example assumes a command-line interface where players input commands to flip bits.
+
+**Game Start**:
+
+```
+Welcome to Binary Clash!
+
+Binary Length (N): 8
+Target Pattern: 1 0 1 0 1 1 0 0
+Initial State: 0 0 0 0 0 0 0 0
+
+Player 1's turn.
+Enter bit position to flip (0-7): 0
+
+[After input]
+Shared Binary Number: 1 0 0 0 0 0 0 0
+```
+
+**Player Turns**:
+
+```
+Player 2's turn.
+Enter bit position to flip (0-7): 3
+
+[After input]
+Shared Binary Number: 1 0 0 1 0 0 0 0
+
+Player 1's turn.
+Enter bit position to flip (0-7): 2
+
+[After input]
+Shared Binary Number: 1 0 1 1 0 0 0 0
+
+... (game continues)
+```
+
+**Victory Condition**:
+
+```
+Player 1's turn.
+Enter bit position to flip (0-7): 4
+
+[After input]
+Shared Binary Number: 1 0 1 0 1 1 0 0
+
+Congratulations! Player 1 has matched the target pattern and wins the game!
+```
+
+## Game Strategy Tips
+
+- **Plan Ahead**: Always consider how your move will set up potential moves for your opponent.
+- **Block Your Opponent**: If you notice your opponent is close to completing the target pattern, flip a bit that prevents them from winning on their next turn.
+- **Forced Moves**: Try to force your opponent into a position where any move they make will allow you to win on your following turn.
+- **Bit Analysis**: Focus on bits that are critical to the target pattern and prioritize flipping those.
+
+## Conclusion
+
+**Binary Clash** is a simple yet strategic game that challenges players to think ahead and anticipate their opponent's moves. It's easy to code in a command-line interface and provides depth for players to develop strategies. With no possibility of a draw, each game is guaranteed to produce a winner in a short amount of time.
+
+Enjoy the game and may the most strategic player win!

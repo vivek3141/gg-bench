@@ -1,0 +1,292 @@
+# Quantum Duel Rule Book
+
+## Objective
+
+**Quantum Duel** is a two-player, turn-based strategy game played on a linear board representing quantum states. The primary goal is to be the first player to create an unbroken chain of **four** of your symbols (either `X` or `O`) on the board. Players must strategically "observe" quantum states and decide when to challenge their opponent's moves to achieve victory. The game blends elements of chance and strategy, ensuring that skilled players can consistently outperform unskilled opponents.
+
+---
+
+## Setup
+
+1. **Game Board**: A linear board consisting of **seven (7) cells**, each representing a quantum state. Initially, all cells are unclaimed and considered unobserved.
+
+   ```
+   [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]
+     1     2     3     4     5     6     7
+   ```
+
+2. **Players**:
+   - **Player 1**: Uses the symbol `X`.
+   - **Player 2**: Uses the symbol `O`.
+
+3. **Starting Player**: Decide who goes first (e.g., coin toss, mutual agreement). Turns will alternate thereafter.
+
+---
+
+## Game Components
+
+- **Board Cells**: Seven positions labeled from 1 to 7.
+- **Player Symbols**: `X` for Player 1 and `O` for Player 2.
+- **Quantum States**: Cells that can be in one of two states:
+  - **Unobserved** (`_`): The cell is empty and unclaimed.
+  - **Observed**: The cell contains a player's symbol (`X` or `O`).
+
+- **Challenge Mechanism**:
+  - **Randomizer**: A coin flip or random number generator (0 or 1) to determine the outcome of challenges.
+
+---
+
+## Turns
+
+- Players alternate turns, starting with the designated first player.
+- **On Each Turn**:
+  1. **Observation**: The active player selects an unobserved cell to "observe" and places their symbol in it.
+  2. **Challenge Opportunity**:
+     - **If the observed cell is adjacent** (immediately next to) **one or more of the active player's own symbols**, the opponent may choose to challenge the observation.
+     - **If there are no adjacent own symbols**, the observation automatically succeeds, and no challenge is possible.
+
+---
+
+## Rules and Mechanics
+
+### Observing Quantum States
+
+- **Observation Success**:
+  - **Unchallenged Observations**: Automatically succeed.
+  - **Challenged Observations**: Success is determined by a coin flip or randomizer.
+    - **Heads (1)**: Observation succeeds; the symbol remains.
+    - **Tails (0)**: Observation fails; the cell reverts to unobserved (`_`).
+
+### Challenges
+
+- **When to Challenge**:
+  - The opponent may challenge **only if** the observed cell is adjacent to one or more of the active player's symbols already on the board.
+  - The opponent **cannot challenge** if the observed cell is not adjacent to any of the active player's symbols.
+
+- **Challenge Procedure**:
+  1. **Opponent Declares Challenge**: Immediately after the active player places their symbol.
+  2. **Resolve Challenge**: Use the randomizer.
+  3. **Outcome**:
+     - **Success**: Symbol stays.
+     - **Failure**: Cell reverts to unobserved.
+
+### Adjacent Cells
+
+- **Definition of Adjacent**:
+  - Cells immediately next to each other in the linear sequence.
+  - For example, cells 3 and 4 are adjacent; cells 3 and 5 are not.
+
+### Winning the Game
+
+- The first player to create an unbroken chain of **four** of their symbols (`X` or `O`) in any location on the board wins the game.
+
+- **Unbroken Chain**:
+  - Four symbols must be consecutive with no gaps.
+  - Order of cells can be from cell 1 to cell 4, cell 2 to cell 5, etc.
+
+### No Draw Mechanism
+
+- The game cannot end in a draw; it continues until one player achieves an unbroken chain of four symbols.
+
+---
+
+## Scoring
+
+- **Victory**: Achieved by forming a consecutive chain of four symbols.
+- **No Point System**: The game is win-or-lose without cumulative scoring.
+- **Skill Emphasis**: Strategic observation and challenge decisions impact the outcome.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Board
+
+```
+[ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]
+  1     2     3     4     5     6     7
+```
+
+#### Turn 1: Player 1 (`X`)
+
+- **Action**: Observes cell **3**.
+- **Board**:
+
+  ```
+  [ _ ] [ _ ] [ X ] [ _ ] [ _ ] [ _ ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+- **Challenge**: Not applicable (no adjacent own symbols). Observation succeeds.
+
+#### Turn 2: Player 2 (`O`)
+
+- **Action**: Observes cell **5**.
+- **Board**:
+
+  ```
+  [ _ ] [ _ ] [ X ] [ _ ] [ O ] [ _ ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+- **Challenge**: Not applicable. Observation succeeds.
+
+#### Turn 3: Player 1 (`X`)
+
+- **Action**: Attempts to observe cell **4** (adjacent to their symbol at cell 3).
+- **Opponent's Choice**:
+  - Player 2 decides to **challenge**.
+- **Challenge Resolution**:
+  - **Randomizer Result**: **Heads (1)**.
+  - **Outcome**: Observation succeeds; `X` remains at cell 4.
+- **Board**:
+
+  ```
+  [ _ ] [ _ ] [ X ] [ X ] [ O ] [ _ ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+#### Turn 4: Player 2 (`O`)
+
+- **Action**: Observes cell **6** (adjacent to their symbol at cell 5).
+- **Opponent's Choice**:
+  - Player 1 decides to **challenge**.
+- **Challenge Resolution**:
+  - **Randomizer Result**: **Tails (0)**.
+  - **Outcome**: Observation fails; cell 6 reverts to unobserved.
+- **Board Remains**:
+
+  ```
+  [ _ ] [ _ ] [ X ] [ X ] [ O ] [ _ ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+#### Turn 5: Player 1 (`X`)
+
+- **Action**: Attempts to observe cell **2** (adjacent to their symbol at cell 3).
+- **Opponent's Choice**:
+  - Player 2 decides to **challenge**.
+- **Challenge Resolution**:
+  - **Randomizer Result**: **Heads (1)**.
+  - **Outcome**: Observation succeeds; `X` is placed at cell 2.
+- **Board**:
+
+  ```
+  [ _ ] [ X ] [ X ] [ X ] [ O ] [ _ ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+#### Turn 6: Player 2 (`O`)
+
+- **Action**: Observes cell **6** again.
+- **Opponent's Choice**:
+  - Player 1 decides to **challenge**.
+- **Challenge Resolution**:
+  - **Randomizer Result**: **Heads (1)**.
+  - **Outcome**: Observation succeeds; `O` is placed at cell 6.
+- **Board**:
+
+  ```
+  [ _ ] [ X ] [ X ] [ X ] [ O ] [ O ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+#### Turn 7: Player 1 (`X`)
+
+- **Action**: Attempts to observe cell **1** (adjacent to their symbol at cell 2).
+- **Opponent's Choice**:
+  - Player 2 decides to **challenge**.
+- **Challenge Resolution**:
+  - **Randomizer Result**: **Heads (1)**.
+  - **Outcome**: Observation succeeds; `X` is placed at cell 1.
+- **Board**:
+
+  ```
+  [ X ] [ X ] [ X ] [ X ] [ O ] [ O ] [ _ ]
+    1     2     3     4     5     6     7
+  ```
+
+- **Victory**: Player 1 has an unbroken chain of four `X` symbols from cells 1 to 4.
+- **Winner**: **Player 1 (`X`)**
+
+---
+
+## Strategic Tips
+
+- **Balanced Expansion**: Early in the game, observe non-adjacent cells to avoid challenges.
+- **Risk Management**: Decide carefully when to observe adjacent cells; challenges introduce risk.
+- **Challenge Wisely**: Weigh the odds before challenging; unnecessary challenges might waste opportunities.
+- **Block Opponent**: Observe cells that prevent your opponent from forming a chain.
+- **Resource Awareness**: Pay attention to remaining unobserved cells to plan your moves.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a command-line interface where players input commands to play the game.
+
+### Sample Turn Input and Output
+
+#### Game Start
+
+```
+Welcome to Quantum Duel!
+
+Initial Board:
+[ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ] [ _ ]
+  1     2     3     4     5     6     7
+
+Player 1 (X), it's your turn.
+Enter the cell number you want to observe: 3
+```
+
+#### Player 1 Observes Cell 3
+
+```
+You have observed cell 3.
+
+Current Board:
+[ _ ] [ _ ] [ X ] [ _ ] [ _ ] [ _ ] [ _ ]
+  1     2     3     4     5     6     7
+
+Player 2 (O), it's your turn.
+Enter the cell number you want to observe: 5
+```
+
+#### Player 2 Observes Cell 5
+
+```
+You have observed cell 5.
+
+Current Board:
+[ _ ] [ _ ] [ X ] [ _ ] [ O ] [ _ ] [ _ ]
+  1     2     3     4     5     6     7
+
+Player 1 (X), it's your turn.
+Enter the cell number you want to observe: 4
+
+Cell 4 is adjacent to your symbol at cell 3.
+Player 2, do you want to challenge? (yes/no): yes
+
+Challenge initiated!
+Flipping a coin...
+Result: Heads
+
+Observation successful! Cell 4 is now yours.
+
+Current Board:
+[ _ ] [ _ ] [ X ] [ X ] [ O ] [ _ ] [ _ ]
+  1     2     3     4     5     6     7
+```
+
+#### Subsequent Turns
+
+_Players continue taking turns following the same input/output pattern until one wins._
+
+---
+
+## Conclusion
+
+**Quantum Duel** offers a unique blend of strategy and chance in a simple and quick gameplay format suitable for a command-line interface. By planning observations and strategically challenging your opponent, you can outmaneuver less skilled players and claim victory. Enjoy the mind games and may the best strategist win!

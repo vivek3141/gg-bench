@@ -1,0 +1,139 @@
+# Prime Subtractor: Rule Book
+
+## Objective
+
+**Prime Subtractor** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the player who reduces the shared total to exactly **zero** by subtracting prime numbers. Players take turns selecting prime numbers to subtract from the current total. The player who successfully brings the total to **zero** on their turn **wins** the game. If a player causes the total to drop below zero, they **lose**.
+
+---
+
+## Setup
+
+1. **Starting Total**: The game begins with a predetermined positive integer as the starting total. By default, this number is **23**, but players can agree on any positive integer to start with.
+2. **Player Assignment**: Determine which player will go first. This can be decided by a coin flip, random selection, or mutual agreement.
+3. **Prime Number List**: A list of prime numbers less than the starting total should be available for reference:
+   - **Primes under 23**: 2, 3, 5, 7, 11, 13, 17, 19
+
+---
+
+## Game Components
+
+- **Current Total**: A shared number that starts at the initial total (e.g., 23) and decreases as players subtract prime numbers.
+- **Prime Numbers**: The set of prime numbers less than the current total, which players can choose from on their turn.
+- **Turn Indicator**: A simple indicator to show which player's turn it is.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player designated to go first during setup.
+2. **Player Actions**:
+   - **View Current Total**: At the start of their turn, the player is informed of the current total.
+   - **Select a Prime Number**: The player chooses a prime number less than or equal to the current total to subtract.
+3. **Updating Total**: The chosen prime number is subtracted from the current total, and the new total is announced.
+4. **Turn Progression**: If the total is reduced to zero, the game ends, and the current player wins. If the total drops below zero, the current player loses. If the total is above zero, the next player's turn begins.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - Players can only subtract **prime numbers** less than or equal to the current total.
+   - Only prime numbers (2, 3, 5, 7, 11, 13, 17, 19, etc.) are valid choices.
+2. **Winning the Game**:
+   - A player wins by reducing the current total to **exactly zero** on their turn.
+3. **Losing the Game**:
+   - If a player's subtraction causes the total to drop **below zero**, they immediately lose.
+4. **Invalid Moves**:
+   - Choosing a non-prime number or a prime number greater than the current total is invalid.
+   - If an invalid move is made, the player is prompted to select a valid prime number.
+5. **Strategy**:
+   - Players must plan ahead to avoid leaving a total that allows their opponent to win on the next turn.
+   - Knowledge of prime numbers and strategic subtraction is key to victory.
+
+---
+
+## Scoring
+
+- **Victory**: Achieved by the player who brings the current total to exactly zero.
+- **Defeat**: Assigned to the player who causes the total to drop below zero or is unable to make a valid move when the current total is greater than zero.
+- **No Draws**: The game cannot end in a tie; there is always a clear winner and loser.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup:
+
+- **Starting Total**: 23
+- **Player 1**: Alice
+- **Player 2**: Bob
+- **Prime Numbers Available**: 2, 3, 5, 7, 11, 13, 17, 19
+
+#### Turn-by-Turn Breakdown:
+
+1. **Turn 1 - Alice**:
+   - **Current Total**: 23
+   - **Alice's Move**: Subtracts **13**
+   - **Calculation**: 23 - 13 = 10
+   - **New Total**: 10
+
+2. **Turn 2 - Bob**:
+   - **Current Total**: 10
+   - **Primes Available**: 2, 3, 5, 7
+   - **Bob's Move**: Subtracts **7**
+   - **Calculation**: 10 - 7 = 3
+   - **New Total**: 3
+
+3. **Turn 3 - Alice**:
+   - **Current Total**: 3
+   - **Primes Available**: 2, 3
+   - **Alice's Move**: Subtracts **3**
+   - **Calculation**: 3 - 3 = 0
+   - **New Total**: 0
+   - **Result**: Alice wins by reducing the total to zero.
+
+### Command-Line Interaction Sample
+
+```
+=== Prime Subtractor ===
+Starting Total: 23
+Player 1: Alice
+Player 2: Bob
+
+--- Turn 1 ---
+Current Total: 23
+Available Primes: 2, 3, 5, 7, 11, 13, 17, 19
+Alice's Turn. Choose a prime number to subtract: 13
+You chose 13.
+New Total: 10
+
+--- Turn 2 ---
+Current Total: 10
+Available Primes: 2, 3, 5, 7
+Bob's Turn. Choose a prime number to subtract: 7
+You chose 7.
+New Total: 3
+
+--- Turn 3 ---
+Current Total: 3
+Available Primes: 2, 3
+Alice's Turn. Choose a prime number to subtract: 3
+You chose 3.
+New Total: 0
+Alice wins the game!
+```
+
+---
+
+## Additional Notes
+
+- **Prime Number Reference**: Players may benefit from having a list of prime numbers handy.
+- **Alternate Starting Totals**: For varying difficulty or longer games, players can agree on a different starting total.
+- **No Skipping Turns**: Players must make a valid move if possible.
+- **Game Integrity**: The game is designed so that there are no draws, ensuring a swift and decisive outcome.
+
+---
+
+By understanding the rules and employing strategic subtraction of prime numbers, players can enjoy a quick, competitive game that challenges their numerical skills and strategic planning. **Prime Subtractor** is simple to learn but offers depth for those seeking to outwit their opponent.

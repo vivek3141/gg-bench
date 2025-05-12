@@ -1,0 +1,404 @@
+# Blockade Runner
+
+## Objective
+
+Be the first player to navigate your piece from your starting position to your opponent's starting position on a shared grid while strategically placing obstacles to hinder your opponent's progress. Utilize movement and obstacle placement to outmaneuver your opponent and reach the goal before they do.
+
+## Setup
+
+- **Grid**: A 5x5 grid is used for the game. Each cell on the grid is identified by its coordinates `(x, y)`, where `0 ≤ x, y ≤ 4`.
+- **Starting Positions**:
+  - **Player 1** starts with their piece at the top-left corner of the grid at position `(0, 0)`.
+  - **Player 2** starts with their piece at the bottom-right corner of the grid at position `(4, 4)`.
+- **Obstacle Reserves**: Each player has a reserve of **three obstacles** that they can place on the grid during the game.
+  
+The initial setup looks like this:
+
+```
+[P1][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][P2]
+```
+
+Where `[P1]` is Player 1's piece and `[P2]` is Player 2's piece.
+
+## Game Components
+
+- **Grid Cells**: Represented as coordinate pairs, each cell can be empty, contain a player piece, or contain an obstacle.
+- **Player Pieces**: Each player has one piece that occupies a grid cell.
+  - **Appearance**:
+    - Player 1's piece is represented as `P1`.
+    - Player 2's piece is represented as `P2`.
+- **Obstacles**: Static blocks that prevent movement into the occupied cell.
+  - **Appearance**: Obstacles are represented as `X`.
+  - **Attributes**:
+    - Once placed, obstacles remain on the grid permanently.
+    - Each player has exactly three obstacles to use during the game.
+
+## Turns
+
+Players take turns alternately, starting with **Player 1**.
+
+### Turn Structure
+
+On a player's turn, they must perform **one** of the following actions:
+
+1. **Move Action**: Move their piece to an adjacent cell.
+   - Movement can be to any of the four cardinal directions: up, down, left, or right.
+   - Diagonal movement is not allowed.
+   - The destination cell must be empty (cannot contain an obstacle or the opponent's piece).
+
+2. **Obstacle Placement Action**: Place one obstacle on the grid.
+   - The obstacle can be placed on any empty cell except:
+     - A cell currently occupied by either player's piece.
+     - A cell that would completely block the opponent's ability to reach the goal (there must always be at least one possible path remaining).
+   - Players cannot place more than three obstacles during the game (once per obstacle reserve).
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Valid Moves**:
+  - Moving to an adjacent cell in the grid (not diagonally).
+  - The cell must be within the bounds of the grid (`0 ≤ x, y ≤ 4`).
+- **Blocked Cells**:
+  - Players cannot move into a cell occupied by an obstacle (`X`) or the opponent's piece.
+
+### Obstacle Placement Rules
+
+- **Placing Obstacles**:
+  - An obstacle can only be placed on an empty cell.
+  - Players have a limited number of obstacles (three per player).
+- **Blocking Paths**:
+  - Players **cannot** place an obstacle that results in the opponent having **no possible path** to the goal.
+  - There must always be at least one path available for the opponent to reach your starting position.
+  
+### Winning the Game
+
+- **Victory Condition**: A player wins by moving their piece to the opponent's starting position.
+- **No Draws**: The game continues until one player reaches the opponent's starting position; draws are not possible.
+
+## Scoring
+
+- The first player to reach the opponent's starting position `(for Player 1: (4, 4), for Player 2: (0, 0))` wins the game.
+- There is no point system; the game is a race to the goal.
+
+## Examples
+
+Below are sample turns demonstrating how the game progresses.
+
+### Example Game
+
+#### Initial Grid
+
+```
+[P1][  ][  ][  ][  ]  Row 0
+[  ][  ][  ][  ][  ]  Row 1
+[  ][  ][  ][  ][  ]  Row 2
+[  ][  ][  ][  ][  ]  Row 3
+[  ][  ][  ][  ][P2]  Row 4
+  Column 0 1  2  3  4
+```
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**: Moves right to `(1, 0)`.
+
+   ```
+   [  ][P1][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][P2]
+   ```
+
+2. **Player 2's Turn**: Places an obstacle at `(2, 0)` to block Player 1's direct path.
+
+   ```
+   [  ][P1][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][P2]
+   [Obstacle placed at (2, 0)]
+   ```
+
+3. **Player 1's Turn**: Moves down to `(1, 1)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][P1][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][P2]
+   [Obstacle at (2, 0)]
+   ```
+
+4. **Player 2's Turn**: Moves left to `(3, 4)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][P1][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][P2][  ]
+   [Obstacle at (2, 0)]
+   ```
+
+5. **Player 1's Turn**: Places an obstacle at `(3, 4)` to block Player 2's path.
+
+   - **Note**: This move is **invalid** because it would place an obstacle on a cell occupied by Player 2.
+  
+   - **Correction**: Player 1 instead places an obstacle at `(3, 3)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][P1][  ][  ][  ]
+   [  ][  ][  ][  ][  ]
+   [  ][  ][  ][X ][  ]
+   [  ][  ][  ][P2][  ]
+   [Obstacles at (2, 0), (3, 3)]
+   ```
+
+6. **Player 2's Turn**: Moves up to `(3, 3)`.
+
+   - **Note**: This move is **invalid** because `(3, 3)` contains an obstacle.
+
+   - **Correction**: Player 2 moves up to `(3, 2)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][P1][  ][  ][  ]
+   [  ][  ][  ][P2][  ]
+   [  ][  ][  ][X ][  ]
+   [  ][  ][  ][  ][  ]
+   [Obstacles at (2, 0), (3, 3)]
+   ```
+
+7. **Player 1's Turn**: Moves right to `(2, 1)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][  ][P1][  ][  ]
+   [  ][  ][  ][P2][  ]
+   [  ][  ][  ][X ][  ]
+   [  ][  ][  ][  ][  ]
+   [Obstacles at (2, 0), (3, 3)]
+   ```
+
+8. **Player 2's Turn**: Places an obstacle at `(2, 1)` to block Player 1.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][  ][P1][  ][  ]
+   [  ][  ][  ][P2][  ]
+   [  ][  ][  ][X ][  ]
+   [  ][  ][  ][  ][  ]
+   [Obstacles at (2, 0), (2, 1), (3, 3)]
+   ```
+
+   - **Note**: This obstacle placement is **invalid** because `(2, 1)` is occupied by Player 1.
+
+   - **Correction**: Player 2 places an obstacle at `(2, 2)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][  ][P1][  ][  ]
+   [  ][  ][X ][P2][  ]
+   [  ][  ][  ][X ][  ]
+   [  ][  ][  ][  ][  ]
+   [Obstacles at (2, 0), (2, 2), (3, 3)]
+   ```
+
+9. **Player 1's Turn**: Moves down to `(2, 2)`.
+
+   - **Note**: Move is **invalid**; `(2, 2)` contains an obstacle.
+
+   - **Alternative**: Player 1 moves left to `(1, 1)`.
+
+   ```
+   [  ][  ][  ][  ][  ]
+   [  ][P1][  ][  ][  ]
+   [  ][  ][X ][P2][  ]
+   [  ][  ][  ][X ][  ]
+   [  ][  ][  ][  ][  ]
+   [Obstacles at (2, 0), (2, 2), (3, 3)]
+   ```
+
+10. **Player 2's Turn**: Moves left to `(2, 2)`.
+
+    - **Move is invalid**; `(2, 2)` contains an obstacle.
+
+    - **Alternative**: Player 2 moves down to `(3, 2)`.
+
+    ```
+    [  ][  ][  ][  ][  ]
+    [  ][P1][  ][  ][  ]
+    [  ][  ][X ][  ][  ]
+    [  ][  ][P2][X ][  ]
+    [  ][  ][  ][  ][  ]
+    [Obstacles at (2, 0), (2, 2), (3, 3)]
+    ```
+
+11. **Player 1's Turn**: Moves down to `(1, 2)`.
+
+    ```
+    [  ][  ][  ][  ][  ]
+    [  ][  ][  ][  ][  ]
+    [  ][P1][X ][  ][  ]
+    [  ][  ][P2][X ][  ]
+    [  ][  ][  ][  ][  ]
+    [Obstacles at (2, 0), (2, 2), (3, 3)]
+    ```
+
+12. **Player 2's Turn**: Moves left to `(2, 2)`.
+
+    - **Invalid**; still an obstacle.
+
+    - **Alternative**: Player 2 places an obstacle at `(1, 2)`.
+
+    - **Note**: This move is invalid because `(1, 2)` is occupied by Player 1.
+
+    - **Alternative**: Player 2 places an obstacle at `(1, 3)`.
+
+    ```
+    [  ][  ][  ][  ][  ]
+    [  ][  ][  ][  ][  ]
+    [  ][P1][X ][  ][  ]
+    [  ][X ][P2][X ][  ]
+    [  ][  ][  ][  ][  ]
+    [Obstacles at (1, 3), (2, 0), (2, 2), (3, 3)]
+    ```
+
+13. **Player 1's Turn**: Moves left to `(0, 2)`.
+
+    ```
+    [  ][  ][  ][  ][  ]
+    [  ][  ][  ][  ][  ]
+    [P1][  ][X ][  ][  ]
+    [  ][X ][P2][X ][  ]
+    [  ][  ][  ][  ][  ]
+    [Obstacles at (1, 3), (2, 0), (2, 2), (3, 3)]
+    ```
+
+14. **Player 2's Turn**: Moves up to `(3, 1)`.
+
+    ```
+    [  ][  ][  ][  ][  ]
+    [  ][  ][  ][  ][  ]
+    [P1][  ][X ][  ][  ]
+    [  ][X ][  ][X ][  ]
+    [  ][  ][P2][  ][  ]
+    [Obstacles at (1, 3), (2, 0), (2, 2), (3, 3)]
+    ```
+
+15. **Player 1's Turn**: Moves down to `(0, 3)`.
+
+    ```
+    [  ][  ][  ][  ][  ]
+    [  ][  ][  ][  ][  ]
+    [  ][  ][X ][  ][  ]
+    [P1][X ][  ][X ][  ]
+    [  ][  ][P2][  ][  ]
+    [Obstacles at (1, 3), (2, 0), (2, 2), (3, 3)]
+    ```
+
+16. **Player 2's Turn**: Moves up to `(3, 0)`.
+
+    ```
+    [  ][  ][  ][P2][  ]
+    [  ][  ][  ][  ][  ]
+    [  ][  ][X ][  ][  ]
+    [P1][X ][  ][X ][  ]
+    [  ][  ][  ][  ][  ]
+    [Obstacles at (1, 3), (2, 0), (2, 2), (3, 3)]
+    ```
+
+17. **Player 1's Turn**: Moves down to `(0, 4)`.
+
+    - **Player 1** reaches the goal at `(0, 4)`, which is the starting position of Player 2.
+
+    ```
+    [  ][  ][  ][P2][  ]
+    [  ][  ][  ][  ][  ]
+    [  ][  ][X ][  ][  ]
+    [  ][X ][  ][X ][  ]
+    [P1][  ][  ][  ][  ]
+    [Obstacles at (1, 3), (2, 0), (2, 2), (3, 3)]
+    ```
+
+**Player 1 wins the game!**
+
+## Command-Line Interaction Sample
+
+Below is a sample of how the game might be played in a command-line interface.
+
+### Starting the Game
+
+```
+Welcome to Blockade Runner!
+
+Player 1 starts at (0, 0).
+Player 2 starts at (4, 4).
+
+Each player has 3 obstacles to use.
+Player 1's turn.
+```
+
+### Sample Turn
+
+#### Player 1's Turn
+
+```
+Current Grid:
+[P1][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][P2]
+
+Choose an action:
+1. Move
+2. Place Obstacle
+
+Enter the number of your choice: 1
+
+Enter move direction (up, down, left, right): right
+
+Player 1 moved right to (1, 0).
+
+Player 2's turn.
+```
+
+#### Player 2's Turn
+
+```
+Current Grid:
+[  ][P1][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][P2]
+
+Choose an action:
+1. Move
+2. Place Obstacle
+
+Enter the number of your choice: 2
+
+Enter obstacle coordinates (x y): 2 0
+
+Player 2 placed an obstacle at (2, 0).
+
+Player 1's turn.
+```
+
+### Continuing Play
+
+Players would continue to take turns in this manner, with the command-line interface updating the grid and providing prompts for each action.
+
+## Conclusion
+
+**Blockade Runner** is a strategic, turn-based game that requires players to balance offensive moves with defensive obstacle placement. The simplicity of the rules ensures it's easy to code and quick to play, while the depth of strategy allows skilled players to consistently outperform less experienced opponents. Enjoy the challenge of outsmarting your opponent in this race across the grid!

@@ -1,0 +1,305 @@
+# Number Nimble
+
+**Objective**
+
+Number Nimble is a two-player turn-based strategy game. The primary goal is to avoid being the player who is forced to pick the last remaining number from a shared list. Players achieve victory by strategically selecting numbers to limit their opponent's options, forcing them into a position where they must pick the final number and lose the game.
+
+---
+
+**Setup**
+
+1. **Initial Number List**: The game begins with a shared list of numbers from **1** to **9**:
+
+   ```
+   Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   ```
+
+2. **Player Identification**:
+
+   - **Player 1**: The player who initiates the game.
+   - **Player 2**: The opponent.
+
+3. **Starting Conditions**:
+
+   - Players decide who will be Player 1 and Player 2 before the game starts.
+   - Both players have no initial pieces or tokens; they interact directly with the shared number list.
+
+---
+
+**Game Components**
+
+1. **Number List**:
+
+   - A mutable list containing numbers **1** through **9**.
+   - Represents the pool of available numbers for selection.
+
+2. **Numbers**:
+
+   - **Appearance**: Integers displayed in a list format.
+   - **Functionality**: When a number is picked, it and its mathematical associates are removed from the list.
+   - **Unique Attributes**:
+
+     - **Prime Numbers**: Only the number itself is removed unless its multiples are present.
+     - **Composite Numbers**: Both the number and its factors and multiples are affected.
+
+---
+
+**Turns**
+
+1. **Turn Structure**:
+
+   - Players take turns alternately, starting with **Player 1**.
+   - Each turn consists of:
+
+     a. **Displaying Available Numbers**: The current list of numbers is presented.
+     
+     b. **Number Selection**: The player selects one available number from the list.
+     
+     c. **Updating the Number List**: The chosen number and all its associates are removed from the list.
+
+2. **Order of Actions**:
+
+   - **Display**: Show the updated number list.
+   - **Select**: Player inputs their chosen number.
+   - **Remove**: Apply the removal rules to update the list for the next turn.
+
+3. **Progression of Turns**:
+
+   - The game continues with players alternating turns until the end condition is met.
+
+---
+
+**Rules and Mechanics**
+
+1. **Number Selection**:
+
+   - On their turn, a player must select one number from the available numbers in the list.
+
+2. **Removal Rules**:
+
+   - Upon selecting a number, the following numbers are removed from the list:
+
+     a. **The Selected Number** itself.
+     
+     b. **Factors** of the Selected Number (excluding the number **1** unless **1** is the selected number).
+     
+     c. **Multiples** of the Selected Number within the remaining list.
+
+   - **Note**: 
+
+     - If a number is both a factor and a multiple of the selected number, it is still only removed once.
+     - The number **1** is a special case; when **1** is selected, only **1** is removed.
+
+3. **End Condition**:
+
+   - The game ends when a player is forced to pick the **last remaining number** from the list.
+   - **Loss Condition**: The player who picks the last number loses the game.
+   - **Win Condition**: The other player is declared the winner.
+
+4. **Special Considerations**:
+
+   - If at any point a player has no valid moves because all remaining numbers have been removed, they lose the game.
+   - Players must choose wisely to avoid limiting their future options.
+
+---
+
+**Scoring**
+
+- There is no point system.
+- Victory is achieved by strategic elimination.
+- Tracking is solely based on who picks the last number (loser) and who forces this outcome (winner).
+
+---
+
+**Examples**
+
+Below are example scenarios illustrating how the game is played in a command-line interface.
+
+---
+
+**Example Game**
+
+*Initial State*:
+
+```
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+---
+
+**Turn 1: Player 1**
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Player 1 Picks**: **5**
+
+**Removal**:
+
+- Remove **5** (selected number).
+- Remove **Multiples of 5**: None in the list beyond 5.
+- Remove **Factors of 5**: **1** (since 1 is a factor of all numbers), but per special considerations, we only remove **1** if it's the selected number.
+
+- **Updated Numbers**: [1, 2, 3, 4, 6, 7, 8, 9]
+
+---
+
+**Turn 2: Player 2**
+
+- **Available Numbers**: [1, 2, 3, 4, 6, 7, 8, 9]
+- **Player 2 Picks**: **2**
+
+**Removal**:
+
+- Remove **2** (selected number).
+- Remove **Multiples of 2**: **4**, **6**, **8**
+- Remove **Factors of 2**: **1**
+
+- **Updated Numbers**: [3, 7, 9]
+
+---
+
+**Turn 3: Player 1**
+
+- **Available Numbers**: [3, 7, 9]
+- **Player 1 Picks**: **3**
+
+**Removal**:
+
+- Remove **3** (selected number).
+- Remove **Multiples of 3**: **9**
+- Remove **Factors of 3**: None (since **1** already removed)
+
+- **Updated Numbers**: [7]
+
+---
+
+**Turn 4: Player 2**
+
+- **Available Numbers**: [7]
+- **Player 2 Picks**: **7**
+
+**Removal**:
+
+- Remove **7** (selected number).
+- No multiples or factors left to remove.
+
+- **Updated Numbers**: []
+
+**Game Ends**:
+
+- **Player 2** picked the last number.
+- **Player 2 Loses**.
+- **Player 1 Wins**.
+
+---
+
+**Command-Line Interaction Example**
+
+*Assuming a simple command-line interface where players input their chosen number when prompted.*
+
+---
+
+**Game Start**
+
+```
+Welcome to Number Nimble!
+
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1, it's your turn.
+Enter your chosen number: 5
+```
+
+---
+
+**After Player 1's Turn**
+
+```
+You chose: 5
+
+Numbers removed: 5
+
+Available Numbers: [1, 2, 3, 4, 6, 7, 8, 9]
+
+Player 2, it's your turn.
+Enter your chosen number: 2
+```
+
+---
+
+**After Player 2's Turn**
+
+```
+You chose: 2
+
+Numbers removed: 2, 4, 6, 8
+
+Available Numbers: [1, 3, 7, 9]
+
+Player 1, it's your turn.
+Enter your chosen number: 3
+```
+
+---
+
+**After Player 1's Second Turn**
+
+```
+You chose: 3
+
+Numbers removed: 3, 9
+
+Available Numbers: [1, 7]
+
+Player 2, it's your turn.
+Enter your chosen number: 7
+```
+
+---
+
+**After Player 2's Second Turn**
+
+```
+You chose: 7
+
+Numbers removed: 7
+
+Available Numbers: [1]
+
+Player 1, it's your turn.
+Enter your chosen number: 1
+```
+
+---
+
+**After Player 1's Final Turn**
+
+```
+You chose: 1
+
+Numbers removed: 1
+
+No numbers remain.
+
+Player 1 picked the last number.
+Player 1 Loses.
+Player 2 Wins!
+
+Thank you for playing Number Nimble!
+```
+
+*Note: In this adjusted example, Player 1 loses by picking the last number.*
+
+---
+
+**Strategic Tips**
+
+- **Avoid Picking Small Numbers Early**: Selecting small numbers like **1** or **2** early can remove many options and may backfire.
+- **Force Your Opponent's Hand**: Try to leave a set of numbers that limits your opponent's choices while preserving options for yourself.
+- **Plan Ahead**: Consider the consequences of each pick not just for the current turn but for future turns.
+- **Prime Numbers Are Powerful**: Picking prime numbers removes fewer numbers, which can be strategic in controlling the flow of the game.
+
+---
+
+**Conclusion**
+
+Number Nimble is a game of mathematical strategy and foresight. While the rules are straightforward, mastering the game requires practice and tactical planning. Remember, every choice narrows the path, so choose wisely to outmaneuver your opponent and claim victory!

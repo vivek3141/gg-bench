@@ -1,0 +1,179 @@
+# GridLock: A Two-Player Strategy Game
+
+## Objective
+
+**GridLock** is a turn-based strategy game where players compete to be the last person able to place a marker on a shared grid following specific placement rules. The goal is to strategically position your markers to limit your opponent's options while maximizing your own, ultimately forcing them into a position where they cannot make a legal move.
+
+## Setup
+
+- **Grid**: The game is played on a 4x4 grid, consisting of 16 cells arranged in 4 rows and 4 columns.
+- **Players**: Two players, designated as **Player 1** and **Player 2**.
+- **Markers**: Each player has a unique marker symbol:
+  - **Player 1** uses the marker `"X"`.
+  - **Player 2** uses the marker `"O"`.
+- **Starting Conditions**:
+  - The grid is empty at the start of the game.
+  - Players decide who takes the first turn (e.g., by mutual agreement or a random method).
+
+## Game Components
+
+- **4x4 Grid**: Represented in the command-line interface as a matrix with rows and columns numbered from 1 to 4.
+- **Markers**:
+  - **"X"** for Player 1.
+  - **"O"** for Player 2.
+- **Empty Cells**: Denoted by a dot `"."` or space `" "` in the grid display.
+
+## Turns
+
+### Turn Structure
+
+- **Alternate Play**: Players take turns alternately, starting with the designated first player.
+- **Action per Turn**:
+  - **Place a Marker**: On your turn, you must place your marker on an empty cell that adheres to the placement rules below.
+
+### Turn Order
+
+1. **Player 1** takes their turn.
+2. **Player 2** takes their turn.
+3. Repeat until the game ends.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **Valid Cells**:
+   - You can place your marker on any empty cell **not adjacent** to any of your own markers already on the grid.
+   - **Adjacency** includes all eight surrounding cells: horizontal, vertical, and diagonal neighbors.
+2. **Opponent's Markers**:
+   - You **can** place your marker adjacent to your opponent's markers.
+3. **No Moves Available**:
+   - If you have no valid moves on your turn, you **lose** the game.
+
+### Definitions
+
+- **Adjacent Cells**: Cells that share a side or corner with a given cell.
+  - For cell `(row, column)`, adjacent cells are:
+    - `(row-1, column-1)`, `(row-1, column)`, `(row-1, column+1)`
+    - `(row, column-1)`,                 `(row, column+1)`
+    - `(row+1, column-1)`, `(row+1, column)`, `(row+1, column+1)`
+- **Grid Boundaries**:
+  - Cells outside the 4x4 grid are considered invalid.
+
+## Scoring
+
+- **Winning the Game**: The player who successfully places a marker when their opponent cannot make a valid move on their subsequent turn wins the game.
+- **No Point System**: There is no cumulative scoring; the outcome is a win or loss based on the final move.
+
+## Examples
+
+### Example Scenario
+
+#### Initial Grid
+
+```
+   1 2 3 4
+  ---------
+1 | . . . .
+2 | . . . .
+3 | . . . .
+4 | . . . .
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Places `"X"` at cell `(2,2)`.
+- **Grid**:
+
+```
+   1 2 3 4
+  ---------
+1 | . . . .
+2 | . X . .
+3 | . . . .
+4 | . . . .
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Places `"O"` at cell `(2,3)`, adjacent to `"X"`.
+- **Grid**:
+
+```
+   1 2 3 4
+  ---------
+1 | . . . .
+2 | . X O .
+3 | . . . .
+4 | . . . .
+```
+
+#### Turn 3: Player 1
+
+- **Adjacency Check**: Cannot place adjacent to `(2,2)`.
+- **Action**: Places `"X"` at cell `(4,4)`.
+- **Grid**:
+
+```
+   1 2 3 4
+  ---------
+1 | . . . .
+2 | . X O .
+3 | . . . .
+4 | . . . X
+```
+
+#### Turn 4: Player 2
+
+- **Adjacency Check**: Can place near either marker.
+- **Action**: Places `"O"` at cell `(3,3)`.
+- **Grid**:
+
+```
+   1 2 3 4
+  ---------
+1 | . . . .
+2 | . X O .
+3 | . . O .
+4 | . . . X
+```
+
+#### Subsequent Turns
+
+- Players continue to place markers following the rules until one cannot make a valid move.
+
+### Command-Line Interaction Example
+
+#### Player 1's Turn
+
+```
+Player 1 (X), it's your turn.
+Your markers are at: (2,2), (4,4)
+Available cells: [(list of valid cells)]
+Enter your move as 'row column':
+> 1 4
+```
+
+#### Player 2's Turn
+
+```
+Player 2 (O), it's your turn.
+Your markers are at: (2,3), (3,3)
+Available cells: [(list of valid cells)]
+Enter your move as 'row column':
+> 1 3
+```
+
+## Strategy Tips
+
+- **Space Your Markers**: Place your markers in a way that maximizes the number of non-adjacent cells available for future turns.
+- **Block Opponent**: Position your markers to limit the spaces where your opponent can legally place their markers.
+- **Plan Ahead**: Consider not just your next move but how the placement will affect your options in subsequent turns.
+- **Forced Moves**: Try to create situations where your opponent has fewer options, potentially forcing them into a corner.
+
+## Summary
+
+**GridLock** is a simple yet strategic game that requires foresight and planning. With straightforward rules and quick gameplay, it's easy to learn but offers depth for players to develop their strategies. Enjoy outsmarting your opponent in this battle of wits!
+
+---
+
+Happy gaming!

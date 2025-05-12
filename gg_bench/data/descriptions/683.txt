@@ -1,0 +1,193 @@
+# Sum Battle
+
+## Objective
+
+Be the first player to reach a cumulative total of **exactly 50** by strategically selecting numbers from a shared pool. The goal is to reach the target sum before your opponent without exceeding it.
+
+## Setup
+
+- **Players**: Two players compete against each other.
+- **Starting Conditions**:
+  - Both players begin with a **cumulative total of 0**.
+  - A **shared pool of numbers** from **1** to **9** is available for selection. Each number can be selected multiple times throughout the game.
+
+## Game Components
+
+- **Shared Numbers Pool**:
+  - Numbers available: **1, 2, 3, 4, 5, 6, 7, 8, 9**.
+  - Each number can be selected by either player on their turn, subject to the selection rules.
+- **Cumulative Totals**:
+  - Each player maintains their own cumulative total sum, starting at **0**.
+  - The cumulative total increases as players add numbers from the shared pool during their turns.
+
+## Turns
+
+- **Turn Order**:
+  - Players take turns alternately.
+  - **Player 1** starts the game.
+- **Actions During a Turn**:
+  - Select a valid number from the shared pool according to the selection rules.
+  - Add the selected number to your cumulative total.
+  - Announce the selected number and your new cumulative total.
+
+## Rules and Mechanics
+
+### Number Selection Rules
+
+1. **Valid Numbers**:
+   - On your turn, you may choose any number between **1** and **9** from the shared pool.
+   - Numbers can be selected multiple times throughout the game.
+
+2. **Restriction Based on Opponent's Last Move**:
+   - **You cannot select the same number** that your opponent selected on their **immediately previous turn**.
+   - **You cannot select numbers that are adjacent** to your opponent's last selected number. Adjacent numbers are those that differ by **±1**.
+     - For example, if your opponent selected **5** on their last turn:
+       - You **cannot** select **4**, **5**, or **6** on your turn.
+
+### Cumulative Total Rules
+
+1. **Adding to Total**:
+   - After selecting a valid number, add it to your cumulative total.
+   - Keep track of your cumulative total throughout the game.
+
+2. **Winning the Game**:
+   - The first player to reach a cumulative total of **exactly 50** wins.
+
+3. **Exceeding the Target**:
+   - If a player's cumulative total **exceeds 50**, they **immediately lose** the game.
+
+4. **No Valid Moves**:
+   - If a player cannot make a valid selection on their turn due to the number selection rules, they **lose the game**.
+
+## Scoring
+
+- **Winning**:
+  - The player who reaches a cumulative total of **exactly 50** first **wins the game**.
+- **Losing**:
+  - A player loses if:
+    - Their cumulative total **exceeds 50**.
+    - They **cannot make a valid move** on their turn.
+
+## Examples
+
+### Example Game Play
+
+#### Turn 1:
+- **Player 1's Turn**:
+  - Selects **7**.
+  - Cumulative Total: **0 + 7 = 7**.
+
+#### Turn 2:
+- **Player 2's Turn**:
+  - Cannot select **6**, **7**, or **8** (adjacent to 7).
+  - Selects **9**.
+  - Cumulative Total: **0 + 9 = 9**.
+
+#### Turn 3:
+- **Player 1's Turn**:
+  - Cannot select **8**, **9**, or **10** (adjacent to 9, although 10 is not in the pool).
+  - Selects **5**.
+  - Cumulative Total: **7 + 5 = 12**.
+
+#### Turn 4:
+- **Player 2's Turn**:
+  - Cannot select **4**, **5**, or **6**.
+  - Selects **3**.
+  - Cumulative Total: **9 + 3 = 12**.
+
+#### Turn 5:
+- **Player 1's Turn**:
+  - Cannot select **2**, **3**, or **4**.
+  - Selects **1**.
+  - Cumulative Total: **12 + 1 = 13**.
+
+#### Turn 6:
+- **Player 2's Turn**:
+  - Cannot select **0**, **1**, or **2** (0 is not in the pool).
+  - Selects **7**.
+  - Cumulative Total: **12 + 7 = 19**.
+
+#### Game Continues:
+- Players continue in this fashion, adhering to the selection rules and aiming to reach exactly 50.
+
+### Command-Line Interaction Example
+
+Below is a sample command-line interaction for a few turns of the game.
+
+```plaintext
+--- Sum Battle Game Start ---
+
+Player 1's Turn:
+Your cumulative total is 0.
+Enter a number between 1 and 9: 7
+You selected 7.
+Your new cumulative total is 7.
+
+Player 2's Turn:
+Your cumulative total is 0.
+Opponent's last number was 7.
+You cannot select 6, 7, or 8.
+Available numbers: 1, 2, 3, 4, 5, 9
+Enter a number between 1 and 9: 9
+You selected 9.
+Your new cumulative total is 9.
+
+Player 1's Turn:
+Your cumulative total is 7.
+Opponent's last number was 9.
+You cannot select 8, 9, or 10.
+Available numbers: 1, 2, 3, 4, 5, 6, 7
+Enter a number between 1 and 9: 5
+You selected 5.
+Your new cumulative total is 12.
+
+Player 2's Turn:
+Your cumulative total is 9.
+Opponent's last number was 5.
+You cannot select 4, 5, or 6.
+Available numbers: 1, 2, 3, 7, 8, 9
+Enter a number between 1 and 9: 3
+You selected 3.
+Your new cumulative total is 12.
+
+--- Game Continues ---
+```
+
+## Strategic Considerations
+
+- **Anticipate Opponent's Moves**:
+  - Try to select numbers that limit your opponent's options on their next turn.
+  - For example, selecting a middle number like **5** restricts your opponent from selecting **4**, **5**, or **6**.
+
+- **Plan Your Cumulative Total**:
+  - Keep an eye on both your and your opponent's cumulative totals.
+  - Aim to reach numbers that set you up to reach 50 in future turns without exceeding it.
+
+- **Avoid Exceeding 50**:
+  - Be cautious when your cumulative total is close to 50.
+  - Consider the possible numbers you can select and ensure they don't push you over the target.
+
+- **Force a Win**:
+  - If possible, maneuver the game to a state where you can reach exactly 50 on your next turn, regardless of your opponent's move.
+
+## Game Flow Summary
+
+1. **Start the Game**:
+   - Initialize both cumulative totals to 0.
+   - Determine who will be Player 1.
+
+2. **Player Turns**:
+   - Players alternate turns, following the number selection rules.
+   - After each turn, update and announce the cumulative total.
+
+3. **Check for Win/Loss Conditions**:
+   - After each move, check if a player has reached exactly 50 or cannot make a valid move.
+
+4. **End the Game**:
+   - Declare the winner and conclude the game when a win/loss condition is met.
+
+## Conclusion
+
+Sum Battle is a strategic numerical game that challenges players to think ahead and anticipate their opponent's moves. By following the rules and considering the strategic tips, players can enhance their chances of victory in this engaging and competitive game.
+
+Enjoy the battle of sums, and may the best strategist win!

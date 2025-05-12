@@ -1,0 +1,152 @@
+# Safe Path
+
+## Objective
+
+**Safe Path** is a strategic two-player, turn-based game played on a linear path of numbered positions. The primary goal is to be the first player to reach exactly position **20** without landing on a mine. Players must strategically plan their moves to navigate the path safely while avoiding known mines and outmaneuvering their opponent. The game ends when a player either successfully reaches position 20 or loses by stepping on a mine.
+
+## Setup
+
+- **Game Board**: A linear path consisting of positions numbered from **0** to **20**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Starting Positions**: Both players start at position **0**.
+- **Mines**: Mines are placed on the path at positions **5**, **10**, **15**, and **18**. The locations of the mines are known to both players.
+
+## Game Components
+
+- **Linear Path**: Represents the game board with positions from **0** (start) to **20** (end).
+- **Player Tokens**: Each player has a token that represents their current position on the path.
+- **Mines**: Hazardous positions (5, 10, 15, 18) that players must avoid. Landing on a mine results in an immediate loss.
+
+## Turns
+
+- **Turn Order**: The game begins with **Player 1**, and players alternate turns thereafter.
+- **Player Actions**: On their turn, a player must move their token forward by **1**, **2**, or **3** positions.
+- **Turn Progression**: After a player completes their move, it becomes the other player's turn.
+
+## Rules and Mechanics
+
+1. **Movement**:
+   - On your turn, move your token forward by **1**, **2**, or **3** positions from your current position.
+   - Movement must be forward only; backward movement is not allowed.
+   - You cannot skip a turn; you must move on every turn.
+
+2. **Mines**:
+   - Mines are located at positions **5**, **10**, **15**, and **18**.
+   - **Landing** exactly on a mine results in an immediate loss for the player who landed on it.
+   - Players may pass over mines without penalty as long as they do not land on them.
+
+3. **Winning the Game**:
+   - The first player to reach **exactly position 20** wins the game.
+   - If a player cannot move without landing on a mine or exceeding position 20, they must choose the maximum move that keeps them within bounds and safe.
+   - If a player lands on a mine, the other player wins by default.
+
+4. **Constraints**:
+   - Players must consider both their current position and potential future moves to avoid mines.
+   - Planning ahead is crucial to force your opponent into a position where they cannot avoid a mine.
+
+## Scoring
+
+- There is no point-based scoring system in **Safe Path**.
+- The outcome is binary: a player either **wins** by reaching position 20 safely or **loses** by landing on a mine.
+- The game does not allow for a draw; a winner is always determined.
+
+## Examples
+
+### Example Scenario 1
+
+**Starting Positions**:
+- Player 1: Position 0
+- Player 2: Position 0
+
+**Turn 1**:
+- **Player 1** moves ahead by **3** to position **3**.
+
+**Turn 2**:
+- **Player 2** moves ahead by **2** to position **2**.
+
+**Turn 3**:
+- **Player 1** considers that moving by 2 will land on position **5** (a mine). To avoid the mine, they choose to move ahead by **1** to position **4**.
+
+**Turn 4**:
+- **Player 2** moves ahead by **1** to position **3**.
+
+**Turn 5**:
+- **Player 1** must avoid landing on the mine at position **5**. They choose to move ahead by **3** to position **7** (since moving by 1 or 2 would land on or pass the mine at position 5).
+
+**Turn 6**:
+- **Player 2** cannot move by 3 (would land on position **6**), so they move ahead by **2** to position **5** (a mine) and loses the game.
+
+**Outcome**:
+- **Player 2** lands on a mine at position **5**. **Player 1** wins the game.
+
+### Example Scenario 2
+
+**Starting Positions**:
+- Player 1: Position 0
+- Player 2: Position 0
+
+**Turn 1**:
+- **Player 1** moves ahead by **1** to position **1**.
+
+**Turn 2**:
+- **Player 2** moves ahead by **3** to position **3**.
+
+**Turn 3**:
+- **Player 1** moves ahead by **3** to position **4**.
+
+**Turn 4**:
+- **Player 2** must avoid the mine at position **5**. They choose to move ahead by **2** to position **5** (a mine), resulting in a loss.
+
+**Outcome**:
+- **Player 2** lands on a mine at position **5**. **Player 1** wins the game.
+
+### Command-Line Interaction Sample
+
+**Notation**:
+- `P1` and `P2` denote Player 1 and Player 2.
+- `>` indicates the prompt for player's input.
+
+**Game Start**:
+
+```
+Welcome to Safe Path!
+Player 1 and Player 2 start at position 0.
+Mines are at positions: 5, 10, 15, 18
+First to reach position 20 without landing on a mine wins!
+
+Player 1's turn.
+You are at position 0.
+Enter your move (1, 2, or 3): 
+> 3
+
+Player 1 moves to position 3.
+
+Player 2's turn.
+You are at position 0.
+Enter your move (1, 2, or 3): 
+> 3
+
+Player 2 moves to position 3.
+
+Player 1's turn.
+You are at position 3.
+Enter your move (1, 2, or 3): 
+> 2
+
+Player 1 moves to position 5.
+
+Oh no! Player 1 landed on a mine at position 5.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Always look several moves ahead to ensure you won't be forced into landing on a mine.
+- **Control the Pace**: By choosing your moves wisely, you can force your opponent into positions where they have no safe moves.
+- **Avoid Mirroring**: Don't simply copy your opponent's moves; adapt your strategy based on the current positions.
+
+## Conclusion
+
+**Safe Path** is a game of strategic foresight and planning. Each move must be calculated not only for immediate safety but also for future implications. By carefully choosing your steps, you can navigate the mine-laden path and emerge victorious.
+
+Enjoy the challenge, and may the safest path lead you to victory!

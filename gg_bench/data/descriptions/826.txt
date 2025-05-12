@@ -1,0 +1,155 @@
+# Number Stack: A Two-Player Turn-Based Game
+
+## Objective
+
+Be the first player to create a stack of numbered tokens that sums **exactly to 15**. Utilize strategic token selection and stack management to outmaneuver your opponent and achieve the target sum before they do.
+
+## Setup
+
+1. **Token Pool**: Place numbered tokens from **1** to **15** face-up in a shared pool accessible to both players.
+2. **Player Stacks**: Each player has **three empty stack slots**—Stack 1, Stack 2, and Stack 3—to build their stacks during the game.
+3. **Starting Player**: Decide who will take the first turn (Player A or Player B).
+
+## Game Components
+
+### 1. Numbered Tokens
+
+- **Quantity**: 15 tokens.
+- **Values**: Each token is uniquely numbered from **1** to **15**.
+- **Appearance**: Tokens can be represented by their numerical value in the command-line interface.
+- **Functionality**: Tokens are selected and placed onto player stacks to accumulate sums.
+
+### 2. Player Stacks
+
+- **Structure**: Each player has three stacks—Stack 1, Stack 2, Stack 3.
+- **Functionality**: Tokens are placed onto these stacks to build up to the target sum.
+- **Attributes**:
+  - **Stack Total**: The sum of all token values in a stack.
+  - **Capacity**: No stack can have a total exceeding 15.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the designated first player.
+2. **Player Actions**:
+   - **Select a Token**: Choose one available token from the pool.
+   - **Place Token on a Stack**: Place the selected token onto one of your three stacks.
+3. **Progression**: The game continues with players alternating turns until a win condition is met or no legal moves remain.
+
+## Rules and Mechanics
+
+### 1. Token Selection
+
+- **Available Tokens**: Players can only select tokens that are currently in the pool.
+- **Removal from Pool**: Once a token is selected, it is removed from the pool and cannot be selected again.
+
+### 2. Stack Placement
+
+- **Choosing a Stack**: The selected token must be placed on one of your own stacks.
+- **Stack Limits**:
+  - **Maximum Total**: A stack cannot exceed a total sum of **15**.
+  - **Legal Moves**: If placing a token would cause the stack's total to exceed 15, that move is illegal for that stack.
+- **Stack Management**: Players must strategically decide which stack to place a token on to reach the target sum.
+
+### 3. Winning the Game
+
+- **Victory Condition**: The first player to have **any one** of their stacks sum **exactly to 15** wins the game immediately.
+- **No Legal Moves**: If a player has no legal moves (cannot place any remaining tokens without exceeding stack limits), they must pass their turn.
+
+### 4. Game End Conditions
+
+- **Win by Exact Sum**: Game ends immediately when a player achieves a stack totaling exactly 15.
+- **Win by Highest Sum**:
+  - If all tokens are used and no player has a stack totaling 15, the player with the **highest stack sum not exceeding 15** wins.
+  - If tied, compare the next highest stacks.
+  - **Tie-Breaker**: If still tied, the **second player** (Player B) is declared the winner to prevent a draw.
+
+### 5. Mandatory Moves
+
+- **Must Play If Able**: If a player has at least one legal move, they must take their turn.
+- **Passing**: If no legal moves are available, the player passes, and the turn goes to the opponent.
+
+## Scoring
+
+- **No Point System**: The game does not use a point system; victory is achieved by meeting the win conditions.
+- **Strategy Over Scoring**: Focus is on strategic token placement and stack management.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Token Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+- **Player A Stacks**: Empty
+- **Player B Stacks**: Empty
+
+#### Turn Sequence
+
+1. **Player A's Turn**
+   - **Selects Token**: 7
+   - **Places on**: Stack 1
+   - **Stack 1 Total**: 7
+2. **Player B's Turn**
+   - **Selects Token**: 8
+   - **Places on**: Stack 1
+   - **Stack 1 Total**: 8
+3. **Player A's Turn**
+   - **Selects Token**: 4
+   - **Places on**: Stack 1
+   - **Stack 1 Total**: 7 + 4 = 11
+4. **Player B's Turn**
+   - **Selects Token**: 7
+   - **Places on**: Stack 1
+   - **Stack 1 Total**: 8 + 7 = 15
+   - **Result**: Player B wins by achieving a stack totaling exactly 15.
+
+### Command-Line Interaction Example
+
+```plaintext
+Welcome to Number Stack!
+
+Tokens in Pool: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+Player A's turn.
+Available Tokens: [1-15]
+Select a token: 7
+Choose a stack to place the token (1-3): 1
+Player A places token 7 on Stack 1 (Total: 7)
+
+Tokens in Pool: [1,2,3,4,5,6,8,9,10,11,12,13,14,15]
+
+Player B's turn.
+Available Tokens: [1-6,8-15]
+Select a token: 8
+Choose a stack to place the token (1-3): 1
+Player B places token 8 on Stack 1 (Total: 8)
+
+Tokens in Pool: [1,2,3,4,5,6,9,10,11,12,13,14,15]
+
+Player A's turn.
+Available Tokens: [1-6,9-15]
+Select a token: 4
+Choose a stack to place the token (1-3): 1
+Player A places token 4 on Stack 1 (Total: 11)
+
+Tokens in Pool: [1,2,3,5,6,9,10,11,12,13,14,15]
+
+Player B's turn.
+Available Tokens: [1-6,9-15] (excluding already used tokens)
+Select a token: 7
+Choose a stack to place the token (1-3): 1
+Player B places token 7 on Stack 1 (Total: 8 + 7 = 15)
+
+Player B wins! Stack 1 sums to exactly 15.
+```
+
+## Strategic Depth and Complexity
+
+- **Token Prioritization**: Players must decide which tokens to select to build towards 15 while also considering which tokens might benefit their opponent if left in the pool.
+- **Stack Management**: With three stacks, players need to balance their efforts, deciding whether to focus on one stack or spread their tokens.
+- **Anticipation**: Predicting the opponent's moves can provide a strategic advantage, such as blocking potential wins by taking crucial tokens.
+- **Limited Resources**: As tokens are removed from the pool, options diminish, increasing the complexity of decisions in later turns.
+
+---
+
+Enjoy playing Number Stack, where every move counts, and strategic planning leads to victory!

@@ -1,0 +1,170 @@
+# Binary Battle: Rule Book
+
+## Objective
+
+**Binary Battle** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to transform your binary number into the **target binary number** through strategic bit manipulation. Victory is achieved by flipping bits—either in your own binary number or in your opponent's—to match the target number exactly.
+
+## Setup
+
+1. **Target Binary Number**: At the start of the game, a **target binary number** of 4 bits (e.g., `1010`) is agreed upon or randomly selected.
+2. **Initial Player Binaries**: Both players begin with their own 4-bit binary numbers set to `0000`.
+3. **Player Assignment**: Decide which player will be **Player 1** and **Player 2**. This can be done by mutual agreement or randomly (e.g., coin toss).
+
+## Game Components
+
+- **Binary Numbers**: Each player has a 4-bit binary number displayed as a sequence of 0s and 1s (e.g., `0101`).
+- **Bits**: Individual digits within the binary number, indexed from left to right as positions 1 to 4.
+- **Target Binary Number**: A 4-bit binary number that players strive to match with their own binary number.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately. The game starts with **Player 1**.
+- **Player Actions**: On their turn, a player must perform **one** of the following actions:
+  1. **Flip One Bit in Own Binary**: Change a `0` to a `1` or a `1` to a `0` in their own binary number at a chosen position (1-4).
+  2. **Flip One Bit in Opponent's Binary**: Change a `0` to a `1` or a `1` to a `0` in the opponent's binary number at a chosen position (1-4).
+- **Turn Progression**: After a player completes their action, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Bit Flipping**:
+   - Players specify which bit to flip by indicating the position (1 to 4).
+   - Only one bit may be flipped per turn.
+2. **Action Restrictions**:
+   - A player **must** flip a bit on their turn; passing is not allowed.
+   - Players can choose to flip a bit in their own binary or their opponent's binary, but not both.
+3. **Winning the Game**:
+   - A player wins immediately if, after their turn, their own binary number exactly matches the **target binary number**.
+4. **Game End Conditions**:
+   - The game ends when a player wins by matching the target binary number.
+   - The game cannot end in a draw.
+
+## Scoring
+
+- **Victory**: The player who first matches the target binary number wins the game.
+- **No Points System**: There is no point tracking; the game outcome is win or lose based on achieving the objective.
+
+## Examples
+
+### Example Game Play
+
+#### Setup:
+
+- **Target Binary Number**: `1011`
+- **Player 1's Binary**: `0000`
+- **Player 2's Binary**: `0000`
+
+#### Turn 1: Player 1
+
+- **Action**: Flips bit **1** of their own binary.
+- **Result**:
+  - Player 1's Binary: `1000`
+  - Player 2's Binary: `0000`
+
+#### Turn 2: Player 2
+
+- **Action**: Flips bit **4** of Player 1's binary.
+- **Result**:
+  - Player 1's Binary: `1001`
+  - Player 2's Binary: `0000`
+
+#### Turn 3: Player 1
+
+- **Action**: Flips bit **2** of their own binary.
+- **Result**:
+  - Player 1's Binary: `1101`
+  - Player 2's Binary: `0000`
+
+#### Turn 4: Player 2
+
+- **Action**: Flips bit **3** of their own binary.
+- **Result**:
+  - Player 1's Binary: `1101`
+  - Player 2's Binary: `0010`
+
+#### Turn 5: Player 1
+
+- **Action**: Flips bit **3** of their own binary.
+- **Result**:
+  - Player 1's Binary: `1111`
+  - Player 2's Binary: `0010`
+- **Check for Win**: Player 1's binary `1111` does **not** match the target `1011`.
+
+#### Turn 6: Player 2
+
+- **Action**: Flips bit **1** of Player 1's binary.
+- **Result**:
+  - Player 1's Binary: `0111`
+  - Player 2's Binary: `0010`
+
+#### Turn 7: Player 1
+
+- **Action**: Flips bit **2** of their own binary.
+- **Result**:
+  - Player 1's Binary: `0011`
+  - Player 2's Binary: `0010`
+- **Check for Win**: Player 1's binary `0011` does **not** match the target `1011`.
+
+#### Turn 8: Player 2
+
+- **Action**: Flips bit **4** of their own binary.
+- **Result**:
+  - Player 1's Binary: `0011`
+  - Player 2's Binary: `0011`
+
+#### Turn 9: Player 1
+
+- **Action**: Flips bit **1** of their own binary.
+- **Result**:
+  - Player 1's Binary: `1011`
+  - Player 2's Binary: `0011`
+- **Check for Win**: Player 1's binary `1011` matches the target `1011`.
+- **Outcome**: **Player 1 wins the game!**
+
+### Sample Command-Line Interaction
+
+#### Game Start
+
+```
+Welcome to Binary Battle!
+Target Binary Number: 1011
+Player 1's Binary: 0000
+Player 2's Binary: 0000
+
+Player 1's Turn:
+Choose action:
+1. Flip your own bit
+2. Flip opponent's bit
+Enter action number (1 or 2): 1
+Enter bit position to flip (1-4): 1
+
+Result:
+Player 1's Binary: 1000
+Player 2's Binary: 0000
+```
+
+#### Next Turn
+
+```
+Player 2's Turn:
+Choose action:
+1. Flip your own bit
+2. Flip opponent's bit
+Enter action number (1 or 2): 2
+Enter bit position to flip in opponent's binary (1-4): 4
+
+Result:
+Player 1's Binary: 1001
+Player 2's Binary: 0000
+```
+
+*...game continues until a player wins...*
+
+## Strategy Tips
+
+- **Balancing Offense and Defense**: Decide whether it's more advantageous to improve your own binary number or hinder your opponent's progress.
+- **Anticipate Opponent's Moves**: Keep track of both binaries and the target to predict your opponent's strategy.
+- **Bit Position Importance**: Some bits are more critical than others based on the target number; prioritize flipping these bits.
+
+## Conclusion
+
+**Binary Battle** is a quick and strategic game that tests players' tactical decision-making skills in binary manipulation. With simple rules and deep strategy, players can enjoy a unique and engaging experience in a command-line setting.

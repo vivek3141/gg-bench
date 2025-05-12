@@ -1,0 +1,279 @@
+# Score Duel
+
+## Objective
+
+Be the first player to reach **exactly 50 points** or strategically force your opponent to exceed 50 and reset their score, thereby gaining an advantage. Use tactical decisions to manage both your score and your opponent's score to achieve victory.
+
+## Setup
+
+- Both players start the game with a score of **25 points**.
+- Determine which player goes first (e.g., by a coin toss or mutual agreement).
+- Ensure access to a method for simulating a six-sided die roll (numbers 1 through 6), such as a random number generator.
+
+## Game Components
+
+- **Player Scores**: Each player has a personal score, starting at 25.
+- **Six-Sided Die**: Simulated using random number generation to produce integers from 1 to 6.
+- **Score Tracker**: A simple display or variables to keep track of both players' scores.
+
+## Turns
+
+- Players take turns in a back-and-forth sequence.
+- **Turn Structure**:
+  1. **Roll the Die**: The current player generates a random number between 1 and 6.
+  2. **Assign Points**: The player decides to add the rolled number to either their own score or their opponent's score.
+  3. **Update Scores**: Adjust the chosen player's score according to the assigned points.
+  4. **Check for Win or Reset**: Determine if any scores have reached 50 or exceeded it and act accordingly.
+  5. **End Turn**: The turn passes to the other player.
+
+## Rules and Mechanics
+
+### Rolling the Die
+
+- Use a random number generator to simulate rolling a six-sided die.
+- The result will be an integer between 1 and 6 inclusive.
+
+### Assigning Points
+
+- After rolling, the current player must choose to add the rolled number to **either**:
+  - **Their own score**, or
+  - **Their opponent's score**.
+
+### Scoring
+
+- **Reaching 50 Points**:
+  - If a player's score reaches **exactly 50** after points are assigned, that player **wins** the game immediately.
+- **Exceeding 50 Points**:
+  - If adding points causes a player's score to exceed 50 (i.e., 51 or more), their score is **reset to 25**.
+  - This rule applies to both players, regardless of who assigned the points.
+
+### Strategic Considerations
+
+- Players must decide whether to boost their own score or hinder their opponent's progress.
+- Assigning points to the opponent may force them to exceed 50 and reset, providing a strategic advantage.
+- Careful calculation and anticipation of potential future rolls can influence the decision-making process.
+
+## Scoring
+
+- **Win Condition**:
+  - Be the first to reach exactly 50 points.
+- **Reset Condition**:
+  - If a player's score exceeds 50, reset their score to 25.
+
+## Examples
+
+### Example Game Play
+
+**Starting Scores**:
+- Player 1: 25
+- Player 2: 25
+
+---
+
+#### Turn 1: Player 1
+
+- **Rolls**: 4
+- **Decision**: Adds 4 to **own score**.
+- **Scores**:
+  - Player 1: 25 + 4 = **29**
+  - Player 2: 25
+
+---
+
+#### Turn 2: Player 2
+
+- **Rolls**: 6
+- **Decision**: Adds 6 to **Player 1's score**.
+- **Scores**:
+  - Player 1: 29 + 6 = **35**
+  - Player 2: 25
+
+---
+
+#### Turn 3: Player 1
+
+- **Rolls**: 5
+- **Decision**: Adds 5 to **own score**.
+- **Scores**:
+  - Player 1: 35 + 5 = **40**
+  - Player 2: 25
+
+---
+
+#### Turn 4: Player 2
+
+- **Rolls**: 3
+- **Decision**: Adds 3 to **Player 1's score**.
+- **Scores**:
+  - Player 1: 40 + 3 = **43**
+  - Player 2: 25
+
+---
+
+#### Turn 5: Player 1
+
+- **Rolls**: 6
+- **Decision**: Adds 6 to **own score**.
+- **Scores**:
+  - Player 1: 43 + 6 = **49**
+  - Player 2: 25
+
+---
+
+#### Turn 6: Player 2
+
+- **Rolls**: 2
+- **Decision**: Adds 2 to **Player 1's score**.
+- **Scores**:
+  - Player 1: 49 + 2 = **51** (exceeds 50, reset to 25)
+  - **Reset**: Player 1's score resets to **25**
+  - Player 2: 25
+
+---
+
+#### Turn 7: Player 1
+
+- **Rolls**: 5
+- **Decision**: Adds 5 to **Player 2's score**.
+- **Scores**:
+  - Player 1: 25
+  - Player 2: 25 + 5 = **30**
+
+---
+
+#### Turn 8: Player 2
+
+- **Rolls**: 6
+- **Decision**: Adds 6 to **own score**.
+- **Scores**:
+  - Player 1: 25
+  - Player 2: 30 + 6 = **36**
+
+---
+
+#### Turn 9: Player 1
+
+- **Rolls**: 4
+- **Decision**: Adds 4 to **own score**.
+- **Scores**:
+  - Player 1: 25 + 4 = **29**
+  - Player 2: 36
+
+---
+
+#### Turn 10: Player 2
+
+- **Rolls**: 5
+- **Decision**: Adds 5 to **own score**.
+- **Scores**:
+  - Player 1: 29
+  - Player 2: 36 + 5 = **41**
+
+---
+
+#### Turn 11: Player 1
+
+- **Rolls**: 6
+- **Decision**: Adds 6 to **Player 2's score**.
+- **Scores**:
+  - Player 1: 29
+  - Player 2: 41 + 6 = **47**
+
+---
+
+#### Turn 12: Player 2
+
+- **Rolls**: 4
+- **Decision**: Adds 4 to **own score**.
+- **Scores**:
+  - Player 1: 29
+  - Player 2: 47 + 4 = **51** (exceeds 50, reset to 25)
+  - **Reset**: Player 2's score resets to **25**
+
+---
+
+#### Turn 13: Player 1
+
+- **Rolls**: 3
+- **Decision**: Adds 3 to **own score**.
+- **Scores**:
+  - Player 1: 29 + 3 = **32**
+  - Player 2: 25
+
+---
+
+#### Turn 14: Player 2
+
+- **Rolls**: 2
+- **Decision**: Adds 2 to **Player 1's score**.
+- **Scores**:
+  - Player 1: 32 + 2 = **34**
+  - Player 2: 25
+
+---
+
+#### Turn 15: Player 1
+
+- **Rolls**: 6
+- **Decision**: Adds 6 to **own score**.
+- **Scores**:
+  - Player 1: 34 + 6 = **40**
+  - Player 2: 25
+
+---
+
+#### Turn 16: Player 2
+
+- **Rolls**: 5
+- **Decision**: Adds 5 to **Player 1's score**.
+- **Scores**:
+  - Player 1: 40 + 5 = **45**
+  - Player 2: 25
+
+---
+
+#### Turn 17: Player 1
+
+- **Rolls**: 5
+- **Decision**: Adds 5 to **own score**.
+- **Scores**:
+  - Player 1: 45 + 5 = **50**
+  - **Victory**: Player 1 wins by reaching exactly 50 points.
+
+---
+
+## Command-Line Interaction Example
+
+### Turn Simulation
+
+**Player 1's Turn**:
+
+```
+Player 1, it's your turn.
+Current Scores - Player 1: 25, Player 2: 25
+You rolled a 4.
+Do you want to add 4 to your score or your opponent's score? (Type 'me' or 'opponent'): me
+Your score is now 29.
+```
+
+**Player 2's Turn**:
+
+```
+Player 2, it's your turn.
+Current Scores - Player 1: 29, Player 2: 25
+You rolled a 6.
+Do you want to add 6 to your score or your opponent's score? (Type 'me' or 'opponent'): opponent
+Player 1's score is now 35.
+```
+
+*...and so on, following the structure outlined in the examples above.*
+
+---
+
+## Summary
+
+**Score Duel** is a simple yet strategically rich game that is easy to implement in a command-line interface. It involves probability, decision-making, and foresight, allowing skilled players to consistently outperform less experienced opponents. With clear rules and quick gameplay, it provides an engaging experience without the possibility of a draw.
+
+---
+
+Enjoy the game and may the best strategist win!

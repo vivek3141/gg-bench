@@ -1,0 +1,199 @@
+# Factor Duel
+
+## Objective
+
+Be the last player able to select a number from the shared pool according to the game rules. Victory is achieved by successfully forcing your opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+- **Number Pool**: A shared pool containing all the integers from **2** to **50**, inclusive.
+- **Player Sets**: Each player starts with an empty set of "captured" numbers.
+- **Starting Player**: Decide who goes first (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Shared Number Pool**:
+  - Contains the numbers **2** through **50**.
+  - Numbers are removed from the pool as they are selected.
+
+- **Player's Captured Numbers**:
+  - Each player maintains their own set of captured numbers.
+  - These sets start empty and grow as players select numbers.
+
+- **Numbers (2-50)**:
+  - Each number has its inherent mathematical properties.
+  - Numbers can have factors (divisors) other than 1 and themselves.
+  - Prime numbers (e.g., 2, 3, 5, 7, 11, 13, etc.) have no divisors other than 1 and themselves.
+
+---
+
+## Turns
+
+- Play proceeds in alternating turns between the two players.
+- **On Your Turn**:
+  1. **Select a Number**:
+     - Choose a number from the shared pool that adheres to the selection rules.
+  2. **Update Sets**:
+     - Add the selected number to your set of captured numbers.
+     - Remove the selected number from the shared pool.
+
+- **Turn Progression**:
+  - Continue alternating turns until a player cannot make a valid selection on their turn.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection Rules
+
+- **Valid Selection**:
+  - On your turn, you must select a number from the shared pool that is **coprime** with **all** numbers in your own captured set.
+  - **Coprime**: Two numbers are coprime if their greatest common divisor (GCD) is **1** (they share no common factors other than 1).
+
+- **Invalid Selection**:
+  - You **cannot** select a number that shares any common factors greater than 1 with any number in your captured set.
+
+### Game Progression
+
+- **Captured Numbers**:
+  - Keep track of the numbers you have captured.
+  - These numbers determine which numbers you can select in future turns.
+
+- **End of Game**:
+  - If a player cannot select any valid number on their turn (no numbers in the pool are coprime with their captured set), they **lose**.
+  - The opponent is declared the **winner**.
+
+### Additional Mechanics
+
+- **Strategic Blocking**:
+  - Players can choose numbers not only to advance their own position but also to limit the options available to their opponent in future turns.
+
+- **Mathematical Strategy**:
+  - Understanding prime numbers and common factors is crucial.
+  - Capturing numbers with certain factors can block large groups of numbers for your opponent.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The game does not use a point-based scoring system.
+  - Victory is binary: you **win** if your opponent cannot make a valid move on their turn.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Setup
+
+- **Number Pool**: 2 to 50.
+- **Player 1 Set**: Empty.
+- **Player 2 Set**: Empty.
+
+#### Turn 1: Player 1
+
+- **Selection**: Chooses **13** (a prime number).
+- **Reason**: Starting with a prime gives maximum flexibility.
+- **Updated Sets**:
+  - **Player 1 Set**: {13}
+  - **Number Pool**: Numbers 2-50 excluding 13.
+
+#### Turn 2: Player 2
+
+- **Selection**: Chooses **12**.
+- **Reason**: 12 has factors of 2 and 3; Player 2 plans to limit Player 1's options by controlling these factors.
+- **Updated Sets**:
+  - **Player 2 Set**: {12}
+  - **Number Pool**: Numbers 2-50 excluding 12 and 13.
+
+#### Turn 3: Player 1
+
+- **Selection**: Chooses **17**.
+- **Reason**: Must select a number coprime with 13; 17 is coprime with 13.
+- **Updated Sets**:
+  - **Player 1 Set**: {13, 17}
+  - **Number Pool**: Excludes 12, 13, 17.
+
+#### Turn 4: Player 2
+
+- **Selection**: Chooses **9**.
+- **Reason**: 9 shares a factor with 12 (both divisible by 3); acceptable since the rule checks for common factors with their own set, not the opponent's.
+- **Updated Sets**:
+  - **Player 2 Set**: {12, 9}
+  - **Number Pool**: Excludes 9, 12, 13, 17.
+
+#### Turn 5: Player 1
+
+- **Selection**: Chooses **29**.
+- **Reason**: 29 is coprime with both 13 and 17.
+- **Updated Sets**:
+  - **Player 1 Set**: {13, 17, 29}
+  - **Number Pool**: Excludes 9, 12, 13, 17, 29.
+
+#### Turn 6: Player 2
+
+- **Selection**: Attempts to choose **6**.
+- **Validity Check**:
+  - Factors of 6: 2 and 3.
+  - **Invalid**: 6 shares common factors with both 12 and 9 in Player 2's set.
+- **Alternative Selection**: Chooses **25**.
+- **Reason**: Factors of 25 are 5 and 5. 25 is coprime with both 12 and 9.
+- **Updated Sets**:
+  - **Player 2 Set**: {12, 9, 25}
+  - **Number Pool**: Excludes 9, 12, 13, 17, 25, 29.
+
+#### Gameplay Continues...
+
+- Players continue selecting numbers according to the rules.
+- Eventually, one player will be unable to make a valid selection.
+
+### Command-Line Interaction Example
+
+```plaintext
+Player 1's Turn
+Your Captured Numbers: []
+Available Numbers: [2, 3, 4, 5, ..., 50]
+Enter a number to capture: 13
+
+Player 2's Turn
+Your Captured Numbers: []
+Available Numbers: [2, 3, 4, 5, ..., 50] (excluding 13)
+Enter a number to capture: 12
+
+Player 1's Turn
+Your Captured Numbers: [13]
+Available Numbers: [2, 3, 4, 5, ..., 50] (excluding 12, 13)
+Enter a number to capture: 17
+...
+
+(Player attempts an invalid move)
+
+Player 2's Turn
+Your Captured Numbers: [12, 9, 25]
+Available Numbers: [remaining numbers]
+Enter a number to capture: 6
+Invalid selection! 6 shares a common factor with your captured numbers.
+Enter a valid number to capture: (Player cannot make a valid move)
+Player 2 cannot make a valid move.
+Player 1 wins!
+```
+
+---
+
+## Tips for Strategic Play
+
+- **Prioritize Prime Numbers**: They are only divisible by 1 and themselves, making future selections easier.
+- **Block Opponent's Options**: Capture numbers with common factors to restrict your opponent's future selections.
+- **Plan Ahead**: Anticipate which numbers will remain in the pool and how your selections affect future moves.
+
+---
+
+## Conclusion
+
+Factor Duel is a game of numerical strategy and foresight. By understanding the properties of numbers and carefully planning your moves, you can outmaneuver your opponent and secure victory. Enjoy honing your mathematical tactics in this battle of wits!

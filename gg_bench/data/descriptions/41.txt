@@ -1,0 +1,232 @@
+**Sequence Duel: Rule Book**
+
+---
+
+### **Objective**
+
+Be the first player to force your opponent to create a sequence where the sum of any three consecutive numbers is a multiple of **7**. The game challenges players to strategically add numbers to a shared sequence while avoiding creating a triplet summing to a multiple of 7. The player who causes such a triplet loses.
+
+---
+
+### **Setup**
+
+1. **Determine Player Order**: Decide which player goes first (Player 1) and which player goes second (Player 2). This can be done by a coin toss or mutual agreement.
+2. **Initial Sequence**: Begin with an empty sequence. The shared sequence will grow as players take turns adding numbers.
+
+---
+
+### **Game Components**
+
+- **The Shared Sequence**: A list that both players contribute to by adding numbers. This sequence is visible to both players throughout the game.
+- **Number Range**: Players can choose any integer between **1** and **9** (inclusive) on their turn.
+  
+**Note**: No physical components are required; the game can be played entirely through command-line interactions by displaying and updating the sequence as numbers are added.
+
+---
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Actions on a Turn**:
+  - **Add a Number**: On your turn, append a number between **1** and **9** (inclusive) to the end of the shared sequence.
+  - **Restrictions**:
+    - **No Repeating Adjacent Numbers**: You cannot add a number that would result in two identical numbers appearing next to each other in the sequence.
+    - **Sequence Length Limit**: The sequence cannot exceed **10** numbers in total. If the sequence reaches 10 numbers without a player losing, the game ends in a loss for the player whose turn it is (to ensure the game ends quickly, as per the design criteria).
+
+---
+
+### **Rules and Mechanics**
+
+1. **Adding Numbers**:
+   - On each turn, a player must add **one** number to the sequence.
+   - The chosen number must be between **1** and **9** (inclusive).
+   - The number cannot be the same as the last number in the sequence to prevent repeating adjacent numbers.
+
+2. **Sum Condition**:
+   - After each turn, check the **sum of the last three numbers** in the sequence.
+   - **Losing Condition**: If the sum of any three consecutive numbers (the last three numbers added, in particular) is a multiple of **7** (i.e., divisible by 7 without remainder), the player who just played **loses** the game.
+
+3. **Sequence Length Limit**:
+   - If the sequence reaches **10** numbers without triggering the losing condition, the game automatically ends, and the player whose turn it is loses.
+
+4. **Validity of Moves**:
+   - **Invalid Moves**: If a player cannot make a valid move according to the rules (e.g., no possible numbers to add without repeating adjacent numbers), that player loses the game.
+
+---
+
+### **Scoring**
+
+- **Winning the Game**: You win if your opponent adds a number that causes the sum of the last three numbers in the sequence to be a multiple of 7.
+- **Losing the Game**: You lose if:
+  - You add a number that causes the sum of the last three numbers to be a multiple of 7.
+  - You cannot make a valid move on your turn.
+  - The sequence reaches 10 numbers on your turn.
+
+---
+
+### **Examples**
+
+**Example 1: Basic Gameplay**
+
+*Let's illustrate a sample game between Player 1 and Player 2.*
+
+---
+
+**Starting the Game**
+
+- The sequence is initially empty: `[]`.
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Adds `2` to the sequence.
+- **Sequence**: `[2]`
+- **Reasoning**: Since the sequence has fewer than 3 numbers, no sum check is needed.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Adds `3`.
+- **Sequence**: `[2, 3]`
+- **Reasoning**: Cannot add `2` (would repeat adjacent numbers). No sum check needed.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Adds `4`.
+- **Sequence**: `[2, 3, 4]`
+- **Sum Check**: Sum of last three numbers is `2 + 3 + 4 = 9`.
+- **Result**: 9 is not a multiple of 7; the game continues.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: Adds `5`.
+- **Sequence**: `[2, 3, 4, 5]`
+- **Sum Check**: Sum of last three numbers (`3 + 4 + 5 = 12`).
+- **Result**: 12 is not a multiple of 7.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action**: Adds `6`.
+- **Sequence**: `[2, 3, 4, 5, 6]`
+- **Sum Check**: Sum of last three numbers (`4 + 5 + 6 = 15`).
+- **Result**: 15 is not a multiple of 7.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action**: Adds `1`.
+- **Sequence**: `[2, 3, 4, 5, 6, 1]`
+- **Sum Check**: Sum of last three numbers (`5 + 6 + 1 = 12`).
+- **Result**: 12 is not a multiple of 7.
+
+---
+
+**Turn 7: Player 1**
+
+- **Action**: Adds `5` (cannot add `1` as it's the last number).
+- **Sequence**: `[2, 3, 4, 5, 6, 1, 5]`
+- **Sum Check**: Sum of last three numbers (`6 + 1 + 5 = 12`).
+- **Result**: 12 is not a multiple of 7.
+
+---
+
+**Turn 8: Player 2**
+
+- **Action**: Adds `2`.
+- **Sequence**: `[2, 3, 4, 5, 6, 1, 5, 2]`
+- **Sum Check**: Sum of last three numbers (`1 + 5 + 2 = 8`).
+- **Result**: 8 is not a multiple of 7.
+
+---
+
+**Turn 9: Player 1**
+
+- **Action**: Adds `4` (cannot add `2`).
+- **Sequence**: `[2, 3, 4, 5, 6, 1, 5, 2, 4]`
+- **Sum Check**: Sum of last three numbers (`5 + 2 + 4 = 11`).
+- **Result**: 11 is not a multiple of 7.
+
+---
+
+**Turn 10: Player 2**
+
+- **Action**: Adds `3` (cannot add `4`).
+- **Sequence**: `[2, 3, 4, 5, 6, 1, 5, 2, 4, 3]`
+- **Sum Check**: Sum of last three numbers (`2 + 4 + 3 = 9`).
+- **Result**: 9 is not a multiple of 7.
+
+- **Sequence Length Limit Reached**: The sequence now has 10 numbers.
+- **Outcome**: Since the sequence length limit is reached on Player 2's turn, and no sum of three consecutive numbers is a multiple of 7, **Player 2 loses** according to the rules.
+
+---
+
+### **Command-Line Interaction Sample**
+
+Below is an example of how the game might proceed in a command-line interface.
+
+---
+
+**Game Start**
+
+```
+Welcome to Sequence Duel!
+
+Player 1, it's your turn.
+Current sequence: []
+Enter a number between 1 and 9 (not repeating the last number):
+> 2
+
+Player 2, it's your turn.
+Current sequence: [2]
+Enter a number between 1 and 9 (not 2):
+> 3
+
+Player 1, it's your turn.
+Current sequence: [2, 3]
+Enter a number between 1 and 9 (not 3):
+> 4
+
+[Sum Check] Last three numbers: [2, 3, 4]. Sum = 9.
+The game continues.
+
+Player 2, it's your turn.
+Current sequence: [2, 3, 4]
+Enter a number between 1 and 9 (not 4):
+> 5
+
+[Sum Check] Last three numbers: [3, 4, 5]. Sum = 12.
+The game continues.
+
+... [Continues as per the example above]
+
+Player 2, it's your turn.
+Current sequence: [2, 3, 4, 5, 6, 1, 5, 2, 4, 3]
+Enter a number between 1 and 9 (not 3):
+
+Sorry, the sequence has reached 10 numbers.
+According to the rules, you lose.
+
+Player 1 wins the game!
+```
+
+---
+
+### **Strategies and Tips**
+
+- **Avoid Sums Near Multiples of 7**: Keep track of the sum of the last two numbers. Avoid adding a number that could make the sum of three consecutive numbers reach a multiple of 7.
+- **Force Your Opponent's Hand**: Try to play numbers that limit your opponent's safe options on their next turn.
+- **Sequence Planning**: Anticipate the possible sums based on the numbers available to both you and your opponent.
+- **Remember the Restrictions**: Keep in mind you cannot repeat the last number, which can be used strategically to block certain numbers from being played.
+
+---
+
+**Enjoy playing Sequence Duel and may the best strategist win!**

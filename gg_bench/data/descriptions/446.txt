@@ -1,0 +1,244 @@
+# **Factor Duel**
+
+## **Objective**
+
+**Factor Duel** is a strategic two-player turn-based game where the goal is to reduce your opponent's number to **1** before they do the same to you. Players take turns selecting factors to divide their opponent's number, requiring careful calculation and foresight. Victory is achieved by skillfully choosing factors to shrink your opponent's number to exactly **1**, thereby winning the duel.
+
+## **Setup**
+
+1. **Initial Number:** Both players agree on a starting number greater than **1**. The default initial number is **100**, but players can choose any positive integer to adjust the game's difficulty and length.
+   
+2. **Player Numbers:** Each player begins with their own number, set to the agreed initial number.
+
+3. **Determine Turn Order:** Decide who goes first. This can be done by a coin toss, mutual agreement, or any other fair method.
+
+## **Game Components**
+
+- **Player Numbers:**
+  - Each player has a personal number that changes throughout the game.
+  - Represented numerically (e.g., `Player 1's number: 100`).
+
+- **Factors (2-9):**
+  - Numbers from **2** to **9** are used as potential factors to divide the opponent's number.
+  - Only factors that divide the opponent's current number evenly (without a remainder) can be used.
+
+- **Command-Line Interface:**
+  - The game is played in a command-line environment.
+  - Players input their chosen factors when prompted.
+
+## **Turns**
+
+### **Turn Structure**
+
+1. **Opponent's Number Displayed:**
+   - At the start of your turn, the opponent's current number is shown.
+
+2. **Input Factor:**
+   - You are prompted to enter a factor between **2** and **9** that divides the opponent's number.
+
+3. **Validation:**
+   - The game checks if the entered factor is valid (i.e., it divides the opponent's number without a remainder).
+
+4. **Update Opponent's Number:**
+   - If valid, the opponent's number is divided by the chosen factor.
+   - The result becomes the opponent's new number.
+
+5. **Turn Ends:**
+   - The turn passes to the other player.
+
+### **Example Turn Sequence**
+
+- **Player 1's Turn:**
+  - Opponent's number is **60**.
+  - Valid factors are **2**, **3**, **4**, **5**, **6**.
+  - Player 1 selects **5**.
+  - Opponent's number becomes **12** (`60 / 5`).
+
+## **Rules and Mechanics**
+
+### **Core Rules**
+
+1. **Choosing Factors:**
+   - On your turn, select a factor between **2** and **9** that evenly divides your opponent's current number.
+   - The factor must result in an integer quotient (no decimals or remainders).
+
+2. **Dividing Opponent's Number:**
+   - The opponent's number is updated by dividing it by the chosen factor.
+   - Example: Opponent's number is **45**, you choose **5**; their new number is **9**.
+
+3. **No Valid Factors:**
+   - If you cannot find a valid factor (e.g., the opponent's number is **1** or a prime number less than **10** without factors between **2** and **9**), you must pass your turn.
+   - Passing does not affect numbers; the turn simply moves to the opponent.
+
+### **Winning the Game**
+
+- **Victory Condition:**
+  - If you reduce your opponent's number to exactly **1** on your turn, you win the game immediately.
+
+- **No Possible Moves:**
+  - If both players consecutively cannot make a valid move because neither can divide the other's number (both numbers are **1** or prime numbers without factors in the **2**-**9** range), the game ends. The player with the **higher number loses**.
+
+## **Scoring**
+
+- **No Point System:**
+  - The game does not use a point or scoring system.
+  
+- **Winning:**
+  - Success is binary—you win by reducing your opponent's number to **1**.
+
+- **Strategic Advantage:**
+  - Skillful selection of factors and anticipation of the opponent's moves are key to victory.
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Initial Setup:**
+
+- Initial number: **100**
+- **Player 1's number:** 100
+- **Player 2's number:** 100
+
+---
+
+**Turn 1: Player 1**
+
+- **Opponent's Number:** 100
+- **Possible Factors:** 2, 4, 5, 10
+- **Action:** Chooses **5**
+- **Calculation:** 100 / 5 = **20**
+- **Player 2's New Number:** **20**
+
+---
+
+**Turn 1: Player 2**
+
+- **Opponent's Number:** 100
+- **Possible Factors:** 2, 4, 5, 10
+- **Action:** Chooses **4**
+- **Calculation:** 100 / 4 = **25**
+- **Player 1's New Number:** **25**
+
+---
+
+**Turn 2: Player 1**
+
+- **Opponent's Number:** 20
+- **Possible Factors:** 2, 4, 5, 10
+- **Action:** Chooses **5**
+- **Calculation:** 20 / 5 = **4**
+- **Player 2's New Number:** **4**
+
+---
+
+**Turn 2: Player 2**
+
+- **Opponent's Number:** 25
+- **Possible Factors:** 5
+- **Action:** Chooses **5**
+- **Calculation:** 25 / 5 = **5**
+- **Player 1's New Number:** **5**
+
+---
+
+**Turn 3: Player 1**
+
+- **Opponent's Number:** 4
+- **Possible Factors:** 2, 4
+- **Action:** Chooses **2**
+- **Calculation:** 4 / 2 = **2**
+- **Player 2's New Number:** **2**
+
+---
+
+**Turn 3: Player 2**
+
+- **Opponent's Number:** 5
+- **Possible Factors:** 5
+- **Action:** Chooses **5**
+- **Calculation:** 5 / 5 = **1**
+- **Player 1's New Number:** **1**
+
+---
+
+**Turn 4: Player 1**
+
+- **Opponent's Number:** 2
+- **Possible Factors:** 2
+- **Action:** Chooses **2**
+- **Calculation:** 2 / 2 = **1**
+- **Player 2's New Number:** **1**
+- **Victory:** Since both numbers are now **1**, the last player to reduce the opponent's number to **1** wins. **Player 1** wins!
+
+### **Command-Line Interaction Example**
+
+```
+Welcome to Factor Duel!
+Initial number set to 100.
+
+Player 1's number: 100
+Player 2's number: 100
+
+--- Player 1's Turn ---
+Opponent's number is 100.
+Enter a factor between 2 and 9 that divides 100: 5
+Valid factor!
+Player 2's number is now 20.
+
+--- Player 2's Turn ---
+Opponent's number is 100.
+Enter a factor between 2 and 9 that divides 100: 4
+Valid factor!
+Player 1's number is now 25.
+
+--- Player 1's Turn ---
+Opponent's number is 20.
+Enter a factor between 2 and 9 that divides 20: 5
+Valid factor!
+Player 2's number is now 4.
+
+--- Player 2's Turn ---
+Opponent's number is 25.
+Enter a factor between 2 and 9 that divides 25: 5
+Valid factor!
+Player 1's number is now 5.
+
+--- Player 1's Turn ---
+Opponent's number is 4.
+Enter a factor between 2 and 9 that divides 4: 2
+Valid factor!
+Player 2's number is now 2.
+
+--- Player 2's Turn ---
+Opponent's number is 5.
+Enter a factor between 2 and 9 that divides 5: 5
+Valid factor!
+Player 1's number is now 1.
+
+--- Player 1's Turn ---
+Opponent's number is 2.
+Enter a factor between 2 and 9 that divides 2: 2
+Valid factor!
+Player 2's number is now 1.
+
+Player 1 has reduced Player 2's number to 1.
+Player 1 wins the game!
+```
+
+### **Strategic Considerations**
+
+- **Anticipate Opponent's Moves:**
+  - Consider which factors your opponent can use against you on their next turn.
+  - Avoid leaving your number in a state where a single move can significantly reduce it.
+
+- **Select Factors Wisely:**
+  - Choosing larger factors can drastically reduce the opponent's number but may leave you vulnerable.
+  - Sometimes selecting a smaller factor extends the game, giving you more control.
+
+- **Plan Ahead:**
+  - Look several moves ahead to foresee possible outcomes.
+  - Aim to force the opponent into positions with limited options.
+
+## **Conclusion**
+
+**Factor Duel** is a simple yet strategically rich game that tests players' mathematical thinking and planning abilities. With straightforward rules and minimal components, it's easy to learn and quick to play, making it ideal for a command-line interface. Each match offers a new challenge, as initial numbers and player choices create a dynamic and engaging experience. Will you outthink your opponent and emerge victorious in the battle of factors?

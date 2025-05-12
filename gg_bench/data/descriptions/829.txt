@@ -1,0 +1,237 @@
+**Game Name:** Number Eliminator
+
+---
+
+### **Objective**
+
+Be the last player able to make a valid move by strategically crossing off numbers from a shared list according to the game's divisibility rules.
+
+---
+
+### **Setup**
+
+- **Number List:** Write down a shared list of numbers from **1** to **9**.
+  
+  ```
+  1, 2, 3, 4, 5, 6, 7, 8, 9
+  ```
+
+- **Starting Player:** Decide who will take the first turn (e.g., flip a coin or agree amicably).
+
+---
+
+### **Game Components**
+
+- **Shared Number List:** A list containing the numbers **1** through **9**.
+- **Turn Indicator:** An optional marker or simple notation to keep track of whose turn it is.
+- **Cross-Off Mechanism:** A method to mark numbers as used (e.g., striking through numbers on paper or removing them from a digital list).
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players alternate turns throughout the game.
+- **Turn Actions:**
+  - **First Turn:** The starting player selects **any one number** from the shared list to cross off.
+  - **Subsequent Turns:** Each player must select a number that is a **divisor** or a **multiple** of the **last number** their opponent chose.
+- **Turn Progression:** The game continues with players alternating turns until one player cannot make a valid move.
+
+---
+
+### **Rules and Mechanics**
+
+1. **First Move:**
+   - The first player may choose **any number** from the list to cross off.
+
+2. **Valid Moves:**
+   - On your turn, you **must** cross off a number that is either a **divisor** or a **multiple** of the **last number** your opponent selected.
+   - The number **must be available** in the list (not already crossed off).
+
+3. **Definitions:**
+   - **Divisor:** A number that divides evenly into another number without leaving a remainder.
+     - Example: **2** is a divisor of **4** because \( 4 \div 2 = 2 \) with no remainder.
+   - **Multiple:** A number that can be obtained by multiplying another number by an integer.
+     - Example: **8** is a multiple of **4** because \( 4 \times 2 = 8 \).
+
+4. **Winning the Game:**
+   - If a player cannot cross off any valid number on their turn (no numbers remaining are divisors or multiples of the last number chosen), they **lose** the game.
+   - The **other player wins** by default.
+
+5. **Additional Rules:**
+   - **All numbers** crossed off remain out of play for the rest of the game.
+   - **Players cannot pass;** they must make a move if a valid one is available.
+
+---
+
+### **Scoring**
+
+- **Winning Condition:** The winner is the player who successfully makes the last valid move.
+- **No Points System:** The game does not involve point tracking; it is a win/lose outcome based on the ability to make a valid move.
+
+---
+
+### **Examples**
+
+#### **Gameplay Example**
+
+**Initial Number List:**
+
+```
+1, 2, 3, 4, 5, 6, 7, 8, 9
+```
+
+**Turn-by-Turn Play:**
+
+1. **Player 1's Turn:**
+   - Chooses **6** and crosses it off.
+   - **Reason:** First move; any number is allowed.
+   - **Numbers Remaining:** 1, 2, 3, 4, 5, 7, 8, 9
+
+2. **Player 2's Turn:**
+   - Last number chosen: **6**
+   - **Valid Choices:** Divisors or multiples of 6 that are still available.
+     - **Divisors of 6:** 1, 2, 3
+     - **Multiples of 6:** None within 1-9 besides 6 (already crossed off)
+   - Chooses **3** and crosses it off.
+   - **Numbers Remaining:** 1, 2, 4, 5, 7, 8, 9
+
+3. **Player 1's Turn:**
+   - Last number chosen: **3**
+   - **Valid Choices:** Divisors or multiples of 3.
+     - **Divisors of 3:** 1
+     - **Multiples of 3:** 9
+   - Chooses **9** and crosses it off.
+   - **Numbers Remaining:** 1, 2, 4, 5, 7, 8
+
+4. **Player 2's Turn:**
+   - Last number chosen: **9**
+   - **Valid Choices:** Divisors of 9.
+     - **Divisors of 9:** 1
+   - Chooses **1** and crosses it off.
+   - **Numbers Remaining:** 2, 4, 5, 7, 8
+
+5. **Player 1's Turn:**
+   - Last number chosen: **1**
+   - **Valid Choices:** Multiples of 1 (any remaining number).
+   - Chooses **4** and crosses it off.
+   - **Numbers Remaining:** 2, 5, 7, 8
+
+6. **Player 2's Turn:**
+   - Last number chosen: **4**
+   - **Valid Choices:** Divisors or multiples of 4.
+     - **Divisors of 4:** 2
+     - **Multiples of 4:** 8
+   - Chooses **2** and crosses it off.
+   - **Numbers Remaining:** 5, 7, 8
+
+7. **Player 1's Turn:**
+   - Last number chosen: **2**
+   - **Valid Choices:** Multiples of 2.
+     - **Multiples of 2:** 8
+   - Chooses **8** and crosses it off.
+   - **Numbers Remaining:** 5, 7
+
+8. **Player 2's Turn:**
+   - Last number chosen: **8**
+   - **Valid Choices:** Divisors of 8 (already crossed off) or multiples (beyond 9).
+   - **No valid moves available.**
+   - **Player 2 loses; Player 1 wins!**
+
+---
+
+### **Command-Line Interaction Example**
+
+```plaintext
+Welcome to Number Eliminator!
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1's Turn:
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Select a number to cross off: **6**
+
+Player 1 crosses off 6.
+
+-----------------------------------
+
+Player 2's Turn:
+Last Number Chosen by Opponent: 6
+Available Numbers: 1, 2, 3, 4, 5, 7, 8, 9
+Valid Choices: 1, 2, 3
+Select a number to cross off: **3**
+
+Player 2 crosses off 3.
+
+-----------------------------------
+
+Player 1's Turn:
+Last Number Chosen by Opponent: 3
+Available Numbers: 1, 2, 4, 5, 7, 8, 9
+Valid Choices: 1, 9
+Select a number to cross off: **9**
+
+Player 1 crosses off 9.
+
+-----------------------------------
+
+Player 2's Turn:
+Last Number Chosen by Opponent: 9
+Available Numbers: 1, 2, 4, 5, 7, 8
+Valid Choices: 1
+Select a number to cross off: **1**
+
+Player 2 crosses off 1.
+
+-----------------------------------
+
+Player 1's Turn:
+Last Number Chosen by Opponent: 1
+Available Numbers: 2, 4, 5, 7, 8
+Valid Choices: 2, 4, 5, 7, 8
+Select a number to cross off: **4**
+
+Player 1 crosses off 4.
+
+-----------------------------------
+
+Player 2's Turn:
+Last Number Chosen by Opponent: 4
+Available Numbers: 2, 5, 7, 8
+Valid Choices: 2, 8
+Select a number to cross off: **2**
+
+Player 2 crosses off 2.
+
+-----------------------------------
+
+Player 1's Turn:
+Last Number Chosen by Opponent: 2
+Available Numbers: 5, 7, 8
+Valid Choices: 8
+Select a number to cross off: **8**
+
+Player 1 crosses off 8.
+
+-----------------------------------
+
+Player 2's Turn:
+Last Number Chosen by Opponent: 8
+Available Numbers: 5, 7
+Valid Choices: None
+
+Player 2 has no valid moves left.
+Player 1 wins the game!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead:** Anticipate your opponent’s possible moves based on the numbers remaining.
+- **Control the Game:** By choosing numbers strategically, you can limit your opponent's valid options.
+- **Remember the Divisibility Rules:** A strong grasp of basic math fundamentals will enhance your gameplay.
+
+---
+
+This game combines simple arithmetic with strategic planning, allowing for quick gameplay that's easy to code and play via a command-line interface. Skilled players who think ahead can consistently outmaneuver less strategic opponents, ensuring that the game remains competitive and engaging without ending in a draw.
+
+Have fun playing Number Eliminator!

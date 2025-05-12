@@ -1,0 +1,220 @@
+# Gridlock Game Rule Book
+
+## Objective
+
+**Gridlock** is a strategic two-player, turn-based game played on a 4x4 grid. The primary goal is to outmaneuver your opponent by placing your markers on the grid and blocking them from making a legal move. The player who forces their opponent into a position where they cannot place a marker without violating the game's placement rules wins the game.
+
+## Setup
+
+1. **Game Grid**: The game is played on a 4x4 grid consisting of 16 cells arranged in 4 rows and 4 columns.
+2. **Markers**:
+   - **Player 1** uses markers represented by "X".
+   - **Player 2** uses markers represented by "O".
+3. **Starting Conditions**:
+   - The grid starts empty with all cells unoccupied.
+   - Decide who will be Player 1 and Player 2. This can be determined by agreement or a random method such as flipping a coin.
+
+## Game Components
+
+- **Grid**: A 4x4 grid displayed in the command-line interface. Each cell is identified by its row and column numbers (ranging from 1 to 4).
+- **Markers**:
+  - "X" for Player 1.
+  - "O" for Player 2.
+- **Empty Cells**: Represented by "." or a blank space in the grid display.
+- **Command Inputs**: Players input their moves by specifying the row and column numbers of the cell where they wish to place their marker.
+
+## Turns
+
+- The game proceeds in alternating turns starting with Player 1.
+- **Turn Structure**:
+  1. **Display Grid**: The current state of the grid is displayed.
+  2. **Player Input**: The current player inputs the coordinates (row and column) of an empty cell where they wish to place their marker.
+  3. **Validation**: The game checks if the move is legal according to the rules.
+     - If the move is legal, the marker is placed, and the turn ends.
+     - If the move is illegal, the player is prompted to input a different move.
+  4. **Check for Game End**: After each move, the game checks if the opponent has any legal moves remaining.
+     - If the opponent cannot make a legal move, the current player wins.
+     - If the opponent can make a move, the next turn begins.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **Marker Placement**:
+   - Players can place their marker on any empty cell that is **not adjacent** (horizontally or vertically) to any of the opponent's markers.
+   - Diagonal adjacency is allowed; only horizontal and vertical adjacency to an opponent's marker is prohibited.
+2. **Adjacency Definition**:
+   - Two cells are considered adjacent if they share a common side (not including corners).
+   - For example, if Player 2 has a marker on cell (2,3), Player 1 cannot place a marker on cells (1,3), (2,2), (2,4), or (3,3).
+
+### Move Validation
+
+- A move is considered legal if:
+  - The chosen cell is within the bounds of the grid (rows and columns between 1 and 4).
+  - The chosen cell is empty.
+  - The chosen cell is not adjacent to any of the opponent's existing markers (excluding diagonal adjacency).
+
+- If a player has no legal moves available on their turn, they lose the game.
+
+### Game End Conditions
+
+- **Victory**: A player wins if their opponent has no legal moves to make on their turn.
+- **No Draws**: The game cannot end in a draw due to the finite number of cells and the placement rules.
+
+## Scoring
+
+- **Win**: The winning player is declared the victor of the game.
+- **Loss**: The losing player is the one who cannot make a legal move on their turn.
+- **No Points or Accumulated Score**: This game does not use a point or scoring system beyond determining the winner and loser of each game.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid State
+
+All cells are empty.
+
+```
+    1   2   3   4
+  +---+---+---+---+
+1 |   |   |   |   |
+  +---+---+---+---+
+2 |   |   |   |   |
+  +---+---+---+---+
+3 |   |   |   |   |
+  +---+---+---+---+
+4 |   |   |   |   |
+  +---+---+---+---+
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 places an "X" at cell (2,2).
+- **Move Validation**: Cell (2,2) is empty and not adjacent to any opponent's markers (since none exist yet).
+- **Grid State**:
+
+```
+    1   2   3   4
+  +---+---+---+---+
+1 |   |   |   |   |
+  +---+---+---+---+
+2 |   | X |   |   |
+  +---+---+---+---+
+3 |   |   |   |   |
+  +---+---+---+---+
+4 |   |   |   |   |
+  +---+---+---+---+
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 attempts to place an "O" at cell (2,3).
+- **Move Validation**:
+  - Cell (2,3) is adjacent to Player 1's marker at (2,2).
+  - **Invalid Move**: Player 2 cannot place a marker adjacent to an opponent's marker.
+- **Player 2's Second Attempt**:
+  - **Action**: Player 2 places an "O" at cell (3,3).
+  - **Move Validation**: Cell (3,3) is not adjacent horizontally or vertically to any of Player 1's markers.
+- **Grid State**:
+
+```
+    1   2   3   4
+  +---+---+---+---+
+1 |   |   |   |   |
+  +---+---+---+---+
+2 |   | X |   |   |
+  +---+---+---+---+
+3 |   |   | O |   |
+  +---+---+---+---+
+4 |   |   |   |   |
+  +---+---+---+---+
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Player 1 attempts to place an "X" at cell (3,2).
+- **Move Validation**:
+  - Cell (3,2) is adjacent to Player 2's marker at (3,3).
+  - **Invalid Move**: Cannot place adjacent to opponent's marker.
+- **Player 1's Second Attempt**:
+  - **Action**: Player 1 places an "X" at cell (1,1).
+  - **Move Validation**: Valid move.
+- **Grid State**:
+
+```
+    1   2   3   4
+  +---+---+---+---+
+1 | X |   |   |   |
+  +---+---+---+---+
+2 |   | X |   |   |
+  +---+---+---+---+
+3 |   |   | O |   |
+  +---+---+---+---+
+4 |   |   |   |   |
+  +---+---+---+---+
+```
+
+#### Subsequent Turns
+
+- Players continue following the rules, carefully choosing positions that are not adjacent to the opponent's markers.
+- As the grid fills up, options become limited.
+- **Endgame Scenario**:
+
+Suppose it's Player 2's turn, and the only remaining empty cells are adjacent to Player 1's markers. Player 2 has no legal moves.
+
+- **Outcome**: Player 1 wins because Player 2 cannot make a legal move.
+
+### Command-Line Interaction Sample
+
+#### Start of Game
+
+- **Prompt**: "Player 1 (X), it's your turn. Enter your move (row and column):"
+- **Player Input**: `2 2`
+
+#### Move Validation
+
+- **Output**: "You placed an 'X' at position (2,2)."
+
+#### Display Grid
+
+```
+    1   2   3   4
+  +---+---+---+---+
+1 |   |   |   |   |
+  +---+---+---+---+
+2 |   | X |   |   |
+  +---+---+---+---+
+3 |   |   |   |   |
+  +---+---+---+---+
+4 |   |   |   |   |
+  +---+---+---+---+
+```
+
+#### Invalid Move Attempt
+
+- **Prompt**: "Player 2 (O), it's your turn. Enter your move (row and column):"
+- **Player Input**: `2 3`
+- **Output**: "Invalid move. You cannot place next to an opponent's marker. Please choose a different cell."
+
+#### Valid Move
+
+- **Player Input**: `3 3`
+- **Output**: "You placed an 'O' at position (3,3)."
+
+#### Game Conclusion
+
+- **Prompt**: "Player 1 (X), it's your turn. Enter your move (row and column):"
+- **Player Input**: [No legal moves available]
+- **Output**: "Player 1 has no legal moves remaining. Player 2 (O) wins the game!"
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's potential moves and aim to limit their options.
+- **Control the Center**: Placing markers near the center early on can maximize your own options while restricting your opponent.
+- **Avoid Isolation**: Keep your markers spread out to maintain multiple areas for potential placement.
+- **Force Moves**: Try to guide your opponent into areas where their options will become limited more quickly.
+
+---
+
+Enjoy playing **Gridlock**, and may the most strategic player win!

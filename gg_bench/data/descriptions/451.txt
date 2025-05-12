@@ -1,0 +1,132 @@
+# Divisor Duel
+
+## Objective
+
+Divisor Duel is a two-player, turn-based game where players take turns reducing a shared positive integer by subtracting its proper divisors. The primary goal is to be the last player able to make a valid move. A player wins by forcing their opponent into a position where they cannot make a move on their turn.
+
+## Setup
+
+- **Starting Number (N):** The game begins with a shared positive integer \( N \) greater than 1. It is recommended to start with a number like 30 for a quick game, but any integer greater than 1 can be used.
+
+- **Players:** Two players, referred to as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Shared Number (N):** This is the current number in play. It is visible to both players and is updated each turn based on the players' actions.
+
+- **Proper Divisors:** For any given number \( N \), its proper divisors are all positive integers less than \( N \) that divide \( N \) evenly (excluding 1 and \( N \) itself).
+
+## Turns
+
+- **Turn Order:** Players take turns alternately. Player 1 starts the game.
+
+- **Player Actions:**
+  - On their turn, a player must:
+    1. **Identify the Proper Divisors of \( N \):** List all the proper divisors of the current number \( N \) (excluding 1 and \( N \)).
+    2. **Choose a Divisor to Subtract:** Select one proper divisor from the list.
+    3. **Update \( N \):** Subtract the chosen divisor from \( N \) to obtain a new \( N \).
+    4. **Announce the Move:** Inform the opponent of the chosen divisor and the new value of \( N \).
+
+- **Turn Progression:** The updated \( N \) becomes the current number for the next player's turn.
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - A move is valid if:
+     - The chosen divisor is a proper divisor of \( N \) (excluding 1 and \( N \)).
+     - The subtraction results in a positive integer greater than 0.
+
+2. **Invalid Moves:**
+   - If a player cannot find any proper divisors of \( N \) (i.e., \( N \) is prime or \( N \) equals 1), they cannot make a move and lose the game.
+
+3. **End of Game:**
+   - The game ends when a player cannot make a valid move on their turn. The other player is declared the winner.
+
+4. **No Draws:**
+   - There are no possible draw scenarios in Divisor Duel. The game will always result in one winner and one loser.
+
+## Scoring
+
+- **Winning the Game:** The player who forces their opponent into a position where they cannot make a valid move wins the game.
+
+- **No Points System:** Divisor Duel does not track points. Victory is determined solely by the ability to make valid moves.
+
+## Examples
+
+### Example Game
+
+**Starting Number:** \( N = 30 \)
+
+#### Turn 1:
+- **Player 1's Turn:**
+  - **Proper Divisors of 30:** 2, 3, 5, 6, 10, 15
+  - **Player 1 Chooses:** 15
+  - **New \( N \):** \( 30 - 15 = 15 \)
+  - **Announcement:** "I subtract 15 from 30. New N is 15."
+
+#### Turn 2:
+- **Player 2's Turn:**
+  - **Proper Divisors of 15:** 3, 5
+  - **Player 2 Chooses:** 5
+  - **New \( N \):** \( 15 - 5 = 10 \)
+  - **Announcement:** "I subtract 5 from 15. New N is 10."
+
+#### Turn 3:
+- **Player 1's Turn:**
+  - **Proper Divisors of 10:** 2, 5
+  - **Player 1 Chooses:** 5
+  - **New \( N \):** \( 10 - 5 = 5 \)
+  - **Announcement:** "I subtract 5 from 10. New N is 5."
+
+#### Turn 4:
+- **Player 2's Turn:**
+  - **Proper Divisors of 5:** None (since 5 is prime)
+  - **Outcome:** Player 2 cannot make a move.
+  - **Winner:** Player 1 wins the game.
+
+### Command-Line Interaction
+
+Below is a sample interaction between two players in a command-line interface:
+
+```
+Starting Number (N): 30
+
+Player 1's Turn:
+Proper divisors of 30: 2, 3, 5, 6, 10, 15
+Enter the divisor to subtract: 15
+You subtracted 15 from 30.
+New N is 15.
+
+Player 2's Turn:
+Proper divisors of 15: 3, 5
+Enter the divisor to subtract: 5
+You subtracted 5 from 15.
+New N is 10.
+
+Player 1's Turn:
+Proper divisors of 10: 2, 5
+Enter the divisor to subtract: 5
+You subtracted 5 from 10.
+New N is 5.
+
+Player 2's Turn:
+Proper divisors of 5: None
+No valid moves available. Player 2 loses.
+Player 1 wins the game!
+```
+
+## Strategic Depth
+
+- **Understanding Divisors:** Skilled players will benefit from quickly identifying the proper divisors of numbers and anticipating future moves.
+
+- **Planning Ahead:** By choosing specific divisors, players can manipulate \( N \) to prime numbers or 1 on their opponent's turn, forcing a win.
+
+- **Control of the Game:** Players can strategize to control the flow of the game, deciding when to reduce \( N \) significantly or minimally based on the available divisors.
+
+## Summary
+
+Divisor Duel is a simple yet strategic game that involves number theory and foresight. It is easy to code and play in a command-line interface, ends quickly, and ensures that skilled players can consistently outmaneuver unskilled opponents through better understanding and planning.
+
+---
+
+Enjoy playing Divisor Duel, and may the best strategist win!

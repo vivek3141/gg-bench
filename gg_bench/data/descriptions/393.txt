@@ -1,0 +1,145 @@
+# GridLock
+
+## Objective
+
+**GridLock** is a strategic two-player turn-based game played on a grid. The primary goal is to be the last player able to make a valid move. Players take turns moving a shared token on the grid, and the player who forces their opponent into a position where they cannot make a move wins the game.
+
+## Setup
+
+1. **Game Board**: A 7x7 square grid is used as the game board.
+2. **Starting Position**: A single token is placed at the center cell of the grid, which is at position `(4,4)` considering the top-left cell as `(1,1)`.
+3. **Visited Cells**: At the start, no cells are marked as visited except the starting cell, which is considered visited.
+
+## Game Components
+
+- **Grid**: A 7x7 two-dimensional grid representing the game board.
+- **Token**: A marker that occupies one cell on the grid at a time. It represents the current position.
+- **Visited Cells**: Cells that the token has occupied during the game. These cells cannot be occupied again.
+
+## Turns
+
+- Players decide who goes first (e.g., by a coin toss).
+- Players alternate turns throughout the game.
+- **On a player's turn**:
+  - The player must move the token according to the movement rules.
+  - If a player cannot make a valid move on their turn, they lose the game.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Direction**: The token can move in one of four cardinal directions: up, down, left, or right (no diagonal moves).
+2. **Distance**: The token can move any number of unvisited cells in a straight line, but must move at least one cell.
+3. **Visited Cells**: The token cannot move through or land on a visited cell.
+4. **Boundary Limits**: The token cannot move beyond the boundaries of the grid.
+5. **Marking Visited Cells**: After moving, the token marks all cells it has passed over, including the starting and ending cells of the move, as visited.
+
+### Additional Rules
+
+- **Forced Moves**: If a player has at least one valid move, they must make a move.
+- **No Passing**: Players cannot skip their turn.
+- **Winning Condition**: If a player cannot make any valid moves on their turn, they lose, and their opponent wins.
+
+## Scoring
+
+- **Win/Loss**: The game is won by being the last player to make a valid move.
+- **No Points System**: There is no point tracking; the outcome is a win or loss.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial State:
+
+- Token Position: `(4,4)`
+- Visited Cells: `(4,4)`
+
+#### Player 1's Turn:
+
+- **Move**: Moves the token up to `(1,4)` (three cells up).
+- **Path Visited**: `(4,4)`, `(3,4)`, `(2,4)`, `(1,4)`
+- **Visited Cells Updated**: `(1,4)`, `(2,4)`, `(3,4)`, `(4,4)`
+
+#### Player 2's Turn:
+
+- **Possible Moves**:
+  - Right to `(1,7)`
+  - Left to `(1,1)`
+  - Down to `(2,4)` is invalid (already visited).
+- **Move**: Moves the token left to `(1,1)` (three cells left).
+- **Path Visited**: `(1,4)`, `(1,3)`, `(1,2)`, `(1,1)`
+- **Visited Cells Updated**: `(1,1)`, `(1,2)`, `(1,3)`, `(1,4)`
+
+#### Player 1's Turn:
+
+- **Possible Moves**:
+  - Down to `(7,1)` is invalid (would need to pass over visited cells or exceed boundaries).
+  - Right to `(1,7)` (available).
+- **Move**: Moves the token right to `(1,7)` (six cells right).
+- **Path Visited**: `(1,1)`, `(1,2)`, `(1,3)`, `(1,4)`, `(1,5)`, `(1,6)`, `(1,7)`
+- **Visited Cells Updated**: `(1,5)`, `(1,6)`, `(1,7)`
+
+#### Player 2's Turn:
+
+- **Possible Moves**:
+  - Down to `(7,7)` (can move down).
+- **Move**: Moves the token down to `(7,7)` (six cells down).
+- **Path Visited**: `(1,7)`, `(2,7)`, `(3,7)`, `(4,7)`, `(5,7)`, `(6,7)`, `(7,7)`
+- **Visited Cells Updated**: `(2,7)`, `(3,7)`, `(4,7)`, `(5,7)`, `(6,7)`, `(7,7)`
+
+#### Player 1's Turn:
+
+- **Possible Moves**:
+  - Left to `(7,1)` (available).
+- **Move**: Moves the token left to `(7,1)` (six cells left).
+- **Path Visited**: `(7,7)`, `(7,6)`, `(7,5)`, `(7,4)`, `(7,3)`, `(7,2)`, `(7,1)`
+- **Visited Cells Updated**: `(7,1)`, `(7,2)`, `(7,3)`, `(7,4)`, `(7,5)`, `(7,6)`, `(7,7)`
+
+#### Player 2's Turn:
+
+- **Possible Moves**:
+  - Up to `(1,1)` is invalid (cells already visited).
+  - Right or Down moves are out of bounds.
+- **Result**: Player 2 cannot make a valid move and loses the game. **Player 1 wins**.
+
+### Command-Line Interaction Example
+
+Assuming input as coordinates and direction:
+
+```plaintext
+Game Start!
+Token is at (4,4).
+
+Player 1's Turn:
+Enter direction (up/down/left/right): up
+Enter number of steps: 3
+Token moved to (1,4).
+
+Player 2's Turn:
+Enter direction: left
+Enter number of steps: 3
+Token moved to (1,1).
+
+Player 1's Turn:
+Enter direction: right
+Enter number of steps: 6
+Token moved to (1,7).
+
+Player 2's Turn:
+Enter direction: down
+Enter number of steps: 6
+Token moved to (7,7).
+
+Player 1's Turn:
+Enter direction: left
+Enter number of steps: 6
+Token moved to (7,1).
+
+Player 2's Turn:
+No valid moves available.
+Player 1 wins!
+```
+
+## Summary
+
+**GridLock** is a simple yet strategic game that challenges players to maneuver within an ever-shrinking grid. It requires foresight and planning to avoid trapping oneself while restricting the opponent's options. The game's simplicity makes it easy to implement in a command-line interface, and the clear win condition ensures each game concludes decisively and quickly.

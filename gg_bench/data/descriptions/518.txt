@@ -1,0 +1,239 @@
+# Number Trek
+
+## Objective
+
+**Be the first player to reach the End Node by strategically moving through a network of numbered nodes, following specific numerical movement rules.**
+
+In Number Trek, two players compete to navigate a network of interconnected nodes labeled with integer numbers. Players move from node to node by leveraging mathematical relationships between the numbers. The first player to reach the End Node wins the game.
+
+---
+
+## Setup
+
+### Game Board
+
+- **Network of Nodes**: The game is played on a predefined network (graph) of nodes connected by edges.
+- **Node Labels**: Each node is labeled with a unique positive integer.
+- **Start Node**: Both players begin the game on the Start Node.
+- **End Node**: The goal is to reach the End Node first.
+
+### Player Positions
+
+- Both players start at the **Start Node**.
+- Positions are tracked throughout the game, typically by variables representing the current node of each player.
+
+### Starting Conditions
+
+- **Player Turn Order**: Decide randomly which player takes the first turn.
+- **Move Log**: An optional log can be maintained to record the sequence of moves for each player.
+
+---
+
+## Game Components
+
+### Nodes
+
+- **Description**: Points in the network labeled with integers (e.g., 1, 2, 3, ..., N).
+- **Attributes**:
+  - **Label**: A unique positive integer.
+  - **Connections**: Each node is connected to one or more other nodes.
+
+### Edges
+
+- **Description**: Connections between nodes.
+- **Attributes**:
+  - **Bidirectional**: Movement between connected nodes is allowed in both directions unless otherwise specified.
+
+### Player Tokens
+
+- **Representation**: In a command-line interface, tokens can be represented by the player's number (Player 1 or Player 2) and their current node.
+- **Functionality**: Indicates the player's current position on the network.
+
+### Game Map
+
+- **Representation**: The network can be represented as an adjacency list or adjacency matrix within the code.
+- **Display**: The game can display connected nodes and possible moves to the player during their turn.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Turn Order**: Players alternate turns. The starting player is determined randomly at the beginning of the game.
+2. **Player Actions**:
+   - **View Current Node**: The player is informed of their current node and its connections.
+   - **Determine Valid Moves**: The player is presented with a list of connected nodes that are valid moves based on the movement rules.
+   - **Select Move**: The player chooses a node to move to from the list of valid moves.
+3. **Turn Progression**: After a player completes their move, the turn passes to the other player.
+
+### Player Options During Turn
+
+- **Move to a Node**: Move to a connected node that satisfies the movement rules.
+- **Pass**: If no valid moves are available, the player must pass their turn.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Valid Moves**:
+   - A player may move from their current node to any directly connected node if **the number on the destination node is either a factor or a multiple of the number on the current node**.
+   - **Factors**: Numbers that divide evenly into the current node's number.
+   - **Multiples**: Numbers that are evenly divisible by the current node's number.
+
+2. **Examples**:
+   - **Current Node Label**: 4
+     - **Connected Nodes**: 2, 3, 8
+     - **Valid Moves**: 2 (factor), 8 (multiple)
+     - **Invalid Move**: 3 (neither a factor nor a multiple of 4)
+
+### Special Nodes
+
+- **Start Node**:
+  - Labelled with the number 1.
+  - Both players begin here.
+- **End Node**:
+  - The node that players aim to reach.
+  - Reaching this node first results in a win.
+
+### Occupied Nodes
+
+- Both players can occupy the same node without any conflict.
+
+### Blocked Paths
+
+- If a player has **no valid moves** on their turn (i.e., no connected nodes satisfy the movement rules), they must **pass** their turn.
+- The game continues with the other player's turn.
+
+### Winning the Game
+
+- The first player to reach the **End Node** wins the game.
+- There are no draws; the game continues until one player wins.
+
+---
+
+## Scoring
+
+- **Win Tracking**: Players can keep track of wins if playing multiple rounds.
+- **No Points System**: The game does not utilize a points system; victory is achieved by reaching the End Node first.
+
+---
+
+## Examples
+
+### Sample Network
+
+Below is a sample network to illustrate the game's mechanics:
+
+```
+Nodes and Connections:
+
+Start(1)
+   |
+   2
+  / \
+ 4   3
+ |   |
+ 8   6
+  \ /
+  End(12)
+```
+
+### Example Turn Sequence
+
+1. **Turn 1**: Player 1 at Node 1
+   - **Connected Nodes**: 2
+   - **Valid Moves**: 2 (multiple of 1)
+   - **Action**: Moves to Node 2
+
+2. **Turn 2**: Player 2 at Node 1
+   - **Connected Nodes**: 2
+   - **Valid Moves**: 2 (multiple of 1)
+   - **Action**: Moves to Node 2
+
+3. **Turn 3**: Player 1 at Node 2
+   - **Connected Nodes**: 4, 3
+   - **Valid Moves**:
+     - 4 (multiple of 2)
+     - 1 is not connected.
+     - 3 (invalid, since 3 is not a factor or multiple of 2)
+   - **Action**: Moves to Node 4
+
+4. **Turn 4**: Player 2 at Node 2
+   - **Connected Nodes**: 4, 3
+   - **Valid Moves**: 4
+   - **Action**: Moves to Node 4
+
+5. **Turn 5**: Player 1 at Node 4
+   - **Connected Nodes**: 2, 8
+   - **Valid Moves**:
+     - 2 (factor of 4)
+     - 8 (multiple of 4)
+   - **Action**: Moves to Node 8
+
+6. **Turn 6**: Player 2 at Node 4
+   - **Connected Nodes**: 2, 8
+   - **Valid Moves**: 2, 8
+   - **Action**: Moves to Node 8
+
+7. **Turn 7**: Player 1 at Node 8
+   - **Connected Nodes**: 4, 12
+   - **Valid Moves**:
+     - 4 (factor of 8)
+     - 12 (multiple of 8 is not valid since 12 is not a multiple of 8)
+   - **Action**: Cannot move to 12 (since 12 is not a multiple of 8 and not connected in this example). Must stay at 8.
+
+8. **Turn 8**: Player 2 at Node 8
+   - **Same situation as Player 1**
+
+   *(Assuming the network allows movement to End Node from Node 8 if connected)*
+
+9. **Turn 9**: Player 1 at Node 8
+   - **Connected Nodes**: End(12)
+   - **Valid Moves**:
+     - End(12) (since 12 is a multiple of 8 if connected)
+   - **Action**: Moves to End Node and wins the game.
+
+### Command-Line Interaction Example
+
+```
+Player 1's Turn:
+You are at Node 2.
+Connected Nodes: 4, 3
+Valid Moves: 4
+Enter the label of the node you want to move to: 4
+
+Player 1 moves to Node 4.
+
+Player 2's Turn:
+You are at Node 2.
+Connected Nodes: 4, 3
+Valid Moves: 4
+Enter the label of the node you want to move to: 4
+
+Player 2 moves to Node 4.
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Look for paths with nodes that offer multiple valid moves to avoid getting stuck.
+- **Block Opponent**: Move to nodes that might reduce the options for your opponent on their next turn.
+- **Number Relationships**: Familiarize yourself with factors and multiples of numbers on the network to quickly identify valid moves.
+
+---
+
+## Notes
+
+- **Custom Networks**: Players can create custom networks with different node numbers and connections for varied gameplay.
+- **Complexity Adjustment**: Increase or decrease the number of nodes and complexity of connections to adjust the game's difficulty.
+- **Educational Benefit**: The game helps improve understanding of factors and multiples, making it both fun and educational.
+
+---
+
+By combining numerical relationships with strategic movement, Number Trek offers a unique and engaging experience that is straightforward to code and play in a command-line interface. The simplicity of the rules ensures quick games, while the strategic depth allows skilled players to consistently outmaneuver their opponents.
+
+Enjoy your journey through the Number Trek!

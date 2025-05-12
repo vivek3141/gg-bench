@@ -1,0 +1,196 @@
+# Number Reach: Rule Book
+
+## Objective
+
+**Primary Goal:**  
+Be the first player to reach the **target number** exactly by strategically applying mathematical operations to the **current number**. Reaching the target number wins the game immediately. Overshooting the target number results in an instant loss.
+
+## Setup
+
+1. **Initial Conditions:**
+   - **Starting Number:** `1`
+   - **Target Number:** `20`
+
+2. **Player Assignment:**  
+   - Two players are required: **Player 1** and **Player 2**.
+   - Determine who goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Current Number:**  
+  The number that players manipulate during their turns, starting at `1`.
+
+- **Target Number:**  
+  The number players aim to reach, set at `20`.
+
+- **Operations:**
+  - **Add 1 (+1):** Increment the current number by one.
+  - **Multiply by 2 (×2):** Double the current number.
+
+- **Game Interface:**  
+  A command-line interface where players input their chosen operations. No physical pieces or board are required.
+
+## Turns
+
+- **Turn Structure:**
+  - Players take turns in sequence, starting with **Player 1**.
+  - On each turn, a player performs **one** operation on the current number.
+
+- **Available Actions on a Turn:**
+  - Choose **one** of the two operations:
+    - Add 1 to the current number.
+    - Multiply the current number by 2.
+
+- **Progression:**
+  - After a player performs an operation, the new number becomes the current number for the next player's turn.
+
+## Rules and Mechanics
+
+1. **Operation Rules:**
+   - **Add 1 (+1):**  
+     - Syntax: `+1`
+     - Functionality: `current_number = current_number + 1`
+
+   - **Multiply by 2 (×2):**  
+     - Syntax: `*2`
+     - Functionality: `current_number = current_number * 2`
+
+2. **Winning the Game:**
+   - If a player’s operation results in the current number being **exactly equal** to the target number (`20`), that player **wins** immediately.
+
+3. **Losing the Game:**
+   - If a player's operation causes the current number to exceed the target number (`current_number > 20`), that player **loses** immediately.
+
+4. **Continuing Play:**
+   - If the current number is less than the target number after a turn (`current_number < 20`), the game continues with the next player's turn.
+
+5. **No Draws:**
+   - The game cannot end in a draw. It continues until one player wins or loses according to the rules above.
+
+## Scoring
+
+- **Victory:**
+  - The player who reaches the target number (`20`) exactly wins the game.
+
+- **Defeat:**
+  - The player who causes the current number to exceed the target number loses the game.
+
+- **No Points System:**
+  - There is no points system; the game outcome is win or lose based on reaching the target number.
+
+## Examples
+
+### Example Game Play
+
+**Starting Conditions:**
+- Current Number: `1`
+- Target Number: `20`
+
+**Turn-by-Turn Breakdown:**
+
+1. **Player 1's Turn:**
+   - Current Number: `1`
+   - Action: `*2` (Multiply by 2)
+   - Calculation: `1 * 2 = 2`
+   - New Current Number: `2`
+
+2. **Player 2's Turn:**
+   - Current Number: `2`
+   - Action: `*2` (Multiply by 2)
+   - Calculation: `2 * 2 = 4`
+   - New Current Number: `4`
+
+3. **Player 1's Turn:**
+   - Current Number: `4`
+   - Action: `*2` (Multiply by 2)
+   - Calculation: `4 * 2 = 8`
+   - New Current Number: `8`
+
+4. **Player 2's Turn:**
+   - Current Number: `8`
+   - Action: `+1` (Add 1)
+   - Calculation: `8 + 1 = 9`
+   - New Current Number: `9`
+
+5. **Player 1's Turn:**
+   - Current Number: `9`
+   - Action: `*2` (Multiply by 2)
+   - Calculation: `9 * 2 = 18`
+   - New Current Number: `18`
+
+6. **Player 2's Turn:**
+   - Current Number: `18`
+   - Action: `+1` (Add 1)
+   - Calculation: `18 + 1 = 19`
+   - New Current Number: `19`
+
+7. **Player 1's Turn:**
+   - Current Number: `19`
+   - Action: `+1` (Add 1)
+   - Calculation: `19 + 1 = 20`
+   - New Current Number: `20`
+   - **Player 1 Wins!**
+
+### Command-Line Interaction Example
+
+**Game Start:**
+```
+Target Number: 20
+Current Number: 1
+
+Player 1's turn.
+Enter your move (+1 or *2): *2
+New Current Number: 2
+
+Player 2's turn.
+Enter your move (+1 or *2): *2
+New Current Number: 4
+
+Player 1's turn.
+Enter your move (+1 or *2): *2
+New Current Number: 8
+
+Player 2's turn.
+Enter your move (+1 or *2): +1
+New Current Number: 9
+
+Player 1's turn.
+Enter your move (+1 or *2): *2
+New Current Number: 18
+
+Player 2's turn.
+Enter your move (+1 or *2): +1
+New Current Number: 19
+
+Player 1's turn.
+Enter your move (+1 or *2): +1
+New Current Number: 20
+
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead:**  
+  Anticipate the results of your moves to avoid overshooting the target number.
+
+- **Control the Pace:**  
+  Use addition or multiplication strategically to force your opponent into a losing position.
+
+- **Avoid Overshooting:**  
+  Be cautious when the current number is close to the target. Opt for addition if multiplication would cause you to exceed `20`.
+
+## Game Variations
+
+- **Different Target Number:**  
+  Alter the target number to increase or decrease game length and complexity.
+
+- **Additional Operations:**  
+  Introduce new operations like subtracting 1 (`-1`) or dividing by 2 (`/2`) with appropriate rules adjustments.
+
+- **Three-Player Version:**  
+  Adapt the turn order to accommodate more players, with the same objective and rules.
+
+---
+
+Enjoy playing **Number Reach** and may the best strategist win!

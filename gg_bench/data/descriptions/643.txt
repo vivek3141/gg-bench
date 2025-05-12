@@ -1,0 +1,279 @@
+# Trap Runner
+
+## Rule Book
+
+### Objective
+
+The goal of **Trap Runner** is to be the first player to reach the goal square (square 10) by advancing along a linear track while avoiding traps set by your opponent. Victory is achieved when a player lands exactly on square 10 during their turn.
+
+### Setup
+
+- **Track**: A linear sequence of squares numbered from 0 (start) to 10 (goal).
+- **Starting Positions**: Both players begin at square 0.
+- **Player Tokens**: Each player has a token representing their current position on the track.
+- **Traps**: Invisible markers that players can place on squares to hinder their opponent.
+
+### Game Components
+
+- **Track**
+  - A straight line of squares numbered from 0 to 10.
+  - Square 0 is the starting point for both players.
+  - Square 10 is the goal; landing here wins the game.
+
+- **Player Tokens**
+  - Represent each player's current position.
+  - Move forward along the track based on player choices.
+
+- **Traps**
+  - Invisible to the opponent.
+  - Set on squares the player leaves during movement.
+  - Triggered when the opponent lands on a trapped square.
+
+### Turns
+
+- Players alternate turns.
+- Each turn consists of two phases:
+  1. **Movement Phase**
+     - Choose to move forward 1, 2, or 3 squares.
+  2. **Trap Setting Phase**
+     - Optionally set a trap on the square just left (except square 0).
+
+### Rules and Mechanics
+
+#### Movement Rules
+
+1. **Advance Forward**
+   - On your turn, move your token forward by **1**, **2**, or **3** squares.
+   - Example: If you're on square 4, you can move to square 5, 6, or 7.
+
+2. **No Backward Movement**
+   - You cannot move backward or stay on the same square.
+
+3. **Exact Landing**
+   - You must land exactly on square 10 to win.
+   - If moving the full amount would take you past square 10, you must adjust your move to land on square 10.
+   - Example: If you're on square 8, you can only move **2** to land on square 10.
+
+#### Trap Setting Rules
+
+1. **Setting a Trap**
+   - After moving, you may set a trap on the square you just left.
+   - Traps cannot be set on square 0.
+
+2. **One Trap per Square**
+   - Each square can hold only one trap.
+   - If a square already has a trap (even your own), you cannot place another.
+
+3. **Invisible Traps**
+   - Traps are invisible to your opponent but known to you.
+
+#### Encountering Traps
+
+1. **Triggering a Trap**
+   - If you land on a square with an opponent's trap, you are **sent back to square 0**.
+   - This takes effect immediately at the **start of your next turn**.
+
+2. **Own Traps**
+   - Landing on your own trap has no effect.
+
+3. **Trap Persistence**
+   - Traps remain on the squares where they were set for the rest of the game.
+
+#### Winning the Game
+
+- **Reach Square 10 First**
+  - The first player to land exactly on square 10 wins.
+  - There are no draws or ties.
+
+### Scoring
+
+- No points are tracked.
+- Victory is achieved by reaching square 10 before your opponent.
+
+### Examples
+
+#### Example 1: Basic Gameplay
+
+**Player 1's Turn**
+- **Position**: Square 0
+- **Movement**: Moves forward **3** squares to square **3**.
+- **Trap Setting**: Cannot set a trap on square 0, so no trap is set.
+
+**Player 2's Turn**
+- **Position**: Square 0
+- **Movement**: Moves forward **2** squares to square **2**.
+- **Trap Setting**: Cannot set a trap on square 0, so no trap is set.
+
+**Player 1's Turn**
+- **Position**: Square 3
+- **Movement**: Moves forward **2** squares to square **5**.
+- **Trap Setting**: Sets a trap on square **3**.
+
+#### Example 2: Triggering a Trap
+
+**Player 2's Turn**
+- **Position**: Square 2
+- **Movement**: Moves forward **3** squares to square **5**.
+- **Trap Checking**: No trap on square 5.
+- **Trap Setting**: Sets a trap on square **2**.
+
+**Player 1's Turn**
+- **Position**: Square 5
+- **Movement**: Moves forward **3** squares to square **8**.
+- **Trap Setting**: Sets a trap on square **5**.
+
+**Player 2's Turn**
+- **Position**: Square 5
+- **Movement**: Moves forward **3** squares to square **8**.
+- **Trap Checking**: Lands on square **8**, no trap is present.
+- **Trap Setting**: Attempts to set a trap on square **5**, but a trap already exists (Player 1's), so cannot set another.
+
+**Player 1's Turn**
+- **Position**: Square 8
+- **Movement**: Moves forward **2** squares to square **10**.
+- **Victory**: Player 1 wins the game by landing on square 10.
+
+#### Example 3: Hitting a Trap and Resetting
+
+**Player 2's Turn**
+- **Position**: Square 5
+- **Movement**: Moves forward **3** squares to square **8**.
+- **Trap Checking**: No trap on square 8.
+- **Trap Setting**: Cannot set a trap on square 5 (already occupied).
+
+**Player 1's Turn**
+- **Position**: Square 8
+- **Movement**: Moves forward **2** squares to square **10**.
+- **Victory**: Player 1 wins.
+
+### Sample Command-Line Interaction
+
+This interaction assumes a simple command-line interface where players input their move choices.
+
+---
+
+**Game Start**
+
+Both players start at square 0.
+
+---
+
+**Player 1's Turn**
+
+_Your Position: Square 0_
+
+- Enter the number of squares to move forward (1-3): `3`
+
+_Result:_
+- You move to **square 3**.
+- Cannot set a trap on square 0.
+
+---
+
+**Player 2's Turn**
+
+_Your Position: Square 0_
+
+- Enter the number of squares to move forward (1-3): `3`
+
+_Result:_
+- You move to **square 3**.
+- You have triggered a trap set by Player 1!
+- You will return to square 0 at the start of your next turn.
+- Cannot set a trap on square 0.
+
+---
+
+**Player 1's Turn**
+
+_Your Position: Square 3_
+
+- Enter the number of squares to move forward (1-3): `2`
+
+_Result:_
+- You move to **square 5**.
+- You set a trap on square **3**.
+
+---
+
+**Player 2's Turn**
+
+_You have been sent back to square 0 due to a trap!_
+
+_Your Position: Square 0_
+
+- Enter the number of squares to move forward (1-3): `2`
+
+_Result:_
+- You move to **square 2**.
+- Cannot set a trap on square 0.
+
+---
+
+**Player 1's Turn**
+
+_Your Position: Square 5_
+
+- Enter the number of squares to move forward (1-3): `3`
+
+_Result:_
+- You move to **square 8**.
+- You set a trap on square **5**.
+
+---
+
+**Player 2's Turn**
+
+_Your Position: Square 2_
+
+- Enter the number of squares to move forward (1-3): `3`
+
+_Result:_
+- You move to **square 5**.
+- You have triggered a trap set by Player 1!
+- You will return to square 0 at the start of your next turn.
+- You cannot set a trap on square 2 (already occupied or starting square).
+
+---
+
+**Player 1's Turn**
+
+_Your Position: Square 8_
+
+- Enter the number of squares to move forward (1-2): `2`
+
+_Result:_
+- You move to **square 10**.
+- **Congratulations! You have reached the goal and won the game!**
+
+---
+
+### Strategies
+
+- **Predict Opponent's Moves**
+  - Anticipate how far your opponent might move and set traps accordingly.
+  
+- **Mix Up Your Movement**
+  - Vary your movement distances to avoid falling into predictable patterns.
+
+- **Trap Placement**
+  - Place traps on squares that are likely to be landing spots for your opponent's potential moves.
+
+- **Progression Balance**
+  - Decide between rapid advancement (risking traps) and cautious movement (slower but potentially safer).
+
+### Notes
+
+- **No Skipping Turns**
+  - Players must move on their turn; skipping is not allowed.
+
+- **No Draw Condition**
+  - The game continues until one player reaches square 10.
+
+- **Visibility**
+  - Players are informed of their own traps but not those of their opponent.
+  - Current positions are known to both players.
+
+---
+
+**Enjoy playing Trap Runner, and may the best strategist win!**

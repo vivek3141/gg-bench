@@ -1,0 +1,148 @@
+# Blockade Runner
+
+## Objective
+
+Be the first player to navigate your piece across the grid to the opponent's starting row or to prevent your opponent from making any valid moves. The game tests strategic planning and foresight, rewarding skilled play over chance.
+
+## Setup
+
+- **Grid**: The game is played on a 5x5 grid.
+- **Starting Positions**:
+  - **Player 1 (P1)**: Starts on the top row, middle column (Row 1, Column 3).
+  - **Player 2 (P2)**: Starts on the bottom row, middle column (Row 5, Column 3).
+- Players decide randomly who takes the first turn.
+
+## Game Components
+
+- **Grid**: A 5x5 grid represented as a matrix, with rows numbered 1 to 5 (top to bottom) and columns numbered 1 to 5 (left to right).
+- **Player Pieces**:
+  - **P1's Piece**: Represented by `P1` on the grid.
+  - **P2's Piece**: Represented by `P2` on the grid.
+- **Blocks**:
+  - Represented by `X` on the grid.
+  - Used to obstruct the opponent's path.
+- **Empty Cells**: Represented by `.` on the grid.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Action Phase**: Choose to either move your piece or place a block.
+     - **Move**: Move your piece to an adjacent empty cell.
+     - **Block**: Place a block on any empty cell not adjacent to either player's piece.
+- **Movement Rules**:
+  - A piece can move to any of the eight adjacent cells (including diagonals) as long as the cell is empty.
+  - A piece cannot move onto a cell occupied by a block or the opponent's piece.
+- **Block Placement Rules**:
+  - Blocks can be placed on any empty cell not adjacent (including diagonally) to either player's piece.
+  - Blocks remain on the grid for the duration of the game.
+
+## Rules and Mechanics
+
+- **Winning the Game**:
+  - **Victory by Crossing**: Be the first to move your piece onto any cell of the opponent's starting row.
+  - **Victory by Blockade**: If the opponent cannot make any valid moves on their turn, you win.
+- **Draws**: The game cannot end in a draw.
+- **Valid Moves**:
+  - A move is valid if it adheres to the movement rules and results in the piece occupying a new cell.
+  - If a player has no valid moves, they lose the game.
+- **Blocked Cells**:
+  - Once a block is placed, it cannot be moved or removed.
+  - Blocks serve as permanent obstacles for both players.
+
+## Scoring
+
+- **Winning**: The winner is the player who either reaches the opponent's starting row first or successfully blocks the opponent's possible moves.
+- **No Points System**: The game does not use a points system; victory is achieved through strategic movement and blocking.
+
+## Examples
+
+### Example Grid Initialization
+
+```
+Row\Col | 1   2   3   4   5
+-----------------------------
+   1    | .   .  P1   .   .
+   2    | .   .   .   .   .
+   3    | .   .   .   .   .
+   4    | .   .   .   .   .
+   5    | .   .  P2   .   .
+```
+
+### Sample Turns
+
+#### Turn 1: Player 1 (P1)
+
+- **Action**: Moves piece diagonally down-right to (Row 2, Column 4).
+- **Grid Update**:
+
+```
+   1    | .   .   .   .   .
+   2    | .   .   .  P1   .
+   3    | .   .   .   .   .
+   4    | .   .   .   .   .
+   5    | .   .  P2   .   .
+```
+
+#### Turn 2: Player 2 (P2)
+
+- **Action**: Places a block at (Row 3, Column 3).
+- **Reason**: To block P1's potential straight path.
+- **Grid Update**:
+
+```
+   1    | .   .   .   .   .
+   2    | .   .   .  P1   .
+   3    | .   .   X   .   .
+   4    | .   .   .   .   .
+   5    | .   .  P2   .   .
+```
+
+#### Turn 3: Player 1 (P1)
+
+- **Action**: Moves piece to (Row 3, Column 5).
+- **Grid Update**:
+
+```
+   1    | .   .   .   .   .
+   2    | .   .   .   .   .
+   3    | .   .   X   .  P1
+   4    | .   .   .   .   .
+   5    | .   .  P2   .   .
+```
+
+#### Turn 4: Player 2 (P2)
+
+- **Action**: Moves piece diagonally up-right to (Row 4, Column 4).
+- **Grid Update**:
+
+```
+   1    | .   .   .   .   .
+   2    | .   .   .   .   .
+   3    | .   .   X   .  P1
+   4    | .   .   .  P2   .
+   5    | .   .   .   .   .
+```
+
+#### Subsequent Turns
+
+Players continue to strategically move their pieces toward the opponent's starting row while placing blocks to hinder each other's progress. The game progresses until one player reaches the opponent's starting row or blocks the opponent entirely.
+
+## Command-Line Interaction Examples
+
+- **Moving a Piece**:
+  - Prompt: `Player 1, enter move to (row,column):`
+  - Input: `2,4`
+- **Placing a Block**:
+  - Prompt: `Player 2, enter block position at (row,column):`
+  - Input: `3,3`
+- **Invalid Move Attempt**:
+  - Prompt: `Invalid move. The cell is occupied or adjacent to a player. Try again.`
+
+## Summary
+
+**Blockade Runner** is a turn-based strategy game that combines tactical movement with strategic blocking. Its simple rules and quick gameplay make it easy to code and play in a command-line interface. The game emphasizes skill over luck, ensuring that a more experienced player can consistently outperform a novice.
+
+Players must balance the decision to advance their own piece with the need to impede their opponent. Every move and block placement can significantly impact the outcome, providing depth and complexity within an accessible framework.
+
+Happy gaming!

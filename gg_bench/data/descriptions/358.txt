@@ -1,0 +1,167 @@
+# Prime Climb
+
+## Objective
+
+**Prime Climb** is a two-player, turn-based strategy game where players race to reach exactly 100 on a shared number line. Players advance by adding prime numbers to their current positions. The first player to land exactly on 100 wins the game. Strategic planning and knowledge of prime numbers are key to victory.
+
+## Setup
+
+1. **Number Line**: Draw a number line from 0 to 100. This can be represented in the command-line interface as a simple numeric value tracking each player's position.
+2. **Starting Positions**: Both players start at position **0**.
+3. **Available Primes**: Prime numbers less than or equal to 13 are available for movement:
+   - **2, 3, 5, 7, 11, 13**
+
+## Game Components
+
+- **Players**: Two players, **Player 1** and **Player 2**.
+- **Positions**: Each player's current position on the number line (an integer between 0 and 100).
+- **Prime Numbers**: The set of prime numbers used to advance along the number line.
+- **Move History**: Record of primes used by each player in previous turns.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns. **Player 1** starts the game.
+2. **Turn Structure**:
+   - **Select Move**: On their turn, a player chooses a prime number from the available primes.
+   - **Advance Position**: The chosen prime number is added to the player's current position.
+   - **Announce Move**: The player announces the prime chosen and their new position.
+3. **Constraints**:
+   - Players **cannot** use the **same prime number** they used on their **immediately preceding turn**.
+   - A move **cannot** advance the player's position beyond 100.
+   - If no legal moves are available, the player loses their turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Legal Moves**: A move is legal if:
+  - The prime number is from the available set.
+  - The prime number is not the same as the one the player used on their last turn.
+  - Adding the prime number to the current position does not exceed 100.
+- **Advancing**: Players add the chosen prime number to their current position.
+- **Winning the Game**: The first player to land **exactly** on position 100 wins.
+
+### Special Conditions
+
+- **No Backward Movement**: Players cannot subtract or move backward.
+- **No Repeats**: Players may repeat primes used in earlier turns, as long as they are not repeating the prime used on their immediately preceding turn.
+- **Forfeiting a Turn**: If a player has no legal moves (all possible moves would repeat the last prime used or exceed 100), they forfeit their turn.
+
+## Scoring
+
+- **Winning**: The player who reaches exactly 100 first is declared the winner.
+- **Tracking Progress**: Players keep track of their positions and move history throughout the game.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Player 1 Position: 0
+- Player 2 Position: 0
+
+---
+
+**Turn 1**:
+
+- **Player 1**:
+  - Chooses prime **13**.
+  - New Position: 0 + 13 = **13**
+  - Announces: "Player 1 moves 13 to position 13."
+
+---
+
+**Turn 2**:
+
+- **Player 2**:
+  - Chooses prime **11**.
+  - New Position: 0 + 11 = **11**
+  - Announces: "Player 2 moves 11 to position 11."
+
+---
+
+**Turn 3**:
+
+- **Player 1**:
+  - Cannot choose **13** (used in the last turn), selects **7**.
+  - New Position: 13 + 7 = **20**
+  - Announces: "Player 1 moves 7 to position 20."
+
+---
+
+**Turn 4**:
+
+- **Player 2**:
+  - Cannot choose **11** (used in the last turn), selects **13**.
+  - New Position: 11 + 13 = **24**
+  - Announces: "Player 2 moves 13 to position 24."
+
+---
+
+**Turn 5**:
+
+- **Player 1**:
+  - Can choose **13** again (not used in the immediately preceding turn), selects **13**.
+  - New Position: 20 + 13 = **33**
+  - Announces: "Player 1 moves 13 to position 33."
+
+---
+
+**The game continues in this manner until one player reaches exactly 100.**
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should plan moves to avoid being without legal moves on future turns.
+- **Forced Moves**: Anticipate the opponent's moves to avoid setting them up for an easy win.
+- **Prime Variety**: Utilize different primes to maintain flexibility in future turns.
+
+## Command-Line Interaction Examples
+
+**Player Prompts and Inputs**:
+
+- **Prompt**: `Player 1, enter your chosen prime (2, 3, 5, 7, 11, 13):`
+- **Input**: `13`
+- **Output**: `Player 1 moves 13 to position 13.`
+
+---
+
+- **Prompt**: `Player 2, enter your chosen prime (cannot reuse 13):`
+- **Input**: `13` _(Invalid since Player 2 didn't use 13 last turn, but the rule prohibits reusing one's own last move)_
+- **Output**: `Invalid move. You cannot reuse the prime number from your last turn or exceed position 100. Please choose another prime.`
+
+---
+
+- **Prompt**: `Player 2, enter your chosen prime (cannot reuse 11):`
+- **Input**: `7`
+- **Output**: `Player 2 moves 7 to position 31.`
+
+---
+
+- **Position Update**:
+
+  ```
+  Current Positions:
+  - Player 1: 33
+  - Player 2: 31
+  ```
+
+---
+
+**Winning the Game**:
+
+- **Player's Move**:
+
+  - **Prompt**: `Player 1, enter your chosen prime (cannot reuse 13):`
+  - **Input**: `7`
+  - **Calculation**: 93 + 7 = **100**
+  - **Output**: `Player 1 moves 7 to position 100.`
+  - **Output**: `Player 1 wins the game by reaching 100!`
+
+---
+
+## Conclusion
+
+**Prime Climb** is a simple yet strategic game that challenges players to think ahead and utilize prime numbers effectively. The game is easy to implement in a command-line interface and provides a quick, engaging experience where skill and planning are rewarded.
+
+Enjoy the climb to 100!

@@ -1,0 +1,295 @@
+**Game Name: Last Bit Standing**
+
+---
+
+**Objective:**
+
+The objective of *Last Bit Standing* is to force your opponent into a position where they cannot make a valid move without creating a binary number that is divisible by 3. The player who successfully compels their opponent to create such a number, thereby leaving them without a valid move, wins the game.
+
+---
+
+**Setup:**
+
+- **Starting Binary Number**: The game begins with a shared binary number, initially set to `"1"`.
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Turn Order**: Players decide who will take the first turn. This can be determined by mutual agreement or a random method like flipping a coin.
+
+---
+
+**Game Components:**
+
+- **Shared Binary Number**: A sequence of binary digits (bits), starting with `"1"`, which both players will build upon during the game.
+- **Bits**: The binary digits `"0"` and `"1"` that players will append to the shared binary number.
+- **Command-Line Interface**: The game is played via text input and output, with players entering their chosen bits during their turns.
+
+---
+
+**Turns:**
+
+1. **Player Action**:
+   - On their turn, a player must choose to append either a `"0"` or a `"1"` to the current binary number.
+   - The choice is made by entering the bit (`0` or `1`) into the command line when prompted.
+
+2. **Validating Moves**:
+   - After appending the chosen bit, the new binary number is evaluated.
+   - If the decimal equivalent of the new binary number is **not divisible by 3**, the move is valid, and the game proceeds.
+   - If the new binary number is divisible by 3, the move is invalid, and the player loses the game.
+
+3. **Turn Progression**:
+   - Players alternate turns, continually appending bits to the binary number, until a player loses as per the rules.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Binary Number Construction**:
+   - The binary number always starts with `"1"`.
+   - Players can only append bits to the **right end** of the binary number.
+   - The binary number grows by one bit each turn.
+
+2. **Valid Moves**:
+   - A move is valid if, after appending the chosen bit, the binary number converted to decimal is **not divisible by 3**.
+
+3. **Invalid Moves and Losing**:
+   - If appending either a `"0"` or a `"1"` results in a binary number that is divisible by 3, the player has no valid moves and loses the game.
+   - The game cannot end in a draw.
+
+4. **Number Conversion**:
+   - Players may convert the binary number to its decimal equivalent to check for divisibility by 3.
+   - Example: Binary `"110"` equals decimal `6`. Since `6` is divisible by `3`, appending bits to create `"110"` would be an invalid move.
+
+5. **Strategic Play**:
+   - Players can plan ahead by considering how their choice of bit affects future moves.
+   - Anticipating the opponent's options can provide a strategic advantage.
+
+---
+
+**Scoring:**
+
+- **Winning the Game**:
+  - The player who forces their opponent into a position where they cannot make a valid move wins the game.
+- **No Points System**:
+  - The game does not involve points or scoring beyond identifying the winner.
+
+---
+
+**Examples:**
+
+**Example 1: Basic Gameplay**
+
+- **Starting with Binary `"1"` (Decimal `1`)**
+
+1. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"10"` (Decimal `2`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"11"` (Decimal `3`): Divisible by `3` → **Invalid Move**.
+   - **Player 1 chooses to append `"0"`**.
+   - New Binary Number: `"10"` (Decimal `2`).
+
+2. **Player 2's Turn**:
+   - Options:
+     - Append `"0"` → `"100"` (Decimal `4`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"101"` (Decimal `5`): Not divisible by `3` → **Valid Move**.
+   - **Player 2 chooses to append `"1"`**.
+   - New Binary Number: `"101"` (Decimal `5`).
+
+3. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"1010"` (Decimal `10`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"1011"` (Decimal `11`): Not divisible by `3` → **Valid Move**.
+   - **Player 1 chooses to append `"1"`**.
+   - New Binary Number: `"1011"` (Decimal `11`).
+
+**Example 2: Winning Scenario**
+
+- **Current Binary Number**: `"1101"` (Decimal `13`)
+
+1. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"11010"` (Decimal `26`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"11011"` (Decimal `27`): Divisible by `3` → **Invalid Move**.
+   - **Player 1 chooses to append `"0"`**.
+   - New Binary Number: `"11010"` (Decimal `26`).
+
+2. **Player 2's Turn**:
+   - Options:
+     - Append `"0"` → `"110100"` (Decimal `52`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"110101"` (Decimal `53`): Not divisible by `3` → **Valid Move**.
+   - **Player 2 chooses to append `"1"`**.
+   - New Binary Number: `"110101"` (Decimal `53`).
+
+3. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"1101010"` (Decimal `106`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"1101011"` (Decimal `107`): Not divisible by `3` → **Valid Move**.
+   - **Player 1 chooses to append `"0"`**.
+   - New Binary Number: `"1101010"` (Decimal `106`).
+
+4. **Player 2's Turn**:
+   - Options:
+     - Append `"0"` → `"11010100"` (Decimal `212`): Divisible by `3` → **Invalid Move**.
+     - Append `"1"` → `"11010101"` (Decimal `213`): Not divisible by `3` → **Valid Move**.
+   - **Player 2 has only one valid move and chooses to append `"1"`**.
+   - New Binary Number: `"11010101"` (Decimal `213`).
+
+5. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"110101010"` (Decimal `426`): Divisible by `3` → **Invalid Move**.
+     - Append `"1"` → `"110101011"` (Decimal `427`): Not divisible by `3` → **Valid Move**.
+   - **Player 1 has only one valid move and chooses to append `"1"`**.
+   - New Binary Number: `"110101011"` (Decimal `427`).
+
+6. **Player 2's Turn**:
+   - Options:
+     - Append `"0"` → `"1101010110"` (Decimal `854`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"1101010111"` (Decimal `855`): Divisible by `3` → **Invalid Move**.
+   - **Player 2 chooses to append `"0"`**.
+   - New Binary Number: `"1101010110"` (Decimal `854`).
+
+7. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"11010101100"` (Decimal `1708`): Divisible by `3` → **Invalid Move**.
+     - Append `"1"` → `"11010101101"` (Decimal `1709`): Not divisible by `3` → **Valid Move**.
+   - **Player 1 has only one valid move and chooses to append `"1"`**.
+   - New Binary Number: `"11010101101"` (Decimal `1709`).
+
+8. **Player 2's Turn**:
+   - Options:
+     - Append `"0"` → `"110101011010"` (Decimal `3418`): Not divisible by `3` → **Valid Move**.
+     - Append `"1"` → `"110101011011"` (Decimal `3419`): Not divisible by `3` → **Valid Move**.
+   - **Player 2 chooses to append `"0"`**.
+   - New Binary Number: `"110101011010"` (Decimal `3418`).
+
+9. **Player 1's Turn**:
+   - Options:
+     - Append `"0"` → `"1101010110100"` (Decimal `6836`): Divisible by `3` → **Invalid Move**.
+     - Append `"1"` → `"1101010110101"` (Decimal `6837`): Not divisible by `3` → **Valid Move**.
+   - **Player 1 has only one valid move and chooses to append `"1"`**.
+   - New Binary Number: `"1101010110101"` (Decimal `6837`).
+
+10. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"11010101101010"` (Decimal `13674`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"11010101101011"` (Decimal `13675`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"11010101101011"` (Decimal `13675`).
+
+11. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → `"110101011010110"` (Decimal `27350`): Not divisible by `3` → **Valid Move**.
+      - Append `"1"` → `"110101011010111"` (Decimal `27351`): Divisible by `3` → **Invalid Move**.
+    - **Player 1 chooses to append `"0"`**.
+    - New Binary Number: `"110101011010110"` (Decimal `27350`).
+
+12. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"1101010110101100"` (Decimal `54700`): Not divisible by `3` → **Valid Move**.
+      - Append `"1"` → `"1101010110101101"` (Decimal `54701`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 chooses to append `"1"`**.
+    - New Binary Number: `"1101010110101101"` (Decimal `54701`).
+
+13. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → `"11010101101011010"` (Decimal `109402`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"11010101101011011"` (Decimal `109403`): Not divisible by `3` → **Valid Move**.
+    - **Player 1 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"11010101101011011"` (Decimal `109403`).
+
+14. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"110101011010110110"` (Decimal `218806`): Not divisible by `3` → **Valid Move**.
+      - Append `"1"` → `"110101011010110111"` (Decimal `218807`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 chooses to append `"0"`**.
+    - New Binary Number: `"110101011010110110"` (Decimal `218806`).
+
+15. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → `"1101010110101101100"` (Decimal `437612`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"1101010110101101101"` (Decimal `437613`): Not divisible by `3` → **Valid Move**.
+    - **Player 1 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"1101010110101101101"` (Decimal `437613`).
+
+16. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"11010101101011011010"` (Decimal `875226`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"11010101101011011011"` (Decimal `875227`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"11010101101011011011"` (Decimal `875227`).
+
+17. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → `"110101011010110110110"` (Decimal `1750454`): Not divisible by `3` → **Valid Move**.
+      - Append `"1"` → `"110101011010110110111"` (Decimal `1750455`): Divisible by `3` → **Invalid Move**.
+    - **Player 1 chooses to append `"0"`**.
+    - New Binary Number: `"110101011010110110110"` (Decimal `1750454`).
+
+18. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"1101010110101101101100"` (Decimal `3500908`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"1101010110101101101101"` (Decimal `3500909`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"1101010110101101101101"` (Decimal `3500909`).
+
+19. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → `"11010101101011011011010"` (Decimal `7001818`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"11010101101011011011011"` (Decimal `7001819`): Not divisible by `3` → **Valid Move**.
+    - **Player 1 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"11010101101011011011011"` (Decimal `7001819`).
+
+20. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"110101011010110110110110"` (Decimal `14003638`): Not divisible by `3` → **Valid Move**.
+      - Append `"1"` → `"110101011010110110110111"` (Decimal `14003639`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 chooses to append `"0"`**.
+    - New Binary Number: `"110101011010110110110110"` (Decimal `14003638`).
+
+21. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → `"1101010110101101101101100"` (Decimal `28007276`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"1101010110101101101101101"` (Decimal `28007277`): Not divisible by `3` → **Valid Move**.
+    - **Player 1 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"1101010110101101101101101"` (Decimal `28007277`).
+
+22. **Player 2's Turn**:
+    - Options:
+      - Append `"0"` → `"11010101101011011011011010"` (Decimal `56014554`): Divisible by `3` → **Invalid Move**.
+      - Append `"1"` → `"11010101101011011011011011"` (Decimal `56014555`): Not divisible by `3` → **Valid Move**.
+    - **Player 2 has only one valid move and chooses to append `"1"`**.
+    - New Binary Number: `"11010101101011011011011011"` (Decimal `56014555`).
+
+23. **Player 1's Turn**:
+    - Options:
+      - Append `"0"` → Both options result in numbers divisible by `3`.
+      - **Player 1 has no valid moves and loses the game**.
+
+---
+
+**Command-Line Interaction Example:**
+
+- **Turn Prompt**:
+  ```
+  Current Binary Number: 1010 (Decimal: 10)
+  Player 1's Turn:
+  Choose a bit to append (0 or 1):
+  ```
+- **Player Input**:
+  ```
+  1
+  ```
+- **Validation and Result**:
+  ```
+  New Binary Number: 10101 (Decimal: 21)
+  Invalid move! The number is divisible by 3.
+  Player 1 loses the game.
+  ```
+- **Game Conclusion**:
+  ```
+  Congratulations, Player 2 wins!
+  ```
+
+---
+
+**Conclusion:**
+
+*Last Bit Standing* is a strategic and engaging game that combines binary numbers and divisibility rules to create a challenging experience. Its simple rules and minimal components make it easy to implement in a command-line interface while offering depth for players to develop winning strategies. Since each move requires careful consideration of the binary number's growth and its divisibility by 3, skilled players can consistently outperform less experienced opponents. The game is quick to play and has a clear win condition, ensuring an exciting and conclusive gameplay experience without the possibility of a draw.

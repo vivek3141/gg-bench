@@ -1,0 +1,212 @@
+# Gravity Well Duel
+
+## Objective
+
+**Gravity Well Duel** is a strategic two-player turn-based game played in a command-line interface. The primary goal is to manipulate a shared gravity counter to reach your designated target before your opponent does. One player aims to pull the gravity well to the positive extreme, while the other strives for the negative extreme. Victory is achieved by being the first to move the gravity counter to your side of the spectrum.
+
+## Setup
+
+1. **Assign Roles**: Decide which player will be **Positive** and which will be **Negative**. This can be done by mutual agreement or by a random method such as a coin toss.
+2. **Initialize Gravity Counter**: Set the gravity counter to **0**. This counter represents the position of the gravity well and can range from **-10** to **+10**.
+
+## Game Components
+
+- **Gravity Counter**: A numerical value ranging from **-10** to **+10**, starting at **0**. It represents the position of the gravity well.
+- **Players**: Two players assigned opposite roles:
+  - **Positive Player**: Aims to move the gravity counter to **+10**.
+  - **Negative Player**: Aims to move the gravity counter to **-10**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game. The player assigned the Positive role starts the game.
+- **Actions Per Turn**:
+  - On their turn, a player must choose to either **increase** or **decrease** the gravity counter.
+  - The player can adjust the counter by **1** or **2** units in their chosen direction.
+
+## Rules and Mechanics
+
+1. **Movement Options**:
+   - **Positive Player**:
+     - Can **increase** the gravity counter by **1** or **2**.
+     - Can **decrease** the gravity counter by **1** or **2**.
+   - **Negative Player**:
+     - Can **decrease** the gravity counter by **1** or **2**.
+     - Can **increase** the gravity counter by **1** or **2**.
+2. **Objective Direction**:
+   - The Positive Player aims to reach **+10**.
+   - The Negative Player aims to reach **-10**.
+3. **Boundary Conditions**:
+   - The gravity counter cannot exceed **+10** or go below **-10**.
+   - If a move would cause the counter to go beyond these limits, the move is invalid, and the player must choose a different action.
+4. **Winning the Game**:
+   - The first player to move the gravity counter to their target extreme (**+10** or **-10**) wins the game.
+5. **No Draws**:
+   - The game cannot end in a tie. Play continues until one player reaches their designated target.
+
+## Scoring
+
+- **Victory**: Winning the game by reaching the target extreme counts as one win.
+- The game can be played in multiple rounds, and players can keep track of wins to determine an overall champion after a set number of games.
+
+## Examples
+
+### Sample Turn Sequence
+
+Let's illustrate how **Gravity Well Duel** is played through a sample game.
+
+**Initial State**:
+- Gravity Counter: **0**
+- Positive Player: Alice
+- Negative Player: Bob
+
+**Turn 1**: *Alice's Turn (Positive Player)*
+
+- Alice decides to **increase** the gravity counter by **2**.
+- Gravity Counter: **0 + 2 = +2**
+
+**Turn 2**: *Bob's Turn (Negative Player)*
+
+- Bob chooses to **decrease** the gravity counter by **2**.
+- Gravity Counter: **+2 - 2 = 0**
+
+**Turn 3**: *Alice's Turn*
+
+- Alice opts to **increase** by **2** again.
+- Gravity Counter: **0 + 2 = +2**
+
+**Turn 4**: *Bob's Turn*
+
+- Bob decides to **decrease** by **1**.
+- Gravity Counter: **+2 - 1 = +1**
+
+**Turn 5**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+1 + 2 = +3**
+
+**Turn 6**: *Bob's Turn*
+
+- Bob increases (pulling towards positive) by **2** to block Alice.
+- Gravity Counter: **+3 + 2 = +5**
+
+*(Note: Bob can choose to increase to create strategic opportunities.)*
+
+**Turn 7**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+5 + 2 = +7**
+
+**Turn 8**: *Bob's Turn*
+
+- Bob decreases by **2**.
+- Gravity Counter: **+7 - 2 = +5**
+
+**Turn 9**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+5 + 2 = +7**
+
+**Turn 10**: *Bob's Turn*
+
+- Bob decreases by **1**.
+- Gravity Counter: **+7 - 1 = +6**
+
+**Turn 11**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+6 + 2 = +8**
+
+**Turn 12**: *Bob's Turn*
+
+- Bob decreases by **2**.
+- Gravity Counter: **+8 - 2 = +6**
+
+**Turn 13**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+6 + 2 = +8**
+
+**Turn 14**: *Bob's Turn*
+
+- Bob cannot prevent Alice from reaching +10 in her next turn but tries decreasing by **2**.
+- Gravity Counter: **+8 - 2 = +6**
+
+**Turn 15**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+6 + 2 = +8**
+
+**Turn 16**: *Bob's Turn*
+
+- Bob decreases by **2**.
+- Gravity Counter: **+8 - 2 = +6**
+
+**Turn 17**: *Alice's Turn*
+
+- Alice increases by **2**.
+- Gravity Counter: **+6 + 2 = +8**
+
+*Note: This loop continues unless a player changes strategy.*
+
+**Alternate Strategy**:
+
+Suppose at **Turn 14**, Bob decides to **increase** by **2** instead.
+
+- Gravity Counter: **+8 + 2 = +10**
+
+Since Bob increased the counter to **+10**, he inadvertently allowed Alice's target to be reached, resulting in **Alice's victory**.
+
+### Command-Line Interaction Sample
+
+Below is how a sample game might look in a command-line interface.
+
+```
+--- Gravity Well Duel ---
+
+Starting the game...
+Gravity Counter is at 0.
+
+Alice (Positive Player), it's your turn.
+Choose action:
+1. Increase by 1
+2. Increase by 2
+3. Decrease by 1
+4. Decrease by 2
+Enter choice: 2
+You increased by 2.
+Gravity Counter is now at +2.
+
+Bob (Negative Player), it's your turn.
+Choose action:
+1. Decrease by 1
+2. Decrease by 2
+3. Increase by 1
+4. Increase by 2
+Enter choice: 2
+You decreased by 2.
+Gravity Counter is now at 0.
+
+[Alice and Bob continue taking turns following similar prompts.]
+
+... (Turns continue)
+
+Alice (Positive Player), it's your turn.
+Gravity Counter is at +8.
+Enter choice: 2
+You increased by 2.
+Gravity Counter is now at +10.
+
+Congratulations, Alice! You have reached +10.
+Alice wins the game!
+```
+
+## Strategic Tips
+
+- **Anticipate Opponent Moves**: Try to predict your opponent's strategy to block their path to victory.
+- **Control the Game Pace**: Decide when to play offensively or defensively based on the gravity counter's position.
+- **Balance Moves**: Mixing between increasing and decreasing can sometimes confuse your opponent and open up opportunities.
+- **Stay Within Boundaries**: Always ensure your move is valid and doesn't exceed the gravity counter limits.
+
+---
+
+With its simple mechanics yet deep strategic potential, **Gravity Well Duel** offers an engaging and quick gameplay experience where skillful play is rewarded. Enjoy dueling in the gravitational tug-of-war!

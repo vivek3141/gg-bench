@@ -1,0 +1,183 @@
+# Increasing Differences: The Game
+
+## Objective
+
+Be the first player to build a sequence of numbers where each absolute difference between consecutive numbers is **strictly greater** than the previous difference. The first player to reach the required sequence length under these rules wins the game. If a player cannot make a valid move on their turn, they lose.
+
+## Setup
+
+1. **Sequence Length (N):** Decide on the number of elements required to win the game. For a quick game, N can be 4 or 5.
+2. **Number Range (M):** Determine the range of numbers available. For example, numbers from 1 to 20.
+3. **Available Numbers Pool:** Create a shared pool of numbers from 1 to M. All numbers are initially unclaimed and can be selected by either player.
+4. **Player Sequences:** Each player starts with an empty sequence.
+
+## Game Components
+
+- **Number Pool:** A shared list of available numbers from 1 to M (e.g., 1-20).
+- **Player Sequences:** Individual sequences where each player records their chosen numbers.
+- **Command-Line Interface:** Players interact with the game via text input, selecting numbers and viewing sequences.
+
+## Turns
+
+- **Turn Order:** Players alternate turns. Decide who starts first (e.g., Player 1).
+- **Actions on Turn:**
+  - **Select a Number:** Player chooses an unused number from the available pool.
+  - **Append to Sequence:** The chosen number is added to the end of their sequence.
+- **Turn Progression:** After a valid number is chosen and added to the sequence, control passes to the other player.
+
+## Rules and Mechanics
+
+### 1. Selecting Numbers
+
+- **Unused Numbers Only:** Players can only select numbers that have not been previously chosen by either player.
+- **Number Range:** Selected numbers must be within the defined range (1 to M).
+
+### 2. Building the Sequence
+
+- **First Number:** Can be any available number from the pool.
+- **Calculating Differences:**
+  - **First Difference:** After the second number is added, calculate the absolute difference between the first and second numbers.
+  - **Subsequent Differences:** For each new number added, calculate the absolute difference between it and the immediately preceding number.
+- **Increasing Differences:**
+  - Each new absolute difference must be **strictly greater** than the previous absolute difference.
+  - **Example:** If the previous difference was 2, the next difference must be 3 or more.
+- **Valid Moves Only:** If a player cannot find a valid number that satisfies the increasing difference condition, they lose.
+
+### 3. Winning the Game
+
+- **Sequence Completion:** The first player to successfully build a sequence with the required number of elements (N), adhering to all rules, wins.
+- **Forced Loss:** If a player cannot make a valid move on their turn (no available numbers satisfy the conditions), they lose.
+
+## Scoring
+
+- **Winning:** Victory is achieved by meeting the sequence requirements before the opponent.
+- **No Points System:** The game is won outright; there is no scoring system or points to track.
+
+## Examples
+
+### Example Game with N = 4 and M = 15
+
+#### Initial Setup
+
+- **Available Numbers:** 1 to 15
+- **Player 1 Sequence:** []
+- **Player 2 Sequence:** []
+
+#### Turn 1: Player 1
+
+- **Action:** Selects number **5**.
+- **Sequence:** [5]
+- **Explanation:** First number can be any number.
+
+#### Turn 2: Player 2
+
+- **Action:** Selects number **7**.
+- **Sequence:** [7]
+- **Explanation:** First number can be any number.
+
+#### Turn 3: Player 1
+
+- **Action:** Selects number **8**.
+- **Difference:** |8 - 5| = 3
+- **Previous Difference:** N/A (first difference)
+- **Sequence:** [5, 8]
+- **Explanation:** No previous difference, so any number is valid.
+
+#### Turn 4: Player 2
+
+- **Action:** Selects number **9**.
+- **Difference:** |9 - 7| = 2
+- **Previous Difference:** N/A (first difference)
+- **Sequence:** [7, 9]
+- **Explanation:** No previous difference, so any number is valid.
+
+#### Turn 5: Player 1
+
+- **Action:** Selects number **12**.
+- **Difference:** |12 - 8| = 4
+- **Previous Difference:** 3
+- **Sequence:** [5, 8, 12]
+- **Explanation:** 4 > 3 (previous difference), move is valid.
+
+#### Turn 6: Player 2
+
+- **Action:** Selects number **13**.
+- **Difference:** |13 - 9| = 4
+- **Previous Difference:** 2
+- **Sequence:** [7, 9, 13]
+- **Explanation:** 4 > 2 (previous difference), move is valid.
+
+#### Turn 7: Player 1
+
+- **Action:** Selects number **15**.
+- **Difference:** |15 - 12| = 3
+- **Previous Difference:** 4
+- **Sequence:** [5, 8, 12, 15]
+- **Explanation:** **Invalid Move** because 3 is not greater than 4.
+
+- **Tries number **17**, but it's outside the range.**
+
+- **Tries number **2**:**
+  - **Difference:** |2 - 12| = 10
+  - **Valid Move:** 10 > 4
+  - **Sequence:** [5, 8, 12, 2]
+  - **Player 1 wins!**
+
+#### Game End
+
+- **Winner:** Player 1
+- **Winning Sequence:** [5, 8, 12, 2]
+- **Differences:** 3, 4, 10 (each difference greater than the previous)
+
+## Command-Line Interaction Example
+
+```plaintext
+Available Numbers: 1-15
+
+Player 1, select your number: 5
+Player 1 Sequence: [5]
+
+Player 2, select your number: 7
+Player 2 Sequence: [7]
+
+Player 1, select your number: 8
+Previous difference: N/A
+New difference: 3
+Player 1 Sequence: [5, 8]
+
+Player 2, select your number: 9
+Previous difference: N/A
+New difference: 2
+Player 2 Sequence: [7, 9]
+
+Player 1, select your number: 12
+Previous difference: 3
+New difference: 4
+Player 1 Sequence: [5, 8, 12]
+
+Player 2, select your number: 13
+Previous difference: 2
+New difference: 4
+Player 2 Sequence: [7, 9, 13]
+
+Player 1, select your number: 2
+Previous difference: 4
+New difference: 10
+Player 1 Sequence: [5, 8, 12, 2]
+Congratulations, Player 1! You've completed your sequence.
+```
+
+## Additional Rules and Notes
+
+- **Strategic Play:**
+  - **Blocking:** Players can select numbers that might be useful to their opponent to hinder their progress.
+  - **Planning Ahead:** Consider which numbers will be available in future turns to ensure you can continue your sequence.
+- **Invalid Moves:**
+  - If a player selects a number that doesn't satisfy the increasing difference condition, they must choose a different number.
+  - If no valid numbers are available, the player loses the game.
+- **Number Availability:**
+  - Keep track of the numbers that have been used. A simple list can be displayed each turn.
+
+## Game Summary
+
+"Increasing Differences" offers a simple yet strategically rich gameplay experience. Players must carefully select numbers to build their sequences while considering how to prevent their opponent from doing the same. The game is easy to understand and implement in a command-line interface, ensuring quick play sessions without the possibility of a draw. Skilled players who think ahead and manage the available numbers effectively will consistently outperform less strategic opponents, fulfilling the game's design goals.

@@ -1,0 +1,255 @@
+# Number Duel
+
+## Objective
+
+Be the first player to reduce your opponent's Health Points (HP) to zero or below. Utilize strategic attacks and defenses to outmaneuver your opponent and win the duel.
+
+## Setup
+
+- **Players**: Two players.
+- **Starting Health**: Each player begins with **10 Health Points (HP)**.
+- **Starting Turn**: Determine who goes first (e.g., coin toss, random selection).
+
+## Game Components
+
+- **Health Points (HP)**:
+  - Represents a player's remaining life.
+  - Each player starts with 10 HP.
+  - HP cannot exceed 10 at any point.
+- **Attack Values**:
+  - On their turn, players choose an attack value between **1 and 5** (inclusive).
+
+## Turns
+
+1. **Attack Phase**:
+   - The **Attacker** declares an attack value (1-5).
+   - Example: "I attack with a value of 4."
+2. **Defense Phase**:
+   - The **Defender** chooses to **Block** or **Counter-Attack**:
+     - **Block**:
+       - Reduces incoming damage by **2 points** (minimum damage is 0).
+       - Defender says: "I choose to block."
+     - **Counter-Attack**:
+       - Defender sacrifices **1 HP** to reflect the full attack back to the Attacker.
+       - Defender says: "I choose to counter-attack."
+3. **Damage Resolution**:
+   - Calculate and apply damage based on the Defender's choice.
+4. **End of Turn**:
+   - Swap roles: the Attacker becomes the Defender, and vice versa.
+   - Continue to the next turn.
+
+## Rules and Mechanics
+
+### Attack Values
+
+- The Attacker must choose an integer value between **1 and 5**.
+- This value represents the strength of their attack.
+
+### Defense Options
+
+1. **Block**:
+   - Reduces the attack's damage by **2 HP**.
+   - Damage to Defender = Attack Value - 2 (minimum of 0).
+   - Defender does **not** lose additional HP beyond incoming damage.
+2. **Counter-Attack**:
+   - Defender loses **1 HP** immediately for counter-attacking.
+   - The full attack value is reflected back as damage to the Attacker.
+   - Damage to Attacker = Attack Value.
+   - Defender takes no further damage from the attack.
+
+### Health Points (HP)
+
+- HP cannot exceed the starting value of **10**.
+- A player's HP is reduced by the damage taken.
+- If a player's HP drops to **0 or below**, they lose the game.
+- Negative HP is allowed for calculation purposes but signifies defeat.
+
+### Winning the Game
+
+- The game ends immediately when a player's HP reaches **0 or less** at the end of a turn.
+- The opposing player is declared the winner.
+- There are no draws; the game continues until one player wins.
+
+## Scoring
+
+- **HP Tracking**:
+  - Keep a running total of each player's HP after every turn.
+  - Players should announce their remaining HP at the end of their turn.
+- **Victory Condition**:
+  - The first player to reduce their opponent's HP to **0 or below** wins.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Player 1 HP: 10
+- Player 2 HP: 10
+
+---
+
+**Turn 1**:
+
+- **Player 1 (Attacker)**:
+  - Declares an attack of **3**.
+  - Says: "I attack with a value of 3."
+- **Player 2 (Defender)**:
+  - Chooses to **Block**.
+  - Says: "I choose to block."
+- **Damage Calculation**:
+  - Damage to Player 2 = 3 (Attack) - 2 (Block) = **1 HP**.
+  - Player 2 HP: 10 - 1 = **9 HP**.
+- **End of Turn**:
+  - Player 1 HP: **10 HP**
+  - Player 2 HP: **9 HP**
+
+---
+
+**Turn 2**:
+
+- **Player 2 (Attacker)**:
+  - Declares an attack of **5**.
+  - Says: "I attack with a value of 5."
+- **Player 1 (Defender)**:
+  - Chooses to **Counter-Attack**.
+  - Says: "I choose to counter-attack."
+- **Damage Calculation**:
+  - Player 1 loses **1 HP** for counter-attacking.
+    - Player 1 HP: 10 - 1 = **9 HP**.
+  - Damage to Player 2 = **5 HP** (reflected attack).
+    - Player 2 HP: 9 - 5 = **4 HP**.
+- **End of Turn**:
+  - Player 1 HP: **9 HP**
+  - Player 2 HP: **4 HP**
+
+---
+
+**Turn 3**:
+
+- **Player 1 (Attacker)**:
+  - Declares an attack of **4**.
+  - Says: "I attack with a value of 4."
+- **Player 2 (Defender)**:
+  - Chooses to **Block**.
+  - Says: "I choose to block."
+- **Damage Calculation**:
+  - Damage to Player 2 = 4 - 2 = **2 HP**.
+  - Player 2 HP: 4 - 2 = **2 HP**.
+- **End of Turn**:
+  - Player 1 HP: **9 HP**
+  - Player 2 HP: **2 HP**
+
+---
+
+**Turn 4**:
+
+- **Player 2 (Attacker)**:
+  - Declares an attack of **5**.
+  - Says: "I attack with a value of 5."
+- **Player 1 (Defender)**:
+  - Chooses to **Block**.
+  - Says: "I choose to block."
+- **Damage Calculation**:
+  - Damage to Player 1 = 5 - 2 = **3 HP**.
+  - Player 1 HP: 9 - 3 = **6 HP**.
+- **End of Turn**:
+  - Player 1 HP: **6 HP**
+  - Player 2 HP: **2 HP**
+
+---
+
+**Turn 5**:
+
+- **Player 1 (Attacker)**:
+  - Declares an attack of **2**.
+  - Says: "I attack with a value of 2."
+- **Player 2 (Defender)**:
+  - Chooses to **Counter-Attack**.
+  - Says: "I choose to counter-attack."
+- **Damage Calculation**:
+  - Player 2 loses **1 HP** for counter-attacking.
+    - Player 2 HP: 2 - 1 = **1 HP**.
+  - Damage to Player 1 = **2 HP** (reflected attack).
+    - Player 1 HP: 6 - 2 = **4 HP**.
+- **End of Turn**:
+  - Player 1 HP: **4 HP**
+  - Player 2 HP: **1 HP**
+
+---
+
+**Turn 6**:
+
+- **Player 2 (Attacker)**:
+  - Declares an attack of **5**.
+  - Says: "I attack with a value of 5."
+- **Player 1 (Defender)**:
+  - Chooses to **Block**.
+  - Says: "I choose to block."
+- **Damage Calculation**:
+  - Damage to Player 1 = 5 - 2 = **3 HP**.
+  - Player 1 HP: 4 - 3 = **1 HP**.
+- **End of Turn**:
+  - Player 1 HP: **1 HP**
+  - Player 2 HP: **1 HP**
+
+---
+
+**Turn 7**:
+
+- **Player 1 (Attacker)**:
+  - Declares an attack of **5**.
+  - Says: "I attack with a value of 5."
+- **Player 2 (Defender)**:
+  - Chooses to **Block**.
+  - Says: "I choose to block."
+- **Damage Calculation**:
+  - Damage to Player 2 = 5 - 2 = **3 HP**.
+  - Player 2 HP: 1 - 3 = **-2 HP**.
+- **End of Turn**:
+  - Player 1 HP: **1 HP**
+  - Player 2 HP: **-2 HP**
+
+**Game Over**:
+
+- Player 2's HP has dropped below zero.
+- **Player 1 wins the game!**
+
+## Strategy Tips
+
+- **Balancing Attack Values**:
+  - Higher attacks can deal more damage but may be riskier if counter-attacked.
+  - Lower attacks might be safer but may not reduce your opponent's HP quickly.
+- **Choosing to Block vs. Counter-Attack**:
+  - **Block** when you want to minimize damage and preserve HP.
+  - **Counter-Attack** when you can afford the 1 HP cost and want to inflict damage back.
+- **Monitoring HP Levels**:
+  - Pay attention to both players' HP to make informed decisions.
+  - Use high attacks when your opponent has low HP to try to finish the game.
+- **Predicting Opponent's Moves**:
+  - Anticipate whether your opponent is likely to block or counter-attack based on their HP.
+
+## Notes
+
+- The game is designed to be simple to code in a command-line interface.
+- All necessary actions involve simple input and output commands.
+- The lack of randomness means skilled players can use strategy to consistently win.
+
+## Command-Line Interaction Example
+
+- **Attacker's Input**: Enter attack value (1-5).
+- **Defender's Input**: Choose to block or counter-attack.
+- **System Output**: Displays damage calculations and updated HP for both players.
+- **Loop**: The game continues in a loop until one player's HP reaches zero or below.
+
+### Sample Commands
+
+- `Player1> attack 4`
+- `Player2> block`
+- `System> Player2 takes 2 damage. Player1 HP: 10, Player2 HP: 8.`
+
+---
+
+By following this rule book, players can easily understand how to play Number Duel. The game combines simple mechanics with strategic depth, providing an engaging experience that is both quick and competitive.
+
+---

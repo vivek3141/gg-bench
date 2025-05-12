@@ -1,0 +1,213 @@
+# Prime Duel
+
+## Objective
+
+Be the first player to reach a cumulative total that is a **prime number greater than 50** without exceeding 60. Achieve this before your opponent to win the game.
+
+## Setup
+
+- **Players**: Two players (Player A and Player B).
+- **Starting Total**: Both players begin with a cumulative total of **0**.
+- **First Turn**: Decide randomly which player takes the first turn.
+- **Score Tracking**: Prepare a method to track each player's cumulative total (paper, calculator, or digital display).
+
+## Game Components
+
+- **Number Pool**: Integers from **1** to **10** (inclusive).
+  - Each number can be selected multiple times throughout the game.
+- **Cumulative Total**: The sum of numbers a player has selected during the game.
+  - Starts at **0** for each player.
+- **Turn Indicator**: An indicator to show which player's turn it is (optional but helpful in a command-line interface).
+
+## Turns
+
+- Players take turns alternately.
+- **Turn Structure**:
+  1. **Number Selection**: The active player selects a number from the number pool.
+  2. **Validation**: Ensure the selected number is allowed (not restricted based on the previous move).
+  3. **Update Total**: Add the selected number to the player's cumulative total.
+  4. **Check for Win/Loss Conditions**: Determine if the game has been won or lost.
+  5. **Next Turn**: Pass the turn to the opponent.
+
+## Rules and Mechanics
+
+### Number Selection
+
+- On your turn, **choose an integer between 1 and 10** (inclusive) to add to your cumulative total.
+- **Restriction**: You **cannot select the same number** that your opponent selected on their **immediately previous turn**.
+  - Example: If Player A selects **7**, Player B cannot select **7** on their next turn.
+- All numbers remain available regardless of how many times they have been selected previously.
+
+### Cumulative Total
+
+- **Tracking**: Keep a running total of the numbers you have selected.
+- **Visibility**: Both players' cumulative totals are public knowledge.
+- **Example**: If your previous total was **15** and you select **6**, your new total is **21**.
+
+### Winning the Game
+
+- **Victory Condition**: Be the **first player** to reach a cumulative total that is:
+  - A **prime number** (a number greater than 1 with no positive divisors other than 1 and itself).
+  - **Greater than 50**.
+- The game ends immediately when a player meets the victory condition.
+
+### Losing the Game
+
+- **Overstepping**: If your cumulative total **exceeds 60**, you **lose** the game immediately.
+- **Forced Loss**: If you are unable to select any number without causing your total to exceed 60, you lose.
+
+### Tie-Breaker
+
+- If both players exceed 60 without either reaching a prime number greater than 50:
+  - The player with the **lower cumulative total** is declared the **winner**.
+  - If both totals are equal, the game continues until the tie is broken under normal rules.
+
+## Scoring
+
+- The game does not utilize a point system.
+- Victory is achieved by meeting the specified win condition.
+- There are no draws; the game must end with a win or a loss.
+
+## Examples
+
+### Example Game Playthrough
+
+**Turn 1: Player A**
+
+- **Previous Total**: 0
+- **Available Numbers**: 1-10
+- **Selection**: 7
+- **Reason**: Starting with a moderate number.
+- **New Total**: 0 + 7 = **7**
+
+**Turn 2: Player B**
+
+- **Cannot Select**: 7 (Player A's last selection)
+- **Available Numbers**: 1-10 (excluding 7)
+- **Selection**: 10
+- **New Total**: 0 + 10 = **10**
+
+**Turn 3: Player A**
+
+- **Cannot Select**: 10 (Player B's last selection)
+- **Available Numbers**: 1-10 (excluding 10)
+- **Selection**: 8
+- **New Total**: 7 + 8 = **15**
+
+**Turn 4: Player B**
+
+- **Cannot Select**: 8
+- **Selection**: 9
+- **New Total**: 10 + 9 = **19**
+
+**Turn 5: Player A**
+
+- **Cannot Select**: 9
+- **Selection**: 10
+- **New Total**: 15 + 10 = **25**
+
+**Turn 6: Player B**
+
+- **Cannot Select**: 10
+- **Selection**: 7
+- **New Total**: 19 + 7 = **26**
+
+**Turn 7: Player A**
+
+- **Cannot Select**: 7
+- **Selection**: 6
+- **New Total**: 25 + 6 = **31**
+
+**Turn 8: Player B**
+
+- **Cannot Select**: 6
+- **Selection**: 9
+- **New Total**: 26 + 9 = **35**
+
+**Turn 9: Player A**
+
+- **Cannot Select**: 9
+- **Selection**: 8
+- **New Total**: 31 + 8 = **39**
+
+**Turn 10: Player B**
+
+- **Cannot Select**: 8
+- **Selection**: 10
+- **New Total**: 35 + 10 = **45**
+
+**Turn 11: Player A**
+
+- **Cannot Select**: 10
+- **Selection**: 7
+- **New Total**: 39 + 7 = **46**
+
+**Turn 12: Player B**
+
+- **Cannot Select**: 7
+- **Selection**: 6
+- **New Total**: 45 + 6 = **51**
+
+- **Check for Victory**: 51 is a prime number greater than 50.
+- **Player B Wins!**
+
+### Command-Line Interaction Example
+
+*Assuming input prompts and outputs for clarity.*
+
+---
+
+**Player A's Turn**
+
+```
+Your current total: 0
+Opponent's last number: None
+Select a number between 1 and 10 (excluding None): 7
+```
+
+_Output_:
+
+```
+Player A selects 7.
+Player A's new total is 7.
+```
+
+---
+
+**Player B's Turn**
+
+```
+Your current total: 0
+Opponent's last number: 7
+Select a number between 1 and 10 (excluding 7): 10
+```
+
+_Output_:
+
+```
+Player B selects 10.
+Player B's new total is 10.
+```
+
+---
+
+*Continue the game following the example playthrough.*
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of both totals to anticipate your opponent's moves.
+- **Prime Awareness**: Familiarize yourself with prime numbers greater than 50 (53, 59).
+- **Control Numbers**: By selecting certain numbers, you can prevent your opponent from accessing them on their next turn.
+- **Avoid Overstepping**: Be cautious not to exceed the total of 60 unless it forces your opponent into a loss.
+
+## Prime Numbers Greater Than 50 (for Reference)
+
+- **53**, **59**
+
+Ensure you aim for these targets to secure a win.
+
+---
+
+Enjoy your strategic duel of numbers, and may the most calculating mind prevail!

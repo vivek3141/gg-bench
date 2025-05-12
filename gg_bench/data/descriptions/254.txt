@@ -1,0 +1,304 @@
+# Number Maze
+
+## Rule Book
+
+### Objective
+
+The **primary goal** of **Number Maze** is to be the **first player to reach the target number exactly**. Players achieve victory by applying strategic mathematical operations to their current number, aiming to reach the target number before their opponent. 
+
+- **Win Condition:** A player wins by adjusting their current number to exactly match the target number on their turn.
+- **Loss Condition:** If a player's operation causes their current number to exceed the target number, they immediately lose the game.
+
+### Setup
+
+1. **Select Target Number:**
+   - Decide on a target number that both players will aim to reach.
+   - The **default target number is 100**, but players can agree on any positive integer greater than 1 to vary the game's difficulty and length.
+
+2. **Starting Number:**
+   - Both players begin the game with a **starting number of 1**.
+
+3. **Determine Player Order:**
+   - Decide who will take the first turn.
+   - This can be determined randomly (e.g., coin toss) or by mutual agreement.
+
+4. **Prepare Tracking Tools (Optional):**
+   - While not necessary, players may use paper, a calculator, or a command-line interface to keep track of numbers and operations.
+
+### Game Components
+
+- **Current Number:**
+  - Each player has their own current number, starting at 1.
+  - This number changes based on the operations performed during the game.
+
+- **Operations:**
+  - **Add 1:** Increase the current number by 1.
+  - **Multiply by 2:** Double the current number.
+
+- **No Physical Components Required:**
+  - All calculations and operations are performed mentally or tracked digitally/with paper.
+  - Ideal for a command-line interface or simple program.
+
+### Turns
+
+- **Turn Order:**
+  - Players take turns alternately throughout the game.
+  
+- **Structure of a Turn:**
+  1. **Operation Selection:**
+     - The player chooses one of the two available operations:
+       - **Option 1:** Add 1
+       - **Option 2:** Multiply by 2
+  2. **Perform Operation:**
+     - Apply the chosen operation to the current number.
+  3. **Update Current Number:**
+     - The player's current number is updated to reflect the operation.
+  4. **Check for Win/Loss Conditions:**
+     - If the current number **exactly equals** the target number, the player wins.
+     - If the current number **exceeds** the target number, the player loses.
+  5. **Pass Turn:**
+     - The turn passes to the other player.
+
+### Rules and Mechanics
+
+1. **Available Operations:**
+   - **Add 1:**
+     - **Effect:** Increases the current number by 1.
+     - **Example:** If the current number is 5, after adding 1, it becomes 6.
+   - **Multiply by 2:**
+     - **Effect:** Multiplies the current number by 2.
+     - **Example:** If the current number is 5, after multiplying by 2, it becomes 10.
+
+2. **Winning the Game:**
+   - A player **wins immediately** if their current number equals the target number after their operation.
+   - The game ends upon a win; no further turns are played.
+
+3. **Losing the Game:**
+   - A player **loses immediately** if their current number exceeds the target number after their operation.
+   - The game ends upon a loss; no further turns are played.
+
+4. **No Draws:**
+   - The game cannot end in a draw.
+   - Each game will result in a win for one player and a loss for the other.
+
+5. **Valid Moves:**
+   - Players must choose an operation that results in a current number within the range of 1 to the target number.
+   - There are no skips or passes; a player must perform one of the two operations on their turn.
+
+6. **Strategic Considerations:**
+   - Players should plan ahead to avoid overshooting the target number.
+   - Anticipating the opponent's possible moves can provide a strategic advantage.
+
+### Scoring
+
+- **Single Round Wins:**
+  - Each game is a single round where the outcome is a win or loss.
+  - The player who reaches the target number first is declared the winner of that round.
+
+- **Match Play (Optional):**
+  - Players can agree to play multiple rounds.
+  - **Scoring System:** One point per win.
+  - **Winning the Match:** The first player to reach a predetermined number of points (e.g., best of 5 games) wins the match.
+
+- **Tie-Breaker:**
+  - Since there are no draws, tie-breakers are unnecessary.
+
+### Examples
+
+#### Example Game Play:
+
+**Game Settings:**
+
+- **Target Number:** 10
+- **Starting Number:** 1
+- **Player 1:** Alice
+- **Player 2:** Bob
+- **Player 1 starts the game.**
+
+**Turn 1:**
+
+- **Player:** Alice
+- **Current Number:** 1
+- **Operation:** Multiply by 2
+- **Calculation:** 1 × 2 = 2
+- **New Current Number:** 2
+- **Comment:** Alice doubles her number to 2.
+
+**Turn 2:**
+
+- **Player:** Bob
+- **Current Number:** 1
+- **Operation:** Multiply by 2
+- **Calculation:** 1 × 2 = 2
+- **New Current Number:** 2
+- **Comment:** Bob mirrors Alice's move.
+
+**Turn 3:**
+
+- **Player:** Alice
+- **Current Number:** 2
+- **Operation:** Multiply by 2
+- **Calculation:** 2 × 2 = 4
+- **New Current Number:** 4
+- **Comment:** Alice doubles again to 4.
+
+**Turn 4:**
+
+- **Player:** Bob
+- **Current Number:** 2
+- **Operation:** Add 1
+- **Calculation:** 2 + 1 = 3
+- **New Current Number:** 3
+- **Comment:** Bob adds 1 to reach 3.
+
+**Turn 5:**
+
+- **Player:** Alice
+- **Current Number:** 4
+- **Operation:** Multiply by 2
+- **Calculation:** 4 × 2 = 8
+- **New Current Number:** 8
+- **Comment:** Alice doubles to 8.
+
+**Turn 6:**
+
+- **Player:** Bob
+- **Current Number:** 3
+- **Operation:** Multiply by 2
+- **Calculation:** 3 × 2 = 6
+- **New Current Number:** 6
+- **Comment:** Bob doubles to 6.
+
+**Turn 7:**
+
+- **Player:** Alice
+- **Current Number:** 8
+- **Operation:** Add 1
+- **Calculation:** 8 + 1 = 9
+- **New Current Number:** 9
+- **Comment:** Alice adds 1 to get closer to 10.
+
+**Turn 8:**
+
+- **Player:** Bob
+- **Current Number:** 6
+- **Operation:** Multiply by 2
+- **Calculation:** 6 × 2 = 12
+- **New Current Number:** 12
+- **Outcome:** Bob exceeds the target number.
+- **Result:** Bob loses the game.
+
+**Winner:** Alice
+
+#### Command-Line Interaction Example:
+
+```
+Game Start: Target Number is 10
+
+Player 1 (Alice)'s Turn:
+Current Number: 1
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+Alice's New Number: 2
+
+Player 2 (Bob)'s Turn:
+Current Number: 1
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+Bob's New Number: 2
+
+Player 1 (Alice)'s Turn:
+Current Number: 2
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+Alice's New Number: 4
+
+Player 2 (Bob)'s Turn:
+Current Number: 2
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 1
+Bob's New Number: 3
+
+Player 1 (Alice)'s Turn:
+Current Number: 4
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+Alice's New Number: 8
+
+Player 2 (Bob)'s Turn:
+Current Number: 3
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+Bob's New Number: 6
+
+Player 1 (Alice)'s Turn:
+Current Number: 8
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 1
+Alice's New Number: 9
+
+Player 2 (Bob)'s Turn:
+Current Number: 6
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter choice (1 or 2): 2
+Bob's New Number: 12
+Bob has exceeded the target number!
+Alice wins the game.
+```
+
+### Strategy Tips
+
+- **Plan Ahead:**
+  - Think several moves ahead to avoid putting yourself in a losing position.
+  - Consider the possible outcomes of both operations before making a move.
+
+- **Watch Your Opponent:**
+  - Pay attention to your opponent's current number.
+  - Try to anticipate their next move and adjust your strategy accordingly.
+
+- **Avoid Overshooting:**
+  - As you approach the target number, choose operations that keep you within safe range.
+  - Be cautious with multiplication when your current number is close to half of the target number.
+
+- **Force Errors:**
+  - Try to set up situations where your opponent has no safe moves and will be forced to exceed the target number on their turn.
+
+### Variations
+
+1. **Different Target Numbers:**
+   - Change the target number to make the game shorter or longer.
+   - Example: Target number of 50 for a shorter game.
+
+2. **Additional Operations:**
+   - Introduce new operations to increase complexity.
+     - **Subtract 1:** Allow players to decrease their number by 1.
+     - **Divide by 2:** Allow division if the current number is even.
+
+3. **Limit Operation Use:**
+   - Restrict the number of times an operation can be used.
+   - Example: Each player can only multiply by 2 a maximum of 5 times.
+
+4. **Time Constraints:**
+   - Implement a time limit per turn to increase pressure and excitement.
+
+### Conclusion
+
+**Number Maze** is a simple yet engaging game that combines basic arithmetic with strategic planning. It's easy to learn and quick to play, making it ideal for command-line implementation and casual gaming sessions. The game's simplicity doesn't detract from its depth; skilled players can consistently outmaneuver less experienced opponents through careful calculation and foresight.
+
+Enjoy the challenge of reaching the target number before your opponent, and may the best strategist win!

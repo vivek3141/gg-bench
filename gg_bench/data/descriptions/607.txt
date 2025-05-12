@@ -1,0 +1,141 @@
+# Narrow: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+**Narrow** is a strategic two-player game where players take turns narrowing down a numerical range. The primary goal is to be the last player to make a valid move in reducing the range according to the game's rules. The player who forces their opponent into a position where they cannot make a valid move wins the game.
+
+## Setup
+
+- **Initial Range**: The game begins with an initial range of consecutive integers from **1 to 100**.
+- **Players**: Two players are designated as **Player 1** and **Player 2**. Player order can be decided arbitrarily or by agreement.
+
+## Game Components
+
+- **Numerical Range**: The current set of consecutive integers in play. This range changes as players narrow it down during the game.
+  
+  Example:
+  ```
+  Current Range: 1-100
+  ```
+
+## Turns
+
+- Players alternate turns starting with **Player 1**.
+- **Turn Structure**:
+  1. **Announce**: The player announces a valid subrange within the current range.
+  2. **Update**: The current range is updated to the new subrange for the next player's turn.
+- Each turn must adhere to the game's rules and mechanics.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Selecting a Subrange**:
+   - On your turn, you must select a **subrange** within the current range.
+   - The subrange must **exclude at least one number from both the lower and upper ends** of the current range.
+   - The subrange must be **strictly inside** the current range; it cannot be equal to or extend beyond it.
+
+2. **Valid Subrange Criteria**:
+   - **Minimum Reduction**: The subrange must be at least two numbers smaller than the current range (excluding at least one number from each end).
+   - **Consecutive Integers**: The subrange must consist of consecutive integers.
+   - **Announcement**: Clearly announce the new subrange during your turn.
+
+3. **Progression**:
+   - The updated subrange becomes the current range for the next player's turn.
+   - Players continue narrowing down the range on each turn following the same rules.
+
+4. **Winning the Game**:
+   - A player **loses** if they cannot make a valid move on their turn (i.e., if the current range cannot be reduced according to the rules).
+   - The opposing player is then declared the **winner**.
+
+### Example of Valid Moves
+
+- If the current range is **1-10**, valid subranges include:
+  - **2-9** (excluding 1 and 10)
+  - **3-8** (excluding 1, 2, 9, and 10)
+  - **2-8**, **3-9**, etc.
+
+- Invalid subranges (examples):
+  - **1-9** (does not exclude a number from the lower end)
+  - **2-10** (does not exclude a number from the upper end)
+  - **1-10** (cannot select the entire current range)
+
+### Additional Clarifications
+
+- **Final Range**: When the current range is reduced to only two consecutive numbers, the next player cannot make a valid move and thus loses.
+- **Strategic Depth**: Players should plan ahead to force their opponent into positions where a valid move isn't possible.
+
+## Scoring
+
+- **Winning the Game**: Victory is achieved by being the last player to make a valid move.
+- No point system is necessary as the game ends upon one player's inability to make a valid move.
+
+## Examples
+
+### Sample Game Play
+
+**Starting Range**: 1-10
+
+**Player 1's Turn**:
+- Chooses subrange **2-9**
+- Announces: "I reduce the range to 2-9."
+
+**Player 2's Turn**:
+- Chooses subrange **3-8**
+- Announces: "I reduce the range to 3-8."
+
+**Player 1's Turn**:
+- Chooses subrange **4-7**
+- Announces: "I reduce the range to 4-7."
+
+**Player 2's Turn**:
+- Chooses subrange **5-6**
+- Announces: "I reduce the range to 5-6."
+
+**Player 1's Turn**:
+- Current range is **5-6**
+- Cannot make a valid move (cannot exclude numbers from both ends)
+- **Player 1 loses**, **Player 2 wins**.
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input ranges.
+
+```
+Game Start: The initial range is 1-10.
+
+Player 1, enter your subrange (exclude at least one number from both ends):
+> 2 9
+
+Current Range is now 2-9.
+
+Player 2, enter your subrange (exclude at least one number from both ends):
+> 3 8
+
+Current Range is now 3-8.
+
+Player 1, enter your subrange (exclude at least one number from both ends):
+> 4 7
+
+Current Range is now 4-7.
+
+Player 2, enter your subrange (exclude at least one number from both ends):
+> 5 6
+
+Current Range is now 5-6.
+
+Player 1, enter your subrange (exclude at least one number from both ends):
+> 
+
+No valid move available. Player 2 wins!
+```
+
+### Strategic Notes
+
+- **Early Game**: Players should aim to reduce the range in a way that limits the opponent's options in future turns.
+- **Mid Game**: Keep track of the range size; try to force the range into sizes where you have a winning strategy.
+- **End Game**: Anticipate the opponent's moves and aim to leave them with a range where no valid moves are possible.
+
+## Conclusion
+
+**Narrow** is a simple yet strategic game that tests players' foresight and planning abilities. While the rules are straightforward, mastering the game requires practice and strategic thinking. Enjoy challenging your opponent in this battle of wits!

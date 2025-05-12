@@ -1,0 +1,206 @@
+# Battle to Ten: Rule Book
+
+## Objective
+
+**Battle to Ten** is a strategic two-player, turn-based game. The primary goal is to be the first player to reach **exactly 10** by adding available digits to your total without exceeding it. Exceeding a total of 10 results in an immediate loss. Skilled play involves strategic selection of digits to advance your total while preventing your opponent from reaching 10.
+
+## Setup
+
+1. **Starting Totals**: Both players begin with a total of **0**.
+2. **Available Digits**: A shared pool of digits from **1** to **9** is available for both players.
+3. **First Player**: Decide who goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Digits Pool**: Numbers from **1** to **9**.
+- **Player Totals**: Each player keeps track of their current total (starting at 0).
+- **Used Digits List**: A list to track which digits have been used and are no longer available.
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with the first player.
+- **Turn Actions**:
+  - Choose one **unused digit** from the available digits pool.
+  - **Add** the chosen digit to **your total**.
+  - **Update** the available digits pool and used digits list by removing the chosen digit.
+  - **Check for Win/Loss Conditions**.
+
+- **Example Turn**:
+  - **Available Digits**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+  - **Player A's Total**: 0
+  - **Player B's Total**: 0
+  - **Player A** selects digit **3**.
+  - **Player A's Total** becomes **3**.
+  - Digit **3** is removed from available digits.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Players can only select **unused digits** from **1** to **9**.
+   - Each digit can be used **only once** in the game.
+
+2. **Updating Totals**:
+   - After selecting a digit, a player **adds** it to **their own total**.
+
+3. **Winning the Game**:
+   - A player **wins** if, after their turn, **their total is exactly 10**.
+
+4. **Losing the Game**:
+   - A player **loses** immediately if **their total exceeds 10** after adding a digit.
+   - If a player has **no legal moves** (no available digits can be added without exceeding 10), they **lose their turn**, and the opponent continues. If both players have no legal moves, the player with the **lower total** wins.
+
+5. **No Draw Mechanism**:
+   - The game cannot end in a draw due to the finite number of digits and the win/loss conditions.
+
+6. **Strategic Considerations**:
+   - Players must be cautious not to set up the opponent for a win by leaving them with a winning digit.
+   - Anticipate which digits remain and plan accordingly to avoid exceeding a total of 10.
+
+## Scoring
+
+- **Victory**: The winner is the first to reach a total of exactly 10.
+- **Defeat**: Exceeding a total of 10 or being unable to make a legal move results in a loss.
+- **No Points System**: The game outcome is determined by win or loss; there is no ongoing point scoring.
+
+## Examples
+
+### Example Game Play
+
+**Starting Game State**:
+
+- **Available Digits**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player A's Total**: 0
+- **Player B's Total**: 0
+
+---
+
+**Turn 1**:
+
+- **Player A** selects **4**.
+- **Player A's Total**: 0 + 4 = **4**
+- **Available Digits**: 1, 2, 3, 5, 6, 7, 8, 9
+
+---
+
+**Turn 2**:
+
+- **Player B** selects **5**.
+- **Player B's Total**: 0 + 5 = **5**
+- **Available Digits**: 1, 2, 3, 6, 7, 8, 9
+
+---
+
+**Turn 3**:
+
+- **Player A** selects **6**.
+- **Player A's Total**: 4 + 6 = **10**
+- **Available Digits**: 1, 2, 3, 7, 8, 9
+
+- **Player A Wins!**
+
+**Explanation**: Player A reached exactly 10 and wins the game.
+
+---
+
+### Avoiding Defeat Scenario
+
+**Game State**:
+
+- **Available Digits**: 2, 3, 4, 5, 6, 7
+- **Player A's Total**: 7
+- **Player B's Total**: 8
+
+**Turn**:
+
+- **Player A** must choose from available digits.
+- Digits **2**, **3**, **4**, **5**, **6**, **7** remain.
+- Adding any digit will exceed 10 (7 + 2 = 9, 7 + 3 = 10 [possible], 7 + 4 = 11 [exceeds], etc.).
+
+**Optimal Move**:
+
+- **Player A** selects **3**.
+- **Player A's Total**: 7 + 3 = **10**
+- **Player A Wins!**
+
+---
+
+**Alternate Scenario**:
+
+If **Player A** had **selected 2**:
+
+- **Player A's Total**: 7 + 2 = **9**
+- **Available Digits**: 3, 4, 5, 6, 7
+
+**Player B's Turn**:
+
+- **Player B** must avoid exceeding 10.
+- **Player B** has a total of 8.
+- **Player B** cannot select any remaining digit without exceeding 10 (all digits are 3 or higher).
+- **Player B Loses** due to no legal moves.
+
+## Command-Line Interaction Sample
+
+### Example Session
+
+**Game Start**
+
+```
+Available Digits: 1 2 3 4 5 6 7 8 9
+Player A's Total: 0
+Player B's Total: 0
+Player A's Turn.
+Choose a digit to add to your total: 4
+```
+
+**After Player A's Turn**
+
+```
+Player A selected 4.
+Player A's Total: 4
+Available Digits: 1 2 3 5 6 7 8 9
+```
+
+**Player B's Turn**
+
+```
+Player B's Turn.
+Choose a digit to add to your total: 5
+```
+
+**After Player B's Turn**
+
+```
+Player B selected 5.
+Player B's Total: 5
+Available Digits: 1 2 3 6 7 8 9
+```
+
+**Player A's Winning Turn**
+
+```
+Player A's Turn.
+Choose a digit to add to your total: 6
+```
+
+**Game End**
+
+```
+Player A selected 6.
+Player A's Total: 10
+Player A has reached exactly 10 and wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of remaining digits and calculate possible totals for both yourself and your opponent.
+- **Block Opponent**: Avoid leaving a digit available that would allow your opponent to reach 10 on their next turn.
+- **Safe Additions**: If you cannot reach 10 on your turn, consider selecting a digit that brings you closer without setting up your opponent.
+- **Force a Loss**: If possible, force a situation where any move your opponent makes will cause them to exceed 10.
+
+---
+
+## Conclusion
+
+**Battle to Ten** is a game of strategy and foresight. By carefully selecting digits and anticipating your opponent's moves, you can control the flow of the game and steer it toward victory. Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,185 @@
+# Number Clash: Rule Book
+
+## Objective
+
+**Be the first to reduce your opponent's life points to zero** by strategically selecting numbers in attack and defense phases. Outsmart your opponent by managing your number choices and anticipating their moves.
+
+---
+
+## Setup
+
+- **Players:** 2
+- **Starting Life Points:** Each player begins with **20 life points**.
+- **Number Pool:** Both players have access to numbers **1 through 10**, with each number available **twice** for use throughout the game.
+
+---
+
+## Game Components
+
+1. **Life Points Tracker:**
+
+   - Keeps track of each player's remaining life points.
+   - Starts at 20 and decreases based on damage taken.
+
+2. **Number Usage Chart:**
+
+   - A list of numbers **1-10** for each player.
+   - Each number has **two uses** (can be used twice).
+   - Tracks how many times each number has been used in attacks or defenses.
+
+3. **Command-Line Interface:**
+
+   - Players input their choices when prompted.
+   - Displays current life points, available numbers, and game status.
+
+---
+
+## Turns
+
+1. **Round Structure:**
+
+   - The game is played in **rounds**, each consisting of an **Attack Phase** and a **Defense Phase**.
+   - Players alternate roles each round: one player is the attacker, the other is the defender.
+
+2. **Determining First Attacker:**
+
+   - Randomly decide who attacks first (e.g., flip a coin, or the program selects randomly).
+
+3. **Turn Order within a Round:**
+
+   - **Attack Phase:** Attacker selects an attack number.
+   - **Defense Phase:** Defender responds with a defense number.
+   - **Resolution:** Determine the outcome and update life points.
+   - **Role Swap:** Attacker and defender roles switch for the next round.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- **Attack Number:**
+  - The attacker chooses a number between **1 and 10** (inclusive) that they have not used more than twice.
+- **Defense Number:**
+  - After seeing the attack number, the defender chooses a number between **1 and 10** (inclusive) that they have not used more than twice.
+
+### 2. Number Usage Restrictions
+
+- **Limited Uses:**
+  - Each number **1-10** can be used **twice per player** during the game, whether in attack or defense.
+- **Tracking:**
+  - Players must keep track of their used numbers. The game interface should display remaining uses.
+
+### 3. Resolving Attacks
+
+- **Successful Defense:**
+  - If the defender's number is **greater than or equal to** the attacker's number, the attack is blocked, and **no damage** is dealt.
+- **Successful Attack:**
+  - If the attacker's number is **greater** than the defender's number, the defender takes **damage equal to the difference** between the two numbers.
+  - Example: Attacker plays 7, Defender plays 5. Damage = 7 - 5 = **2 points**.
+
+### 4. Life Points Reduction
+
+- Subtract damage from the defender's life points.
+- If a player's life points reach **zero or below**, they **lose the game**.
+
+### 5. End of Game
+
+- **Winning Condition:**
+  - Reduce your opponent's life points to **zero or below**.
+- **No Draws:**
+  - The game continues until one player wins. There is **no draw mechanism**.
+
+---
+
+## Scoring
+
+- **Life Points:** The primary scoring metric. Keep track of both players' life points throughout the game.
+- **Damage Calculation:** Damage = Attack Number - Defense Number (if attack is successful).
+
+---
+
+## Examples
+
+### Example 1: Successful Defense
+
+- **Player 1 (Attacker):**
+  - Chooses **6** (has one use of 6 left after this).
+- **Player 2 (Defender):**
+  - Chooses **8** (has one use of 8 left after this).
+- **Outcome:**
+  - Defense successful. No damage dealt.
+- **Life Points:**
+  - Player 1: 20 LP
+  - Player 2: 20 LP
+
+### Example 2: Successful Attack
+
+- **Player 2 (Attacker):**
+  - Chooses **9** (has one use of 9 left after this).
+- **Player 1 (Defender):**
+  - Chooses **4** (has one use of 4 left after this).
+- **Outcome:**
+  - Attack successful. Damage = 9 - 4 = **5 points**.
+- **Life Points:**
+  - Player 1: 15 LP (**20 - 5**)
+  - Player 2: 20 LP
+
+### Example 3: Number Exhaustion
+
+- **Situation:**
+  - Player 1 has already used the number **10** twice.
+- **Player 2 (Attacker):**
+  - Chooses **10**.
+- **Player 1 (Defender):**
+  - Cannot choose **10** (no uses left).
+  - Must choose another available number.
+- **Strategic Impact:**
+  - Limited options may force Player 1 to select a lower defense number.
+
+---
+
+## Command-Line Interaction Samples
+
+**At the Start of Each Turn:**
+
+- **Display:**
+  - Current Life Points.
+  - Available Numbers and Remaining Uses.
+- **Prompt Attacker:**
+  - "Player X, choose your attack number (available numbers: ...):"
+- **Prompt Defender:**
+  - "Player Y, Player X attacked with [attack number]. Choose your defense number (available numbers: ...):"
+
+**After Each Turn:**
+
+- **Display Outcome:**
+  - "Attack Successful! Player Y takes [damage] damage."
+  - **Or**
+  - "Attack Blocked! No damage dealt."
+- **Update Life Points:**
+  - "Player X Life Points: [current LP]"
+  - "Player Y Life Points: [current LP]"
+- **Role Swap Notification:**
+  - "Roles have switched. It's now Player Y's turn to attack."
+
+---
+
+## Strategic Considerations
+
+- **Number Management:**
+  - Conserve high numbers for critical moments.
+  - Decide when to expend a number's second use.
+- **Predicting Opponent Moves:**
+  - Keep track of numbers your opponent has used.
+  - Anticipate whether they'll use high or low numbers based on remaining options.
+- **Balancing Attack and Defense:**
+  - Weigh the benefit of a strong attack against the risk of having fewer high numbers for defense later.
+
+---
+
+## Conclusion
+
+**Number Clash** is a game of strategic resource management and anticipation. With limited uses of each number, players must outthink their opponent to effectively deal damage and defend against attacks. The simplicity of the rules combined with the depth of strategy makes for quick, engaging gameplay where skill prevails.
+
+Enjoy the challenge and may the best strategist win!

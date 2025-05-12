@@ -1,0 +1,340 @@
+# Predictive Pursuit
+
+## Objective
+
+**Primary Goal**: Be the first player to reach position **10** on a linear track by outmaneuvering your opponent through strategic decision-making and prediction.
+
+**Victory Condition**: A player wins by advancing their token to exactly position **10** before their opponent does. There are no draws; the game continues until one player achieves this objective.
+
+---
+
+## Setup
+
+1. **Game Board**: Conceptualize a linear track with positions numbered from **0** to **10**.
+
+2. **Player Tokens**: Each player has a token that starts at position **0** on the track.
+
+3. **Starting Conditions**: Decide which player goes first through mutual agreement or a simple random method like flipping a coin.
+
+---
+
+## Game Components
+
+- **Tokens**: Represented in the command-line interface by each player's initials or a designated character (e.g., `P1` for Player 1 and `P2` for Player 2).
+
+- **Track Positions**: Numerical positions from **0** (start) to **10** (finish). The track is conceptual and displayed as numerical values updated each turn.
+
+- **Moves**: Players secretly choose to move **1** or **2** steps forward during their turn.
+
+---
+
+## Turns
+
+1. **Secret Move Selection**: On each turn, the active player secretly selects to move **1** or **2** steps forward without revealing this choice to the opponent.
+
+2. **Opponent's Guess**: The opponent attempts to predict the active player's chosen move by guessing **1** or **2**.
+
+3. **Movement Resolution**:
+
+   - **Correct Guess**: If the opponent guesses correctly, the active player's token does **not** move.
+   
+   - **Incorrect Guess**: If the opponent guesses incorrectly, the active player's token moves forward by the number of steps they secretly selected.
+
+4. **Turn Progression**: Players alternate turns, repeating the above steps until one player's token reaches position **10**.
+
+---
+
+## Rules and Mechanics
+
+- **Movement Constraints**:
+
+  - A player cannot move beyond position **10**. If a move would place the token past position **10**, that move is invalid, and the player must choose a lesser move if possible.
+  
+- **Secret Selection Method**:
+
+  - Each player inputs their secret move into the command-line interface without the opponent seeing (e.g., by having the opponent look away or using separate input methods).
+  
+- **Guessing Mechanism**:
+
+  - The opponent verbally announces their guess after the active player has made their secret selection.
+
+- **Turn Example**:
+
+  1. **Player 1's Turn**:
+
+     - Secretly selects to move **2** steps.
+     
+     - Player 2 guesses **1**.
+     
+     - Since the guess is incorrect, Player 1 moves forward **2** steps to position **2**.
+     
+  2. **Player 2's Turn**:
+
+     - Secretly selects to move **1** step.
+     
+     - Player 1 guesses **1**.
+     
+     - Guess is correct; Player 2 does not move.
+
+---
+
+## Scoring
+
+- **Progress Tracking**:
+
+  - Each player's current position is tracked and displayed after each turn.
+
+- **Winning the Game**:
+
+  - The first player to reach position **10** exactly is declared the winner.
+
+- **No Draws**:
+
+  - The game cannot end in a draw; play continues until one player wins.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Initial State**:
+
+- Player 1 Position: 0
+- Player 2 Position: 0
+
+---
+
+**Turn 1**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 2
+- **Player 2's Guess**: 1
+- **Outcome**: Guess incorrect. Player 1 moves to position **2**.
+
+**Positions**:
+
+- Player 1: 2
+- Player 2: 0
+
+---
+
+**Turn 2**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 2
+- **Player 1's Guess**: 2
+- **Outcome**: Guess correct. Player 2 does not move.
+
+**Positions**:
+
+- Player 1: 2
+- Player 2: 0
+
+---
+
+**Turn 3**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 1
+- **Player 2's Guess**: 2
+- **Outcome**: Guess incorrect. Player 1 moves to position **3**.
+
+**Positions**:
+
+- Player 1: 3
+- Player 2: 0
+
+---
+
+**Turn 4**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 1
+- **Player 1's Guess**: 1
+- **Outcome**: Guess correct. Player 2 does not move.
+
+**Positions**:
+
+- Player 1: 3
+- Player 2: 0
+
+---
+
+**Turn 5**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 2
+- **Player 2's Guess**: 1
+- **Outcome**: Guess incorrect. Player 1 moves to position **5**.
+
+**Positions**:
+
+- Player 1: 5
+- Player 2: 0
+
+---
+
+**Turn 6**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 2
+- **Player 1's Guess**: 1
+- **Outcome**: Guess incorrect. Player 2 moves to position **2**.
+
+**Positions**:
+
+- Player 1: 5
+- Player 2: 2
+
+---
+
+**Turn 7**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 2
+- **Player 2's Guess**: 2
+- **Outcome**: Guess correct. Player 1 does not move.
+
+**Positions**:
+
+- Player 1: 5
+- Player 2: 2
+
+---
+
+**Turn 8**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 1
+- **Player 1's Guess**: 2
+- **Outcome**: Guess incorrect. Player 2 moves to position **3**.
+
+**Positions**:
+
+- Player 1: 5
+- Player 2: 3
+
+---
+
+**Turn 9**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 2
+- **Player 2's Guess**: 1
+- **Outcome**: Guess incorrect. Player 1 moves to position **7**.
+
+**Positions**:
+
+- Player 1: 7
+- Player 2: 3
+
+---
+
+**Turn 10**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 2
+- **Player 1's Guess**: 2
+- **Outcome**: Guess correct. Player 2 does not move.
+
+**Positions**:
+
+- Player 1: 7
+- Player 2: 3
+
+---
+
+**Turn 11**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 1
+- **Player 2's Guess**: 2
+- **Outcome**: Guess incorrect. Player 1 moves to position **8**.
+
+**Positions**:
+
+- Player 1: 8
+- Player 2: 3
+
+---
+
+**Turn 12**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 1
+- **Player 1's Guess**: 1
+- **Outcome**: Guess correct. Player 2 does not move.
+
+**Positions**:
+
+- Player 1: 8
+- Player 2: 3
+
+---
+
+**Turn 13**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 2 *(Cannot move 2 steps to position 10)*
+- **Valid Move Options**: Only **2** steps to reach position **10**.
+
+- **Player 2's Guess**: 2
+- **Outcome**: Guess correct. Player 1 does not move.
+
+**Positions**:
+
+- Player 1: 8
+- Player 2: 3
+
+---
+
+**Turn 14**: *Player 2's Turn*
+
+- **Player 2's Secret Move**: 2
+- **Player 1's Guess**: 1
+- **Outcome**: Guess incorrect. Player 2 moves to position **5**.
+
+**Positions**:
+
+- Player 1: 8
+- Player 2: 5
+
+---
+
+**Turn 15**: *Player 1's Turn*
+
+- **Player 1's Secret Move**: 2
+- **Player 2's Guess**: 1
+- **Outcome**: Guess incorrect. Player 1 moves to position **10**.
+
+**Winner**: **Player 1** reaches position **10** and wins the game.
+
+---
+
+## Command-Line Interaction Example
+
+```plaintext
+Player 1's Turn:
+Enter your secret move (1 or 2): [Input Hidden]
+Player 2, guess Player 1's move (1 or 2): 1
+Player 1 chose 2.
+Your guess was incorrect. Player 1 moves to position 2.
+
+Scores:
+Player 1 Position: 2
+Player 2 Position: 0
+---
+Player 2's Turn:
+Enter your secret move (1 or 2): [Input Hidden]
+Player 1, guess Player 2's move (1 or 2): 2
+Player 2 chose 2.
+Your guess was correct. Player 2 does not move.
+
+Scores:
+Player 1 Position: 2
+Player 2 Position: 0
+---
+... (Continues until a player reaches position 10)
+```
+
+---
+
+## Strategy Tips
+
+- **Predictability**: Avoid patterns in your move selections to make it harder for your opponent to guess correctly.
+
+- **Psychological Play**: Use bluffing and reverse psychology to mislead your opponent.
+
+- **Endgame Planning**: As you approach position 10, carefully consider your move options to avoid being blocked by correct guesses.
+
+---
+
+By following this rule book, players can engage in a competitive and strategic duel that is quick to play and simple to implement in a command-line interface. The game balances luck and skill, ensuring that a knowledgeable player can consistently outperform an unskilled opponent.

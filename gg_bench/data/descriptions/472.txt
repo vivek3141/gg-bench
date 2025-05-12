@@ -1,0 +1,202 @@
+# Number Nexus
+
+## Objective
+
+Be the last player to successfully add a valid number to the shared list by strategically selecting numbers that are either factors or multiples of the previously added number. The player who causes their opponent to have no valid moves wins the game.
+
+## Setup
+
+- **Players**: Two players take turns.
+- **Starting Condition**: The shared list of numbers starts empty.
+- **First Move**: A coin toss or random selection determines which player goes first.
+
+## Game Components
+
+- **Shared List**: A list that holds all the numbers played during the game.
+- **Valid Numbers**: Positive integers between 2 and 100 inclusive.
+- **Number Repository**: A pool of numbers from 2 to 100 that players can select from, excluding numbers already played.
+
+## Turns
+
+- **Turn Structure**: Players alternate turns throughout the game.
+- **First Player Move**: Chooses any valid number between 2 and 100 to start the shared list.
+- **Subsequent Moves**:
+  - On their turn, a player must:
+    - Choose a number not already in the shared list.
+    - The chosen number must be either a **factor** or a **multiple** of the last number added to the shared list.
+  - Add the chosen number to the end of the shared list.
+
+## Rules and Mechanics
+
+1. **Valid Numbers**:
+   - Must be a positive integer between 2 and 100 inclusive.
+   - Cannot be a number already present in the shared list.
+
+2. **First Move**:
+   - The first player can choose any valid number to start the game.
+
+3. **Subsequent Moves**:
+   - The number must satisfy one of the following conditions with respect to the **last number** in the shared list:
+     - **Factor**: The number divides evenly into the last number.
+     - **Multiple**: The number is a multiple of the last number.
+   - Examples:
+     - If the last number is 6, valid next numbers could be 2 (factor), 3 (factor), 12 (multiple), 18 (multiple), etc., provided they have not been played yet.
+
+4. **Victory Condition**:
+   - A player wins if their opponent cannot make a valid move on their turn.
+   - If a player cannot add a valid number on their turn, they lose the game.
+
+5. **Invalid Moves**:
+   - If a player adds an invalid number (not a factor or multiple, already used, or out of range), they immediately lose the game.
+
+6. **Strategy**:
+   - Players can use strategic thinking to select numbers that limit the opponent's options in subsequent turns.
+
+## Scoring
+
+- This is a win-or-lose game with no point scoring system.
+- The game concludes when one player cannot make a valid move.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+- **Shared List**: Empty.
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses the number **6**.
+- **Shared List**: [6].
+
+#### Turn 2: Player 2
+
+- **Possible Choices**:
+  - Factors of 6: 2, 3.
+  - Multiples of 6: 12, 18, 24, etc.
+- **Action**: Chooses the number **3** (factor).
+- **Shared List**: [6, 3].
+
+#### Turn 3: Player 1
+
+- **Possible Choices**:
+  - Factors of 3: None (since 1 is not allowed and 3 is already used).
+  - Multiples of 3: 9, 12, 15, etc.
+- **Action**: Chooses the number **9** (multiple).
+- **Shared List**: [6, 3, 9].
+
+#### Turn 4: Player 2
+
+- **Possible Choices**:
+  - Factors of 9: 9 is already used; 3 is already used.
+  - Multiples of 9: 18, 27, etc.
+- **Action**: Chooses the number **18** (multiple).
+- **Shared List**: [6, 3, 9, 18].
+
+#### Turn 5: Player 1
+
+- **Possible Choices**:
+  - Factors of 18: 2, 3, 6, 9 (but 3, 6, 9, and 18 are already used).
+  - **Available Choices**: **2**.
+  - Multiples of 18: 36, 54, 72, etc.
+- **Action**: Chooses the number **2** (factor).
+- **Shared List**: [6, 3, 9, 18, 2].
+
+#### Turn 6: Player 2
+
+- **Possible Choices**:
+  - Factors of 2: None available (2 is already used).
+  - Multiples of 2: 4, 6, 8, 10, etc. (6 is already used).
+- **Action**: Chooses the number **4** (multiple).
+- **Shared List**: [6, 3, 9, 18, 2, 4].
+
+#### Turn 7: Player 1
+
+- **Possible Choices**:
+  - Factors of 4: 2 (already used).
+  - Multiples of 4: 8, 12, 16, etc.
+- **Action**: Chooses the number **8** (multiple).
+- **Shared List**: [6, 3, 9, 18, 2, 4, 8].
+
+#### Turn 8: Player 2
+
+- **Possible Choices**:
+  - Factors of 8: 2 (already used), 4 (already used).
+  - Multiples of 8: 16, 24, 32, etc.
+- **Action**: Chooses the number **16** (multiple).
+- **Shared List**: [6, 3, 9, 18, 2, 4, 8, 16].
+
+#### Turn 9: Player 1
+
+- **Possible Choices**:
+  - Factors of 16: 2, 4, 8 (all already used).
+  - Multiples of 16: 32, 48, 64, etc.
+- **Action**: Chooses the number **32** (multiple).
+- **Shared List**: [6, 3, 9, 18, 2, 4, 8, 16, 32].
+
+#### Turn 10: Player 2
+
+- **Possible Choices**:
+  - Factors of 32: 2, 4, 8, 16 (all already used).
+  - Multiples of 32: 64, 96 (within the allowed range).
+- **Action**: Chooses the number **64** (multiple).
+- **Shared List**: [6, 3, 9, 18, 2, 4, 8, 16, 32, 64].
+
+#### Turn 11: Player 1
+
+- **Possible Choices**:
+  - Factors of 64: 2, 4, 8, 16, 32 (all already used).
+  - Multiples of 64: None within the allowed range (next would be 128, which is over 100).
+- **Outcome**: Player 1 cannot make a valid move and **loses**.
+- **Winner**: Player 2.
+
+### Command-Line Interaction Sample
+
+#### Starting the Game
+
+```
+Welcome to Number Nexus!
+Player 1, please enter the starting number (between 2 and 100): 6
+Shared List: [6]
+```
+
+#### Turn Progression
+
+```
+Player 2's Turn
+Last Number: 6
+Available Numbers: [Factors and Multiples of 6 not already used]
+Enter your number: 3
+Shared List: [6, 3]
+
+Player 1's Turn
+Last Number: 3
+Available Numbers: [Multiples of 3 not already used]
+Enter your number: 9
+Shared List: [6, 3, 9]
+
+... and so on until the game concludes.
+```
+
+#### Game Conclusion
+
+```
+Player 1's Turn
+Last Number: 64
+No valid moves available.
+Player 2 wins the game!
+```
+
+## Additional Notes
+
+- **Strategic Tips**:
+  - Try to select numbers with few factors or multiples remaining to limit your opponent's options.
+  - Keep track of numbers already used to avoid penalization.
+- **Fair Play**:
+  - Both players should ensure they only select valid numbers on their turn.
+  - Using a command-line program can help validate moves automatically.
+
+## Summary
+
+Number Nexus is a simple yet strategic game that challenges players to think ahead and use basic number theory to outmaneuver their opponent. With straightforward rules and a clear objective, it offers engaging gameplay suitable for a command-line interface and can be easily coded for quick matches.

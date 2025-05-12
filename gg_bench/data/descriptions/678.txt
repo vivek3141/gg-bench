@@ -1,0 +1,233 @@
+# Last Digit Standing
+
+## Objective
+
+**Last Digit Standing** is a two-player turn-based game where players take turns naming two-digit numbers based on specific rules. The primary objective is to be the last player able to make a valid move. A player wins by successfully naming a valid two-digit number when their opponent cannot.
+
+---
+
+## Setup
+
+1. **Starting Number**: The game begins with an agreed-upon two-digit number between 10 and 99 (inclusive). This number serves as the first number in the game.
+
+2. **Used Numbers List**: A shared list is maintained to keep track of all two-digit numbers that have been used during the game. Initially, this list contains only the starting number.
+
+3. **Player Order**: Players decide who will take the first turn (Player 1 and Player 2).
+
+4. **Command-Line Interface**: Players will input their chosen numbers via the command line or any text-based input method.
+
+---
+
+## Game Components
+
+- **Two-Digit Numbers (10-99)**: These are the numbers used during the game. Each number can be used only once.
+
+- **Used Numbers List**: A record of all numbers that have been played. This ensures that no number is repeated.
+
+- **Command-Line Input**: Players enter their numbers in turn, adhering to the game's rules.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players alternate turns beginning with Player 1.
+
+2. **Player's Action**:
+
+   - **Naming a Number**: On their turn, a player must enter a valid two-digit number that starts with the last digit of the previous number.
+
+   - **Validity Check**: The chosen number must not have been used previously in the game.
+
+3. **Updating the Game State**:
+
+   - Add the newly chosen number to the Used Numbers List.
+
+   - Announce the number so both players are aware of the current game state.
+
+4. **Turn Progression**: If a player provides a valid number, play passes to the next player. If a player cannot provide a valid number, the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Number Selection**:
+
+   - **Two-Digit Range**: Only numbers between 10 and 99 inclusive are allowed.
+
+   - **Starting Digit**: The number must start with the last digit of the previous number played.
+
+     - *Example*: If the previous number was **42**, which ends with **2**, the next number must start with **2** (e.g., 24, 27).
+
+   - **Unused Numbers**: The number must not already be in the Used Numbers List.
+
+2. **First Turn Special Rule**:
+
+   - The first player selects any valid two-digit number to start the game.
+
+3. **Winning the Game**:
+
+   - A player wins when their opponent is unable to name a valid number on their turn.
+
+4. **Losing Conditions**:
+
+   - A player loses if they cannot provide a valid number on their turn due to:
+
+     - No remaining numbers starting with the required digit.
+
+     - All such numbers have been previously used.
+
+5. **No Repeats**: Once a number has been used, it cannot be used again by either player.
+
+6. **Invalid Input**:
+
+   - If a player provides an invalid number (does not start with the correct digit, is out of range, or has been used), they must try again.
+
+   - If they cannot provide a valid number, they lose the game.
+
+---
+
+## Scoring
+
+There is no point-based scoring system in **Last Digit Standing**. Victory is determined solely by the ability to continue making valid moves when the opponent cannot.
+
+---
+
+## Examples
+
+### Example Game Play
+
+Let's walk through a sample game to illustrate how the rules are applied.
+
+**Starting the Game**:
+
+- **Player 1** chooses the starting number: **42**
+- **Used Numbers List**: [42]
+
+**Turn Progression**:
+
+1. **Player 2's Turn**:
+
+   - **Required Starting Digit**: 2 (last digit of 42)
+   - **Possible Choices**: Any unused two-digit number starting with 2 (e.g., 21, 23, 24, ..., 29)
+   - **Player 2 Chooses**: **27**
+   - **Used Numbers List**: [42, 27]
+
+2. **Player 1's Turn**:
+
+   - **Required Starting Digit**: 7 (last digit of 27)
+   - **Possible Choices**: 70, 71, 72, 73, 74, 75, 76, 77, 78, 79
+   - **Player 1 Chooses**: **73**
+   - **Used Numbers List**: [42, 27, 73]
+
+3. **Player 2's Turn**:
+
+   - **Required Starting Digit**: 3 (last digit of 73)
+   - **Possible Choices**: 30, 31, 32, 33, 34, 35, 36, 37, 38, 39
+   - **Player 2 Chooses**: **31**
+   - **Used Numbers List**: [42, 27, 73, 31]
+
+4. **Player 1's Turn**:
+
+   - **Required Starting Digit**: 1 (last digit of 31)
+   - **Possible Choices**: 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+   - **Player 1 Chooses**: **15**
+   - **Used Numbers List**: [42, 27, 73, 31, 15]
+
+5. **Player 2's Turn**:
+
+   - **Required Starting Digit**: 5 (last digit of 15)
+   - **Possible Choices**: 50, 51, 52, 53, 54, 55, 56, 57, 58, 59
+   - **Player 2 Chooses**: **56**
+   - **Used Numbers List**: [42, 27, 73, 31, 15, 56]
+
+6. **Player 1's Turn**:
+
+   - **Required Starting Digit**: 6 (last digit of 56)
+   - **Possible Choices**: 60, 61, 62, 63, 64, 65, 66, 67, 68, 69
+   - **Player 1 Chooses**: **68**
+   - **Used Numbers List**: [42, 27, 73, 31, 15, 56, 68]
+
+7. **Player 2's Turn**:
+
+   - **Required Starting Digit**: 8 (last digit of 68)
+   - **Possible Choices**: 80, 81, 82, 83, 84, 85, 86, 87, 88, 89
+   - **Player 2 Chooses**: **89**
+   - **Used Numbers List**: [42, 27, 73, 31, 15, 56, 68, 89]
+
+8. **Player 1's Turn**:
+
+   - **Required Starting Digit**: 9 (last digit of 89)
+   - **Possible Choices**: 90, 91, 92, 93, 94, 95, 96, 97, 98, 99
+   - **Player 1 Chooses**: **94**
+   - **Used Numbers List**: [42, 27, 73, 31, 15, 56, 68, 89, 94]
+
+9. **Player 2's Turn**:
+
+   - **Required Starting Digit**: 4 (last digit of 94)
+   - **Possible Choices**: 40, 41, 42 (used), 43, 44, 45, 46, 47, 48, 49
+   - **Player 2 Chooses**: **40**
+   - **Used Numbers List**: [42, 27, 73, 31, 15, 56, 68, 89, 94, 40]
+
+10. **Player 1's Turn**:
+
+    - **Required Starting Digit**: 0 (last digit of 40)
+    - **Possible Choices**: There are no two-digit numbers that start with 0.
+    - **Outcome**: Player 1 cannot make a valid move.
+
+**Conclusion**:
+
+- **Player 1** cannot make a valid move.
+- **Player 2** wins the game.
+
+### Command-Line Interaction Example
+
+```
+Player 1, enter the starting number (10-99): 42
+[Used Numbers: 42]
+
+Player 2, enter a two-digit number starting with 2: 27
+[Used Numbers: 42, 27]
+
+Player 1, enter a two-digit number starting with 7: 73
+[Used Numbers: 42, 27, 73]
+
+Player 2, enter a two-digit number starting with 3: 31
+[Used Numbers: 42, 27, 73, 31]
+
+Player 1, enter a two-digit number starting with 1: 15
+[Used Numbers: 42, 27, 73, 31, 15]
+
+Player 2, enter a two-digit number starting with 5: 56
+[Used Numbers: 42, 27, 73, 31, 15, 56]
+
+Player 1, enter a two-digit number starting with 6: 68
+[Used Numbers: 42, 27, 73, 31, 15, 56, 68]
+
+Player 2, enter a two-digit number starting with 8: 89
+[Used Numbers: 42, 27, 73, 31, 15, 56, 68, 89]
+
+Player 1, enter a two-digit number starting with 9: 94
+[Used Numbers: 42, 27, 73, 31, 15, 56, 68, 89, 94]
+
+Player 2, enter a two-digit number starting with 4: 40
+[Used Numbers: 42, 27, 73, 31, 15, 56, 68, 89, 94, 40]
+
+Player 1, enter a two-digit number starting with 0: ---
+No valid numbers remaining. Player 2 wins!
+```
+
+---
+
+## Strategic Tips
+
+- **Think Ahead**: Anticipate which digits your move will force your opponent to use. Try to limit their options.
+
+- **Number Awareness**: Keep track of which numbers have been used to avoid selecting a number that leaves your opponent with many choices.
+
+- **Avoid Certain Ending Digits**: Be cautious when playing numbers that end with digits offering your opponent many possibilities (like 1, 2, or 7).
+
+---
+
+## Conclusion
+
+**Last Digit Standing** is a simple yet strategic game that challenges players to think ahead and plan their moves carefully. By following the rules outlined in this guide, players can enjoy a quick and engaging battle of wits in a command-line interface. May the most strategic player win!

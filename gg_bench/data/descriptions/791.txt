@@ -1,0 +1,214 @@
+# Clash on the Bridge
+
+## Objective
+
+**Clash on the Bridge** is a strategic two-player, turn-based game played on a linear bridge consisting of eight cells. Each player aims to capture the opponent's token by landing on the same cell without passing them. The first player to land on the opponent's token wins the game. If a player moves past the opponent's token without landing on the same cell, they lose the game.
+
+---
+
+## Setup
+
+- **Game Board**: A linear bridge comprising **8 cells**, numbered from **1** to **8**.
+- **Player Tokens**:
+  - **Player 1** uses token **P1**.
+  - **Player 2** uses token **P2**.
+- **Starting Positions**:
+  - **Player 1** begins off the bridge at **position 0** (before cell 1).
+  - **Player 2** begins off the bridge at **position 9** (after cell 8).
+
+At the start of the game, both tokens are off the bridge and not visible on the board.
+
+---
+
+## Game Components
+
+- **The Bridge**:
+  - A straight line of cells numbered **1** through **8**.
+  - Represents the path on which tokens move towards each other.
+- **Player Tokens**:
+  - Represented in the command-line interface as `P1` and `P2`.
+  - Tokens move along the bridge towards the center.
+
+---
+
+## Turns
+
+- Players alternate turns, with **Player 1** starting the game.
+- On their turn, a player must perform one of the following actions:
+  - **Enter the Bridge**: If their token is off the bridge, they **must** move onto the bridge:
+    - **Player 1** moves from position **0** to cell **1**.
+    - **Player 2** moves from position **9** to cell **8**.
+  - **Advance on the Bridge**: If their token is already on the bridge, they move it forward towards the center by **1 or 2 cells**.
+
+---
+
+## Rules and Mechanics
+
+### Movement
+
+1. **Direction**:
+   - **Player 1** moves in **ascending order** (from cell 1 towards cell 8).
+   - **Player 2** moves in **descending order** (from cell 8 towards cell 1).
+
+2. **Advancement**:
+   - On each turn, a player **must** move their token forward by **1 or 2 cells**.
+   - Tokens cannot remain stationary.
+
+### Capturing the Opponent
+
+- **Capturing** occurs when a player moves their token onto the cell occupied by the opponent's token.
+- The player who moves onto the occupied cell **immediately wins** the game.
+
+### Passing the Opponent
+
+- If a player moves their token **past** the opponent's token **without landing on the same cell**, they **lose** the game immediately.
+  - "Passing" means the player's token moves beyond the opponent's token's position.
+  
+### Occupied Cells
+
+- Both tokens **cannot** occupy the same cell unless a capture is occurring.
+- Only one token per cell is allowed unless a player is moving onto the opponent's cell to capture.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - A player wins by **capturing** the opponent's token.
+- **Losing**:
+  - A player loses if they **pass** the opponent's token without capturing.
+- The game does not involve a point system; it's a win-or-lose outcome for each match.
+
+---
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Initial Setup**:
+
+- Bridge cells: **1** to **8**.
+- **Player 1** at position **0** (off the bridge).
+- **Player 2** at position **9** (off the bridge).
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**:
+   - Moves onto the bridge to **cell 1**.
+
+2. **Player 2's Turn**:
+   - Moves onto the bridge to **cell 8**.
+
+3. **Player 1's Turn**:
+   - Moves forward **2 cells** to **cell 3**.
+
+4. **Player 2's Turn**:
+   - Moves forward **2 cells** to **cell 6**.
+
+5. **Player 1's Turn**:
+   - Moves forward **1 cell** to **cell 4**.
+
+6. **Player 2's Turn**:
+   - Moves forward **2 cells** to **cell 4**.
+   - **Capture** occurs: Player 2 moves onto **cell 4** where Player 1 is located.
+   - **Player 2 wins** the game.
+
+### Example 2: Passing the Opponent
+
+**Continuing from Previous Turns**:
+
+5. **Player 1's Turn**:
+   - Moves forward **2 cells** to **cell 5**.
+
+6. **Player 2's Turn**:
+   - Moves forward **1 cell** to **cell 7**.
+
+7. **Player 1's Turn**:
+   - Moves forward **2 cells** to **cell 7**.
+   - **Capture** occurs: Player 1 moves onto **cell 7** where Player 2 is located.
+   - **Player 1 wins** the game.
+
+### Example 3: Passing Without Capturing
+
+**Continuing from Previous Turns**:
+
+5. **Player 1's Turn**:
+   - Moves forward **2 cells** to **cell 5**.
+
+6. **Player 2's Turn**:
+   - Moves forward **2 cells** to **cell 5**.
+   - **Capture** occurs: Player 2 moves onto **cell 5** where Player 1 is located.
+   - **Player 2 wins** the game.
+
+---
+
+## Command-Line Interactions
+
+### Turn Instructions
+
+- The game prompts the player on their turn with their current position and asks for their move.
+- Players input the number of cells they wish to move (**1** or **2**).
+
+### Sample Turn
+
+```
+[Player 1's Turn]
+Your token is at position 3.
+Enter your move (1 or 2): 2
+
+[Player 1 moves to position 5]
+
+[Player 2's Turn]
+Your token is at position 6.
+Enter your move (1 or 2): 1
+
+[Player 2 moves to position 5]
+
+Player 2 has landed on Player 1's token. Player 2 wins!
+```
+
+### Invalid Moves
+
+- If a player attempts to enter an invalid move (e.g., moving 3 cells), the game will prompt them to enter a valid number.
+
+```
+Enter your move (1 or 2): 3
+Invalid move. Please enter 1 or 2.
+Enter your move (1 or 2): 2
+```
+
+### Passing Notification
+
+- If a player passes the opponent's token, the game will notify them of the loss.
+
+```
+[Player 1's Turn]
+Your token is at position 5.
+Enter your move (1 or 2): 2
+
+[Player 1 moves to position 7]
+
+Player 1 has passed Player 2's token without capturing.
+Player 1 loses. Player 2 wins!
+```
+
+---
+
+## Strategic Depth
+
+- **Anticipate Opponent's Moves**:
+  - Plan your moves by predicting whether the opponent will move 1 or 2 cells.
+- **Control the Center**:
+  - Moving to certain cells may force the opponent into a position where they must choose between passing (and losing) or being captured.
+- **Avoid Passing**:
+  - Be cautious not to move past the opponent without landing on their cell.
+
+---
+
+## Summary
+
+**Clash on the Bridge** is a simple yet strategic game that requires foresight and planning. Each decision can lead to victory or defeat. With straightforward rules and quick gameplay, it offers an engaging experience in a command-line setting.
+
+---
+
+Enjoy the battle of wits on the bridge, and may the best strategist win!

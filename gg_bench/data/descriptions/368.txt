@@ -1,0 +1,271 @@
+# Switch and Capture: Rule Book
+
+## Objective
+
+**Be the last player able to make a legal move.**
+
+In "Switch and Capture," two players compete to outmaneuver each other by toggling switches according to specific rules. The primary goal is to force your opponent into a position where they cannot make a legal move on their turn, thereby securing your victory.
+
+---
+
+## Setup
+
+- **Switches Row:** A row of **10 switches**, numbered from **1** to **10**, is initialized.
+- **Initial State:** All switches start in the **OFF** position.
+- **Player Positions:** Players decide who will take the **first turn** (e.g., by coin toss or mutual agreement).
+- **Starting Conditions:** No switches are toggled; the game begins with all switches OFF.
+
+---
+
+## Game Components
+
+1. **Switches:**
+   - **Quantity:** 10 switches.
+   - **Numbering:** Each switch is uniquely identified by a number from **1** to **10**.
+   - **States:**
+     - **OFF Position:** The default state at the start of the game.
+     - **ON Position:** Switches toggled by players during the game.
+   - **Functionality:** Toggling switches affects their state and potentially others, based on the rules.
+
+2. **Player Symbols:**
+   - While not necessary, players may be represented by symbols or initials in the command-line interface for clarity.
+
+---
+
+## Turns
+
+- **Turn Order:** Players alternate turns, starting with the player who was chosen to go first.
+- **Actions During a Turn:**
+  1. **Select a Switch to Toggle ON:**
+     - The player chooses a switch that is currently in the **OFF** position.
+     - The chosen switch must be toggled to the **ON** position.
+  2. **Toggle Affected Switches:**
+     - After toggling the chosen switch to ON, the player must toggle all other switches whose numbers are **factors or multiples** of the chosen switch's number.
+     - **Affected switches** change state (ON becomes OFF; OFF becomes ON).
+- **Turn Progression:**
+  - Once all required switches have been toggled, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Legal Moves:**
+   - A player **must** toggle at least one switch to the **ON** position during their turn.
+   - Only switches in the **OFF** position can be toggled to ON.
+2. **Toggling Mechanism:**
+   - **Chosen Switch:**
+     - Toggle the selected switch from OFF to ON.
+   - **Affected Switches:**
+     - Identify all switches whose numbers are **factors or multiples** of the chosen switch's number (excluding the chosen switch itself).
+     - Toggle the state of each affected switch (ON becomes OFF; OFF becomes ON).
+3. **Factors and Multiples:**
+   - A **factor** of a number is an integer that divides evenly into that number.
+     - Example: Factors of 6 are 1, 2, 3, and 6.
+   - A **multiple** of a number is the product of that number and an integer.
+     - Example: Multiples of 2 up to 10 are 2, 4, 6, 8, and 10.
+4. **End of the Game:**
+   - The game ends when a player **cannot make a legal move** on their turn (i.e., there are no switches in the OFF position that can be toggled ON).
+   - The **last player** who made a legal move is declared the **winner**.
+5. **Forbidden Moves:**
+   - A player **cannot pass** their turn if a legal move is available.
+   - A player **cannot** toggle a switch that is already in the **ON** position to ON again.
+
+---
+
+## Scoring
+
+- **Victory Condition:**
+  - Winning is achieved by being the **last player able to make a legal move**.
+- **No Points System:**
+  - There is no point accumulation or scoring beyond determining the winner.
+- **Tracking Game State:**
+  - The current state of all switches (ON or OFF) should be displayed after each turn to keep players informed.
+
+---
+
+## Examples
+
+### Example Scenario
+
+Let's illustrate a sample game between **Player A** and **Player B**.
+
+#### Initial State:
+
+Switches 1 to 10 are all OFF.
+
+```
+Switches:
+1[OFF] 2[OFF] 3[OFF] 4[OFF] 5[OFF] 6[OFF] 7[OFF] 8[OFF] 9[OFF] 10[OFF]
+```
+
+#### Turn 1: Player A
+
+- **Chooses Switch 7** to toggle ON.
+- **Affected Switches:** Since 7 has no factors or multiples within 1-10 other than 7 itself, **no other switches are toggled**.
+- **Resulting State:**
+
+```
+Switches:
+1[OFF] 2[OFF] 3[OFF] 4[OFF] 5[OFF] 6[OFF] 7[ON] 8[OFF] 9[OFF] 10[OFF]
+```
+
+#### Turn 2: Player B
+
+- **Chooses Switch 2** to toggle ON.
+- **Affected Switches:** Switches that are multiples or factors of 2 (excluding 2):
+  - **Switch 4** (2 x 2)
+  - **Switch 6** (2 x 3)
+  - **Switch 8** (2 x 4)
+  - **Switch 10** (2 x 5)
+- **Toggles Switches 4, 6, 8, and 10**.
+- **Resulting State:**
+
+```
+Switches:
+1[OFF] 2[ON] 3[OFF] 4[ON] 5[OFF] 6[ON] 7[ON] 8[ON] 9[OFF] 10[ON]
+```
+
+#### Turn 3: Player A
+
+- **Chooses Switch 5** to toggle ON.
+- **Affected Switches:** Switches that are multiples or factors of 5 (excluding 5):
+  - **Switch 10** (5 x 2)
+- **Toggles Switch 10**.
+- **Switch 10** changes from ON to **OFF**.
+- **Resulting State:**
+
+```
+Switches:
+1[OFF] 2[ON] 3[OFF] 4[ON] 5[ON] 6[ON] 7[ON] 8[ON] 9[OFF] 10[OFF]
+```
+
+#### Turn 4: Player B
+
+- **Chooses Switch 6**. However, Switch 6 is already ON.
+- **Available OFF switches:** 1, 3, 9, 10.
+- **Chooses Switch 9** to toggle ON.
+- **Affected Switches:** Switch 9 has factors/multiples:
+  - **Switch 3** (3 x 3 = 9)
+- **Toggles Switch 3**.
+- **Switch 3** changes from OFF to **ON**.
+- **Resulting State:**
+
+```
+Switches:
+1[OFF] 2[ON] 3[ON] 4[ON] 5[ON] 6[ON] 7[ON] 8[ON] 9[ON] 10[OFF]
+```
+
+#### Turn 5: Player A
+
+- **Available OFF switches:** 1 and 10.
+- **Chooses Switch 1** to toggle ON.
+- **Affected Switches:** Switches that are factors or multiples of 1 (excluding 1):
+  - **Switches 2 to 10** (since 1 is a factor of all numbers)
+- **Toggles Switches 2 to 10**:
+  - Switches currently ON (2, 3, 4, 5, 6, 7, 8, 9) change to OFF.
+  - Switch 10 (currently OFF) changes to ON.
+- **Resulting State:**
+
+```
+Switches:
+1[ON] 2[OFF] 3[OFF] 4[OFF] 5[OFF] 6[OFF] 7[OFF] 8[OFF] 9[OFF] 10[ON]
+```
+
+#### Turn 6: Player B
+
+- **Available OFF switches:** 2 to 9.
+- **Chooses Switch 2** to toggle ON.
+- **Affected Switches:** Switches that are factors or multiples of 2 (excluding 2):
+  - **Switch 4**, **6**, **8**, and **10**.
+- **Toggles Switches 4, 6, 8, 10**:
+  - Switches 4, 6, 8 (currently OFF) change to ON.
+  - Switch 10 (currently ON) changes to OFF.
+- **Resulting State:**
+
+```
+Switches:
+1[ON] 2[ON] 3[OFF] 4[ON] 5[OFF] 6[ON] 7[OFF] 8[ON] 9[OFF] 10[OFF]
+```
+
+#### Turns Continue...
+
+Players continue taking turns following the rules.
+
+#### End Game Scenario:
+
+Assuming the game progresses and only Switch 5 is left in the OFF position on Player A's turn.
+
+- **Player A** toggles Switch 5 ON.
+- **Affected Switches:** Switch 10 (multiple of 5).
+- **Switch 10** toggles from OFF to ON.
+- **Resulting State:**
+
+```
+Switches:
+1[ON] 2[ON] 3[ON] 4[ON] 5[ON] 6[ON] 7[ON] 8[ON] 9[ON] 10[ON]
+```
+
+- **Player B's Turn:**
+  - All switches are now ON.
+  - **No legal moves available**.
+  - **Player B loses**.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input switch numbers to toggle.
+
+### Game Start:
+
+```
+Welcome to Switch and Capture!
+
+All switches are OFF:
+1[OFF] 2[OFF] 3[OFF] 4[OFF] 5[OFF] 6[OFF] 7[OFF] 8[OFF] 9[OFF] 10[OFF]
+
+Player A, it's your turn.
+Enter the number of the switch you want to toggle ON: 7
+```
+
+### After Player A's Turn:
+
+```
+You toggled Switch 7 ON.
+No other switches were affected.
+
+Current Switch States:
+1[OFF] 2[OFF] 3[OFF] 4[OFF] 5[OFF] 6[OFF] 7[ON] 8[OFF] 9[OFF] 10[OFF]
+
+Player B, it's your turn.
+Enter the number of the switch you want to toggle ON: 2
+```
+
+### After Player B's Turn:
+
+```
+You toggled Switch 2 ON.
+Affected switches toggled:
+Switch 4 toggled to ON.
+Switch 6 toggled to ON.
+Switch 8 toggled to ON.
+Switch 10 toggled to ON.
+
+Current Switch States:
+1[OFF] 2[ON] 3[OFF] 4[ON] 5[OFF] 6[ON] 7[ON] 8[ON] 9[OFF] 10[ON]
+
+Player A, it's your turn.
+Enter the number of the switch you want to toggle ON: 5
+```
+
+### Game Continues...
+
+Players continue to input their moves, and the command-line interface updates the switch states accordingly after each turn.
+
+---
+
+## Conclusion
+
+"Switch and Capture" is a strategic two-player game that combines mathematical concepts with tactical planning. Players must consider the impact of each move, not only on the immediate state but also on future possibilities. With simple rules and a deterministic outcome, the game ensures that a skilled player can consistently outperform an unskilled one, all while providing an engaging and challenging experience.
+
+Happy gaming!

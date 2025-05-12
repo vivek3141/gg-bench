@@ -1,0 +1,267 @@
+# Multiple Madness
+
+## Objective
+
+**Multiple Madness** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the last player able to make a valid move. Players take turns removing numbers from a shared list based on specific rules. A player wins by forcing their opponent into a position where no valid moves are possible on their turn.
+
+## Setup
+
+1. **Initial Number List**: Begin with a list of numbers from **1 to 20** displayed in ascending order.
+2. **Player Roles**: Decide which player goes first. This can be determined randomly or by mutual agreement.
+
+Example of the initial number list:
+```
+Numbers available: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+## Game Components
+
+- **Number List**: Represents the pool of numbers players will choose from. Numbers are removed from this list during play.
+- **Players**: Two participants who will alternate turns.
+
+_No physical components are required; all gameplay occurs within the command-line interface._
+
+## Turns
+
+- **Turn Structure**:
+  - **Player Action**: On their turn, a player must select a valid number from the number list according to the game rules.
+  - **Removal**: The chosen number is removed from the number list.
+- **Turn Order**: Players alternate turns, starting with Player 1.
+
+## Rules and Mechanics
+
+1. **First Move**:
+   - Player 1 starts the game by removing any one number from the number list.
+
+2. **Subsequent Moves**:
+   - On each turn after the first, the player must remove a number that is either:
+     - A **factor** of the last number removed by their opponent, _or_
+     - A **multiple** of the last number removed by their opponent.
+   - **Valid Numbers**:
+     - The selected number must still be present in the number list.
+     - If no valid numbers are available, the player loses their turn.
+
+3. **Winning the Game**:
+   - The game ends when a player cannot make a valid move on their turn. The other player is declared the winner.
+
+4. **Additional Rules**:
+   - **Numbers Cannot Be Reused**: Once a number is removed from the list, it cannot be selected again.
+   - **Legal Moves Enforcement**: Players must select numbers that comply with the rules. If a player selects an invalid number, they must choose again.
+
+## Scoring
+
+- **Win Condition**: The player who successfully forces their opponent into a position with no valid moves wins the game.
+- **No Point System**: There is no point tracking or scoring beyond determining the winner.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Number List**:
+```
+Numbers available: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+**Player 1's Turn**:
+- **Action**: Removes number **6**.
+- **Reason**: As the first move, any number can be chosen.
+
+**Number List After Turn**:
+```
+Numbers available: 1 2 3 4 5 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+**Player 2's Turn**:
+- **Last Number Removed by Opponent**: **6**
+- **Valid Choices**:
+  - Factors of 6: **1**, **2**, **3**
+  - Multiples of 6: **12**, **18**
+- **Action**: Removes number **3**.
+- **Reason**: 3 is a factor of 6.
+
+**Number List After Turn**:
+```
+Numbers available: 1 2 4 5 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+**Player 1's Turn**:
+- **Last Number Removed by Opponent**: **3**
+- **Valid Choices**:
+  - Factors of 3: **1**
+  - Multiples of 3: **9**, **12**, **15**, **18**
+- **Action**: Removes number **9**.
+- **Reason**: 9 is a multiple of 3.
+
+**Number List After Turn**:
+```
+Numbers available: 1 2 4 5 7 8 10 11 12 13 14 15 16 17 18 19 20
+```
+
+**Player 2's Turn**:
+- **Last Number Removed by Opponent**: **9**
+- **Valid Choices**:
+  - Factors of 9: **1**
+  - Multiples of 9: **18**
+- **Action**: Removes number **18**.
+- **Reason**: 18 is a multiple of 9.
+
+**Number List After Turn**:
+```
+Numbers available: 1 2 4 5 7 8 10 11 12 13 14 15 16 17 19 20
+```
+
+**Player 1's Turn**:
+- **Last Number Removed by Opponent**: **18**
+- **Valid Choices**:
+  - Factors of 18: **1**, **2**
+  - Multiples of 18: None (as all multiples over 18 are beyond 20)
+- **Action**: Removes number **2**.
+- **Reason**: 2 is a factor of 18.
+
+**Number List After Turn**:
+```
+Numbers available: 1 4 5 7 8 10 11 12 13 14 15 16 17 19 20
+```
+
+**Player 2's Turn**:
+- **Last Number Removed by Opponent**: **2**
+- **Valid Choices**:
+  - Factors of 2: **1**
+  - Multiples of 2: **4**, **8**, **10**, **12**, **14**, **16**, **18**, **20**
+- **Action**: Removes number **10**.
+- **Reason**: 10 is a multiple of 2.
+
+**Number List After Turn**:
+```
+Numbers available: 1 4 5 7 8 11 12 13 14 15 16 17 19 20
+```
+
+**Player 1's Turn**:
+- **Last Number Removed by Opponent**: **10**
+- **Valid Choices**:
+  - Factors of 10: **1**, **5**
+  - Multiples of 10: **20**
+- **Action**: Removes number **5**.
+- **Reason**: 5 is a factor of 10.
+
+**Number List After Turn**:
+```
+Numbers available: 1 4 7 8 11 12 13 14 15 16 17 19 20
+```
+
+**Player 2's Turn**:
+- **Last Number Removed by Opponent**: **5**
+- **Valid Choices**:
+  - Factors of 5: **1**
+  - Multiples of 5: **15**, **20**
+- **Action**: Removes number **15**.
+- **Reason**: 15 is a multiple of 5.
+
+**Number List After Turn**:
+```
+Numbers available: 1 4 7 8 11 12 13 14 16 17 19 20
+```
+
+**Player 1's Turn**:
+- **Last Number Removed by Opponent**: **15**
+- **Valid Choices**:
+  - Factors of 15: **1**, **3**, **5** (already removed)
+  - Multiples of 15: None within range
+- **Action**: Removes number **1**.
+- **Reason**: 1 is a factor of every number.
+
+**Number List After Turn**:
+```
+Numbers available: 4 7 8 11 12 13 14 16 17 19 20
+```
+
+**Player 2's Turn**:
+- **Last Number Removed by Opponent**: **1**
+- **Valid Choices**:
+  - Factors of 1: **1** (already removed)
+  - Multiples of 1: All remaining numbers
+- **Action**: Removes number **4**.
+- **Reason**: All numbers are multiples of 1; 4 is chosen.
+
+**Number List After Turn**:
+```
+Numbers available: 7 8 11 12 13 14 16 17 19 20
+```
+
+**Player 1's Turn**:
+- **Last Number Removed by Opponent**: **4**
+- **Valid Choices**:
+  - Factors of 4: **2**, **1** (removed)
+  - Multiples of 4: **8**, **12**, **16**, **20**
+- **Action**: Removes number **8**.
+- **Reason**: 8 is a multiple of 4.
+
+**Number List After Turn**:
+```
+Numbers available: 7 11 12 13 14 16 17 19 20
+```
+
+**Player 2's Turn**:
+- **Last Number Removed by Opponent**: **8**
+- **Valid Choices**:
+  - Factors of 8: **2**, **4** (removed), **1** (removed)
+  - Multiples of 8: **16**
+- **Action**: Removes number **16**.
+- **Reason**: 16 is a multiple of 8.
+
+**Number List After Turn**:
+```
+Numbers available: 7 11 12 13 14 17 19 20
+```
+
+**Player 1's Turn**:
+- **Last Number Removed by Opponent**: **16**
+- **Valid Choices**:
+  - Factors of 16: **2**, **4**, **8** (all removed), **1** (removed)
+  - Multiples of 16: None within range
+- **Action**: No valid moves available.
+
+**Conclusion**:
+- **Player 1 cannot make a valid move and loses the game.**
+- **Player 2 wins!**
+
+## Command-Line Interaction Example
+
+Here's how the game might look in a command-line interface:
+
+```
+Numbers available: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 1's turn.
+Select a number to remove: 6
+
+Numbers available: 1 2 3 4 5 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 2's turn.
+Last number removed by opponent: 6
+Valid numbers to remove: 1 2 3 12 18
+Select a number to remove: 3
+
+Numbers available: 1 2 4 5 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 1's turn.
+Last number removed by opponent: 3
+Valid numbers to remove: 1 9 12 15 18
+Select a number to remove: 9
+
+...
+
+Player 1 has no valid moves.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the possible numbers your opponent can choose based on your current move.
+- **Control the Game**: By selecting numbers with limited factors or multiples, you can restrict your opponent's options.
+- **Remember Removed Numbers**: Keep track of which numbers have been removed to make informed decisions.
+- **Use the Number 1 Wisely**: Since 1 is a factor of every number and every number is a multiple of 1, removing it at a strategic time can be advantageous.
+
+---
+
+Enjoy playing **Multiple Madness** and may the best strategist win!

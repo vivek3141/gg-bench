@@ -1,0 +1,154 @@
+# Sum Race
+
+## Objective
+
+Be the first player to reach a total score of **exactly 20** without exceeding it. Strategically select numbers to add to your score while restricting your opponent's options. Victory is achieved by careful planning and anticipation of your opponent's moves.
+
+## Setup
+
+- **Players:** Two players, referred to as Player 1 and Player 2.
+- **Starting Score:** Both players begin with a score of **0**.
+- **Initial Conditions:** No prior conditions; the game starts fresh each time.
+
+## Game Components
+
+- **Numbers (1 to 6):** These integers represent possible moves each turn.
+  - **Availability:** All numbers from 1 to 6 are available at the start.
+  - **Functionality:** Players select these numbers to add to their total score.
+- **Scores:** Keep track of each player's cumulative score.
+- **Command-Line Interface:** The game is played through text inputs and outputs.
+  - **Input:** Players enter their chosen numbers when prompted.
+  - **Output:** The game displays scores, available numbers, and turn information.
+
+## Turns
+
+1. **Turn Order:**
+   - Player 1 begins the game.
+   - Turns alternate between players.
+
+2. **Actions per Turn:**
+   - **Select a Number:** Choose an integer from 1 to 6 that was not chosen by your opponent on their previous turn.
+   - **Update Score:** Add the selected number to your total score.
+   - **Restriction Enforcement:** Ensure your selection adheres to the game's rules.
+
+3. **Progression:**
+   - After a player completes their turn, the game updates and displays both players' scores.
+   - The turn passes to the other player unless the game has ended.
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - **Valid Choices:** On your turn, you may choose any number from 1 to 6 **except** the number your opponent chose on their last turn.
+   - **Example:** If your opponent chose 4 on their previous turn, you cannot choose 4 on your current turn.
+
+2. **Score Limit:**
+   - **Maximum Score:** Your total score must **not exceed 20**.
+   - **Exact Match:** You must reach **exactly 20** to win.
+   - **Exceeding 20:** If all available numbers would cause you to exceed 20, you lose your turn and the game.
+
+3. **Winning the Game:**
+   - **Victory Condition:** The first player to reach a total score of **exactly 20** wins.
+   - **Forced Loss:** If you cannot make a valid move on your turn, you lose, and your opponent wins.
+
+4. **Game End:**
+   - The game ends immediately when a player reaches 20 or cannot make a valid move.
+   - **No Draws:** The game cannot end in a draw; there is always a winner.
+
+## Scoring
+
+- **Tracking Scores:** After each turn, add the selected number to the player's total score.
+  - **Display:** The game should display both players' scores after each turn.
+- **Score Updates:**
+  - **Player's Score:** Increases by the value of the chosen number.
+  - **Opponent's Score:** Remains unchanged during your turn.
+
+## Examples
+
+### Example Game Play
+
+#### Turn 1
+- **Player 1's Turn:**
+  - **Choice:** Selects **5**.
+  - **Score Update:** Player 1's score is now **0 + 5 = 5**.
+  - **Restriction for Player 2:** Cannot choose **5** on their next turn.
+
+#### Turn 2
+- **Player 2's Turn:**
+  - **Available Numbers:** 1, 2, 3, 4, 6.
+  - **Choice:** Selects **6**.
+  - **Score Update:** Player 2's score is now **0 + 6 = 6**.
+  - **Restriction for Player 1:** Cannot choose **6** on their next turn.
+
+#### Turn 3
+- **Player 1's Turn:**
+  - **Available Numbers:** 1, 2, 3, 4, 5.
+  - **Choice:** Selects **4**.
+  - **Score Update:** Player 1's score is now **5 + 4 = 9**.
+  - **Restriction for Player 2:** Cannot choose **4** on their next turn.
+
+#### Turn 4
+- **Player 2's Turn:**
+  - **Available Numbers:** 1, 2, 3, 5, 6.
+  - **Choice:** Selects **5**.
+  - **Score Update:** Player 2's score is now **6 + 5 = 11**.
+  - **Restriction for Player 1:** Cannot choose **5** on their next turn.
+
+#### Turn 5
+- **Player 1's Turn:**
+  - **Available Numbers:** 1, 2, 3, 4, 6.
+  - **Choice:** Selects **6**.
+  - **Score Update:** Player 1's score is now **9 + 6 = 15**.
+  - **Restriction for Player 2:** Cannot choose **6** on their next turn.
+
+#### Turn 6
+- **Player 2's Turn:**
+  - **Available Numbers:** 1, 2, 3, 4, 5.
+  - **Choice:** Selects **3**.
+  - **Score Update:** Player 2's score is now **11 + 3 = 14**.
+  - **Restriction for Player 1:** Cannot choose **3** on their next turn.
+
+#### Turn 7
+- **Player 1's Turn:**
+  - **Available Numbers:** 1, 2, 4, 5, 6.
+  - **Choice:** Selects **5**.
+  - **Score Update:** Player 1's score is now **15 + 5 = 20**.
+  - **Result:** Player 1 wins by reaching exactly **20**.
+
+### Command-Line Interaction Example
+
+- **Game Start:**
+  ```
+  Welcome to Sum Race!
+  Both players start with a score of 0.
+  Player 1's turn.
+  Available numbers: 1, 2, 3, 4, 5, 6.
+  Enter your choice: 5
+  Player 1 chooses 5. Score: 5
+  ```
+
+- **Next Turn:**
+  ```
+  Player 2's turn.
+  Available numbers: 1, 2, 3, 4, 6 (Cannot choose 5)
+  Enter your choice: 6
+  Player 2 chooses 6. Score: 6
+  ```
+
+- *...and so on until the game ends.*
+
+## Strategic Tips
+
+- **Anticipate Opponent's Moves:**
+  - Predict which numbers your opponent may want to choose and select numbers that limit their options.
+- **Control High Numbers:**
+  - Use higher numbers to reach 20 quicker but be cautious of overshooting.
+- **Force Mistakes:**
+  - Aim to leave your opponent with numbers that would make them exceed 20 or limit their ability to reach exactly 20.
+- **Plan Ahead:**
+  - Keep track of the cumulative scores to plan your moves accordingly.
+
+## Summary
+
+Sum Race is a simple yet strategic game that tests numerical planning and predictive tactics. With quick turns and straightforward rules, players can engage in multiple rounds, each time refining their strategies to outsmart their opponent. Mastery comes from balancing the race to 20 while manipulating the available numbers to your advantage.
+
+Enjoy the challenge of Sum Race, and may the best strategist win!

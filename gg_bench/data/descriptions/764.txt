@@ -1,0 +1,221 @@
+# Factor Fury: A Strategic Number Game
+
+## Objective
+
+Be the first player to accumulate **15 points** by strategically selecting numbers from a shared pool and leveraging their unique prime factors. Outscore your opponent by carefully choosing numbers that maximize your point gain while limiting their options.
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - Create a shared pool containing integers from **2 to 50** inclusive.
+   - Ensure all numbers are available at the start of the game.
+
+2. **Player Roles**:
+   - This is a **two-player game**. Decide who will be **Player 1** and **Player 2**.
+   - Players may choose their designation randomly or by mutual agreement.
+
+3. **Starting Conditions**:
+   - Set both players' scores to **zero**.
+   - Determine who takes the first turn (e.g., by a coin toss).
+
+## Game Components
+
+- **Number Pool**:
+  - A list of integers from **2 to 50**.
+  - Numbers can be selected only once during the game.
+
+- **Player Scores**:
+  - Each player has a score that starts at **zero**.
+  - Scores increase based on the prime factors of the selected numbers.
+
+- **Prime Numbers**:
+  - Fundamental to scoring. The unique prime factors of selected numbers determine point gains.
+  - Prime numbers between 2 and 47 (the largest prime under 50) are integral to the game.
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, starting with the designated first player.
+
+- **Turn Actions**:
+  1. **Select a Number**:
+     - Choose any available number from the number pool.
+     - Numbers already chosen by either player cannot be selected again.
+  2. **Score Calculation**:
+     - Identify the **unique prime factors** of the selected number.
+     - Add the count of these prime factors to your score.
+  3. **Update the Number Pool**:
+     - Remove the selected number from the pool.
+  4. **Announce Turn Results**:
+     - Reveal the selected number, its prime factors, and the updated scores.
+  5. **Check for Victory**:
+     - If a player reaches or exceeds **15 points**, the game ends with that player’s victory.
+     - If not, the next player takes their turn.
+
+## Rules and Mechanics
+
+1. **Number Selection Rules**:
+   - Only numbers from **2 to 50** can be selected.
+   - Each number can be chosen **only once**.
+   - Players must select a number on their turn; skipping a turn is not allowed.
+
+2. **Scoring Mechanics**:
+   - **Points per Turn**:
+     - Points gained per turn equal the count of **unique prime factors** of the selected number.
+   - **Prime Factorization**:
+     - Break down the selected number into its prime factors.
+     - Only **unique** primes count towards the score, regardless of their multiplicity.
+     - For example:
+       - Selecting **18** (prime factors 2 and 3) grants **2 points**.
+       - Selecting **16** (prime factor 2) grants **1 point**.
+       - Selecting a prime number like **13** grants **1 point**.
+
+3. **Strategic Considerations**:
+   - **Maximize Points**:
+     - Aim to select numbers with the highest number of unique prime factors.
+   - **Deny Opponent**:
+     - Anticipate and select numbers that your opponent might use to gain high points.
+   - **Prime Numbers**:
+     - Remember that prime numbers only grant **1 point**.
+
+4. **Winning the Game**:
+   - The first player to reach or exceed **15 points** at the end of their turn wins.
+   - If both players reach 15 points in the same round, the player with the higher score wins.
+   - In the unlikely event of a tie, continue playing until the tie is broken.
+
+## Scoring
+
+- **Point Calculation Example**:
+  - **Number Selected**: 30
+  - **Prime Factors**: 2, 3, 5 (since 30 = 2 × 3 × 5)
+  - **Points Gained**: 3
+  - **Updated Score**: Add points gained to the player's existing score.
+
+- **Tracking Scores**:
+  - Keep a running total of each player's score after every turn.
+  - Ensure transparency by announcing updated scores after each move.
+
+## Examples
+
+### Sample Game Play
+
+**Game Setup**:
+- Number Pool: Numbers 2 to 10 for brevity (actual game uses 2 to 50).
+- Players: Alice (Player 1) and Bob (Player 2).
+- Target Score: 5 points (reduced for sample purposes).
+
+**Turn 1**:
+- **Alice’s Turn**:
+  - **Available Numbers**: 2-10.
+  - **Alice Selects**: **6**.
+  - **Prime Factors of 6**: 2, 3.
+  - **Points Gained**: 2.
+  - **Alice’s Score**: 0 + 2 = **2**.
+  - **Remaining Numbers**: 2-5, 7-10.
+
+**Turn 2**:
+- **Bob’s Turn**:
+  - **Available Numbers**: 2-5, 7-10.
+  - **Bob Selects**: **10**.
+  - **Prime Factors of 10**: 2, 5.
+  - **Points Gained**: 2.
+  - **Bob’s Score**: 0 + 2 = **2**.
+  - **Remaining Numbers**: 2-5, 7-9.
+
+**Turn 3**:
+- **Alice’s Turn**:
+  - **Available Numbers**: 2-5, 7-9.
+  - **Alice Selects**: **9**.
+  - **Prime Factors of 9**: 3.
+  - **Points Gained**: 1.
+  - **Alice’s Score**: 2 + 1 = **3**.
+  - **Remaining Numbers**: 2-5, 7-8.
+
+**Turn 4**:
+- **Bob’s Turn**:
+  - **Available Numbers**: 2-5, 7-8.
+  - **Bob Selects**: **15** (assuming extended pool).
+  - **Prime Factors of 15**: 3, 5.
+  - **Points Gained**: 2.
+  - **Bob’s Score**: 2 + 2 = **4**.
+  - **Remaining Numbers**: 2-5, 7-8.
+
+**Turn 5**:
+- **Alice’s Turn**:
+  - **Available Numbers**: 2-5, 7-8.
+  - **Alice Selects**: **7**.
+  - **Prime Factors of 7**: 7.
+  - **Points Gained**: 1.
+  - **Alice’s Score**: 3 + 1 = **4**.
+  - **Remaining Numbers**: 2-5, 8.
+
+**Turn 6**:
+- **Bob’s Turn**:
+  - **Available Numbers**: 2-5, 8.
+  - **Bob Selects**: **8**.
+  - **Prime Factors of 8**: 2.
+  - **Points Gained**: 1.
+  - **Bob’s Score**: 4 + 1 = **5**.
+  - **Bob reaches the target score of 5 and wins the game.**
+
+### Command-Line Interaction Example
+
+**Game Start**:
+```
+Welcome to Factor Fury!
+Target Score: 15 points
+Player 1: Alice
+Player 2: Bob
+Number Pool: 2-50
+```
+
+**Turn 1**:
+```
+Alice's Turn:
+Available Numbers: 2-50
+Enter your chosen number: 30
+You selected 30.
+Prime factors: 2, 3, 5
+Points gained: 3
+Alice's Score: 3
+```
+
+**Turn 2**:
+```
+Bob's Turn:
+Available Numbers: 2-29, 31-50
+Enter your chosen number: 42
+You selected 42.
+Prime factors: 2, 3, 7
+Points gained: 3
+Bob's Score: 3
+```
+
+**Turn 3**:
+```
+Alice's Turn:
+Available Numbers: 2-29, 31-41, 43-50
+Enter your chosen number: 45
+You selected 45.
+Prime factors: 3, 5
+Points gained: 2
+Alice's Score: 5
+```
+
+*(The game continues in this fashion until a player reaches 15 points.)*
+
+## Additional Tips
+
+- **Plan Ahead**:
+  - Look at the available numbers and their prime factors.
+  - Choose numbers that maximize your points while minimizing high-value options for your opponent.
+
+- **Prime Awareness**:
+  - Be mindful of prime numbers left in the pool. They grant only 1 point but can be used strategically.
+
+- **Avoid Helping Opponent**:
+  - Try not to leave numbers with many unique prime factors available for your opponent's next turn.
+
+## Conclusion
+
+Factor Fury combines basic number theory with strategic planning, offering a simple yet engaging experience. By selecting numbers wisely and anticipating your opponent's moves, you can outscore them and claim victory. Enjoy the challenge of blending arithmetic with cunning strategy!

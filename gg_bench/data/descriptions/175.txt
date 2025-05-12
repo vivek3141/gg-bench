@@ -1,0 +1,192 @@
+# Safe Code: Rule Book
+
+## Objective
+
+**Safe Code** is a two-player, turn-based deduction game where each player aims to crack their opponent's safe by correctly guessing their secret code. The first player to correctly determine the opponent's safe code wins the game.
+
+---
+
+## Setup
+
+1. **Secret Code Selection**:
+   - Each player secretly chooses a **safe code**, which is an integer between **1 and 30** (inclusive).
+   - The code should be kept hidden from the opponent.
+
+2. **Clue Creation**:
+   - Each player prepares **three mathematical clues** that relate to their safe code. These clues will assist the opponent in deducing the code.
+   - Clues must be factual statements about the safe code (see **Clue Guidelines** below).
+
+3. **Game Start**:
+   - Decide which player will take the first turn (e.g., flip a coin).
+   - Both players should have a way to record guesses and received clues (paper or digital notes).
+
+---
+
+## Game Components
+
+- **Safe Codes**: Integers from **1 to 30**.
+- **Clues**: Three mathematical statements per player that describe properties of their safe code.
+- **Player Notes**: Paper or digital medium to track guesses and clues.
+- **Command-Line Interface**: The game is played through text input and output.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players take turns in alternating order starting with the player designated to go first.
+
+2. **Turn Actions**:
+   - On a player's turn, they have two options:
+     - **Request a Clue**: Ask the opponent for the next available clue.
+     - **Make a Guess**: Attempt to guess the opponent's safe code.
+
+3. **Clue Provision**:
+   - If a player requests a clue, the opponent provides the next clue from their list in the order they were written.
+   - Clues are given sequentially. Once all three clues have been given, no more clues can be requested.
+
+4. **Guessing**:
+   - When making a guess, the player states a number between 1 and 30.
+   - The opponent indicates whether the guess is **correct** or **incorrect**.
+
+5. **End of Turn**:
+   - After a clue is provided or a guess is made, the turn ends, and the other player takes their turn.
+
+---
+
+## Rules and Mechanics
+
+### Clue Guidelines
+
+- **Clue Requirements**:
+  - Clues must be **true statements** about the safe code.
+  - Clues should be based on **mathematical properties** such as divisibility, parity, size comparison, primality, etc.
+
+- **Examples of Valid Clues**:
+  - "The number is **even**."
+  - "It is **greater than 15**."
+  - "The number is a **prime**."
+  - "It is **divisible by 3**."
+  - "The number is a **perfect square**."
+
+- **Invalid Clues**:
+  - Vague statements like "It's my favorite number."
+  - Subjective opinions or personal references.
+  - Any false or misleading information.
+
+### Making Guesses
+
+- Players can choose to make a guess **instead of** requesting a clue on their turn.
+- If the guess is **correct**, the game ends, and the guessing player wins.
+- If the guess is **incorrect**, the opponent simply states "Incorrect," and the game continues.
+
+### Winning the Game
+
+- The first player to correctly guess the opponent's safe code wins.
+- **No Draws**: The game continues until one player wins; there are no ties or stalemates.
+
+---
+
+## Scoring
+
+- **Victory**: Winning the game constitutes the score; track wins if playing multiple rounds.
+- **No Point System**: There is no point accumulation; the focus is on deducing the opponent's code before they deduce yours.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+#### Setup
+
+- **Player 1** selects the safe code **18** and prepares the following clues:
+  1. "The number is **even**."
+  2. "It is **divisible by 3**."
+  3. "The number is **less than 20**."
+
+- **Player 2** selects the safe code **7** and prepares the following clues:
+  1. "The number is a **prime**."
+  2. "It is **less than 10**."
+  3. "The number is **odd**."
+
+#### Gameplay
+
+1. **Player 1's Turn**:
+   - Requests a clue.
+   - **Player 2** provides Clue #1: "The number is a **prime**."
+
+2. **Player 2's Turn**:
+   - Requests a clue.
+   - **Player 1** provides Clue #1: "The number is **even**."
+
+3. **Player 1's Turn**:
+   - Guesses **13**.
+   - **Player 2** responds: "Incorrect."
+
+4. **Player 2's Turn**:
+   - Guesses **16**.
+   - **Player 1** responds: "Incorrect."
+
+5. **Player 1's Turn**:
+   - Requests a clue.
+   - **Player 2** provides Clue #2: "It is **less than 10**."
+
+6. **Player 2's Turn**:
+   - Requests a clue.
+   - **Player 1** provides Clue #2: "It is **divisible by 3**."
+
+7. **Player 1's Turn**:
+   - Guesses **7**.
+   - **Player 2** responds: "Correct!"
+   - **Player 1** wins the game.
+
+### Command-Line Interaction Example
+
+Below is how a portion of the game might look in a command-line interface:
+
+```
+[Player 1's Turn]
+Choose an action:
+1. Request a clue
+2. Make a guess
+Enter 1 or 2: 1
+Player 2's Clue: "The number is a prime."
+
+[Player 2's Turn]
+Choose an action:
+1. Request a clue
+2. Make a guess
+Enter 1 or 2: 2
+Enter your guess (1-30): 16
+Player 1 says: "Incorrect."
+
+[Player 1's Turn]
+Choose an action:
+1. Request a clue
+2. Make a guess
+Enter 1 or 2: 2
+Enter your guess (1-30): 7
+Player 2 says: "Correct!"
+Congratulations, Player 1! You have cracked the safe.
+```
+
+---
+
+## Strategy Tips
+
+- **Balance Clues and Guesses**: Decide strategically when to request a clue or make a guess. Too many clues can help your opponent narrow down your code as well.
+
+- **Clue Order**: Plan the order of your clues carefully. Provide less revealing clues first to make it harder for your opponent.
+
+- **Track Information**: Keep notes of the clues and guesses made to narrow down the possibilities efficiently.
+
+- **Mathematical Knowledge**: Brush up on number properties (primes, divisibility, etc.) to create effective clues and make educated guesses.
+
+---
+
+## Summary
+
+Safe Code is a quick and engaging game that tests players' deductive reasoning and knowledge of basic number properties. It's easy to play in a command-line environment and ensures that each game is concise, with a clear winner emerging through strategic thinking and clever clue management.
+
+Enjoy cracking safes and outsmarting your opponent in this battle of wits!

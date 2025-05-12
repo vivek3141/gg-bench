@@ -1,0 +1,226 @@
+# Add or Multiply: The Duel of Numbers
+
+## Objective
+
+**Be the first to reach the target number exactly by strategically applying mathematical operations to a shared current number.** Players take turns adding or multiplying the current number, aiming to reach the target without exceeding it. The player who reaches the target number on their turn wins the game. If a player's operation causes the current number to exceed the target number, they lose immediately.
+
+---
+
+## Setup
+
+1. **Choose the Starting Number and Target Number:**
+   - **Starting Number:** Agree on a positive integer to begin the game (e.g., 1).
+   - **Target Number:** Agree on a positive integer that players aim to reach (e.g., 20).
+2. **Determine Player Order:**
+   - Decide which player will take the first turn (e.g., flip a coin or mutual agreement).
+3. **Initialize the Game:**
+   - Set the **Current Number** to the **Starting Number**.
+
+---
+
+## Game Components
+
+- **Current Number:**
+  - A shared integer that changes based on players' actions each turn.
+- **Target Number:**
+  - The specific integer that players aim to reach exactly.
+- **Operations:**
+  - **Addition (+1):** Add 1 to the Current Number.
+  - **Multiplication (×2):** Multiply the Current Number by 2.
+- **Operation History:**
+  - Record of the last operation each player performed (to enforce operation alternation rules).
+
+---
+
+## Turns
+
+1. **Start of Turn:**
+   - The player notes the **Current Number** and reviews the last operation they performed.
+2. **Select an Operation:**
+   - Choose an operation (**Add 1** or **Multiply by 2**) following the operation rules.
+3. **Apply Operation:**
+   - Calculate the new **Current Number** by applying the chosen operation.
+4. **Check for Win or Loss:**
+   - **Win:** If the **Current Number** equals the **Target Number**, the player wins.
+   - **Loss:** If the **Current Number** exceeds the **Target Number**, the player loses.
+5. **End of Turn:**
+   - Record the operation used.
+   - Pass the turn to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Operation Choices:**
+   - On your turn, you may choose to:
+     - **Add 1** to the Current Number.
+     - **Multiply the Current Number by 2.**
+2. **Operation Alternation:**
+   - You **cannot** use the **same operation** you used on your **previous turn**.
+     - *Example:* If you added 1 last turn, you must multiply by 2 this turn.
+3. **Reaching the Target:**
+   - The goal is to make the **Current Number** equal the **Target Number**.
+4. **Avoiding Exceeding the Target:**
+   - If your operation causes the **Current Number** to exceed the **Target Number**, you **lose** immediately.
+5. **Legal Moves Only:**
+   - If both possible operations would cause the **Current Number** to exceed the **Target Number**, you **lose** on your turn.
+6. **No Skipping Turns:**
+   - Players must perform an operation if at least one legal operation is available.
+
+### Additional Mechanics
+
+- **Operation History Tracking:**
+  - Each player should keep track of their last used operation to ensure compliance with the operation alternation rule.
+- **Tie-Breaker:**
+  - Since the game cannot end in a draw, no tie-breaker is necessary.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The player who reaches the **Target Number** exactly on their turn **wins** the game.
+- **Losing the Game:**
+  - A player **loses** if:
+    - Their operation causes the **Current Number** to exceed the **Target Number**.
+    - They have no legal moves that would keep the **Current Number** at or below the **Target Number** on their turn.
+
+---
+
+## Examples
+
+### Example Game
+
+**Starting Number:** 1  
+**Target Number:** 20
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn:**
+   - **Current Number:** 1
+   - **Last Operation Used:** None
+   - **Possible Operations:** Add 1, Multiply by 2
+   - **Decision:** Multiply by 2
+   - **Calculation:** 1 × 2 = 2
+   - **Current Number Becomes:** 2
+   - **Operation Used:** Multiply by 2
+
+2. **Player 2's Turn:**
+   - **Current Number:** 2
+   - **Last Operation Used:** None
+   - **Possible Operations:** Add 1, Multiply by 2
+   - **Decision:** Multiply by 2
+   - **Calculation:** 2 × 2 = 4
+   - **Current Number Becomes:** 4
+   - **Operation Used:** Multiply by 2
+
+3. **Player 1's Turn:**
+   - **Current Number:** 4
+   - **Last Operation Used:** Multiply by 2
+   - **Possible Operations:** Add 1 (cannot Multiply by 2 again)
+   - **Decision:** Add 1
+   - **Calculation:** 4 + 1 = 5
+   - **Current Number Becomes:** 5
+   - **Operation Used:** Add 1
+
+4. **Player 2's Turn:**
+   - **Current Number:** 5
+   - **Last Operation Used:** Multiply by 2
+   - **Possible Operations:** Add 1 (cannot Multiply by 2 again)
+   - **Decision:** Add 1
+   - **Calculation:** 5 + 1 = 6
+   - **Current Number Becomes:** 6
+   - **Operation Used:** Add 1
+
+5. **Player 1's Turn:**
+   - **Current Number:** 6
+   - **Last Operation Used:** Add 1
+   - **Possible Operations:** Multiply by 2 (cannot Add 1 again)
+   - **Decision:** Multiply by 2
+   - **Calculation:** 6 × 2 = 12
+   - **Current Number Becomes:** 12
+   - **Operation Used:** Multiply by 2
+
+6. **Player 2's Turn:**
+   - **Current Number:** 12
+   - **Last Operation Used:** Add 1
+   - **Possible Operations:** Multiply by 2 (cannot Add 1 again)
+   - **Decision:** Multiply by 2
+   - **Calculation:** 12 × 2 = 24
+   - **Current Number Becomes:** 24
+   - **Since 24 > 20, Player 2 loses.**  
+   **Player 1 wins the game.**
+
+### Command-Line Interaction Sample
+
+```plaintext
+Game Start!
+Starting Number: 1
+Target Number: 20
+
+Player 1's Turn
+Last Operation: None
+Current Number: 1
+Available Operations: Add 1, Multiply by 2
+Enter your choice ('add' or 'multiply'): multiply
+You chose to multiply.
+New Current Number: 2
+
+Player 2's Turn
+Last Operation: None
+Current Number: 2
+Available Operations: Add 1, Multiply by 2
+Enter your choice ('add' or 'multiply'): multiply
+You chose to multiply.
+New Current Number: 4
+
+Player 1's Turn
+Last Operation: multiply
+Current Number: 4
+Available Operations: Add 1
+Enter your choice ('add' or 'multiply'): add
+You chose to add.
+New Current Number: 5
+
+Player 2's Turn
+Last Operation: multiply
+Current Number: 5
+Available Operations: Add 1
+Enter your choice ('add' or 'multiply'): add
+You chose to add.
+New Current Number: 6
+
+Player 1's Turn
+Last Operation: add
+Current Number: 6
+Available Operations: Multiply by 2
+Enter your choice ('add' or 'multiply'): multiply
+You chose to multiply.
+New Current Number: 12
+
+Player 2's Turn
+Last Operation: add
+Current Number: 12
+Available Operations: Multiply by 2
+Enter your choice ('add' or 'multiply'): multiply
+You chose to multiply.
+New Current Number: 24
+Current Number exceeds Target Number!
+Player 2 loses. Player 1 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Consider how your current move will affect the next turn, especially since you cannot repeat the same operation consecutively.
+- **Force Your Opponent's Hand:** Try to set up the Current Number so that your opponent has no safe moves.
+- **Alternate Operations Wisely:** Since you must alternate operations, think about when it's advantageous to switch between adding and multiplying.
+
+---
+
+## Conclusion
+
+"Add or Multiply" is a game of arithmetic strategy and foresight. With simple rules but deep tactical possibilities, it's quick to play yet challenging to master. By anticipating your opponent's moves and carefully planning your operations, you can consistently outmaneuver less skilled players. Enjoy the numerical duel!

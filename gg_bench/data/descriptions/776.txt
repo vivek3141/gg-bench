@@ -1,0 +1,178 @@
+# Game Title: Dice Duel
+
+## Objective
+
+Be the first player to reach a score of **exactly 15** by strategically adding or subtracting dice rolls from your total. The game combines luck and strategy, allowing skilled players to outmaneuver their opponents.
+
+## Setup
+
+- **Players**: Two players compete against each other.
+- **Starting Scores**: Both players begin with a score of **0**.
+- **Dice**: A simulated six-sided die will be used for rolling numbers between 1 and 6.
+
+## Game Components
+
+- **Scores**: Each player has an individual score starting at 0.
+- **Die**: A six-sided die providing random numbers from 1 to 6.
+
+## Turns
+
+- Players take turns in sequence.
+- **Turn Structure**:
+  1. **Roll the Die**: The current player rolls the die to generate a number between 1 and 6.
+  2. **Choose Operation**: The player decides whether to **add** or **subtract** the rolled number from their current score.
+  3. **Update Score**: The player's score is adjusted according to their choice.
+  4. **Check for Win/Loss**: If the player's score reaches exactly 15, they win. If their score goes below 0 or exceeds 15, they lose.
+
+## Rules and Mechanics
+
+1. **Rolling the Die**:
+   - On each turn, the player must roll the die once.
+   - The die generates a random integer between 1 and 6 inclusive.
+
+2. **Adding or Subtracting**:
+   - After rolling, the player chooses to either **add** or **subtract** the rolled number to/from their current score.
+   - Example: If the current score is 10 and the player rolls a 4, they can choose to have a new score of **14** (10 + 4) or **6** (10 - 4).
+
+3. **Winning the Game**:
+   - The first player to adjust their score to **exactly 15** wins the game immediately.
+
+4. **Losing the Game**:
+   - If a player's score becomes **negative** (below 0) or **exceeds 15** after their turn, they **lose** the game immediately.
+   - If a player cannot make a move without their score going below 0 or above 15, they lose on their turn.
+
+5. **Valid Moves**:
+   - Players must make a move on their turn; passing is not allowed.
+   - The only operations are addition and subtraction of the rolled number.
+
+6. **No Draws**:
+   - The game cannot end in a draw. Play continues until one player wins or loses according to the rules.
+
+## Scoring
+
+- **Score Tracking**:
+  - Players maintain their own scores throughout the game.
+  - Scores can range from 0 to 15 inclusive.
+
+- **Winning Condition**:
+  - Reach a score of **exactly 15**.
+
+- **Losing Conditions**:
+  - Score drops below **0**.
+  - Score exceeds **15**.
+  - Unable to make a valid move without causing the score to go below 0 or above 15.
+
+## Examples
+
+### Example Game
+
+#### Initial State
+
+- **Player 1 Score**: 0
+- **Player 2 Score**: 0
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Rolls**: 5
+   - **Options**: Add (0 + 5 = 5) or Subtract (0 - 5 = -5)
+   - **Chooses**: Add
+   - **New Score**: 5
+   - **Reasoning**: Subtracting would result in a negative score and an immediate loss.
+
+2. **Player 2's Turn**:
+   - **Rolls**: 3
+   - **Options**: Add (0 + 3 = 3) or Subtract (0 - 3 = -3)
+   - **Chooses**: Add
+   - **New Score**: 3
+
+3. **Player 1's Turn**:
+   - **Rolls**: 6
+   - **Options**: Add (5 + 6 = 11) or Subtract (5 - 6 = -1)
+   - **Chooses**: Add
+   - **New Score**: 11
+   - **Reasoning**: Subtracting would result in a negative score.
+
+4. **Player 2's Turn**:
+   - **Rolls**: 4
+   - **Options**: Add (3 + 4 = 7) or Subtract (3 - 4 = -1)
+   - **Chooses**: Add
+   - **New Score**: 7
+
+5. **Player 1's Turn**:
+   - **Rolls**: 4
+   - **Options**: Add (11 + 4 = 15) or Subtract (11 - 4 = 7)
+   - **Chooses**: Add
+   - **New Score**: 15
+   - **Outcome**: Player 1 wins by reaching exactly 15.
+
+### Strategic Considerations
+
+- **Avoiding Loss**: Players should be cautious when their score is close to 0 or 15 to avoid forced losses.
+- **Planning Ahead**: Anticipate future rolls and consider the probability of rolling certain numbers.
+- **Choosing Operations**: Deciding when to add or subtract can force the opponent into difficult positions.
+
+## Command-Line Interaction Example
+
+### Starting the Game
+
+```
+Welcome to Dice Duel!
+Player 1 and Player 2 both start with a score of 0.
+First to reach exactly 15 wins. Exceeding 15 or going below 0 loses.
+```
+
+### Sample Turns
+
+#### Player 1's Turn
+
+```
+Player 1's turn.
+Current Score: 0
+Rolling the die...
+You rolled a 5.
+Do you want to (A)dd or (S)ubtract? A
+New Score: 5
+```
+
+#### Player 2's Turn
+
+```
+Player 2's turn.
+Current Score: 0
+Rolling the die...
+You rolled a 6.
+Do you want to (A)dd or (S)ubtract? A
+New Score: 6
+```
+
+#### Player 1's Next Turn
+
+```
+Player 1's turn.
+Current Score: 5
+Rolling the die...
+You rolled a 4.
+Do you want to (A)dd or (S)ubtract? A
+New Score: 9
+```
+
+#### Continuation Until Win/Loss
+
+The game continues with players taking turns, updating their scores based on their choices, until one player reaches exactly 15 and wins or loses by exceeding the score limits.
+
+### Winning the Game
+
+```
+Player 2's turn.
+Current Score: 12
+Rolling the die...
+You rolled a 3.
+Do you want to (A)dd or (S)ubtract? A
+New Score: 15
+Congratulations, Player 2! You have reached exactly 15 and won the game!
+```
+
+## Conclusion
+
+Dice Duel is a simple yet strategic game that combines luck with decision-making. Players must carefully choose when to add or subtract to manipulate their scores, aiming to reach exactly 15 while preventing their opponent from doing the same. With easy-to-understand rules and quick gameplay, it's perfect for command-line implementation and offers depth for players to develop winning strategies.

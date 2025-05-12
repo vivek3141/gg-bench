@@ -1,0 +1,182 @@
+# Treasure Hunt Duel
+
+## Objective
+
+**Be the first player to locate and reveal the hidden treasure on a secret grid.**
+
+In **Treasure Hunt Duel**, two players compete to be the first to find the hidden treasure on a shared grid. By uncovering clues and using logical deduction, players navigate the grid to pinpoint the treasure's location. The first player to correctly reveal the treasure wins the game. However, if a player incorrectly guesses the treasure's location, they lose immediately.
+
+## Setup
+
+1. **Grid Initialization**: The game is played on a concealed 5x5 grid with coordinates ranging from (1,1) to (5,5).
+2. **Hidden Numbers**: Each cell on the grid contains a hidden clue number between 1 and 5, inclusive. These numbers represent the Manhattan distance from that cell to the treasure.
+3. **Treasure Placement**: One cell on the grid contains the hidden treasure. The treasure's location is unknown to both players at the start of the game.
+4. **Player Positions**: Players do not have physical positions on the grid. They take turns selecting cells to reveal clues.
+
+## Game Components
+
+- **5x5 Grid**: A virtual grid labeled with rows and columns numbered from 1 to 5.
+- **Cells**: Each of the 25 cells contains:
+  - A hidden clue number (1-5) indicating the distance to the treasure.
+  - Or the treasure itself.
+- **Command-Line Interface**: The game is played via text commands inputted in a terminal or command-line window.
+
+## Turns
+
+- Players alternate turns, starting with Player 1.
+- **On a Player's Turn**:
+  1. The player selects a cell by specifying its coordinates (row and column).
+  2. The content of the selected cell is revealed:
+     - If it contains a clue number, that number is disclosed.
+     - If it contains the treasure, the player wins.
+- **Turn Progression**:
+  - After a cell is revealed, the turn passes to the other player.
+  - Players use the revealed clues to deduce the treasure's location.
+
+## Rules and Mechanics
+
+### Cell Selection
+
+- Players can select any unrevealed cell on the grid.
+- A cell cannot be selected more than once.
+
+### Clue Numbers
+
+- **Clue Interpretation**: The number revealed from a cell represents the **Manhattan distance** from that cell to the treasure.
+  - **Manhattan Distance**: The sum of the absolute differences of the coordinates. For cells `(x1, y1)` and `(x2, y2)`, the distance is `|x1 - x2| + |y1 - y2|`.
+- Clue numbers range from 1 to 5.
+- Clues help narrow down the possible locations of the treasure.
+
+### Winning the Game
+
+- **Correct Treasure Reveal**: If a player selects the cell containing the treasure on their turn, they win the game immediately.
+
+### Losing the Game
+
+- **Incorrect Treasure Guess**: If a player believes they know the treasure's location and selects a cell they think contains the treasure but it does not, they lose the game immediately.
+  - Note: Since players are only selecting cells to reveal, and any cell could potentially be the treasure, an incorrect selection (expecting the treasure but finding a clue) results in a loss.
+- **No Remaining Cells**: If all cells have been revealed except for the treasure and no player has found it, the next player must select the remaining cell, which will contain the treasure, resulting in their victory.
+
+### Strategy and Deduction
+
+- Players should use the revealed clues to calculate possible treasure locations.
+- Keeping track of all revealed clues and their positions is crucial.
+- Logical reasoning is essential to narrow down the possibilities.
+
+## Scoring
+
+- **Victory**: The player who reveals the treasure wins the game.
+- **Defeat**: The player who incorrectly guesses the treasure's location loses immediately.
+- There is no point-based scoring system; the game is won by successfully finding the treasure before your opponent.
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial State**:
+
+- A 5x5 grid with all cells hidden.
+
+**Turn 1**:
+
+- **Player 1** selects cell (3,3).
+- The cell reveals the clue number **2**.
+- **Interpretation**: The treasure is at a Manhattan distance of 2 from (3,3).
+
+**Turn 2**:
+
+- **Player 2** selects cell (2,3).
+- The cell reveals the clue number **3**.
+- **Interpretation**: The treasure is at a distance of 3 from (2,3).
+
+**Turn 3**:
+
+- **Player 1** selects cell (4,2).
+- The cell reveals the clue number **3**.
+- **Interpretation**: The treasure is at a distance of 3 from (4,2).
+
+**Turn 4**:
+
+- **Player 2** selects cell (3,4).
+- The cell reveals the clue number **2**.
+- **Interpretation**: The treasure is at a distance of 2 from (3,4).
+
+**Logical Deduction**:
+
+- Using the clues, both players start mapping possible locations.
+- From (3,3) with a distance of 2, possible treasure locations are:
+  - (1,3), (3,1), (5,3), (3,5), (2,2), (4,2), (2,4), (4,4)
+- From (3,4) with a distance of 2:
+  - (1,4), (3,2), (5,4), (3,6), (2,3), (4,3), (2,5), (4,5)
+- Intersecting the possibilities based on all clues narrows down the potential locations.
+
+**Turn 5**:
+
+- **Player 1** selects cell (4,4).
+- The cell reveals the clue number **1**.
+- **Interpretation**: The treasure is at a distance of 1 from (4,4).
+
+**Further Deduction**:
+
+- From (4,4) with a distance of 1, possible locations are:
+  - (3,4), (4,3), (4,5), (5,4)
+- Combining all clues, the only possible location is (4,5).
+
+**Turn 6**:
+
+- **Player 2** believes the treasure is at (4,5) and selects it.
+- The cell contains the treasure.
+- **Player 2 wins the game**.
+
+### Command-Line Interaction Example
+
+Below is a simulated interaction between the players and the game in a command-line interface.
+
+**Game Start**
+
+```
+Welcome to Treasure Hunt Duel!
+Players take turns to find the hidden treasure.
+The grid is of size 5x5 (rows 1-5, columns 1-5).
+
+Player 1's turn.
+Enter the row and column of the cell you want to reveal (e.g., 3 3):
+> 3 3
+You revealed a clue number: 2
+
+Player 2's turn.
+Enter the row and column of the cell you want to reveal:
+> 2 3
+You revealed a clue number: 3
+
+Player 1's turn.
+Enter the row and column of the cell you want to reveal:
+> 4 2
+You revealed a clue number: 3
+
+Player 2's turn.
+Enter the row and column of the cell you want to reveal:
+> 3 4
+You revealed a clue number: 2
+
+Player 1's turn.
+Enter the row and column of the cell you want to reveal:
+> 4 4
+You revealed a clue number: 1
+
+Player 2's turn.
+Enter the row and column of the cell you want to reveal:
+> 4 5
+You found the treasure! Congratulations, Player 2 wins!
+```
+
+## Additional Notes
+
+- Players are encouraged to keep their own notes and maps to aid in deduction.
+- Good memory and logical reasoning provide a significant advantage.
+- The game is designed to be quick, with most matches concluding within a few minutes.
+- Since there are no chances for a draw, every game results in a clear winner.
+
+## Summary
+
+**Treasure Hunt Duel** combines elements of deduction, strategy, and a bit of luck. It's easy to code as a command-line game and can be expanded upon with larger grids or additional mechanics for increased complexity. Skilled players who effectively use the clues and apply logical reasoning will consistently outperform unskilled players, making it a game of both strategy and intellect.

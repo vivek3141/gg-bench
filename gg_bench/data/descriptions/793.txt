@@ -1,0 +1,190 @@
+# Number Connect
+
+## Objective
+
+The primary goal of **Number Connect** is to be the first player to create a connected sequence of numbers on a grid that adds up to **exactly 15**. Players take turns claiming cells on the grid, strategically choosing numbers that contribute to their total sum while blocking their opponent's potential paths. The game ends when a player reaches the target sum of 15, exceeds it (resulting in a loss), or when all cells are claimed. If neither player reaches exactly 15 and all cells are claimed, the player with the highest sum **not exceeding 15** wins the game.
+
+## Setup
+
+1. **Grid Creation**: Generate a 4x4 grid (total of 16 cells).
+2. **Number Placement**: Randomly assign an integer between 1 and 9 (inclusive) to each cell in the grid. Each cell should display its number.
+3. **Player Assignment**:
+    - **Player 1**: Uses the marker `X`.
+    - **Player 2**: Uses the marker `O`.
+4. **Starting Conditions**:
+    - Both players start with a total sum of **0**.
+    - No cells are claimed at the beginning of the game.
+    - Decide randomly or have Player 1 start first.
+
+## Game Components
+
+- **Grid**: A 4x4 matrix where each cell contains a number (1-9).
+- **Markers**: `X` for Player 1 and `O` for Player 2 to indicate claimed cells.
+- **Player Totals**: Each player keeps a running total of the sum of their claimed numbers.
+  
+### Grid Example:
+
+```
++---+---+---+---+
+| 5 | 2 | 7 | 1 |
++---+---+---+---+
+| 3 | 6 | 4 | 8 |
++---+---+---+---+
+| 9 | 2 | 5 | 1 |
++---+---+---+---+
+| 4 | 7 | 3 | 6 |
++---+---+---+---+
+```
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with Player 1.
+2. **Turn Actions**:
+    - **Claim a Cell**: Select an unclaimed cell that is **adjacent** (up, down, left, or right) to a cell you have already claimed. Diagonal moves are **not** allowed.
+        - **Exception for First Move**: If you have not yet claimed any cells, you may select any unclaimed cell on the grid.
+    - **Update Total Sum**: Add the number in the claimed cell to your total sum.
+3. **Ending a Turn**: After claiming a cell and updating your total, check for victory or loss conditions before passing the turn to the opponent.
+
+## Rules and Mechanics
+
+- **Adjacency Requirement**: Except for the first move, you can only claim cells adjacent to your existing claimed cells.
+- **Claiming Cells**:
+    - Mark the claimed cell with your marker (`X` or `O`).
+    - Once claimed, a cell cannot be claimed by the opponent.
+- **Total Sum Constraints**:
+    - **Target Sum**: Aim to reach exactly **15**.
+    - **Exceeding 15**: If your total sum exceeds 15, you **immediately lose** the game.
+- **Winning the Game**:
+    - **Exact Match**: First player to reach a total sum of exactly 15 wins immediately.
+    - **All Cells Claimed**: If all cells are claimed without either player reaching 15, the player with the **highest total sum not exceeding 15** wins.
+- **Blocking**: Players may strategically claim cells to block their opponent's access to certain areas of the grid.
+  
+## Scoring
+
+- **Running Total**: Keep a running total of the numbers from the cells you have claimed.
+- **Victory Conditions**:
+    - **Win**: Achieving a total sum of exactly 15.
+    - **Lose**: Exceeding a total sum of 15.
+    - **Alternate Win**: Having the highest sum not exceeding 15 when all cells are claimed.
+
+## Examples
+
+### Example Game Walkthrough
+
+#### Initial Grid:
+
+```
++---+---+---+---+
+| 4 | 1 | 5 | 2 |
++---+---+---+---+
+| 6 | 3 | 7 | 1 |
++---+---+---+---+
+| 2 | 8 | 4 | 5 |
++---+---+---+---+
+| 9 | 1 | 6 | 2 |
++---+---+---+---+
+```
+
+#### Game Play:
+
+**Turn 1**: Player 1 (`X`)
+
+- **Action**: Chooses cell at (0,0) with value **4**.
+- **Total Sum**: 0 + 4 = **4**
+
+**Turn 2**: Player 2 (`O`)
+
+- **Action**: Chooses cell at (0,3) with value **2**.
+- **Total Sum**: 0 + 2 = **2**
+
+**Turn 3**: Player 1 (`X`)
+
+- **Adjacent Cells to (0,0)**: Cells at positions (0,1), (1,0)
+- **Action**: Chooses cell at (0,1) with value **1**.
+- **Total Sum**: 4 + 1 = **5**
+
+**Turn 4**: Player 2 (`O`)
+
+- **Adjacent Cells to (0,3)**: Cells at positions (0,2), (1,3)
+- **Action**: Chooses cell at (1,3) with value **1**.
+- **Total Sum**: 2 + 1 = **3**
+
+**Turn 5**: Player 1 (`X`)
+
+- **Adjacent Cells to claimed cells**: (0,0), (0,1)
+- **Available Adjacent Cells**: (0,2), (1,1)
+- **Action**: Chooses cell at (1,0) with value **6**.
+- **Total Sum**: 5 + 6 = **11**
+
+**Turn 6**: Player 2 (`O`)
+
+- **Adjacent Cells to claimed cells**: (0,3), (1,3)
+- **Available Adjacent Cells**: (2,3), (0,2)
+- **Action**: Chooses cell at (0,2) with value **5**.
+- **Total Sum**: 3 + 5 = **8**
+
+**Turn 7**: Player 1 (`X`)
+
+- **Available Adjacent Cells**: (1,1)
+- **Action**: Chooses cell at (1,1) with value **3**.
+- **Total Sum**: 11 + 3 = **14**
+
+**Turn 8**: Player 2 (`O`)
+
+- **Available Adjacent Cells**: (1,2)
+- **Action**: Chooses cell at (1,2) with value **7**.
+- **Total Sum**: 8 + 7 = **15**
+
+**Victory Check**:
+
+- Player 2 has reached the target sum of **15**.
+- **Player 2 wins the game!**
+
+### Command-Line Interaction Example
+
+- **Notation**: Cells are referenced by their row and column indices (row,column), starting from (0,0) at the top-left corner.
+
+**Game Start**
+
+```
+Player 1 (X), enter your move (row,column): 0,0
+You selected cell [0,0] with value 4. Your total is now 4.
+
+Player 2 (O), enter your move (row,column): 0,3
+You selected cell [0,3] with value 2. Your total is now 2.
+```
+
+**Subsequent Turns**
+
+```
+Player 1 (X), enter your move (row,column): 0,1
+You selected cell [0,1] with value 1. Your total is now 5.
+
+Player 2 (O), enter your move (row,column): 1,3
+You selected cell [1,3] with value 1. Your total is now 3.
+
+Player 1 (X), enter your move (row,column): 1,0
+You selected cell [1,0] with value 6. Your total is now 11.
+
+Player 2 (O), enter your move (row,column): 0,2
+You selected cell [0,2] with value 5. Your total is now 8.
+
+Player 1 (X), enter your move (row,column): 1,1
+You selected cell [1,1] with value 3. Your total is now 14.
+
+Player 2 (O), enter your move (row,column): 1,2
+You selected cell [1,2] with value 7. Your total is now 15.
+
+Player 2 has reached a total of 15 and wins the game!
+```
+
+## Strategic Tips
+
+- **Planning Ahead**: Keep track of the numbers on the grid to plan a path that adds up to 15.
+- **Blocking Opponent**: Be mindful of your opponent's moves and consider blocking their access to certain numbers.
+- **Managing Your Total**: Avoid selecting high-value cells early on that might cause you to exceed 15.
+- **Adjacency**: Remember that after your first move, you can only claim adjacent cells. Plan your initial move to give you access to favorable numbers.
+
+---
+
+Enjoy playing **Number Connect**! The game combines simple arithmetic with strategic positioning, making it easy to code and fun to play. May the best strategist win!

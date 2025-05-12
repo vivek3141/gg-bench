@@ -1,0 +1,124 @@
+# Modular Countdown
+
+## Objective
+
+The goal of **Modular Countdown** is to be the first player to reduce the shared counter exactly to zero after applying a modulus operation. Players take turns adding numbers to the counter, trying to reach zero in a way that forces their opponent into a losing position.
+
+## Setup
+
+1. **Choose the Modulus Number (N):** Agree on a positive integer greater than the maximum add number. For a quick game, set **N = 10**.
+2. **Set the Maximum Add Number (K):** Decide on the highest number a player can add on their turn. For example, **K = 3**.
+3. **Initialize the Counter:** Start the shared counter at **0**.
+4. **Determine Turn Order:** Decide which player goes first. Players can flip a coin or choose randomly.
+
+## Game Components
+
+- **Shared Counter:** A numerical value that starts at 0 and changes as players add numbers.
+- **Modulus Number (N):** A fixed positive integer that determines the modulo operation (e.g., N = 10).
+- **Maximum Add Number (K):** The maximum positive integer that can be added to the counter on each turn (e.g., K = 3).
+- **Allowed Add Numbers:** Players can add any integer from 1 up to K inclusive on their turn.
+
+## Turns
+
+### Structure of a Turn
+
+1. **Select a Number:**
+   - On your turn, choose an integer **a** such that **1 ≤ a ≤ K**.
+2. **Update the Counter:**
+   - Add your chosen number to the shared counter.
+   - Apply the modulus operation:  
+     **Counter = (Current Counter + a) mod N**
+3. **Announce the Move:**
+   - Clearly state the number added and the new value of the counter.
+
+### Order of Actions
+
+- Players alternate turns, starting with Player 1.
+- Each turn consists of selecting a number, updating the counter, and announcing the result.
+
+### Turn Progression
+
+- The game continues with players taking turns until one player reduces the counter to zero after their move, winning the game.
+
+## Rules and Mechanics
+
+1. **Adding Numbers:**
+   - Players must choose a number between **1** and **K** inclusive.
+2. **Modulo Operation:**
+   - After adding your number, apply the modulus N to the counter:
+     - **Counter = (Current Counter + a) mod N**
+   - This keeps the counter within the range **0** to **N – 1**.
+3. **Winning the Game:**
+   - The player who reduces the counter to **exactly zero** after their turn **wins**.
+4. **No Illegal Moves:**
+   - Players must always make a move; skipping a turn or failing to add a number is not allowed.
+5. **No Draws:**
+   - The game cannot end in a draw. The rules ensure that a winner will emerge.
+
+## Scoring
+
+- **Winning:** The first player to reduce the counter to zero modulo N after their turn wins the game.
+- **No Points System:** The game is a straightforward win/loss; no points are tracked.
+
+## Examples
+
+### Example Game
+
+**Setup:**
+
+- **Modulus Number (N):** 10
+- **Maximum Add Number (K):** 3
+- **Starting Counter:** 0
+
+**Gameplay:**
+
+- **Turn 1:**
+  - *Player 1* adds **2**.
+  - Counter: (0 + 2) mod 10 = **2**
+  - *Player 1 announces:* "I add 2. Counter is now 2."
+- **Turn 2:**
+  - *Player 2* adds **3**.
+  - Counter: (2 + 3) mod 10 = **5**
+  - *Player 2 announces:* "I add 3. Counter is now 5."
+- **Turn 3:**
+  - *Player 1* adds **3**.
+  - Counter: (5 + 3) mod 10 = **8**
+  - *Player 1 announces:* "I add 3. Counter is now 8."
+- **Turn 4:**
+  - *Player 2* adds **2**.
+  - Counter: (8 + 2) mod 10 = **0**
+  - *Player 2 announces:* "I add 2. Counter is now 0. I win!"
+
+**Result:**
+
+- *Player 2* wins the game by reducing the counter to zero.
+
+### Command-Line Interaction
+
+```plaintext
+Player 1, enter a number between 1 and 3: 2
+Player 1 adds 2. Counter is now 2.
+
+Player 2, enter a number between 1 and 3: 3
+Player 2 adds 3. Counter is now 5.
+
+Player 1, enter a number between 1 and 3: 3
+Player 1 adds 3. Counter is now 8.
+
+Player 2, enter a number between 1 and 3: 2
+Player 2 adds 2. Counter is now 0.
+Player 2 wins!
+```
+
+## Strategic Considerations
+
+- **Plan Ahead:** Anticipate the counter values that will allow you to force a win.
+- **Modular Arithmetic Understanding:** Familiarity with modulus operations can provide a strategic edge.
+- **Control the Game Flow:** Try to manipulate the counter to values where your opponent has no winning moves.
+- **Forced Moves:** Aim to put your opponent in a position where any move they make sets you up to win on your next turn.
+
+By mastering these strategies, you can increase your chances of consistently winning against less skilled players.
+
+---
+
+Enjoy playing **Modular Countdown** and may the best strategist win!

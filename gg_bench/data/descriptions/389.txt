@@ -1,0 +1,164 @@
+# Prime Subtractor
+
+## Objective
+
+Be the player who reduces the shared number to **exactly zero** by strategically subtracting allowed prime numbers on your turn.
+
+## Setup
+
+- **Shared Number**: The game starts with a shared number set to **50**.
+
+## Game Components
+
+- **Shared Number**: An integer value that both players will manipulate during the game.
+- **Allowed Prime Numbers**: The prime numbers you can subtract are **2**, **3**, **5**, and **7**.
+
+## Turns
+
+- The game is played between two players who take turns alternately.
+- During your turn, you must subtract one of the allowed prime numbers from the shared number.
+
+## Rules and Mechanics
+
+### 1. Subtracting Primes
+
+- **Choose a Prime**: On your turn, select one of the allowed prime numbers: 2, 3, 5, or 7.
+- **Subtract from Shared Number**: Subtract the chosen prime from the shared number.
+- **Example**: If the shared number is 50 and you choose 7, the new shared number becomes 43.
+
+### 2. Valid Moves
+
+- **Non-Negative Result**: Your move is valid only if the shared number remains **zero or positive** after subtraction.
+- **Invalid Move**: If subtracting your chosen prime results in a negative number, you must pick a different prime.
+- **No Available Moves**: If none of the allowed primes can be subtracted without making the shared number negative, you lose your turn.
+
+### 3. Winning the Game
+
+- **Exact Zero**: The player who reduces the shared number to **exactly zero** wins the game.
+- **Forced Loss**: If you cannot make a valid move on your turn (no primes can be subtracted without going negative), you lose the game.
+
+### 4. Game Progression
+
+- **Turn Sequence**: Players alternate turns until the game ends.
+- **Shared Number Update**: After each valid move, the shared number is updated and the turn passes to the opponent.
+
+## Scoring
+
+- No points are tracked.
+- The goal is to be the player who successfully reduces the shared number to exactly zero.
+
+## Examples
+
+### Sample Game Play
+
+#### Starting the Game
+
+- **Shared Number**: 50
+
+#### Player 1's Turn
+
+- **Available Primes**: 2, 3, 5, 7
+- **Shared Number**: 50
+- **Action**: Subtract 7
+- **Calculation**: 50 - 7 = 43
+- **New Shared Number**: 43
+
+#### Player 2's Turn
+
+- **Available Primes**: 2, 3, 5, 7
+- **Shared Number**: 43
+- **Action**: Subtract 5
+- **Calculation**: 43 - 5 = 38
+- **New Shared Number**: 38
+
+#### Player 1's Turn
+
+- **Shared Number**: 38
+- **Action**: Subtract 7
+- **New Shared Number**: 31
+
+#### Player 2's Turn
+
+- **Shared Number**: 31
+- **Action**: Subtract 5
+- **New Shared Number**: 26
+
+#### Player 1's Turn
+
+- **Shared Number**: 26
+- **Action**: Subtract 7
+- **New Shared Number**: 19
+
+#### Player 2's Turn
+
+- **Shared Number**: 19
+- **Action**: Subtract 7
+- **New Shared Number**: 12
+
+#### Player 1's Turn
+
+- **Shared Number**: 12
+- **Action**: Subtract 7
+- **New Shared Number**: 5
+
+#### Player 2's Turn
+
+- **Shared Number**: 5
+- **Action**: Subtract 5
+- **New Shared Number**: 0
+- **Result**: Player 2 wins the game!
+
+## Command-Line Interaction Example
+
+```
+Welcome to Prime Subtractor!
+Starting Shared Number: 50
+
+Player 1's Turn
+----------------
+Available Primes to Subtract: 2, 3, 5, 7
+Current Shared Number: 50
+Enter a prime number to subtract: 7
+You subtracted 7.
+New Shared Number: 43
+
+Player 2's Turn
+----------------
+Available Primes to Subtract: 2, 3, 5, 7
+Current Shared Number: 43
+Enter a prime number to subtract: 5
+You subtracted 5.
+New Shared Number: 38
+
+Player 1's Turn
+----------------
+Available Primes to Subtract: 2, 3, 5, 7
+Current Shared Number: 38
+Enter a prime number to subtract: 7
+You subtracted 7.
+New Shared Number: 31
+
+... (game continues)
+
+Player 2's Turn
+----------------
+Available Primes to Subtract: 2, 3, 5, 7
+Current Shared Number: 5
+Enter a prime number to subtract: 5
+You subtracted 5.
+New Shared Number: 0
+
+Congratulations, Player 2! You reduced the number to zero and won the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Think several moves ahead to anticipate your opponent's options.
+- **Control the Game**: Try to force the shared number into values where your opponent has fewer options.
+- **Avoid Negative Numbers**: Always ensure your chosen prime doesn't reduce the shared number below zero.
+
+## Game Summary
+
+Prime Subtractor is a simple yet strategic game that challenges players to think ahead and make calculated moves. With straightforward rules and minimal components, it's easy to code and perfect for a command-line interface. The game progresses quickly, ensuring that each session is engaging and concise. There are no draws—only a clear path to victory for the player who best manages their choices.
+
+Enjoy the challenge and may the best strategist win!

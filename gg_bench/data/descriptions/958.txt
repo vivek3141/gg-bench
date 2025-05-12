@@ -1,0 +1,150 @@
+# Sequence Duel
+
+## Objective
+Be the first player to construct a sequence of **four numbers** in which each number is either a **multiple** or a **factor** of the previous number in your sequence. Strategic selection and blocking are key to outmaneuvering your opponent and achieving victory.
+
+## Setup
+1. **Shared Pool Creation**: Generate a shared pool of numbers ranging from **2** to **20** inclusive. This will be the set of numbers players can select from.
+2. **Initial Sequences**: Both players start with an **empty sequence**.
+3. **Determine First Player**: Decide who takes the first turn (e.g., by coin toss or random selection).
+
+## Game Components
+- **Shared Number Pool**: A list of integers from 2 to 20.
+- **Player Sequences**: Each player has their own sequence, starting empty.
+- **Game Interface**: Command-line prompts for selecting numbers and displaying sequences.
+
+## Turns
+1. **Player Actions**:
+   - On your turn, **select one number** from the shared pool following the game rules.
+   - Add the chosen number to the **end of your sequence**.
+   - **Remove** the selected number from the shared pool—it is no longer available.
+2. **Turn Progression**:
+   - Turns alternate between players.
+   - If a player cannot make a valid move, they must **pass**, and the turn goes to the opponent.
+   - The game continues until a player wins or no valid moves remain.
+
+## Rules and Mechanics
+
+### Number Selection Rules
+- **First Number**:
+  - Can be **any number** from the shared pool.
+- **Subsequent Numbers**:
+  - Must be a **factor or a multiple** of the **last number** in your own sequence.
+  - Must be **available** in the shared pool.
+
+### Additional Rules
+- **Unavailable Numbers**:
+  - Once a number is selected by either player, it is **removed** from the shared pool and cannot be selected again.
+- **Passing**:
+  - If no valid numbers are available on your turn, you must **pass**.
+- **Winning the Game**:
+  - **Immediate Victory**: The first player to construct a valid sequence of **four numbers** wins.
+  - **Endgame Victory**: If both players are unable to continue and no one has reached a sequence of four, the player with the **longer sequence** wins.
+  - **Tie-Breaker**: If both sequences are of equal length, the **last player to make a valid move** wins.
+
+## Scoring
+- **Victory Condition**: Achieving a valid sequence of four numbers first.
+- **Alternate Victory**: Having a longer sequence when no further moves can be made.
+- **Tie-Breaker**: Winning by being the last to add to your sequence if both sequences are equal in length.
+
+## Examples
+
+### Example Scenario 1
+
+**Shared Pool**: 2-20
+
+#### Turn 1
+- **Player 1** selects **8**.
+  - Player 1 Sequence: **8**
+  - Shared Pool: 2-7, 9-20
+
+#### Turn 2
+- **Player 2** selects **5**.
+  - Player 2 Sequence: **5**
+  - Shared Pool: 2-4, 6-7, 9-20
+
+#### Turn 3
+- **Player 1** selects **4** (factor of 8).
+  - Player 1 Sequence: **8, 4**
+  - Shared Pool: 2-3, 5-7, 9-20
+
+#### Turn 4
+- **Player 2** selects **10** (multiple of 5).
+  - Player 2 Sequence: **5, 10**
+  - Shared Pool: 2-3, 4, 6-7, 9, 11-20
+
+#### Turn 5
+- **Player 1** selects **2** (factor of 4).
+  - Player 1 Sequence: **8, 4, 2**
+  - Shared Pool: 3, 5-7, 9-20
+
+#### Turn 6
+- **Player 2** selects **2** (factor of 10) but it's already taken.
+- **Player 2** selects **20** (multiple of 10).
+  - Player 2 Sequence: **5, 10, 20**
+  - Shared Pool: 3, 5-7, 9-19
+
+#### Turn 7
+- **Player 1** selects **6**.
+  - **Invalid Move**: 6 is not a factor or multiple of **2**.
+- **Player 1** checks available numbers and cannot make a valid move—**passes**.
+
+#### Turn 8
+- **Player 2** selects **4** (factor of 20).
+  - Player 2 Sequence: **5, 10, 20, 4**
+  - **Player 2 wins** with a sequence of four numbers.
+
+### Example Scenario 2
+
+**Shared Pool**: 2-20
+
+#### Players alternate turns but neither can build a sequence of four due to strategic blocking.
+
+- **Endgame**:
+  - Player 1 Sequence: **6, 12, 18**
+  - Player 2 Sequence: **5, 10, 15**
+  - No valid moves remain for either player.
+  - **Result**: Tie-breaker applies.
+    - Last valid move was made by **Player 2**.
+    - **Player 2 wins**.
+
+## Command-Line Interaction Example
+
+### Turn Prompt
+```
+Shared Pool: 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+Player 1 Sequence: 
+
+Player 1, select your number: 8
+```
+
+### Validation and Update
+```
+You selected 8.
+
+Player 1 Sequence: 8
+
+Shared Pool updated.
+```
+
+### Subsequent Turn
+```
+Shared Pool: 2, 3, 4, 5, 6, 7, 9, 10
+
+Player 2 Sequence: 
+
+Player 2, select your number: 5
+```
+
+### Continuing the Game
+The game continues with the above interaction pattern until a player wins.
+
+## Strategy Tips
+- **Plan Ahead**: Keep track of available numbers that could extend your sequence.
+- **Block Opponent**: Select numbers that your opponent may need.
+- **Balance**: Decide between advancing your sequence and hindering your opponent.
+- **Adapt**: Be prepared to change your strategy based on the shared pool's status.
+
+## Conclusion
+Sequence Duel is a game of numerical strategy and foresight. By understanding the relationships between numbers and anticipating your opponent's moves, you can outmaneuver them and achieve victory. Enjoy the challenge of building your sequence while blocking your opponent in this exciting numerical duel!

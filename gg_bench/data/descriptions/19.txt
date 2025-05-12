@@ -1,0 +1,173 @@
+**Factor Frenzy**
+
+---
+
+### **Objective**
+
+The primary goal of **Factor Frenzy** is to be the player who reduces the shared number, **N**, to **1** through strategic selection and division by its factors. Players take turns choosing factors of the current number and dividing the number by the chosen factor. The player who successfully reduces **N** to **1** wins the game. If a player cannot make a valid move on their turn (no available factors), they lose the game.
+
+---
+
+### **Setup**
+
+1. **Initial Number Selection**: The game starts with a positive integer **N**. By default, **N = 30**, but players can agree on any positive integer greater than **1** to increase or decrease the game's difficulty and length.
+
+2. **Determine Turn Order**: Decide which player goes first. This can be done by mutual agreement, coin toss, or any random fair method.
+
+---
+
+### **Game Components**
+
+- **Shared Number (**_N_**)**: A positive integer that both players manipulate throughout the game. Starts at the agreed-upon initial value (default is 30).
+
+- **Available Factors List**: A dynamic list of factors of the current **N** (excluding **1** and **N** itself). This list changes as **N** changes and factors are used.
+
+- **Used Factors Set**: A set containing all factors that have been chosen previously. Used factors are removed from future consideration.
+
+_No physical components are necessary; the game can be played entirely through command-line interaction._
+
+---
+
+### **Turns**
+
+1. **Player Action**: On their turn, a player must:
+
+   - **Choose a Valid Factor**: Select a factor of the current **N** that is neither **1** nor **N**, and that has not been used before.
+   
+   - **Divide**: Divide **N** by the chosen factor to get a new **N**.
+
+2. **Turn Progression**:
+
+   - **Update**: The chosen factor is added to the **Used Factors Set** and removed from future consideration.
+   
+   - **Announce**: The player announces their chosen factor and the new value of **N**.
+   
+   - **Check for Win/Loss Conditions**: If **N** is reduced to **1**, the player who made the last valid move wins. If a player cannot make a valid move on their turn, they lose.
+   
+   - **Next Turn**: The turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+
+   - A move is valid if the player selects a factor of **N** (excluding **1** and **N**) that has not been previously used.
+   
+   - The chosen factor must divide **N** exactly (no remainders).
+
+2. **Updating N**:
+
+   - After dividing, **N** becomes the quotient of the division.
+
+3. **Used Factors**:
+
+   - Once a factor has been used, it cannot be selected again for the remainder of the game.
+   
+   - Players must keep track of used factors.
+
+4. **Winning the Game**:
+
+   - A player wins if they successfully reduce **N** to **1** on their turn.
+   
+   - If a player cannot make a valid move because there are no available factors (excluding **1** and **N**, or all factors have been used), they lose, and the other player wins.
+
+5. **Illegal Moves**:
+
+   - If a player attempts to make an invalid move (selects a non-factor, a used factor, or tries to divide resulting in a remainder), they forfeit their turn, and the other player may choose to enforce a loss or allow the player to retry (must be agreed upon before the game starts).
+
+---
+
+### **Scoring**
+
+- **Victory**: The player who reduces **N** to **1** wins the game.
+  
+- **Forfeit**: If a player cannot make a valid move on their turn, they lose the game.
+
+_No point system is involved; the game outcome is win or loss._
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting the Game**
+
+- **N = 30**
+- **Used Factors Set**: Empty
+- **Player 1** and **Player 2** decide that Player 1 will start.
+
+**Turn 1: Player 1**
+
+- **Available Factors of 30**: 2, 3, 5, 6, 10, 15
+- **Move**: Player 1 chooses **5**
+- **Calculation**: 30 ÷ 5 = **6**
+- **Update**:
+  - **N = 6**
+  - **Used Factors Set**: {5}
+- **Announcement**: "I divide by 5. N is now 6."
+
+**Turn 2: Player 2**
+
+- **Available Factors of 6**: 2, 3
+- **Unused Factors**: 2, 3 (since 5 is already used)
+- **Move**: Player 2 chooses **3**
+- **Calculation**: 6 ÷ 3 = **2**
+- **Update**:
+  - **N = 2**
+  - **Used Factors Set**: {3, 5}
+- **Announcement**: "I divide by 3. N is now 2."
+
+**Turn 3: Player 1**
+
+- **Available Factors of 2**: None (excluding 1 and 2)
+- **Unused Factors**: N/A
+- **Move**: Player 1 has no valid factors to choose.
+- **Result**: Player 1 cannot make a move and loses.
+- **Announcement**: "I have no valid moves. You win!"
+
+**Winner**: Player 2
+
+---
+
+#### **Command-Line Interaction Sample**
+
+```
+Game Start! N is 30.
+Used Factors: None
+
+Player 1's Turn:
+Available Factors of 30 (excluding used factors): 2, 3, 5, 6, 10, 15
+Enter your chosen factor: 5
+You chose 5.
+N is now 6.
+Used Factors: 5
+
+Player 2's Turn:
+Available Factors of 6 (excluding used factors): 2, 3
+Enter your chosen factor: 3
+You chose 3.
+N is now 2.
+Used Factors: 3, 5
+
+Player 1's Turn:
+Available Factors of 2 (excluding used factors): None
+No valid moves left. Player 2 wins!
+```
+
+---
+
+### **Strategic Notes**
+
+- **Plan Ahead**: Consider the factors that will be available to your opponent after your move.
+
+- **Control the Game**: Aim to force your opponent into a position where they have no valid moves.
+
+- **Factor Awareness**: Keep track of used factors to avoid illegal moves and to predict upcoming plays.
+
+- **Prime Numbers**: Reducing **N** to a prime number (other than 2) can limit the available moves for the next player.
+
+---
+
+Enjoy playing **Factor Frenzy** and may the best strategist win!

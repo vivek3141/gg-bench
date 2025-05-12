@@ -1,0 +1,263 @@
+# Conquer Squares - Rule Book
+
+## Objective
+
+Be the first player to **conquer squares totaling exactly 15 points** on a 4x4 grid. Use strategy to claim valuable squares while limiting your opponent's options, aiming to reach the target score before they do.
+
+---
+
+## Setup
+
+1. **Game Board Initialization**:
+   - Create a **4x4 grid** representing the game board.
+   - Each square on the grid is assigned a random integer value between **1** and **5**, inclusive.
+   - The values are revealed to both players at the start of the game.
+
+2. **Starting Conditions**:
+   - Both players begin with a **score of 0**.
+   - No squares are claimed at the outset.
+   - Decide which player goes first (Player 1).
+
+---
+
+## Game Components
+
+1. **Game Board**:
+   - A grid consisting of **16 squares** arranged in 4 rows and 4 columns.
+   - Each square is identified by its **row and column numbers** (e.g., Row 1, Column 2).
+
+2. **Squares**:
+   - Each square contains:
+     - A **value** (1 to 5).
+     - A **status**:
+       - Unclaimed (available for conquest).
+       - Claimed by **Player 1**.
+       - Claimed by **Player 2**.
+
+3. **Players**:
+   - **Player 1** and **Player 2** take turns.
+   - Each player maintains:
+     - A **total score** (sum of values of claimed squares).
+     - A list of **claimed squares**.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Turn Actions**:
+   - On your turn, you may **conquer one unclaimed square** according to the rules.
+   - If no valid moves are available, you must **pass your turn**.
+
+3. **Conquering a Square**:
+   - If you **do not own any squares yet**:
+     - You may conquer **any unclaimed square** on the board.
+   - If you **already own squares**:
+     - You may only conquer an **unclaimed square adjacent** (up, down, left, or right) to a square you have already claimed.
+     - Diagonal squares are **not** considered adjacent.
+
+4. **Updating Score**:
+   - Add the value of the conquered square to your **total score**.
+   - You **cannot** conquer a square if it would cause your total score to **exceed 15**.
+
+---
+
+## Rules and Mechanics
+
+1. **Objective**:
+   - Aim to be the first player with a **total score of exactly 15**.
+
+2. **Valid Moves**:
+   - You may conquer squares that:
+     - Are **unclaimed**.
+     - Are **adjacent** to your claimed squares (after your first move).
+     - Do not cause your total score to exceed 15.
+
+3. **Passing a Turn**:
+   - If you have no valid moves (all adjacent squares are claimed or would exceed 15), you must **pass**.
+
+4. **Winning the Game**:
+   - **Immediate Win**:
+     - The first player to reach a total score of **exactly 15** points **wins the game**.
+   - **Endgame Scenario**:
+     - If **both players pass consecutively** (no valid moves for either player):
+       - The game ends.
+       - The player with the **highest total score not exceeding 15** wins.
+       - **No Draws**: If scores are equal, **Player 2 wins**.
+
+5. **Game End Conditions**:
+   - A player reaches **exactly 15 points**.
+   - Both players have **no valid moves** and have passed their turns.
+
+6. **Restrictions**:
+   - You **cannot** skip a valid move; if a move is possible, you must make it.
+   - You **cannot** conquer a square that would make your score exceed 15.
+
+---
+
+## Scoring
+
+- **Calculating Total Score**:
+  - Keep a running total of the values of all squares you have conquered.
+  - Ensure your total score does not exceed 15.
+
+- **Winning Score**:
+  - **Exact Match**: Reach **exactly 15 points** to win immediately.
+  - **Highest Score**: If the game ends without a player reaching 15, the player with the highest score **not exceeding 15** wins.
+
+---
+
+## Examples
+
+### Example Scenario
+
+Let's walk through a sample game to illustrate the rules and gameplay.
+
+#### Initial Board:
+
+```
+[1][4][2][3]
+[5][2][3][1]
+[4][1][5][2]
+[3][2][1][4]
+```
+
+#### Game Play:
+
+1. **Player 1's Turn**:
+   - No squares claimed yet.
+   - Chooses to conquer **(Row 2, Column 1)** with value **5**.
+   - **Player 1's Total Score**: 5.
+
+2. **Player 2's Turn**:
+   - No squares claimed yet.
+   - Chooses to conquer **(Row 1, Column 2)** with value **4**.
+   - **Player 2's Total Score**: 4.
+
+3. **Player 1's Turn**:
+   - Can conquer any unclaimed square adjacent to **(Row 2, Column 1)**.
+   - Options:
+     - **(Row 1, Column 1)** [Value 1]
+     - **(Row 2, Column 2)** [Value 2]
+     - **(Row 3, Column 1)** [Value 4]
+   - Chooses **(Row 3, Column 1)** [Value 4].
+   - **Player 1's Total Score**: 5 + 4 = 9.
+
+4. **Player 2's Turn**:
+   - Can conquer squares adjacent to **(Row 1, Column 2)**.
+   - Options:
+     - **(Row 1, Column 1)** [Value 1]
+     - **(Row 1, Column 3)** [Value 2]
+     - **(Row 2, Column 2)** [Value 2]
+   - Chooses **(Row 1, Column 3)** [Value 2].
+   - **Player 2's Total Score**: 4 + 2 = 6.
+
+5. **Player 1's Turn**:
+   - Options adjacent to owned squares:
+     - **(Row 2, Column 2)** [Value 2]
+     - **(Row 3, Column 2)** [Value 1]
+     - **(Row 4, Column 1)** [Value 3]
+   - Chooses **(Row 4, Column 1)** [Value 3].
+   - **Player 1's Total Score**: 9 + 3 = 12.
+
+6. **Player 2's Turn**:
+   - Options:
+     - **(Row 1, Column 1)** [Value 1]
+     - **(Row 1, Column 4)** [Value 3]
+     - **(Row 2, Column 2)** [Value 2]
+   - Cannot choose **(Row 1, Column 4)** [Value 3] as 6 + 3 = 9 (still valid).
+   - Chooses **(Row 1, Column 4)** [Value 3].
+   - **Player 2's Total Score**: 6 + 3 = 9.
+
+7. **Player 1's Turn**:
+   - Options:
+     - **(Row 3, Column 2)** [Value 1]
+     - **(Row 4, Column 2)** [Value 2]
+   - Needs 3 points to reach 15.
+   - Chooses **(Row 3, Column 2)** [Value 1].
+   - **Player 1's Total Score**: 12 + 1 = 13.
+
+8. **Player 2's Turn**:
+   - Needs 6 points to reach 15.
+   - Options:
+     - **(Row 2, Column 2)** [Value 2]
+     - **(Row 2, Column 3)** [Value 3]
+   - Chooses **(Row 2, Column 3)** [Value 3].
+   - **Player 2's Total Score**: 9 + 3 = 12.
+
+9. **Player 1's Turn**:
+   - Needs 2 points to reach 15.
+   - Options:
+     - **(Row 4, Column 2)** [Value 2]
+   - Chooses **(Row 4, Column 2)** [Value 2].
+   - **Player 1's Total Score**: 13 + 2 = 15.
+   - **Player 1 wins**.
+
+---
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**:
+
+```
+Your current score: 5
+Your claimed squares: (2,1)
+Available squares to conquer:
+1. (1,1) - Value: 1
+2. (2,2) - Value: 2
+3. (3,1) - Value: 4
+Enter the number of the square you wish to conquer: 3
+You have conquered square (3,1) with value 4.
+Your new total score: 9
+```
+
+**Player 2's Turn**:
+
+```
+Your current score: 4
+Your claimed squares: (1,2)
+Available squares to conquer:
+1. (1,1) - Value: 1
+2. (1,3) - Value: 2
+3. (2,2) - Value: 2
+Enter the number of the square you wish to conquer: 2
+You have conquered square (1,3) with value 2.
+Your new total score: 6
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Your Path**:
+  - Look ahead to see which squares you can access in future turns.
+  - Consider the values of adjacent squares and how they contribute to your total score.
+
+- **Balance Risk and Reward**:
+  - High-value squares help you reach 15 faster but limit future options.
+  - Conquering lower-value squares may give you more flexibility.
+
+- **Block Your Opponent**:
+  - If possible, conquer squares that your opponent might need.
+  - Pay attention to their score and claimed squares.
+
+- **Avoid Overstepping**:
+  - Be cautious not to get stuck without valid moves.
+  - Ensure you have options to reach exactly 15.
+
+- **Force Passes**:
+  - Try to position your opponent where they have to pass their turn.
+
+---
+
+## Important Notes
+
+- **No Draws**: The game is designed to always produce a winner.
+- **Player 2 Advantage**: In the event of a tie when both players cannot move, Player 2 wins.
+- **Adjacency Is Key**: After your first move, you can only expand to adjacent squares.
+
+---
+
+By following this rule book, players should have a clear understanding of how to play "Conquer Squares." The game combines simple mechanics with strategic depth, allowing skilled players to consistently outperform their opponents. Enjoy the challenge and have fun conquering squares!

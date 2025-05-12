@@ -1,0 +1,175 @@
+# Divisor Duel
+
+## Objective
+
+Be the player who reduces the shared counter to **exactly zero** by subtracting allowed divisors of the current counter value. The player who makes the counter reach zero **wins the game**.
+
+## Setup
+
+- The game starts with a **shared counter** set to **20**.
+- Determine which player goes first (e.g., by coin toss, random selection, or mutual agreement).
+
+## Game Components
+
+- **Shared Counter**: A single integer value that starts at **20** and is updated throughout the game.
+- **Players**: Two players who will take turns according to the game rules.
+
+## Turns
+
+- Players take turns **alternately**.
+- On each turn, a player performs the following steps:
+  1. **Identify Valid Moves**: Determine the proper divisors of the current counter value.
+  2. **Choose a Divisor**: Select one of the valid divisors to subtract from the counter.
+  3. **Update the Counter**: Subtract the chosen divisor from the current counter value.
+- The turn passes to the other player after the counter is updated.
+
+## Rules and Mechanics
+
+### 1. Choosing Divisors
+
+- **Proper Divisors Only**: On your turn, you must subtract a **proper divisor** of the current counter value.
+  - A proper divisor is any positive integer divisor of the counter value **excluding** 1 and the counter value itself.
+- **Prime Numbers Exception**:
+  - If the current counter value is a **prime number**, you may subtract **1**.
+  - Remember that prime numbers have no proper divisors other than 1 and themselves.
+
+### 2. Valid Moves
+
+- **Mandatory Move**: If there is at least one valid proper divisor, you must subtract one of them.
+- **No Skipping Turns**: You cannot skip your turn or pass; you must make a valid move if possible.
+- **No Negative Counter**: The result after subtraction must not reduce the counter below zero.
+
+### 3. Winning the Game
+
+- **Winning Condition**: You win if you reduce the counter to **exactly zero** on your turn.
+- **Unable to Move**: If you cannot make a valid move on your turn (i.e., there are no proper divisors and the counter is not prime), you **lose** the game.
+
+## Scoring
+
+- The game is **won** by the player who successfully reduces the counter to zero according to the rules.
+- There is no points system; the outcome is a win or loss.
+
+## Examples
+
+### Example Turn Sequence
+
+**Starting Counter**: 20
+
+---
+
+- **Player 1's Turn**:
+  - **Current Counter**: 20
+  - **Proper Divisors**: 2, 4, 5, 10
+  - **Player 1 Chooses**: Subtract 5
+  - **New Counter**: 20 - 5 = **15**
+
+---
+
+- **Player 2's Turn**:
+  - **Current Counter**: 15
+  - **Proper Divisors**: 3, 5
+  - **Player 2 Chooses**: Subtract 5
+  - **New Counter**: 15 - 5 = **10**
+
+---
+
+- **Player 1's Turn**:
+  - **Current Counter**: 10
+  - **Proper Divisors**: 2, 5
+  - **Player 1 Chooses**: Subtract 2
+  - **New Counter**: 10 - 2 = **8**
+
+---
+
+- **Player 2's Turn**:
+  - **Current Counter**: 8
+  - **Proper Divisors**: 2, 4
+  - **Player 2 Chooses**: Subtract 4
+  - **New Counter**: 8 - 4 = **4**
+
+---
+
+- **Player 1's Turn**:
+  - **Current Counter**: 4
+  - **Proper Divisors**: 2
+  - **Player 1 Chooses**: Subtract 2
+  - **New Counter**: 4 - 2 = **2**
+
+---
+
+- **Player 2's Turn**:
+  - **Current Counter**: 2 (Prime Number)
+  - **Player 2 Chooses**: Subtract 1
+  - **New Counter**: 2 - 1 = **1**
+
+---
+
+- **Player 1's Turn**:
+  - **Current Counter**: 1
+  - **No Proper Divisors**: 1 is not prime and has no proper divisors.
+  - **Player 1 Cannot Move**: Player 1 loses the game.
+  - **Player 2 Wins!**
+
+---
+
+## Command-Line Interaction Example
+
+```
+Game Start! The counter is at 20.
+
+Player 1's turn.
+Current counter: 20
+Available divisors to subtract: [2, 4, 5, 10]
+Enter divisor to subtract: 5
+Counter is now 15.
+
+Player 2's turn.
+Current counter: 15
+Available divisors to subtract: [3, 5]
+Enter divisor to subtract: 5
+Counter is now 10.
+
+Player 1's turn.
+Current counter: 10
+Available divisors to subtract: [2, 5]
+Enter divisor to subtract: 2
+Counter is now 8.
+
+Player 2's turn.
+Current counter: 8
+Available divisors to subtract: [2, 4]
+Enter divisor to subtract: 4
+Counter is now 4.
+
+Player 1's turn.
+Current counter: 4
+Available divisors to subtract: [2]
+Enter divisor to subtract: 2
+Counter is now 2.
+
+Player 2's turn.
+Current counter: 2
+The counter is a prime number. You may subtract 1.
+Enter number to subtract: 1
+Counter is now 1.
+
+Player 1's turn.
+Current counter: 1
+No valid moves available. Player 1 cannot make a move.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Force Prime Counters**: Try to leave the counter at a prime number for your opponent, limiting their options.
+- **Avoid Prime Traps**: Be cautious when the counter is approaching a prime number; plan your moves to avoid being forced into subtracting 1.
+- **Plan Ahead**: Consider the possible subsequent counter values resulting from your move to anticipate your opponent's options.
+- **Divisor Awareness**: Familiarize yourself with the proper divisors of numbers to make quick and strategic decisions.
+
+## Conclusion
+
+**Divisor Duel** is a game of strategic numerical reduction. It combines simple arithmetic with forward-thinking tactics, making it easy to learn but challenging to master. Ideal for a quick battle of wits in a command-line interface, this game rewards players who can anticipate their opponent's moves and manipulate the counter to their advantage.
+
+---
+
+Enjoy testing your numerical prowess against your opponent in **Divisor Duel**!

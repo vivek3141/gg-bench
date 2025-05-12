@@ -1,0 +1,299 @@
+# **Color Bridge** - Rule Book
+
+---
+
+## **Objective**
+
+**Color Bridge** is a two-player, turn-based strategy game played on a linear track. The primary goal is to be the first player to create a continuous sequence of **exactly three adjacent positions** colored with your assigned color. Achieve victory by strategically coloring positions to form this sequence while preventing your opponent from doing the same.
+
+---
+
+## **Setup**
+
+- **Game Board**: A linear track consisting of **11 uncolored positions**, numbered from **1** to **11**.
+- **Initial State**: All positions are uncolored, represented by underscores `_`.
+
+  ```
+  _ _ _ _ _ _ _ _ _ _ _
+  ```
+
+- **Players**:
+  - **Player 1**: Assigned the color **Red** `(R)`.
+  - **Player 2**: Assigned the color **Blue** `(B)`.
+
+- **Starting Player**: Decide randomly or by agreement who takes the first turn.
+
+---
+
+## **Game Components**
+
+- **Linear Track**: Represents the game board with positions numbered **1** to **11**.
+- **Player Colors**:
+  - **Red (R)**: Used by Player 1 to mark positions.
+  - **Blue (B)**: Used by Player 2 to mark positions.
+
+- **Command-Line Interface (CLI)**: Players interact with the game by entering position numbers to color.
+
+---
+
+## **Turns**
+
+- Players alternate turns, starting with the player chosen to go first.
+- **On Your Turn**:
+  - **Option 1**: Color **one uncolored position** with your color.
+  - **Option 2**: Color **two adjacent uncolored positions** with your color.
+
+- **How to Make a Move**:
+  - Input the position number(s) you wish to color when prompted.
+  - If coloring two positions, ensure they are adjacent and both uncolored.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Coloring Positions**:
+   - You may only color positions that are currently uncolored (`_`).
+   - When choosing to color two positions:
+     - They must be adjacent (e.g., positions `5` and `6`).
+     - Both positions must be uncolored.
+
+2. **Winning the Game**:
+   - You win by creating a continuous sequence of **exactly three adjacent positions** colored with your color.
+   - Sequences longer than three do **not** count towards a win.
+     - Example: A sequence of four positions does not qualify.
+   - The winning sequence can be located anywhere along the track.
+
+3. **Blocking**:
+   - You can block your opponent by coloring positions that disrupt their potential sequences.
+
+4. **No Oversized Sequences**:
+   - Be cautious not to create a sequence longer than three; it does not contribute to winning and may waste moves.
+
+5. **No Draws**:
+   - The game continues until one player wins; a draw is not possible.
+
+---
+
+## **Scoring**
+
+- The first player to create a continuous sequence of exactly three adjacent positions in their color is declared the winner.
+- No points are accumulated; the focus is on achieving the objective.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+**Initial Track**:
+
+```
+_ _ _ _ _ _ _ _ _ _ _
+```
+
+**Player 1 (Red) Starts**:
+
+---
+
+**Turn 1** - *Player 1 (Red)*
+
+- **Action**: Colors positions `5` and `6`.
+- **Input**: `5 6`
+- **Updated Track**:
+
+  ```
+  _ _ _ _ R R _ _ _ _ _
+  ```
+
+---
+
+**Turn 2** - *Player 2 (Blue)*
+
+- **Action**: Colors position `4`.
+- **Input**: `4`
+- **Updated Track**:
+
+  ```
+  _ _ _ B R R _ _ _ _ _
+  ```
+
+---
+
+**Turn 3** - *Player 1 (Red)*
+
+- **Action**: Colors position `7`.
+- **Input**: `7`
+- **Updated Track**:
+
+  ```
+  _ _ _ B R R R _ _ _ _
+  ```
+
+- **Note**: Although Red has four adjacent positions, sequences longer than three do not count towards a win.
+
+---
+
+**Turn 4** - *Player 2 (Blue)*
+
+- **Action**: Colors positions `9` and `10`.
+- **Input**: `9 10`
+- **Updated Track**:
+
+  ```
+  _ _ _ B R R R _ B B _
+  ```
+
+---
+
+**Turn 5** - *Player 1 (Red)*
+
+- **Action**: Colors position `8`.
+- **Input**: `8`
+- **Updated Track**:
+
+  ```
+  _ _ _ B R R R R B B _
+  ```
+
+- **Note**: Red now has a sequence of four again, which does not count.
+
+---
+
+**Turn 6** - *Player 2 (Blue)*
+
+- **Action**: Colors position `11`.
+- **Input**: `11`
+- **Updated Track**:
+
+  ```
+  _ _ _ B R R R R B B B
+  ```
+
+---
+
+**Turn 7** - *Player 1 (Red)*
+
+- **Action**: Colors position `2`.
+- **Input**: `2`
+- **Updated Track**:
+
+  ```
+  _ R _ B R R R R B B B
+  ```
+
+---
+
+**Turn 8** - *Player 2 (Blue)*
+
+- **Action**: Colors positions `1` and `3`.
+- **Input**: `1 3`
+- **Updated Track**:
+
+  ```
+  B R B B R R R R B B B
+  ```
+
+- **Note**: Blue attempted to block Red and create opportunities.
+
+---
+
+**Turn 9** - *Player 1 (Red)*
+
+- **Action**: Colors position `4` (already colored by Blue).
+- **Result**: Invalid move. Must choose an uncolored position.
+
+- **Corrected Action**: Colors position `0` (invalid position).
+- **Result**: Invalid position number.
+
+- **Second Attempt**: Colors position `None` (no valid moves left to win).
+
+- **Game Continues**: Players recognize that no player can now create a sequence of exactly three adjacent colors due to the track's current state.
+
+---
+
+**Conclusion**:
+
+- Due to strategic blocking, neither player can achieve the objective with the remaining uncolored positions.
+- However, **the game cannot end in a draw**; players must continue until a win is achieved.
+
+---
+
+### **Alternate Ending**
+
+Assuming earlier strategic moves:
+
+**Turn 2** - *Player 2 (Blue)*
+
+- **Action**: Colors position `7`.
+- **Input**: `7`
+- **Updated Track**:
+
+  ```
+  _ _ _ _ R R B _ _ _ _
+  ```
+
+---
+
+**Turn 3** - *Player 1 (Red)*
+
+- **Action**: Colors position `4`.
+- **Input**: `4`
+- **Updated Track**:
+
+  ```
+  _ _ _ R R R B _ _ _ _
+  ```
+
+- **Result**: **Player 1 (Red) wins** by forming a sequence at positions `4`, `5`, `6`.
+
+---
+
+## **Command-Line Interaction Example**
+
+**Player 1's Turn**:
+
+```
+Current Track: _ _ _ _ _ _ _ _ _ _ _
+Player 1 (Red), choose position(s) to color (one or two positions):
+> 5 6
+
+Updated Track: _ _ _ _ R R _ _ _ _ _
+```
+
+---
+
+**Player 2's Turn**:
+
+```
+Current Track: _ _ _ _ R R _ _ _ _ _
+Player 2 (Blue), choose position(s) to color (one or two positions):
+> 7
+
+Updated Track: _ _ _ _ R R B _ _ _ _
+```
+
+---
+
+**Player 1's Turn**:
+
+```
+Current Track: _ _ _ _ R R B _ _ _ _
+Player 1 (Red), choose position(s) to color (one or two positions):
+> 4
+
+Updated Track: _ _ _ R R R B _ _ _ _
+
+Player 1 (Red) wins by forming a sequence at positions 4, 5, 6!
+```
+
+---
+
+## **Ensure Strategic Depth**
+
+- **Plan Ahead**: Anticipate your opponent's moves and block potential sequences.
+- **Balance Offense and Defense**: Decide when to advance your own sequence or hinder your opponent's progress.
+- **Optimal Use of Moves**: Determine whether coloring one or two positions best suits your strategy.
+
+---
+
+Enjoy playing **Color Bridge**! Sharpen your strategic thinking and may the best tactician win.

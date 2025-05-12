@@ -1,0 +1,268 @@
+# Number Stack Duel: Rule Book
+
+## Objective
+
+**Primary Goal**: The objective of *Number Stack Duel* is to be the last player able to make a valid move by strategically placing numbers on a shared stack while following an alternating pattern of "greater than" and "less than."
+
+**Victory Conditions**:
+- **Win**: You win if your opponent cannot make a valid move on their turn.
+- **Loss**: You lose if you cannot make a valid move on your turn following the game's rules.
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - A shared pool of numbers from **1** to **9** is available.
+   - Each number can be used only **once** during the game.
+
+2. **Stack Initialization**:
+   - The game begins with an **empty stack**.
+
+3. **Player Order**:
+   - Decide who will be **Player 1** and **Player 2**.
+   - Players will take turns alternately, starting with Player 1.
+
+## Game Components
+
+1. **Number Pool**:
+   - **Numbers**: Integers from **1** to **9**.
+   - **Usage**: Once a number is selected, it is **removed** from the pool for the remainder of the game.
+
+2. **Stack**:
+   - A virtual stack where numbers are placed on top of each other.
+   - **Function**: Maintains the sequence of numbers played.
+
+3. **Pattern Indicator**:
+   - Determines the required relationship between the current number and the previous number.
+   - Alternates between **"greater than" (>)** and **"less than" (<)** after each turn following the first move.
+
+## Turns
+
+### Structure of a Turn
+
+1. **Player's Turn Start**:
+   - The player is informed of the **current pattern** and the **top number** on the stack (if any).
+   - The player views the **available numbers** in the pool.
+
+2. **Action**:
+   - The player selects an **unused number** from the pool that satisfies the current pattern in relation to the top number on the stack.
+   - The selected number is then **placed on top of the stack**.
+
+3. **Pattern Alternation**:
+   - After a valid move, the pattern **switches**:
+     - If the pattern was **greater than (>)**, it changes to **less than (<)**.
+     - If it was **less than (<)**, it changes to **greater than (>)**.
+   - This pattern will dictate the next player's valid moves.
+
+4. **Turn End**:
+   - If a player **cannot make a valid move**, they **lose**, and the game ends.
+   - Otherwise, the turn passes to the next player.
+
+### Turn Progression
+
+- **First Turn**:
+  - Player 1 can choose **any number** from the pool.
+  - The initial pattern for the next turn is set to **"greater than" (>)**.
+
+- **Subsequent Turns**:
+  - Players must select a number following the **current pattern** with respect to the **top number** on the stack.
+
+## Rules and Mechanics
+
+1. **Number Selection Rules**:
+   - **Unused Numbers**: Players can only select numbers that have not been used previously.
+   - **Pattern Compliance**:
+     - **Greater Than (>)**: The selected number must be **strictly greater** than the top number on the stack.
+     - **Less Than (<)**: The selected number must be **strictly less** than the top number on the stack.
+
+2. **Pattern Alternation**:
+   - The pattern **alternates** after each turn, adding strategic depth.
+   - The sequence of patterns is: **">"**, **"<"**, **">"**, **"<"**, etc.
+
+3. **Invalid Moves and Loss Conditions**:
+   - If a player has **no valid numbers** to play on their turn, they **lose the game**.
+   - A move is invalid if:
+     - The selected number does not satisfy the current pattern.
+     - There are no unused numbers that satisfy the pattern.
+
+4. **Game End**:
+   - The game ends **immediately** when a player cannot make a valid move.
+   - The other player is declared the **winner**.
+
+5. **No Draws**:
+   - The game is designed so that a draw is **impossible**.
+   - With careful play, a skilled player can **consistently win**.
+
+## Scoring
+
+- **No Point System**:
+  - There is **no scoring** or accumulation of points.
+  - The outcome is simply a **win** or a **loss**.
+- **Victory Determination**:
+  - The winner is the player who successfully forces their opponent into a position where they cannot make a valid move.
+
+## Examples
+
+### Example Game Play
+
+**Initial Number Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9  
+**Stack**: Empty  
+**Pattern**: N/A  
+
+---
+
+**Turn 1**: *Player 1*
+
+- **Action**: Chooses **5** and places it on the stack.
+- **Stack**: [5]
+- **Pattern for Next Turn**: **Greater Than (>)**
+
+**Remaining Numbers**: 1, 2, 3, 4, 6, 7, 8, 9
+
+---
+
+**Turn 2**: *Player 2*
+
+- **Current Pattern**: **Greater Than (>)**
+- **Available Choices**: Numbers **greater than 5**: 6, 7, 8, 9
+- **Action**: Chooses **7** and places it on the stack.
+- **Stack**: [5, 7]
+- **Pattern for Next Turn**: **Less Than (<)**
+
+**Remaining Numbers**: 1, 2, 3, 4, 6, 8, 9
+
+---
+
+**Turn 3**: *Player 1*
+
+- **Current Pattern**: **Less Than (<)**
+- **Available Choices**: Numbers **less than 7**: 1, 2, 3, 4, 6
+- **Action**: Chooses **6** and places it on the stack.
+- **Stack**: [5, 7, 6]
+- **Pattern for Next Turn**: **Greater Than (>)**
+
+**Remaining Numbers**: 1, 2, 3, 4, 8, 9
+
+---
+
+**Turn 4**: *Player 2*
+
+- **Current Pattern**: **Greater Than (>)**
+- **Available Choices**: Numbers **greater than 6**: 8, 9
+- **Action**: Chooses **8** and places it on the stack.
+- **Stack**: [5, 7, 6, 8]
+- **Pattern for Next Turn**: **Less Than (<)**
+
+**Remaining Numbers**: 1, 2, 3, 4, 9
+
+---
+
+**Turn 5**: *Player 1*
+
+- **Current Pattern**: **Less Than (<)**
+- **Available Choices**: Numbers **less than 8**: 1, 2, 3, 4
+- **Action**: Chooses **4** and places it on the stack.
+- **Stack**: [5, 7, 6, 8, 4]
+- **Pattern for Next Turn**: **Greater Than (>)**
+
+**Remaining Numbers**: 1, 2, 3, 9
+
+---
+
+**Turn 6**: *Player 2*
+
+- **Current Pattern**: **Greater Than (>)**
+- **Available Choices**: Numbers **greater than 4**: 9
+- **Action**: Chooses **9** and places it on the stack.
+- **Stack**: [5, 7, 6, 8, 4, 9]
+- **Pattern for Next Turn**: **Less Than (<)**
+
+**Remaining Numbers**: 1, 2, 3
+
+---
+
+**Turn 7**: *Player 1*
+
+- **Current Pattern**: **Less Than (<)**
+- **Available Choices**: Numbers **less than 9**: 1, 2, 3
+- **Action**: Chooses **3** and places it on the stack.
+- **Stack**: [5, 7, 6, 8, 4, 9, 3]
+- **Pattern for Next Turn**: **Greater Than (>)**
+
+**Remaining Numbers**: 1, 2
+
+---
+
+**Turn 8**: *Player 2*
+
+- **Current Pattern**: **Greater Than (>)**
+- **Available Choices**: Numbers **greater than 3**: None (Numbers 4-9 already used)
+- **Action**: No valid moves available.
+- **Result**: **Player 2 loses**.
+- **Winner**: **Player 1**
+
+### Command-Line Interaction Sample
+
+```
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Stack: Empty
+-------------------------
+Player 1's Turn
+Pattern: N/A (First move)
+Choose any number from the available numbers.
+Enter your number: 5
+
+Player 1 placed 5 on the stack.
+Next Pattern: Greater Than (>)
+
+-------------------------
+Available Numbers: 1, 2, 3, 4, 6, 7, 8, 9
+Stack: 5
+Player 2's Turn
+Pattern: Greater Than (>)
+You must choose a number greater than 5.
+Available numbers: 6, 7, 8, 9
+Enter your number: 7
+
+Player 2 placed 7 on the stack.
+Next Pattern: Less Than (<)
+
+-------------------------
+Available Numbers: 1, 2, 3, 4, 6, 8, 9
+Stack: 5, 7
+Player 1's Turn
+Pattern: Less Than (<)
+You must choose a number less than 7.
+Available numbers: 1, 2, 3, 4, 6
+Enter your number: 6
+
+Player 1 placed 6 on the stack.
+Next Pattern: Greater Than (>)
+
+-------------------------
+... (game continues) ...
+
+-------------------------
+Available Numbers: 1, 2
+Stack: 5, 7, 6, 8, 4, 9, 3
+Player 2's Turn
+Pattern: Greater Than (>)
+You must choose a number greater than 3.
+Available numbers: None
+No valid moves available.
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of both the numbers you need and the numbers your opponent may need.
+- **Number Denial**: Sometimes it's strategic to select a number not only to make a valid move but also to prevent your opponent from having valid options on their next turn.
+- **Pattern Awareness**: Always be mindful of the upcoming pattern change to anticipate future moves.
+
+## Conclusion
+
+*Number Stack Duel* offers a quick, engaging gameplay experience that challenges players to think strategically. With simple rules and a clear objective, it's easy to learn yet provides depth for skilled players to consistently outsmart their opponents. Whether you're looking for a casual game or a competitive challenge, *Number Stack Duel* delivers an enjoyable and thought-provoking experience.
+
+---
+
+Enjoy the game, and may the best strategist win!

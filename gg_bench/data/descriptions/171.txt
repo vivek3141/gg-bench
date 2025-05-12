@@ -1,0 +1,167 @@
+# **Factor Duel**
+
+## **Objective**
+
+Factor Duel is a two-player, turn-based mathematical strategy game played in a command-line interface. The primary goal is to force your opponent into a position where they cannot make a valid move. Specifically, a player wins by reducing the shared number to a prime number at the start of their opponent's turn, leaving them with no valid factors to choose from.
+
+## **Setup**
+
+- **Starting Number (N):** The game begins with a shared positive integer greater than 2. The recommended starting number is **30**, but players can agree on any suitable number.
+- Both players are aware of the starting number and understand that they will be manipulating this number throughout the game.
+
+## **Game Components**
+
+- **Shared Number (N):** A positive integer that both players will manipulate by selecting factors.
+- **Factors:** Divisors of the current number N (excluding 1 and N) that players can choose on their turn.
+- **Command-Line Interface:** Players input their chosen factors through the command line.
+
+## **Turns**
+
+1. **Turn Order:**
+   - Players decide who goes first (e.g., by mutual agreement or a random method).
+   - Turns alternate between Player 1 and Player 2.
+
+2. **Player's Turn Structure:**
+   - **Display Current Number:** The current value of N is displayed.
+   - **Available Factors:** The game lists all valid factors of N (excluding 1 and N itself).
+   - **Player Action:** The active player selects one of the available factors.
+   - **Update N:** N is divided by the chosen factor, and the result becomes the new N.
+   - **End Turn:** Control passes to the other player.
+
+## **Rules and Mechanics**
+
+1. **Valid Moves:**
+   - On your turn, you must select a factor of the current N that is neither 1 nor N itself.
+   - The factor must divide evenly into N (no remainders).
+
+2. **Division Process:**
+   - After selecting a valid factor, divide N by that factor.
+   - The result becomes the new N for the next player's turn.
+
+3. **Winning Conditions:**
+   - **Victory by Prime:** If after your turn N becomes a prime number greater than 1, you win the game. This is because your opponent will have no valid factors to choose from on their turn.
+   - **Victory by No Valid Moves:** If your opponent has no valid moves on their turn because N is prime, you win.
+   - **Invalid Move Penalty:** If a player selects an invalid factor (not a factor of N, or 1 or N itself), they immediately lose the game.
+
+4. **Game End:**
+   - The game ends when one player wins according to the winning conditions.
+   - There are no draws in Factor Duel.
+
+## **Scoring**
+
+- **Winning the Game:** The player who forces the opponent into a position with no valid moves wins the game.
+- **No Point System:** There is no point tracking; the outcome is simply a win or loss based on the game's objective.
+
+## **Examples**
+
+### **Example Game Play Starting with N = 30**
+
+**Starting N:** 30
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 30
+- **Available Factors:** 2, 3, 5, 6, 10, 15
+- **Player 1 selects factor:** **5**
+- **Calculation:** 30 ÷ 5 = **6**
+- **N is now 6**
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** 6
+- **Available Factors:** 2, 3
+- **Player 2 selects factor:** **2**
+- **Calculation:** 6 ÷ 2 = **3**
+- **N is now 3**
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 3
+- **Available Factors:** None (since 3 is prime)
+- **Player 1 has no valid moves and loses.**
+
+**Result:** Player 2 wins the game.
+
+---
+
+### **Alternative Strategy**
+
+**Player 1's Turn:**
+
+- **Current N:** 30
+- **Available Factors:** 2, 3, 5, 6, 10, 15
+- **Player 1 selects factor:** **2**
+- **Calculation:** 30 ÷ 2 = **15**
+- **N is now 15**
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** 15
+- **Available Factors:** 3, 5
+- **Player 2 selects factor:** **5**
+- **Calculation:** 15 ÷ 5 = **3**
+- **N is now 3**
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 3
+- **Available Factors:** None
+- **Player 1 has no valid moves and loses.**
+
+**Result:** Player 2 wins the game.
+
+---
+
+## **Sample Command-Line Interaction**
+
+```
+Welcome to Factor Duel!
+Starting number (N) is 30.
+
+Player 1's turn.
+Current N: 30
+Available factors: 2, 3, 5, 6, 10, 15
+Enter your chosen factor: 5
+You selected 5.
+N is now 6.
+
+Player 2's turn.
+Current N: 6
+Available factors: 2, 3
+Enter your chosen factor: 2
+You selected 2.
+N is now 3.
+
+Player 1's turn.
+Current N: 3
+No valid factors available. 3 is a prime number.
+Player 1 has no valid moves.
+Congratulations, Player 2! You win the game!
+```
+
+---
+
+## **Strategy Tips**
+
+- **Plan Ahead:** Anticipate your opponent's possible moves based on the factors available after your turn.
+- **Control the Game:** Aim to leave N as a composite number with limited factors on your opponent's turn.
+- **Avoid Primes on Your Turn:** Ensure that you do not reduce N to a prime number on your own turn unless it's a strategic move to win.
+- **Force Prime on Opponent's Turn:** Position the game so that N becomes a prime at the start of your opponent's turn, leaving them without valid moves.
+
+---
+
+## **Conclusion**
+
+Factor Duel combines simple arithmetic with strategic planning, offering players a quick and engaging experience. Its easy-to-understand rules and minimal components make it ideal for a command-line interface implementation. The game encourages players to think ahead and apply basic number theory to outmaneuver their opponent.
+
+Enjoy the challenge and may the best strategist win!

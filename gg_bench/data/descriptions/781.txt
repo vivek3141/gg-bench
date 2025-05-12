@@ -1,0 +1,194 @@
+# Bit Flip
+
+## Objective
+
+**Bit Flip** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reduce a shared binary number to zero by flipping bits according to the game rules. The player who changes the binary number to all zeros on their turn wins the game.
+
+## Setup
+
+1. **Initial Binary Number**: Agree on the length of the binary number (number of bits) to be used in the game. A recommended starting length is **8 bits** for a quick game, but any reasonable length (e.g., 5 to 16 bits) can be used.
+2. **Starting Configuration**: Initialize the binary number to all ones. For example, with 8 bits, the starting number is **11111111**.
+3. **Player Assignment**: Decide which player will be **Player 1** and **Player 2**. This can be done randomly or by mutual agreement.
+4. **First Turn**: Player 1 begins the game.
+
+## Game Components
+
+- **Binary Number**: A sequence of bits represented as ones (`1`) and zeros (`0`). It is shared between both players and displayed during each turn.
+- **Bit Positions**: Each bit in the binary number has a position index, starting from **1** on the leftmost bit to **N** on the rightmost bit, where **N** is the length of the binary number.
+- **Players**: Two participants designated as **Player 1** and **Player 2**.
+
+## Turns
+
+- The game proceeds in alternating turns, starting with Player 1.
+- During a turn, the active player performs one valid action to modify the shared binary number.
+- After the action, the updated binary number is displayed.
+- The turn then passes to the other player.
+- The game continues until one player wins according to the winning condition.
+
+## Rules and Mechanics
+
+### Actions on a Turn
+
+On their turn, a player must perform one of the following actions:
+
+1. **Flip a Single Bit**:
+   - Choose any one bit that is currently set to `1`.
+   - Flip it to `0`.
+
+2. **Flip Two Adjacent Bits**:
+   - Choose two bits that are both currently set to `1` and are next to each other (adjacent).
+   - Flip both bits to `0`.
+
+### Restrictions
+
+- **Valid Moves**:
+  - A player can only flip bits that are currently set to `1`.
+  - When flipping two bits, they must be adjacent and both set to `1`.
+- **Mandatory Action**:
+  - A player must make a valid move on their turn. Skipping a turn or passing is not allowed.
+- **No Reversing**:
+  - Bits set to `0` cannot be changed back to `1`.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The player who reduces the binary number to all zeros (`0`) on their turn immediately wins the game.
+- **No Valid Moves**:
+  - If a player has no valid moves on their turn (because all bits are `0`), they lose the game.
+
+## Scoring
+
+- **Win/Loss Outcome**:
+  - The game is won by the player who successfully reduces the binary number to zero on their turn.
+  - There is no point system or scoring beyond determining the winner of each game.
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Starting Binary Number**: `11111` (5 bits)
+
+#### Turn 1: Player 1
+
+- **Action**: Flip a single bit at position **3**.
+- **Explanation**: Bit at position 3 (counting from the left) is flipped from `1` to `0`.
+- **Updated Binary Number**: `1 1 0 1 1`
+
+#### Turn 2: Player 2
+
+- **Action**: Flip two adjacent bits starting at position **4**.
+- **Explanation**: Bits at positions 4 and 5 are both `1` and adjacent. Both are flipped to `0`.
+- **Updated Binary Number**: `1 1 0 0 0`
+
+#### Turn 3: Player 1
+
+- **Action**: Flip two adjacent bits starting at position **1**.
+- **Explanation**: Bits at positions 1 and 2 are both `1` and adjacent. Both are flipped to `0`.
+- **Updated Binary Number**: `0 0 0 0 0`
+
+**Result**: Player 1 wins by reducing the binary number to all zeros.
+
+### Command-Line Interaction Example
+
+Assuming an 8-bit game starting with `11111111`:
+
+```
+Welcome to Bit Flip!
+
+Starting Binary Number: 1 1 1 1 1 1 1 1
+
+---
+
+Player 1's Turn
+Current Binary Number: 1 1 1 1 1 1 1 1
+
+Choose your action:
+1) Flip a single bit
+2) Flip two adjacent bits
+Enter choice (1 or 2): 2
+
+Enter the starting position of the first bit to flip (1-7): 5
+
+You flipped bits at positions 5 and 6.
+
+Updated Binary Number: 1 1 1 1 0 0 1 1
+
+---
+
+Player 2's Turn
+Current Binary Number: 1 1 1 1 0 0 1 1
+
+Choose your action:
+1) Flip a single bit
+2) Flip two adjacent bits
+Enter choice (1 or 2): 1
+
+Enter the position of the bit to flip (1-8): 3
+
+You flipped bit at position 3.
+
+Updated Binary Number: 1 1 0 1 0 0 1 1
+
+---
+
+Player 1's Turn
+Current Binary Number: 1 1 0 1 0 0 1 1
+
+Choose your action:
+1) Flip a single bit
+2) Flip two adjacent bits
+Enter choice (1 or 2): 2
+
+Enter the starting position of the first bit to flip (1-7): 1
+
+You flipped bits at positions 1 and 2.
+
+Updated Binary Number: 0 0 0 1 0 0 1 1
+
+---
+
+Player 2's Turn
+Current Binary Number: 0 0 0 1 0 0 1 1
+
+Choose your action:
+1) Flip a single bit
+2) Flip two adjacent bits
+Enter choice (1 or 2): 2
+
+Enter the starting position of the first bit to flip (1-7): 7
+
+You flipped bits at positions 7 and 8.
+
+Updated Binary Number: 0 0 0 1 0 0 0 0
+
+---
+
+Player 1's Turn
+Current Binary Number: 0 0 0 1 0 0 0 0
+
+Choose your action:
+1) Flip a single bit
+2) Flip two adjacent bits
+Enter choice (1 or 2): 1
+
+Enter the position of the bit to flip (1-8): 4
+
+You flipped bit at position 4.
+
+Updated Binary Number: 0 0 0 0 0 0 0 0
+
+---
+
+Player 1 has reduced the binary number to zero and wins the game!
+```
+
+**Explanation**:
+
+- Players take turns strategically flipping bits to force the opponent into a position with no winning moves.
+- Optimal play involves anticipating the opponent's responses and planning several moves ahead.
+
+---
+
+Enjoy playing Bit Flip, and may the most strategic player win!

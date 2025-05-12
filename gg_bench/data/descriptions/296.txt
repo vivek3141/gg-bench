@@ -1,0 +1,278 @@
+# Bid and Take
+
+## Objective
+
+Bid and Take is a strategic two-player game where players compete to reach a target score by smartly bidding numbers. Each player has a limited set of numbers to bid, and the goal is to outbid the opponent to win rounds and accumulate points. The player who first reaches or exceeds the target score of **50 points** wins the game.
+
+## Setup
+
+- **Players**: Two players.
+- **Target Score**: 50 points.
+- **Player Hands**: Each player has a set of numbers from **1 to 10**, inclusive.
+  - Each number represents a bid value and can be used **only once** per game.
+- **Scores**: Both players start with a score of **0** points.
+
+## Game Components
+
+- **Number Set**: Each player has the following numbers in their hand:
+  ```
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  ```
+  - **Appearance**: Represented as simple integers.
+  - **Functionality**: Numbers are used to place bids in each round.
+  - **Unique Attributes**: Once a number is used for a bid, it cannot be used again by that player for the remainder of the game.
+- **Score Tracker**: A simple numerical value for each player to keep track of their current score.
+- **Rounds**: The game is played over multiple rounds until a player reaches or exceeds the target score.
+
+## Turns
+
+### Round Structure
+
+1. **Bid Selection**:
+   - **Both players simultaneously** select a number (bid) from their remaining unused numbers.
+   - Bids are chosen secretly without revealing them to the opponent before the reveal phase.
+
+2. **Bid Reveal**:
+   - Both players **simultaneously reveal** their selected bids.
+
+3. **Determine Round Winner**:
+   - The player with the **higher bid** wins the round.
+   - In the case of a **tie** (both players bid the same number), **no one wins the round**, and no points are awarded.
+
+4. **Score Update**:
+   - The round winner adds points equal to the **sum of both bids** to their score.
+   - The bids used in this round are **discarded** and cannot be used again.
+
+5. **Proceed to Next Round**:
+   - The next round begins with the remaining unused numbers.
+
+## Rules and Mechanics
+
+- **Bidding Mechanics**:
+  - Players must choose bids from their **unused numbers**.
+  - Each bid must be an integer between **1 and 10**, inclusive.
+  - A number can be bid **only once** per game by each player.
+
+- **Winning a Round**:
+  - The player who bids the **higher number** wins the round.
+  - The winner gains points equal to the **sum of both bids**.
+  - **Example**: If Player A bids 7 and Player B bids 5, Player A wins the round and gains **12 points** (7 + 5).
+
+- **Tie Rule**:
+  - If both players bid the **same number**, the round results in a **tie**.
+  - No points are awarded to either player.
+  - The numbers bid are still **discarded**.
+
+- **Score Tracking**:
+  - Players maintain a cumulative score.
+  - The game continues until a player reaches or exceeds **50 points**.
+
+- **End of Game**:
+  - The first player to reach or exceed **50 points** wins the game.
+  - If both players reach 50 points in the same round, the player with the **higher score** wins.
+  - If scores are **tied at 50 or more points**, play additional rounds until the tie is broken.
+
+- **Exhausting Numbers**:
+  - If all numbers have been used and no player has reached 50 points, the player with the **higher score** wins.
+  - If scores are tied after all numbers are used, the game ends in a **draw**.
+
+## Scoring
+
+- **Winning Points**: Round winner gains points equal to the **sum of both bids**.
+- **Score Example**:
+  - **Round 1**:
+    - Player 1 bids 8.
+    - Player 2 bids 7.
+    - Player 1 wins and gains **15 points** (8 + 7).
+  - **Round 2**:
+    - Player 1 bids 5.
+    - Player 2 bids 10.
+    - Player 2 wins and gains **15 points** (5 + 10).
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Player Hands**:
+  - Player 1: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  - Player 2: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+- **Scores**:
+  - Player 1: 0
+  - Player 2: 0
+
+#### Round 1
+
+- **Players Choose Bids**:
+  - Player 1 selects **8**.
+  - Player 2 selects **7**.
+
+- **Bids Revealed**:
+  - Player 1 bid: 8
+  - Player 2 bid: 7
+
+- **Determine Winner**:
+  - Player 1 wins the round.
+
+- **Score Update**:
+  - Player 1 gains **15 points** (8 + 7).
+  - **Updated Scores**:
+    - Player 1: 15
+    - Player 2: 0
+
+- **Numbers Discarded**:
+  - Player 1 discards **8**.
+  - Player 2 discards **7**.
+
+#### Round 2
+
+- **Remaining Numbers**:
+  - Player 1: 1-7, 9, 10
+  - Player 2: 1-6, 8-10
+
+- **Players Choose Bids**:
+  - Player 1 selects **5**.
+  - Player 2 selects **9**.
+
+- **Bids Revealed**:
+  - Player 1 bid: 5
+  - Player 2 bid: 9
+
+- **Determine Winner**:
+  - Player 2 wins the round.
+
+- **Score Update**:
+  - Player 2 gains **14 points** (5 + 9).
+  - **Updated Scores**:
+    - Player 1: 15
+    - Player 2: 14
+
+- **Numbers Discarded**:
+  - Player 1 discards **5**.
+  - Player 2 discards **9**.
+
+#### Round 3
+
+- **Remaining Numbers**:
+  - Player 1: 1-4, 6, 7, 9, 10
+  - Player 2: 1-6, 8, 10
+
+- **Players Choose Bids**:
+  - Player 1 selects **10**.
+  - Player 2 selects **10**.
+
+- **Bids Revealed**:
+  - Player 1 bid: 10
+  - Player 2 bid: 10
+
+- **Determine Winner**:
+  - It's a **tie**.
+
+- **Score Update**:
+  - No points awarded.
+
+- **Numbers Discarded**:
+  - Both players discard **10**.
+
+#### Continuing the Game
+
+- Players continue selecting bids each round following the same rules.
+
+#### Ending the Game
+
+- Suppose after several rounds:
+  - **Final Scores**:
+    - Player 1: 52
+    - Player 2: 48
+
+- **Winner**: Player 1 wins the game by reaching **52 points**, exceeding the target score of **50 points**.
+
+### Sample Command-Line Interaction
+
+#### Starting the Game
+
+```
+Welcome to Bid and Take!
+
+Target Score: 50 points
+Player 1 and Player 2, you both have numbers 1 to 10 available.
+
+Game Start!
+```
+
+#### Round 1
+
+```
+Round 1:
+
+Player 1, enter your bid: [Input Hidden]
+Player 2, enter your bid: [Input Hidden]
+
+Revealing bids...
+Player 1 bid: 8
+Player 2 bid: 7
+
+Player 1 wins the round and gains 15 points!
+
+Scores:
+Player 1: 15
+Player 2: 0
+
+Numbers used:
+Player 1 discarded: 8
+Player 2 discarded: 7
+```
+
+#### Round 2
+
+```
+Round 2:
+
+Remaining Numbers:
+Player 1: 1-7, 9, 10
+Player 2: 1-6, 8-10
+
+Player 1, enter your bid: [Input Hidden]
+Player 2, enter your bid: [Input Hidden]
+
+Revealing bids...
+Player 1 bid: 5
+Player 2 bid: 9
+
+Player 2 wins the round and gains 14 points!
+
+Scores:
+Player 1: 15
+Player 2: 14
+
+Numbers used:
+Player 1 discarded: 5
+Player 2 discarded: 9
+```
+
+#### Continuing Rounds
+
+- The game continues with players entering their bids each round.
+- The command-line interface hides inputs until bids are revealed simultaneously.
+
+#### Game Conclusion
+
+```
+Final Scores:
+Player 1: 52
+Player 2: 48
+
+Congratulations, Player 1! You have reached 52 points and won the game!
+```
+
+## Strategic Depth
+
+- **Bid Management**: Players must decide when to use high bids to win crucial rounds and when to conserve them.
+- **Predicting Opponent's Moves**: Anticipating the opponent's possible bids based on the numbers they have left adds a layer of strategy.
+- **Risk vs. Reward**: Weighing the potential points gained against the numbers expended.
+- **Endgame Planning**: As the game progresses, players need to plan their remaining bids to reach the target score efficiently.
+
+## Conclusion
+
+Bid and Take is a simple yet strategically rich game that is easy to play in a command-line interface. The game involves secret bidding, score tracking, and number management, providing players with opportunities to outthink and outmaneuver their opponent. With no possibility of a draw and a clear path to victory, the game ensures a quick and decisive outcome where skillful play is rewarded.

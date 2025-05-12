@@ -1,0 +1,221 @@
+# Numbers War - Rule Book
+
+## Objective
+
+**Numbers War** is a strategic two-player turn-based game where players compete to accumulate the highest total score by selecting numbers from a shared list. The primary goal is to outscore your opponent by carefully choosing numbers and anticipating their moves. The player with the highest total at the end of the game wins.
+
+---
+
+## Setup
+
+1. **Number List Creation**:
+   - Use a predefined sequence of integers, typically numbers from `1` to `9`.
+   - Shuffle the numbers randomly to create an unpredictable arrangement.
+   - Example Starting List: `[3, 9, 1, 2, 4, 8]`.
+
+2. **Game Display**:
+   - Present the shuffled list in a single horizontal line visible to both players.
+   - Establish clear labels for the leftmost and rightmost ends.
+
+3. **Determine First Player**:
+   - Decide who takes the first turn through mutual agreement or a random method (e.g., coin toss).
+
+4. **Player Areas**:
+   - Each player has their own collection area to store the numbers they select during the game.
+
+---
+
+## Game Components
+
+- **Number List**:
+  - A central list of numbers shared between both players.
+  - Example: `[3, 9, 1, 2, 4, 8]`.
+
+- **Player Collections**:
+  - Individual areas (could be simply a list) where each player keeps their selected numbers.
+  - Initially empty for both players.
+
+- **Command-Line Interface**:
+  - The game is played through text-based commands.
+  - Prompts and messages guide the players through their turns.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  - Players take turns alternately.
+  - On each turn, a player must perform the following actions:
+    1. **Review Choices**:
+       - Observe the current number list and identify the leftmost and rightmost numbers available.
+    2. **Select a Number**:
+       - Choose **either** the leftmost **or** the rightmost number from the list.
+    3. **Update Collections**:
+       - Add the selected number to your personal collection.
+    4. **Update Number List**:
+       - Remove the selected number from the number list.
+
+- **Turn Progression**:
+  - The turn ends after a player has selected and removed a number.
+  - The next player then takes their turn following the same steps.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection Rules**:
+   - Players may only choose from the two numbers at the ends of the number list.
+   - Skipping or selecting numbers from the middle of the list is not allowed.
+
+2. **Game Progression**:
+   - The game continues until all numbers have been selected and the number list is empty.
+   - Each player will have selected the same number of numbers by the end.
+
+3. **Strategic Considerations**:
+   - Players must anticipate future moves and consider the potential choices left for their opponent.
+   - Timing and selection can influence the final outcome significantly.
+
+4. **No Draw Mechanism**:
+   - In the event of a tie in total scores, the last player to have taken a number is declared the winner.
+   - This ensures that every game has a decisive outcome.
+
+---
+
+## Scoring
+
+- **Calculating Scores**:
+  - At the end of the game, each player sums the numbers in their collection.
+  - Example:
+    - **Player 1's Collection**: `[8, 3, 2]` → Total Score: `13`.
+    - **Player 2's Collection**: `[4, 9, 1]` → Total Score: `14`.
+
+- **Determining the Winner**:
+  - The player with the higher total score wins the game.
+  - If totals are equal, the player who made the last move wins.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Number List**: `[3, 9, 1, 2, 4, 8]`
+
+**Turn-by-Turn Breakdown**:
+
+1. **Turn 1 - Player 1**:
+   - **Choices**: `Left - 3`, `Right - 8`.
+   - **Decision**: Chooses `8` (Right).
+   - **Player 1's Collection**: `[8]`.
+   - **Updated Number List**: `[3, 9, 1, 2, 4]`.
+
+2. **Turn 2 - Player 2**:
+   - **Choices**: `Left - 3`, `Right - 4`.
+   - **Decision**: Chooses `4` (Right).
+   - **Player 2's Collection**: `[4]`.
+   - **Updated Number List**: `[3, 9, 1, 2]`.
+
+3. **Turn 3 - Player 1**:
+   - **Choices**: `Left - 3`, `Right - 2`.
+   - **Decision**: Chooses `3` (Left).
+   - **Player 1's Collection**: `[8, 3]`.
+   - **Updated Number List**: `[9, 1, 2]`.
+
+4. **Turn 4 - Player 2**:
+   - **Choices**: `Left - 9`, `Right - 2`.
+   - **Decision**: Chooses `9` (Left).
+   - **Player 2's Collection**: `[4, 9]`.
+   - **Updated Number List**: `[1, 2]`.
+
+5. **Turn 5 - Player 1**:
+   - **Choices**: `Left - 1`, `Right - 2`.
+   - **Decision**: Chooses `2` (Right).
+   - **Player 1's Collection**: `[8, 3, 2]`.
+   - **Updated Number List**: `[1]`.
+
+6. **Turn 6 - Player 2**:
+   - **Only Choice**: `1`.
+   - **Decision**: Chooses `1`.
+   - **Player 2's Collection**: `[4, 9, 1]`.
+   - **Number List**: `[]` (Empty).
+
+**Final Scores**:
+
+- **Player 1**: `8 + 3 + 2 = 13`.
+- **Player 2**: `4 + 9 + 1 = 14`.
+
+**Winner**: **Player 2** wins with a total score of `14`.
+
+---
+
+### Command-Line Interaction Example
+
+```
+Game Start!
+Number List: [3, 9, 1, 2, 4, 8]
+
+Player 1's Turn:
+Available choices - Left: 3, Right: 8
+Enter 'L' to pick the left number or 'R' to pick the right number: R
+You picked 8.
+Player 1's Collection: [8]
+Updated Number List: [3, 9, 1, 2, 4]
+
+Player 2's Turn:
+Available choices - Left: 3, Right: 4
+Enter 'L' to pick the left number or 'R' to pick the right number: R
+You picked 4.
+Player 2's Collection: [4]
+Updated Number List: [3, 9, 1, 2]
+
+Player 1's Turn:
+Available choices - Left: 3, Right: 2
+Enter 'L' to pick the left number or 'R' to pick the right number: L
+You picked 3.
+Player 1's Collection: [8, 3]
+Updated Number List: [9, 1, 2]
+
+Player 2's Turn:
+Available choices - Left: 9, Right: 2
+Enter 'L' to pick the left number or 'R' to pick the right number: L
+You picked 9.
+Player 2's Collection: [4, 9]
+Updated Number List: [1, 2]
+
+Player 1's Turn:
+Available choices - Left: 1, Right: 2
+Enter 'L' to pick the left number or 'R' to pick the right number: R
+You picked 2.
+Player 1's Collection: [8, 3, 2]
+Updated Number List: [1]
+
+Player 2's Turn:
+Only one choice available.
+You picked 1.
+Player 2's Collection: [4, 9, 1]
+Number List is now empty.
+
+Calculating final scores...
+Player 1's Total Score: 13
+Player 2's Total Score: 14
+
+Player 2 wins the game!
+```
+
+---
+
+## Ensure Fair Play and Strategy
+
+- Players should not reveal their strategies or intended future moves.
+- Consider the implications of each selection, not just the immediate gain.
+- Pay attention to the remaining numbers to anticipate the opponent's options.
+
+---
+
+## Conclusion
+
+**Numbers War** is a unique and engaging game that combines simplicity with strategic depth. Its straightforward mechanics make it easy to code and play within a command-line interface. The game progresses quickly, with a clear winner determined at the end, ensuring an enjoyable and competitive experience where skillful play is rewarded.
+
+By carefully selecting numbers and anticipating the opponent's moves, a skilled player can consistently outperform an unskilled one. The absence of a draw mechanism guarantees that every game reaches a decisive conclusion, adding to the competitive thrill.
+
+Enjoy battling it out in the **Numbers War**!

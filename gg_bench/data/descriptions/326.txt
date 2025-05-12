@@ -1,0 +1,247 @@
+# **Palindrome War**
+
+## **Objective**
+
+In **Palindrome War**, two players compete to be the first to construct a palindrome—a word or sequence that reads the same backward as forward—of length **five or more** using lowercase English letters. The primary goal is to strategically add letters to a shared sequence, either at the beginning or the end, to form a palindrome while preventing your opponent from doing so.
+
+The player who creates a palindrome of length five or more on their turn wins the game.
+
+---
+
+## **Setup**
+
+- **Shared Sequence**: Begin with an empty sequence displayed to both players. This sequence will evolve as players add letters during the game.
+- **Letter Pool**: All lowercase English letters from **'a'** to **'z'** are available for use. There is no limit to how many times a particular letter can be used.
+
+---
+
+## **Game Components**
+
+- **Shared Sequence Display**: A text line in the command-line interface that shows the current sequence of letters.
+  
+  Example:
+  ```
+  Current Sequence: a b c
+  ```
+- **Letter Input**: Players will input letters from **'a'** to **'z'** during their turns.
+- **Position Choice**: Players choose to add their selected letter to either the **beginning** or the **end** of the current sequence.
+
+---
+
+## **Turns**
+
+- **Turn Order**: The game starts with **Player 1** and alternates between the two players.
+- **Turn Structure**:
+  1. **Display Current Sequence**: The current sequence is shown to both players.
+  2. **Player's Move**:
+     - **Choose a Letter**: The player selects any lowercase letter from **'a'** to **'z'**.
+     - **Choose Position**: The player decides whether to add the letter to the **beginning** or the **end** of the sequence.
+  3. **Update Sequence**: The sequence is updated to reflect the player's move.
+  4. **Check for Palindrome**: After each move, check if the sequence forms a palindrome of length **five or more**.
+     - **If a palindrome is formed**, the player who made the move **wins**.
+     - **If not**, the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Letter Selection**:
+   - Players can choose **any** lowercase letter from **'a'** to **'z'**.
+   - Letters can be repeated; there is no restriction on letter usage frequency.
+
+2. **Adding Letters**:
+   - **Position Choice**: On their turn, players must add their chosen letter to either the **beginning** or the **end** of the current sequence.
+   - The sequence is always updated immediately after the player's move.
+
+3. **Palindrome Formation**:
+   - A **palindrome** is a sequence that reads the same backward as forward.
+   - The palindrome must be of length **five or more** to win.
+   - The palindrome can be the entire sequence or a substring within it.
+   - Only the sequence after the player's move is considered for palindrome checking.
+
+4. **Winning the Game**:
+   - The first player to form a palindrome of length five or more on their turn wins.
+   - If a player forms such a palindrome, the game ends immediately.
+
+5. **Preventing Opponent's Win**:
+   - Players should strategize not only to form a palindrome but also to block their opponent from creating one.
+   - Moves should consider the possible outcomes of adding certain letters in specific positions.
+
+6. **Game Continuation**:
+   - If no palindrome of length five or more is formed after a move, the game continues.
+   - There is **no draw** mechanism; the game continues until one player wins.
+
+---
+
+## **Example Gameplay**
+
+### **Sample Turn Sequence**
+
+#### **Starting the Game**
+
+- **Current Sequence**: *(Empty)*
+
+#### **Player 1's Turn**
+
+1. **Display Current Sequence**:
+   ```
+   Current Sequence: 
+   ```
+2. **Player 1 Chooses**:
+   - **Letter**: 'r'
+   - **Position**: End
+3. **Update Sequence**:
+   ```
+   Current Sequence: r
+   ```
+4. **Check for Palindrome**:
+   - Sequence length less than 5; continue game.
+
+#### **Player 2's Turn**
+
+1. **Display Current Sequence**:
+   ```
+   Current Sequence: r
+   ```
+2. **Player 2 Chooses**:
+   - **Letter**: 'a'
+   - **Position**: Beginning
+3. **Update Sequence**:
+   ```
+   Current Sequence: a r
+   ```
+4. **Check for Palindrome**:
+   - Sequence length less than 5; continue game.
+
+#### **Player 1's Turn**
+
+1. **Display Current Sequence**:
+   ```
+   Current Sequence: a r
+   ```
+2. **Player 1 Chooses**:
+   - **Letter**: 'c'
+   - **Position**: End
+3. **Update Sequence**:
+   ```
+   Current Sequence: a r c
+   ```
+4. **Check for Palindrome**:
+   - Sequence length less than 5; continue game.
+
+#### **Player 2's Turn**
+
+1. **Display Current Sequence**:
+   ```
+   Current Sequence: a r c
+   ```
+2. **Player 2 Chooses**:
+   - **Letter**: 'a'
+   - **Position**: End
+3. **Update Sequence**:
+   ```
+   Current Sequence: a r c a
+   ```
+4. **Check for Palindrome**:
+   - Sequence length less than 5; continue game.
+
+#### **Player 1's Turn**
+
+1. **Display Current Sequence**:
+   ```
+   Current Sequence: a r c a
+   ```
+2. **Player 1 Chooses**:
+   - **Letter**: 'r'
+   - **Position**: End
+3. **Update Sequence**:
+   ```
+   Current Sequence: a r c a r
+   ```
+4. **Check for Palindrome**:
+   - The sequence 'a r c a r' is a palindrome.
+   - **Player 1 Wins!**
+
+### **Command-Line Interaction Example**
+
+Below is an example of how the game might play out in a command-line interface.
+
+#### **Game Start**
+
+```
+Welcome to Palindrome War!
+
+Player 1 begins.
+
+Current Sequence: 
+
+Player 1, enter your letter (a-z): r
+Choose position - type 'B' for beginning or 'E' for end: E
+
+Updated Sequence: r
+
+No palindrome formed. Next player's turn.
+
+---
+
+Current Sequence: r
+
+Player 2, enter your letter (a-z): a
+Choose position - type 'B' for beginning or 'E' for end: B
+
+Updated Sequence: a r
+
+No palindrome formed. Next player's turn.
+
+---
+
+Current Sequence: a r
+
+Player 1, enter your letter (a-z): c
+Choose position - type 'B' for beginning or 'E' for end: E
+
+Updated Sequence: a r c
+
+No palindrome formed. Next player's turn.
+
+---
+
+Current Sequence: a r c
+
+Player 2, enter your letter (a-z): a
+Choose position - type 'B' for beginning or 'E' for end: E
+
+Updated Sequence: a r c a
+
+No palindrome formed. Next player's turn.
+
+---
+
+Current Sequence: a r c a
+
+Player 1, enter your letter (a-z): r
+Choose position - type 'B' for beginning or 'E' for end: E
+
+Updated Sequence: a r c a r
+
+Palindrome formed: 'a r c a r'
+
+Player 1 wins!
+```
+
+---
+
+## **Strategy Tips**
+
+- **Plan Ahead**: Think about how your letter and position choices can set you up for a palindrome while blocking your opponent.
+- **Observe the Sequence**: Pay attention to the current sequence to anticipate possible palindromic combinations.
+- **Block Opponent**: If you see your opponent is close to forming a palindrome, choose letters and positions that prevent them from completing it.
+- **Use Symmetry**: Palindromes are symmetrical. Placing the same letters on opposite ends can help in forming a palindrome.
+
+---
+
+## **Summary**
+
+**Palindrome War** is a quick and strategic game that challenges players to think ahead and manipulate a shared sequence of letters to their advantage. With simple rules and a clear objective, it's easy to learn yet offers depth for those looking to outmaneuver their opponent.
+
+Gather a friend, fire up your command-line interface, and may the best strategist win the **Palindrome War**!

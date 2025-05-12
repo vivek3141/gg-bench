@@ -1,0 +1,182 @@
+# Sequence Duel
+
+## Objective
+
+Sequence Duel is a strategic two-player game where players take turns adding numbers to a shared sequence. The primary goal is to avoid creating a sequence where the sum of any three consecutive numbers equals or exceeds 15. The player who forces the sequence to meet or exceed this sum during their turn loses, declaring the opponent as the winner.
+
+## Setup
+
+The game begins with an empty sequence. Players decide who will take the first turn, perhaps by a coin toss or mutual agreement. Each player may want a notepad to track the sequence as it develops.
+
+## Game Components
+
+- **Numbers**: Integers from **1** to **10** (inclusive).
+- **Shared Sequence**: A growing list of numbers resulting from players' choices.
+- **Turn Indicator**: Keeps track of whose turn it is (Player 1 or Player 2).
+
+There are no physical components needed other than a way to record the sequence (such as paper and pencil or the command-line interface displaying the sequence).
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions on Their Turn**:
+  - Choose an integer between **1** and **10** (inclusive) that will be added to the end of the shared sequence.
+  - Review the sequence to avoid violating the losing condition.
+- **Progression of Turns**:
+  - The game continues with players adding numbers to the sequence until one player loses by causing the sum of the last three numbers in the sequence to be **15** or more.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, select any integer between **1** and **10** (inclusive).
+   - The number is added to the **end** of the shared sequence.
+
+2. **Losing Condition**:
+   - After adding your number, check the **sum of the last three numbers** in the sequence.
+   - **If this sum is equal to or greater than 15**, you lose the game.
+   - The opponent is declared the winner.
+
+3. **Sequence Building**:
+   - The sequence is a continuous list of numbers selected by both players.
+   - Players should strategize to avoid reaching the losing condition on their turns.
+
+4. **Valid Moves**:
+   - Any integer from **1** to **10** is a valid move unless it immediately triggers the losing condition.
+   - If all possible moves result in the losing condition, the current player must select one, and the opponent wins.
+
+5. **No Repeats Restriction**:
+   - Players may choose any number between 1 and 10; numbers can be repeated in the sequence.
+
+6. **Game End**:
+   - The game ends immediately when the losing condition is met on a player's turn.
+   - The opponent is declared the winner.
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who does **not** cause the sum of any three consecutive numbers in the sequence to equal or exceed 15.
+- **No Points System**: There is no point tracking; the outcome is a win or loss based on the game's losing condition.
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Turn 1**:
+- **Player 1** chooses **5**.
+- **Sequence**: [5]
+- No losing condition (less than three numbers).
+
+**Turn 2**:
+- **Player 2** chooses **6**.
+- **Sequence**: [5, 6]
+- No losing condition (less than three numbers).
+
+**Turn 3**:
+- **Player 1** chooses **3**.
+- **Sequence**: [5, 6, 3]
+- Sum of last three numbers: 5 + 6 + 3 = **14** (safe).
+
+**Turn 4**:
+- **Player 2** chooses **4**.
+- **Sequence**: [5, 6, 3, 4]
+- Sum of last three numbers: 6 + 3 + 4 = **13** (safe).
+
+**Turn 5**:
+- **Player 1** chooses **7**.
+- **Sequence**: [5, 6, 3, 4, 7]
+- Sum of last three numbers: 3 + 4 + 7 = **14** (safe).
+
+**Turn 6**:
+- **Player 2** chooses **8**.
+- **Sequence**: [5, 6, 3, 4, 7, 8]
+- Sum of last three numbers: 4 + 7 + 8 = **19**
+
+**Result**:
+- The sum of the last three numbers (4 + 7 + 8) is **19**, which is greater than 15.
+- **Player 2** loses the game.
+- **Player 1** wins.
+
+### Example 2: Forced Loss
+
+**Turn 1**:
+- **Player 1** chooses **10**.
+- **Sequence**: [10]
+- No losing condition.
+
+**Turn 2**:
+- **Player 2** chooses **1**.
+- **Sequence**: [10, 1]
+- No losing condition.
+
+**Turn 3**:
+- **Player 1** chooses **4**.
+- **Sequence**: [10, 1, 4]
+- Sum of last three numbers: 10 + 1 + 4 = **15**
+
+**Result**:
+- The sum of the last three numbers is exactly **15**.
+- **Player 1** loses the game.
+- **Player 2** wins.
+
+### Example 3: Strategic Play
+
+**Turn 1**:
+- **Player 1** chooses **5**.
+- **Sequence**: [5]
+
+**Turn 2**:
+- **Player 2** chooses **5**.
+- **Sequence**: [5,5]
+
+**Turn 3**:
+- **Player 1** considers that choosing any number **5** or higher will force a loss in the next rounds, so selects **4**.
+- **Sequence**: [5,5,4]
+- Sum of last three numbers: 5 + 5 + 4 = **14**
+
+**Turn 4**:
+- **Player 2** now cannot choose **1** (sum would be 5 + 4 + 1 = 10), which is safe.
+- Chooses **6**.
+- **Sequence**: [5,5,4,6]
+- Sum of last three numbers: 5 + 4 + 6 = **15**
+
+**Result**:
+- The sum of the last three numbers is exactly **15**.
+- **Player 2** loses the game.
+- **Player 1** wins.
+
+## Strategy Tips
+
+- **Monitoring Sums**: Always calculate the potential sum of the last three numbers before making your move.
+- **Low vs. High Numbers**: Playing lower numbers can be safer but may force you into a loss if not careful.
+- **Forcing the Opponent**: Try to put the opponent in a position where any number they choose will result in a loss.
+- **Sequence Planning**: Anticipate future moves and consider how your current choice affects the upcoming turns.
+
+## Command-Line Interaction Sample
+
+**Game Start**
+
+```
+The sequence is empty.
+Player 1, enter a number between 1 and 10: 5
+Sequence: [5]
+```
+
+**Next Turn**
+
+```
+Player 2, enter a number between 1 and 10: 6
+Sequence: [5, 6]
+```
+
+**Continuing**
+
+```
+Player 1, enter a number between 1 and 10: 4
+Sequence: [5, 6, 4]
+Sum of last three numbers: 5 + 6 + 4 = 15
+Player 1 loses the game.
+Player 2 wins!
+```
+
+## Conclusion
+
+Sequence Duel is a simple yet strategic game that requires players to think ahead and anticipate their opponent's moves. With easy-to-understand rules and minimal components, it's perfect for quick matches that test your numerical strategy skills.

@@ -1,0 +1,242 @@
+# The Even-Steven Game Rule Book
+
+## Objective
+
+**Be the first player to reduce the shared starting number to zero through strategic operations.**
+
+- Players take turns performing allowed operations on a shared number.
+- The primary goal is to force the shared number down to zero.
+- **Victory Condition:** The player who reduces the shared number exactly to zero on their turn wins the game.
+- **Loss Condition:** If a player cannot perform any allowed operation on their turn (e.g., the number is already zero before their turn), they lose.
+
+## Setup
+
+1. **Starting Number:** The game begins with a shared positive integer, typically **15**. (Players may agree on a different starting number for variation.)
+2. **Player Roles:** Two players are designated as **Player 1** and **Player 2**. Decide who goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Shared Number:**
+
+  - A single positive integer visible to both players.
+  - This number changes throughout the game based on players' actions.
+
+- **Allowed Operations:**
+
+  - **Subtract 1 (-1):** Decrease the shared number by 1.
+  - **Divide by 2 (/2):** If the shared number is even, divide it by 2.
+
+## Turns
+
+1. **Turn Order:** Players take turns alternately, starting with Player 1.
+2. **Turn Structure:**
+
+   - **Evaluate Options:** On their turn, a player examines the current shared number and determines which allowed operations can be performed.
+   - **Choose an Operation:** The player selects one operation from the allowed options:
+     - **Subtract 1 (-1)**
+     - **Divide by 2 (/2)** (only if the shared number is even)
+   - **Update Shared Number:** The chosen operation is applied, and the shared number is updated accordingly.
+   - **Announce Move:** The player announces their move and the new shared number.
+3. **Turn Progression:** The updated shared number is now used by the next player for their turn.
+
+## Rules and Mechanics
+
+- **Allowed Operations Details:**
+
+  1. **Subtract 1 (-1):**
+
+     - Always available on any positive shared number.
+     - Reduces the shared number by exactly 1.
+
+  2. **Divide by 2 (/2):**
+
+     - Available **only if the shared number is even**.
+     - Divides the shared number by 2 (integer division).
+
+- **Winning the Game:**
+
+  - **Victory Condition:** The player who reduces the shared number to exactly **zero** on their turn wins immediately.
+  - **Forced Loss:** If a player starts their turn and the shared number is already zero, they lose the game (since they cannot make a move).
+
+- **Forbidden Moves:**
+
+  - Players **cannot** perform operations that would result in negative numbers.
+  - Players must perform an operation on their turn if at least one allowed operation is available.
+
+## Scoring
+
+- **Winning the Game:** The winner is the first player to reach the shared number of zero through the allowed operations.
+- **Tracking Progress:** No points are awarded; the focus is on strategic reduction of the shared number.
+- **Match Play (Optional):** Players may keep track of wins over multiple games to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Starting Shared Number: 15**
+
+#### Turn 1:
+
+- **Player 1's Turn:**
+  - Shared number is **15** (odd).
+  - Options: Subtract 1.
+  - **Action:** Subtract 1.
+  - **Shared Number after Move:** 15 - 1 = **14**.
+  - **Announcement:** "I subtract 1. The number is now 14."
+
+#### Turn 2:
+
+- **Player 2's Turn:**
+  - Shared number is **14** (even).
+  - Options: Subtract 1 or Divide by 2.
+  - **Action:** Divide by 2.
+  - **Shared Number after Move:** 14 / 2 = **7**.
+  - **Announcement:** "I divide by 2. The number is now 7."
+
+#### Turn 3:
+
+- **Player 1's Turn:**
+  - Shared number is **7** (odd).
+  - Options: Subtract 1.
+  - **Action:** Subtract 1.
+  - **Shared Number after Move:** 7 - 1 = **6**.
+  - **Announcement:** "I subtract 1. The number is now 6."
+
+#### Turn 4:
+
+- **Player 2's Turn:**
+  - Shared number is **6** (even).
+  - Options: Subtract 1 or Divide by 2.
+  - **Action:** Divide by 2.
+  - **Shared Number after Move:** 6 / 2 = **3**.
+  - **Announcement:** "I divide by 2. The number is now 3."
+
+#### Turn 5:
+
+- **Player 1's Turn:**
+  - Shared number is **3** (odd).
+  - Options: Subtract 1.
+  - **Action:** Subtract 1.
+  - **Shared Number after Move:** 3 - 1 = **2**.
+  - **Announcement:** "I subtract 1. The number is now 2."
+
+#### Turn 6:
+
+- **Player 2's Turn:**
+  - Shared number is **2** (even).
+  - Options: Subtract 1 or Divide by 2.
+  - **Action:** Divide by 2.
+  - **Shared Number after Move:** 2 / 2 = **1**.
+  - **Announcement:** "I divide by 2. The number is now 1."
+
+#### Turn 7:
+
+- **Player 1's Turn:**
+  - Shared number is **1** (odd).
+  - Options: Subtract 1.
+  - **Action:** Subtract 1.
+  - **Shared Number after Move:** 1 - 1 = **0**.
+  - **Announcement:** "I subtract 1. The number is now 0."
+  - **Result:** Player 1 wins the game!
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction as it might appear in a command-line interface:
+
+```
+=== Even-Steven Game Start ===
+Starting Number: 15
+
+Player 1's Turn:
+Current Number: 15
+Options: [1] Subtract 1
+Enter your choice: 1
+Player 1 subtracts 1.
+New Number: 14
+
+Player 2's Turn:
+Current Number: 14
+Options: [1] Subtract 1, [2] Divide by 2
+Enter your choice: 2
+Player 2 divides by 2.
+New Number: 7
+
+Player 1's Turn:
+Current Number: 7
+Options: [1] Subtract 1
+Enter your choice: 1
+Player 1 subtracts 1.
+New Number: 6
+
+Player 2's Turn:
+Current Number: 6
+Options: [1] Subtract 1, [2] Divide by 2
+Enter your choice: 2
+Player 2 divides by 2.
+New Number: 3
+
+Player 1's Turn:
+Current Number: 3
+Options: [1] Subtract 1
+Enter your choice: 1
+Player 1 subtracts 1.
+New Number: 2
+
+Player 2's Turn:
+Current Number: 2
+Options: [1] Subtract 1, [2] Divide by 2
+Enter your choice: 2
+Player 2 divides by 2.
+New Number: 1
+
+Player 1's Turn:
+Current Number: 1
+Options: [1] Subtract 1
+Enter your choice: 1
+Player 1 subtracts 1.
+New Number: 0
+
+Player 1 wins the game!
+```
+
+## Strategic Considerations
+
+- **Planning Ahead:**
+
+  - Anticipate the results of your moves and how they'll affect your opponent's options.
+  - Aim to force the shared number into a value that limits your opponent's moves.
+
+- **Even and Odd Numbers:**
+
+  - **Even Numbers:** Offer more options (subtract or divide), providing flexibility.
+  - **Odd Numbers:** Restrict options to only subtracting 1, which can be used to control the flow of the game.
+
+- **Controlling the Game:**
+
+  - Try to create situations where your opponent receives an odd number, limiting their choices.
+  - Use division strategically to reduce the shared number more rapidly.
+
+## Variations
+
+- **Different Starting Numbers:**
+
+  - Choose a larger starting number for a longer game or a smaller one for a quicker match.
+  - Example starting numbers: 7, 21, 31, etc.
+
+- **Additional Operations (Advanced Play):**
+
+  - Introduce new allowed operations for added complexity:
+    - **Subtract 2 (-2):** Subtract 2 from the shared number (only if the number is 2 or greater).
+    - **Multiply by 0.5 (*0.5):** Another way to represent division by 2.
+
+- **Time Limits:**
+
+  - Implement a time limit per turn to increase the challenge and pace.
+
+## Conclusion
+
+The Even-Steven Game is a simple yet strategically rich game that challenges players to think ahead and manipulate the shared number to their advantage. With easy-to-understand rules and quick gameplay, it provides an engaging experience that is both easy to code and enjoyable to play in a command-line interface.
+
+---
+
+Enjoy the game, and may the most strategic player win!

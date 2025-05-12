@@ -1,0 +1,301 @@
+# Digit Dilemma: Rule Book
+
+## Objective
+
+**Digit Dilemma** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to construct a three-digit number that is a multiple of **7** by strategically selecting and placing digits from a shared pool. Players must carefully choose digits and their positions to form a valid number while also anticipating and blocking their opponent's potential moves. Victory is achieved by completing a qualifying number first, ensuring a definitive win with no possibility of a draw.
+
+---
+
+## Setup
+
+1. **Digit Pool Initialization:**
+   - Create a shared pool containing the digits **0** through **9**.
+   - Each digit is unique within the pool and can be selected only once during the game.
+
+2. **Player Boards:**
+   - Each player has an individual board or placeholder for constructing their three-digit number.
+   - The number positions are labeled as:
+     - **Left** (Hundreds place)
+     - **Middle** (Tens place)
+     - **Right** (Units place)
+   - All positions start empty, represented as underscores: `_ _ _`
+
+3. **Starting the Game:**
+   - Determine the first player through any mutual agreement or random selection.
+   - The game proceeds in alternating turns between Player 1 and Player 2.
+
+---
+
+## Game Components
+
+1. **Shared Digit Pool:**
+   - Digits: **0**, **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**
+   - Functionality: Players select digits from this pool to build their numbers.
+   - Unique Attribute: Once a digit is selected by either player, it is removed from the pool and cannot be selected again.
+
+2. **Player Boards:**
+   - Visual Representation: `_ _ _` for empty positions.
+   - Positions:
+     - **Left**: Represents the hundreds place.
+     - **Middle**: Represents the tens place.
+     - **Right**: Represents the units place.
+   - Functionality: Players assign selected digits to these positions to form their three-digit numbers.
+
+3. **Command-Line Interface:**
+   - Inputs: Players enter their chosen digit and position during their turn.
+   - Outputs: The game displays the current state of the digit pool, player boards, and validation messages.
+
+---
+
+## Turns
+
+1. **Turn Structure:**
+   - Players alternate turns, starting with Player 1.
+   - Each turn consists of two main actions:
+     1. **Digit Selection**
+     2. **Digit Placement**
+
+2. **Player Actions During a Turn:**
+   - **Digit Selection:**
+     - Choose any available digit from the shared digit pool.
+   - **Digit Placement:**
+     - Assign the selected digit to any one empty position on your player board: Left, Middle, or Right.
+     - **Note:** Once a digit is placed in a position, it **cannot** be moved or changed.
+
+3. **Progression of Turns:**
+   - After a player completes their turn, the selected digit is removed from the digit pool.
+   - The game updates the display to show the current state before the next player's turn begins.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Digit Availability:**
+   - Each digit (0-9) is available only once.
+   - Digits already selected and placed by either player are no longer available.
+
+2. **Digit Placement Restrictions:**
+   - Players must assign a digit to an **empty position** on their own board.
+   - Positions cannot be left unassigned once a digit is placed.
+
+3. **Number Formation:**
+   - Players aim to construct a three-digit number.
+   - The Left position is the hundreds place, Middle is the tens place, and Right is the units place.
+
+4. **Immutability of Placement:**
+   - Once a digit is placed in a position, it is fixed for the remainder of the game.
+   - Strategic foresight is essential to avoid being stuck with an invalid number.
+
+### Winning the Game
+
+1. **Victory Condition:**
+   - The first player to complete their three-digit number that is **exactly divisible by 7** wins the game.
+
+2. **Completion and Verification:**
+   - Upon completing their number, a player must declare their number.
+   - The game verifies if the number is divisible by 7.
+
+3. **Tie-Breaker Rules:**
+   - If both players complete their numbers and neither is divisible by 7:
+     - The player whose number is **closer to the next higher multiple of 7** wins.
+     - If both numbers are equally distant, the player with the **smaller number** wins.
+
+4. **Exhaustion of Digits:**
+   - If all digits are used and no player has formed a number divisible by 7, apply the tie-breaker rules to determine the winner.
+
+---
+
+## Scoring
+
+- **Win/Loss Outcome:**
+  - The game focuses on a definitive win or loss.
+  - There is no point-based scoring system.
+- **Recording Results:**
+  - Players may keep track of wins in a match series if desired.
+  - Skill improvement is measured by the ability to consistently construct valid numbers and win rounds.
+
+---
+
+## Examples
+
+### Example Scenario
+
+#### Initial Setup
+
+- **Digit Pool:** 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1's Number:** `_ _ _`
+- **Player 2's Number:** `_ _ _`
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn:**
+   - **Digit Selection:** 7
+   - **Placement:** Left position (Hundreds place)
+   - **Player 1's Number:** `7 _ _`
+   - **Digit Pool:** 0, 1, 2, 3, 4, 5, 6, 8, 9
+
+2. **Player 2's Turn:**
+   - **Digit Selection:** 3
+   - **Placement:** Middle position (Tens place)
+   - **Player 2's Number:** `_ 3 _`
+   - **Digit Pool:** 0, 1, 2, 4, 5, 6, 8, 9
+
+3. **Player 1's Turn:**
+   - **Digit Selection:** 1
+   - **Placement:** Right position (Units place)
+   - **Player 1's Number:** `7 _ 1`
+   - **Digit Pool:** 0, 2, 4, 5, 6, 8, 9
+
+4. **Player 2's Turn:**
+   - **Digit Selection:** 5
+   - **Placement:** Left position
+   - **Player 2's Number:** `5 3 _`
+   - **Digit Pool:** 0, 2, 4, 6, 8, 9
+
+5. **Player 1's Turn:**
+   - **Digit Selection:** 4
+   - **Placement:** Middle position
+   - **Player 1's Number:** `7 4 1`
+   - **Completed Number:** 741
+   - **Verification:** 741 ÷ 7 = 105.857 (**Not divisible by 7**)
+   - **Digit Pool:** 0, 2, 6, 8, 9
+
+6. **Player 2's Turn:**
+   - **Digit Selection:** 2
+   - **Placement:** Right position
+   - **Player 2's Number:** `5 3 2`
+   - **Completed Number:** 532
+   - **Verification:** 532 ÷ 7 = 76 (**Divisible by 7**)
+   - **Result:** **Player 2 wins!**
+
+### Command-Line Interaction Sample
+
+```
+Welcome to Digit Dilemma!
+
+Available Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1's Number: _ _ _
+Player 2's Number: _ _ _
+
+---
+
+Player 1's Turn:
+Available Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+Enter the digit you want to pick: **7**
+Enter the position to place the digit (Left, Middle, Right): **Left**
+
+Player 1's Number: **7 _ _**
+Player 2's Number: _ _ _
+Digit Pool after turn: 0, 1, 2, 3, 4, 5, 6, 8, 9
+
+---
+
+Player 2's Turn:
+Available Digits: 0, 1, 2, 3, 4, 5, 6, 8, 9
+Enter the digit you want to pick: **3**
+Enter the position to place the digit (Left, Middle, Right): **Middle**
+
+Player 1's Number: 7 _ _
+Player 2's Number: _ **3** _
+Digit Pool after turn: 0, 1, 2, 4, 5, 6, 8, 9
+
+---
+
+Player 1's Turn:
+Available Digits: 0, 1, 2, 4, 5, 6, 8, 9
+Enter the digit you want to pick: **1**
+Enter the position to place the digit (Left, Middle, Right): **Right**
+
+Player 1's Number: **7 _ 1**
+Player 2's Number: _ 3 _
+Digit Pool after turn: 0, 2, 4, 5, 6, 8, 9
+
+---
+
+Player 2's Turn:
+Available Digits: 0, 2, 4, 5, 6, 8, 9
+Enter the digit you want to pick: **5**
+Enter the position to place the digit (Left, Middle, Right): **Left**
+
+Player 1's Number: 7 _ 1
+Player 2's Number: **5 3 _**
+Digit Pool after turn: 0, 2, 4, 6, 8, 9
+
+---
+
+Player 1's Turn:
+Available Digits: 0, 2, 4, 6, 8, 9
+Enter the digit you want to pick: **4**
+Enter the position to place the digit (Left, Middle, Right): **Middle**
+
+Player 1's Number: **7 4 1**
+Player 2's Number: 5 3 _
+Digit Pool after turn: 0, 2, 6, 8, 9
+
+Completed Number: 741
+Checking if 741 is divisible by 7...
+Result: 741 ÷ 7 = 105.857 (Not divisible by 7)
+
+---
+
+Player 2's Turn:
+Available Digits: 0, 2, 6, 8, 9
+Enter the digit you want to pick: **2**
+Enter the position to place the digit (Left, Middle, Right): **Right**
+
+Player 1's Number: 7 4 1
+Player 2's Number: **5 3 2**
+Digit Pool after turn: 0, 6, 8, 9
+
+Completed Number: 532
+Checking if 532 is divisible by 7...
+Result: 532 ÷ 7 = 76 (Divisible by 7)
+
+---
+
+Congratulations, Player 2 wins by forming the number 532, which is a multiple of 7!
+```
+
+---
+
+## Ensuring Strategic Depth
+
+**Strategies for Skilled Players:**
+
+1. **Digit Awareness:**
+   - Keep track of which digits have been used and which remain.
+   - Anticipate which digits the opponent may need and select them preemptively.
+
+2. **Multiple Calculations:**
+   - Familiarize yourself with three-digit multiples of 7 (from 105 to 994).
+   - Plan your number based on achievable multiples with available digits.
+
+3. **Positional Planning:**
+   - Decide the importance of each position based on the digits available.
+   - Place digits in positions that maximize your chances of forming a valid number.
+
+4. **Blocking Opponents:**
+   - Identify digits critical for your opponent's potential numbers.
+   - Select those digits to limit their options.
+
+---
+
+## Conclusion
+
+**Digit Dilemma** offers a unique and engaging experience that combines numerical strategy with anticipation of an opponent's moves. The simplicity of the game's components and rules makes it easy to code and play in a command-line interface, while the depth of strategy ensures that skilled players can consistently outmaneuver less experienced opponents. With no possibility of a draw and quick gameplay, this game is designed for enjoyable and competitive matches.
+
+---
+
+### Game Summary
+
+- **Players:** 2
+- **Objective:** Be the first to construct a three-digit number divisible by 7.
+- **Components:** Shared digit pool (0-9), player boards with Left, Middle, Right positions.
+- **Setup Time:** Less than a minute.
+- **Game Time:** Approximately 5-10 minutes per round.
+- **Skill Emphasis:** Numerical strategy, planning, opponent prediction.
+
+Enjoy the challenge of **Digit Dilemma**, and may the best strategist win!

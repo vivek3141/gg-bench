@@ -1,0 +1,247 @@
+# Multiplicity: A Two-Player Turn-Based Game
+
+## Objective
+
+Multiplicity is a strategic two-player game where players take turns selecting numbers from a finite set. The primary goal of the game is to force your opponent into a position where they cannot make a valid move according to the game's rules. A player wins by choosing numbers that limit their opponent's options, ultimately leaving them unable to continue the sequence.
+
+## Setup
+
+- **Number Set**: The game uses a predefined set of positive integers from **1** to **50**.
+- **Starting Number**: The game begins with the current number set to **1**.
+- **Unchosen Numbers**: All numbers from **1** to **50** are initially unchosen and available for selection.
+
+## Game Components
+
+- **Players**: Two participants alternate turns throughout the game.
+- **Number Pool**: A list of numbers from **1** to **50**.
+- **Current Number (`N`)**: The most recently chosen number, starting at **1**.
+- **Chosen Numbers**: A record of numbers that have already been selected during gameplay.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first through mutual agreement or a random method (e.g., coin toss).
+- **Action on Turn**:
+  - The player must select an **unchosen number** from the number pool.
+  - The chosen number must be a **proper multiple or proper divisor** of the current number `N`.
+    - A **proper multiple** is a number greater than `N` where the chosen number is divisible by `N` without a remainder.
+    - A **proper divisor** is a number less than `N` that divides evenly into `N`.
+    - The chosen number **cannot** be equal to `N`.
+- **Updating the Current Number**: After a valid selection, the chosen number becomes the new current number `N`.
+- **Turn Progression**: Turns alternate between the two players until the game ends.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On each turn, a player must select an unchosen number from **1** to **50**.
+   - The selected number must satisfy one of the following conditions:
+     - **Multiple of `N`**: The number is a proper multiple of the current number `N` (chosen number > `N` and divisible by `N`).
+     - **Divisor of `N`**: The number is a proper divisor of the current number `N` (chosen number < `N` and `N` divisible by the chosen number).
+   - The selected number must **not** have been chosen previously in the game.
+
+2. **Invalid Moves**:
+   - Selecting a number that is not a proper multiple or proper divisor of `N`.
+   - Choosing a number that has already been selected earlier in the game.
+   - Selecting the same number as the current number `N`.
+
+3. **Winning the Game**:
+   - A player **loses** if they are unable to make a valid move on their turn.
+   - The opposing player is declared the **winner**.
+
+4. **Game End**:
+   - The game ends immediately when a player cannot make a valid move.
+   - There are no draws; a winner is always determined.
+
+## Scoring
+
+- **Win/Loss Outcome**:
+  - The game result is binary: one player wins, and the other loses.
+  - No points are accumulated; only the win/loss outcome is recorded.
+
+- **Match Play (Optional)**:
+  - Players may agree to play multiple rounds.
+  - Keep track of the number of games won by each player to determine an overall winner after a set number of rounds.
+
+## Examples
+
+### Example 1: Basic Gameplay
+
+**Starting Number (`N`):** 1
+
+**Available Numbers:** 1 to 50 (all numbers are unchosen)
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - **Current `N`**: 1
+   - **Possible Choices**: All numbers from 2 to 50 (since every number is a multiple of 1)
+   - **Chosen Number**: 5
+   - **Updated `N`**: 5
+
+2. **Player 2's Turn**:
+   - **Current `N`**: 5
+   - **Possible Choices**:
+     - **Proper Divisors of 5**: 1 (already chosen), cannot choose
+     - **Proper Multiples of 5**: 10, 15, 20, 25, 30, 35, 40, 45, 50
+   - **Chosen Number**: 10
+   - **Updated `N`**: 10
+
+3. **Player 1's Turn**:
+   - **Current `N`**: 10
+   - **Possible Choices**:
+     - **Proper Divisors of 10**: 2, 5 (unchosen and less than 10)
+     - **Proper Multiples of 10**: 20, 30, 40, 50 (unchosen and greater than 10)
+   - **Chosen Number**: 2
+   - **Updated `N`**: 2
+
+4. **Player 2's Turn**:
+   - **Current `N`**: 2
+   - **Possible Choices**:
+     - **Proper Divisors of 2**: 1 (already chosen), cannot choose
+     - **Proper Multiples of 2**: 4, 6, 8, ..., 50 (even numbers greater than 2)
+   - **Chosen Number**: 4
+   - **Updated `N`**: 4
+
+5. **Player 1's Turn**:
+   - **Current `N`**: 4
+   - **Possible Choices**:
+     - **Proper Divisors of 4**: 2 (already chosen), cannot choose
+     - **Proper Multiples of 4**: 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48
+   - **Chosen Number**: 8
+   - **Updated `N`**: 8
+
+6. **Player 2's Turn**:
+   - **Current `N`**: 8
+   - **Possible Choices**:
+     - **Proper Divisors of 8**: 2, 4 (already chosen), cannot choose
+     - **Proper Multiples of 8**: 16, 24, 32, 40, 48
+   - **Chosen Number**: 16
+   - **Updated `N`**: 16
+
+7. **Player 1's Turn**:
+   - **Current `N`**: 16
+   - **Possible Choices**:
+     - **Proper Divisors of 16**: 2, 4, 8 (already chosen), cannot choose
+     - **Proper Multiples of 16**: 32, 48
+   - **Chosen Number**: 32
+   - **Updated `N`**: 32
+
+8. **Player 2's Turn**:
+   - **Current `N`**: 32
+   - **Possible Choices**:
+     - **Proper Divisors of 32**: 2, 4, 8, 16 (already chosen), cannot choose
+     - **Proper Multiples of 32**: None within 1-50 (since 64 > 50)
+   - **Player 2 cannot make a valid move and **loses**.
+   - **Player 1 wins** the game.
+
+### Example 2: Strategic Gameplay
+
+**Starting Number (`N`):** 1
+
+**Available Numbers:** 1 to 20
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - **Current `N`**: 1
+   - **Chosen Number**: 7
+   - **Updated `N`**: 7
+
+2. **Player 2's Turn**:
+   - **Current `N`**: 7
+   - **Possible Choices**:
+     - **Proper Divisors of 7**: 1 (already chosen), cannot choose
+     - **Proper Multiples of 7**: 14
+   - **Chosen Number**: 14
+   - **Updated `N`**: 14
+
+3. **Player 1's Turn**:
+   - **Current `N`**: 14
+   - **Possible Choices**:
+     - **Proper Divisors of 14**: 2, 7 (unchosen and less than 14)
+     - **Proper Multiples of 14**: None within 1-20
+   - **Chosen Number**: 2
+   - **Updated `N`**: 2
+
+4. **Player 2's Turn**:
+   - **Current `N`**: 2
+   - **Possible Choices**:
+     - **Proper Divisors of 2**: 1 (already chosen), cannot choose
+     - **Proper Multiples of 2**: 4, 6, 8, 10, 12, 16, 18, 20
+   - **Chosen Number**: 4
+   - **Updated `N`**: 4
+
+5. **Player 1's Turn**:
+   - **Current `N`**: 4
+   - **Possible Choices**:
+     - **Proper Divisors of 4**: 2 (already chosen), cannot choose
+     - **Proper Multiples of 4**: 8, 12, 16, 20
+   - **Chosen Number**: 8
+   - **Updated `N`**: 8
+
+6. **Player 2's Turn**:
+   - **Current `N`**: 8
+   - **Possible Choices**:
+     - **Proper Divisors of 8**: 2, 4 (already chosen), cannot choose
+     - **Proper Multiples of 8**: 16 (already chosen), cannot choose
+   - **Player 2 cannot make a valid move and **loses**.
+   - **Player 1 wins** the game.
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction between two players in a command-line interface:
+
+```plaintext
+Welcome to Multiplicity!
+
+Available Numbers: 1 to 20
+Starting Number (N): 1
+
+Player 1, it's your turn.
+Current N: 1
+Available numbers to choose from:
+[All numbers from 2 to 20]
+
+Enter your choice: 7
+
+Player 2, it's your turn.
+Current N: 7
+Available numbers to choose from:
+Proper multiples of 7: [14]
+Enter your choice: 14
+
+Player 1, it's your turn.
+Current N: 14
+Available numbers to choose from:
+Proper divisors of 14: [2, 7]
+Enter your choice: 2
+
+Player 2, it's your turn.
+Current N: 2
+Available numbers to choose from:
+Proper multiples of 2: [4, 6, 8, 10, 12, 16, 18, 20]
+Enter your choice: 4
+
+Player 1, it's your turn.
+Current N: 4
+Available numbers to choose from:
+Proper multiples of 4: [8, 12, 16, 20]
+Enter your choice: 8
+
+Player 2, it's your turn.
+Current N: 8
+Available numbers to choose from:
+No valid moves available.
+Player 2 cannot make a valid move. Player 1 wins!
+```
+
+## Strategic Depth and Complexity
+
+Multiplicity offers a balance of simplicity and strategic depth. While the rules are straightforward, players must think ahead to avoid leaving their opponent with advantageous moves. Key strategies include:
+
+- **Limiting Opponent's Options**: Choose numbers that reduce the possible valid moves for your opponent.
+- **Controlling the Flow**: Select numbers that force the game into sequences where you have the upper hand.
+- **Awareness of Remaining Numbers**: Keep track of which numbers have been used to plan future moves.
+
+## Summary
+
+Multiplicity is an engaging game that combines basic mathematical concepts with strategic planning. Its simple rules make it easy to code and play in a command-line interface, while the strategic possibilities ensure that skilled players can consistently outperform unskilled opponents. With no possibility of a draw and a finite number set, games are quick and always conclude with a clear winner.

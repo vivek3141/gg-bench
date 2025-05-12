@@ -1,0 +1,205 @@
+# Dual Digits: Rule Book
+
+## Objective
+
+**Dual Digits** is a two-player, turn-based strategy game. The primary goal is to be the first player to reduce the shared number exactly to zero by strategically subtracting numbers while adhering to the game rules. Victory is achieved by forcing the opponent into a position where they cannot make a valid move without causing the shared number to go below zero.
+
+---
+
+## Setup
+
+1. **Shared Number Initialization**: The game starts with a shared number set to **25**.
+2. **Player Selection**: Decide which player will take the first turn (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Shared Number**: A single integer value that both players manipulate. It starts at **25** and is displayed prominently after each turn.
+- **Valid Subtraction Numbers**: Integers **1**, **2**, **3**, and **4**. Players use these numbers to subtract from the shared number.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Turn Actions**:
+  1. **Choose a Number to Subtract**: On your turn, select a valid number (1-4) to subtract from the shared number.
+  2. **Apply the Subtraction**: Subtract the chosen number from the shared number.
+  3. **Update and Announce**: Update the shared number and announce the new value to your opponent.
+- **Restrictions**:
+  - **Forbidden Number**: You cannot choose the same number that your opponent chose on their immediately previous turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Numbers**: On each turn, you may subtract **only one** of the numbers **1**, **2**, **3**, or **4**.
+2. **Forbidden Number Rule**: 
+   - You **cannot** subtract the same number your opponent subtracted on their last turn.
+   - Example: If your opponent subtracted **3** on their last turn, you cannot subtract **3** on your current turn.
+3. **Winning the Game**:
+   - **Exact Zero**: The shared number must be reduced to **exactly zero** to win.
+   - **Avoid Negative Numbers**: If subtracting your chosen number would cause the shared number to go below zero, you **cannot** make that move.
+   - **Forced Loss**: If no valid moves are possible (all allowable numbers would cause the shared number to go below zero or are forbidden), the player **loses** the game.
+4. **Allowed and Forbidden Moves**:
+   - **Allowed Moves**: Any valid number (1-4) that wasn't forbidden by the opponent's last move and that doesn't reduce the shared number below zero.
+   - **Forbidden Moves**: Choosing the same number your opponent chose on their last turn or any move that would reduce the shared number below zero.
+
+---
+
+## Scoring
+
+- **Victory**: The player who reduces the shared number to exactly zero wins the game.
+- **Defeat**: A player loses if:
+  - They cannot make a valid move on their turn.
+  - They cause the shared number to go below zero.
+
+---
+
+## Examples
+
+Below are example scenarios illustrating how the game is played in a command-line interface.
+
+### Example Game Play
+
+**Starting Shared Number**: 25
+
+#### Turn 1:
+- **Player 1's Turn**:
+  - **Previous Opponent's Number**: None (first turn).
+  - **Allowed Numbers**: 1, 2, 3, 4.
+  - **Player 1 Chooses**: 3.
+  - **Calculation**: 25 - 3 = 22.
+  - **Announce**: "I subtract 3. The new shared number is 22."
+
+#### Turn 2:
+- **Player 2's Turn**:
+  - **Previous Opponent's Number**: 3.
+  - **Forbidden Number**: 3.
+  - **Allowed Numbers**: 1, 2, 4.
+  - **Player 2 Chooses**: 2.
+  - **Calculation**: 22 - 2 = 20.
+  - **Announce**: "I subtract 2. The new shared number is 20."
+
+#### Turn 3:
+- **Player 1's Turn**:
+  - **Previous Opponent's Number**: 2.
+  - **Forbidden Number**: 2.
+  - **Allowed Numbers**: 1, 3, 4.
+  - **Player 1 Chooses**: 4.
+  - **Calculation**: 20 - 4 = 16.
+  - **Announce**: "I subtract 4. The new shared number is 16."
+
+#### Turn 4:
+- **Player 2's Turn**:
+  - **Previous Opponent's Number**: 4.
+  - **Forbidden Number**: 4.
+  - **Allowed Numbers**: 1, 2, 3.
+  - **Player 2 Chooses**: 3.
+  - **Calculation**: 16 - 3 = 13.
+  - **Announce**: "I subtract 3. The new shared number is 13."
+
+#### Turn 5:
+- **Player 1's Turn**:
+  - **Previous Opponent's Number**: 3.
+  - **Forbidden Number**: 3.
+  - **Allowed Numbers**: 1, 2, 4.
+  - **Player 1 Chooses**: 2.
+  - **Calculation**: 13 - 2 = 11.
+  - **Announce**: "I subtract 2. The new shared number is 11."
+
+#### Turn 6:
+- **Player 2's Turn**:
+  - **Previous Opponent's Number**: 2.
+  - **Forbidden Number**: 2.
+  - **Allowed Numbers**: 1, 3, 4.
+  - **Player 2 Chooses**: 4.
+  - **Calculation**: 11 - 4 = 7.
+  - **Announce**: "I subtract 4. The new shared number is 7."
+
+#### Turn 7:
+- **Player 1's Turn**:
+  - **Previous Opponent's Number**: 4.
+  - **Forbidden Number**: 4.
+  - **Allowed Numbers**: 1, 2, 3.
+  - **Player 1 Chooses**: 3.
+  - **Calculation**: 7 - 3 = 4.
+  - **Announce**: "I subtract 3. The new shared number is 4."
+
+#### Turn 8:
+- **Player 2's Turn**:
+  - **Previous Opponent's Number**: 3.
+  - **Forbidden Number**: 3.
+  - **Allowed Numbers**: 1, 2, 4.
+  - **Player 2 Chooses**: 1.
+  - **Calculation**: 4 - 1 = 3.
+  - **Announce**: "I subtract 1. The new shared number is 3."
+
+#### Turn 9:
+- **Player 1's Turn**:
+  - **Previous Opponent's Number**: 1.
+  - **Forbidden Number**: 1.
+  - **Allowed Numbers**: 2, 3, 4.
+  - **Player 1 Chooses**: 2.
+  - **Calculation**: 3 - 2 = 1.
+  - **Announce**: "I subtract 2. The new shared number is 1."
+
+#### Turn 10:
+- **Player 2's Turn**:
+  - **Previous Opponent's Number**: 2.
+  - **Forbidden Number**: 2.
+  - **Allowed Numbers**: 1, 3, 4.
+  - **Possible Moves**:
+    - **Subtract 1**: 1 - 1 = 0 (Valid, game continues).
+    - **Subtract 3 or 4**: Would cause shared number to go below zero (Invalid).
+  - **Player 2 Chooses**: 1.
+  - **Calculation**: 1 - 1 = 0.
+  - **Announce**: "I subtract 1. The new shared number is 0."
+  - **Result**: Player 2 wins by reducing the shared number to exactly zero.
+
+---
+
+## Strategic Tips
+
+- **Anticipate Opponent's Options**: Keep track of which numbers you are forbidding your opponent from using, and plan your moves to limit their options.
+- **Control the Forbidden Number**: By wisely choosing which number to subtract, you can force your opponent into a position where they have fewer advantageous moves.
+- **Avoid Reducing to Unfavorable Numbers**: Be cautious not to leave the shared number at a value that allows your opponent to win on their next turn.
+
+---
+
+## Command-Line Interaction Sample
+
+Here's how the game might look in a command-line interface:
+
+```plaintext
+=== Dual Digits ===
+Starting Shared Number: 25
+
+Player 1's Turn:
+Previous Opponent's Number: None
+Allowed Numbers to Subtract: 1, 2, 3, 4
+Enter the number you wish to subtract: 3
+You subtracted 3. New Shared Number: 22
+
+Player 2's Turn:
+Previous Opponent's Number: 3
+Allowed Numbers to Subtract: 1, 2, 4
+Enter the number you wish to subtract: 2
+You subtracted 2. New Shared Number: 20
+
+...
+
+Player 2's Turn:
+Previous Opponent's Number: 2
+Allowed Numbers to Subtract: 1, 3, 4
+Enter the number you wish to subtract: 1
+You subtracted 1. New Shared Number: 0
+Congratulations! Player 2 wins!
+```
+
+---
+
+## Conclusion
+
+**Dual Digits** is a simple yet strategically deep game that tests players' foresight and planning abilities. By carefully choosing which numbers to subtract and which numbers to forbid, skilled players can control the flow of the game and outmaneuver their opponents. Enjoy the challenge and may the best strategist win!

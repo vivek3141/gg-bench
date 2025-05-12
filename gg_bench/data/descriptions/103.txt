@@ -1,0 +1,168 @@
+# Divider's Dilemma
+
+## Objective
+
+Be the last player able to make a valid move by successfully dividing the current number by one of its proper divisors greater than 1. The player who cannot make a valid move on their turn loses the game.
+
+---
+
+## Setup
+
+1. **Starting Number (N):** The game begins with a positive integer agreed upon by both players. For a quick game, choose a small composite number like 16, 18, or 20.
+2. **Player Order:** Decide who takes the first turn (e.g., coin toss, random selection, or mutual agreement).
+
+---
+
+## Game Components
+
+- **Current Number (_N_):** A shared number that changes throughout the game based on players' moves.
+- **Proper Divisors:** Divisors of the current number _N_ that are greater than 1 and less than _N_.
+
+All interactions occur via the command-line interface, where players input their moves and receive updates.
+
+---
+
+## Turns
+
+1. **Turn Structure:**
+   - Players alternate turns throughout the game.
+   - On a player's turn, they must perform the following actions:
+     - **Identify Valid Divisors:** List all proper divisors of the current number _N_.
+     - **Choose a Divisor (_D_):** Select one proper divisor from the list.
+     - **Divide:** Calculate the new current number by dividing _N_ by _D_ (i.e., _N_ = _N_ ÷ _D_).
+     - **Announce Move:** Declare the chosen divisor and the new current number.
+
+2. **Example Turn:**
+   - **Current Number:** 18
+   - **Proper Divisors of 18:** 2, 3, 6, 9
+   - **Player's Choice:** Divide by 9
+   - **Calculation:** 18 ÷ 9 = 2
+   - **Announcement:** "I divide by 9. The new number is 2."
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - A move is valid if:
+     - The chosen divisor is a proper divisor of the current number (_N_).
+     - The divisor is greater than 1 and less than _N_.
+     - The current number _N_ is divisible by the chosen divisor without a remainder.
+
+2. **Proper Divisors:**
+   - Do **not** include 1 or the number itself.
+   - Must be an integer that divides _N_ evenly.
+
+3. **Updating the Current Number:**
+   - After a valid move, update _N_ to the result of _N_ ÷ _D_.
+   - The updated _N_ becomes the current number for the next player's turn.
+
+4. **Winning the Game:**
+   - If a player cannot make a valid move on their turn (i.e., the current number _N_ is prime), they lose.
+   - The opposing player is declared the winner.
+
+5. **No Repetition or Reversal:**
+   - Players cannot repeat previous moves to revert to prior numbers.
+   - Once a number has been used, the game progresses from that point.
+
+6. **No Draws:**
+   - The game will always result in a win or loss; there are no tie conditions.
+
+---
+
+## Scoring
+
+- The game uses a win/loss system rather than point scoring.
+- **Winner:** The player who successfully forces their opponent into a position where they cannot make a valid move.
+- **Loser:** The player who cannot make a valid move on their turn.
+
+---
+
+## Examples
+
+### Example 1: Quick Game with N = 16
+
+**Starting Number:** 16
+
+**Turn 1 - Player 1:**
+- **Proper Divisors of 16:** 2, 4, 8
+- **Choice:** Divide by 8
+- **Calculation:** 16 ÷ 8 = 2
+- **Announcement:** "I divide by 8. The new number is 2."
+
+**Turn 2 - Player 2:**
+- **Current Number:** 2 (prime number)
+- **Proper Divisors of 2:** None (only 1 and 2)
+- **Outcome:** No valid move.
+- **Announcement:** "I have no valid moves. You win!"
+- **Result:** Player 1 wins.
+
+### Example 2: Strategic Play with N = 100
+
+**Starting Number:** 100
+
+**Turn 1 - Player 1:**
+- **Proper Divisors of 100:** 2, 4, 5, 10, 20, 25, 50
+- **Choice:** Divide by 25
+- **Calculation:** 100 ÷ 25 = 4
+- **Announcement:** "I divide by 25. The new number is 4."
+
+**Turn 2 - Player 2:**
+- **Proper Divisors of 4:** 2
+- **Choice:** Divide by 2
+- **Calculation:** 4 ÷ 2 = 2
+- **Announcement:** "I divide by 2. The new number is 2."
+
+**Turn 3 - Player 1:**
+- **Current Number:** 2 (prime)
+- **Outcome:** No valid move.
+- **Announcement:** "I have no valid moves. You win!"
+- **Result:** Player 2 wins.
+
+---
+
+## Command-Line Interaction Example
+
+**Starting Number:** 30
+
+**Game Start:**
+
+- **System:** "The game begins with the number 30."
+- **System:** "Player 1, it's your turn."
+
+**Turn 1 - Player 1:**
+
+- **Player 1 Input:** "Divide by 15"
+- **System:** "Player 1 divides by 15. The new number is 2."
+
+**Turn 2 - Player 2:**
+
+- **System:** "Player 2, it's your turn. Current number is 2."
+- **System:** "No valid divisors available."
+- **Player 2 Input:** "I have no valid moves."
+- **System:** "Player 2 cannot make a move. Player 1 wins the game!"
+
+---
+
+## Strategic Tips
+
+- **Aim for Primes:** Try to reduce the current number to a prime on your opponent's turn.
+- **Calculate Ahead:** Anticipate possible responses to your moves.
+- **Avoid Obvious Traps:** Be cautious of moves that immediately allow your opponent to force a win.
+- **Optimal Divisors:** Choose divisors that leave your opponent with fewer options.
+
+---
+
+## Additional Notes
+
+- **Flexibility in Starting Numbers:** For longer games, start with larger composite numbers.
+- **Learning Factor:** Familiarity with factors and prime numbers enhances gameplay.
+- **Adaptability:** The game rules can be adjusted slightly for variety, such as allowing division by 1 or adding more complex mathematical operations, provided both players agree beforehand.
+
+---
+
+## Conclusion
+
+Divider's Dilemma is a unique, strategic, and easy-to-code game ideal for a command-line interface. It combines basic arithmetic with forward-thinking strategy, ensuring that skilled players can consistently outmaneuver their opponents. The simplicity of the rules allows for quick gameplay, while the depth of strategy provides a challenging experience.
+
+Enjoy the game, and may the best strategist win!

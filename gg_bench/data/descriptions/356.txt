@@ -1,0 +1,231 @@
+# Prime Division Duel
+
+## Objective
+
+**Prime Division Duel** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the player who reduces the shared "Current Number" to exactly **1** by dividing it by its prime factors. Players achieve victory by strategically choosing prime factors to divide the Current Number on their turn. The player who cannot make a valid move (either because the Current Number is 1 or there are no valid prime factors to divide by) loses the game.
+
+---
+
+## Setup
+
+1. **Choose the Starting Number:**
+   - Select an initial integer **N** greater than **1** to be the **Current Number**. This can be a predefined number (e.g., N = 60) or one agreed upon by both players at the start.
+
+2. **Determine Turn Order:**
+   - Decide which player will take the first turn. This can be done by mutual agreement or by a random method like a coin toss.
+
+3. **Initialize the Game Environment:**
+   - Prepare a command-line interface where players can input their moves and see the Current Number and available prime factors on each turn.
+
+---
+
+## Game Components
+
+- **Current Number (N):**
+  - An integer greater than **1** that both players will manipulate during the game. It is updated after each turn based on players' actions.
+
+- **Prime Factors:**
+  - Prime numbers that are exact divisors of the Current Number. These are the valid options players can choose to divide the Current Number.
+
+- **Players:**
+  - Two participants (Player 1 and Player 2) who alternate turns making strategic decisions to reach the game's objective.
+
+- **Command-Line Interface:**
+  - The platform where the game is played. It displays the Current Number, available prime factors, and accepts players' inputs.
+
+---
+
+## Turns
+
+1. **Start of Turn:**
+   - The game announces which player's turn it is and displays the Current Number.
+
+2. **Determine Prime Factors:**
+   - Calculate and display all prime factors of the Current Number (excluding **1**).
+
+3. **Player's Action:**
+   - The player selects one of the available prime factors.
+   - The chosen prime factor must divide the Current Number exactly (without a remainder).
+
+4. **Update Current Number:**
+   - Divide the Current Number by the chosen prime factor using integer division.
+   - The result becomes the new Current Number for the next turn.
+
+5. **End of Turn:**
+   - Check if the Current Number is **1**:
+     - If **yes**, the player who made the last valid move wins the game.
+     - If **no**, pass the turn to the other player.
+
+6. **Invalid Moves:**
+   - If a player cannot make a valid move (no valid prime factors), they lose the game.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules:
+
+1. **Valid Prime Factors:**
+   - Only prime numbers that are exact divisors of the Current Number can be used.
+   - **1** is not considered a prime factor and cannot be used.
+
+2. **Division Process:**
+   - Players must perform exact division; the Current Number divided by the chosen prime factor must result in an integer without any remainder.
+
+3. **No Skipping Turns:**
+   - Players cannot skip their turn. If there is a valid move, they must make one.
+
+4. **Winning the Game:**
+   - A player wins by reducing the Current Number to exactly **1** on their turn.
+   - If a player cannot make a move because the Current Number is **1**, they lose.
+
+5. **Losing the Game:**
+   - A player loses if they cannot perform a valid division because there are no prime factors (other than **1**) for the Current Number.
+
+### Strategic Mechanics:
+
+- **Optimal Play:**
+  - Players should anticipate future moves and consider how their choice of prime factor will affect subsequent turns.
+
+- **Prime Factor Selection:**
+  - Choosing larger prime factors can reduce the Current Number more significantly but may open opportunities for the opponent.
+
+- **Endgame Strategy:**
+  - Players must be cautious when the Current Number becomes small to avoid setting up an unavoidable loss.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The player who reduces the Current Number to **1** wins the game outright.
+
+- **No Point System:**
+  - There is no cumulative scoring or points; victory is determined solely by achieving the game's objective.
+
+---
+
+## Examples
+
+### Example Game Starting with N = 60
+
+#### Initial Setup:
+
+- **Current Number:** 60
+- **Player 1** will start.
+
+---
+
+#### Gameplay:
+
+1. **Player 1's Turn:**
+
+   - **Current Number:** 60
+   - **Prime Factors of 60:** [2, 3, 5]
+   - **Player 1 chooses:** 5
+   - **Calculation:** 60 ÷ 5 = 12
+   - **New Current Number:** 12
+
+2. **Player 2's Turn:**
+
+   - **Current Number:** 12
+   - **Prime Factors of 12:** [2, 3]
+   - **Player 2 chooses:** 3
+   - **Calculation:** 12 ÷ 3 = 4
+   - **New Current Number:** 4
+
+3. **Player 1's Turn:**
+
+   - **Current Number:** 4
+   - **Prime Factors of 4:** [2]
+   - **Player 1 chooses:** 2
+   - **Calculation:** 4 ÷ 2 = 2
+   - **New Current Number:** 2
+
+4. **Player 2's Turn:**
+
+   - **Current Number:** 2
+   - **Prime Factors of 2:** [2]
+   - **Player 2 chooses:** 2
+   - **Calculation:** 2 ÷ 2 = 1
+   - **New Current Number:** 1
+
+---
+
+#### Outcome:
+
+- **Player 2** has reduced the **Current Number** to 1 and **wins** the game.
+
+---
+
+### Command-Line Interaction Sample
+
+```
+Game Start: Current Number = 60
+
+Player 1's turn. Current Number: 60
+Prime factors of 60: [2, 3, 5]
+Enter a prime factor to divide by: 5
+You chose 5.
+New Current Number: 12
+
+Player 2's turn. Current Number: 12
+Prime factors of 12: [2, 3]
+Enter a prime factor to divide by: 3
+You chose 3.
+New Current Number: 4
+
+Player 1's turn. Current Number: 4
+Prime factors of 4: [2]
+Enter a prime factor to divide by: 2
+You chose 2.
+New Current Number: 2
+
+Player 2's turn. Current Number: 2
+Prime factors of 2: [2]
+Enter a prime factor to divide by: 2
+You chose 2.
+New Current Number: 1
+
+Player 2 has reduced the Current Number to 1 and wins the game!
+```
+
+---
+
+## Additional Notes
+
+### Strategic Tips:
+
+- **Think Ahead:**
+  - Anticipate your opponent's possible moves based on the Current Number after your turn.
+
+- **Prime Factor Selection:**
+  - Sometimes selecting a smaller prime factor can be advantageous by limiting your opponent's options.
+
+- **Avoiding Traps:**
+  - Be cautious of reducing the Current Number to a point where your opponent can force a win.
+
+### Complexity and Depth:
+
+- Despite simple rules, the game offers strategic depth as players must consider arithmetic and the implications of each move.
+
+### Variations:
+
+- **Different Starting Numbers:**
+  - Use larger or smaller starting numbers to adjust game length and complexity.
+
+- **Restricted Prime Factors:**
+  - Introduce rules where certain primes cannot be used to add complexity.
+
+- **Multiple Rounds:**
+  - Play multiple rounds with different starting numbers, tallying wins to determine an overall champion.
+
+---
+
+## Conclusion
+
+**Prime Division Duel** is a unique, mathematical strategy game that is easy to learn and simple to code for a command-line interface. With straightforward rules centered around prime factorization and division, it provides strategic depth and allows skilled players to consistently outmaneuver less experienced opponents. The game ensures quick play without the possibility of a draw, meeting all design criteria for an engaging and competitive experience.
+
+---
+
+Enjoy the game, and may the best strategist win!

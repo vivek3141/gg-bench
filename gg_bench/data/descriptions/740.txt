@@ -1,0 +1,200 @@
+# Prime Time Duel
+
+## Objective
+
+**Prime Time Duel** is a strategic two-player, turn-based game where players take turns selecting numbers based on divisibility rules. The primary goal is to be the last player to make a valid move according to the game's rules. A player wins by forcing their opponent into a position where they cannot select a valid number on their turn.
+
+## Setup
+
+- **Shared Number Pool**: A list of integers from **2 to 50**, inclusive.
+- **Current Number**: Initially set to **1**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+Both players have access to the shared number pool and can see the current number at all times.
+
+## Game Components
+
+- **Shared Number Pool**:
+  - Contains integers from **2 to 50**.
+  - Numbers are removed from the pool once selected.
+- **Current Number**:
+  - Starts at **1**.
+  - Updated to the last number selected by a player.
+- **Players**:
+  - Alternate turns starting with **Player 1**.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Information**:
+   - Current Number.
+   - Shared Number Pool (available numbers).
+2. **Player's Action**:
+   - Select a valid number from the Shared Number Pool.
+3. **Update Game State**:
+   - Remove the selected number from the Shared Number Pool.
+   - Update the Current Number to the selected number.
+4. **Check for Victory**:
+   - If a player cannot make a valid move on their turn, they lose the game.
+
+### Order of Actions
+
+- The game begins with **Player 1**.
+- Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On their turn, a player must select a number from the Shared Number Pool that is either:
+     - A **factor** of the Current Number, or
+     - A **multiple** of the Current Number.
+   - The selected number becomes the new Current Number.
+   - The selected number is removed from the Shared Number Pool.
+2. **Invalid Moves**:
+   - If a player cannot select a valid number on their turn (no factors or multiples of the Current Number are available in the Shared Number Pool), they lose the game.
+3. **Number Selection Constraints**:
+   - Numbers must be selected from the Shared Number Pool.
+   - Each number can be used only once.
+4. **Starting the Game**:
+   - The Current Number is initially set to **1**.
+   - Since **1** is a universal factor and multiple, the first player may select any number from the Shared Number Pool.
+5. **Gameplay Continuation**:
+   - The game continues with players alternately selecting valid numbers until a player cannot make a valid move.
+
+## Scoring
+
+- **Winning the Game**:
+  - A player wins by making the last valid move, after which their opponent cannot make a valid move on their turn.
+- **No Point System**:
+  - There are no points or scoring beyond determining the winner of the game.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Starting the Game
+
+- **Current Number**: 1
+- **Shared Number Pool**: [2, 3, 4, 5, 6, ..., 50]
+
+#### Player 1's Turn
+
+- **Available Numbers**: All numbers in the Shared Number Pool.
+- **Action**: Chooses **5** (can choose any number since 1 is a factor and multiple of all numbers).
+- **Updates**:
+  - Current Number becomes **5**.
+  - Remove **5** from the Shared Number Pool.
+
+#### Player 2's Turn
+
+- **Current Number**: 5
+- **Shared Number Pool**: [2, 3, 4, 6, 7, ..., 50] (excluding 5)
+- **Valid Options**:
+  - Factors of 5: **(only 1, which is not in the pool)**
+  - Multiples of 5: **10, 15, 20, 25, 30, 35, 40, 45, 50**
+- **Action**: Chooses **10**.
+- **Updates**:
+  - Current Number becomes **10**.
+  - Remove **10** from the Shared Number Pool.
+
+#### Player 1's Turn
+
+- **Current Number**: 10
+- **Shared Number Pool**: [2, 3, 4, 6, 7, 8, 9, 11, ..., 50] (excluding 5 and 10)
+- **Valid Options**:
+  - Factors of 10: **2, 5** (5 already used), **other factors: 2**
+  - Multiples of 10: **20, 30, 40, 50** (10 already used)
+- **Action**: Chooses **20**.
+- **Updates**:
+  - Current Number becomes **20**.
+  - Remove **20** from the Shared Number Pool.
+
+#### Player 2's Turn
+
+- **Current Number**: 20
+- **Shared Number Pool**: [2, 3, 4, 6, 7, 8, 9, 11, ..., 50] (excluding 5, 10, 20)
+- **Valid Options**:
+  - Factors of 20: **2, 4, 5, 10** (5, 10 already used); **available factors: 2, 4**
+  - Multiples of 20: **40** (20 already used)
+- **Action**: Chooses **4**.
+- **Updates**:
+  - Current Number becomes **4**.
+  - Remove **4** from the Shared Number Pool.
+
+#### Player 1's Turn
+
+- **Current Number**: 4
+- **Shared Number Pool**: [2, 3, 6, 7, 8, 9, 11, ..., 50] (excluding 4, 5, 10, 20)
+- **Valid Options**:
+  - Factors of 4: **2**
+  - Multiples of 4: **8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48** (20 already used)
+- **Action**: Chooses **8**.
+- **Updates**:
+  - Current Number becomes **8**.
+  - Remove **8** from the Shared Number Pool.
+
+#### Player 2's Turn
+
+- **Current Number**: 8
+- **Shared Number Pool**: [2, 3, 6, 7, 9, 11, ..., 50] (excluding 4, 5, 8, 10, 20)
+- **Valid Options**:
+  - Factors of 8: **2, 4** (4 already used)
+  - Multiples of 8: **16, 24, 32, 40, 48**
+- **Action**: Chooses **16**.
+- **Updates**:
+  - Current Number becomes **16**.
+  - Remove **16** from the Shared Number Pool.
+
+#### Continuing the Game
+
+- Players continue in this manner until one cannot make a valid move.
+
+### Endgame Scenario
+
+Suppose later in the game, the Current Number is **7**, and the Shared Number Pool contains no multiples or factors of **7** (because they've all been used). The player whose turn it is and cannot select a valid number loses the game.
+
+## Strategies
+
+- **Prime Numbers**:
+  - Selecting a prime number can limit the opponent's options, as fewer numbers are factors or multiples of primes.
+- **Avoiding Traps**:
+  - Be cautious when selecting numbers that could leave you with limited options on your next turn.
+- **Resource Management**:
+  - Keep track of which numbers have been used to anticipate your opponent's potential moves.
+- **Forcing Moves**:
+  - Guide the game toward numbers where you have valid moves, but your opponent does not.
+
+## Command-Line Interaction Examples
+
+### Example 1: Basic Turn
+
+```
+--- Player 1's Turn ---
+Current Number: 1
+Available Numbers: [2, 3, 4, 5, 6, ..., 50]
+Enter a number that is a factor or multiple of 1: 13
+
+--- Player 2's Turn ---
+Current Number: 13
+Available Numbers: [2, 3, 4, 5, 6, ..., 50] (excluding 13)
+Valid Options: Multiples or factors of 13
+Enter a number that is a factor or multiple of 13: 26
+```
+
+### Example 2: No Valid Moves
+
+```
+--- Player 2's Turn ---
+Current Number: 17
+Available Numbers: [2, 3, 4, 5, 6, ..., 50] (excluding numbers used)
+Valid Options: Multiples or factors of 17
+No valid numbers available.
+Player 2 cannot make a move and loses the game.
+```
+
+## Conclusion
+
+**Prime Time Duel** offers strategic depth through simple rules, making it easy to learn but challenging to master. Players must think ahead and anticipate their opponent's moves while managing the shared pool of numbers. The game is designed to be played quickly and can be easily implemented in a command-line interface.
+
+Feel free to enjoy this engaging numerical battle of wits!

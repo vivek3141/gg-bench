@@ -1,0 +1,191 @@
+# Parity Push: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+**Parity Push** is a strategic two-player turn-based game played on the command line. The primary goal is to be the last player able to make a valid move by selecting numbers with the correct parity (odd or even). Players take turns choosing numbers from a shared list, following specific parity rules. The player who forces their opponent into a position where they cannot make a valid move wins the game. There is no possibility of a draw, ensuring a decisive outcome in every match.
+
+## Setup
+
+1. **Number List**: The game uses a shared list of integers from **1 to 30**, inclusive.
+2. **Available Numbers**: At the start, all numbers in the list are considered **available**.
+3. **Starting Player**: Decide which player goes first. This can be random or agreed upon by both players.
+
+## Game Components
+
+- **Number List**: A sequential list of numbers from **1 to 30** displayed on the command line.
+- **Available Numbers**: Numbers that have not yet been selected by either player.
+- **Selected Numbers**: Numbers that have been chosen during the game; these are no longer available.
+- **Parity Indicator**: Keeps track of the parity (odd or even) required for the next move based on the last number selected.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns, beginning with **Player 1**.
+   - On each turn, a player must select an **available number** following the parity rule.
+
+2. **First Turn**:
+   - **Player 1** may select **any number** from the available numbers list.
+
+3. **Subsequent Turns**:
+   - If the **last number selected** was **odd**, the next player must choose an **even number**.
+   - If the last number selected was **even**, the next player must choose an **odd number**.
+
+4. **Selection Process**:
+   - The player inputs their chosen number via the command line.
+   - The game updates:
+     - The list of available numbers.
+     - The parity required for the next player's move.
+
+5. **Invalid Moves**:
+   - If a player selects a number that does not meet the parity requirement or is not available, they are prompted to choose again.
+
+## Rules and Mechanics
+
+1. **Parity Rule**:
+   - Determines which numbers are valid choices on a player's turn based on the last number selected.
+   - Enforces alternating between odd and even numbers.
+
+2. **Number Availability**:
+   - Each number from **1 to 30** can be selected **only once** per game.
+   - Once a number is chosen, it is **removed** from the list of available numbers.
+
+3. **Valid Moves**:
+   - A move is valid if the selected number:
+     - Meets the required parity (odd or even).
+     - Is still available (has not been previously selected).
+
+4. **Forced Pass**:
+   - If a player has no valid moves (no available numbers of the required parity), they **lose** the game.
+
+5. **No Draws**:
+   - The game cannot end in a draw; a player will always win by making the last valid move.
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who makes the last valid move is declared the **winner**.
+  - There are no points or cumulative scoring; the outcome is win or loss per game.
+
+- **Match Play (Optional)**:
+  - Players can agree to play multiple games, tracking wins to determine an overall champion.
+  - For example, best out of five games.
+
+## Examples
+
+### Example Gameplay
+
+#### Initial Setup
+
+- Available Numbers: **1 to 30**
+
+#### Game Progression
+
+1. **Player 1's Turn**:
+   - Chooses **7** (an odd number).
+   - Available Numbers: 1-6, 8-30
+   - Parity Required Next: **Even**
+
+2. **Player 2's Turn**:
+   - Must choose an **even number**.
+   - Chooses **12**.
+   - Available Numbers: 1-6, 8-11, 13-30
+   - Parity Required Next: **Odd**
+
+3. **Player 1's Turn**:
+   - Must choose an **odd number**.
+   - Chooses **5**.
+   - Available Numbers: 1-4, 6, 8-11, 13-30
+   - Parity Required Next: **Even**
+
+4. **Player 2's Turn**:
+   - Must choose an **even number**.
+   - Chooses **8**.
+   - Available Numbers: 1-4, 6, 9-11, 13-30
+   - Parity Required Next: **Odd**
+
+5. **Player 1's Turn**:
+   - Must choose an **odd number**.
+   - Chooses **11**.
+   - Available Numbers: 1-4, 6, 9, 10, 13-30
+   - Parity Required Next: **Even**
+
+6. **Player 2's Turn**:
+   - Must choose an **even number**.
+   - Chooses **6**.
+   - Available Numbers: 1-4, 9, 10, 13-30
+   - Parity Required Next: **Odd**
+
+7. **Player 1's Turn**:
+   - Must choose an **odd number**.
+   - Available odd numbers: **1, 3, 9, 13, 15, 17, 19, 21, 23, 25, 27, 29**
+   - Chooses **29**.
+   - Available Numbers: 1-4, 9, 10, 13-28, 30
+   - Parity Required Next: **Even**
+
+8. **Player 2's Turn**:
+   - Must choose an **even number**.
+   - Available even numbers: **2, 4, 10, 14, 16, 18, 20, 22, 24, 26, 28, 30**
+   - Chooses **30**.
+   - Available Numbers: 1-4, 9, 10, 13-28
+   - Parity Required Next: **Odd**
+
+9. **Player 1's Turn**:
+   - Must choose an **odd number**.
+   - Continues selecting from remaining odd numbers.
+
+#### Endgame Scenario
+
+- Suppose later in the game, Player 2 must select an **even number**, but all even numbers have been chosen.
+- **Player 2 cannot make a valid move and thus loses the game**.
+- **Player 1 wins**.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Game Start!
+Available Numbers: 1-30
+
+Player 1's Turn:
+Required Parity: Any
+Select a number: 7
+You selected 7.
+
+Available Numbers: 1-6, 8-30
+Player 2's Turn:
+Required Parity: Even
+Select a number: 12
+You selected 12.
+
+Available Numbers: 1-6, 8-11, 13-30
+Player 1's Turn:
+Required Parity: Odd
+Select a number: 5
+You selected 5.
+
+Available Numbers: 1-4, 6, 8-11, 13-30
+... (game continues)
+
+Player 2's Turn:
+Required Parity: Even
+No available even numbers. You cannot make a valid move.
+Player 1 wins the game!
+```
+
+## Additional Notes
+
+- **Strategic Tips**:
+  - **Plan Ahead**: Anticipate which numbers will be available on your next turn based on current selections.
+  - **Parity Control**: Manipulate the parity to limit your opponent's options, forcing them into a losing position.
+  - **Number Selection**: Choose numbers that maximize your options while minimizing your opponent's choices.
+
+- **Game Length**:
+  - **Quick Gameplay**: Designed to end quickly, usually within a few minutes.
+  - **Replayability**: High replay value due to strategic depth and varying choices each game.
+
+- **Skill Factor**:
+  - **Strategic Depth**: While the rules are simple, mastering the game requires planning and foresight.
+  - **Skill Advantage**: A skilled player who effectively controls parity and plans ahead should consistently outperform an unskilled player.
+
+## Conclusion
+
+**Parity Push** offers a unique and engaging experience that combines simplicity with strategic complexity. Its easy-to-understand rules make it accessible, while the depth of strategy ensures that skilled players are rewarded for their planning and decision-making. With quick gameplay and no possibility of a draw, **Parity Push** is an excellent game for players seeking a fast-paced and intellectually stimulating challenge on the command line.

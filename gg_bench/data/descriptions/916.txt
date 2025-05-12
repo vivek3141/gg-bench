@@ -1,0 +1,128 @@
+# Lockdown
+
+## Objective
+
+Be the first player to collect three numbers that sum exactly to **15**. Strategic selection and planning are key, as each number can only be chosen once. The game requires careful observation of both your own picks and your opponent's moves.
+
+## Setup
+
+- **Number Pool**: A shared pool containing the numbers **1** through **9**, each available only once.
+- **Players**: Two players are required. Decide who will be **Player 1** and **Player 2**. Player 1 takes the first turn.
+
+## Game Components
+
+- **Number Pool**:
+  - Numbers **1** to **9** are placed in the pool.
+  - Each number is unique and can be selected only once.
+
+- **Player Collections**:
+  - Each player has their own collection where they keep their chosen numbers.
+  - Collections start empty.
+
+## Turns
+
+- Players take turns one after the other.
+- **Turn Structure**:
+  1. **Selection Phase**: The active player selects one number from the number pool.
+  2. **Acquisition Phase**: The selected number is moved from the pool to the player's collection.
+  3. **Update Phase**: Check if the player has collected three numbers that sum to **15**.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, select any available number from the pool.
+   - Once a number is selected, it is no longer available for either player.
+
+2. **Building Collections**:
+   - Each player aims to collect exactly **three** numbers.
+   - The goal is for these three numbers to sum to **15**.
+
+3. **Winning the Game**:
+   - The first player whose collection contains exactly three numbers summing to **15** wins the game immediately.
+   - If a player exceeds three numbers without summing to **15**, they continue playing to block the opponent.
+
+4. **Game End Without a Direct Win**:
+   - If all numbers have been selected and neither player has exactly three numbers summing to **15**, the winner is determined by:
+     - **Closest Sum**: The player with a total sum **closest to 15 without exceeding it** wins.
+     - **Tie-breaker**: If both players have the same sum, the player with the **lowest individual number** in their collection wins.
+     - **No Draws**: The rules ensure that there is always a winner.
+
+5. **Strategic Considerations**:
+   - Be mindful of the numbers your opponent selects to anticipate their potential to sum to **15**.
+   - You may need to block your opponent by selecting numbers they need.
+
+## Scoring
+
+- **Winning**: Achieve a collection of exactly three numbers that sum to **15**.
+- **Alternate Winning Condition**: If no player sums to **15**, have the closest sum to **15** without exceeding it.
+- **Tie-breaker**: Lowest individual number in the collection.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+- **Number Pool**: 1 2 3 4 5 6 7 8 9
+- **Player 1 Collection**: (Empty)
+- **Player 2 Collection**: (Empty)
+
+#### Turns
+
+1. **Player 1's Turn**:
+   - Selects **8**.
+   - **Player 1 Collection**: 8
+   - **Number Pool**: 1 2 3 4 5 6 7 9
+
+2. **Player 2's Turn**:
+   - Selects **7**.
+   - **Player 2 Collection**: 7
+   - **Number Pool**: 1 2 3 4 5 6 9
+
+3. **Player 1's Turn**:
+   - Selects **1**.
+   - **Player 1 Collection**: 8, 1
+   - **Number Pool**: 2 3 4 5 6 9
+
+4. **Player 2's Turn**:
+   - Selects **5**.
+   - **Player 2 Collection**: 7, 5
+   - **Number Pool**: 2 3 4 6 9
+
+5. **Player 1's Turn**:
+   - Selects **6**.
+   - **Player 1 Collection**: 8, 1, 6
+   - **Number Pool**: 2 3 4 9
+   - **Sum Check**: 8 + 1 + 6 = **15**
+   - **Result**: **Player 1 wins!**
+
+### Alternate Ending Scenario
+
+- **After all numbers are selected** and neither player has a collection summing to **15**:
+
+  - **Player 1 Collection**: 9, 3, 2
+    - Sum: 14
+  - **Player 2 Collection**: 8, 4, 1
+    - Sum: 13
+  - **Winner**: **Player 1** wins for being closest to **15** without exceeding it.
+
+## Command-Line Interaction Example
+
+- **Prompt**: `Player 1, select a number from the pool [1 2 3 4 5 6 7 8 9]: `
+- **Player 1 Input**: `8`
+- **Output**: `Player 1 has selected 8.`
+- **Prompt**: `Player 2, select a number from the pool [1 2 3 4 5 6 7 9]: `
+- **Player 2 Input**: `7`
+- **Output**: `Player 2 has selected 7.`
+- *...and so on until a player wins.*
+
+## Strategy Tips
+
+- **Observe Opponent's Picks**: Keep track of the numbers your opponent selects to anticipate if they are close to summing **15**.
+- **Block Wisely**: If you see your opponent is close, consider taking a number they need.
+- **Plan Ahead**: Aim for combinations that can sum to **15** in multiple ways to keep your options open.
+
+## Conclusion
+
+**Lockdown** is a game of cunning and foresight. By carefully selecting numbers and anticipating your opponent's moves, you can secure a victory. The simplicity of the rules allows for quick gameplay, while the strategic depth ensures that skilled players are rewarded for their planning and tactical decisions.
+
+Enjoy the challenge and may the best strategist win!

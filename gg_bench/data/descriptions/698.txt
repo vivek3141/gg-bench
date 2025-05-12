@@ -1,0 +1,145 @@
+# Binary Flip
+
+## Objective
+
+Be the first player to change a shared 4-bit binary number from all zeros (`0 0 0 0`) to all ones (`1 1 1 1`) by flipping bits according to the game rules.
+
+## Setup
+
+- **Initial State:** The game starts with a 4-bit binary number set to `0 0 0 0`.
+- **Player Order:** Decide who will take the first turn (e.g., by mutual agreement or a random method like a coin toss).
+
+## Game Components
+
+- **Binary Number:** A sequence of four bits displayed as `0` or `1`. The bits are numbered from left to right:
+  - **Bit 1**
+  - **Bit 2**
+  - **Bit 3**
+  - **Bit 4**
+- **Command-Line Interface:** No physical components are required. The game is played through text input and output in a command-line environment.
+
+## Turns
+
+- Players take turns alternately.
+- On a player's turn, they must perform one valid action:
+  - **Flip a Single Bit**
+  - **Flip Two Adjacent Bits**
+
+## Rules and Mechanics
+
+### Bit Flipping
+
+- **Flip a Single Bit:**
+  - Change a single bit from `0` to `1` or from `1` to `0`.
+  - Example Command: `flip 3` (flips Bit 3)
+
+- **Flip Two Adjacent Bits:**
+  - Change two bits that are next to each other in sequence.
+  - Adjacent pairs are Bits `1 & 2`, `2 & 3`, or `3 & 4`.
+  - Example Command: `flip 2 3` (flips Bits 2 and 3)
+
+### Game Progression
+
+- After each move, the new state of the binary number is displayed.
+- Players are not allowed to skip their turn.
+- Invalid inputs or moves not following the rules result in the player being prompted to make a valid move.
+
+### Winning the Game
+
+- The first player to change the binary number to `1 1 1 1` wins.
+- The game cannot end in a draw; play continues until one player wins.
+
+## Scoring
+
+- **No Point System:** The game is won by achieving the objective, not by accumulating points.
+- **Victory Condition:** Changing the binary number to all ones (`1 1 1 1`).
+
+## Examples
+
+### Sample Game Play
+
+**Initial State:** `0 0 0 0`
+
+---
+
+**Player 1's Turn**
+
+- **Action:** `flip 1 2`
+- **Explanation:** Player 1 flips Bits 1 and 2.
+- **New State:** `1 1 0 0`
+
+**Player 2's Turn**
+
+- **Action:** `flip 3`
+- **Explanation:** Player 2 flips Bit 3.
+- **New State:** `1 1 1 0`
+
+**Player 1's Turn**
+
+- **Action:** `flip 3 4`
+- **Explanation:** Player 1 flips Bits 3 and 4.
+- **New State:** `1 1 0 1`
+
+**Player 2's Turn**
+
+- **Action:** `flip 4`
+- **Explanation:** Player 2 flips Bit 4.
+- **New State:** `1 1 0 0`
+
+**Player 1's Turn**
+
+- **Action:** `flip 3`
+- **Explanation:** Player 1 flips Bit 3.
+- **New State:** `1 1 1 0`
+
+**Player 2's Turn**
+
+- **Action:** `flip 2 3`
+- **Explanation:** Player 2 flips Bits 2 and 3.
+- **New State:** `1 0 0 0`
+
+**Player 1's Turn**
+
+- **Action:** `flip 1`
+- **Explanation:** Player 1 flips Bit 1.
+- **New State:** `0 0 0 0`
+
+**Player 2's Turn**
+
+- **Action:** `flip 1 2`
+- **Explanation:** Player 2 flips Bits 1 and 2.
+- **New State:** `1 1 0 0`
+
+...and so on until one player achieves `1 1 1 1`.
+
+### Command-Line Interaction
+
+Below is an example of how the game might look in a command-line interface:
+
+```
+Current State: 0 0 0 0
+Player 1's turn. Enter your move: flip 1 2
+You flipped bits 1 and 2.
+New State: 1 1 0 0
+
+Current State: 1 1 0 0
+Player 2's turn. Enter your move: flip 3
+You flipped bit 3.
+New State: 1 1 1 0
+
+Current State: 1 1 1 0
+Player 1's turn. Enter your move: flip 4
+You flipped bit 4.
+New State: 1 1 1 1
+Congratulations, Player 1! You have won the game.
+```
+
+## Strategic Considerations
+
+- **Plan Ahead:** Anticipate your opponent's possible moves based on the current state.
+- **Control Key Bits:** Focus on flipping bits that provide you with more winning opportunities while limiting your opponent's options.
+- **Respond Wisely:** If your opponent is close to winning, prioritize moves that disrupt their plans.
+
+---
+
+Enjoy playing Binary Flip, and may the best strategist win!

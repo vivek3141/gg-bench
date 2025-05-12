@@ -1,0 +1,211 @@
+# Odd and Even Duel: Rule Book
+
+## Objective
+
+**Odd and Even Duel** is a strategic two-player, turn-based game played via a command-line interface. The primary goal is to be the first player to reach **exactly 25 points**. Players accumulate points by selecting numbers and strategically deciding whether to add points to their own score or to their opponent's score. The game requires careful planning and foresight, ensuring that skilled players can consistently outmaneuver unskilled opponents. The game ends when a player reaches exactly 25 points, securing a win, or when a player exceeds 25 points, resulting in their loss.
+
+## Setup
+
+- **Players**: Two players participate in the game.
+- **Starting Scores**: Both players start with a score of **0**.
+- **Number Range**: Numbers available for selection range from **1 to 10**.
+- **Usage of Numbers**: Numbers can be **reused** any number of times throughout the game.
+- **Turn Order**: Decide which player goes first (can be random or predetermined).
+
+## Game Components
+
+- **Scores**: Each player has an individual score, starting at 0 and increasing throughout the game.
+- **Number Selection**: Numbers from 1 to 10 are available for players to choose during their turn.
+- **Command-Line Interface**: Players input their choices through command-line prompts.
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns in sequence.
+   - On each turn, a player selects a number from 1 to 10.
+
+2. **Number Selection**:
+   - The player chooses any integer between 1 and 10 (inclusive).
+   - Numbers can be selected multiple times in the game; there's no limitation on reuse.
+
+3. **Applying the Number**:
+   - **Odd Numbers**: If the selected number is **odd**, the player **adds** it to **their own score**.
+   - **Even Numbers**: If the selected number is **even**, the player **gives** it to their **opponent**, who must add it to **their opponent's score**.
+
+4. **Score Updates**:
+   - After applying the number, update the appropriate player's score accordingly.
+   - Check for win/loss conditions after each turn.
+
+5. **Progression of Turns**:
+   - The next player then takes their turn, following the same rules.
+   - The game continues with players alternating turns.
+
+## Rules and Mechanics
+
+- **Number Selection Rules**:
+  - Players may choose any number from 1 to 10 on their turn.
+  - There is no restriction on how many times a number can be selected throughout the game.
+
+- **Scoring Mechanics**:
+  - **Odd Number Selection**:
+    - The player adds the number to **their own score**.
+    - Example: Selecting 7 adds 7 points to the player's score.
+  - **Even Number Selection**:
+    - The player gives the number to their **opponent**, who must add it to the **opponent's score**.
+    - Example: Selecting 4 adds 4 points to the opponent's score.
+
+- **Win Condition**:
+  - The first player to reach **exactly 25 points** wins the game.
+
+- **Loss Condition**:
+  - If a player's score **exceeds 25 points**, they **lose** immediately.
+  - The opponent is declared the winner in this case.
+
+- **Strategic Considerations**:
+  - Players must carefully choose numbers to advance their score without overshooting 25.
+  - Giving even numbers to the opponent can be used to force them closer to or over 25.
+  - Planning ahead is crucial to avoid inadvertently causing your own loss.
+
+- **No Draws**:
+  - The game cannot end in a draw due to the scoring mechanics and win/loss conditions.
+
+## Scoring
+
+- **Tracking Scores**:
+  - Keep a running total of each player's score after every turn.
+  - Scores should be clearly displayed after each turn for both players.
+
+- **Victory**:
+  - Achieved by reaching exactly 25 points.
+  - The game ends immediately when a player hits 25.
+
+- **Defeat**:
+  - Occurs if a player exceeds 25 points.
+  - The player who exceeds 25 loses instantly.
+
+## Examples
+
+Below are example scenarios and command-line interactions to illustrate how **Odd and Even Duel** is played.
+
+### Example Game Playthrough
+
+#### Initial State
+
+- **Player 1 Score**: 0
+- **Player 2 Score**: 0
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses **7** (odd number).
+- **Result**:
+  - Adds 7 to **their own score**.
+  - **Player 1 Score**: 7
+  - **Player 2 Score**: 0
+
+**Command-Line Interaction**:
+
+```
+Player 1, enter a number between 1 and 10: 7
+You selected 7 (odd). Added to your score.
+Player 1 Score: 7
+Player 2 Score: 0
+```
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Chooses **6** (even number).
+- **Result**:
+  - Adds 6 to **Player 1's score**.
+  - **Player 1 Score**: 13
+  - **Player 2 Score**: 0
+
+**Command-Line Interaction**:
+
+```
+Player 2, enter a number between 1 and 10: 6
+You selected 6 (even). Added to Player 1's score.
+Player 1 Score: 13
+Player 2 Score: 0
+```
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Chooses **5** (odd number).
+- **Result**:
+  - Adds 5 to **their own score**.
+  - **Player 1 Score**: 18
+  - **Player 2 Score**: 0
+
+**Command-Line Interaction**:
+
+```
+Player 1, enter a number between 1 and 10: 5
+You selected 5 (odd). Added to your score.
+Player 1 Score: 18
+Player 2 Score: 0
+```
+
+---
+
+#### Turn 4: Player 2
+
+- **Action**: Chooses **8** (even number).
+- **Result**:
+  - Adds 8 to **Player 1's score**.
+  - **Player 1 Score**: 26
+  - **Player 2 Score**: 0
+- **Outcome**:
+  - **Player 1** exceeds 25 points and **loses**.
+  - **Player 2** is declared the **winner**.
+
+**Command-Line Interaction**:
+
+```
+Player 2, enter a number between 1 and 10: 8
+You selected 8 (even). Added to Player 1's score.
+Player 1 Score: 26
+Player 2 Score: 0
+Player 1's score exceeded 25. Player 2 wins!
+```
+
+---
+
+### Strategic Notes from the Example
+
+- **Player 2** strategically chose even numbers to force **Player 1's** score higher.
+- **Player 1** failed to anticipate the risk of getting their score pushed over 25.
+- Careful selection of numbers and predicting the opponent's moves is crucial.
+
+## Game Flow Summary
+
+1. **Start**: Both players at 0 points.
+2. **Turns**: Players alternate turns, selecting numbers from 1 to 10.
+3. **Number Effect**:
+   - **Odd**: Add to **own** score.
+   - **Even**: Add to **opponent's** score.
+4. **Win Condition**: First to **exactly 25 points** wins.
+5. **Loss Condition**: Exceeding **25 points** results in an immediate loss.
+6. **End**: Game ends when a player wins by reaching 25 or causes the other to lose by exceeding 25.
+
+## Additional Clarifications
+
+- **Repeated Numbers**: There is no limit to how many times a number can be chosen by either player.
+- **Valid Inputs**: Players must choose an integer between 1 and 10 inclusive.
+- **Invalid Inputs**: If an invalid number is chosen (e.g., outside 1-10 or non-integer), prompt the player to select again.
+
+## Tips for Players
+
+- **Monitor Scores Closely**: Always be aware of both your own and your opponent's scores.
+- **Plan Ahead**: Anticipate the consequences of your number selection on future turns.
+- **Use Even Numbers Wisely**: Giving an even number to your opponent can help force them towards exceeding 25.
+- **Avoid Overshooting**: Be cautious when your score is near 25 to avoid accidentally exceeding it.
+
+## Conclusion
+
+**Odd and Even Duel** combines simplicity with strategic depth, making it an engaging game that is easy to learn but challenging to master. The interplay of adding to your own score and manipulating your opponent's score creates a dynamic where forward-thinking and tactical decision-making are rewarded. Enjoy the duel, and may the most strategic player win!

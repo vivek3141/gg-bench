@@ -1,0 +1,210 @@
+# Last Digit Standing
+
+## Objective
+
+Be the first player to reach a total of **exactly 50** by adding integers between 1 and 9 to a running total. Each new total's last digit must not repeat any last digit previously obtained during the game. Strategic planning is key, as players must anticipate future moves to avoid being unable to make a valid addition. A player loses if they cannot make a valid move on their turn.
+
+## Setup
+
+1. **Initial Total**: The game starts with a running total of **0**.
+2. **Used Last Digits List**: Begin with an empty list to track the last digits that have appeared in the running total throughout the game.
+3. **Turn Order**: Decide which player goes first (Player 1 and Player 2). This can be done randomly or by mutual agreement.
+
+## Game Components
+
+- **Running Total**: A cumulative total that starts at 0 and increases as players add numbers on their turns.
+- **Numbers 1-9**: On each turn, players choose an integer between 1 and 9 (inclusive) to add to the running total.
+- **Used Last Digits List**: A shared list that records the last digit of the running total after each valid move. This list prevents players from repeating last digits.
+
+## Turns
+
+1. **Player Turn**: Players alternate turns throughout the game.
+2. **Choosing a Number**: On their turn, a player selects an integer between 1 and 9 to add to the running total.
+3. **Valid Moves**: The chosen number must result in a new running total where the last digit has not been used previously and does not exceed 50.
+4. **Updating the Game State**:
+   - Add the chosen number to the running total.
+   - Record the last digit of the new running total in the Used Last Digits List.
+5. **Turn Progression**: The turn passes to the other player after a valid move or if a player loses due to being unable to make a valid move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Adding Numbers**: On each turn, a player must add an integer **between 1 and 9** (inclusive) to the running total.
+2. **Last Digit Restriction**:
+   - The **last digit** of the new running total **must not** be a digit that has already been recorded in the Used Last Digits List.
+   - If the last digit has been used before, the move is invalid, and the player must choose a different number.
+3. **Exceeding the Target**:
+   - Players **cannot** make a move that results in the running total **exceeding 50**.
+   - If all possible additions either repeat a last digit or exceed 50, the player loses the game.
+4. **Winning the Game**:
+   - The first player to reach a running total of **exactly 50** wins the game.
+   - If a player cannot make a valid move on their turn, they lose, and the other player wins.
+
+### Additional Mechanics
+
+- **Strategic Blocking**: Players can use strategic additions to limit the opponent's future moves by consuming last digits that would benefit them.
+- **Memory and Tracking**: Both players should keep track of the Used Last Digits List to plan their moves effectively.
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who either reaches exactly **50** or forces the opponent into a position where they cannot make a valid move.
+- **No Point System**: The game operates on a win/loss basis without accumulating points.
+
+## Examples
+
+### Sample Gameplay
+
+#### Starting the Game
+
+- **Running Total**: 0
+- **Used Last Digits List**: []
+
+#### Player 1's Turn
+
+1. **Possible Additions**: 1-9 (since no last digits are used yet).
+2. **Choice**: Player 1 adds **7**.
+3. **New Running Total**: 0 + 7 = **7**
+4. **Last Digit**: **7**
+5. **Update Used Last Digits List**: [7]
+
+#### Player 2's Turn
+
+1. **Possible Additions**: 1-9 (resulting in last digits not equal to 7).
+2. **Evaluation**:
+   - Adding 1: 7 + 1 = 8 (Last Digit: 8)
+   - Adding 2: 7 + 2 = 9 (Last Digit: 9)
+   - Adding 3: 7 + 3 = 10 (Last Digit: 0)
+3. **Choice**: Player 2 adds **3**.
+4. **New Running Total**: 7 + 3 = **10**
+5. **Last Digit**: **0**
+6. **Update Used Last Digits List**: [7, 0]
+
+#### Player 1's Turn
+
+1. **Possible Additions**: 1-9 (resulting in last digits not equal to 7 or 0).
+2. **Evaluation**:
+   - Adding 3: 10 + 3 = 13 (Last Digit: 3)
+   - Adding 4: 10 + 4 = 14 (Last Digit: 4)
+3. **Choice**: Player 1 adds **4**.
+4. **New Running Total**: 10 + 4 = **14**
+5. **Last Digit**: **4**
+6. **Update Used Last Digits List**: [7, 0, 4]
+
+#### Player 2's Turn
+
+1. **Possible Additions**: 1-9 (resulting in last digits not equal to 7, 0, or 4).
+2. **Evaluation**:
+   - Adding 1: 14 + 1 = 15 (Last Digit: 5)
+   - Adding 2: 14 + 2 = 16 (Last Digit: 6)
+3. **Choice**: Player 2 adds **6**.
+4. **New Running Total**: 14 + 6 = **20**
+5. **Last Digit**: **0** (Already used)
+6. **Invalid Move**: Last digit 0 has been used.
+7. **Alternative Choice**: Player 2 adds **1** instead.
+8. **New Running Total**: 14 + 1 = **15**
+9. **Last Digit**: **5**
+10. **Update Used Last Digits List**: [7, 0, 4, 5]
+
+#### Continuing the Game
+
+Players continue to take turns, ensuring they do not repeat any last digits and do not exceed the total of 50. Strategic choices can force the opponent into a position where they have no valid moves remaining.
+
+### Command-Line Interaction Example
+
+#### Starting Prompt
+
+```
+Welcome to Last Digit Standing!
+Player 1 and Player 2, get ready.
+Current Total: 0
+Used Last Digits: []
+Player 1's turn. Enter a number between 1 and 9 to add:
+```
+
+#### Player 1's Input
+
+```
+7
+```
+
+#### Game Response
+
+```
+Player 1 added 7.
+New Total: 7
+Used Last Digits: [7]
+Player 2's turn. Enter a number between 1 and 9 to add:
+```
+
+#### Player 2's Input
+
+```
+3
+```
+
+#### Game Response
+
+```
+Player 2 added 3.
+New Total: 10
+Used Last Digits: [7, 0]
+Player 1's turn. Enter a number between 1 and 9 to add:
+```
+
+#### Player 1's Input
+
+```
+4
+```
+
+#### Game Response
+
+```
+Player 1 added 4.
+New Total: 14
+Used Last Digits: [7, 0, 4]
+Player 2's turn. Enter a number between 1 and 9 to add:
+```
+
+#### Player 2's Invalid Move
+
+```
+6
+```
+
+#### Game Response
+
+```
+Invalid move! The last digit '0' has already been used.
+Player 2, please choose a different number:
+```
+
+#### Player 2's Valid Move
+
+```
+1
+```
+
+#### Game Response
+
+```
+Player 2 added 1.
+New Total: 15
+Used Last Digits: [7, 0, 4, 5]
+Player 1's turn. Enter a number between 1 and 9 to add:
+```
+
+#### Ending the Game
+
+- The game continues until one player reaches exactly 50 and wins, or a player cannot make a valid move and loses.
+
+### Strategic Considerations
+
+- **Planning Ahead**: Keep track of which last digits are still available and plan your additions to leave your opponent with fewer options.
+- **Blocking**: Try to use last digits that your opponent might need, limiting their possible moves.
+- **Avoiding Traps**: Be cautious not to reduce your own future options by unnecessarily using last digits that could be useful later in the game.
+
+## Conclusion
+
+_Last Digit Standing_ is a simple yet strategically rich game that challenges players to think ahead and anticipate their opponent's moves. With straightforward rules and minimal components, it's perfect for quick matches in a command-line interface. Enjoy testing your numerical prowess and may the best strategist win!

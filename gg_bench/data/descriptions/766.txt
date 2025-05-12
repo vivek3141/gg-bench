@@ -1,0 +1,186 @@
+# Number Maze: A Strategic Race Game
+
+## Objective
+
+Be the first player to reach your opponent's starting corner by navigating through a numbered grid according to specific movement rules. Use strategic planning to outmaneuver your opponent and claim victory.
+
+## Setup
+
+1. **Game Grid Creation**:
+   - Prepare a 4x4 grid, consisting of 16 cells.
+   - Each cell is assigned a number from 1 to 4. These numbers are randomly distributed across the grid at the start of each game.
+
+2. **Player Starting Positions**:
+   - **Player 1** places their token on the **top-left corner** cell, designated as **Cell (1, 1)**.
+   - **Player 2** places their token on the **bottom-right corner** cell, designated as **Cell (4, 4)**.
+
+3. **Initial Conditions**:
+   - Both players begin the game with their tokens on their respective starting cells.
+   - The grid with numbers is visible to both players.
+
+## Game Components
+
+1. **Game Grid**:
+   - A 4x4 grid labeled with rows and columns numbered from 1 to 4. Cells can be referenced using coordinates (Row, Column).
+
+2. **Numbered Cells**:
+   - Each cell contains a number between 1 and 4.
+   - The number determines the exact number of steps a player must move when starting from that cell.
+
+3. **Player Tokens**:
+   - **Player 1 Token**: Represented by `P1`.
+   - **Player 2 Token**: Represented by `P2`.
+
+4. **Movement Directions**:
+   - Allowed movements are in the four cardinal directions: **Up**, **Down**, **Left**, or **Right**.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns. **Player 1** starts the game.
+
+2. **Turn Actions**:
+   - On your turn, you **must move** your token according to the movement rules.
+
+3. **Movement Execution**:
+   - Determine the number on your **current cell**.
+   - Move your token **exactly** that many steps in **one** of the four cardinal directions.
+
+4. **Invalid Moves**:
+   - If you cannot make a legal move (e.g., moving off the grid or landing on the opponent's cell), you **lose** the game.
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - **Step Count**: You must move **exactly** the number of steps indicated by the number on your current cell.
+   - **Direction**: Choose **one** cardinal direction to move in for that turn.
+   - **Path**: Your movement path is a straight line; you cannot change directions mid-move.
+
+2. **Board Boundaries**:
+   - You cannot move off the edges of the grid.
+   - If a move would require you to go off the grid, the move is invalid.
+
+3. **Occupied Cells**:
+   - You cannot **land** on a cell currently occupied by your opponent.
+   - You **can** move **through** a cell occupied by your opponent.
+
+4. **Winning the Game**:
+   - The first player to land **exactly** on their opponent's starting cell **wins** the game.
+   - If a player cannot make any valid moves on their turn, they **lose** the game.
+
+5. **Stalemate**:
+   - There is **no draw** mechanism. The game continues until one player wins or loses according to the rules.
+
+## Scoring
+
+- The game is won by successfully reaching the opponent's starting cell or when the opponent cannot make a valid move.
+- No points are tracked; it's a win/lose outcome per game.
+- Players may choose to play multiple rounds and keep track of wins for extended play.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid Setup
+
+```
+Grid Cells with Numbers:
+
++-----+-----+-----+-----+
+| (1) |  3  |  2  |  4  |
++-----+-----+-----+-----+
+|  2  |  1  |  3  |  2  |
++-----+-----+-----+-----+
+|  4  |  2  |  1  |  3  |
++-----+-----+-----+-----+
+|  3  |  4  |  2  | (1) |
++-----+-----+-----+-----+
+
+Positions:
+- Player 1 Token (P1) at Cell (1,1)
+- Player 2 Token (P2) at Cell (4,4)
+```
+
+#### Turn-by-Turn Gameplay
+
+1. **Player 1's Turn**:
+   - Current Cell: (1,1), Number: **1**
+   - Moves **1** step to the **Right** to Cell (1,2).
+
+2. **Player 2's Turn**:
+   - Current Cell: (4,4), Number: **1**
+   - Moves **1** step to the **Left** to Cell (4,3).
+
+3. **Player 1's Turn**:
+   - Current Cell: (1,2), Number: **3**
+   - Moves **3** steps **Down** to Cell (4,2).
+
+4. **Player 2's Turn**:
+   - Current Cell: (4,3), Number: **2**
+   - Moves **2** steps **Up** to Cell (2,3).
+
+5. **Player 1's Turn**:
+   - Current Cell: (4,2), Number: **4**
+   - **Cannot** move 4 steps in any direction without going off the grid.
+   - **Player 1 loses** the game.
+
+### Command-Line Interaction Example
+
+#### Player 1's Turn
+
+```
+Player 1's Turn:
+- Current Position: (1,1)
+- Number on Current Cell: 1
+Enter direction (Up/Down/Left/Right): Right
+
+Player 1 moves to (1,2)
+```
+
+#### Player 2's Turn
+
+```
+Player 2's Turn:
+- Current Position: (4,4)
+- Number on Current Cell: 1
+Enter direction (Up/Down/Left/Right): Left
+
+Player 2 moves to (4,3)
+```
+
+#### Player 1's Second Turn
+
+```
+Player 1's Turn:
+- Current Position: (1,2)
+- Number on Current Cell: 3
+Enter direction (Up/Down/Left/Right): Down
+
+Player 1 moves to (4,2)
+```
+
+#### Player 1 Attempts Invalid Move
+
+```
+Player 1's Turn:
+- Current Position: (4,2)
+- Number on Current Cell: 4
+Possible Moves:
+  - Up: Invalid (would move off the grid)
+  - Down: Invalid (would move off the grid)
+  - Left: Invalid (would move to (4,-2))
+  - Right: Invalid (would move to (4,6))
+No valid moves available.
+Player 1 cannot move and loses the game.
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Look at the numbers on adjacent cells to anticipate future moves.
+- **Control the Center**: Navigating through the center may offer more movement options.
+- **Avoid Traps**: Be cautious of cells with high numbers near the edges, as they can limit your moves.
+- **Block Your Opponent**: Position yourself to limit your opponent's movement options without violating the rules.
+
+## Conclusion
+
+"Number Maze" challenges players to think strategically within a simple set of rules. Every move counts, and foresight is essential to navigate the grid successfully. With its easy-to-understand mechanics and strategic depth, it's an engaging game suitable for quick, competitive play.

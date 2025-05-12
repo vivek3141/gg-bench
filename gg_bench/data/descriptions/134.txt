@@ -1,0 +1,243 @@
+# Rule Book for "Pathfinder Pursuit"
+
+## Objective
+
+**Pathfinder Pursuit** is a two-player turn-based strategy game where players race to discover and traverse a hidden path on a 5x5 grid. The primary goal is to be the first player to reach the **End Point** by correctly following the hidden path from the **Start Point**. Players must use logical deduction and memory to uncover the correct sequence of moves while strategically outmaneuvering their opponent.
+
+---
+
+## Setup
+
+### Game Board
+
+- **Grid**: A 5x5 grid with positions labeled from `(1,1)` [top-left corner] to `(5,5)` [bottom-right corner].
+- **Start Point**: The starting position for both players at `(1,1)`.
+- **End Point**: The final destination at `(5,5)` that players aim to reach.
+- **Hidden Path**: A secret sequence of connected cells from the **Start Point** to the **End Point**. This path is randomly generated but follows specific rules:
+  - The path consists of adjacent moves (including diagonals).
+  - The path does not revisit any cell.
+  - Only one unique path exists per game.
+
+### Players
+
+- **Player Tokens**: Each player has a token representing their current position on the grid.
+- **Turn Order**: Decide who goes first by mutual agreement or a random method (e.g., a coin toss).
+
+---
+
+## Game Components
+
+### Grid
+
+- A visual or conceptual representation of a 5x5 grid.
+- Each cell is identified by its coordinates `(row, column)`.
+
+### Hidden Path
+
+- Known only to the game system (or a neutral party if playing manually).
+- Determines valid moves for players.
+
+### Player Tokens
+
+- Represent the current position of each player.
+- Start at `(1,1)`.
+
+### Feedback Mechanism
+
+- Provides players with immediate feedback on the validity of their moves:
+  - **"Correct"**: Move is on the hidden path.
+  - **"Incorrect"**: Move is not on the hidden path; player returns to previous position.
+
+---
+
+## Turns
+
+### Turn Structure
+
+- Players take turns in alternating order.
+- Each turn consists of:
+  1. **Movement Phase**: The player attempts to move to an adjacent cell.
+  2. **Feedback Phase**: The player receives feedback on their move.
+
+### Movement Phase
+
+- A player may move to any **adjacent** cell, including diagonals, resulting in up to 8 possible moves from any cell.
+- Players input the coordinates `(row, column)` of the cell they wish to move to.
+- Example of valid moves from `(2,2)`:
+  - `(1,1)`, `(1,2)`, `(1,3)`
+  - `(2,1)`,        `(2,3)`
+  - `(3,1)`, `(3,2)`, `(3,3)`
+
+### Feedback Phase
+
+- After the move, immediate feedback is provided:
+  - **"Correct" Move**:
+    - The player's token remains on the new cell.
+    - The turn ends.
+  - **"Incorrect" Move**:
+    - The player’s token returns to their previous cell.
+    - The turn ends.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Adjacency**: Moves must be to an adjacent cell (including diagonally).
+2. **Grid Boundaries**: Players cannot move off the grid.
+3. **Occupied Cells**:
+   - Players cannot move into a cell currently occupied by the opponent, except for the **Start Point**.
+   - Both players can be on the **Start Point** simultaneously.
+
+### Feedback Rules
+
+- The feedback only indicates whether the move is part of the hidden path.
+- No additional hints are provided.
+- Feedback must be accurate and immediate.
+
+### Winning the Game
+
+- The first player to reach the **End Point** at `(5,5)` by following the correct sequence of moves wins the game.
+- If both players reach the **End Point** on the same turn, the player who moved first wins.
+
+### Memory and Deduction
+
+- Players must remember their own moves and the feedback received.
+- Observing the opponent's moves and feedback can provide valuable clues.
+- Note-taking is not allowed unless both players agree before the game begins.
+
+### Restrictions
+
+- **Invalid Moves**:
+  - If a player attempts an invalid move (e.g., non-adjacent cell), they are informed, and the turn is forfeited.
+- **Skipping Turns**: Players cannot skip their turn.
+- **Communication**: Players cannot share information about the hidden path with each other.
+
+---
+
+## Scoring
+
+- There is no point system.
+- The game concludes when a player reaches the **End Point**.
+- The winner is the first to successfully navigate the hidden path to `(5,5)`.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- Both players start at `(1,1)`.
+
+#### Turn 1
+
+- **Player 1's Move**:
+  - Moves to `(1,2)`.
+  - **Feedback**: "Correct"
+  - **Player 1** is now at `(1,2)`.
+
+- **Player 2's Move**:
+  - Attempts to move to `(2,1)`.
+  - **Feedback**: "Incorrect"
+  - **Player 2** remains at `(1,1)`.
+
+#### Turn 2
+
+- **Player 1's Move**:
+  - Moves to `(2,3)`.
+  - **Feedback**: "Incorrect"
+  - Returns to `(1,2)`.
+
+- **Player 2's Move**:
+  - Moves to `(1,2)` (cannot occupy; moves to `(1,3)` instead).
+  - **Feedback**: "Correct"
+  - **Player 2** is now at `(1,3)`.
+
+#### Turn 3
+
+- **Player 1's Move**:
+  - Moves to `(2,2)`.
+  - **Feedback**: "Correct"
+  - **Player 1** is now at `(2,2)`.
+
+- **Player 2's Move**:
+  - Moves to `(2,4)`.
+  - **Feedback**: "Incorrect"
+  - Returns to `(1,3)`.
+
+Players continue taking turns, using feedback to deduce the hidden path. The player who successfully reaches `(5,5)` first wins the game.
+
+---
+
+## Command-Line Interaction Examples
+
+### Player Move
+
+```
+Player 1, your current position: (1,1)
+Enter your move (row,column): 1,2
+Feedback: Correct move!
+```
+
+### Invalid Move
+
+```
+Player 2, your current position: (1,1)
+Enter your move (row,column): 3,3
+Feedback: Invalid move. You can only move to an adjacent cell. Turn forfeited.
+```
+
+### Incorrect Move
+
+```
+Player 1, your current position: (1,2)
+Enter your move (row,column): 2,3
+Feedback: Incorrect move. Return to previous position.
+```
+
+### Winning Move
+
+```
+Player 1, your current position: (5,5)
+Congratulations! You have reached the End Point and won the game!
+```
+
+---
+
+## Strategies
+
+### Observation
+
+- Pay close attention to the opponent's moves and the feedback they receive.
+- Use this information to infer parts of the hidden path.
+
+### Memory
+
+- Remember the outcomes of your previous moves.
+- Avoid repeating incorrect moves.
+
+### Logical Deduction
+
+- Use the process of elimination to determine possible correct moves.
+- Consider all possible adjacent cells that haven’t been attempted or were "Incorrect."
+
+### Risk Management
+
+- Decide whether to explore new paths or follow the opponent if they seem to be making progress.
+- Balancing between exploration and cautious advancement can be key.
+
+---
+
+## Summary
+
+- **Pathfinder Pursuit** is a game of deduction, memory, and strategy.
+- The simplicity of the rules allows for quick gameplay and easy implementation in a command-line interface.
+- Careful planning and keen observation give skilled players an edge over unskilled opponents.
+- With no possibility of a draw and a race to the **End Point**, each game is engaging and competitive.
+
+---
+
+Enjoy your journey through the grid, and may the best pathfinder win!

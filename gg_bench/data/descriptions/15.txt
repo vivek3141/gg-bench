@@ -1,0 +1,323 @@
+# Trap the Knight
+
+## Rule Book
+
+---
+
+### Objective
+
+**Trap the Knight** is a two-player turn-based strategy game played on a 4x4 grid. The primary goal is to trap your opponent's Knight so that it cannot make any legal moves, or to capture the opponent's Knight by landing on its position. The player who achieves either of these objectives first wins the game.
+
+---
+
+### Setup
+
+- **Game Board**: A 4x4 grid representing the game board.
+- **Starting Positions**:
+  - **Player 1's Knight (N1)**: Placed at the top-left corner, position **A1** (Column A, Row 1).
+  - **Player 2's Knight (N2)**: Placed at the bottom-right corner, position **D4** (Column D, Row 4).
+- The grid coordinates are labeled as:
+  - **Columns**: A, B, C, D (left to right).
+  - **Rows**: 1, 2, 3, 4 (top to bottom).
+
+---
+
+### Game Components
+
+- **Grid Cells**:
+  - Each cell can be empty (`.`) or occupied by a Knight (`N1` or `N2`).
+- **Knights**:
+  - **N1**: Represents Player 1's Knight.
+  - **N2**: Represents Player 2's Knight.
+- **Representation**:
+  - The game is displayed in a command-line interface as a grid with cells labeled accordingly.
+
+---
+
+### Turns
+
+- **Turn Order**:
+  - Player 1 moves first.
+  - Players alternate turns thereafter.
+- **Player Actions**:
+  - On your turn, move your Knight to a new, valid position following the movement rules.
+- **Move Submission**:
+  - Enter moves using grid coordinates (e.g., `B3`).
+
+---
+
+### Rules and Mechanics
+
+1. **Knight Movement**:
+   - Knights move in an **‘L’ shape**, similar to the Knight in chess.
+   - Moves consist of:
+     - Two steps in one direction (vertical or horizontal) and then one step perpendicular.
+     - Or one step in one direction and then two steps perpendicular.
+   - **Possible Moves from a Position**:
+     - If the Knight is at position `(x, y)`, it can move to:
+       - `(x ± 2, y ± 1)`
+       - `(x ± 1, y ± 2)`
+   - Moves must stay within the bounds of the 4x4 grid (columns A-D, rows 1-4).
+
+2. **Legal Moves**:
+   - **Occupied Cells**: A Knight cannot move to a cell occupied by its own Knight.
+   - **Capturing**: If a Knight moves to a cell occupied by the opponent’s Knight, it captures it, and the moving player wins.
+   - **No Legal Moves**: If a player has no legal moves on their turn, they lose.
+
+3. **Winning the Game**:
+   - **Capture**: Landing your Knight on the opponent’s Knight’s position.
+   - **Trapping**: Positioning so the opponent has no legal moves on their turn.
+
+4. **Game End Conditions**:
+   - **Win**: Achieving one of the winning conditions.
+   - **Loss**: Being captured or having no legal moves.
+   - **No Draws**: The game cannot end in a draw.
+
+---
+
+### Scoring
+
+- **Winning**: The player who captures the opponent's Knight or traps it wins the game.
+- **Match Play** (Optional):
+  - Players may track wins across multiple games for match play.
+  - No points are awarded beyond the win/loss outcome of each game.
+
+---
+
+### Examples
+
+#### Initial Grid
+
+```
+    A   B   C   D
+  +---+---+---+---+
+1 | N1| . | . | . |
+  +---+---+---+---+
+2 | . | . | . | . |
+  +---+---+---+---+
+3 | . | . | . | . |
+  +---+---+---+---+
+4 | . | . | . | N2|
+  +---+---+---+---+
+```
+
+#### Sample Gameplay
+
+- **Turn 1 - Player 1**
+
+  - **Move**: N1 from `A1` to `B3`.
+  - **Explanation**: Two steps down (from row `1` to `3`), one step right (from column `A` to `B`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 | . | . | . | . |
+    +---+---+---+---+
+  3 | . |N1 | . | . |
+    +---+---+---+---+
+  4 | . | . | . | N2|
+    +---+---+---+---+
+  ```
+
+- **Turn 2 - Player 2**
+
+  - **Move**: N2 from `D4` to `C2`.
+  - **Explanation**: Two steps up (from row `4` to `2`), one step left (from column `D` to `C`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 | . | . |N2 | . |
+    +---+---+---+---+
+  3 | . |N1 | . | . |
+    +---+---+---+---+
+  4 | . | . | . | . |
+    +---+---+---+---+
+  ```
+
+- **Turn 3 - Player 1**
+
+  - **Move**: N1 from `B3` to `D4`.
+  - **Explanation**: One step right (from `B` to `D`), two steps down (from `3` to `4`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 | . | . |N2 | . |
+    +---+---+---+---+
+  3 | . | . | . | . |
+    +---+---+---+---+
+  4 | . | . | . |N1 |
+    +---+---+---+---+
+  ```
+
+- **Turn 4 - Player 2**
+
+  - **Move**: N2 from `C2` to `B4`.
+  - **Explanation**: One step left (from `C` to `B`), two steps down (from `2` to `4`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 | . | . | . | . |
+    +---+---+---+---+
+  3 | . | . | . | . |
+    +---+---+---+---+
+  4 | . |N2 | . |N1 |
+    +---+---+---+---+
+  ```
+
+- **Turn 5 - Player 1**
+
+  - **Move**: N1 from `D4` to `C2`.
+  - **Explanation**: Two steps up (from `4` to `2`), one step left (from `D` to `C`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 | . | . |N1 | . |
+    +---+---+---+---+
+  3 | . | . | . | . |
+    +---+---+---+---+
+  4 | . |N2 | . | . |
+    +---+---+---+---+
+  ```
+
+- **Turn 6 - Player 2**
+
+  - **Move**: N2 from `B4` to `A2`.
+  - **Explanation**: Two steps up (from `4` to `2`), one step left (from `B` to `A`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 |N2 | . |N1 | . |
+    +---+---+---+---+
+  3 | . | . | . | . |
+    +---+---+---+---+
+  4 | . | . | . | . |
+    +---+---+---+---+
+  ```
+
+- **Turn 7 - Player 1**
+
+  - **Move**: N1 from `C2` to `B4`.
+  - **Explanation**: One step left (from `C` to `B`), two steps down (from `2` to `4`).
+  
+- **Updated Grid**:
+
+  ```
+      A   B   C   D
+    +---+---+---+---+
+  1 | . | . | . | . |
+    +---+---+---+---+
+  2 |N2 | . | . | . |
+    +---+---+---+---+
+  3 | . | . | . | . |
+    +---+---+---+---+
+  4 | . |N1 | . | . |
+    +---+---+---+---+
+  ```
+
+- **Turn 8 - Player 2**
+
+  - **Move**: N2 from `A2` to `B4`.
+  - **Explanation**: Captures Player 1's Knight at `B4`.
+  - **Result**: Player 2 wins by capturing N1.
+
+---
+
+### Command-Line Interaction Example
+
+- **Player 1's Turn**:
+
+  ```
+  Player 1, enter your move (e.g., B3): B3
+  Move accepted. N1 moved to B3.
+  ```
+
+- **Player 2's Turn**:
+
+  ```
+  Player 2, enter your move (e.g., C2): C2
+  Move accepted. N2 moved to C2.
+  ```
+
+- **Player 1's Turn**:
+
+  ```
+  Player 1, enter your move (e.g., D4): D4
+  Move accepted. N1 moved to D4.
+  ```
+
+- **Player 2's Turn**:
+
+  ```
+  Player 2, enter your move (e.g., B4): B4
+  Move accepted. N2 moved to B4.
+  ```
+
+- **Player 1's Turn**:
+
+  ```
+  Player 1, enter your move (e.g., C2): C2
+  Move accepted. N1 moved to C2.
+  ```
+
+- **Player 2's Turn**:
+
+  ```
+  Player 2, enter your move (e.g., A2): A2
+  Move accepted. N2 moved to A2.
+  ```
+
+- **Player 1's Turn**:
+
+  ```
+  Player 1, enter your move (e.g., B4): B4
+  Move accepted. N1 moved to B4.
+  ```
+
+- **Player 2's Turn**:
+
+  ```
+  Player 2, enter your move (e.g., B4): B4
+  Move accepted. N2 moved to B4.
+  Player 2 captures Player 1's Knight! Player 2 wins!
+  ```
+
+---
+
+### Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your strategy accordingly.
+- **Control the Center**: Moving your Knight towards the center may give you more options.
+- **Avoid Traps**: Be cautious of positions where your Knight can be easily trapped.
+
+---
+
+**Enjoy playing Trap the Knight!**

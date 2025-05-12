@@ -1,0 +1,264 @@
+# Number Bridge
+*A Two-Player Turn-Based Game*
+
+## Objective
+
+The objective of **Number Bridge** is to be the last player able to make a valid move. Players take turns moving their markers along a number line. The player who blocks their opponent from moving wins the game.
+
+---
+
+## Setup
+
+1. **Number Line**: Create a number line with positions numbered from **1** to **11**.
+   
+2. **Markers**:
+   - **Player 1** uses the marker **`X`**.
+   - **Player 2** uses the marker **`O`**.
+
+3. **Starting Positions**: Both players start with their markers **off** the number line.
+
+---
+
+## Game Components
+
+- **Number Line**: A linear arrangement of numbers from **1** to **11**.
+
+  ```
+  1 2 3 4 5 6 7 8 9 10 11
+  ```
+  
+- **Markers**:
+  - **`X`**: Represents Player 1's current position.
+  - **`O`**: Represents Player 2's current position.
+
+- **Occupied Positions**: Numbers currently occupied by either player's marker.
+
+---
+
+## Turns
+
+1. Players decide who goes first (e.g., by agreement or randomly).
+2. Players alternate turns throughout the game.
+3. On each turn, a player moves according to the game rules outlined below.
+
+---
+
+## Rules and Mechanics
+
+### 1. First Move
+
+- On their first turn, each player places their marker on **any unoccupied number** on the number line.
+- Players cannot place their marker on a number already occupied by the opponent.
+
+### 2. Subsequent Moves
+
+- On each subsequent turn, a player moves their marker to an **adjacent unoccupied number**.
+- **Adjacent numbers** are the immediate next or previous numbers on the number line.
+  - For example, from position **5**, a player can move to **4** or **6** if they are unoccupied.
+- Players **cannot skip positions** or move more than one position per turn.
+
+### 3. Occupied Numbers
+
+- A number can **only be occupied by one marker** at a time.
+- Players cannot move onto a number that is **currently occupied** by the opponent's marker.
+
+### 4. Boundaries
+
+- The number line starts at **1** and ends at **11**.
+- Numbers **beyond 1 and 11** are considered **off the number line** and are not valid positions.
+
+### 5. Winning the Game
+
+- **Goal**: Block your opponent from making a valid move.
+- A player **loses** if they cannot move their marker because:
+  - Both adjacent numbers are **occupied**.
+  - Both adjacent numbers are **off the number line**.
+- When a player cannot make a valid move on their turn, the **opponent wins** the game.
+
+---
+
+## Scoring
+
+- **Win Condition**: There is no point system. The game is won by being the last player able to make a valid move.
+- **Winner**: The player who successfully blocks their opponent from moving.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+#### Initial Number Line
+
+```
+1 2 3 4 5 6 7 8 9 10 11
+```
+
+#### Player 1's Turn (First Move)
+
+- **Action**: Player 1 places **`X`** on position **6**.
+
+```
+1 2 3 4 5 X 7 8 9 10 11
+```
+
+#### Player 2's Turn (First Move)
+
+- **Action**: Player 2 places **`O`** on position **8**.
+
+```
+1 2 3 4 5 X 7 O 9 10 11
+```
+
+#### Player 1's Turn
+
+- **Current Position**: **6**
+- **Possible Moves**: **5** (unoccupied), **7** (unoccupied)
+- **Action**: Moves **`X`** from **6** to **5**.
+
+```
+1 2 3 4 X _ 7 O 9 10 11
+```
+
+#### Player 2's Turn
+
+- **Current Position**: **8**
+- **Possible Moves**: **7** (unoccupied), **9** (unoccupied)
+- **Action**: Moves **`O`** from **8** to **9**.
+
+```
+1 2 3 4 X _ 7 _ O 10 11
+```
+
+#### Player 1's Turn
+
+- **Current Position**: **5**
+- **Possible Moves**: **4** (unoccupied), **6** (unoccupied but previously occupied)
+- **Action**: Moves **`X`** from **5** to **4**.
+
+```
+1 2 3 X _ _ 7 _ O 10 11
+```
+
+#### Player 2's Turn
+
+- **Current Position**: **9**
+- **Possible Moves**: **8** (unoccupied but previously occupied), **10** (unoccupied)
+- **Action**: Moves **`O`** from **9** to **10**.
+
+```
+1 2 3 X _ _ 7 _ _ O 11
+```
+
+#### Player 1's Turn
+
+- **Current Position**: **4**
+- **Possible Moves**: **3** (unoccupied), **5** (unoccupied but previously occupied)
+- **Action**: Moves **`X`** from **4** to **3**.
+
+```
+1 2 X _ _ _ 7 _ _ O 11
+```
+
+#### Player 2's Turn
+
+- **Current Position**: **10**
+- **Possible Moves**: **9** (unoccupied but previously occupied), **11** (unoccupied)
+- **Action**: Moves **`O`** from **10** to **11**.
+
+```
+1 2 X _ _ _ 7 _ _ _ O
+```
+
+#### Player 1's Turn
+
+- **Current Position**: **3**
+- **Possible Moves**: **2** (unoccupied), **4** (unoccupied but previously occupied)
+- **Action**: Moves **`X`** from **3** to **2**.
+
+```
+1 X _ _ _ _ 7 _ _ _ O
+```
+
+#### Player 2's Turn
+
+- **Current Position**: **11**
+- **Possible Moves**: **10** (unoccupied but previously occupied), **off the number line**
+- **Action**: Cannot move to **12** (off the number line) or **10** (already visited)
+- **Result**: Player 2 **cannot make a valid move**.
+
+---
+
+### Game Result
+
+- **Winner**: Player 1
+- **Reason**: Player 2 is unable to move; both adjacent positions are either occupied or off the number line.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a sample interaction for a command-line implementation:
+
+```plaintext
+Welcome to Number Bridge!
+
+The number line is:
+1 2 3 4 5 6 7 8 9 10 11
+
+Player 1's turn. (Marker: X)
+First move! Choose a starting position (1-11):
+Player 1 selects position 6.
+
+Number line:
+1 2 3 4 5 X 7 8 9 10 11
+
+Player 2's turn. (Marker: O)
+First move! Choose a starting position (1-11):
+Player 2 selects position 8.
+
+Number line:
+1 2 3 4 5 X 7 O 9 10 11
+
+Player 1's turn.
+Current position: 6
+Available moves: 5, 7
+Choose your move:
+Player 1 moves to position 5.
+
+Number line:
+1 2 3 4 X _ 7 O 9 10 11
+
+Player 2's turn.
+Current position: 8
+Available moves: 7, 9
+Choose your move:
+Player 2 moves to position 9.
+
+Number line:
+1 2 3 4 X _ 7 _ O 10 11
+
+... (turns continue) ...
+
+Player 2's turn.
+Current position: 11
+Available moves: 10 (already visited), off the number line
+No valid moves available!
+Player 1 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Control the Center**: Starting near the middle of the number line provides more immediate options.
+- **Block Opponent**: Anticipate your opponent's moves and occupy positions that limit their options.
+- **Forward Planning**: Think several moves ahead to avoid getting trapped.
+
+---
+
+## Conclusion
+
+Number Bridge is a simple yet strategic game that challenges players to outmaneuver their opponent on a numerical battlefield. With easy-to-understand rules and quick gameplay, it's perfect for a command-line interface and offers depth for players who enjoy tactical thinking.
+
+Enjoy the game!

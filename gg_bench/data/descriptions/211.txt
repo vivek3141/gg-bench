@@ -1,0 +1,234 @@
+# Star Capture
+
+## Objective
+
+The objective of **Star Capture** is to be the first player to collect **three (3) stars** on a 5x5 grid. Players navigate the grid, capturing stars and strategically moving to outmaneuver their opponent. The game ends when a player successfully captures their third star, thus achieving victory.
+
+## Setup
+
+1. **Grid Initialization**: Create a 5x5 grid represented by coordinates `(0,0)` to `(4,4)`.
+2. **Star Placement**: Randomly place **seven (7)** stars on the grid. Stars cannot be placed on the players' starting positions.
+3. **Player Positions**:
+   - **Player 1** starts at the top-left corner `(0,0)`.
+   - **Player 2** starts at the bottom-right corner `(4,4)`.
+4. **Starting Conditions**:
+   - Both players begin with zero stars captured.
+   - The positions of the stars and players are known to both players.
+
+## Game Components
+
+- **Grid**: A 5x5 matrix representing the game space.
+- **Stars (`*`)**: Collectible items placed randomly on the grid cells except for the starting positions.
+- **Players**:
+  - **Player 1 (`P1`)**: Represented by their coordinates on the grid.
+  - **Player 2 (`P2`)**: Represented similarly to Player 1.
+- **Empty Cell**: A grid space that does not contain a star or a player.
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with **Player 1**.
+- **Actions Per Turn**:
+  - **Move**: A player must move to one of the four adjacent cells (up, down, left, or right). Diagonal movements are not allowed.
+    - Movement should keep the player within the bounds of the grid.
+  - **Capture**:
+    - If a player moves onto a cell containing a star, they capture the star, and the star is removed from the grid.
+    - If a player moves onto a cell occupied by the opponent, they **steal one captured star** from the opponent (if the opponent has any stars).
+- **Turn Progression**:
+  - After completing their move (and any resultant action), the turn passes to the other player.
+  - Players cannot skip or pass their turn.
+
+## Rules and Mechanics
+
+1. **Movement**:
+   - Players must move each turn; staying in the same cell is not permitted.
+   - Players cannot move off the grid.
+2. **Capturing Stars**:
+   - Collecting a star increases the player's star count by one.
+   - The star is removed from the grid upon capture.
+3. **Stealing Stars**:
+   - Landing on the opponent's current position allows the player to steal one star from them.
+   - If the opponent has no stars, no stars are stolen.
+4. **Winning the Game**:
+   - The first player to have **three (3)** stars in their possession wins the game immediately.
+5. **No Draws**:
+   - The game continues until one player wins. There are no draw conditions.
+6. **Star Availability**:
+   - Once all stars on the grid are captured, players can only increase their star count by stealing from the opponent.
+
+## Scoring
+
+- **Star Count**:
+  - Players keep track of the number of stars they have captured.
+  - The score is simply the number of stars each player currently holds.
+- **Victory Condition**:
+  - A player wins upon capturing their third star.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Initial Grid Setup (Command-Line Representation):
+
+```
+Grid Size: 5x5
+Stars Positions: [(1,2), (0,4), (2,2), (3,1), (4,0), (1,4), (3,3)]
+Player 1 Position: (0,0)
+Player 2 Position: (4,4)
+```
+
+#### Turn-by-Turn Example
+
+**Turn 1: Player 1**
+
+- **Action**: Move Right to `(1,0)`
+- **Result**: No star captured.
+- **Output**:
+  ```
+  Player 1 moves to (1,0).
+  No star at this position.
+  ```
+
+**Turn 2: Player 2**
+
+- **Action**: Move Left to `(3,4)`
+- **Result**: No star captured.
+- **Output**:
+  ```
+  Player 2 moves to (3,4).
+  No star at this position.
+  ```
+
+**Turn 3: Player 1**
+
+- **Action**: Move Up to `(1,1)`
+- **Result**: No star captured.
+- **Output**:
+  ```
+  Player 1 moves to (1,1).
+  No star at this position.
+  ```
+
+**Turn 4: Player 2**
+
+- **Action**: Move Down to `(3,3)`
+- **Result**: Star captured!
+- **Player 2 Stars**: 1
+- **Output**:
+  ```
+  Player 2 moves to (3,3).
+  Player 2 captures a star! Total stars: 1
+  ```
+
+**Turn 5: Player 1**
+
+- **Action**: Move Up to `(1,2)`
+- **Result**: Star captured!
+- **Player 1 Stars**: 1
+- **Output**:
+  ```
+  Player 1 moves to (1,2).
+  Player 1 captures a star! Total stars: 1
+  ```
+
+**Turn 6: Player 2**
+
+- **Action**: Move Left to `(2,3)`
+- **Result**: No star captured.
+- **Output**:
+  ```
+  Player 2 moves to (2,3).
+  No star at this position.
+  ```
+
+**Turn 7: Player 1**
+
+- **Action**: Move Up to `(1,3)`
+- **Result**: No star captured.
+- **Output**:
+  ```
+  Player 1 moves to (1,3).
+  No star at this position.
+  ```
+
+**Turn 8: Player 2**
+
+- **Action**: Move Left to `(1,3)` (encounters Player 1)
+- **Result**:
+  - Steals one star from Player 1.
+  - **Player 2 Stars**: 2
+  - **Player 1 Stars**: 0
+- **Output**:
+  ```
+  Player 2 moves to (1,3).
+  Player 2 encounters Player 1 and steals a star!
+  Player 2 total stars: 2
+  Player 1 total stars: 0
+  ```
+
+**Turn 9: Player 1**
+
+- **Action**: Move Up to `(1,4)`
+- **Result**: Star captured!
+- **Player 1 Stars**: 1
+- **Output**:
+  ```
+  Player 1 moves to (1,4).
+  Player 1 captures a star! Total stars: 1
+  ```
+
+**Turn 10: Player 2**
+
+- **Action**: Move Up to `(1,4)` (encounters Player 1)
+- **Result**:
+  - Steals one star from Player 1.
+  - **Player 2 Stars**: 3
+  - **Player 1 Stars**: 0
+- **Winning Condition Met**:
+  - Player 2 has 3 stars and wins the game.
+- **Output**:
+  ```
+  Player 2 moves to (1,4).
+  Player 2 encounters Player 1 and steals a star!
+  Player 2 total stars: 3
+  Player 1 total stars: 0
+  Player 2 has collected 3 stars and wins the game!
+  ```
+
+## Command-Line Interaction Example
+
+Below is a sample command-line interaction for a single turn.
+
+**Prompt**:
+
+```
+Player 1's Turn:
+Current Position: (1,2)
+Stars Collected: 1
+Available Moves: Up(U), Down(D), Left(L), Right(R)
+Enter your move (U/D/L/R):
+```
+
+**Player Input**:
+
+```
+R
+```
+
+**Result**:
+
+```
+Player 1 moves Right to (2,2).
+You have found a star!
+Stars Collected: 2
+```
+
+## Additional Notes
+
+- **Strategic Depth**:
+  - Players must decide whether to pursue stars, block the opponent, or attempt to steal stars.
+  - Awareness of the opponent's position and potential moves is crucial.
+- **Game Balance**:
+  - Random star placement ensures that each game is unique and requires adaptable strategies.
+  - Starting positions are equidistant from most stars to provide a fair chance for both players.
+  
+Enjoy your game of **Star Capture**, and may the most strategic player win!

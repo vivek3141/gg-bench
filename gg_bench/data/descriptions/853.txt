@@ -1,0 +1,218 @@
+**Game Title:** Number Takedown
+
+---
+
+### **Objective**
+
+Be the first player to reduce the shared number to exactly zero by strategically subtracting proper divisors on your turn.
+
+---
+
+### **Setup**
+
+1. **Select the Starting Number (N):**
+   - Players agree on a starting positive integer greater than 1 (e.g., N = 25).
+   - This number will be the shared value that players will manipulate during the game.
+
+2. **Determine Turn Order:**
+   - Decide who will take the first turn by mutual agreement or a random method (e.g., coin toss).
+
+---
+
+### **Game Components**
+
+- **Shared Number (N):**
+  - A positive integer that both players will subtract from during their turns.
+  - Updated after each turn to reflect the new value.
+
+- **Proper Divisors:**
+  - For any given N, the proper divisors are all positive integers greater than 1 and less than N that divide N exactly (without leaving a remainder).
+  - Players need to identify these divisors on their turn.
+
+---
+
+### **Turns**
+
+- **Turn Structure:**
+  1. **Announcement of Current N:**
+     - The current value of N is displayed or announced at the beginning of each turn.
+  2. **Identify Proper Divisors:**
+     - The active player determines all proper divisors of N (excluding 1 and N itself).
+  3. **Subtract a Divisor:**
+     - The player selects one proper divisor and subtracts it from N.
+  4. **Update N:**
+     - The new value of N is announced for the next player's turn.
+
+- **Turn Progression:**
+  - Players alternate turns until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves:**
+   - On your turn, you must subtract a proper divisor of the current N.
+   - **Proper Divisors Exclude:**
+     - The number 1.
+     - The number N itself.
+
+2. **Subtracting Divisors:**
+   - The selected divisor is subtracted from N:
+     \[
+     N_{\text{new}} = N_{\text{current}} - \text{Proper Divisor}
+     \]
+   - The result must be a positive integer greater than or equal to zero.
+
+3. **Winning the Game:**
+   - **Victory Condition:**
+     - If you reduce N to exactly zero on your turn, you win the game.
+   - **Losing Condition:**
+     - If it's your turn and no proper divisors (excluding 1) exist for N (i.e., N is prime or N = 1), you cannot make a move and lose the game.
+
+4. **No Draws:**
+   - The game cannot end in a tie; there will always be a winner and a loser.
+
+5. **Important Notes:**
+   - **Prime Numbers:**
+     - When N is a prime number greater than 2, it has no proper divisors other than 1 and itself.
+     - Players cannot subtract 1 or N; thus, the player faced with a prime N loses.
+   - **Strategic Play:**
+     - Aim to force your opponent into a position where N becomes a prime number on their turn.
+
+---
+
+### **Scoring**
+
+- **Winner:**
+  - The player who reduces N to exactly zero on their turn.
+- **Loser:**
+  - The player who cannot make a valid move because N has no proper divisors (excluding 1).
+
+---
+
+### **Examples**
+
+#### **Example 1**
+
+**Starting N:** 18
+
+1. **Player 1's Turn:**
+   - **Current N:** 18
+   - **Proper Divisors:** 2, 3, 6, 9
+   - **Action:** Subtract 9
+   - **New N:** 18 - 9 = 9
+
+2. **Player 2's Turn:**
+   - **Current N:** 9
+   - **Proper Divisors:** 3
+   - **Action:** Subtract 3
+   - **New N:** 9 - 3 = 6
+
+3. **Player 1's Turn:**
+   - **Current N:** 6
+   - **Proper Divisors:** 2, 3
+   - **Action:** Subtract 3
+   - **New N:** 6 - 3 = 3
+
+4. **Player 2's Turn:**
+   - **Current N:** 3
+   - **Proper Divisors:** None (since 3 is prime)
+   - **Outcome:** Player 2 cannot move and loses.
+
+**Winner:** Player 1
+
+---
+
+#### **Example 2**
+
+**Starting N:** 25
+
+1. **Player 1's Turn:**
+   - **Current N:** 25
+   - **Proper Divisors:** 5
+   - **Action:** Subtract 5
+   - **New N:** 25 - 5 = 20
+
+2. **Player 2's Turn:**
+   - **Current N:** 20
+   - **Proper Divisors:** 2, 4, 5, 10
+   - **Action:** Subtract 10
+   - **New N:** 20 - 10 = 10
+
+3. **Player 1's Turn:**
+   - **Current N:** 10
+   - **Proper Divisors:** 2, 5
+   - **Action:** Subtract 5
+   - **New N:** 10 - 5 = 5
+
+4. **Player 2's Turn:**
+   - **Current N:** 5
+   - **Proper Divisors:** None (since 5 is prime)
+   - **Outcome:** Player 2 cannot move and loses.
+
+**Winner:** Player 1
+
+---
+
+### **Command-Line Interaction Example**
+
+**Starting N:** 12
+
+**Player 1's Turn:**
+
+```
+Current N: 12
+Proper divisors of 12 (excluding 1 and 12): 2, 3, 4, 6
+Enter the divisor to subtract: 6
+New N after subtraction: 6
+```
+
+**Player 2's Turn:**
+
+```
+Current N: 6
+Proper divisors of 6 (excluding 1 and 6): 2, 3
+Enter the divisor to subtract: 2
+New N after subtraction: 4
+```
+
+**Player 1's Turn:**
+
+```
+Current N: 4
+Proper divisors of 4 (excluding 1 and 4): 2
+Enter the divisor to subtract: 2
+New N after subtraction: 2
+```
+
+**Player 2's Turn:**
+
+```
+Current N: 2
+Proper divisors of 2 (excluding 1 and 2): None
+No valid moves. N is prime.
+Player 2 cannot make a move. Player 1 wins!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead:**
+  - Anticipate the results of your subtraction to avoid leaving a prime number for your opponent.
+- **Force Primes:**
+  - Try to reduce N to a prime number on your opponent's turn, ensuring they cannot make a move.
+- **Divisor Choices:**
+  - Larger divisors reduce N quickly but may give the advantage to your opponent. Balance your choices wisely.
+- **Know Your Numbers:**
+  - Familiarity with divisibility and prime numbers enhances strategic options.
+
+---
+
+### **Game Summary**
+
+Number Takedown is a strategic numerical game where players alternately subtract proper divisors to reduce a shared number to zero. The game's simplicity makes it easy to learn and code, yet it offers depth for players who enjoy mathematical strategy. With no possibility of a draw and the potential for quick gameplay, it's an engaging challenge that rewards foresight and numerical proficiency.
+
+---
+
+Enjoy playing **Number Takedown** and may the best strategist win!

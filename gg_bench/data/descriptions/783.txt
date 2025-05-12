@@ -1,0 +1,286 @@
+# **Pattern Clash**
+
+---
+
+## **Objective**
+
+Be the first player to complete your unique pattern on a shared 5x5 grid by strategically placing your symbols and blocking your opponent's attempts to complete their pattern.
+
+---
+
+## **Setup**
+
+- **Grid:** A 5x5 grid represented in the command-line interface.
+- **Symbols:**
+  - **Player 1:** 'X'
+  - **Player 2:** 'O'
+- **Patterns:**
+  - **Player 1's Target Pattern:** 'L' shape (rotations and reflections allowed).
+  - **Player 2's Target Pattern:** 'T' shape (rotations and reflections allowed).
+
+---
+
+## **Game Components**
+
+### **Grid**
+
+- A grid of 5 rows and 5 columns.
+- Cells are identified by coordinates `(row, column)`, with rows and columns numbered from 1 to 5.
+- Example of an empty grid:
+
+  ```
+     1   2   3   4   5
+  1  .   .   .   .   .
+  2  .   .   .   .   .
+  3  .   .   .   .   .
+  4  .   .   .   .   .
+  5  .   .   .   .   .
+  ```
+
+### **Symbols**
+
+- **Player 1:** Uses the symbol 'X'.
+- **Player 2:** Uses the symbol 'O'.
+
+---
+
+## **Turns**
+
+1. **Starting the Game:**
+   - Players decide who goes first (e.g., by coin toss).
+
+2. **Turn Structure:**
+   - Players alternate turns throughout the game.
+   - On your turn:
+     - Enter the coordinates `(row, column)` of an empty cell to place your symbol.
+     - The cell must not already be occupied.
+
+3. **Example Turn:**
+   - **Player 1's Turn:** Places 'X' at (3, 3).
+   - **Player 2's Turn:** Places 'O' at (2, 3).
+
+---
+
+## **Rules and Mechanics**
+
+### **1. Placing Symbols**
+
+- On your turn, place your symbol in any unoccupied cell.
+- Symbols remain in place once set; they cannot be moved or removed.
+
+### **2. Winning the Game**
+
+- **Objective:** Form your target pattern anywhere on the grid.
+- **Pattern Completion:**
+  - The pattern must exactly match the shape of your target pattern.
+  - Patterns can be placed in any orientation (rotated or reflected).
+
+### **3. Target Patterns**
+
+#### **Player 1's 'L' Shape**
+
+- **Description:** Comprises 5 'X's forming an 'L'.
+- **Formation:** 
+  - Vertical line of 3 'X's connected to a horizontal line of 2 'X's.
+  - The connection can be at any end of the vertical line.
+- **Orientations:**
+  - Upright, upside-down, left-facing, or right-facing.
+  - Rotations and reflections are allowed.
+
+#### **Player 2's 'T' Shape**
+
+- **Description:** Comprises 5 'O's forming a 'T'.
+- **Formation:** 
+  - Vertical line of 3 'O's with a horizontal line of 3 'O's intersecting at the middle.
+- **Orientations:**
+  - Upright, upside-down, left-facing, or right-facing.
+  - Rotations and reflections are allowed.
+
+### **4. Blocking and Strategy**
+
+- You can place your symbol to block your opponent from completing their pattern.
+- Pay attention to your opponent's moves and anticipate their strategy.
+
+### **5. Game End Conditions**
+
+- **Win:** The first player to complete their pattern wins immediately.
+- **No Available Moves:** If the grid is filled without any player completing their pattern, the game continues until a player wins.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+**Initial Grid:**
+
+```
+   1   2   3   4   5
+1  .   .   .   .   .
+2  .   .   .   .   .
+3  .   .   .   .   .
+4  .   .   .   .   .
+5  .   .   .   .   .
+```
+
+**Turns:**
+
+1. **Player 1 ('X'):** Places at (3, 3).
+2. **Player 2 ('O'):** Places at (2, 3).
+3. **Player 1 ('X'):** Places at (4, 3).
+4. **Player 2 ('O'):** Places at (2, 2).
+5. **Player 1 ('X'):** Places at (5, 3).
+6. **Victory Condition Check:**
+   - Player 1 needs to complete the horizontal part of the 'L'.
+7. **Player 2 ('O'):** Places at (2, 4) to form part of their 'T' and block Player 1.
+8. **Player 1 ('X'):** Places at (5, 4).
+9. **Player 2 ('O'):** Places at (2, 5).
+10. **Player 2 completes the 'T' shape and wins.**
+
+**Final Grid:**
+
+```
+   1   2   3   4   5
+1  .   .   .   .   .
+2  .   O   O   O   O
+3  .   .   X   .   .
+4  .   .   X   .   .
+5  .   .   X   X   .
+```
+
+---
+
+## **Scoring**
+
+- **Winning:** The player who first completes their pattern wins.
+- There is no point accumulation; it's a win/lose outcome.
+
+---
+
+## **Pattern Examples**
+
+### **Player 1's 'L' Shape Variations**
+
+- **Upright 'L':**
+
+  ```
+  . X
+  . X
+  X X
+  ```
+
+- **Upside-Down 'L':**
+
+  ```
+  X X
+  . X
+  . X
+  ```
+
+- **Left-Facing 'L':**
+
+  ```
+  X . .
+  X . .
+  X X .
+  ```
+
+- **Right-Facing 'L':**
+
+  ```
+  . . X
+  . . X
+  . X X
+  ```
+
+### **Player 2's 'T' Shape Variations**
+
+- **Upright 'T':**
+
+  ```
+  O O O
+    O
+    O
+  ```
+
+- **Upside-Down 'T':**
+
+  ```
+    O
+    O
+  O O O
+  ```
+
+- **Left-Facing 'T':**
+
+  ```
+    O
+  O O O
+    O
+  ```
+
+- **Right-Facing 'T':**
+
+  ```
+    O
+  O O O
+    O
+  ```
+
+**Note:** Patterns can be rotated or mirrored in any way.
+
+---
+
+## **Strategy Tips**
+
+- **Block Your Opponent:** Pay attention to where your opponent places their symbols and block critical positions.
+- **Multiple Orientations:** Consider all possible orientations of your pattern to maximize opportunities.
+- **Plan Ahead:** Think several moves ahead to set up your pattern while disrupting your opponent's plans.
+
+---
+
+## **Command-Line Interaction Example**
+
+**Starting the Game:**
+
+```
+Welcome to Pattern Clash!
+Player 1 is 'X'.
+Player 2 is 'O'.
+
+Player 1, enter your move (row column): 3 3
+```
+
+**Displaying the Grid:**
+
+```
+Current Grid:
+   1   2   3   4   5
+1  .   .   .   .   .
+2  .   .   .   .   .
+3  .   .   X   .   .
+4  .   .   .   .   .
+5  .   .   .   .   .
+
+Player 2, enter your move (row column): 2 3
+```
+
+**Announcing the Winner:**
+
+```
+Player 2 has completed their 'T' pattern and wins the game!
+```
+
+---
+
+## **Additional Notes**
+
+- **Invalid Moves:**
+  - If a player attempts to place a symbol on an occupied cell or outside the grid, prompt them to choose again.
+- **Game Continuation:**
+  - If all cells are filled without a winner, the game continues until a player completes their pattern, but since symbols cannot be moved, it's likely a stalemate.
+  - **Important:** This scenario is extremely rare due to the grid size and pattern possibilities.
+
+---
+
+By following these rules, players can engage in a strategic battle of wits, where every move counts. Stay sharp, plan your pattern, and may the best strategist win!

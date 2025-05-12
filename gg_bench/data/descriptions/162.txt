@@ -1,0 +1,227 @@
+**Number Chain Duel**
+
+---
+
+### **Objective**
+
+Be the first player to complete your number chain when the opponent cannot make a valid move. Utilize strategic selection of numbers to extend your chain while limiting your opponent's options. The game ends when a player cannot add a valid number to their chain, resulting in their loss.
+
+---
+
+### **Setup**
+
+1. **Number Pool**: Create a shared pool of numbers from **1** to **9**.
+2. **Chains**: Each player starts with an **empty chain**.
+3. **Player Order**: Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by a simple random method like flipping a coin.
+
+---
+
+### **Game Components**
+
+- **Number Pool**:
+  - A set of numbers: **1, 2, 3, 4, 5, 6, 7, 8, 9**.
+  - Numbers are **removed** from the pool once selected and cannot be used again by either player.
+- **Player Chains**:
+  - Each player maintains their own sequence of numbers known as a **chain**.
+  - Chains begin **empty** and grow as players add numbers during their turns.
+
+---
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns starting with **Player 1**.
+- **Turn Actions**:
+  1. **Select a Number**: Choose a valid number from the **Number Pool**.
+  2. **Add to Chain**: Append the selected number to the **end** of your chain.
+  3. **Update Number Pool**: Remove the selected number from the **Number Pool**.
+- **Turn Progression**: The game continues with players taking turns until a player cannot make a valid move.
+
+---
+
+### **Rules and Mechanics**
+
+1. **First Number Selection**:
+   - If your chain is **empty**, you may select **any** number from the Number Pool.
+2. **Adding Numbers to Chain**:
+   - The number you select must be a **factor** or a **multiple** of the **last number** in your chain.
+     - **Factor**: A number that divides evenly into the last number.
+     - **Multiple**: A number that the last number divides evenly into.
+3. **Valid Moves**:
+   - You **must** select a number that meets the factor or multiple rule.
+   - If there is no valid number available, you **lose** the game.
+4. **Number Usage**:
+   - Once a number is selected by either player, it is **removed** from the Number Pool and cannot be selected again.
+5. **Winning the Game**:
+   - A player **wins** when their opponent cannot make a valid move on their turn.
+
+---
+
+### **Scoring**
+
+- **Win Condition**: The game is a **win-or-lose** scenario with no points or draws.
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds.
+  - Keep track of **wins** to determine an overall winner after a set number of games.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Number Pool**: `1, 2, 3, 4, 5, 6, 7, 8, 9`
+
+---
+
+**Player 1's Turn**:
+
+- **Chain**: `Empty`
+- **Action**: Chooses **3** (any number is valid since the chain is empty).
+- **Chain After Turn**: `[3]`
+- **Number Pool**: `1, 2, 4, 5, 6, 7, 8, 9`
+
+---
+
+**Player 2's Turn**:
+
+- **Chain**: `Empty`
+- **Action**: Chooses **4**.
+- **Chain After Turn**: `[4]`
+- **Number Pool**: `1, 2, 5, 6, 7, 8, 9`
+
+---
+
+**Player 1's Turn**:
+
+- **Chain**: `[3]`
+- **Last Number in Chain**: `3`
+- **Valid Choices** (Factors or Multiples of `3`): `1, 6, 9`
+- **Action**: Chooses **6**.
+- **Chain After Turn**: `[3, 6]`
+- **Number Pool**: `1, 2, 5, 7, 8, 9`
+
+---
+
+**Player 2's Turn**:
+
+- **Chain**: `[4]`
+- **Last Number in Chain**: `4`
+- **Valid Choices** (Factors or Multiples of `4`): `1, 2, 8`
+- **Action**: Chooses **2**.
+- **Chain After Turn**: `[4, 2]`
+- **Number Pool**: `5, 7, 8, 9`
+
+---
+
+**Player 1's Turn**:
+
+- **Chain**: `[3, 6]`
+- **Last Number in Chain**: `6`
+- **Valid Choices**: Factors or multiples of `6`: `1, 9`
+- **Action**: Chooses **9**.
+- **Chain After Turn**: `[3, 6, 9]`
+- **Number Pool**: `5, 7, 8`
+
+---
+
+**Player 2's Turn**:
+
+- **Chain**: `[4, 2]`
+- **Last Number in Chain**: `2`
+- **Valid Choices**: Factors or multiples of `2`: `8`
+- **Action**: Chooses **8**.
+- **Chain After Turn**: `[4, 2, 8]`
+- **Number Pool**: `5, 7`
+
+---
+
+**Player 1's Turn**:
+
+- **Chain**: `[3, 6, 9]`
+- **Last Number in Chain**: `9`
+- **Valid Choices**: Factors or multiples of `9`: `None` (since `9`'s factors/multiples `1` and `3` are already used)
+- **Action**: Cannot make a valid move.
+- **Result**: **Player 2 Wins**
+
+---
+
+### **Command-Line Interaction Sample**
+
+#### **Starting the Game**
+
+```
+Welcome to Number Chain Duel!
+Player 1 and Player 2, get ready to build your chains.
+The Number Pool is: 1, 2, 3, 4, 5, 6, 7, 8, 9
+```
+
+---
+
+#### **Player 1's Turn**
+
+```
+Player 1's Chain: []
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Player 1, select a number to start your chain: 5
+Player 1's Chain is now: [5]
+```
+
+---
+
+#### **Player 2's Turn**
+
+```
+Player 2's Chain: []
+Available Numbers: 1, 2, 3, 4, 6, 7, 8, 9
+Player 2, select a number to start your chain: 3
+Player 2's Chain is now: [3]
+```
+
+---
+
+#### **Player 1's Next Turn**
+
+```
+Player 1's Chain: [5]
+Available Numbers: 1, 2, 4, 6, 7, 8, 9
+Valid Choices (Factors or Multiples of 5): 1
+Player 1, select a number to add to your chain: 1
+Player 1's Chain is now: [5, 1]
+```
+
+---
+
+#### **Continuing the Game**
+
+- The game continues with players taking turns, following the rules for valid number selection.
+- If a player cannot make a valid move, the game announces the winner.
+
+---
+
+#### **Ending the Game**
+
+```
+Player 2's Chain: [3, 6, 9]
+Available Numbers: 2, 4, 7, 8
+No valid moves available for Player 2.
+Player 1 Wins the Game!
+```
+
+---
+
+### **Strategies and Tips**
+
+- **Plan Ahead**: Pay attention to the numbers your opponent may need and consider selecting them first.
+- **Control the Pool**: Choose numbers that limit your opponent's future options.
+- **Chain Flexibility**: Build a chain with numbers that have multiple factors or multiples to keep your options open.
+- **Resource Management**: Remember that once a number is used, it's gone. Use high-value numbers wisely.
+
+---
+
+### **Conclusion**
+
+Number Chain Duel is a game of numerical strategy and foresight. By carefully selecting numbers and anticipating your opponent's moves, you can control the flow of the game and lead yourself to victory. Enjoy sharpening your numerical thinking and strategic planning in this exciting duel!
+
+---
+
+**Happy Gaming!**

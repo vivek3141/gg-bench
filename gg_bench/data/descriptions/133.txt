@@ -1,0 +1,237 @@
+# Number Tower
+
+## Objective
+
+**Primary Goal:**  
+Be the player to successfully place the last number on the Number Tower, forcing your opponent into a position where they cannot make a valid move according to the game rules. The game tests numerical strategy and foresight, rewarding players who can anticipate and plan ahead.
+
+## Setup
+
+1. **Players:**  
+   - Two players are required.
+   - Decide who will be Player 1 and Player 2. This can be determined randomly or by agreement.
+
+2. **Number Tower Initialization:**  
+   - Start with an empty Number Tower.
+   - No pieces or numbers are on the tower at the beginning of the game.
+
+## Game Components
+
+- **Number Tower:**  
+  - A virtual stack or list that represents the tower.
+  - Numbers are added to the top of the tower as the game progresses.
+
+- **Numbers:**  
+  - Integers from **1** to **9** inclusive.
+  - Each number is considered a game piece that players can place on the tower during their turn.
+
+## Turns
+
+1. **Turn Structure:**  
+   - Players take turns alternately, starting with Player 1.
+   - On each turn, a player must add a valid number to the top of the Number Tower.
+
+2. **Player Actions During a Turn:**  
+   - **Select a Number:** Choose a number between 1 and 9.
+   - **Place the Number:** Add the chosen number to the top of the Number Tower, adhering to the placement rules.
+
+3. **Progression of Turns:**  
+   - The game continues with players adding numbers in turns until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+1. **Initial Move:**  
+   - Since the tower is empty, Player 1 can place any number between 1 and 9.
+
+2. **Placing Numbers:**  
+   - **Valid Moves:**  
+     - The number you place must be either a **factor** or a **multiple** of the number directly below it on the tower.
+     - Example: If the number below is 4, the next number can be 2 (factor of 4), 1 (factor of all numbers), 8 (multiple of 4), etc.
+   - **Invalid Moves:**  
+     - Placing a number that is neither a factor nor a multiple of the number below.
+     - Using numbers outside the 1-9 range.
+
+3. **Winning the Game:**  
+   - **Victory Condition:**  
+     - If a player cannot place a valid number on their turn, they lose the game.
+     - The opposing player who placed the last valid number wins.
+
+4. **Additional Rules:**  
+   - **Number Availability:**  
+     - There is an unlimited supply of numbers from 1 to 9; numbers can be reused any number of times.
+   - **Strategy Note:**  
+     - Players should anticipate future moves to avoid placing numbers that lead to their own defeat.
+
+## Scoring
+
+- **Winning the Game:**  
+  - The winner is the player who successfully places a number when the opponent cannot respond with a valid move.
+
+- **No Point System:**  
+  - There is no point tracking; the game outcome is simply win or lose.
+
+## Examples
+
+### Example Game Play
+
+#### Scenario 1:
+
+1. **Player 1's Turn:**
+   - The tower is empty.
+   - Player 1 places **6** on the tower.
+   - Tower now: [6]
+
+2. **Player 2's Turn:**
+   - The number on top is **6**.
+   - Player 2 can place any factor or multiple of 6 between 1 and 9.
+   - Choices: 1, 2, 3, 6, or 9 (since 6 x 1.5 = 9).
+   - Player 2 chooses **3**.
+   - Tower now: [6, 3]
+
+3. **Player 1's Turn:**
+   - The number on top is **3**.
+   - Valid choices: 1, 3, 6, or 9.
+   - Player 1 chooses **9**.
+   - Tower now: [6, 3, 9]
+
+4. **Player 2's Turn:**
+   - The number on top is **9**.
+   - Valid choices: 1, 3, 9.
+   - Player 2 chooses **1**.
+   - Tower now: [6, 3, 9, 1]
+
+5. **Player 1's Turn:**
+   - The number on top is **1**.
+   - Since 1 is a factor and multiple of all numbers, any number from 1 to 9 is valid.
+   - Player 1 chooses **7**.
+   - Tower now: [6, 3, 9, 1, 7]
+
+6. **Player 2's Turn:**
+   - The number on top is **7**.
+   - Valid choices: 1, 7.
+   - Player 2 chooses **7**.
+   - Tower now: [6, 3, 9, 1, 7, 7]
+
+7. **Player 1's Turn:**
+   - The number on top is **7**.
+   - Valid choices: 1, 7.
+   - Player 1 chooses **1**.
+   - Tower now: [6, 3, 9, 1, 7, 7, 1]
+
+8. **Player 2's Turn:**
+   - The number on top is **1**.
+   - Any number from 1 to 9 is valid.
+   - Player 2 chooses **5**.
+   - Tower now: [6, 3, 9, 1, 7, 7, 1, 5]
+
+9. **Player 1's Turn:**
+   - The number on top is **5**.
+   - Valid choices: 1, 5.
+   - Player 1 chooses **5**.
+   - Tower now: [6, 3, 9, 1, 7, 7, 1, 5, 5]
+
+10. **Player 2's Turn:**
+    - The number on top is **5**.
+    - Valid choices: 1, 5.
+    - Player 2 has already used 5 multiple times but can use it again.
+    - Player 2 chooses **1**.
+    - Tower now: [6, 3, 9, 1, 7, 7, 1, 5, 5, 1]
+
+11. **Player 1's Turn:**
+    - The number on top is **1**.
+    - Any number from 1 to 9 is valid.
+    - Player 1 chooses **4**.
+    - Tower now: [6, 3, 9, 1, 7, 7, 1, 5, 5, 1, 4]
+
+12. **Player 2's Turn:**
+    - The number on top is **4**.
+    - Valid choices: 1, 2, 4, 8.
+    - Player 2 chooses **2**.
+    - Tower now: [6, 3, 9, 1, 7, 7, 1, 5, 5, 1, 4, 2]
+
+13. **Player 1's Turn:**
+    - The number on top is **2**.
+    - Valid choices: 1, 2, 4, 6, 8.
+    - Player 1 chooses **6**.
+    - Tower now: [6, 3, 9, 1, 7, 7, 1, 5, 5, 1, 4, 2, 6]
+
+14. **Player 2's Turn:**
+    - The number on top is **6**.
+    - Valid choices: 1, 2, 3, 6, 9.
+    - Player 2 cannot choose a number that forces Player 1 into an impossible position.
+
+Assuming the game continues, eventually one player will be unable to place a number according to the rules.
+
+#### Scenario 2: Ending the Game
+
+Suppose later in the game:
+
+- **Number on top is 7.**
+- **Player's Turn:** Needs to place a factor or multiple of 7.
+- **Valid options:** 1, 7.
+
+If **Player 1** has to play and has already strategically forced **Player 2** into a corner, they can choose **7**, leaving Player 2 with only one valid move (**1**). Eventually, if they can force a situation where the opponent cannot make any valid move, they win.
+
+## Command-Line Interaction Example
+
+Below is a sample interaction in a command-line interface:
+
+```
+=== Number Tower Game ===
+
+Tower: Empty
+
+Player 1's Turn:
+Choose a number (1-9): 6
+
+Tower: [6]
+
+Player 2's Turn:
+Top of Tower is 6
+Valid numbers: [1,2,3,6,9]
+Choose a number (1-9): 3
+
+Tower: [6,3]
+
+Player 1's Turn:
+Top of Tower is 3
+Valid numbers: [1,3,6,9]
+Choose a number (1-9): 9
+
+Tower: [6,3,9]
+
+...
+
+(Player turns continue)
+
+...
+
+Player 2's Turn:
+Top of Tower is 5
+Valid numbers: [1,5]
+Choose a number (1-9): 2
+Invalid move! 2 is neither a factor nor a multiple of 5.
+
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:**  
+  Anticipate the possible numbers your opponent can play in response to your moves.
+
+- **Use '1' Wisely:**  
+  Since 1 is a universal factor and multiple, it can prolong the game or set up strategic plays.
+
+- **Control the Tower:**  
+  Place numbers that limit your opponent's options while keeping your future moves flexible.
+
+- **Forcing Moves:**  
+  Aim to force your opponent into a position where their only valid moves will allow you to win on your next turn.
+
+## Conclusion
+
+Number Tower is a simple yet strategic game that challenges players to think ahead and use basic numerical relationships to outmaneuver their opponent. With straightforward rules and minimal components, it's perfect for quick matches and easy implementation in a command-line interface.
+
+Have fun building your Number Tower and may the best strategist win!

@@ -1,0 +1,193 @@
+# Operation Duel
+
+**A Two-Player Turn-Based Strategy Game**
+
+## Objective
+
+The primary goal of Operation Duel is to be the first player to reach the **target number** exactly by performing strategic arithmetic operations on a **current number**. Players take turns applying operations to the current number, and the first to reach the target number **exactly** wins the game. If a player causes the current number to exceed the target number, they **lose** immediately.
+
+---
+
+## Setup
+
+1. **Determine the Target Number**: Decide on a target number \( T \) that players will aim to reach. A reasonable starting value is **20**, but players can agree on any positive integer.
+   
+2. **Set the Starting Number**: Initialize the current number \( C \) to **1**. This is the number that players will manipulate during the game.
+   
+3. **Decide Turn Order**: Players agree on who will take the first turn. This can be decided randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Current Number \( C \)**:
+  - An integer that starts at **1**.
+  - It is updated by players on each turn.
+  - It should be displayed prominently after each move.
+
+- **Target Number \( T \)**:
+  - The number players aim to reach exactly.
+  - Agreed upon before the game starts.
+
+- **Operations**:
+  - Players have two available operations to apply to the current number:
+    1. **Addition (+1)**: Add **1** to the current number.
+    2. **Multiplication (×2)**: Multiply the current number by **2**.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns, starting with the player who was chosen to go first during setup.
+
+2. **Player Actions**:
+   - On their turn, a player must choose **one** of the two operations to apply to the current number \( C \):
+     - **Add 1**: \( C = C + 1 \)
+     - **Multiply by 2**: \( C = C \times 2 \)
+   - The chosen operation is applied immediately, and the new current number is announced.
+
+3. **Progression of Turns**:
+   - After a player completes their turn, control passes to the other player.
+   - The game continues in this alternating fashion until the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Operations**:
+   - Only the two specified operations (addition of 1 or multiplication by 2) are allowed.
+   - Players must choose an operation that keeps the current number within or equal to the target number.
+
+2. **Winning the Game**:
+   - **Exact Match**: The first player to manipulate the current number to **exactly** match the target number \( T \) **wins** the game.
+
+3. **Losing the Game**:
+   - **Overstepping the Target**: If a player's operation causes the current number \( C \) to exceed the target number \( T \), that player **immediately loses** the game.
+
+4. **Stalemate Prevention**:
+   - Given the available operations, the game cannot end in a draw or stalemate. A win or loss is always achieved.
+
+5. **Strategic Considerations**:
+   - Players must plan ahead to avoid forcing themselves into a losing move.
+   - Anticipating the opponent's options is key to victory.
+
+---
+
+## Scoring
+
+- **Single-Game Victory**:
+  - The player who reaches the target number exactly is declared the **winner** of the game.
+
+- **Match Play (Optional)**:
+  - Players can compete in multiple rounds.
+  - Keep track of victories, and the player with the most wins after a set number of games is the overall winner.
+
+---
+
+## Examples
+
+### Example Game
+
+**Target Number**: \( T = 20 \)
+
+**Starting Number**: \( C = 1 \)
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Operation**: Multiply by 2
+   - **Calculation**: \( C = 1 \times 2 = 2 \)
+   - **Announcement**: "I multiplied by 2. Current number is now **2**."
+
+2. **Player 2's Turn**:
+   - **Operation**: Add 1
+   - **Calculation**: \( C = 2 + 1 = 3 \)
+   - **Announcement**: "I added 1. Current number is now **3**."
+
+3. **Player 1's Turn**:
+   - **Operation**: Multiply by 2
+   - **Calculation**: \( C = 3 \times 2 = 6 \)
+   - **Announcement**: "I multiplied by 2. Current number is now **6**."
+
+4. **Player 2's Turn**:
+   - **Operation**: Add 1
+   - **Calculation**: \( C = 6 + 1 = 7 \)
+   - **Announcement**: "I added 1. Current number is now **7**."
+
+5. **Player 1's Turn**:
+   - **Operation**: Multiply by 2
+   - **Calculation**: \( C = 7 \times 2 = 14 \)
+   - **Announcement**: "I multiplied by 2. Current number is now **14**."
+
+6. **Player 2's Turn**:
+   - **Operation**: Add 1
+   - **Calculation**: \( C = 14 + 1 = 15 \)
+   - **Announcement**: "I added 1. Current number is now **15**."
+
+7. **Player 1's Turn**:
+   - **Operation**: Multiply by 2
+   - **Calculation**: \( C = 15 \times 2 = 30 \)
+   - **Outcome**: Since \( 30 > 20 \), Player 1 **loses**.
+   - **Announcement**: "I multiplied by 2. Current number is now **30**. I have exceeded the target number. I lose."
+
+**Winner**: Player 2
+
+---
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction for a command-line implementation:
+
+```
+Welcome to Operation Duel!
+Target Number (T): 20
+Starting Number (C): 1
+
+Player 1, it's your turn.
+Current Number is 1.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+You chose to multiply by 2.
+New Current Number is 2.
+
+Player 2, it's your turn.
+Current Number is 2.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 1
+You chose to add 1.
+New Current Number is 3.
+
+[...game continues in the same pattern...]
+
+Player 1, it's your turn.
+Current Number is 15.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+You chose to multiply by 2.
+New Current Number is 30.
+You have exceeded the target number!
+Player 2 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Avoid Exceeding the Target**: Always calculate the potential new current number before deciding on an operation to ensure you don't exceed \( T \).
+
+- **Forced Moves**: Try to force your opponent into a position where any move they make will cause them to exceed the target number.
+
+- **Look Ahead**: Anticipate future moves by considering how your operation will affect the subsequent possible moves for both players.
+
+---
+
+## Conclusion
+
+Operation Duel is a simple yet strategic game that challenges players to think ahead and make calculated decisions. With straightforward rules and quick gameplay, it offers an engaging experience that can be easily implemented in a command-line interface. Whether you're playing a single round or a series of matches, Operation Duel provides ample opportunity for strategic depth and competitive fun.

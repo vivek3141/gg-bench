@@ -1,0 +1,208 @@
+# Prime Division Duel
+
+## Objective
+
+Be the first player to reduce the shared number to exactly **1** by dividing it by its prime factors. The player who achieves **N = 1** on their turn wins the game.
+
+---
+
+## Setup
+
+1. **Starting Number Selection:**
+   - Agree on a starting positive integer **N > 1**. For a quick game, it's recommended to start with **N = 30**.
+   
+2. **Determine Turn Order:**
+   - Decide who takes the first turn (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Shared Number (N):**
+  - A positive integer that both players manipulate during the game.
+  
+- **No Physical Components Needed:**
+  - The game is played entirely through calculations and declarations, making it ideal for a command-line interface.
+
+---
+
+## Turns
+
+### Turn Structure:
+
+1. **Announcement:**
+   - The current value of **N** is announced at the start of each turn.
+
+2. **Prime Factor Selection:**
+   - The active player selects a prime factor of **N** (excluding **1**).
+
+3. **Division:**
+   - **N** is divided by the chosen prime factor.
+   - The result becomes the new **N**.
+
+4. **Declaration:**
+   - The player announces the chosen prime factor and the new value of **N**.
+
+5. **Turn Progression:**
+   - Turns alternate between the two players until the game ends.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules:
+
+1. **Valid Moves:**
+   - On your turn, you must divide **N** by one of its prime factors greater than **1**.
+   - The prime factor must divide evenly into **N** (no remainders).
+
+2. **Updating N:**
+   - After division, update **N** to the new value.
+   - Example: If **N = 30** and you choose prime factor **5**, then **N** becomes `30 ÷ 5 = 6`.
+
+3. **Winning the Game:**
+   - If your move reduces **N** to exactly **1**, you win.
+   - The game ends immediately upon reaching **N = 1**.
+
+4. **Prime Number Scenario:**
+   - If **N** is a prime number on your turn, your only valid move is to divide **N** by itself.
+   - This will always reduce **N** to **1**, potentially securing a win.
+
+5. **Invalid Moves:**
+   - Dividing by **1** or a non-prime number is not allowed.
+   - If a player cannot make a valid move, they lose their turn (though this situation should not occur with correct play).
+
+### Special Notes:
+
+- **Prime Factor Definition:**
+  - A prime factor is a prime number that divides **N** exactly without leaving a remainder.
+
+- **No Skipping Turns:**
+  - Players must make a valid move if one is available.
+
+- **No Draws:**
+  - The game cannot end in a draw; play continues until **N** is reduced to **1**.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The first player to reduce **N** to **1** wins.
+  
+- **Tracking Progress:**
+  - Keep a record of **N** after each turn to monitor the game's progress.
+
+---
+
+## Examples
+
+### Example Game Starting with N = 30
+
+#### Initial Setup:
+
+- **N = 30**
+- **Player 1** and **Player 2** decide who goes first.
+
+#### Game Play:
+
+1. **Player 1's Turn:**
+
+   - **Current N:** 30
+   - **Prime Factors of 30:** 2, 3, 5
+   - **Choice:** Divide by **5**
+   - **Calculation:** `30 ÷ 5 = 6`
+   - **Announcement:** "I divide by 5. N is now 6."
+
+2. **Player 2's Turn:**
+
+   - **Current N:** 6
+   - **Prime Factors of 6:** 2, 3
+   - **Choice:** Divide by **2**
+   - **Calculation:** `6 ÷ 2 = 3`
+   - **Announcement:** "I divide by 2. N is now 3."
+
+3. **Player 1's Turn:**
+
+   - **Current N:** 3 (a prime number)
+   - **Prime Factors of 3:** 3
+   - **Choice:** Divide by **3**
+   - **Calculation:** `3 ÷ 3 = 1`
+   - **Announcement:** "I divide by 3. N is now 1. I win!"
+
+#### Outcome:
+
+- **Player 1** wins by reducing **N** to **1**.
+
+---
+
+## Command-Line Interaction Example
+
+```
+Game Start: N = 30
+
+Player 1's Turn
+Available prime factors of 30: 2, 3, 5
+Enter prime factor to divide N: 5
+Player 1 divides by 5. N is now 6.
+
+Player 2's Turn
+Available prime factors of 6: 2, 3
+Enter prime factor to divide N: 2
+Player 2 divides by 2. N is now 3.
+
+Player 1's Turn
+Available prime factors of 3: 3
+Enter prime factor to divide N: 3
+Player 1 divides by 3. N is now 1.
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:**
+  - Anticipate your opponent's possible moves based on the resulting **N** after your turn.
+
+- **Prime Positioning:**
+  - Try to leave **N** as a prime number when it's your opponent's turn to limit their options.
+
+- **Avoiding Traps:**
+  - Be cautious of dividing **N** into a small composite number that could allow your opponent to win on their next turn.
+
+---
+
+## Examples of Prime Factors
+
+- **Prime Numbers between 2 and 29:**
+  - 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+- **Composite Number Example:**
+  - If **N = 14**, the prime factors are **2** and **7**.
+
+---
+
+## Variations
+
+### Starting Number Variations:
+
+- **Longer Game:**
+  - Start with a larger **N** (e.g., **N = 210**).
+- **Shorter Game:**
+  - Start with a smaller **N** (e.g., **N = 15**).
+
+### Additional Rules:
+
+- **Forbidden Primes:**
+  - Agree to exclude certain primes to increase difficulty.
+- **Multiple Divisions:**
+  - Allow players to divide by multiple prime factors in one turn (advanced play).
+
+---
+
+## Conclusion
+
+Prime Division Duel is a simple yet strategic game that challenges players to use basic arithmetic and foresight. It's perfect for quick matches and can be easily implemented in a command-line interface, making it both accessible and engaging for players of all skill levels.
+
+Enjoy the battle of wits, and may the best mathematician win!

@@ -1,0 +1,193 @@
+**Sequence Duel**  
+
+---
+
+### **Objective**
+
+Be the first player to construct a sequence of three numbers where each number is a divisor of the next number in the sequence. The sequence must consist of numbers you've selected during the game. The first player to achieve this wins the game.
+
+---
+
+### **Setup**
+
+1. **Number Pool**: A shared pool of integers ranging from **2 to 30**.
+2. **Players**: Two players compete against each other.
+3. **Starting Condition**: No numbers have been selected yet. All numbers from 2 to 30 are available in the pool.
+
+---
+
+### **Game Components**
+
+- **Number Pool**: A list of integers from 2 to 30. This is the shared resource from which players select numbers.
+- **Player Collections**: Each player has their own collection of numbers they've selected from the pool.
+- **Sequence**: A sequence of three numbers where each number divides the next (e.g., 2 divides 4 divides 8).
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Players take turns alternately. Decide who goes first by mutual agreement or a random method.
+2. **Actions Per Turn**:
+   - **Select a Number**: On your turn, pick any one available number from the number pool and add it to your collection.
+3. **Turn Progression**: After a player selects a number, it's the other player's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+   - Players can choose any number from the pool during their turn.
+   - Once a number is selected, it is removed from the pool and cannot be selected again.
+2. **Building Your Sequence**:
+   - Each player aims to collect numbers that can form a sequence where each number divides the next.
+   - The sequence must consist of exactly **three numbers** from your collection.
+   - Numbers in the sequence can be arranged in any order from your collection to satisfy the divisibility condition.
+3. **Visibility**:
+   - All selected numbers are visible to both players.
+   - Players keep track of both their own and the opponent's selected numbers.
+4. **Winning the Game**:
+   - The first player to have three numbers in their collection that can form a valid sequence wins immediately.
+   - If a player achieves this condition, they must declare it at the start of their next turn.
+5. **No Draws**:
+   - Since numbers are finite and the game ends when a player forms a valid sequence, there is always a winner.
+6. **Strategic Considerations**:
+   - Players can block opponents by selecting numbers they might need.
+   - Pay attention to the numbers your opponent selects to anticipate their strategy.
+
+---
+
+### **Scoring**
+
+- **Victory Condition**: The game is won by achieving the objective before your opponent.
+- There are no points or additional scoring mechanisms beyond winning the game.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Number Pool**: 2 to 10 (for simplicity in this example)
+
+#### **Turn 1**
+
+- **Player 1** selects **4**.
+  - Player 1's collection: [4]
+  - Player 2's collection: []
+  - Remaining Pool: [2, 3, 5, 6, 7, 8, 9, 10]
+
+#### **Turn 2**
+
+- **Player 2** selects **5**.
+  - Player 1's collection: [4]
+  - Player 2's collection: [5]
+  - Remaining Pool: [2, 3, 6, 7, 8, 9, 10]
+
+#### **Turn 3**
+
+- **Player 1** selects **6**.
+  - Player 1's collection: [4, 6]
+  - Player 2's collection: [5]
+  - Remaining Pool: [2, 3, 7, 8, 9, 10]
+
+#### **Turn 4**
+
+- **Player 2** selects **10**.
+  - Player 1's collection: [4, 6]
+  - Player 2's collection: [5, 10]
+  - Remaining Pool: [2, 3, 7, 8, 9]
+
+#### **Turn 5**
+
+- **Player 1** selects **12**.
+  - Player 1's collection: [4, 6, 12]
+    - Possible sequences:
+      - **4 divides 12**, **6 divides 12**.
+      - Arrange as [4, 6, 12]: 4 divides 6, 6 divides 12.
+  - Player 2's collection: [5, 10]
+  - Remaining Pool: [2, 3, 7, 8, 9]
+
+**Player 1** declares a win at the start of their next turn due to having a valid sequence: **4 divides 6 divides 12**.
+
+---
+
+### **Command-Line Interaction Sample**
+
+#### **Start of Game**
+
+```
+Welcome to Sequence Duel!
+
+Available Numbers: 2-30
+
+Player 1, you go first.
+```
+
+#### **Turn Example**
+
+```
+Player 1's Turn
+Selected Numbers: [None]
+Available Numbers: 2-30
+
+Enter a number to select: 15
+
+Player 1 has selected 15.
+
+---
+
+Player 2's Turn
+Selected Numbers: [None]
+Available Numbers: 2-14, 16-30
+
+Enter a number to select: 5
+
+Player 2 has selected 5.
+
+---
+
+Player 1's Turn
+Selected Numbers: [15]
+Available Numbers: 2-4, 6-14, 16-30
+
+Enter a number to select: 3
+
+Player 1 has selected 3.
+
+---
+
+Player 1's Numbers: [15, 3]
+Player 2's Numbers: [5]
+```
+
+#### **Winning Declaration**
+
+```
+Player 1's Turn
+Selected Numbers: [15, 3, 9]
+Available Numbers: [Remaining numbers]
+
+Player 1 has selected 9.
+
+---
+
+Player 1 declares victory!
+
+Player 1's Numbers: [15, 3, 9]
+Possible Sequence: 3 divides 9 divides 15
+
+Congratulations, Player 1! You have won the game.
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead**: Look for numbers that have common divisibility relationships.
+- **Block Opponent**: If you notice your opponent collecting certain numbers, consider selecting numbers they may need.
+- **Multiple Options**: Try to select numbers that offer multiple sequence possibilities.
+- **Monitor Selections**: Keep track of both your and your opponent's numbers to anticipate and disrupt their strategy.
+
+---
+
+Enjoy your game of Sequence Duel! May the best strategist win.

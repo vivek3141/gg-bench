@@ -1,0 +1,9 @@
+The action space indices in the game map to the following moves:
+
+1. **Indices 0-54:** These represent the placement of new power nodes. The action index is split into:
+   - **Position:** Calculated as `action // 5`, determining where on the power line (positions 0-10) the node is placed.
+   - **Power Level:** Calculated as `(action % 5) + 1`, determining the power level of the node (between 1 and 5).
+
+2. **Indices 55-65:** These represent the upgrade of existing power nodes. Each index corresponds to upgrading a node at a specific position on the power line (positions 0-10).
+
+Invalid indices or actions result in penalties, and actions are constrained by game rules such as energy costs and node availability.

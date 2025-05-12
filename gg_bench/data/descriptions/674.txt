@@ -1,0 +1,222 @@
+# Number Line Duel
+
+## Objective
+
+**Number Line Duel** is a strategic two-player, turn-based game played on a virtual number line. The primary goal is to capture your opponent by landing on their position or to outmaneuver them by advancing closer to their starting point without passing them. Skillful planning and foresight will enable a player to consistently outperform an unskilled opponent.
+
+Victory is achieved by:
+
+- **Capturing the opponent**: Landing on the opponent's current position.
+- **Advancing further**: Moving closer to the opponent's starting position without passing them if players bypass each other without landing on the same spot.
+
+There are no draws in **Number Line Duel**; each game concludes with a clear winner.
+
+---
+
+## Setup
+
+1. **Number Line Creation**: The game uses a virtual number line with positions numbered from **1 to 21**.
+
+2. **Player Positions**:
+
+   - **Player 1** starts on position **1**.
+   - **Player 2** starts on position **21**.
+
+3. **Markers**: Each player has a marker representing their current position on the number line.
+
+4. **Initial Display**: A command-line interface displays the number line with both players' markers at their respective starting positions.
+
+---
+
+## Game Components
+
+1. **Number Line**:
+
+   - A sequence of integers from **1** to **21**.
+   - Represents the pathway on which players move.
+
+2. **Player Markers**:
+
+   - **Player 1 Marker**: Denoted by `P1`.
+   - **Player 2 Marker**: Denoted by `P2`.
+
+3. **Positions**:
+
+   - Each position is a discrete point on the number line.
+   - Positions are occupied by player markers during the game.
+
+4. **Allowed Moves**:
+
+   - Players can move their marker forward towards the opponent's starting position.
+   - On each turn, a player may move **1 to 5 positions**.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+
+   - Players alternate turns.
+   - **Player 1** makes the first move.
+
+2. **Turn Structure**:
+
+   - **Step 1**: Display the current state of the number line.
+   - **Step 2**: Indicate which player's turn it is.
+   - **Step 3**: Player selects the number of positions to move (**1 to 5**).
+   - **Step 4**: Update the player's marker on the number line.
+   - **Step 5**: Check for a win condition.
+   - **Step 6**: Proceed to the next player's turn if the game continues.
+
+3. **Input Method**:
+
+   - Players input their move using the command line by entering a number between **1** and **5**.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement**:
+
+   - Players move their marker forward towards the opponent's starting position.
+   - On each turn, a player must move their marker by **1 to 5 positions**.
+   - Players cannot move beyond the opponent's starting position.
+
+2. **Capturing the Opponent**:
+
+   - If a player lands on the position currently occupied by the opponent, they capture the opponent and **win the game**.
+
+3. **Passing the Opponent**:
+
+   - If a player's move would take them beyond the opponent's current position, they do **not** move past them. Instead, their marker stops just before the opponent's position.
+   - If after both players have moved and they have passed each other without landing on the same position, the player who is closest to the opponent's starting position **wins the game**.
+
+4. **No Skipping Turns**:
+
+   - Players must make a move on their turn; skipping a turn is not allowed.
+
+5. **Invalid Moves**:
+
+   - If a player attempts to move an invalid number of positions (less than 1 or more than 5), they are prompted to enter a valid number.
+   - Players cannot move beyond the opponent's starting position.
+
+---
+
+## Scoring
+
+Since **Number Line Duel** is a win-loss game without point tracking, scoring is straightforward:
+
+- **Winner**: The player who captures the opponent or advances further towards the opponent's starting position without passing them.
+- **Loser**: The other player.
+
+Players may choose to play multiple rounds and keep track of wins to determine an overall champion if desired.
+
+---
+
+## Examples
+
+### Example Scenario
+
+Let's illustrate a sample game with command-line interactions.
+
+#### Initial State
+
+```
+Position: 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+Markers:  P1                                                 P2
+```
+
+#### Turn 1: Player 1
+
+- **Prompt**: "Player 1, enter your move (1-5):"
+- **Input**: `5`
+- **Action**: Player 1 moves from position 1 to position 6.
+
+**Updated State**:
+
+```
+Position: 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+Markers:      P1                                            P2
+```
+
+#### Turn 2: Player 2
+
+- **Prompt**: "Player 2, enter your move (1-5):"
+- **Input**: `4`
+- **Action**: Player 2 moves from position 21 to position 17.
+
+**Updated State**:
+
+```
+Position: 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+Markers:      P1                             P2
+```
+
+#### Turn 3: Player 1
+
+- **Prompt**: "Player 1, enter your move (1-5):"
+- **Input**: `5`
+- **Action**: Player 1 moves from position 6 to position 11.
+
+**Updated State**:
+
+```
+Position: 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+Markers:                        P1              P2
+```
+
+#### Turn 4: Player 2
+
+- **Prompt**: "Player 2, enter your move (1-5):"
+- **Input**: `5`
+- **Action**: Player 2 moves from position 17 to position 12.
+
+**Updated State**:
+
+```
+Position: 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+Markers:                        P1        P2
+```
+
+#### Turn 5: Player 1
+
+- **Prompt**: "Player 1, enter your move (1-5):"
+- **Input**: `1`
+- **Action**: Player 1 moves from position 11 to position 12.
+
+- **Result**: Player 1 lands on Player 2's position and **captures** them.
+
+**Final State**:
+
+```
+Position: 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+Markers:                              P1/P2
+```
+
+- **Game Over**: Player 1 wins by capturing Player 2.
+
+---
+
+### Command-Line Interaction Summary
+
+- **Player 1 Move**: Moves 5 positions to position 6.
+- **Player 2 Move**: Moves 4 positions to position 17.
+- **Player 1 Move**: Moves 5 positions to position 11.
+- **Player 2 Move**: Moves 5 positions to position 12.
+- **Player 1 Move**: Moves 1 position to position 12 (captures Player 2).
+
+---
+
+## Strategic Considerations
+
+- **Anticipate Opponent's Moves**: Try to predict how far your opponent may move to position yourself advantageously.
+- **Control the Distance**: Balance advancing aggressively with the risk of being captured.
+- **Force a Passing Scenario**: If you can create a situation where you pass the opponent but remain closer to their starting position, you can secure a win.
+
+---
+
+## Conclusion
+
+**Number Line Duel** offers a simple yet strategically rich gameplay experience that is easy to code and quick to play. Mastery comes from anticipating your opponent's moves and planning your advances carefully. Enjoy the challenge and may the best strategist win!
+
+---

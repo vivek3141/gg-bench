@@ -1,0 +1,214 @@
+# Number Line Sprint - Rule Book
+
+## Objective
+
+**Number Line Sprint** is a two-player, turn-based strategy game played on a virtual number line. The primary goal is to be the first player to reach either end of the number line (position **1** or position **11**). Players start from the center and race to their respective ends, strategically navigating the number line while blocking their opponent's progress. Victory is achieved by skillfully moving your token to the end position before your opponent does.
+
+## Setup
+
+- **Number Line**: The game uses a virtual number line with positions numbered from **1** to **11**.
+
+- **Starting Positions**:
+  - **Player 1** starts with their token at position **6** (center of the number line).
+  - **Player 2** also starts with their token at position **6** (sharing the starting position).
+
+- **Player Tokens**: Each player is assigned a unique token to represent their position on the number line:
+  - **Player 1**: `P1`
+  - **Player 2**: `P2`
+
+## Game Components
+
+- **Number Line**: A linear sequence of positions numbered **1** through **11**.
+
+- **Player Tokens**: Distinct symbols or identifiers (`P1` and `P2`) representing each player's current position on the number line.
+
+- **Command-Line Interface**: The game is played through text-based commands entered into a command-line prompt.
+
+## Turns
+
+- Players decide who takes the first turn (e.g., coin toss, random selection).
+
+- Turns alternate between players.
+
+- During a turn, a player performs the following:
+  1. **Declare Move Direction**: Choose to move **Left** (`L`) towards position **1** or **Right** (`R`) towards position **11**.
+  2. **Declare Number of Steps**: Choose to move **1** or **2** positions in the chosen direction.
+
+- Example Command: `L2` (move left by 2 positions).
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Move Direction**:
+   - Players can move **left** (`L`) towards position **1** or **right** (`R`) towards position **11**.
+
+2. **Move Distance**:
+   - On each turn, a player may move **1** or **2** positions.
+
+3. **Boundaries**:
+   - Players cannot move beyond position **1** on the left or position **11** on the right.
+
+4. **Occupying Positions**:
+   - Both players **cannot occupy the same position** simultaneously.
+   - A player **cannot move onto or pass over** the position occupied by the opponent.
+   - If a player's desired move would land on or skip over the opponent's current position, that move is **invalid**.
+
+5. **Blocked Movement**:
+   - If all possible moves are invalid due to the opponent's position, the player **loses their turn**.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The first player to land exactly on position **1** or position **11** wins the game.
+
+- **Forced Loss**:
+  - If a player has **no valid moves** on their turn (all moves are blocked by the opponent), they **lose the game** immediately.
+
+## Scoring
+
+- The game results in a **win** or **loss**; there is no point scoring system.
+- The player who reaches position **1** or **11** first is declared the **winner**.
+- The opposing player is the **loser**.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                       P1/P2
+```
+
+Both players start at position **6**.
+
+#### Turn 1: Player 1
+
+- **Action**: Moves **Right** (`R`) by **2** positions.
+- **New Position**: Position **8**.
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                         P2   P1
+```
+
+#### Turn 2: Player 2
+
+- **Possible Moves**:
+  - **Left** to position **5** or **4**.
+  - **Right** to position **7** (cannot move to **8**; occupied by Player 1).
+- **Action**: Moves **Right** (`R`) by **1** position to position **7**.
+- **New Position**: Position **7**.
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                       P2    P1
+```
+
+#### Turn 3: Player 1
+
+- **Possible Moves**:
+  - **Left** to position **7** (blocked; occupied by Player 2).
+  - **Right** to positions **9** or **10**.
+- **Action**: Moves **Right** (`R`) by **2** positions to position **10**.
+- **New Position**: Position **10**.
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                       P2         P1
+```
+
+#### Turn 4: Player 2
+
+- **Possible Moves**:
+  - **Left** to positions **6** or **5**.
+  - **Right** to position **8** (cannot move to **9**; would pass over Player 1 at **10**).
+- **Action**: Moves **Left** (`L`) by **1** position to position **6**.
+- **New Position**: Position **6**.
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                     P2          P1
+```
+
+#### Turn 5: Player 1
+
+- **Possible Moves**:
+  - **Left** to position **9**.
+  - **Right** to position **11**.
+- **Action**: Moves **Right** (`R`) by **1** position to position **11**.
+- **New Position**: Position **11**.
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                     P2             P1
+```
+
+#### Result
+
+- **Player 1** has reached the end of the number line at position **11** and **wins the game**.
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Welcome to Number Line Sprint!
+
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                       P1/P2
+
+Player 1 starts first.
+```
+
+#### Player 1's Turn
+
+```
+Player 1's turn. Current position: 6
+Enter your move (L/R followed by 1 or 2): R2
+
+Player 1 moves Right by 2 positions to position 8.
+
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                         P2   P1
+```
+
+#### Player 2's Turn
+
+```
+Player 2's turn. Current position: 6
+Enter your move (L/R followed by 1 or 2): R1
+
+Player 2 moves Right by 1 position to position 7.
+
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                       P2    P1
+```
+
+#### Subsequent Turns
+
+*Players continue to input their moves as prompted, with the game state updating each time.*
+
+#### Game End
+
+```
+Player 1 moves Right by 1 position to position 11.
+
+Player 1 has reached the end and wins the game!
+```
+
+## Strategic Tips
+
+- **Block Your Opponent**: Position yourself to limit your opponent's movement options, forcing them to waste turns or become blocked.
+
+- **Advance Efficiently**: Move towards your goal end as quickly as possible without compromising your ability to block your opponent.
+
+- **Anticipate Moves**: Predict your opponent's possible moves and plan accordingly to stay ahead.
+
+- **Control the Center**: Early in the game, control over central positions can provide more movement options.
+
+---
+
+Enjoy playing **Number Line Sprint**, and may the most strategic player win!

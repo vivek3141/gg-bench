@@ -1,0 +1,9 @@
+The action space in the given gym environment is mapped to possible moves in the game based on the array size `N`. Each action index corresponds to a specific move, either a swap or a rotate:
+
+1. **Swap Moves**: The first `N-1` action indices correspond to swap moves. Each index `i` in this range represents a swap operation on the adjacent elements at positions `i` and `i+1` in the array.
+
+2. **Rotate Moves**: The next `(N-2)*2` action indices correspond to rotation moves involving three consecutive elements. Each starting index `i` in this range has two actions: one for rotating left and one for rotating right, forming pairs for all possible triplet segments in the array.
+
+Thus, the mapping is as follows:
+- Indices `0` to `N-2`: Represent swap operations at positions `i` to `i+1`.
+- Indices `N-1` to `N-3+2*(N-2)`: Represent rotation operations for positions `i` to `i+2`, toggled between left and right.

@@ -1,0 +1,234 @@
+**Energy Duel Rule Book**
+
+---
+
+### **Objective**
+
+Be the first player to reduce your opponent's Energy Points (EP) to zero. Strategically manage your own energy while predicting your opponent's moves to achieve victory.
+
+---
+
+### **Setup**
+
+- **Players**: Two players.
+- **Starting Energy**: Each player begins with **10 Energy Points (EP)**.
+
+---
+
+### **Game Components**
+
+- **Energy Points (EP)**:
+  - Represents a player's current energy level.
+  - Used to perform actions during the game.
+  - Each player starts with **10 EP**.
+  - EP cannot exceed **10** at any time.
+- **Action Options**:
+  - **Attack**: Spend EP to inflict damage on your opponent.
+  - **Charge**: Recover EP to prepare for future actions.
+
+---
+
+### **Turns**
+
+1. **Turn Order**:
+   - Decide which player goes first (e.g., by coin toss).
+   - Players then alternate turns.
+
+2. **Player Actions**:
+   - On your turn, you must choose **one** of the following actions:
+     1. **Attack**
+     2. **Charge**
+
+3. **Turn Progression**:
+   - Declare your action clearly.
+   - Resolve the action according to the rules.
+   - Update both players' EP accordingly.
+   - End your turn; the opponent takes their turn.
+
+---
+
+### **Rules and Mechanics**
+
+#### **1. Attack**
+
+- **Description**:
+  - Spend your EP to deal damage to your opponent.
+- **How to Attack**:
+  - Choose to spend **1**, **2**, or **3 EP**.
+  - Announce your intended **Attack Cost** to your opponent.
+- **Attack Resolution**:
+  - **Reduce your EP** by the **Attack Cost**.
+  - **Calculate Damage**: The opponent loses EP equal to **twice** your Attack Cost.
+    - For example, if you spend **2 EP** to attack, your opponent loses **4 EP**.
+- **Restrictions**:
+  - You cannot spend more EP than you currently have.
+  - Minimum Attack Cost is **1 EP**.
+  - Maximum Attack Cost is **3 EP**.
+
+#### **2. Charge**
+
+- **Description**:
+  - Recover EP to strengthen future actions.
+- **How to Charge**:
+  - Declare that you are charging.
+- **Charge Resolution**:
+  - **Increase your EP** by **2**.
+  - EP cannot exceed the maximum of **10**.
+    - If charging would raise your EP above **10**, your EP is set to **10**.
+
+#### **3. Energy Management**
+
+- **Maximum EP**:
+  - At no point can a player's EP exceed **10**.
+- **Depleting Opponent’s EP**:
+  - A player wins immediately if their opponent's EP drops to **0** or below.
+- **Depleting Your Own EP**:
+  - You can reduce your own EP to **0** by spending it on attacks.
+  - If both players reach **0 EP** simultaneously, the **attacking player wins**.
+
+---
+
+### **Scoring**
+
+- **Tracking EP**:
+  - Use a piece of paper, tokens, or command-line interface to keep track of both players' EP after each turn.
+- **Winning the Game**:
+  - The game ends when one player reduces their opponent's EP to **0** or below.
+  - The player who achieves this is declared the **winner**.
+
+---
+
+### **Examples**
+
+#### **Example Scenario 1**
+
+**Starting EP**:
+- Player A: 10 EP
+- Player B: 10 EP
+
+**Turn Sequence**:
+
+1. **Player A's Turn**:
+   - Chooses to **Attack** with **3 EP**.
+   - **Player A's EP**: 10 - 3 = **7 EP**
+   - **Damage to Player B**: 3 x 2 = **6 EP**
+   - **Player B's EP**: 10 - 6 = **4 EP**
+
+2. **Player B's Turn**:
+   - Chooses to **Charge**.
+   - **Player B's EP**: 4 + 2 = **6 EP**
+
+3. **Player A's Turn**:
+   - Chooses to **Attack** with **3 EP**.
+   - **Player A's EP**: 7 - 3 = **4 EP**
+   - **Damage to Player B**: 3 x 2 = **6 EP**
+   - **Player B's EP**: 6 - 6 = **0 EP**
+
+**Outcome**:
+- **Player A wins** as Player B's EP has reached **0**.
+
+---
+
+#### **Example Scenario 2**
+
+**Starting EP**:
+- Player A: 10 EP
+- Player B: 10 EP
+
+**Turn Sequence**:
+
+1. **Player A's Turn**:
+   - Chooses to **Attack** with **2 EP**.
+   - **Player A's EP**: 10 - 2 = **8 EP**
+   - **Damage to Player B**: 2 x 2 = **4 EP**
+   - **Player B's EP**: 10 - 4 = **6 EP**
+
+2. **Player B's Turn**:
+   - Chooses to **Attack** with **3 EP**.
+   - **Player B's EP**: 6 - 3 = **3 EP**
+   - **Damage to Player A**: 3 x 2 = **6 EP**
+   - **Player A's EP**: 8 - 6 = **2 EP**
+
+3. **Player A's Turn**:
+   - Chooses to **Charge**.
+   - **Player A's EP**: 2 + 2 = **4 EP**
+
+4. **Player B's Turn**:
+   - Chooses to **Attack** with **3 EP**.
+   - **Player B's EP**: 3 - 3 = **0 EP**
+   - **Damage to Player A**: 3 x 2 = **6 EP**
+   - **Player A's EP**: 4 - 6 = **-2 EP**
+
+**Outcome**:
+- Both players have EP at **0 or below**.
+- **Player B wins** because they were the attacking player in the final turn.
+
+---
+
+### **Command-Line Interaction Sample**
+
+Below is a sample interaction illustrating how the game can be played in a command-line interface.
+
+**Game Start**
+
+```plaintext
+Player A EP: 10
+Player B EP: 10
+
+Player A's Turn:
+Choose action - Attack (1), Charge (2): 1
+Enter Attack Cost (1-3): 3
+Player A attacks with 3 EP.
+Player A EP: 7
+Player B loses 6 EP.
+Player B EP: 4
+```
+
+**Game Progression**
+
+```plaintext
+Player B's Turn:
+Choose action - Attack (1), Charge (2): 2
+Player B charges.
+Player B EP: 6
+
+Player A's Turn:
+Choose action - Attack (1), Charge (2): 1
+Enter Attack Cost (1-3): 3
+Player A attacks with 3 EP.
+Player A EP: 4
+Player B loses 6 EP.
+Player B EP: 0
+
+Game Over: Player A Wins!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Energy Management**:
+  - Balance your EP between attacking and charging.
+  - Anticipate your opponent's moves to avoid running out of EP.
+
+- **Attack Timing**:
+  - High-cost attacks (3 EP) deal significant damage but deplete your own EP quickly.
+  - Consider the opponent's EP before choosing your Attack Cost.
+
+- **Charging Strategically**:
+  - Use charging to recover EP when low.
+  - Be cautious: charging gives the opponent an opportunity to attack.
+
+- **Predicting Opponent's Moves**:
+  - Observe patterns in your opponent's actions.
+  - If the opponent has low EP, they may be forced to charge.
+
+---
+
+### **Conclusion**
+
+"Energy Duel" is a game of strategic energy management and prediction. Simple yet deep, it challenges players to outthink their opponent while carefully balancing offense and defense. Quick to learn and fast-paced, it provides an engaging experience perfect for a command-line interface.
+
+---
+
+Enjoy your duel and may the best strategist win!

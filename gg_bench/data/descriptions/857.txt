@@ -1,0 +1,220 @@
+# Turn-Taker's Triumph
+
+## Objective
+
+Be the first player to reach the target total exactly by strategically adding numbers on your turn. The primary goal is to make the cumulative total equal to the target number without exceeding it. The player who reaches the target number exactly on their turn wins the game. If a player causes the total to exceed the target number, they lose immediately.
+
+## Setup
+
+- **Target Number**: 30
+- **Current Total**: Begins at 0
+- **Player Designations**: Player 1 and Player 2
+
+Both players agree on who will take the first turn. The game is played in turns until one player wins according to the rules.
+
+## Game Components
+
+- **Target Number (30)**: The total that players aim to reach exactly.
+- **Current Total**: A running sum that starts at 0 and increases as players add numbers.
+- **Allowed Additions**: Numbers from **1** to **6** inclusive.
+- **Command-Line Interface**: Players input their chosen numbers through the command line when prompted.
+
+There are no physical components required. The game is entirely text-based and is played through a command-line interface that displays the current total and prompts players for input.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the player designated to go first.
+- **Player Actions on Their Turn**:
+  - View the current total.
+  - Choose a number to add to the current total. The number must be an integer between 1 and 6 inclusive.
+  - Input their chosen number via the command line.
+- **Progression**:
+  - The chosen number is added to the current total.
+  - The game checks for a win or loss condition.
+  - If the game continues, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Adding to the Total**:
+   - On your turn, you must choose a number between **1** and **6** inclusive to add to the current total.
+   - The number must be a whole number; decimal or fractional numbers are not allowed.
+2. **Winning the Game**:
+   - If your addition brings the current total to **exactly the target number (30)**, you win the game.
+3. **Losing the Game**:
+   - If your addition causes the current total to **exceed the target number (over 30)**, you lose the game immediately.
+4. **Continuing the Game**:
+   - If the current total is less than the target number after your turn, the game continues, and it becomes the other player's turn.
+5. **Invalid Inputs**:
+   - If a player inputs a number outside the allowed range (1-6), they are prompted to enter a valid number.
+   - The game does not penalize invalid inputs beyond asking for a valid number.
+6. **Strategic Depth**:
+   - Players can use arithmetic and strategic planning to control the flow of the game.
+   - Skilled players can anticipate future totals and force a win by careful selection of numbers.
+
+## Scoring
+
+- **Winning**: Successfully making the current total exactly equal to 30 on your turn.
+- **Losing**: Causing the current total to exceed 30 on your turn.
+- There is no point system; the outcome is simply a win or loss for each game played.
+
+## Examples
+
+Below are sample turns to illustrate how the game is played via command-line interactions.
+
+### Example Game
+
+**Starting the Game**
+
+- Current Total: 0
+- Target: 30
+- Player 1 and Player 2 decide that Player 1 will start.
+
+---
+
+**Turn 1: Player 1**
+
+- Current Total: 0
+- Player 1's Move:
+  - Chooses to add **6**.
+  - Inputs: `6`
+- New Current Total: 0 + 6 = **6**
+- The game continues.
+
+---
+
+**Turn 2: Player 2**
+
+- Current Total: 6
+- Player 2's Move:
+  - Chooses to add **3**.
+  - Inputs: `3`
+- New Current Total: 6 + 3 = **9**
+- The game continues.
+
+---
+
+**Turn 3: Player 1**
+
+- Current Total: 9
+- Player 1's Move:
+  - Chooses to add **6**.
+  - Inputs: `6`
+- New Current Total: 9 + 6 = **15**
+- The game continues.
+
+---
+
+**Turn 4: Player 2**
+
+- Current Total: 15
+- Player 2's Move:
+  - Chooses to add **6**.
+  - Inputs: `6`
+- New Current Total: 15 + 6 = **21**
+- The game continues.
+
+---
+
+**Turn 5: Player 1**
+
+- Current Total: 21
+- Player 1's Move:
+  - Chooses to add **5**.
+  - Inputs: `5`
+- New Current Total: 21 + 5 = **26**
+- The game continues.
+
+---
+
+**Turn 6: Player 2**
+
+- Current Total: 26
+- Player 2's Move:
+  - Chooses to add **5**.
+  - Inputs: `5`
+- New Current Total: 26 + 5 = **31**
+- **Current Total exceeds 30. Player 2 loses.**
+
+**Result**: Player 1 wins the game.
+
+---
+
+### Strategic Considerations
+
+- **Controlling the Totals**:
+  - Skilled players can keep track of the current total and choose numbers that force their opponent into a losing position.
+  - For example, aiming to make the current total equal to 24 on your turn can set you up to win on your next turn.
+- **Forcing a Win**:
+  - Players can plan ahead by considering the sums that are multiples of 7 (7, 14, 21, 28).
+  - By making the current total equal to one of these key numbers minus 1 on their turn (6, 13, 20, 27), players can potentially force a win.
+
+### Additional Example
+
+**Turn 1: Player 1**
+
+- Current Total: 0
+- Player 1's Move:
+  - Adds **1**.
+  - Inputs: `1`
+- New Current Total: **1**
+
+---
+
+**Turn 2: Player 2**
+
+- Current Total: 1
+- Player 2's Move:
+  - Adds **6**.
+  - Inputs: `6`
+- New Current Total: **7**
+
+---
+
+**Turn 3: Player 1**
+
+- Current Total: 7
+- Player 1's Move:
+  - Adds **6**.
+  - Inputs: `6`
+- New Current Total: **13**
+
+---
+
+**Turn 4: Player 2**
+
+- Current Total: 13
+- Player 2's Move:
+  - Adds **6**.
+  - Inputs: `6`
+- New Current Total: **19**
+
+---
+
+**Turn 5: Player 1**
+
+- Current Total: 19
+- Player 1's Move:
+  - Adds **6**.
+  - Inputs: `6`
+- New Current Total: **25**
+
+---
+
+**Turn 6: Player 2**
+
+- Current Total: 25
+- Player 2's Move:
+  - Adds **5**.
+  - Inputs: `5`
+- New Current Total: **30**
+- **Player 2 wins the game by reaching the target total exactly.**
+
+---
+
+## Conclusion
+
+**Turn-Taker's Triumph** is a simple yet strategic game that challenges players to think ahead and make calculated decisions. It is easy to code and play within a command-line interface, ensuring quick gameplay without the possibility of a draw. The straightforward rules allow for immediate understanding, while the strategic depth provides a competitive edge for skilled players over unskilled ones.
+
+---
+
+**Note to Players**: Practice different strategies to improve your chances of winning. Pay close attention to the current total and consider how your choices will affect both your and your opponent's future moves.

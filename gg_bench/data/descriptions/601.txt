@@ -1,0 +1,265 @@
+**Game Title:** Capture Square
+
+---
+
+### **Objective**
+
+Be the first player to form a 2x2 square with your markers on a 4x4 grid.
+
+---
+
+### **Setup**
+
+1. **Grid Preparation:**
+   - Draw a 4x4 grid comprising 16 cells.
+   - Label the rows numerically from 1 to 4 (top to bottom).
+   - Label the columns alphabetically from A to D (left to right).
+   - Each cell can be referenced by its coordinate (e.g., A1, B3).
+
+2. **Player Assignment:**
+   - Two players are required.
+   - Decide who will be **Player 1** and **Player 2** (e.g., by coin toss).
+   - **Player 1** uses the marker **'X'**.
+   - **Player 2** uses the marker **'O'**.
+
+---
+
+### **Game Components**
+
+- **The Grid:**
+  - A virtual 4x4 grid that can be represented in the command-line interface.
+  - Initially, all cells are empty.
+
+- **Player Markers:**
+  - **'X'** for Player 1.
+  - **'O'** for Player 2.
+
+- **Coordinates Reference:**
+  - Cells are identified by combining the column letter and row number (e.g., B2).
+
+---
+
+### **Turns**
+
+1. **Turn Order:**
+   - **Player 1** takes the first turn.
+   - Players alternate turns thereafter.
+
+2. **Actions Per Turn:**
+   - On your turn, place your marker (**'X'** or **'O'**) on any empty cell by specifying its coordinate.
+   - Only one marker may be placed per turn.
+
+3. **Turn Progression:**
+   - After a marker is placed, update the grid display.
+   - Check for a winning condition (formation of a 2x2 square).
+   - If no winner, proceed to the next player's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Placing Markers:**
+   - Markers must be placed on empty cells.
+   - Once placed, markers cannot be moved or removed unless during the Sudden Death phase.
+
+2. **Winning Condition:**
+   - The first player to form a 2x2 square with their markers wins.
+   - The square must consist of four markers occupying adjacent grid cells that form a square shape.
+   - Squares can be formed anywhere on the grid.
+
+3. **Example of a Winning Square:**
+   - Cells **B2**, **B3**, **C2**, and **C3** forming a square.
+
+4. **Sudden Death (If Applicable):**
+   - If all cells are filled without a winner, the game enters Sudden Death.
+   - Players take turns swapping one opponent's marker with their own.
+   - Swap actions continue until a player forms a 2x2 square and wins.
+
+5. **Additional Mechanics:**
+   - **Invalid Moves:**
+     - Attempting to place a marker on an occupied cell is invalid.
+     - Players must choose an empty cell.
+   - **Turn Time Limit (Optional):**
+     - Implement a time limit per turn to keep the game moving swiftly.
+
+---
+
+### **Scoring**
+
+- **Winning the Game:**
+  - The player who forms a 2x2 square with their markers wins the game.
+  
+- **No Draws:**
+  - The Sudden Death phase ensures that the game cannot end in a draw.
+
+---
+
+### **Examples**
+
+#### **Example Game Playthrough:**
+
+1. **Initial Grid:**
+
+   ```
+     A   B   C   D
+   1 . | . | . | . 
+     ---+---+---+---
+   2 . | . | . | . 
+     ---+---+---+---
+   3 . | . | . | . 
+     ---+---+---+---
+   4 . | . | . | . 
+   ```
+
+2. **Turn Sequence:**
+
+   - **Player 1's Turn:**
+     - Places **'X'** at **B2**.
+   - **Updated Grid:**
+
+     ```
+       A   B   C   D
+     1 . | . | . | . 
+       ---+---+---+---
+     2 . | X | . | . 
+       ---+---+---+---
+     3 . | . | . | . 
+       ---+---+---+---
+     4 . | . | . | . 
+     ```
+
+   - **Player 2's Turn:**
+     - Places **'O'** at **A1**.
+   - **Updated Grid:**
+
+     ```
+       A   B   C   D
+     1 O | . | . | . 
+       ---+---+---+---
+     2 . | X | . | . 
+       ---+---+---+---
+     3 . | . | . | . 
+       ---+---+---+---
+     4 . | . | . | . 
+     ```
+
+   - **Player 1's Turn:**
+     - Places **'X'** at **B1**.
+   - **Updated Grid:**
+
+     ```
+       A   B   C   D
+     1 O | X | . | . 
+       ---+---+---+---
+     2 . | X | . | . 
+       ---+---+---+---
+     3 . | . | . | . 
+       ---+---+---+---
+     4 . | . | . | . 
+     ```
+
+   - **Player 2's Turn:**
+     - Places **'O'** at **C3**.
+   - **Updated Grid:**
+
+     ```
+       A   B   C   D
+     1 O | X | . | . 
+       ---+---+---+---
+     2 . | X | . | . 
+       ---+---+---+---
+     3 . | . | O | . 
+       ---+---+---+---
+     4 . | . | . | . 
+     ```
+
+   - **Player 1's Turn:**
+     - Places **'X'** at **A2**.
+   - **Updated Grid:**
+
+     ```
+       A   B   C   D
+     1 O | X | . | . 
+       ---+---+---+---
+     2 X | X | . | . 
+       ---+---+---+---
+     3 . | . | O | . 
+       ---+---+---+---
+     4 . | . | . | . 
+     ```
+
+   - **Player 1** has formed a 2x2 square with markers at **A1**, **A2**, **B1**, and **B2**.
+   - **Player 1 Wins!**
+
+---
+
+### **Command-Line Interaction Example**
+
+- **Game Start:**
+
+  ```
+  Welcome to Capture Square!
+
+  Player 1 (X), you go first.
+  ```
+
+- **Displaying the Grid:**
+
+  ```
+    A   B   C   D
+  1 . | . | . | . 
+    ---+---+---+---
+  2 . | . | . | . 
+    ---+---+---+---
+  3 . | . | . | . 
+    ---+---+---+---
+  4 . | . | . | . 
+  ```
+
+- **Player Input:**
+
+  ```
+  Player 1 (X), enter your move (e.g., A1): B2
+  ```
+
+- **Invalid Move Handling:**
+
+  ```
+  Sorry, B2 is already occupied. Please choose another cell.
+  ```
+
+- **Turn Transition:**
+
+  ```
+  Player 2 (O), enter your move (e.g., A1): C3
+  ```
+
+- **Winning Announcement:**
+
+  ```
+  Congratulations, Player 1! You've formed a square and won the game!
+  ```
+
+---
+
+### **Strategic Depth and Complexity**
+
+- **Planning Ahead:**
+  - Players must anticipate opponents' moves and strategize to block potential squares.
+  - Controlling the center can offer more opportunities to form a square.
+
+- **Offense and Defense:**
+  - Balancing between building your own square and preventing your opponent from forming theirs adds depth.
+
+- **Spatial Awareness:**
+  - Recognizing patterns and potential squares on the grid is crucial.
+
+---
+
+### **Summary**
+
+Capture Square is a strategic, fast-paced game that challenges players to outmaneuver their opponent by forming a 2x2 square on a shared grid. With simple rules and straightforward mechanics, it's easy to learn and quick to play, making it perfect for a command-line interface game.
+
+---
+
+Enjoy the game!

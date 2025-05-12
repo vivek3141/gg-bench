@@ -1,0 +1,312 @@
+# Secret Sum: A Two-Player Strategic Bidding Game
+
+## Objective
+
+**Secret Sum** is a turn-based bidding game where players compete over five rounds to win the most rounds by secretly selecting and revealing numbers. The primary goal is to outbid your opponent in each round without exceeding the limitations of your number set. The player who wins the most rounds emerges victorious. In the event of a tie in rounds won, the player with the lower total sum of chosen numbers wins the game. There are no possibilities for a draw.
+
+---
+
+## Setup
+
+1. **Rounds**: The game consists of **five rounds**.
+2. **Number Set**: Each player has a personal set of numbers from **1 to 5**. Each number can be used **only once** during the game.
+3. **Starting Condition**: Both players begin with their full set of numbers and zero rounds won.
+
+---
+
+## Game Components
+
+- **Number Sets**:
+  - **Player Number Sets**: Each player possesses the numbers **1**, **2**, **3**, **4**, and **5**.
+  - **Usage**: Numbers are used for bidding in each round and are removed from the player's set once used.
+
+- **Round Tracker**:
+  - Keeps track of the current round number from **1 to 5**.
+
+- **Scoreboard**:
+  - Records the number of rounds won by each player.
+  - Tracks the total sum of numbers each player has used.
+
+---
+
+## Turns
+
+- **Simultaneous Play**:
+  - Both players act concurrently in each round.
+  - There are no individual turns within a round; instead, each round consists of both players making their choices simultaneously.
+
+- **Round Structure**:
+  1. **Selection Phase**:
+     - Each player **secretly selects** a number from their remaining number set.
+  2. **Reveal Phase**:
+     - Both players **simultaneously reveal** their chosen number.
+  3. **Resolution Phase**:
+     - Determine the round winner based on the revealed numbers.
+     - Update the scoreboard and remove the used numbers from each player's set.
+
+- **Progression**:
+  - The game progresses to the next round after the Resolution Phase.
+  - This process repeats until all five rounds are completed.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection**:
+   - Players must choose a number from **1 to 5** that they have not used in previous rounds.
+   - Once a number is used, it cannot be selected again in subsequent rounds.
+
+2. **Winning a Round**:
+   - The player who reveals the **higher number** wins the round.
+   - If both players reveal the **same number**, the round is a **draw**, and neither player wins the round.
+
+3. **Scoring Rounds**:
+   - **Winning a Round**: The player earns **one point** for winning the round.
+   - **Drawn Rounds**: No points are awarded.
+
+4. **Game Victory Conditions**:
+   - **Primary Victory**: The player who wins the **most rounds** after all five rounds are completed wins the game.
+   - **Tie-Breaker**:
+     - If both players have won an equal number of rounds, the player with the **lower total sum** of their chosen numbers wins.
+     - If the total sums are also equal (extremely rare), proceed to a **sudden death round** using any remaining numbers.
+
+### Additional Mechanics
+
+- **Sudden Death Round** (Only if both rounds won and total sums are equal):
+  - Players select from any unused numbers.
+  - Normal rules apply.
+  - Continue until the tie is broken.
+
+- **Strategic Considerations**:
+  - Players must balance the use of high numbers (to win rounds) against the risk of having a higher total sum in the event of a tie.
+  - Anticipating the opponent's choices is crucial for optimal play.
+
+---
+
+## Scoring
+
+- **Rounds Won**:
+  - Tracked individually for each player.
+  - Determines the primary winner.
+
+- **Total Sum of Chosen Numbers**:
+  - Calculated by adding up the numbers a player has used throughout the game.
+  - Used as a tie-breaker if necessary.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Players**: Alice and Bob
+
+**Initial Number Sets**:
+- Alice: {1, 2, 3, 4, 5}
+- Bob: {1, 2, 3, 4, 5}
+
+---
+
+**Round 1**:
+
+- **Selection**:
+  - Alice selects **4**
+  - Bob selects **5**
+
+- **Reveal**:
+  - Alice reveals **4**
+  - Bob reveals **5**
+
+- **Resolution**:
+  - Bob wins the round (5 > 4)
+  - Used numbers are removed:
+    - Alice's remaining numbers: {1, 2, 3, 5}
+    - Bob's remaining numbers: {1, 2, 3, 4}
+
+- **Scoreboard**:
+  - Alice: 0 rounds won, sum of numbers used: 4
+  - Bob: 1 round won, sum of numbers used: 5
+
+---
+
+**Round 2**:
+
+- **Selection**:
+  - Alice selects **5**
+  - Bob selects **4**
+
+- **Reveal**:
+  - Alice reveals **5**
+  - Bob reveals **4**
+
+- **Resolution**:
+  - Alice wins the round (5 > 4)
+  - Used numbers are removed:
+    - Alice's remaining numbers: {1, 2, 3}
+    - Bob's remaining numbers: {1, 2, 3}
+
+- **Scoreboard**:
+  - Alice: 1 round won, sum of numbers used: 9
+  - Bob: 1 round won, sum of numbers used: 9
+
+---
+
+**Round 3**:
+
+- **Selection**:
+  - Alice selects **3**
+  - Bob selects **3**
+
+- **Reveal**:
+  - Both reveal **3**
+
+- **Resolution**:
+  - Round is a draw (3 = 3)
+  - Used numbers are removed:
+    - Alice's remaining numbers: {1, 2}
+    - Bob's remaining numbers: {1, 2}
+
+- **Scoreboard**:
+  - Alice: 1 round won, sum of numbers used: 12
+  - Bob: 1 round won, sum of numbers used: 12
+
+---
+
+**Round 4**:
+
+- **Selection**:
+  - Alice selects **2**
+  - Bob selects **1**
+
+- **Reveal**:
+  - Alice reveals **2**
+  - Bob reveals **1**
+
+- **Resolution**:
+  - Alice wins the round (2 > 1)
+  - Used numbers are removed:
+    - Alice's remaining number: {1}
+    - Bob's remaining number: {2}
+
+- **Scoreboard**:
+  - Alice: 2 rounds won, sum of numbers used: 14
+  - Bob: 1 round won, sum of numbers used: 13
+
+---
+
+**Round 5**:
+
+- **Selection**:
+  - Alice selects **1**
+  - Bob selects **2**
+
+- **Reveal**:
+  - Alice reveals **1**
+  - Bob reveals **2**
+
+- **Resolution**:
+  - Bob wins the round (2 > 1)
+  - Used numbers are removed:
+    - Alice's remaining numbers: { }
+    - Bob's remaining numbers: { }
+
+- **Scoreboard**:
+  - Alice: 2 rounds won, sum of numbers used: 15
+  - Bob: 2 rounds won, sum of numbers used: 15
+
+---
+
+**Game Conclusion**:
+
+- **Rounds Won**:
+  - Alice: 2 rounds
+  - Bob: 2 rounds
+  - Drawn rounds: 1
+
+- **Total Sum of Numbers Used**:
+  - Alice: 15
+  - Bob: 15
+
+- **Tie-Breaker**:
+  - Since both the rounds won and the total sums are equal, proceed to a **sudden death round**.
+
+---
+
+**Sudden Death Round**:
+
+- **Selection**:
+  - Both players have no numbers left.
+  - Reset unused numbers: Since all numbers are used, players can choose any one number again.
+  - Alice selects **3**
+  - Bob selects **4**
+
+- **Reveal**:
+  - Alice reveals **3**
+  - Bob reveals **4**
+
+- **Resolution**:
+  - Bob wins the sudden death round (4 > 3)
+  - Bob wins the game.
+
+---
+
+### Command-Line Interaction Example
+
+**Round 1**:
+
+- **Prompt to Players**:
+  ```
+  Round 1:
+  Player Alice, select your number (1-5):
+  Player Bob, select your number (1-5):
+  ```
+
+- **Players Input Secretly**:
+  ```
+  (Alice inputs 4)
+  (Bob inputs 5)
+  ```
+
+- **Reveal**:
+  ```
+  Alice selected: 4
+  Bob selected: 5
+  ```
+
+- **Round Result**:
+  ```
+  Bob wins Round 1!
+  ```
+
+- **Updated Scores**:
+  ```
+  Rounds Won - Alice: 0, Bob: 1
+  Total Sum Used - Alice: 4, Bob: 5
+  Remaining Numbers - Alice: [1, 2, 3, 5], Bob: [1, 2, 3, 4]
+  ```
+
+*(The above interaction repeats similarly for subsequent rounds.)*
+
+---
+
+## Strategy Tips
+
+- **Anticipate Opponent's Choices**:
+  - Try to predict which numbers your opponent might play based on remaining numbers.
+  
+- **Manage High Numbers**:
+  - Use high numbers to secure important rounds, but be cautious of the total sum for tie-breakers.
+
+- **Plan for Tie-Breakers**:
+  - If you expect a tie in rounds won, aim for a lower total sum by conserving higher numbers.
+
+- **Balance Risk and Reward**:
+  - Decide when it's worth risking a draw by matching numbers or when to secure a win with a higher number.
+
+---
+
+## Conclusion
+
+**Secret Sum** is a quick and simple game that combines elements of strategy, prediction, and resource management. Its straightforward mechanics make it easy to code and play in a command-line interface, while the strategic depth ensures that skilled players can consistently outperform unskilled opponents. Enjoy the challenge of outsmarting your opponent in this unique and engaging two-player game!

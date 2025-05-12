@@ -1,0 +1,310 @@
+---
+
+# Order Challenge
+
+## Objective
+
+In **Order Challenge**, two players compete to build the longest strictly increasing sequence of numbers by selecting from a shared pool of integers. The primary goal is to continue adding numbers to your sequence without breaking the increasing order. The player who cannot make a valid move loses, and the opponent wins.
+
+---
+
+## Setup
+
+- **Shared Number Pool**: A set of unique integers from **1** to **9** inclusive.
+- **Player Sequences**: Each player starts with an empty sequence.
+
+At the start of the game:
+
+1. Place all numbers from **1** to **9** into the shared number pool.
+2. Decide which player will take the first turn (you may flip a coin or decide amicably).
+
+---
+
+## Game Components
+
+### Shared Number Pool
+
+- **Numbers**: Integers **1** through **9**.
+- **Availability**: Each number is available to both players but can be selected only once.
+- **Function**: Serves as the source from which players draw numbers to build their sequences.
+
+### Player Sequences
+
+- **Individual Sequences**: Each player maintains their own sequence of numbers.
+- **Starting Condition**: Both sequences start empty.
+- **Structure**: Numbers are added to the end of the sequence in the order they are selected.
+
+---
+
+## Turns
+
+Players alternate turns throughout the game.
+
+### Turn Structure
+
+1. **Selection Phase**:
+   - The active player selects one available number from the shared pool.
+2. **Validation Phase**:
+   - The selected number must be **strictly greater** than the last number in the player's own sequence.
+   - If the player's sequence is empty, any available number may be selected.
+3. **Update Phase**:
+   - Add the selected number to the end of the player's sequence.
+   - Remove the selected number from the shared pool.
+4. **Turn End**:
+   - The turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- **Initial Selection**:
+  - If your sequence is empty, you may choose any number from the shared pool.
+- **Subsequent Selections**:
+  - You must choose a number that is **strictly greater** than the last number in your sequence.
+  - If no such number exists in the shared pool, you cannot make a valid move.
+
+### 2. Sequence Building
+
+- **Strictly Increasing Order**:
+  - Your sequence must always increase; equal or smaller numbers cannot be added after larger ones.
+- **Sequence Example**:
+  - Valid: [2, 5, 6]
+  - Invalid: [3, 3], [4, 2]
+
+### 3. Shared Pool Management
+
+- **Number Availability**:
+  - Once a number is selected, it is removed from the shared pool and cannot be selected again.
+- **Viewing the Pool**:
+  - Players should always be informed of the current numbers available in the shared pool at the start of their turn.
+
+### 4. Winning the Game
+
+- **Loss Condition**:
+  - If it's your turn and you cannot select any valid number, you lose.
+- **Win Condition**:
+  - If your opponent cannot make a valid move on their turn, you win.
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player loses.
+
+---
+
+## Scoring
+
+- **Outcome**:
+  - The game results in a win for one player and a loss for the other.
+- **No Point System**:
+  - There are no points awarded; the focus is on strategic play to outlast the opponent.
+- **Match Play**:
+  - Players may choose to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Shared Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Player 1's Sequence**: []
+
+**Player 2's Sequence**: []
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses **5**.
+- **Reason**: Sequence is empty; any number can be selected.
+- **Player 1's Sequence**: [5]
+- **Updated Shared Pool**: [1, 2, 3, 4, 6, 7, 8, 9]
+
+#### Turn 2: Player 2
+
+- **Action**: Chooses **4**.
+- **Reason**: Sequence is empty; any number can be selected.
+- **Player 2's Sequence**: [4]
+- **Updated Shared Pool**: [1, 2, 3, 6, 7, 8, 9]
+
+#### Turn 3: Player 1
+
+- **Last Number**: 5
+- **Available Numbers**: [6, 7, 8, 9]
+- **Action**: Chooses **6**.
+- **Reason**: 6 > 5.
+- **Player 1's Sequence**: [5, 6]
+- **Updated Shared Pool**: [1, 2, 3, 7, 8, 9]
+
+#### Turn 4: Player 2
+
+- **Last Number**: 4
+- **Available Numbers**: [7, 8, 9]
+- **Action**: Chooses **7**.
+- **Reason**: 7 > 4.
+- **Player 2's Sequence**: [4, 7]
+- **Updated Shared Pool**: [1, 2, 3, 8, 9]
+
+#### Turn 5: Player 1
+
+- **Last Number**: 6
+- **Available Numbers**: [8, 9]
+- **Action**: Chooses **8**.
+- **Reason**: 8 > 6.
+- **Player 1's Sequence**: [5, 6, 8]
+- **Updated Shared Pool**: [1, 2, 3, 9]
+
+#### Turn 6: Player 2
+
+- **Last Number**: 7
+- **Available Numbers**: [9]
+- **Action**: Chooses **9**.
+- **Reason**: 9 > 7.
+- **Player 2's Sequence**: [4, 7, 9]
+- **Updated Shared Pool**: [1, 2, 3]
+
+#### Turn 7: Player 1
+
+- **Last Number**: 8
+- **Available Numbers**: None (since 1, 2, 3 < 8)
+- **Action**: Cannot make a valid move.
+- **Outcome**: Player 1 loses.
+
+---
+
+### Command-Line Interaction
+
+This example demonstrates how the game might be played in a command-line interface.
+
+**Game Start**
+
+```
+Shared Pool: [1,2,3,4,5,6,7,8,9]
+Player 1's Sequence: []
+Player 2's Sequence: []
+
+Player 1's turn.
+Available numbers: [1,2,3,4,5,6,7,8,9]
+Enter a number to select: 3
+```
+
+**Player 1 selects 3.**
+
+```
+Shared Pool: [1,2,4,5,6,7,8,9]
+Player 1's Sequence: [3]
+Player 2's Sequence: []
+
+Player 2's turn.
+Available numbers: [1,2,4,5,6,7,8,9]
+Enter a number to select: 2
+```
+
+**Player 2 selects 2.**
+
+```
+Shared Pool: [1,4,5,6,7,8,9]
+Player 1's Sequence: [3]
+Player 2's Sequence: [2]
+
+Player 1's turn.
+Last number in your sequence: 3
+Available numbers greater than 3: [4,5,6,7,8,9]
+Enter a number to select: 5
+```
+
+**Player 1 selects 5.**
+
+```
+Shared Pool: [1,4,6,7,8,9]
+Player 1's Sequence: [3,5]
+Player 2's Sequence: [2]
+
+Player 2's turn.
+Last number in your sequence: 2
+Available numbers greater than 2: [4,6,7,8,9]
+Enter a number to select: 4
+```
+
+**Player 2 selects 4.**
+
+```
+Shared Pool: [1,6,7,8,9]
+Player 1's Sequence: [3,5]
+Player 2's Sequence: [2,4]
+
+Player 1's turn.
+Last number in your sequence: 5
+Available numbers greater than 5: [6,7,8,9]
+Enter a number to select: 6
+```
+
+**Player 1 selects 6.**
+
+```
+Shared Pool: [1,7,8,9]
+Player 1's Sequence: [3,5,6]
+Player 2's Sequence: [2,4]
+
+Player 2's turn.
+Last number in your sequence: 4
+Available numbers greater than 4: [7,8,9]
+Enter a number to select: 7
+```
+
+**Player 2 selects 7.**
+
+```
+Shared Pool: [1,8,9]
+Player 1's Sequence: [3,5,6]
+Player 2's Sequence: [2,4,7]
+
+Player 1's turn.
+Last number in your sequence: 6
+Available numbers greater than 6: [8,9]
+Enter a number to select: 9
+```
+
+**Player 1 selects 9.**
+
+```
+Shared Pool: [1,8]
+Player 1's Sequence: [3,5,6,9]
+Player 2's Sequence: [2,4,7]
+
+Player 2's turn.
+Last number in your sequence: 7
+Available numbers greater than 7: [8]
+Enter a number to select: 8
+```
+
+**Player 2 selects 8.**
+
+```
+Shared Pool: [1]
+Player 1's Sequence: [3,5,6,9]
+Player 2's Sequence: [2,4,7,8]
+
+Player 1's turn.
+Last number in your sequence: 9
+Available numbers greater than 9: None
+No valid moves available.
+
+Player 1 cannot make a valid move. Player 2 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Look at the shared pool and anticipate future moves. Try to force your opponent into a position where they have no valid moves.
+- **Control High Numbers**: Securing higher numbers can limit your opponent's options later in the game.
+- **Balance Selections**: Avoid selecting numbers too high too soon, as this may reduce your own options in later turns.
+- **Monitor Opponent's Sequence**: Keep track of your opponent's sequence to predict their possible moves and adjust your strategy accordingly.
+
+---
+
+By understanding the rules and employing strategic thinking, players can enhance their chances of winning **Order Challenge**. Enjoy the game and may the keenest strategist prevail!
+
+---

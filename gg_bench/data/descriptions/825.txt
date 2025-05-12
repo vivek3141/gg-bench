@@ -1,0 +1,179 @@
+# Safe Cracker: Rule Book
+
+## Objective
+
+Become the first player to crack your opponent's secret code—a three-digit number—by making strategic guesses and deducing the correct digits and their positions based on feedback provided.
+
+## Setup
+
+1. **Secret Code Selection**:
+   - Each player secretly chooses a three-digit code.
+   - Each digit in the code must be a number from **1** to **3** (inclusive).
+   - Digits may be repeated (e.g., `1-2-1` or `3-3-3`).
+
+2. **Game Interface**:
+   - The game is played in a command-line interface.
+   - Players will input guesses and receive feedback through command-line prompts.
+
+## Game Components
+
+- **Secret Codes**:
+  - Three-digit numbers composed of digits from 1 to 3.
+  - Kept hidden from the opponent.
+
+- **Guess Tracker**:
+  - Record of all guesses made by both players.
+  - Includes feedback on the number of correct digits in the correct positions.
+
+- **Feedback Indicators**:
+  - **Exact Matches**: Number of digits guessed correctly with the correct position.
+  - No indication is given about which specific digits are correct.
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., coin toss, random selection).
+   - Players alternate turns throughout the game.
+
+2. **Player Actions During a Turn**:
+   - **Make a Guess**:
+     - Input a three-digit number as a guess of the opponent's secret code.
+     - Digits must be from 1 to 3 (inclusive).
+   - **Receive Feedback**:
+     - The opponent announces how many digits are correct and in the correct position.
+     - Example: "1 exact match" means one digit is correct and in the correct position.
+
+3. **Progression of Turns**:
+   - Turns continue alternately, with each player making a guess and receiving feedback.
+   - Players use the feedback to refine subsequent guesses.
+
+## Rules and Mechanics
+
+1. **Guessing Rules**:
+   - Guesses must be three-digit numbers using digits from 1 to 3.
+   - All guesses and feedback are communicated openly via the command-line interface.
+
+2. **Providing Feedback**:
+   - After the opponent makes a guess, the player checks it against their secret code.
+   - Count the number of digits that are both correct and in the correct position (exact matches).
+   - Announce only the number of exact matches (e.g., "2 exact matches").
+   - Do **not** reveal which digits are correct or their positions.
+
+3. **Winning the Game**:
+   - A player wins immediately when they guess the opponent's exact secret code.
+   - The winning guess must have all three digits correct and in the correct positions (three exact matches).
+
+4. **Strategy**:
+   - Players should keep track of all guesses and feedback to deduce the opponent's code.
+   - Logical reasoning and elimination are key to narrowing down the possible codes.
+
+## Scoring
+
+- **Victory**:
+  - The player who first guesses the opponent's secret code correctly wins the game.
+- **No Points System**:
+  - The game does not use a points system; victory is determined by successful codebreaking.
+
+## Examples
+
+### Example Gameplay
+
+**Initial Setup**:
+
+- Player 1 secretly chooses the code: `2-1-3`.
+- Player 2 secretly chooses the code: `3-3-1`.
+
+**Turn 1**:
+
+- **Player 1's Guess**: `1-1-1`
+  - **Player 2's Feedback**: "1 exact match"
+
+- **Player 2's Guess**: `1-2-3`
+  - **Player 1's Feedback**: "2 exact matches"
+
+**Turn 2**:
+
+- **Player 1's Guess**: `1-3-1`
+  - **Player 2's Feedback**: "0 exact matches"
+
+- **Player 2's Guess**: `2-2-3`
+  - **Player 1's Feedback**: "2 exact matches"
+
+**Turn 3**:
+
+- **Player 1's Guess**: `2-2-1`
+  - **Player 2's Feedback**: "1 exact match"
+
+- **Player 2's Guess**: `2-3-3`
+  - **Player 1's Feedback**: "1 exact match"
+
+**Turn 4**:
+
+- **Player 1's Guess**: `2-1-3`
+  - **Player 2's Feedback**: "3 exact matches"
+  - **Player 1 wins** by correctly guessing Player 2's code.
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**:
+
+```
+Enter your guess (three digits from 1-3): 1 2 3
+Feedback: 2 exact matches
+```
+
+**Player 2's Turn**:
+
+```
+Enter your guess (three digits from 1-3): 2 2 1
+Feedback: 1 exact match
+```
+
+**Player 1's Next Turn**:
+
+```
+Enter your guess (three digits from 1-3): 1 3 3
+Feedback: 1 exact match
+```
+
+**Player 2's Next Turn**:
+
+```
+Enter your guess (three digits from 1-3): 3 2 3
+Feedback: 0 exact matches
+```
+
+**Game Conclusion**:
+
+When a player receives "3 exact matches", they announce their victory.
+
+## Strategy Tips
+
+- **Use Process of Elimination**:
+  - Keep track of which digits and positions have been confirmed or eliminated based on feedback.
+  
+- **Vary Your Guesses**:
+  - Change multiple digits between guesses to gather as much information as possible.
+  
+- **Analyze Feedback Carefully**:
+  - Feedback accumulates over turns—use all prior feedback to narrow down possibilities.
+
+- **Predict Opponent's Choices**:
+  - Consider common patterns or numbers your opponent might choose.
+
+## Game Variations
+
+- **Extended Digit Range**:
+  - Increase the digit options from 1-3 to 1-4 or more for added complexity.
+
+- **Longer Codes**:
+  - Use four-digit codes to increase the game's difficulty and length.
+
+- **Limited Attempts**:
+  - Set a maximum number of guesses; if no one cracks the code, the player who gets the most exact matches in a single guess wins.
+
+## Conclusion
+
+"Safe Cracker" is a game of logic, deduction, and strategy. Players must think critically and use the feedback wisely to outsmart their opponent. With simple rules and deep strategic potential, it's an engaging challenge suitable for a command-line interface.
+
+Enjoy cracking the code!

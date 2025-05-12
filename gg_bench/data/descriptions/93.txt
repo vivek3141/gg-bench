@@ -1,0 +1,203 @@
+# Grid Quest: A Two-Player Command-Line Strategy Game
+
+---
+
+## Objective
+
+Become the first player to locate and capture the hidden treasure on the grid by using strategic scanning and deduction.
+
+---
+
+## Setup
+
+1. **Grid Creation**: A 5x5 grid is created with positions labeled from `A1` to `E5`.
+2. **Treasure Placement**: The treasure is randomly placed in one of the grid positions. Neither player knows its location.
+3. **Player Positions**: Both players start outside the grid and take turns scanning the grid to locate the treasure.
+
+---
+
+## Game Components
+
+- **Grid Positions**: The grid consists of 25 positions labeled as follows:
+  - **Rows**: `A`, `B`, `C`, `D`, `E`
+  - **Columns**: `1`, `2`, `3`, `4`, `5`
+  - Each position is identified by a combination of row and column labels (e.g., `A1`, `B3`, `E5`).
+
+- **Scanner**: Each player has access to a scanner that provides information about the treasure's proximity.
+
+---
+
+## Turns
+
+- **Turn Order**: Players decide who goes first by mutual agreement or a random method.
+
+- **Player Actions on a Turn**:
+  - **Scanning**: The player selects a grid position to scan.
+  - **Receiving Distance**: The system returns the Manhattan distance from the scanned position to the treasure.
+
+- **Progression**:
+  - Players alternate turns, using the information gathered to deduce the treasure's location.
+
+---
+
+## Rules and Mechanics
+
+### 1. Scanning Mechanics
+
+- **Command Format**: On their turn, a player types the command:
+
+  ```
+  SCAN [POSITION]
+  ```
+
+  Replace `[POSITION]` with their chosen grid position (e.g., `SCAN B4`).
+
+- **Distance Calculation**:
+  - **Rows are assigned numeric values**: `A=1`, `B=2`, `C=3`, `D=4`, `E=5`.
+  - **Columns are numeric**: `1` to `5`.
+  - **Manhattan Distance** is calculated as:
+
+    ```
+    Distance = |Row_Treasure - Row_Scanned| + |Column_Treasure - Column_Scanned|
+    ```
+
+- **System Response**: The system outputs:
+
+  ```
+  Distance: [NUMBER]
+  ```
+
+### 2. Guessing the Treasure Location
+
+- **Guessing Command**: Instead of scanning, a player may choose to guess the treasure's exact location by typing:
+
+  ```
+  GUESS [POSITION]
+  ```
+
+- **Outcome**:
+  - **Correct Guess**: The player wins the game.
+  - **Incorrect Guess**: The player loses the game immediately.
+
+### 3. Data Recording
+
+- **Record-Keeping**: Players are responsible for keeping track of the information they have gathered.
+- **Recommendation**: Record scanned positions and distances to aid in deduction.
+
+### 4. Communication
+
+- **Command Line Interaction**: All commands and outputs are entered and received via the command line.
+- **Confidentiality**: Players should not share their deductions or recorded data with the opponent.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The first player to correctly guess the treasure's location wins the game.
+
+- **Losing the Game**:
+  - A player loses if they make an incorrect guess.
+  - The opponent wins by default if a player loses due to an incorrect guess.
+
+---
+
+## Examples
+
+### Initial Setup
+
+- The grid is established, and the treasure is randomly placed at position `D4` (hidden from players).
+
+### Turn 1
+
+- **Player 1**: Types `SCAN B2`
+- **System**: Outputs `Distance: 4`
+
+  *Calculation*:
+
+  ```
+  Row difference: |4 (D) - 2 (B)| = 2
+  Column difference: |4 - 2| = 2
+  Total distance: 2 + 2 = 4
+  ```
+
+### Turn 2
+
+- **Player 2**: Types `SCAN C5`
+- **System**: Outputs `Distance: 2`
+
+  *Calculation*:
+
+  ```
+  Row difference: |4 (D) - 3 (C)| = 1
+  Column difference: |4 - 5| = 1
+  Total distance: 1 + 1 = 2
+  ```
+
+### Turn 3
+
+- **Player 1**: Uses previous data to deduce potential positions.
+  - Types `SCAN D2`
+- **System**: Outputs `Distance: 2`
+
+  *Calculation*:
+
+  ```
+  Row difference: |4 - 4| = 0
+  Column difference: |4 - 2| = 2
+  Total distance: 0 + 2 = 2
+  ```
+
+### Turn 4
+
+- **Player 2**: Confident in their deduction, decides to guess.
+  - Types `GUESS D4`
+- **System**: Outputs `Correct! Player 2 wins the game.`
+
+---
+
+## Strategic Tips
+
+- **Triangulation**: Use the distances provided from multiple scans to narrow down possible treasure locations.
+- **Manhattan Distance**: Remember that it's the sum of the absolute differences in the rows and columns.
+- **Record Data**: Keep a log of all scanned positions and their distances to aid in logical deduction.
+- **Cautious Guessing**: Be certain before guessing; an incorrect guess results in an immediate loss.
+
+---
+
+## Command Summary
+
+- **Scanning**:
+  ```
+  SCAN [POSITION]
+  ```
+  Scans a grid position to receive the Manhattan distance to the treasure.
+
+- **Guessing**:
+  ```
+  GUESS [POSITION]
+  ```
+  Attempts to guess the treasure's exact location. A correct guess wins the game; an incorrect guess loses the game.
+
+---
+
+## Victory Condition
+
+- **Winning**: Correctly guessing the treasure's location.
+- **Losing**: Making an incorrect guess.
+
+---
+
+## Game End
+
+- The game ends immediately upon a correct or incorrect guess.
+- **Winning the Game**:
+  - The player who successfully guesses the treasure's location.
+- **Default Win**:
+  - If a player loses by making an incorrect guess, the opponent wins.
+
+---
+
+Enjoy playing **Grid Quest**! Use your wits and strategy to outsmart your opponent in this exciting game of deduction and logic.
+
+---

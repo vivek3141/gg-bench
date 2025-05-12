@@ -1,0 +1,275 @@
+**Game Name:** Capture Square
+
+---
+
+**Objective:**
+
+Be the first player to capture the center square of the grid by moving one of your tokens onto it.
+
+---
+
+**Setup:**
+
+- **Game Board:** A 3x3 grid representing the game board.
+
+  - Cells are identified by their row and column indices: `(0,0)` to `(2,2)`.
+  - The grid starts empty at the beginning of the game.
+
+- **Players:**
+
+  - **Player A** and **Player B**.
+  - Each player has **four tokens**.
+
+- **Token Representation:**
+
+  - **Player A's tokens:** Represented by the letter `'A'`.
+  - **Player B's tokens:** Represented by the letter `'B'`.
+
+---
+
+**Game Components:**
+
+1. **Grid:**
+
+   - A 3x3 matrix where players place and move their tokens.
+   - The **center square** is at position `(1,1)`.
+
+2. **Tokens:**
+
+   - Each player has four tokens.
+   - **Appearance:** Tokens are represented by `'A'` or `'B'` on the grid.
+   - **Functionality:** Tokens can be placed on the grid and moved to adjacent cells.
+   - **Unique Attributes:** Tokens belong to their respective players and cannot be used by the opponent.
+
+---
+
+**Turns:**
+
+- **Turn Order:**
+
+  - Players alternate turns, starting with **Player A**.
+
+- **Actions per Turn:**
+
+  - On your turn, you may choose **one** of the following actions:
+
+    1. **Place a Token:**
+
+       - Place one of your unused tokens onto any empty cell **except the center square `(1,1)`**.
+       - Example command: `place 0 0` places a token at row `0`, column `0`.
+
+    2. **Move a Token:**
+
+       - Move one of your tokens already on the grid to an **adjacent empty cell** (up, down, left, or right).
+       - You cannot move diagonally.
+       - Example command: `move 0 0 0 1` moves a token from `(0,0)` to `(0,1)`.
+
+- **Turn Progression:**
+
+  - The game proceeds with players taking turns until one player captures the center square.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Token Placement:**
+
+   - Tokens are placed on empty cells, excluding the center square `(1,1)`.
+   - Once all four tokens are placed, you must move existing tokens.
+
+2. **Token Movement:**
+
+   - Tokens move to adjacent cells (up, down, left, or right) that are empty.
+   - Tokens cannot move into a cell occupied by any token.
+   - Tokens cannot move diagonally.
+   - You may not "jump" over other tokens.
+
+3. **Capturing the Center Square:**
+
+   - To win, you must **move** one of your tokens onto the center square `(1,1)`.
+   - Tokens **cannot be placed** directly onto the center square from off the grid.
+   - The center square must be unoccupied to be captured.
+
+4. **Blocked Paths:**
+
+   - Tokens block movement; you cannot move through or onto a square occupied by another token.
+   - Use your tokens strategically to block your opponent.
+
+5. **Winning the Game:**
+
+   - The first player to occupy the center square with one of their tokens wins the game.
+   - There are no draws; the game continues until there is a winner.
+
+---
+
+**Scoring:**
+
+- There is no point scoring system.
+- Victory is achieved by capturing the center square.
+
+---
+
+**Examples:**
+
+**Initial Game Board:**
+
+```
+   Column 0   Column 1   Column 2
+Row 0    -          -          -
+Row 1    -          -          -
+Row 2    -          -          -
+```
+
+**Sample Turns:**
+
+- **Turn 1: Player A**
+
+  - **Action:** Place a token at `(0,0)`.
+  - **Command:** `place 0 0`
+  - **Board State:**
+
+    ```
+       A          -          -
+       -          -          -
+       -          -          -
+    ```
+
+- **Turn 2: Player B**
+
+  - **Action:** Place a token at `(2,2)`.
+  - **Command:** `place 2 2`
+  - **Board State:**
+
+    ```
+       A          -          -
+       -          -          -
+       -          -          B
+    ```
+
+- **Turn 3: Player A**
+
+  - **Action:** Move token from `(0,0)` to `(0,1)`.
+  - **Command:** `move 0 0 0 1`
+  - **Board State:**
+
+    ```
+       -          A          -
+       -          -          -
+       -          -          B
+    ```
+
+- **Turn 4: Player B**
+
+  - **Action:** Place a token at `(1,2)`.
+  - **Command:** `place 1 2`
+  - **Board State:**
+
+    ```
+       -          A          -
+       -          -          B
+       -          -          B
+    ```
+
+- **Turn 5: Player A**
+
+  - **Action:** Place a token at `(1,0)`.
+  - **Command:** `place 1 0`
+  - **Board State:**
+
+    ```
+       -          A          -
+       A          -          B
+       -          -          B
+    ```
+
+- **Turn 6: Player B**
+
+  - **Action:** Move token from `(2,2)` to `(2,1)`.
+  - **Command:** `move 2 2 2 1`
+  - **Board State:**
+
+    ```
+       -          A          -
+       A          -          B
+       -          B          -
+    ```
+
+- **Turn 7: Player A**
+
+  - **Action:** Move token from `(1,0)` to `(1,1)` (center square).
+  - **Command:** `move 1 0 1 1`
+  - **Result:** Player A captures the center square and wins!
+  - **Final Board State:**
+
+    ```
+       -          A          -
+       -          A          B
+       -          B          -
+    ```
+
+---
+
+**Command-Line Interaction Examples:**
+
+- **Player A's Turn:**
+
+  ```
+  It's your turn, Player A.
+  Choose an action ('place' or 'move'):
+  > place
+  Enter the row and column to place your token (e.g., '0 0'):
+  > 0 0
+  ```
+
+- **Player B's Turn:**
+
+  ```
+  It's your turn, Player B.
+  Choose an action ('place' or 'move'):
+  > place
+  Enter the row and column to place your token (e.g., '2 2'):
+  > 2 2
+  ```
+
+- **Player A's Move:**
+
+  ```
+  It's your turn, Player A.
+  Choose an action ('place' or 'move'):
+  > move
+  Enter the row and column of the token to move (e.g., '0 0'):
+  > 0 0
+  Enter the row and column to move to (e.g., '0 1'):
+  > 0 1
+  ```
+
+- **Winning Move:**
+
+  ```
+  It's your turn, Player A.
+  Choose an action ('place' or 'move'):
+  > move
+  Enter the row and column of the token to move (e.g., '1 0'):
+  > 1 0
+  Enter the row and column to move to (e.g., '1 1'):
+  > 1 1
+  Congratulations, Player A! You have captured the center square and won the game!
+  ```
+
+---
+
+**Strategy Tips:**
+
+- **Plan Ahead:** Anticipate your opponent's moves and block their paths to the center square.
+- **Control the Center:** Even before moving to the center, control the adjacent squares to limit your opponent's options.
+- **Token Management:** Decide wisely when to place new tokens and when to move existing ones.
+
+---
+
+**Conclusion:**
+
+"Capture Square" is a simple yet strategic game that challenges players to outmaneuver their opponent on a small grid. With easy-to-understand rules and quick gameplay, it's perfect for a command-line interface. Mastery comes from planning and strategic movement, allowing skilled players to consistently win.
+
+---
+
+Enjoy your game of Capture Square!

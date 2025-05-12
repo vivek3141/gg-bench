@@ -1,0 +1,172 @@
+# Intercept: A Two-Player Strategic Movement Game
+
+## Objective
+
+**Intercept** is a two-player turn-based strategy game played on a linear track. The primary goal is to be the first player to **capture** your opponent by landing on the same position on the track. Players must anticipate their opponent's moves and strategically choose their own movements to achieve a capture while avoiding being captured themselves.
+
+## Setup
+
+- The game is played on a **linear track** numbered from **1 to 20**.
+- **Player 1** starts at **position 1**.
+- **Player 2** starts at **position 20**.
+- Both players are informed of the starting positions and the rules before the game begins.
+
+## Game Components
+
+- **Linear Track**: A series of positions numbered from **1** to **20**.
+- **Player Tokens**: Each player controls a token representing their position on the track.
+  - **Player 1 Token**: Represented by `P1`.
+  - **Player 2 Token**: Represented by `P2`.
+
+## Turns
+
+- Players take turns alternately, starting with **Player 1**.
+- During their turn, a player must:
+  1. **Declare** the number of spaces they wish to move (**1**, **2**, or **3**).
+  2. **Specify** the direction of movement:
+     - **Forward** (towards the higher-numbered positions).
+     - **Backward** (towards the lower-numbered positions).
+- After declaring the move, the player's token is updated to the new position.
+- The game continues with players alternating turns until a player captures the opponent.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Movement Range**: On each turn, a player must move their token by **exactly** **1**, **2**, or **3** positions.
+- **Direction**:
+  - Players may move **forward** or **backward** along the track.
+  - Players cannot move beyond the track boundaries (positions **1** and **20**).
+- **Mandatory Movement**: Players **must** move on their turn; staying in the same position is **not allowed**.
+- **Position Occupation**:
+  - Both players cannot occupy the same position **simultaneously** unless a capture occurs.
+  - A capture happens only when a player lands on the opponent's current position during their own turn.
+
+### Capture Mechanics
+
+- **Capturing the Opponent**:
+  - If a player moves their token to the exact position occupied by the opponent, they **capture** the opponent and **win** the game.
+- **Avoiding Capture**:
+  - Players must anticipate potential capture moves by the opponent and plan their movements accordingly.
+
+### Additional Rules
+
+- **No Skipping Turns**: Players cannot skip their turn; they must move each time.
+- **No Communication**: Players should not reveal their planned moves or strategies to the opponent during the game.
+- **Fair Play**: Players must adhere to the declared movement rules without making illegal moves.
+
+## Scoring
+
+- **Winning the Game**: The first player to capture the opponent by landing on their position wins the game.
+- **No Points System**: The game does not utilize a points system; victory is achieved solely through successful capture.
+
+## Examples
+
+Below are sample turns to illustrate how the game is played in a command-line interface.
+
+### Initial Positions
+
+- **Player 1** (`P1`): Position **1**
+- **Player 2** (`P2`): Position **20**
+
+### Sample Game Play
+
+#### Turn 1
+
+- **Player 1's Turn**:
+  - **Move**: `Move forward by 3`
+  - **New Position**: `Position 4`
+- **Player 2's Turn**:
+  - **Move**: `Move backward by 2`
+  - **New Position**: `Position 18`
+
+#### Turn 2
+
+- **Player 1's Turn**:
+  - **Move**: `Move forward by 2`
+  - **New Position**: `Position 6`
+- **Player 2's Turn**:
+  - **Move**: `Move backward by 3`
+  - **New Position**: `Position 15`
+
+#### Turn 3
+
+- **Player 1's Turn**:
+  - **Move**: `Move forward by 3`
+  - **New Position**: `Position 9`
+- **Player 2's Turn**:
+  - **Move**: `Move backward by 1`
+  - **New Position**: `Position 14`
+
+#### Turn 4
+
+- **Player 1's Turn**:
+  - **Move**: `Move forward by 2`
+  - **New Position**: `Position 11`
+- **Player 2's Turn**:
+  - **Move**: `Move backward by 2`
+  - **New Position**: `Position 12`
+
+#### Turn 5
+
+- **Player 1's Turn**:
+  - **Move**: `Move forward by 1`
+  - **New Position**: `Position 12`
+  - **Capture**: `Player 1 captures Player 2!`
+- **Result**: **Player 1 wins the game.**
+
+### Command-Line Interaction Example
+
+Below is how the game might look in a command-line interface.
+
+```
+=== Intercept Game ===
+
+Starting Positions:
+Player 1 (P1): Position 1
+Player 2 (P2): Position 20
+
+--- Turn 1 ---
+P1's Turn:
+Enter move distance (1-3): 3
+Enter direction (forward/backward): forward
+P1 moves forward by 3 to Position 4.
+
+P2's Turn:
+Enter move distance (1-3): 2
+Enter direction (forward/backward): backward
+P2 moves backward by 2 to Position 18.
+
+--- Turn 2 ---
+P1's Turn:
+Enter move distance (1-3): 2
+Enter direction (forward/backward): forward
+P1 moves forward by 2 to Position 6.
+
+P2's Turn:
+Enter move distance (1-3): 3
+Enter direction (forward/backward): backward
+P2 moves backward by 3 to Position 15.
+
+...
+
+--- Turn 5 ---
+P1's Turn:
+Enter move distance (1-3): 1
+Enter direction (forward/backward): forward
+P1 moves forward by 1 to Position 12.
+P1 captures P2! Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Anticipate Opponent's Moves**: Try to predict where your opponent might move based on their current position.
+- **Position Yourself Wisely**: Aim to move into positions that set you up for a capture on your next turn.
+- **Avoid Vulnerable Spots**: Be cautious of positions where the opponent can easily capture you.
+- **Control the Center**: Moving towards the center of the track can give you more options for movement and control.
+
+## Conclusion
+
+**Intercept** is a simple yet strategic game that requires players to think ahead and plan their moves carefully. With easy-to-understand rules and quick gameplay, it's perfect for honing tactical skills and enjoying a competitive match in a command-line setting.
+
+Enjoy the game, and may the best strategist win!

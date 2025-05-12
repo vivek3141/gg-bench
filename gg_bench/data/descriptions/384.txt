@@ -1,0 +1,285 @@
+# Number Clash: Rule Book
+
+## Objective
+
+The objective of **Number Clash** is to be the first player to win **three rounds** by strategically selecting numbers to outsmart your opponent. Players simultaneously choose numbers from their available set, aiming to win rounds by understanding and predicting the opponent's choices.
+
+---
+
+## Setup
+
+1. **Players**: The game is designed for **two players**.
+2. **Number Set**: Each player has a set of numbers from **1 to 10**.
+   - Each number can be used **only once** per game.
+3. **Score Tracking**: Both players start with **zero points**.
+4. **Winning Condition**: The first player to accumulate **three points** wins the game.
+
+---
+
+## Game Components
+
+- **Number Sets**:
+  - **Player 1's Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  - **Player 2's Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  - Numbers are removed from a player's available set once used.
+
+- **Scoreboard**:
+  - Tracks the number of rounds won by each player.
+  - Example:
+    ```
+    Scores:
+    Player 1: 2
+    Player 2: 1
+    ```
+
+- **Round Counter**:
+  - Optional component to keep track of the number of rounds played.
+
+---
+
+## Turns
+
+- The game is played in **rounds**, with each round consisting of the following steps:
+
+  1. **Selection Phase**:
+     - Both players **simultaneously** select a number from their available numbers.
+     - The selection is kept secret until both players have chosen.
+
+  2. **Reveal Phase**:
+     - Both players reveal their chosen numbers at the same time.
+
+  3. **Resolution Phase**:
+     - Determine the winner of the round based on the rules.
+
+- There are no individual turns within a round; actions are performed simultaneously.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection**:
+   - Players must choose a number from their **available set**.
+   - Each number from 1 to 10 can be used **only once** per player during the game.
+
+2. **Winning a Round**:
+   - **Higher Number Wins**: Generally, the player who selects the higher number wins the round.
+   - **Exception - The Underdog Rule**:
+     - If one player's chosen number is **exactly one less** than the opponent's number, the **lower number wins** the round.
+     - This rule adds a strategic element, allowing lower numbers to sometimes defeat higher numbers.
+
+3. **Tie Rule**:
+   - If both players choose the **same number**, neither player wins the round.
+   - The numbers are still removed from their sets.
+
+4. **Number Removal**:
+   - After each round, the numbers used are **discarded** and cannot be used again in the game.
+
+### Additional Mechanics
+
+- **Simultaneous Play**:
+  - Since selections are made simultaneously, players must decide on their numbers **without knowledge** of the opponent's current choice.
+  
+- **Strategic Depletion**:
+  - Players must plan the use of their numbers carefully to avoid running out of valuable options in later rounds.
+
+---
+
+## Scoring
+
+- **Point Awarding**:
+  - The player who wins a round earns **one point**.
+
+- **Winning the Game**:
+  - The first player to reach **three points** wins the game.
+
+- **Score Tracking**:
+  - Keep track of the points after each round to determine if a player has won.
+  - Optional command-line output after each round:
+    ```
+    Round Result: Player 1 wins the round!
+    Current Scores:
+    Player 1: 2
+    Player 2: 1
+    ```
+
+---
+
+## Examples
+
+### Sample Gameplay
+
+Below is an example of how a game of **Number Clash** might proceed, including command-line interactions.
+
+#### Starting State
+
+- **Available Numbers**:
+  - Player 1: 1-10
+  - Player 2: 1-10
+- **Scores**:
+  - Player 1: 0
+  - Player 2: 0
+
+---
+
+### Round 1
+
+**Selection Phase**:
+
+- **Player 1** chooses **7**.
+- **Player 2** chooses **8**.
+
+**Reveal Phase**:
+
+- Both players reveal their choices.
+  ```
+  Player 1 chose: 7
+  Player 2 chose: 8
+  ```
+
+**Resolution Phase**:
+
+- **Underdog Rule** applies since 7 is exactly one less than 8.
+- **Player 1** wins the round.
+
+**Post-Round Update**:
+
+- **Scores**:
+  - Player 1: 1
+  - Player 2: 0
+- **Available Numbers**:
+  - Player 1: 1-6, 8-10
+  - Player 2: 1-7, 9-10
+
+---
+
+### Round 2
+
+**Selection Phase**:
+
+- **Player 1** chooses **10**.
+- **Player 2** chooses **6**.
+
+**Reveal Phase**:
+
+- Both players reveal their choices.
+  ```
+  Player 1 chose: 10
+  Player 2 chose: 6
+  ```
+
+**Resolution Phase**:
+
+- **Player 1** has the higher number and wins the round.
+
+**Post-Round Update**:
+
+- **Scores**:
+  - Player 1: 2
+  - Player 2: 0
+- **Available Numbers**:
+  - Player 1: 1-6, 8-9
+  - Player 2: 1-5, 7, 9-10
+
+---
+
+### Round 3
+
+**Selection Phase**:
+
+- **Player 1** chooses **5**.
+- **Player 2** chooses **6**.
+
+**Reveal Phase**:
+
+- Both players reveal their choices.
+  ```
+  Player 1 chose: 5
+  Player 2 chose: 6
+  ```
+
+**Resolution Phase**:
+
+- **Underdog Rule** applies since 5 is exactly one less than 6.
+- **Player 1** wins the round.
+
+**Post-Round Update**:
+
+- **Scores**:
+  - Player 1: 3
+  - Player 2: 0
+
+**Game Over**:
+
+- **Player 1** has reached three points and **wins the game**!
+  ```
+  Congratulations, Player 1 wins the game with a score of 3 to 0!
+  ```
+
+---
+
+## Command-Line Interactions
+
+Below is an example of how the game might be implemented in a command-line interface.
+
+### Round Execution
+
+**Prompt for Selection**:
+```
+Player 1, enter your chosen number from your available numbers [1,2,3,4,5,6,8,9]:
+```
+- Player 1 inputs **5**.
+
+```
+Player 2, enter your chosen number from your available numbers [1,2,3,4,5,6,7,9,10]:
+```
+- Player 2 inputs **6**.
+
+**Display Selections**:
+```
+Player 1 chose: 5
+Player 2 chose: 6
+```
+
+**Display Round Result**:
+```
+Underdog Rule Activated! Player 1 wins the round!
+```
+
+**Update Scores**:
+```
+Current Scores:
+Player 1: 3
+Player 2: 0
+```
+
+**Game Conclusion**:
+```
+Player 1 has reached 3 points and wins the game!
+Thank you for playing Number Clash.
+```
+
+---
+
+## Strategy Tips
+
+- **Anticipate Opponent Moves**:
+  - Try to predict which numbers your opponent might play based on their remaining numbers.
+
+- **Use the Underdog Rule**:
+  - Utilize the Underdog Rule by playing a number that is one less than a high-value number you expect your opponent to use.
+
+- **Conserve High Numbers**:
+  - Save your highest numbers for when you think the opponent has exhausted their high numbers.
+
+- **Avoid Ties**:
+  - Since ties result in a loss of valuable numbers without gaining points, try to choose numbers less likely to match the opponent's choice.
+
+---
+
+## Conclusion
+
+**Number Clash** is a simple yet strategic game that requires players to think ahead and outmaneuver their opponent with careful number selection. The unique Underdog Rule adds an element of surprise and strategy, ensuring that every number in your set has the potential to lead you to victory.
+
+Enjoy the battle of wits and may the best strategist win!

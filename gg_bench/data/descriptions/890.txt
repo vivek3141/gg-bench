@@ -1,0 +1,223 @@
+# Block Capture: A Two-Player Strategy Game
+
+---
+
+## Objective
+
+**Block Capture** is a strategic two-player game played on a 5x5 grid. The primary goal is to be the first player to capture the central block of the grid, located at position (3,3). Players achieve victory by strategically placing their markers on the grid, navigating towards the center while limiting the opponent's options. A win is achieved by claiming the central block. A loss occurs if a player has no valid moves left before capturing the central block.
+
+---
+
+## Setup
+
+1. **Game Board**: The game is played on a 5x5 grid with positions labeled using row and column coordinates from 1 to 5. The top-left corner is position (1,1), and the bottom-right corner is position (5,5).
+
+2. **Markers**: Each player selects a unique marker symbol:
+   - Player 1: `X`
+   - Player 2: `O`
+
+3. **Starting Conditions**:
+   - All blocks on the grid are initially unclaimed.
+   - The central block is at position (3,3).
+   - Players decide who takes the first turn (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Grid**: A 5x5 matrix representing the game board.
+
+  ```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+  ```
+
+- **Player Markers**:
+  - `X` for Player 1.
+  - `O` for Player 2.
+
+- **Command-Line Interface**: Players input their moves by specifying row and column numbers.
+
+---
+
+## Turns
+
+1. **First Turn**:
+   - **Player 1** begins by placing their marker on **any unclaimed block along the edge** of the grid. Edge blocks are those in row 1, row 5, column 1, or column 5.
+
+2. **Subsequent Turns**:
+   - Players alternate turns after the first move.
+   - On each turn, a player must place their marker on an unclaimed block that is **adjacent** (horizontally or vertically) to the **last block claimed by the opponent**.
+   - If a player cannot make a move because there are no unclaimed adjacent blocks, they lose the game.
+
+3. **Adjacency**:
+   - Blocks are adjacent if they share a common side (up, down, left, or right). Diagonal adjacency is not considered.
+
+---
+
+## Rules and Mechanics
+
+1. **Placement Rules**:
+   - **First Move**: Player 1 places their marker on any edge block.
+   - **Following Moves**: Each player must place their marker on an unclaimed block adjacent to the last block claimed by their opponent.
+
+2. **Claiming Blocks**:
+   - When a player places their marker on a block, they claim it.
+   - A claimed block cannot be claimed or moved to by the other player.
+
+3. **Winning the Game**:
+   - A player wins immediately upon claiming the central block at position (3,3).
+
+4. **Losing the Game**:
+   - A player loses if they have no valid moves (no unclaimed adjacent blocks to the opponent's last move) before capturing the central block.
+
+---
+
+## Scoring
+
+There is no point scoring system in **Block Capture**. The game focuses on strategic block placement and movement towards the central block. Victory is achieved by fulfilling the winning condition (capturing the central block), and loss is determined by being unable to make a valid move.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Initial Board**:
+
+```
+  1   2   3   4   5
++---+---+---+---+---+
+1|   |   |   |   |   |
++---+---+---+---+---+
+2|   |   |   |   |   |
++---+---+---+---+---+
+3|   |   |   |   |   |
++---+---+---+---+---+
+4|   |   |   |   |   |
++---+---+---+---+---+
+5|   |   |   |   |   |
++---+---+---+---+---+
+```
+
+**Player 1's Turn**:
+
+- Chooses an edge block to place `X`. Let's say position **(1,3)**.
+
+Updated Board:
+
+```
+  1   2   3   4   5
++---+---+---+---+---+
+1|   |   | X |   |   |
++---+---+---+---+---+
+2|   |   |   |   |   |
++---+---+---+---+---+
+3|   |   |   |   |   |
++---+---+---+---+---+
+4|   |   |   |   |   |
++---+---+---+---+---+
+5|   |   |   |   |   |
++---+---+---+---+---+
+```
+
+**Player 2's Turn**:
+
+- Must place `O` on an unclaimed block adjacent to **(1,3)**.
+- Available adjacent positions: **(1,2)**, **(1,4)**, **(2,3)**.
+- Chooses position **(2,3)**.
+
+Updated Board:
+
+```
+  1   2   3   4   5
++---+---+---+---+---+
+1|   |   | X |   |   |
++---+---+---+---+---+
+2|   |   | O |   |   |
++---+---+---+---+---+
+3|   |   |   |   |   |
++---+---+---+---+---+
+4|   |   |   |   |   |
++---+---+---+---+---+
+5|   |   |   |   |   |
++---+---+---+---+---+
+```
+
+**Player 1's Turn**:
+
+- Must place `X` on an unclaimed block adjacent to **(2,3)**.
+- Available adjacent positions: **(1,3)** (already claimed), **(2,2)**, **(2,4)**, **(3,3)**.
+- Chooses position **(3,3)** (central block).
+
+Updated Board:
+
+```
+  1   2   3   4   5
++---+---+---+---+---+
+1|   |   | X |   |   |
++---+---+---+---+---+
+2|   |   | O |   |   |
++---+---+---+---+---+
+3|   |   | X |   |   |
++---+---+---+---+---+
+4|   |   |   |   |   |
++---+---+---+---+---+
+5|   |   |   |   |   |
++---+---+---+---+---+
+```
+
+**Result**:
+
+- Player 1 captures the central block **(3,3)** and wins the game.
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**:
+
+```
+Player 1 (X), choose your starting position along the edge.
+Enter row and column numbers (1-5): 1 3
+```
+
+**Player 2's Turn**:
+
+```
+Player 2 (O), the last move was at (1,3).
+You must place your marker adjacent to this position.
+Available positions: (1,2), (1,4), (2,3)
+Enter row and column numbers (1-5): 2 3
+```
+
+**Player 1's Turn**:
+
+```
+Player 1 (X), the last move was at (2,3).
+You must place your marker adjacent to this position.
+Available positions: (2,2), (2,4), (3,3)
+Enter row and column numbers (1-5): 3 3
+
+Congratulations! You have captured the central block (3,3) and won the game!
+```
+
+---
+
+## Strategic Depth and Complexity
+
+- **Planning Ahead**: Players must think ahead to block the opponent's paths while progressing towards the center.
+- **Control of Movement**: By choosing certain blocks, a player can force the opponent into less advantageous positions.
+- **Anticipation**: Predicting the opponent's moves allows a player to set traps or open pathways to the central block.
+
+---
+
+By following this rule book, players will have all the necessary information to understand and play **Block Capture**. The game's simplicity makes it easy to code for a command-line interface, while the strategic elements provide depth and replayability. Skilled players who plan ahead and anticipate their opponent's moves will consistently outperform unskilled players, ensuring competitive and engaging gameplay.

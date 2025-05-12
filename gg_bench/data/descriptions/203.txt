@@ -1,0 +1,217 @@
+# Operation Obliteration
+
+## Rule Book
+
+---
+
+### Objective
+
+Be the last player able to make a valid move by strategically applying mathematical operations to a shared number. Force your opponent into a position where they cannot perform any valid operation on their turn.
+
+---
+
+### Setup
+
+- **Starting Number**: The game begins with a shared number set to **12**.
+- **Players**: Two players compete against each other.
+- **First Move**: Decide which player goes first (e.g., by flipping a coin).
+
+---
+
+### Game Components
+
+- **Shared Number**: An integer that both players manipulate during the game. It changes as players apply operations.
+- **Operations Set**: The following mathematical operations, which depend on the current state of the shared number:
+  - **Addition (+1)**: Only if the shared number is **prime**.
+  - **Subtraction (-1)**: Only if the shared number is **prime**.
+  - **Division (/2)**: Only if the shared number is **even**.
+  - **Multiply by 3 and Add 1 (\*3+1)**: Only if the shared number is **odd**.
+- **Operation History**: Players cannot repeat the same operation they used on their previous turn.
+
+---
+
+### Turns
+
+- Players take turns alternately.
+- On each turn, a player must perform **one valid operation** on the shared number.
+- After performing the operation, the player announces the new shared number.
+- Turns proceed until a player cannot make a valid move on their turn.
+
+---
+
+### Rules and Mechanics
+
+1. **Valid Moves**:
+   - Determine the properties of the current shared number (prime, even, odd).
+   - Choose an operation that is allowed for that number.
+   - The result must be an **integer between 1 and 100**, inclusive.
+
+2. **Operations Based on Number Properties**:
+   - **If the number is prime**:
+     - **Add 1**: Shared Number = Shared Number + 1
+     - **Subtract 1**: Shared Number = Shared Number - 1
+   - **If the number is even**:
+     - **Divide by 2**: Shared Number = Shared Number ÷ 2
+   - **If the number is odd**:
+     - **Multiply by 3 and Add 1**: Shared Number = (Shared Number × 3) + 1
+
+3. **Restrictions**:
+   - **No Repeats**: A player cannot perform the same operation they used on their previous turn.
+   - **Mandatory Moves**: Passing a turn is not allowed. If a player has a valid move, they must use it.
+   - **Operation Validity**: The chosen operation must result in an integer within the range of 1 to 100. Non-integer results or numbers outside this range are invalid.
+
+4. **Ending the Game**:
+   - **Winning Condition**: A player wins if their opponent cannot perform any valid operation on their turn.
+   - **Losing Condition**: A player loses if they have no valid moves available on their turn.
+
+5. **Game Continuity**:
+   - The game continues until a player wins according to the winning condition.
+
+---
+
+### Scoring
+
+- **Winner**: The player who forces their opponent into a position where they cannot make a valid move.
+- **No Points**: The game is based on winning or losing rather than accumulating points.
+
+---
+
+### Examples
+
+#### Sample Game Play
+
+**Starting Shared Number**: **12**
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Number**: 12 (Even)
+- **Available Operations**:
+  - **Divide by 2** (Since 12 is even)
+- **Operation History**: N/A
+- **Chosen Operation**: Divide by 2
+- **Calculation**: 12 ÷ 2 = **6**
+- **Announcement**: "I divide by 2. New number is 6."
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Number**: 6 (Even)
+- **Available Operations**:
+  - **Divide by 2** (Since 6 is even)
+- **Operation History**: Player 2 has not made any moves yet.
+- **Chosen Operation**: Divide by 2
+- **Calculation**: 6 ÷ 2 = **3**
+- **Announcement**: "I divide by 2. New number is 3."
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Number**: 3 (Prime and Odd)
+- **Available Operations**:
+  - **Add 1** (Prime)
+  - **Subtract 1** (Prime)
+  - **Multiply by 3 and Add 1** (Odd)
+- **Operation History**: Last operation was "Divide by 2"
+- **Chosen Operation**: Subtract 1
+- **Calculation**: 3 - 1 = **2**
+- **Announcement**: "I subtract 1. New number is 2."
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Number**: 2 (Prime and Even)
+- **Available Operations**:
+  - **Add 1** (Prime)
+  - **Divide by 2** (Even)
+  - **Cannot Subtract 1** (Same as last operation used by Player 1)
+- **Operation History**: Last operation was "Divide by 2"
+- **Chosen Operation**: Divide by 2
+- **Calculation**: 2 ÷ 2 = **1**
+- **Announcement**: "I divide by 2. New number is 1."
+
+---
+
+**Turn 5: Player 1**
+
+- **Current Number**: 1 (Odd, Not Prime)
+- **Available Operations**:
+  - **Multiply by 3 and Add 1** (Odd)
+  - **Cannot Subtract 1** or **Divide by 2** (Not valid for 1)
+- **Operation History**: Last operation was "Subtract 1"
+- **Chosen Operation**: Multiply by 3 and Add 1
+- **Calculation**: (1 × 3) + 1 = **4**
+- **Announcement**: "I multiply by 3 and add 1. New number is 4."
+
+---
+
+**Turn 6: Player 2**
+
+- **Current Number**: 4 (Even)
+- **Available Operations**:
+  - **Cannot Divide by 2** (Same as last operation used by Player 2)
+  - **No other valid operations for even numbers**
+- **Operation History**: Last operation was "Divide by 2"
+- **Possible Moves**: None
+- **Conclusion**: Player 2 cannot make a valid move.
+
+---
+
+**Game Over**
+
+- **Winner**: **Player 1**
+
+**Explanation**: Player 2 cannot perform any valid operation on their turn, so Player 1 wins the game.
+
+---
+
+### Additional Strategic Considerations
+
+- **Plan Ahead**: Anticipate the results of your moves and how they will limit your opponent's options.
+- **Operation Diversity**: Avoid using the same operation repeatedly, as it may limit your future choices due to the "No Repeats" rule.
+- **Number Properties**: Keep track of whether the shared number is prime, even, or odd to determine the best possible moves.
+- **Forcing Moves**: Try to manipulate the shared number to a state where your opponent has minimal or no valid moves.
+
+---
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their chosen operation:
+
+**Prompt**: *Player 1, the current number is 12 (Even). Available operations: "divide". Enter your move:*
+
+- **Player 1 Input**: `divide`
+
+**Output**: *Player 1 divides by 2. New number is 6.*
+
+---
+
+**Prompt**: *Player 2, the current number is 6 (Even). Available operations: "divide". Enter your move:*
+
+- **Player 2 Input**: `divide`
+
+**Output**: *Player 2 divides by 2. New number is 3.*
+
+---
+
+**Prompt**: *Player 1, the current number is 3 (Prime and Odd). Available operations: "add", "subtract", "multiply". Enter your move:*
+
+- **Player 1 Input**: `subtract`
+
+**Output**: *Player 1 subtracts 1. New number is 2.*
+
+---
+
+...and so on, following the sample game play provided earlier.
+
+---
+
+By adhering to these rules and mechanics, "Operation Obliteration" offers strategic depth and requires players to think ahead to outmaneuver their opponent. The unique combination of mathematical operations and number properties ensures a fresh and engaging experience distinct from traditional games.
+
+---
+
+**Enjoy the game, and may the best strategist win!**

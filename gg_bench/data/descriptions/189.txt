@@ -1,0 +1,182 @@
+**Divisor Duel: Rule Book**
+
+---
+
+### **Objective**
+
+Be the last player to make a valid move by strategically selecting divisors of the current number. Outwit your opponent by reducing the common number intelligently to force them into a position where they cannot make a move.
+
+---
+
+### **Setup**
+
+1. **Starting Number**: The game begins with a positive integer, **N**, which both players will manipulate. For a quick game, it's recommended to start with **N = 30**. Players can agree on a different starting number for longer or shorter games.
+
+2. **Player Order**: Decide which player goes first. This can be done by a mutual agreement or by any random method such as a coin toss.
+
+---
+
+### **Game Components**
+
+- **Current Number (N)**: A shared positive integer that diminishes as the game progresses.
+  
+- **Used Divisors List**: A record of all divisors that have been chosen during the game to prevent reuse.
+
+- **Players**: Two participants who will alternate turns.
+
+No physical components are necessary beyond a command-line interface or simple tracking method.
+
+---
+
+### **Turns**
+
+1. **Player's Move**: On their turn, a player must:
+
+   - Choose a **proper divisor** of the current number **N** (a proper divisor is a positive integer greater than 1 and less than N that divides N without leaving a remainder).
+   - **Subtract** the chosen divisor from **N** to get a new N.
+   - **Record** the chosen divisor in the Used Divisors List.
+
+2. **Alternating Turns**: Players alternate turns until the game ends.
+
+3. **No Reuse of Divisors**: Once a divisor has been used by either player, it cannot be used again for the remainder of the game.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+
+   - The chosen divisor **D** must satisfy:
+     - **D > 1**
+     - **D < N**
+     - **N % D == 0** (D divides N without a remainder)
+     - **D** has not been used previously by either player.
+
+2. **Updating N**:
+
+   - After a valid move, the current number **N** is updated:
+     - **N = N - D**
+
+3. **Winning the Game**:
+
+   - The player who makes the last valid move wins.
+   - If a player cannot make a valid move on their turn, they **lose**.
+
+4. **Draws**:
+
+   - **No draw is possible** in Divisor Duel. The game continues until one player cannot make a valid move.
+
+---
+
+### **Scoring**
+
+- **Victory**: Winning the game by being the last to make a valid move.
+- **No Point System**: There are no points; the outcome is win or loss.
+- **Skill-Based**: Success depends on strategic choice of divisors and anticipation of the opponent's options.
+
+---
+
+### **Example Gameplay**
+
+**Starting the Game**
+
+- **N = 30**
+- **Used Divisors List**: Empty
+
+**Turns**
+
+1. **Player 1's Turn**
+
+   - **Possible Divisors of 30**: 2, 3, 5, 6, 10, 15 (excluding 1 and 30)
+   - **Chooses D = 15**
+   - **Updates N**: N = 30 - 15 = **15**
+   - **Updates Used Divisors List**: [15]
+
+2. **Player 2's Turn**
+
+   - **Possible Divisors of 15**: 3, 5 (excluding 1, 15, and 15 is used)
+   - **Chooses D = 5**
+   - **Updates N**: N = 15 - 5 = **10**
+   - **Updates Used Divisors List**: [15, 5]
+
+3. **Player 1's Turn**
+
+   - **Possible Divisors of 10**: 2 (since 5 is used; 1 and 10 excluded)
+   - **Chooses D = 2**
+   - **Updates N**: N = 10 - 2 = **8**
+   - **Updates Used Divisors List**: [15, 5, 2]
+
+4. **Player 2's Turn**
+
+   - **Possible Divisors of 8**: 4 (2 is used; 1 and 8 excluded)
+   - **Chooses D = 4**
+   - **Updates N**: N = 8 - 4 = **4**
+   - **Updates Used Divisors List**: [15, 5, 2, 4]
+
+5. **Player 1's Turn**
+
+   - **Possible Divisors of 4**: None (2 and 4 are used; only 1 and 4 left)
+   - **No Valid Move Available**
+   - **Player 1 Loses**
+
+**Outcome**: **Player 2 Wins**
+
+---
+
+### **Command-Line Interaction Example**
+
+Assuming the players are interacting through a command-line interface.
+
+```
+Game Start: N = 30
+
+Used Divisors: 
+
+Player 1's Turn:
+- Available Divisors: 2, 3, 5, 6, 10, 15
+- Enter your divisor: 15
+- N is now: 15
+- Used Divisors: 15
+
+Player 2's Turn:
+- Available Divisors: 2, 3, 5, 6, 10 (excluding 15)
+- Enter your divisor: 5
+- N is now: 10
+- Used Divisors: 15, 5
+
+Player 1's Turn:
+- Available Divisors: 2, 3, 6 (excluding 5 and 15)
+- Enter your divisor: 2
+- N is now: 8
+- Used Divisors: 15, 5, 2
+
+Player 2's Turn:
+- Available Divisors: 3, 6, 4 (since N=8)
+- Enter your divisor: 4
+- N is now: 4
+- Used Divisors: 15, 5, 2, 4
+
+Player 1's Turn:
+- Available Divisors: None (no proper divisors left)
+- You cannot make a move.
+- **Player 2 Wins!**
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead**: Anticipate which divisors will be available to your opponent after your move.
+- **Control the Game**: Force N into a number where the opponent has limited options.
+- **Avoid Obvious Choices**: Using small divisors early might leave you without options later.
+
+---
+
+### **Variations**
+
+- **Different Starting Numbers**: Start with larger numbers for a longer game.
+- **Restricted Divisors**: Limit the divisors to prime numbers for added challenge.
+
+---
+
+**Divisor Duel** combines simple arithmetic with strategic foresight, making it easy to learn but challenging to master. Enjoy testing your mathematical wits against your opponent in this engaging numerical showdown!

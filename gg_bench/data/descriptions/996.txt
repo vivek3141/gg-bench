@@ -1,0 +1,247 @@
+# Number Duel
+
+## Objective
+
+**Number Duel** is a two-player, turn-based strategy game. The primary goal is to accumulate a higher total score than your opponent by strategically selecting numbers from a shared sequence. Players take turns picking numbers from either end of a linear sequence, aiming to maximize their own score while minimizing their opponent's potential gains. The game ends when all numbers have been claimed, and the player with the higher total score wins. There is no draw mechanism; ties are impossible due to the game's design.
+
+## Setup
+
+1. **Number Sequence Initialization**:
+   - Create a linear sequence of numbers. For simplicity, use the numbers from **1 to 9** arranged in any order. An example sequence might be:
+     ```
+     [3, 8, 2, 7, 5, 1, 6, 9, 4]
+     ```
+   - The sequence can be randomized at the start of each game to introduce variability.
+
+2. **Player Assignment**:
+   - Decide who will be **Player 1** and **Player 2**. This can be done randomly or by mutual agreement.
+
+3. **Starting Conditions**:
+   - Both players begin with a **score of zero**.
+   - The number sequence is visible to both players.
+
+## Game Components
+
+- **Number Sequence**:
+  - A list or array representing the sequence of numbers.
+  - Each number represents a value that can be added to a player's score.
+- **Player Scores**:
+  - Each player has an individual score tally, starting at zero.
+- **Turn Indicator**:
+  - A method to keep track of whose turn it is (could be as simple as a variable toggling between players).
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns, starting with **Player 1**.
+- **Actions During a Turn**:
+  - On their turn, a player must choose **one** of the following actions:
+    - **Pick the leftmost number** from the sequence.
+    - **Pick the rightmost number** from the sequence.
+  - The chosen number is removed from the sequence and added to the player's score.
+- **Progression**:
+  - The game continues with players alternating turns until all numbers have been claimed.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players can only choose from the **ends of the sequence** (either the first or last number).
+   - Only **one** number can be picked per turn.
+
+2. **Sequence Update**:
+   - After a number is picked, it is **removed** from the sequence.
+   - The sequence shrinks as numbers are removed from the ends.
+
+3. **Score Update**:
+   - The player's score is increased by the value of the number they picked.
+
+4. **Game End Condition**:
+   - The game ends when the **sequence is empty** (all numbers have been picked).
+
+5. **Winning the Game**:
+   - The player with the **higher total score** at the end of the game **wins**.
+   - Since the sum of all numbers is odd (1+2+...+9 = 45), ties are not possible.
+
+6. **Strategic Depth**:
+   - Players must anticipate future moves, considering which numbers will be available to their opponent after their turn.
+   - Choosing a lower number now might prevent the opponent from gaining a higher number later.
+
+## Scoring
+
+- Each player's **total score** is the **sum** of the numbers they have picked.
+- **Victory Condition**:
+  - **Winner**: The player with the **higher total score** after all numbers have been claimed.
+  - **No Draws**: Due to the odd total sum of numbers, a tie is impossible.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup
+
+- **Number Sequence**:
+  ```
+  [3, 8, 2, 7, 5, 1, 6, 9, 4]
+  ```
+- **Player Scores**:
+  - Player 1 Score: 0
+  - Player 2 Score: 0
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Options**: Pick **3** (left end) or **4** (right end).
+   - **Choice**: Picks **4** (right end).
+   - **Updated Sequence**:
+     ```
+     [3, 8, 2, 7, 5, 1, 6, 9]
+     ```
+   - **Player 1 Score**: 4
+
+2. **Player 2's Turn**:
+   - **Options**: Pick **3** or **9**.
+   - **Choice**: Picks **9** (right end).
+   - **Updated Sequence**:
+     ```
+     [3, 8, 2, 7, 5, 1, 6]
+     ```
+   - **Player 2 Score**: 9
+
+3. **Player 1's Turn**:
+   - **Options**: Pick **3** or **6**.
+   - **Choice**: Picks **6** (right end).
+   - **Updated Sequence**:
+     ```
+     [3, 8, 2, 7, 5, 1]
+     ```
+   - **Player 1 Score**: 4 + 6 = **10**
+
+4. **Player 2's Turn**:
+   - **Options**: Pick **3** or **1**.
+   - **Choice**: Picks **3** (left end).
+   - **Updated Sequence**:
+     ```
+     [8, 2, 7, 5, 1]
+     ```
+   - **Player 2 Score**: 9 + 3 = **12**
+
+5. **Player 1's Turn**:
+   - **Options**: Pick **8** or **1**.
+   - **Choice**: Picks **8** (left end).
+   - **Updated Sequence**:
+     ```
+     [2, 7, 5, 1]
+     ```
+   - **Player 1 Score**: 10 + 8 = **18**
+
+6. **Player 2's Turn**:
+   - **Options**: Pick **2** or **1**.
+   - **Choice**: Picks **1** (right end).
+   - **Updated Sequence**:
+     ```
+     [2, 7, 5]
+     ```
+   - **Player 2 Score**: 12 + 1 = **13**
+
+7. **Player 1's Turn**:
+   - **Options**: Pick **2** or **5**.
+   - **Choice**: Picks **5** (right end).
+   - **Updated Sequence**:
+     ```
+     [2, 7]
+     ```
+   - **Player 1 Score**: 18 + 5 = **23**
+
+8. **Player 2's Turn**:
+   - **Options**: Pick **2** or **7**.
+   - **Choice**: Picks **7** (right end).
+   - **Updated Sequence**:
+     ```
+     [2]
+     ```
+   - **Player 2 Score**: 13 + 7 = **20**
+
+9. **Player 1's Turn**:
+   - **Only Option**: Picks **2**.
+   - **Updated Sequence**:
+     ```
+     []
+     ```
+   - **Player 1 Score**: 23 + 2 = **25**
+
+#### Final Scores
+
+- **Player 1 Score**: 25
+- **Player 2 Score**: 20
+
+**Winner**: **Player 1**
+
+### Sample Command-Line Interaction
+
+Below is a hypothetical command-line interaction for the game.
+
+#### Game Start
+
+```
+Welcome to Number Duel!
+
+Initial Number Sequence:
+[3, 8, 2, 7, 5, 1, 6, 9, 4]
+
+Player 1 Score: 0
+Player 2 Score: 0
+```
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   ```
+   Player 1's turn.
+   Available choices:
+   - Left: 3
+   - Right: 4
+   Enter 'L' to pick left or 'R' to pick right: R
+
+   Player 1 picks 4 from the right end.
+   Updated Number Sequence:
+   [3, 8, 2, 7, 5, 1, 6, 9]
+   Player 1 Score: 4
+   ```
+
+2. **Player 2's Turn**:
+   ```
+   Player 2's turn.
+   Available choices:
+   - Left: 3
+   - Right: 9
+   Enter 'L' to pick left or 'R' to pick right: R
+
+   Player 2 picks 9 from the right end.
+   Updated Number Sequence:
+   [3, 8, 2, 7, 5, 1, 6]
+   Player 2 Score: 9
+   ```
+
+*(The game continues in this fashion until all numbers are picked.)*
+
+#### Game End
+
+```
+All numbers have been claimed!
+
+Final Scores:
+Player 1 Score: 25
+Player 2 Score: 20
+
+Congratulations, Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Anticipate Opponent's Moves**: Look ahead to see which numbers will be available on your next turn based on your current choice.
+- **Control High-Value Numbers**: Try to force your opponent into positions where they have to pick lower numbers while you secure higher ones.
+- **Balance Immediate Gain vs. Future Advantage**: Sometimes picking a lower number now can prevent your opponent from accessing a higher number later.
+
+## Summary
+
+Number Duel is a simple yet strategic game that can be easily played in a command-line interface. It requires players to think ahead and make decisions that will not only maximize their own scores but also limit the scoring opportunities for their opponent. The game's design ensures that there is always a clear winner, making each match decisive and engaging.

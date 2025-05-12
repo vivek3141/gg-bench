@@ -1,0 +1,153 @@
+# Power Play: Rule Book
+
+## Objective
+
+**Power Play** is a two-player turn-based strategy game. The primary goal is to be the player who reduces the shared number to exactly **1** on your turn by strategically dividing it by its prime factors. Victory is achieved by forcing your opponent into a position where they have no valid moves left except to reduce the number to 1 on your own turn.
+
+---
+
+## Setup
+
+- **Starting Number**: The game begins with a positive integer **N**. By default, **N = 100**, but players can agree on any suitable starting number greater than **1**.
+- **Player Order**: Decide which player goes first. This can be done by mutual agreement or by any random method (e.g., coin toss).
+
+---
+
+## Game Components
+
+- **Shared Number (`N`)**: A positive integer visible to both players. This number changes as the game progresses.
+- **Prime Factors**: The prime numbers that are factors of the current shared number (`N`). These are the valid divisors players can use on their turn.
+- **Players**: Two participants who will alternate turns modifying the shared number.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Identify Prime Factors**: At the start of your turn, determine the prime factors of the current shared number (`N`).
+2. **Select a Prime Factor**: Choose one of the prime factors to divide `N` by.
+3. **Divide `N`**: Perform the division and update the shared number (`N`).
+4. **Announce Move**: Clearly state which prime factor you are using and the new value of `N`.
+5. **End Turn**: The turn passes to the other player.
+
+### Order of Actions
+
+- **Player 1** starts the game.
+- Players alternate turns until the game ends.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves**: On your turn, you must divide the current shared number (`N`) by one of its **prime factors** (excluding 1).
+2. **Result Must Be Whole**: The division must result in an integer. Decimal or fractional results are not allowed.
+3. **Reducing to 1**: The player who reduces `N` to exactly **1** on their turn **wins** the game.
+4. **No Valid Moves**: If a player cannot perform a valid division (i.e., `N` is 1 or a prime number with no valid prime factors other than itself), they lose their turn, and the other player continues.
+
+### Special Conditions
+
+- **Prime Number `N`**: If `N` is a prime number greater than 2, the only valid move is to divide it by itself, resulting in `N = 1`.
+- **Winning the Game**: Reducing `N` to 1 on your turn constitutes an immediate win.
+- **Invalid Moves**: If a player attempts an invalid move (e.g., dividing by a non-prime factor or resulting in a non-integer), they must redo their turn with a valid move.
+
+---
+
+## Scoring
+
+- **Winning**: The player who reduces the shared number (`N`) to exactly **1** wins the game.
+- **Losing**: The opposing player loses the game.
+- **No Draws**: There are no draw conditions in Power Play; every game results in a win or loss.
+
+---
+
+## Examples
+
+### Example Game
+
+**Starting Number (`N`):** 100
+
+#### Game Progression
+
+1. **Player 1's Turn:**
+   - **Prime Factors of 100:** 2, 5
+   - **Choice:** Divide by 2
+   - **Calculation:** 100 ÷ 2 = 50
+   - **Announce:** "I divide by 2. The new number is 50."
+2. **Player 2's Turn:**
+   - **Prime Factors of 50:** 2, 5
+   - **Choice:** Divide by 5
+   - **Calculation:** 50 ÷ 5 = 10
+   - **Announce:** "I divide by 5. The new number is 10."
+3. **Player 1's Turn:**
+   - **Prime Factors of 10:** 2, 5
+   - **Choice:** Divide by 2
+   - **Calculation:** 10 ÷ 2 = 5
+   - **Announce:** "I divide by 2. The new number is 5."
+4. **Player 2's Turn:**
+   - **Prime Factors of 5:** 5
+   - **Choice:** Divide by 5
+   - **Calculation:** 5 ÷ 5 = 1
+   - **Announce:** "I divide by 5. The new number is 1. I win!"
+
+**Result:** Player 2 wins the game.
+
+---
+
+### Command-Line Interaction Sample
+
+Below is a sample of how the game might unfold in a command-line interface.
+
+```
+Game Start! The starting number is 100.
+
+Player 1's Turn:
+Prime factors of 100 are [2, 2, 5, 5].
+Available prime factors to choose from: [2, 5]
+Enter your chosen prime factor: 2
+You divided 100 by 2.
+New number is 50.
+
+Player 2's Turn:
+Prime factors of 50 are [2, 5, 5].
+Available prime factors to choose from: [2, 5]
+Enter your chosen prime factor: 5
+You divided 50 by 5.
+New number is 10.
+
+Player 1's Turn:
+Prime factors of 10 are [2, 5].
+Available prime factors to choose from: [2, 5]
+Enter your chosen prime factor: 2
+You divided 10 by 2.
+New number is 5.
+
+Player 2's Turn:
+Prime factors of 5 are [5].
+Available prime factors to choose from: [5]
+Enter your chosen prime factor: 5
+You divided 5 by 5.
+New number is 1.
+
+Congratulations! Player 2 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves by considering the resulting `N` after your turn.
+- **Prime Awareness**: Be mindful when `N` becomes a prime number; this can force the game towards a conclusion.
+- **Force Moves**: Try to reduce `N` to a number where your opponent has limited options.
+
+---
+
+## Conclusion
+
+Power Play is a simple yet strategic game that combines basic arithmetic with tactical foresight. By understanding prime factors and anticipating your opponent's moves, you can increase your chances of victory. Enjoy the challenge and may the best mathematician win!
+
+---
+
+Feel free to adjust the starting number (`N`) to make the game shorter or longer, depending on your preference. Have fun playing Power Play!

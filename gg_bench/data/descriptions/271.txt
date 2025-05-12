@@ -1,0 +1,321 @@
+# Rule Book for the Game: **Charge**
+
+## Objective
+
+Be the first player to accumulate **exactly 15 charge points** by strategically playing action cards to increase your own charge, block your opponent's charge, and steal charge points from your opponent. Overshooting the goal resets your charge to zero, so plan your moves carefully!
+
+---
+
+## Setup
+
+1. **Initial Charge Points**: Both players start with **0 charge points**.
+2. **Action Cards**: Each player receives a set of action cards:
+   - **5 Charge Cards**
+   - **2 Block Cards**
+   - **1 Steal Card**
+3. **Card Management**:
+   - Cards are held privately by each player.
+   - In a command-line interface, players can view their remaining cards at any time.
+   - Cards are discarded after use and cannot be reused unless specified.
+
+---
+
+## Game Components
+
+1. **Charge Points**:
+   - A numeric value starting at **0**.
+   - Represents your progress toward the goal of 15 charge points.
+
+2. **Action Cards**:
+   - **Charge Card**:
+     - Allows you to add charge points to your total.
+     - You choose how many points to add (between **1 and 5**).
+     - **Quantity**: 5 per player.
+   - **Block Card**:
+     - Prevents your opponent from gaining charge points on their next turn.
+     - **Quantity**: 2 per player.
+   - **Steal Card**:
+     - Steals charge points your opponent gained in their last turn.
+     - **Quantity**: 1 per player.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players take turns alternately.
+   - Decide who goes first by mutual agreement or random selection.
+
+2. **Player Actions**:
+   - On your turn, **play one action card** from your hand.
+   - Announce the action and follow the card's specific rules.
+   - You cannot skip your turn; you must play a card if you have any remaining.
+
+3. **Card Declarations**:
+   - Clearly state which card you are playing and any required details (e.g., if playing a Charge Card, specify the amount).
+
+4. **Discarding Cards**:
+   - After playing a card, remove it from your hand; it cannot be played again unless all cards are refreshed.
+
+5. **Refreshing Cards**:
+   - Once you have used all your Charge Cards, you may refresh them by forfeiting one turn.
+   - **Block** and **Steal Cards** do not refresh.
+
+---
+
+## Rules and Mechanics
+
+### 1. Charge Card
+
+- **Function**: Increases your charge points by a chosen amount.
+- **Usage**:
+  - Declare that you're playing a **Charge Card**.
+  - Choose a number between **1 and 5** (inclusive) to add to your charge points.
+  - Announce the amount added and your new total charge.
+
+- **Example**:
+  - "Player 1 plays a Charge Card and adds **3** charge points. Total charge is now **9**."
+
+### 2. Block Card
+
+- **Function**: Blocks your opponent from gaining charge points on their next turn.
+- **Usage**:
+  - Declare that you're playing a **Block Card**.
+  - The Block effect remains active until the end of your opponent's next turn.
+  - Your opponent must still play a card on their turn; if they play a Charge Card, it has no effect, but the card is still discarded.
+  - Block does not affect Steal Cards.
+
+- **Example**:
+  - "Player 2 plays a Block Card. Player 1's next charge will be blocked."
+
+### 3. Steal Card
+
+- **Function**: Steals the amount of charge points your opponent gained during their last turn.
+- **Usage**:
+  - Declare that you're playing a **Steal Card**.
+  - Transfer the charge points your opponent gained in their last turn to your charge total.
+  - Deduct the stolen charge points from your opponent's total.
+  - If your opponent gained no charge points on their last turn (e.g., they were blocked or played a non-Charge Card), the Steal Card has no effect.
+
+- **Example**:
+  - "Player 1 plays a Steal Card and steals **4** charge points from Player 2. Player 1's total is now **13**; Player 2's total is now **5**."
+
+### 4. Exceeding 15 Charge Points
+
+- **Penalty**:
+  - If your charge points exceed **15** at any time, your total resets to **0**.
+  - This rule applies immediately, even during your own turn.
+
+- **Example**:
+  - "Player 2 adds **4** charge points to reach **16**, exceeding the limit. Player 2's charge resets to **0**."
+
+### 5. Winning the Game
+
+- **Victory Condition**:
+  - The first player to reach **exactly 15 charge points** wins the game.
+  - Monitor both your own and your opponent's charge totals to anticipate winning opportunities.
+
+---
+
+## Scoring
+
+- **Charge Points Tracking**:
+  - Keep a running total of your charge points.
+  - Both players should track and announce their charge totals after each turn.
+  - In a command-line game, the system should display updated totals after each action.
+
+- **No Point System**:
+  - There is no cumulative scoring across games; each game is a standalone match.
+  - Focus is on strategic use of action cards to reach the exact charge total needed.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Starting Hands
+
+- **Player 1**:
+  - Charge Cards: 5
+  - Block Cards: 2
+  - Steal Card: 1
+
+- **Player 2**:
+  - Charge Cards: 5
+  - Block Cards: 2
+  - Steal Card: 1
+
+#### Turn 1
+
+- **Player 1's Turn**:
+  - Plays a **Charge Card**, adds **4** points.
+  - Total Charge: **0 + 4 = 4**
+  - Announces: "Player 1 plays a Charge Card adding **4** points. Total charge: **4**."
+
+- **Player 2's Turn**:
+  - Plays a **Charge Card**, adds **5** points.
+  - Total Charge: **0 + 5 = 5**
+  - Announces: "Player 2 plays a Charge Card adding **5** points. Total charge: **5**."
+
+#### Turn 2
+
+- **Player 1's Turn**:
+  - Plays a **Steal Card**.
+  - Steals **5** points from Player 2.
+  - Player 1's Total Charge: **4 + 5 = 9**
+  - Player 2's Total Charge: **5 - 5 = 0**
+  - Announces: "Player 1 plays a Steal Card, stealing **5** points. Player 1 total: **9**; Player 2 total: **0**."
+
+- **Player 2's Turn**:
+  - Plays a **Block Card**.
+  - Announces: "Player 2 plays a Block Card. Player 1's next charge will be blocked."
+
+#### Turn 3
+
+- **Player 1's Turn**:
+  - Plays a **Charge Card**, attempts to add **6** points.
+  - Invalid amount; must choose between **1 and 5**.
+  - Chooses to add **5** points.
+  - Block Card in effect; no charge is gained.
+  - Charge Card is discarded.
+  - Total Charge remains at **9**.
+  - Announces: "Player 1 plays a Charge Card but is blocked. Total charge remains at **9**."
+
+- **Player 2's Turn**:
+  - Plays a **Charge Card**, adds **5** points.
+  - Total Charge: **0 + 5 = 5**
+  - Announces: "Player 2 plays a Charge Card adding **5** points. Total charge: **5**."
+
+#### Turn 4
+
+- **Player 1's Turn**:
+  - Plays a **Charge Card**, adds **4** points.
+  - Total Charge: **9 + 4 = 13**
+  - Announces: "Player 1 plays a Charge Card adding **4** points. Total charge: **13**."
+
+- **Player 2's Turn**:
+  - Plays a **Steal Card**.
+  - Steals **4** points from Player 1's last turn.
+  - Player 2's Total Charge: **5 + 4 = 9**
+  - Player 1's Total Charge: **13 - 4 = 9**
+  - Announces: "Player 2 plays a Steal Card, stealing **4** points. Player 2 total: **9**; Player 1 total: **9**."
+
+#### Turn 5
+
+- **Player 1's Turn**:
+  - Plays a **Charge Card**, adds **6** points.
+  - Invalid amount; must choose between **1 and 5**.
+  - Chooses to add **5** points.
+  - Total Charge: **9 + 5 = 14**
+  - Announces: "Player 1 plays a Charge Card adding **5** points. Total charge: **14**."
+
+- **Player 2's Turn**:
+  - Plays a **Block Card**.
+  - Announces: "Player 2 plays a Block Card. Player 1's next charge will be blocked."
+
+#### Turn 6
+
+- **Player 1's Turn**:
+  - Plays a **Charge Card**, adds **1** point.
+  - Block Card in effect; no charge is gained.
+  - Total Charge remains at **14**.
+  - Announces: "Player 1 plays a Charge Card but is blocked. Total charge remains at **14**."
+
+- **Player 2's Turn**:
+  - Plays a **Charge Card**, adds **5** points.
+  - Total Charge: **9 + 5 = 14**
+  - Announces: "Player 2 plays a Charge Card adding **5** points. Total charge: **14**."
+
+#### Turn 7
+
+- **Player 1's Turn**:
+  - No Charge Cards left; cannot refresh since Block and Steal Cards did not use up all cards.
+  - Plays remaining **Charge Card**, adds **1** point.
+  - Total Charge: **14 + 1 = 15**
+  - Announces: "Player 1 plays a Charge Card adding **1** point. Total charge: **15**."
+  - **Player 1 wins the game!**
+
+---
+
+## Command-Line Interaction Example
+
+### Game Start
+
+- **Player 1's Hand**: Charge x5, Block x2, Steal x1
+- **Player 2's Hand**: Charge x5, Block x2, Steal x1
+
+### Sample Turn Sequence
+
+#### Turn 1
+
+- **Player 1**:
+  - **Input**: `play charge 3`
+  - **Output**: "Player 1 plays a Charge Card adding **3** points. Total charge: **3**."
+
+- **Player 2**:
+  - **Input**: `play charge 5`
+  - **Output**: "Player 2 plays a Charge Card adding **5** points. Total charge: **5**."
+
+#### Turn 2
+
+- **Player 1**:
+  - **Input**: `play steal`
+  - **Output**: "Player 1 plays a Steal Card, stealing **5** points from Player 2."
+  - **Charge Updates**:
+    - Player 1: **3 + 5 = 8**
+    - Player 2: **5 - 5 = 0**
+
+- **Player 2**:
+  - **Input**: `play block`
+  - **Output**: "Player 2 plays a Block Card. Player 1's next charge will be blocked."
+
+#### Turn 3
+
+- **Player 1**:
+  - **Input**: `play charge 5`
+  - **Output**: "Player 1 plays a Charge Card but is blocked. Total charge remains at **8**."
+
+- **Player 2**:
+  - **Input**: `play charge 4`
+  - **Output**: "Player 2 plays a Charge Card adding **4** points. Total charge: **0 + 4 = 4**."
+
+#### Turn 4
+
+- **Player 1**:
+  - **Input**: `play charge 5`
+  - **Output**: "Player 1 plays a Charge Card adding **5** points. Total charge: **8 + 5 = 13**."
+
+- **Player 2**:
+  - **Input**: `play steal`
+  - **Output**: "Player 2 plays a Steal Card, stealing **5** points from Player 1."
+  - **Charge Updates**:
+    - Player 2: **4 + 5 = 9**
+    - Player 1: **13 - 5 = 8**
+
+#### Turn 5
+
+- **Player 1**:
+  - **Input**: `play charge 5`
+  - **Output**: "Player 1 plays a Charge Card adding **5** points. Total charge: **8 + 5 = 13**."
+
+- **Player 2**:
+  - **Input**: `play block`
+  - **Output**: "Player 2 plays a Block Card. Player 1's next charge will be blocked."
+
+---
+
+## Strategic Depth and Complexity
+
+- **Card Management**: With limited action cards, players must decide the optimal time to use each card, balancing immediate gains against future needs.
+- **Prediction and Anticipation**: Observing your opponent's actions helps predict their remaining cards, allowing you to counter their strategy effectively.
+- **Risk vs. Reward**: Choosing how many charge points to add involves risk; adding too many may lead to overshooting, while adding too few prolongs the game.
+- **Bluffing and Deception**: Players may bluff about their intentions to mislead their opponent into misusing their Block or Steal Cards.
+
+---
+
+## Conclusion
+
+**Charge** is a strategic two-player turn-based game that combines resource management, prediction, and risk assessment. Its simple rules and components make it easy to code and play in a command-line interface, while the strategic depth ensures that skilled players can consistently outperform unskilled ones. With no possibility of a draw and quick gameplay, **Charge** offers an engaging and competitive experience for players seeking both strategy and fun.
+
+Enjoy the game, and may the best strategist win!

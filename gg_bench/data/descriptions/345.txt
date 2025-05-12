@@ -1,0 +1,338 @@
+# Number Warriors: Rule Book
+
+## Objective
+
+**Number Warriors** is a strategic two-player turn-based game where each player aims to reduce their opponent's Life Points to zero. By strategically selecting numbers from a shared pool, players engage in numerical battles to outmaneuver and outthink their opponent. The first player to deplete the opponent's Life Points wins the game.
+
+---
+
+## Setup
+
+1. **Life Points**
+   - Each player starts with **15 Life Points**.
+   - Life Points are tracked throughout the game and cannot exceed the starting amount.
+   
+2. **Number Pool**
+   - A shared pool of numbers from **1 to 9** is used.
+   - These numbers represent the "Warriors" each player can deploy.
+   - Once a number is used, it is removed from the pool for the remainder of the game.
+
+3. **Game Interface**
+   - The game is played in a command-line interface (CLI).
+   - Players are identified as **Player 1** and **Player 2**.
+
+---
+
+## Game Components
+
+- **Life Points Tracker**
+  - Displays each player's current Life Points.
+  - Example: `Player 1 Life Points: 15`
+
+- **Number Pool**
+  - Shows which numbers are still available.
+  - Example: `Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9`
+
+- **Secret Selection Mechanism**
+  - Players input their chosen number without revealing it to their opponent until both have made their choices.
+
+---
+
+## Turns
+
+1. **Simultaneous Selection**
+   - Both players **simultaneously** select a number from the available pool.
+   - Selections are made secretly to prevent the opponent from knowing the choice beforehand.
+   
+2. **Reveal Phase**
+   - Once both players have made their selections, the chosen numbers are revealed.
+
+3. **Resolution Phase**
+   - The numbers are compared to determine damage and Life Point reduction.
+   - Selected numbers are then removed from the pool.
+
+4. **Next Turn**
+   - The game proceeds to the next turn, following the same structure.
+   - Turns continue until the game ends with a victory.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**
+   - Players can select any **remaining number** from the pool during their turn.
+   - Each number can only be used **once per game**.
+   
+2. **Combat Resolution**
+   - After both numbers are revealed:
+     - If the numbers are **different**, the player who chose the **higher number** deals damage.
+     - **Damage Dealt**: The difference between the higher and lower numbers.
+     - The player with the lower number **loses Life Points** equal to this difference.
+     - If the numbers are **equal**, no damage is dealt; the turn ends without changes to Life Points.
+   
+3. **Life Points Reduction**
+   - A player's Life Points are reduced based on damage taken.
+   - Life Points cannot go below zero.
+
+4. **Number Pool Depletion**
+   - Used numbers are removed from the pool and cannot be selected again.
+   - The pool shrinks each turn, increasing the strategic depth.
+
+5. **Winning the Game**
+   - A player wins by reducing the opponent's Life Points to **zero**.
+   - If all numbers are exhausted and both players still have Life Points:
+     - The player with the **higher Life Points** wins.
+     - If Life Points are **equal**, the game continues with no numbers until a player's Life Points are reduced to zero (this scenario cannot occur due to the mechanics ensuring a win).
+
+6. **No Draws**
+   - The game is designed to always result in a win for one of the players.
+   - Strategic choices prevent stalemates.
+
+---
+
+## Scoring
+
+- **Damage Calculation**
+  - `Damage = Higher Number - Lower Number`
+  - Example: If Player 1 chooses 7 and Player 2 chooses 5, Damage = 7 - 5 = 2.
+  
+- **Life Points Tracking**
+  - Players must keep track of their own and their opponent's Life Points.
+  - Life Points are updated after each turn's Resolution Phase.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**
+
+- **Player 1 Life Points**: 15
+- **Player 2 Life Points**: 15
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+---
+
+**Turn 1**
+
+- **Selections**:
+  - Player 1 selects **5**.
+  - Player 2 selects **7**.
+
+- **Reveal**:
+  - Player 1: 5
+  - Player 2: 7
+
+- **Resolution**:
+  - Player 2's number is higher.
+  - Damage: 7 - 5 = **2**
+  - Player 1 loses 2 Life Points.
+
+- **Updated Life Points**:
+  - Player 1: **13**
+  - Player 2: **15**
+
+- **Numbers Removed**: 5, 7
+
+- **Available Numbers**: 1, 2, 3, 4, 6, 8, 9
+
+---
+
+**Turn 2**
+
+- **Selections**:
+  - Player 1 selects **9**.
+  - Player 2 selects **8**.
+
+- **Reveal**:
+  - Player 1: 9
+  - Player 2: 8
+
+- **Resolution**:
+  - Player 1's number is higher.
+  - Damage: 9 - 8 = **1**
+  - Player 2 loses 1 Life Point.
+
+- **Updated Life Points**:
+  - Player 1: **13**
+  - Player 2: **14**
+
+- **Numbers Removed**: 9, 8
+
+- **Available Numbers**: 1, 2, 3, 4, 6
+
+---
+
+**Turn 3**
+
+- **Selections**:
+  - Player 1 selects **6**.
+  - Player 2 selects **6**.
+
+- **Reveal**:
+  - Both players chose 6.
+
+- **Resolution**:
+  - Numbers are equal; no damage dealt.
+
+- **Life Points Unchanged**:
+  - Player 1: **13**
+  - Player 2: **14**
+
+- **Numbers Removed**: 6
+
+- **Available Numbers**: 1, 2, 3, 4
+
+---
+
+**Turn 4**
+
+- **Selections**:
+  - Player 1 selects **4**.
+  - Player 2 selects **3**.
+
+- **Reveal**:
+  - Player 1: 4
+  - Player 2: 3
+
+- **Resolution**:
+  - Player 1's number is higher.
+  - Damage: 4 - 3 = **1**
+  - Player 2 loses 1 Life Point.
+
+- **Updated Life Points**:
+  - Player 1: **13**
+  - Player 2: **13**
+
+- **Numbers Removed**: 4, 3
+
+- **Available Numbers**: 1, 2
+
+---
+
+**Turn 5**
+
+- **Selections**:
+  - Player 1 selects **2**.
+  - Player 2 selects **1**.
+
+- **Reveal**:
+  - Player 1: 2
+  - Player 2: 1
+
+- **Resolution**:
+  - Player 1's number is higher.
+  - Damage: 2 - 1 = **1**
+  - Player 2 loses 1 Life Point.
+
+- **Updated Life Points**:
+  - Player 1: **13**
+  - Player 2: **12**
+
+- **Numbers Removed**: 2, 1
+
+- **Available Numbers**: **None**
+
+---
+
+**End of Number Pool**
+
+- All numbers have been used.
+
+- **Final Life Points**:
+  - Player 1: **13**
+  - Player 2: **12**
+
+- **Result**:
+  - Player 1 has higher Life Points.
+  - **Player 1 Wins the Game!**
+
+---
+
+## Command-Line Interface Interactions
+
+### Turn Structure
+
+1. **Prompt for Selection**:
+   - `Player 1, enter your number: `
+   - `Player 2, enter your number: `
+   
+2. **Confirmation**:
+   - `Player 1 has selected their number.`
+   - `Player 2 has selected their number.`
+   
+3. **Reveal Selections**:
+   - `Player 1 chose: 5`
+   - `Player 2 chose: 7`
+   
+4. **Resolution Announcement**:
+   - `Player 2's number is higher.`
+   - `Player 1 loses 2 Life Points.`
+   - `Player 1 Life Points: 13`
+   - `Player 2 Life Points: 15`
+   
+5. **Update Available Numbers**:
+   - `Numbers 5 and 7 have been removed from the pool.`
+   - `Available Numbers: 1, 2, 3, 4, 6, 8, 9`
+
+### Example Input and Output
+
+**Player Selections Hidden**
+
+```plaintext
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1, enter your number: 5
+Player 2, enter your number: 7
+
+Player 1 has selected their number.
+Player 2 has selected their number.
+
+Revealing selections...
+
+Player 1 chose: 5
+Player 2 chose: 7
+
+Player 2's number is higher.
+Player 1 loses 2 Life Points.
+
+Player 1 Life Points: 13
+Player 2 Life Points: 15
+
+Numbers 5 and 7 have been removed from the pool.
+Available Numbers: 1, 2, 3, 4, 6, 8, 9
+
+Press Enter to proceed to the next turn...
+```
+
+---
+
+## Strategy Tips
+
+- **Predict Opponent's Choices**:
+  - Anticipate when your opponent might use high or low numbers.
+  - Use this to decide whether to conserve your high numbers or use them to deal damage.
+
+- **Conserve High Numbers**:
+  - Holding onto higher numbers can give you an advantage in later turns.
+  - But beware of your opponent depleting your Life Points early.
+
+- **Balancing Act**:
+  - Weigh the benefits of dealing immediate damage versus saving strong numbers for future turns.
+
+- **Mathematical Planning**:
+  - Keep track of remaining numbers to calculate potential damage in upcoming turns.
+
+- **Psychological Play**:
+  - Use bluffing tactics by occasionally choosing unexpected numbers to confuse your opponent.
+
+---
+
+## Conclusion
+
+**Number Warriors** combines simple arithmetic with deep strategic thinking. By carefully selecting numbers and predicting your opponent's moves, you can outmaneuver them and claim victory. The game's straightforward mechanics make it easy to learn but challenging to master, ensuring that skilled players can consistently outperform unskilled ones.
+
+Engage in this battle of numbers and strategy—may the best warrior win!
+
+---

@@ -1,0 +1,9 @@
+In the given game environment, the action space consists of 50 discrete actions, representing two types of moves: query actions and guess actions.
+
+1. **Query Actions (0-24):**  
+   - Each index from 0 to 24 corresponds to querying a specific cell on the 5x5 grid.
+   - The index directly maps to the grid cells in row-major order, where index `i` corresponds to the cell `(row, column)` pair by `divmod(i, grid_size)` (with `grid_size = 5`).
+
+2. **Guess Actions (25-49):**  
+   - Each index from 25 to 49 represents a guess action for a specific cell location.
+   - These indices are offset by 25, so index `i` corresponds to a guess for the cell with index `i - 25`, using the same row-major mapping as the query actions.

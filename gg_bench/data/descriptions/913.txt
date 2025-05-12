@@ -1,0 +1,304 @@
+**Game Title: Battle of Divisibility**
+
+---
+
+### **Objective**
+
+Be the last player able to make a valid move by strategically selecting numbers based on divisibility rules. Players aim to outmaneuver their opponent by leaving them without a valid number to choose, thus securing victory.
+
+---
+
+### **Setup**
+
+- **Number Pool**: A shared list of integers from **2** to **50**.
+- **Starting Conditions**:
+  - All numbers in the pool are available for selection.
+  - Players decide who takes the first turn (e.g., coin toss).
+
+---
+
+### **Game Components**
+
+1. **Number Pool**:
+   - Integers from **2** to **50**, inclusive.
+   - Each number can be selected only once.
+2. **Selection History**:
+   - A record of numbers already chosen by both players.
+3. **Players**:
+   - **Player 1** and **Player 2**.
+
+---
+
+### **Turns**
+
+- **Turn Sequence**:
+  - Players alternate turns, starting with the designated first player.
+- **During a Turn**:
+  1. **Selection**:
+     - The player selects an available number from the pool that is either:
+       - A **divisor** or **multiple** of the **previous number** selected by the opponent.
+  2. **Validation**:
+     - The selected number must not have been previously chosen.
+     - The number must satisfy the divisibility condition relative to the opponent's last number.
+  3. **Recording**:
+     - The chosen number is removed from the pool and added to the selection history.
+- **First Turn Exception**:
+  - The first player can choose **any number** from the pool on their initial turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Divisibility Requirement**:
+   - On each turn (except the first), a player **must** select a number that is a divisor or multiple of the opponent's last chosen number.
+     - **Divisor**: The number divides the opponent's last number without a remainder.
+     - **Multiple**: The number is a product of the opponent's last number and an integer.
+2. **Valid Moves**:
+   - If multiple valid numbers are available, the player may choose any of them.
+   - If no valid numbers are available, the player loses the game.
+3. **Number Usage**:
+   - Each number from the pool can be selected only **once**.
+   - Once a number is selected, it is **removed** from the pool.
+4. **End of Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The **opponent** of the player who cannot make a move is declared the **winner**.
+
+---
+
+### **Scoring**
+
+- **Victory**:
+  - The winner is the player who successfully leaves their opponent without a valid move.
+- **No Points System**:
+  - The game does not utilize a points system; victory is determined solely by the ability to make valid moves according to the rules.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Number Pool**: 2-50
+
+---
+
+**Turn 1: Player 1**
+
+- **Selection**: Chooses **15**.
+  - Reason: As the first move, any number can be selected.
+- **Number Pool Update**: 15 is removed.
+
+---
+
+**Turn 2: Player 2**
+
+- **Opponent's Last Number**: **15**
+- **Available Numbers**: Numbers that are divisors or multiples of 15 and not yet chosen.
+- **Possible Choices**:
+  - **Divisors of 15**: 3, 5
+  - **Multiples of 15**: 30, 45
+- **Selection**: Chooses **5**.
+  - Reason: 5 is a divisor of 15.
+- **Number Pool Update**: 5 is removed.
+
+---
+
+**Turn 3: Player 1**
+
+- **Opponent's Last Number**: **5**
+- **Available Numbers**: Divisors or multiples of 5.
+- **Possible Choices**:
+  - **Divisors of 5**: 1 (not in pool), 5 (already chosen)
+  - **Multiples of 5**: 10, 20, 25, 30, 35, 40, 45, 50
+- **Selection**: Chooses **25**.
+  - Reason: 25 is a multiple of 5.
+- **Number Pool Update**: 25 is removed.
+
+---
+
+**Turn 4: Player 2**
+
+- **Opponent's Last Number**: **25**
+- **Available Numbers**: Divisors or multiples of 25.
+- **Possible Choices**:
+  - **Divisors of 25**: 5 (already chosen), 25 (already chosen)
+  - **Multiples of 25**: 50
+- **Selection**: Chooses **50**.
+  - Reason: 50 is a multiple of 25.
+- **Number Pool Update**: 50 is removed.
+
+---
+
+**Turn 5: Player 1**
+
+- **Opponent's Last Number**: **50**
+- **Available Numbers**: Divisors or multiples of 50.
+- **Possible Choices**:
+  - **Divisors of 50**: 2, 5, 10, 25 (some already chosen)
+  - **Multiples of 50**: None within 2-50.
+- **Selection**: Chooses **10**.
+  - Reason: 10 is a divisor of 50.
+- **Number Pool Update**: 10 is removed.
+
+---
+
+**Turn 6: Player 2**
+
+- **Opponent's Last Number**: **10**
+- **Available Numbers**: Divisors or multiples of 10.
+- **Possible Choices**:
+  - **Divisors of 10**: 2, 5 (already chosen)
+  - **Multiples of 10**: 20, 30, 40
+- **Selection**: Chooses **20**.
+  - Reason: 20 is a multiple of 10.
+- **Number Pool Update**: 20 is removed.
+
+---
+
+**Turn 7: Player 1**
+
+- **Opponent's Last Number**: **20**
+- **Available Numbers**: Divisors or multiples of 20.
+- **Possible Choices**:
+  - **Divisors of 20**: 2, 4, 5, 10 (some already chosen)
+  - **Multiples of 20**: 40
+- **Selection**: Chooses **40**.
+  - Reason: 40 is a multiple of 20.
+- **Number Pool Update**: 40 is removed.
+
+---
+
+**Turn 8: Player 2**
+
+- **Opponent's Last Number**: **40**
+- **Available Numbers**: Divisors or multiples of 40.
+- **Possible Choices**:
+  - **Divisors of 40**: 2, 4, 5, 8, 10, 20 (some already chosen)
+  - **Multiples of 40**: None within 2-50.
+- **Selection**: Chooses **8**.
+  - Reason: 8 is a divisor of 40.
+- **Number Pool Update**: 8 is removed.
+
+---
+
+**Turn 9: Player 1**
+
+- **Opponent's Last Number**: **8**
+- **Available Numbers**: Divisors or multiples of 8.
+- **Possible Choices**:
+  - **Divisors of 8**: 2, 4
+  - **Multiples of 8**: 16, 24, 32, 40 (already chosen)
+- **Selection**: Chooses **16**.
+  - Reason: 16 is a multiple of 8.
+- **Number Pool Update**: 16 is removed.
+
+---
+
+**Turn 10: Player 2**
+
+- **Opponent's Last Number**: **16**
+- **Available Numbers**: Divisors or multiples of 16.
+- **Possible Choices**:
+  - **Divisors of 16**: 2, 4, 8 (already chosen)
+  - **Multiples of 16**: 32
+- **Selection**: Chooses **32**.
+  - Reason: 32 is a multiple of 16.
+- **Number Pool Update**: 32 is removed.
+
+---
+
+**Turn 11: Player 1**
+
+- **Opponent's Last Number**: **32**
+- **Available Numbers**: Divisors or multiples of 32.
+- **Possible Choices**:
+  - **Divisors of 32**: 2, 4, 8, 16 (some already chosen)
+  - **Multiples of 32**: None within 2-50.
+- **Selection**: Chooses **4**.
+  - Reason: 4 is a divisor of 32.
+- **Number Pool Update**: 4 is removed.
+
+---
+
+**Turn 12: Player 2**
+
+- **Opponent's Last Number**: **4**
+- **Available Numbers**: Divisors or multiples of 4.
+- **Possible Choices**:
+  - **Divisors of 4**: 2
+  - **Multiples of 4**: 12, 24, 28, 36, 44, 48
+- **Selection**: Chooses **24**.
+  - Reason: 24 is a multiple of 4.
+- **Number Pool Update**: 24 is removed.
+
+---
+
+**The game continues until a player cannot make a valid move.**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Initial Prompt**:
+
+```
+Welcome to Battle of Divisibility!
+Numbers available: 2-50
+Player 1, it's your turn.
+Enter a number to start the game: 
+```
+
+**Player 1 Input**:
+
+```
+15
+```
+
+**Game Response**:
+
+```
+Player 1 selected 15.
+Numbers remaining: [list excluding 15]
+Player 2, it's your turn.
+Available numbers divisible by or multiples of 15: [3, 5, 30, 45]
+Enter your number: 
+```
+
+**Player 2 Input**:
+
+```
+5
+```
+
+**Game Response**:
+
+```
+Player 2 selected 5.
+Numbers remaining: [list excluding 5 and 15]
+Player 1, it's your turn.
+Available numbers divisible by or multiples of 5: [10, 20, 25, 30, 35, 40, 45, 50]
+Enter your number:
+```
+
+**...**
+
+**Game Conclusion**:
+
+```
+Player 1, no valid moves available.
+Player 2 wins the game!
+Thank you for playing Battle of Divisibility!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Anticipate future moves by considering the numbers that will be available to your opponent after your turn.
+- **Avoid Low Divisibility Numbers**: Selecting prime numbers may limit your opponent's options, as they have fewer divisors.
+- **Control High Multiples**: Picking numbers with many multiples can give you control over the flow of the game.
+- **Monitor the Pool**: Keep track of which numbers have been used to avoid accidental invalid moves.
+
+---
+
+**Enjoy the challenge of Battle of Divisibility, where mathematical strategy and foresight are your keys to victory!**

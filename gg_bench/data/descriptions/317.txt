@@ -1,0 +1,175 @@
+**Game Name: Factor Frenzy**
+
+---
+
+### **Objective**
+
+Be the first player to reduce the shared positive integer **N** exactly to **1** by strategically dividing it by its prime factors. The player who successfully reduces **N** to **1** on their turn wins the game. If a player cannot make a valid move because **N** is already **1** before their turn, they lose.
+
+---
+
+### **Setup**
+
+1. **Choose Starting Number**: Decide on a positive integer **N** greater than **1** to start the game. A common starting value is **100**, but players can agree on any suitable number.
+   
+2. **Display**: Both players are informed of the starting number **N**. In a command-line interface, **N** is displayed prominently for both players at the beginning and after each turn.
+
+3. **Determine Turn Order**: Decide which player will take the first turn. This can be done by mutual agreement or by a random method such as a coin toss.
+
+---
+
+### **Game Components**
+
+- **Shared Number (N)**: A positive integer that both players will manipulate. It changes value as the game progresses based on players' actions.
+
+- **Prime Numbers**: Fundamental components in the game used for dividing **N**. Players must identify prime factors of **N** during their turns.
+
+- **Command-Line Interface**: Since the game is played in a command-line environment, inputs and outputs are text-based. Players input their chosen prime factors, and the updated value of **N** is displayed after each turn.
+
+---
+
+### **Turns**
+
+1. **Player Action**: On their turn, the player must:
+   - **Identify** the prime factors of the current **N**.
+   - **Choose** one of these prime factors (**P**) to divide **N**.
+
+2. **Execution**:
+   - **Divide** **N** by the chosen prime factor **P**: \( N = \frac{N}{P} \).
+   - **Update**: The new value of **N** is displayed for both players.
+
+3. **Turn Progression**:
+   - Players alternate turns.
+   - The game continues until one player reduces **N** to **1** or a player cannot make a valid move.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - A move is valid if the player divides **N** by a prime factor of **N**.
+   - The chosen prime factor **P** must be a divisor of **N** (i.e., \( N \mod P = 0 \)).
+
+2. **Winning the Game**:
+   - If a player reduces **N** to exactly **1** on their turn, they win the game.
+
+3. **Losing the Game**:
+   - If **N** is **1** before a player's turn, they cannot make a move and thus lose the game.
+
+4. **Special Cases**:
+   - When **N** is a prime number greater than **1**, the only valid move is to divide **N** by itself, resulting in **N = 1**.
+
+5. **No Skipping Turns**:
+   - Players must make a move if a valid one is available.
+
+6. **Fair Play**:
+   - Players should perform calculations carefully to avoid errors in prime factor identification.
+
+---
+
+### **Scoring**
+
+- **Victory**: The player who reduces **N** to **1** on their turn wins the game.
+- **Loss**: The player who cannot make a valid move because **N** is **1** at the start of their turn loses the game.
+- No points are tracked beyond determining the winner of each game. Players can play multiple rounds and keep track of wins if desired.
+
+---
+
+### **Examples**
+
+#### **Example 1: Starting with N = 15**
+
+1. **Initial State**:
+   - **N = 15**
+   - Prime factors of **15** are **3** and **5**.
+   
+2. **Player 1's Turn**:
+   - Chooses **P = 5**.
+   - Calculates \( N = \frac{15}{5} = 3 \).
+   - **N** is now **3**.
+
+3. **Player 2's Turn**:
+   - **N = 3**, which is a prime number.
+   - Must divide by **3**: \( N = \frac{3}{3} = 1 \).
+   - **N** is now **1**.
+   - **Player 2 wins**.
+
+#### **Example 2: Starting with N = 12**
+
+1. **Initial State**:
+   - **N = 12**
+   - Prime factors of **12** are **2** and **3**.
+   
+2. **Player 1's Turn**:
+   - Chooses **P = 3**.
+   - Calculates \( N = \frac{12}{3} = 4 \).
+   - **N** is now **4**.
+
+3. **Player 2's Turn**:
+   - Prime factor of **4** is **2**.
+   - Chooses **P = 2**.
+   - Calculates \( N = \frac{4}{2} = 2 \).
+   - **N** is now **2**.
+
+4. **Player 1's Turn**:
+   - **N = 2**, which is a prime number.
+   - Must divide by **2**: \( N = \frac{2}{2} = 1 \).
+   - **N** is now **1**.
+   - **Player 1 wins**.
+
+---
+
+### **Sample Command-Line Interaction**
+
+#### **Game Start**
+
+```
+Welcome to Factor Frenzy!
+Enter the starting number N (greater than 1): 18
+Randomly selecting the first player...
+Player 1 will start the game.
+
+Current N: 18
+```
+
+#### **Player 1's Turn**
+
+```
+Player 1's turn.
+Prime factors of 18 are: 2, 3
+Enter a prime factor to divide N: 3
+You chose to divide by 3.
+N is now: 6
+```
+
+#### **Player 2's Turn**
+
+```
+Player 2's turn.
+Prime factors of 6 are: 2, 3
+Enter a prime factor to divide N: 2
+You chose to divide by 2.
+N is now: 3
+```
+
+#### **Player 1's Turn**
+
+```
+Player 1's turn.
+N is 3, which is a prime number.
+Dividing N by 3.
+N is now: 1
+Player 1 wins the game!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead**: Try to anticipate your opponent's possible moves and set traps by leaving them with prime numbers on their turns.
+- **Prime Awareness**: Keep a mental or written note of prime numbers and their factors to make quick decisions.
+- **Force Primes**: Aim to reduce **N** to a prime number on your opponent's turn, forcing them to hand you the win.
+
+---
+
+**Enjoy playing Factor Frenzy and may the best strategist win!**

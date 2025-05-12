@@ -1,0 +1,236 @@
+# **Factor Chain**
+
+## **Objective**
+
+**Factor Chain** is a two-player, turn-based strategy game played via a command-line interface. Players alternately add numbers to a growing sequence, following specific mathematical rules. The primary goal is to be the last player to add a valid number to the sequence without breaking the rules. A player wins by forcing their opponent into a position where they cannot add a valid number on their turn.
+
+---
+
+## **Setup**
+
+1. **Initial Number**: The game begins with the number **1** as the starting point of the sequence.
+2. **Number Range**: Players agree on a number range for the game, typically integers between **1 and 100** inclusive.
+3. **Player Order**: Decide which player goes first (e.g., by coin toss or mutual agreement).
+4. **Record Keeping**: Prepare a method to record the sequence of numbers and keep track of the numbers each player has used (this can be done on paper or within the game code).
+
+---
+
+## **Game Components**
+
+- **Sequence**: A list that records all numbers added during the game, starting with the initial number **1**.
+- **Number Range**: The allowable integers for selection, usually **1 to 100**.
+- **Player Records**: Each player maintains a list of numbers they have personally played to avoid reusing them.
+- **Command-Line Interface**: Players input their chosen numbers when prompted during their turn.
+
+---
+
+## **Turns**
+
+1. **Turn Order**: Players take turns alternately throughout the game.
+2. **Player Actions on Their Turn**:
+   - **Review**: Observe the last number added to the sequence.
+   - **Select**: Choose a valid number based on the game's rules.
+   - **Input**: Enter the chosen number into the command-line interface when prompted.
+   - **Update**: The chosen number is added to the sequence, and the player's personal list of used numbers.
+
+3. **Turn Progression**: After a player completes their turn, the next player proceeds with the same steps.
+
+---
+
+## **Rules and Mechanics**
+
+### **1. Valid Number Selection**
+
+On their turn, a player must select a number that meets all the following criteria:
+
+- **Within Range**: The number must be within the agreed-upon number range (e.g., **1 to 100**).
+- **Factor or Multiple**: The number must be a **factor** or a **multiple** of the **last number** in the sequence.
+  - **Factor**: A number that divides the last number exactly without leaving a remainder.
+  - **Multiple**: A number that is the product of the last number and an integer.
+- **Not Identical**: The number cannot be the same as the last number played.
+- **Unused by Player**: The number must not have been previously played by the **same player**. However, numbers played by the opponent can be reused.
+
+### **2. Sequence Building**
+
+- The game starts with the sequence `[1]`.
+- Each valid number selected by a player is appended to the sequence.
+- The sequence grows as players alternately add valid numbers.
+
+### **3. Winning the Game**
+
+- **Win Condition**: A player wins if their opponent cannot make a valid move on their turn.
+- **Loss Condition**: A player loses if they:
+  - Cannot select a valid number on their turn.
+  - Input an invalid number that does not meet the selection criteria.
+
+### **4. Invalid Moves**
+
+- If a player attempts to play an invalid number (violating any selection rule), they immediately lose the game.
+- Players are encouraged to double-check their choices before confirming their move.
+
+### **5. Example of Factors and Multiples**
+
+- **Factors of 8**: 1, 2, 4, 8
+- **Multiples of 8** (within 1-100): 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96
+
+---
+
+## **Scoring**
+
+- **No Point System**: The game does not use a cumulative point system.
+- **Winning**: Victory is achieved by strategic play that limits the opponent's options, forcing them into a position where they cannot make a valid move.
+- **Strategy**: Players should anticipate future moves and consider the available factors and multiples to outmaneuver their opponent.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Setup**:
+
+- **Number Range**: 1 to 100
+- **Starting Sequence**: [1]
+- **Players**: Player 1 and Player 2
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Sequence**: [1]
+- **Last Number**: 1
+- **Valid Moves**: Any number from 2 to 100 (since all numbers are multiples of 1).
+- **Player 1 Chooses**: **2**
+- **Updated Sequence**: [1, 2]
+- **Player 1's Numbers**: [2]
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Sequence**: [1, 2]
+- **Last Number**: 2
+- **Valid Moves**:
+  - **Factors of 2**: 1 (already in sequence), 2 (cannot reuse the last number).
+  - **Multiples of 2**: 4, 6, 8, ..., 100 (all even numbers greater than 2).
+- **Player 2 Chooses**: **4**
+- **Updated Sequence**: [1, 2, 4]
+- **Player 2's Numbers**: [4]
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Sequence**: [1, 2, 4]
+- **Last Number**: 4
+- **Valid Moves**:
+  - **Factors of 4**: 1 (in sequence), 2 (Player 1 used), 4 (last number).
+  - **Multiples of 4**: 8, 12, 16, ..., 100 (multiples of 4 greater than 4).
+- **Player 1 Chooses**: **8**
+- **Updated Sequence**: [1, 2, 4, 8]
+- **Player 1's Numbers**: [2, 8]
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Sequence**: [1, 2, 4, 8]
+- **Last Number**: 8
+- **Valid Moves**:
+  - **Factors of 8**: 1 (in sequence), 2 (Player 1 used), 4 (Player 2 used), 8 (last number).
+  - **Multiples of 8**: 16, 24, 32, ..., 96 (multiples of 8 up to 100).
+- **Player 2 Chooses**: **16**
+- **Updated Sequence**: [1, 2, 4, 8, 16]
+- **Player 2's Numbers**: [4, 16]
+
+---
+
+#### **Turn 5: Player 1**
+
+- **Sequence**: [1, 2, 4, 8, 16]
+- **Last Number**: 16
+- **Valid Moves**:
+  - **Factors of 16**: 1, 2, 4, 8 (all previously used), 16 (last number).
+  - **Multiples of 16**: 32, 48, 64, 80, 96.
+- **Player 1 Chooses**: **32**
+- **Updated Sequence**: [1, 2, 4, 8, 16, 32]
+- **Player 1's Numbers**: [2, 8, 32]
+
+---
+
+#### **Turn 6: Player 2**
+
+- **Sequence**: [1, 2, 4, 8, 16, 32]
+- **Last Number**: 32
+- **Valid Moves**:
+  - **Factors of 32**: 1, 2, 4, 8, 16 (all previously used), 32 (last number).
+  - **Multiples of 32**: 64, 96.
+- **Player 2 Chooses**: **64**
+- **Updated Sequence**: [1, 2, 4, 8, 16, 32, 64]
+- **Player 2's Numbers**: [4, 16, 64]
+
+---
+
+#### **Turn 7: Player 1**
+
+- **Sequence**: [1, 2, 4, 8, 16, 32, 64]
+- **Last Number**: 64
+- **Valid Moves**:
+  - **Factors of 64**: 1, 2, 4, 8, 16, 32 (all previously used), 64 (last number).
+  - **Multiples of 64**: None within 1-100 (since 128 exceeds the range).
+- **Player 1 Cannot Make a Valid Move**: All factors have been used, and there are no valid multiples within range.
+- **Player 1 Loses**, **Player 2 Wins**.
+
+---
+
+### **Strategic Notes**
+
+- **Early Choices Matter**: Selecting smaller factors early on can preserve options for later moves.
+- **Forcing Moves**: Players can choose numbers that limit the available factors and multiples for their opponent.
+- **Awareness of Used Numbers**: Keeping track of both players' used numbers is crucial to avoid invalid moves.
+
+---
+
+## **Command-Line Interaction Example**
+
+Here's how a sample turn might look in the command-line interface:
+
+```plaintext
+--- Factor Chain Game ---
+
+Current Sequence: [1, 2, 4]
+
+Player 1's Turn
+Last Number: 4
+Your Used Numbers: [2]
+
+Enter a valid number: 8
+
+Number accepted!
+Updated Sequence: [1, 2, 4, 8]
+
+---
+
+Current Sequence: [1, 2, 4, 8]
+
+Player 2's Turn
+Last Number: 8
+Your Used Numbers: [4]
+
+Enter a valid number: 16
+
+Number accepted!
+Updated Sequence: [1, 2, 4, 8, 16]
+```
+
+---
+
+## **Conclusion**
+
+**Factor Chain** is a game of mathematical strategy and foresight. By understanding factors and multiples, players can make informed decisions to outmaneuver their opponent. The simplicity of the rules makes it easy to learn, while the strategic depth ensures that skilled players have a significant advantage.
+
+Enjoy the challenge and may the best strategist win!
+
+---
+
+**Note**: This game is designed to be easily implemented in a command-line interface, requiring basic input/output and logical checks for valid moves. It promotes mathematical thinking and strategic planning.

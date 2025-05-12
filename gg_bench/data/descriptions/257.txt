@@ -1,0 +1,218 @@
+# Number Merge: A Two-Player Turn-Based Game
+
+## Objective
+
+**Number Merge** is a strategic numerical game where two players compete to be the first to reach the **target number of 100**. Players take turns performing mathematical operations to increase their current number. The primary goal is to manipulate numbers thoughtfully to reach exactly **100** without exceeding it. The player who reaches the target number first **wins** the game. If a player cannot make a valid move without surpassing 100, they **lose**.
+
+## Setup
+
+- **Players**: Two players (Player 1 and Player 2).
+- **Starting Numbers**: Both players begin with a **current number of 1**.
+- **Target Number**: The goal is to reach exactly **100**.
+
+At the start of the game, the state is as follows:
+
+- **Player 1 Current Number**: 1
+- **Player 2 Current Number**: 1
+- **No moves have been made yet.**
+
+## Game Components
+
+- **Player's Current Number**: An integer variable representing each player's number, starting at 1.
+- **Target Number**: A constant value of 100 that players aim to reach.
+- **Operations**: Functions that players can perform on their turn:
+  - **Double Own Number**: Add their current number to itself.
+  - **Add Opponent's Number**: Add the opponent's current number to their own.
+
+The game is played in a command-line interface, displaying each player's current number after every turn.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, with **Player 1** starting the game.
+- **Turn Structure**:
+  1. **Display Current Numbers**: Show both players' current numbers.
+  2. **Player Action**: The current player chooses an operation.
+  3. **Validation**: Ensure the new number does not exceed 100.
+  4. **Update Current Number**: Apply the operation if it's valid.
+  5. **Check for Victory or Defeat**: Determine if the game has been won or if a player cannot make a valid move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Operations**:
+   - **Double Own Number**:
+     - Formula: `Player's Current Number = Player's Current Number + Player's Current Number`
+   - **Add Opponent's Number**:
+     - Formula: `Player's Current Number = Player's Current Number + Opponent's Current Number`
+2. **Validity of Moves**:
+   - The result of the operation must be **less than or equal to 100**.
+   - If both possible operations would result in a number greater than 100, the player **loses**.
+3. **Winning the Game**:
+   - The player who reaches **exactly 100** on their turn **wins** immediately.
+4. **Losing the Game**:
+   - If a player cannot perform any valid operation without exceeding 100, they **lose**, and the opponent **wins**.
+
+### Additional Mechanics
+
+- **No Skipping Turns**: Players must perform an operation on their turn if possible.
+- **No Negative Numbers**: All operations result in positive integers.
+- **Operations are Optional Based on Validity**: If only one operation is valid (i.e., only one doesn't exceed 100), the player must choose that operation.
+- **Game State Persistence**: Players' current numbers carry over between turns.
+
+## Scoring
+
+- **Winning**: The player who reaches exactly **100** first is declared the **winner**.
+- **Losing**: If a player cannot make a valid move without exceeding 100, they **lose**, and the other player **wins**.
+- **No Draws**: The game cannot end in a draw; there is always a winner.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Starting State
+
+- **Player 1 Current Number**: 1
+- **Player 2 Current Number**: 1
+
+---
+
+#### Turn 1: Player 1
+
+- **Current Numbers**:
+  - Player 1: 1
+  - Player 2: 1
+- **Available Operations**:
+  1. **Double Own Number**: 1 + 1 = 2
+  2. **Add Opponent's Number**: 1 + 1 = 2
+- **Player 1 Chooses**: Double own number.
+- **New Current Number**: Player 1's number is now **2**.
+
+---
+
+#### Turn 2: Player 2
+
+- **Current Numbers**:
+  - Player 1: 2
+  - Player 2: 1
+- **Available Operations**:
+  1. **Double Own Number**: 1 + 1 = 2
+  2. **Add Opponent's Number**: 1 + 2 = 3
+- **Player 2 Chooses**: Add opponent's number.
+- **New Current Number**: Player 2's number is now **3**.
+
+---
+
+#### Turn 3: Player 1
+
+- **Current Numbers**:
+  - Player 1: 2
+  - Player 2: 3
+- **Available Operations**:
+  1. **Double Own Number**: 2 + 2 = 4
+  2. **Add Opponent's Number**: 2 + 3 = 5
+- **Player 1 Chooses**: Double own number.
+- **New Current Number**: Player 1's number is now **4**.
+
+---
+
+#### Turn 4: Player 2
+
+- **Current Numbers**:
+  - Player 1: 4
+  - Player 2: 3
+- **Available Operations**:
+  1. **Double Own Number**: 3 + 3 = 6
+  2. **Add Opponent's Number**: 3 + 4 = 7
+- **Player 2 Chooses**: Double own number.
+- **New Current Number**: Player 2's number is now **6**.
+
+---
+
+#### Turns Continue...
+
+Players continue taking turns, choosing operations based on their strategy. The numbers grow as they apply operations.
+
+---
+
+#### Final Turns
+
+##### Turn X: Player 1
+
+- **Current Numbers**:
+  - Player 1: 64
+  - Player 2: 60
+- **Available Operations**:
+  1. **Double Own Number**: 64 + 64 = 128 (Invalid, exceeds 100)
+  2. **Add Opponent's Number**: 64 + 60 = 124 (Invalid, exceeds 100)
+- **No Valid Moves**: Player 1 cannot make a valid move.
+- **Player 1 Loses**: Player 2 **wins** the game.
+
+**Note**: This example demonstrates strategic decision-making. Players must plan ahead to avoid reaching a point where they cannot make a valid move.
+
+## Command-Line Interaction Examples
+
+Below are sample command-line interactions to illustrate how the game progresses.
+
+### Sample Interaction
+
+```plaintext
+Game Start!
+Target Number: 100
+Player 1 Current Number: 1
+Player 2 Current Number: 1
+
+Player 1's Turn
+Choose an operation:
+1. Double your own number (1 + 1)
+2. Add opponent's number to your own (1 + 1)
+Enter 1 or 2: 1
+Player 1 doubles their own number.
+Player 1's New Number: 2
+
+Player 2's Turn
+Choose an operation:
+1. Double your own number (1 + 1)
+2. Add opponent's number to your own (1 + 2)
+Enter 1 or 2: 2
+Player 2 adds Player 1's number to their own.
+Player 2's New Number: 3
+
+Player 1's Turn
+Choose an operation:
+1. Double your own number (2 + 2)
+2. Add opponent's number to your own (2 + 3)
+Enter 1 or 2: 1
+Player 1 doubles their own number.
+Player 1's New Number: 4
+
+...
+
+(Continues as per previous turns)
+
+...
+
+Player 1's Turn
+Current Numbers:
+- Player 1: 64
+- Player 2: 60
+Available Operations:
+1. Double your own number (64 + 64 = 128)
+2. Add opponent's number to your own (64 + 60 = 124)
+No valid moves available without exceeding 100.
+Player 1 cannot make a valid move.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves to avoid getting trapped without valid options.
+- **Monitor Opponent's Number**: Use your opponent's number to your advantage or prevent them from leveraging yours.
+- **Avoid Large Jumps Prematurely**: Doubling large numbers early can limit your options later.
+- **Force Opponent into a Corner**: Manipulate the numbers to leave your opponent with no valid moves.
+
+## Summary
+
+**Number Merge** is a simple yet strategic game that tests players' mathematical thinking and foresight. By carefully choosing when to double their own number or add the opponent's number, players can control the flow of the game and steer towards victory. The straightforward rules make it easy to code and play in a command-line interface, ensuring quick gameplay with a clear winner every time.
+
+Enjoy the challenge and may the best strategist win!

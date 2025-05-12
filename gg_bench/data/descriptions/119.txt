@@ -1,0 +1,253 @@
+**Number Nexus**
+
+---
+
+**Objective**
+
+Become the last player able to make a valid move by strategically selecting numbers from a shared pool according to the game's rules. Force your opponent into a position where they cannot select a valid number on their turn to win the game.
+
+---
+
+**Setup**
+
+1. **Number Pool**: A shared pool of integers ranging from **2** to **20**.
+2. **Players**: Two players, referred to as **Player 1** and **Player 2**.
+3. **Starting Player**: Decide which player goes first (e.g., by coin toss or agreement).
+
+---
+
+**Game Components**
+
+1. **Shared Number Pool**: The numbers **2** through **20** inclusive.
+   - Each number is unique and can be selected only once.
+   - Numbers are removed from the pool once selected.
+2. **Turn Indicator**: Keeps track of whose turn it is.
+3. **Command-Line Interface**: Players input their chosen numbers when prompted.
+
+---
+
+**Turns**
+
+1. **Player 1** begins the game by selecting any one number from the shared pool.
+2. **Player 2** then takes their turn, adhering to the selection rules based on Player 1's chosen number.
+3. Players alternate turns, each time selecting a valid number from the pool according to the rules.
+
+---
+
+**Rules and Mechanics**
+
+1. **First Turn Rule**:
+   - The first player may select **any** number from the shared pool on their first turn.
+
+2. **Subsequent Turn Rule**:
+   - On your turn, you **must** select a number that is either a **factor** or a **multiple** of the **last number** chosen by your opponent.
+   - **Factors**: Numbers that divide evenly into the last number chosen (without leaving a remainder).
+   - **Multiples**: Numbers that the last number chosen divides evenly into (without leaving a remainder).
+
+3. **Valid Move Criteria**:
+   - The selected number must be present in the shared pool.
+   - The number must satisfy the factor or multiple condition relative to the last number chosen by your opponent.
+
+4. **Removal of Numbers**:
+   - Once a number is selected by a player, it is **removed** from the shared pool and cannot be selected again.
+
+5. **Winning the Game**:
+   - If a player cannot make a valid move on their turn (no numbers in the pool satisfy the conditions), they **lose**, and the other player **wins** the game.
+
+---
+
+**Examples of Valid and Invalid Moves**
+
+- If the last number chosen by your opponent is **12**, valid selections include its factors **2**, **3**, **4**, **6** or any multiples (if within 2-20 and in the pool).
+- If the last number chosen is **5**, valid selections could be **5** (factor and multiple of itself), or **10**, **15**, **20** (multiples of 5), assuming they are still in the pool.
+- Selecting a number that is neither a factor nor a multiple of the last number chosen by your opponent is an **invalid move**.
+
+---
+
+**Scoring**
+
+- **Winning**: You win the game if your opponent cannot make a valid move on their turn.
+- **Losing**: You lose the game if you cannot make a valid move on your turn.
+- **No Points System**: There are no points; the game outcome is a win or loss.
+
+---
+
+**Example Gameplay**
+
+*Initial Shared Pool*: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+---
+
+**Turn 1**
+
+- **Player 1's Turn**:
+  - Chooses **12** (can pick any number on the first turn).
+  - **Removal**: 12 is removed from the pool.
+  - **Shared Pool Now**: 2-11, 13-20 (excluding 12).
+
+**Turn 2**
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of **12**.
+  - **Available Factors**: 2, 3, 4, 6.
+  - **Available Multiples**: None within 2-20.
+  - Chooses **6**.
+  - **Removal**: 6 is removed from the pool.
+  - **Shared Pool Now**: 2-5, 7-11, 13-20 (excluding 6, 12).
+
+**Turn 3**
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of **6**.
+  - **Available Factors**: 2, 3.
+  - **Available Multiples**: 18.
+  - Chooses **18**.
+  - **Removal**: 18 is removed from the pool.
+  - **Shared Pool Now**: 2-5, 7-11, 13-17, 19, 20.
+
+**Turn 4**
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of **18**.
+  - **Available Factors**: 2, 3, 9.
+  - Chooses **9**.
+  - **Removal**: 9 is removed from the pool.
+  - **Shared Pool Now**: 2-5, 7, 8, 10, 11, 13-17, 19, 20.
+
+**Turn 5**
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of **9**.
+  - **Available Factors**: 3.
+  - Chooses **3**.
+  - **Removal**: 3 is removed from the pool.
+  - **Shared Pool Now**: 2, 4, 5, 7, 8, 10, 11, 13-17, 19, 20.
+
+**Turn 6**
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of **3**.
+  - **Available Multiples**: 15.
+  - Chooses **15**.
+  - **Removal**: 15 is removed from the pool.
+  - **Shared Pool Now**: 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20.
+
+**Turn 7**
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of **15**.
+  - **Available Factors**: 5.
+  - Chooses **5**.
+  - **Removal**: 5 is removed from the pool.
+  - **Shared Pool Now**: 2, 4, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20.
+
+**Turn 8**
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of **5**.
+  - **Available Multiples**: 10, 20.
+  - Chooses **10**.
+  - **Removal**: 10 is removed from the pool.
+  - **Shared Pool Now**: 2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 20.
+
+**Turn 9**
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of **10**.
+  - **Available Factors**: 2.
+  - Chooses **2**.
+  - **Removal**: 2 is removed from the pool.
+  - **Shared Pool Now**: 4, 7, 8, 11, 13, 14, 16, 17, 19, 20.
+
+**Turn 10**
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of **2**.
+  - **Available Multiples**: 4, 8, 14, 16, 20.
+  - Chooses **16**.
+  - **Removal**: 16 is removed from the pool.
+  - **Shared Pool Now**: 4, 7, 8, 11, 13, 14, 17, 19, 20.
+
+**Turn 11**
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of **16**.
+  - **Available Factors**: 4.
+  - Chooses **4**.
+  - **Removal**: 4 is removed from the pool.
+  - **Shared Pool Now**: 7, 8, 11, 13, 14, 17, 19, 20.
+
+**Turn 12**
+
+- **Player 2's Turn**:
+  - Must select a factor or multiple of **4**.
+  - **Available Multiples**: 8, 20.
+  - Chooses **8**.
+  - **Removal**: 8 is removed from the pool.
+  - **Shared Pool Now**: 7, 11, 13, 14, 17, 19, 20.
+
+**Turn 13**
+
+- **Player 1's Turn**:
+  - Must select a factor or multiple of **8**.
+  - **No Valid Moves**: There are no remaining numbers that are factors or multiples of 8.
+  - **Player 1** cannot make a valid move and therefore **loses** the game.
+  - **Player 2** **wins**!
+
+---
+
+**Command-Line Interaction Example**
+
+```plaintext
+Welcome to Number Nexus!
+
+Shared Pool: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+Player 1, it's your turn.
+Select any number from the pool: 12
+
+Player 2, it's your turn.
+Last number chosen was 12.
+Select a factor or multiple of 12 from the pool.
+Available options: 2, 3, 4, 6
+Your choice: 6
+
+Player 1, it's your turn.
+Last number chosen was 6.
+Select a factor or multiple of 6 from the pool.
+Available options: 2, 3, 18
+Your choice: 18
+
+Player 2, it's your turn.
+Last number chosen was 18.
+Select a factor or multiple of 18 from the pool.
+Available options: 2, 3, 9
+Your choice: 9
+
+... [Gameplay continues as per the example above] ...
+
+Player 1, it's your turn.
+Last number chosen was 8.
+Select a factor or multiple of 8 from the pool.
+Available options: None
+No valid moves available. You lose!
+Player 2 wins the game!
+```
+
+---
+
+**Strategy Tips**
+
+- **Plan Ahead**: Anticipate the numbers that will be available on your next turn based on your opponent's possible choices.
+- **Control the Game**: Try to force your opponent into picking numbers that limit their subsequent options.
+- **Number Selection**: Choosing numbers with fewer factors or multiples remaining in the pool can strategically restrict your opponent's choices.
+
+---
+
+**Conclusion**
+
+Number Nexus is a simple yet strategically rich game that tests numerical skills and forward-thinking. By carefully selecting numbers and anticipating moves, players can outmaneuver their opponents and secure victory.
+
+Enjoy the challenge, and may the best strategist win!
+
+---

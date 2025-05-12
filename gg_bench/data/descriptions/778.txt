@@ -1,0 +1,169 @@
+# Line Duel
+
+## Objective
+
+**Line Duel** is a two-player turn-based strategy game played on a simple number line. The primary goal is to avoid being the player who moves the shared token to either end of the number line (positions **1** or **10**). Players take turns moving the token along the line, and strategic planning is essential to force your opponent into a losing move. The player who is compelled to move the token to position **1** or **10** loses the game.
+
+## Setup
+
+- **Number Line**: A linear sequence of numbered positions from **1** to **10**.
+- **Token**: A single shared piece representing the current position on the number line.
+- **Starting Position**: Place the token at position **5**, the center of the number line.
+- **Players**: Two participants, referred to as **Player 1** and **Player 2**.
+- **First Turn**: Decide which player will take the first turn (e.g., toss a coin or mutual agreement).
+
+## Game Components
+
+- **Number Line**:
+  - Positions are numbered sequentially from **1** to **10**.
+  - Represents the playing field where the token moves.
+- **Token**:
+  - A marker or symbol indicating the current position on the number line.
+  - Shared between both players.
+- **Players**:
+  - **Player 1** and **Player 2** alternate turns.
+  - Each player makes strategic decisions to control the token's movement.
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns throughout the game.
+  - The player designated to go first begins the game.
+- **Turn Structure**:
+  - **Step 1**: Display the current position of the token.
+  - **Step 2**: The current player chooses their move:
+    - Select a number of positions to move: **1** or **2**.
+    - Choose a direction: **left** (towards **1**) or **right** (towards **10**).
+  - **Step 3**: Validate the move to ensure it stays within the number line boundaries.
+  - **Step 4**: Update the token's position based on the move.
+  - **Step 5**: Check for a win/loss condition.
+  - **Step 6**: If the game continues, pass the turn to the next player.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Move Distance**:
+   - On your turn, you must move the token **exactly 1 or 2 positions** along the number line.
+2. **Direction**:
+   - You can move the token **left** (towards **1**) or **right** (towards **10**) on each turn.
+3. **Boundaries**:
+   - The token cannot move beyond positions **1** or **10**.
+   - Moves resulting in positions less than **1** or greater than **10** are invalid.
+
+### Winning Condition
+
+- **Loss Condition**:
+  - If a player moves the token to **position 1** or **position 10** on their turn, they **lose** the game.
+- **Winning**:
+  - You win if your opponent is forced to move the token to **position 1** or **position 10** on their turn.
+
+### Additional Rules
+
+- **Mandatory Moves**:
+  - Players **cannot pass** their turn; a move must be made if possible.
+- **Valid Moves Only**:
+  - If a player has no valid moves (unlikely given the rules), they lose their turn.
+
+## Scoring
+
+- **Win/Loss Outcome**:
+  - The game concludes with a clear win/loss result.
+  - No points are awarded; the outcome is based solely on avoiding the loss condition.
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds.
+  - Keep track of victories to determine an overall winner after a set number of games.
+
+## Examples
+
+### Example Game Play
+
+#### Starting Situation
+
+- **Token Position**: 5
+- **Player 1**: Begins the game.
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - **Move**: 2 positions to the **right**.
+   - **Calculation**: 5 ➔ 7.
+   - **Token Position**: 7.
+2. **Player 2's Turn**:
+   - **Move**: 1 position to the **right**.
+   - **Calculation**: 7 ➔ 8.
+   - **Token Position**: 8.
+3. **Player 1's Turn**:
+   - **Move**: 2 positions to the **left**.
+   - **Calculation**: 8 ➔ 6.
+   - **Token Position**: 6.
+4. **Player 2's Turn**:
+   - **Move**: 1 position to the **left**.
+   - **Calculation**: 6 ➔ 5.
+   - **Token Position**: 5.
+5. **Player 1's Turn**:
+   - **Move**: 2 positions to the **left**.
+   - **Calculation**: 5 ➔ 3.
+   - **Token Position**: 3.
+6. **Player 2's Turn**:
+   - **Move**: 2 positions to the **left**.
+   - **Calculation**: 3 ➔ 1.
+   - **Token Position**: 1.
+   - **Result**: Player 2 moved the token to position **1** and **loses**.
+   - **Winner**: Player 1.
+
+### Command-Line Interaction Example
+
+#### Turn Prompt
+
+```
+Current token position: 5
+Player 1's turn.
+Enter the number of positions to move (1 or 2): 2
+Enter direction to move (left/right): right
+Token moved to position 7.
+```
+
+#### Invalid Move Example
+
+```
+Current token position: 9
+Player 2's turn.
+Enter the number of positions to move (1 or 2): 2
+Enter direction to move (right):
+Invalid move. The token cannot move beyond position 10.
+Please enter a valid number of positions (1 or 2): 1
+Enter direction to move (right): right
+Token moved to position 10.
+Player 2 loses the game!
+```
+
+## Strategic Considerations
+
+- **Planning Ahead**:
+  - Anticipate future positions to force your opponent into a losing move.
+- **Control the Center**:
+  - Keep the token away from the edges to maintain more options.
+- **Mirror Moves**:
+  - Mimic your opponent's moves to neutralize their strategy.
+- **Forcing Moves**:
+  - Position the token so your opponent has limited safe moves.
+- **Avoiding Traps**:
+  - Be cautious of positions that can lead to an inevitable loss in subsequent turns.
+
+## Comprehensive Rules Summary
+
+- Players alternate turns, moving the shared token along a number line from positions **1** to **10**.
+- On each turn, a player must move the token **1 or 2 positions** in either the **left** or **right** direction.
+- The token cannot move beyond the endpoints of the number line.
+- The player who moves the token to **position 1** or **position 10** **loses** the game.
+- Moves are mandatory; players cannot skip their turn.
+- The game ends with a clear winner and loser, with no possibility of a draw.
+
+## Conclusion
+
+**Line Duel** combines simplicity and strategic depth, making it easy to learn yet challenging to master. Its straightforward mechanics ensure the game is quick and suitable for a command-line interface implementation. With every move, players must think ahead to outmaneuver their opponent, providing a competitive experience where skill prevails over chance.
+
+---
+
+**Note for Developers**: Implementing **Line Duel** in a command-line interface involves input handling, move validation, game state tracking, and win/loss condition checking. The simplicity of the game's mechanics allows for an efficient and concise codebase, making it ideal for beginner programmers or for quick deployment in text-based environments.

@@ -1,0 +1,15 @@
+In the `CustomEnv` gym environment for the game "Grid Conquest," the action space is defined as `spaces.Discrete(25)`, which represents the 25 possible cells in the 5x5 grid. Each action index corresponds to a specific cell on the grid, mapped sequentially from top-left to bottom-right. The index-to-cell mapping is as follows:
+
+- Index `0` corresponds to cell `A1`,
+- Index `1` to cell `A2`,
+- ...
+- Index `4` to cell `A5`,
+- Index `5` to cell `B1`,
+- and so on until,
+- Index `24` corresponds to cell `E5`.
+
+An action index `n` is translated to the grid coordinates `(i, j)` using the calculations:
+- Row index `i = n // 5` (integer division),
+- Column index `j = n % 5` (remainder).
+
+This allows players to select cells by performing actions indexed from 0 to 24, aligning each action to a specific cell on the grid.

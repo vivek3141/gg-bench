@@ -1,0 +1,257 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a strategic two-player turn-based game. The primary goal is to be the last player to make a valid move by selecting a number from a shared pool based on divisibility rules. Victory is achieved by forcing your opponent into a position where they cannot select a valid number on their turn.
+
+## Setup
+
+- **Number Pool**: The game begins with a pool of numbers ranging from **1 to 20**.
+- **Starting Player**: Decide who will take the first turn (e.g., by coin toss or mutual agreement).
+- **Initial Conditions**: All numbers in the pool are available for selection. There are no restrictions on the first move.
+
+## Game Components
+
+- **Number Pool**: A list or array containing the numbers **1 through 20**.
+  - Example: `[1, 2, 3, 4, ..., 19, 20]`
+- **Selected Numbers List**: An empty list to keep track of numbers that have been chosen during the game.
+  - Example: `[]`
+
+## Turns
+
+- Players alternate turns, starting with the designated first player.
+- **Turn Structure**:
+  1. **Selection**: The player selects a valid number from the number pool based on the game rules.
+  2. **Validation**: Ensure the selected number adheres to the divisibility rules.
+  3. **Update**: Remove the selected number from the number pool and add it to the selected numbers list.
+  4. **Pass Turn**: The turn passes to the next player.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - The first player may select **any number** from the number pool.
+2. **Subsequent Moves**:
+   - A player must select a number that is **either a divisor or a multiple** of the **last number selected** (the number chosen by the opponent in the previous turn).
+   - The selected number **must be available** in the number pool (i.e., it has not been previously selected).
+3. **Valid Moves**:
+   - If a player has at least one valid number to select based on the above rule, they must choose one of them.
+4. **Invalid Moves**:
+   - If a player has **no valid numbers** to select (no numbers in the pool are divisors or multiples of the last selected number), they **lose** the game.
+5. **Number Removal**:
+   - Once a number is selected, it is **removed** from the number pool and **cannot be selected again**.
+
+### Special Conditions
+
+- **No Draws**: The game cannot end in a draw; a player will always lose if they cannot make a valid move on their turn.
+- **Strategy**:
+  - Players should consider both offensive and defensive strategies, selecting numbers that limit the opponent's options.
+
+## Scoring
+
+- **Winner**: The player who makes the last valid move.
+- **Loser**: The player who cannot make a valid move on their turn.
+- **Score Tracking**: No points are accumulated; the game result is simply a win or loss.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- Number Pool: `[1, 2, 3, 4, 5, 6, ..., 19, 20]`
+- Selected Numbers: `[]`
+- Player 1 and Player 2 agree that Player 1 will start.
+
+#### Turn by Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Selection**: Chooses **6** (can pick any number on the first turn).
+   - **Update**:
+     - Number Pool: `[1, 2, 3, 4, 5, 7, 8, ..., 19, 20]`
+     - Selected Numbers: `[6]`
+   - **Comment**: No restrictions; any number can be selected.
+
+2. **Player 2's Turn**:
+   - **Last Selected Number**: **6**
+   - **Valid Options**: Numbers that are divisors or multiples of 6 and still in the pool.
+     - Divisors of 6: **1**, **2**, **3**
+     - Multiples of 6: **12**, **18**
+     - Available Valid Options: **1**, **2**, **3**, **12**, **18**
+   - **Selection**: Chooses **3**.
+   - **Update**:
+     - Number Pool: `[1, 2, 4, 5, 7, 8, ..., 19, 20]` (without 3)
+     - Selected Numbers: `[6, 3]`
+   - **Comment**: Selected 3 as it is a divisor of 6.
+
+3. **Player 1's Turn**:
+   - **Last Selected Number**: **3**
+   - **Valid Options**: Divisors or multiples of 3 in the pool.
+     - Divisors of 3: **1**
+     - Multiples of 3: **9**, **12**, **15**, **18**
+     - Available Valid Options: **1**, **9**, **12**, **15**, **18**
+   - **Selection**: Chooses **9**.
+   - **Update**:
+     - Number Pool: `[1, 2, 4, 5, 7, 8, 10, 11, 12, ..., 19, 20]` (without 9)
+     - Selected Numbers: `[6, 3, 9]`
+
+4. **Player 2's Turn**:
+   - **Last Selected Number**: **9**
+   - **Valid Options**: Divisors or multiples of 9 in the pool.
+     - Divisors of 9: **1**, **3**
+     - Multiples of 9: **18**
+     - Available Valid Options: **1**, **18**
+   - **Selection**: Chooses **18**.
+   - **Update**:
+     - Number Pool: `[1, 2, 4, 5, 7, 8, 10, 11, 12, ..., 17, 19, 20]` (without 18)
+     - Selected Numbers: `[6, 3, 9, 18]`
+
+5. **Player 1's Turn**:
+   - **Last Selected Number**: **18**
+   - **Valid Options**: Divisors or multiples of 18.
+     - Divisors of 18: **1**, **2**, **3**, **6**, **9**
+     - Multiples of 18: None within 1-20 range.
+     - Available Valid Options: **1**, **2**
+   - **Selection**: Chooses **2**.
+   - **Update**:
+     - Number Pool: `[1, 4, 5, 7, 8, 10, 11, 12, ..., 17, 19, 20]` (without 2)
+     - Selected Numbers: `[6, 3, 9, 18, 2]`
+
+6. **Player 2's Turn**:
+   - **Last Selected Number**: **2**
+   - **Valid Options**: Divisors or multiples of 2.
+     - Divisors of 2: **1**
+     - Multiples of 2: **4**, **6**, **8**, **10**, **12**, **14**, **16**, **18**, **20**
+     - Available Valid Options: **1**, **4**, **8**, **10**, **12**, **14**, **16**, **20**
+   - **Selection**: Chooses **12**.
+   - **Update**:
+     - Number Pool: `[1, 4, 5, 7, 8, 10, 11, 13, 14, ..., 17, 19, 20]` (without 12)
+     - Selected Numbers: `[6, 3, 9, 18, 2, 12]`
+
+7. **Player 1's Turn**:
+   - **Last Selected Number**: **12**
+   - **Valid Options**: Divisors or multiples of 12.
+     - Divisors of 12: **1**, **2**, **3**, **4**, **6**
+     - Multiples of 12: None within 1-20 range.
+     - Available Valid Options: **1**, **4**
+   - **Selection**: Chooses **4**.
+   - **Update**:
+     - Number Pool: `[1, 5, 7, 8, 10, 11, 13, 14, ..., 17, 19, 20]` (without 4)
+     - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4]`
+
+8. **Player 2's Turn**:
+   - **Last Selected Number**: **4**
+   - **Valid Options**: Divisors or multiples of 4.
+     - Divisors of 4: **1**, **2**
+     - Multiples of 4: **8**, **12**, **16**, **20**
+     - Available Valid Options: **1**, **8**, **16**, **20**
+   - **Selection**: Chooses **8**.
+   - **Update**:
+     - Number Pool: `[1, 5, 7, 10, 11, 13, 14, ..., 17, 19, 20]` (without 8)
+     - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4, 8]`
+
+9. **Player 1's Turn**:
+   - **Last Selected Number**: **8**
+   - **Valid Options**: Divisors or multiples of 8.
+     - Divisors of 8: **1**, **2**, **4**
+     - Multiples of 8: **16**
+     - Available Valid Options: **1**, **16**
+   - **Selection**: Chooses **16**.
+   - **Update**:
+     - Number Pool: `[1, 5, 7, 10, 11, 13, 14, 15, 17, 19, 20]` (without 16)
+     - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4, 8, 16]`
+
+10. **Player 2's Turn**:
+    - **Last Selected Number**: **16**
+    - **Valid Options**: Divisors or multiples of 16.
+      - Divisors of 16: **1**, **2**, **4**, **8**
+      - Multiples of 16: None within 1-20 range.
+      - Available Valid Options: **1**
+    - **Selection**: Chooses **1**.
+    - **Update**:
+      - Number Pool: `[5, 7, 10, 11, 13, 14, 15, 17, 19, 20]` (without 1)
+      - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4, 8, 16, 1]`
+
+11. **Player 1's Turn**:
+    - **Last Selected Number**: **1**
+    - **Valid Options**: Any remaining numbers, since all numbers are multiples of 1.
+      - Available Valid Options: `[5, 7, 10, 11, 13, 14, 15, 17, 19, 20]`
+    - **Selection**: Chooses **5**.
+    - **Update**:
+      - Number Pool: `[7, 10, 11, 13, 14, 15, 17, 19, 20]` (without 5)
+      - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4, 8, 16, 1, 5]`
+
+12. **Player 2's Turn**:
+    - **Last Selected Number**: **5**
+    - **Valid Options**: Numbers that are divisors or multiples of 5.
+      - Divisors of 5: **1**
+      - Multiples of 5: **10**, **15**, **20**
+      - Available Valid Options: **10**, **15**, **20**
+    - **Selection**: Chooses **10**.
+    - **Update**:
+      - Number Pool: `[7, 11, 13, 14, 15, 17, 19, 20]` (without 10)
+      - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4, 8, 16, 1, 5, 10]`
+
+13. **Player 1's Turn**:
+    - **Last Selected Number**: **10**
+    - **Valid Options**: Divisors or multiples of 10.
+      - Divisors of 10: **1**, **2**, **5**
+      - Multiples of 10: **20**
+      - Available Valid Options: **20**
+    - **Selection**: Chooses **20**.
+    - **Update**:
+      - Number Pool: `[7, 11, 13, 14, 15, 17, 19]` (without 20)
+      - Selected Numbers: `[6, 3, 9, 18, 2, 12, 4, 8, 16, 1, 5, 10, 20]`
+
+14. **Player 2's Turn**:
+    - **Last Selected Number**: **20**
+    - **Valid Options**: Divisors or multiples of 20.
+      - Divisors of 20: **1**, **2**, **4**, **5**, **10**
+      - Multiples of 20: None within 1-20 range.
+      - Available Valid Options: None (since 1, 2, 4, 5, 10 are already selected)
+    - **Outcome**:
+      - Player 2 has **no valid moves**.
+      - **Player 1 Wins**.
+
+### Command-Line Interaction Example
+
+```plaintext
+Game Start: Numbers [1-20] are available.
+
+Player 1's Turn:
+Available Numbers: [1, 2, 3, ..., 19, 20]
+Select any number: 6
+
+Player 2's Turn:
+Last Number Selected: 6
+Available Numbers: [1, 2, 3, 4, 5, 7, ..., 19, 20]
+Select a divisor or multiple of 6 from the available numbers.
+Valid Options: [1, 2, 3, 12, 18]
+Select number: 3
+
+Player 1's Turn:
+Last Number Selected: 3
+Available Numbers: [1, 2, 4, 5, 7, ..., 19, 20]
+Valid Options: [1, 9, 12, 15, 18]
+Select number: 9
+
+... (game continues as per the turn-by-turn breakdown) ...
+
+Player 2's Turn:
+Last Number Selected: 20
+Available Numbers: [7, 11, 13, 14, 15, 17, 19]
+No valid moves available.
+Player 2 has no valid moves. **Player 1 Wins!**
+```
+
+## Strategy Tips
+
+- **Control Key Numbers**: Aim to select numbers that provide you with more options in subsequent turns while limiting your opponent's choices.
+- **Track Remaining Numbers**: Keep an eye on which numbers are still available to predict future valid moves.
+- **Forcing Moves**: Try to force your opponent into a position where they have only one valid move or none at all.
+- **Multiples vs. Divisors**: Remember that higher numbers have fewer multiples within the pool range, potentially limiting options.
+
+---
+
+Enjoy playing **Divisor Duel** and may the most strategic player win!

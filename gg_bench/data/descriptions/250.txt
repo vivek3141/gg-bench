@@ -1,0 +1,139 @@
+# Number Line Deletion
+
+## Objective
+
+The objective of **Number Line Deletion** is to force your opponent to remove the last remaining number from a shared number line. Players take turns removing numbers from either end of the line, strategically aiming to avoid being the player who has no choice but to eliminate the final number.
+
+## Setup
+
+- **Number Line Creation**: Begin with a number line containing the numbers **1** through **10** arranged in ascending order.
+- **Initial Display**: The number line is represented in the command-line interface as a list: `[1 2 3 4 5 6 7 8 9 10]`.
+- **Determine First Player**: Decide who will take the first turn (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Number Line**: A sequence of numbers from **1** to **10**.
+  - **Representation**: The numbers are displayed sequentially and updated after each turn.
+  - **Functionality**: Numbers are removed from either end based on player choices.
+  - **Unique Attributes**: Once a number is removed, it cannot be chosen again.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the first player determined during setup.
+- **Actions per Turn**:
+  1. **Choose Side**: Select either the **left end** or **right end** of the current number line.
+  2. **Choose Quantity**: Decide to remove **1**, **2**, or **3** consecutive numbers from the chosen end.
+  3. **Remove Numbers**: The selected numbers are removed from the number line.
+- **Turn Progression**: The game continues with players alternately removing numbers until one player is forced to remove the last number.
+
+## Rules and Mechanics
+
+1. **Removal Options**:
+   - You may only remove numbers from **one end** (left or right) per turn.
+   - You must remove at least **1** number and no more than **3** numbers on your turn.
+   - The numbers removed must be consecutive, starting from the chosen end.
+
+2. **Number Line Updates**:
+   - After numbers are removed, the number line is updated and displayed.
+   - Removed numbers are out of play and cannot be selected again.
+
+3. **Winning Condition**:
+   - The player who forces their opponent to remove the **last remaining number** wins the game.
+   - If on your turn there are no valid moves other than removing the last number, you must do so and lose.
+
+## Scoring
+
+- **Win/Loss Outcome**: The game results in a win for one player and a loss for the other.
+- **No Points System**: There is no ongoing score or points; each game is a standalone match.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Number Line**:
+```
+[1 2 3 4 5 6 7 8 9 10]
+```
+
+**Turn 1 - Player 1**:
+- **Choose Side**: Left
+- **Choose Quantity**: 3
+- **Numbers Removed**: [1 2 3]
+- **Updated Number Line**: [4 5 6 7 8 9 10]
+
+**Turn 2 - Player 2**:
+- **Choose Side**: Right
+- **Choose Quantity**: 2
+- **Numbers Removed**: [10 9]
+- **Updated Number Line**: [4 5 6 7 8]
+
+**Turn 3 - Player 1**:
+- **Choose Side**: Left
+- **Choose Quantity**: 1
+- **Numbers Removed**: [4]
+- **Updated Number Line**: [5 6 7 8]
+
+**Turn 4 - Player 2**:
+- **Choose Side**: Right
+- **Choose Quantity**: 3
+- **Numbers Removed**: [8 7 6]
+- **Updated Number Line**: [5]
+
+**Turn 5 - Player 1**:
+- Only one number remains. Player 1 must remove it.
+- **Numbers Removed**: [5]
+- **Game Outcome**: Player 1 removes the last number and loses.
+- **Winner**: Player 2
+
+### Command-Line Interaction Example
+
+**Game Start**:
+```
+Number Line: [1 2 3 4 5 6 7 8 9 10]
+
+Player 1's turn.
+Choose side to remove from (left/right): left
+Choose number of elements to remove (1-3): 3
+Numbers removed: [1 2 3]
+Remaining line: [4 5 6 7 8 9 10]
+```
+
+**Next Turn**:
+```
+Player 2's turn.
+Choose side to remove from (left/right): right
+Choose number of elements to remove (1-3): 2
+Numbers removed: [10 9]
+Remaining line: [4 5 6 7 8]
+```
+
+**Continuing Play**:
+```
+Player 1's turn.
+Choose side to remove from (left/right): left
+Choose number of elements to remove (1-3): 1
+Numbers removed: [4]
+Remaining line: [5 6 7 8]
+
+Player 2's turn.
+Choose side to remove from (left/right): right
+Choose number of elements to remove (1-3): 3
+Numbers removed: [8 7 6]
+Remaining line: [5]
+
+Player 1's turn.
+Only one number remains.
+You must remove the last number: [5]
+You have removed the last number and lost the game.
+```
+
+## Strategic Depth and Complexity
+
+- **Forethought Required**: Players must think ahead to avoid situations where they are forced to remove the last number.
+- **Control the Pace**: Deciding how many numbers to remove and from which end can manipulate the options available to your opponent.
+- **End-Game Strategy**: Anticipating the sequence of remaining numbers allows players to force a win by limiting the opponent's choices.
+- **Adaptive Play**: Players need to adjust their strategy based on their opponent's moves to maintain an advantage.
+
+## Conclusion
+
+**Number Line Deletion** is a simple yet strategically rich game that challenges players to outmaneuver their opponent through careful planning and foresight. Its minimal components and straightforward rules make it ideal for a command-line interface, providing an engaging experience that concludes quickly without the possibility of a draw.

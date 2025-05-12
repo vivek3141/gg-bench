@@ -1,0 +1,293 @@
+**Game Name:** Reverse Avoidance
+
+---
+
+**Objective:**
+
+The primary goal of Reverse Avoidance is to force your opponent into creating a number divisible by 7 or leave them with no valid moves. Players take turns manipulating a shared sequence of digits, aiming to avoid sequences that are divisible by 7. The player who causes the sequence to be divisible by 7 on their turn loses the game.
+
+---
+
+**Setup:**
+
+- **Initial Sequence:** The game begins with a shared sequence containing the single digit `'1'`.
+- **Starting Player:** Decide which player goes first (e.g., by coin toss or mutual agreement).
+
+---
+
+**Game Components:**
+
+- **Shared Sequence:**
+  - A sequence of digits that both players manipulate during their turns.
+  - Initially starts as `'1'`.
+- **Digits (1-9):**
+  - Players can append any single digit from `'1'` to `'9'` to the sequence.
+- **Actions:**
+  - **Append Digit:** Adding a digit to the end of the current sequence.
+  - **Reverse Sequence:** Reversing the order of the digits in the current sequence.
+
+---
+
+**Turns:**
+
+1. **Turn Order:**
+   - Players alternate turns throughout the game.
+2. **Player Actions:**
+   - On your turn, you must perform **one** of the following actions:
+     - **Append a Digit:**
+       - Choose any digit from `'1'` to `'9'`.
+       - Append this digit to the **end** of the current sequence.
+     - **Reverse the Sequence:**
+       - Reverse the order of the digits in the current sequence (e.g., `'123'` becomes `'321'`).
+3. **Valid Moves:**
+   - After your action, the resulting sequence must represent a positive integer **not divisible by 7**.
+   - If the sequence is divisible by 7 after your move, you lose.
+   - If you have no valid moves that result in a sequence not divisible by 7, you lose.
+
+---
+
+**Rules and Mechanics:**
+
+- **Sequence Integrity:**
+  - The sequence always represents a positive integer without leading zeros.
+  - Leading zeros are not allowed (e.g., sequences like `'01'` are invalid).
+- **Actions Explained:**
+  - **Appending a Digit:**
+    - Example: Current sequence is `'123'`.
+    - You choose to append `'4'`.
+    - New sequence becomes `'1234'`.
+  - **Reversing the Sequence:**
+    - Example: Current sequence is `'123'`.
+    - You choose to reverse it.
+    - New sequence becomes `'321'`.
+- **Divisibility Check:**
+  - At the end of each turn, check if the new sequence is divisible by 7.
+    - Use standard division.
+    - If divisible, the player who made the move loses.
+- **No Skip or Pass:**
+  - Players cannot skip their turn; they must perform one of the two actions if possible.
+- **Winning the Game:**
+  - You win if:
+    - Your opponent creates a sequence divisible by 7 on their turn.
+    - Your opponent has no valid moves that avoid creating a sequence divisible by 7.
+
+---
+
+**Scoring:**
+
+- **Winning:**
+  - The winner is the player who avoids creating a sequence divisible by 7 while forcing their opponent into an impossible position.
+- **No Points System:**
+  - There is no cumulative scoring; each game is won by achieving the objective.
+
+---
+
+**Examples:**
+
+*Below are sample turns illustrating how the game is played in a command-line interface.*
+
+---
+
+**Example Game:**
+
+- **Initial Sequence:** `'1'`
+
+---
+
+**Player 1's Turn:**
+
+- **Current Sequence:** `'1'`
+- **Action:** Append Digit `'2'`
+- **Sequence After Move:** `'12'`
+- **Divisibility Check:** `12 ÷ 7 = 1 remainder 5` (Not divisible)
+- **Game Continues**
+
+**Command-line Interaction:**
+
+```
+Current sequence: 1
+Player 1, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 1
+Enter digit to append (1-9): 2
+New sequence: 12
+Sequence is not divisible by 7. Next player's turn.
+```
+
+---
+
+**Player 2's Turn:**
+
+- **Current Sequence:** `'12'`
+- **Action:** Reverse the Sequence
+- **Sequence After Move:** `'21'`
+- **Divisibility Check:** `21 ÷ 7 = 3` (Divisible)
+- **Player 2 Loses**
+
+**Command-line Interaction:**
+
+```
+Current sequence: 12
+Player 2, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 2
+New sequence: 21
+Sequence is divisible by 7. Player 2 loses!
+```
+
+---
+
+**Game Over:**
+
+- **Winner:** Player 1
+
+---
+
+**Extended Example with Strategic Play:**
+
+**Initial Sequence:** `'1'`
+
+---
+
+**Player 1's Turn:**
+
+- **Action:** Append Digit `'4'`
+- **Sequence After Move:** `'14'`
+- **Divisibility Check:** `14 ÷ 7 = 2` (Divisible)
+- **Player 1 Loses**
+
+**Command-line Interaction:**
+
+```
+Current sequence: 1
+Player 1, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 1
+Enter digit to append (1-9): 4
+New sequence: 14
+Sequence is divisible by 7. Player 1 loses!
+```
+
+- **Winner:** Player 2
+
+---
+
+**Strategic Considerations:**
+
+- **Avoid Creating Multiples of 7:**
+  - Be cautious when appending digits that may lead to a multiple of 7.
+- **Use Reversals Wisely:**
+  - Reversing the sequence can drastically change the number; use it to avoid traps or set up the opponent.
+- **Predict Opponent's Options:**
+  - Anticipate the results of possible moves to force the opponent into a losing position.
+  
+---
+
+**Additional Notes:**
+
+- **Validity of Moves:**
+  - Players must ensure their moves result in valid sequences (no leading zeros, positive integers).
+- **Example of Invalid Move:**
+  - If the current sequence is `'1'` and a player attempts to reverse it, the sequence remains `'1'`.
+  - If `'1'` is not divisible by 7, the move is valid but may not be strategic.
+- **No Repetition Restrictions:**
+  - Players can use the same action multiple times in the game (e.g., append digits consecutively).
+
+---
+
+**Command-Line Interaction Overview:**
+
+- **Prompting the Player:**
+  - Each player is prompted for their action and inputs.
+- **Displaying Information:**
+  - Current sequence is displayed at the start of each turn.
+  - After each move, the new sequence and divisibility result are shown.
+- **Handling Invalid Inputs:**
+  - The game should handle invalid inputs gracefully, prompting the player to try again.
+
+---
+
+**Example of Full Command-Line Game:**
+
+**Initial Setup:**
+
+```
+Welcome to Reverse Avoidance!
+Starting sequence: 1
+Player 1 goes first.
+```
+
+---
+
+**Turn 1 - Player 1:**
+
+```
+Current sequence: 1
+Player 1, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 1
+Enter digit to append (1-9): 5
+New sequence: 15
+Sequence is not divisible by 7. Next player's turn.
+```
+
+---
+
+**Turn 2 - Player 2:**
+
+```
+Current sequence: 15
+Player 2, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 2
+New sequence: 51
+Sequence is not divisible by 7. Next player's turn.
+```
+
+---
+
+**Turn 3 - Player 1:**
+
+```
+Current sequence: 51
+Player 1, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 1
+Enter digit to append (1-9): 2
+New sequence: 512
+Sequence is not divisible by 7. Next player's turn.
+```
+
+---
+
+**Turn 4 - Player 2:**
+
+```
+Current sequence: 512
+Player 2, choose action:
+1. Append a digit
+2. Reverse the sequence
+Enter choice: 1
+Enter digit to append (1-9): 3
+New sequence: 5123
+Sequence is divisible by 7. Player 2 loses!
+```
+
+---
+
+**Game Conclusion:**
+
+```
+Player 1 wins the game!
+Thank you for playing Reverse Avoidance.
+```
+
+---
+
+By following these rules and utilizing strategic thinking, players can enjoy a quick and engaging game of Reverse Avoidance that is simple to play in a command-line interface yet offers ample opportunity for skillful play.

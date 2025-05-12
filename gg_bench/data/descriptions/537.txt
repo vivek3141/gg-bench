@@ -1,0 +1,231 @@
+**Game Title: Number Race**
+
+---
+
+### **Objective**
+
+The objective of **Number Race** is to be the first player to reach the end of a numerical array by strategically moving through positions that match rolled numbers. Players advance by matching their die rolls with the numbers on the array positions. The first player to reach the final position of the array wins the game.
+
+### **Setup**
+
+1. **Array Creation**:
+   - Create a linear array of 20 positions (indexed from 1 to 20).
+   - Assign a random integer between 1 and 6 to each position in the array. These numbers represent the values required to land on that position.
+
+2. **Player Tokens**:
+   - Each player selects a unique token to represent their position on the array (e.g., `P1` for Player 1 and `P2` for Player 2).
+   - Both tokens start off the array at position 0, which is considered the starting point.
+
+3. **Starting Conditions**:
+   - Decide which player goes first (e.g., by flipping a coin or mutual agreement).
+
+### **Game Components**
+
+- **Array Positions**:
+  - A list of 20 positions, each containing a number between 1 and 6.
+  - Example of an array:
+    ```
+    Position: 1  2  3  4  5  6  7  8  9  10 ...
+    Number:   3  6  1  2  5  4  3  2  6   1 ...
+    ```
+
+- **Player Tokens**:
+  - Symbols or identifiers used to mark each player's current position on the array.
+  - Example: `P1` for Player 1 and `P2` for Player 2.
+
+- **Six-sided Die Simulation**:
+  - A random number generator that produces integers from 1 to 6 to simulate die rolls during the game.
+
+### **Turns**
+
+- Players take turns in sequences.
+- **Turn Structure for Each Player**:
+  1. **Roll the Die**:
+     - The player rolls the die to obtain a number between 1 and 6.
+  2. **Move the Token**:
+     - The player moves their token forward to the next position in the array that contains the rolled number.
+     - If multiple positions ahead contain the number, the player moves only to the nearest one.
+  3. **Unable to Move**:
+     - If there is no position ahead with the rolled number, the player loses their turn and remains in their current position.
+
+- **End of Turn**:
+  - After moving (or not moving), the turn passes to the other player.
+
+### **Rules and Mechanics**
+
+1. **Movement Rules**:
+   - Players must always move forward; backward movement is not allowed.
+   - Landing on a position already occupied by the other player is permitted.
+
+2. **Position Numbers**:
+   - The numbers on positions do not change during the game.
+   - Each position's number represents the required die roll to land there.
+
+3. **Winning the Game**:
+   - The first player to reach or pass position 20 wins the game.
+
+4. **Blocked Movement**:
+   - If a player cannot move because no matching number exists ahead, they simply skip their movement for that turn.
+
+5. **Equal Die Rolls**:
+   - Die rolls and movements are independent for each player; rolling the same number as the opponent does not affect gameplay.
+
+6. **Game Continuity**:
+   - The game continues until one player reaches or passes the final position on the array.
+
+### **Scoring**
+
+- **Win Condition**:
+  - The game is won by the first player who successfully moves their token to position 20 or beyond.
+- **No Points System**:
+  - There is no point accumulation; the focus is on reaching the end of the array.
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Array Setup**:
+```
+Positions:  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20
+Numbers:    4  2  6  1  3  5  2  4  6   1  3  5  2  4  6  1  3  5  2  4
+```
+
+**Game Progression**:
+
+- **Turn 1**:
+  - **Player 1** rolls: **4**
+    - Moves from position 0 to position 1 (first occurrence of 4).
+    - Current Position: **P1 at 1**
+  - **Player 2** rolls: **3**
+    - Moves from position 0 to position 5 (first occurrence of 3).
+    - Current Position: **P2 at 5**
+
+- **Turn 2**:
+  - **Player 1** rolls: **2**
+    - Moves from position 1 to position 2.
+    - Current Position: **P1 at 2**
+  - **Player 2** rolls: **5**
+    - Moves from position 5 to position 6.
+    - Current Position: **P2 at 6**
+
+- **Turn 3**:
+  - **Player 1** rolls: **6**
+    - Moves from position 2 to position 3.
+    - Current Position: **P1 at 3**
+  - **Player 2** rolls: **2**
+    - Moves from position 6 to position 7.
+    - Current Position: **P2 at 7**
+
+- **Turn 4**:
+  - **Player 1** rolls: **1**
+    - Moves from position 3 to position 4.
+    - Current Position: **P1 at 4**
+  - **Player 2** rolls: **6**
+    - Moves from position 7 to position 9.
+    - Current Position: **P2 at 9**
+
+- **Turn 5**:
+  - **Player 1** rolls: **5**
+    - Moves from position 4 to position 6.
+    - Current Position: **P1 at 6**
+  - **Player 2** rolls: **4**
+    - Moves from position 9 to position 14.
+    - Current Position: **P2 at 14**
+
+- **Turn 6**:
+  - **Player 1** rolls: **2**
+    - Moves from position 6 to position 7.
+    - Current Position: **P1 at 7**
+  - **Player 2** rolls: **1**
+    - Moves from position 14 to position 16.
+    - Current Position: **P2 at 16**
+
+- **Turn 7**:
+  - **Player 1** rolls: **4**
+    - Moves from position 7 to position 8.
+    - Current Position: **P1 at 8**
+  - **Player 2** rolls: **5**
+    - Moves from position 16 to position 18.
+    - Current Position: **P2 at 18**
+
+- **Turn 8**:
+  - **Player 1** rolls: **6**
+    - Moves from position 8 to position 9.
+    - Current Position: **P1 at 9**
+  - **Player 2** rolls: **2**
+    - Moves from position 18 to position 19.
+    - Current Position: **P2 at 19**
+
+- **Turn 9**:
+  - **Player 1** rolls: **1**
+    - Moves from position 9 to position 10.
+    - Current Position: **P1 at 10**
+  - **Player 2** rolls: **4**
+    - Moves from position 19 to position 20.
+    - Current Position: **P2 at 20**
+
+- **Conclusion**:
+  - **Player 2** has reached position 20 and wins the game.
+
+#### **Command-Line Interaction Example**
+
+**Game Start**:
+```
+Welcome to Number Race!
+Player 1 Token: P1
+Player 2 Token: P2
+Array Length: 20
+
+Position Numbers:
+[4,2,6,1,3,5,2,4,6,1,3,5,2,4,6,1,3,5,2,4]
+
+Game Start! Player 1 goes first.
+```
+
+**Turn 1**:
+```
+Player 1's Turn:
+Roll the die (Press Enter to roll)...
+You rolled a 4.
+Moving to position 1.
+```
+
+```
+Player 2's Turn:
+Roll the die (Press Enter to roll)...
+You rolled a 3.
+Moving to position 5.
+```
+
+*(Subsequent turns continue similarly.)*
+
+**Winning Turn**:
+```
+Player 2's Turn:
+Roll the die (Press Enter to roll)...
+You rolled a 4.
+Moving to position 20.
+Congratulations, Player 2! You have reached the end and won the game!
+```
+
+### **Strategic Tips**
+
+- **Planning Ahead**:
+  - Pay attention to the numbers on upcoming positions to anticipate which rolls will benefit you the most.
+
+- **Probability Awareness**:
+  - Certain numbers may appear more frequently ahead. Knowing this can help you maximize your chances of movement.
+
+- **Opponent Tracking**:
+  - Keep an eye on your opponent's position to gauge how much risk you need to take.
+
+- **Optimal Moves**:
+  - If possible, land on positions that are more advantageous for future rolls.
+
+### **Summary**
+
+**Number Race** is a simple yet strategic game that combines elements of chance and planning. With easy-to-understand rules and quick gameplay, it's perfect for two players looking for a competitive challenge in a command-line interface. The randomness of the array setup ensures each game is unique, providing endless replayability and opportunities to develop and refine strategies.
+
+---
+
+Enjoy your race to the finish, and may the best player win!

@@ -1,0 +1,180 @@
+# Overload: A Strategic Two-Player Command-Line Game
+
+## Objective
+
+**Primary Goal:**  
+Be the last player to make a valid move without causing any cell to overload.  
+**Victory Condition:**  
+A player wins by forcing their opponent to overload a cell, thereby causing the opponent to lose the game.
+
+## Setup
+
+**Initial Game State:**  
+- The game consists of a single row of **four cells**, numbered **1** to **4** from left to right.
+- All cells start with a value of **0**.
+- Each cell has a maximum capacity equal to its cell number:
+  - Cell 1: Max capacity **1**
+  - Cell 2: Max capacity **2**
+  - Cell 3: Max capacity **3**
+  - Cell 4: Max capacity **4**
+  
+**Player Positions:**  
+- Two players, **Player 1** and **Player 2**, take turns.
+- There are no physical pieces; the game is played by updating cell values.
+
+## Game Components
+
+**Cells:**
+- **Cell Numbers:** Identifiers ranging from **1** to **4**.
+- **Current Value:** The number of tokens currently in the cell (starts at **0**).
+- **Maximum Capacity:** The maximum number of tokens a cell can hold before overloading (equal to its cell number).
+
+**Tokens:**
+- Represented numerically; players add **1** token to a cell during their turn.
+
+**Game Board Representation:**
+- A simple display showing each cell's current value and maximum capacity, for example:
+  ```
+  Cell 1 [0/1] | Cell 2 [0/2] | Cell 3 [0/3] | Cell 4 [0/4]
+  ```
+
+## Turns
+
+**Turn Structure:**
+
+- **Order of Play:** Players alternate turns, starting with **Player 1**.
+- **Actions Per Turn:** On their turn, a player must:
+  1. **Select a Cell:** Choose any one of the four cells.
+  2. **Add a Token:** Increase the chosen cell's current value by **1**.
+
+**Progression of Turns:**
+
+- After a player adds a token, the game checks for overloading.
+- The turn ends, and control passes to the other player if no overload occurs.
+
+## Rules and Mechanics
+
+**Core Rules:**
+
+1. **Adding Tokens:**
+   - Players must add **exactly 1** token to **any** cell during their turn.
+   - A cell's current value cannot exceed its maximum capacity.
+
+2. **Overloading a Cell:**
+   - If a cell's current value **exceeds** its maximum capacity after a token is added, it **overloads**.
+   - Overloading a cell results in:
+     - The cell's current value resetting to **0**.
+     - The player who caused the overload **losing the game** immediately.
+
+3. **Valid Moves:**
+   - Players must make a move that does not cause any cell to overload unless no such move is possible.
+   - If all moves would result in an overload, the current player must proceed, and the game will end.
+
+4. **Game End:**
+   - The game ends when a player causes a cell to overload.
+   - The opponent is declared the **winner**.
+
+**Strategic Considerations:**
+
+- Players should aim to force their opponent into a position where any move they make would cause an overload.
+- Planning ahead is crucial to avoid overloading a cell on your turn.
+
+## Scoring
+
+**Winning the Game:**
+
+- There is no point system.
+- The winner is the player who **does not** cause a cell to overload.
+
+## Examples
+
+### Example Game Play
+
+**Initial Game State:**
+```
+Cell 1 [0/1] | Cell 2 [0/2] | Cell 3 [0/3] | Cell 4 [0/4]
+```
+
+**Player 1's Turn:**
+
+- Chooses **Cell 2**, adds 1 token.
+- Updated State:
+  ```
+  Cell 1 [0/1] | Cell 2 [1/2] | Cell 3 [0/3] | Cell 4 [0/4]
+  ```
+
+**Player 2's Turn:**
+
+- Chooses **Cell 2**, adds 1 token.
+- Updated State:
+  ```
+  Cell 1 [0/1] | Cell 2 [2/2] | Cell 3 [0/3] | Cell 4 [0/4]
+  ```
+
+**Player 1's Turn:**
+
+- Chooses **Cell 2**, attempts to add 1 token.
+- **Cell 2** would exceed its maximum capacity of 2 (current value would become 3).
+- Move is valid until made; upon adding, **Cell 2 overloads**.
+- **Cell 2** resets to [0/2].
+- **Player 1** loses the game.
+- **Player 2** wins the game.
+
+### Command-Line Interaction Sample
+
+**Game Start:**
+```
+Welcome to Overload!
+
+Current State:
+Cell 1 [0/1] | Cell 2 [0/2] | Cell 3 [0/3] | Cell 4 [0/4]
+
+Player 1's turn.
+Choose a cell to add 1 token (1-4): 3
+```
+
+**Player 1 adds 1 token to Cell 3.**
+
+```
+Updated State:
+Cell 1 [0/1] | Cell 2 [0/2] | Cell 3 [1/3] | Cell 4 [0/4]
+
+Player 2's turn.
+Choose a cell to add 1 token (1-4): 3
+```
+
+**Player 2 adds 1 token to Cell 3.**
+
+```
+Updated State:
+Cell 1 [0/1] | Cell 2 [0/2] | Cell 3 [2/3] | Cell 4 [0/4]
+
+Player 1's turn.
+Choose a cell to add 1 token (1-4): 3
+```
+
+**Player 1 adds 1 token to Cell 3.**
+
+```
+Updated State:
+Cell 1 [0/1] | Cell 2 [0/2] | Cell 3 [3/3] | Cell 4 [0/4]
+
+Player 2's turn.
+Choose a cell to add 1 token (1-4): 3
+```
+
+**Player 2 attempts to add 1 token to Cell 3.**
+
+- **Cell 3** would overload (current value would become 4).
+- **Cell 3** resets to [0/3].
+- **Player 2** loses the game.
+
+```
+Cell 3 has overloaded!
+Player 2 has caused an overload and loses the game.
+Congratulations, Player 1! You win!
+```
+
+## Summary
+
+**Overload** is a simple yet strategic game where players must carefully choose which cells to increment, aiming to avoid overloading any cell on their turn while setting traps for their opponent. The simplicity of the rules combined with the need for foresight provides depth and replayability.

@@ -1,0 +1,208 @@
+# Digit Deletion Duel
+
+## Objective
+
+Be the first player to reduce the **Shared Number** to a **single-digit number** by strategically deleting digits. The player who achieves this first **wins the game**. If a player cannot make a valid move on their turn, they **lose**, and the opponent wins.
+
+## Setup
+
+1. **Generate the Shared Number**:
+   - Start the game by generating a **random four-digit number** between **1000** and **9999**. This number will be the **Shared Number** that players will manipulate during the game.
+   - Example starting numbers: 1847, 5629, 9301.
+
+2. **Decide Turn Order**:
+   - Determine who will take the first turn. This can be done by a simple coin toss, agreement, or any random method.
+
+## Game Components
+
+- **Shared Number**:
+  - A four-digit number visible to both players.
+  - It is the central element of the game and changes as players remove digits.
+  - Must always be a positive integer and cannot start with zero after any move.
+
+- **Digits**:
+  - Individual numerals (0-9) that make up the Shared Number.
+  - Players will remove these digits during their turns.
+
+## Turns
+
+- Players take turns **alternating** throughout the game.
+- On each turn, a player performs the following actions:
+  1. **Select a Digit to Remove**:
+     - Choose one digit from the current Shared Number to delete.
+  2. **Update the Shared Number**:
+     - Remove the selected digit to form a new number.
+     - The digits **maintain their original order**; digits are not rearranged.
+  3. **Announce the Move**:
+     - Inform the opponent of the digit removed and the new Shared Number.
+
+## Rules and Mechanics
+
+1. **Removing a Digit**:
+   - **Valid Moves**:
+     - The player must remove **exactly one digit** from the Shared Number.
+     - The resulting number must be a **positive integer**.
+     - The new number **cannot start with zero**. If removing a digit results in a leading zero, that move is **invalid**.
+   - **Invalid Moves**:
+     - Removing a digit that causes the number to start with zero.
+     - Attempting to remove a digit when the Shared Number is already a single-digit number.
+     - If no valid moves are available, the player loses.
+
+2. **Winning the Game**:
+   - The game continues until one player reduces the Shared Number to a **single-digit number** (1-9) on their turn.
+   - The player who achieves this first **wins the game**.
+   - If a player cannot make a valid move, they **lose**, and the opponent is declared the winner.
+
+3. **No Rearrangement**:
+   - Players **cannot** rearrange the remaining digits after removing a digit.
+   - The sequence of digits must remain in the **original order**.
+
+4. **Game End Conditions**:
+   - **Victory**: Reducing the Shared Number to a single-digit.
+   - **Loss**: Being unable to make a valid move on your turn.
+
+## Scoring
+
+- **Winner**: The player who reduces the Shared Number to a single-digit number.
+- **Loser**: The player who either cannot make a valid move or whose opponent achieves the objective first.
+
+The game does not involve point tracking beyond determining the winner of each match. Players may choose to play multiple rounds and keep track of victories to determine an overall winner.
+
+## Examples
+
+### Example 1: Standard Play
+
+**Starting Shared Number**: 5284
+
+1. **Player 1's Turn**:
+   - **Action**: Removes the digit **'2'**.
+   - **New Shared Number**: **584**.
+   - **Announcement**: "Removed '2', new number is 584."
+
+2. **Player 2's Turn**:
+   - **Action**: Removes the digit **'8'**.
+   - **New Shared Number**: **54**.
+   - **Announcement**: "Removed '8', new number is 54."
+
+3. **Player 1's Turn**:
+   - **Action**: Removes the digit **'5'**.
+   - **New Shared Number**: **4**.
+   - **Announcement**: "Removed '5', new number is 4."
+   - **Result**: Player 1 wins by reducing the number to a single-digit.
+
+### Example 2: Invalid Move Leading to Loss
+
+**Starting Shared Number**: 1023
+
+1. **Player 1's Turn**:
+   - **Action**: Attempts to remove the digit **'1'**.
+   - **Result**: Move is **invalid** because the new number would be **'023'**, which starts with zero.
+   - **Alternate Action**: Must choose a different digit.
+
+2. **Player 1's Corrected Turn**:
+   - **Action**: Removes the digit **'0'**.
+   - **New Shared Number**: **123**.
+   - **Announcement**: "Removed '0', new number is 123."
+
+3. **Player 2's Turn**:
+   - **Action**: Removes the digit **'2'**.
+   - **New Shared Number**: **13**.
+   - **Announcement**: "Removed '2', new number is 13."
+
+4. **Player 1's Turn**:
+   - **Action**: Removes the digit **'3'**.
+   - **New Shared Number**: **1**.
+   - **Announcement**: "Removed '3', new number is 1."
+   - **Result**: Player 1 wins.
+
+### Example 3: No Valid Move Available
+
+**Starting Shared Number**: 110
+
+1. **Player 1's Turn**:
+   - **Action**: Removes the digit **'1'** (first digit).
+   - **New Shared Number**: **10**.
+   - **Announcement**: "Removed '1', new number is 10."
+
+2. **Player 2's Turn**:
+   - **Action**: Attempts to remove the digit **'1'** (now first digit).
+   - **New Shared Number**: **0**.
+   - **Result**: Move is **invalid** because resulting number is zero.
+
+3. **Alternate Actions**:
+   - Removing the digit **'0'** would result in **'1'**, a valid move.
+
+4. **Player 2's Corrected Turn**:
+   - **Action**: Removes the digit **'0'**.
+   - **New Shared Number**: **1**.
+   - **Announcement**: "Removed '0', new number is 1."
+   - **Result**: Player 2 wins.
+
+### Command-Line Interaction Example
+
+**Game Start**:
+```
+Shared Number is 7496
+Player 1's Turn.
+Enter the position of the digit to remove (1-4):
+```
+
+**Player 1 Input**:
+```
+2
+```
+
+**Game Output**:
+```
+Player 1 removed digit '4'.
+New Shared Number is 796.
+```
+
+**Player 2's Turn**:
+```
+Enter the position of the digit to remove (1-3):
+```
+
+**Player 2 Input**:
+```
+1
+```
+
+**Game Output**:
+```
+Player 2 removed digit '7'.
+New Shared Number is 96.
+```
+
+**Player 1's Turn**:
+```
+Enter the position of the digit to remove (1-2):
+```
+
+**Player 1 Input**:
+```
+2
+```
+
+**Game Output**:
+```
+Player 1 removed digit '6'.
+New Shared Number is 9.
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves by considering how your digit removal will affect the Shared Number and potential options for your opponent.
+
+- **Control the Game**: Aim to force the Shared Number into configurations where your opponent has limited options, potentially leading them to a position with no valid moves.
+
+- **Avoid Leading Zeros**: Be cautious of moves that may result in a leading zero after your opponent's next turn, as this can limit your own future options.
+
+- **Digit Significance**: Consider removing digits that significantly reduce the value of the Shared Number, bringing you closer to a single-digit number.
+
+- **Observe Patterns**: Pay attention to the sequence of remaining digits to identify opportunities to win in the next turn.
+
+## Conclusion
+
+**Digit Deletion Duel** is a simple yet strategic game that challenges players to think ahead and manipulate numbers carefully. With clear rules and quick gameplay, it offers an engaging experience that tests numerical reasoning and foresight. Enjoy the duel and may the best strategist win!

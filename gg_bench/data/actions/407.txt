@@ -1,0 +1,11 @@
+The action space in the `Portal Runner` gym environment is mapped as follows:
+
+- **Actions 0-3:** These indices correspond to the player's movement in four directions:
+  - `0` represents moving up.
+  - `1` represents moving down.
+  - `2` represents moving left.
+  - `3` represents moving right.
+
+- **Actions 4-27:** These indices correspond to placing a block at specific positions on the grid, excluding the portal cell. The indices map to grid positions (row, column) by calculating `row = (index - 4) // 5` and `col = (index - 4) % 5`, adjusting the index by `+1` if it exceeds the portal's index (12) to skip the portal cell.
+
+This provides a total of 28 discrete actions in the action space.

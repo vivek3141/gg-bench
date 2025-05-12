@@ -1,0 +1,221 @@
+# **Game Rule Book: "Numeral Nexus"**
+
+---
+
+## **Objective**
+
+Become the first player to align three of your numbers in a row on a 5x5 numerical grid by strategically placing and manipulating numbers to create a sequence in any direction—horizontally, vertically, or diagonally. Victory is achieved when a player forms an unbroken sequence of three of their own numbers in ascending or descending order.
+
+---
+
+## **Setup**
+
+1. **Game Grid Initialization**:
+   - Prepare a 5x5 grid represented by cells numbered from **A1** to **E5**, where rows are labeled **A** to **E** and columns **1** to **5**.
+   - All cells are empty at the start of the game.
+
+2. **Number Pool**:
+   - A shared pool of numbers ranging from **1** to **9**.
+   - Each number from **1** to **9** appears exactly **three times** in the pool.
+
+3. **Player Roles**:
+   - **Player 1**: Uses symbol **'X'** to mark ownership of numbers placed.
+   - **Player 2**: Uses symbol **'O'** to mark ownership.
+
+4. **Starting Conditions**:
+   - Determine the first player by a coin toss or mutual agreement.
+   - Both players start with no numbers on the grid.
+
+---
+
+## **Game Components**
+
+1. **The Grid**:
+   - A simple 5x5 grid (can be represented in the command-line interface with coordinates from **A1** to **E5**).
+
+2. **Number Pool**:
+   - A list of available numbers (1-9), each with three copies.
+
+3. **Player Markers**:
+   - **'X'** for Player 1.
+   - **'O'** for Player 2.
+
+4. **Command-Line Interface Inputs**:
+   - Grid coordinates (e.g., **B3**).
+   - Number selection from the available pool.
+
+---
+
+## **Turns**
+
+1. **Turn Structure**:
+   - Players alternate turns.
+
+2. **Turn Actions**:
+   - **Place a Number**: Select an available number from the pool and place it on an empty grid cell.
+   - **Swap a Number (Optional Special Action)**:
+     - Once per game, a player may swap the positions of any two numbers on the grid, regardless of ownership.
+     - This action consumes the player's turn.
+     - To perform a swap, the player must specify the coordinates of both numbers to be swapped.
+
+3. **Turn Progression**:
+   - At the end of each turn, the placed number is marked with the player's symbol (**'X'** or **'O'**).
+   - The number chosen is removed from the pool.
+   - The game interface updates to reflect the new grid state and the remaining numbers in the pool.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Placing Numbers**:
+   - Players can place numbers on **any empty cell**.
+   - The chosen number must be available in the number pool.
+
+2. **Ownership**:
+   - Once a number is placed, it is marked with the placing player's symbol and considered their own.
+
+3. **Winning Condition**:
+   - A player wins by creating an unbroken sequence of **three of their own numbers** that are in **strictly ascending or descending order**.
+   - The sequence can be aligned **horizontally, vertically, or diagonally**.
+   - Only the player's own numbers count toward their sequence.
+
+4. **Swap Mechanic**:
+   - Each player can use the **swap action once per game**.
+   - Swapping does **not** change the ownership of the numbers.
+   - Swapping can be strategic to block the opponent or to form a winning sequence.
+
+5. **Game End Conditions**:
+   - A player achieves the winning condition.
+   - All grid cells are filled without any player achieving the winning condition. In this case, the player with the **most potential sequences of two** wins.
+   - If still tied, the player with the **most numbers on the grid** wins.
+
+---
+
+## **Scoring**
+
+- **Victory**: Achieved by forming the required sequence.
+- **Potential Sequences**: If no player wins by the time the grid is full, count the number of potential sequences of two owned numbers in a row for each player.
+- **Tie-Breaker**: If tied on potential sequences, the player with more numbers on the grid wins.
+
+---
+
+## **Examples**
+
+### **Example Turn**
+
+- **Player 1's Turn**:
+  1. **Action**: Places number **5** at cell **C3**.
+  2. **Number Pool Update**: Number **5** now has two copies remaining.
+  3. **Grid Update**:
+
+     ```
+       1   2   3   4   5
+     A[ ] [ ] [ ] [ ] [ ]
+     B[ ] [ ] [ ] [ ] [ ]
+     C[ ] [ ] [X5][ ] [ ]
+     D[ ] [ ] [ ] [ ] [ ]
+     E[ ] [ ] [ ] [ ] [ ]
+     ```
+  4. **Remarks**: Player 1 now owns number **5** at **C3**.
+
+### **Using the Swap Action**
+
+- **Player 2's Turn**:
+  1. **Action**: Chooses to use the **swap action** to swap numbers at **C3** and **D4**.
+  2. **Ownership**: Ownership remains the same after the swap.
+  3. **Swap Details**:
+     - Number at **C3** (e.g., **Player 1's X5**) swaps with **D4** (e.g., **Player 2's O7**).
+  4. **Grid Update**:
+
+     ```
+       1   2   3   4   5
+     A[ ] [ ] [ ] [ ] [ ]
+     B[ ] [ ] [ ] [ ] [ ]
+     C[ ] [ ] [O7][ ] [ ]
+     D[ ] [ ] [ ] [X5][ ]
+     E[ ] [ ] [ ] [ ] [ ]
+     ```
+  5. **Remarks**: Player 2 used their one-time swap to reposition numbers strategically.
+
+### **Winning Scenario**
+
+- **Player 1's Grid Numbers**:
+  - **B2**: **X4**
+  - **C3**: **X5**
+  - **D4**: **X6**
+
+- **Sequence**: **4**, **5**, **6** diagonally from **B2** to **D4**.
+
+- **Result**: Player 1 wins by forming an ascending sequence of three numbers.
+
+---
+
+## **Command-Line Interaction Sample**
+
+### **Game Start**
+
+```
+Welcome to Numeral Nexus!
+
+Available Numbers: 1(3), 2(3), 3(3), 4(3), 5(3), 6(3), 7(3), 8(3), 9(3)
+Player 1 (X), it's your turn.
+```
+
+### **Player 1's Turn**
+
+```
+Enter the number you want to place: 5
+Enter the grid position (e.g., C3): C3
+
+You placed number 5 at C3.
+
+Available Numbers: 1(3), 2(3), 3(3), 4(3), 5(2), 6(3), 7(3), 8(3), 9(3)
+```
+
+### **Player 2's Turn**
+
+```
+Player 2 (O), it's your turn.
+Enter the number you want to place or type 'swap' to use your swap action: swap
+Enter the first grid position to swap: C3
+Enter the second grid position to swap: D4
+
+You swapped positions C3 and D4.
+
+Available Numbers: 1(3), 2(3), 3(3), 4(3), 5(2), 6(3), 7(3), 8(3), 9(3)
+```
+
+### **Player 1 Claims Victory**
+
+```
+Player 1 (X), it's your turn.
+Enter the number you want to place: 6
+Enter the grid position: D4
+
+You placed number 6 at D4.
+
+Available Numbers: 1(3), 2(3), 3(3), 4(3), 5(2), 6(2), 7(3), 8(3), 9(3)
+
+Player 1 forms a sequence: 4-5-6 diagonally from B2 to D4. Player 1 wins!
+```
+
+---
+
+## **Strategy Tips**
+
+- **Plan Ahead**: Keep track of the numbers you and your opponent have placed to anticipate possible sequences.
+- **Use the Swap Wisely**: The swap action is powerful; use it to disrupt your opponent's sequence or to complete your own.
+- **Control the Center**: Placing numbers in central cells increases your chances of forming sequences in multiple directions.
+- **Balance Your Numbers**: Avoid clustering your numbers without purpose; spread them to create multiple opportunities.
+
+---
+
+## **Conclusion**
+
+"Numeral Nexus" is a game of strategic placement and foresight. By carefully choosing which numbers to place and when to utilize your swap action, you can outmaneuver your opponent and claim victory. Enjoy the challenge and may the best strategist win!
+
+---
+
+# **End of Rule Book**
+
+Feel free to ask any questions or request clarifications about the game rules.

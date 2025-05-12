@@ -1,0 +1,176 @@
+# Divide and Conquer: A Strategic Two-Player Game
+
+## Objective
+
+**"Divide and Conquer"** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the last player able to make a valid move. Players take turns dividing piles of stones into two unequal smaller piles. The player who makes the last valid split wins the game, thereby conquering the board.
+
+## Setup
+
+1. **Initial Pile**: The game starts with a single pile containing a prime number of stones. By default, this number is **13**, but players can agree on any prime number to begin with (e.g., 7, 11, 17).
+
+2. **Player Assignment**: Decide which player goes first. This can be determined randomly or by mutual agreement.
+
+3. **Command-Line Interface**: Ensure that the game is set up in a command-line environment where players can input commands and view the game's status.
+
+## Game Components
+
+- **Stones**: Represented numerically as counts within piles. There are no physical stones; counts are tracked within the program.
+  
+- **Piles**: A list of integers representing the number of stones in each pile. The initial setup has one pile with the starting number of stones (e.g., `[13]`).
+
+- **Players**: Two participants taking turns in the game, referred to as **Player 1** and **Player 2**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns. The player designated to go first begins the game.
+
+- **Player Actions During a Turn**:
+  1. **Select a Pile**: Choose one of the existing piles that has at least **3** stones.
+  2. **Divide the Pile**: Split the selected pile into two **unequal** smaller integer piles (e.g., splitting a pile of 7 into piles of 5 and 2).
+
+- **Turn Progression**: After a player completes their move, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Splits**:
+   - **Minimum Pile Size for Splitting**: Only piles with **3 or more** stones can be split.
+   - **Unequal Piles**: When splitting, the two new piles must contain a different number of stones. Splitting a pile of 6 into 3 and 3 is **not allowed**.
+   - **Integer Stones**: Stones are indivisible; splits must result in whole numbers.
+
+2. **Piles of Size 1 or 2**:
+   - Piles containing **1 or 2** stones cannot be split further and remain on the board until the game's end.
+
+3. **No Skipping**:
+   - Players must make a valid move on their turn if possible. Skipping a turn is not allowed.
+
+4. **Game End Condition**:
+   - The game ends when a player cannot make a valid move because there are no piles of size 3 or greater to split.
+   - The **last player** who made a valid move **wins** the game.
+
+## Scoring
+
+- **Winning the Game**: Victory is achieved by being the player to make the last valid split.
+- **No Point System**: There is no point tracking; the outcome is a win or loss.
+- **Match Play**: Players can decide to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Example Gameplay
+
+### Initial Setup
+
+- Starting pile: `[13]`
+- Players: Player 1 and Player 2
+
+### Sample Turns
+
+**Turn 1**: *Player 1*
+
+- **Piles Available**: `[13]`
+- **Action**: Select pile with 13 stones.
+- **Split**: 13 into 8 and 5.
+- **New Piles**: `[8, 5]`
+
+**Turn 2**: *Player 2*
+
+- **Piles Available**: `[8, 5]`
+- **Action**: Select pile with 8 stones.
+- **Split**: 8 into 5 and 3.
+- **New Piles**: `[5, 5, 3]`
+
+**Turn 3**: *Player 1*
+
+- **Piles Available**: `[5, 5, 3]`
+- **Action**: Select pile with 5 stones.
+- **Split**: 5 into 3 and 2.
+- **New Piles**: `[5, 3, 3, 2]`
+
+**Turn 4**: *Player 2*
+
+- **Piles Available**: `[5, 3, 3, 2]`
+- **Action**: Select pile with 5 stones.
+- **Split**: 5 into 4 and 1.
+- **New Piles**: `[4, 3, 3, 2, 1]`
+
+**Turn 5**: *Player 1*
+
+- **Piles Available**: `[4, 3, 3, 2, 1]`
+- **Action**: Select pile with 4 stones.
+- **Split**: 4 into 3 and 1.
+- **New Piles**: `[3, 3, 3, 2, 1, 1]`
+
+**Turn 6**: *Player 2*
+
+- **Piles Available**: `[3, 3, 3, 2, 1, 1]`
+- **Action**: Select pile with 3 stones.
+- **Split**: 3 into 2 and 1.
+- **New Piles**: `[3, 3, 2, 2, 1, 1, 1]`
+
+**Turn 7**: *Player 1*
+
+- **Piles Available**: `[3, 3, 2, 2, 1, 1, 1]`
+- **Action**: Select pile with 3 stones.
+- **Split**: 3 into 2 and 1.
+- **New Piles**: `[3, 2, 2, 2, 1, 1, 1, 1]`
+
+**Turn 8**: *Player 2*
+
+- **Piles Available**: `[3, 2, 2, 2, 1, 1, 1, 1]`
+- **Action**: Select pile with 3 stones.
+- **Split**: 3 into 2 and 1.
+- **New Piles**: `[2, 2, 2, 2, 2, 1, 1, 1, 1]`
+
+**Turn 9**: *Player 1*
+
+- **Piles Available**: `[2, 2, 2, 2, 2, 1, 1, 1, 1]`
+- **No Valid Moves**: There are no piles with 3 or more stones.
+- **Outcome**: Player 1 cannot make a valid move and loses the game.
+- **Winner**: Player 2
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Starting Divide and Conquer!
+Initial pile: [13]
+Player 1's turn.
+Available piles: [13]
+Select a pile to split: 13
+Enter two unequal integers that sum to 13: 8 5
+Piles after split: [8, 5]
+```
+
+**Subsequent Turns**
+
+```
+Player 2's turn.
+Available piles: [8, 5]
+Select a pile to split: 8
+Enter two unequal integers that sum to 8: 5 3
+Piles after split: [5, 5, 3]
+
+Player 1's turn.
+Available piles: [5, 5, 3]
+Select a pile to split: 5
+Enter two unequal integers that sum to 5: 3 2
+Piles after split: [5, 3, 3, 2]
+
+...
+
+Player 1's turn.
+Available piles: [2, 2, 2, 2, 2, 1, 1, 1, 1]
+No valid moves available.
+Player 1 cannot make a move.
+Player 2 wins the game!
+```
+
+## Strategic Depth
+
+- **Plan Ahead**: Anticipate future moves by considering how splits will leave options for your opponent.
+- **Control the Game**: Aim to force your opponent into a position where they have no valid moves.
+- **Pile Selection**: Choose which piles to split carefully to minimize your opponent's opportunities.
+
+## Conclusion
+
+"Divide and Conquer" is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and quick gameplay, it's perfect for a command-line interface and can be enjoyed by both novice and experienced players looking for a mental challenge.
+
+Enjoy the battle of wits, and may the best strategist win!

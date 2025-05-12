@@ -1,0 +1,166 @@
+# Trail Blazer: Rule Book
+
+## Objective
+
+**Trail Blazer** is a two-player, turn-based racing game played on a linear track. The primary goal is to be the first player to reach or pass the finish line at position 10. Players move strategically to outmaneuver their opponent without landing on the same spot.
+
+## Setup
+
+- **Track Layout**: A linear track with positions numbered from **0** (start) to **10** (finish).
+- **Starting Positions**: Both players begin at position **0**.
+- **Player Designation**: Players decide who goes first (Player 1 and Player 2).
+
+## Game Components
+
+- **Track**: A sequence of numerical positions from 0 to 10.
+- **Pawns**: Each player has a unique pawn representing their position on the track.
+  - *Appearance*: Represented by player names or symbols (e.g., `P1` and `P2`).
+  - *Functionality*: Pawns move forward along the track based on player decisions.
+- **Movement Options**: Players can choose to move **1**, **2**, or **3** positions forward on their turn.
+
+## Turns
+
+### Turn Structure
+
+1. **Decision Phase**: The active player selects their move distance (1, 2, or 3 positions).
+2. **Movement Phase**: The pawn moves forward accordingly unless movement is restricted.
+3. **Turn End**: The turn passes to the other player.
+
+### Order of Play
+
+- Players alternate turns, starting with Player 1.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Advancing**:
+  - On your turn, you may move your pawn forward **1**, **2**, or **3** positions.
+- **Occupied Positions**:
+  - **Cannot Land On Opponent**: You may **not** land on a position occupied by the opponent.
+  - **Blocked Movement**: If all potential moves (1, 2, or 3 spaces) would result in landing on the opponent's position, you **forfeit your turn**.
+- **Overtaking**:
+  - Passing over the opponent is allowed if the landing position is unoccupied.
+- **Finish Line**:
+  - The track ends at position **10**. You may move beyond this position to win.
+
+### Winning the Game
+
+- The first player to reach a position **greater than or equal to 10** wins the game.
+
+### Additional Mechanics
+
+- **No Backward Movement**: Players may not move backward.
+- **No Skipping Moves**: Players must move if at least one valid move is available.
+
+## Scoring
+
+- **Victory Conditions**:
+  - A player wins by being the first to reach or pass position 10.
+  - If a player cannot move on their turn (all moves are blocked), the other player continues until they reach the finish line.
+- **No Points Tracking**: The game is a race to the finish without point accumulation.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Setup
+
+- **Track Positions**: 0 to 10
+- **Starting Positions**:
+  - Player 1 (`P1`): Position 0
+  - Player 2 (`P2`): Position 0
+
+#### Turn-by-Turn Example
+
+1. **Player 1's Turn**:
+   - **Decision**: Move forward 3 positions.
+   - **Movement**: `P1` moves to position **3**.
+   - **Track Status**:
+     - `P1`: Position 3
+     - `P2`: Position 0
+
+2. **Player 2's Turn**:
+   - **Decision**: Move forward 2 positions.
+   - **Movement**: `P2` moves to position **2**.
+   - **Track Status**:
+     - `P1`: Position 3
+     - `P2`: Position 2
+
+3. **Player 1's Turn**:
+   - **Decision**: Attempt to move 1 position to position 4.
+   - **Movement**: `P1` moves to position **4**.
+   - **Track Status**:
+     - `P1`: Position 4
+     - `P2`: Position 2
+
+4. **Player 2's Turn**:
+   - **Decision**: Move forward 3 positions.
+   - **Movement**: `P2` moves to position **5**.
+   - **Track Status**:
+     - `P1`: Position 4
+     - `P2`: Position 5
+
+5. **Player 1's Turn**:
+   - **Decision**: Move forward 3 positions to position **7**.
+   - **Movement**: `P1` moves to position **7**.
+   - **Track Status**:
+     - `P1`: Position 7
+     - `P2`: Position 5
+
+6. **Player 2's Turn**:
+   - **Decision**: Move forward 2 positions to position **7**.
+   - **Movement Restriction**: Cannot land on `P1` at position 7.
+   - **Alternate Decision**: Move forward 1 position to position **6**.
+   - **Movement**: `P2` moves to position **6**.
+   - **Track Status**:
+     - `P1`: Position 7
+     - `P2`: Position 6
+
+7. **Player 1's Turn**:
+   - **Decision**: Move forward 3 positions to position **10**.
+   - **Movement**: `P1` moves to position **10**.
+   - **Result**: `P1` reaches position **10** and wins the game.
+
+### Command-Line Interaction Example
+
+```plaintext
+--- Trail Blazer Game Start ---
+Positions: 0 to 10
+
+[P1 Turn] Enter your move (1, 2, or 3): 3
+P1 moves to position 3.
+
+[P2 Turn] Enter your move (1, 2, or 3): 2
+P2 moves to position 2.
+
+[P1 Turn] Enter your move (1, 2, or 3): 1
+P1 moves to position 4.
+
+[P2 Turn] Enter your move (1, 2, or 3): 3
+P2 moves to position 5.
+
+[P1 Turn] Enter your move (1, 2, or 3): 3
+P1 moves to position 7.
+
+[P2 Turn] Enter your move (1, 2, or 3): 2
+Cannot move to position 7 (occupied by P1).
+Choose another move.
+[P2 Turn] Enter your move (1, 2, or 3): 1
+P2 moves to position 6.
+
+[P1 Turn] Enter your move (1, 2, or 3): 3
+P1 moves to position 10.
+
+P1 has reached the finish line and wins the game!
+```
+
+## Strategic Tips
+
+- **Blocking**: Position yourself to limit your opponent's movement options.
+- **Counting Ahead**: Anticipate future moves to avoid being blocked.
+- **Forcing Moves**: Move in a way that your opponent is forced to forfeit a turn.
+
+## Conclusion
+
+Trail Blazer is a fast-paced, strategic game that tests players' foresight and decision-making skills. Easy to learn and quick to play, it's perfect for a command-line interface and offers depth for those who wish to master it.

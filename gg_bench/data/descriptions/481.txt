@@ -1,0 +1,205 @@
+# Subtraction Squares - Rule Book
+
+## Objective
+
+**Goal:** Be the player to reduce the common pool of points to exactly zero by subtracting perfect square numbers from it. The player who reduces the total to zero **wins** the game. If a player cannot make a valid move on their turn, they **lose**.
+
+## Setup
+
+1. **Starting Total:** The game begins with a common pool of points totaling **100**.
+   - *Note:* Players can agree on a different starting total if desired, as long as it is a positive integer.
+
+2. **Determine Player Order:**
+   - Choose who will be **Player 1** and **Player 2**. This can be decided randomly or by mutual agreement.
+
+3. **No Physical Components Required:**
+   - The game is played entirely through the command-line interface.
+   - Both players should have access to input commands and view the current total after each turn.
+
+## Game Components
+
+- **Common Pool Total:**
+  - A single integer value representing the remaining points in the game.
+  - Starts at **100** and decreases as players subtract perfect squares.
+
+- **Perfect Squares:**
+  - The set of numbers obtained by squaring integers (1², 2², 3², 4², etc.).
+  - Valid perfect squares for subtraction are those less than or equal to the current total.
+
+    | n | Perfect Square (n²) |
+    |---|---------------------|
+    | 1 | 1                   |
+    | 2 | 4                   |
+    | 3 | 9                   |
+    | 4 | 16                  |
+    | 5 | 25                  |
+    | 6 | 36                  |
+    | 7 | 49                  |
+    | 8 | 64                  |
+    | 9 | 81                  |
+    |10 | 100                 |
+    |...| ...                 |
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns starting with **Player 1**.
+
+2. **Player Actions:**
+   - On their turn, a player must:
+     - Choose a valid perfect square to subtract from the current total.
+     - Input the chosen perfect square into the command-line.
+     - Ensure the chosen perfect square is less than or equal to the current total.
+
+3. **Progression of Turns:**
+   - After a player makes a move, the new total is announced.
+   - The next player then takes their turn following the same rules.
+
+## Rules and Mechanics
+
+### 1. Valid Moves
+
+- **Choosing a Perfect Square:**
+  - Players can only subtract perfect squares from the current total.
+  - The perfect square must be **less than or equal to** the current total.
+  - Examples of valid perfect squares (given specific totals):
+    - If the total is **50**, valid moves include 1, 4, 9, 16, 25, 36, and 49.
+    - If the total is **10**, valid moves include 1, 4, and 9.
+
+### 2. Subtracting and Updating Total
+
+- **Subtracting the Perfect Square:**
+  - The chosen perfect square is subtracted from the current total.
+- **Announcing the New Total:**
+  - After subtraction, the new total is displayed for both players.
+
+### 3. Winning the Game
+
+- **Victory Condition:**
+  - A player wins if they reduce the total to **exactly zero** on their turn.
+- **Losing Condition:**
+  - A player loses if:
+    - It's their turn, and
+    - There are **no valid perfect squares** that can be subtracted from the current total.
+  - This situation occurs when all possible perfect squares are greater than the current total.
+
+### 4. No Draws
+
+- **Guaranteed Outcome:**
+  - The game cannot end in a draw.
+  - Every game will result in one player winning and the other losing.
+
+### 5. Fair Play
+
+- **No Skipping Turns:**
+  - Players cannot pass or skip their turn.
+- **Invalid Moves:**
+  - Choosing a number that is not a perfect square or is greater than the current total is not allowed.
+  - If an invalid move is made, the player should be prompted to choose again.
+
+## Scoring
+
+- **Single-Game Victory:**
+  - The winner is the player who reduces the total to zero.
+- **Match Play:**
+  - Players can agree to play multiple rounds.
+  - Keep track of the number of games won by each player to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Starting Total:** 100
+
+1. **Player 1's Turn:**
+   - Valid perfect squares ≤ 100: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+   - Player 1 subtracts **36**.
+   - **New Total:** 100 - 36 = **64**
+
+2. **Player 2's Turn:**
+   - Valid perfect squares ≤ 64: 1, 4, 9, 16, 25, 36, 49, 64
+   - Player 2 subtracts **49**.
+   - **New Total:** 64 - 49 = **15**
+
+3. **Player 1's Turn:**
+   - Valid perfect squares ≤ 15: 1, 4, 9
+   - Player 1 subtracts **9**.
+   - **New Total:** 15 - 9 = **6**
+
+4. **Player 2's Turn:**
+   - Valid perfect squares ≤ 6: 1, 4
+   - Player 2 subtracts **4**.
+   - **New Total:** 6 - 4 = **2**
+
+5. **Player 1's Turn:**
+   - Valid perfect squares ≤ 2: 1
+   - Player 1 subtracts **1**.
+   - **New Total:** 2 - 1 = **1**
+
+6. **Player 2's Turn:**
+   - Valid perfect squares ≤ 1: 1
+   - Player 2 subtracts **1**.
+   - **New Total:** 1 - 1 = **0**
+   - **Player 2 Wins!**
+
+### Command-Line Interaction Sample
+
+```plaintext
+Game Start! Total points: 100
+
+Player 1's turn.
+Enter a perfect square to subtract (Valid choices: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100): 36
+You subtracted 36.
+New total is 64.
+
+Player 2's turn.
+Enter a perfect square to subtract (Valid choices: 1, 4, 9, 16, 25, 36, 49, 64): 49
+You subtracted 49.
+New total is 15.
+
+Player 1's turn.
+Enter a perfect square to subtract (Valid choices: 1, 4, 9): 9
+You subtracted 9.
+New total is 6.
+
+Player 2's turn.
+Enter a perfect square to subtract (Valid choices: 1, 4): 4
+You subtracted 4.
+New total is 2.
+
+Player 1's turn.
+Enter a perfect square to subtract (Valid choice: 1): 1
+You subtracted 1.
+New total is 1.
+
+Player 2's turn.
+Enter a perfect square to subtract (Valid choice: 1): 1
+You subtracted 1.
+New total is 0.
+
+Player 2 wins the game!
+```
+
+## Strategic Insights
+
+- **Anticipate Future Moves:**
+  - Consider the perfect squares your opponent will have available after your turn.
+- **Control the Game:**
+  - Aim to leave totals that are advantageous for you and force your opponent into a losing position.
+- **Key Numbers:**
+  - Familiarize yourself with totals that are likely to lead to a win when it's your turn (e.g., totals where no matter what perfect square the opponent subtracts, you can win on your next turn).
+
+## Tips for Players
+
+- **Know Your Perfect Squares:**
+  - Memorize perfect squares up to the starting total for quick decision-making.
+- **Calculate Ahead:**
+  - Think a few moves ahead to plan your strategy.
+- **Practice:**
+  - Play multiple games to recognize patterns and improve your skill.
+
+## Conclusion
+
+Subtraction Squares is an engaging two-player game that combines simple arithmetic with strategic planning. It's easy to code and play in a command-line interface, making it accessible while still offering depth for skilled players to consistently outperform less experienced opponents.
+
+Enjoy the challenge and may the best strategist win!

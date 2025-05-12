@@ -1,0 +1,241 @@
+**Game Name**: Parity Chase
+
+---
+
+## Objective
+
+**Parity Chase** is a two-player turn-based game where each player aims to be the first to reach a total sum of **exactly 30** by selecting numbers of the same parity (all even or all odd) from a shared pool. A player wins by strategically selecting numbers to build their sequence while potentially limiting the opponent's options. A player loses if they exceed a total sum of 30 or cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+1. **Number Pool**: Begin with a shared pool of numbers ranging from **1 to 20** inclusive. All numbers are initially available.
+
+2. **Player Sequences**: Each player starts with an empty sequence and a total sum of **0**.
+
+3. **Determine Starting Player**: Decide which player will take the first turn. This can be done by mutual agreement or a random method like a coin toss.
+
+---
+
+## Game Components
+
+- **Number Pool**: A shared list of integers from **1 to 20**.
+  - Each number can be selected only once during the game.
+  - Numbers are removed from the pool once selected.
+
+- **Player Sequences**: Individual sequences where players accumulate their chosen numbers.
+  - **Total Sum**: The sum of the numbers in a player's sequence.
+  - **Parity**: All numbers in a player's sequence must be of the same parity (all even or all odd) after the first number is chosen.
+
+---
+
+## Turns
+
+- **Turn Order**: Players take turns alternately, starting with the player determined during setup.
+
+- **Turn Structure**:
+  1. **Review Available Numbers**: Player reviews the number pool for available numbers matching their required parity.
+  2. **Select a Number**: Player selects one number from the pool that matches the required parity.
+  3. **Update Sequence and Total**:
+     - Add the selected number to the player's sequence.
+     - Update the total sum of the sequence.
+  4. **Remove Number from Pool**: The selected number is removed from the number pool.
+  5. **Check for Victory or Loss**:
+     - **Victory**: If the player's total sum is **exactly 30**, the player wins.
+     - **Loss**:
+       - If the total sum exceeds **30**, the player loses.
+       - If no valid numbers are available to select on the player's turn, the player loses.
+
+- **Turn Progression**: The game continues with players alternating turns until a win or loss condition is met.
+
+---
+
+## Rules and Mechanics
+
+### 1. Parity Selection
+
+- **First Turn**:
+  - The first number selected by each player can be **any number** from the pool.
+  - This number determines the **parity** (odd or even) for the player's sequence.
+
+- **Subsequent Turns**:
+  - Players must select numbers that match the parity of their sequence.
+    - **Odd Sequence**: Must select odd numbers.
+    - **Even Sequence**: Must select even numbers.
+  - If no numbers of the required parity are available, the player loses.
+
+### 2. Building the Sequence
+
+- Players add the selected number to their sequence and update their total sum.
+
+- The sequence and total sum are visible to both players throughout the game.
+
+### 3. Winning the Game
+
+- **Victory Condition**: A player wins immediately if their total sum reaches **exactly 30**.
+
+### 4. Losing the Game
+
+- A player loses if:
+  - Their total sum **exceeds 30** after their turn.
+  - They **cannot make a valid move** because:
+    - There are no remaining numbers of the required parity in the pool.
+
+### 5. Number Pool Management
+
+- Once a number is selected, it is **removed** from the pool and cannot be selected again by either player.
+
+- Players should keep track of the remaining numbers to strategize effectively.
+
+---
+
+## Scoring
+
+- **No Point System**: The game does not use a point system; instead, it focuses on reaching the target sum to determine the winner.
+
+- **Victory**: Achieved by being the first to reach a total sum of **exactly 30** with numbers of the same parity.
+
+- **Loss**: Occurs if a player exceeds a total sum of **30** or cannot make a valid move due to the unavailability of required numbers.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+- **Number Pool**: 1 to 20
+- **Player 1 Sequence**: Empty (Total Sum = 0)
+- **Player 2 Sequence**: Empty (Total Sum = 0)
+
+---
+
+#### Turn 1: Player 1
+
+- **Selection**: Chooses **5** (odd).
+- **Sequence Update**: [5]
+- **Total Sum**: 5
+- **Parity**: Odd
+- **Number Pool**: 1-20 excluding 5
+
+---
+
+#### Turn 2: Player 2
+
+- **Selection**: Chooses **8** (even).
+- **Sequence Update**: [8]
+- **Total Sum**: 8
+- **Parity**: Even
+- **Number Pool**: 1-20 excluding 5 and 8
+
+---
+
+#### Turn 3: Player 1
+
+- **Available Odd Numbers**: 1, 3, 7, 9, 11, 13, 15, 17, 19
+- **Selection**: Chooses **15** (odd).
+- **Sequence Update**: [5, 15]
+- **Total Sum**: 20
+- **Number Pool**: Excluding 5, 8, and 15
+
+---
+
+#### Turn 4: Player 2
+
+- **Available Even Numbers**: 2, 4, 6, 10, 12, 14, 16, 18, 20
+- **Selection**: Chooses **12** (even).
+- **Sequence Update**: [8, 12]
+- **Total Sum**: 20
+- **Number Pool**: Excluding 5, 8, 12, and 15
+
+---
+
+#### Turn 5: Player 1
+
+- **Available Odd Numbers**: 1, 3, 7, 9, 11, 13, 17, 19
+- **Selection**: Chooses **9** (odd).
+- **Sequence Update**: [5, 15, 9]
+- **Total Sum**: 29
+- **Number Pool**: Excluding 5, 8, 9, 12, and 15
+
+---
+
+#### Turn 6: Player 2
+
+- **Available Even Numbers**: 2, 4, 6, 10, 14, 16, 18, 20
+- **Selection**: Chooses **10** (even).
+- **Sequence Update**: [8, 12, 10]
+- **Total Sum**: 30
+- **Victory**: Player 2 wins by reaching exactly 30.
+
+---
+
+## Command-Line Interaction Example
+
+```
+--- Parity Chase Game Start ---
+Number Pool: [1-20]
+Player 1 Total Sum: 0 | Sequence: []
+Player 2 Total Sum: 0 | Sequence: []
+
+Player 1's Turn:
+Available Numbers: [1-20]
+Choose any number: 5
+You chose 5.
+Your Parity is now Odd.
+Updated Total Sum: 5
+Updated Sequence: [5]
+Number Pool Updated.
+
+Player 2's Turn:
+Available Numbers: [1-20 excluding 5]
+Choose any number: 8
+You chose 8.
+Your Parity is now Even.
+Updated Total Sum: 8
+Updated Sequence: [8]
+Number Pool Updated.
+
+...
+
+Player 1's Turn:
+Available Odd Numbers: [1,3,7,9,11,13,17,19]
+Your Total Sum: 29
+Choose a number: 1
+You chose 1.
+Updated Total Sum: 30
+Updated Sequence: [5,15,9,1]
+Congratulations! You reached exactly 30. You win!
+
+--- Game Over ---
+```
+
+---
+
+## Strategic Considerations
+
+- **Planning Ahead**: Keep track of the numbers that have been used and those remaining in the pool to plan future moves.
+
+- **Parity Choice**: Choosing whether to go with odd or even numbers at the start can impact your chances based on available numbers.
+
+- **Blocking**: Select numbers that your opponent may need to prevent them from reaching 30.
+
+- **Risk Management**: Be cautious when your total sum is close to 30. Avoid selecting numbers that may cause you to exceed 30.
+
+- **Forced Moves**: If possible, force your opponent into a position where they have no valid moves left.
+
+---
+
+## Game Tips
+
+- **Monitor Opponent's Sequence**: Pay attention to the parity and total sum of your opponent's sequence to anticipate their needs.
+
+- **Balance Selection**: While blocking your opponent can be beneficial, ensure it doesn't hinder your own path to 30.
+
+- **Stay Flexible**: Adapt your strategy based on the changing number pool and your opponent's actions.
+
+---
+
+Enjoy playing **Parity Chase** and may the most strategic player win!

@@ -1,0 +1,173 @@
+# Factor Frenzy
+
+## Objective
+
+Be the last player able to make a valid move by strategically selecting numbers that are factors or multiples of the previously chosen number. Your goal is to outmaneuver your opponent by limiting their available options, ultimately forcing them into a position where they cannot make a valid move.
+
+---
+
+## Setup
+
+- **Number Line**: The game uses a number line consisting of integers from **1 to 50**.
+- **Starting Conditions**:
+  - All numbers from 1 to 50 are initially **unclaimed** and available for selection.
+  - **Player 1** is chosen to start the game.
+
+---
+
+## Game Components
+
+- **Number Line**: A display or list showing numbers 1 through 50. In a command-line interface, this can be displayed as a simple list.
+- **Markers**: While physical markers are not used in a command-line interface, the game will track which numbers have been claimed.
+- **Players**: Two players take turns selecting numbers according to the game rules.
+
+---
+
+## Turns
+
+1. **Starting the Game**:
+   - **Player 1** begins by selecting **any number** from the unclaimed numbers.
+2. **Alternating Turns**:
+   - Players alternate turns throughout the game.
+   - On their turn, a player must select an **unclaimed number** that is a **factor or multiple** of the **last number selected** by the opponent.
+3. **Turn Structure**:
+   - **Display Available Numbers**: The game lists all unclaimed numbers.
+   - **Prompt Selection**: The player is prompted to select a valid number.
+   - **Validation**: The game checks if the selected number is valid.
+   - **Update State**: The selected number is marked as claimed and removed from the list of available numbers.
+
+---
+
+## Rules and Mechanics
+
+### Valid Moves
+
+- **First Turn**:
+  - Player 1 may select **any number** from 1 to 50.
+- **Subsequent Turns**:
+  - A player must select an **unclaimed number** that is a **factor** or a **multiple** of the **number selected by the previous player**.
+  - **Example**: If the previous number was 8, the next player can choose numbers like 2, 4, 16, 24, etc., provided they are unclaimed.
+
+### Number Selection
+
+- **Uniqueness**:
+  - Each number can be selected **only once** during the game.
+  - Once a number is claimed, it is **removed** from the available numbers.
+- **Selection Criteria**:
+  - The chosen number must satisfy the factor or multiple condition relative to the last selected number.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - A player **wins** if their opponent cannot make a valid move on their turn.
+- **Losing Condition**:
+  - A player **loses** if they cannot select a valid number on their turn according to the rules.
+
+---
+
+## Scoring
+
+- **Single-Point Victory**:
+  - The game is won by the player who successfully forces their opponent into a position where no valid moves are available.
+- **No Point Accumulation**:
+  - There is no point system; the focus is on strategic play leading to an immediate win or loss.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Game Start**
+
+- **Available Numbers**: 1, 2, 3, 4, 5, ..., 50
+
+**Turn 1**
+
+- **Player 1** selects **15**.
+- **Available Numbers**: 1-14, 16-50 (15 is removed)
+
+**Turn 2**
+
+- **Player 2** must select a factor or multiple of **15**.
+- **Valid Options**: 1, 3, 5, 45, 30
+- **Player 2** selects **5**.
+- **Available Numbers**: 1-4, 6-14, 16-29, 31-44, 46-50 (5 and 15 are removed)
+
+**Turn 3**
+
+- **Player 1** must select a factor or multiple of **5**.
+- **Valid Options**: 1, 2 (since 10, 20, etc., may still be available)
+- **Player 1** selects **10**.
+- **Available Numbers**: 1-4, 6-9, 11-14, 16-29, 31-44, 46-50 (5, 10, 15 are removed)
+
+**Turn 4**
+
+- **Player 2** must select a factor or multiple of **10**.
+- **Valid Options**: 2, 20, 40
+- **Player 2** selects **20**.
+- **Available Numbers**: 1-4, 6-9, 11-14, 16-19, 21-29, 31-39, 41-44, 46-50
+
+**Play Continues**
+
+- Players continue to alternate turns, selecting valid numbers based on the last number chosen.
+- The game proceeds until one player cannot make a valid move.
+
+### Winning Scenario
+
+- Suppose it's **Player 1's** turn, and the last number chosen is **7**.
+- **Available Numbers**: All multiples and factors of 7 have been claimed.
+- **Player 1** cannot select a valid number and thus **loses**.
+
+---
+
+## Command-Line Interaction
+
+The game facilitates interaction via text prompts and displays.
+
+**Example Turn**
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9 10 ... 50
+
+Player 1, it's your turn. Select any number:
+
+> 12
+
+Available Numbers: 1 2 3 4 5 6 7 8 9 10 11 13 14 ... 50
+
+Player 2, it's your turn.
+
+You must select a factor or multiple of 12.
+
+Available options: 2 3 4 6 24 36 48
+
+> 6
+
+Available Numbers: 1 2 3 4 5 7 8 9 10 11 13 14 ... 50
+
+Player 1, it's your turn.
+
+You must select a factor or multiple of 6.
+
+Available options: 2 3 4 12 18 24 30 42 48
+
+> 18
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves by considering the numbers that will be available after your selection.
+- **Limit Opponent's Options**: Choose numbers that have fewer factors or multiples remaining to constrain your opponent's choices.
+- **Track Numbers**: Keep a mental or written note of which numbers have been claimed to avoid invalid moves.
+- **Diversify Moves**: Avoid picking numbers that open up many options for your opponent.
+
+---
+
+By understanding the rules and employing strategic thinking, players can enjoy a game that's easy to play yet offers depth and complexity. "Factor Frenzy" is designed to be implemented effortlessly in a command-line interface while ensuring engaging gameplay where skill is rewarded.
+
+---
+
+Happy playing!

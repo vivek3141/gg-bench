@@ -1,0 +1,8 @@
+In the provided Gym environment for "Magic Square Duel," the action space consists of 117 discrete actions, covering both the placement and sudden death phases of the game. The mapping is as follows:
+
+1. **Placement Phase (0 to 80)**: The actions are represented by indices where:
+   - The first part (indices 0 to 8) corresponds to choosing a number from 1 to 9. Each number is represented by a range of 9 consecutive indices (e.g., 0 to 8 map to selecting number 1 for positions 0 to 8 in the grid).
+   - The second part (within each group of 9 indices) corresponds to placing the selected number into one of the 9 cells in the 3x3 grid (indices 0 for (1,1), ..., 8 for (3,3)).
+
+2. **Sudden Death Phase (81 to 116)**: The actions are swapping two numbers in the grid and are indexed as follows:
+   - Action 81+ corresponds to swapping pairs of grid positions. Each pair is an action representing a swap of two distinct cells (e.g., 0 for (0,1), 1 for (0,2), ... up to the last possible unique pair from 81 to 116).

@@ -1,0 +1,213 @@
+# Randomizer Challenge: Rule Book
+
+## Objective
+
+**Randomizer Challenge** is a two-player turn-based game where players compete to be the first to reach *exactly* **50 points**. Players must strategically decide whether to **add** or **multiply** random numbers to their score without exceeding the target. If a player's score surpasses 50, they reset to zero, adding a layer of risk and strategy. The first player to reach **exactly 50 points** wins the game.
+
+## Setup
+
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Starting Scores**: Both players start with a score of **0**.
+- **Turn Order**: Decide which player goes first (e.g., by mutual agreement or a coin toss).
+
+## Game Components
+
+- **Scores**: Numerical values representing each player's current total, starting at 0.
+- **Random Number Generator**: Utilized to generate random numbers within specified ranges during the game.
+
+## Turns
+
+On each turn, the active player performs the following actions:
+
+1. **Choose an Action**:
+   - **Add**: Opt to add a random number to your score.
+   - **Multiply**: Opt to multiply your score by a random number.
+
+2. **Generate Random Number**:
+   - If **Add** was chosen: Generate a random integer between **1 and 10** (inclusive).
+   - If **Multiply** was chosen: Generate a random integer between **2 and 5** (inclusive).
+
+3. **Update Score**:
+   - Perform the chosen mathematical operation (**addition** or **multiplication**) using the generated random number.
+   - Update your score accordingly.
+
+4. **Check for Reset**:
+   - If your score exceeds **50**, your score resets to **0** immediately.
+
+5. **End Turn**:
+   - The turn passes to the other player.
+
+## Rules and Mechanics
+
+### Actions
+
+- **Add**:
+  - Generates a random number between **1 and 10**.
+  - The generated number is **added** to the player's current score.
+
+- **Multiply**:
+  - Generates a random number between **2 and 5**.
+  - The player's current score is **multiplied** by the generated number.
+
+### Scoring and Winning
+
+- **Target Score**:
+  - The objective is to reach **exactly 50 points**.
+  - Surpassing 50 points results in a **score reset** to **0**.
+
+- **Score Reset**:
+  - If a player's score exceeds 50 after their turn, their score is reset to 0 immediately.
+
+- **Winning the Game**:
+  - The first player to reach **exactly 50 points** at the end of their turn wins.
+  - The game cannot end in a draw.
+
+### Additional Rules
+
+- **Random Number Generation**:
+  - Use a reliable method to generate random numbers within the specified ranges.
+  - Both players must agree on the method of random number generation (e.g., built-in functions, random number tables).
+
+- **Transparency**:
+  - All random numbers generated and calculations performed must be visible to both players to ensure fairness.
+
+- **Valid Inputs**:
+  - Players must choose between the two valid actions: **Add** or **Multiply**.
+  - No other operations or number ranges are permitted.
+
+## Scoring
+
+- **Score Tracking**:
+  - Keep track of both players' scores after each turn.
+  - Scores should be clearly displayed or communicated to both players.
+
+- **Calculations**:
+  - Ensure all calculations are accurate.
+  - Miscalculations should be corrected immediately upon discovery.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Starting the Game
+
+- **Player 1** and **Player 2** both start with **0 points**.
+- **Player 1** goes first.
+
+#### Turn 1: Player 1
+
+- **Action Chosen**: Add
+- **Random Number Generated**: 7
+- **Calculation**: 0 (current score) + 7 = **7**
+- **Updated Score**: Player 1 now has **7 points**.
+- **Score Check**: Score is less than 50, no reset needed.
+- **Turn Ends**.
+
+#### Turn 2: Player 2
+
+- **Action Chosen**: Multiply
+- **Random Number Generated**: 3
+- **Calculation**: 0 (current score) × 3 = **0**
+- **Updated Score**: Player 2 remains at **0 points**.
+- **Score Check**: Score is less than 50, no reset needed.
+- **Turn Ends**.
+
+#### Turn 3: Player 1
+
+- **Action Chosen**: Multiply
+- **Random Number Generated**: 5
+- **Calculation**: 7 (current score) × 5 = **35**
+- **Updated Score**: Player 1 now has **35 points**.
+- **Score Check**: Score is less than 50, no reset needed.
+- **Turn Ends**.
+
+#### Turn 4: Player 2
+
+- **Action Chosen**: Add
+- **Random Number Generated**: 10
+- **Calculation**: 0 (current score) + 10 = **10**
+- **Updated Score**: Player 2 now has **10 points**.
+- **Score Check**: Score is less than 50, no reset needed.
+- **Turn Ends**.
+
+#### Turn 5: Player 1
+
+- **Action Chosen**: Add
+- **Random Number Generated**: 8
+- **Calculation**: 35 (current score) + 8 = **43**
+- **Updated Score**: Player 1 now has **43 points**.
+- **Score Check**: Score is less than 50, no reset needed.
+- **Turn Ends**.
+
+#### Turn 6: Player 2
+
+- **Action Chosen**: Multiply
+- **Random Number Generated**: 4
+- **Calculation**: 10 (current score) × 4 = **40**
+- **Updated Score**: Player 2 now has **40 points**.
+- **Score Check**: Score is less than 50, no reset needed.
+- **Turn Ends**.
+
+#### Turn 7: Player 1
+
+- **Action Chosen**: Add
+- **Random Number Generated**: 7
+- **Calculation**: 43 (current score) + 7 = **50**
+- **Updated Score**: Player 1 now has **50 points**.
+- **Score Check**: Player 1 has reached **exactly 50 points**.
+- **Game Ends**: **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+#### Player 1's Turn
+
+```
+Current Scores - Player 1: 35, Player 2: 10
+Player 1, choose your action (Add/Multiply): Add
+Random number generated: 8
+You added 8 to your score.
+New Score: 43
+```
+
+#### Player 2's Turn
+
+```
+Current Scores - Player 1: 43, Player 2: 10
+Player 2, choose your action (Add/Multiply): Multiply
+Random number generated: 4
+You multiplied your score by 4.
+New Score: 40
+```
+
+#### Player 1's Winning Turn
+
+```
+Current Scores - Player 1: 43, Player 2: 40
+Player 1, choose your action (Add/Multiply): Add
+Random number generated: 7
+You added 7 to your score.
+New Score: 50
+Congratulations, Player 1! You have reached exactly 50 points and won the game!
+```
+
+## Strategy Tips
+
+- **Risk Assessment**:
+  - If you're close to 50, consider the risk of exceeding the target when choosing to **Add** or **Multiply**.
+
+- **Multiplication Risks**:
+  - Multiplying can lead to rapid score increases but also increases the risk of overshooting 50.
+
+- **Addition Control**:
+  - Adding gives you more control over your score increments, especially when nearing 50.
+
+- **Observing Opponent**:
+  - Keep track of your opponent's score and adjust your strategy accordingly.
+
+## Conclusion
+
+**Randomizer Challenge** combines luck and strategic decision-making in a simple yet engaging game. With every choice between adding or multiplying, players must weigh the potential rewards against the risks of overshooting the target score. May the best strategist win!
+
+---
+
+Enjoy the game and have fun challenging your opponent in this exciting numerical duel!

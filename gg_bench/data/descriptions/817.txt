@@ -1,0 +1,179 @@
+**Game Name:** Subtract a Prime
+
+---
+
+### **Objective**
+
+Be the player who reduces the shared current number exactly to zero by strategically subtracting prime numbers. The goal is to make the final move that brings the number down to zero, thus securing victory.
+
+---
+
+### **Setup**
+
+1. **Starting Number (N):**
+   - Decide on a positive integer greater than **1** to be the starting number \( N \).
+   - For a standard game, \( N = 20 \) is recommended.
+   - Players may agree on any starting number to adjust difficulty or game length.
+
+2. **Determine Turn Order:**
+   - Players decide who will take the first turn, either randomly or by agreement.
+
+3. **Initial Conditions:**
+   - No physical components are needed other than a way to track the current value of \( N \), such as a piece of paper or the command-line interface.
+
+---
+
+### **Game Components**
+
+- **Current Number (N):**
+  - A shared positive integer that players will reduce to zero.
+  - Updated each turn based on player actions.
+
+- **Prime Numbers:**
+  - The set of prime numbers less than or equal to \( N \).
+  - Available for players to subtract from \( N \).
+
+---
+
+### **Turns**
+
+- **Turn Order:**
+  - Players alternate turns throughout the game.
+
+- **Player Actions During a Turn:**
+  1. **Identify Valid Primes:**
+     - List all prime numbers less than or equal to the current \( N \).
+  2. **Select a Prime Number:**
+     - Choose one prime number from the valid list.
+  3. **Subtract the Prime:**
+     - Subtract the chosen prime number from \( N \) to obtain the new \( N \).
+  4. **Announce Move:**
+     - Declare the chosen prime and the new value of \( N \).
+
+- **Example Turn:**
+  - "I subtract 7 from 20. The new number is 13."
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves:**
+   - On each turn, a player must subtract a prime number from the current \( N \).
+   - The prime number must be:
+     - A positive integer (2, 3, 5, 7, 11, 13, 17, 19, etc.).
+     - Less than or equal to the current \( N \).
+
+2. **Updating N:**
+   - \( N_{\text{new}} = N_{\text{current}} - \text{prime} \)
+   - The new \( N \) becomes the current number for the next player's turn.
+
+3. **Winning the Game:**
+   - The player who reduces \( N \) exactly to zero on their turn **wins**.
+   - If a player cannot make a valid move (no primes less than or equal to \( N \)), they **lose**, and the other player wins by default.
+
+4. **No Negative Numbers:**
+   - Players cannot subtract a prime that results in \( N \) becoming negative.
+
+5. **No Draws:**
+   - The game continues until one player wins; there are no tie conditions.
+
+---
+
+### **Scoring**
+
+- **Victory Conditions:**
+  - Winning is achieved by being the player who reduces \( N \) to zero.
+- **Tracking Wins:**
+  - Each game is standalone; players may keep a tally of wins for multiple games for extended competition.
+
+---
+
+### **Examples**
+
+#### **Example 1: Quick Game**
+
+- **Starting N:** 10
+- **Player 1's Turn:**
+  - Valid Primes: 2, 3, 5, 7
+  - Chooses 5
+  - \( 10 - 5 = 5 \)
+  - Announces: "I subtract 5 from 10. The new number is 5."
+- **Player 2's Turn:**
+  - Valid Primes: 2, 3, 5
+  - Chooses 5
+  - \( 5 - 5 = 0 \)
+  - Announces: "I subtract 5 from 5. The new number is 0."
+  - **Player 2 wins the game.**
+
+#### **Example 2: Strategic Play**
+
+- **Starting N:** 15
+- **Player 1's Turn:**
+  - Valid Primes: 2, 3, 5, 7, 11, 13
+  - Chooses 2
+  - \( 15 - 2 = 13 \)
+  - Announces: "I subtract 2 from 15. The new number is 13."
+- **Player 2's Turn:**
+  - Valid Primes: 2, 3, 5, 7, 11, 13
+  - Chooses 13
+  - \( 13 - 13 = 0 \)
+  - Announces: "I subtract 13 from 13. The new number is 0."
+  - **Player 2 wins the game.**
+
+#### **Example 3: Extended Game**
+
+- **Starting N:** 20
+- **Player 1's Turn:**
+  - Valid Primes: 2, 3, 5, 7, 11, 13, 17, 19
+  - Chooses 3
+  - \( 20 - 3 = 17 \)
+  - Announces: "I subtract 3 from 20. The new number is 17."
+- **Player 2's Turn:**
+  - Valid Primes: 2, 3, 5, 7, 11, 13, 17
+  - Chooses 17
+  - \( 17 - 17 = 0 \)
+  - Announces: "I subtract 17 from 17. The new number is 0."
+  - **Player 2 wins the game.**
+
+#### **Example of Command-Line Interaction:**
+
+```
+Game Start! The starting number is 20.
+Player 1's turn.
+Valid primes to subtract: 2, 3, 5, 7, 11, 13, 17, 19
+Enter the prime number to subtract: 11
+You chose to subtract 11.
+New number is: 9
+
+Player 2's turn.
+Valid primes to subtract: 2, 3, 5, 7
+Enter the prime number to subtract: 7
+You chose to subtract 7.
+New number is: 2
+
+Player 1's turn.
+Valid primes to subtract: 2
+Enter the prime number to subtract: 2
+You chose to subtract 2.
+New number is: 0
+Player 1 wins the game!
+```
+
+---
+
+### **Strategic Depth**
+
+- **Choice of Primes:**
+  - Deciding whether to subtract a large or small prime affects future options.
+  - Subtracting larger primes can limit the opponent's choices but may provide them an opportunity to win.
+
+- **Anticipating Moves:**
+  - Players should anticipate possible responses and plan several moves ahead.
+  - Controlling the available primes can force the opponent into an unfavorable position.
+
+- **Game Variation:**
+  - Changing the starting number alters the game's dynamics, allowing for fresh strategies.
+
+---
+
+This rule book provides all necessary information for players to understand and play **Subtract a Prime**, offering strategic depth within a simple and easily codable framework suitable for a command-line interface.

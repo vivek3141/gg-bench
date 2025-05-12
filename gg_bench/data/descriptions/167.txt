@@ -1,0 +1,235 @@
+# Sequence Duel
+
+## Objective
+
+Sequence Duel is a two-player, turn-based strategy game where players compete to be the first to create a numerical sequence following specific arithmetic rules. The primary goal is to be the first player to obtain three numbers that satisfy the condition: one number is the sum or difference of the other two. Players must strategically select numbers to build their sequence while blocking their opponent's attempts to do the same.
+
+Victory is achieved by being the first to form a valid sequence of three numbers **a**, **b**, and **c**, in any order, such that:
+
+- **a + b = c**, or
+- **a - b = c** (including negative results).
+
+## Setup
+
+1. **Number Pool**: The game uses a shared pool of numbers from **1** to **9**.
+2. **Player Hands**: Each player starts with an empty hand.
+3. **First Player**: Decide who goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Shared Number List**: A list of numbers from **1** to **9** available for selection. Each number can be selected only once.
+  
+  ```
+  Available Numbers: 1 2 3 4 5 6 7 8 9
+  ```
+
+- **Player Hands**: Records of numbers each player has selected.
+  - **Player 1 Hand**: Numbers selected by Player 1.
+  - **Player 2 Hand**: Numbers selected by Player 2.
+
+- **Command-Line Interface**: The game is played via text input and output.
+
+## Turns
+
+- Players alternate turns starting with the first player.
+- **On a Player's Turn**:
+  1. **Select a Number**: Choose one number from the available numbers in the shared number list.
+  2. **Update Hands**:
+     - Add the selected number to the player's hand.
+     - Remove the selected number from the shared number list.
+  3. **Check for Victory**:
+     - After each turn, check if the player has a sequence satisfying the victory condition.
+     - If victory is achieved, the game ends.
+  4. **Pass Turn**: The turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On each turn, a player must select **one** available number from the shared number list.
+   - Numbers are selected by specifying the desired number.
+
+2. **Sequence Formation**:
+   - Players aim to collect three numbers that can form an equation of the form:
+     - **a + b = c** or **a - b = c**, where **a**, **b**, and **c** are any three numbers from the player's hand.
+   - The numbers can be used in any order.
+   - Equations must use **exactly three numbers** from the player's hand.
+   - All numbers in the equation must be from the player's hand; numbers from the opponent's hand or unselected numbers cannot be used.
+
+3. **Game End Conditions**:
+   - **Win**: A player wins immediately upon forming a valid sequence satisfying the victory condition.
+   - **Loss**: A player loses if the opponent forms a valid sequence first.
+   - **No Draws**: The game cannot end in a draw since a finite number of numbers ensures that eventually, one player will achieve the victory condition.
+
+4. **Invalid Moves**:
+   - If a player attempts to select a number that is not available, they must choose another number.
+   - Failure to select a valid number on a turn (e.g., due to inputting an invalid choice) results in losing that turn but does not incur additional penalties.
+
+5. **Strategy**:
+   - Players must balance between advancing their sequences and blocking the opponent.
+   - Observing the opponent's selections is crucial for anticipating and preventing their victory.
+
+## Scoring
+
+- **Winning**: The player who first forms a valid sequence according to the victory condition is declared the winner.
+- **Tracking Scores**:
+  - Although individual games result in a win or loss, players may keep a tally of wins over multiple games to determine overall performance.
+  - **Optional**: Assign points for wins to create a match (e.g., first to 3 wins).
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1 Hand: 
+Player 2 Hand: 
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 selects **5**.
+- **Update**:
+  - Available Numbers: 1 2 3 4 6 7 8 9
+  - Player 1 Hand: 5
+  - Player 2 Hand: 
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 selects **3**.
+- **Update**:
+  - Available Numbers: 1 2 4 6 7 8 9
+  - Player 1 Hand: 5
+  - Player 2 Hand: 3
+
+#### Turn 3: Player 1
+
+- **Action**: Player 1 selects **2**.
+- **Update**:
+  - Available Numbers: 1 4 6 7 8 9
+  - Player 1 Hand: 5 2
+  - Player 2 Hand: 3
+
+#### Turn 4: Player 2
+
+- **Action**: Player 2 selects **7**.
+- **Update**:
+  - Available Numbers: 1 4 6 8 9
+  - Player 1 Hand: 5 2
+  - Player 2 Hand: 3 7
+
+#### Turn 5: Player 1
+
+- **Action**: Player 1 selects **7** (Invalid move; 7 is not available).
+- **Correction**: Player 1 selects **4**.
+- **Update**:
+  - Available Numbers: 1 6 8 9
+  - Player 1 Hand: 5 2 4
+  - Player 2 Hand: 3 7
+
+- **Victory Check**:
+  - Player 1 has numbers **2**, **4**, **5**.
+  - Possible sequences:
+    - **2 + 4 = 6** (But 6 is not in Player 1's hand).
+    - **5 - 2 = 3** (3 is not in Player 1's hand).
+    - No valid sequence yet.
+
+#### Turn 6: Player 2
+
+- **Action**: Player 2 selects **2** (Invalid move; 2 is not available).
+- **Correction**: Player 2 selects **6**.
+- **Update**:
+  - Available Numbers: 1 8 9
+  - Player 1 Hand: 5 2 4
+  - Player 2 Hand: 3 7 6
+
+- **Victory Check**:
+  - Player 2 has numbers **3**, **6**, **7**.
+  - Possible sequences:
+    - **3 + 6 = 9** (9 is not in Player 2's hand).
+    - **7 - 3 = 4** (4 is not in Player 2's hand).
+    - No valid sequence yet.
+
+#### Turn 7: Player 1
+
+- **Action**: Player 1 selects **9**.
+- **Update**:
+  - Available Numbers: 1 8
+  - Player 1 Hand: 5 2 4 9
+  - Player 2 Hand: 3 7 6
+
+- **Victory Check**:
+  - Player 1 has numbers **2**, **4**, **5**, **9**.
+  - Possible sequences:
+    - **5 + 4 = 9** (All numbers are in Player 1's hand).
+  - **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1 Hand: 
+Player 2 Hand: 
+
+Player 1's turn.
+Select a number from the available numbers: 5
+
+Available Numbers: 1 2 3 4 6 7 8 9
+Player 1 Hand: 5
+Player 2 Hand: 
+
+Player 2's turn.
+Select a number from the available numbers: 3
+
+Available Numbers: 1 2 4 6 7 8 9
+Player 1 Hand: 5
+Player 2 Hand: 3
+
+Player 1's turn.
+Select a number from the available numbers: 2
+
+Available Numbers: 1 4 6 7 8 9
+Player 1 Hand: 5 2
+Player 2 Hand: 3
+
+Player 2's turn.
+Select a number from the available numbers: 7
+
+Available Numbers: 1 4 6 8 9
+Player 1 Hand: 5 2
+Player 2 Hand: 3 7
+
+Player 1's turn.
+Select a number from the available numbers: 4
+
+Available Numbers: 1 6 8 9
+Player 1 Hand: 5 2 4
+Player 2 Hand: 3 7
+
+Player 1 has not yet formed a valid sequence.
+
+Player 2's turn.
+Select a number from the available numbers: 6
+
+Available Numbers: 1 8 9
+Player 1 Hand: 5 2 4
+Player 2 Hand: 3 7 6
+
+Player 2 has not yet formed a valid sequence.
+
+Player 1's turn.
+Select a number from the available numbers: 9
+
+Available Numbers: 1 8
+Player 1 Hand: 5 2 4 9
+Player 2 Hand: 3 7 6
+
+Player 1 has formed a valid sequence: 5 + 4 = 9
+
+Player 1 wins!
+```
+
+## Summary
+
+Sequence Duel is a simple yet strategic game that challenges players to think ahead and anticipate their opponent's moves. With a finite set of numbers and clear rules, games are fast-paced and engaging, perfect for quick matches or longer sessions tracking multiple wins. Whether you're honing your arithmetic skills or enjoying competitive play, Sequence Duel offers an exciting experience in a minimalist format.

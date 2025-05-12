@@ -1,0 +1,235 @@
+# Light Switch Showdown
+
+## Objective
+
+Be the first player to create a sequence of **three consecutive ON lights** in a line of 10 lights. Players take turns toggling lights to achieve this goal while blocking their opponent from doing the same. The player who first arranges **three adjacent lights** to be **ON** wins the game.
+
+## Setup
+
+- **Lights**: A row of **10 lights** numbered from **1 to 10**.
+- **Initial State**: All lights start in the **OFF** position.
+- **Players**: Two players, deciding who goes first by mutual agreement or a random method (e.g., coin toss).
+
+## Game Components
+
+- **Lights**:
+
+  - **Numbered** from **1** to **10**.
+  - Each light has two states:
+    - **OFF**: Represented by `0` or `OFF`.
+    - **ON**: Represented by `1` or `ON`.
+
+- **Game Board**:
+
+  In a command-line interface, the game board is displayed as:
+
+  ```
+  [1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] OFF  [6] OFF  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+  ```
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Turn Actions**:
+
+  - On your turn, **toggle one light** by changing its state from OFF to ON or from ON to OFF.
+  - You may choose **any light** (1-10), regardless of its current state or previous moves.
+
+- **Turn Progression**:
+
+  - After toggling a light, the updated game board is displayed.
+  - The turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Toggling Lights**:
+
+   - **Toggle Exactly One Light** per turn.
+
+2. **Winning Condition**:
+
+   - **Win** by having **three consecutive lights ON** after your turn.
+   - The sequence can be from any position, e.g., lights 2-4 or lights 7-9.
+
+3. **Blocking**:
+
+   - You can **toggle an opponent's ON light to OFF** to prevent them from winning.
+
+4. **No Draws**:
+
+   - The game continues until one player wins.
+   - There is **no possibility of a draw**.
+
+5. **Game State Visibility**:
+
+   - The state of all lights is **visible to both players** after each turn.
+
+6. **Illegal Moves**:
+
+   - **Invalid Action**: Skipping a turn or toggling multiple lights is not allowed.
+   - **Correction**: If an invalid move is made, the player must redo their turn with a valid action.
+
+## Scoring
+
+- **Winning the Game**:
+
+  - The first player to achieve **three consecutive ON lights** wins.
+  - There is no point system; the focus is on strategic play to win each game.
+
+- **Match Play (Optional)**:
+
+  - Players can play multiple games, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Scenario 1
+
+**Initial State**:
+
+```
+[1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] OFF  [6] OFF  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+```
+
+- **Player 1's Turn**:
+
+  - Toggles **Light 5** (OFF → ON)
+
+- **Updated State**:
+
+  ```
+  [1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] ON  [6] OFF  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+  ```
+
+- **Player 2's Turn**:
+
+  - Toggles **Light 6** (OFF → ON)
+
+- **Updated State**:
+
+  ```
+  [1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] ON  [6] ON  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+  ```
+
+- **Player 1's Turn**:
+
+  - Toggles **Light 4** (OFF → ON)
+
+- **Updated State**:
+
+  ```
+  [1] OFF  [2] OFF  [3] OFF  [4] ON  [5] ON  [6] ON  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+  ```
+
+- **Result**:
+
+  - **Player 1 wins** with lights 4-6 all ON.
+
+### Example Scenario 2
+
+**Player 1's Turn**:
+
+- Toggles **Light 3** (OFF → ON)
+
+**Player 2's Turn**:
+
+- Toggles **Light 4** (OFF → ON)
+
+**Player 1's Turn**:
+
+- Toggles **Light 5** (OFF → ON)
+
+**Player 2's Turn**:
+
+- Toggles **Light 3** (ON → OFF) to block Player 1
+
+**Explanation**:
+
+- Player 2 prevents Player 1 from achieving three consecutive ON lights (lights 3-5) by turning **Light 3 OFF**.
+
+## Command-Line Interaction Example
+
+**Game Start**:
+
+```
+Lights:
+[1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] OFF  [6] OFF  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+```
+
+**Player 1's Turn**:
+
+```
+Enter the number of the light you want to toggle (1-10):
+> 5
+
+You toggled Light 5. It is now ON.
+
+Lights:
+[1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] ON  [6] OFF  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+```
+
+**Player 2's Turn**:
+
+```
+Enter the number of the light you want to toggle (1-10):
+> 6
+
+You toggled Light 6. It is now ON.
+
+Lights:
+[1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] ON  [6] ON  [7] OFF  [8] OFF  [9] OFF  [10] OFF
+```
+
+**Player 1's Turn**:
+
+```
+Enter the number of the light you want to toggle (1-10):
+> 7
+
+You toggled Light 7. It is now ON.
+
+Lights:
+[1] OFF  [2] OFF  [3] OFF  [4] OFF  [5] ON  [6] ON  [7] ON  [8] OFF  [9] OFF  [10] OFF
+
+Congratulations, you have created three consecutive ON lights!
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**:
+
+  - Look for opportunities to set up multiple potential winning sequences.
+  - Anticipate your opponent's moves and plan your toggles accordingly.
+
+- **Block Effectively**:
+
+  - Keep an eye on your opponent's progress toward creating a sequence.
+  - Toggle their ON lights back to OFF to prevent them from winning.
+
+- **Control the Center**:
+
+  - Focusing on the middle lights (e.g., lights 4-7) provides more options for creating sequences.
+
+- **Stay Flexible**:
+
+  - Be prepared to switch strategies based on the changing game board.
+
+## Game Variations (Optional)
+
+- **Extended Board**:
+
+  - Increase the number of lights for a longer game (e.g., 15 or 20 lights).
+
+- **Longer Sequences**:
+
+  - Change the winning condition to requiring four or five consecutive ON lights.
+
+- **Limited Toggling**:
+
+  - Restrict the number of times each light can be toggled during the game.
+
+## Conclusion
+
+Light Switch Showdown is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With straightforward rules and quick gameplay, it provides engaging entertainment suitable for a command-line interface.
+
+Enjoy the game, and may the best strategist win!

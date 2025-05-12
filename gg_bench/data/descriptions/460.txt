@@ -1,0 +1,236 @@
+**Parity Plus: A Two-Player Command-Line Strategy Game**
+
+---
+
+### **Objective**
+
+**Be the first player to reach the exact target score** by strategically selecting numbers while adhering to the game's parity rules. The goal is to outmaneuver your opponent through careful planning and number selection, ensuring victory by reaching the target score before they do.
+
+---
+
+### **Setup**
+
+1. **Choose Target Score (T):**
+   - Players agree on a target score (e.g., **T = 20**). This can be any positive integer, affecting game length and complexity.
+
+2. **Initialize Available Numbers (N):**
+   - A list of available numbers from **1** to **M** is generated (e.g., **M = 10**, so numbers **1-10**).
+   - Each number can be selected only **once** during the game.
+
+3. **Set Starting Scores:**
+   - Both players begin with a **score of 0**.
+
+4. **Determine First Player:**
+   - Decide who will take the first turn by mutual agreement or randomly (e.g., coin toss).
+
+---
+
+### **Game Components**
+
+- **Available Numbers List:**
+  - A shared list containing integers from **1** to **M** (e.g., `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`).
+  
+- **Player Scores:**
+  - Each player maintains their own cumulative score, starting at **0**.
+
+- **Target Score (T):**
+  - The agreed-upon score that players aim to reach (e.g., **20**).
+
+- **Parity Rule Reference:**
+  - Guidelines indicating number selection based on the current score's parity (odd or even).
+
+---
+
+### **Turns**
+
+- **Turn Order:**
+  - Players alternate turns, beginning with the first player determined during setup.
+
+- **Turn Structure:**
+
+  1. **Check Current Score Parity:**
+     - **Even Score:** Must select an **odd** number.
+     - **Odd Score:** Must select an **even** number.
+
+  2. **Select a Number:**
+     - Choose a number from the available numbers list that complies with the Parity Rule.
+     - Remove the selected number from the available numbers list.
+
+  3. **Update Score:**
+     - Add the selected number to your cumulative score.
+
+  4. **End Turn:**
+     - Pass play to the opponent.
+
+- **Passing a Turn:**
+  - If no valid numbers are available (none comply with the Parity Rule), the player must **pass** their turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Parity Rule:**
+   - Players must select numbers based on the **parity** (oddness or evenness) of their current cumulative score.
+     - **If your score is even:** You must select an **odd** number.
+     - **If your score is odd:** You must select an **even** number.
+
+2. **Number Selection Constraints:**
+   - You may only select from numbers that are **still available** in the list.
+   - Each number can be used only **once** in the entire game.
+
+3. **Valid Moves:**
+   - A move is valid if it complies with the Parity Rule and the number is available.
+   - **Example:** If your score is **4** (even), you must pick an **odd** number like **1, 3, 5, 7, or 9**, provided it's still available.
+
+4. **Winning the Game:**
+   - **Exact Target Score:** The first player to reach the **exact target score T wins** immediately.
+   - **Game End Without Target Score:**
+     - If both players cannot reach the target score (no valid moves remain), the player with the **highest cumulative score below or equal to T** wins.
+     - **Exceeding T:** If players' scores exceed T, the player with the **closest score to T without going under** wins.
+   - **No Draws:** The game cannot end in a tie due to score comparison and turn order advantage.
+
+5. **End of Game:**
+   - The game concludes when:
+     - A player reaches the exact target score.
+     - Both players have no valid moves remaining.
+
+---
+
+### **Scoring**
+
+- **Cumulative Scores:**
+  - Players keep a running total of their selected numbers.
+
+- **Score Tracking:**
+  - Scores are updated each turn after a number is selected.
+
+- **Determining the Winner:**
+  - The player who reaches the target score first or has the highest valid score at game's end wins.
+
+---
+
+### **Examples**
+
+**Example Game Play:**
+
+*Target Score (**T**) = 15, Available Numbers (**1-9**)*
+
+---
+
+**Initial State:**
+
+- **Available Numbers:** `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- **Player 1 Score:** `0` (Even)
+- **Player 2 Score:** `0` (Even)
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Score:** `0` (Even)
+- **Parity Rule:** Must pick an **odd** number.
+- **Available Odd Numbers:** `1, 3, 5, 7, 9`
+- **Player 1 Picks:** `5`
+- **Updated Score:** `0 + 5 = 5`
+- **Available Numbers:** `[1, 2, 3, 4, 6, 7, 8, 9]`
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Score:** `0` (Even)
+- **Parity Rule:** Must pick an **odd** number.
+- **Available Odd Numbers:** `1, 3, 7, 9`
+- **Player 2 Picks:** `7`
+- **Updated Score:** `0 + 7 = 7`
+- **Available Numbers:** `[1, 2, 3, 4, 6, 8, 9]`
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Score:** `5` (Odd)
+- **Parity Rule:** Must pick an **even** number.
+- **Available Even Numbers:** `2, 4, 6, 8`
+- **Player 1 Picks:** `8`
+- **Updated Score:** `5 + 8 = 13`
+- **Available Numbers:** `[1, 2, 3, 4, 6, 9]`
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Score:** `7` (Odd)
+- **Parity Rule:** Must pick an **even** number.
+- **Available Even Numbers:** `2, 4, 6`
+- **Player 2 Picks:** `6`
+- **Updated Score:** `7 + 6 = 13`
+- **Available Numbers:** `[1, 2, 3, 4, 9]`
+
+---
+
+**Turn 5: Player 1**
+
+- **Current Score:** `13` (Odd)
+- **Parity Rule:** Must pick an **even** number.
+- **Available Even Numbers:** `2, 4`
+- **Player 1 Picks:** `2`
+- **Updated Score:** `13 + 2 = 15` (**Reaches Target Score**)
+- **Game Ends:** **Player 1 Wins**
+
+---
+
+### **Strategic Tips**
+
+- **Parity Management:**
+  - Plan your moves to control the parity of your score, enabling access to desired numbers.
+
+- **Denying Opponent Options:**
+  - Anticipate which numbers your opponent needs and select numbers that limit their options.
+
+- **Resource Awareness:**
+  - Keep track of remaining numbers to avoid being forced to pass on crucial turns.
+
+- **Target Planning:**
+  - Aim for combinations of numbers that can reach the target score efficiently.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Prompting Player Actions:**
+
+```plaintext
+Target Score (T): 15
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1's turn.
+Current Score: 0 (Even)
+Available Odd Numbers: [1, 3, 5, 7, 9]
+Select a number: 5
+
+Player 1 selected 5.
+New Score: 5
+Available Numbers: [1, 2, 3, 4, 6, 7, 8, 9]
+
+Player 2's turn.
+Current Score: 0 (Even)
+Available Odd Numbers: [1, 3, 7, 9]
+Select a number: 7
+
+Player 2 selected 7.
+New Score: 7
+Available Numbers: [1, 2, 3, 4, 6, 8, 9]
+
+... [Game continues]
+```
+
+---
+
+### **Conclusion**
+
+**Parity Plus** is a simple yet strategic game that requires players to think ahead and manage the parity of their scores. Its easy-to-understand rules make it quick to learn and play, while the underlying strategy ensures depth and replayability. The game is perfect for a command-line interface and can be coded with basic programming constructs, making it an excellent choice for developers seeking to implement a new game.
+
+---
+
+**Enjoy the game and may the best strategist win!**

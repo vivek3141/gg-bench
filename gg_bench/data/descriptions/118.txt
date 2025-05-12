@@ -1,0 +1,228 @@
+**Game Title: "Numerical Showdown"**
+
+---
+
+### **Objective**
+
+Be the first player to reduce your opponent's Health Points (HP) to zero by strategically choosing actions and numbers to maximize your attacks and defenses.
+
+---
+
+### **Setup**
+
+- **Players:** Two players.
+- **Health Points:** Each player starts with **20 Health Points (HP)**.
+- **Available Numbers:** A shared pool of numbers from **1 to 9**.
+
+---
+
+### **Game Components**
+
+1. **Health Points (HP):**
+   - Represents a player's life total.
+   - Starts at 20 HP for each player.
+   - Reduced through opponent's attacks.
+
+2. **Numbers (1-9):**
+   - Shared between players.
+   - Each number can be used **only once** in the game.
+   - Once a number is used by either player, it is **no longer available**.
+
+3. **Actions:**
+   - **Attack:** Deal damage to the opponent.
+   - **Defend:** Set up a shield to reduce damage from the next attack.
+
+---
+
+### **Turns**
+
+- Players alternate turns throughout the game.
+- **Turn Structure for Player on Turn:**
+  1. **Choose an Action:** Either **Attack** or **Defend**.
+  2. **Select a Number:** Choose an available number from 1 to 9.
+  3. **Announce Action and Number:** Declare the chosen action and number to the opponent.
+- **Numbers Used:** Remove the chosen number from the available pool—it cannot be used again by either player.
+
+---
+
+### **Rules and Mechanics**
+
+#### **1. Actions**
+
+**Attack**
+
+- **Purpose:** Inflict damage on the opponent.
+- **Mechanics:**
+  - Damage equals the **chosen number**.
+  - If the opponent **Defended** on their previous turn, subtract their **Defense Number** from your attack damage.
+  - **Damage Calculation:**
+    ```
+    Net Damage = Attack Number - Opponent's Defense Number (if any)
+    ```
+  - **Minimum Damage:** Cannot be less than zero.
+
+**Defend**
+
+- **Purpose:** Reduce damage from the opponent's next attack.
+- **Mechanics:**
+  - Sets up a **shield** equal to the **chosen number**.
+  - The shield lasts until the **start of your next turn**.
+  - Reduces damage from the **next attack only**.
+  - **No Stacking:** Shields do not accumulate over multiple turns.
+
+#### **2. Health Points (HP)**
+
+- When a player takes damage, subtract the **Net Damage** from their current HP.
+- **Defeat:** If a player's HP drops to **zero or below**, they lose the game.
+
+#### **3. Number Availability**
+
+- Each number from 1 to 9 is **used only once** per game.
+- Once a number is selected for any action, it is **unavailable** for both players for the rest of the game.
+
+#### **4. No Draws**
+
+- The game continues until one player wins.
+- There are no scenarios where the game can end in a draw.
+
+---
+
+### **Scoring**
+
+- **Tracking HP:** Keep a running total of each player's HP after every turn.
+- **Victory Condition:**
+  - A player wins by reducing the opponent's HP to **zero or below**.
+
+---
+
+### **Example Gameplay**
+
+**Initial Setup:**
+
+- Player A HP: 20
+- Player B HP: 20
+- Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+---
+
+**Turn 1: Player A**
+
+- **Action:** Defend
+- **Number:** 5
+- **Effect:** Player A sets up a shield with a value of **5**.
+- **Available Numbers:** 1, 2, 3, 4, 6, 7, 8, 9
+
+**Turn 2: Player B**
+
+- **Action:** Attack
+- **Number:** 8
+- **Effect:**
+  - Calculates damage: **8 (Attack Number) - 5 (Defense Number) = 3**.
+  - Player A's HP reduced from **20 to 17**.
+- **Available Numbers:** 1, 2, 3, 4, 6, 7, 9
+
+**Turn 3: Player A**
+
+- **Action:** Attack
+- **Number:** 7
+- **Effect:**
+  - No defense from Player B.
+  - Damage: **7**.
+  - Player B's HP reduced from **20 to 13**.
+- **Available Numbers:** 1, 2, 3, 4, 6, 9
+
+**Turn 4: Player B**
+
+- **Action:** Defend
+- **Number:** 6
+- **Effect:** Player B sets up a shield with a value of **6**.
+- **Available Numbers:** 1, 2, 3, 4, 9
+
+**Turn 5: Player A**
+
+- **Action:** Attack
+- **Number:** 9
+- **Effect:**
+  - Damage: **9 (Attack Number) - 6 (Defense Number) = 3**.
+  - Player B's HP reduced from **13 to 10**.
+- **Available Numbers:** 1, 2, 3, 4
+
+---
+
+**Game Continues:**
+
+Players continue taking turns, choosing actions and numbers until one player's HP reaches zero or below.
+
+---
+
+### **Command-Line Interaction Sample**
+
+**Player A's Turn:**
+
+```
+Your HP: 17
+Opponent's HP: 10
+Available Numbers: 1, 2, 3, 4
+Choose an action (Attack/Defend): Attack
+Choose a number from available numbers: 4
+You chose to Attack with number 4.
+```
+
+**Player B's Turn:**
+
+```
+Your HP: 10
+Opponent's HP: 17
+Available Numbers: 1, 2, 3
+Choose an action (Attack/Defend): Attack
+Choose a number from available numbers: 3
+You chose to Attack with number 3.
+```
+
+**Resolution:**
+
+- Player A attacks with **4**.
+  - Player B has no active shield.
+  - Player B's HP: **10 - 4 = 6**
+
+- Player B attacks with **3**.
+  - Player A has no active shield.
+  - Player A's HP: **17 - 3 = 14**
+
+---
+
+### **Strategy Tips**
+
+- **Anticipate Opponent's Moves:**
+  - Consider when the opponent might defend and adjust your attack accordingly.
+- **Optimize Number Usage:**
+  - Save higher numbers for crucial moments.
+  - Use lower numbers for defense if you anticipate a low attack.
+- **Mind the Number Pool:**
+  - Keep track of which numbers have been used to plan your future moves.
+- **Balance Attack and Defense:**
+  - A well-timed defense can significantly reduce damage.
+  - Continuous attacking can overwhelm an undefended opponent.
+
+---
+
+### **Game End**
+
+- Continue alternating turns until a player's HP reaches zero or below.
+- **Declare Winner:**
+  - The player whose opponent's HP is reduced to zero or less is the winner.
+- **Example Conclusion:**
+  ```
+  Player B's HP has dropped to 0.
+  Player A wins the game!
+  ```
+
+---
+
+### **Summary**
+
+"Numerical Showdown" is a strategic, turn-based game where players must carefully choose when to attack and when to defend, all while managing a limited set of numbers. By anticipating the opponent's moves and making optimal choices, a skilled player can consistently outperform an unskilled player.
+
+---
+
+**Enjoy the game, and may the best strategist win!**

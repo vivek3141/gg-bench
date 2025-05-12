@@ -1,0 +1,198 @@
+**Game Name: Stack Attack**
+
+---
+
+### Objective
+
+Be the first player to move one of your tokens onto your opponent's base square. Utilize strategy to control stacks and capture opponent tokens while advancing your own tokens across the board.
+
+### Setup
+
+- **Game Board**: A linear board consisting of 11 sequentially numbered squares from **0** to **10**.
+- **Player Bases**:
+  - **Player 1's base** is located at **square 10**.
+  - **Player 2's base** is located at **square 0**.
+- **Token Placement**:
+  - **Player 1** places their three tokens on **squares 0**, **1**, and **2**.
+  - **Player 2** places their three tokens on **squares 8**, **9**, and **10**.
+- **Neutral Zone**:
+  - **Square 5** is designated as the neutral zone separating the two territories.
+
+### Game Components
+
+- **Board**:
+  - A linear array of squares numbered from **0** to **10**.
+- **Tokens**:
+  - Each player has **three distinguishable tokens**.
+  - Tokens can be stacked atop one another to form stacks.
+- **Stacks**:
+  - Composed of one or more tokens occupying the same square.
+  - The **topmost token** indicates control of the entire stack.
+
+### Turns
+
+- Players alternate turns, starting with **Player 1**.
+- **During a turn**, a player must:
+  - **Select one token or stack** they control.
+  - **Move it forward** towards the opponent's base by **1 or 2 squares**.
+- **Movement Rules**:
+  - Tokens and stacks move **only forward** (towards the opponent's base).
+  - **No backward movement** is allowed.
+  - **If landing on an occupied square**, tokens may form or add to a stack.
+
+### Rules and Mechanics
+
+#### Movement
+
+- **Single Tokens**:
+  - Can be moved forward by **1 or 2 squares**.
+  - Can move onto an **empty square** or one **occupied by any token(s)**.
+- **Stacks**:
+  - Move as a **single unit**.
+  - Controlled by the **player whose token is on top**.
+  - Can be moved forward by **1 or 2 squares**.
+
+#### Stacking Tokens
+
+- **Forming Stacks**:
+  - When moving onto a square occupied by **opponent's tokens or stacks**, place your token(s) **on top**.
+  - The player with their token on top **gains control** of the entire stack.
+- **Stack Control**:
+  - Only the **controlling player** (topmost token) can move the stack.
+  - Control can change if the opponent places their token on top during their turn.
+
+#### Capturing Tokens
+
+- **Capture Mechanics**:
+  - If a stack controlled by a player moves into their own **home territory**:
+    - **Player 1's home territory**: squares **0** to **4**.
+    - **Player 2's home territory**: squares **6** to **10**.
+  - Any **opponent's tokens** within the stack are **captured and removed** from the game.
+- **Continuing Play**:
+  - The controlling player's own tokens remain and continue as a stack or single tokens.
+
+#### Winning the Game
+
+- A player **wins** by moving a token they control onto the **opponent's base square**:
+  - **Player 1 wins** by reaching **square 10**.
+  - **Player 2 wins** by reaching **square 0**.
+- **Winning Move**:
+  - The token must be under the player's control during the move onto the base square.
+
+### Scoring
+
+- There is **no point-based scoring** system.
+- The game is **won outright** by achieving the objective.
+- **Capturing opponent tokens** reduces their options but does not contribute to a score.
+
+### Examples
+
+#### Example 1: Basic Movement
+
+- **Situation**:
+  - **Player 1's tokens** are on squares **2**, **3**, and **4**.
+  - **Player 2's tokens** are on squares **7**, **8**, and **9**.
+- **Player 1's Turn**:
+  - Moves the token from **square 4** to **square 6** (advances 2 squares).
+  - **Square 6** is empty; the token occupies it alone.
+
+#### Example 2: Forming a Stack
+
+- **Player 2's Turn**:
+  - Moves the token from **square 7** to **square 6** (advances 1 square).
+  - **Square 6** is occupied by **Player 1's token**.
+  - **Player 2's token** is placed **on top**, forming a stack.
+  - **Player 2** now **controls the stack** at **square 6**.
+
+#### Example 3: Moving a Stack
+
+- **Player 2's Next Turn**:
+  - Chooses to move the **stack at square 6** forward by **1 square** to **square 7**.
+  - The entire stack moves as a unit under **Player 2's control**.
+
+#### Example 4: Capturing Tokens
+
+- **Player 1's Turn**:
+  - Moves a token from **square 5** to **square 7** (advances 2 squares).
+  - **Square 7** is occupied by a stack controlled by **Player 2**.
+  - **Player 1's token** is placed on top, gaining control of the stack.
+- **Player 1's Next Turn**:
+  - Moves the stack from **square 7** back to **square 5** (own territory).
+  - Since the stack entered **Player 1's home territory**, any **Player 2 tokens** in the stack are **captured and removed**.
+  - **Player 1's tokens** remain and can continue moving.
+
+#### Example 5: Winning the Game
+
+- **Player 1's Token** is on **square 9**.
+- **Player 1's Turn**:
+  - Moves the token from **square 9** to **square 10** (advances 1 square).
+  - **Square 10** is **Player 2's base square**.
+  - **Player 1 wins** the game by reaching the opponent's base.
+
+### Command-Line Interaction Example
+
+#### Initial Setup Display
+
+```
+[Player 1 Base] 0 1 2 3 4 5 6 7 8 9 10 [Player 2 Base]
+Positions:
+Player 1 Tokens at positions: 0, 1, 2
+Player 2 Tokens at positions: 8, 9, 10
+```
+
+#### Player Turn Example
+
+- **Player 1's Turn**:
+  ```
+  Player 1, enter the position of the token you want to move: 2
+  Enter the number of squares to move forward (1 or 2): 2
+  Token moved from position 2 to position 4.
+  ```
+- **Updated Positions**:
+  ```
+  Player 1 Tokens at positions: 0, 1, 4
+  Player 2 Tokens at positions: 8, 9, 10
+  ```
+
+#### Stack Formation Example
+
+- **Player 2's Turn**:
+  ```
+  Player 2, enter the position of the token you want to move: 8
+  Enter the number of squares to move forward (1 or 2): 4
+  Invalid move. You can only move forward 1 or 2 squares.
+  Enter the number of squares to move forward (1 or 2): 2
+  Token moved from position 8 to position 6.
+  ```
+- **Player 2's Token moves onto position 6, which is empty**.
+- **Updated Positions**:
+  ```
+  Player 1 Tokens at positions: 0, 1, 4
+  Player 2 Tokens at positions: 6, 9, 10
+  ```
+
+- **Player 1's Turn**:
+  ```
+  Player 1, enter the position of the token you want to move: 4
+  Enter the number of squares to move forward (1 or 2): 2
+  Token moved from position 4 to position 6.
+  ```
+- **Token moves onto position 6 occupied by Player 2's token, forming a stack controlled by Player 1**.
+- **Updated Stack at Position 6**:
+  - Stack: Top -> **Player 1's token**, Bottom -> **Player 2's token**.
+- **Player 1 Controls the Stack**.
+
+### Strategic Tips
+
+- **Control Stacks**:
+  - Gaining control of stacks can help you advance more tokens at once.
+- **Capture Opponent Tokens**:
+  - Strategically move stacks back into your territory to capture opponent tokens.
+- **Protect Your Tokens**:
+  - Be cautious of moving tokens alone where they can be easily overtaken.
+- **Advance Wisely**:
+  - Balance between advancing towards the opponent's base and securing your tokens.
+
+---
+
+**Enjoy your game of Stack Attack! Plan your moves, control the stacks, and outmaneuver your opponent to claim victory.**

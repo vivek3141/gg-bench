@@ -1,0 +1,184 @@
+# Number Stack
+
+## Objective
+
+Become the first player to reach a cumulative total of **exactly 100** in your stack without exceeding it. Use strategic play to hinder your opponent by removing numbers from their stack when opportunities arise.
+
+## Setup
+
+- **Players**: Two players are required.
+- **Starting Condition**: Both players begin with an empty stack.
+- **Number Pool**: A shared pool of numbers from **1** to **10**. Numbers can be reused any number of times.
+
+## Game Components
+
+- **Player Stacks**: Each player maintains their own stack (a list) of numbers. The sum of the numbers in the stack is the player's current total.
+  
+  - *Example*: If your stack contains `[10, 5, 7]`, your total is `10 + 5 + 7 = 22`.
+
+- **Shared Number Pool**: Numbers from **1** to **10** are available for players to select during their turns.
+
+## Turns
+
+Players take turns performing the following actions:
+
+1. **Select a Number**: Choose a number between **1** and **10** (inclusive) from the shared pool.
+2. **Add to Stack**: Place the chosen number on top of your stack.
+3. **Calculate Total**: Sum all the numbers in your stack to get your new total.
+4. **Check for Multiples of 10**: If your new total is a multiple of **10**, you may remove the top number from your opponent's stack.
+5. **Check for Bust or Victory**:
+   - If your total exceeds **100**, you bust and **lose** the game.
+   - If your total is exactly **100**, you **win** the game.
+
+## Rules and Mechanics
+
+### 1. Selecting Numbers
+
+- On your turn, you **must** choose a number between **1** and **10**.
+- The number is added to the top of your stack immediately.
+
+### 2. Calculating Totals
+
+- After adding the number, calculate your **new total** by summing all numbers in your stack.
+- Keep track of your total throughout the game.
+
+### 3. Multiples of 10 - Special Ability
+
+- If your new total is a **multiple of 10** (e.g., 10, 20, 30, ..., 100), you **may** remove the top number from your opponent's stack.
+- If the opponent's stack is empty, this action has no effect.
+- The removed number is discarded from the game.
+- This action is optional; you can choose not to remove a number from your opponent's stack.
+
+### 4. Busting
+
+- If your total **exceeds 100**, you **immediately lose** the game.
+- Play carefully to avoid busting.
+
+### 5. Winning the Game
+
+- The first player to reach a total of **exactly 100** wins.
+- If both players reach 100 on the same turn, the player with **fewer numbers** in their stack wins.
+- If both players have the same total and stack size, play continues until the tie is broken.
+
+## Scoring
+
+- **Victory**: Achieved by reaching exactly **100**.
+- **Loss**: Occurs if a player's total exceeds **100** (busting).
+- There is no point system beyond tracking the cumulative totals.
+
+## Examples
+
+### Example Game Play
+
+#### Start of Game:
+
+- **Player 1's Stack**: `[]` (Total: 0)
+- **Player 2's Stack**: `[]` (Total: 0)
+
+#### Turn 1 - Player 1:
+
+- **Chooses Number**: 10
+- **Adds to Stack**: `[10]`
+- **New Total**: 10
+- **Multiple of 10**: Yes
+  - **Action**: Player 1 chooses to remove the top number from Player 2's stack (no effect since it's empty).
+
+#### Turn 2 - Player 2:
+
+- **Chooses Number**: 7
+- **Adds to Stack**: `[7]`
+- **New Total**: 7
+- **Multiple of 10**: No
+
+#### Turn 3 - Player 1:
+
+- **Chooses Number**: 5
+- **Adds to Stack**: `[10, 5]`
+- **New Total**: 15
+- **Multiple of 10**: No
+
+#### Turn 4 - Player 2:
+
+- **Chooses Number**: 3
+- **Adds to Stack**: `[7, 3]`
+- **New Total**: 10
+- **Multiple of 10**: Yes
+  - **Action**: Player 2 removes the top number from Player 1's stack.
+  - **Player 1's Stack After Removal**: `[10]` (Total: 10)
+
+#### Turn 5 - Player 1:
+
+- **Chooses Number**: 10
+- **Adds to Stack**: `[10, 10]`
+- **New Total**: 20
+- **Multiple of 10**: Yes
+  - **Action**: Player 1 removes the top number from Player 2's stack.
+  - **Player 2's Stack After Removal**: `[7]` (Total: 7)
+
+#### Turn 6 - Player 2:
+
+- **Chooses Number**: 8
+- **Adds to Stack**: `[7, 8]`
+- **New Total**: 15
+- **Multiple of 10**: No
+
+#### ... (Game continues)
+
+#### Final Turns:
+
+Assume the game progresses with careful selections. On Player 1's final turn:
+
+- **Player 1's Total Before Turn**:  ninety-something.
+- **Chooses Number**: Appropriate number to reach exactly 100.
+- **Adds to Stack**: `[... , Number]`
+- **New Total**: 100
+- **Multiple of 10**: Yes
+  - **Action**: Optionally remove the top number from Player 2's stack.
+- **Win Condition Met**: Player 1 wins the game.
+
+## Command-Line Interaction Example
+
+### Player 1's Turn:
+
+```
+Player 1, enter a number between 1 and 10: 10
+You added 10 to your stack. Your total is now 30.
+Your total is a multiple of 10!
+Do you want to remove the top number from Player 2's stack? (yes/no): yes
+Player 2's top number has been removed.
+```
+
+### Player 2's Turn:
+
+```
+Player 2, enter a number between 1 and 10: 8
+You added 8 to your stack. Your total is now 15.
+```
+
+### Bust Scenario:
+
+```
+Player 2, enter a number between 1 and 10: 9
+You added 9 to your stack. Your total is now 105.
+You have exceeded 100 and busted. Player 1 wins the game!
+```
+
+### Victory Announcement:
+
+```
+Player 1, enter a number between 1 and 10: 5
+You added 5 to your stack. Your total is now 100.
+Congratulations, Player 1! You have reached exactly 100 and won the game!
+```
+
+## Strategy Tips
+
+- **Aim for Multiples of 10**: Reaching multiples of 10 allows you to disrupt your opponent's progress.
+- **Monitor Opponent's Stack**: Keep an eye on your opponent's total and stack size to plan your moves effectively.
+- **Avoid Busting**: Consider the possible sums before adding a number to prevent exceeding 100.
+- **Stack Size Matters**: In the event of a tie at 100, having fewer numbers in your stack can secure your victory.
+- **Plan Ahead**: Anticipate future moves to set yourself up for reaching 100 while controlling the game's pace.
+
+---
+
+Enjoy playing **Number Stack** and may the best strategist win!

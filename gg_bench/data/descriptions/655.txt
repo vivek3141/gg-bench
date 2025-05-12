@@ -1,0 +1,218 @@
+# **Prime Clash**
+
+## **Objective**
+
+Be the first player to reduce your opponent's life total to zero or below by strategically selecting prime numbers and applying them during your turn. Victory is achieved by depleting your opponent's life total before they deplete yours.
+
+---
+
+## **Setup**
+
+- **Players**: Two players compete against each other.
+- **Life Totals**: Each player starts with a life total of **50**.
+- **Prime Number Pool**: A shared pool of the first ten prime numbers is established:
+  - **2, 3, 5, 7, 11, 13, 17, 19, 23, 29**
+- **Command-Line Interface**: The game is played using text input and output in a command-line environment.
+
+---
+
+## **Game Components**
+
+### **Life Total Tracker**
+
+- **Purpose**: Keeps track of each player's current life total.
+- **Display**: Life totals are displayed as integers next to each player's name.
+
+### **Prime Number Pool**
+
+- **Purpose**: A shared list of prime numbers available for selection.
+- **Display**: The available primes are displayed at the start of each turn.
+
+### **Player Indicators**
+
+- **Symbols**: Players are identified by their names (or "Player 1" and "Player 2").
+- **Turn Indicator**: The game prompts the current player when it is their turn.
+
+---
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns, beginning with **Player 1**.
+- **Turn Actions**:
+  1. **Select a Prime Number**: Choose one prime number from the available pool.
+  2. **Apply Damage**: Subtract the chosen prime number from the opponent's life total.
+  3. **Update Pool**: Remove the selected prime number from the pool; it cannot be used again.
+- **Turn Completion**: After completing these actions, the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+1. ### **Prime Selection**
+
+   - **Available Choices**: Only prime numbers from the shared pool may be selected.
+   - **Unique Usage**: Each prime number can be used only once per game.
+   - **Input Validation**: Players must select a valid prime from the pool.
+
+2. ### **Applying Damage**
+
+   - **Life Reduction**: The selected prime number is subtracted from the opponent's life total.
+   - **Minimum Life Total**: Life totals can drop below zero; negative values indicate defeat.
+
+3. ### **Winning the Game**
+
+   - **Victory by Depletion**: If a player's life total reaches **zero or below**, the game ends immediately, and their opponent wins.
+   - **Victory by Superiority**: If all prime numbers have been used and no player's life total is zero or below, the player with the **higher life total** wins.
+   - **No Draws**: If life totals are equal when all primes are exhausted, the **last player to take a turn loses**, ensuring a decisive outcome.
+
+4. ### **Life Total Management**
+
+   - **No Healing**: Life totals cannot be increased during the game.
+   - **Display Updates**: Life totals are updated and displayed after each turn.
+
+5. ### **Game Progression**
+
+   - **Continuous Play**: Players must take a turn if primes are available.
+   - **End of Game**: The game ends immediately upon meeting a victory condition.
+
+---
+
+## **Scoring**
+
+- **Life Totals**: Serve as the score for each player.
+- **Winning Condition**: Achieved by reducing the opponent's life total to zero or below or by having a higher life total when primes are exhausted.
+- **No Points System**: The game does not use a separate points system beyond life totals.
+
+---
+
+## **Examples**
+
+### **Sample Game Overview**
+
+**Players**: Alice (Player 1) and Bob (Player 2)
+
+**Starting Life Totals**:
+- **Alice**: 50
+- **Bob**: 50
+
+**Available Primes**:
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+---
+
+### **Gameplay**
+
+**Turn 1 - Alice's Turn**
+
+- **Selection**: Alice chooses **29**.
+- **Action**: Subtracts 29 from Bob's life total.
+- **Bob's Life Total**: 50 - 29 = **21**
+- **Primes Remaining**: 2, 3, 5, 7, 11, 13, 17, 19, 23
+
+**Turn 2 - Bob's Turn**
+
+- **Selection**: Bob chooses **23**.
+- **Action**: Subtracts 23 from Alice's life total.
+- **Alice's Life Total**: 50 - 23 = **27**
+- **Primes Remaining**: 2, 3, 5, 7, 11, 13, 17, 19
+
+**Turn 3 - Alice's Turn**
+
+- **Selection**: Alice chooses **19**.
+- **Action**: Subtracts 19 from Bob's life total.
+- **Bob's Life Total**: 21 - 19 = **2**
+- **Primes Remaining**: 2, 3, 5, 7, 11, 13, 17
+
+**Turn 4 - Bob's Turn**
+
+- **Selection**: Bob chooses **17**.
+- **Action**: Subtracts 17 from Alice's life total.
+- **Alice's Life Total**: 27 - 17 = **10**
+- **Primes Remaining**: 2, 3, 5, 7, 11, 13
+
+**Turn 5 - Alice's Turn**
+
+- **Selection**: Alice chooses **13**.
+- **Action**: Subtracts 13 from Bob's life total.
+- **Bob's Life Total**: 2 - 13 = **-11**
+
+**Result**: Bob's life total is below zero. **Alice wins!**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+```
+Welcome to Prime Clash!
+Alice and Bob start with 50 life points each.
+Available primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+```
+
+**Turn 1 - Alice**
+
+```
+Alice's Life Total: 50
+Bob's Life Total: 50
+
+Available Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+Alice, it's your turn.
+Select a prime number to attack Bob: 29
+
+You chose 29.
+Bob's life total is now 21.
+```
+
+**Turn 2 - Bob**
+
+```
+Alice's Life Total: 50
+Bob's Life Total: 21
+
+Available Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23
+
+Bob, it's your turn.
+Select a prime number to attack Alice: 23
+
+You chose 23.
+Alice's life total is now 27.
+```
+
+**...and so on, until the game concludes.**
+
+---
+
+## **Strategic Depth**
+
+- **Prime Value Balance**: Choosing larger primes inflicts more damage but leaves fewer options later.
+- **Life Total Consideration**: Weigh the opponent's remaining life against available primes.
+- **Turn Order Impact**: Anticipate the opponent's moves based on remaining primes.
+
+---
+
+## **Game End**
+
+- **Automatic Victory Check**: After each turn, the game checks for a winner.
+- **Announcing the Winner**: The game declares the winner and displays final life totals.
+
+---
+
+## **Notes for Players**
+
+- **Fair Play**: Ensure honest input and adhere to the rules for an enjoyable game.
+- **Learning Curve**: Familiarity with prime numbers can enhance strategic choices.
+- **Replayability**: Each game is different based on the order of prime selection.
+
+---
+
+## **Implementation Tips**
+
+- **Input Validation**: Ensure that player inputs are valid prime numbers from the available pool.
+- **Error Handling**: Handle invalid inputs gracefully with appropriate error messages.
+- **User Experience**: Provide clear prompts and updates to keep players informed.
+
+---
+
+Enjoy playing **Prime Clash** and may the most strategic player win!

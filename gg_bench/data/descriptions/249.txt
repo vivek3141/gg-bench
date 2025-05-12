@@ -1,0 +1,148 @@
+# Number Maze
+
+## Objective
+
+Be the first player to reach the target node (number 20) by strategically navigating through a numerical maze. Players move by selecting connected nodes based on specific mathematical relationships, aiming to outmaneuver their opponent and reach the end before them.
+
+## Setup
+
+1. **Maze Initialization**: The maze consists of nodes numbered from 1 to 20.
+2. **Starting Position**: Both players begin at node **1**.
+3. **Player Assignment**: Decide which player will take the first turn (e.g., by flipping a coin).
+
+## Game Components
+
+- **Nodes**: Each node represents a number from 1 to 20.
+- **Players**: Two players, each tracking their current node position.
+- **Connections**: Nodes are considered connected if they satisfy the movement rules (factor or multiple relationship).
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player chosen to go first.
+2. **Player Actions**:
+   - Determine possible moves from the current node.
+   - Select a node to move to based on the movement rules.
+3. **Updating Position**: Move your player token to the new node.
+4. **Turn Completion**: End your turn, allowing the next player to proceed.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Connected Nodes**: From your current node, you may move to any node that is either:
+  - A **factor** of the current node (excluding the current node itself).
+  - A **multiple** of the current node (up to 20).
+
+- **Valid Moves**:
+  - **Factors**: Numbers that divide evenly into the current node.
+  - **Multiples**: Numbers that are evenly divisible by the current node.
+
+- **Example**:
+  - If you're on node **4**:
+    - **Factors**: Move to nodes **1** or **2** (since 1 and 2 are factors of 4).
+    - **Multiples**: Move to nodes **8**, **12**, **16**, or **20** (since these are multiples of 4 up to 20).
+
+### Movement Restrictions
+
+- **No Backtracking**: You may not move to a node you occupied on your previous turn.
+- **Occupied Nodes**: Both players can occupy the same node; positions are independent.
+- **Boundary**: Nodes are limited to numbers 1 through 20.
+
+### Winning the Game
+
+- The first player to reach **node 20** wins the game.
+- **Exact Landing**: You must land exactly on node 20 by following the movement rules.
+- **No Valid Moves**: If a player has no valid moves on their turn, they skip the turn.
+
+## Scoring
+
+- **Victory**: The player who reaches node 20 first is declared the winner.
+- **No Draws**: The game cannot end in a draw due to the movement rules and finite node options.
+
+## Examples
+
+### Example Turn Sequence
+
+#### Setup
+
+- Both players start on node **1**.
+
+#### Turn 1: Player 1
+
+- **Current Node**: 1
+- **Possible Moves**: Since 1 is a factor and multiple of every number, Player 1 can move to any node between 2 and 20.
+- **Move Chosen**: Player 1 moves to node **5**.
+
+#### Turn 2: Player 2
+
+- **Current Node**: 1
+- **Possible Moves**: Can move to any node between 2 and 20.
+- **Move Chosen**: Player 2 moves to node **2**.
+
+#### Turn 3: Player 1
+
+- **Current Node**: 5
+- **Possible Moves**:
+  - **Factors**: 1
+  - **Multiples**: 10, 15, 20
+- **Move Chosen**: Moves to node **10**.
+
+#### Turn 4: Player 2
+
+- **Current Node**: 2
+- **Possible Moves**:
+  - **Factors**: 1
+  - **Multiples**: 4, 6, 8, 10, 12, 14, 16, 18, 20
+- **Move Chosen**: Moves to node **4**.
+
+#### Turn 5: Player 1
+
+- **Current Node**: 10
+- **Possible Moves**:
+  - **Factors**: 1, 2, 5
+  - **Multiples**: 20
+- **Cannot Move to**: Node 5 (occupied last turn)
+- **Move Chosen**: Moves to node **20** and wins the game.
+
+### Command-Line Interaction Sample
+
+```
+Player 1 Turn:
+Current Node: 1
+Available Moves: 2-20
+Enter your next node: 5
+
+Player 2 Turn:
+Current Node: 1
+Available Moves: 2-20
+Enter your next node: 2
+
+Player 1 Turn:
+Current Node: 5
+Available Moves: 1, 10, 15, 20
+Enter your next node: 10
+
+Player 2 Turn:
+Current Node: 2
+Available Moves: 1, 4, 6, 8, 10, 12, 14, 16, 18, 20
+Enter your next node: 4
+
+Player 1 Turn:
+Current Node: 10
+Available Moves: 1, 2, 5, 20
+Enter your next node: 20
+
+Player 1 has reached node 20 and wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your future moves by considering the factors and multiples of potential nodes.
+- **Block Paths**: Move to nodes that limit your opponent's options in subsequent turns.
+- **Avoid Backtracking**: Remember you cannot return to your previous node on the next turn.
+
+## Summary
+
+**Number Maze** is a strategic two-player game that combines mathematical relationships with tactical movement. Players must navigate from node 1 to node 20 by moving to connected nodes defined by factor and multiple relationships. The game encourages forward-thinking and numerical understanding, providing a quick and decisive gameplay experience without the possibility of a draw.
+
+**Enjoy the challenge and may the best strategist win!**

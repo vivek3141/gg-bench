@@ -1,0 +1,165 @@
+# Divisor Duel
+
+## Objective
+
+Be the player to force your opponent into a position where they **cannot make a valid move**, by strategically dividing the current number by its proper divisors. This typically happens when the current number on your opponent's turn is **1** or a **prime number** greater than 1. The player who forces their opponent into such a position **wins** the game.
+
+## Setup
+
+- The game begins with a shared positive integer called the **Current Number**.
+- The **Initial Current Number** is **100**.
+
+## Game Components
+
+- **Current Number**: A positive integer shared between both players, starting at **100**.
+- **Proper Divisors**: For any Current Number, these are the positive integers **greater than 1 and less than the Current Number** that divide it evenly (without leaving a remainder).
+
+## Turns
+
+Players take turns in alternating order, starting with **Player 1**.
+
+### On Your Turn
+
+1. **Identify Proper Divisors**: List all proper divisors of the Current Number.
+2. **Select a Proper Divisor**: Choose one proper divisor from the list.
+3. **Divide the Current Number**: Divide the Current Number by the selected proper divisor.
+4. **Update the Current Number**: The result becomes the new Current Number.
+5. **Announce the Move**: State the chosen divisor and the new Current Number.
+
+### Example Turn
+
+- **Current Number**: 100
+- **Proper Divisors**: 2, 4, 5, 10, 20, 25, 50
+- **Player's Choice**: Select 25
+- **Calculation**: 100 ÷ 25 = 4
+- **New Current Number**: 4
+- **Announcement**: "I divide 100 by 25. The new Current Number is 4."
+
+## Rules and Mechanics
+
+1. **Proper Divisor Selection**
+   - You **must** choose a proper divisor of the Current Number on your turn.
+   - A proper divisor is an integer greater than 1 and less than the Current Number that divides it evenly.
+   - **1** and the Current Number itself are **not** proper divisors and cannot be selected.
+
+2. **Valid Moves**
+   - If you cannot make a valid move because there are no proper divisors (i.e., the Current Number is prime or 1), you **lose** the game.
+   - The division must result in an integer. Fractions or decimals are not allowed.
+
+3. **Winning the Game**
+   - You win if your opponent cannot make a valid move on their turn.
+   - This happens when the Current Number on their turn is a **prime number** (greater than 1) or **1**.
+
+4. **Division Mechanics**
+   - Always perform integer division; ensure the result is a whole number.
+   - Update the Current Number immediately after your turn.
+
+5. **No Reversing Moves**
+   - Once a move is made, it cannot be reversed. Be strategic with your choices.
+
+## Scoring
+
+- The game is won by a single player when the opponent cannot make a valid move.
+- There are no points or cumulative scoring; it's a win/loss outcome per game.
+
+## Examples
+
+### Example Game 1
+
+**Starting Current Number**: 100
+
+1. **Player 1's Turn**
+   - Proper Divisors: 2, 4, 5, 10, 20, 25, 50
+   - Chooses: 25
+   - Calculation: 100 ÷ 25 = 4
+   - Announces: "I divide 100 by 25. The new Current Number is 4."
+
+2. **Player 2's Turn**
+   - Current Number: 4
+   - Proper Divisors: 2
+   - Chooses: 2
+   - Calculation: 4 ÷ 2 = 2
+   - Announces: "I divide 4 by 2. The new Current Number is 2."
+
+3. **Player 1's Turn**
+   - Current Number: 2
+   - Proper Divisors: None (since 2 is prime)
+   - **No valid moves available**
+   - **Player 1 loses. Player 2 wins.**
+
+### Example Game 2
+
+**Starting Current Number**: 60
+
+1. **Player 1's Turn**
+   - Proper Divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+   - Chooses: 30
+   - Calculation: 60 ÷ 30 = 2
+   - Announces: "I divide 60 by 30. The new Current Number is 2."
+
+2. **Player 2's Turn**
+   - Current Number: 2
+   - Proper Divisors: None
+   - **No valid moves available**
+   - **Player 2 loses. Player 1 wins.**
+
+### Example Game 3
+
+**Starting Current Number**: 24
+
+1. **Player 1's Turn**
+   - Proper Divisors: 2, 3, 4, 6, 8, 12
+   - Chooses: 12
+   - Calculation: 24 ÷ 12 = 2
+   - Announces: "I divide 24 by 12. The new Current Number is 2."
+
+2. **Player 2's Turn**
+   - Current Number: 2
+   - Proper Divisors: None
+   - **No valid moves available**
+   - **Player 2 loses. Player 1 wins.**
+
+## Strategy Tips
+
+- **Aim for Primes**: Try to leave a prime number as the Current Number on your opponent's turn.
+- **Consider Divisibility**: Select a divisor that reduces the Current Number to a number with few or no proper divisors.
+- **Anticipate Moves**: Think ahead about possible divisors your opponent can use on their turn.
+- **Avoid Leaving Composite Numbers**: Leaving numbers with many divisors gives your opponent more options.
+
+## Command-Line Interaction Examples
+
+**Game Start**
+
+```
+Current Number: 100
+Player 1's Turn.
+Enter a proper divisor of 100: 25
+Player 1 divides 100 by 25.
+New Current Number is 4.
+```
+
+**Next Turn**
+
+```
+Current Number: 4
+Player 2's Turn.
+Enter a proper divisor of 4: 2
+Player 2 divides 4 by 2.
+New Current Number is 2.
+```
+
+**Final Turn**
+
+```
+Current Number: 2
+Player 1's Turn.
+No proper divisors available.
+Player 1 cannot make a move.
+Player 2 wins the game!
+```
+
+## Conclusion
+
+"Divisor Duel" is a strategic two-player game that combines basic division with tactical planning. By carefully selecting divisors, players can control the flow of the game and potentially force their opponent into a losing position. The simplicity of the rules makes it easy to code and play in a command-line interface, yet offers enough depth for skilled players to consistently outperform unskilled opponents.
+
+Enjoy the game, and may the best strategist win!

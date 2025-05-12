@@ -1,0 +1,292 @@
+# Factor Frenzy
+
+## Objective
+
+**Factor Frenzy** is a strategic two-player turn-based game played via a command-line interface. The primary goal is to outmaneuver your opponent by selecting numbers from a shared pool. On each turn, a player must choose a number that is either a **factor** or a **multiple** of the last number selected. The game continues until a player cannot make a valid move on their turn, resulting in their loss. A skilled player can consistently beat an unskilled player by anticipating moves and controlling the number pool.
+
+---
+
+## Setup
+
+### Initial Number Pool
+
+- The game begins with a **number pool** containing all integers from **2 to 20**, inclusive.
+
+### Starting the Game
+
+- **Player 1** starts the game and may select **any number** from the initial number pool as the first move.
+
+### Player Roles
+
+- There are two players: **Player 1** and **Player 2**.
+
+---
+
+## Game Components
+
+### Number Pool
+
+- A list of available numbers `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]`.
+- Numbers are removed from the pool once selected and cannot be reused.
+
+### Sequence List
+
+- A record of all numbers selected in the order they were chosen.
+- Displays the progression of the game.
+
+### Command-Line Interface
+
+- Players interact with the game by entering their chosen numbers when prompted.
+- The interface displays the available numbers, the sequence of selected numbers, and prompts for player input.
+
+---
+
+## Turns
+
+### Turn Order
+
+- Players alternate turns, starting with **Player 1**.
+
+### Turn Structure
+
+1. **Display Information**: The game displays the current available numbers and the sequence of selected numbers.
+2. **Prompt**: The player is prompted to select a valid number based on the last number selected.
+3. **Player Action**:
+   - **Player 1** (first turn only): May select any number from the initial number pool.
+   - **Subsequent Turns**: Must select a number that is a **factor** or **multiple** of the **last number** in the sequence.
+4. **Validation**: The game checks if the selected number is valid.
+   - If valid, the number is removed from the number pool and added to the sequence.
+   - If invalid, the player loses the game.
+5. **Turn End**: The turn ends, and control passes to the other player.
+
+### Turn Progression
+
+- The game continues with players alternating turns until a win or loss condition is met.
+
+---
+
+## Rules and Mechanics
+
+### Valid Moves
+
+- **First Move (Player 1)**:
+  - Can select any number from 2 to 20.
+- **Subsequent Moves**:
+  - The selected number must be a **factor** or a **multiple** of the **last number** in the sequence.
+  - The number must be **available** in the number pool.
+
+### Invalid Moves
+
+- Selecting a number that is **not** a factor or multiple of the last number.
+- Selecting a number that is **not** in the number pool.
+- Failure to select a valid number when one exists.
+
+### Winning the Game
+
+- A player **wins** if their opponent cannot make a valid move on their turn.
+- A player **loses** if they cannot make a valid move on their own turn or make an invalid move.
+
+### No Draws
+
+- The game cannot end in a draw; it will always result in a win or loss.
+
+### Examples of Factors and Multiples
+
+- **Factors**: Numbers that divide evenly into the last number (excluding 1 and the number itself unless they are within 2 to 20).
+  - Example: Factors of 12 are 2, 3, 4, and 6.
+- **Multiples**: Numbers that the last number divides evenly into.
+  - Example: Multiples of 5 within 2 to 20 are 10, 15, and 20.
+
+---
+
+## Scoring
+
+- **Win Condition**: The player who forces their opponent into a position where they cannot make a valid move **wins** the game.
+- **Loss Condition**: The player who cannot make a valid move on their turn or makes an invalid move **loses** the game.
+- **No Points System**: The game does not use a points-based scoring system; it is a win/loss outcome per game.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Number Pool**: `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]`
+- **Sequence**: `[]`
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 selects **12**.
+- **Reason**: Starting the game; any number is valid.
+- **Number Pool**: `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20]`
+- **Sequence**: `[12]`
+
+#### Turn 2: Player 2
+
+- **Last Number**: **12**
+- **Valid Choices**: Factors or multiples of 12 from the number pool.
+  - **Factors**: 2, 3, 4, 6
+  - **Multiples**: 18 (since 12 x 1.5 = 18)
+- **Action**: Player 2 selects **6**.
+- **Number Pool**: `[2, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20]`
+- **Sequence**: `[12, 6]`
+
+#### Turn 3: Player 1
+
+- **Last Number**: **6**
+- **Valid Choices**: Factors or multiples of 6 from the number pool.
+  - **Factors**: 2, 3
+  - **Multiples**: 18
+- **Action**: Player 1 selects **18**.
+- **Number Pool**: `[2, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18]`
+
+#### Turn 4: Player 2
+
+- **Last Number**: **18**
+- **Valid Choices**: Factors or multiples of 18 from the number pool.
+  - **Factors**: 2, 3, 6, 9
+- **Action**: Player 2 selects **9**.
+- **Number Pool**: `[2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 15, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9]`
+
+#### Turn 5: Player 1
+
+- **Last Number**: **9**
+- **Valid Choices**: Factors or multiples of 9 from the number pool.
+  - **Factors**: 3
+- **Action**: Player 1 selects **3**.
+- **Number Pool**: `[2, 4, 5, 7, 8, 10, 11, 13, 14, 15, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3]`
+
+#### Turn 6: Player 2
+
+- **Last Number**: **3**
+- **Valid Choices**: Multiples of 3 from the number pool.
+  - **Multiples**: 15
+- **Action**: Player 2 selects **15**.
+- **Number Pool**: `[2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15]`
+
+#### Turn 7: Player 1
+
+- **Last Number**: **15**
+- **Valid Choices**: Factors of 15 from the number pool.
+  - **Factors**: 5
+- **Action**: Player 1 selects **5**.
+- **Number Pool**: `[2, 4, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5]`
+
+#### Turn 8: Player 2
+
+- **Last Number**: **5**
+- **Valid Choices**: Multiples of 5 from the number pool.
+  - **Multiples**: 10, 20
+- **Action**: Player 2 selects **10**.
+- **Number Pool**: `[2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5, 10]`
+
+#### Turn 9: Player 1
+
+- **Last Number**: **10**
+- **Valid Choices**: Factors of 10 from the number pool.
+  - **Factors**: 2
+- **Action**: Player 1 selects **2**.
+- **Number Pool**: `[4, 7, 8, 11, 13, 14, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5, 10, 2]`
+
+#### Turn 10: Player 2
+
+- **Last Number**: **2**
+- **Valid Choices**: Multiples of 2 from the number pool.
+  - **Multiples**: 4, 8, 14, 16, 20
+- **Action**: Player 2 selects **8**.
+- **Number Pool**: `[4, 7, 11, 13, 14, 16, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5, 10, 2, 8]`
+
+#### Turn 11: Player 1
+
+- **Last Number**: **8**
+- **Valid Choices**: Multiples of 8 from the number pool.
+  - **Multiples**: 16
+- **Action**: Player 1 selects **16**.
+- **Number Pool**: `[4, 7, 11, 13, 14, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5, 10, 2, 8, 16]`
+
+#### Turn 12: Player 2
+
+- **Last Number**: **16**
+- **Valid Choices**: Factors of 16 from the number pool.
+  - **Factors**: 4
+- **Action**: Player 2 selects **4**.
+- **Number Pool**: `[7, 11, 13, 14, 17, 19, 20]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5, 10, 2, 8, 16, 4]`
+
+#### Turn 13: Player 1
+
+- **Last Number**: **4**
+- **Valid Choices**: Multiples of 4 from the number pool.
+  - **Multiples**: 20
+- **Action**: Player 1 selects **20**.
+- **Number Pool**: `[7, 11, 13, 14, 17, 19]`
+- **Sequence**: `[12, 6, 18, 9, 3, 15, 5, 10, 2, 8, 16, 4, 20]`
+
+#### Turn 14: Player 2
+
+- **Last Number**: **20**
+- **Valid Choices**: Factors of 20 from the number pool.
+  - **Factors**: None available.
+- **Outcome**: Player 2 cannot make a valid move and **loses** the game.
+
+### Winner: **Player 1**
+
+---
+
+### Sample Command-Line Interaction
+
+```plaintext
+Game Start!
+
+Available Numbers: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+Sequence: []
+Player 1, select any number to start: 12
+
+Available Numbers: [2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20]
+Sequence: [12]
+Player 2, select a factor or multiple of 12 from the available numbers: 6
+
+Available Numbers: [2,3,4,5,7,8,9,10,11,13,14,15,16,17,18,19,20]
+Sequence: [12,6]
+Player 1, select a factor or multiple of 6 from the available numbers: 18
+
+Available Numbers: [2,3,4,5,7,8,9,10,11,13,14,15,16,17,19,20]
+Sequence: [12,6,18]
+Player 2, select a factor or multiple of 18 from the available numbers: 9
+
+Available Numbers: [2,3,4,5,7,8,10,11,13,14,15,16,17,19,20]
+Sequence: [12,6,18,9]
+Player 1, select a factor or multiple of 9 from the available numbers: 3
+
+... (Game continues in this manner)
+
+Player 2 cannot make a valid move. Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Control the Game**: Try to select numbers that limit your opponent's options on their next turn.
+- **Anticipate Moves**: Keep track of the remaining numbers to anticipate potential future moves.
+- **Forced Moves**: Force your opponent into a position where they have only one valid move or none at all.
+- **Number Selection**: Selecting higher numbers early can limit the availability of factors and multiples for your opponent.
+
+---
+
+## Conclusion
+
+Factor Frenzy is a simple yet strategically rich game that challenges players to think ahead and control the flow of the game. Its straightforward rules make it easy to code and play via a command-line interface, while the depth of strategy ensures that skilled players can consistently outplay less experienced opponents. Enjoy the challenge of numerical tactics and have fun mastering Factor Frenzy!

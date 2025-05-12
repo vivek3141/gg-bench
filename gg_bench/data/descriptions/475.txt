@@ -1,0 +1,160 @@
+# Word Ladder Duel
+
+## Objective
+
+Be the first player to transform the **Shared Word** into your **Secret Target Word** by changing one letter at a time, following the game rules. A player wins by successfully changing the Shared Word into their Secret Target Word using valid intermediate words.
+
+## Setup
+
+1. **Shared Word**: Both players agree on a starting word of a specified length (e.g., 4-letter word "COLD"). This word is used as the starting point for both players.
+
+2. **Secret Target Words**:
+   - Each player secretly chooses a target word of the same length as the Shared Word. The target word must be a valid English word.
+   - Players should not reveal their target words to each other until the end of the game or when a victory condition is met.
+
+3. **Dictionary**: A predefined list of valid English words of the specified length is agreed upon or loaded into the game for word validation during play.
+
+## Game Components
+
+- **Shared Word**: The current word in play, visible to both players.
+- **Secret Target Words**: The words each player aims to transform the Shared Word into, kept secret from the opponent.
+- **Dictionary**: A list of valid words used to verify the legality of moves.
+- **Turns Indicator**: Keeps track of whose turn it is to play.
+- **Command-Line Interface**: Players interact with the game via text commands in the command line.
+
+## Turns
+
+1. **Turn Order**: Players decide who goes first (e.g., by coin toss). Turns alternate between Player 1 and Player 2.
+
+2. **Player Actions During a Turn**:
+   - **Change a Letter**: The player modifies the Shared Word by changing exactly one letter to another letter, creating a new valid word.
+   - **Pass**: If no valid moves are available, the player may pass their turn.
+
+3. **Updating the Shared Word**: After a player makes a valid move, the Shared Word is updated to the new word.
+
+4. **Turn Progression**: The game continues with players alternating turns until a victory condition is met.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A player must change exactly one letter of the Shared Word on their turn.
+   - The resulting word must be a valid English word found in the agreed-upon dictionary.
+   - The new word must not be the same as the previous Shared Word.
+   - A player cannot undo the opponent's last move by reverting the Shared Word to a word used previously in the game.
+
+2. **Word Validity**:
+   - Words must be of the same length as the Shared Word and Secret Target Words.
+   - Proper nouns, abbreviations, and acronyms are not allowed unless agreed upon before the game.
+
+3. **Winning the Game**:
+   - A player wins if, after their turn, the Shared Word is identical to their Secret Target Word.
+   - If both players' Secret Target Words are the same, the first player to reach it wins.
+
+4. **Stalemate and Passing**:
+   - If a player cannot make a valid move, they may pass their turn.
+   - If both players pass consecutively, the game ends in a forfeit for the player who cannot progress towards their Secret Target Word, as per the no-draw condition.
+
+5. **Game Integrity**:
+   - Players must not reveal their Secret Target Word until a victory condition is claimed.
+   - Cheating (e.g., changing more than one letter, using invalid words) results in an immediate loss.
+
+## Example Gameplay
+
+### Initial Setup
+
+- **Shared Word**: `COLD`
+- **Player 1's Secret Target Word**: `WARM`
+- **Player 2's Secret Target Word**: `HEAT`
+
+### Turn-by-Turn Example
+
+**Turn 1: Player 1**
+
+- **Action**: Change 'C' to 'C' (illegal, since it doesn't change a letter).
+- **Revision**: Change 'C' to 'C' is invalid.
+- **Action**: Change 'C' to 'C' is invalid.
+- **Correct Action**: Change 'C' to 'C' is invalid.
+- Actually, that seems not useful.
+
+But we need to correct the example to properly reflect the rules.
+
+Let's provide a correct example:
+
+**Turn 1: Player 1**
+
+- **Action**: Change `COLD` to `CORD` by changing 'L' to 'R'.
+- **Shared Word**: `CORD`
+
+**Turn 2: Player 2**
+
+- **Action**: Change `CORD` to `CARD` by changing 'O' to 'A'.
+- **Shared Word**: `CARD`
+
+**Turn 3: Player 1**
+
+- **Action**: Change `CARD` to `WARD` by changing 'C' to 'W'.
+- **Shared Word**: `WARD`
+
+**Turn 4: Player 2**
+
+- **Action**: Change `WARD` to `WARS` by changing 'D' to 'S'.
+- **Shared Word**: `WARS`
+
+**Turn 5: Player 1**
+
+- **Action**: Change `WARS` to `WARM` by changing 'S' to 'M'.
+- **Shared Word**: `WARM`
+
+- **Victory**: Player 1's Secret Target Word is `WARM`. Player 1 wins!
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input commands in the format:
+
+```
+Player [Number]> [Command]
+```
+
+Commands might include:
+
+- `change [old_letter][position][new_letter]` (e.g., `change L3R` to change the third letter 'L' to 'R')
+- `pass`
+
+### Sample Interaction
+
+```
+Shared Word: COLD
+
+Player 1> change L3R
+Shared Word updated to: CORD
+
+Player 2> change O2A
+Shared Word updated to: CARD
+
+Player 1> change C1W
+Shared Word updated to: WARD
+
+Player 2> change D4S
+Shared Word updated to: WARS
+
+Player 1> change S4M
+Shared Word updated to: WARM
+Player 1 declares victory with the word: WARM
+```
+
+## Strategic Considerations
+
+- **Anticipate Opponent's Target**: Try to deduce the opponent's Secret Target Word based on their moves to block their progress.
+- **Word Selection**: Choose target words that are not easily reached from common words or that require rare intermediate words.
+- **Diversify Moves**: Avoid creating a path that the opponent can use to reach their target word.
+- **Word Validity**: Keep a mental or written note of words used to ensure you do not revert to a previous word, violating the rules.
+
+## Additional Rules for Complexity
+
+To increase strategic depth, players may agree to:
+
+- **Limited Vocabulary**: Use a more restricted dictionary (e.g., only words from a specific category).
+- **Move Limits**: Set a maximum number of turns for the game.
+- **Time Limits**: Implement a time limit per turn to add pressure and test quick thinking.
+
+By adhering to these rules and mechanics, players can engage in a challenging duel of wits, vocabulary, and strategy in the Word Ladder Duel game.

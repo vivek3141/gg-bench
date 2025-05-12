@@ -1,0 +1,189 @@
+# Factor Duel
+
+## Objective
+
+**Factor Duel** is a strategic two-player turn-based game where players take turns selecting numbers from a shared list. The primary goal is to force your opponent into a position where they cannot select a valid number according to the game rules. The player who successfully does this wins the game.
+
+## Setup
+
+- **Number Pool**: A shared list of integers from **2 to 50** inclusive.
+- **Starting Conditions**:
+  - Both players begin with no numbers selected.
+  - All numbers from 2 to 50 are available for selection.
+- **Player Roles**:
+  - Decide who will be **Player 1** and **Player 2**. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Number Pool**: The central component of the game, comprising integers **2 through 50**.
+  - Each number is unique and can be selected only once during the game.
+- **Selected Numbers**: A record of numbers that have been picked by both players.
+  - Used to determine valid selections on each turn.
+- **Available Numbers**: The numbers remaining in the Number Pool after selections are made.
+  - Updated after each turn.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Player Action**: On their turn, a player selects a valid number from the Available Numbers.
+  2. **Validation**: The selected number must not be a multiple or a factor of any previously selected number.
+  3. **Update**:
+     - Remove the selected number from the Available Numbers.
+     - Add the selected number to the list of Selected Numbers.
+  4. **Turn Progression**: Turns alternate between players until the game ends.
+
+## Rules and Mechanics
+
+- **Valid Selections**:
+  - A number is valid if it is not a multiple or factor of any number already selected by either player.
+  - **Factors**: Numbers that divide evenly into another number (excluding 1 and the number itself).
+  - **Multiples**: Numbers that are evenly divisible by another number.
+- **Selection Restrictions**:
+  - You cannot select a number that is a **factor** of any previously selected number.
+  - You cannot select a number that is a **multiple** of any previously selected number.
+- **Winning the Game**:
+  - If a player has no valid numbers to select on their turn, they lose the game.
+  - The opponent is declared the winner.
+- **Example of Factors and Multiples**:
+  - If **6** is a previously selected number:
+    - **Factors of 6**: 2, 3
+    - **Multiples of 6**: 12, 18, 24, etc.
+    - The numbers 2, 3, 6, 12, 18, 24, etc., cannot be selected.
+
+## Scoring
+
+- **Victory Condition**:
+  - The game does not use a point-based scoring system.
+  - Winning is achieved by forcing your opponent into a position where they cannot make a valid move on their turn.
+- **Game End**:
+  - The game ends immediately when a player cannot select a valid number.
+  - No draws are possible in this game.
+
+## Examples
+
+### Sample Game Walkthrough
+
+#### Initial Setup
+
+- **Available Numbers**: 2 through 50.
+- **Selected Numbers**: None.
+
+#### Turn 1: Player 1
+
+- **Action**: Selects **7**.
+- **Reasoning**: 7 is a prime number, minimizing immediate factors and multiples.
+- **Update**:
+  - Remove **7** from Available Numbers.
+  - Add **7** to Selected Numbers.
+
+#### Turn 2: Player 2
+
+- **Available Numbers**: 2-6, 8-50 (excluding 7).
+- **Factors and Multiples to Avoid**:
+  - **Factors/Multiples of 7**: 7, 14, 21, 28, 35, 42, 49.
+- **Action**: Selects **9**.
+- **Reasoning**: 9 has minimal overlap with 7.
+- **Update**:
+  - Remove **9** from Available Numbers.
+  - Add **9** to Selected Numbers.
+
+#### Turn 3: Player 1
+
+- **Available Numbers**: 2-6, 8, 10-50 (excluding 7 and 9).
+- **Factors and Multiples to Avoid**:
+  - **From 7**: 7, 14, 21, 28, 35, 42, 49.
+  - **From 9**: 3, 9, 18, 27, 36, 45.
+- **Action**: Selects **4**.
+- **Update**:
+  - Remove **4** from Available Numbers.
+  - Add **4** to Selected Numbers.
+
+#### Turn 4: Player 2
+
+- **Available Numbers**: 2, 5, 6, 8, 10-50 (excluding previously selected and invalid numbers).
+- **Factors and Multiples to Avoid**:
+  - **From 7**: As before.
+  - **From 9**: As before.
+  - **From 4**: 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48.
+- **Action**: Selects **5**.
+- **Update**:
+  - Remove **5** from Available Numbers.
+  - Add **5** to Selected Numbers.
+
+#### Turn 5: Player 1
+
+- **Available Numbers**: 6, 10, 11, 13, 15, 17, 19, 22, 23, 25, 26, 29, 31, 33, 34, 37, 38, 39, 41, 43, 46, 47, 50.
+- **Factors and Multiples to Avoid**:
+  - **From 7**: As before.
+  - **From 9**: As before.
+  - **From 4**: As before.
+  - **From 5**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50.
+- **Action**: Selects **11**.
+- **Update**:
+  - Remove **11** from Available Numbers.
+  - Add **11** to Selected Numbers.
+
+#### Subsequent Turns
+
+- The players continue in this manner, with the list of factors and multiples growing each turn.
+- Eventually, one player will be unable to select a valid number.
+
+### Command-Line Interaction Example
+
+Below is an example of how the game might be played in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to Factor Duel!
+
+Available Numbers: 2 through 50
+
+Player 1, it's your turn.
+Select a number: 7
+
+Number 7 selected.
+
+Player 2, it's your turn.
+Available Numbers: 2-6, 8-50 (excluding 7 and its factors/multiples).
+Select a number: 9
+
+Number 9 selected.
+
+Player 1, it's your turn.
+Available Numbers updated.
+Select a number: 4
+
+Number 4 selected.
+
+Player 2, it's your turn.
+Available Numbers updated.
+Select a number: 5
+
+Number 5 selected.
+
+Player 1, it's your turn.
+Available Numbers updated.
+Select a number: 11
+
+Number 11 selected.
+
+... (game continues)
+
+Player 2, it's your turn.
+No valid numbers available.
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Select Prime Numbers Early**: Choosing prime numbers can limit your opponent's options due to fewer factors.
+- **Avoid Common Factors**: Be mindful of numbers that share common factors with previously selected numbers.
+- **Force Multiples**: Try to select numbers whose multiples are abundant in the remaining pool, restricting your opponent's choices.
+- **Plan Ahead**: Consider the impact of your selection on future turns, not just the immediate next move.
+
+## Conclusion
+
+Factor Duel is a simple yet strategic game that tests players' numerical reasoning and foresight. By carefully selecting numbers and anticipating your opponent's moves, you can gain the upper hand and secure victory.
+
+Have fun and may the best strategist win!

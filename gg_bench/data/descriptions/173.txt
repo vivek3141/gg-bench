@@ -1,0 +1,193 @@
+# **Word Clash**
+
+## **Objective**
+
+The primary goal of **Word Clash** is to be the first player to complete a valid English word of a predetermined length on your word board. Players strategically select letters and place them on either their own board to build their word or on their opponent's board to hinder their progress. The first player to complete a valid word wins the game. However, if a player completes their board with an invalid word, they lose.
+
+## **Setup**
+
+1. **Determine Word Length**: Players agree on the target word length for the game (commonly 5 letters for standard play).
+2. **Letter Pool**: The game uses the standard English alphabet (26 letters, A-Z) as the letter pool.
+3. **Word Boards**:
+   - Each player has their own word board with empty slots numbered according to the chosen word length (e.g., 1 to 5).
+   - Boards are initially empty and ready for letter placement.
+4. **Valid Word List**: A dictionary of valid English words matching the target length is used to verify completed words during the game.
+
+## **Game Components**
+
+- **Players**: Two players compete against each other.
+- **Letter Pool**: The set of 26 letters in the English alphabet, available for selection during the game.
+- **Word Boards**:
+  - **Player Boards**: Each player has a personal board with slots equal to the target word length.
+  - **Slots**: Positions on the board where letters can be placed, numbered sequentially.
+- **Valid Word List**: A reference list of acceptable English words of the target length for word validation.
+
+## **Turns**
+
+- The game proceeds in alternating turns between the two players.
+- **Turn Structure**:
+  1. **Letter Selection**: The active player selects a letter from the letter pool.
+  2. **Board Selection**: The player chooses to place the letter on either their own board or their opponent's board.
+  3. **Slot Placement**: The player selects an empty slot on the chosen board to place the letter.
+  4. **Announcement**: The player announces their move.
+
+- **Example Turn Announcement**: "I place the letter 'E' in position 3 on my opponent's board."
+
+## **Rules and Mechanics**
+
+1. **Letter Selection**:
+   - Players can select any letter from the letter pool during their turn.
+   - Letters can be selected multiple times; the pool does not deplete.
+
+2. **Letter Placement**:
+   - The selected letter is placed in any empty slot on the chosen board (self or opponent).
+   - Once a letter is placed in a slot, it cannot be moved or replaced.
+   - Players must specify the board and slot number when placing a letter.
+
+3. **Board Completion**:
+   - A board is considered complete when all its slots are filled with letters.
+   - Upon completion, the word is immediately validated against the valid word list.
+   - **If the word is valid**:
+     - The player whose board it is wins the game if it's their own board.
+     - A player loses if they complete their opponent's board with a valid word.
+   - **If the word is invalid**:
+     - The player whose board it is loses the game if it's their own board.
+     - A player wins if they force their opponent to complete an invalid word.
+
+4. **Winning the Game**:
+   - **Win by Completion**: Complete your own board with a valid word.
+   - **Win by Sabotage**: Force your opponent to complete their board with an invalid word.
+
+5. **Losing the Game**:
+   - **Loss by Invalid Word**: Completing your own board with an invalid word.
+   - **Loss by Opponent's Success**: If your opponent completes their board with a valid word.
+
+6. **Strategic Play**:
+   - Players must balance between advancing their own word and impeding their opponent's progress.
+   - Placing less common letters or unlikely combinations on the opponent's board can hinder their ability to form a valid word.
+
+7. **No Draws**:
+   - The game cannot end in a draw; a win/loss condition will always be met through the rules above.
+
+## **Scoring**
+
+- **Win/Loss Outcome**:
+  - The game is decided by a win or loss based on the completion and validity of the words.
+- **No Point System**:
+  - There is no point scoring; the focus is on strategic letter placement to achieve victory.
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Game Setup**:
+
+- **Target Word Length**: 5 letters.
+- **Players**: Player 1 and Player 2.
+- **Word Boards**:
+  - Player 1's Board: [_, _, _, _, _]
+  - Player 2's Board: [_, _, _, _, _]
+  
+**Turn 1: Player 1**
+
+- **Letter Selection**: 'A'
+- **Board Selection**: Own board.
+- **Slot Placement**: Position 1.
+- **Move Announcement**: "I place the letter 'A' in position 1 on my board."
+- **Boards**:
+  - Player 1's Board: [A, _, _, _, _]
+  - Player 2's Board: [_, _, _, _, _]
+
+**Turn 2: Player 2**
+
+- **Letter Selection**: 'E'
+- **Board Selection**: Player 1's board.
+- **Slot Placement**: Position 2.
+- **Move Announcement**: "I place the letter 'E' in position 2 on my opponent's board."
+- **Boards**:
+  - Player 1's Board: [A, E, _, _, _]
+  - Player 2's Board: [_, _, _, _, _]
+
+**Turn 3: Player 1**
+
+- **Letter Selection**: 'T'
+- **Board Selection**: Own board.
+- **Slot Placement**: Position 3.
+- **Move Announcement**: "I place the letter 'T' in position 3 on my board."
+- **Boards**:
+  - Player 1's Board: [A, E, T, _, _]
+  - Player 2's Board: [_, _, _, _, _]
+
+**Turn 4: Player 2**
+
+- **Letter Selection**: 'S'
+- **Board Selection**: Player 1's board.
+- **Slot Placement**: Position 4.
+- **Move Announcement**: "I place the letter 'S' in position 4 on my opponent's board."
+- **Boards**:
+  - Player 1's Board: [A, E, T, S, _]
+  - Player 2's Board: [_, _, _, _, _]
+
+**Turn 5: Player 1**
+
+- **Letter Selection**: 'E'
+- **Board Selection**: Own board.
+- **Slot Placement**: Position 5.
+- **Move Announcement**: "I place the letter 'E' in position 5 on my board."
+- **Boards**:
+  - Player 1's Board: [A, E, T, S, E]
+  - Player 2's Board: [_, _, _, _, _]
+
+**Board Completion and Validation**:
+
+- Player 1's board is complete: A E T S E
+- Validity Check:
+  - 'AETSE' is not a valid English word.
+- **Result**:
+  - Player 1 loses for completing their board with an invalid word.
+  - Player 2 wins the game.
+
+### **Sample Command-Line Interaction**
+
+**Player 1's Turn**
+
+```
+Your Board: [_, _, _, _, _]
+Opponent's Board: [_, _, _, _, _]
+
+Select a letter from A-Z: A
+Place letter on ('self' or 'opponent'): self
+Choose position (1-5): 1
+
+You placed 'A' in position 1 on your board.
+
+Press Enter to end your turn...
+```
+
+**Player 2's Turn**
+
+```
+Your Board: [_, _, _, _, _]
+Opponent's Board: [A, _, _, _, _]
+
+Select a letter from A-Z: E
+Place letter on ('self' or 'opponent'): opponent
+Choose position (1-5): 2
+
+You placed 'E' in position 2 on your opponent's board.
+
+Press Enter to end your turn...
+```
+
+**Gameplay continues in this manner until a win or loss condition is met.**
+
+## **Strategic Tips**
+
+- **Advance Your Word**: Focus on placing letters that can lead to multiple valid word possibilities on your board.
+- **Disrupt Opponent**: Place less common or awkward letters on your opponent's board to limit their options.
+- **Letter Frequency**: Be mindful of frequently used letters and consider their impact on both boards.
+- **Balance Actions**: Weigh the benefits of advancing your own word against the potential to hinder your opponent.
+
+---
+
+By carefully selecting letters and strategically placing them, players can outmaneuver their opponents to achieve victory in **Word Clash**. The game combines elements of strategy, word knowledge, and tactical planning, offering depth and replayability in a simple command-line format.

@@ -1,0 +1,198 @@
+**Game Title:** Last Digit Standing
+
+---
+
+### **Objective**
+
+Be the player who forces your opponent to select the last remaining digit from the available pool. Use strategic selection to limit your opponent's options and avoid being the one who picks the final digit.
+
+---
+
+### **Setup**
+
+- **Available Digits:** Digits from **1** to **9**.
+- **Starting Pool:** All digits are initially available for selection.
+- **Player Designation:** Two players are identified as **Player 1** and **Player 2**.
+
+---
+
+### **Game Components**
+
+- **Digits Pool:** A shared list of digits from **1** to **9**.
+  - **Appearance:** Represented numerically in the command line interface.
+  - **Functionality:** Digits are selected and removed from the pool during gameplay.
+  - **Unique Attributes:** Each digit can only be selected once and has a strategic relationship with its complement to **10**.
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players alternate turns, starting with **Player 1**.
+- **Actions per Turn:**
+  - **Select a Digit:** Choose one available digit from the pool.
+  - **Update Pool:** The chosen digit is removed from the pool.
+- **Turn Progression:** After a digit is selected and the pool is updated, the turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Digit Selection:**
+   - On your turn, you may select **any one** available digit from **1** to **9**.
+   - Once selected, the digit is no longer available for either player.
+2. **Restriction Based on Opponent's Choices:**
+   - **You cannot select a digit that, when added to any digit previously selected by your opponent, sums to **10****.
+     - *Example:* If your opponent has selected **3**, you cannot select **7** (since **3 + 7 = 10**).
+   - This rule applies to **all digits** your opponent has selected throughout the game.
+3. **Objective Achievement:**
+   - **Winning Condition:** Force your opponent to be the player who must select the **last remaining digit**.
+   - **Losing Condition:** Being compelled to select the final digit due to no other options.
+
+---
+
+### **Scoring**
+
+- **Win:** Successfully maneuver your selections so that your opponent is forced to pick the last digit.
+- **Loss:** Being the player who must select the last remaining digit.
+- There are no points; the game outcome is a win or loss based on the final move.
+
+---
+
+### **Examples**
+
+#### **Example Game Playthrough**
+
+**Starting Pool:** [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Player 1's Selections:** 1, 3, 5, 7
+
+**Player 2's Selections:** 2, 4, 6, 8
+
+**Available Digits and Moves:**
+
+1. **Player 1's Turn:**
+   - **Available Digits:** 1-9
+   - **Action:** Selects **1**
+   - **Updated Pool:** [2, 3, 4, 5, 6, 7, 8, 9]
+2. **Player 2's Turn:**
+   - **Cannot Select:** **9** (since **1 + 9 = 10**)
+   - **Action:** Selects **2**
+   - **Updated Pool:** [3, 4, 5, 6, 7, 8, 9]
+3. **Player 1's Turn:**
+   - **Cannot Select:** **8** (since **2 + 8 = 10**)
+   - **Action:** Selects **3**
+   - **Updated Pool:** [4, 5, 6, 7, 8, 9]
+4. **Player 2's Turn:**
+   - **Cannot Select:** **7** (since **3 + 7 = 10**)
+   - **Action:** Selects **4**
+   - **Updated Pool:** [5, 6, 7, 8, 9]
+5. **Player 1's Turn:**
+   - **Cannot Select:** **6** (since **4 + 6 = 10**)
+   - **Action:** Selects **5**
+   - **Updated Pool:** [6, 7, 8, 9]
+6. **Player 2's Turn:**
+   - **Cannot Select:** **5** (already selected), **6** is available.
+   - **Action:** Selects **6**
+   - **Updated Pool:** [7, 8, 9]
+7. **Player 1's Turn:**
+   - **Cannot Select:** **4** (since **6 + 4 = 10**) - irrelevant as 4 is taken.
+   - **Cannot Select:** **4** (already selected)
+   - **Action:** Selects **7**
+   - **Updated Pool:** [8, 9]
+8. **Player 2's Turn:**
+   - **Cannot Select:** **3** (since **7 + 3 = 10**) - irrelevant as 3 is taken.
+   - **Action:** Selects **8**
+   - **Updated Pool:** [9]
+9. **Player 1's Turn:**
+   - **Only Digit Left:** **9**
+   - **Action:** Forced to select **9**
+   - **Game Over**
+
+**Outcome:** **Player 1** is forced to pick the last digit and therefore **loses**. **Player 2 wins** the game.
+
+---
+
+#### **Command-Line Interaction Sample**
+
+```plaintext
+Available Digits: 1 2 3 4 5 6 7 8 9
+
+Player 1's turn.
+Select a digit: 1
+
+Player 1 selected 1.
+Available Digits: 2 3 4 5 6 7 8 9
+
+Player 2's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 9
+Select a digit: 2
+
+Player 2 selected 2.
+Available Digits: 3 4 5 6 7 8 9
+
+Player 1's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 8
+Select a digit: 3
+
+Player 1 selected 3.
+Available Digits: 4 5 6 7 8 9
+
+Player 2's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 7
+Select a digit: 4
+
+Player 2 selected 4.
+Available Digits: 5 6 7 8 9
+
+Player 1's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 6
+Select a digit: 5
+
+Player 1 selected 5.
+Available Digits: 6 7 8 9
+
+Player 2's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 5
+Select a digit: 6
+
+Player 2 selected 6.
+Available Digits: 7 8 9
+
+Player 1's turn.
+Digits you cannot select (sum to 10 with opponent's picks): None
+Select a digit: 7
+
+Player 1 selected 7.
+Available Digits: 8 9
+
+Player 2's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 3
+Select a digit: 8
+
+Player 2 selected 8.
+Available Digits: 9
+
+Player 1's turn.
+Digits you cannot select (sum to 10 with opponent's picks): 2
+Only digit left is 9.
+You are forced to select 9.
+
+Player 1 selected 9.
+No digits left.
+
+**Player 1 has picked the last digit and loses. Player 2 wins the game!**
+```
+
+---
+
+### **Strategic Tips**
+
+- **Avoid Complements:** Be mindful of the digits your opponent has selected. Avoid choosing digits that open up options for them to block you by taking your complements.
+- **Force the Outcome:** Plan ahead to force your opponent into a position where they must pick the last digit.
+- **Track Opponent's Picks:** Keep a record of the digits your opponent has chosen to calculate which digits are off-limits for both players.
+
+---
+
+### **Conclusion**
+
+_Last Digit Standing_ is a strategic numerical game that tests players' foresight and planning abilities. With simple rules and quick gameplay, it offers depth and excitement in a command-line environment. Master the mechanics, anticipate your opponent's moves, and aim to be the last digit **not** standing to secure your victory!

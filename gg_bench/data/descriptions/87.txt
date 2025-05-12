@@ -1,0 +1,167 @@
+# Bracket Battle
+
+## Objective
+
+**Bracket Battle** is a two-player, turn-based strategy game. The primary goal is to be the player who completes a valid and balanced sequence of brackets. Players take turns adding opening `(` or closing `)` brackets to a shared string. The player who places the last bracket that completes the sequence without violating the rules wins the game.
+
+## Setup
+
+- **Starting Condition**: An empty string where brackets will be added.
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Initial Turn**: Decide who takes the first turn (you can flip a coin or let the program assign randomly).
+
+## Game Components
+
+- **Brackets**: The characters `(` (opening bracket) and `)` (closing bracket).
+- **Shared String**: A sequence where brackets are added turn by turn.
+- **Command-Line Interface**: Players input their moves via text commands in the terminal.
+
+## Turns
+
+- **Turn Structure**:
+  - On their turn, a player must add either an opening `(` or a closing `)` bracket to the shared string.
+  - Players alternate turns until the game ends.
+- **Input**:
+  - Players input their chosen bracket when prompted.
+  - Valid inputs are `(` or `)`.
+
+## Rules and Mechanics
+
+1. **Valid Sequence Maintenance**:
+   - At no point can the number of closing brackets `)` exceed the number of opening brackets `(` in the sequence.
+   - The sequence must remain potentially completable into a valid and balanced bracket expression after each move.
+
+2. **Legal Moves**:
+   - A player may add an opening `(` bracket at any time.
+   - A player may add a closing `)` bracket only if it does not cause the sequence to become invalid (i.e., the number of closing brackets does not exceed the number of opening brackets).
+
+3. **Winning the Game**:
+   - The player who places the last bracket that completes a valid and balanced bracket sequence wins.
+   - A valid sequence is one where the number of opening and closing brackets is equal, and each closing bracket pairs with a preceding opening bracket.
+
+4. **Forced Moves**:
+   - If a player has no legal moves (i.e., they cannot place a closing bracket without invalidating the sequence and no opening brackets are left to be placed), they lose the game.
+
+5. **Turn Time Limit** (Optional for command-line implementation):
+   - Players must make their move within a reasonable time frame (e.g., 30 seconds), or they forfeit the game.
+
+## Scoring
+
+- **Winning**: The winner is the player who successfully completes the balanced bracket sequence according to the rules.
+- **Losing**: The loser is the player who either cannot make a legal move on their turn or violates the sequence validity rules by making an invalid move.
+
+## Examples
+
+### Example Game Play
+
+**Starting Game**
+
+- Shared Sequence: _(empty)_
+
+**Turn 1**: Player 1
+
+- Player 1 adds `(`.
+- Shared Sequence: `(`
+
+**Turn 2**: Player 2
+
+- Player 2 adds `(`.
+- Shared Sequence: `((`
+
+**Turn 3**: Player 1
+
+- Player 1 adds `(`.
+- Shared Sequence: `(((`
+
+**Turn 4**: Player 2
+
+- Player 2 adds `)`.
+- Shared Sequence: `((()`
+
+**Turn 5**: Player 1
+
+- Player 1 adds `)`.
+- Shared Sequence: `((())`
+
+**Turn 6**: Player 2
+
+- Player 2 adds `)`.
+- Shared Sequence: `((()))`
+
+**Winning Move**
+
+- The sequence `((()))` is a valid and balanced bracket sequence.
+- Player 2 added the last bracket to complete the sequence.
+- **Player 2 wins the game**.
+
+### Invalid Move Example
+
+**Turn 1**: Player 1
+
+- Player 1 adds `)`.
+- Shared Sequence: `)`
+- Since the number of closing brackets exceeds the number of opening brackets, the move is invalid.
+- **Player 1 loses the game for making an invalid move**.
+
+### Command-Line Interaction Sample
+
+**Game Start**
+
+```
+Welcome to Bracket Battle!
+
+Player 1, your turn.
+Current Sequence: 
+Choose your bracket to add ('(' or ')'): (
+```
+
+**After Player 1's Move**
+
+```
+Current Sequence: (
+
+Player 2, your turn.
+Choose your bracket to add ('(' or ')'): (
+```
+
+**After Player 2's Move**
+
+```
+Current Sequence: ((
+
+Player 1, your turn.
+Choose your bracket to add ('(' or ')'): )
+```
+
+**Continuation Until Game Ends**
+
+```
+Current Sequence: (()
+
+Player 2, your turn.
+Choose your bracket to add ('(' or ')'): )
+```
+
+**Final Sequence and Result**
+
+```
+Current Sequence: (())
+
+
+Player 1, your turn.
+No legal moves available. You cannot make a valid move without breaking the rules.
+
+Player 2 wins the game!
+```
+
+## Strategic Tips
+
+- **Balancing Act**: Try to keep the sequence in a state that offers you more options on your next turn while limiting your opponent's moves.
+- **Anticipate Moves**: Think ahead about how the sequence can be completed and plan your brackets accordingly.
+- **Force a Win**: Lead the sequence towards a position where you can complete it on your turn.
+
+## Summary
+
+Bracket Battle is a simple yet strategic game that tests players' foresight and planning skills. With straightforward rules and minimal components, it's easy to pick up and quick to play, making it an ideal choice for a command-line interface game.
+
+Have fun battling it out to create the perfectly balanced bracket sequence!

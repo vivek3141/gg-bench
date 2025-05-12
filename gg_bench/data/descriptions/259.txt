@@ -1,0 +1,228 @@
+**Divide and Conquer: Rule Book**
+
+---
+
+### **Objective**
+
+Be the first player to reduce the shared number to **1**. Players take turns dividing the current number using specific rules. Strategic selection of divisors is key to victory. The player who reduces the number to **1** on their turn **wins** the game.
+
+---
+
+### **Setup**
+
+- **Starting Number**: Agree upon an initial positive integer greater than **1** (e.g., **100**). This number is shared between both players.
+- **Players**: Two players participate, taking alternating turns. Decide who will take the **first turn** (e.g., by flipping a coin).
+
+---
+
+### **Game Components**
+
+- **Shared Number**: The game revolves around a single shared positive integer, which changes as players make moves.
+  
+- **Divisors**: Integers greater than **1** that exactly divide the current shared number (i.e., without leaving a remainder).
+
+---
+
+### **Turns**
+
+- Players alternate turns throughout the game.
+  
+- **On a Player's Turn**:
+  1. **Action**: Choose a valid move based on the current shared number (see **Rules and Mechanics**).
+  2. **Update**: Apply the move to modify the shared number accordingly.
+  3. **Pass Turn**: The turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Dividing the Number**:
+   - If the current shared number **N** is **composite** (not prime), the player must:
+     - Choose a **proper divisor** of **N** (an integer greater than **1** and less than **N** that divides **N** exactly).
+     - **Divide** **N** by the chosen divisor.
+     - **Update** **N** to be **N ÷ divisor**.
+   - Example: If **N = 100**, valid divisors are **2, 4, 5, 10, 20, 25, 50**.
+
+2. **Subtracting One**:
+   - If the current shared number **N** is **prime**, the player must:
+     - **Subtract 1** from **N**.
+     - **Update** **N** to be **N - 1**.
+   - Example: If **N = 7**, subtracting **1** results in **N = 6**.
+
+3. **Winning the Game**:
+   - The player who reduces the shared number to **1** on their turn **wins** the game.
+   - The game ends immediately when **N** becomes **1**.
+
+4. **Valid Moves**:
+   - **Proper Divisors Only**: When dividing, the chosen divisor must not be **1** or **N** itself.
+   - **Exact Division**: The division must result in an integer without any remainder.
+   - **No Passes**: Players cannot skip their turn; a valid move must be made if possible.
+
+5. **Example Divisors**:
+   - For **N = 28**:
+     - Valid divisors: **2, 4, 7, 14**.
+     - Invalid divisors: **1** (too small), **28** (equal to **N**), **3** (does not divide evenly).
+
+---
+
+### **Scoring**
+
+- **Victory**: Achieved by the player who successfully reduces the shared number to **1** during their turn.
+  
+- **No Draws**: The game cannot end in a draw; it will always conclude with one player winning.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting Number**: 15
+
+---
+
+**Player 1's Turn**:
+- **Current N**: 15 (composite).
+- **Divisors of 15**: 3, 5.
+- **Chooses Divisor**: 5.
+- **Calculation**: 15 ÷ 5 = 3.
+- **Updated N**: 3.
+  
+---
+
+**Player 2's Turn**:
+- **Current N**: 3 (prime).
+- **Must Subtract 1**: 3 - 1 = 2.
+- **Updated N**: 2.
+
+---
+
+**Player 1's Turn**:
+- **Current N**: 2 (prime).
+- **Must Subtract 1**: 2 - 1 = 1.
+- **Updated N**: 1.
+- **Player 1 Wins!**
+
+---
+
+#### **Detailed Turn-by-Turn Example**
+
+**Starting Number**: 100
+
+---
+
+**Player 1's Turn**:
+- **Current N**: 100 (composite).
+- **Divisors of 100**: 2, 4, 5, 10, 20, 25, 50.
+- **Chooses Divisor**: 4.
+- **Calculation**: 100 ÷ 4 = 25.
+- **Updated N**: 25.
+
+---
+
+**Player 2's Turn**:
+- **Current N**: 25 (composite).
+- **Divisors of 25**: 5.
+- **Chooses Divisor**: 5.
+- **Calculation**: 25 ÷ 5 = 5.
+- **Updated N**: 5.
+
+---
+
+**Player 1's Turn**:
+- **Current N**: 5 (prime).
+- **Must Subtract 1**: 5 - 1 = 4.
+- **Updated N**: 4.
+
+---
+
+**Player 2's Turn**:
+- **Current N**: 4 (composite).
+- **Divisors of 4**: 2.
+- **Chooses Divisor**: 2.
+- **Calculation**: 4 ÷ 2 = 2.
+- **Updated N**: 2.
+
+---
+
+**Player 1's Turn**:
+- **Current N**: 2 (prime).
+- **Must Subtract 1**: 2 - 1 = 1.
+- **Updated N**: 1.
+- **Player 1 Wins!**
+
+---
+
+### **Command-Line Interaction Example**
+
+Assuming a command-line interface where players input their chosen divisors or confirm subtraction:
+
+#### **Game Start**
+
+```
+Starting Number (N): 100
+Player 1 begins.
+```
+
+---
+
+**Player 1's Turn**:
+```
+Current N: 100
+Divisors of N (excluding 1 and N): 2, 4, 5, 10, 20, 25, 50
+Enter your chosen divisor: 4
+You chose to divide by 4. New N is 25.
+```
+
+---
+
+**Player 2's Turn**:
+```
+Current N: 25
+Divisors of N (excluding 1 and N): 5
+Enter your chosen divisor: 5
+You chose to divide by 5. New N is 5.
+```
+
+---
+
+**Player 1's Turn**:
+```
+Current N: 5
+N is prime. You must subtract 1.
+Subtracting 1. New N is 4.
+```
+
+---
+
+**Player 2's Turn**:
+```
+Current N: 4
+Divisors of N (excluding 1 and N): 2
+Enter your chosen divisor: 2
+You chose to divide by 2. New N is 2.
+```
+
+---
+
+**Player 1's Turn**:
+```
+Current N: 2
+N is prime. You must subtract 1.
+Subtracting 1. New N is 1.
+Player 1 wins!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Anticipate your opponent's options based on your current move.
+  
+- **Prime Numbers**: Forcing the shared number into a prime can limit your opponent's moves.
+  
+- **Divisor Choice**: Choosing larger divisors can reduce the shared number more quickly but may offer strategic opportunities for your opponent.
+
+---
+
+**Enjoy the battle of wits in Divide and Conquer!**

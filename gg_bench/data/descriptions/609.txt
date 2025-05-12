@@ -1,0 +1,199 @@
+# GridLockdown
+
+## Objective
+
+GridLockdown is a strategic two-player turn-based game played on a 4x4 grid. The primary goal is to be the last player able to make a valid move. Players take turns moving their marker according to specific rules, and the first player who cannot move loses the game. Skillful planning and foresight are essential to outmaneuver your opponent and secure victory.
+
+## Setup
+
+- **Game Grid**: A 4x4 grid consisting of 16 cells numbered from 1 to 16.
+
+- **Player Markers**: Each player has a unique marker (`X` for Player 1 and `O` for Player 2).
+
+- **Starting Positions**:
+  - Player 1 begins by placing their marker on any one of the 16 cells.
+  - Player 2 then places their marker on any unoccupied cell.
+
+- **Occupied Cells**: Keep track of occupied cells, as they cannot be landed on again during the game.
+
+## Game Components
+
+- **Grid**:
+  ```
+   1   2   3   4
+   5   6   7   8
+   9  10  11  12
+  13  14  15  16
+  ```
+
+- **Markers**:
+  - Player 1: `X`
+  - Player 2: `O`
+
+- **Command-Line Interface**: Players input the number of the cell they wish to move to when prompted.
+
+## Turns
+
+1. **Turn Order**:
+   - Player 1 makes the first move.
+   - Players alternate turns thereafter.
+
+2. **Player Actions on Their Turn**:
+   - **Move Marker**: Move your marker to a valid adjacent unoccupied cell.
+   - **Pass**: If no valid moves are available, you must pass (which results in a loss).
+
+3. **Turn Progression**:
+   - After a player moves, the cell they moved from remains occupied and cannot be used again.
+   - The game continues until a player cannot make a valid move on their turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Adjacent Moves**:
+  - A move consists of sliding your marker to an adjacent unoccupied cell.
+  - Cells are considered adjacent if they are directly horizontal, vertical, or diagonal neighbors.
+
+- **Occupied Cells**:
+  - Neither player can move into a cell that is already occupied.
+  - Once a cell has been occupied by either player, it remains unavailable for the rest of the game.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - If a player has no valid moves on their turn, they lose the game.
+  - The opposing player is declared the winner.
+
+- **No Draws**:
+  - There is no possibility of a draw in GridLockdown; the game will always have a winner.
+
+### Special Conditions
+
+- **Edge of the Grid**:
+  - Movement wraps are not allowed; you cannot move off the grid or wrap around edges.
+  - All moves must stay within the boundaries of the 4x4 grid.
+
+## Scoring
+
+- **Single-Game Win**:
+  - The winner is the player who successfully forces their opponent into a position with no valid moves.
+
+- **Match Play (Optional)**:
+  - Players can play multiple games and keep track of victories to determine an overall champion.
+  - One point is awarded per game won.
+
+## Examples
+
+### Sample Game Play
+
+Below is a sample turn-by-turn playthrough to illustrate how the game progresses.
+
+#### Initial Grid
+
+```
+ 1  2  3  4
+ 5  6  7  8
+ 9 10 11 12
+13 14 15 16
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Places `X` on cell **6**.
+
+#### Turn 2: Player 2
+
+- **Action**: Places `O` on cell **11**.
+
+#### Grid After Initial Placement
+
+```
+ 1  2  3  4
+ 5  X  7  8
+ 9 10  O 12
+13 14 15 16
+```
+
+#### Turn 3: Player 1
+
+- **Possible Moves from Cell 6**:
+  - Adjacent cells: 1, 2, 3, 5, 7, 9, 10, 11 (cells occupied: 6 and 11).
+
+- **Action**: Moves `X` from cell **6** to cell **7**.
+
+- **Occupied Cells**: 6 (remains occupied), 7 (now occupied by `X`).
+
+#### Turn 4: Player 2
+
+- **Possible Moves from Cell 11**:
+  - Adjacent cells: 6, 7, 8, 10, 12, 14, 15, 16 (cells occupied: 6, 7, and 11).
+
+- **Action**: Moves `O` from cell **11** to cell **10**.
+
+- **Occupied Cells**: 6, 7, 10 (now occupied by `O`), 11.
+
+#### Grid After Two Full Turns
+
+```
+ 1  2  3  4
+ 5  X  X  8
+ 9  O  O 12
+13 14 15 16
+```
+
+#### Subsequent Turns
+
+Players continue moving their markers to adjacent unoccupied cells, marking the cells as occupied.
+
+#### Endgame Scenario
+
+Suppose later in the game:
+
+- **Player 1's Marker Position**: Cell **3**
+
+- **Available Moves for Player 1**: Cells **2**, **4**, **7**
+
+- **All Adjacent Cells Occupied Except**: None
+
+- **Player 1 Action**: Cannot move (no available adjacent unoccupied cells).
+
+- **Result**: Player 1 loses, Player 2 wins.
+
+## Command-Line Interaction Example
+
+```
+Welcome to GridLockdown!
+
+Player 1, place your marker (enter cell number 1-16): 6
+
+Player 2, place your marker (enter cell number 1-16, excluding occupied cells): 11
+
+Game Start!
+
+Player 1's turn. Your marker is at cell 6.
+Available moves: 1, 2, 3, 5, 7, 9, 10
+Enter the cell number to move to: 7
+
+Player 2's turn. Your marker is at cell 11.
+Available moves: 8, 12, 14, 15, 16
+Enter the cell number to move to: 12
+
+...
+
+Player 1 has no valid moves left!
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Control the Center**: Occupying central positions increases your movement options.
+
+- **Block Opponent Paths**: Anticipate your opponent's moves and occupy cells that limit their options.
+
+- **Plan Ahead**: Think several moves ahead to avoid getting trapped.
+
+- **Conserve Space**: Avoid moving into tight areas of the grid too early.
+
+## Conclusion
+
+GridLockdown is a simple yet deeply strategic game that tests your foresight and planning skills. Each move can have significant consequences, so play thoughtfully and enjoy the challenge!

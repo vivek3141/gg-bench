@@ -1,0 +1,336 @@
+# Primal Duel: The Battle of Composite Numbers
+
+## Objective:
+
+Primal Duel is a two-player turn-based game where players compete to avoid creating a prime number. Starting from the number 1, players take turns multiplying the current number by an integer between 2 and 9 inclusive. The resulting product becomes the new current number. The primary goal is to force your opponent into a position where they must create a prime number on their turn. The player who produces a prime number loses the game.
+
+---
+
+## Setup:
+
+- **Starting Number**: The game begins with a current number of **1**.
+- **Players**: Two players agree on who will be **Player 1** and **Player 2**.
+- **No Additional Components**: No physical components are required; all interactions occur via command-line inputs.
+
+---
+
+## Game Components:
+
+1. **Current Number**:
+   - A shared integer that players modify during their turns.
+   - Initially set to **1**.
+   - Updated each turn based on player actions.
+
+2. **Allowed Multipliers**:
+   - Integers from **2** to **9** inclusive.
+   - Players select one multiplier per turn.
+
+---
+
+## Turns:
+
+- Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Select Multiplier**: The player chooses a multiplier between 2 and 9.
+  2. **Update Current Number**: Multiply the current number by the selected multiplier.
+     - **New Current Number** = Current Number × Multiplier
+  3. **Prime Check**: Determine if the new current number is a prime number.
+     - If it **is prime**, the player **loses**.
+     - If it **is not prime**, the game proceeds to the next player's turn.
+
+---
+
+## Rules and Mechanics:
+
+1. **Multiplier Selection**:
+   - On their turn, a player **must** select a multiplier between **2** and **9**.
+   - No skipping or passing turns is allowed.
+
+2. **Current Number Update**:
+   - The current number is continually updated with each valid move.
+   - Example: If the current number is 4 and the player selects 3, the new current number is 12.
+
+3. **Prime Number Determination**:
+   - A number greater than 1 is **prime** if it has no positive divisors other than 1 and itself.
+   - The game includes functionality to check if a number is prime.
+
+4. **Losing Condition**:
+   - If a player's move results in a prime number, they **lose the game immediately**.
+   - The opponent is declared the **winner**.
+
+5. **Winning Condition**:
+   - Force your opponent to create a prime number on their turn.
+   - Avoid creating a prime number on your own turn.
+
+6. **Game Continuity**:
+   - There is **no upper limit** to the current number unless players agree to set one.
+   - The game continues until a player loses by making the current number prime.
+
+7. **No Draws**:
+   - The game cannot end in a draw.
+
+---
+
+## Scoring:
+
+- **Win/Loss Format**:
+  - The game outcome is binary: one player wins, and one player loses.
+  - Players may keep track of wins over multiple rounds for extended play.
+
+---
+
+## Examples:
+
+### Example Game:
+
+#### Turn 1:
+- **Player 1's Move**:
+  - Current Number: **1**
+  - Chooses Multiplier: **4**
+  - New Current Number: 1 × 4 = **4**
+  - 4 is **not prime**.
+  - Game continues.
+
+#### Turn 2:
+- **Player 2's Move**:
+  - Current Number: **4**
+  - Chooses Multiplier: **3**
+  - New Current Number: 4 × 3 = **12**
+  - 12 is **not prime**.
+  - Game continues.
+
+#### Turn 3:
+- **Player 1's Move**:
+  - Current Number: **12**
+  - Chooses Multiplier: **2**
+  - New Current Number: 12 × 2 = **24**
+  - 24 is **not prime**.
+  - Game continues.
+
+#### Turn 4:
+- **Player 2's Move**:
+  - Current Number: **24**
+  - Chooses Multiplier: **5**
+  - New Current Number: 24 × 5 = **120**
+  - 120 is **not prime**.
+  - Game continues.
+
+#### Turn 5:
+- **Player 1's Move**:
+  - Current Number: **120**
+  - Chooses Multiplier: **7**
+  - New Current Number: 120 × 7 = **840**
+  - 840 is **not prime**.
+  - Game continues.
+
+#### Turn 6:
+- **Player 2's Move**:
+  - Current Number: **840**
+  - Chooses Multiplier: **2**
+  - New Current Number: 840 × 2 = **1680**
+  - 1680 is **not prime**.
+  - Game continues.
+
+#### Turn 7:
+- **Player 1's Move**:
+  - Current Number: **1680**
+  - Chooses Multiplier: **3**
+  - New Current Number: 1680 × 3 = **5040**
+  - 5040 is **not prime**.
+  - Game continues.
+
+#### Turn 8:
+- **Player 2's Move**:
+  - Current Number: **5040**
+  - Chooses Multiplier: **2**
+  - New Current Number: 5040 × 2 = **10080**
+  - 10080 is **not prime**.
+  - Game continues.
+
+#### Turn 9:
+- **Player 1's Move**:
+  - Current Number: **10080**
+  - Chooses Multiplier: **7**
+  - New Current Number: 10080 × 7 = **70560**
+  - 70560 is **not prime**.
+  - Game continues.
+
+#### Turn 10:
+- **Player 2's Move**:
+  - Current Number: **70560**
+  - Chooses Multiplier: **2**
+  - New Current Number: 70560 × 2 = **141120**
+  - 141120 is **not prime**.
+  - Game continues.
+
+#### Turn 11:
+- **Player 1's Move**:
+  - Current Number: **141120**
+  - Chooses Multiplier: **3**
+  - New Current Number: 141120 × 3 = **423360**
+  - 423360 is **not prime**.
+  - Game continues.
+
+#### Turn 12:
+- **Player 2's Move**:
+  - Current Number: **423360**
+  - Chooses Multiplier: **2**
+  - New Current Number: 423360 × 2 = **846720**
+  - 846720 is **not prime**.
+  - Game continues.
+
+#### Turn 13:
+- **Player 1's Move**:
+  - Current Number: **846720**
+  - Chooses Multiplier: **5**
+  - New Current Number: 846720 × 5 = **4233600**
+  - 4233600 is **not prime**.
+  - Game continues.
+
+#### Turn 14:
+- **Player 2's Move**:
+  - Current Number: **4233600**
+  - Chooses Multiplier: **2**
+  - New Current Number: 4233600 × 2 = **8467200**
+  - 8467200 is **not prime**.
+  - Game continues.
+
+#### Turn 15:
+- **Player 1's Move**:
+  - Current Number: **8467200**
+  - Chooses Multiplier: **7**
+  - New Current Number: 8467200 × 7 = **59270400**
+  - 59270400 is **not prime**.
+  - Game continues.
+
+#### Turn 16:
+- **Player 2's Move**:
+  - Current Number: **59270400**
+  - Chooses Multiplier: **2**
+  - New Current Number: 59270400 × 2 = **118540800**
+  - 118540800 is **not prime**.
+  - Game continues.
+
+#### Turn 17:
+- **Player 1's Move**:
+  - Current Number: **118540800**
+  - Chooses Multiplier: **3**
+  - New Current Number: 118540800 × 3 = **355622400**
+  - 355622400 is **not prime**.
+  - Game continues.
+
+#### Turn 18:
+- **Player 2's Move**:
+  - Current Number: **355622400**
+  - Chooses Multiplier: **2**
+  - New Current Number: 355622400 × 2 = **711244800**
+  - 711244800 is **not prime**.
+  - Game continues.
+
+#### Turn 19:
+- **Player 1's Move**:
+  - Current Number: **711244800**
+  - Chooses Multiplier: **9**
+  - New Current Number: 711244800 × 9 = **6401203200**
+  - 6401203200 is **not prime**.
+  - Game continues.
+
+#### Turn 20:
+- **Player 2's Move**:
+  - Current Number: **6401203200**
+  - Chooses Multiplier: **2**
+  - New Current Number: 6401203200 × 2 = **12802406400**
+  - 12802406400 is **not prime**.
+  - Game continues.
+
+#### Turn 21:
+- **Player 1's Move**:
+  - Current Number: **12802406400**
+  - Chooses Multiplier: **7**
+  - New Current Number: 12802406400 × 7 = **89616844800**
+  - 89616844800 is **not prime**.
+  - Game continues.
+
+#### Turn 22:
+- **Player 2's Move**:
+  - Current Number: **89616844800**
+  - Chooses Multiplier: **2**
+  - New Current Number: 89616844800 × 2 = **179233689600**
+  - 179233689600 is **not prime**.
+  - Game continues.
+
+#### Turn 23:
+- **Player 1's Move**:
+  - Current Number: **179233689600**
+  - Chooses Multiplier: **3**
+  - New Current Number: 179233689600 × 3 = **537701068800**
+  - 537701068800 is **not prime**.
+  - Game continues.
+
+#### Turn 24:
+- **Player 2's Move**:
+  - Current Number: **537701068800**
+  - Chooses Multiplier: **2**
+  - New Current Number: 537701068800 × 2 = **1075402137600**
+  - 1075402137600 is **not prime**.
+  - Game continues.
+
+The game continues in this manner, with players strategically selecting multipliers to avoid producing a prime number. Eventually, one player will be forced into a position where any multiplier they choose results in a prime number, thereby losing the game.
+
+---
+
+### Command-line Interaction Example:
+
+```
+Game Start!
+Current Number: 1
+
+Player 1, choose a multiplier (2-9): 4
+> New Current Number: 1 * 4 = 4
+4 is not prime. Game continues.
+
+Player 2, choose a multiplier (2-9): 3
+> New Current Number: 4 * 3 = 12
+12 is not prime. Game continues.
+
+Player 1, choose a multiplier (2-9): 7
+> New Current Number: 12 * 7 = 84
+84 is not prime. Game continues.
+
+Player 2, choose a multiplier (2-9): 2
+> New Current Number: 84 * 2 = 168
+168 is not prime. Game continues.
+
+Player 1, choose a multiplier (2-9): 5
+> New Current Number: 168 * 5 = 840
+840 is not prime. Game continues.
+
+Player 2, choose a multiplier (2-9): 2
+> New Current Number: 840 * 2 = 1680
+1680 is not prime. Game continues.
+
+... [Game continues] ...
+
+Player 1, choose a multiplier (2-9): 2
+> New Current Number: [Current Number] * 2 = [Prime Number]
+[Prime Number] is prime.
+
+Player 1 has created a prime number and loses.
+Player 2 wins the game!
+```
+
+---
+
+## Strategy Tips:
+
+- **Avoid Multipliers Leading to Primes**: Be cautious of multipliers that might result in a prime number when multiplied with the current number.
+- **Anticipate Opponent's Moves**: Consider how your current move will affect your opponent's options.
+- **Control the Game Pace**: Sometimes choosing smaller multipliers can lead to a better strategic position.
+- **Know Your Primes**: Familiarity with prime numbers can give you an advantage in avoiding them.
+- **Force the Opponent's Hand**: Aim to put the opponent in a position where any move they make will result in a prime number.
+
+---
+
+## Conclusion:
+
+Primal Duel is a unique and engaging game that combines simple arithmetic with strategic planning. It is easy to code and play in a command-line interface, making it accessible for players and programmers alike. The game's mechanics ensure that it ends quickly and that a skilled player can consistently outperform an unskilled one. Enjoy the challenge of avoiding primes in this mathematical showdown!

@@ -1,0 +1,249 @@
+# Binary Divisibility Duel
+
+## Objective
+
+**Primary Goal**: Be the first player to create a binary number divisible by the target divisor through strategic bit placement.
+
+Players take turns appending bits (0 or 1) to a shared binary string. The objective is to create a binary number that, when converted to decimal, is divisible by a predefined target number. The player who appends a bit that results in such a number wins the game.
+
+---
+
+## Setup
+
+1. **Initialize the Game**:
+   - Start with an empty binary string: `""`.
+
+2. **Determine the Target Divisor**:
+   - Agree on a target divisor for the game (e.g., 3, 5, 7).
+   - For a quick game, choose a smaller number (e.g., 3).
+   - For more complexity, choose a larger prime number (e.g., 7).
+
+3. **Decide on the Starting Player**:
+   - Flip a coin, or have the program randomly select which player goes first.
+
+---
+
+## Game Components
+
+- **Binary String**:
+  - A shared string that represents the binary number being formed.
+  - Initially empty and grows as players append bits.
+
+- **Bits**:
+  - Digits `0` and `1` that players can append to the binary string.
+  - Represent the fundamental components of binary numbers.
+
+- **Target Divisor**:
+  - A positive integer agreed upon before the game starts.
+  - The binary number is converted to decimal and checked for divisibility by this number.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns throughout the game.
+   - The player chosen during setup goes first.
+
+2. **Actions During a Turn**:
+   - **Append a Bit**:
+     - Choose to add either `'0'` or `'1'` to the **end** of the binary string.
+     - Input the chosen bit when prompted.
+   - **Update the Binary String**:
+     - The binary string is updated to include the new bit.
+     - Example: If the current string is `'101'` and the player adds `'1'`, it becomes `'1011'`.
+
+3. **Turn Progression**:
+   - After a player concludes their turn by appending a bit, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Appending Bits**:
+   - Players can only add **one bit** (`'0'` or `'1'`) per turn.
+   - The bit is always appended to the **end** of the current binary string.
+
+2. **Valid Moves**:
+   - The binary string **must not** start with a `'0'` unless the string is `'0'` itself.
+   - Example: The first bit cannot be `'0'`; the string cannot be `'0'` followed by other bits like `'01'`.
+
+3. **Winning the Game**:
+   - **Victory Condition**:
+     - A player wins if, after their turn, the binary string represents a decimal number divisible by the **target divisor**.
+     - The binary number must be at least **four bits long** before a win can occur (to ensure the game doesn't end too quickly).
+   - **Checking for Divisibility**:
+     - After each turn, convert the binary string to its decimal equivalent.
+     - Check if this decimal number is divisible by the target divisor.
+     - If divisible, the player who just played wins.
+     - If not, the game continues.
+
+4. **Example of Divisibility Check**:
+   - Binary string: `'1010'`
+   - Decimal conversion: `10`
+   - If the target divisor is `5`, since `10 % 5 == 0`, the player wins.
+
+5. **Game Continuation**:
+   - If the binary number is not divisible by the target, the game proceeds to the next player's turn.
+
+6. **Invalid Moves and Forfeiture**:
+   - If a player attempts to make an invalid move (e.g., starting the string with `'0'` after the first turn), they must redo their turn with a valid move.
+   - Repeated invalid moves may result in forfeiture, at the discretion of the players or enforced by the program.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who creates a binary number divisible by the target divisor scores one point and wins the round.
+- **Match Play**:
+  - Players can agree to play multiple rounds.
+  - Keep track of the number of rounds each player wins.
+  - The player with the most points after a set number of rounds (e.g., best of five) is the overall winner.
+
+---
+
+## Examples
+
+### Example Scenario 1: Target Divisor 5
+
+**Setup**:
+- Target Divisor: `5`
+- Starting Binary String: `""`
+- Players: Player 1 and Player 2
+
+#### Turn Progression:
+
+1. **Player 1's Turn**:
+   - Appends `'1'` to the binary string.
+   - Binary String: `'1'`
+   - Decimal Value: `1`
+   - Divisible by 5? `No`
+   - Game continues.
+
+2. **Player 2's Turn**:
+   - Appends `'0'`.
+   - Binary String: `'10'`
+   - Decimal Value: `2`
+   - Divisible by 5? `No`
+   - Game continues.
+
+3. **Player 1's Turn**:
+   - Appends `'1'`.
+   - Binary String: `'101'`
+   - Decimal Value: `5`
+   - Divisible by 5? `Yes`
+   - **Player 1 wins**.
+
+### Example Scenario 2: Target Divisor 3
+
+**Setup**:
+- Target Divisor: `3`
+- Starting Binary String: `""`
+- Players: Player A and Player B
+
+#### Turn Progression:
+
+1. **Player A's Turn**:
+   - Appends `'1'`.
+   - Binary String: `'1'`
+   - Decimal Value: `1`
+   - Divisible by 3? `No`
+   - Game continues.
+
+2. **Player B's Turn**:
+   - Appends `'1'`.
+   - Binary String: `'11'`
+   - Decimal Value: `3`
+   - Divisible by 3? `Yes`
+   - Note: The binary string is only two bits long; minimum length of four bits is required.
+   - Game continues.
+
+3. **Player A's Turn**:
+   - Appends `'0'`.
+   - Binary String: `'110'`
+   - Decimal Value: `6`
+   - Divisible by 3? `Yes`
+   - Note: String length is now three bits; still below minimum length.
+   - Game continues.
+
+4. **Player B's Turn**:
+   - Appends `'0'`.
+   - Binary String: `'1100'`
+   - Decimal Value: `12`
+   - Divisible by 3? `Yes`
+   - String length is four bits.
+   - **Player B wins**.
+
+---
+
+## Command-Line Interaction Sample
+
+Below is how the game might proceed in a command-line interface:
+
+**Game Start**:
+```
+Welcome to Binary Divisibility Duel!
+Target Divisor: 5
+Player 1 begins.
+
+Current Binary String: 
+Player 1, enter your bit (0 or 1): 1
+```
+
+**After Player 1's Turn**:
+```
+Current Binary String: 1
+Decimal Value: 1
+Not divisible by 5. Game continues.
+
+Player 2's turn.
+Player 2, enter your bit (0 or 1): 0
+```
+
+**After Player 2's Turn**:
+```
+Current Binary String: 10
+Decimal Value: 2
+Not divisible by 5. Game continues.
+
+Player 1's turn.
+Player 1, enter your bit (0 or 1): 1
+```
+
+**Player 1 Wins**:
+```
+Current Binary String: 101
+Decimal Value: 5
+Divisible by 5!
+
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Considerations
+
+- **Anticipate Opponent's Moves**:
+  - Keep track of the binary string and consider how adding `'0'` or `'1'` will affect divisibility in future turns.
+- **Bit Selection**:
+  - Choosing between `'0'` and `'1'` can set traps or force the opponent into a losing position.
+- **Mathematical Analysis**:
+  - Understanding binary to decimal conversion and divisibility rules can provide a strategic advantage.
+- **Length Requirement**:
+  - Use the minimum length rule to extend the game and create more opportunities for strategic play.
+
+---
+
+## Tips for Players
+
+- **Practice Conversion**:
+  - Familiarize yourself with converting binary numbers to decimal to quickly assess the game's state.
+- **Plan Ahead**:
+  - Think a few moves ahead to avoid accidentally allowing your opponent to win.
+- **Use the Minimum Length Rule**:
+  - Early in the game, focus on building the string without making it divisible, forcing the opponent to find moves that also avoid winning prematurely.
+
+---
+
+By understanding the rules and mechanics of Binary Divisibility Duel, players can engage in a battle of wits, strategy, and mathematical prowess. Enjoy the game, and may the best binary strategist win!

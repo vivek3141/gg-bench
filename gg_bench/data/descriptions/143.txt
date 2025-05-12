@@ -1,0 +1,115 @@
+# Divisor Duel: A Strategic Numerical Game
+
+## Objective
+
+**Divisor Duel** is a two-player, turn-based numerical game of strategy and foresight. The primary goal is to force your opponent into a position where they cannot make a valid move, thereby securing your victory. Players achieve victory by cleverly selecting divisors to reduce the shared number to a point where the opponent cannot proceed according to the game rules.
+
+## Setup
+
+- **Starting Number**: The game begins with a positive integer \( N \) greater than 1. For a quick game, a smaller number like 16 or 20 is recommended.
+- **Player Roles**: Two players are designated as Player 1 and Player 2. The players decide who goes first, perhaps by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Shared Number (N)**: The central element of the game is the shared positive integer \( N \). This number changes as players make their moves.
+- **Divisors**: Proper divisors of \( N \) (positive integers that divide \( N \) evenly, excluding 1 and \( N \) itself).
+
+There are no physical components required. The game can be easily played in a command-line interface where players input and track values.
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns, starting with Player 1.
+  - On each turn, the active player performs the following actions:
+    1. Identifies all proper divisors of the current shared number \( N \).
+    2. Chooses one proper divisor to subtract from \( N \).
+    3. Subtracts the chosen divisor from \( N \), updating \( N \) for the next turn.
+- **Turn Progression**: The updated value of \( N \) is used by the opponent on their turn.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves**: On your turn, you must subtract a proper divisor of \( N \) (excluding 1 and \( N \) itself) from \( N \).
+   - *Example*: If \( N = 16 \), the proper divisors are 2, 4, and 8.
+2. **Updating N**: After subtracting the chosen divisor, the result becomes the new \( N \) for the next player’s turn.
+3. **Winning the Game**: If a player cannot make a valid move because \( N \) is 1 or has no proper divisors (other than 1), that player loses, and the opponent wins.
+4. **Forbidden Moves**: 
+   - You cannot subtract 1 or \( N \) itself.
+   - Negative results are not allowed; \( N \) must remain a positive integer greater than 0.
+5. **No Skipping**: Players cannot skip their turn. If a valid move is possible, it must be made.
+
+### Special Conditions
+
+- **When N is Prime**: If \( N \) is a prime number greater than 2, the only proper divisor is 1 (which is not allowed). Therefore, the player faced with a prime \( N \) greater than 2 loses, as they cannot make a valid move.
+- **Endgame**: If \( N \) reaches 1, the next player cannot make a move and thus loses the game.
+
+## Scoring
+
+- **Victory**: Winning the game occurs by making the last valid move that reduces \( N \) to a state where the opponent has no legal moves.
+- **No Points System**: The game does not track points. The focus is on strategic reduction of \( N \) and forcing the opponent into an untenable position.
+- **Match Play**: For extended play, players can compete in a series of games, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Starting Number \( N = 16 \)**
+
+1. **Player 1's Turn**:
+   - Proper divisors of 16: 2, 4, 8.
+   - Player 1 chooses to subtract 8.
+   - New \( N \) is \( 16 - 8 = 8 \).
+
+2. **Player 2's Turn**:
+   - Proper divisors of 8: 2, 4.
+   - Player 2 chooses to subtract 4.
+   - New \( N \) is \( 8 - 4 = 4 \).
+
+3. **Player 1's Turn**:
+   - Proper divisors of 4: 2.
+   - Player 1 subtracts 2.
+   - New \( N \) is \( 4 - 2 = 2 \).
+
+4. **Player 2's Turn**:
+   - \( N = 2 \) (which is prime).
+   - Proper divisors of 2: none (since 1 is not allowed).
+   - Player 2 cannot make a move and loses.
+   - **Player 1 wins the game**.
+
+### Command-Line Interaction Sample
+
+Assuming the game is implemented in a command-line interface, a sample interaction might look like this:
+
+```
+Game Start: N = 16
+
+Player 1's Turn
+Available divisors of 16: [2, 4, 8]
+Enter the divisor to subtract: 8
+You subtracted 8. New N is 8.
+
+Player 2's Turn
+Available divisors of 8: [2, 4]
+Enter the divisor to subtract: 4
+You subtracted 4. New N is 4.
+
+Player 1's Turn
+Available divisors of 4: [2]
+Enter the divisor to subtract: 2
+You subtracted 2. New N is 2.
+
+Player 2's Turn
+No valid moves available. You lose!
+Player 1 wins the game.
+```
+
+## Strategic Tips
+
+- **Anticipate Moves**: Look ahead to predict the sequence of possible moves and force the opponent into a losing position.
+- **Control Prime Numbers**: Try to maneuver \( N \) into a prime number on your opponent’s turn, leaving them without valid moves.
+- **Minimize Options**: Subtract divisors that reduce \( N \) to numbers with fewer proper divisors, limiting your opponent's choices.
+
+## Conclusion
+
+Divisor Duel is a simple yet strategically deep game that challenges players to think ahead and outmaneuver their opponent. Its minimal components and straightforward rules make it ideal for quick play and easy implementation in a command-line environment. Whether you're honing your mathematical reasoning or just looking for an engaging duel, Divisor Duel offers a unique and competitive experience.

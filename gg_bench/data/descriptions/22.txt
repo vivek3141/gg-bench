@@ -1,0 +1,212 @@
+**Mirror Duel: Rule Book**
+
+---
+
+### **Objective**
+
+Be the first to force your opponent into creating a palindromic sequence of numbers. The primary goal is to strategically add numbers to a shared sequence while avoiding the formation of a palindrome. A palindrome is a sequence that reads the same forwards and backwards (e.g., `1-2-3-2-1`). The player who adds a number that results in a palindromic sequence loses the game.
+
+---
+
+### **Setup**
+
+- The game is played between two players.
+- Begin with an empty sequence displayed in the command-line interface.
+- No additional setup is required; players alternate turns starting with Player 1.
+
+---
+
+### **Game Components**
+
+- **Shared Sequence**: A list of numbers that both players contribute to during the game.
+- **Numbers**: Digits from `1` to `9` that players can add to the sequence.
+- **Positions**: Players can add numbers to either the **front** (left side) or **back** (right side) of the sequence.
+
+---
+
+### **Turns**
+
+- Players take turns alternately, starting with **Player 1**.
+- **During a Turn**, a player must:
+  1. Choose a number from `1` to `9`.
+  2. Decide whether to add the number to the **front** or the **back** of the sequence.
+  3. Update the shared sequence accordingly.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Adding Numbers**:
+   - On your turn, select any digit between `1` and `9`.
+   - Place the chosen number at either end of the sequence:
+     - **Front**: The number becomes the new first element.
+     - **Back**: The number becomes the new last element.
+
+2. **Avoid Palindromes**:
+   - The shared sequence must **not** form a palindrome after any turn.
+   - A palindrome is a sequence that reads identically forwards and backwards (e.g., `2-4-6-4-2`).
+
+3. **Losing the Game**:
+   - If a player's move results in the sequence becoming a palindrome, that player **loses**.
+   - Carefully consider each move to avoid creating a palindromic sequence.
+
+4. **Valid Moves**:
+   - Players **must** add a number on their turn; passing is not allowed.
+   - All numbers from `1` to `9` are always available regardless of previous moves.
+   - There is no limit to how many times a particular number can be used in the sequence.
+
+5. **End of the Game**:
+   - The game ends immediately when a palindrome is formed.
+   - The player who did **not** create the palindrome is declared the **winner**.
+
+---
+
+### **Scoring**
+
+- **Win**: If your opponent creates a palindromic sequence, you win the game.
+- **Loss**: If you create a palindromic sequence on your turn, you lose the game.
+- **No Draws**: The game cannot end in a draw; there is always a winner and a loser in each game.
+
+---
+
+### **Examples**
+
+#### **Example 1: Basic Gameplay**
+
+- **Starting Sequence**: (empty)
+
+1. **Player 1's Turn**:
+   - Chooses number `3`.
+   - Adds `3` to the **back**.
+   - **Sequence**: `3`
+
+2. **Player 2's Turn**:
+   - Chooses number `5`.
+   - Adds `5` to the **front**.
+   - **Sequence**: `5-3`
+
+3. **Player 1's Turn**:
+   - Chooses number `7`.
+   - Adds `7` to the **back**.
+   - **Sequence**: `5-3-7`
+   - This sequence is **not** a palindrome.
+
+4. **Player 2's Turn**:
+   - Chooses number `5`.
+   - Adds `5` to the **back**.
+   - **Sequence**: `5-3-7-5`
+   - This sequence is **not** a palindrome.
+
+5. **Player 1's Turn**:
+   - Chooses number `5`.
+   - Adds `5` to the **front**.
+   - **Sequence**: `5-5-3-7-5`
+   - This sequence **is** a palindrome (`5-5-3-7-5` reads the same forwards and backwards).
+   - **Player 1** loses.
+   - **Player 2** wins.
+
+#### **Example 2: Strategic Play**
+
+- **Starting Sequence**: (empty)
+
+1. **Player 1's Turn**:
+   - Chooses number `1`.
+   - Adds `1` to the **front**.
+   - **Sequence**: `1`
+
+2. **Player 2's Turn**:
+   - Chooses number `2`.
+   - Adds `2` to the **back**.
+   - **Sequence**: `1-2`
+
+3. **Player 1's Turn**:
+   - Chooses number `3`.
+   - Adds `3` to the **front**.
+   - **Sequence**: `3-1-2`
+
+4. **Player 2's Turn**:
+   - Chooses number `4`.
+   - Adds `4` to the **back**.
+   - **Sequence**: `3-1-2-4`
+
+5. **Player 1's Turn**:
+   - Chooses number `2`.
+   - Adds `2` to the **front**.
+   - **Sequence**: `2-3-1-2-4`
+   - Sequence is **not** a palindrome.
+
+6. **Player 2's Turn**:
+   - Chooses number `3`.
+   - Adds `3` to the **back**.
+   - **Sequence**: `2-3-1-2-4-3`
+   - Sequence is **not** a palindrome.
+
+7. **Player 1's Turn**:
+   - Chooses number `2`.
+   - Considers potential moves:
+     - Adding `2` to the front would create `2-2-3-1-2-4-3`, which is not a palindrome.
+     - Adding `2` to the back would create `2-3-1-2-4-3-2`, which is **a palindrome**.
+   - **Player 1** chooses to add `2` to the **front**.
+   - **Sequence**: `2-2-3-1-2-4-3`
+   - Sequence is **not** a palindrome.
+
+8. **Player 2's Turn**:
+   - Chooses number `2`.
+   - Adds `2` to the **back**.
+   - **Sequence**: `2-2-3-1-2-4-3-2`
+   - **Sequence is a palindrome**.
+   - **Player 2** loses.
+   - **Player 1** wins.
+
+---
+
+### **Gameplay Tips**
+
+- **Think Ahead**: Always consider how your move will affect the sequence in future turns. Anticipate your opponent's possible moves.
+- **Sequence Analysis**: Keep track of the symmetry in the sequence to avoid setting up a palindrome.
+- **Forced Moves**: Try to force your opponent into a position where any move they make will create a palindrome.
+- **Flexible Placement**: Remember that you can add numbers to either the front or back, giving you strategic options to alter the sequence.
+
+---
+
+### **Command-Line Interaction Example**
+
+Here's how a sample game might look in a command-line interface:
+
+```
+Welcome to Mirror Duel!
+
+Current Sequence: (empty)
+
+Player 1's Turn:
+Choose a number (1-9): 4
+Add to the (F)ront or (B)ack?: B
+Sequence after move: 4
+
+Player 2's Turn:
+Choose a number (1-9): 5
+Add to the (F)ront or (B)ack?: F
+Sequence after move: 5 4
+
+Player 1's Turn:
+Choose a number (1-9): 6
+Add to the (F)ront or (B)ack?: B
+Sequence after move: 5 4 6
+
+Player 2's Turn:
+Choose a number (1-9): 5
+Add to the (F)ront or (B)ack?: B
+Sequence after move: 5 4 6 5
+
+Player 1's Turn:
+Choose a number (1-9): 5
+Add to the (F)ront or (B)ack?: F
+Sequence after move: 5 5 4 6 5
+Oh no! The sequence is a palindrome!
+Player 1 loses.
+Player 2 wins!
+```
+
+---
+
+**Enjoy playing Mirror Duel and may the most strategic player win!**

@@ -1,0 +1,351 @@
+# Capture Quest: A Strategic Territory Control Game
+
+**Objective**
+
+Capture Quest is a two-player, turn-based strategy game where the objective is to be the first player to control a majority of territories on the board. Players compete to capture territories by strategically placing their limited tokens. The first player to control **three out of five** territories wins the game.
+
+---
+
+**Setup**
+
+- **Game Board**: The game consists of **five territories** labeled **A**, **B**, **C**, **D**, and **E**.
+- **Tokens**: Each player has **five unique tokens**, distinguishable by their markers (`X` for Player 1 and `O` for Player 2).
+- **Starting Conditions**: The game begins with an empty board. Players decide who takes the first turn (e.g., by coin toss).
+
+---
+
+**Game Components**
+
+1. **Territories**:
+
+   - **A**, **B**, **C**, **D**, **E**
+   - Each territory can hold multiple tokens from both players.
+   - Territories are independent and do not affect each other directly.
+
+2. **Tokens**:
+
+   - Each player has **five tokens** denoted by their symbol (`X` or `O`).
+   - Tokens are used to gain control over territories.
+   - Once placed, tokens remain in the territory for the duration of the game.
+
+---
+
+**Turns**
+
+- Players alternate turns, starting with the player determined during setup.
+- **On a Player's Turn**:
+
+  1. **Place a Token**:
+
+     - Choose any territory (**A** to **E**) to place one of your available tokens.
+     - Tokens can be placed in any territory, regardless of the number of tokens already present.
+
+  2. **Update Control**:
+
+     - After placing a token, calculate control for the affected territory.
+     - **Control of a Territory**:
+
+       - A player controls a territory if they have **more tokens** in that territory than their opponent.
+       - If both players have an equal number of tokens, the territory is **contested** and controlled by neither.
+
+- **Turn Progression**:
+
+  - The turn ends after the player places a token and updates control.
+  - The next player then takes their turn.
+
+---
+
+**Rules and Mechanics**
+
+1. **Token Placement**:
+
+   - Players can only place **one token per turn**.
+   - Tokens are **limited**; each player has only **five**.
+   - Once a token is placed, it **cannot be moved**.
+
+2. **Territory Control**:
+
+   - Control is dynamic and can change as players add more tokens.
+   - Control of a territory can shift multiple times during the game.
+
+3. **Winning the Game**:
+
+   - The game is won when a player **controls three territories simultaneously**.
+
+4. **Game End without a Winner**:
+
+   - If all tokens are placed and neither player controls three territories, the game continues without further moves until control changes due to the final placements.
+   - Given the mechanics, a **draw is impossible**; control will eventually favor one player.
+
+---
+
+**Scoring**
+
+- **Control Tracking**:
+
+  - Keep track of territories controlled by each player after every turn.
+  - Territories can be in one of three states:
+    - Controlled by Player 1 (`X`)
+    - Controlled by Player 2 (`O`)
+    - Contested (no control)
+
+- **Victory Condition**:
+
+  - The first player to have **three territories under their control** at the **end of their turn** wins the game.
+
+---
+
+**Examples**
+
+**Example Game Playthrough**
+
+- **Initial State**:
+
+  ```
+  Territories:
+  A: []
+  B: []
+  C: []
+  D: []
+  E: []
+  ```
+
+- **Turn 1**: Player 1 places an `X` token in territory **A**.
+
+  ```
+  Player 1 places an 'X' in A.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: []
+  C: []
+  D: []
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2:
+  ```
+
+- **Turn 2**: Player 2 places an `O` token in territory **B**.
+
+  ```
+  Player 2 places an 'O' in B.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O] - Controlled by Player 2
+  C: []
+  D: []
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2: B
+  ```
+
+- **Turn 3**: Player 1 places an `X` token in territory **B**.
+
+  ```
+  Player 1 places an 'X' in B.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X] - Contested
+  C: []
+  D: []
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2:
+  ```
+
+  - **Note**: Territory B is now contested since both players have one token each.
+
+- **Turn 4**: Player 2 places an `O` token in territory **C**.
+
+  ```
+  Player 2 places an 'O' in C.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X] - Contested
+  C: [O] - Controlled by Player 2
+  D: []
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2: C
+  ```
+
+- **Turn 5**: Player 1 places an `X` token in territory **C**.
+
+  ```
+  Player 1 places an 'X' in C.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X] - Contested
+  C: [O, X] - Contested
+  D: []
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2:
+  ```
+
+- **Turn 6**: Player 2 places an `O` token in territory **B**.
+
+  ```
+  Player 2 places an 'O' in B.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X, O] - Controlled by Player 2
+  C: [O, X] - Contested
+  D: []
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2: B
+  ```
+
+- **Turn 7**: Player 1 places an `X` token in territory **D**.
+
+  ```
+  Player 1 places an 'X' in D.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X, O] - Controlled by Player 2
+  C: [O, X] - Contested
+  D: [X] - Controlled by Player 1
+  E: []
+
+  Controlled Territories:
+  Player 1: A, D
+  Player 2: B
+  ```
+
+- **Turn 8**: Player 2 places an `O` token in territory **D**.
+
+  ```
+  Player 2 places an 'O' in D.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X, O] - Controlled by Player 2
+  C: [O, X] - Contested
+  D: [X, O] - Contested
+  E: []
+
+  Controlled Territories:
+  Player 1: A
+  Player 2: B
+  ```
+
+- **Turn 9**: Player 1 places their last `X` token in territory **E**.
+
+  ```
+  Player 1 places an 'X' in E.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X, O] - Controlled by Player 2
+  C: [O, X] - Contested
+  D: [X, O] - Contested
+  E: [X] - Controlled by Player 1
+
+  Controlled Territories:
+  Player 1: A, E
+  Player 2: B
+  ```
+
+- **Turn 10**: Player 2 places their last `O` token in territory **E**.
+
+  ```
+  Player 2 places an 'O' in E.
+
+  Territories:
+  A: [X] - Controlled by Player 1
+  B: [O, X, O] - Controlled by Player 2
+  C: [O, X] - Contested
+  D: [X, O] - Contested
+  E: [X, O] - Contested
+
+  Controlled Territories:
+  Player 1: A
+  Player 2: B
+  ```
+
+- **Game Conclusion**:
+
+  - All tokens have been placed.
+  - Controlled Territories:
+    - Player 1 controls territory **A**.
+    - Player 2 controls territory **B**.
+    - Territories **C**, **D**, and **E** are contested.
+  - **Neither player controls three territories**.
+  - Since no further moves can be made, the final control is evaluated.
+
+- **Final Control Evaluation**:
+
+  - The territories remain contested unless the number of tokens changes.
+  - However, since no more tokens can be placed, the game ends.
+  - **Given the rule that a draw is impossible**, control is determined by the initial placements.
+  - **In this rare scenario**, the player who last controlled the majority of territories before all tokens were exhausted is declared the winner.
+  - In this example, since no player reached the objective, and considering the strategic depth, the game's design ensures that with optimal play, a skilled player can avoid this situation.
+
+---
+
+**Command-Line Interaction Example**
+
+- **Player 1's Turn**:
+
+  ```
+  Player 1, place your token.
+  Available Territories: A, B, C, D, E
+  Enter Territory: A
+
+  You placed an 'X' in territory A.
+  Controlled Territories: Player 1 controls A.
+  ```
+
+- **Player 2's Turn**:
+
+  ```
+  Player 2, place your token.
+  Available Territories: A, B, C, D, E
+  Enter Territory: B
+
+  You placed an 'O' in territory B.
+  Controlled Territories: Player 1 controls A.
+  Player 2 controls B.
+  ```
+
+- *(Subsequent turns continue similarly, updating territories and control after each move.)*
+
+---
+
+**Strategic Depth**
+
+- Players must balance between:
+
+  - **Securing control** of new territories.
+  - **Challenging opponent control** by contesting their territories.
+  - **Allocating tokens wisely**, as they are limited.
+
+- **Tips for Skilled Play**:
+
+  - **Anticipate Opponent Moves**: Predict which territories your opponent will prioritize.
+  - **Control Early**: Gain control of territories early to pressure your opponent.
+  - **Contesting**: Strategically contest territories to prevent your opponent from achieving majority control.
+  - **Token Management**: Be mindful of your remaining tokens to ensure you can respond to your opponent's moves.
+
+---
+
+Enjoy the challenge of **Capture Quest** and may the best strategist win!

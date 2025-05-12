@@ -1,0 +1,166 @@
+# Factor Duel: A Two-Player Command-Line Game
+
+## Objective
+
+**Factor Duel** is a strategic two-player game where each player competes to reach a common target number through multiplication. The primary goal is to be the first player to exactly reach the target number by multiplying selected factors. Players must carefully choose factors to build their product without exceeding the target. Overshooting the target number results in an immediate loss. The game combines arithmetic skill with strategic planning, ensuring that a skilled player can consistently outperform an unskilled one.
+
+## Setup
+
+1. **Decide on a Target Number (`N`):** Before the game begins, players agree upon a target number. For simplicity and quick gameplay, it's recommended to choose a moderately sized number like 60 or 100.
+
+2. **Initialize Player Products:**
+   - Both players start with an initial product of **1**.
+
+3. **Determine Turn Order:**
+   - Flip a coin or agree on a method to decide which player goes first.
+
+## Game Components
+
+- **Target Number (`N`):** The common number both players aim to reach exactly through multiplication.
+
+- **Factor Pool:** The set of available factors that players can choose from on their turn. This includes all integers from **2** to **9**, inclusive.
+
+- **Player Products:**
+  - Each player maintains their own running product, starting at **1**.
+  - Products are updated on each turn by multiplying the current product by the chosen factor.
+
+## Turns
+
+- Players take turns alternately, beginning with the player determined to go first during setup.
+
+- **Turn Structure for Each Player:**
+  1. **Select a Factor:**
+     - Choose an integer between **2** and **9**, inclusive.
+     - Factors can be reused; there is no limit on how many times a particular number can be selected during the game.
+  2. **Update Product:**
+     - Multiply your current product by the chosen factor.
+     - Example: If your current product is 6 and you choose 3, your new product is \(6 \times 3 = 18\).
+  3. **Check for Victory or Loss:**
+     - If your new product **exactly equals** the target number (`N`), you **win**.
+     - If your product **exceeds** the target number (`N`), you **lose immediately**.
+     - If neither condition is met, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Factors:**
+   - On each turn, a player must choose a factor between **2** and **9**.
+   - The chosen factor is applied only to the selecting player's product.
+
+2. **Product Management:**
+   - Players independently maintain their products.
+   - There is no interaction between the players' products.
+
+3. **Winning the Game:**
+   - The first player to reach a product that exactly matches the target number wins the game.
+
+4. **Losing the Game:**
+   - If a player's product exceeds the target number, they lose immediately, and the other player wins.
+
+5. **No Draws:**
+   - The game cannot end in a draw; a winner is always determined based on the rules above.
+
+6. **Strategic Considerations:**
+   - Players should plan ahead to avoid overshooting the target number.
+   - Monitoring both your product and the opponent's can provide strategic advantages.
+
+## Scoring
+
+Since **Factor Duel** is based on winning or losing rather than accumulating points, traditional scoring is not used. However, players may keep track of the number of games won in a match or series for competitive play.
+
+## Examples
+
+### Example Game Playthrough
+
+**Target Number (`N`):** 60
+
+**Player 1 and Player 2 both start with a product of 1.**
+
+#### Turn 1:
+
+- **Player 1:**
+  - Chooses factor **5**.
+  - Updates product: \(1 \times 5 = 5\).
+  - Product is 5 (does not equal or exceed 60), game continues.
+
+#### Turn 2:
+
+- **Player 2:**
+  - Chooses factor **3**.
+  - Updates product: \(1 \times 3 = 3\).
+  - Product is 3, game continues.
+
+#### Turn 3:
+
+- **Player 1:**
+  - Chooses factor **4**.
+  - Updates product: \(5 \times 4 = 20\).
+  - Product is 20, game continues.
+
+#### Turn 4:
+
+- **Player 2:**
+  - Chooses factor **5**.
+  - Updates product: \(3 \times 5 = 15\).
+  - Product is 15, game continues.
+
+#### Turn 5:
+
+- **Player 1:**
+  - Chooses factor **3**.
+  - Updates product: \(20 \times 3 = 60\).
+  - Product equals the target number **60**.
+  - **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+Assuming a basic command-line interface where players input their chosen factors:
+
+```
+Target Number (N): 60
+
+Player 1's Turn:
+Current Product: 1
+Choose a factor between 2 and 9: 5
+Player 1's New Product: 5
+
+Player 2's Turn:
+Current Product: 1
+Choose a factor between 2 and 9: 3
+Player 2's New Product: 3
+
+Player 1's Turn:
+Current Product: 5
+Choose a factor between 2 and 9: 4
+Player 1's New Product: 20
+
+Player 2's Turn:
+Current Product: 3
+Choose a factor between 2 and 9: 5
+Player 2's New Product: 15
+
+Player 1's Turn:
+Current Product: 20
+Choose a factor between 2 and 9: 3
+Player 1's New Product: 60
+Player 1 has reached the target number and wins the game!
+```
+
+### Strategy Tips
+
+- **Avoid Early Overshooting:**
+  - Be cautious with large factors if your current product is already substantial.
+
+- **Monitor Opponent's Product:**
+  - Keep an eye on the opponent's progress to anticipate their possible moves.
+
+- **Plan Ahead:**
+  - Calculate potential future products to choose factors that set you up for an exact match with the target number.
+
+- **Force Errors:**
+  - In some cases, you can pick factors that limit the opponent's options on their next turn, increasing the chance they might overshoot.
+
+## Conclusion
+
+**Factor Duel** is a simple yet strategic game that requires players to balance risk and foresight. Its straightforward mechanics make it easy to code and play in a command-line interface. The lack of a draw condition ensures that each game concludes decisively and quickly. Mastery of multiplication and strategic planning will give skilled players a consistent edge over their opponents.
+
+Enjoy the duel and may the best multiplier win!

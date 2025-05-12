@@ -1,0 +1,203 @@
+# Gridlock
+
+## Objective
+
+Gridlock is a two-player turn-based strategy game played on a 4x4 grid. The primary goal is to be the first player to create a connected sequence of at least **three of your own tokens** in a straight line—horizontal, vertical, or diagonal—where the numbers on your tokens form a strict ascending or descending order.
+
+## Setup
+
+- **Grid Initialization**: Begin with an empty 4x4 grid. Each cell is identified by its row (A-D) and column (1-4), such as A1 or C3.
+- **Player Tokens**:
+  - **Player 1** receives tokens numbered **1 to 8**.
+  - **Player 2** receives tokens numbered **1 to 8**.
+- **Starting Conditions**:
+  - Both players have all their tokens unplaced.
+  - Decide who takes the first turn (e.g., by coin toss).
+
+## Game Components
+
+### Grid
+
+- **Structure**: A 4x4 grid consisting of 16 cells.
+- **Identification**: Rows labeled A to D; columns labeled 1 to 4.
+- **Example Grid**:
+
+  ```
+     1   2   3   4
+   +---+---+---+---+
+  A|   |   |   |   |
+   +---+---+---+---+
+  B|   |   |   |   |
+   +---+---+---+---+
+  C|   |   |   |   |
+   +---+---+---+---+
+  D|   |   |   |   |
+   +---+---+---+---+
+  ```
+
+### Tokens
+
+- **Quantity**: Each player has 8 tokens.
+- **Numbering**: Tokens are numbered from **1 to 8**.
+- **Identification**:
+  - Player 1's tokens are labeled as `P1-1` to `P1-8`.
+  - Player 2's tokens are labeled as `P2-1` to `P2-8`.
+- **Appearance**: In the command-line interface, tokens display the player number and token number (e.g., `P1-5`).
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the player who goes first.
+- **Actions Per Turn**:
+  - **Place a Token**: Place one of your unplaced tokens on any empty cell on the grid.
+- **Token Placement**:
+  - Tokens can be placed in any order, regardless of their numbering.
+  - Once placed, tokens remain on the grid for the rest of the game.
+
+## Rules and Mechanics
+
+### Token Placement
+
+- **Mandatory Move**: On your turn, you must place one of your available tokens.
+- **Available Cells**: You can place a token on any empty cell.
+- **Order of Tokens**: You may choose any of your unplaced tokens to play.
+
+### Winning the Game
+
+- **Primary Victory Condition**: Form a connected sequence of at least **three of your own tokens** in a straight line (horizontal, vertical, or diagonal) where the numbers form a strict ascending or descending order.
+  - **Ascending Example**: Tokens `P1-3`, `P1-4`, `P1-5` in sequence.
+  - **Descending Example**: Tokens `P2-7`, `P2-6`, `P2-5` in sequence.
+- **Sequence Requirements**:
+  - Tokens must be directly adjacent—no gaps.
+  - The numerical sequence must be strictly increasing or decreasing without repeats.
+  - Only your own tokens count toward your sequence.
+
+### Blocking and Strategy
+
+- **Blocking Opponent**: You can place tokens to block potential sequences of your opponent.
+- **Shared Numbers**: Since both players have tokens numbered 1 to 8, anticipate which numbers your opponent may need.
+- **Grid Awareness**: Pay attention to the grid to prevent setting up sequences for your opponent.
+
+### Game End Conditions
+
+- **Victory**: The game ends immediately when a player achieves the primary victory condition.
+- **Secondary Victory Condition**:
+  - **Tie-Breaker**: If all grid cells are filled without a player forming a valid sequence, the player with the **higher total sum** of their placed token numbers wins.
+  - **No Draws**: If the sums are equal (highly unlikely due to token choices), the last player to place a token wins.
+
+## Scoring
+
+- **Primary Method**: Forming a valid numerical sequence as described in the winning conditions.
+- **Secondary Method**: If no sequence is formed, the sum of your tokens on the grid determines the winner.
+  - **Calculation**: Add up the numbers of all your placed tokens.
+  - **Example**: If your tokens on the grid are `P1-2`, `P1-5`, `P1-7`, your total sum is 14.
+
+## Examples
+
+### Example Game Play
+
+#### Game Start
+
+- **Player 1's Tokens**: 1, 2, 3, 4, 5, 6, 7, 8
+- **Player 2's Tokens**: 1, 2, 3, 4, 5, 6, 7, 8
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - Places `P1-5` at **B2**.
+2. **Player 2's Turn**:
+   - Places `P2-4` at **A1**.
+3. **Player 1's Turn**:
+   - Places `P1-6` at **C2**.
+4. **Player 2's Turn**:
+   - Places `P2-3` at **A2**.
+5. **Player 1's Turn**:
+   - Places `P1-7` at **D2**.
+
+#### Game Analysis
+
+- **Player 1's Tokens on Grid**: `P1-5` (B2), `P1-6` (C2), `P1-7` (D2)
+- **Sequence Formed**: `P1-5` ➔ `P1-6` ➔ `P1-7` vertically aligned in ascending order.
+- **Result**: **Player 1 wins** by forming the required sequence.
+
+### Tie-Breaker Scenario
+
+#### Grid Filled Without Sequence
+
+- All cells are occupied, and no player has formed a valid sequence.
+
+#### Tokens on Grid
+
+- **Player 1's Tokens**: `P1-2`, `P1-4`, `P1-5`, `P1-7`, `P1-8`
+- **Player 2's Tokens**: `P2-1`, `P2-3`, `P2-6`, `P2-7`, `P2-8`, `P2-5`
+
+#### Sum Calculation
+
+- **Player 1's Total Sum**: 2 + 4 + 5 + 7 + 8 = **26**
+- **Player 2's Total Sum**: 1 + 3 + 5 + 6 + 7 + 8 = **30**
+- **Result**: **Player 2 wins** due to a higher total sum.
+
+## Command-Line Interaction Examples
+
+### Sample Turn
+
+- **Grid Display**:
+
+  ```
+     1     2     3     4
+   +----+----+----+----+
+  A|    |    |    |    |
+   +----+----+----+----+
+  B|    |    |    |    |
+   +----+----+----+----+
+  C|    |    |    |    |
+   +----+----+----+----+
+  D|    |    |    |    |
+   +----+----+----+----+
+  ```
+
+- **Player 1's Available Tokens**: 1, 2, 3, 4, 5, 6, 7, 8
+- **Player 1's Turn**:
+  - **Action**: Place token `P1-5`.
+  - **Input**:
+    ```
+    Enter the token number to place: 5
+    Enter the cell to place token P1-5 (e.g., B2): B2
+    ```
+- **Updated Grid**:
+
+  ```
+     1     2     3     4
+   +----+----+----+----+
+  A|    |    |    |    |
+   +----+----+----+----+
+  B|    | P1-5 |    |    |
+   +----+----+----+----+
+  C|    |    |    |    |
+   +----+----+----+----+
+  D|    |    |    |    |
+   +----+----+----+----+
+  ```
+
+### Game Continuation
+
+- Players continue to alternate turns, placing their tokens on the grid, aiming to form the required sequence while blocking their opponent.
+
+## Strategic Tips
+
+- **Plan Ahead**: Think multiple moves ahead to set up your sequence.
+- **Block Opponent**: Watch your opponent's placements and use your tokens to block potential sequences.
+- **Token Selection**:
+  - **Low Numbers**: Useful for starting ascending sequences or blocking.
+  - **High Numbers**: Useful for starting descending sequences or blocking higher-number sequences.
+- **Grid Control**: Occupying central cells can provide more opportunities for forming sequences.
+- **Balance**: Use a mix of high and low numbered tokens to keep your options open.
+
+## Summary
+
+- **Simple Mechanics**: Easy to learn and play.
+- **Strategic Depth**: Requires planning and foresight.
+- **Quick Gameplay**: Designed to end swiftly.
+- **No Draws**: Tie-breaker rules ensure a decisive winner.
+- **Skill-Based**: A skilled player can consistently outmaneuver an unskilled opponent.
+
+Enjoy playing Gridlock and may the best strategist win!

@@ -1,0 +1,437 @@
+# Crystal Clash: A Two-Player Command-Line Game
+
+## Objective
+
+**Primary Goal**: Be the first player to reduce your opponent's crystal integrity points to zero.
+
+Players engage in a strategic duel where they manage energy resources and choose actions to attack, defend, and outmaneuver their opponent. Victory is achieved by successfully depleting the opponent's crystal integrity while protecting your own.
+
+---
+
+## Setup
+
+1. **Crystals**:
+   - Each player starts with a crystal possessing **10 Integrity Points (IP)**.
+
+2. **Energy Points (EP)**:
+   - Both players begin with **0 Energy Points**.
+
+3. **Starting Conditions**:
+   - Decide who takes the first turn (can be random or agreed upon).
+
+4. **Game Interface**:
+   - The game is played in a command-line interface where players input their chosen actions when prompted.
+
+---
+
+## Game Components
+
+1. **Crystals**:
+   - Represent the player's life force.
+   - **Integrity Points (IP)** range from **10 (full health)** to **0 (destroyed)**.
+   - Appearance: Represented numerically in the interface (e.g., `Player 1 Crystal IP: 10`).
+
+2. **Energy Points (EP)**:
+   - Required to perform actions other than charging.
+   - Players can have a maximum of **5 EP** at any time.
+   - Displayed alongside crystal IP (e.g., `Player 1 EP: 3`).
+
+3. **Actions**:
+   - **Charge**:
+     - Increases player's EP by **1**.
+     - No cost to perform.
+     - Command: `charge`
+   - **Shield**:
+     - Activates a shield that blocks the next incoming attack.
+     - Costs **1 EP**.
+     - Shield lasts until the player's next turn.
+     - Command: `shield`
+   - **Attack**:
+     - Deals **2 damage** to the opponent's crystal.
+     - Costs **2 EP**.
+     - Command: `attack`
+
+4. **Shields**:
+   - Status indicator showing whether a player has an active shield.
+   - Appearance: Displayed in status updates (e.g., `Player 2 Shield: ACTIVE`).
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns alternately.
+   - Each turn consists of:
+     - The game displaying the current status of both players.
+     - The active player choosing and executing an action.
+
+2. **Order of Actions**:
+   - **Status Update**:
+     - Current IP and EP of both players.
+     - Shield status if active.
+   - **Player's Action**:
+     - Inputting the command for the chosen action (`charge`, `shield`, or `attack`).
+   - **Resolution**:
+     - Action effects are applied immediately.
+     - Shield statuses are updated.
+
+3. **Progression of Turns**:
+   - The game continues with players alternating turns until one player's crystal IP reaches zero.
+
+---
+
+## Rules and Mechanics
+
+### Energy Points (EP)
+
+- **Accumulating EP**:
+  - **Charge Action** increases EP by **1**.
+  - Maximum EP is **5**; EP cannot exceed this limit.
+- **Using EP**:
+  - **Shield Action** costs **1 EP**.
+  - **Attack Action** costs **2 EP**.
+- **Insufficient EP**:
+  - Players cannot select an action if they lack sufficient EP.
+  - Attempting to do so prompts an error, and the player is asked to choose a valid action.
+
+### Actions
+
+1. **Charge** (`charge`):
+   - Increases player's EP by **1**.
+   - No EP cost.
+   - Cannot increase EP beyond **5**.
+   - Example:
+     - `Player 1 EP before: 4`
+     - `Player 1 uses Charge.`
+     - `Player 1 EP after: 5`
+
+2. **Shield** (`shield`):
+   - Activates a shield that blocks the next incoming attack.
+   - Costs **1 EP**.
+   - Shield remains active until the player's next turn.
+   - If multiple shields are activated consecutively, only one shield effect remains (shields do not stack).
+   - Example:
+     - `Player 2 EP before: 3`
+     - `Player 2 uses Shield.`
+     - `Player 2 EP after: 2`
+     - `Player 2 Shield Status: ACTIVE`
+
+3. **Attack** (`attack`):
+   - Deals **2 damage** to the opponent's crystal.
+   - Costs **2 EP**.
+   - If the opponent has an active shield, the attack is blocked, and no damage is dealt.
+   - Example:
+     - `Player 1 EP before: 2`
+     - `Player 1 uses Attack.`
+     - `Player 1 EP after: 0`
+     - `Player 2 Shield Status: INACTIVE`
+     - `Player 2 Crystal IP reduced by 2.`
+
+### Shield Mechanics
+
+- **Activation**:
+  - Shields are activated by using the `shield` command and paying **1 EP**.
+- **Duration**:
+  - The shield remains active until the start of the player's next turn.
+- **Effectiveness**:
+  - Blocks all damage from a single `attack` action.
+  - After blocking an attack or when the player's next turn begins, the shield becomes inactive.
+- **Limitations**:
+  - Shields do not accumulate; activating a shield while one is already active does not extend or enhance protection.
+  - There is no EP refund if a shield expires without blocking an attack.
+
+---
+
+## Scoring
+
+- **Integrity Points (IP)**:
+  - Each player's crystal starts with **10 IP**.
+  - **When IP reaches 0**, the crystal is destroyed, and the player loses the game.
+- **Tracking IP and EP**:
+  - The game interface continuously displays the current IP and EP of both players.
+- **Winning the Game**:
+  - The first player to reduce their opponent's crystal IP to **0** wins.
+- **Losing the Game**:
+  - A player loses when their crystal's IP reaches **0**.
+- **No Draws**:
+  - There are no mechanisms in the game that allow for a draw; the game continues until one player wins.
+
+---
+
+## Examples
+
+### Sample Game Walkthrough
+
+**Initial Status**:
+```
+Player 1 - Crystal IP: 10, EP: 0, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 0, Shield: INACTIVE
+```
+
+#### Turn 1: Player 1
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 0, Shield: INACTIVE
+```
+
+#### Turn 2: Player 2
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 3: Player 1
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **1** to **2**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 2, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 4: Player 2
+
+- **Action**: `shield`
+- **Effect**:
+  - EP decreases from **1** to **0**.
+  - Shield status set to **ACTIVE**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 2, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 0, Shield: ACTIVE
+```
+
+#### Turn 5: Player 1
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **2** to **0**.
+  - Player 2's shield blocks the attack; no damage dealt.
+  - Player 2's shield status will reset to **INACTIVE** at the start of their turn.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 0, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 0, Shield: ACTIVE (will deactivate after this turn)
+```
+
+#### Turn 6: Player 2
+
+- **Shield Deactivates**:
+  - Shield status set to **INACTIVE**.
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 0, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 7: Player 1
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 8: Player 2
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **1** to **-1** (invalid action).
+- **Error**:
+  - **Insufficient EP**: Cannot perform attack with only **1 EP**.
+- **Correction**:
+  - Prompted to choose a valid action.
+
+**Player 2 Reconsiders**:
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **1** to **2**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 1, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 2, Shield: INACTIVE
+```
+
+#### Turn 9: Player 1
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **1** to **-1** (invalid action).
+- **Error**:
+  - **Insufficient EP**: Cannot perform attack with only **1 EP**.
+- **Correction**:
+  - Prompted to choose a valid action.
+
+**Player 1 Reconsiders**:
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **1** to **2**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 10, EP: 2, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 2, Shield: INACTIVE
+```
+
+#### Turn 10: Player 2
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **2** to **0**.
+  - Player 1's crystal IP decreases from **10** to **8**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 2, Shield: INACTIVE
+Player 2 - Crystal IP: 10, EP: 0, Shield: INACTIVE
+```
+
+#### Turn 11: Player 1
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **2** to **0**.
+  - Player 2's crystal IP decreases from **10** to **8**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 0, Shield: INACTIVE
+Player 2 - Crystal IP: 8, EP: 0, Shield: INACTIVE
+```
+
+#### Turn 12: Player 2
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 0, Shield: INACTIVE
+Player 2 - Crystal IP: 8, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 13: Player 1
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 1, Shield: INACTIVE
+Player 2 - Crystal IP: 8, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 14: Player 2
+
+- **Action**: `shield`
+- **Effect**:
+  - EP decreases from **1** to **0**.
+  - Shield status set to **ACTIVE**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 1, Shield: INACTIVE
+Player 2 - Crystal IP: 8, EP: 0, Shield: ACTIVE
+```
+
+#### Turn 15: Player 1
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **1** to **-1** (invalid action).
+- **Error**:
+  - **Insufficient EP**: Cannot perform attack with only **1 EP**.
+- **Correction**:
+  - Prompted to choose a valid action.
+
+**Player 1 Reconsiders**:
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **1** to **2**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 2, Shield: INACTIVE
+Player 2 - Crystal IP: 8, EP: 0, Shield: ACTIVE
+```
+
+#### Turn 16: Player 2
+
+- **Shield Deactivates**:
+  - Shield status set to **INACTIVE**.
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **0** to **-2** (invalid action).
+- **Error**:
+  - **Insufficient EP**: Cannot perform attack with only **0 EP**.
+- **Correction**:
+  - Prompted to choose a valid action.
+
+**Player 2 Reconsiders**:
+
+- **Action**: `charge`
+- **Effect**:
+  - EP increases from **0** to **1**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 2, Shield: INACTIVE
+Player 2 - Crystal IP: 8, EP: 1, Shield: INACTIVE
+```
+
+#### Turn 17: Player 1
+
+- **Action**: `attack`
+- **Effect**:
+  - EP decreases from **2** to **0**.
+  - Player 2's crystal IP decreases from **8** to **6**.
+- **Status Update**:
+```
+Player 1 - Crystal IP: 8, EP: 0, Shield: INACTIVE
+Player 2 - Crystal IP: 6, EP: 1, Shield: INACTIVE
+```
+
+*The game continues in this manner until one player's crystal IP reaches zero.*
+
+---
+
+## Strategic Tips
+
+- **Manage Your EP Wisely**:
+  - Always be aware of your EP and plan actions accordingly.
+  - Anticipate future moves based on EP accumulation.
+
+- **Observe Opponent's EP and Shield Status**:
+  - Avoid wasting an attack when the opponent has an active shield.
+  - Consider when the opponent might attack and use shields strategically.
+
+- **Balancing Offense and Defense**:
+  - Charging EP leaves you vulnerable but is necessary for powerful actions.
+  - Use shields to protect yourself during critical moments.
+
+- **Predict Opponent's Moves**:
+  - Try to anticipate whether the opponent will attack, shield, or charge.
+  - Adapt your strategy to counter their likely actions.
+
+---
+
+## Conclusion
+
+"**Crystal Clash**" is a strategic, turn-based game that tests players' abilities to manage resources and anticipate their opponent's moves. The simplicity of its rules combined with the depth of its strategy makes it an engaging game that can be easily implemented in a command-line interface. Players must carefully decide when to charge, attack, or shield to outwit their opponent and emerge victorious.
+
+Enjoy the duel, and may the best strategist win!

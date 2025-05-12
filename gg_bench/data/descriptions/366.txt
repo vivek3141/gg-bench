@@ -1,0 +1,195 @@
+# Grid Conquest
+
+## Objective
+
+Grid Conquest is a two-player strategic game played on a 5x5 grid. The primary goal is to conquer more cells than your opponent by the time the grid is entirely claimed. Players take turns claiming cells and capturing adjacent territories. The player who controls the majority of the grid (more than half of the cells) at the end of the game wins.
+
+## Setup
+
+1. **Grid Initialization**: The game is played on a 5x5 grid, consisting of 25 cells arranged in 5 rows and 5 columns.
+2. **Cell Status**: At the start, all cells are unclaimed and available for capture.
+3. **Player Symbols**: Each player chooses a unique symbol or character to represent their claimed cells:
+   - Player 1: `X`
+   - Player 2: `O`
+
+## Game Components
+
+- **Grid**: A 5x5 matrix that visually represents the game board within the command-line interface.
+- **Cells**: Individual units within the grid that can be claimed by players.
+- **Player Symbols**: Characters used to mark claimed cells (`X` for Player 1 and `O` for Player 2).
+
+## Turns
+
+1. **Turn Order**: Players decide who goes first (e.g., Player 1). Turns alternate between players throughout the game.
+2. **Action Sequence**: During a turn, a player performs the following actions:
+   - **Select a Cell**: Choose any unclaimed cell to claim.
+   - **Capture Adjacent Cells**: Automatically claim any unclaimed adjacent cells (up, down, left, right).
+3. **Turn Completion**: After capturing cells, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### Claiming Cells
+
+- **Selecting Cells**: On your turn, you may select any single unclaimed cell on the grid.
+- **Capturing Adjacent Cells**: When you claim a cell, you also capture all unclaimed adjacent cells (orthogonally adjacent: up, down, left, right).
+- **Occupied Cells**: You cannot claim or capture cells that have already been claimed by either player.
+
+### Adjacent Cells Clarification
+
+- **Orthogonal Adjacency**: Only cells directly above, below, to the left, or right are considered adjacent.
+- **Diagonal Cells**: Cells diagonal to the selected cell are **not** considered adjacent and are not captured.
+
+### Game End
+
+- **Grid Full**: The game ends when all cells on the grid have been claimed.
+- **Majority Control**: The player who has claimed the majority of the cells (at least 13 out of 25) wins the game.
+- **No Draws**: With a 5x5 grid (an odd number of cells), a tie is impossible.
+
+## Scoring
+
+- **Cell Count**: Keep a running tally of the number of cells each player has claimed.
+  - **Player 1 Score**: Number of cells claimed with symbol `X`.
+  - **Player 2 Score**: Number of cells claimed with symbol `O`.
+- **Victory Condition**: At the end of the game, the player with the higher cell count wins.
+
+## Examples
+
+### Sample Grid Representation
+
+Before any moves:
+
+```
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+Where `.` represents an unclaimed cell.
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Action**: Claims cell at position (2,2).
+- **Captures**: Also captures adjacent unclaimed cells at positions (1,2), (3,2), (2,1), (2,3).
+- **Grid After Move**:
+
+```
+. . . . .
+. X . . .
+X X X . .
+. X . . .
+. . . . .
+```
+
+- **Score**:
+  - Player 1: 5 cells
+  - Player 2: 0 cells
+
+#### Turn 2: Player 2
+
+- **Action**: Claims cell at position (0,0).
+- **Captures**: Also captures adjacent unclaimed cells at positions (0,1), (1,0).
+- **Grid After Move**:
+
+```
+O O . . .
+O X . . .
+X X X . .
+. X . . .
+. . . . .
+```
+
+- **Score**:
+  - Player 1: 5 cells
+  - Player 2: 3 cells
+
+#### Turn 3: Player 1
+
+- **Action**: Claims cell at position (4,4).
+- **Captures**: Also captures adjacent unclaimed cells at positions (3,4), (4,3).
+- **Grid After Move**:
+
+```
+O O . . .
+O X . . .
+X X X . .
+. X . . O
+. . . O O
+```
+
+- **Score**:
+  - Player 1: 8 cells
+  - Player 2: 3 cells
+
+#### Subsequent Turns
+
+Players continue to take turns claiming cells and capturing adjacent territories until all cells are claimed.
+
+### End of Game
+
+- **Final Grid**:
+
+```
+O O O X X
+O X X X X
+X X X X X
+O X X X O
+O O O O O
+```
+
+- **Final Scores**:
+  - Player 1 (`X`): 15 cells
+  - Player 2 (`O`): 10 cells
+
+- **Winner**: Player 1 wins the game with a majority of 15 cells.
+
+## Command-Line Interaction Example
+
+Assuming row and column indices start at 0.
+
+1. **Player 1's Turn**:
+   - **Input**: `claim 2 2`
+   - **Output**:
+     ```
+     Player 1 claimed cell (2,2) and captured adjacent cells.
+     Updated Grid:
+     . . . . .
+     . X . . .
+     X X X . .
+     . X . . .
+     . . . . .
+     ```
+
+2. **Player 2's Turn**:
+   - **Input**: `claim 0 0`
+   - **Output**:
+     ```
+     Player 2 claimed cell (0,0) and captured adjacent cells.
+     Updated Grid:
+     O O . . .
+     O X . . .
+     X X X . .
+     . X . . .
+     . . . . .
+     ```
+
+3. **Game Continues**: Players alternate turns until the grid is full.
+
+## Strategic Depth
+
+- **Early Advantage**: Capturing central cells can lead to larger territory gains due to more adjacent unclaimed cells.
+- **Blocking**: Players can block opponents by claiming key cells that prevent large captures.
+- **Planning Ahead**: Anticipating the opponent's moves and controlling areas with high potential for captures can secure victory.
+
+## Additional Rules
+
+- **Invalid Moves**: If a player attempts to claim an already claimed cell or inputs an invalid coordinate, they must retry their move.
+- **Boundary Cells**: Cells on the edge have fewer adjacent cells, making them less advantageous for large captures.
+- **No Skipping Turns**: Players must make a valid move on their turn; skipping is not allowed.
+
+## Conclusion
+
+Grid Conquest is a simple yet strategic game that involves area control and foresight. It is easy to implement in a command-line interface and provides opportunities for skilled players to consistently outmaneuver less experienced opponents. With no possibility of a draw and a quick gameplay pace, it offers an engaging and competitive experience.

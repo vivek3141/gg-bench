@@ -1,0 +1,168 @@
+# Trap Runner Rule Book
+
+## Objective
+
+**Trap Runner** is a two-player, turn-based strategy game played on a 5x5 grid. The primary goal is to **capture your opponent's token** by moving onto their position **after reducing their shields to zero**. Players must balance offensive strategies to deplete their opponent's shields with tactical movements to position themselves for capture.
+
+## Setup
+
+- **Game Grid**: A 5x5 grid labeled with coordinates `(X, Y)` where `X` and `Y` range from `1` to `5`.
+- **Starting Positions**:
+  - **Player 1**: Starts at position `(1, 1)`.
+  - **Player 2**: Starts at position `(5, 5)`.
+- **Shields**:
+  - Each player begins with **3 shields**.
+  
+Both players' tokens and shields are displayed on the grid or through command-line outputs at the start of the game.
+
+## Game Components
+
+- **Grid**:
+  - Represents the game board as a 5x5 matrix.
+  - Coordinates range from `(1,1)` in the bottom-left corner to `(5,5)` in the top-right corner.
+- **Player Tokens**:
+  - **Player 1 Token**: Represented as `P1`.
+  - **Player 2 Token**: Represented as `P2`.
+- **Shields**:
+  - Each player has shields represented numerically (e.g., `Shields: 3`).
+  - Shields protect players from being captured.
+
+## Turns
+
+Players alternate turns starting with **Player 1**. On each turn, a player must choose to perform **one** of the following actions:
+
+1. **Move**:
+   - Move your token to an adjacent cell (up, down, left, or right).
+   - Diagonal movements are **not** allowed.
+2. **Attack**:
+   - Reduce your opponent's shields by **one**.
+
+After a player completes their action, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### Movement
+
+- **Adjacent Cells**: Movement can only be to cells directly above, below, or beside the current position.
+- **Grid Wrapping**:
+  - Moving off the grid on one side wraps around to the opposite side.
+  - Example: Moving left from `X = 1` wraps to `X = 5`; moving up from `Y = 5` wraps to `Y = 1`.
+- **Occupied Cells**:
+  - You **cannot** move onto a cell occupied by your opponent **unless** they have zero shields.
+
+### Attacking
+
+- **Reducing Shields**:
+  - When you choose to attack, your opponent’s shields decrease by one.
+  - You cannot attack if your opponent has zero shields.
+- **No Movement**:
+  - Choosing to attack means you forego movement for that turn.
+
+### Shields
+
+- **Protection**:
+  - Shields prevent your opponent from capturing you.
+- **Depletion**:
+  - When shields reach zero, your token becomes vulnerable to capture.
+
+### Capturing
+
+- **Conditions for Capture**:
+  - Your opponent has zero shields.
+  - You move your token onto the opponent's current position.
+- **Winning the Game**:
+  - Successfully capturing your opponent results in an immediate win.
+
+## Scoring
+
+There is no point-based scoring system. Victory is achieved by capturing your opponent according to the rules above.
+
+## Examples
+
+### Sample Game Play
+
+**Initial State**:
+```
+Player 1 Position: (1,1), Shields: 3
+Player 2 Position: (5,5), Shields: 3
+```
+
+**Turn 1 - Player 1**:
+- **Action**: Move right to `(2,1)`
+- **Command**: `move right`
+
+**Turn 2 - Player 2**:
+- **Action**: Attack (Player 1's shields decrease to 2)
+- **Command**: `attack`
+
+**Turn 3 - Player 1**:
+- **Action**: Move up to `(2,2)`
+- **Command**: `move up`
+
+**Turn 4 - Player 2**:
+- **Action**: Move left to `(4,5)`
+- **Command**: `move left`
+
+**Turn 5 - Player 1**:
+- **Action**: Attack (Player 2's shields decrease to 2)
+- **Command**: `attack`
+
+**Turn 6 - Player 2**:
+- **Action**: Attack (Player 1's shields decrease to 1)
+- **Command**: `attack`
+
+**Turn 7 - Player 1**:
+- **Action**: Move up to `(2,3)`
+- **Command**: `move up`
+
+**Turn 8 - Player 2**:
+- **Action**: Move up to `(4,1)` (since moving up from `Y=5` wraps to `Y=1`)
+- **Command**: `move up`
+
+**Continued Play**:
+Players continue to strategically move and attack. If Player 1 reduces Player 2's shields to zero and moves onto Player 2's position at `(4,1)`, Player 1 wins.
+
+## Command-Line Interactions
+
+- **Movement Commands**:
+  - `move up`
+  - `move down`
+  - `move left`
+  - `move right`
+- **Attack Command**:
+  - `attack`
+- **Game Feedback**:
+  - After each turn, the game displays:
+    - Both players' positions.
+    - Remaining shields.
+    - An updated grid (optional).
+
+**Example**:
+```
+Player 1, it's your turn.
+Enter command: move right
+You moved to position (2,1).
+
+Player 2, it's your turn.
+Enter command: attack
+You attacked Player 1. Player 1's shields are now 2.
+```
+
+## Strategic Tips
+
+- **Balance Attack and Movement**:
+  - Constantly attacking may leave you out of position.
+  - Prioritize movement if you see an opportunity to capture.
+- **Monitor Shields**:
+  - Keep track of both your own and your opponent's shields.
+  - Timing your attacks to deplete shields at the right moment is crucial.
+- **Use Grid Wrapping**:
+  - Leverage the grid wrapping to surprise your opponent or to escape.
+- **Predict Opponent's Moves**:
+  - Anticipate where your opponent might move to plan your attacks or set up a capture.
+
+By mastering these strategies, skilled players can consistently outmaneuver less experienced opponents.
+
+---
+
+**Enjoy playing Trap Runner, and may the best strategist win!**

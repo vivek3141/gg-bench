@@ -1,0 +1,205 @@
+# Number Tower Duel
+
+## Objective
+
+**Be the first player to successfully place all your numbered tiles onto the shared towers, or force your opponent into a position where they cannot make a valid move.** Victory is achieved by strategically stacking your numbers while blocking your opponent's options.
+
+## Setup
+
+1. **Players**: Two players are required.
+2. **Tiles**: Each player receives a set of numbered tiles from 1 to 5 (five tiles in total).
+3. **Towers**: There are three shared towers labeled Tower A, Tower B, and Tower C. All towers start empty.
+4. **Starting Player**: Decide who goes first (e.g., flip a coin or agree mutually).
+
+## Game Components
+
+- **Numbered Tiles (1-5)**:
+  - Each tile is numbered from 1 to 5.
+  - Tiles are unique within a player's hand; each number from 1 to 5 appears once.
+  - Tiles are represented by their numbers in the command-line interface.
+
+- **Towers (A, B, C)**:
+  - Shared between players.
+  - Each tower is a stack where tiles are placed on top of one another.
+  - Towers are empty at the start of the game.
+  - Towers can be represented as lists showing the sequence of tiles from bottom to top.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the player chosen during setup.
+- **Player Actions on Their Turn**:
+  1. **View Game State**: Optionally view the current state of all towers and remaining tiles in hand.
+  2. **Select Tile**: Choose one tile from your hand to play.
+  3. **Select Tower**: Choose one of the three towers (A, B, or C) to place your tile.
+  4. **Place Tile**: Place your tile on the selected tower according to the placement rules.
+- **Turn Progression**: After placing a tile, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### Tile Placement Rules
+
+1. **Valid Moves**:
+   - **Empty Tower**: You may place any of your tiles on an empty tower.
+   - **Non-Empty Tower**: You may place a tile on top of a tower only if your tile's number is **higher** than the number on the top tile of that tower.
+2. **Invalid Moves**:
+   - You cannot place a tile on a tower if your tile's number is equal to or lower than the number on the top tile of that tower.
+   - You cannot place a tile on a tower if you have no tiles with higher numbers than the top tile.
+3. **Tile Usage**:
+   - Once a tile is placed on a tower, it cannot be moved or played again.
+   - Each tile can only be used once per game.
+
+### Forced Pass and End of Game
+
+- **Forced Pass**:
+  - If a player has no valid moves (cannot place any of their remaining tiles on any tower), they must pass their turn.
+- **End of Game**:
+  - **Winning by Placement**: If a player successfully places all their tiles onto the towers, they win the game immediately.
+  - **Winning by Opponent's Inability**: If both players pass consecutively because neither can make a valid move, the player with fewer remaining tiles in hand wins.
+  - **Tie-Breaker**:
+    - If both players have the same number of remaining tiles after consecutive passes, the player whose tiles have a lower total sum wins.
+    - If still tied, the game proceeds in sudden death: players remove the top tile from any tower (starting with the last player who placed a tile) and see if new moves are possible.
+
+## Scoring
+
+- **Primary Goal**: There is no point scoring system; the objective is to be the first to place all your tiles or to force your opponent into a position with no valid moves.
+- **Tie-Breaker Rankings**:
+  1. Fewest tiles remaining.
+  2. Lowest total of remaining tile numbers.
+  3. Sudden death play if still tied.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Hands
+
+- **Player 1's Hand**: [1, 2, 3, 4, 5]
+- **Player 2's Hand**: [1, 2, 3, 4, 5]
+- **Towers**:
+  - Tower A: Empty
+  - Tower B: Empty
+  - Tower C: Empty
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Select Tile**: 2
+   - **Select Tower**: Tower A
+   - **Place Tile**: Places 2 on Tower A
+   - **Player 1's Remaining Tiles**: [1, 3, 4, 5]
+
+2. **Player 2's Turn**:
+   - **Select Tile**: 1
+   - **Select Tower**: Tower B
+   - **Place Tile**: Places 1 on Tower B
+   - **Player 2's Remaining Tiles**: [2, 3, 4, 5]
+
+3. **Player 1's Turn**:
+   - **Select Tile**: 3
+   - **Select Tower**: Tower A
+   - **Placement Valid**: Yes (3 > top tile 2 on Tower A)
+   - **Place Tile**: Places 3 on Tower A
+   - **Player 1's Remaining Tiles**: [1, 4, 5]
+
+4. **Player 2's Turn**:
+   - **Select Tile**: 2
+   - **Select Tower**: Tower B
+   - **Placement Valid**: Yes (2 > top tile 1 on Tower B)
+   - **Place Tile**: Places 2 on Tower B
+   - **Player 2's Remaining Tiles**: [3, 4, 5]
+
+5. **Player 1's Turn**:
+   - **Select Tile**: 4
+   - **Select Tower**: Tower A
+   - **Placement Valid**: Yes (4 > top tile 3 on Tower A)
+   - **Place Tile**: Places 4 on Tower A
+   - **Player 1's Remaining Tiles**: [1, 5]
+
+6. **Player 2's Turn**:
+   - **Select Tile**: 3
+   - **Select Tower**: Tower B
+   - **Placement Valid**: Yes (3 > top tile 2 on Tower B)
+   - **Place Tile**: Places 3 on Tower B
+   - **Player 2's Remaining Tiles**: [4, 5]
+
+7. **Player 1's Turn**:
+   - **Select Tile**: 5
+   - **Select Tower**: Tower A
+   - **Placement Valid**: Yes (5 > top tile 4 on Tower A)
+   - **Place Tile**: Places 5 on Tower A
+   - **Player 1's Remaining Tiles**: [1]
+
+8. **Player 2's Turn**:
+   - **Select Tile**: 4
+   - **Select Tower**: Tower B
+   - **Placement Valid**: Yes (4 > top tile 3 on Tower B)
+   - **Place Tile**: Places 4 on Tower B
+   - **Player 2's Remaining Tiles**: [5]
+
+9. **Player 1's Turn**:
+   - **Select Tile**: 1
+   - **Possible Towers**:
+     - **Tower A**: Top tile is 5 (1 < 5) - Invalid
+     - **Tower B**: Top tile is 4 (1 < 4) - Invalid
+     - **Tower C**: Empty - Valid
+   - **Select Tower**: Tower C
+   - **Place Tile**: Places 1 on Tower C
+   - **Player 1's Remaining Tiles**: []
+
+   **Player 1 has placed all their tiles and wins the game!**
+
+### Command-Line Interaction Example
+
+Below is a sample interaction between a player and the game program.
+
+#### Game State Display
+
+```
+Towers:
+- Tower A: 5
+- Tower B: 4
+- Tower C: Empty
+
+Your Hand:
+- [1]
+
+Opponent has 1 tile(s) remaining.
+```
+
+#### Player's Turn Prompt
+
+```
+It's your turn.
+
+Available Tiles in Hand: [1]
+Enter the number of the tile you wish to play: 1
+
+Available Towers:
+- A (Top: 5)
+- B (Top: 4)
+- C (Empty)
+
+Enter the tower you wish to place the tile on (A, B, C): C
+
+You placed tile '1' on Tower C.
+```
+
+#### Game Conclusion
+
+```
+Congratulations! You have placed all your tiles.
+You win the game!
+```
+
+## Strategy Tips
+
+- **Prioritize Lower Numbers Early**: Play your lower-numbered tiles on empty towers to maximize future placement options.
+- **Block Your Opponent**: Anticipate your opponent's remaining tiles and aim to limit their valid moves.
+- **Tower Management**: Be cautious about building towers too high too quickly, as it may restrict your own future moves.
+- **Balance**: Try to balance the distribution of your tiles among the towers to avoid being forced into a pass.
+
+## Summary
+
+Number Tower Duel is a simple yet strategic game that requires foresight and planning. By carefully choosing which tiles to play and where to place them, players can outmaneuver their opponent and claim victory. With easy-to-understand rules and quick gameplay, it is ideal for command-line interface implementation and provides an engaging challenge for both new and experienced players.
+
+Enjoy the game and may the best strategist win!

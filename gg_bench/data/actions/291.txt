@@ -1,0 +1,7 @@
+In the Gridlock Duel gym environment, the action space consists of 81 possible actions, represented as a combination of move and block positions. This is defined as `9 * 9` because there are 9 possible positions to move to (computed as `move_pos`) and 9 possible positions to block (calculated as `block_pos`) on a 3x3 grid.
+
+Each action index corresponds to a unique combination of these moves and blocks:
+- **Move Position (`move_pos`)**: The grid is flattened into a 1D array, where each position can be indexed from 0 to 8. The index for move positions is given by `action // 9`.
+- **Block Position (`block_pos`)**: After choosing a move position, the possible block position for an action is determined by `action % 9`.
+
+Thus, each action is a pair: first deciding a move (0 to 8) to an adjacent cell, followed by blocking another adjacent cell (which can be diagonal as well), both represented by integer indices of the grid.

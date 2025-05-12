@@ -1,0 +1,225 @@
+# Prime Duel
+
+## Objective
+
+**Prime Duel** is a strategic two-player, turn-based game where players compete to be the last to make a valid move. The primary goal is to outmaneuver your opponent by selecting prime numbers and eliminating options from a shared pool of numbers. A player wins by forcing their opponent into a position where no valid moves are possible on their turn.
+
+## Setup
+
+1. **Shared Number Pool**: The game begins with a shared pool of consecutive integers from **2 to 50**.
+2. **Starting Player**: Decide who will take the first turn (e.g., flip a coin).
+
+## Game Components
+
+- **Number Pool**: A list of numbers from **2 to 50** that both players can see.
+  - *Appearance*: The numbers are displayed sequentially in the command-line interface.
+  - *Functionality*: Represents available choices for players to select during their turns.
+  - *Unique Attributes*: When a number is selected, it and its multiples are removed from the pool.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player chosen to go first.
+2. **Player Actions**:
+   - On their turn, a player must:
+     - **Select a Prime Number**: Choose any prime number remaining in the number pool.
+     - **Eliminate Multiples**: Remove the selected prime number and all its multiples from the number pool.
+3. **Turn Progression**: The game continues with players alternating turns until a player cannot make a valid move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves**:
+   - A player must select a **prime number** that is still present in the number pool.
+   - If no prime numbers are available on a player's turn, they lose the game.
+
+2. **Eliminating Numbers**:
+   - When a prime number is selected:
+     - Remove the selected prime number from the number pool.
+     - Remove all multiples of that prime number from the number pool.
+
+3. **Winning the Game**:
+   - A player wins if their opponent cannot select a prime number on their turn.
+   - There are no draws; the game continues until one player wins.
+
+### Special Conditions
+
+- **Invalid Selection**:
+  - If a player selects a number that is not prime or not in the number pool, they forfeit the game.
+- **Game End**:
+  - The game ends immediately when a player cannot make a valid move during their turn.
+
+## Scoring
+
+- **Victory**: The winning player is the one who successfully forces their opponent into a position with no valid moves.
+- **Tracking Progress**:
+  - No formal score is kept, but players can track which numbers have been removed to strategize future moves.
+  - The remaining number pool is updated and displayed after each turn.
+
+## Examples
+
+### Sample Game Play
+
+Let's illustrate a sample game between Player 1 and Player 2.
+
+#### Initial Number Pool
+
+```
+2, 3, 4, 5, 6, 7, 8, 9, ..., 50
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses **2**.
+- **Eliminated Numbers**: 2, 4, 6, 8, 10, ..., 50 (all multiples of 2).
+- **Updated Number Pool**:
+
+  ```
+  3, 5, 7, 9, 11, 13, 15, ..., 49
+  ```
+
+#### Turn 2: Player 2
+
+- **Action**: Chooses **3**.
+- **Eliminated Numbers**: 3, 9, 15, 21, 27, 33, 39, 45 (all multiples of 3).
+- **Updated Number Pool**:
+
+  ```
+  5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49
+  ```
+
+#### Turn 3: Player 1
+
+- **Action**: Chooses **5**.
+- **Eliminated Numbers**: 5, 25, 35, 45 (all multiples of 5).
+- **Updated Number Pool**:
+
+  ```
+  7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 49
+  ```
+
+#### Turn 4: Player 2
+
+- **Action**: Chooses **7**.
+- **Eliminated Numbers**: 7, 49 (all multiples of 7).
+- **Updated Number Pool**:
+
+  ```
+  11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 5: Player 1
+
+- **Action**: Chooses **11**.
+- **Eliminated Numbers**: 11
+- **Updated Number Pool**:
+
+  ```
+  13, 17, 19, 23, 29, 31, 37, 41, 43, 47
+  ```
+
+#### Turn 6: Player 2
+
+- **Action**: Chooses **13**.
+- **Eliminated Numbers**: 13
+- **Updated Number Pool**:
+
+  ```
+  17, 19, 23, 29, 31, 37, 41, 43, 47
+  ```
+
+#### Turns Continue...
+
+- Players continue to select the next available prime numbers.
+
+#### Final Turns
+
+Assuming the game progresses with each player selecting the next smallest prime:
+
+- **Player 1 selects 17**
+- **Player 2 selects 19**
+- **Player 1 selects 23**
+- **Player 2 selects 29**
+- **Player 1 selects 31**
+- **Player 2 selects 37**
+- **Player 1 selects 41**
+- **Player 2 selects 43**
+- **Player 1 selects 47**
+
+Now, the number pool is empty.
+
+#### Determining the Winner
+
+- Since all prime numbers have been selected, and there are no primes left for Player 2's turn, **Player 2 cannot make a move**.
+
+**Winner**: **Player 1** wins the game.
+
+## Command-Line Interaction Example
+
+### Turn Progression
+
+#### Prompt for Player Action
+
+```
+It's Player 1's turn.
+Available primes: 2, 3, 5, 7, ..., 47
+Please select a prime number: 
+```
+
+#### Player Input
+
+```
+Player 1 selects: 2
+```
+
+#### System Response
+
+```
+Removed numbers: 2, 4, 6, 8, ..., 50
+Updated number pool: 3, 5, 7, 9, ..., 49
+
+---
+
+It's Player 2's turn.
+Available primes: 3, 5, 7, ..., 49
+Please select a prime number: 
+```
+
+### Invalid Move Handling
+
+#### Scenario
+
+If a player selects a non-prime or unavailable number.
+
+#### Prompt
+
+```
+It's Player 2's turn.
+Available primes: 3, 5, 7, ..., 49
+Please select a prime number: 
+```
+
+#### Player Input
+
+```
+Player 2 selects: 4
+```
+
+#### System Response
+
+```
+Invalid selection. 4 is not a prime number or is no longer available.
+Player 2 forfeits the game.
+
+Winner: Player 1
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider which primes will remove the most options for your opponent.
+- **Control the Game**: By selecting primes that eliminate several future primes (e.g., selecting 2 or 3 early).
+- **Delay Tactics**: Force your opponent into selecting primes that offer minimal strategic advantage.
+
+## Conclusion
+
+**Prime Duel** is a game of foresight and strategy. With a simple set of rules and minimal components, it provides depth and complexity, ensuring that skilled players can consistently outperform beginners. Enjoy testing your numerical prowess and may the best strategist win!

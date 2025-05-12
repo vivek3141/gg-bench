@@ -1,0 +1,142 @@
+# Prime Duel
+
+## Objective
+
+**Prime Duel** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to bring the shared total to a prime number greater than the target value. Players achieve victory by strategically selecting numbers to add to the shared total while preventing their opponent from reaching a prime total first. A player loses if they cause the total to exceed twice the target value without obtaining a prime number.
+
+---
+
+## Setup
+
+1. **Initial Total**: The game begins with a shared total of **0**.
+2. **Target Value**: Set a target value of **20** (modifiable for different difficulty levels).
+3. **Available Numbers**: Both players have access to numbers **1** through **10** to add to the total.
+4. **Player Order**: Decide which player goes first (e.g., Player 1 and Player 2) by mutual agreement or a random method.
+
+---
+
+## Game Components
+
+- **Shared Total**: A cumulative total that both players add to during the game.
+- **Available Numbers**: Integers from **1** to **10**. These numbers can be reused and are accessible to both players each turn.
+- **Target Value**: The threshold number (**20**) that the prime total must exceed to win.
+- **Command-Line Interface**: Players input their chosen numbers through the command line when prompted.
+
+---
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with Player 1.
+2. **Player Action**:
+   - On their turn, a player selects a number between **1** and **10**.
+   - The chosen number is added to the shared total.
+3. **Turn Progression**:
+   - After adding the number, the game evaluates if the new total meets any winning or losing conditions.
+   - The turn passes to the next player if the game hasn't ended.
+
+---
+
+## Rules and Mechanics
+
+1. **Adding Numbers**:
+   - Players can choose any number from **1** to **10** on their turn.
+   - Numbers can be reused; there are no limitations on the frequency of using a specific number.
+2. **Winning the Game**:
+   - A player wins if the new shared total after their turn is a **prime number** **greater than the target value** (e.g., primes greater than **20** in this case).
+3. **Losing the Game**:
+   - If a player's move causes the shared total to exceed **twice the target value** (i.e., total **> 40** with a target of **20**) **without** the total being a prime number greater than the target, they lose the game.
+4. **Prime Numbers**:
+   - A prime number is a natural number greater than **1** that has no positive divisors other than **1** and itself.
+   - Examples of primes greater than **20**: **23, 29, 31, 37**.
+5. **Invalid Moves**:
+   - A player must select a number that keeps the total within permissible bounds (total ≤ **40** unless it's a winning prime).
+   - Selecting a number that immediately causes a loss is allowed but strategically unsound.
+6. **Draws**:
+   - There are no draw conditions in this game. The game continues until one player wins or loses according to the rules.
+
+---
+
+## Scoring
+
+- **Victory**: The winning player is the one who first brings the shared total to a prime number greater than the target value.
+- **Defeat**: A player loses if they cause the total to exceed twice the target value without achieving a winning prime total.
+- **No Point System**: There are no points awarded; the outcome is a win or loss based on the game conditions.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Shared Total**: 0
+- **Target Value**: 20
+- **Players**: Player 1 and Player 2
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Chooses **7**.
+   - Shared Total: 0 + 7 = **7**
+   - The total is not a prime greater than 20; the game continues.
+2. **Player 2's Turn**:
+   - Chooses **8**.
+   - Shared Total: 7 + 8 = **15**
+   - The total is not a prime greater than 20; the game continues.
+3. **Player 1's Turn**:
+   - Chooses **10**.
+   - Shared Total: 15 + 10 = **25**
+   - 25 is not a prime (it's 5 squared); the game continues.
+4. **Player 2's Turn**:
+   - Chooses **4**.
+   - Shared Total: 25 + 4 = **29**
+   - 29 is a prime number greater than 20.
+   - **Player 2 wins!**
+
+### Command-Line Interaction Sample
+
+```
+[Game Start]
+Shared Total: 0
+Target Value: 20
+
+Player 1's Turn:
+Choose a number between 1 and 10: 7
+Shared Total is now 7.
+
+Player 2's Turn:
+Choose a number between 1 and 10: 8
+Shared Total is now 15.
+
+Player 1's Turn:
+Choose a number between 1 and 10: 10
+Shared Total is now 25.
+
+Player 2's Turn:
+Choose a number between 1 and 10: 4
+Shared Total is now 29.
+29 is a prime number greater than 20.
+Player 2 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Aim for Prime Totals**: Keep track of the cumulative total and aim to reach a prime number greater than the target value on your turn.
+- **Prevent Opponent's Win**: Be cautious not to set up the total in a way that allows your opponent to win on their next turn.
+- **Calculate Ahead**: Anticipate the sums of future moves to block your opponent's path to victory.
+- **Stay Within Bounds**: Avoid moves that bring the total dangerously close to the losing threshold (twice the target value) unless it leads to a win.
+
+---
+
+## Additional Notes
+
+- **Adjustable Difficulty**: You can modify the target value or the range of available numbers to adjust the game's difficulty and length.
+- **No Luck Involved**: The game is deterministic with no element of chance, ensuring that skillful play determines the winner.
+- **Learning Curve**: While the rules are simple, mastering the strategy requires practice and foresight.
+
+Enjoy playing **Prime Duel** and may the best strategist win!
+
+---

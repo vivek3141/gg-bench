@@ -1,0 +1,224 @@
+# Number Stack Attack Rule Book
+
+## Objective
+
+**Number Stack Attack** is a strategic two-player, turn-based game where players compete to be the first to reach a stack total of exactly **21** without exceeding it. Players take turns adding numbered tokens to their personal stack, planning their moves carefully to achieve the target total while preventing their opponent from doing the same.
+
+## Setup
+
+1. **Game Start**: Determine which player goes first (Player 1 and Player 2). This can be decided randomly or by mutual agreement.
+2. **Stacks**: Each player begins with an empty stack.
+3. **Number Tokens**: A shared pool of number tokens ranging from **1** to **9** is available. Each number token is available in unlimited quantity, so players do not need to worry about depleting a particular number.
+
+## Game Components
+
+- **Number Tokens (1-9)**:
+  - Each token displays a number from **1** to **9**.
+  - Tokens are identical except for their numeric value.
+  - Tokens have no special attributes beyond their number.
+
+- **Player Stacks**:
+  - Each player has their own stack where they place number tokens during the game.
+  - The stack total is the sum of all numbers in the player's stack.
+
+- **Command-Line Interface**:
+  - Players interact with the game via text inputs and outputs in the command-line interface.
+  - The interface displays the current stack totals, available numbers, and prompts for player actions.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Player Actions**:
+  - On their turn, a player must select one number token from **1** to **9** and add it to their stack.
+  - Players input their chosen number via the command-line interface.
+- **Turn Progression**:
+  - After a player adds a number to their stack, the turn passes to the other player.
+  - The game continues until a win condition is met.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Adding Numbers**:
+   - Players can choose any number from **1** to **9** on their turn.
+   - Numbers are not depleted; each number can be chosen multiple times by both players.
+
+2. **Stack Total**:
+   - A player's stack total is the sum of all numbers in their stack.
+   - Players must ensure their stack total does not exceed **21**.
+   - If adding a number would cause the stack total to exceed **21**, the player must skip their turn.
+
+3. **Winning the Game**:
+   - **Exact Total Victory**: The first player to reach a stack total of exactly **21** wins the game.
+   - **Stand Off Victory**:
+     - If both players are unable to make a move without exceeding **21**, the player with the stack total closest to **21** wins.
+     - If both players have the same total, the player who reached that total first wins.
+
+4. **Forced Pass**:
+   - If a player cannot add any number without exceeding **21**, they must pass their turn.
+   - The opposing player continues to take turns if they can make legal moves.
+
+### Strategic Considerations
+
+- **Planning Ahead**:
+  - Players should anticipate how their number selections affect future turns.
+  - Consideration of both players' stack totals is crucial.
+
+- **Defensive Play**:
+  - Players can choose numbers that limit the opponent's options on their next turn.
+  - For example, leaving the opponent with only numbers that would cause them to exceed **21**.
+
+- **Risk Management**:
+  - Balancing the desire to reach **21** quickly against the risk of limiting one's own future options is key.
+
+## Scoring
+
+- **No Point System**:
+  - The game does not use a point system.
+  - Victory is achieved by meeting the win conditions outlined above.
+
+- **Victory Conditions**:
+  - **Primary Victory**: Reaching a stack total of exactly **21**.
+  - **Secondary Victory**: Having the highest stack total below **21** when both players cannot make a legal move.
+
+## Examples
+
+### Example Scenario
+
+**Initial State**:
+- Player 1 Stack Total: 0
+- Player 2 Stack Total: 0
+- Available Numbers: 1-9 (unlimited supply)
+
+---
+
+**Turn 1 - Player 1**:
+- Chooses number **9**.
+- Player 1 Stack Total: 9
+
+**Command-Line Interaction**:
+```
+Player 1 Turn:
+Your current stack total is 0.
+Enter a number between 1 and 9 to add to your stack: 9
+You added 9 to your stack.
+Your new stack total is 9.
+```
+
+---
+
+**Turn 2 - Player 2**:
+- Chooses number **8**.
+- Player 2 Stack Total: 8
+
+**Command-Line Interaction**:
+```
+Player 2 Turn:
+Your current stack total is 0.
+Enter a number between 1 and 9 to add to your stack: 8
+You added 8 to your stack.
+Your new stack total is 8.
+```
+
+---
+
+**Turn 3 - Player 1**:
+- Chooses number **7**.
+- Player 1 Stack Total: 16 (9 + 7)
+
+**Command-Line Interaction**:
+```
+Player 1 Turn:
+Your current stack total is 9.
+Enter a number between 1 and 9 to add to your stack: 7
+You added 7 to your stack.
+Your new stack total is 16.
+```
+
+---
+
+**Turn 4 - Player 2**:
+- Chooses number **9**.
+- Player 2 Stack Total: 17 (8 + 9)
+
+**Command-Line Interaction**:
+```
+Player 2 Turn:
+Your current stack total is 8.
+Enter a number between 1 and 9 to add to your stack: 9
+You added 9 to your stack.
+Your new stack total is 17.
+```
+
+---
+
+**Turn 5 - Player 1**:
+- Must choose a number that does not cause the stack total to exceed **21**.
+- Options are numbers **1** to **5** (since 16 + 6 = 22).
+- Chooses number **5**.
+- Player 1 Stack Total: 21 (16 + 5)
+- Player 1 wins by reaching **21** exactly.
+
+**Command-Line Interaction**:
+```
+Player 1 Turn:
+Your current stack total is 16.
+Enter a number between 1 and 5 to add to your stack: 5
+You added 5 to your stack.
+Your new stack total is 21.
+Congratulations, you have reached 21 and won the game!
+```
+
+---
+
+**Game End**:
+- Player 1 wins.
+- Player 2 had a stack total of 17.
+
+## Additional Examples
+
+### Scenario Where Both Players Must Pass
+
+**Late Game State**:
+- Player 1 Stack Total: 19
+- Player 2 Stack Total: 18
+
+**Player 1 Turn**:
+- Cannot add numbers **1** to **9** without exceeding **21**.
+- Must pass.
+
+**Player 2 Turn**:
+- Only number **1** can be added without exceeding **21** (18 + 1 = 19).
+- Chooses number **1**.
+- Player 2 Stack Total: 19
+
+**Player 1 Turn**:
+- Stack Total: 19
+- Cannot add any number without exceeding **21**.
+- Must pass.
+
+**Player 2 Turn**:
+- Stack Total: 19
+- Cannot add any number without exceeding **21**.
+- Must pass.
+
+**Result**:
+- Both players cannot make a move.
+- Both players have a stack total of **19**.
+- Player 2 wins because they reached **19** after Player 1, and in the case of a tie, the player who achieved the highest total first loses.
+
+## Strategies
+
+- **Monitor Both Stacks**: Keep track of not only your own stack total but also your opponent's. This awareness allows you to make informed decisions that can limit your opponent's options.
+
+- **Control the Pace**: By choosing certain numbers, you can control the progression of both stack totals, potentially forcing your opponent into a position where they cannot make a legal move.
+
+- **Avoid Early High Totals**: Jumping to a high stack total early in the game can limit your options in later turns. Balance your number selections to maintain flexibility.
+
+- **Force a Pass**: Aim to leave your opponent in a position where any available number would cause them to exceed **21**, forcing them to pass and giving you an opportunity to reach **21**.
+
+## Conclusion
+
+**Number Stack Attack** combines simple arithmetic with strategic planning, offering depth and replayability in a game that's quick to play and easy to code for a command-line interface. Mastery comes from anticipating your opponent's moves, managing your stack total carefully, and making calculated decisions to reach the target total before your opponent.
+
+Enjoy the game, and may the best strategist win!

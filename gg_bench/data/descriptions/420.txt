@@ -1,0 +1,252 @@
+# Divide and Conquer: A Two-Player Turn-Based Game
+
+## Objective
+
+Be the first player to reduce the shared number to exactly **1** by strategically choosing divisors. The player who successfully reduces the shared number to **1** wins the game. If a player cannot make a valid move on their turn, they lose.
+
+## Setup
+
+1. **Shared Number Initialization**: The game starts with a shared positive integer, initially set to **100**.
+2. **Divisor List**: Create an empty list to keep track of used divisors.
+3. **Player Positions**: Decide which player goes first (Player 1 and Player 2). This can be determined by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Shared Number**: An integer that both players will manipulate. It starts at **100**.
+- **Divisors**: Integers greater than **1** that exactly divide the shared number. Once a divisor is used, it cannot be used again.
+- **Used Divisors List**: A record of all divisors that have been used during the game.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately, starting with Player 1.
+- **Turn Actions**:
+  - **Select a Divisor**: Choose an integer greater than **1** that exactly divides the current shared number and has not been used before.
+  - **Divide the Shared Number**: Divide the shared number by the chosen divisor to get the new shared number.
+  - **Update Used Divisors List**: Add the chosen divisor to the list of used divisors.
+- **Turn Progression**: The turn passes to the next player after a valid move is made.
+
+## Rules and Mechanics
+
+1. **Valid Divisors**:
+   - Must be an integer greater than **1**.
+   - Must exactly divide the current shared number (no remainders).
+   - Must not have been used previously in the game.
+
+2. **Making a Move**:
+   - On your turn, if there is at least one valid divisor, you must choose one and divide the shared number.
+   - If there are no valid divisors available, you lose the game.
+
+3. **Winning the Game**:
+   - The player who reduces the shared number to exactly **1** wins the game.
+   - If a player cannot make a move on their turn (no valid divisors), they lose.
+
+4. **Restrictions**:
+   - Divisors of **1** are not considered valid since **1** cannot be divided further.
+   - The divisor **1** cannot be used.
+
+## Scoring
+
+- **Victory**: The winner is the first player to reduce the shared number to **1**.
+- **Tracking**: No points are accumulated; the game outcome is win or loss based on achieving the objective.
+
+## Examples
+
+Below are example scenarios with command-line interactions to illustrate how the game is played.
+
+### Example Game
+
+**Starting Shared Number**: 100
+
+**Used Divisors**: None
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Shared Number**: 100
+- **Used Divisors**: []
+- **Valid Divisors**: 2, 4, 5, 10, 20, 25, 50, 100
+- **Player 1's Move**:
+
+  ```plaintext
+  Player 1's turn.
+  Current shared number: 100
+  Used divisors: []
+  Available divisors: 2, 4, 5, 10, 20, 25, 50, 100
+  Enter your chosen divisor: 10
+  ```
+
+- **Calculations**:
+  - New shared number = 100 / 10 = 10
+  - Update used divisors: [10]
+- **Result**:
+
+  ```plaintext
+  You chose divisor 10.
+  New shared number is 10.
+  ```
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Shared Number**: 10
+- **Used Divisors**: [10]
+- **Valid Divisors**: 2, 5
+- **Player 2's Move**:
+
+  ```plaintext
+  Player 2's turn.
+  Current shared number: 10
+  Used divisors: [10]
+  Available divisors: 2, 5
+  Enter your chosen divisor: 5
+  ```
+
+- **Calculations**:
+  - New shared number = 10 / 5 = 2
+  - Update used divisors: [10, 5]
+- **Result**:
+
+  ```plaintext
+  You chose divisor 5.
+  New shared number is 2.
+  ```
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Shared Number**: 2
+- **Used Divisors**: [10, 5]
+- **Valid Divisors**: 2
+- **Player 1's Move**:
+
+  ```plaintext
+  Player 1's turn.
+  Current shared number: 2
+  Used divisors: [10, 5]
+  Available divisors: 2
+  Enter your chosen divisor: 2
+  ```
+
+- **Calculations**:
+  - New shared number = 2 / 2 = 1
+  - Update used divisors: [10, 5, 2]
+- **Result**:
+
+  ```plaintext
+  You chose divisor 2.
+  New shared number is 1.
+  Player 1 has reduced the shared number to 1 and wins the game!
+  ```
+
+**Game Over**: Player 1 wins.
+
+---
+
+### Additional Example with Strategic Depth
+
+**Starting Shared Number**: 60
+
+**Used Divisors**: None
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Shared Number**: 60
+- **Used Divisors**: []
+- **Valid Divisors**: (List all divisors of 60 greater than 1)
+  - 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60
+- **Player 1's Move**:
+
+  ```plaintext
+  Player 1's turn.
+  Current shared number: 60
+  Used divisors: []
+  Available divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60
+  Enter your chosen divisor: 6
+  ```
+
+- **Calculations**:
+  - New shared number = 60 / 6 = 10
+  - Update used divisors: [6]
+- **Result**:
+
+  ```plaintext
+  You chose divisor 6.
+  New shared number is 10.
+  ```
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Shared Number**: 10
+- **Used Divisors**: [6]
+- **Valid Divisors**: 2, 5, 10
+- **Player 2's Move**:
+
+  ```plaintext
+  Player 2's turn.
+  Current shared number: 10
+  Used divisors: [6]
+  Available divisors: 2, 5, 10
+  Enter your chosen divisor: 5
+  ```
+
+- **Calculations**:
+  - New shared number = 10 / 5 = 2
+  - Update used divisors: [6, 5]
+- **Result**:
+
+  ```plaintext
+  You chose divisor 5.
+  New shared number is 2.
+  ```
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Shared Number**: 2
+- **Used Divisors**: [6, 5]
+- **Valid Divisors**: 2
+- **Player 1's Move**:
+
+  ```plaintext
+  Player 1's turn.
+  Current shared number: 2
+  Used divisors: [6, 5]
+  Available divisors: 2
+  Enter your chosen divisor: 2
+  ```
+
+- **Calculations**:
+  - New shared number = 2 / 2 = 1
+  - Update used divisors: [6, 5, 2]
+- **Result**:
+
+  ```plaintext
+  You chose divisor 2.
+  New shared number is 1.
+  Player 1 has reduced the shared number to 1 and wins the game!
+  ```
+
+**Game Over**: Player 1 wins.
+
+---
+
+## Strategic Depth and Complexity
+
+- **Planning Ahead**: Players must anticipate future moves by considering which divisors will be available on subsequent turns.
+- **Divisor Selection**: Choosing larger divisors might lead to a quicker game but could leave fewer options for the next turn.
+- **Forcing Moves**: Skilled players can force unskilled players into positions where they have no valid moves or can only make moves that lead to their loss.
+- **Unique Divisors**: Since used divisors cannot be reused, tracking and remembering them adds a layer of memory skill to the game.
+
+## Summary
+
+"Divide and Conquer" is a simple yet strategically rich game where players must carefully select divisors to manipulate the shared number, aiming to reduce it to exactly **1**. With straightforward rules and minimal components, it is easy to code for a command-line interface and provides a competitive environment where skill can consistently overcome chance.
+
+Enjoy strategizing and may the best divisor win!

@@ -1,0 +1,249 @@
+# Digit Duel
+
+## Objective
+
+Be the first player to win two rounds by constructing higher three-digit numbers than your opponent. Strategically decide whether to keep drawn digits or give them to your opponent to maximize your chances of winning each round.
+
+## Setup
+
+1. **Players**: Two players.
+2. **Deck Preparation**:
+   - Create a deck containing four copies of each digit from 0 to 9, resulting in a 40-card deck.
+   - Shuffle the deck thoroughly.
+3. **Hands**:
+   - Each player starts with an empty hand that can hold up to three digits.
+
+## Game Components
+
+- **Digit Cards**:
+  - **Appearance**: Cards are labeled with a single digit from 0 to 9.
+  - **Quantity**: Four copies of each digit, totaling 40 cards.
+- **Player Hands**:
+  - Each player has a hand that can hold up to three digits.
+  - Hands are private until the end of the round when numbers are revealed.
+
+## Turns
+
+- Players take turns; decide who goes first by agreement or a random method (e.g., coin toss).
+- **Turn Structure**:
+  1. **Draw Phase**: Draw one digit card from the top of the deck.
+  2. **Decision Phase**: Choose to keep the digit or give it to your opponent.
+     - **If Keeping**:
+       - Add the digit to your hand.
+     - **If Giving**:
+       - Offer the digit to your opponent.
+       - The opponent must accept and add it to their hand unless their hand is full; in that case, the digit is discarded.
+  3. **Hand Limit**:
+     - A hand can hold a maximum of three digits.
+     - Once a hand is full, any additional digits assigned to that player are discarded.
+
+## Rules and Mechanics
+
+### Core Rules
+
+- **Round End**:
+  - The round ends when both players have three digits in their hands.
+- **Number Formation**:
+  - At the end of the round, each player arranges their three digits to form the highest possible three-digit number.
+  - Leading zeros are allowed (e.g., '0', '0', '5' forms '005').
+- **Round Victory**:
+  - The player with the higher three-digit number wins the round.
+  - In case of a tie (identical numbers), the round is replayed with the remaining cards.
+
+### Additional Rules
+
+- **Discard Pile and Deck Reshuffle**:
+  - If the deck runs out before the round ends, reshuffle the discard pile to form a new deck.
+- **Strategy Considerations**:
+  - Decide when to keep high digits for yourself or give low digits to your opponent.
+  - Observe which digits have been played to infer which ones remain.
+
+## Scoring
+
+- **Round Win**: Earned by having a higher three-digit number than your opponent at the end of a round.
+- **Game Win**: The first player to win two rounds wins the game.
+
+## Examples
+
+### Example Gameplay
+
+#### Round 1
+
+**Starting the Game**:
+- Players decide that Player 1 will start first.
+
+**Turn 1 - Player 1**:
+- **Draws**: '7'
+- **Decision**: Keeps '7' and adds it to their hand.
+- **Player 1's Hand**: [7]
+
+**Turn 2 - Player 2**:
+- **Draws**: '2'
+- **Decision**: Gives '2' to Player 1.
+- **Player 1's Hand**: [7, 2]
+
+**Turn 3 - Player 1**:
+- **Draws**: '9'
+- **Decision**: Keeps '9' and adds it to their hand.
+- **Player 1's Hand**: [7, 2, 9] (Hand is now full)
+
+**Turn 4 - Player 2**:
+- **Draws**: '5'
+- **Decision**: Keeps '5' and adds it to their hand.
+- **Player 2's Hand**: [5]
+
+**Turn 5 - Player 2**:
+- **Draws**: '1'
+- **Decision**: Keeps '1' and adds it to their hand.
+- **Player 2's Hand**: [5, 1]
+
+**Turn 6 - Player 2**:
+- **Draws**: '8'
+- **Decision**: Keeps '8' and adds it to their hand.
+- **Player 2's Hand**: [5, 1, 8] (Hand is now full)
+
+**End of Round 1**:
+
+- **Player 1's Digits**: [7, 2, 9]
+  - **Possible Arrangements**: 972, 927, 792, 729, 297, 279
+  - **Chooses**: 972
+
+- **Player 2's Digits**: [5, 1, 8]
+  - **Possible Arrangements**: 851, 815, 581, 518, 185, 158
+  - **Chooses**: 851
+
+- **Round Result**:
+  - Player 1's Number: 972
+  - Player 2's Number: 851
+  - **Winner**: Player 1 wins Round 1.
+
+#### Round 2
+
+**Turn 1 - Player 2**:
+- **Draws**: '4'
+- **Decision**: Gives '4' to Player 1.
+- **Player 1's Hand**: [4]
+
+**Turn 2 - Player 1**:
+- **Draws**: '6'
+- **Decision**: Keeps '6' and adds it to their hand.
+- **Player 1's Hand**: [4, 6]
+
+**Turn 3 - Player 2**:
+- **Draws**: '9'
+- **Decision**: Keeps '9' and adds it to their hand.
+- **Player 2's Hand**: [9]
+
+**Turn 4 - Player 1**:
+- **Draws**: '3'
+- **Decision**: Keeps '3' and adds it to their hand.
+- **Player 1's Hand**: [4, 6, 3] (Hand is now full)
+
+**Turn 5 - Player 2**:
+- **Draws**: '0'
+- **Decision**: Keeps '0' and adds it to their hand.
+- **Player 2's Hand**: [9, 0]
+
+**Turn 6 - Player 2**:
+- **Draws**: '7'
+- **Decision**: Keeps '7' and adds it to their hand.
+- **Player 2's Hand**: [9, 0, 7] (Hand is now full)
+
+**End of Round 2**:
+
+- **Player 1's Digits**: [4, 6, 3]
+  - **Possible Arrangements**: 643, 634, 463, 436, 364, 346
+  - **Chooses**: 643
+
+- **Player 2's Digits**: [9, 0, 7]
+  - **Possible Arrangements**: 970, 907, 790, 709, 097, 079
+  - **Chooses**: 970
+
+- **Round Result**:
+  - Player 1's Number: 643
+  - Player 2's Number: 970
+  - **Winner**: Player 2 wins Round 2.
+
+#### Round 3
+
+- Continue playing rounds until one player has won two rounds.
+
+### Command-Line Interaction Example
+
+```
+Welcome to Digit Duel!
+
+--- Round 1 ---
+
+Player 1's Turn:
+- You draw a '7'.
+- Do you want to keep it? (yes/no): yes
+- Your hand: [7]
+
+Player 2's Turn:
+- You draw a '2'.
+- Do you want to keep it? (yes/no): no
+- You give the '2' to Player 1.
+- Player 1's hand: [7, 2]
+
+Player 1's Turn:
+- You draw a '9'.
+- Do you want to keep it? (yes/no): yes
+- Your hand is now full: [7, 2, 9]
+
+Player 2's Turn:
+- You draw a '5'.
+- Do you want to keep it? (yes/no): yes
+- Your hand: [5]
+
+Player 2's Turn:
+- You draw a '1'.
+- Do you want to keep it? (yes/no): yes
+- Your hand: [5, 1]
+
+Player 2's Turn:
+- You draw a '8'.
+- Do you want to keep it? (yes/no): yes
+- Your hand is now full: [5, 1, 8]
+
+Both hands are full. Time to reveal your numbers!
+
+Player 1, arrange your digits to form your number.
+- Your digits: [7, 2, 9]
+- Enter your number (use each digit once): 972
+
+Player 2, arrange your digits to form your number.
+- Your digits: [5, 1, 8]
+- Enter your number (use each digit once): 851
+
+Round 1 Results:
+- Player 1's Number: 972
+- Player 2's Number: 851
+- Player 1 wins the round!
+
+Current Score:
+- Player 1: 1 win
+- Player 2: 0 wins
+
+--- Round 2 ---
+
+[Proceed with Round 2 as above]
+
+```
+
+## Strategy Tips
+
+- **High Digits**:
+  - Keep high digits (7, 8, 9) to boost your own number.
+- **Low Digits**:
+  - Give low digits (0, 1, 2) to your opponent to potentially lower their final number.
+- **Middle Digits**:
+  - Use discretion with middle digits (3, 4, 5, 6) based on the current state of hands.
+- **Observation**:
+  - Pay attention to which digits have already been drawn to estimate remaining cards.
+
+## Conclusion
+
+"Digit Duel" is a fast-paced game that combines luck and strategy, perfect for a command-line interface. Players must make tactical decisions each turn, balancing the benefit of strengthening their own hand against the opportunity to weaken their opponent's chances. With simple rules and deep strategic potential, "Digit Duel" offers engaging gameplay that allows a skilled player to consistently outperform an unskilled one.
+
+Enjoy the game!

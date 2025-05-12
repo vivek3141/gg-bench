@@ -1,0 +1,155 @@
+# Palindrome Duel: A Two-Player Command-Line Game
+
+## Objective
+
+**Palindrome Duel** is a strategic two-player turn-based game where players take turns adding their symbol to a shared sequence. The primary goal is to avoid creating a palindrome of three or more consecutive symbols. The player who forces the creation of such a palindrome on their turn loses the game. Victory is achieved by strategically placing symbols to corner your opponent into making a palindrome.
+
+## Setup
+
+- The game starts with an empty sequence that can hold up to **11** symbols.
+- Each player chooses a unique symbol:
+  - **Player 1**: `X`
+  - **Player 2**: `O`
+- Determine who will take the first turn (e.g., by a coin toss or mutual agreement).
+
+## Game Components
+
+- **Sequence**: A linear array (list) that represents the shared sequence of symbols. It has a maximum capacity of **11** positions.
+- **Symbols**:
+  - `X`: Represents the symbols placed by Player 1.
+  - `O`: Represents the symbols placed by Player 2.
+- **Positions**: The sequence positions are indexed from **1** (leftmost) to **N** (rightmost), where **N** is the current length of the sequence.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **On each turn**, a player must:
+  1. **Choose a Side**: Decide to add their symbol to the **left** or **right** end of the sequence.
+  2. **Place Symbol**: Add their symbol (`X` or `O`) to the chosen end.
+- The sequence grows by one symbol each turn until it reaches the maximum length or the game ends.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Adding Symbols**:
+   - Players can only add their own symbol (`X` or `O`).
+   - Symbols are only added to either end of the sequence (leftmost or rightmost position).
+
+2. **Creating Palindromes**:
+   - After a player adds their symbol, the sequence is checked for **palindromes of length 3 or more**.
+   - **Palindrome Definition**: A sequence that reads the same forward and backward (e.g., `XOX`, `OOO`, `XOOX`).
+   - **Overlap Allowed**: Palindromes can overlap with previously placed symbols.
+
+3. **Losing the Game**:
+   - If the placement of a symbol results in the formation of any palindrome of length **3 or more**, the player who placed the symbol **loses the game**.
+
+4. **Winning the Game**:
+   - A player wins if their opponent is forced to create a palindrome on their turn.
+   - If the sequence reaches its maximum length (**11 symbols**) without any palindromes of length 3 or more being formed, **the last player to have placed a symbol wins**.
+
+### Special Conditions
+
+- **Forced Move**: Players must place a symbol on their turn; skipping a turn is not allowed.
+- **Game End**: The game ends immediately when a palindrome of required length is formed.
+
+## Scoring
+
+- **Win**: The winning player receives 1 point.
+- **Loss**: The losing player receives 0 points.
+- **Match Play**: Players can play multiple rounds, keeping track of their total score over several games.
+
+## Examples
+
+### Example Scenario 1
+
+**Sequence State**: (Empty)
+
+- **Turn 1**:
+  - **Player**: 1 (`X`)
+  - **Action**: Adds `X` to the left.
+  - **Sequence**: `X`
+
+- **Turn 2**:
+  - **Player**: 2 (`O`)
+  - **Action**: Adds `O` to the right.
+  - **Sequence**: `X O`
+
+- **Turn 3**:
+  - **Player**: 1 (`X`)
+  - **Action**: Adds `X` to the right.
+  - **Sequence**: `X O X`
+  - **Check for Palindromes**:
+    - Subsequence `X O X` is a palindrome of length 3.
+  - **Result**: **Player 1 loses** (created a palindrome of length 3).
+
+### Example Scenario 2
+
+**Sequence State**: (Empty)
+
+- **Turn 1**:
+  - **Player**: 1 (`X`)
+  - **Action**: Adds `X` to the right.
+  - **Sequence**: `X`
+
+- **Turn 2**:
+  - **Player**: 2 (`O`)
+  - **Action**: Adds `O` to the left.
+  - **Sequence**: `O X`
+
+- **Turn 3**:
+  - **Player**: 1 (`X`)
+  - **Action**: Adds `X` to the left.
+  - **Sequence**: `X O X`
+  - **Check for Palindromes**:
+    - Subsequence `X O X` is a palindrome of length 3.
+  - **Result**: **Player 1 loses**.
+
+### Example Scenario 3
+
+**Sequence State**: (Empty)
+
+- **Turn 1 to 5**:
+  - Players continue adding symbols without creating a palindrome.
+  - **Sequence**: `X O X O X`
+
+- **Turn 6**:
+  - **Player**: 2 (`O`)
+  - **Action**: Adds `O` to the right.
+  - **Sequence**: `X O X O X O`
+  - **Check for Palindromes**:
+    - Subsequence `X O X O X O` is not a palindrome.
+    - Subsequence `O X O` (positions 2-4) is a palindrome of length 3.
+  - **Result**: **Player 2 loses** (created a palindrome of length 3).
+
+### Command-Line Interaction Sample
+
+```
+Sequence: 
+
+Player 1's Turn (Symbol: X)
+Choose side to place your symbol (left/right): left
+Sequence: X
+
+Player 2's Turn (Symbol: O)
+Choose side to place your symbol (left/right): right
+Sequence: X O
+
+Player 1's Turn (Symbol: X)
+Choose side to place your symbol (left/right): right
+Sequence: X O X
+Palindrome formed: X O X
+Player 1 loses the game!
+```
+
+## Strategic Tips
+
+- **Avoid Symmetry**: Placing symbols to prevent symmetrical patterns can help avoid accidental palindromes.
+- **Force Moves**: Try to manipulate the sequence to limit your opponent's safe moves.
+- **Anticipate**: Think ahead about how the sequence can evolve with each placement.
+
+## Summary
+
+**Palindrome Duel** is a simple yet strategically rich game that tests players' foresight and planning. By carefully choosing where to place their symbols, players can control the flow of the game and outmaneuver their opponent. The game is quick to play, easy to implement in a command-line interface, and offers depth for those looking to refine their tactical skills.
+
+Enjoy the duel, and may the most strategic player win!

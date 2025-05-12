@@ -1,0 +1,241 @@
+# Gridlock: A Two-Player Command-Line Strategy Game
+
+## Objective
+
+Be the last player able to make a valid move. Players take turns placing markers on a grid while strategically blocking their opponent's options. The player who makes the final valid move wins the game.
+
+## Setup
+
+- **Grid Initialization**: The game is played on a 5x5 grid of empty cells.
+- **Starting Player**: Decide who will take the first turn (e.g., by mutual agreement or random selection).
+
+## Game Components
+
+- **Grid**: A 5x5 grid represented in the command-line interface. Each cell is identified by its row and column numbers (e.g., `(1,1)` for the top-left corner).
+  
+  ```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+  ```
+  
+- **Markers**: Each player uses a unique marker to denote their placed cells:
+  - Player 1: `X`
+  - Player 2: `O`
+  
+- **Blocked Cells**: Cells that are unavailable for selection, marked as `#`.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Selection Phase**: The active player selects an available (unblocked and unoccupied) cell to place their marker.
+  2. **Blocking Phase**: Upon placing their marker, all orthogonally adjacent cells (up, down, left, right) to the selected cell become blocked and are marked with `#`.
+  3. **Turn End**: The turn ends, and control passes to the opponent.
+
+- **Turn Progression**:
+  - Players alternate turns.
+  - If a player cannot make a valid move on their turn, they lose the game.
+
+## Rules and Mechanics
+
+- **Valid Moves**:
+  - A cell is valid for selection if it is not already occupied (`X` or `O`) and is not blocked (`#`).
+  - Players must select a valid cell on their turn.
+
+- **Blocking Mechanism**:
+  - After placing a marker, immediately block all orthogonally adjacent cells.
+  - Diagonal cells are not affected.
+  - If an adjacent cell is already occupied or blocked, no additional action is needed.
+
+- **Winning the Game**:
+  - The game continues until one player cannot make a valid move on their turn.
+  - The last player to make a valid move wins the game.
+  
+- **Game End Condition**:
+  - A player loses if:
+    - There are no valid cells available on their turn.
+    - They forfeit or concede the game.
+
+## Scoring
+
+- **Victory**: The winning player is the one who successfully places the last marker.
+- **No Point System**: There is no scoring or point tracking beyond determining the winner.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Grid
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn-by-Turn Example
+
+1. **Player 1's Turn**:
+   - **Selection**: Chooses cell `(3,3)`.
+   - **Grid Update**:
+
+     ```
+         1   2   3   4   5
+       +---+---+---+---+---+
+     1 |   |   |   |   |   |
+       +---+---+---+---+---+
+     2 |   |   | # |   |   |
+       +---+---+---+---+---+
+     3 |   | # | X | # |   |
+       +---+---+---+---+---+
+     4 |   |   | # |   |   |
+       +---+---+---+---+---+
+     5 |   |   |   |   |   |
+       +---+---+---+---+---+
+     ```
+   - **Explanation**: Cell `(3,3)` is marked with `X`. Cells `(2,3)`, `(4,3)`, `(3,2)`, and `(3,4)` are blocked (`#`).
+
+2. **Player 2's Turn**:
+   - **Selection**: Chooses cell `(2,2)`.
+   - **Grid Update**:
+
+     ```
+         1   2   3   4   5
+       +---+---+---+---+---+
+     1 |   | # |   |   |   |
+       +---+---+---+---+---+
+     2 | # | O | # |   |   |
+       +---+---+---+---+---+
+     3 |   | # | X | # |   |
+       +---+---+---+---+---+
+     4 |   |   | # |   |   |
+       +---+---+---+---+---+
+     5 |   |   |   |   |   |
+       +---+---+---+---+---+
+     ```
+   - **Explanation**: Cell `(2,2)` is marked with `O`. Cells `(1,2)`, `(3,2)`, `(2,1)`, and `(2,3)` are blocked. Note that `(2,3)` was already blocked.
+
+3. **Player 1's Turn**:
+   - **Selection**: Chooses cell `(4,2)`.
+   - **Grid Update**:
+
+     ```
+         1   2   3   4   5
+       +---+---+---+---+---+
+     1 |   | # |   |   |   |
+       +---+---+---+---+---+
+     2 | # | O | # |   |   |
+       +---+---+---+---+---+
+     3 |   | # | X | # |   |
+       +---+---+---+---+---+
+     4 |   | X | # |   |   |
+       +---+---+---+---+---+
+     5 |   | # |   |   |   |
+       +---+---+---+---+---+
+     ```
+   - **Explanation**: Cell `(4,2)` is marked with `X`. Cells `(3,2)`, `(5,2)`, `(4,1)`, and `(4,3)` are blocked.
+
+4. **Player 2's Turn**:
+   - **Selection**: Chooses cell `(1,3)`.
+   - **Grid Update**:
+
+     ```
+         1   2   3   4   5
+       +---+---+---+---+---+
+     1 |   | # | O | # |   |
+       +---+---+---+---+---+
+     2 | # | O | # |   |   |
+       +---+---+---+---+---+
+     3 |   | # | X | # |   |
+       +---+---+---+---+---+
+     4 |   | X | # |   |   |
+       +---+---+---+---+---+
+     5 |   | # |   |   |   |
+       +---+---+---+---+---+
+     ```
+   - **Explanation**: Cell `(1,3)` is marked with `O`. Cells `(1,2)`, `(1,4)`, `(2,3)` are blocked.
+
+5. **Player 1's Turn**:
+   - **Selection**: Chooses cell `(5,3)`.
+   - **Grid Update**:
+
+     ```
+         1   2   3   4   5
+       +---+---+---+---+---+
+     1 |   | # | O | # |   |
+       +---+---+---+---+---+
+     2 | # | O | # |   |   |
+       +---+---+---+---+---+
+     3 |   | # | X | # |   |
+       +---+---+---+---+---+
+     4 |   | X | # |   |   |
+       +---+---+---+---+---+
+     5 |   | # | X | # |   |
+       +---+---+---+---+---+
+     ```
+   - **Explanation**: Cell `(5,3)` is marked with `X`. Cells `(4,3)`, `(5,2)`, `(5,4)` are blocked.
+
+6. **Player 2's Turn**:
+   - **Selection**: Cannot make a valid move; all available cells are either occupied or blocked.
+   - **Outcome**: Player 2 loses; Player 1 wins the game.
+
+## Command-Line Interaction
+
+### Sample Turn Interaction
+
+- **Player Prompt**:
+  ```
+  Player 1's turn (X):
+  Available cells: (list of available cells)
+  Choose your move (format: row,column): 
+  ```
+- **Player Input**:
+  ```
+  3,3
+  ```
+- **Game Response**:
+  ```
+  You placed an X at (3,3).
+  Blocking cells: (2,3), (4,3), (3,2), (3,4)
+  ```
+- **Updated Grid Display**:
+  ```
+  (Display updated grid)
+  ```
+
+### End of Game
+
+- **Victory Announcement**:
+  ```
+  No valid moves available for Player 2.
+  Player 1 wins the game!
+  ```
+
+## Strategy Tips
+
+- **Control the Center**: Placing your marker near the center can block more options for your opponent.
+- **Force Moves**: Try to limit the available cells in such a way that your opponent has fewer choices.
+- **Plan Ahead**: Anticipate the blocking effect of your move on future turns.
+- **Avoid Corners Early**: Corner cells block fewer cells; save them for later in the game.
+
+## Conclusion
+
+Gridlock is a strategic game that combines foresight and tactical planning. By understanding the blocking mechanics and anticipating your opponent's moves, you can gain a strategic advantage and secure victory. Enjoy the challenge and may the best strategist win!

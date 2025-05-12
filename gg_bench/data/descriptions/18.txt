@@ -1,0 +1,229 @@
+# Gridlock Showdown
+
+## Objective
+
+Gridlock Showdown is a strategic two-player, turn-based game played on a virtual grid. The primary goal is to be the last player able to make a valid move. Players take turns claiming cells on the grid, strategically blocking their opponent's options. The player who cannot make a move on their turn loses the game.
+
+## Setup
+
+- **Grid Configuration**: A 4x4 grid is initialized, consisting of 16 cells arranged in 4 rows and 4 columns.
+- **Cell States**: All cells start as unclaimed and are available for players to claim.
+- **Player Assignment**: Two players are designated as Player 1 and Player 2. Player 1 makes the first move.
+
+## Game Components
+
+- **Grid**: A virtual 4x4 grid represented in the command-line interface, with rows numbered 1 to 4 from top to bottom and columns numbered 1 to 4 from left to right.
+- **Cells**: Each cell can be in one of three states:
+  - **Unclaimed ('-')**: The cell is available for claiming.
+  - **Claimed ('X' or 'O')**: The cell has been claimed by a player. 'X' represents Player 1, and 'O' represents Player 2.
+  - **Blocked ('#')**: The cell is blocked and cannot be claimed.
+- **Markers**: Players use unique symbols to mark their claimed cells:
+  - **Player 1**: 'X'
+  - **Player 2**: 'O'
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Actions Per Turn**:
+  1. **Claim a Cell**: The player selects any unclaimed and unblocked cell by specifying its row and column coordinates.
+  2. **Block Adjacent Cells**: Immediately after claiming a cell, all orthogonally adjacent unclaimed cells (up, down, left, right) become blocked.
+- **Turn Progression**: After a player completes their turn, the next player proceeds unless the game has ended.
+
+## Rules and Mechanics
+
+1. **Claiming Cells**:
+   - On your turn, you must claim one unclaimed and unblocked cell.
+   - To claim a cell, enter the row and column numbers (e.g., row 2, column 3).
+2. **Blocking Mechanism**:
+   - After claiming a cell, the game automatically blocks all unclaimed orthogonally adjacent cells (not diagonal).
+   - Blocked cells are marked with a '#' symbol and cannot be claimed by either player.
+3. **Valid Moves**:
+   - A move is valid if there is at least one unclaimed and unblocked cell available to claim.
+   - If a player has no valid moves on their turn, they lose the game.
+4. **Winning the Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The last player to have made a valid move is declared the winner.
+
+## Scoring
+
+- **Victory Condition**: There are no points or scoring mechanisms. The objective is to force your opponent into a position where they cannot make a valid move.
+- **Winner**: The player who successfully limits their opponent's options, leaving them without a valid move, wins the game.
+
+## Examples
+
+### Sample Game Play
+
+Below is an example of how a game might proceed, including command-line interactions.
+
+#### Initial Grid State
+
+```
+   1 2 3 4
+1 [- - - -]
+2 [- - - -]
+3 [- - - -]
+4 [- - - -]
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 claims cell (2,2).
+- **Input**: `Player 1, enter your move (row and column): 2 2`
+- **Grid Update**:
+  - Cell (2,2) is marked with 'X'.
+  - Cells (1,2), (2,1), (2,3), and (3,2) become blocked ('#').
+
+```
+   1 2 3 4
+1 [- # - -]
+2 [# X # -]
+3 [- # - -]
+4 [- - - -]
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 claims cell (1,3).
+- **Input**: `Player 2, enter your move (row and column): 1 3`
+- **Grid Update**:
+  - Cell (1,3) is marked with 'O'.
+  - Cells (1,2), (1,4) become blocked, but (1,2) is already blocked.
+
+```
+   1 2 3 4
+1 [- # O #]
+2 [# X # -]
+3 [- # - -]
+4 [- - - -]
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Player 1 claims cell (3,3).
+- **Input**: `Player 1, enter your move (row and column): 3 3`
+- **Grid Update**:
+  - Cell (3,3) is marked with 'X'.
+  - Cells (2,3), (3,2), (3,4), and (4,3) become blocked.
+
+```
+   1 2 3 4
+1 [- # O #]
+2 [# X # -]
+3 [- # X #]
+4 [- - # -]
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Player 2 claims cell (4,2).
+- **Input**: `Player 2, enter your move (row and column): 4 2`
+- **Grid Update**:
+  - Cell (4,2) is marked with 'O'.
+  - Cells (3,2), (4,1), (4,3) become blocked, but (3,2) and (4,3) are already blocked.
+
+```
+   1 2 3 4
+1 [- # O #]
+2 [# X # -]
+3 [- # X #]
+4 [# O # -]
+```
+
+#### Turn 5: Player 1
+
+- **Action**: Player 1 attempts to find a valid move.
+- **Available Moves**: Cell (2,4), Cell (4,4).
+- **Choice**: Player 1 claims cell (2,4).
+- **Input**: `Player 1, enter your move (row and column): 2 4`
+- **Grid Update**:
+  - Cell (2,4) is marked with 'X'.
+  - Cells (1,4), (3,4), (2,3) become blocked, but (1,4) and (3,4) are already blocked.
+
+```
+   1 2 3 4
+1 [- # O #]
+2 [# X # X]
+3 [- # X #]
+4 [# O # -]
+```
+
+#### Turn 6: Player 2
+
+- **Action**: Player 2 claims cell (4,4).
+- **Input**: `Player 2, enter your move (row and column): 4 4`
+- **Grid Update**:
+  - Cell (4,4) is marked with 'O'.
+  - Cells (3,4), (4,3) become blocked, but both are already blocked.
+
+```
+   1 2 3 4
+1 [- # O #]
+2 [# X # X]
+3 [- # X #]
+4 [# O # O]
+```
+
+#### Turn 7: Player 1
+
+- **Action**: Player 1 checks for valid moves.
+- **Available Moves**: Cell (1,1), Cell (4,1).
+- **Choice**: Player 1 claims cell (1,1).
+- **Input**: `Player 1, enter your move (row and column): 1 1`
+- **Grid Update**:
+  - Cell (1,1) is marked with 'X'.
+  - Cells (1,2), (2,1) become blocked, but both are already blocked.
+
+```
+   1 2 3 4
+1 [X # O #]
+2 [# X # X]
+3 [- # X #]
+4 [# O # O]
+```
+
+#### Turn 8: Player 2
+
+- **Action**: Player 2 claims cell (4,1).
+- **Input**: `Player 2, enter your move (row and column): 4 1`
+- **Grid Update**:
+  - Cell (4,1) is marked with 'O'.
+  - Cells (3,1), (4,2) become blocked, but both are already blocked.
+
+```
+   1 2 3 4
+1 [X # O #]
+2 [# X # X]
+3 [- # X #]
+4 [O O # O]
+```
+
+#### Turn 9: Player 1
+
+- **Action**: Player 1 checks for valid moves.
+- **Available Moves**: Cell (3,1).
+- **Choice**: Player 1 claims cell (3,1).
+- **Input**: `Player 1, enter your move (row and column): 3 1`
+- **Grid Update**:
+  - Cell (3,1) is marked with 'X'.
+  - Cells (2,1), (3,2), (4,1) become blocked or are already blocked.
+
+```
+   1 2 3 4
+1 [X # O #]
+2 [# X # X]
+3 [X # X #]
+4 [O O # O]
+```
+
+#### Turn 10: Player 2
+
+- **Action**: Player 2 checks for valid moves.
+- **Available Moves**: None.
+- **Outcome**: Player 2 cannot make a valid move and loses the game.
+- **Message**: `Player 2 has no valid moves left. Player 1 wins!`
+
+## Conclusion
+
+Gridlock Showdown is a quick and strategic game that requires players to think ahead and anticipate their opponent's moves. By carefully selecting which cells to claim and considering the blocking effect on adjacent cells, skilled players can consistently outmaneuver less experienced opponents.
+
+Enjoy the battle of wits in Gridlock Showdown!

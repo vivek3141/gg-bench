@@ -1,0 +1,165 @@
+# Multiply to 100
+
+## Objective
+
+**Multiply to 100** is a strategic two-player, turn-based game. The primary goal is to be the first player to reach **exactly 100** by multiplying a cumulative number starting from 1. Players take turns multiplying the current number by 2, 3, or 4. Overshooting 100 results in an immediate loss.
+
+## Setup
+
+1. **Starting Number**: The game begins with a cumulative number set to **1**.
+2. **Players**: Two players are required. Player 1 will make the first move, followed by Player 2.
+3. **Command-Line Interface**: The game is played within a command-line interface, where players input their chosen multipliers when prompted.
+
+## Game Components
+
+- **Cumulative Number**: A running total that starts at 1 and is updated each turn based on players' multipliers.
+- **Multipliers**: The set of numbers a player can choose to multiply the cumulative number by on their turn. The available multipliers are:
+  - **2**
+  - **3**
+  - **4**
+
+## Turns
+
+- **Turn Order**: The game proceeds in alternating turns, starting with Player 1.
+- **Player Actions During a Turn**:
+  1. **Input Multiplier**: The current player selects a multiplier from the available options (2, 3, or 4).
+  2. **Update Cumulative Number**: The chosen multiplier is applied to the cumulative number to produce a new cumulative number.
+  3. **Check for Win or Loss**:
+     - If the cumulative number is exactly 100, the current player wins.
+     - If the cumulative number exceeds 100, the current player loses.
+     - If neither condition is met, the turn passes to the next player.
+
+## Rules and Mechanics
+
+1. **Valid Multipliers**: On their turn, a player must choose one of the valid multipliers: 2, 3, or 4.
+2. **Cumulative Number Updates**: The cumulative number is updated each turn by multiplying it with the player's chosen multiplier.
+3. **Winning the Game**:
+   - A player wins if they reach a cumulative number of exactly 100 on their turn.
+4. **Losing the Game**:
+   - A player loses if the cumulative number exceeds 100 as a result of their move.
+5. **Invalid Moves**:
+   - If a player inputs an invalid multiplier (not 2, 3, or 4), they are prompted again to enter a valid multiplier.
+
+## Scoring
+
+- **Winning Player**: The player who reaches exactly 100 wins the game.
+- **Losing Player**: The player who causes the cumulative number to exceed 100 loses the game.
+- **No Draws**: The game cannot end in a draw; it will always result in a win or loss.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Turn 1:
+
+- **Cumulative Number**: 1
+- **Player 1's Turn**:
+  - **Available Multipliers**: 2, 3, 4
+  - **Player 1 Chooses**: 4
+  - **Calculation**: 1 × 4 = 4
+  - **Cumulative Number Updated To**: 4
+- **Game Continues**: No win or loss.
+
+#### Turn 2:
+
+- **Cumulative Number**: 4
+- **Player 2's Turn**:
+  - **Available Multipliers**: 2, 3, 4
+  - **Player 2 Chooses**: 3
+  - **Calculation**: 4 × 3 = 12
+  - **Cumulative Number Updated To**: 12
+- **Game Continues**: No win or loss.
+
+#### Turn 3:
+
+- **Cumulative Number**: 12
+- **Player 1's Turn**:
+  - **Available Multipliers**: 2, 3, 4
+  - **Player 1 Chooses**: 2
+  - **Calculation**: 12 × 2 = 24
+  - **Cumulative Number Updated To**: 24
+- **Game Continues**: No win or loss.
+
+#### Turn 4:
+
+- **Cumulative Number**: 24
+- **Player 2's Turn**:
+  - **Player 2 Chooses**: 4
+  - **Calculation**: 24 × 4 = 96
+  - **Cumulative Number Updated To**: 96
+- **Game Continues**: No win or loss.
+
+#### Turn 5:
+
+- **Cumulative Number**: 96
+- **Player 1's Turn**:
+  - **Player 1 Chooses**: 2
+  - **Calculation**: 96 × 2 = 192
+  - **Cumulative Number Updated To**: 192
+- **Result**: Cumulative number exceeds 100.
+- **Player 1 Loses**: Player 1 has caused the cumulative number to exceed 100.
+- **Player 2 Wins**: Player 2 is declared the winner.
+
+### Example Command-Line Interaction
+
+```plaintext
+Welcome to Multiply to 100!
+
+Starting Number: 1
+
+-----------------------------
+Player 1's Turn
+Current Number: 1
+Choose a multiplier (2, 3, or 4): 4
+
+You chose to multiply by 4.
+New Number: 4
+
+-----------------------------
+Player 2's Turn
+Current Number: 4
+Choose a multiplier (2, 3, or 4): 3
+
+You chose to multiply by 3.
+New Number: 12
+
+-----------------------------
+Player 1's Turn
+Current Number: 12
+Choose a multiplier (2, 3, or 4): 2
+
+You chose to multiply by 2.
+New Number: 24
+
+-----------------------------
+Player 2's Turn
+Current Number: 24
+Choose a multiplier (2, 3, or 4): 4
+
+You chose to multiply by 4.
+New Number: 96
+
+-----------------------------
+Player 1's Turn
+Current Number: 96
+Choose a multiplier (2, 3, or 4): 2
+
+You chose to multiply by 2.
+New Number: 192
+
+Oh no! The number has exceeded 100.
+Player 1 loses.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the potential outcomes of your multiplier choices, not just for the current turn but for future turns.
+- **Control the Game**: Aim to force your opponent into a position where any multiplier they choose will cause them to exceed 100.
+- **Key Numbers**: Be mindful of cumulative numbers that you should avoid passing to your opponent. For example, reaching 25 can be advantageous because all multipliers will keep the total under 100 on the next turn.
+
+## Conclusion
+
+"Multiply to 100" is a simple yet strategically rich game that tests players' mathematical foresight and planning skills. With easy-to-understand rules and quick gameplay, it's perfect for players looking for a challenging and engaging experience in a command-line interface.
+
+Enjoy the game, and may the best strategist win!

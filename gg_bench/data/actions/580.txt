@@ -1,0 +1,12 @@
+In the given environment, the action space is mapped to a set of moves as follows:
+
+- **Indices 0 to 3:** These correspond to movement actions based on direction:
+  - `0`: Move up
+  - `1`: Move down
+  - `2`: Move left
+  - `3`: Move right
+
+- **Indices 4 to 28:** These correspond to blocking actions, where each index represents placing a blocking token on an unoccupied cell in the grid:
+  - The formula to find the grid position from the index is: `block_row, block_col = divmod(action_index - 4, 5)`
+
+Thus, the action space consists of 4 movement actions and 25 block actions.

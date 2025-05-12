@@ -1,0 +1,259 @@
+# Barrier Battle: Rule Book
+
+## Objective
+
+**Barrier Battle** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to break through your opponent's barrier by reducing its strength to zero while defending your own barrier. Victory is achieved by carefully balancing offensive and defensive actions to outmaneuver your opponent.
+
+## Setup
+
+1. **Initialize Barriers**: Both players start with a barrier strength of 10.
+2. **Assign Player Roles**: Decide which player will go first. This can be determined randomly or by mutual agreement.
+3. **Display Status**: At the beginning of the game, display both players' barrier strengths:
+   ```
+   Player 1 Barrier: 10
+   Player 2 Barrier: 10
+   ```
+
+## Game Components
+
+- **Barriers**: Each player has a barrier with a strength value ranging from 0 to 10.
+  - *Appearance*: Represented numerically in the game interface.
+  - *Functionality*: Indicates the player's defensive strength; when it reaches zero, the barrier is broken.
+- **Actions**: Players can choose from three actions on their turn:
+  - **Light Attack** (`LA`): Deals 2 damage to the opponent's barrier.
+  - **Heavy Attack** (`HA`): Deals 3 damage to the opponent's barrier but cannot be used if your barrier is at 3 or less strength.
+  - **Fortify** (`F`): Restores 1 strength to your own barrier (cannot exceed 10).
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns alternately.
+   - On each turn, the active player selects one action.
+2. **Order of Actions**:
+   - The player chooses an action (`LA`, `HA`, or `F`).
+   - The action is executed, updating the barriers accordingly.
+   - The game displays the updated barrier strengths.
+3. **Progression**:
+   - The turn passes to the other player after the action is resolved.
+   - The game continues until one player's barrier reaches zero.
+
+## Rules and Mechanics
+
+### Actions
+
+1. **Light Attack (`LA`)**:
+   - *Effect*: Reduces the opponent's barrier by 2 points.
+   - *Usage*: Can be used regardless of your own barrier strength.
+
+2. **Heavy Attack (`HA`)**:
+   - *Effect*: Reduces the opponent's barrier by 3 points.
+   - *Restriction*: Cannot be used if your own barrier is at 3 or less strength.
+     - This encourages players to maintain their barrier strength before launching powerful attacks.
+
+3. **Fortify (`F`)**:
+   - *Effect*: Increases your own barrier by 1 point.
+   - *Limit*: Your barrier strength cannot exceed 10.
+   - *Usage*: Helps to recover from attacks and enables future heavy attacks.
+
+### Additional Rules
+
+- **Barrier Limits**:
+  - Barrier strengths are always kept within the range of 0 to 10.
+  - If an action would reduce a barrier below 0, set it to 0.
+  - If an action would increase a barrier above 10, set it to 10.
+
+- **Winning the Game**:
+  - The first player to reduce their opponent's barrier to exactly 0 wins the game.
+  - If both players' barriers reach 0 in the same turn, the player who initiated the action wins.
+
+- **Invalid Actions**:
+  - If a player selects an action they cannot perform (e.g., attempting a heavy attack with insufficient barrier strength), they are prompted to choose a valid action.
+  
+## Scoring
+
+- **Victory Condition**: The game does not use a point-based scoring system. Instead, the objective is to reduce your opponent's barrier to zero.
+- **Tracking Progress**:
+  - Barrier strengths are displayed after each turn, showing the current status of both players.
+  - Example:
+    ```
+    Player 1 Barrier: 7
+    Player 2 Barrier: 5
+    ```
+- **Winning the Game**:
+  - When a player's barrier reaches zero, the game announces the winner:
+    ```
+    Player 1's barrier has been destroyed!
+    Player 2 wins the game!
+    ```
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Status**:
+```
+Player 1 Barrier: 10
+Player 2 Barrier: 10
+```
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Chooses **Heavy Attack (`HA`)**.
+  - Player 2's barrier decreases by 3 (from 10 to 7).
+- **Status Update**:
+  ```
+  Player 1 used Heavy Attack!
+  Player 2's barrier is now 7.
+
+  Player 1 Barrier: 10
+  Player 2 Barrier: 7
+  ```
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - Chooses **Fortify (`F`)**.
+  - Player 2's barrier increases by 1 (from 7 to 8).
+- **Status Update**:
+  ```
+  Player 2 used Fortify!
+  Player 2's barrier is now 8.
+
+  Player 1 Barrier: 10
+  Player 2 Barrier: 8
+  ```
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - Chooses **Heavy Attack (`HA`)**.
+  - Player 2's barrier decreases by 3 (from 8 to 5).
+- **Status Update**:
+  ```
+  Player 1 used Heavy Attack!
+  Player 2's barrier is now 5.
+
+  Player 1 Barrier: 10
+  Player 2 Barrier: 5
+  ```
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - Chooses **Heavy Attack (`HA`)**.
+  - *Restriction*: Player 2's barrier is at 5, so they can perform a heavy attack.
+  - Player 1's barrier decreases by 3 (from 10 to 7).
+- **Status Update**:
+  ```
+  Player 2 used Heavy Attack!
+  Player 1's barrier is now 7.
+
+  Player 1 Barrier: 7
+  Player 2 Barrier: 5
+  ```
+
+**Turn 5**:
+- **Player 1's Turn**:
+  - Chooses **Light Attack (`LA`)**.
+  - Player 2's barrier decreases by 2 (from 5 to 3).
+- **Status Update**:
+  ```
+  Player 1 used Light Attack!
+  Player 2's barrier is now 3.
+
+  Player 1 Barrier: 7
+  Player 2 Barrier: 3
+  ```
+
+**Turn 6**:
+- **Player 2's Turn**:
+  - Chooses **Heavy Attack (`HA`)**.
+  - *Restriction*: Player 2's barrier is at 3.
+  - *Invalid Action*: Cannot perform heavy attack with barrier at 3 or less.
+  - **Prompt**: Player 2 must choose a valid action.
+- **Player 2 Chooses Light Attack (`LA`)**:
+  - Player 1's barrier decreases by 2 (from 7 to 5).
+- **Status Update**:
+  ```
+  Player 2 used Light Attack!
+  Player 1's barrier is now 5.
+
+  Player 1 Barrier: 5
+  Player 2 Barrier: 3
+  ```
+
+**Turn 7**:
+- **Player 1's Turn**:
+  - Chooses **Light Attack (`LA`)**.
+  - Player 2's barrier decreases by 2 (from 3 to 1).
+- **Status Update**:
+  ```
+  Player 1 used Light Attack!
+  Player 2's barrier is now 1.
+
+  Player 1 Barrier: 5
+  Player 2 Barrier: 1
+  ```
+
+**Turn 8**:
+- **Player 2's Turn**:
+  - Chooses **Fortify (`F`)**.
+  - Player 2's barrier increases by 1 (from 1 to 2).
+- **Status Update**:
+  ```
+  Player 2 used Fortify!
+  Player 2's barrier is now 2.
+
+  Player 1 Barrier: 5
+  Player 2 Barrier: 2
+  ```
+
+**Turn 9**:
+- **Player 1's Turn**:
+  - Chooses **Heavy Attack (`HA`)**.
+  - *Restriction*: Player 1's barrier is at 5, can perform heavy attack.
+  - Player 2's barrier decreases by 3 (from 2 to -1).
+  - Barrier cannot go below 0; set to 0.
+- **Status Update**:
+  ```
+  Player 1 used Heavy Attack!
+  Player 2's barrier is now 0.
+
+  Player 1 Barrier: 5
+  Player 2 Barrier: 0
+  ```
+
+**End of Game**:
+```
+Player 2's barrier has been destroyed!
+Player 1 wins the game!
+```
+
+## Command-Line Interaction Example
+
+**Player Prompts**:
+- On each turn, prompt the player for their action:
+  ```
+  Player 1, choose your action:
+  [LA] Light Attack (Deal 2 damage)
+  [HA] Heavy Attack (Deal 3 damage, requires barrier > 3)
+  [F] Fortify (Increase your barrier by 1)
+  Enter your action: 
+  ```
+
+**Invalid Action Handling**:
+- If a player selects an invalid action, display an error and prompt again:
+  ```
+  Invalid action. You cannot perform a Heavy Attack with barrier strength of 3 or less.
+  Please choose a valid action.
+  ```
+
+**Status Display**:
+- After each action, display the updated barrier strengths and any relevant messages.
+
+## Strategy Tips
+
+- **Maintain Barrier Strength**: Keep your barrier above 3 to retain the ability to perform heavy attacks.
+- **Balance Offense and Defense**: A mix of attacks and fortifying can help outlast your opponent.
+- **Anticipate Opponent's Moves**: Monitor their barrier strength to predict their possible actions.
+
+---
+
+**Barrier Battle** combines simple mechanics with strategic depth, making it quick to play yet rewarding for skilled players. Enjoy outsmarting your opponent in this battle of wits!

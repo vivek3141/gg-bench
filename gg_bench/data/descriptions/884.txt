@@ -1,0 +1,160 @@
+# Prime Path
+
+## Objective
+
+Be the first player to reach exactly position 25 on a numerical path by strategically selecting prime numbers to advance. Outmaneuver your opponent by managing prime resources and positioning, while potentially sending them back to the start.
+
+## Setup
+
+- **Numerical Path**: A linear path numbered from **1** to **25**.
+- **Starting Position**: Both players begin at **position 0**, just before the number 1.
+- **Player Tokens**: Each player has a token represented by their name or initials.
+- **Prime Number Pool**: A shared list of prime numbers less than 20: **[2, 3, 5, 7, 11, 13, 17, 19]**.
+- **Turn Order**: Decide who goes first (coin toss, agreement, etc.).
+
+## Game Components
+
+- **Numerical Path**: A sequence of numbers from 1 to 25 displayed linearly.
+- **Player Tokens**: Indicators of each player's current position on the path.
+- **Prime Number Pool**: The list of available prime numbers for movement.
+
+## Turns
+
+- Players take turns alternately.
+- **Turn Actions**:
+  1. **Select a Prime**: Choose a prime number from the available pool.
+  2. **Move Token**: Advance your token forward by the number selected.
+  3. **Update Prime Pool**: Remove the chosen prime from the pool.
+
+## Rules and Mechanics
+
+1. **Selecting Primes**:
+   - Choose any available prime number from the pool on your turn.
+   - Once a prime is used, it's **removed** from the pool.
+
+2. **Moving the Token**:
+   - Advance your token forward by the exact number of spaces equal to the chosen prime.
+   - Movement is **only forward**; no backward moves allowed.
+
+3. **Landing on the Opponent**:
+   - If you land on the same position as your opponent, their token is sent back to **position 0**.
+   - If both players are on position 0, they coexist without affecting each other.
+
+4. **Exact Landing**:
+   - To win, you must land **exactly** on position 25.
+   - Moves that would take you beyond 25 are **invalid**; you must choose a different prime.
+
+5. **No Valid Moves**:
+   - If no available primes allow a valid move, you **skip your turn**.
+   - Managing primes to avoid this scenario is part of the strategy.
+
+## Scoring
+
+- **Winning the Game**: The first player to land exactly on **position 25** wins.
+- There is no point system; the game is won by reaching the end of the path first.
+
+## Examples
+
+### Sample Game Play
+
+#### Starting the Game
+
+- **Prime Pool**: [2, 3, 5, 7, 11, 13, 17, 19]
+- **Player Positions**:
+  - Player 1: Position 0
+  - Player 2: Position 0
+
+#### Turns Breakdown
+
+1. **Player 1's Turn**:
+   - Chooses prime **13**.
+   - Moves to **position 13**.
+   - Prime Pool now: [2, 3, 5, 7, 11, 17, 19]
+
+2. **Player 2's Turn**:
+   - Chooses prime **19**.
+   - Moves to **position 19**.
+   - Prime Pool now: [2, 3, 5, 7, 11, 17]
+
+3. **Player 1's Turn**:
+   - Cannot use **17** (13+17=30 > 25).
+   - Chooses prime **7**.
+   - Moves to **position 20**.
+   - Prime Pool now: [2, 3, 5, 11, 17]
+
+4. **Player 2's Turn**:
+   - Chooses prime **5**.
+   - Moves to **position 24**.
+   - Prime Pool now: [2, 3, 11, 17]
+
+5. **Player 1's Turn**:
+   - Chooses prime **3**.
+   - Moves to **position 23**.
+   - Prime Pool now: [2, 11, 17]
+
+6. **Player 2's Turn**:
+   - Cannot use any primes (all moves exceed 25).
+   - **Skips turn**.
+
+7. **Player 1's Turn**:
+   - Chooses prime **2**.
+   - Moves to **position 25**.
+   - **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+```
+Prime Pool: [2, 3, 5, 7, 11, 13, 17, 19]
+Player 1's Turn
+Available Primes: [2, 3, 5, 7, 11, 13, 17, 19]
+Choose a prime number: 13
+Player 1 moves to position 13.
+
+Prime Pool: [2, 3, 5, 7, 11, 17, 19]
+Player 2's Turn
+Available Primes: [2, 3, 5, 7, 11, 17, 19]
+Choose a prime number: 19
+Player 2 moves to position 19.
+
+Prime Pool: [2, 3, 5, 7, 11, 17]
+Player 1's Turn
+Available Primes: [2, 3, 5, 7, 11, 17]
+Cannot choose 17 (move exceeds 25).
+Choose a prime number: 7
+Player 1 moves to position 20.
+
+Prime Pool: [2, 3, 5, 11, 17]
+Player 2's Turn
+Available Primes: [2, 3, 5, 11, 17]
+Choose a prime number: 5
+Player 2 moves to position 24.
+
+Prime Pool: [2, 3, 11, 17]
+Player 1's Turn
+Available Primes: [2, 3, 11, 17]
+Choose a prime number: 3
+Player 1 moves to position 23.
+
+Prime Pool: [2, 11, 17]
+Player 2's Turn
+Available Primes: [2, 11, 17]
+No valid moves available. Turn skipped.
+
+Prime Pool: [2, 11, 17]
+Player 1's Turn
+Available Primes: [2, 11, 17]
+Choose a prime number: 2
+Player 1 moves to position 25.
+Player 1 wins!
+```
+
+## Strategic Depth
+
+- **Prime Resource Management**: Decide when to use high or low primes. Using large primes early can be advantageous but may limit options later.
+- **Position Awareness**: Keep track of both players' positions to avoid aiding your opponent or to plan sending them back to start.
+- **Blocking Moves**: Anticipate your opponent's possible moves to block them by removing certain primes from the pool.
+- **Forced Skips**: Strategically use primes to force your opponent into a position where they have no valid moves.
+
+---
+
+By mastering prime management and anticipating your opponent's options, you can consistently outplay less skilled players in **Prime Path**.

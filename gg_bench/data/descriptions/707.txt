@@ -1,0 +1,239 @@
+# Conquest Command
+
+Conquest Command is a unique, strategic two-player turn-based game designed for play in a command-line interface. Players engage in a tactical battle of wits, aiming to outmaneuver their opponent through clever resource management and strategic planning. The game is easy to code and ensures a swift conclusion with no possibility of a draw. A skilled player can consistently outperform an unskilled player, adding depth and competitive excitement to each match.
+
+---
+
+## Objective
+
+Be the first player to conquer the central territory by accumulating exactly **100 Power Points (PP)** through strategic resource allocation and territorial control. Achieving 100 PP allows a player to launch a decisive strike to claim victory. Exceeding 100 PP results in an overload and loss, so precise management is crucial.
+
+---
+
+## Setup
+
+1. **Players**: Two players, **Commander A** and **Commander B**.
+2. **Resources**:
+   - Each player starts with:
+     - **3 Supply Units (SU)**
+     - **0 Power Points (PP)**
+3. **Territories**:
+   - **Home Base**: Each player has a home base.
+   - **Neutral Zone**: A contested central territory.
+4. **Turn Order**: Decide which player goes first (e.g., coin toss).
+
+---
+
+## Game Components
+
+- **Supply Units (SU)**:
+  - Represent resources used to generate Power Points.
+  - Players spend SUs to perform actions.
+- **Power Points (PP)**:
+  - Accumulated to reach the objective of 100 PP.
+  - Represent the player's strategic strength.
+- **Actions**:
+  - **Harvest**: Convert SUs into PP.
+  - **Spy**: Peek at opponent's PP.
+  - **Sabotage**: Reduce opponent's PP.
+  - **Fortify**: Protect own PP from sabotage.
+- **Command-Line Interface**:
+  - All interactions occur via text commands.
+
+---
+
+## Turns
+
+Each turn consists of the following phases:
+
+1. **Resource Allocation**:
+   - Players receive **1 SU** at the start of their turn.
+2. **Action Phase**:
+   - Spend SUs to perform actions:
+     - **Harvest** (`harvest`): Convert SUs to PP.
+     - **Spy** (`spy`): Spend 1 SU to view opponent’s PP.
+     - **Sabotage** (`sabotage`): Spend 2 SUs to reduce opponent’s PP.
+     - **Fortify** (`fortify`): Spend 1 SU to protect against sabotage.
+3. **End Turn**:
+   - The turn ends, and control passes to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### Actions Detailed
+
+1. **Harvest**:
+   - **Command**: `harvest <number_of_SUs>`
+   - **Effect**: Converts the specified number of SUs into PP at a rate of **1 SU = 20 PP**.
+   - **Limit**: Cannot harvest more SUs than currently possessed.
+   - **Example**: `harvest 2` converts 2 SUs into 40 PP.
+
+2. **Spy**:
+   - **Command**: `spy`
+   - **Cost**: 1 SU.
+   - **Effect**: Reveals the opponent's current PP total unless they are fortified this turn.
+   - **Limit**: Can only be used once per turn.
+
+3. **Sabotage**:
+   - **Command**: `sabotage`
+   - **Cost**: 2 SUs.
+   - **Effect**: Reduces opponent's PP by **30 PP** unless they fortified in their last turn.
+   - **Limit**: Can only be used once per turn.
+   - **Note**: Cannot reduce opponent's PP below 0.
+
+4. **Fortify**:
+   - **Command**: `fortify`
+   - **Cost**: 1 SU.
+   - **Effect**: Protects your PP from sabotage until your next turn.
+   - **Limit**: Can only be used once per turn.
+
+### Additional Rules
+
+- **Maximum PP**:
+  - If a player's PP exceeds **100**, they suffer an overload and immediately lose the game.
+- **Running Out of SUs**:
+  - If a player has no SUs at the start of their turn, they only receive 1 SU and may perform any action as normal.
+- **No Draws**:
+  - The game continues until a player wins or loses; there is no possibility of a draw.
+- **Secret Information**:
+  - Players do not automatically know the opponent's PP unless they use the `spy` action.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - **Victory Condition**: Accumulate **exactly 100 PP**.
+  - **Loss Conditions**:
+    - PP exceeds 100 (overload).
+    - Any action resulting in an overload causes an immediate loss.
+- **Tracking Progress**:
+  - Players must keep track of their own PP and SUs.
+  - **Example**:
+    - Current PP: 80
+    - Current SUs: 2
+    - Action: `harvest 1` (adds 20 PP, total PP becomes 100)
+
+---
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Turn 1: Commander A
+
+- **Resource Allocation**:
+  - Receives 1 SU (total SUs: 4).
+- **Action Phase**:
+  - Enters command: `harvest 2`
+  - Converts 2 SUs into 40 PP (total PP: 40).
+  - Remaining SUs: 2.
+- **End Turn**.
+
+#### Turn 1: Commander B
+
+- **Resource Allocation**:
+  - Receives 1 SU (total SUs: 4).
+- **Action Phase**:
+  - Enters command: `harvest 3`
+  - Converts 3 SUs into 60 PP (total PP: 60).
+  - Remaining SUs: 1.
+- **End Turn**.
+
+#### Turn 2: Commander A
+
+- **Resource Allocation**:
+  - Receives 1 SU (total SUs: 3).
+- **Action Phase**:
+  - Enters command: `spy` (costs 1 SU).
+  - Learns Commander B has 60 PP.
+  - Remaining SUs: 2.
+- **End Turn**.
+
+#### Turn 2: Commander B
+
+- **Resource Allocation**:
+  - Receives 1 SU (total SUs: 2).
+- **Action Phase**:
+  - Enters command: `fortify` (costs 1 SU).
+  - PP is protected until next turn.
+  - Remaining SUs: 1.
+- **End Turn**.
+
+#### Turn 3: Commander A
+
+- **Resource Allocation**:
+  - Receives 1 SU (total SUs: 3).
+- **Action Phase**:
+  - Enters command: `sabotage` (costs 2 SUs).
+  - Attempt to reduce Commander B's PP by 30 PP.
+  - However, Commander B fortified last turn; sabotage fails.
+  - Remaining SUs: 1.
+- **End Turn**.
+
+#### Turn 3: Commander B
+
+- **Resource Allocation**:
+  - Receives 1 SU (total SUs: 2).
+- **Action Phase**:
+  - Enters command: `harvest 2`
+  - **Note**: Current PP is 60.
+  - Harvesting 2 SUs adds 40 PP (total PP becomes 100).
+  - **Victory**: Commander B wins by reaching exactly 100 PP.
+- **Game Over**.
+
+---
+
+## Command-Line Interaction Example
+
+```plaintext
+Commander A's Turn
+------------------
+You have 2 SUs and 40 PP.
+Enter your action: spy
+You spend 1 SU to spy on Commander B.
+Commander B has 60 PP.
+Remaining SUs: 1
+Turn ends.
+
+Commander B's Turn
+------------------
+You have 1 SU and 60 PP.
+Enter your action: fortify
+You spend 1 SU to fortify your position.
+Remaining SUs: 0
+Your PP is protected until your next turn.
+Turn ends.
+
+Commander A's Turn
+------------------
+You have 1 SU and 40 PP.
+Enter your action: sabotage
+Not enough SUs to perform this action.
+Choose a different action.
+Enter your action: harvest 1
+You convert 1 SU into 20 PP.
+Total PP: 60
+Remaining SUs: 0
+Turn ends.
+```
+
+---
+
+## Strategy Tips
+
+- **Resource Management**:
+  - Balance between harvesting PP and retaining SUs for defensive or aggressive actions.
+- **Monitoring Opponent**:
+  - Use `spy` wisely to inform your strategy.
+- **Defensive Play**:
+  - Fortify when you suspect an opponent might sabotage you.
+- **Aggressive Play**:
+  - Time your `sabotage` to set back your opponent, especially if they are close to 100 PP.
+- **Avoid Overload**:
+  - Plan your harvests carefully to avoid exceeding 100 PP.
+
+---
+
+Enjoy engaging in a battle of strategy and resource management in **Conquest Command**. May the most cunning commander win!

@@ -1,0 +1,198 @@
+# Operator Outwit
+
+## Objective
+
+Be the first player to reach the **target number** exactly by strategically applying mathematical operations to a shared **current number**. Use addition, multiplication, or subtraction wisely to outmaneuver your opponent. The player who reaches the target number exactly on their turn wins the game. If a player's move causes the current number to exceed the target number, they lose immediately.
+
+## Setup
+
+1. **Determine the Target Number**: Agree on a target number to reach. For a standard game, the target number is **23**.
+2. **Initialize the Current Number**: Set the current number to **1** at the start of the game.
+3. **Player Roles**: Decide who will be **Player 1** and **Player 2**. This can be done by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Current Number**: A shared number that starts at 1 and changes as players apply operations.
+- **Target Number**: The number that players aim to reach exactly with the current number (e.g., 23).
+- **Operations**:
+  - **Add 2** (`+2`)
+  - **Multiply by 2** (`*2`)
+  - **Subtract 1** (`-1`)
+
+These operations are the only allowed moves, and each player can choose any one of them on their turn.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Display the Current Number**: At the beginning of each turn, announce the current number.
+  2. **Choose an Operation**: The player selects one of the allowed operations to apply to the current number.
+  3. **Apply the Operation**: Calculate the new current number after applying the chosen operation.
+  4. **Check for Win/Loss Conditions**:
+     - If the new current number **equals** the target number, the player **wins**.
+     - If the new current number **exceeds** the target number, the player **loses** immediately.
+     - If neither condition is met, the turn passes to the other player with the updated current number.
+  5. **Announce the Result**: Communicate the operation used and the new current number.
+
+## Rules and Mechanics
+
+1. **Allowed Operations**: On each turn, a player must choose **one** of the following operations to apply to the current number:
+   - **Add 2** (`+2`)
+   - **Multiply by 2** (`*2`)
+   - **Subtract 1** (`-1`)
+2. **Operational Restrictions**:
+   - The current number **cannot drop below 1**. If an operation would result in a number less than 1, that operation is invalid, and the player must choose a different one.
+3. **Win Condition**:
+   - A player **wins** if they reach the target number **exactly** on their turn.
+4. **Loss Condition**:
+   - A player **loses** if the current number **exceeds** the target number as a result of their operation.
+5. **Turn Passing**:
+   - If the current number is neither equal to nor exceeds the target number after the operation, the turn passes to the other player.
+6. **No Skipping Turns**:
+   - Players **cannot skip** their turn or pass; they must choose an allowable operation.
+7. **Validity of Moves**:
+   - If a player selects an invalid operation (e.g., results in a current number less than 1), they must choose a valid operation instead.
+
+## Scoring
+
+- **Winning the Game**: The player who reaches the target number exactly on their turn wins the game.
+- **Losing the Game**: The player who causes the current number to exceed the target number loses the game.
+- **Single Round Play**: The game is typically played in a single round. For extended play, players can keep track of wins over multiple rounds.
+
+## Examples
+
+### Example Game Play
+
+**Target Number**: 23  
+**Current Number**: Starts at 1
+
+#### Turn 1: Player 1
+
+- **Current Number**: 1
+- **Player 1's Move**: Multiply by 2 (`*2`)
+- **Calculation**: 1 * 2 = 2
+- **New Current Number**: 2
+- **Announce**: "I used *2. The current number is now 2."
+
+#### Turn 2: Player 2
+
+- **Current Number**: 2
+- **Player 2's Move**: Add 2 (`+2`)
+- **Calculation**: 2 + 2 = 4
+- **New Current Number**: 4
+- **Announce**: "I used +2. The current number is now 4."
+
+#### Turn 3: Player 1
+
+- **Current Number**: 4
+- **Player 1's Move**: Multiply by 2 (`*2`)
+- **Calculation**: 4 * 2 = 8
+- **New Current Number**: 8
+- **Announce**: "I used *2. The current number is now 8."
+
+#### Turn 4: Player 2
+
+- **Current Number**: 8
+- **Player 2's Move**: Add 2 (`+2`)
+- **Calculation**: 8 + 2 = 10
+- **New Current Number**: 10
+- **Announce**: "I used +2. The current number is now 10."
+
+#### Turn 5: Player 1
+
+- **Current Number**: 10
+- **Player 1's Move**: Multiply by 2 (`*2`)
+- **Calculation**: 10 * 2 = 20
+- **New Current Number**: 20
+- **Announce**: "I used *2. The current number is now 20."
+
+#### Turn 6: Player 2
+
+- **Current Number**: 20
+
+- **Player 2's Move**: Add 2 (`+2`)
+- **Calculation**: 20 + 2 = 22
+- **New Current Number**: 22
+- **Announce**: "I used +2. The current number is now 22."
+
+#### Turn 7: Player 1
+
+- **Current Number**: 22
+
+- **Player 1's Move**: Add 2 (`+2`)
+- **Calculation**: 22 + 2 = 24
+
+- **New Current Number**: 24
+
+- **Result**: The current number exceeds the target number (24 > 23). **Player 1 loses**.
+
+- **Announce**: "I used +2. The current number is now 24. I have exceeded the target number. Player 2 wins!"
+
+### Strategy Tips
+
+- **Avoid Exceeding the Target**: Always calculate the potential new current number before making a move to ensure you won't exceed the target.
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your operations to force them into a losing position.
+- **Control the Multiplication**: Using multiplication can rapidly increase the current number. Use it wisely to avoid overshooting the target.
+- **Use Subtraction Strategically**: Subtracting 1 can be a crucial move to adjust the current number and control the flow of the game.
+
+## Command-Line Interaction Example
+
+Below is an example of how the game might be played in a command-line interface:
+
+```
+Welcome to Operator Outwit!
+
+Target Number: 23
+Current Number: 1
+
+Player 1's turn.
+Current Number is 1.
+Choose an operation (+2, *2, -1): *2
+You chose *2.
+New Current Number is 2.
+
+Player 2's turn.
+Current Number is 2.
+Choose an operation (+2, *2, -1): +2
+You chose +2.
+New Current Number is 4.
+
+Player 1's turn.
+Current Number is 4.
+Choose an operation (+2, *2, -1): *2
+You chose *2.
+New Current Number is 8.
+
+Player 2's turn.
+Current Number is 8.
+Choose an operation (+2, *2, -1): +2
+You chose +2.
+New Current Number is 10.
+
+Player 1's turn.
+Current Number is 10.
+Choose an operation (+2, *2, -1): *2
+You chose *2.
+New Current Number is 20.
+
+Player 2's turn.
+Current Number is 20.
+Choose an operation (+2, *2, -1): +2
+You chose +2.
+New Current Number is 22.
+
+Player 1's turn.
+Current Number is 22.
+Choose an operation (+2, *2, -1): +2
+You chose +2.
+New Current Number is 24.
+
+Oh no! The current number has exceeded the target number.
+Player 1 loses. Player 2 wins!
+```
+
+## Conclusion
+
+**Operator Outwit** is a simple yet strategic game that challenges players to think ahead and plan their moves carefully. The rules are straightforward, making it easy to code and play in a command-line interface. The game ends quickly, and there is no possibility of a draw. Skilled players who can anticipate their opponent's moves and control the current number will consistently outperform less experienced players.
+
+Enjoy the battle of wits, and may the best strategist win!

@@ -1,0 +1,115 @@
+# Divide and Conquer
+
+## Objective
+
+"Divide and Conquer" is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the player who reduces the shared number to exactly **1** through a series of permitted divisions. Victory is achieved by executing optimal strategies to force your opponent into a position where they cannot avoid the inevitable reduction to **1** on your turn.
+
+## Setup
+
+1. **Starting Number**: The game begins with a shared positive integer **N**, set to **100**.
+2. **Players**: Two players, Player 1 and Player 2, participate in the game.
+3. **Turn Order**: Player 1 makes the first move.
+
+_The initial setup simply requires the starting number to be displayed and the players to be assigned._
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players manipulate. Initially set to **100**.
+- **Allowed Divisors**: Integers ranging from **2** to **9** (inclusive). These are the numbers players can choose to divide **N** by on their turn.
+- **Command-Line Interface**: Players input their chosen divisors through the command line when prompted.
+
+_No physical components are required. All game elements are managed digitally within the command-line interface._
+
+## Turns
+
+1. **Player Prompt**: On their turn, the player is prompted to input a divisor between **2** and **9**.
+2. **Action Execution**: The shared number **N** is divided by the chosen divisor.
+3. **Number Update**: **N** is updated to the integer part of the division result (i.e., discarded any fractional part).
+4. **Turn Progression**: The turn passes to the next player unless the game has ended.
+
+_Turns alternate between players until the game concludes._
+
+## Rules and Mechanics
+
+1. **Valid Divisors**: On each turn, a player must choose an integer between **2** and **9** (inclusive) to divide **N**.
+2. **Division Process**: The shared number **N** is divided by the chosen divisor. Only the integer part of the result is kept. For example, if **N** is **7** and the divisor is **2**, **N** becomes **3**.
+3. **Winning Condition**: The player who reduces **N** to exactly **1** on their turn **wins** the game.
+4. **Forced Move**: If a player is faced with **N** less than **2**, they lose their turn (though this scenario cannot occur under the rules if both players play correctly).
+5. **Invalid Moves**: If a player inputs an invalid divisor (not an integer between **2** and **9** or one that doesn't divide **N**), they are prompted again for a valid input.
+
+_The game's core mechanic revolves around strategic selection of divisors to control the progression of **N** towards **1**._
+
+## Scoring
+
+- **Winning**: The player who reduces **N** to exactly **1** wins the game.
+- **No Points System**: There is no point accumulation or scoring system beyond winning or losing the game.
+
+_Scoring is straightforward: the objective is to win the game by following the rules and applying strategic choices._
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial State**:
+- **N** = 100
+
+**Turn 1**: Player 1's turn
+- **Player 1** chooses to divide by **2**.
+- **Calculation**: 100 ÷ 2 = **50**
+- **N** is now **50**.
+
+**Turn 2**: Player 2's turn
+- **Player 2** chooses to divide by **5**.
+- **Calculation**: 50 ÷ 5 = **10**
+- **N** is now **10**.
+
+**Turn 3**: Player 1's turn
+- **Player 1** chooses to divide by **2**.
+- **Calculation**: 10 ÷ 2 = **5**
+- **N** is now **5**.
+
+**Turn 4**: Player 2's turn
+- **Player 2** chooses to divide by **5**.
+- **Calculation**: 5 ÷ 5 = **1**
+- **N** is now **1**.
+
+**Outcome**:
+- **Player 2** has reduced **N** to **1** and wins the game.
+
+### Command-Line Interaction Sample
+
+```
+Starting Number (N): 100
+
+Player 1's turn.
+Enter a divisor between 2 and 9: 2
+N is now 50.
+
+Player 2's turn.
+Enter a divisor between 2 and 9: 5
+N is now 10.
+
+Player 1's turn.
+Enter a divisor between 2 and 9: 2
+N is now 5.
+
+Player 2's turn.
+Enter a divisor between 2 and 9: 5
+N is now 1.
+
+Player 2 wins the game!
+```
+
+## Strategic Depth
+
+To excel at "Divide and Conquer," players should:
+
+- **Plan Ahead**: Anticipate the results of possible divisors to control the future value of **N**.
+- **Control the Game**: Force the opponent into positions where their options are limited.
+- **Mathematical Calculation**: Calculate the outcomes of different divisors to make optimal choices.
+
+Understanding the mathematical properties of numbers and divisibility can provide a significant advantage, allowing a skilled player to consistently outperform an unskilled opponent.
+
+---
+
+Enjoy playing "Divide and Conquer," and may the best strategist win!

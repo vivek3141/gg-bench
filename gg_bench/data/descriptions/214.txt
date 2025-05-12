@@ -1,0 +1,187 @@
+# Quantum Flip: Rule Book
+
+## Objective
+
+Be the first player to create your unique **Winning Pattern** in the binary string by strategically flipping bits. Use careful planning and foresight to achieve your pattern while preventing your opponent from forming theirs.
+
+---
+
+## Setup
+
+- **Binary String**: A sequence of 5 bits, initialized to `0 0 0 0 0`.
+- **Players**: Two players compete against each other.
+  - **Player 1's Winning Pattern**: `1 0 1 0 1`
+  - **Player 2's Winning Pattern**: `0 1 0 1 0`
+
+---
+
+## Game Components
+
+### Binary String
+
+- **Positions**: The binary string consists of 5 positions numbered from 1 to 5.
+- **Bits**: Each position can have a bit value of either `0` or `1`.
+- **Initial State**: All bits start at `0`.
+
+### Players
+
+- **Player 1**:
+  - Winning Pattern: `1 0 1 0 1`
+- **Player 2**:
+  - Winning Pattern: `0 1 0 1 0`
+
+---
+
+## Turns
+
+- Players take turns alternately, starting with **Player 1**.
+- **During a Turn**:
+  - A player can **flip** (toggle) **one or two bits** in the binary string.
+  - Flipping a bit changes its value from `0` to `1` or from `1` to `0`.
+  - Bits to flip can be **any positions**; they do not need to be adjacent.
+
+---
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - On each turn, a player **must** flip at least **one** bit and can choose to flip **up to two** bits.
+   - Legal moves include flipping one bit or flipping two bits.
+
+2. **Updating the Binary String**:
+   - After a player flips the chosen bits, the binary string is updated to reflect these changes.
+
+3. **Winning the Game**:
+   - A player wins if, after their turn, the binary string exactly matches **their** winning pattern.
+   - **Example**: If the binary string becomes `1 0 1 0 1`, **Player 1** wins.
+
+4. **Losing Conditions**:
+   - If a player, on their turn, creates the **opponent's** winning pattern, they **lose** immediately.
+   - Players must avoid setting up the binary string to match the opponent's pattern.
+
+5. **Continuation of Play**:
+   - If the binary string matches neither player's winning pattern after a turn, the game continues with the next player's turn.
+   - The game proceeds until one player achieves their winning pattern or loses by forming the opponent's pattern.
+
+6. **No Skipping Turns**:
+   - Players **cannot skip** their turn.
+   - Each player must make a valid move by flipping one or two bits.
+
+---
+
+## Scoring
+
+- **Winning the Game**: The player who first achieves their winning pattern wins the game.
+- **Losing the Game**: A player loses if they create the opponent's winning pattern on their turn.
+
+---
+
+## Examples
+
+### Initial State
+
+- Binary String: `0 0 0 0 0`
+
+### Sample Game Play
+
+1. **Player 1's Turn**:
+   - **Action**: Flips bits at positions **1** and **3**.
+   - **Binary String After Move**: `1 0 1 0 0`
+   - **Result**: No winning pattern formed.
+
+2. **Player 2's Turn**:
+   - **Action**: Flips bits at positions **2** and **4**.
+   - **Binary String After Move**: `1 1 1 1 0`
+   - **Result**: No winning pattern formed.
+
+3. **Player 1's Turn**:
+   - **Action**: Flips bit at position **5**.
+   - **Binary String After Move**: `1 1 1 1 1`
+   - **Result**: No winning pattern formed.
+
+4. **Player 2's Turn**:
+   - **Action**: Flips bits at positions **1** and **3**.
+   - **Binary String After Move**: `0 1 0 1 1`
+   - **Result**: No winning pattern formed.
+
+5. **Player 1's Turn**:
+   - **Action**: Flips bits at positions **2** and **5**.
+   - **Binary String After Move**: `0 0 0 1 0`
+   - **Result**: No winning pattern formed.
+
+6. **Player 2's Turn**:
+   - **Action**: Flips bits at positions **3** and **5**.
+   - **Binary String After Move**: `0 0 1 1 1`
+   - **Result**: No winning pattern formed.
+
+7. **Player 1's Turn**:
+   - **Action**: Flips bits at positions **1** and **3**.
+   - **Binary String After Move**: `1 0 0 1 1`
+   - **Result**: No winning pattern formed.
+
+8. **Player 2's Turn**:
+   - **Action**: Flips bits at positions **1** and **5**.
+   - **Binary String After Move**: `0 0 0 1 0`
+   - **Result**: The binary string matches **Player 2's Winning Pattern** (`0 1 0 1 0`).
+
+   **Outcome**: **Player 2 wins** the game.
+
+---
+
+## Command-Line Interactions
+
+At each turn, the following information is displayed and input is requested:
+
+1. **Display Current State**:
+   - The binary string is shown with positions labeled.
+   - Example: `Positions:  [1] [2] [3] [4] [5]`
+   - Example: `Bit Values:  1   0   1   0   0`
+
+2. **Prompt for Action**:
+   - The current player is prompted to enter the positions of bits they wish to flip.
+   - Example: `Player 2's Turn: Enter positions to flip (1-5), separated by spaces (Max 2 positions):`
+
+3. **Input Validation**:
+   - The input is checked to ensure:
+     - Positions are within 1 to 5.
+     - No more than two positions are entered.
+     - At least one position is entered.
+   - If invalid, the player is prompted again.
+
+4. **Update and Display New State**:
+   - The binary string is updated based on the player's action.
+   - The new state is displayed.
+   - Example: `Updated Bit Values: 0   1   0   1   0`
+
+5. **Check for Win/Loss**:
+   - The game checks if the new binary string matches either player's winning pattern.
+   - If a win or loss condition is met, the game announces the outcome.
+   - Example: `Player 2 has achieved their winning pattern and wins the game!`
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**:
+  - Consider how your flips will affect both your own progress and your opponent's opportunities.
+  - Aim to flip bits that move you closer to your pattern without enabling your opponent.
+
+- **Anticipate Opponent's Moves**:
+  - Keep track of which bits your opponent is flipping to understand their strategy.
+  - Try to block their progress by flipping bits they need for their pattern.
+
+- **Avoid Creating Opponent's Pattern**:
+  - Always check if your intended flips could inadvertently complete your opponent's pattern.
+  - If necessary, choose a less optimal move to prevent handing victory to your opponent.
+
+- **Control Critical Bits**:
+  - Identify bits that are crucial for both patterns and focus on controlling them.
+  - Flipping a critical bit might simultaneously hinder your opponent and benefit you.
+
+- **Flexibility**:
+  - Be prepared to adjust your strategy based on the evolving state of the binary string.
+  - Sometimes it's beneficial to prioritize blocking over advancing your own pattern.
+
+---
+
+By mastering these rules and strategies, you can enjoy a challenging and competitive game of **Quantum Flip**. Good luck, and may the best strategist win!

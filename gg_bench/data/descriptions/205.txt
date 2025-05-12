@@ -1,0 +1,177 @@
+# Sequence Builder: Rule Book
+
+## Objective
+
+Be the first player to create a sequence of three numbers that form either an arithmetic progression or a geometric progression. The sequence must be made from numbers selected during gameplay. Victory is achieved when a player successfully forms such a sequence, constituting a win. If all numbers are selected without either player achieving the primary goal, the player with the highest total sum of their numbers wins the game.
+
+## Setup
+
+1. **Number Pool**: Create a shared pool of numbers ranging from **1** to **9**.
+2. **Player Sequences**: Each player starts with an empty sequence where they will collect their numbers.
+3. **Starting Player**: Decide which player takes the first turn (e.g., by coin toss, mutual agreement, or randomly in the program).
+
+## Game Components
+
+- **Number Pool**: A set of integers from **1** to **9** inclusive.
+- **Player Sequences**: Each player has:
+  - **Sequence Slots**: Holds up to three numbers.
+  - **Selected Numbers**: The numbers a player has chosen during the game.
+- **Command-Line Interface**:
+  - Players input commands to select numbers.
+  - The interface displays the available numbers and each player's current sequence.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions During a Turn**:
+  1. **Select a Number**: Choose any available number from the Number Pool.
+  2. **Update Sequence**: Add the selected number to your sequence.
+- **Progression of Turns**: The game continues with players taking turns until a win condition is met or all numbers are exhausted.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, you must select one number from the remaining numbers in the Number Pool.
+   - Once a number is selected by any player, it is removed from the Number Pool and cannot be chosen again.
+2. **Building Sequences**:
+   - Each player's sequence can hold up to three numbers.
+   - Numbers in your sequence are arranged in the order you selected them.
+3. **Winning Conditions**:
+   - **Primary Victory**: You win immediately if, after your turn, your sequence of numbers forms:
+     - An **Arithmetic Progression**: A sequence where the difference between consecutive numbers is constant (e.g., 2, 4, 6).
+     - A **Geometric Progression**: A sequence where each number after the first is found by multiplying the previous one by a constant (e.g., 2, 4, 8).
+   - **Secondary Victory**: If all numbers have been selected and neither player has formed a valid progression:
+     - The player with the **highest sum** of their sequence numbers wins.
+     - If the sums are equal, the last player who took a turn loses, and their opponent wins (this ensures no draw scenario).
+4. **Strategy and Blocking**:
+   - Players can anticipate their opponent's needs and choose numbers strategically to block potential progressions.
+5. **Sequence Evaluation**:
+   - After each turn, check the player's sequence to see if it meets a winning condition.
+   - Sequences do not need to be sorted but can be rearranged for evaluation purposes.
+
+## Scoring
+
+- **No Point System**: The game does not use points but relies on achieving the winning conditions.
+- **Winning the Game**: Victory is achieved through forming a valid progression or, secondarily, by having a higher total sum of selected numbers if no progression is formed.
+
+## Examples
+
+### Example Scenario 1: Winning with Arithmetic Progression
+
+**Turn 1**:
+- **Player 1** selects **5**.
+  - **Player 1's Sequence**: 5
+- **Available Numbers**: 1, 2, 3, 4, 6, 7, 8, 9
+
+**Turn 2**:
+- **Player 2** selects **3**.
+  - **Player 2's Sequence**: 3
+- **Available Numbers**: 1, 2, 4, 6, 7, 8, 9
+
+**Turn 3**:
+- **Player 1** selects **7**.
+  - **Player 1's Sequence**: 5, 7
+- **Available Numbers**: 1, 2, 4, 6, 8, 9
+
+**Turn 4**:
+- **Player 2** selects **6**.
+  - **Player 2's Sequence**: 3, 6
+- **Available Numbers**: 1, 2, 4, 8, 9
+
+**Turn 5**:
+- **Player 1** selects **9**.
+  - **Player 1's Sequence**: 5, 7, 9
+  - **Evaluation**:
+    - Player 1's sequence forms an arithmetic progression: 5, 7, 9 (common difference of 2).
+  - **Result**: **Player 1 wins**.
+
+### Example Scenario 2: Winning by Highest Sum
+
+**All numbers have been selected without any player forming a progression.**
+
+- **Player 1's Sequence**: 1, 4, 7
+  - Sum: 12
+- **Player 2's Sequence**: 2, 5, 6
+  - Sum: 13
+- **Result**:
+  - Player 2 has the higher sum.
+  - **Player 2 wins**.
+
+### Example Scenario 3: Blocking Strategy
+
+**Turn 1**:
+- **Player 1** selects **2**.
+  - **Player 1's Sequence**: 2
+- **Available Numbers**: 1, 3, 4, 5, 6, 7, 8, 9
+
+**Turn 2**:
+- **Player 2** selects **4**.
+  - **Player 2's Sequence**: 4
+- **Available Numbers**: 1, 3, 5, 6, 7, 8, 9
+
+**Turn 3**:
+- **Player 1** notices that if Player 2 gets **6**, they could form an arithmetic progression (2, 4, 6).
+- **Player 1** selects **6** to block.
+  - **Player 1's Sequence**: 2, 6
+- **Available Numbers**: 1, 3, 5, 7, 8, 9
+
+**Turn 4**:
+- **Player 2** adjusts strategy and selects **5**.
+  - **Player 2's Sequence**: 4, 5
+- **Available Numbers**: 1, 3, 7, 8, 9
+
+**Turn 5**:
+- **Player 1** selects **3**.
+  - **Player 1's Sequence**: 2, 6, 3
+  - **Evaluation**:
+    - No progression formed.
+- **Available Numbers**: 1, 7, 8, 9
+
+**Turn 6**:
+- **Player 2** selects **6** but it's already taken.
+- **Player 2** selects **7**.
+  - **Player 2's Sequence**: 4, 5, 7
+  - **Evaluation**:
+    - No progression formed.
+- **Available Numbers**: 1, 8, 9
+
+**Game Continues Until All Numbers Are Taken or a Player Wins**
+
+## Command-Line Interaction Sample
+
+```
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1, select a number: 3
+Player 1's Sequence: 3
+
+Available Numbers: 1, 2, 4, 5, 6, 7, 8, 9
+
+Player 2, select a number: 6
+Player 2's Sequence: 6
+
+Available Numbers: 1, 2, 4, 5, 7, 8, 9
+
+Player 1, select a number: 9
+Player 1's Sequence: 3, 9
+
+Available Numbers: 1, 2, 4, 5, 7, 8
+
+Player 2, select a number: 2
+Player 2's Sequence: 6, 2
+
+Available Numbers: 1, 4, 5, 7, 8
+
+Player 1, select a number: 6 (Error: Number already taken)
+
+Player 1, select a number: 5
+Player 1's Sequence: 3, 9, 5
+Evaluation: Arithmetic progression formed (3, 5, 7)
+Result: Player 1 wins!
+```
+
+(Note: In this sample interaction, there is a mistake because 7 is not included in Player 1's sequence. This highlights the importance of accurate calculation during gameplay.)
+
+---
+
+Ensure that during the implementation of this game in a command-line interface, inputs are validated, and players are informed of errors such as selecting already taken numbers. The game flow should guide players through each turn, displaying necessary information like available numbers and current sequences, and automatically checking for winning conditions after each move.

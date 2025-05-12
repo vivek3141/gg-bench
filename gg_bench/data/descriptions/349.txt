@@ -1,0 +1,171 @@
+# Multiplication Showdown
+
+## Objective
+
+**Multiplication Showdown** is a strategic two-player turn-based game where players compete to be the last one able to make a valid move. The primary goal is to outmaneuver your opponent by strategically multiplying numbers while avoiding repetitions. The player who forces their opponent into a position where they cannot make a valid move wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with the number **1** as the current number.
+- **Used Numbers List**: Initialize a list with the starting number `[1]` to keep track of all numbers that have been used during the game.
+- **Players**: Two players decide who will take the first turn, either by mutual agreement or by a random method such as a coin toss.
+
+## Game Components
+
+- **Current Number**: A shared number that players manipulate during the game, starting at **1**.
+- **Used Numbers List**: A list that contains all numbers that have been used in the game to prevent repetitions.
+- **Allowed Multipliers**: Integers from **2** to **9** inclusive, which players can use to multiply the current number.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately throughout the game.
+- **Player Actions During a Turn**:
+  1. **Choose a Multiplier**: Select an integer between **2** and **9** inclusive.
+  2. **Multiply**: Multiply the **current number** by the chosen multiplier to produce a **new number**.
+  3. **Valid Move Check**: Ensure that the **new number** has not been previously used in the game.
+  4. **Update Game State**:
+     - Set the **current number** to the **new number**.
+     - Add the **new number** to the **used numbers list**.
+- **Turn Progression**: After a player completes their turn, the next player takes their turn following the same rules.
+
+## Rules and Mechanics
+
+1. **Valid Multipliers**: On each turn, a player must choose a multiplier between **2** and **9** inclusive.
+2. **Unique Numbers**: The result of the multiplication (the **new number**) must not be in the **used numbers list**. Repeating a number is not allowed.
+3. **Valid Moves**: If a player cannot produce a new number using any valid multiplier without repeating a number, they lose the game.
+4. **No Skipping Turns**: Players must make a valid move on their turn if possible; skipping a turn is not allowed.
+5. **End of Game**: The game ends when a player cannot make a valid move on their turn. The opposing player wins the game.
+
+## Scoring
+
+- There is no point-based scoring system in **Multiplication Showdown**.
+- The player who wins the game is the one who successfully forces their opponent into a position where they cannot make a valid move.
+
+## Examples
+
+### Example Scenario
+
+Let's illustrate the gameplay with sample turns:
+
+1. **Starting the Game**:
+   - **Current Number**: `1`
+   - **Used Numbers List**: `[1]`
+
+2. **Player 1's Turn**:
+   - **Action**: Chooses multiplier `2`.
+   - **Calculation**: `1 * 2 = 2`.
+   - **Valid Move**: `2` is not in `[1]`.
+   - **Updates**:
+     - **Current Number**: `2`
+     - **Used Numbers List**: `[1, 2]`
+
+3. **Player 2's Turn**:
+   - **Action**: Chooses multiplier `3`.
+   - **Calculation**: `2 * 3 = 6`.
+   - **Valid Move**: `6` is not in `[1, 2]`.
+   - **Updates**:
+     - **Current Number**: `6`
+     - **Used Numbers List**: `[1, 2, 6]`
+
+4. **Player 1's Turn**:
+   - **Action**: Chooses multiplier `5`.
+   - **Calculation**: `6 * 5 = 30`.
+   - **Valid Move**: `30` is not in `[1, 2, 6]`.
+   - **Updates**:
+     - **Current Number**: `30`
+     - **Used Numbers List**: `[1, 2, 6, 30]`
+
+5. **Player 2's Turn**:
+   - **Action**: Chooses multiplier `3`.
+   - **Calculation**: `30 * 3 = 90`.
+   - **Valid Move**: `90` is not in `[1, 2, 6, 30]`.
+   - **Updates**:
+     - **Current Number**: `90`
+     - **Used Numbers List**: `[1, 2, 6, 30, 90]`
+
+6. **Player 1's Turn**:
+   - **Action**: Chooses multiplier `2`.
+   - **Calculation**: `90 * 2 = 180`.
+   - **Valid Move**: `180` is not in `[1, 2, 6, 30, 90]`.
+   - **Updates**:
+     - **Current Number**: `180`
+     - **Used Numbers List**: `[1, 2, 6, 30, 90, 180]`
+
+7. **Player 2's Turn**:
+   - **Action**: Examines possible multipliers:
+     - `2`: `180 * 2 = 360` (valid)
+     - `3`: `180 * 3 = 540` (valid)
+     - `4`: `180 * 4 = 720` (valid)
+     - `5`: `180 * 5 = 900` (valid)
+     - `6`: `180 * 6 = 1080` (valid)
+     - `7`: `180 * 7 = 1260` (valid)
+     - `8`: `180 * 8 = 1440` (valid)
+     - `9`: `180 * 9 = 1620` (valid)
+   - **Chooses multiplier**: `9`.
+   - **Calculation**: `180 * 9 = 1620`.
+   - **Valid Move**: `1620` is not in the used numbers list.
+   - **Updates**:
+     - **Current Number**: `1620`
+     - **Used Numbers List**: `[1, 2, 6, 30, 90, 180, 1620]`
+
+8. **Player 1's Turn**:
+   - **Action**: Examines possible multipliers:
+     - `2`: `1620 * 2 = 3240` (valid)
+     - `3`: `1620 * 3 = 4860` (valid)
+     - ...
+   - *(Game continues with players trying to force the opponent into a position where no valid moves are possible.)*
+
+### Sample Command-Line Interaction
+
+**Note**: Assume input prompts are represented by `>`, and player outputs are represented by their player number.
+
+- **Game Start**:
+  ```
+  Welcome to Multiplication Showdown!
+  Starting number is 1.
+  ```
+
+- **Player 1's Turn**:
+  ```
+  Player 1's turn.
+  Current number: 1
+  Used numbers: [1]
+  Choose a multiplier between 2 and 9:
+  > 2
+  Player 1 multiplies 1 by 2 to get 2.
+  ```
+
+- **Player 2's Turn**:
+  ```
+  Player 2's turn.
+  Current number: 2
+  Used numbers: [1, 2]
+  Choose a multiplier between 2 and 9:
+  > 3
+  Player 2 multiplies 2 by 3 to get 6.
+  ```
+
+*(The game continues with similar interactions.)*
+
+- **Ending the Game**:
+  ```
+  Player 2's turn.
+  Current number: 180
+  Used numbers: [1, 2, 6, 30, 90, 180]
+  No valid moves available!
+  Player 2 cannot make a valid move.
+  Player 1 wins the game!
+  ```
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the possible results of your multiplier choices to avoid setting up your opponent for a winning move.
+- **Avoid Common Factors**: Be cautious with multipliers that could lead to numbers with many factors, as this may give your opponent more options.
+- **Track Used Numbers**: Keep a mental or written note of used numbers to avoid illegal moves and to anticipate your opponent's options.
+- **Force Limited Options**: Try to steer the game towards numbers where your opponent has fewer valid multipliers.
+
+## Summary
+
+**Multiplication Showdown** is a simple yet strategic game that combines basic multiplication with tactical planning. It's easy to code for a command-line interface and ends quickly, ensuring an engaging and skill-based competition where the more strategic player is likely to win.
+
+Enjoy the challenge, and may the best multiplier win!

@@ -1,0 +1,238 @@
+# Trail Trek: Rule Book
+
+## Objective
+
+**Trail Trek** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to create an unbroken sequence (trail) of **seven** consecutive numbers. Players achieve victory by strategically selecting numbers from a shared pool to build their trail while potentially disrupting their opponent's progress. A player wins by successfully assembling a trail of seven consecutive numbers in their collection.
+
+## Setup
+
+1. **Number Pool Initialization**: The game starts with a shared pool of numbers ranging from **1 to 20**.
+2. **Player Initialization**: Both players begin with an empty collection.
+3. **Starting Player**: Decide who goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Number Pool**: A list of available numbers from **1 to 20**. Each number can be selected only once during the game.
+- **Player Collections**: Each player has a personal list where they keep track of the numbers they have selected.
+- **Trail**: A sequence within a player's collection that consists of consecutive numbers.
+
+## Turns
+
+The game progresses in alternating turns. Each turn consists of:
+
+1. **Number Selection**:
+   - The player selects any one available number from the number pool.
+2. **Updating Collections**:
+   - The selected number is added to the player's collection.
+   - The number is removed from the shared number pool.
+3. **Display**:
+   - Update and display the current state of both players' collections and the remaining numbers in the pool.
+4. **Victory Check**:
+   - Check if the player has formed a trail of seven consecutive numbers.
+   - If so, the game ends with that player as the winner.
+5. **Turn Transition**:
+   - The turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players can select any **one** number per turn from the available numbers in the pool.
+   - Once a number is selected, it **cannot** be selected again by either player.
+2. **Collections**:
+   - Players maintain their own collections of numbers.
+   - Collections are unordered; the sequence matters only when forming the trail.
+3. **Forming a Trail**:
+   - A trail consists of **seven** numbers that are consecutive in value (e.g., 3, 4, 5, 6, 7, 8, 9).
+   - The numbers in the trail do not need to be selected in order.
+   - Players can rearrange their collections at any time to check for a consecutive sequence.
+4. **Winning the Game**:
+   - The first player to have a trail of seven consecutive numbers in their collection wins.
+   - There is no possibility of a draw; the game continues until a player wins.
+5. **Strategy**:
+   - Players may choose numbers that help build their own trail or block their opponent from completing theirs.
+6. **Game End Due to Number Exhaustion**:
+   - If all numbers have been selected and no player has formed a trail of seven consecutive numbers, the player with the longest consecutive trail wins.
+   - If both players have trails of equal length, the player with the higher numbers in their trail wins.
+
+## Scoring
+
+- **Victory**: Achieved by forming a trail of seven consecutive numbers.
+- **Longest Trail**: If the number pool is exhausted without a seven-number trail, the player with the longest consecutive trail wins.
+- **Tie-Breaker**:
+  - If both players have trails of equal length, the player whose trail has the higher numerical values wins (e.g., a trail of 5-6-7 beats 2-3-4).
+
+## Examples
+
+### Example Game Play
+
+#### Initial State:
+
+- **Number Pool**: 1-20
+- **Player 1 Collection**: Empty
+- **Player 2 Collection**: Empty
+
+#### Turn 1:
+
+- **Player 1** selects **10**.
+- **Collections**:
+  - Player 1: 10
+  - Player 2: Empty
+- **Number Pool**: 1-9, 11-20
+
+#### Turn 2:
+
+- **Player 2** selects **11**.
+- **Collections**:
+  - Player 1: 10
+  - Player 2: 11
+- **Number Pool**: 1-9, 12-20
+
+#### Turn 3:
+
+- **Player 1** selects **9**.
+- **Collections**:
+  - Player 1: 9, 10
+  - Player 2: 11
+- **Number Pool**: 1-8, 12-20
+
+#### Turn 4:
+
+- **Player 2** selects **12**.
+- **Collections**:
+  - Player 1: 9, 10
+  - Player 2: 11, 12
+- **Number Pool**: 1-8, 13-20
+
+#### Turn 5:
+
+- **Player 1** selects **8**.
+- **Collections**:
+  - Player 1: 8, 9, 10
+  - Player 2: 11, 12
+- **Number Pool**: 1-7, 13-20
+
+#### Turn 6:
+
+- **Player 2** selects **13**.
+- **Collections**:
+  - Player 1: 8, 9, 10
+  - Player 2: 11, 12, 13
+- **Number Pool**: 1-7, 14-20
+
+#### Turn 7:
+
+- **Player 1** selects **7**.
+- **Collections**:
+  - Player 1: 7, 8, 9, 10
+  - Player 2: 11, 12, 13
+- **Number Pool**: 1-6, 14-20
+
+#### Turn 8:
+
+- **Player 2** selects **14**.
+- **Collections**:
+  - Player 1: 7, 8, 9, 10
+  - Player 2: 11, 12, 13, 14
+- **Number Pool**: 1-6, 15-20
+
+#### Turn 9:
+
+- **Player 1** selects **6**.
+- **Collections**:
+  - Player 1: 6, 7, 8, 9, 10
+  - Player 2: 11, 12, 13, 14
+- **Number Pool**: 1-5, 15-20
+
+#### Turn 10:
+
+- **Player 2** selects **15**.
+- **Collections**:
+  - Player 1: 6, 7, 8, 9, 10
+  - Player 2: 11, 12, 13, 14, 15
+- **Number Pool**: 1-5, 16-20
+
+#### Turn 11:
+
+- **Player 1** selects **5**.
+
+- **Collections**:
+  - Player 1: 5, 6, 7, 8, 9, 10
+  - Player 2: 11, 12, 13, 14, 15
+- **Number Pool**: 1-4, 16-20
+
+#### Turn 12:
+
+- **Player 2** selects **16**.
+
+- **Collections**:
+  - Player 1: 5, 6, 7, 8, 9, 10
+  - Player 2: 11, 12, 13, 14, 15, 16
+- **Number Pool**: 1-4, 17-20
+
+#### Turn 13:
+
+- **Player 1** selects **4**.
+
+- **Collections**:
+  - Player 1: 4, 5, 6, 7, 8, 9, 10
+  - Player 2: 11, 12, 13, 14, 15, 16
+- **Number Pool**: 1-3, 17-20
+
+**Victory Check**:
+
+- **Player 1** has a trail: 4-5-6-7-8-9-10
+
+**Result**:
+
+- **Player 1 wins** by forming a trail of seven consecutive numbers.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Welcome to Trail Trek!
+
+Number Pool: 1-20
+Player 1 Collection: []
+Player 2 Collection: []
+
+Player 1, select a number: 10
+
+Updated Collections:
+Player 1 Collection: [10]
+Player 2 Collection: []
+Number Pool: 1-9, 11-20
+
+Player 2, select a number: 11
+
+Updated Collections:
+Player 1 Collection: [10]
+Player 2 Collection: [11]
+Number Pool: 1-9, 12-20
+
+...
+
+Player 1, select a number: 4
+
+Updated Collections:
+Player 1 Collection: [4, 5, 6, 7, 8, 9, 10]
+Player 2 Collection: [11, 12, 13, 14, 15, 16]
+Number Pool: 1-3, 17-20
+
+Congratulations, Player 1! You've formed a trail: 4-5-6-7-8-9-10
+Player 1 wins!
+```
+
+## Additional Notes
+
+- **Strategic Tips**:
+  - Monitor your opponent's collection to anticipate their trail-building efforts.
+  - Consider selecting numbers that block your opponent's ability to form a consecutive sequence.
+  - Balance between building your trail and disrupting your opponent's progress.
+- **Game Variations**:
+  - **Different Trail Length**: Adjust the required trail length for a shorter or longer game.
+  - **Number Pool Range**: Expand or reduce the number pool range for increased complexity.
+  - **Special Numbers**: Introduce special numbers with unique effects (e.g., skip a turn, extra pick).
+
+## Summary
+
+Trail Trek is an exciting and strategic game that challenges players to think ahead and make tactical decisions. With simple rules and deep strategic potential, it offers an engaging experience that is easy to code and perfect for a command-line interface. Enjoy the race to create your trail and outsmart your opponent!

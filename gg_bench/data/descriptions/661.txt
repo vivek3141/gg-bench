@@ -1,0 +1,190 @@
+# Reverse Digit Duel
+
+## Objective
+
+Reverse Digit Duel is a two-player, turn-based game where each player aims to construct the lowest possible three-digit number. Players take turns selecting digits from 1 to 9, assigning each chosen digit to a position (hundreds, tens, or ones place) in their own number. Once both players have completed their three-digit numbers, the player with the **lowest** number wins the game.
+
+## Setup
+
+- **Digit Pool**: A shared pool of digits from **1** to **9**.
+- **Player Boards**: Each player has a personal board with three slots representing the hundreds, tens, and ones places of a three-digit number.
+- **Starting Conditions**: No digits are assigned at the beginning. All digits from 1 to 9 are available in the digit pool.
+
+## Game Components
+
+- **Digits (1-9)**: Represented as numbers in the command-line interface. Each digit can be selected only once per game.
+- **Player Boards**: Visualized in the CLI as placeholders for the hundreds, tens, and ones positions for each player.
+
+Example:
+
+```
+Player 1 Board: [_] [_] [_]
+Player 2 Board: [_] [_] [_]
+Available Digits: 1 2 3 4 5 6 7 8 9
+```
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss, agreement, or random selection).
+- **Structure of a Turn**:
+  1. **Select a Digit**: The current player chooses an available digit from the digit pool.
+  2. **Assign the Digit**: The player assigns the chosen digit to one of the three positions (hundreds, tens, or ones) on their board. Once placed, the digit cannot be moved.
+  3. **Update Boards**: The game displays the updated boards and the remaining available digits.
+- **Turn Progression**: Players alternate turns until all digits in their three-digit numbers are assigned.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Each digit from **1** to **9** can be selected only once during the game.
+   - Players must choose from the remaining available digits in the pool.
+   
+2. **Digit Assignment**:
+   - On their turn, after selecting a digit, players must immediately assign it to one of the open positions (hundreds, tens, or ones) on their board.
+   - Once a digit is assigned to a position, it **cannot be changed** later in the game.
+   
+3. **Objective**:
+   - The goal is to create the **lowest possible three-digit number**.
+   - Strategic placement is key, as players must anticipate which digits may be available in future turns.
+
+4. **Game End**:
+   - The game ends after both players have filled all three positions on their boards.
+   - The player with the lower three-digit number wins.
+   
+5. **Winning the Game**:
+   - If both players create identical numbers, which is highly unlikely due to the unique digit selection, the game results in a win for the player who completed their number **second**, emphasizing the strategic advantage of turn order.
+   
+6. **No Draws**:
+   - The game is designed to avoid draws, ensuring a decisive outcome each time.
+
+## Scoring
+
+- **Victory Condition**: Having a lower three-digit number than the opponent.
+- **No Points System**: The game uses a win/loss outcome without cumulative scoring.
+- **Match Play**:
+  - Players may choose to play multiple rounds.
+  - Keep track of wins to determine an overall champion after a set number of games.
+
+## Examples
+
+### Example Game
+
+#### Initial Setup
+
+```
+Player 1 Board: [_] [_] [_]
+Player 2 Board: [_] [_] [_]
+Available Digits: 1 2 3 4 5 6 7 8 9
+```
+
+#### Turn 1: Player 1
+
+- **Selects Digit**: 9
+- **Assigns To**: Hundreds place
+
+Updated Boards:
+
+```
+Player 1 Board: [9] [_] [_]
+Player 2 Board: [_] [_] [_]
+Available Digits: 1 2 3 4 5 6 7 8
+```
+
+#### Turn 2: Player 2
+
+- **Selects Digit**: 1
+- **Assigns To**: Hundreds place
+
+Updated Boards:
+
+```
+Player 1 Board: [9] [_] [_]
+Player 2 Board: [1] [_] [_]
+Available Digits: 2 3 4 5 6 7 8
+```
+
+#### Turn 3: Player 1
+
+- **Selects Digit**: 8
+- **Assigns To**: Tens place
+
+Updated Boards:
+
+```
+Player 1 Board: [9] [8] [_]
+Player 2 Board: [1] [_] [_]
+Available Digits: 2 3 4 5 6 7
+```
+
+#### Turn 4: Player 2
+
+- **Selects Digit**: 2
+- **Assigns To**: Ones place
+
+Updated Boards:
+
+```
+Player 1 Board: [9] [8] [_]
+Player 2 Board: [1] [_] [2]
+Available Digits: 3 4 5 6 7
+```
+
+#### Turn 5: Player 1
+
+- **Selects Digit**: 3
+- **Assigns To**: Ones place
+
+Updated Boards:
+
+```
+Player 1 Board: [9] [8] [3]
+Player 2 Board: [1] [_] [2]
+Available Digits: 4 5 6 7
+```
+
+#### Turn 6: Player 2
+
+- **Selects Digit**: 4
+- **Assigns To**: Tens place
+
+Updated Boards:
+
+```
+Player 1 Board: [9] [8] [3]
+Player 2 Board: [1] [4] [2]
+Available Digits: 5 6 7
+```
+
+#### Game End
+
+- **Player 1 Number**: 983
+- **Player 2 Number**: 142
+
+**Winner**: **Player 2**, with the lower number 142.
+
+### Strategic Considerations
+
+- **Early Placement**: Assign high digits to higher place values if you are forced to take them.
+- **Anticipation**: Keep track of remaining digits to plan your future moves.
+- **Position Assignment**: Decide whether to fill higher place values first or leave them open for potential lower digits later.
+
+### Command-Line Interaction
+
+Sample prompts and inputs:
+
+```
+Available Digits: 1 2 3 4 5 6 7 8 9
+
+Player 1, it's your turn.
+Select a digit from the available digits: 6
+Assign digit '6' to a position (hundreds/tens/ones): ones
+
+Updated Board:
+Player 1 Board: [_] [_] [6]
+Available Digits: 1 2 3 4 5 7 8 9
+```
+
+## Summary
+
+Reverse Digit Duel is a quick and strategic game that challenges players to think ahead and make smart choices with each turn. The simplicity of the rules combined with the depth of strategy makes it suitable for players of all skill levels. Mastery comes from anticipating your opponent's choices and optimizing the placement of your digits to construct the lowest possible number.
+
+Enjoy the duel, and may the best strategist win!

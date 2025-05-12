@@ -1,0 +1,162 @@
+# Tower of Numbers
+
+## Objective
+
+**Tower of Numbers** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to build a tower that reaches **exactly 15 units in height** by stacking numbered blocks according to specific rules. Players must carefully select and place blocks to reach the target height without exceeding it. The game requires foresight and planning, allowing a skilled player to consistently outmaneuver an unskilled opponent.
+
+## Setup
+
+1. **Initialize the Game Environment**:
+   - Start the game in a command-line interface.
+   - Display the list of available blocks numbered from **1** to **9**.
+
+2. **Player Identification**:
+   - Determine which player will go first (Player 1 and Player 2). This can be decided randomly or by mutual agreement.
+
+3. **Prepare Player Towers**:
+   - Each player begins with an empty tower.
+   - The target tower height is set to **15 units** for both players.
+
+## Game Components
+
+1. **Blocks**:
+   - **Numbered Blocks (1-9)**: Each block is assigned a number from **1** to **9**, representing its height in units.
+   - **Unique Usage**: Each block can be used **only once** in the game. Once a block is placed by either player, it is no longer available.
+
+2. **Player Towers**:
+   - Each player has their own tower where they stack blocks during their turns.
+   - Towers start empty and grow as blocks are added.
+
+3. **Target Height**:
+   - The target height for the tower is **15 units**. Players aim to reach this exact height.
+
+## Turns
+
+1. **Turn Order**:
+   - Players take turns alternately, starting with **Player 1**.
+
+2. **Player Actions During a Turn**:
+   - **Select a Block**: Choose one block from the list of available blocks.
+   - **Place the Block**: Add the selected block to the top of your tower, following the stacking rules.
+
+3. **Turn Progression**:
+   - After a player completes their turn, the next player takes their turn.
+   - The game continues until a player wins or no valid moves remain.
+
+## Rules and Mechanics
+
+### Block Selection and Placement
+
+1. **Available Blocks**:
+   - At the start, blocks numbered **1** to **9** are available.
+   - Once a block is selected by either player, it is removed from the pool of available blocks.
+
+2. **Stacking Rules**:
+   - **Non-Increasing Order**: When adding a block to your tower, the number on the new block must be **less than or equal to** the number on the block directly beneath it.
+     - *Example*: A block numbered **5** can be placed on top of a block numbered **5** or higher (e.g., **5**, **6**, **7**, **8**, **9**).
+     - *Invalid Move*: You cannot place a block numbered **7** on top of a block numbered **5**.
+
+3. **Tower Height Limit**:
+   - The sum of the block numbers (heights) in your tower cannot exceed **15 units**.
+   - If placing a block would cause your tower to exceed 15 units, you **cannot** place that block.
+
+### Winning the Game
+
+1. **Exact Height Victory**:
+   - The first player to reach a tower height of **exactly 15 units** wins the game immediately.
+
+2. **Exceeding the Height**:
+   - If a player's tower exceeds 15 units, they **lose** the game automatically.
+
+3. **No Valid Moves**:
+   - If neither player can make a valid move (no available blocks can be legally placed without exceeding 15 units or violating stacking rules), the player with the **highest tower height not exceeding 15 units** wins.
+
+### Additional Rules
+
+1. **Skipping a Turn**:
+   - If a player cannot make a valid move on their turn (no blocks can be legally placed), they must **skip** their turn.
+
+2. **Game End Conditions**:
+   - The game ends when a player reaches exactly 15 units, exceeds 15 units, or when no valid moves remain for both players.
+
+## Scoring
+
+- **Winning**: The winner is the player who successfully builds a tower of exactly **15 units** first or has the highest valid tower when no further moves are possible.
+- There is no point tracking; the game is won by meeting the objective conditions.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Available Blocks**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+#### Turn 1:
+
+- **Player 1**:
+  - **Selects Block**: 9
+  - **Places On Tower**: Block 9
+  - **Tower Height**: 9 units
+  - **Available Blocks**: 1-8
+
+#### Turn 2:
+
+- **Player 2**:
+  - **Selects Block**: 8
+  - **Places On Tower**: Block 8
+  - **Tower Height**: 8 units
+  - **Available Blocks**: 1-7
+
+#### Turn 3:
+
+- **Player 1**:
+  - **Needs**: 6 units to reach 15 (15 - 9 = 6)
+  - **Possible Blocks to Use**: 6 or less (cannot exceed needed units)
+  - **Valid Blocks (≤9 and ≤6)**: 6, 5, 4, 3, 2, 1
+  - **Selects Block**: 6
+  - **Places On Tower**: Block 6
+  - **Stacking Rule Valid**: 6 ≤ 9
+  - **Tower Height**: 9 + 6 = **15 units**
+  - **Available Blocks**: 1-5, 7
+
+- **Player 1 wins** by reaching exactly 15 units.
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate which blocks will be available in future turns and how their opponent might use them.
+- **Block Denial**: Selecting a block that your opponent may need can prevent them from reaching 15 units.
+- **Tower Height Management**: Avoid exceeding 15 units. Always calculate the potential tower height before placing a block.
+
+### Command-Line Interaction Sample
+
+```plaintext
+--- Tower of Numbers Game Start ---
+Available Blocks: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Target Tower Height: 15 units
+
+Player 1's Turn:
+- Your Tower Height: 0 units
+- Available Blocks: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Enter the block number you wish to place: 9
+You placed block 9 on your tower.
+- New Tower Height: 9 units
+
+Player 2's Turn:
+- Your Tower Height: 0 units
+- Available Blocks: 1, 2, 3, 4, 5, 6, 7, 8
+Enter the block number you wish to place: 8
+You placed block 8 on your tower.
+- New Tower Height: 8 units
+
+Player 1's Turn:
+- Your Tower Height: 9 units
+- Available Blocks: 1, 2, 3, 4, 5, 6, 7
+Enter the block number you wish to place: 6
+You placed block 6 on your tower.
+- New Tower Height: 15 units
+
+Congratulations, Player 1! You have built a tower of exactly 15 units and won the game!
+```
+
+## Summary
+
+**Tower of Numbers** is a fast-paced and strategic game that combines simple arithmetic with tactical decision-making. Each move requires players to balance the immediate benefits against future possibilities, making it essential to think ahead and anticipate your opponent's actions. Its simplicity makes it easy to code and play in a command-line interface, while its unique mechanics ensure a fresh and engaging experience distinct from traditional games.

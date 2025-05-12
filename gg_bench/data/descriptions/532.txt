@@ -1,0 +1,300 @@
+# Grid Conquest
+
+**A Strategic Two-Player Command-Line Game**
+
+---
+
+## Objective
+
+*Be the first player to reach or exceed **15 points** by strategically claiming cells on a hidden-value grid.*
+
+---
+
+## Setup
+
+- **Grid Initialization**:
+  - The game is played on a **5x5 grid**, with cells labeled from **A1** to **E5**.
+  - Each cell is randomly assigned a **hidden value** between **1** and **5**.
+  - All cell values are hidden at the start of the game.
+
+- **Player Preparation**:
+  - Two players are designated as **Player 1** and **Player 2**.
+  - Both players start with a **score of 0**.
+
+- **Game Start**:
+  - Decide which player goes first (e.g., by a coin toss).
+
+---
+
+## Game Components
+
+- **The Grid**:
+  - A virtual 5x5 grid with cells labeled:
+    ```
+    A1 A2 A3 A4 A5
+    B1 B2 B3 B4 B5
+    C1 C2 C3 C4 C5
+    D1 D2 D3 D4 D5
+    E1 E2 E3 E4 E5
+    ```
+
+- **Cells**:
+  - Each cell contains:
+    - **Hidden Value**: A random integer between **1** and **5**.
+    - **Status**:
+      - **Unclaimed**: Not yet selected by any player.
+      - **Claimed**: Selected by a player; value revealed and added to their score.
+
+- **Player Scores**:
+  - A running total of points accumulated by each player based on claimed cells.
+
+---
+
+## Turns
+
+- Players take turns in sequential order.
+- **During a Turn**, a player:
+  1. **Selects an Unclaimed Cell**:
+     - Must choose a cell that has not been claimed by either player.
+     - Can be a hidden cell or a previously revealed cell.
+  2. **Claims the Cell**:
+     - The cell’s value is revealed.
+     - The value is **added to the player's score**.
+     - The cell is marked as **claimed** by the player.
+  3. **Reveals Adjacent Cells**:
+     - All **orthogonally and diagonally adjacent** unclaimed cells become **revealed** (values shown but not claimed).
+
+- **Turn Progression**:
+  - After completing these steps, the turn passes to the next player.
+
+---
+
+## Rules and Mechanics
+
+### Claiming Cells
+
+- **Selecting Cells**:
+  - Players may choose any **unclaimed** cell on the grid.
+  - Selecting a cell strategically can influence the game's outcome.
+
+- **Hidden and Revealed Cells**:
+  - **Hidden Cells**: Values are not visible until selected or revealed.
+  - **Revealed Cells**: Values are visible but remain unclaimed until a player chooses to claim them.
+
+### Revealing Adjacent Cells
+
+- When a cell is claimed:
+  - All surrounding unclaimed cells (up to 8 cells) are revealed.
+  - Revealed cells provide strategic information for future turns.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The first player to reach or exceed **15 points** wins the game **immediately**.
+
+- **End of Game**:
+  - If all cells are claimed and no player has reached 15 points:
+    - The player with the **higher score** wins.
+    - If scores are **tied**, the game enters **sudden death**.
+
+### Sudden Death Rules
+
+- Players continue taking turns claiming one cell at a time.
+- The first player to gain a **lead in points** wins.
+- If no unclaimed cells remain and the tie persists, the game is declared a **draw** (though initial rules state no draws, sudden death ensures a winner).
+
+---
+
+## Scoring
+
+- **Accumulating Points**:
+  - Players gain points equal to the **value of each cell** they claim.
+  - Scores are updated immediately after each turn.
+
+- **Tracking Scores**:
+  - Scores should be displayed after each turn for both players.
+
+---
+
+## Example Gameplay
+
+### Initial State
+
+- All cells are unclaimed and hidden:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  [ ][ ][ ][ ][ ]
+  ```
+  
+### Turn-by-Turn Example
+
+#### **Turn 1: Player 1**
+
+- **Selection**: Chooses cell **C3**.
+- **Action**:
+  - Reveals value **4**.
+  - Adds **4** points to Player 1's score (Total: 4).
+  - Marks **C3** as claimed.
+- **Adjacent Cells Revealed**:
+  - **B2**, **B3**, **B4**, **C2**, **C4**, **D2**, **D3**, **D4**.
+- **Grid Update**:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][4][2][5][ ]
+  [ ][3][P1][5][ ]
+  [ ][1][5][2][ ]
+  [ ][ ][ ][ ][ ]
+  ```
+
+#### **Turn 2: Player 2**
+
+- **Selection**: Chooses revealed cell **D4** (value **2**).
+- **Action**:
+  - Adds **2** points to Player 2's score (Total: 2).
+  - Marks **D4** as claimed.
+- **Adjacent Cells Revealed**:
+  - **C3** (already claimed), **C4**, **C5**, **D3**, **D5**, **E3**, **E4**, **E5**.
+- **Grid Update**:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][4][2][5][ ]
+  [ ][3][P1][5][ ]
+  [ ][1][5][P2][3]
+  [ ][ ][2][1][4]
+  ```
+
+#### **Turn 3: Player 1**
+
+- **Selection**: Chooses revealed cell **D3** (value **5**).
+- **Action**:
+  - Adds **5** points to Player 1's score (Total: 9).
+  - Marks **D3** as claimed.
+- **Adjacent Cells Revealed**:
+  - **C2**, **C3** (claimed), **C4**, **D2**, **D4** (claimed), **E2**, **E3**, **E4**.
+- **Grid Update**:
+  ```
+  [ ][ ][ ][ ][ ]
+  [ ][4][2][5][ ]
+  [ ][3][P1][5][ ]
+  [ ][1][P1][P2][3]
+  [ ][2][2][1][4]
+  ```
+
+#### **Turn 4: Player 2**
+
+- **Selection**: Chooses hidden cell **A1**.
+- **Action**:
+  - Reveals value **5**.
+  - Adds **5** points to Player 2's score (Total: 7).
+  - Marks **A1** as claimed.
+- **Adjacent Cells Revealed**:
+  - **A2**, **B1**, **B2**.
+- **Grid Update**:
+  ```
+  [P2][3][ ][ ][ ]
+  [2][4][2][5][ ]
+  [ ][3][P1][5][ ]
+  [ ][1][P1][P2][3]
+  [ ][2][2][1][4]
+  ```
+
+#### **Turn 5: Player 1**
+
+- **Selection**: Chooses revealed cell **B2** (value **4**).
+- **Action**:
+  - Adds **4** points to Player 1's score (Total: 13).
+  - Marks **B2** as claimed.
+- **Adjacent Cells Revealed**:
+  - **A1** (claimed), **A2**, **A3**, **B1**, **B3**, **C1**, **C2**, **C3** (claimed).
+- **Grid Update**:
+  ```
+  [P2][3][1][ ][ ]
+  [2][P1][2][5][ ]
+  [4][3][P1][5][ ]
+  [ ][1][P1][P2][3]
+  [ ][2][2][1][4]
+  ```
+
+#### **Turn 6: Player 2**
+
+- **Selection**: Chooses revealed cell **B4** (value **5**).
+- **Action**:
+  - Adds **5** points to Player 2's score (Total: 12).
+  - Marks **B4** as claimed.
+- **Adjacent Cells Revealed**:
+  - **A3**, **A4**, **A5**, **B3**, **B5**, **C3** (claimed), **C4**, **C5**.
+- **Grid Update**:
+  ```
+  [P2][3][1][5][2]
+  [2][P1][2][P2][1]
+  [4][3][P1][5][3]
+  [ ][1][P1][P2][3]
+  [ ][2][2][1][4]
+  ```
+
+#### **Turn 7: Player 1**
+
+- **Selection**: Chooses revealed cell **C5** (value **3**).
+- **Action**:
+  - Adds **3** points to Player 1's score (Total: **16**).
+  - Marks **C5** as claimed.
+- **Winning Condition Met**:
+  - Player 1's score is **16**, reaching or exceeding **15**.
+  - **Player 1 wins the game!**
+
+---
+
+## Strategic Tips
+
+- **Consider Future Reveals**:
+  - Claiming a cell not only adds to your score but also reveals adjacent cells that may benefit your opponent.
+  
+- **Balance Risk and Reward**:
+  - High-value revealed cells can boost your score but may expose better options for your opponent.
+
+- **Control High-Value Areas**:
+  - Aim to reveal and claim cells around high-value cells to prevent your opponent from accessing them.
+
+- **Monitor Scores**:
+  - Keep track of both scores to gauge how aggressive you need to be in claiming higher-value cells.
+
+---
+
+## Command-Line Interaction Examples
+
+### Displaying the Grid
+
+- The grid shows claimed cells, revealed values, and hidden cells:
+  ```
+  [P2][3 ][1 ][5 ][2 ]
+  [2 ][P1][2 ][P2][1 ]
+  [4 ][3 ][P1][5 ][P1]
+  [   ][1 ][P1][P2][3 ]
+  [   ][2 ][2 ][1 ][4 ]
+  ```
+
+### Making a Move
+
+- **Prompt**:
+  ```
+  Player 1, enter the cell you wish to claim: 
+  ```
+- **Input**:
+  ```
+  C5
+  ```
+- **Output**:
+  ```
+  You have claimed cell C5 with a value of 3.
+  Your new score is 16.
+  Congratulations! You have reached 16 points and won the game!
+  ```
+
+---
+
+## Conclusion
+
+**Grid Conquest** is a game of strategic planning and foresight. By carefully choosing which cells to claim and predicting how the board will evolve, skilled players can outmaneuver their opponents and secure victory. Enjoy the challenge and may the best strategist win!

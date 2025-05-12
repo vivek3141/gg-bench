@@ -1,0 +1,195 @@
+# Tower Switch
+
+## Objective
+
+Tower Switch is a two-player, turn-based strategy game. The primary goal is to be the player who removes the last block from the tower. Players take turns removing blocks from the top of a shared tower, strategically deciding how many blocks to remove to force their opponent into a losing position.
+
+## Setup
+
+- **Tower Construction**: Begin with a tower consisting of 10 blocks, numbered from 1 (the top block) to 10 (the bottom block). The blocks are arranged in a single vertical stack.
+- **Player Positions**: Players decide who will take the first turn. This can be determined randomly or by mutual agreement.
+- **Starting Conditions**: Both players are aware of the initial tower structure and the rules governing block removal.
+
+## Game Components
+
+- **Tower Blocks**: 
+  - **Appearance**: The tower is represented as a list or sequence of numbers from 1 to 10 in the command-line interface.
+  - **Functionality**: Each block represents a level in the tower. Blocks are removed starting from the top (lowest-numbered block) downwards.
+  - **Unique Attributes**: The blocks are indistinct except for their position in the tower, which is crucial for gameplay.
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns throughout the game.
+  - On a player's turn, they remove blocks from the top of the tower according to the rules.
+- **Order of Actions**:
+  1. **Determine Allowed Moves**: Based on the previous turn, ascertain whether you can remove 1 block or have the option to remove 1 or 2 blocks.
+  2. **Select Number of Blocks to Remove**: Choose the number of blocks to remove from the top of the tower.
+  3. **Update the Tower**: Remove the blocks and display the updated tower status.
+  4. **Pass the Turn**: The next player now takes their turn under the updated conditions.
+- **Progression of Turns**: The number of blocks a player can remove on their turn depends on the previous player's move.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Initial Move**:
+   - The first player may remove either 1 or 2 blocks from the top of the tower.
+2. **Subsequent Moves**:
+   - **If the previous player removed 1 block**: The next player may choose to remove **1 or 2 blocks**.
+   - **If the previous player removed 2 blocks**: The next player may **only remove 1 block**.
+3. **Removal of Blocks**:
+   - Blocks must be removed from the top of the tower (i.e., the lowest-numbered remaining block(s)).
+   - Players cannot skip levels or remove blocks from the middle or bottom of the tower.
+4. **Turn Action**:
+   - On their turn, a player must remove the allowed number of blocks. Skipping a turn or removing zero blocks is not permitted.
+5. **Winning the Game**:
+   - The player who removes the **last block** (block number 10) from the tower wins the game.
+
+### Special Mechanics
+
+- **Switch Mechanism**:
+  - The allowable number of blocks a player can remove on their turn is directly influenced by the previous player's move.
+  - This switch in allowed moves adds a strategic layer, requiring players to think ahead and anticipate their opponent's options.
+
+## Scoring
+
+- **Winning the Game**: The primary objective is to win by being the player to remove the last block from the tower.
+- **No Point System**: There is no point tracking or scoring beyond determining the winner of each game.
+- **Match Play (Optional)**: Players may agree to play multiple rounds, tracking the number of games each player wins.
+
+## Examples
+
+### Example Game Play
+
+**Initial Tower State**:
+```
+Tower Levels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+**Player 1's Turn**:
+- **Previous Move**: N/A (first turn)
+- **Allowed Blocks to Remove**: 1 or 2
+- **Action**: Removes 2 blocks (levels 1 and 2)
+- **Updated Tower**:
+  ```
+  Tower Levels: [3, 4, 5, 6, 7, 8, 9, 10]
+  ```
+
+**Player 2's Turn**:
+- **Previous Move**: Player 1 removed 2 blocks
+- **Allowed Blocks to Remove**: Only 1
+- **Action**: Removes 1 block (level 3)
+- **Updated Tower**:
+  ```
+  Tower Levels: [4, 5, 6, 7, 8, 9, 10]
+  ```
+
+**Player 1's Turn**:
+- **Previous Move**: Player 2 removed 1 block
+- **Allowed Blocks to Remove**: 1 or 2
+- **Action**: Removes 2 blocks (levels 4 and 5)
+- **Updated Tower**:
+  ```
+  Tower Levels: [6, 7, 8, 9, 10]
+  ```
+
+**Player 2's Turn**:
+- **Previous Move**: Player 1 removed 2 blocks
+- **Allowed Blocks to Remove**: Only 1
+- **Action**: Removes 1 block (level 6)
+- **Updated Tower**:
+  ```
+  Tower Levels: [7, 8, 9, 10]
+  ```
+
+**Player 1's Turn**:
+- **Previous Move**: Player 2 removed 1 block
+- **Allowed Blocks to Remove**: 1 or 2
+- **Action**: Removes 1 block (level 7)
+- **Updated Tower**:
+  ```
+  Tower Levels: [8, 9, 10]
+  ```
+
+**Player 2's Turn**:
+- **Previous Move**: Player 1 removed 1 block
+- **Allowed Blocks to Remove**: 1 or 2
+- **Action**: Removes 2 blocks (levels 8 and 9)
+- **Updated Tower**:
+  ```
+  Tower Levels: [10]
+  ```
+
+**Player 1's Turn**:
+- **Previous Move**: Player 2 removed 2 blocks
+- **Allowed Blocks to Remove**: Only 1
+- **Action**: Removes 1 block (level 10)
+- **Updated Tower**:
+  ```
+  Tower Levels: []
+  ```
+
+**Result**:
+- **Player 1** has removed the last block and **wins the game**.
+
+### Command-Line Interaction Sample
+
+**Game Start**:
+```
+Welcome to Tower Switch!
+Tower Levels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Player 1's turn.
+You may remove 1 or 2 blocks.
+Enter the number of blocks to remove: 2
+Player 1 removes blocks 1 and 2.
+Updated Tower Levels: [3, 4, 5, 6, 7, 8, 9, 10]
+
+Player 2's turn.
+You may remove only 1 block.
+Enter the number of blocks to remove: 1
+Player 2 removes block 3.
+Updated Tower Levels: [4, 5, 6, 7, 8, 9, 10]
+
+Player 1's turn.
+You may remove 1 or 2 blocks.
+Enter the number of blocks to remove: 2
+Player 1 removes blocks 4 and 5.
+Updated Tower Levels: [6, 7, 8, 9, 10]
+
+Player 2's turn.
+You may remove only 1 block.
+Enter the number of blocks to remove: 1
+Player 2 removes block 6.
+Updated Tower Levels: [7, 8, 9, 10]
+
+Player 1's turn.
+You may remove 1 or 2 blocks.
+Enter the number of blocks to remove: 1
+Player 1 removes block 7.
+Updated Tower Levels: [8, 9, 10]
+
+Player 2's turn.
+You may remove 1 or 2 blocks.
+Enter the number of blocks to remove: 2
+Player 2 removes blocks 8 and 9.
+Updated Tower Levels: [10]
+
+Player 1's turn.
+You may remove only 1 block.
+Enter the number of blocks to remove: 1
+Player 1 removes block 10.
+Updated Tower Levels: []
+
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Force Your Opponent's Options**: By removing 2 blocks when possible, you can limit your opponent to removing only 1 block on their next turn.
+- **Plan Ahead**: Anticipate the number of blocks remaining and plan your moves to be the one removing the last block.
+- **Control the Flow**: Use the switch mechanic to your advantage by controlling how many blocks your opponent can remove.
+
+## Conclusion
+
+Tower Switch is a simple yet strategic game that requires players to think ahead and make tactical decisions each turn. With easy-to-understand rules and straightforward gameplay, it is ideal for quick matches and can be easily implemented in a command-line interface. Enjoy testing your strategic skills against your opponent in this engaging tower-clearing challenge!

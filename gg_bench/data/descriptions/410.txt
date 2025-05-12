@@ -1,0 +1,151 @@
+# Top Stack Twelve
+
+## Objective
+
+**Top Stack Twelve** is a strategic two-player game where the goal is to **avoid being the player who causes the sum of the top three numbers on a shared stack to equal or exceed 12**. Players take turns placing number tokens onto a stack, and with each move, the tension builds as the cumulative total edges closer to the critical threshold. The player who forces the sum to reach or surpass 12 loses the game.
+
+## Setup
+
+- **Players:** Two players (Player 1 and Player 2).
+- **Starting Conditions:** The game begins with an empty stack.
+- **Determining First Player:** Players decide who goes first by mutual agreement or a random method (e.g., coin toss).
+
+## Game Components
+
+- **Number Tokens:** Digits from **1** to **6**. Each player has access to an unlimited supply of each number token.
+- **Stack:** A virtual or physical stack where number tokens are placed on top of one another. In a command-line interface, this can be represented as a list or array.
+
+## Turns
+
+- **Turn Order:** Players alternate turns throughout the game.
+- **Player Actions on Their Turn:**
+  - **Select a Number Token:** Choose a number between 1 and 6.
+  - **Place the Token:** Add the chosen number to the top of the stack.
+  - **Calculate the Sum:** Determine the sum of the top three numbers in the stack (or all numbers if there are fewer than three).
+  - **Evaluate the Sum:** Check if the sum is less than 12.
+    - If **less than 12**, the game continues.
+    - If **12 or more**, the player who made the move **loses**.
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - On your turn, you must place **one** number token (1 to 6) onto the stack.
+   - You may choose any number regardless of previous moves.
+2. **Stack Management:**
+   - The stack grows with each turn as numbers are added.
+   - Numbers remain in the stack for the duration of the game.
+3. **Sum Calculation:**
+   - After placing a number, **immediately calculate the sum of the top three numbers** on the stack.
+   - If the stack contains **fewer than three numbers**, sum all available numbers.
+4. **Losing Condition:**
+   - If your move causes the sum to **equal or exceed 12**, you **lose** the game.
+   - The sum must be **strictly less than 12** for the game to continue.
+5. **Winning Condition:**
+   - You win if your opponent causes the sum to equal or exceed 12 on their turn.
+6. **No Skipping Turns:**
+   - Players cannot skip their turn; a number must be placed when it is your turn.
+7. **No Draws:**
+   - The game cannot end in a draw; play continues until one player loses according to the rules.
+
+## Scoring
+
+- **Win/Loss Tracking:**
+  - The game uses a simple win/loss outcome per round.
+  - Players may choose to play multiple rounds, keeping track of victories to determine an overall winner.
+- **Optional Scoring Variant:**
+  - Assign points for each win (e.g., 1 point per win).
+  - First player to reach a predetermined number of points wins the match.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- The stack is empty.
+- Player 1 is chosen to start.
+
+#### Turn Sequence
+
+1. **Player 1's Turn:**
+   - Chooses to place a **2**.
+   - **Stack:** [2]
+   - **Sum of top numbers:** 2
+   - **Sum < 12**, game continues.
+
+2. **Player 2's Turn:**
+   - Chooses to place a **3**.
+   - **Stack:** [3, 2]
+   - **Sum of top numbers:** 3 + 2 = 5
+   - **Sum < 12**, game continues.
+
+3. **Player 1's Turn:**
+   - Chooses to place a **4**.
+   - **Stack:** [4, 3, 2]
+   - **Sum of top three numbers:** 4 + 3 + 2 = 9
+   - **Sum < 12**, game continues.
+
+4. **Player 2's Turn:**
+   - Chooses to place a **2**.
+   - **Stack:** [2, 4, 3, 2]
+   - **Sum of top three numbers:** 2 + 4 + 3 = 9
+   - **Sum < 12**, game continues.
+
+5. **Player 1's Turn:**
+   - Chooses to place a **6**.
+   - **Stack:** [6, 2, 4, 3, 2]
+   - **Sum of top three numbers:** 6 + 2 + 4 = 12
+   - **Sum = 12**, **Player 1 loses**.
+
+**Outcome:** Player 2 wins the game.
+
+### Strategic Considerations
+
+- **Planning Ahead:** Anticipate the cumulative sum after your move and how it sets up the next player.
+- **Forcing Moves:** Try to force your opponent into a position where any number they play will cause the sum to reach 12.
+- **Low Numbers in Critical Moments:** Placing lower numbers can be a defensive strategy to keep the sum low.
+- **Tracking the Stack:** Keep attentive track of the top three numbers to make optimal decisions.
+
+### Example Command-Line Interaction
+
+Below is a sample command-line interaction demonstrating how the game might proceed.
+
+```
+--- Game Start ---
+
+Stack is empty.
+
+Player 1's Turn:
+Choose a number to place on the stack (1-6): 2
+You placed 2 on the stack.
+Current Stack (top to bottom): [2]
+Sum of top numbers: 2
+Sum is less than 12. Game continues.
+
+Player 2's Turn:
+Choose a number to place on the stack (1-6): 5
+You placed 5 on the stack.
+Current Stack (top to bottom): [5, 2]
+Sum of top numbers: 5 + 2 = 7
+Sum is less than 12. Game continues.
+
+Player 1's Turn:
+Choose a number to place on the stack (1-6): 6
+You placed 6 on the stack.
+Current Stack (top to bottom): [6, 5, 2]
+Sum of top numbers: 6 + 5 + 2 = 13
+Sum is 12 or more.
+Player 1 loses the game.
+
+--- Game Over ---
+```
+
+**Winner:** Player 2
+
+---
+
+## Summary
+
+**Top Stack Twelve** is a simple yet strategic game that requires players to think ahead and make tactical decisions to avoid losing. With easy-to-understand rules and quick gameplay, it is perfect for a command-line interface implementation and offers depth for players who enjoy mathematical and strategic challenges.
+
+Enjoy the game and may the most strategic player win!

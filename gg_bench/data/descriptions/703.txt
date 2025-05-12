@@ -1,0 +1,212 @@
+**Pattern Match**
+
+_A strategic two-player turn-based game designed for command-line play._
+
+---
+
+### **Objective**
+
+The primary goal of **Pattern Match** is to be the first player to create a straight line—row, column, or diagonal—of numbers that sum up to **15** on your personal 3x3 grid. Achieving this sum in any straight line constitutes a win. If a player successfully creates such a line, they win the game. There is no draw mechanism; play continues until a player wins.
+
+---
+
+### **Setup**
+
+1. **Grids Initialization**: Each player has their own 3x3 grid, which starts empty. Grids are labeled with rows 1-3 and columns 1-3 for easy reference.
+
+2. **Number Pool**: A shared pool of numbers from **1** to **9** is available. Each number is unique and can be used only once in the game.
+
+3. **Player Positions**: Players decide who will take the first turn, either by mutual agreement or a random method (e.g., coin toss).
+
+---
+
+### **Game Components**
+
+- **3x3 Grids**: Each grid is a square composed of 9 cells arranged in 3 rows and 3 columns. Players fill these grids during the game.
+
+- **Number Tokens (1-9)**: Single instances of the numbers from 1 to 9. Each number can be used only once in the game, by either player.
+
+---
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns, starting with the player who was chosen to go first during setup.
+
+- **Actions per Turn**:
+
+  1. **Select a Number**: Choose an unused number from the shared pool (numbers 1-9).
+
+  2. **Place the Number**: Place the selected number into any empty cell on **your own** grid.
+
+- **Progression**: After a player completes their turn by placing a number, the turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+
+   - **Unique Usage**: Once a number is selected by a player, it is no longer available for either player.
+   - **Available Numbers**: Players can only select from numbers that have not yet been used.
+
+2. **Placement Rules**:
+
+   - **Own Grid Only**: Players place numbers only on their own grid.
+   - **Empty Cells**: Numbers must be placed in an empty cell.
+   - **No Replacements**: Once placed, numbers cannot be moved or replaced.
+
+3. **Winning the Game**:
+
+   - **Sum of 15**: The objective is to have any row, column, or diagonal in your grid where the three numbers sum to exactly **15**.
+   - **Winning Configuration Examples**:
+     - **Row**: Numbers in cells (Row 2, Columns 1-3) sum to 15.
+     - **Column**: Numbers in cells (Rows 1-3, Column 3) sum to 15.
+     - **Diagonal**: Numbers in cells (Row 1, Column 1), (Row 2, Column 2), and (Row 3, Column 3) sum to 15.
+
+4. **Game End Conditions**:
+
+   - **Win**: A player wins immediately upon creating a line that sums to 15.
+   - **Continuation**: If all numbers have been used and no player has achieved the sum of 15 in a line, the game continues by allowing players to replace one of their own numbers in the grid with an unused number (if any remain).
+   - **No Draws**: The game continues indefinitely until a player wins; draws are not possible.
+
+5. **Strategic Depth**:
+
+   - **Blocking**: Players must consider not only their own grid but also anticipate the opponent's moves to prevent them from winning.
+   - **Number Availability**: Keeping track of which numbers have been used adds a layer of strategy.
+
+---
+
+### **Scoring**
+
+- **Winning**: Victory is achieved by being the first player to align three numbers in a row, column, or diagonal that sum to 15.
+- **No Point System**: There is no point tracking; the focus is on achieving the game's objective to win.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting the Game**:
+
+- Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- Both Grids are empty.
+
+**Turn 1**:
+
+- **Player 1** selects number **5** and places it in their grid at position (Row 2, Column 2).
+
+  Command-line input:
+  ```
+  Player 1, select a number: 5
+  Choose grid position (row and column): 2 2
+  ```
+
+- **Available Numbers** now: 1, 2, 3, 4, 6, 7, 8, 9
+
+**Turn 2**:
+
+- **Player 2** selects number **8** and places it at (Row 1, Column 3).
+
+  Command-line input:
+  ```
+  Player 2, select a number: 8
+  Choose grid position (row and column): 1 3
+  ```
+
+- **Available Numbers** now: 1, 2, 3, 4, 6, 7, 9
+
+**Turn 3**:
+
+- **Player 1** selects number **6** and places it at (Row 1, Column 1).
+
+  Command-line input:
+  ```
+  Player 1, select a number: 6
+  Choose grid position (row and column): 1 1
+  ```
+
+- **Available Numbers** now: 1, 2, 3, 4, 7, 9
+
+**Turn 4**:
+
+- **Player 2** selects number **9** and places it at (Row 3, Column 2).
+
+  Command-line input:
+  ```
+  Player 2, select a number: 9
+  Choose grid position (row and column): 3 2
+  ```
+
+- **Available Numbers** now: 1, 2, 3, 4, 7
+
+**Turn 5**:
+
+- **Player 1** selects number **4** and places it at (Row 3, Column 3).
+
+  Command-line input:
+  ```
+  Player 1, select a number: 4
+  Choose grid position (row and column): 3 3
+  ```
+
+- **Available Numbers** now: 1, 2, 3, 7
+
+**Player 1's Grid**:
+
+```
+[6][ ][ ]
+[ ][5][ ]
+[ ][ ][4]
+```
+
+- **Player 1** now has numbers 6 (Row 1, Col 1), 5 (Row 2, Col 2), and 4 (Row 3, Col 3) placed diagonally.
+
+- **Sum of Diagonal**:
+  - 6 + 5 + 4 = **15**
+
+**Result**:
+
+- **Player 1 wins** by achieving a diagonal sum of 15.
+
+**Game Over**.
+
+---
+
+### **Command-Line Interaction Summary**
+
+- **Number Selection**:
+  ```
+  Player X, select a number: [Available Number]
+  ```
+
+- **Grid Placement**:
+  ```
+  Choose grid position (row and column): [Row Number] [Column Number]
+  ```
+
+- **Invalid Moves**: If a player selects an unavailable number or an occupied grid position, prompt again.
+
+  ```
+  Invalid selection. Please choose an available number and an empty grid position.
+  ```
+
+- **Winning Announcement**:
+
+  ```
+  Player X wins! Line at [Row/Column/Diagonal] sums to 15.
+  ```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead**: Focus on creating multiple opportunities to sum to 15, increasing your chances of winning.
+
+- **Block Opponent**: Watch your opponent's grid progress to anticipate and block their attempts to sum to 15.
+
+- **Number Awareness**: Keep track of which numbers have been used to inform your strategy.
+
+---
+
+**Enjoy the challenge of Pattern Match, where arithmetic meets strategy!**

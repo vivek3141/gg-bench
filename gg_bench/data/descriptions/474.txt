@@ -1,0 +1,195 @@
+# Operation Duel: Rule Book
+
+## Objective
+
+**Operation Duel** is a two-player turn-based game where the goal is to be the first player to reach the **target number** exactly by strategically applying mathematical operations to a **current number**. The player who successfully reaches the target number without exceeding it wins the game. If a player causes the current number to exceed the target number, they lose immediately.
+
+---
+
+## Setup
+
+1. **Initial Number**: The game starts with a current number of **1**.
+2. **Target Number**: The target number that players aim to reach is **20**.
+3. **Player Order**: Decide which player goes first (Player 1 and Player 2) by mutual agreement or a random method such as a coin toss.
+
+---
+
+## Game Components
+
+- **Current Number**: A shared number that both players manipulate during their turns. It starts at **1**.
+- **Target Number**: A fixed number set at **20** that players aim to reach exactly.
+- **Operations**: Players can perform specific mathematical operations on the current number during their turns.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns alternately. Player 1 makes the first move, followed by Player 2.
+2. **Actions Per Turn**:
+   - **Add 1**: Increment the current number by 1.
+   - **Multiply by 2**: Multiply the current number by 2.
+3. **Turn Progression**:
+   - After a player performs an operation, the turn passes to the other player.
+4. **Valid Moves**:
+   - Players must choose an operation that does not cause the current number to exceed the target number (20).
+   - If no valid moves are available, the player loses their turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Operation Choices**:
+   - On each turn, a player must choose one of the following operations to perform on the current number:
+     - **Addition**: `current number = current number + 1`
+     - **Multiplication**: `current number = current number * 2`
+2. **Winning the Game**:
+   - The first player to adjust the current number to exactly **20** wins the game.
+3. **Losing the Game**:
+   - If a player's operation causes the current number to exceed **20**, that player loses immediately.
+4. **No Valid Moves**:
+   - If a player has no valid operations that keep the current number at or below **20**, they lose their turn, and play passes to the opponent.
+5. **Game End Conditions**:
+   - **Win by Exact Match**: A player wins by reaching the target number exactly.
+   - **Lose by Exceeding Target**: A player loses if they exceed the target number.
+6. **Game Continuation**:
+   - The game continues until one of the end conditions is met.
+
+---
+
+## Scoring
+
+- **Victory**: The winning player is the one who reaches the target number of **20** exactly through strategic operations.
+- **Loss**: The losing player is the one who either causes the current number to exceed **20** or is unable to make a valid move when it's their turn.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial State**:
+
+- Current Number: 1
+- Target Number: 20
+
+**Turn 1**: Player 1's Turn
+- **Action**: Multiply by 2
+- **Calculation**: 1 * 2 = 2
+- **Current Number After Turn**: 2
+
+**Turn 2**: Player 2's Turn
+- **Action**: Multiply by 2
+- **Calculation**: 2 * 2 = 4
+- **Current Number After Turn**: 4
+
+**Turn 3**: Player 1's Turn
+- **Action**: Add 1
+- **Calculation**: 4 + 1 = 5
+- **Current Number After Turn**: 5
+
+**Turn 4**: Player 2's Turn
+- **Action**: Multiply by 2
+- **Calculation**: 5 * 2 = 10
+- **Current Number After Turn**: 10
+
+**Turn 5**: Player 1's Turn
+- **Action**: Multiply by 2
+- **Calculation**: 10 * 2 = 20
+- **Current Number After Turn**: 20
+
+**Outcome**:
+- **Player 1 wins** by reaching the target number exactly.
+
+### Invalid Move Example
+
+**Current Number**: 19
+
+**Player's Turn**:
+
+- **Available Actions**:
+  - Add 1: 19 + 1 = 20 (Valid)
+  - Multiply by 2: 19 * 2 = 38 (Invalid, exceeds target number)
+
+**Player Chooses**: Multiply by 2
+
+**Outcome**:
+
+- The current number becomes 38, which exceeds 20.
+- **Player loses** immediately for exceeding the target number.
+- **Opponent wins** the game.
+
+---
+
+## Command-Line Interaction Sample
+
+### Introduction
+
+```plaintext
+Welcome to Operation Duel!
+Player 1 and Player 2, get ready to start the game.
+Current Number: 1
+Target Number: 20
+```
+
+### Turn Sequence
+
+**Player 1's Turn**
+
+```plaintext
+Player 1's turn.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+You chose to Multiply by 2.
+New Current Number: 2
+```
+
+**Player 2's Turn**
+
+```plaintext
+Player 2's turn.
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+You chose to Multiply by 2.
+New Current Number: 4
+```
+
+**Proceeding Turns**
+
+*The game continues with players choosing operations and updating the current number, as in the example above.*
+
+### Winning the Game
+
+**Final Turn**
+
+```plaintext
+Player 1's turn.
+Current Number: 10
+Choose an operation:
+1. Add 1
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+You chose to Multiply by 2.
+New Current Number: 20
+Congratulations, Player 1! You have reached the target number and won the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the potential results of both operations not just for your current turn but for future turns.
+- **Force Opponent Errors**: Aim to leave the current number at a value where the opponent has limited or risky options.
+- **Avoid Exceeding Target**: Always verify that your chosen operation won't cause the current number to surpass the target.
+
+---
+
+## Conclusion
+
+Operation Duel is a simple yet strategic game that requires foresight and planning. By carefully selecting mathematical operations, players can control the flow of the game and outmaneuver their opponent. Enjoy the challenge and may the best strategist win!
+
+---

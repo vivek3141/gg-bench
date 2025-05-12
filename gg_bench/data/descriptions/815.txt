@@ -1,0 +1,196 @@
+# Number Quest
+
+*An engaging two-player, turn-based strategy game played on the command line, where players race to reach the target number by strategically adding or multiplying numbers.*
+
+---
+
+## Objective
+
+The primary goal of **Number Quest** is to be the first player to reach the **target number** exactly by strategically performing allowed mathematical operations on a shared **current number**. The player who manipulates the current number to match the target number wins the game.
+
+---
+
+## Setup
+
+1. **Determine the Target Number**: Decide on a target number to reach. This can be any positive integer (e.g., 20, 50, 100). For a quick game, a lower number like 20 is recommended.
+2. **Initialize the Current Number**: Start the game with the current number set to **1**.
+3. **Decide Turn Order**: Players decide who will take the first turn (e.g., by flipping a coin or mutual agreement).
+
+---
+
+## Game Components
+
+- **Target Number**: The agreed-upon number that players aim to reach (e.g., 20).
+- **Current Number**: The number that players manipulate during their turns, starting at 1.
+- **Operations**: Allowed mathematical operations—addition and multiplication.
+- **Command-Line Interface**: All interactions occur through the command line; no physical components are required.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns throughout the game.
+  - On each turn, a player must perform **one** operation on the current number.
+
+- **Player Actions During a Turn**:
+  1. **Select an Operation**:
+     - **Addition**: Add an integer from **1 to 5** (inclusive) to the current number.
+     - **Multiplication**: Multiply the current number by **2** or **3**.
+  2. **Apply the Operation**:
+     - Update the current number with the result of the operation.
+     - Announce the new current number.
+  3. **End of Turn**:
+     - Check for a win condition.
+     - If the target number is reached, the game ends.
+     - If not, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Allowed Operations**:
+
+   - **Addition**:
+     - You may add an integer between **1 and 5** to the current number.
+     - Example: If the current number is 7, you can choose to add 3 to make it 10.
+   - **Multiplication**:
+     - You may multiply the current number by **2** or **3**.
+     - Example: If the current number is 4, you can multiply by 2 to make it 8.
+
+2. **Operation Restrictions**:
+
+   - **No Exceeding the Target**:
+     - The result of your operation **must not exceed** the target number.
+     - If all possible operations would exceed the target, you **lose your turn**.
+   - **Valid Moves Only**:
+     - You must choose an operation that results in a number **less than or equal to** the target number.
+
+3. **Winning the Game**:
+
+   - **Exact Match**:
+     - The first player to make the current number **exactly equal** to the target number **wins the game**.
+   - **Forced Loss**:
+     - If a player **cannot perform any valid operation** on their turn (all operations would exceed the target number), they lose **their turn**, and play passes back to the other player.
+     - If **both players cannot make a move**, the **last player who increased** the current number **loses the game**.
+
+4. **No Draws**:
+
+   - The game cannot end in a draw. There will always be a winner based on the above rules.
+
+---
+
+## Scoring
+
+- **Victory Condition**:
+  - No points are tracked; victory is achieved by being the first to reach the target number according to the game rules.
+- **No Ongoing Score**:
+  - The game is a single-round match with a clear winner at the end.
+
+---
+
+## Examples
+
+### Example Game Play with Target Number 20
+
+#### Starting the Game:
+
+- **Target Number**: 20
+- **Current Number**: 1
+- **Player 1** and **Player 2** decide that Player 1 will start.
+
+#### Turn 1 - Player 1:
+
+- **Current Number**: 1
+- **Available Operations**:
+  - Add 1-5
+  - Multiply by 2 or 3
+- **Player 1's Choice**: Add 5
+- **Calculation**: 1 + 5 = 6
+- **New Current Number**: 6
+- **Announcement**: "Player 1 adds 5. Current Number is now 6."
+
+#### Turn 2 - Player 2:
+
+- **Current Number**: 6
+- **Available Operations**:
+  - Add 1-5
+  - Multiply by 2 or 3
+- **Player 2's Choice**: Multiply by 3
+- **Calculation**: 6 * 3 = 18
+- **New Current Number**: 18
+- **Announcement**: "Player 2 multiplies by 3. Current Number is now 18."
+
+#### Turn 3 - Player 1:
+
+- **Current Number**: 18
+- **Available Operations**:
+  - Add 1 or 2 (adding more would exceed 20)
+- **Player 1's Choice**: Add 2
+- **Calculation**: 18 + 2 = 20
+- **New Current Number**: 20
+- **Announcement**: "Player 1 adds 2. Current Number is now 20."
+- **Result**: Player 1 has reached the target number and **wins the game**.
+
+---
+
+## Command-Line Interaction Sample
+
+### Game Start:
+
+```
+Welcome to Number Quest!
+Target Number: 20
+Current Number: 1
+Player 1, it's your turn.
+```
+
+### Player 1's Turn:
+
+```
+Current Number: 1
+Choose an operation:
+1. Add (1-5)
+2. Multiply (2 or 3)
+Enter operation (add/multiply): add
+Enter number to add (1-5): 5
+Player 1 adds 5. Current Number is now 6.
+```
+
+### Player 2's Turn:
+
+```
+Current Number: 6
+Choose an operation:
+1. Add (1-5)
+2. Multiply (2 or 3)
+Enter operation (add/multiply): multiply
+Enter multiplier (2 or 3): 3
+Player 2 multiplies by 3. Current Number is now 18.
+```
+
+### Player 1's Winning Turn:
+
+```
+Current Number: 18
+Choose an operation:
+1. Add (1-5)
+2. Multiply (2 or 3)
+Enter operation (add/multiply): add
+Enter number to add (1-5): 2
+Player 1 adds 2. Current Number is now 20.
+Congratulations, Player 1! You've reached the target number and won the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider how your move will affect the current number and the options available to your opponent.
+- **Control the Flow**: Try to force the current number into ranges that limit your opponent's valid moves.
+- **Calculate Outcomes**: Before making a move, think about the possible responses from your opponent and choose the operation that maximizes your chance of winning.
+- **Avoid Overstepping**: Be cautious not to increase the current number too rapidly if it might give your opponent a direct path to win.
+
+---
+
+Enjoy playing **Number Quest**, and may the best strategist win!

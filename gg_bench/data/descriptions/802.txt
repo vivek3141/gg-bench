@@ -1,0 +1,262 @@
+# Zone Conquest: Rule Book
+
+## Objective
+
+In **Zone Conquest**, two players compete to control a majority of zones on a 3x3 grid. The primary goal is to be the first player to control **five or more zones**. Players achieve victory by strategically occupying and capturing zones, outmaneuvering their opponent to gain dominance over the grid.
+
+## Setup
+
+1. **Game Grid**: Prepare a 3x3 grid representing the nine zones of the battlefield. Each cell in the grid corresponds to one zone.
+
+2. **Player Tokens**:
+   - **Player 1** uses the symbol `X` to mark controlled zones.
+   - **Player 2** uses the symbol `O` to mark controlled zones.
+
+3. **Starting Conditions**:
+   - The grid begins empty with no zones occupied.
+   - Decide which player goes first (e.g., flip a coin or have each player roll a die, with the higher roll starting).
+
+## Game Components
+
+- **Grid**: A 3x3 matrix displayed in the command-line interface, with cells numbered for reference:
+  ```
+  [1][2][3]
+  [4][5][6]
+  [7][8][9]
+  ```
+- **Tokens**:
+  - `X` represents zones controlled by Player 1.
+  - `O` represents zones controlled by Player 2.
+- **Empty Cells**: Represented by their cell number or a blank space.
+
+## Turns
+
+- Players take turns performing actions.
+- On a player's turn, they may choose to:
+  1. **Occupy** an empty zone.
+  2. **Attack** an opponent's zone, if eligible.
+
+- **Turn Order**:
+  1. **Action Declaration**: The player announces their chosen action and specifies the target zone.
+  2. **Action Resolution**: The action is executed according to the game rules.
+  3. **Turn Completion**: The turn ends, and play passes to the other player.
+
+## Rules and Mechanics
+
+### Occupying Zones
+
+- **Occupy Action**:
+  - A player can occupy any **empty zone** by placing their token (`X` or `O`) in that zone.
+  - Occupying a zone requires no prerequisites.
+
+### Attacking Zones
+
+- **Attack Action**:
+  - A player can attempt to capture an opponent's zone under the following conditions:
+    - The target zone is **adjacent** (horizontally or vertically, not diagonally) to at least one zone already controlled by the attacking player.
+    - The attacking player did **not attack the same zone in their immediate previous turn**.
+  - **Successful Attack**:
+    - The opponent's token is replaced with the attacker's token, and control of the zone shifts to the attacker.
+
+- **Adjacency Example**:
+  - If Player 1 (`X`) controls zone 5, they can attack zones 2, 4, 6, or 8, provided those zones are controlled by Player 2 (`O`).
+
+### Restrictions
+
+- **No Repeated Attacks**:
+  - Players cannot attack the **same zone** on two consecutive turns. They must either attack a different zone or choose to occupy an empty zone.
+
+- **Zone Control Limits**:
+  - Once a player controls a zone, it remains under their control unless captured by the opponent through an attack.
+
+### Winning the Game
+
+- The game ends immediately when a player controls **five or more zones**.
+- The player who achieves this condition is declared the **winner**.
+
+## Scoring
+
+- **Zone Control Count**:
+  - Players keep track of the number of zones they control.
+  - Control is visually represented on the grid using `X` and `O`.
+
+- **Victory Condition**:
+  - No point system is used beyond controlling zones.
+  - The primary objective is to reach the majority control of the grid (five zones).
+
+## Example Gameplay
+
+### Initial Grid
+```
+[1][2][3]
+[4][5][6]
+[7][8][9]
+```
+
+### Turn-by-Turn Example
+
+1. **Player 1's Turn**:
+   - **Action**: Occupy zone 5.
+   - **Grid**:
+     ```
+     [1][2][3]
+     [4][X][6]
+     [7][8][9]
+     ```
+
+2. **Player 2's Turn**:
+   - **Action**: Occupy zone 1.
+   - **Grid**:
+     ```
+     [O][2][3]
+     [4][X][6]
+     [7][8][9]
+     ```
+
+3. **Player 1's Turn**:
+   - **Action**: Occupy zone 2.
+   - **Grid**:
+     ```
+     [O][X][3]
+     [4][X][6]
+     [7][8][9]
+     ```
+
+4. **Player 2's Turn**:
+   - **Action**: Attack zone 2 (illegal, not adjacent to a controlled zone).
+   - **Correction**: Cannot attack; instead, occupy zone 4.
+   - **Grid**:
+     ```
+     [O][X][3]
+     [O][X][6]
+     [7][8][9]
+     ```
+
+5. **Player 1's Turn**:
+   - **Action**: Attack zone 4 (adjacent to zone 5, which they control).
+   - **Grid**:
+     ```
+     [O][X][3]
+     [X][X][6]
+     [7][8][9]
+     ```
+
+6. **Player 2's Turn**:
+   - **Action**: Occupy zone 6.
+   - **Grid**:
+     ```
+     [O][X][3]
+     [X][X][O]
+     [7][8][9]
+     ```
+
+7. **Player 1's Turn**:
+   - **Action**: Occupy zone 8.
+   - **Grid**:
+     ```
+     [O][X][3]
+     [X][X][O]
+     [7][X][9]
+     ```
+   - **Zone Control Count**:
+     - Player 1 controls zones: 2, 4, 5, 8 (4 zones).
+     - Player 2 controls zones: 1, 6 (2 zones).
+
+8. **Player 2's Turn**:
+   - **Action**: Attack zone 8 (adjacent to zone 6, which they control).
+   - **Grid**:
+     ```
+     [O][X][3]
+     [X][X][O]
+     [7][O][9]
+     ```
+   - **Zone Control Count**:
+     - Player 1 controls zones: 2, 4, 5 (3 zones).
+     - Player 2 controls zones: 1, 6, 8 (3 zones).
+
+9. **Player 1's Turn**:
+   - **Action**: Attack zone 6 (adjacent to zone 5).
+   - **Grid**:
+     ```
+     [O][X][3]
+     [X][X][X]
+     [7][O][9]
+     ```
+   - **Zone Control Count**:
+     - Player 1 controls zones: 2, 4, 5, 6 (4 zones).
+     - Player 2 controls zones: 1, 8 (2 zones).
+
+10. **Player 1 controls five zones and wins the game**.
+
+   - On the next turn, if Player 1 occupies or captures one more zone, they reach the victory condition.
+
+## Command-Line Interaction Example
+
+- **Prompt Format**:
+  ```
+  Player [X/O], it's your turn.
+  Current Grid:
+  [Display Grid]
+  Choose your action:
+  1. Occupy a zone
+  2. Attack an opponent's zone
+  ```
+
+- **Player Input**:
+  - **Occupy**:
+    ```
+    Enter the zone number you wish to occupy:
+    ```
+  - **Attack**:
+    ```
+    Enter the zone number you wish to attack:
+    ```
+
+- **Example Turn**:
+
+  ```
+  Player X, it's your turn.
+  Current Grid:
+  [O][X][3]
+  [X][X][X]
+  [7][O][9]
+  Choose your action:
+  1. Occupy a zone
+  2. Attack an opponent's zone
+  ```
+  
+  - **Player Input**: `1`
+  - **System**: `Enter the zone number you wish to occupy:`
+  - **Player Input**: `9`
+  - **System**:
+    ```
+    You occupied zone 9.
+    ```
+
+- **Updated Grid**:
+  ```
+  [O][X][3]
+  [X][X][X]
+  [7][O][X]
+  ```
+
+- **Victory Announcement**:
+  ```
+  Player X now controls five zones and wins the game!
+  ```
+
+## Strategic Tips
+
+- **Expand Early**: Quickly occupy central zones to maximize your options for future attacks.
+
+- **Defensive Play**: Monitor the opponent's controlled zones and anticipate possible attacks.
+
+- **Zone Adjacency**: Control zones in a cluster to enable multiple attack options.
+
+- **Prevent Re-Attacks**: Remember that your opponent cannot attack the same zone consecutively; use this to plan your defenses.
+
+- **Majority Focus**: Aim to control five zones as efficiently as possible rather than solely capturing opponent zones.
+
+---
+
+Enjoy playing **Zone Conquest** and may the best strategist win!

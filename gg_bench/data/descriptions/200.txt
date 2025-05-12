@@ -1,0 +1,166 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a strategic two-player turn-based game played in a command-line interface. The primary goal is to be the last player able to make a valid move. Players take turns reducing a shared number by subtracting its proper divisors. The player who forces the opponent into a position where they cannot make a move wins the game.
+
+## Setup
+
+1. **Initial Number Selection**:
+   - Decide on a starting positive integer **N** (greater than 1) to be used for the game. For a quick game, a number between 10 and 100 is recommended.
+   - Alternatively, the game can randomly select a starting number within a predefined range.
+
+2. **Player Assignment**:
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Determine who will take the first turn (e.g., flip a coin, random selection, or mutual agreement).
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players will manipulate during the game.
+- **Proper Divisors**: For any given number **N**, its proper divisors are all positive integers less than **N** that divide **N** without leaving a remainder.
+  - Example: Proper divisors of 8 are 1, 2, and 4.
+
+## Turns
+
+- Players alternate turns starting with the designated first player.
+- **Turn Structure**:
+  1. **Identify Proper Divisors**: The current player lists all proper divisors of the current number **N**.
+  2. **Subtract a Divisor**: The player selects one proper divisor and subtracts it from **N**.
+  3. **Update N**: The result becomes the new **N** for the next turn.
+  4. **Check for Victory**: If the new **N** is 1 or if there are no proper divisors for the new **N**, the next player cannot make a move, and the current player wins.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On each turn, a player must subtract a proper divisor of the current number **N**.
+   - The chosen proper divisor must be a positive integer less than **N** that divides **N** evenly.
+
+2. **Updating N**:
+   - After subtracting the chosen proper divisor, the new **N** is calculated:
+     \[ N_{\text{new}} = N_{\text{current}} - \text{Divisor} \]
+
+3. **Winning the Game**:
+   - A player wins if they reduce **N** such that the opponent cannot make a valid move on their turn.
+   - This occurs when:
+     - The new **N** is 1 (which has no proper divisors).
+     - The new **N** is a prime number (its only proper divisor is 1).
+     - The new **N** has no proper divisors (e.g., when **N** is 2).
+
+4. **Forbidden Moves**:
+   - Players cannot subtract numbers that are not proper divisors of **N**.
+   - Players cannot pass their turn; a move must be made if possible.
+
+5. **Example of Proper Divisors**:
+   - For **N = 15**, the proper divisors are 1, 3, and 5.
+   - For **N = 16**, the proper divisors are 1, 2, 4, 8.
+
+## Scoring
+
+- **Winning Player**: The player who successfully forces their opponent into a position with no valid moves wins the game.
+- **No Point System**: There is no point tracking; the outcome is simply a win or loss.
+- **Match Play (Optional)**:
+  - Players can play multiple rounds, keeping track of wins to determine an overall match winner.
+  - Best-of-three or best-of-five formats can be used for longer play sessions.
+
+## Examples
+
+### Example Game
+
+**Starting Number**: N = 15
+
+**Player 1's Turn**:
+- **Proper Divisors of 15**: 1, 3, 5
+- **Move**: Subtract 5
+- **Calculation**: 15 - 5 = 10
+- **New N**: 10
+
+**Player 2's Turn**:
+- **Proper Divisors of 10**: 1, 2, 5
+- **Move**: Subtract 5
+- **Calculation**: 10 - 5 = 5
+- **New N**: 5
+
+**Player 1's Turn**:
+- **Proper Divisors of 5**: 1
+- **Move**: Subtract 1
+- **Calculation**: 5 - 1 = 4
+- **New N**: 4
+
+**Player 2's Turn**:
+- **Proper Divisors of 4**: 1, 2
+- **Move**: Subtract 2
+- **Calculation**: 4 - 2 = 2
+- **New N**: 2
+
+**Player 1's Turn**:
+- **Proper Divisors of 2**: 1
+- **Move**: Subtract 1
+- **Calculation**: 2 - 1 = 1
+- **New N**: 1
+
+**Player 2's Turn**:
+- **No Valid Moves**: The number is now 1, which has no proper divisors.
+
+**Result**: **Player 1 Wins**
+
+### Command-Line Interaction Sample
+
+Assuming players input their moves when prompted.
+
+```
+Game Start! The starting number is 15.
+
+Player 1's Turn:
+Proper divisors of 15: 1, 3, 5
+Enter a proper divisor to subtract: 5
+You chose to subtract 5.
+New N is 10.
+
+Player 2's Turn:
+Proper divisors of 10: 1, 2, 5
+Enter a proper divisor to subtract: 5
+You chose to subtract 5.
+New N is 5.
+
+Player 1's Turn:
+Proper divisors of 5: 1
+Enter a proper divisor to subtract: 1
+You chose to subtract 1.
+New N is 4.
+
+Player 2's Turn:
+Proper divisors of 4: 1, 2
+Enter a proper divisor to subtract: 2
+You chose to subtract 2.
+New N is 2.
+
+Player 1's Turn:
+Proper divisors of 2: 1
+Enter a proper divisor to subtract: 1
+You chose to subtract 1.
+New N is 1.
+
+Player 2's Turn:
+No valid moves available.
+Player 1 wins the game!
+```
+
+### Strategic Considerations
+
+- **Prime Numbers**: Reducing **N** to a prime number (other than 2) can be advantageous since the opponent will only have 1 as a proper divisor to subtract.
+- **Avoiding 1**: Try not to leave the opponent with **N = 1** on their turn, as this guarantees your victory.
+- **Divisor Selection**: Consider the consequences of each possible move, and anticipate the opponent's potential responses.
+
+## Additional Notes
+
+- **Game Length**: The game typically ends quickly due to the reducing nature of **N** and the finite number of proper divisors.
+- **Skill Development**: Players who can calculate proper divisors quickly and think ahead will have a strategic advantage.
+- **Variations**:
+  - Change the starting number **N** to adjust game difficulty.
+  - Implement time limits for each turn to increase the challenge.
+
+## Closing
+
+**Divisor Duel** combines basic arithmetic and strategic foresight in a simple yet engaging game. Its minimal components and straightforward rules make it easy to code and play in a command-line interface. Mastery comes from understanding number properties and anticipating your opponent's moves, ensuring that skilled players can consistently outmaneuver less experienced ones.
+
+Enjoy the game, and may the best strategist win!

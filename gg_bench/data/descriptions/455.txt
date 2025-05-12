@@ -1,0 +1,175 @@
+# Divide and Conquer
+
+## Objective
+
+"Divide and Conquer" is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns dividing numbers into smaller integers, and the last player able to make a valid move wins the game. The game demands foresight and planning, allowing skilled players to consistently outmaneuver unskilled opponents.
+
+## Setup
+
+- **Starting Number**: The game begins with a single positive integer, typically **16**. This number is chosen for its balance between game length and strategic complexity but can be adjusted for shorter or longer games.
+- **Number List**: A list that contains the current set of numbers in play. Initially, this list contains only the starting number (e.g., `[16]`).
+- **Players**: Two players, Player 1 and Player 2. Player 1 makes the first move.
+
+## Game Components
+
+### Numbers
+
+- **Integers Greater Than 1**: All numbers in the game are positive integers greater than 1.
+- **Number List**: A dynamic list that updates as players divide numbers. It represents the current state of the game.
+  
+### Command-Line Interface
+
+- The game is played through text-based commands.
+- Players input their moves by specifying which number to divide and how to split it.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Turn Actions**:
+  - **Select a Number**: Choose a number from the current Number List that is greater than 2.
+  - **Divide the Number**: Split the selected number into two smaller positive integers greater than 1 that sum up to the original number.
+  - **Update the List**: Remove the original number from the Number List and add the two new numbers.
+- **Unable to Move**: If a player has no valid moves on their turn, they lose the game.
+
+## Rules and Mechanics
+
+1. **Valid Numbers for Division**:
+   - Only numbers greater than 2 in the Number List can be selected for division.
+   - Numbers equal to or less than 2 cannot be divided further.
+   
+2. **Division Rules**:
+   - The selected number must be split into two positive integers greater than 1.
+   - The sum of the two new numbers must equal the original number.
+   - Example: Dividing 10 can result in 4 and 6, 3 and 7, or 5 and 5.
+
+3. **Updating the Number List**:
+   - Remove the original number from the Number List.
+   - Add the two new numbers to the Number List.
+   - The Number List persists and updates throughout the game.
+
+4. **Winning the Game**:
+   - A player wins if their opponent cannot make a valid move on their turn.
+   - The game ends immediately when a player has no valid numbers to divide.
+
+5. **No Draw Mechanism**:
+   - The game cannot end in a draw; there will always be a winner.
+
+## Scoring
+
+- **Victory**: Victory is achieved by strategic play leading to the opponent's inability to move.
+- **No Points System**: There is no points system; the game is won by forcing the opponent into a position with no valid moves.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+- **Number List**: `[16]`
+- **Player 1's Turn**
+
+#### Turn 1: Player 1
+
+- **Action**: Divide 16 into 10 and 6.
+- **Command**: `divide 16 into 10 6`
+- **Updated Number List**: `[10, 6]`
+
+#### Turn 2: Player 2
+
+- **Action**: Divide 10 into 4 and 6.
+- **Command**: `divide 10 into 4 6`
+- **Updated Number List**: `[6, 4, 6]`
+
+#### Turn 3: Player 1
+
+- **Action**: Divide 6 into 3 and 3.
+- **Command**: `divide 6 into 3 3`
+- **Updated Number List**: `[4, 6, 3, 3]`
+
+#### Turn 4: Player 2
+
+- **Action**: Divide 6 into 2 and 4.
+- **Command**: `divide 6 into 2 4`
+- **Updated Number List**: `[4, 3, 3, 2, 4]`
+
+#### Turn 5: Player 1
+
+- **Action**: Divide 4 into 2 and 2.
+- **Command**: `divide 4 into 2 2`
+- **Updated Number List**: `[3, 3, 2, 4, 2, 2]`
+
+#### Turn 6: Player 2
+
+- **Action**: Divide 4 into 2 and 2.
+- **Command**: `divide 4 into 2 2`
+- **Updated Number List**: `[3, 3, 2, 2, 2, 2, 2]`
+
+#### Turn 7: Player 1
+
+- **Action**: Divide 3 into 2 and 1 (Invalid Move).
+- **Invalid Move**: Both numbers must be greater than 1.
+- **Corrected Action**: Divide 3 into 2 and 1 is invalid. Player must divide a different number.
+
+- **Valid Action**: Divide 3 into 2 and 1 (Invalid). Since all numbers are 3 or less, and 3 cannot be divided into two numbers greater than 1, Player 1 has no valid moves.
+
+#### Conclusion
+
+- **Player 1 Loses**: Player 1 cannot make a valid move.
+- **Player 2 Wins**
+
+### Sample Command-Line Interaction
+
+```
+Number List: [16]
+Player 1's Turn
+Enter the number to divide: 16
+Enter the two numbers to split into (must sum to 16 and be >1): 10 6
+Number List is now: [10, 6]
+
+Number List: [10, 6]
+Player 2's Turn
+Enter the number to divide: 10
+Enter the two numbers to split into (must sum to 10 and be >1): 7 3
+Number List is now: [6, 7, 3]
+
+Number List: [6, 7, 3]
+Player 1's Turn
+Enter the number to divide: 7
+Enter the two numbers to split into (must sum to 7 and be >1): 4 3
+Number List is now: [6, 3, 4, 3]
+
+Number List: [6, 3, 4, 3]
+Player 2's Turn
+Enter the number to divide: 6
+Enter the two numbers to split into (must sum to 6 and be >1): 3 3
+Number List is now: [3, 4, 3, 3, 3]
+
+Number List: [3, 4, 3, 3, 3]
+Player 1's Turn
+Enter the number to divide: 4
+Enter the two numbers to split into (must sum to 4 and be >1): 2 2
+Number List is now: [3, 3, 3, 3, 2, 2]
+
+Number List: [3, 3, 3, 3, 2, 2]
+Player 2's Turn
+Enter the number to divide: 3
+Attempt to divide 3 into two numbers greater than 1.
+Cannot divide 3 into two numbers greater than 1.
+Player 2 cannot make a valid move.
+
+Player 1 Wins!
+```
+
+### Explanation
+
+In this example, Player 2 could not make a valid move on their turn because all numbers in the list were 3 or less, and 3 cannot be divided into two integers greater than 1. Therefore, Player 1 wins the game.
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider how your move will impact the Number List and what options it will leave for your opponent.
+- **Force Moves**: Try to create situations where your opponent has limited options, potentially leading them into a position with no valid moves.
+- **Balance the Numbers**: Be cautious about dividing numbers into equal parts, as this can prolong the game and offer more opportunities for strategic play.
+
+## Conclusion
+
+"Divide and Conquer" is a simple yet profound game that combines mathematical division with strategic foresight. Its straightforward mechanics make it easy to code and play in a command-line interface, while its depth ensures that skilled players can consistently outperform less experienced opponents. Enjoy honing your strategy and outsmarting your rival in this battle of wits!

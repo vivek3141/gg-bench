@@ -1,0 +1,330 @@
+# **Game Title: Shadow Strike**
+
+## **Objective**
+
+In **Shadow Strike**, two players engage in a battle of wits and strategy. The primary goal is to be the first player to reduce your opponent's **Shadow Counter** to zero by strategically choosing actions that manipulate both players' counters. Victory is achieved when your opponent's Shadow Counter reaches zero before yours does.
+
+---
+
+## **Setup**
+
+- **Starting Counters**:
+  - Both players begin with a **Shadow Counter** set to **10**.
+
+- **Player Order**:
+  - Determine who goes first by any agreed method (coin toss, random selection, etc.).
+
+- **Command-Line Interface Initialization**:
+  - The game starts with both Shadow Counters displayed:
+    ```
+    Player 1 Shadow Counter: 10
+    Player 2 Shadow Counter: 10
+    ```
+
+---
+
+## **Game Components**
+
+- **Shadow Counters**:
+  - Numerical values representing each player's life force.
+  - Values range from **0** to **10**.
+
+- **Actions**:
+  - **Strike**: Reduces opponent's Shadow Counter.
+  - **Shield**: Protects your Shadow Counter for one turn.
+  - **Drain**: Sacrifices your Shadow Counter to reduce opponent's counter more significantly.
+
+---
+
+## **Turns**
+
+- Players take turns performing one action per turn.
+- **Turn Structure**:
+  1. **Action Selection**:
+     - Choose one of the available actions: **Strike**, **Shield**, or **Drain**.
+  2. **Action Resolution**:
+     - The chosen action is executed, updating the Shadow Counters accordingly.
+ 3. **Display Update**:
+     - Show updated Shadow Counters after the action.
+ 4. **Turn Progression**:
+     - The turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+### **Actions**
+
+1. **Strike**
+   - **Effect**: Reduces your opponent's Shadow Counter by **1** point.
+   - **Usage**: Can be used every turn unless the opponent has used **Shield** on their previous turn.
+   - **Command**: `strike`
+
+2. **Shield**
+   - **Effect**: Protects your Shadow Counter from being reduced on your opponent's next turn.
+   - **Duration**: Lasts for **1** turn (until your next turn).
+   - **Limitations**:
+     - Cannot be used on two consecutive turns.
+   - **Command**: `shield`
+
+3. **Drain**
+   - **Effect**: Reduces your own Shadow Counter by **1** point and reduces your opponent's Shadow Counter by **2** points.
+   - **Limitations**:
+     - Can only be used if your Shadow Counter is **2** or higher.
+     - Cannot be used on two consecutive turns.
+   - **Command**: `drain`
+
+### **Additional Rules**
+
+- **Shadow Counter Boundaries**:
+  - Shadow Counters cannot exceed **10** or drop below **0**.
+  - If an action would lower a Shadow Counter below **0**, set it to **0**.
+- **Victory Condition**:
+  - The first player to reduce their opponent's Shadow Counter to **0** wins the game.
+- **No Draw Mechanism**:
+  - Due to the asymmetrical impact of actions and counter mechanics, the game cannot end in a draw.
+
+---
+
+## **Scoring**
+
+- There is no point-based scoring system.
+- The game outcome is binary: **Win** or **Loss**.
+- The focus is on strategic depletion of the opponent's Shadow Counter.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Starting State**
+
+```
+Player 1 Shadow Counter: 10
+Player 2 Shadow Counter: 10
+```
+
+#### **Turn 1**
+
+- **Player 1's Turn**:
+  - **Action**: `strike`
+  - **Effect**: Player 2's Shadow Counter decreases by 1.
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 10
+    Player 2 Shadow Counter: 9
+    ```
+
+#### **Turn 2**
+
+- **Player 2's Turn**:
+  - **Action**: `shield`
+  - **Effect**: Player 2 is protected on the next turn.
+  - **Updated Counters** (no change):
+    ```
+    Player 1 Shadow Counter: 10
+    Player 2 Shadow Counter: 9
+    ```
+
+#### **Turn 3**
+
+- **Player 1's Turn**:
+  - **Action**: `strike`
+  - **Effect**:
+    - Player 2 used `shield` last turn; the strike has no effect.
+  - **Updated Counters** (no change):
+    ```
+    Player 1 Shadow Counter: 10
+    Player 2 Shadow Counter: 9
+    ```
+
+#### **Turn 4**
+
+- **Player 2's Turn**:
+  - **Action**: `drain`
+  - **Effect**:
+    - Player 2's Shadow Counter decreases by 1 (from 9 to 8).
+    - Player 1's Shadow Counter decreases by 2 (from 10 to 8).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 8
+    Player 2 Shadow Counter: 8
+    ```
+
+#### **Turn 5**
+
+- **Player 1's Turn**:
+  - **Action**: `drain`
+  - **Effect**:
+    - Player 1's Shadow Counter decreases by 1 (from 8 to 7).
+    - Player 2's Shadow Counter decreases by 2 (from 8 to 6).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 7
+    Player 2 Shadow Counter: 6
+    ```
+
+#### **Turn 6**
+
+- **Player 2's Turn**:
+  - **Action**: `strike`
+  - **Effect**: Player 1's Shadow Counter decreases by 1 (from 7 to 6).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 6
+    Player 2 Shadow Counter: 6
+    ```
+
+#### **Turn 7**
+
+- **Player 1's Turn**:
+  - **Action**: `shield`
+  - **Effect**: Player 1 is protected on the next turn.
+  - **Updated Counters** (no change):
+    ```
+    Player 1 Shadow Counter: 6
+    Player 2 Shadow Counter: 6
+    ```
+
+#### **Turn 8**
+
+- **Player 2's Turn**:
+  - **Action**: `drain`
+  - **Effect**:
+    - Player 2's Shadow Counter decreases by 1 (from 6 to 5).
+    - Player 1's Shadow Counter decreases by 2 (from 6 to 4).
+    - However, Player 1 used `shield` last turn, so their counter doesn't decrease.
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 6
+    Player 2 Shadow Counter: 5
+    ```
+
+#### **Turn 9**
+
+- **Player 1's Turn**:
+  - **Action**: `drain`
+  - **Effect**:
+    - Player 1's Shadow Counter decreases by 1 (from 6 to 5).
+    - Player 2's Shadow Counter decreases by 2 (from 5 to 3).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 5
+    Player 2 Shadow Counter: 3
+    ```
+
+#### **Turn 10**
+
+- **Player 2's Turn**:
+  - **Action**: `strike`
+  - **Effect**: Player 1's Shadow Counter decreases by 1 (from 5 to 4).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 4
+    Player 2 Shadow Counter: 3
+    ```
+
+#### **Turn 11**
+
+- **Player 1's Turn**:
+  - **Action**: `strike`
+  - **Effect**: Player 2's Shadow Counter decreases by 1 (from 3 to 2).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 4
+    Player 2 Shadow Counter: 2
+    ```
+
+#### **Turn 12**
+
+- **Player 2's Turn**:
+  - **Action**: `drain`
+  - **Effect**:
+    - Player 2's Shadow Counter decreases by 1 (from 2 to 1).
+    - Player 1's Shadow Counter decreases by 2 (from 4 to 2).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 2
+    Player 2 Shadow Counter: 1
+    ```
+
+#### **Turn 13**
+
+- **Player 1's Turn**:
+  - **Action**: `strike`
+  - **Effect**: Player 2's Shadow Counter decreases by 1 (from 1 to 0).
+  - **Updated Counters**:
+    ```
+    Player 1 Shadow Counter: 2
+    Player 2 Shadow Counter: 0
+    ```
+
+#### **Game End**
+
+- **Player 1 Wins**: Player 2's Shadow Counter has reached zero.
+
+---
+
+### **Sample Command-Line Interaction**
+
+#### **Initialization**
+
+```
+Welcome to Shadow Strike!
+
+Player 1 Shadow Counter: 10
+Player 2 Shadow Counter: 10
+
+Player 1, it's your turn.
+Available actions: strike, shield, drain
+Enter your action: strike
+```
+
+#### **Turn Progression**
+
+```
+Player 1 used STRIKE!
+Player 2's Shadow Counter decreased by 1.
+
+Player 1 Shadow Counter: 10
+Player 2 Shadow Counter: 9
+
+Player 2, it's your turn.
+Available actions: strike, shield, drain
+Enter your action: shield
+```
+
+... *(Gameplay continues as per the example above)* ...
+
+#### **Victory Announcement**
+
+```
+Player 1 used STRIKE!
+Player 2's Shadow Counter decreased by 1.
+
+Player 1 Shadow Counter: 2
+Player 2 Shadow Counter: 0
+
+Player 2's Shadow Counter has reached zero!
+Player 1 wins the game!
+```
+
+---
+
+## **Strategic Depth and Complexity**
+
+- **Action Prediction**:
+  - Anticipate your opponent's moves to plan effective counter-actions.
+- **Resource Management**:
+  - Decide when to sacrifice your own Shadow Counter using **Drain** for a greater impact.
+- **Timing of Shields**:
+  - Use **Shield** strategically to negate significant attacks like **Drain**.
+- **Limitations Exploitation**:
+  - Remember that **Shield** and **Drain** cannot be used consecutively; exploit these cooldowns.
+
+---
+
+# **Summary**
+
+**Shadow Strike** offers a quick, strategic gaming experience that is easy to code and play via a command-line interface. With simple rules but deep strategic potential, skilled players can consistently outmaneuver unskilled opponents by making calculated decisions and anticipating their opponent's moves. The game’s unique mechanics ensure that every match is engaging and decisively ends with a clear winner.

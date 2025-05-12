@@ -1,0 +1,229 @@
+# Number Quest: A Strategic Numerical Showdown
+
+## Objective
+
+**Be the first player to correctly predict the final sum of a shared sequence of numbers, while strategically adding numbers to influence the outcome.** Victory is achieved by skillfully selecting numbers to reach a predicted sum, outmaneuvering your opponent through foresight and strategic play. A player wins by either:
+
+- Being the only player to correctly predict the final sum of the sequence.
+- Having a closer prediction to the final sum if neither player predicts it exactly.
+
+There is no possibility of a draw; every game ends with a clear winner.
+
+## Setup
+
+1. **Shared Number Pool**: A set of numbers from **1** to **9**.
+2. **Shared Sequence**: An empty list where numbers will be added during the game.
+
+No physical arrangement is needed beyond tracking the shared number pool and sequence. Both players have equal access to the shared number pool and sequence.
+
+## Game Components
+
+- **Numbers (1-9)**: Each number represents a unique value that can be added to the shared sequence. Once a number is used, it cannot be selected again by either player.
+- **Shared Sequence**: A list that accumulates the numbers chosen by both players throughout the game.
+- **Predictions**: Each player's declared guess of what the final sum of the shared sequence will be at the end of the game.
+
+## Turns
+
+- Players decide who goes first (Player 1 and Player 2).
+- Players take turns in alternating order.
+- During each turn, a player can perform the following actions:
+  1. **Declare a Prediction (Optional)**:
+     - A player may declare their prediction for the final sum of the sequence.
+     - **This can only be done once per player per game.**
+     - Once declared, the prediction cannot be changed.
+  2. **Select a Number**:
+     - Choose any unused number from **1** to **9**.
+     - Add the selected number to the end of the shared sequence.
+     - Remove the number from the shared number pool.
+
+- The turn ends after the player has completed the above actions.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must select a number from the available numbers in the pool.
+   - Each number from **1** to **9** can only be used **once** in the game.
+   - Numbers must be added to the sequence; they cannot be skipped or discarded.
+
+2. **Predictions**:
+   - Each player has the opportunity to declare their prediction of the final sum **once per game**, **before selecting a number** on their turn.
+   - A prediction is made by stating the total sum they believe the sequence will reach once all numbers have been played.
+   - Predictions are public and must be communicated to the opponent.
+   - Players are not required to make a prediction on their first turn; they may choose the most strategic moment to declare.
+
+3. **End of Game**:
+   - The game ends when all numbers from **1** to **9** have been added to the sequence.
+   - Alternatively, if no legal moves remain (no numbers left to select), the game concludes.
+
+4. **Determining the Winner**:
+   - **Exact Prediction**: If a player correctly predicted the final sum, and the opponent did not, the predicting player wins.
+   - **Both Correct Predictions**: If both players correctly predicted the final sum:
+     - The player who **declared their prediction first** wins.
+   - **No Correct Prediction**: If neither player predicted the final sum correctly:
+     - The player whose prediction is **numerically closer** to the final sum wins.
+     - In the event of a tie in proximity, the player who declared their prediction **earlier** loses.
+
+5. **No Draw Rule**:
+   - The game is designed to ensure there is always a winner.
+   - Tie-breakers are resolved based on the timing of predictions and proximity to the final sum.
+
+## Scoring
+
+- **Winner**: Awards themselves 1 point for winning the game.
+- **Loser**: Receives 0 points.
+- Players can play multiple rounds, accumulating points to determine an overall champion if desired.
+
+## Examples
+
+### Sample Game Play
+
+#### Initialization
+
+- **Shared Number Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Shared Sequence**: []
+
+#### Turn Sequence
+
+1. **Player 1's Turn**
+   - **Action**: Picks number **5**.
+   - **Sequence**: [5]
+   - **Numbers Remaining**: [1, 2, 3, 4, 6, 7, 8, 9]
+   - **Prediction**: No prediction made.
+
+2. **Player 2's Turn**
+   - **Action**: Declares prediction **30**.
+   - **Action**: Picks number **9**.
+   - **Sequence**: [5, 9]
+   - **Numbers Remaining**: [1, 2, 3, 4, 6, 7, 8]
+   - **Prediction**: Player 2 predicts the final sum will be **30**.
+
+3. **Player 1's Turn**
+   - **Action**: Declares prediction **35**.
+   - **Action**: Picks number **8**.
+   - **Sequence**: [5, 9, 8]
+   - **Numbers Remaining**: [1, 2, 3, 4, 6, 7]
+   - **Prediction**: Player 1 predicts the final sum will be **35**.
+
+4. **Player 2's Turn**
+   - **Action**: Picks number **7**.
+   - **Sequence**: [5, 9, 8, 7]
+   - **Numbers Remaining**: [1, 2, 3, 4, 6]
+   - **Prediction**: Already made.
+
+5. **Player 1's Turn**
+   - **Action**: Picks number **6**.
+   - **Sequence**: [5, 9, 8, 7, 6]
+   - **Numbers Remaining**: [1, 2, 3, 4]
+   - **Prediction**: Already made.
+
+6. **Player 2's Turn**
+   - **Action**: Picks number **4**.
+   - **Sequence**: [5, 9, 8, 7, 6, 4]
+   - **Numbers Remaining**: [1, 2, 3]
+   - **Prediction**: Already made.
+
+7. **Player 1's Turn**
+   - **Action**: Picks number **3**.
+   - **Sequence**: [5, 9, 8, 7, 6, 4, 3]
+   - **Numbers Remaining**: [1, 2]
+   - **Prediction**: Already made.
+
+8. **Player 2's Turn**
+   - **Action**: Picks number **2**.
+   - **Sequence**: [5, 9, 8, 7, 6, 4, 3, 2]
+   - **Numbers Remaining**: [1]
+   - **Prediction**: Already made.
+
+9. **Player 1's Turn**
+   - **Action**: Picks number **1**.
+   - **Sequence**: [5, 9, 8, 7, 6, 4, 3, 2, 1]
+   - **Numbers Remaining**: []
+   - **Prediction**: Already made.
+
+#### End of Game Calculations
+
+- **Final Sum**: 5 + 9 + 8 + 7 + 6 + 4 + 3 + 2 + 1 = **45**
+- **Player Predictions**:
+  - **Player 1**: 35
+  - **Player 2**: 30
+
+#### Determining the Winner
+
+- Neither player predicted the final sum correctly.
+- **Player 1**'s prediction is **10 units away** from 45.
+- **Player 2**'s prediction is **15 units away** from 45.
+- **Player 1** is closer to the final sum and **wins the game**.
+
+### Sample Command-Line Interaction
+
+```plaintext
+--- Number Quest Game Start ---
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Shared Sequence: 
+--------------------------------
+
+Player 1's Turn:
+Do you want to declare a prediction? (yes/no): no
+Select a number to add to the sequence: 5
+You added 5 to the sequence.
+
+Available Numbers: 1 2 3 4 6 7 8 9
+Shared Sequence: 5
+--------------------------------
+
+Player 2's Turn:
+Do you want to declare a prediction? (yes/no): yes
+Enter your prediction for the final sum: 30
+Prediction recorded: 30
+Select a number to add to the sequence: 9
+You added 9 to the sequence.
+
+Available Numbers: 1 2 3 4 6 7 8
+Shared Sequence: 5 9
+--------------------------------
+
+Player 1's Turn:
+Do you want to declare a prediction? (yes/no): yes
+Enter your prediction for the final sum: 35
+Prediction recorded: 35
+Select a number to add to the sequence: 8
+You added 8 to the sequence.
+
+Available Numbers: 1 2 3 4 6 7
+Shared Sequence: 5 9 8
+--------------------------------
+
+Player 2's Turn:
+You have already declared a prediction.
+Select a number to add to the sequence: 7
+You added 7 to the sequence.
+
+Available Numbers: 1 2 3 4 6
+Shared Sequence: 5 9 8 7
+--------------------------------
+
+... (game continues) ...
+
+Game Over!
+Final Sequence: 5 9 8 7 6 4 3 2 1
+Final Sum: 45
+Player 1's Prediction: 35
+Player 2's Prediction: 30
+
+Winner: Player 1
+Congratulations Player 1, you won the game!
+```
+
+## Strategic Tips
+
+- **Early Prediction**: Making an early prediction allows you to influence the sequence toward your predicted sum, but reveals your target to your opponent.
+- **Late Prediction**: Waiting to predict allows you to gather more information but risks the opponent's prediction being closer or identical to yours.
+- **Number Selection**: Choose numbers that steer the total sum toward your prediction and away from your opponent's.
+- **Denying Numbers**: Select numbers that your opponent may need to reach their predicted sum.
+- **Calculations**: Keep track of the running total and remaining numbers to adjust your strategy accordingly.
+
+## Conclusion
+
+Number Quest is a dynamic and strategic numerical game that combines prediction, arithmetic, and tactical play. By carefully choosing when to declare your prediction and which numbers to add to the sequence, you can outmaneuver your opponent and secure victory. Remember, every choice counts, and the key to winning lies in anticipating your opponent's moves and guiding the game toward your desired outcome.
+
+Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,232 @@
+# Bid Battle: Rule Book
+
+## Objective
+
+**Bid Battle** is a strategic two-player turn-based game where players compete to acquire valuable items through bidding. The primary goal is to accumulate the highest total item value by the end of the game. Players achieve victory by strategically managing their points to win items with hidden values, ensuring they outscore their opponent. There are no draws; the player with the higher total item value wins the game.
+
+## Setup
+
+1. **Starting Points**: Each player begins the game with **100 points**.
+2. **Item Deck**: There are **5 items** available for auction, each with a hidden value ranging from 10 to 30 points. These items are:
+   - Item A
+   - Item B
+   - Item C
+   - Item D
+   - Item E
+3. **Item Values**: Before the game starts, the system randomly assigns a hidden value to each item without revealing them to the players.
+
+## Game Components
+
+- **Points**: Numerical representation of a player's bidding power, starting at 100.
+- **Items**: Five unique items (A, B, C, D, E) up for auction. Each item has:
+  - **Hidden Value**: A secret value between 10 and 30 points.
+  - **Identifier**: A label from A to E for players to reference during bidding.
+- **Bids**: The amount of points a player is willing to spend to acquire an item.
+
+## Turns
+
+1. **Auction Phase**:
+   - For each item, an auction occurs where both players participate.
+   - Players simultaneously place their bids without knowledge of the opponent's bid.
+2. **Turn Order**:
+   - The game progresses through **5 rounds**, one for each item.
+   - In each round:
+     - Both players submit their bids.
+     - The bids are revealed simultaneously.
+     - The highest bidder wins the item.
+
+## Rules and Mechanics
+
+1. **Bidding**:
+   - Players can bid any whole number of points from **1 up to their current available points**.
+   - Bids are submitted secretly and revealed simultaneously.
+   - If both players bid the same amount, the item is awarded randomly to one of the players.
+2. **Winning an Item**:
+   - The player with the higher bid wins the item.
+   - The winning bidder **deducts** their bid amount from their available points.
+   - The losing bidder does not lose any points.
+3. **Points Management**:
+   - Players must manage their 100 points across all 5 auctions.
+   - Points not spent in one auction can be used in subsequent auctions.
+4. **Hidden Item Values**:
+   - The values of the items remain hidden until the end of the game.
+   - Players must use intuition and strategy to decide how much to bid on each item.
+5. **Game End**:
+   - After all 5 items have been auctioned, the game ends.
+6. **Determining the Winner**:
+   - The hidden values of the items each player has won are revealed.
+   - Each player sums the values of their acquired items.
+   - The player with the **higher total item value** wins the game.
+
+## Scoring
+
+- **Item Value Total**: The sum of the hidden values of the items a player has won.
+- **Winning the Game**: The player with the higher item value total after all auctions wins.
+- **No Draws**: Since item values range from 10 to 30 and there are an odd number of items, draws are impossible.
+
+## Example Gameplay
+
+### Initial Setup
+
+- **Player 1 Points**: 100
+- **Player 2 Points**: 100
+- **Items for Auction**:
+  - Item A
+  - Item B
+  - Item C
+  - Item D
+  - Item E
+- **Hidden Item Values** (unknown to players):
+  - Item A: 25
+  - Item B: 15
+  - Item C: 30
+  - Item D: 10
+  - Item E: 20
+
+### Round 1: Auctioning Item A
+
+- **Players submit bids** (secretly):
+  - Player 1 bids **20** points.
+  - Player 2 bids **25** points.
+- **Reveal bids**:
+  - Player 1: 20
+  - Player 2: 25
+- **Result**:
+  - Player 2 wins Item A.
+  - Player 2 deducts 25 points from their total.
+- **Updated Points**:
+  - Player 1: 100 points
+  - Player 2: 75 points
+
+### Round 2: Auctioning Item B
+
+- **Players submit bids**:
+  - Player 1 bids **15** points.
+  - Player 2 bids **10** points.
+- **Reveal bids**:
+  - Player 1: 15
+  - Player 2: 10
+- **Result**:
+  - Player 1 wins Item B.
+  - Player 1 deducts 15 points from their total.
+- **Updated Points**:
+  - Player 1: 85 points
+  - Player 2: 75 points
+
+### Round 3: Auctioning Item C
+
+- **Players submit bids**:
+  - Player 1 bids **50** points.
+  - Player 2 bids **40** points.
+- **Reveal bids**:
+  - Player 1: 50
+  - Player 2: 40
+- **Result**:
+  - Player 1 wins Item C.
+  - Player 1 deducts 50 points from their total.
+- **Updated Points**:
+  - Player 1: 35 points
+  - Player 2: 75 points
+
+### Round 4: Auctioning Item D
+
+- **Players submit bids**:
+  - Player 1 bids **10** points.
+  - Player 2 bids **5** points.
+- **Reveal bids**:
+  - Player 1: 10
+  - Player 2: 5
+- **Result**:
+  - Player 1 wins Item D.
+  - Player 1 deducts 10 points from their total.
+- **Updated Points**:
+  - Player 1: 25 points
+  - Player 2: 75 points
+
+### Round 5: Auctioning Item E
+
+- **Players submit bids**:
+  - Player 1 bids **25** points.
+  - Player 2 bids **75** points.
+- **Reveal bids**:
+  - Player 1: 25
+  - Player 2: 75
+- **Result**:
+  - Player 2 wins Item E.
+  - Player 2 deducts 75 points from their total.
+- **Updated Points**:
+  - Player 1: 25 points
+  - Player 2: 0 points
+
+### Game End and Scoring
+
+- **Player 1 Items**:
+  - Item B (value 15)
+  - Item C (value 30)
+  - Item D (value 10)
+- **Player 2 Items**:
+  - Item A (value 25)
+  - Item E (value 20)
+- **Total Item Values**:
+  - Player 1 Total: 15 + 30 + 10 = **55**
+  - Player 2 Total: 25 + 20 = **45**
+- **Winner**: **Player 1** wins with a total item value of 55 points.
+
+## Command-Line Interaction Example
+
+### Starting the Game
+
+```
+Welcome to Bid Battle!
+Both players start with 100 points.
+Items up for auction: Item A, Item B, Item C, Item D, Item E.
+```
+
+### Round 1: Auctioning Item A
+
+```
+Auctioning Item A.
+Player 1, enter your bid: 20
+Player 2, enter your bid: 25
+Bids revealed:
+- Player 1 bid: 20
+- Player 2 bid: 25
+Player 2 wins Item A!
+Player 2 points remaining: 75
+```
+
+### Rounds 2 to 5
+
+*Similar interactions occur for each round, with players entering their bids and the game revealing the outcome.*
+
+### Game End
+
+```
+All items have been auctioned!
+Revealing item values...
+Player 1 acquired:
+- Item B: 15 points
+- Item C: 30 points
+- Item D: 10 points
+Player 2 acquired:
+- Item A: 25 points
+- Item E: 20 points
+Calculating totals...
+Player 1 total item value: 55 points
+Player 2 total item value: 45 points
+Congratulations, Player 1! You win the game!
+```
+
+## Strategic Depth and Complexity
+
+- **Point Management**: Skilled players will strategically allocate their points, deciding when to bid high to secure valuable items and when to conserve points.
+- **Predicting Opponent Behavior**: Anticipating the opponent's bids based on their remaining points and perceived value of items adds a layer of psychological strategy.
+- **Risk vs. Reward**: Deciding whether to bid high on early items or save points for later auctions is crucial. Skilled players balance the immediate gain against future opportunities.
+
+## Notes
+
+- **No Draws**: The game's design ensures a winner in every match due to the odd number of items and the variability in item values.
+- **Quick Gameplay**: With only 5 rounds and simultaneous bidding, games conclude swiftly.
+- **Ease of Coding**: The game's mechanics are straightforward, making it simple to implement in a command-line interface.
+
+Enjoy your strategic bidding in **Bid Battle**!

@@ -1,0 +1,138 @@
+# Divisor Duel
+
+## Objective
+
+The primary goal of **Divisor Duel** is to be the first player to create a shared multi-digit number that is **divisible by a predetermined target number** (e.g., 7). Players take turns adding single-digit numbers to either end of the shared number. Strategic selection and placement of digits are crucial to influence the divisibility of the number and to outmaneuver the opponent.
+
+## Setup
+
+1. **Determine the Target Divisor**: Before the game starts, agree on a target number that the final shared number must be divisible by. For simplicity, 7 is recommended, but any positive integer can be used.
+2. **Initialize the Shared Number**: Start with an empty shared number (no digits).
+3. **Decide the First Player**: Choose who will take the first turn. This can be decided randomly or by mutual agreement.
+
+## Game Components
+
+- **Digits (0-9)**: These are the numbers players will use to build the shared multi-digit number. Each digit can be used multiple times; there is no limit on how many times a digit can be used.
+- **Shared Number**: A number constructed collaboratively by both players, starting empty and growing as players add digits to it.
+
+## Turns
+
+On each turn, a player must:
+
+1. **Choose a Digit**: Select any single-digit number from 0 to 9.
+2. **Choose a Position**: Decide whether to add the chosen digit to the **left** or **right** end of the shared number.
+3. **Update the Shared Number**: Modify the shared number accordingly.
+4. **Check for Victory**: Determine if the new shared number is divisible by the target number.
+5. **Pass Turn**: If no victory, pass the turn to the next player.
+
+## Rules and Mechanics
+
+1. **Adding Digits**:
+   - Players can pick any digit from 0 to 9 on their turn.
+   - The chosen digit is added to either the **leftmost** or **rightmost** position of the shared number.
+   - For example, if the shared number is "123" and a player adds "4" to the left, the new number is "4123". If they add "4" to the right, it becomes "1234".
+
+2. **Divisibility Check**:
+   - After each turn, check if the shared number is divisible by the target number (e.g., 7).
+   - If it is divisible, the player who made the move **wins** the game.
+   - If not, the game continues with the next player's turn.
+
+3. **Number Format**:
+   - **Leading zeros are allowed**. For example, "0" or "00" are valid numbers.
+   - The shared number is treated as a whole number without any separators or decimals.
+
+4. **No Skipping Turns**:
+   - Players **cannot skip** their turn. They must add a digit each time.
+
+5. **Game End Condition**:
+   - The game continues until a player creates a number divisible by the target number on their turn, thus winning the game.
+   - There is **no draw condition**.
+
+## Scoring
+
+- **Win Condition**: The game is won instantly when a player creates a shared number divisible by the target number during their turn.
+- **No Points System**: There is no point tracking; each game results in a win or loss.
+- **Match Play**: For extended play, players can compete in multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Target Number**: 7
+
+**Shared Number Starts as**: (empty)
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Chooses digit **"5"**.
+   - Adds it to the **right** end.
+   - Shared number is now **"5"**.
+   - 5 ÷ 7 = 0.714... (not divisible).
+
+2. **Player 2's Turn**:
+   - Chooses digit **"1"**.
+   - Adds it to the **left** end.
+   - Shared number is now **"15"**.
+   - 15 ÷ 7 = 2.142... (not divisible).
+
+3. **Player 1's Turn**:
+   - Chooses digit **"4"**.
+   - Adds it to the **right** end.
+   - Shared number is now **"154"**.
+   - 154 ÷ 7 = 22 (divisible).
+   - **Player 1 wins!**
+
+### Command-Line Interaction Example
+
+Below is how a sample interaction might look in a command-line interface:
+
+- **[Player 1's Turn]**
+  ```
+  Current number is ''.
+  Choose a digit (0-9): 5
+  Add to (L)eft or (R)ight? R
+  Shared number is now '5'.
+  ```
+  - Check divisibility: 5 ÷ 7 (not divisible).
+
+- **[Player 2's Turn]**
+  ```
+  Current number is '5'.
+  Choose a digit (0-9): 1
+  Add to (L)eft or (R)ight? L
+  Shared number is now '15'.
+  ```
+  - Check divisibility: 15 ÷ 7 (not divisible).
+
+- **[Player 1's Turn]**
+  ```
+  Current number is '15'.
+  Choose a digit (0-9): 4
+  Add to (L)eft or (R)ight? R
+  Shared number is now '154'.
+  ```
+  - Check divisibility: 154 ÷ 7 = 22 (divisible).
+  - **Output**: "154 is divisible by 7. Player 1 wins!"
+
+## Strategic Considerations
+
+- **Mathematical Strategy**:
+  - **Divisibility Rules**: Familiarity with divisibility rules can help plan moves that create numbers divisible by the target.
+  - **Predicting Outcomes**: Anticipate how adding certain digits will affect the divisibility of future numbers.
+
+- **Positional Play**:
+  - **Left vs. Right**: Choosing whether to add a digit to the left or right can significantly alter the number's value.
+  - **Blocking Moves**: Players can try to force the opponent into positions where they have fewer options to win.
+
+- **Digit Selection**:
+  - **High vs. Low Digits**: Higher digits may bring the total closer to a multiple of the target number, but consider how it affects future plays.
+  - **Repeating Digits**: Using digits that have already been played can confuse patterns and strategies.
+
+## Conclusion
+
+**Divisor Duel** is a simple yet strategically rich game that tests numerical skills and forward-thinking. Its straightforward rules make it easy to implement in a command-line interface, and the absence of a draw condition ensures every game concludes decisively. Whether for educational purposes or casual competition, this game offers depth and enjoyment in a quick-play format.
+
+---
+
+Feel free to adjust the target number or add variations to increase complexity or tailor the game to different skill levels.

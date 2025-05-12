@@ -1,0 +1,210 @@
+# Prime Reduction Game - Rule Book
+
+## Objective
+
+The **Prime Reduction Game** is a strategic two-player turn-based game. The primary goal is to be the player who reduces the shared number **N** to exactly **1**. Players achieve victory by strategically choosing prime factors to divide **N**, reducing it step by step. The player who successfully reduces **N** to **1** on their turn wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared positive integer **N**.
+  - By default, **N = 100**, but players can agree on any positive integer greater than **1** to increase or decrease the game's difficulty and length.
+- **Players**: Two players are designated as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players manipulate during the game.
+- **Prime Factors**: The set of prime numbers that are divisors of **N** at any point in the game.
+- **Action Options**: On each turn, players have specific actions they can perform based on the current value of **N**.
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with **Player 1**.
+- **Player Actions**:
+  - On your turn, you may perform **one** of the following actions:
+    1. **Subtract 1** from **N**.
+    2. **Divide** **N** by one of its prime factors greater than **1**.
+    3. **Pass** (do nothing), if no other valid moves are available.
+
+- **Turn Progression**: After a player completes their action, the turn passes to the other player. The updated value of **N** is used for the next turn.
+
+## Rules and Mechanics
+
+1. **Valid Actions**:
+   - **Subtracting 1**:
+     - You may subtract **1** from **N** at any time, provided **N > 1**.
+   - **Dividing by a Prime Factor**:
+     - You may divide **N** by any of its prime factors greater than **1**.
+     - The result must be an integer (no fractions or decimals).
+     - **N** becomes **N ÷ p**, where **p** is a prime number that divides **N** evenly.
+   - **Passing**:
+     - If **N = 1**, or if there are no valid prime factors to divide **N** by, and subtracting **1** is not possible (because **N = 1**), you may pass your turn.
+     - Passing is generally only an option when **N = 1**, effectively ending the game.
+
+2. **Ending the Game**:
+   - The game ends when a player reduces **N** to exactly **1** on their turn.
+   - The player who achieves **N = 1** wins the game.
+   - If a player cannot perform any valid action on their turn (which can only occur when **N = 1**), they lose the game.
+
+3. **Important Notes**:
+   - **N** must always remain a positive integer greater than or equal to **1**.
+   - Players must perform an action on their turn if a valid action is available.
+   - **Prime Factors** are determined based on the current value of **N** at the start of a player's turn.
+   - No skips or invalid moves are allowed except for passing when no valid action exists.
+
+## Scoring
+
+- The game uses a **win/loss** scoring system.
+  - **Winning**: The player who reduces **N** to **1** on their turn wins the game.
+  - **Losing**: The player who cannot make a valid move when it's their turn (due to **N = 1**) loses the game.
+- **No Draws**: The game is designed to always result in a win for one player; there are no possible draws.
+
+## Examples
+
+### Example 1: Starting with N = 10
+
+**Initial State**:
+- **N = 10**
+
+**Turn 1 - Player 1**:
+- Options:
+  - Subtract 1: **10 - 1 = 9**
+  - Divide by prime factor 2: **10 ÷ 2 = 5**
+  - Divide by prime factor 5: **10 ÷ 5 = 2**
+- **Player 1 decides to divide by 2**:
+  - **N = 10 ÷ 2 = 5**
+
+**Turn 2 - Player 2**:
+- **N = 5**
+- Options:
+  - Subtract 1: **5 - 1 = 4**
+  - Divide by prime factor 5: **5 ÷ 5 = 1**
+- **Player 2 decides to divide by 5**:
+  - **N = 5 ÷ 5 = 1**
+- **Player 2 wins**, as **N** is now **1**.
+
+### Example 2: Starting with N = 15
+
+**Initial State**:
+- **N = 15**
+
+**Turn 1 - Player 1**:
+- Options:
+  - Subtract 1: **15 - 1 = 14**
+  - Divide by prime factors:
+    - Divide by 3: **15 ÷ 3 = 5**
+    - Divide by 5: **15 ÷ 5 = 3**
+- **Player 1 decides to divide by 5**:
+  - **N = 15 ÷ 5 = 3**
+
+**Turn 2 - Player 2**:
+- **N = 3**
+- Options:
+  - Subtract 1: **3 - 1 = 2**
+  - Divide by prime factor 3: **3 ÷ 3 = 1**
+- **Player 2 decides to divide by 3**:
+  - **N = 3 ÷ 3 = 1**
+- **Player 2 wins**, as **N** is now **1**.
+
+### Example 3: Starting with N = 12
+
+**Initial State**:
+- **N = 12**
+
+**Turn 1 - Player 1**:
+- Options:
+  - Subtract 1: **12 - 1 = 11**
+  - Divide by prime factors:
+    - Divide by 2: **12 ÷ 2 = 6**
+    - Divide by 3: **12 ÷ 3 = 4**
+- **Player 1 decides to divide by 3**:
+  - **N = 12 ÷ 3 = 4**
+
+**Turn 2 - Player 2**:
+- **N = 4**
+- Options:
+  - Subtract 1: **4 - 1 = 3**
+  - Divide by prime factor 2: **4 ÷ 2 = 2**
+- **Player 2 decides to divide by 2**:
+  - **N = 4 ÷ 2 = 2**
+
+**Turn 3 - Player 1**:
+- **N = 2**
+- Options:
+  - Subtract 1: **2 - 1 = 1**
+  - Divide by prime factor 2: **2 ÷ 2 = 1**
+- **Player 1 decides to divide by 2**:
+  - **N = 2 ÷ 2 = 1**
+- **Player 1 wins**, as **N** is now **1**.
+
+## Command-line Interaction Example
+
+### Starting the Game
+
+```
+Welcome to the Prime Reduction Game!
+Starting number (N): 20
+Player 1, it's your turn.
+Current N: 20
+Available actions:
+1. Subtract 1 (20 - 1 = 19)
+2. Divide by 2 (20 ÷ 2 = 10)
+3. Divide by 5 (20 ÷ 5 = 4)
+Enter your choice (e.g., "Subtract", "Divide by 2"): 
+```
+
+### Player 1's Turn
+
+```
+Player 1 chooses to divide by 5.
+N is now 4.
+```
+
+### Player 2's Turn
+
+```
+Player 2, it's your turn.
+Current N: 4
+Available actions:
+1. Subtract 1 (4 - 1 = 3)
+2. Divide by 2 (4 ÷ 2 = 2)
+Enter your choice: 
+```
+
+### Player 2's Decision
+
+```
+Player 2 chooses to divide by 2.
+N is now 2.
+```
+
+### Player 1's Next Turn
+
+```
+Player 1, it's your turn.
+Current N: 2
+Available actions:
+1. Subtract 1 (2 - 1 = 1)
+2. Divide by 2 (2 ÷ 2 = 1)
+Enter your choice: 
+```
+
+### Player 1 Wins
+
+```
+Player 1 chooses to divide by 2.
+N is now 1.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the possible resulting values of **N** after your move and how they might benefit your opponent.
+- **Prime Factors**: Dividing by larger prime factors can reduce **N** more quickly but may leave you vulnerable if not planned carefully.
+- **Subtracting 1**: Sometimes it's strategic to subtract **1** to force your opponent into an unfavorable position.
+- **Control the Game**: Aim to leave **N** in a state where your opponent has limited options.
+
+## Conclusion
+
+The **Prime Reduction Game** combines simple arithmetic with strategic planning. Each turn requires players to think critically about the implications of their actions. The game is easy to learn but offers depth for players to develop and apply strategies, ensuring that skilled players can consistently outperform less experienced opponents.
+
+Enjoy the challenge and may the best strategist win!

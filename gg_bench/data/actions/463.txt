@@ -1,0 +1,7 @@
+The action space in the game consists of two types of actions: placing tokens and moving tokens.
+
+- **Place Actions:** The first set of action indices corresponds to placing tokens on the board. These indices are mapped to specific grid positions (excluding the center square) through `self.place_action_mapping`. Each place action is associated with a unique pair of row and column coordinates where a token can be placed, ensuring valid placement.
+
+- **Move Actions:** The subsequent action indices represent moving tokens already on the board. These are mapped via `self.move_action_mapping`. Each move action is defined by a pair of coordinates indicating the starting and ending grid positions of a token, corresponding to an adjacent move (up, down, left, or right).
+
+The action space spans all possible placements first, followed by possible movements, covering all valid operations a player can execute on their turn.

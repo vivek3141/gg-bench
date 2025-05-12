@@ -1,0 +1,130 @@
+# Multiplication Showdown
+
+## Objective
+
+Multiplication Showdown is a two-player, turn-based game. The primary goal is to force your opponent to be the first to reach or exceed the target number, which results in their loss. Players take turns multiplying a running total by a chosen number within a specified range. Strategic thinking and foresight are key to victory.
+
+## Setup
+
+- **Initial Total**: The game starts with a total of **1**.
+- **Target Number**: The target number is set to **1,000**.
+- **Players**: Two players participate, designated as **Player 1** and **Player 2**.
+  
+There are no physical components to set up, making it perfect for a command-line interface.
+
+## Game Components
+
+- **Running Total**: A numeric value that starts at **1** and is updated each turn.
+- **Multipliers**: Integers ranging from **2** to **9**. Players choose from these numbers to modify the running total.
+  
+No boards, cards, or tokens are required.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Player Action**:
+  - On their turn, a player selects a multiplier (an integer from **2** to **9**).
+  - The running total is then multiplied by the chosen multiplier.
+- **Progression**: The updated total is displayed, and the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Choosing Multipliers**:
+   - Players must select an integer between **2** and **9**, inclusive.
+   - Only integers within this range are valid; decimals or numbers outside the range are not allowed.
+
+2. **Updating the Total**:
+   - The running total is updated by multiplying it by the chosen multiplier.
+   - Example: If the current total is **5** and the player chooses **3**, the new total is **15**.
+
+3. **Winning the Game**:
+   - If a player's move causes the running total to reach or exceed **1,000**, that player **loses** the game.
+   - The opponent is declared the **winner**.
+
+4. **Invalid Moves**:
+   - If a player inputs an invalid multiplier (not an integer between **2** and **9**), they are prompted again.
+   - The running total remains unchanged until a valid move is made.
+
+5. **Strategic Considerations**:
+   - Players must plan ahead to avoid being forced into reaching or exceeding the target number.
+   - Understanding multiplication and anticipating the opponent's options is crucial.
+
+## Scoring
+
+- **Victory Condition**: The opponent reaches or exceeds the target number (**1,000**) on their turn.
+- **No Points System**: There is no point tracking beyond determining the winner and loser of each game.
+- **Match Play**: Players can agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+**Initial State**:
+- Running Total: **1**
+- Target Number: **1,000**
+
+**Player 1's Turn**:
+- Chooses multiplier **5**.
+- New total: \(1 \times 5 = 5\).
+
+**Player 2's Turn**:
+- Chooses multiplier **9**.
+- New total: \(5 \times 9 = 45\).
+
+**Player 1's Turn**:
+- Chooses multiplier **2**.
+- New total: \(45 \times 2 = 90\).
+
+**Player 2's Turn**:
+- Chooses multiplier **9**.
+- New total: \(90 \times 9 = 810\).
+
+**Player 1's Turn**:
+- Can only choose multipliers from 2 to 9.
+- All choices will result in a total equal to or exceeding 1,620 (since \(810 \times 2 = 1,620\)), surpassing the target.
+- Player 1 must choose a multiplier.
+- Chooses **2**, resulting in \(810 \times 2 = 1,620\).
+- Running total is **1,620**, which exceeds **1,000**.
+
+**Result**:
+- **Player 1** exceeds the target number.
+- **Player 2** wins the game.
+
+### Command-Line Interaction
+
+Below is a sample of how the game might look in a command-line interface.
+
+```
+Welcome to Multiplication Showdown!
+Target Number: 1,000
+
+Starting with 1.
+
+Player 1's turn.
+Enter a multiplier (2-9): 5
+Running Total is now: 5
+
+Player 2's turn.
+Enter a multiplier (2-9): 9
+Running Total is now: 45
+
+Player 1's turn.
+Enter a multiplier (2-9): 2
+Running Total is now: 90
+
+Player 2's turn.
+Enter a multiplier (2-9): 9
+Running Total is now: 810
+
+Player 1's turn.
+Enter a multiplier (2-9): 2
+Running Total is now: 1620
+
+Total has reached or exceeded 1,000!
+Player 1 loses.
+Player 2 wins!
+```
+
+## Conclusion
+
+Multiplication Showdown is a simple yet strategic game that challenges players to think ahead and make optimal choices each turn. With easy-to-understand rules and minimal components, it's perfect for quick matches and can be easily implemented in a command-line environment. Enjoy honing your multiplication skills and outsmarting your opponent in this numerical duel!

@@ -1,0 +1,228 @@
+# Number Climb
+
+## Objective
+
+**Number Climb** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reach the top of the number ladder by landing exactly on position 10. Players must strategically choose their moves to advance while blocking their opponent's progress. Victory is achieved by reaching position 10 according to the movement rules, resulting in a win for the successful player and a loss for the opponent.
+
+## Setup
+
+- The game features a linear number ladder consisting of positions numbered from **0** to **10**.
+- Both players start at the **starting position 0**.
+- The initial state of the game displays both players at position 0 on the ladder.
+- Players decide who will take the first turn (this can be randomized or decided by agreement).
+
+## Game Components
+
+- **Number Ladder**: A linear sequence of positions numbered from **0** (start) to **10** (top).
+  
+  ```
+  Positions: 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10
+  ```
+  
+- **Player Tokens**: Each player is represented by a unique token or identifier:
+  - **Player 1**: `P1`
+  - **Player 2**: `P2`
+  
+- **Command-Line Interface**: Players input their moves and receive game updates through text prompts in the command line.
+
+## Turns
+
+- Players take turns alternately.
+- On each turn, a player can perform the following action:
+  - **Move Forward**: Advance their token **1, 2, or 3 positions** forward on the ladder.
+- The turn structure is as follows:
+  1. **Game State Display**: The current positions of both players are displayed.
+  2. **Player Input**: The active player is prompted to enter their move choice.
+  3. **Move Execution**: The player's token is moved according to the rules.
+  4. **Turn End**: The game checks for a win condition or proceeds to the next player's turn.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Advancing Positions**:
+   - On their turn, a player may choose to move their token forward by **1, 2, or 3 positions**.
+   
+2. **Blocking Mechanic**:
+   - **Cannot Pass or Land On Opponent**:
+     - A player **cannot** move past or land on a position currently occupied by the opponent.
+     - If the opponent is within 3 positions ahead, the player's maximum move is limited to landing just before the opponent.
+   - **Blocked Movement**:
+     - If a player has no legal moves (because all possible moves would land on or pass the opponent), they **skip their turn**.
+
+3. **Exact Landing on Position 10**:
+   - A player must land **exactly** on position 10 to win.
+   - Excess movement beyond position 10 is not allowed; if a chosen move would take the player past 10, it is invalid, and the player must choose a legal move.
+
+### Winning the Game
+
+- The game ends when a player lands exactly on position 10 according to the movement rules.
+- The player who reaches position 10 first is declared the **winner**.
+- The opponent is declared the **loser**.
+
+## Scoring
+
+- The game does not use a point-based scoring system.
+- Victory is determined solely by reaching position 10 first.
+- Players may track wins across multiple games if desired.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Positions
+
+- `P1` (Player 1) at position **0**
+- `P2` (Player 2) at position **0**
+
+#### Turn 1: Player 1
+
+- **Available Moves**: Move 1, 2, or 3 positions forward.
+- **Player 1's Choice**: Moves **3 positions** forward to position **3**.
+  
+  ```
+  P1 moves to position 3.
+  ```
+
+#### Turn 2: Player 2
+
+- **Available Moves**: Move 1, 2, or 3 positions forward.
+- **Player 2's Choice**: Moves **3 positions** forward to position **3**.
+- **Blocking Rule Applies**: Cannot land on the position occupied by Player 1.
+- **Adjusted Move**: Player 2 moves to position **2** instead.
+
+  ```
+  P2 cannot land on position 3 (occupied by P1). Moves to position 2.
+  ```
+
+#### Turn 3: Player 1
+
+- **Available Moves**:
+  - Moving 1 position forward to position **4**.
+  - Moving 2 positions forward to position **5**.
+  - Moving 3 positions forward to position **6**.
+- **Player 1's Choice**: Moves **2 positions** forward to position **5**.
+
+  ```
+  P1 moves to position 5.
+  ```
+
+#### Turn 4: Player 2
+
+- **Available Moves**:
+  - Moving 1 position forward to position **3** (occupied by P1 previously, now empty).
+  - Moving 2 positions forward to position **4**.
+  - Moving 3 positions forward to position **5**.
+- **Player 2's Choice**: Moves **3 positions** forward to position **5**.
+- **Blocking Rule Applies**: Cannot land on position **5** (occupied by P1).
+- **Adjusted Move**: Player 2 moves to position **4**.
+
+  ```
+  P2 cannot land on position 5 (occupied by P1). Moves to position 4.
+  ```
+
+#### Turn 5: Player 1
+
+- **Available Moves**:
+  - Moving 1 position forward to position **6**.
+  - Moving 2 positions forward to position **7**.
+  - Moving 3 positions forward to position **8**.
+- **Player 1's Choice**: Moves **3 positions** forward to position **8**.
+
+  ```
+  P1 moves to position 8.
+  ```
+
+#### Turn 6: Player 2
+
+- **Available Moves**:
+  - Moving 1 position forward to position **5**.
+  - Moving 2 positions forward to position **6**.
+  - Moving 3 positions forward to position **7**.
+- **Player 2's Choice**: Moves **3 positions** forward to position **7**.
+
+  ```
+  P2 moves to position 7.
+  ```
+
+#### Turn 7: Player 1
+
+- **Available Moves**:
+  - Moving 1 position forward to position **9**.
+  - Moving 2 positions forward to position **10**.
+  - Moving 3 positions forward to position **11** (invalid, exceeds position 10).
+- **Player 1's Choice**: Moves **2 positions** forward to **position 10**.
+
+  ```
+  P1 moves to position 10 and wins the game!
+  ```
+
+## Command-Line Interaction Sample
+
+### Game Start
+
+```
+Welcome to Number Climb!
+
+Player 1 (P1) and Player 2 (P2) start at position 0.
+
+Player 1, it's your turn.
+Current Positions: P1 at 0, P2 at 0
+Available moves: 1, 2, or 3 positions forward.
+Enter your move (1, 2, or 3):
+```
+
+### Player Input
+
+```
+Player 1 selects: 3
+P1 moves to position 3.
+```
+
+### Next Turn Prompt
+
+```
+Player 2, it's your turn.
+Current Positions: P1 at 3, P2 at 0
+Available moves: 1, 2, or 3 positions forward.
+Enter your move (1, 2, or 3):
+```
+
+### Handling Blocking Rule
+
+```
+Player 2 selects: 3
+Cannot land on position 3 (occupied by P1). Moving to position 2 instead.
+P2 moves to position 2.
+```
+
+### Winning Announcement
+
+```
+Player 1, it's your turn.
+Current Positions: P1 at 8, P2 at 7
+Available moves: 1 or 2 positions forward.
+Enter your move (1, 2):
+```
+
+```
+Player 1 selects: 2
+P1 moves to position 10 and wins the game!
+
+Congratulations Player 1!
+```
+
+## Strategic Depth and Complexity
+
+**Number Climb** offers strategic depth through:
+
+- **Decision Making**: Players must choose moves that advance them while considering the opponent's position.
+- **Blocking**: Strategically positioning to block the opponent and limit their movement options.
+- **Planning Ahead**: Anticipating future moves to avoid being blocked and ensuring the ability to reach position 10.
+- **Resource Management**: Balancing the choice between moving quickly and controlling the game pace.
+
+Skilled players can consistently outperform unskilled players by effectively utilizing these strategic elements.
+
+---
+
+With clear rules and simple mechanics, **Number Climb** is easy to learn and quick to play, making it suitable for a command-line interface implementation. Enjoy the challenge and may the best strategist win!

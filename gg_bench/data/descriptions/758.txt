@@ -1,0 +1,192 @@
+# Number Clash
+
+## Objective
+
+The objective of **Number Clash** is to reduce your opponent's Health Points (HP) to zero before they do the same to you. Players achieve this by strategically playing number cards to deal damage based on the difference between their card and their opponent's last played card.
+
+## Setup
+
+1. **Health Points**: Each player starts the game with **10 Health Points**.
+2. **Deck Preparation**:
+   - Create a shared deck consisting of number cards from **1 to 9**. To ensure a sufficient number of cards, include **four copies of each number**, resulting in a **36-card deck**.
+3. **Initial Draw**:
+   - Shuffle the deck thoroughly.
+   - Each player draws **three cards** from the deck to form their starting hand.
+
+## Game Components
+
+- **Number Cards (1-9)**:
+  - **Appearance**: Cards are numbered **1** through **9**, with equal quantities of each.
+  - **Functionality**: Used to attack the opponent or defend against incoming attacks.
+- **Health Points**:
+  - **Each player starts with 10 HP**.
+  - HP is reduced based on the outcomes of card clashes.
+- **Shared Deck**:
+  - A common draw pile from which players replenish their hands.
+- **Discard Pile**:
+  - A place for used cards. If the deck runs out, shuffle the discard pile to form a new deck.
+
+## Turns
+
+Players take turns performing the following actions:
+
+1. **Play a Card**:
+   - Select one card from your hand and play it face up on the table.
+2. **Resolve the Clash**:
+   - Compare your played card with your opponent's last played card.
+   - Calculate damage based on the Rules and Mechanics.
+3. **Draw a Card**:
+   - Draw one card from the deck to replenish your hand back to three cards.
+4. **Pass Turn**:
+   - The turn passes to the opponent, who now becomes the active player.
+
+## Rules and Mechanics
+
+### Card Play
+
+- **First Turn Exception**:
+  - On the very first turn of the game, since there is no previous card to compare, **no damage is dealt**.
+- **Valid Plays**:
+  - You must play a card each turn. If you have no cards (which shouldn't happen under normal circumstances), skip drawing a card but reshuffle the discard pile to create a new deck if the draw pile is empty.
+
+### Resolving Clashes
+
+- **Comparing Cards**:
+  - When you play a card, compare its value to your opponent's last played card.
+- **Damage Calculation**:
+  - **If your card is higher**:
+    - Deal damage to your opponent equal to the difference between the two cards.
+    - **Damage to Opponent** = Your Card - Opponent's Last Card.
+  - **If your card is lower**:
+    - You take damage equal to the difference between the two cards.
+    - **Damage to You** = Opponent's Last Card - Your Card.
+  - **If the cards are equal**:
+    - Both players take **1 damage**.
+
+### Health Points
+
+- **Tracking HP**:
+  - Keep track of both players' HP throughout the game.
+- **Zero HP**:
+  - If a player's HP drops to **zero or below**, they lose the game immediately.
+
+### Deck Management
+
+- **Replenishing Hand**:
+  - After playing a card, always draw one card to maintain a hand of three cards.
+- **Deck Depletion**:
+  - If the deck runs out of cards, shuffle the discard pile to form a new deck.
+
+## Scoring
+
+- **Winning the Game**:
+  - The first player to reduce their opponent's HP to zero or below wins the game.
+- **No Draws**:
+  - Since HP cannot be reduced below zero simultaneously due to the turn structure, **draws are not possible** in Number Clash.
+
+## Examples
+
+### Sample Turn Sequence
+
+**Initial Setup**:
+
+- Both players have **10 HP**.
+- Both players draw **three cards**.
+
+**Turn 1**:
+
+- **Player 1** plays a **5**.
+  - No previous card to compare.
+  - **No damage is dealt**.
+  - Player 1 draws a card.
+- **Player 2** plays a **7**.
+  - Compare 7 (Player 2) vs. 5 (Player 1's last card).
+  - 7 > 5, so **Player 2 deals 2 damage** to **Player 1**.
+  - **Player 1's HP** is now **8**.
+  - Player 2 draws a card.
+
+**Turn 2**:
+
+- **Player 1** plays a **4**.
+  - Compare 4 (Player 1) vs. 7 (Player 2's last card).
+  - 4 < 7, so **Player 1 takes 3 damage**.
+  - **Player 1's HP** is now **5**.
+  - Player 1 draws a card.
+- **Player 2** plays a **3**.
+  - Compare 3 (Player 2) vs. 4 (Player 1's last card).
+  - 3 < 4, so **Player 2 takes 1 damage**.
+  - **Player 2's HP** is now **9**.
+  - Player 2 draws a card.
+
+**Turn 3**:
+
+- **Player 1** plays a **9**.
+  - Compare 9 (Player 1) vs. 3 (Player 2's last card).
+  - 9 > 3, so **Player 1 deals 6 damage** to **Player 2**.
+  - **Player 2's HP** is now **3**.
+  - Player 1 draws a card.
+- **Player 2** plays a **5**.
+  - Compare 5 (Player 2) vs. 9 (Player 1's last card).
+  - 5 < 9, so **Player 2 takes 4 damage**.
+  - **Player 2's HP** is now **-1**.
+  - **Player 2's HP** has dropped below zero.
+
+**Conclusion**:
+
+- **Player 2**'s HP is **-1**.
+- **Player 1 wins the game**.
+
+### Command-Line Interaction Example
+
+Assuming a command-line interface where players input commands.
+
+**Player Commands**:
+
+- `play [card number]` - Plays a card from the hand.
+- `hand` - Shows current hand.
+- `hp` - Shows both players' HP.
+
+**Sample Interaction**:
+
+```
+Player 1's turn.
+Your hand: [3, 5, 7]
+Opponent's last card: None
+Enter command: play 5
+You played 5.
+No previous card to compare. No damage dealt.
+You draw a card.
+
+Player 2's turn.
+Your hand: [2, 6, 7]
+Opponent's last card: 5
+Enter command: play 7
+You played 7.
+Opponent's last card: 5
+7 > 5, you deal 2 damage to Player 1.
+Player 1's HP: 8
+You draw a card.
+
+Player 1's turn.
+Your hand: [3, 4, 9]
+Opponent's last card: 7
+Enter command: play 4
+You played 4.
+Opponent's last card: 7
+4 < 7, you take 3 damage.
+Your HP: 5
+You draw a card.
+```
+
+## Strategic Tips
+
+- **Hand Management**:
+  - Keep track of your opponent's last card to decide which card to play.
+- **High vs. Low Cards**:
+  - Playing a high card after your opponent's low card can deal significant damage.
+- **Predict Opponent Moves**:
+  - Anticipate what your opponent might play based on the cards they've played.
+
+## Summary
+
+Number Clash is a fast-paced, strategic game that combines elements of luck and foresight. By carefully selecting which cards to play, players can maximize damage to their opponent while minimizing damage to themselves. With simple rules and deep strategic potential, Number Clash offers an engaging experience that challenges players to think ahead and adapt to their opponent's moves.

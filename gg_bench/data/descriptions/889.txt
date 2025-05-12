@@ -1,0 +1,259 @@
+# GridLock: A Two-Player Strategic Game
+
+## Objective
+
+GridLock is a two-player turn-based strategy game played on a 5x5 grid. The primary goal is to immobilize your opponent by strategically moving your marker and placing blocks on the grid. A player wins by preventing the opponent from making any legal moves on their turn, effectively "locking" them in place.
+
+## Setup
+
+1. **Game Board**: A 5x5 grid, represented as a matrix of cells.
+
+2. **Player Markers**:
+   - **Player 1** starts with their marker at the top-left corner of the grid (position (0, 0)).
+   - **Player 2** starts with their marker at the bottom-right corner of the grid (position (4, 4)).
+
+3. **Blocks**: Initially, all other cells on the grid are empty and available for movement or block placement.
+
+## Game Components
+
+- **Grid Cells**:
+  - Represented by coordinates (row, column) ranging from (0, 0) to (4, 4).
+  - Each cell can be in one of the following states:
+    - **Empty**: Available for movement or block placement.
+    - **Occupied by Player Marker**: Contains Player 1's marker (`P1`) or Player 2's marker (`P2`).
+    - **Blocked**: Contains a block (`X`) and cannot be moved into or through.
+
+- **Player Markers**:
+  - **Player 1 Marker (`P1`)**: Represents Player 1's position on the grid.
+  - **Player 2 Marker (`P2`)**: Represents Player 2's position on the grid.
+
+- **Blocks (`X`)**:
+  - Placed by players to obstruct the opponent's movement.
+  - Once placed, blocks remain on the grid for the duration of the game.
+
+## Turns
+
+Players alternate turns starting with **Player 1**.
+
+### On Each Turn, a Player Must:
+
+1. **Move Their Marker**:
+   - Move to an adjacent empty cell.
+   - Movement can be **up**, **down**, **left**, or **right** (no diagonal moves).
+
+2. **Place a Block**:
+   - After moving, place a block (`X`) on any empty cell adjacent (including diagonally) to their **current** position.
+   - Cannot place a block on a cell occupied by either player's marker or on a cell that already contains a block.
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - A player must move their marker on their turn.
+   - Markers cannot move into or through cells containing a block or the opponent's marker.
+   - If a player has no legal moves at the start of their turn, they lose the game.
+
+2. **Block Placement Rules**:
+   - After moving, the player must place a block.
+   - Blocks can only be placed on empty cells adjacent (including diagonally) to the player's **current** position.
+   - Blocks are permanent and cannot be removed or moved once placed.
+
+3. **Winning the Game**:
+   - A player wins when their opponent cannot make any legal moves on their turn.
+   - If both players are unable to move on their respective turns, the player who moved last wins.
+
+4. **No Passing or Skipping**:
+   - Players cannot skip their move or block placement. Both actions are mandatory on each turn.
+
+5. **Game End Conditions**:
+   - The game ends immediately when a player cannot move on their turn.
+   - There are no draws; the game always results in a win for one player.
+
+## Scoring
+
+- **Victory**:
+  - The winning player is the one who successfully immobilizes their opponent.
+  - There is no point-based scoring system; the game is won by strategic play leading to the opponent's inability to move.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Grid State:
+
+```
+P1 .  .  .  .
+ .  .  .  .  .
+ .  .  .  .  .
+ .  .  .  .  .
+ .  .  .  . P2
+```
+
+- `P1`: Player 1's marker starting at position (0, 0).
+- `P2`: Player 2's marker starting at position (4, 4).
+- `.`: Empty cells.
+
+#### Turn 1: Player 1
+
+1. **Move**:
+   - Moves from (0, 0) to (0, 1).
+
+2. **Place Block**:
+   - Places a block at (0, 0).
+
+#### Grid State:
+
+```
+X  P1 .  .  .
+ .  .  .  .  .
+ .  .  .  .  .
+ .  .  .  .  .
+ .  .  .  . P2
+```
+
+#### Turn 2: Player 2
+
+1. **Move**:
+   - Moves from (4, 4) to (3, 4).
+
+2. **Place Block**:
+   - Places a block at (4, 4).
+
+#### Grid State:
+
+```
+X  P1 .  .  .
+ .  .  .  .  .
+ .  .  .  .  .
+ .  .  .  . P2
+ .  .  .  . X
+```
+
+#### Turn 3: Player 1
+
+1. **Move**:
+   - Moves from (0, 1) to (1, 1).
+
+2. **Place Block**:
+   - Places a block at (0, 1).
+
+#### Grid State:
+
+```
+X  X  .  .  .
+ . P1 .  .  .
+ .  .  .  .  .
+ .  .  .  . P2
+ .  .  .  . X
+```
+
+#### Turn 4: Player 2
+
+1. **Move**:
+   - Moves from (3, 4) to (3, 3).
+
+2. **Place Block**:
+   - Places a block at (3, 4).
+
+#### Grid State:
+
+```
+X  X  .  .  .
+ . P1 .  .  .
+ .  .  .  .  .
+ .  .  . P2 X
+ .  .  .  . X
+```
+
+#### Continuing the Game
+
+Players continue moving and placing blocks, strategically trying to block the opponent's possible moves while keeping escape routes open for themselves.
+
+#### Endgame Scenario
+
+Assume after several turns, the grid looks like this:
+
+```
+X  X  X  X  X
+X  P1 X  X  X
+X  X  X  X  X
+X  X  X P2 X
+X  X  X  X  X
+```
+
+If it's **Player 2's** turn, and they have no adjacent empty cells to move into, **Player 1** wins.
+
+## Command-Line Interaction Example
+
+### Game Notation:
+
+- Rows and columns are numbered from 0 to 4.
+- Player input is collected via simple prompts.
+- The grid is displayed after each turn.
+
+### Sample Turn
+
+#### Player 1's Turn
+
+**Display Grid:**
+
+```
+   0 1 2 3 4
+0 [P1 .  .  .  . ]
+1 [ .  .  .  .  . ]
+2 [ .  .  .  .  . ]
+3 [ .  .  .  .  . ]
+4 [ .  .  .  . P2]
+```
+
+**Prompt:**
+
+- "Player 1, your move."
+- "Enter move direction (up, down, left, right):"
+
+**Player Input:**
+
+- `right`
+
+**Processing Move:**
+
+- Player 1 moves from (0, 0) to (0, 1).
+
+**Prompt for Block Placement:**
+
+- "Place a block adjacent to your current position (row and column):"
+
+**Player Input:**
+
+- `0 0`
+
+**Processing Block Placement:**
+
+- A block is placed at (0, 0).
+
+**Display Updated Grid:**
+
+```
+   0 1 2 3 4
+0 [X  P1 .  .  . ]
+1 [ .  .  .  .  . ]
+2 [ .  .  .  .  . ]
+3 [ .  .  .  .  . ]
+4 [ .  .  .  . P2]
+```
+
+### Subsequent Turns
+
+Players continue in this fashion, with the system prompting for movement and block placement, updating and displaying the grid after each turn.
+
+## Strategic Tips
+
+- **Cut Off Routes**: Focus on placing blocks that limit your opponent's movement options without restricting your own.
+- **Maintain Mobility**: Keep your marker towards the center of the grid to maximize escape routes.
+- **Predict Opponent's Moves**: Anticipate where your opponent might move next and place blocks to preemptively trap them.
+- **Block Key Cells**: Identify and block cells that are crucial for your opponent's movement.
+
+## Conclusion
+
+GridLock is a simple yet strategically deep game that challenges players to think ahead and outmaneuver their opponent. With straightforward rules and fast-paced gameplay, it's perfect for quick matches that test your tactical skills.
+
+Enjoy the challenge, and may the best strategist win!

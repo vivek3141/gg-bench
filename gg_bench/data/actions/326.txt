@@ -1,0 +1,7 @@
+In the CustomEnv gym environment for the Palindrome War game, actions are represented by discrete indices in the action space. Each action index corresponds to two components: a letter choice and a position choice:
+
+1. **Letter Choice**: The action space has 52 actions (26 letters × 2 positions). The index `letter_index` can be derived using integer division of the action index by 2 (`action // 2`). This maps the action index to a specific letter, where 0 maps to 'a', 1 maps to 'b', and so on up to 25, which maps to 'z'.
+
+2. **Position Choice**: The position to add the letter is determined by the remainder of the action index when divided by 2 (`action % 2`). An even result (0) means the letter is added to the beginning of the sequence, while an odd result (1) means it is added to the end.
+
+Thus, each possible action is a unique combination of a letter and its insertion position in the sequence.

@@ -1,0 +1,188 @@
+# Grid Power
+
+## Objective
+
+Grid Power is a two-player, turn-based strategy game played on a 3x3 grid in a command-line interface. The primary goal is to achieve a higher total power than your opponent by strategically placing your power units on the grid. The player with the highest total power at the end of the game wins.
+
+## Setup
+
+- **Grid**: A 3x3 empty grid is used for the game, with cells labeled by their row and column numbers (from 1 to 3).
+- **Players**: Two players, designated as Player 1 and Player 2.
+- **Power Units**: Each player has a set of power units numbered from 1 to 9. Each number represents the strength of the power unit and can be used only once per player.
+
+### Initial Conditions
+
+- The grid starts empty.
+- Both players have all their power units (numbers 1-9) available.
+
+## Game Components
+
+- **Grid Cells**: Represented by coordinates `(row, column)`, each cell can hold one power unit.
+- **Power Units**: Numeric tokens from 1 to 9 with the following attributes:
+  - **Value**: The number on the token, indicating its base power.
+  - **Usage**: Each power unit can be placed once per game.
+  
+Example of the empty grid:
+
+```
+(1,1) | (1,2) | (1,3)
+------+------+------
+(2,1) | (2,2) | (2,3)
+------+------+------
+(3,1) | (3,2) | (3,3)
+```
+
+## Turns
+
+- **Turn Order**: Player 1 starts the game. Players alternate turns thereafter.
+- **Actions per Turn**:
+  - Select one of your available power units (numbers not yet used).
+  - Place the selected power unit in any empty cell on the grid.
+
+### Turn Structure
+
+1. **Display Available Power Units**: The system shows the player their remaining power units.
+2. **Player's Move**:
+   - The player selects a power unit from their available units.
+   - The player chooses an empty cell to place the power unit.
+3. **Update Grid**: The system places the power unit on the grid.
+4. **Display Grid**: The updated grid is displayed to both players.
+5. **Check for Game End**: If all cells are filled, proceed to scoring.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+- **Available Units**: Players can only use power units that they have not yet placed.
+- **Empty Cells**: Power units must be placed on empty cells.
+- **One Unit per Turn**: Players place only one power unit per turn.
+
+### Power Calculation
+
+- **Base Power**: The value of the power unit placed.
+- **Adjacency Bonus**:
+  - A power unit gains additional power from adjacent friendly units (horizontally and vertically, not diagonally).
+  - For each adjacent friendly unit, add the value of that unit to the base power.
+- **Total Power**: The sum of the base power and adjacency bonuses for all of a player's units on the grid.
+
+### Winning the Game
+
+- **Victory Condition**: The player with the higher total power after all cells are filled wins the game.
+- **Tie Breaker**: Since both players have identical power units and placements alternate, a tie is impossible under normal play.
+
+## Scoring
+
+1. **Calculate Individual Unit Power**:
+   - For each of a player's power units on the grid:
+     - Base Power = Value of the power unit.
+     - Adjacency Bonus = Sum of the values of all adjacent friendly units.
+     - Unit Power = Base Power + Adjacency Bonus.
+2. **Total Power**:
+   - Total Power = Sum of all Unit Powers for the player.
+3. **Determine Winner**:
+   - Compare the Total Power of both players.
+   - The player with the higher Total Power wins.
+
+## Examples
+
+### Sample Turn Sequence
+
+**Starting the Game**:
+
+- Both players have power units 1-9 available.
+- The grid is empty.
+
+**Turn 1**: Player 1
+
+- Available Units: 1-9
+- Player 1 chooses power unit **5**.
+- Places it at cell **(2,2)**.
+
+**Turn 2**: Player 2
+
+- Available Units: 1-9
+- Player 2 chooses power unit **7**.
+- Places it at cell **(1,2)**.
+
+**Turn 3**: Player 1
+
+- Available Units: 1-4, 6-9 (5 used)
+- Player 1 chooses power unit **3**.
+- Places it at cell **(2,1)**.
+
+**Grid After Turn 3**:
+
+```
+(1,1) |  7   | (1,3)
+------+------+------
+  3   |  5   | (2,3)
+------+------+------
+(3,1) | (3,2) | (3,3)
+```
+
+**Power Calculations After Turn 3**:
+
+- **Player 1 Units**:
+  - Unit at (2,2), Value: 5, Adjacent Friendly Units: (2,1): 3
+    - Unit Power: 5 + 3 = 8
+  - Unit at (2,1), Value: 3, Adjacent Friendly Units: (2,2): 5
+    - Unit Power: 3 + 5 = 8
+- **Player 1 Total Power**: 8 + 8 = 16
+
+- **Player 2 Units**:
+  - Unit at (1,2), Value: 7, Adjacent Friendly Units: None
+    - Unit Power: 7 + 0 = 7
+- **Player 2 Total Power**: 7
+
+**Continuing the Game**:
+
+Players continue placing their power units following the turn structure until the grid is full.
+
+**Ending the Game**:
+
+After all cells are filled, the total power for each player is calculated, and the player with the higher total power is declared the winner.
+
+## Command-Line Interaction Example
+
+**Prompt**:
+
+```
+Player 1's turn.
+Available Units: 1,2,3,4,5,6,7,8,9
+Enter the power unit you want to place: 5
+Enter the row (1-3) to place your unit: 2
+Enter the column (1-3) to place your unit: 2
+
+[System updates the grid and displays it]
+
+Player 2's turn.
+Available Units: 1,2,3,4,5,6,7,8,9
+Enter the power unit you want to place: 7
+Enter the row (1-3) to place your unit: 1
+Enter the column (1-3) to place your unit: 2
+
+[System updates the grid and displays it]
+```
+
+**Final Scoring Display**:
+
+```
+Game over. All cells are filled.
+
+Calculating scores...
+
+Player 1 Total Power: 42
+Player 2 Total Power: 38
+
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Maximize Adjacency**: Placing your units adjacent to your own can significantly increase your total power.
+- **Block Opponent**: Prevent your opponent from creating clusters by occupying strategic cells.
+- **Manage High-Value Units**: Use your higher-value power units in positions where they can gain maximum adjacency bonuses.
+
+## Conclusion
+
+Grid Power is a game of strategic placement and foresight. By carefully selecting which power units to deploy and where to place them, players can influence the outcome of the game. The simplicity of the rules combined with the depth of strategy makes Grid Power a quick yet engaging game where skillful play is rewarded.

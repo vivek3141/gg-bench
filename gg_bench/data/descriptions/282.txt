@@ -1,0 +1,230 @@
+# Digit Duel: Rule Book
+
+## Objective
+
+**Digit Duel** is a strategic two-player turn-based game. The primary goal is to be the first player to reach the *target number* exactly by applying allowed mathematical operations to your current number. Overshooting the target number results in an immediate loss. The game requires foresight and planning, ensuring that a skilled player can consistently outperform an unskilled opponent.
+
+---
+
+## Setup
+
+1. **Determine the Target Number**:
+   - At the beginning of the game, randomly select a target number between **20** and **30** (inclusive). This can be done using a random number generator in the command-line interface.
+   - *Example*: The target number is **25**.
+
+2. **Initial Player Numbers**:
+   - Both players start with the number **1** as their current number.
+   - Decide which player will take the first turn (Player 1 and Player 2).
+
+---
+
+## Game Components
+
+- **Players' Current Numbers**:
+  - Each player maintains their own current number throughout the game.
+
+- **Allowed Operations**:
+  - Players can perform the following operations on their current number during their turn:
+    1. **Add 1**: Increment the current number by 1.
+    2. **Subtract 1**: Decrement the current number by 1 (cannot go below 1).
+    3. **Multiply by 2**: Multiply the current number by 2.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take turns alternately, starting with Player 1.
+
+2. **Player Actions**:
+   - On their turn, a player performs **one** of the allowed operations on their current number.
+
+3. **Turn Progression**:
+   - After performing an operation, the player's turn ends, and it becomes the other player's turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Applying Operations**:
+   - **Add 1**:
+     - Increases the current number by 1.
+   - **Subtract 1**:
+     - Decreases the current number by 1.
+     - The current number cannot go below 1. Attempting to subtract 1 from 1 is not allowed.
+   - **Multiply by 2**:
+     - Multiplies the current number by 2.
+
+2. **Winning the Game**:
+   - The first player to reach the target number **exactly** wins the game.
+
+3. **Losing the Game**:
+   - If a player's current number **exceeds** the target number after their turn, they immediately lose the game.
+     - *Example*: If the target number is 25 and a player's current number becomes 26 after their turn, they lose.
+
+4. **Strategic Play**:
+   - Players must plan their moves carefully to reach the target number without overshooting it.
+   - Anticipating the opponent's moves can provide a strategic advantage.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - The winning player is the one who reaches the target number exactly.
+  - Alternatively, if the opponent overshoots the target number, the player wins by default.
+
+- **No Points System**:
+  - The game does not use a points system; victory is determined by achieving the objective.
+
+---
+
+## Examples
+
+Below are sample command-line interactions illustrating how the game is played.
+
+### Example Scenario
+
+**Setup**:
+- Target Number: **23**
+- Player 1 Current Number: 1
+- Player 2 Current Number: 1
+
+**Turn Progression**:
+
+1. **Player 1's Turn**:
+   - Current Number: 1
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 2
+   - *Command*: `multiply`
+
+2. **Player 2's Turn**:
+   - Current Number: 1
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 2
+   - *Command*: `multiply`
+
+3. **Player 1's Turn**:
+   - Current Number: 2
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 4
+   - *Command*: `multiply`
+
+4. **Player 2's Turn**:
+   - Current Number: 2
+   - Chooses to **Add 1**.
+   - New Current Number: 3
+   - *Command*: `add`
+
+5. **Player 1's Turn**:
+   - Current Number: 4
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 8
+   - *Command*: `multiply`
+
+6. **Player 2's Turn**:
+   - Current Number: 3
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 6
+   - *Command*: `multiply`
+
+7. **Player 1's Turn**:
+   - Current Number: 8
+   - Chooses to **Add 1**.
+   - New Current Number: 9
+   - *Command*: `add`
+
+8. **Player 2's Turn**:
+   - Current Number: 6
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 12
+   - *Command*: `multiply`
+
+9. **Player 1's Turn**:
+   - Current Number: 9
+   - Chooses to **Multiply by 2**.
+   - New Current Number: 18
+   - *Command*: `multiply`
+
+10. **Player 2's Turn**:
+    - Current Number: 12
+    - Chooses to **Add 1**.
+    - New Current Number: 13
+    - *Command*: `add`
+
+11. **Player 1's Turn**:
+    - Current Number: 18
+    - Chooses to **Add 1**.
+    - New Current Number: 19
+    - *Command*: `add`
+
+12. **Player 2's Turn**:
+    - Current Number: 13
+    - Chooses to **Multiply by 2**.
+    - New Current Number: 26
+    - Exceeds the target number!
+    - **Player 2 loses**, **Player 1 wins**.
+
+### Command-Line Interaction Example
+
+```
+--- Digit Duel ---
+Target Number: 23
+
+Player 1 Turn:
+Your current number is 1.
+Choose an operation: add, subtract, multiply
+> multiply
+You multiplied by 2. Your new number is 2.
+
+Player 2 Turn:
+Your current number is 1.
+Choose an operation: add, subtract, multiply
+> multiply
+You multiplied by 2. Your new number is 2.
+
+Player 1 Turn:
+Your current number is 2.
+Choose an operation: add, subtract, multiply
+> multiply
+You multiplied by 2. Your new number is 4.
+
+Player 2 Turn:
+Your current number is 2.
+Choose an operation: add, subtract, multiply
+> add
+You added 1. Your new number is 3.
+
+... [Turns continue as in the example above] ...
+
+Player 2 Turn:
+Your current number is 13.
+Choose an operation: add, subtract, multiply
+> multiply
+You multiplied by 2. Your new number is 26.
+You have exceeded the target number!
+Player 2 loses the game.
+Congratulations Player 1, you win!
+```
+
+---
+
+## Additional Notes
+
+- **Invalid Moves**:
+  - If a player attempts an invalid move (e.g., subtracting 1 from 1), prompt them to choose a valid operation.
+
+- **Input Validation**:
+  - The command-line interface should handle unexpected inputs gracefully, prompting the player to enter a valid command.
+
+- **Replayability**:
+  - After a game ends, players can choose to start a new game with a new target number.
+
+- **Strategy Tips**:
+  - Keep track of both your number and your opponent's number.
+  - Plan ahead to avoid overshooting the target number.
+  - Consider the mathematical relationships between numbers to reach the target efficiently.
+
+---
+
+Enjoy playing **Digit Duel** and may the best strategist win!

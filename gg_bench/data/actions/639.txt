@@ -1,0 +1,9 @@
+The action space in the game is mapped to indices as follows:
+
+1. Indices 0-24 correspond to placing a token on the board; each index represents a specific node on the 5x5 grid. The action index `n` maps to the grid node at `(row, column)` where `row = n // 5` and `column = n % 5`.
+
+2. Indices 25-124 correspond to moving a token. Each action has two components: the starting position and the direction of the move. An index `m` in this range is broken down as follows:
+   - Calculate `move_index = m - 25`.
+   - Determine the starting cell `from_cell = move_index // 4`.
+   - `from_row = from_cell // 5`, `from_col = from_cell % 5` gives the starting position on the 5x5 grid.
+   - Calculate the direction with `direction = move_index % 4`, where 0 is up, 1 is down, 2 is left, and 3 is right.

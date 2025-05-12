@@ -1,0 +1,7 @@
+In the Gridlock gym environment, each action represents a combination of a move and a cell removal on a 5x5 grid. The action space consists of indices from 0 to 624 (25x25 combinations), encoded using:
+
+1. **Move Index (0-24)**: Represents moving a player token to a specific cell. Each cell in the 5x5 grid is flattened to a single index where `0` corresponds to `(0,0)` and `24` corresponds to `(4,4)`.
+
+2. **Remove Index (0-24)**: Represents removing a specific cell. Each cell is similarly indexed as the move index.
+
+The action index is computed as `action = move_to_index * 25 + remove_cell_index`, mapping each unique move-remove pair to a distinct action space index.

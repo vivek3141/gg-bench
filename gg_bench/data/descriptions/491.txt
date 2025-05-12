@@ -1,0 +1,220 @@
+# **Adjacent Eliminator**
+
+## **Objective**
+
+The objective of **Adjacent Eliminator** is to be the last player to remove a number from a linear sequence. Players take turns removing numbers and strategically aiming to force their opponent into a position where they have no valid moves left. The player who removes the last number wins the game.
+
+---
+
+## **Setup**
+
+- **Sequence Initialization**:
+  - Create a linear sequence of consecutive integers starting from `1` up to `N`, where `N` is an odd integer greater than `1`. For simplicity, you can set `N = 9`.
+  - The sequence is displayed in order within the command-line interface.
+
+- **Player Positions**:
+  - This is a two-player game: **Player 1** and **Player 2**.
+  - Players decide who will take the first turn (you can default to Player 1 starting).
+
+- **Starting Conditions**:
+  - All numbers in the sequence are available for selection.
+  - No numbers have been removed at the start of the game.
+
+---
+
+## **Game Components**
+
+- **Sequence of Numbers**:
+  - Represents the game board.
+  - Displayed as a list of integers (e.g., `1 2 3 4 5 6 7 8 9`).
+
+- **Command-Line Interface**:
+  - Players interact with the game through text input.
+  - Prompts are provided for player actions, and the updated sequence is displayed after each turn.
+
+- **Markers (Optional)**:
+  - Removed numbers can be shown as blanks or replaced with a placeholder (e.g., `_`) for visual clarity.
+
+---
+
+## **Turns**
+
+- **Turn Structure**:
+  - Players alternate turns, starting with **Player 1**.
+  - Each turn consists of the following steps:
+    1. **Display** the current sequence.
+    2. **Input**: The current player selects a number to remove.
+    3. **Validation**: Confirm that the chosen number is available.
+    4. **Removal**: Remove the selected number and its adjacent numbers.
+    5. **Update**: Display the updated sequence.
+
+- **Player Actions**:
+  - **Select Number**: Choose any available number from the sequence.
+  - Players must input a valid, available number when prompted.
+
+- **Turn Progression**:
+  - After a player completes their turn, control passes to the other player.
+  - The game continues until all numbers have been removed.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Removal**:
+   - On your turn, you must remove one available number from the sequence.
+   - When a number is removed, its immediate neighbors (adjacent numbers to the left and right) are also removed.
+     - **Example**: If you remove `5`, and the sequence is `3 4 5 6 7`, then `4`, `5`, and `6` are all removed.
+   - If the chosen number is at the beginning or end of the sequence, only its single adjacent neighbor is removed along with it.
+     - **Example**: If you remove `1` from `1 2 3`, then `1` and `2` are removed.
+
+2. **Available Numbers**:
+   - A number is considered available if it has not been removed in a previous turn.
+   - After removal, numbers are no longer available and should not be selected in future turns.
+
+3. **Valid Moves**:
+   - Players must select an available number on their turn.
+   - If a player has no valid moves (no available numbers remain), the game ends.
+
+4. **Winning the Game**:
+   - The player who removes the **last number(s)** from the sequence wins the game.
+   - There are no draws; the game always results in a win for one player.
+
+---
+
+## **Scoring**
+
+- **Win Condition**:
+  - No points are tracked in the game.
+  - Victory is achieved by being the player who removes the last number(s) from the sequence.
+
+- **Tracking Progress**:
+  - Players can keep track of wins over multiple games for a series if desired.
+  - Maintaining a win tally can introduce competitive tracking over several rounds.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Initial Sequence**:
+```
+1 2 3 4 5 6 7 8 9
+```
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Chooses to remove `5`.
+- **Removal**: `4`, `5`, and `6` are removed.
+- **Updated Sequence**:
+  ```
+  1 2 3 7 8 9
+  ```
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Chooses to remove `2`.
+- **Removal**: `1`, `2`, and `3` are removed.
+- **Updated Sequence**:
+  ```
+  7 8 9
+  ```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Chooses to remove `8`.
+- **Removal**: `7`, `8`, and `9` are removed.
+- **Updated Sequence**:
+  ```
+  (no numbers remain)
+  ```
+
+---
+
+**Game End**
+
+- **Winner**: Player 1
+- **Reason**: Player 1 removed the last number(s) from the sequence.
+
+---
+
+### **Command-Line Interaction Sample**
+
+Below is a sample of how the game might proceed in a command-line interface.
+
+**Game Start**
+
+```
+Welcome to Adjacent Eliminator!
+
+Initial sequence:
+1 2 3 4 5 6 7 8 9
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9
+Enter the number you want to remove: 5
+You removed 4, 5, 6.
+
+Sequence after your turn:
+1 2 3 7 8 9
+
+---
+
+Player 2's turn.
+Available numbers: 1 2 3 7 8 9
+Enter the number you want to remove: 2
+You removed 1, 2, 3.
+
+Sequence after your turn:
+7 8 9
+
+---
+
+Player 1's turn.
+Available numbers: 7 8 9
+Enter the number you want to remove: 8
+You removed 7, 8, 9.
+
+Sequence after your turn:
+(no numbers remain)
+
+---
+
+Congratulations, Player 1! You have removed the last number and won the game!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Control the Center**:
+  - Removing a middle number can eliminate more options for your opponent.
+
+- **Plan Ahead**:
+  - Anticipate which numbers will be available on your next turn based on your current move.
+
+- **Force Moves**:
+  - Try to leave your opponent with sequences where any move they make will allow you to remove the last number.
+
+---
+
+## **Game Variations**
+
+- **Different Sequence Lengths**:
+  - Alter `N` to make the game shorter or longer (e.g., `N = 7` for a quicker game).
+
+- **Multiple Rounds**:
+  - Play multiple rounds and keep score of the number of games won by each player.
+
+- **Additional Rules**:
+  - Introduce special moves or limitations (e.g., a player cannot remove the same number position twice in consecutive games).
+
+---
+
+Enjoy playing **Adjacent Eliminator**! May the best strategist win.

@@ -1,0 +1,200 @@
+# Parity Duel Rule Book
+
+## Objective
+
+**Parity Duel** is a two-player turn-based game where players strategically select numbers based on parity rules. The primary goal is to be the last player able to make a valid move. You achieve victory by forcing your opponent into a position where they cannot select a number that meets the game's parity requirements on their turn.
+
+---
+
+## Setup
+
+- **Number Pool**: The game uses a shared pool of numbers from **1 to 20**.
+- **Initial State**: All numbers are initially available and unselected.
+- **Starting Player**: Decide which player goes first (e.g., flip a coin or mutual agreement).
+
+---
+
+## Game Components
+
+1. **Number Pool**:
+   - A list of numbers from 1 to 20.
+   - Numbers are removed from the pool as they are selected.
+
+2. **Parity Tracker**:
+   - Keeps track of the required parity (**even** or **odd**) for each turn.
+   - Based on the parity of the number selected in the previous turn.
+
+3. **Players**:
+   - **Player 1** and **Player 2** alternate turns.
+   - Each player makes selections from the shared number pool.
+
+---
+
+## Turns
+
+### Structure of a Turn
+
+1. **Player's Selection**:
+   - On their turn, a player selects an unused number from the pool that matches the required parity.
+
+2. **Update Game State**:
+   - Remove the selected number from the number pool.
+   - Update the parity tracker for the next turn.
+
+3. **Announce Move**:
+   - The player announces their selected number and its parity.
+   - Indicate the required parity for the next player.
+
+### Order of Actions
+
+1. **First Turn**:
+   - Player 1 selects any number from 1 to 20 without parity restrictions.
+
+2. **Subsequent Turns**:
+   - Players alternate turns following the parity rules.
+
+---
+
+## Rules and Mechanics
+
+1. **Selecting Numbers**:
+   - Players choose from the remaining unselected numbers in the number pool.
+
+2. **Parity Rules**:
+   - The required parity for a player's selection depends on the parity of the number chosen in the previous turn:
+     - **If the previous number was _even_**, the next player must select an **_odd_** number.
+     - **If the previous number was _odd_**, the next player must select an **_even_** number.
+
+3. **Valid Moves**:
+   - A move is valid if:
+     - The number selected matches the required parity.
+     - The number has not been previously selected.
+
+4. **Invalid Moves**:
+   - If a player selects a number that does not match the required parity or has already been selected, it is an invalid move. The player must choose a valid number.
+
+5. **Winning Condition**:
+   - A player wins if their opponent cannot make a valid move on their turn due to the lack of available numbers matching the required parity.
+
+6. **No Draws**:
+   - The game continues until one player wins. There is no mechanism for a draw.
+
+---
+
+## Scoring
+
+- **Victory**: The player who forces their opponent into a position where they cannot make a valid move wins the game.
+- **No Points System**: The game does not use a points system; it is a win/loss game.
+- **Game End**: The game ends immediately when a player cannot make a valid move on their turn.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+1. **Available Numbers**: 1 to 20
+2. **Player 1's Turn**:
+   - **Selection**: 7
+   - **Parity**: Odd
+   - **Announces**: "Player 1 selects 7 (Odd). Next required parity: Even."
+3. **Remaining Numbers**: All numbers except 7
+
+#### Continuing the Game
+
+4. **Player 2's Turn**:
+   - **Required Parity**: Even
+   - **Available Even Numbers**: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
+   - **Selection**: 8
+   - **Announces**: "Player 2 selects 8 (Even). Next required parity: Odd."
+5. **Remaining Numbers**: All numbers except 7 and 8
+
+6. **Player 1's Turn**:
+   - **Required Parity**: Odd
+   - **Available Odd Numbers**: 1, 3, 5, 9, 11, 13, 15, 17, 19
+   - **Selection**: 15
+   - **Announces**: "Player 1 selects 15 (Odd). Next required parity: Even."
+7. **Remaining Numbers**: All numbers except 7, 8, and 15
+
+#### Nearing the Endgame
+
+8. **Players continue** alternating turns, selecting valid numbers based on the required parity.
+9. **Suppose** the game progresses to a point where most numbers have been selected.
+
+#### Endgame Scenario
+
+10. **Player 2's Turn**:
+    - **Required Parity**: Even
+    - **Available Even Numbers**: Only 14 remains.
+    - **Selection**: 14
+    - **Announces**: "Player 2 selects 14 (Even). Next required parity: Odd."
+11. **Player 1's Turn**:
+    - **Required Parity**: Odd
+    - **Available Odd Numbers**: All odd numbers have been selected.
+    - **Outcome**: Player 1 cannot make a valid move.
+    - **Player 2 Wins**: "Player 1 has no valid moves remaining. Player 2 wins the game!"
+
+---
+
+## Command-Line Interaction Example
+
+#### Game Start
+
+```
+Available Numbers: 1-20
+Player 1, select a number: 7
+```
+
+- **Player 1 selects 7 (Odd)**
+- **Next required parity: Even**
+
+#### Player 2's Turn
+
+```
+Available Even Numbers: 2,4,6,8,10,12,14,16,18,20
+Player 2, select an even number: 12
+```
+
+- **Player 2 selects 12 (Even)**
+- **Next required parity: Odd**
+
+#### Player 1's Turn
+
+```
+Available Odd Numbers: 1,3,5,9,11,13,15,17,19
+Player 1, select an odd number: 15
+```
+
+- **Player 1 selects 15 (Odd)**
+- **Next required parity: Even**
+
+#### Game Progression
+
+- The players continue in this fashion, with the command-line interface updating the list of available numbers and prompting for selections based on the required parity.
+
+#### End of the Game
+
+- When a player cannot make a valid move, the interface announces the winner.
+
+```
+Player 1 has no valid moves remaining.
+Player 2 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of the remaining numbers to anticipate future parity requirements.
+- **Limit Opponent's Options**: Try to select numbers that will force your opponent into a position with fewer valid moves.
+- **Balance Number Selection**: Avoid using all of one parity too quickly, as it may backfire if the other player manipulates the parity to their advantage.
+
+---
+
+## Summary
+
+Parity Duel is a simple yet strategic game that requires players to think ahead and make tactical decisions based on the parity of numbers. It's easy to play in a command-line interface, ends quickly, and ensures there's always a clear winner. Mastery comes from understanding the flow of parity and predicting your opponent's options.
+
+Enjoy the duel and may the best strategist win!

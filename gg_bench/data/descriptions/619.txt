@@ -1,0 +1,315 @@
+# Energy Duel
+
+**Objective**
+
+Energy Duel is a strategic two-player turn-based game played in a command-line interface. The primary goal of the game is to reduce your opponent's Energy Points (EP) to zero before they do the same to you. Players achieve victory by strategically choosing actions each turn to attack, defend, or recover energy. The game ends quickly, and there is always a decisive winner—no draws are possible.
+
+---
+
+**Setup**
+
+- **Starting Energy**: Both players begin the game with **10 Energy Points (EP)**.
+- **Player Identification**: Decide who will be **Player 1** and **Player 2**. This can be determined randomly or by mutual agreement.
+- **Action Availability**: Each player has access to the same set of actions (spells) from the start.
+
+---
+
+**Game Components**
+
+1. **Energy Points (EP)**
+   - Represents a player's life force.
+   - Each player starts with 10 EP.
+   - EP can never exceed 10 or drop below zero.
+   
+2. **Spells (Actions)**
+   - **Attack**
+     - Deals damage to the opponent.
+     - Reduces opponent's EP by 2.
+   - **Heal**
+     - Restores your own EP.
+     - Increases your EP by 1 (maximum of 10 EP).
+   - **Shield**
+     - Provides temporary defense.
+     - Reduces damage taken on the opponent's next turn by 1.
+     - The shield expires after blocking damage once or after the opponent's next turn.
+     
+3. **Status Indicators**
+   - **Current EP**: Displays each player's current energy.
+   - **Shield Status**: Indicates whether a player has an active shield.
+
+---
+
+**Turns**
+
+- **Turn Order**: Players take turns in sequence, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Action Selection**: On your turn, choose one of the three available spells to cast: Attack, Heal, or Shield.
+  2. **Action Resolution**: The effects of the chosen action are immediately applied.
+  3. **Status Update**: Update the EP totals and shield statuses for both players.
+  4. **End of Turn**: Check for victory conditions. If neither player has won, the turn passes to the opponent.
+
+- **Action Limitations**:
+  - Only one action can be performed per turn.
+  - Players cannot skip their turn; an action must be chosen.
+
+---
+
+**Rules and Mechanics**
+
+1. **Attack**
+   - **Effect**: Reduces the opponent's EP by **2** points.
+   - **Shield Interaction**: If the opponent has an active shield, the damage is reduced by **1** point (opponent loses only **1** EP).
+   - **Shield Expiration**: If the opponent's shield absorbs damage, it expires after the attack.
+
+2. **Heal**
+   - **Effect**: Increases your own EP by **1** point.
+   - **Maximum EP**: Your EP cannot exceed **10**. If at 10 EP, Heal has no effect.
+   - **Shield Interaction**: Healing does not affect shields.
+
+3. **Shield**
+   - **Effect**: Grants a shield that reduces damage from the opponent's next attack by **1** point.
+   - **Duration**: The shield remains active until the start of your next turn or until it absorbs damage.
+   - **Multiple Shields**: Shields do not stack. Casting Shield while a shield is already active refreshes its duration but does not increase its effect.
+
+4. **Energy Point Limits**
+   - **Minimum EP**: EP cannot drop below **0**.
+   - **Maximum EP**: EP cannot exceed **10**.
+
+5. **Winning the Game**
+   - A player wins immediately when their opponent's EP reaches **0**.
+
+6. **No Draws**
+   - Since actions are resolved immediately and EP cannot drop below zero, it's impossible for both players to reach 0 EP on the same turn.
+
+---
+
+**Scoring**
+
+- **Victory**: The winning player may keep track of wins if playing multiple rounds.
+- **No Point System**: There is no point accumulation beyond tracking wins for consecutive games.
+
+---
+
+**Examples**
+
+**Example Game Play**
+
+*Initial State*:
+- Player 1 EP: 10
+- Player 2 EP: 10
+- No shields active.
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Attack
+- **Effect**: Player 2 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 10
+  - Player 2 EP: 8
+  - No shields active.
+
+**Turn 2: Player 2**
+
+- **Action**: Shield
+- **Effect**: Player 2 gains a shield.
+- **Result**:
+  - Player 1 EP: 10
+  - Player 2 EP: 8
+  - Player 2 Shield: Active
+
+**Turn 3: Player 1**
+
+- **Action**: Attack
+- **Effect**:
+  - Player 2's shield absorbs 1 damage and expires.
+  - Player 2 loses 1 EP (2 damage - 1 shield).
+- **Result**:
+  - Player 1 EP: 10
+  - Player 2 EP: 7
+  - No shields active.
+
+**Turn 4: Player 2**
+
+- **Action**: Attack
+- **Effect**: Player 1 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 8
+  - Player 2 EP: 7
+  - No shields active.
+
+**Turn 5: Player 1**
+
+- **Action**: Heal
+- **Effect**: Player 1 gains 1 EP (up to a maximum of 10).
+- **Result**:
+  - Player 1 EP: 9
+  - Player 2 EP: 7
+  - No shields active.
+
+**Turn 6: Player 2**
+
+- **Action**: Attack
+- **Effect**: Player 1 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 7
+  - Player 2 EP: 7
+  - No shields active.
+
+**Turn 7: Player 1**
+
+- **Action**: Attack
+- **Effect**: Player 2 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 7
+  - Player 2 EP: 5
+  - No shields active.
+
+**Turn 8: Player 2**
+
+- **Action**: Heal
+- **Effect**: Player 2 gains 1 EP.
+- **Result**:
+  - Player 1 EP: 7
+  - Player 2 EP: 6
+  - No shields active.
+
+**Turn 9: Player 1**
+
+- **Action**: Attack
+- **Effect**: Player 2 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 7
+  - Player 2 EP: 4
+  - No shields active.
+
+**Turn 10: Player 2**
+
+- **Action**: Shield
+- **Effect**: Player 2 gains a shield.
+- **Result**:
+  - Player 1 EP: 7
+  - Player 2 EP: 4
+  - Player 2 Shield: Active
+
+**Turn 11: Player 1**
+
+- **Action**: Attack
+- **Effect**:
+  - Player 2's shield absorbs 1 damage and expires.
+  - Player 2 loses 1 EP.
+- **Result**:
+  - Player 1 EP: 7
+  - Player 2 EP: 3
+  - No shields active.
+
+**Turn 12: Player 2**
+
+- **Action**: Attack
+- **Effect**: Player 1 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 5
+  - Player 2 EP: 3
+  - No shields active.
+
+**Turn 13: Player 1**
+
+- **Action**: Attack
+- **Effect**: Player 2 loses 2 EP.
+- **Result**:
+  - Player 1 EP: 5
+  - Player 2 EP: 1
+  - No shields active.
+
+**Turn 14: Player 2**
+
+- **Action**: Heal
+- **Effect**: Player 2 gains 1 EP.
+- **Result**:
+  - Player 1 EP: 5
+  - Player 2 EP: 2
+  - No shields active.
+
+**Turn 15: Player 1**
+
+- **Action**: Attack
+- **Effect**: Player 2 loses 2 EP, reaching 0 EP.
+- **Result**:
+  - Player 1 EP: 5
+  - Player 2 EP: 0
+- **Game Over**: Player 1 wins.
+
+---
+
+**Command-Line Interaction Example**
+
+Assuming a simple command-line interface where players input their actions when prompted.
+
+*Game Start*
+
+```
+Welcome to Energy Duel!
+Player 1 and Player 2 start with 10 EP each.
+Let the duel begin!
+
+Player 1's Turn:
+Your EP: 10
+Opponent's EP: 10
+Available Actions: Attack, Heal, Shield
+Enter your action: Attack
+
+[Player 1 chooses to Attack]
+Player 1 attacks! Player 2 loses 2 EP.
+
+Status:
+Player 1 EP: 10
+Player 2 EP: 8
+
+Player 2's Turn:
+Your EP: 8
+Opponent's EP: 10
+Available Actions: Attack, Heal, Shield
+Enter your action: Shield
+
+[Player 2 chooses to Shield]
+Player 2 raises a shield!
+
+Status:
+Player 1 EP: 10
+Player 2 EP: 8 (Shield Active)
+
+Player 1's Turn:
+Your EP: 10
+Opponent's EP: 8
+Opponent has a shield.
+Available Actions: Attack, Heal, Shield
+Enter your action: Attack
+
+[Player 1 chooses to Attack]
+Player 1 attacks! The shield absorbs 1 damage.
+Player 2 loses 1 EP. Shield is now inactive.
+
+Status:
+Player 1 EP: 10
+Player 2 EP: 7
+
+... [Gameplay continues as per the example above] ...
+
+Game Over: Player 1 wins!
+```
+
+---
+
+**Strategic Tips**
+
+- **Balancing Offense and Defense**: Decide when to go on the offensive or when to defend and heal.
+- **Anticipate Opponent's Moves**: Try to predict if your opponent will shield or heal and adjust your strategy accordingly.
+- **Shield Timing**: Use shields when you suspect an incoming attack to maximize their effectiveness.
+- **Maintain EP Advantage**: Keep your EP higher than your opponent's to pressure them into defensive play.
+
+---
+
+**Conclusion**
+
+Energy Duel is a fast-paced game that blends simple rules with strategic depth. Players must make tactical decisions each turn to outmaneuver their opponent. With no possibility of a draw and quick gameplay, it's perfect for engaging battles in a command-line setting. May the best strategist win!

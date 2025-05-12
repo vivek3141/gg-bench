@@ -1,0 +1,255 @@
+# Grid Conqueror
+
+## Objective
+
+Be the first player to control a majority of the squares on the grid by strategically placing your symbols and capturing your opponent's squares. The player who controls the most squares when the grid is fully occupied wins the game.
+
+## Setup
+
+1. **Grid Preparation**: Draw a 3x3 grid, resulting in 9 empty squares arranged in 3 rows and 3 columns. Each square can be identified by its row and column numbers.
+
+2. **Player Symbols**: Decide which player will use which symbol. One player will use `X`, and the other will use `O`.
+
+3. **Starting Player**: Determine who will take the first turn. This can be decided randomly or by mutual agreement.
+
+## Game Components
+
+- **Game Grid**: A 3x3 grid with 9 squares, numbered for reference:
+
+```
+(1,1) | (1,2) | (1,3)
+------+-------+------
+(2,1) | (2,2) | (2,3)
+------+-------+------
+(3,1) | (3,2) | (3,3)
+```
+
+- **Player Symbols**:
+  - `X`: Represents Player 1.
+  - `O`: Represents Player 2.
+
+- **Captured Squares**: Squares that have been changed to a player's symbol through the capture mechanic.
+
+## Turns
+
+Players take turns performing the following actions:
+
+1. **Placement Phase**:
+   - Place your symbol (`X` or `O`) on any empty square on the grid.
+
+2. **Capture Phase** (if applicable):
+   - After placing your symbol, check for any opponent's squares that can be captured according to the capture rules.
+
+3. **End Turn**:
+   - Once all captures (if any) have been resolved, the turn passes to the other player.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+- **Empty Squares Only**: You may only place your symbol on a square that is empty (not already occupied by `X` or `O`).
+
+- **No Skipping Turns**: You must place a symbol on your turn; passing is not allowed.
+
+### Capture Rules
+
+- **Capturing Mechanism**:
+  - If, after placing your symbol, you flank one or more of your opponent's symbols directly between the symbol you just placed and another of your symbols in a straight line horizontally or vertically (not diagonally), you capture those flanked symbols.
+  - Replace all flanked opponent symbols with your own symbol.
+
+- **Capture Conditions**:
+  - **Direct Line**: Captures occur only in straight lines horizontally or vertically.
+  - **No Gaps**: There must be no empty squares between your symbols to capture opponent symbols.
+  - **Multiple Directions**: You can capture in more than one direction in a single turn if the conditions are met.
+  
+- **Example of a Capture**:
+
+  - Before Move:
+
+    ```
+    O |   |  
+    --+---+---
+      | X |  
+    --+---+---
+      |   |  
+    ```
+
+  - Player `O` places an `O` at position (1,3):
+
+    ```
+    O |   | O
+    --+---+---
+      | X |  
+    --+---+---
+      |   |  
+    ```
+
+  - No captures occur since there is no `O` on the other side of `X` horizontally or vertically.
+
+### Game End Conditions
+
+- **Grid Full**: The game ends when all squares on the grid have been occupied.
+
+- **Majority Control**: The player who controls the majority (more than 4) of the squares wins the game.
+
+- **Tie-Breaker**: If both players control an equal number of squares at the end of the game, the last player to capture an opponent's square wins.
+
+## Scoring
+
+- **Controlled Squares**: Each square occupied by your symbol at the end of the game counts as one point.
+
+- **Victory**: The player with the higher score wins the game.
+
+- **Captures**: Capturing opponent's squares is crucial for gaining the majority and should be a key part of your strategy.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Moves
+
+- **Turn 1**: Player `X` places `X` at (2,2). No captures occur.
+
+  ```
+     |   |  
+    --+---+---
+     | X |  
+    --+---+---
+     |   |  
+  ```
+
+- **Turn 2**: Player `O` places `O` at (2,1). No captures occur.
+
+  ```
+     |   |  
+    --+---+---
+    O | X |  
+    --+---+---
+     |   |  
+  ```
+
+#### Capturing a Square
+
+- **Turn 3**: Player `X` places `X` at (2,3).
+
+  - Captures the `O` at (2,1) because it's flanked between `X` at (2,2) and `X` at (2,3) horizontally.
+  
+  - Updated grid:
+
+    ```
+       |   |  
+      --+---+---
+     X | X | X
+      --+---+---
+       |   |  
+    ```
+
+#### Strategic Move
+
+- **Turn 4**: Player `O` places `O` at (1,2).
+
+  - No captures occur.
+
+    ```
+       | O |  
+      --+---+---
+     X | X | X
+      --+---+---
+       |   |  
+    ```
+
+#### Continuing the Game
+
+- **Turn 5**: Player `X` places `X` at (3,2).
+
+  - Captures the `O` at (1,2) vertically as it is flanked between `X` at (2,2) and `X` at (3,2).
+
+  - Updated grid:
+
+    ```
+       | X |  
+      --+---+---
+     X | X | X
+      --+---+---
+       | X |  
+    ```
+
+#### Game Conclusion
+
+- **Final Grid**:
+
+  ```
+    X | X |  
+   --+---+---
+   X | X | X
+   --+---+---
+     | X |  
+  ```
+
+- **Scoring**:
+  - Player `X` controls 7 squares.
+  - Player `O` controls 0 squares.
+
+- **Winner**: Player `X` wins the game by majority control.
+
+## Strategic Tips
+
+- **Early Center Control**: Securing the center square (2,2) provides more opportunities to capture in multiple directions.
+
+- **Plan Ahead**: Anticipate your opponent's moves and avoid placing pieces that could be easily captured.
+
+- **Capture Multiples**: Look for moves that allow you to capture multiple opponent squares in a single turn.
+
+- **Prevent Opponent's Captures**: Be cautious of leaving your symbols flanked without support, making them vulnerable to capture.
+
+## Command-Line Interaction Example
+
+Here's how the game might proceed in a command-line interface:
+
+```
+Welcome to Grid Conqueror!
+
+Player X, it's your turn.
+Enter the row and column to place your symbol (e.g., 2 2): 2 2
+
+Player O, it's your turn.
+Enter the row and column to place your symbol (e.g., 2 1): 2 1
+
+Player X placed an X at (2,2).
+Current Grid:
+   |   |  
+---+---+---
+   | X |  
+---+---+---
+   |   |  
+
+Player O placed an O at (2,1).
+Current Grid:
+   |   |  
+---+---+---
+ O | X |  
+---+---+---
+   |   |  
+
+Player X, it's your turn.
+Enter the row and column to place your symbol: 2 3
+
+You've captured 1 of Player O's squares!
+Current Grid:
+   |   |  
+---+---+---
+ X | X | X
+---+---+---
+   |   |  
+
+...
+
+Game Over!
+Player X controls 7 squares.
+Player O controls 0 squares.
+Player X wins!
+```
+
+## Conclusion
+
+Grid Conqueror is a strategic and fast-paced game that requires critical thinking and foresight. By mastering the capture mechanics and planning your moves carefully, you can outmaneuver your opponent and claim victory. Enjoy the challenge and may the best strategist win!

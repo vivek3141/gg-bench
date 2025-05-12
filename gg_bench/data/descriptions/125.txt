@@ -1,0 +1,235 @@
+# Number Elimination Duel
+
+## Objective
+
+Be the player to pick the **last available number** from a shared list of numbers by strategically selecting numbers and eliminating their multiples. The goal is to force your opponent into a position where no advantageous moves remain, ensuring your victory by claiming the final number.
+
+## Setup
+
+- **Number List**: Create a shared list of consecutive integers starting from **2** up to **30**.
+  ```
+  Number List: 2, 3, 4, 5, 6, ..., 29, 30
+  ```
+- **Players**: Two players participate in the game.
+- **Starting Player**: Decide who will be **Player 1** and **Player 2** (e.g., by coin toss). Player 1 makes the first move.
+
+## Game Components
+
+- **Number List**: The central component of the game, comprising numbers **2** through **30**.
+- **Selected Numbers**: Numbers chosen by the players during their turns.
+- **Eliminated Numbers**: Numbers removed from the list after each turn (the selected number and its multiples).
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- On each turn, a player performs the following actions:
+  1. **Select a Number**: Choose any remaining number from the **Number List**.
+  2. **Eliminate Multiples**: Remove the selected number and all its multiples from the **Number List**.
+
+## Rules and Mechanics
+
+1. **Selecting Numbers**:
+   - On your turn, you must select **one** number from the current **Number List**.
+   - The number must be among those still available (not yet eliminated).
+
+2. **Eliminating Numbers**:
+   - After selecting a number, you eliminate:
+     - The **selected number** itself.
+     - **All multiples** of the selected number that are present in the **Number List**.
+   - Eliminated numbers are removed from play and cannot be selected in subsequent turns.
+
+3. **Winning the Game**:
+   - The player who picks the **last available number** from the **Number List** **wins** the game.
+   - If a player cannot make a move because there are no numbers remaining, they **lose** the game.
+
+4. **Game End Condition**:
+   - The game ends when all numbers have been eliminated from the **Number List**.
+
+5. **Restrictions**:
+   - You cannot skip your turn; if there is at least one number available, you must select one.
+
+## Scoring
+
+- **Winning**: The player who picks the last number wins the game.
+- There are no points or cumulative scoring; each game results in a win or loss.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Number List
+
+```
+Number List: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+```
+
+#### Turn-by-Turn Breakdown
+
+##### Turn 1: Player 1
+
+- **Action**: Picks **5**.
+- **Eliminated Numbers**: 5, 10, 15, 20, 25, 30.
+- **Updated Number List**:
+  ```
+  2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 24, 26, 27, 28, 29
+  ```
+
+##### Turn 2: Player 2
+
+- **Action**: Picks **3**.
+- **Eliminated Numbers**: 3, 6, 9, 12, 15 (already eliminated), 18, 21, 24, 27, 30 (already eliminated).
+- **Updated Number List**:
+  ```
+  2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26, 28, 29
+  ```
+
+##### Turn 3: Player 1
+
+- **Action**: Picks **13**.
+- **Eliminated Numbers**: 13, 26.
+- **Updated Number List**:
+  ```
+  2, 4, 7, 8, 11, 14, 16, 17, 19, 22, 23, 28, 29
+  ```
+
+##### Turn 4: Player 2
+
+- **Action**: Picks **2**.
+- **Eliminated Numbers**: 2, 4, 8, 14, 16, 22, 28.
+- **Updated Number List**:
+  ```
+  7, 11, 17, 19, 23, 29
+  ```
+
+##### Turn 5: Player 1
+
+- **Action**: Picks **19**.
+- **Eliminated Numbers**: 19.
+- **Updated Number List**:
+  ```
+  7, 11, 17, 23, 29
+  ```
+
+##### Turn 6: Player 2
+
+- **Action**: Picks **11**.
+- **Eliminated Numbers**: 11, 22 (already eliminated).
+- **Updated Number List**:
+  ```
+  7, 17, 23, 29
+  ```
+
+##### Turn 7: Player 1
+
+- **Action**: Picks **17**.
+- **Eliminated Numbers**: 17.
+- **Updated Number List**:
+  ```
+  7, 23, 29
+  ```
+
+##### Turn 8: Player 2
+
+- **Action**: Picks **23**.
+- **Eliminated Numbers**: 23.
+- **Updated Number List**:
+  ```
+  7, 29
+  ```
+
+##### Turn 9: Player 1
+
+- **Action**: Picks **29**.
+- **Eliminated Numbers**: 29.
+- **Updated Number List**:
+  ```
+  7
+  ```
+
+##### Turn 10: Player 2
+
+- **Action**: Picks **7**.
+- **Eliminated Numbers**: 7.
+- **Updated Number List**:
+  ```
+  (None)
+  ```
+
+- **Result**: Player 2 picks the last available number and **wins** the game.
+
+### Sample Command-Line Interaction
+
+Below is a simulated command-line interaction between **Player 1** and **Player 2**.
+
+#### Game Start
+
+```
+Welcome to Number Elimination Duel!
+
+Initial Number List:
+2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+
+Player 1's turn.
+```
+
+#### Turn 1: Player 1
+
+```
+Available Numbers:
+2, 3, 4, 5, ..., 30
+
+Player 1, select a number: 5
+
+You selected 5.
+Numbers eliminated: 5, 10, 15, 20, 25, 30
+```
+
+#### Turn 2: Player 2
+
+```
+Available Numbers:
+2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 24, 26, 27, 28, 29
+
+Player 2's turn.
+Player 2, select a number: 3
+
+You selected 3.
+Numbers eliminated: 3, 6, 9, 12, 18, 21, 24, 27
+```
+
+#### Turn 3: Player 1
+
+```
+Available Numbers:
+2, 4, 7, 8, 11, 13, 14, 16, 17, 19, 22, 23, 26, 28, 29
+
+Player 1's turn.
+Player 1, select a number: 13
+
+You selected 13.
+Numbers eliminated: 13, 26
+```
+
+#### ... (Subsequent turns follow the same pattern)
+
+#### Game End
+
+```
+Available Numbers:
+(None)
+
+Player 2 picked the last number and wins the game!
+```
+
+## Strategic Tips
+
+- **Target Composite Numbers**: Selecting composite numbers eliminates more numbers, potentially limiting your opponent's options.
+- **Control the Primes**: Leaving prime numbers for yourself can be advantageous since they have fewer multiples.
+- **Plan Ahead**: Consider the implications of your pick on future moves to avoid setting up your opponent for a win.
+- **Force Moves**: Try to force your opponent into a position where they have no choice but to make a move that benefits you.
+
+## Conclusion
+
+Number Elimination Duel is a simple yet strategic game that can be easily played in a command-line environment. It encourages players to think ahead and make tactical decisions to outmaneuver their opponent.
+
+Enjoy the game and may the best strategist win!

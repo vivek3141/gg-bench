@@ -1,0 +1,220 @@
+# Prime Time: A Two-Player Strategic Number Game
+
+---
+
+## Objective
+
+**Prime Time** is a strategic two-player game where the goal is to force your opponent into a position where they cannot make a valid move. Players take turns selecting numbers from a shared pool based on specific divisibility rules. The player who cannot make a valid move on their turn loses the game. There are no draws in **Prime Time**, ensuring that each game concludes with a definitive winner.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - Create a shared pool of integers ranging from **2 to 50** inclusive.
+   - All numbers are initially available for selection.
+
+2. **Starting the Game**:
+   - Decide which player goes first (Player 1 and Player 2). This can be done by a coin toss or mutual agreement.
+
+---
+
+## Game Components
+
+1. **Number Pool**:
+   - A list of numbers from **2 to 50**.
+   - Numbers are removed from the pool once selected.
+
+2. **Player Roles**:
+   - **Player 1**: Takes the first turn.
+   - **Player 2**: Takes the second turn.
+
+3. **Selected Numbers Log**:
+   - A record of numbers chosen during the game, in the order they were selected.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns, starting with Player 1.
+
+2. **Actions Per Turn**:
+   - **Player 1 (First Turn Only)**:
+     - Select any number from the number pool.
+   - **Subsequent Turns**:
+     - Select a number from the pool that **shares a common factor greater than 1** with the last number chosen by the opponent.
+
+3. **Turn Progression**:
+   - After a player selects a number, it becomes the "current number."
+   - The selected number is removed from the number pool.
+   - The turn passes to the opponent.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection Rules**:
+   - **First Move**:
+     - Player 1 can choose any number from 2 to 50.
+   - **Subsequent Moves**:
+     - A player must select a number that shares a common factor (other than 1) with the "current number" (the last number chosen by the opponent).
+     - If multiple valid numbers are available, the player may choose any of them.
+
+2. **Valid Moves**:
+   - A move is valid if:
+     - The selected number is in the number pool.
+     - It shares a common factor greater than 1 with the "current number."
+
+3. **Invalid Moves**:
+   - If a player cannot make a valid move on their turn (no numbers in the pool share a common factor greater than 1 with the "current number"), they lose the game.
+
+4. **Factors and Common Factors**:
+   - Factors of a number include all integers greater than 1 that divide the number without leaving a remainder.
+   - Common factors are factors that two numbers share.
+   - Only common factors greater than 1 are considered (excluding 1).
+
+5. **Example of Common Factors**:
+   - Numbers **14** and **21** share a common factor of **7**.
+   - Numbers **15** and **16** do not share any common factors greater than 1.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - If a player cannot make a valid move on their turn, the opposing player wins.
+- **No Point System**:
+  - **Prime Time** does not use a point system. Victory is achieved by strategic number selection leading to the opponent's inability to move.
+
+---
+
+## Examples
+
+### Example 1: Sample Game Play
+
+#### Initial Setup:
+
+- Number Pool: 2 to 50.
+- Player 1 starts.
+
+#### Turn-by-Turn Breakdown:
+
+1. **Player 1's Turn**:
+   - Chooses **14** (factors: 2, 7).
+   - "Current number" is now **14**.
+   - Number Pool is updated (14 is removed).
+
+2. **Player 2's Turn**:
+   - Must choose a number sharing a common factor with **14**.
+   - Options include numbers that share factors **2** or **7** (e.g., 7, 21, 28, 35, 42, etc.).
+   - Chooses **21** (factors: 3, 7).
+   - "Current number" is now **21**.
+   - Number Pool is updated (21 is removed).
+
+3. **Player 1's Turn**:
+   - Must choose a number sharing a common factor with **21**.
+   - Common factors are **3** and **7**.
+   - Options include numbers like 3, 9, 27 (factor 3) or 7, 14 (already used), 28, 35, 42, etc. (factor 7).
+   - Chooses **28** (factors: 2, 2, 7).
+   - "Current number" is now **28**.
+   - Number Pool is updated (28 is removed).
+
+4. **Player 2's Turn**:
+   - Must choose a number sharing a common factor with **28**.
+   - Common factors are **2** and **7**.
+   - Options are numbers with factors **2** or **7** (excluding numbers already used).
+   - Chooses **35** (factors: 5, 7).
+   - "Current number" is now **35**.
+   - Number Pool is updated (35 is removed).
+
+5. **Player 1's Turn**:
+   - Must choose a number sharing a common factor with **35**.
+   - Common factors are **5** and **7**.
+   - Options include numbers with factors **5** or **7**.
+   - Chooses **10** (factors: 2, 5).
+   - "Current number" is now **10**.
+   - Number Pool is updated (10 is removed).
+
+6. **Player 2's Turn**:
+   - Must choose a number sharing a common factor with **10**.
+   - Common factors are **2** and **5**.
+   - Options include numbers with factors **2** or **5**.
+   - Chooses **25** (factors: 5, 5).
+   - "Current number" is now **25**.
+   - Number Pool is updated (25 is removed).
+
+7. **Player 1's Turn**:
+   - Must choose a number sharing a common factor with **25**.
+   - Common factor is **5**.
+   - Options include numbers like **5**, **15**, **20**, **30**, **35** (already used), etc.
+   - Chooses **15** (factors: 3, 5).
+   - "Current number" is now **15**.
+   - Number Pool is updated (15 is removed).
+
+8. **Player 2's Turn**:
+   - Must choose a number sharing a common factor with **15**.
+   - Common factors are **3** and **5**.
+   - Options include numbers like **3**, **9**, **18**, **27** (factor 3) or **5**, **20**, **30**, etc. (factor 5).
+   - Chooses **18** (factors: 2, 3, 3).
+   - "Current number" is now **18**.
+   - Number Pool is updated (18 is removed).
+
+9. **Player 1's Turn**:
+   - Must choose a number sharing a common factor with **18**.
+   - Common factors are **2** and **3**.
+   - Options include numbers with factors **2** or **3**, excluding those already used.
+   - Chooses **17** (prime number, factors: 17).
+   - **Invalid Move** as 17 shares no common factors with 18.
+   - **Player 1** cannot make a valid move and loses the game.
+  
+**Result**: **Player 2 Wins**
+
+### Example 2: Command-Line Interaction
+
+Below is a sample interaction in a command-line interface simulating a game of **Prime Time**.
+
+#### Game Start
+
+```
+Welcome to Prime Time!
+
+Number Pool: 2-50
+Player 1, it's your turn. Choose a number from the pool.
+
+Player 1 selects: 12
+
+Number Pool updated. 12 is removed.
+
+Player 2, it's your turn. The last number was 12.
+Numbers sharing a common factor with 12 are: [2, 3, 4, 6, 8, 9, 10, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 38, 39, 40, 42, 44, 45, 46, 48, 49, 50]
+
+Player 2 selects: 15
+
+Number Pool updated. 15 is removed.
+
+Player 1, it's your turn. The last number was 15.
+Numbers sharing a common factor with 15 are: [3, 5, 6, 9, 10, 18, 20, 21, 24, 25, 27, 30, 33, 35, 36, 39, 40, 42, 45, 48, 49, 50]
+
+Player 1 selects: 21
+
+... (Gameplay continues)
+
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of remaining numbers in the pool and anticipate which numbers your opponent may be forced to choose.
+- **Control the Factors**: By selecting numbers with unique factors, you limit your opponent's options.
+- **Avoid Primes Late Game**: Selecting prime numbers early can limit your own future moves since primes have fewer common factors.
+- **Force Invalid Moves**: Try to steer the game towards numbers where your opponent has minimal valid options.
+
+---
+
+## Summary
+
+**Prime Time** is a simple yet strategically deep game that challenges players to think ahead and understand number factors. With easy-to-understand rules and quick gameplay, it is perfect for a command-line interface implementation and ensures that skilled players can consistently outperform less experienced ones.
+
+Have fun playing **Prime Time** and may the best strategist win!

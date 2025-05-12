@@ -1,0 +1,222 @@
+# Tower Siege: Rule Book
+
+## Objective
+
+**Tower Siege** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to reach the opponent's tower located at position **10** on the linear battlefield. Players must navigate their hero across the battlefield while strategically managing their limited battle resources to overcome their opponent. Victory is achieved by reaching the opponent's tower, thus conquering it.
+
+## Setup
+
+- **Battlefield Layout**: A linear path consisting of positions numbered from **0** to **10**.
+  - Position **0**: Each player's base.
+  - Position **10**: The opponent's tower.
+- **Player Heroes**: Each player controls a single hero token.
+  - Player 1's hero starts at position **0** (Player 1's base).
+  - Player 2's hero starts at the opposite position **0** (Player 2's base).
+- **Battle Cards**: Each player has a set of battle cards numbered **1** to **5**.
+  - These cards represent the hero's battle strength.
+  - Each card can be used **once** before it must be restored.
+
+## Game Components
+
+### Battlefield
+
+- **Positions**: Numbered from **0** to **10**.
+  - Positions **1** to **9** are neutral ground.
+  - Position **0** is each player's base; position **10** is the opponent's tower.
+
+### Hero Tokens
+
+- Represented by unique identifiers (e.g., **P1** for Player 1, **P2** for Player 2).
+- Move along the battlefield positions according to game rules.
+
+### Battle Cards
+
+- **Cards**: Numbered **1**, **2**, **3**, **4**, and **5**.
+  - **Strength**: Higher number indicates greater strength.
+- **Usage**:
+  - Each card can be used **once**.
+  - Cards are replenished when a player **rests** at their own base.
+
+## Turns
+
+- Players alternate turns; Player 1 starts the game.
+- On their turn, a player must choose one of the following actions:
+  1. **Move Forward**:
+     - Move the hero forward by **1**, **2**, or **3** positions.
+     - Movement is only **forward** toward the opponent's tower.
+  2. **Rest**:
+     - **Only at own base (position 0)**.
+     - Resting restores all previously used battle cards.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Forward Movement**:
+  - Players choose to move **1**, **2**, or **3** positions forward.
+  - Cannot move beyond position **10**.
+- **Occupying Positions**:
+  - Both heroes can occupy the same position, triggering a **battle**.
+
+### Battle Mechanics
+
+- **Triggering a Battle**:
+  - Occurs when a player moves their hero onto a position occupied by the opponent's hero.
+- **Conducting a Battle**:
+  1. **Card Selection**:
+     - Both players secretly select one available battle card from their hand.
+     - Cards are numbered **1** to **5**; each number represents the card's strength.
+  2. **Reveal**:
+     - Players simultaneously reveal their chosen cards.
+  3. **Determine Outcome**:
+     - **Higher Card Wins**:
+       - The player who played the higher card wins the battle.
+       - The losing player's hero is sent back to their own base (position **0**).
+     - **Tie**:
+       - If both players play cards of equal value, **both heroes** are sent back to their respective bases.
+  4. **Card Usage**:
+     - Used battle cards are **discarded** and cannot be used again until restored by resting.
+- **Post-Battle Movement**:
+  - The winning hero remains on the contested position.
+  - Movement ends after a battle; a player cannot move further on the same turn.
+
+### Resting
+
+- **Conditions**:
+  - A hero must be at their own base (position **0**) to rest.
+- **Effect**:
+  - Resting restores all used battle cards to the player's hand.
+- **Turn Use**:
+  - Resting consumes the player's entire turn.
+
+## Scoring
+
+- **Winning the Game**:
+  - The first player to move their hero onto position **10** (the opponent's tower) **wins the game**.
+  - The game ends immediately upon a player reaching the opponent's tower.
+- **No Draws**:
+  - The game cannot end in a draw; it continues until one player wins.
+
+## Examples
+
+### Example Scenario
+
+#### Initial Setup
+
+- Player 1 (**P1**) starts at position **0**.
+- Player 2 (**P2**) starts at position **0**.
+- Both players have all battle cards (**1** to **5**) available.
+
+#### Sample Turn Sequence
+
+1. **Player 1's Turn**:
+   - **Action**: Moves forward **3** positions.
+   - **New Position**: **P1** is now at position **3**.
+
+2. **Player 2's Turn**:
+   - **Action**: Moves forward **3** positions.
+   - **New Position**: **P2** is now at position **3**.
+   - **Battle Occurs**:
+     - Both players select a battle card.
+     - **P1** plays card **4**.
+     - **P2** plays card **5**.
+     - **Outcome**: **P2** wins (5 > 4).
+     - **Result**:
+       - **P1's hero** is sent back to position **0**.
+       - **P2's hero** remains at position **3**.
+       - Both players discard their used cards (**P1's 4**, **P2's 5**).
+
+3. **Player 1's Turn**:
+   - **Action**: Decides to **rest** at base.
+   - **Effect**: Restores used battle card **4**.
+   - **Note**: **P1** now has all battle cards (**1** to **5**) available again.
+
+4. **Player 2's Turn**:
+   - **Action**: Moves forward **2** positions.
+   - **New Position**: **P2** is now at position **5**.
+
+5. **Player 1's Turn**:
+   - **Action**: Moves forward **3** positions.
+   - **New Position**: **P1** is now at position **3**.
+
+6. **Player 2's Turn**:
+   - **Action**: Moves forward **3** positions to position **8**.
+   - **New Position**: **P2** is at position **8**.
+
+7. **Player 1's Turn**:
+   - **Action**: Moves forward **3** positions to position **6**.
+   - **New Position**: **P1** is at position **6**.
+
+8. **Player 2's Turn**:
+   - **Action**: Moves forward **2** positions to position **10**.
+   - **New Position**: **P2** reaches position **10** (Player 1's tower).
+   - **Outcome**: **Player 2 wins the game**.
+
+### Command-Line Interaction Example
+
+Below is a sample command-line interaction demonstrating how the game might proceed.
+
+#### Starting the Game
+
+```
+Welcome to Tower Siege!
+Player 1 (P1) and Player 2 (P2) start at their bases (position 0).
+Both players have battle cards [1, 2, 3, 4, 5].
+
+Player 1's Turn:
+Choose action:
+1. Move Forward
+2. Rest
+Enter choice: 1
+Enter positions to move forward (1-3): 3
+P1 moves to position 3.
+
+Player 2's Turn:
+Choose action:
+1. Move Forward
+2. Rest
+Enter choice: 1
+Enter positions to move forward (1-3): 3
+P2 moves to position 3.
+Battle initiated at position 3!
+P1's available battle cards: [1, 2, 3, 4, 5]
+P2's available battle cards: [1, 2, 3, 4, 5]
+P1, choose your battle card: 4
+P2, choose your battle card: 5
+P1 plays 4. P2 plays 5.
+P2 wins the battle!
+P1 is sent back to base.
+Used cards are discarded.
+
+Player 1's Turn:
+Choose action:
+1. Move Forward
+2. Rest
+Enter choice: 2
+P1 rests and recovers all battle cards.
+
+Player 2's Turn:
+Choose action:
+1. Move Forward
+2. Rest
+Enter choice: 1
+Enter positions to move forward (1-3): 2
+P2 moves to position 5.
+
+[Game continues...]
+```
+
+## Strategic Tips
+
+- **Balance Movement and Rest**:
+  - Decide when to advance aggressively and when to rest to recover battle cards.
+- **Battle Card Management**:
+  - Use higher-value cards strategically; anticipate your opponent's possible choices.
+- **Predict Opponent's Moves**:
+  - Keep track of the opponent's used battle cards to inform your decisions.
+- **Risk Assessment**:
+  - Weigh the risk of engaging in a battle versus avoiding the opponent.
+
+## Conclusion
+
+**Tower Siege** combines simple movement mechanics with strategic depth in battle management. By carefully planning your moves and wisely utilizing your battle cards, you can outmaneuver your opponent and claim victory by conquering their tower. The game is designed to end swiftly and ensures that skillful play is rewarded, allowing experienced players to consistently outperform novices. Enjoy the challenge and may the best strategist win!

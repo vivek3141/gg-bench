@@ -1,0 +1,141 @@
+# Number Ninjas
+
+## Objective
+
+Become the ultimate Number Ninja by strategically reducing your opponent's Health Points (HP) to **zero** before they do the same to you. Utilize numbers to inflict damage, with opportunities for powerful strikes when timing and number choices align perfectly.
+
+## Setup
+
+- **Health Points**: Both players start with **100 HP**.
+- **Number Pool**: Numbers from **1 to 10** are available for selection each turn.
+- **Turn Order**: Decide who takes the first turn (e.g., by agreement or random selection).
+
+## Game Components
+
+- **Players**: Two participants acting as rival Number Ninjas.
+- **Health Tracker**: A display or record of each player's current HP.
+- **Number Pool**: Integers from **1** to **10**, inclusive.
+
+## Turns
+
+### Turn Structure
+
+1. **Number Selection**: The active player selects an integer **N** where **1 ≤ N ≤ 10**.
+2. **Attack Resolution**:
+   - Check if **N** divides evenly into the opponent's current HP **before** the attack.
+   - Calculate damage based on the **Rules and Mechanics**.
+3. **Update HP**: Subtract the calculated damage from the opponent's HP.
+4. **Check for Victory**: If the opponent's HP is **zero** or less, the game ends.
+5. **Next Turn**: The opposing player becomes the active player.
+
+### Example Turn
+
+- **Player 1's Turn**:
+  - Player 1 chooses **N = 5**.
+  - Opponent's HP is **100**, and **5** divides evenly into **100**.
+  - Damage is **2 × 5 = 10**.
+  - Opponent's HP is updated to **90**.
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- On your turn, select any integer **N** where **1 ≤ N ≤ 10**.
+- You may choose the same number multiple times during the game.
+
+### 2. Damage Calculation
+
+- **Standard Attack**: If **N** does **not** divide evenly into the opponent's current HP **before** the attack, you deal **damage equal to N**.
+- **Critical Strike**: If **N** **does** divide evenly into the opponent's current HP **before** the attack, you deal **damage equal to 2 × N** (double damage).
+
+### 3. Updating Health Points
+
+- Subtract the calculated damage from the opponent's current HP.
+- If the opponent's HP drops to **zero** or below, they are defeated.
+
+### 4. Winning the Game
+
+- The first player to reduce their opponent's HP to **zero** or below **wins** the game.
+- There are **no draws**; the game continues until a player wins.
+
+## Scoring
+
+- **Health Points (HP)**: The vital statistic representing each player's life total.
+- **Damage Dealt**: The amount subtracted from the opponent's HP during your turn.
+- **Critical Strikes**: Special attacks that deal double damage when conditions are met.
+
+## Examples
+
+### Example 1: Standard Attack
+
+- **Player 1's HP**: 100
+- **Player 2's HP**: 100
+- **Player 1's Turn**:
+  - Chooses **N = 7**.
+  - **7** does **not** divide evenly into **Player 2's HP (100)**.
+  - Damage dealt: **7**.
+  - **Player 2's HP** is updated to **93**.
+
+### Example 2: Critical Strike
+
+- **Player 2's HP**: 93
+- **Player 1's Turn**:
+  - Chooses **N = 3**.
+  - **3** divides evenly into **93**.
+  - Damage dealt: **2 × 3 = 6**.
+  - **Player 2's HP** is updated to **87**.
+
+### Example 3: Strategy in Action
+
+- **Player 1's HP**: 50
+- **Player 2's HP**: 20
+- **Player 2's Turn**:
+  - Chooses **N = 5**.
+  - **5** divides evenly into **Player 1's HP (50)**.
+  - Damage dealt: **2 × 5 = 10**.
+  - **Player 1's HP** is updated to **40**.
+  - *Player 2 aims for numbers that are factors of Player 1's HP to maximize damage.*
+
+### Sample Command-Line Interaction
+
+```
+[Turn 1] Player 1's HP: 100 | Player 2's HP: 100
+Player 1, choose a number (1-10): 7
+7 does not divide evenly into 100.
+You deal 7 damage to Player 2.
+Player 2's HP is now 93.
+
+[Turn 2] Player 1's HP: 100 | Player 2's HP: 93
+Player 2, choose a number (1-10): 9
+9 does not divide evenly into 100.
+You deal 9 damage to Player 1.
+Player 1's HP is now 91.
+
+[Turn 3] Player 1's HP: 91 | Player 2's HP: 93
+Player 1, choose a number (1-10): 7
+7 divides evenly into 91.
+Critical Strike! You deal 14 damage to Player 2.
+Player 2's HP is now 79.
+```
+
+## Additional Rules
+
+- **Invalid Input**: If a player selects a number outside the 1-10 range, prompt them to choose a valid number.
+- **Negative HP**: If a player's HP drops below zero, consider it as zero for game-ending purposes.
+- **No Healing**: There are no mechanisms for restoring HP.
+- **Conceding**: A player may concede at any time, resulting in a loss.
+
+## Strategic Tips
+
+- **Monitor Opponent's HP**: Choose numbers that are factors of their HP to maximize damage.
+- **Avoid Predictability**: Vary your number choices to keep your opponent guessing.
+- **Plan Ahead**: Anticipate how your choices affect future turns and potential critical strikes.
+- **Defensive Play**: Sometimes selecting numbers that prevent your HP from being divisible by common numbers can reduce the risk of receiving a critical strike.
+
+## Summary
+
+"Number Ninjas" is a fast-paced, turn-based strategy game that combines basic arithmetic with tactical decision-making. The game is easy to learn but offers strategic depth, rewarding players who think ahead and make calculated choices. With no possibility of a draw and straightforward mechanics, each game is quick and engaging, perfect for play in a command-line interface.
+
+---
+
+Enjoy battling wits and numbers in "Number Ninjas"! May the best strategist win.

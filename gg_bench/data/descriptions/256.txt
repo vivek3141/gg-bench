@@ -1,0 +1,146 @@
+# Divisor Duel
+
+## Objective
+
+Divisor Duel is a strategic two-player turn-based game centered around number manipulation. Players take turns dividing a shared composite number by its proper divisors, aiming to be the first to reduce the number to a prime number. The player who successfully brings the shared number down to a prime wins the game.
+
+## Setup
+
+1. **Starting Number**: The game begins with a predetermined composite number. For standard play, the starting number is **60**.
+2. **Divisors Awareness**: Both players are aware of all proper divisors of the starting number (excluding 1 and the number itself).
+
+## Game Components
+
+- **Shared Number**: A composite integer manipulated by both players throughout the game.
+- **Proper Divisors**: Divisors of the current shared number, greater than 1 and less than the number itself.
+- **Divisors Used List**: A record maintained during the game to track the divisors that have already been used. Once a divisor is used, it cannot be used again by either player.
+
+## Turns
+
+1. **Turn Order**: Decide who goes first by any fair method (e.g., coin toss).
+2. **Player Actions**:
+   - On their turn, a player must:
+     - Select an unused proper divisor of the current shared number.
+     - Divide the shared number by this divisor.
+   - The result of this division becomes the new shared number for the next turn.
+3. **Turn Progression**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Selecting Divisors**:
+   - Players can only choose proper divisors of the current shared number (excluding 1 and the number itself).
+   - The chosen divisor must divide the shared number evenly (no remainders).
+   - Divisors cannot be reused once they've been selected in previous turns.
+   
+2. **Dividing the Shared Number**:
+   - Perform the division using the selected divisor to obtain a new shared number.
+   - The new shared number must be a positive integer.
+   
+3. **Winning the Game**:
+   - If a player reduces the shared number to a prime number on their turn, they win the game.
+   
+4. **Losing the Game**:
+   - If a player cannot make a valid move because there are no unused proper divisors that divide evenly into the shared number, they lose the game.
+   
+5. **Restrictions**:
+   - Players cannot pass their turn; they must make a valid move if possible.
+   - If the shared number becomes 1 or cannot be reduced further by the rules, the current player loses.
+
+## Scoring
+
+- **Victory**: Achieved by reducing the shared number to a prime number on your turn.
+- **Defeat**: Results from being unable to perform a valid division on your turn.
+
+## Examples
+
+### Example 1: Standard Playthrough
+
+**Starting Shared Number**: 60
+
+**Unused Divisors at Start**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+
+**Turn 1 - Player 1**:
+- **Action**: Chooses divisor **6**.
+- **Calculation**: 60 ÷ 6 = **10**.
+- **New Shared Number**: 10.
+- **Divisors Used**: 6.
+
+**Turn 2 - Player 2**:
+- **Unused Divisors**: 2, 3, 4, 5, 10, 12, 15, 20, 30.
+- **Action**: Chooses divisor **2**.
+- **Calculation**: 10 ÷ 2 = **5**.
+- **New Shared Number**: 5 (prime).
+- **Divisors Used**: 6, 2.
+- **Result**: **Player 2 wins**.
+
+### Example 2: Extended Game
+
+**Starting Shared Number**: 60
+
+**Turn 1 - Player 1**:
+- **Action**: Chooses divisor **4**.
+- **Calculation**: 60 ÷ 4 = **15**.
+- **New Shared Number**: 15.
+- **Divisors Used**: 4.
+
+**Turn 2 - Player 2**:
+- **Action**: Chooses divisor **3**.
+- **Calculation**: 15 ÷ 3 = **5**.
+- **New Shared Number**: 5 (prime).
+- **Divisors Used**: 4, 3.
+- **Result**: **Player 2 wins**.
+
+### Example 3: No Valid Moves
+
+**Starting Shared Number**: 50
+
+**Turn 1 - Player 1**:
+- **Action**: Chooses divisor **5**.
+- **Calculation**: 50 ÷ 5 = **10**.
+- **New Shared Number**: 10.
+- **Divisors Used**: 5.
+
+**Turn 2 - Player 2**:
+- **Unused Divisors**: 2.
+- **Action**: Chooses divisor **2**.
+- **Calculation**: 10 ÷ 2 = **5**.
+- **New Shared Number**: 5 (prime).
+- **Divisors Used**: 5, 2.
+- **Result**: **Player 2 wins**.
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction for the game played via command-line:
+
+```
+Game Start! Shared Number is 60.
+
+Available Divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+Divisors Used: None
+
+Player 1's turn.
+Enter your divisor: 5
+You chose 5.
+60 ÷ 5 = 12
+Shared Number is now 12.
+Divisors Used: 5
+
+Available Divisors: 2, 3, 4, 6, 12
+Player 2's turn.
+Enter your divisor: 4
+You chose 4.
+12 ÷ 4 = 3
+Shared Number is now 3.
+Divisors Used: 5, 4
+Since 3 is a prime number, Player 2 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's moves by considering the possible divisors they may use.
+- **Control the Game**: Try to force the shared number into a state where only you have valid moves leading to a win.
+- **Avoid Unwanted Primes**: Be cautious not to reduce the shared number to a prime on your turn unless it results in your victory.
+
+---
+
+Enjoy playing Divisor Duel, and may the most strategic player win!

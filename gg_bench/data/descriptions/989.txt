@@ -1,0 +1,229 @@
+# Positive-Negative: A Two-Player Turn-Based Game
+
+## Objective
+
+Be the player with the highest total score at the end of the game by strategically choosing when to accept or reject drawn numbers. Use risk management and probability assessment to outscore your opponent.
+
+## Setup
+
+- **Deck Preparation**:
+  - Create a custom deck of 20 number cards ranging from **-10** to **-1** and **1** to **10**, excluding zero, with no duplicate numbers.
+  - Shuffle the deck thoroughly.
+- **Player Scores**:
+  - Both players start with a **score of 0**.
+- **Game Start**:
+  - Place the shuffled deck face down within reach of both players.
+
+## Game Components
+
+- **Number Cards**:
+  - **Positive Number Cards**: Numbers from **+1** to **+10**.
+  - **Negative Number Cards**: Numbers from **-1** to **-10**.
+- **Player Score Trackers**:
+  - Each player keeps track of their own cumulative score throughout the game.
+- **Discard Pile**:
+  - A place to put discarded cards, visible to both players.
+
+## Turns
+
+- **Turn Order**:
+  - Players take turns drawing cards, starting with **Player 1**.
+- **Turn Actions**:
+  - On your turn:
+    1. **Draw the Top Card**:
+       - Draw the top card from the deck.
+       - **Privately** view the card.
+    2. **Decide to Keep or Discard**:
+       - **Keep the Card**:
+         - Reveal the card to your opponent.
+         - Add its value to your score.
+       - **Discard the Card**:
+         - Place the card face up in the discard pile.
+         - **Mandatory Draw**:
+           - Immediately draw the next card from the deck.
+           - Reveal it to your opponent.
+           - Add its value to your score **regardless of its value**.
+- **Turn End**:
+  - After completing your action, your turn ends.
+  - Play passes to the other player.
+
+## Rules and Mechanics
+
+1. **Card Handling**:
+   - **All draws are from the top of the deck**; no peeking ahead.
+   - **Once a card is drawn**, you must decide to keep or discard before drawing again.
+2. **Keeping a Card**:
+   - When you keep a card, **add its value to your score immediately**.
+   - The card is shown to the opponent before being added to your score.
+3. **Discarding a Card**:
+   - You can choose to discard any drawn card.
+   - Place the discarded card face up in the discard pile.
+   - **Mandatory Second Draw**:
+     - You must draw the next card from the deck.
+     - **You cannot discard the mandatory second draw**.
+     - Add its value to your score regardless of whether it's positive or negative.
+4. **Deck Depletion**:
+   - The game continues until **all cards** have been drawn and actions taken.
+5. **End of Game**:
+   - Once the deck is exhausted, and all scores are tallied, the game ends.
+6. **Winning the Game**:
+   - The player with the **highest total score** at the end wins.
+   - In case of a tie, the game is a draw.
+
+## Scoring
+
+- **Positive Cards**:
+  - Increase your score by the value of the card.
+- **Negative Cards**:
+  - Decrease your score by the value of the card.
+- **Score Tracking**:
+  - Keep a running total of your score after each turn.
+  - Both players should be aware of each other's scores at all times.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- **Deck Order** (after shuffling): `[5, -3, 7, -2, 10, -5, 4, -6, 8, -1, 6, -9, 3, -7, 2, -8, 9, -4, 1, -10]`
+- **Player Scores**:
+  - Player 1: 0
+  - Player 2: 0
+
+---
+
+**Turn 1**: **Player 1**
+
+- **Draws:** `5`
+- **Decision:** Keeps the card.
+- **Action:** Adds `5` to their score.
+- **Scores**:
+  - Player 1: 5
+  - Player 2: 0
+
+---
+
+**Turn 2**: **Player 2**
+
+- **Draws:** `-3`
+- **Decision:** Discards the card.
+- **Action**:
+  - Places `-3` in the discard pile.
+  - **Mandatory Draw:** Draws `7`.
+  - Adds `7` to their score.
+- **Scores**:
+  - Player 1: 5
+  - Player 2: 7
+
+---
+
+**Turn 3**: **Player 1**
+
+- **Draws:** `-2`
+- **Decision:** Discards the card.
+- **Action**:
+  - Places `-2` in the discard pile.
+  - **Mandatory Draw:** Draws `10`.
+  - Adds `10` to their score.
+- **Scores**:
+  - Player 1: 15 (`5 + 10`)
+  - Player 2: 7
+
+---
+
+**Turn 4**: **Player 2**
+
+- **Draws:** `-5`
+- **Decision:** Discards the card.
+- **Action**:
+  - Places `-5` in the discard pile.
+  - **Mandatory Draw:** Draws `4`.
+  - Adds `4` to their score.
+- **Scores**:
+  - Player 1: 15
+  - Player 2: 11 (`7 + 4`)
+
+---
+
+**Game Continues** following the same pattern until all cards have been drawn.
+
+---
+
+**Final Scores**:
+
+- Player 1: **X**
+- Player 2: **Y**
+
+*(Scores will vary based on decisions made during the game.)*
+
+**Winner**:
+
+- The player with the higher final score wins.
+- If `X > Y`, Player 1 wins.
+- If `Y > X`, Player 2 wins.
+- If `X = Y`, the game is a draw.
+
+## Command-Line Interaction Example
+
+Below is how the game might proceed in a command-line interface.
+
+---
+
+**[Player 1's Turn]**
+
+- **System**: "It's your turn. Your current score is 5."
+- **System**: "You have drawn: **-2**"
+- **System**: "Do you want to keep this card? (yes/no)"
+- **Player 1**: "no"
+- **System**: "You discarded -2."
+- **System**: "You must draw the next card."
+- **System**: "You have drawn: **10**"
+- **System**: "You must add this card to your score."
+- **System**: "Your new score is 15."
+
+---
+
+**[Player 2's Turn]**
+
+- **System**: "It's your turn. Your current score is 7."
+- **System**: "You have drawn: **-5**"
+- **System**: "Do you want to keep this card? (yes/no)"
+- **Player 2**: "no"
+- **System**: "You discarded -5."
+- **System**: "You must draw the next card."
+- **System**: "You have drawn: **4**"
+- **System**: "You must add this card to your score."
+- **System**: "Your new score is 11."
+
+---
+
+*The game continues in this fashion until the deck is depleted.*
+
+---
+
+**[End of Game]**
+
+- **System**: "The deck is empty. Final scores are:"
+  - "Player 1: X"
+  - "Player 2: Y"
+- **System**:
+  - If `X > Y`: "Player 1 wins!"
+  - If `Y > X`: "Player 2 wins!"
+  - If `X = Y`: "It's a draw!"
+
+## Strategy Tips
+
+- **Risk Assessment**:
+  - Consider the ratio of positive to negative cards remaining in the deck.
+  - Discarding a negative card risks drawing an even worse card.
+- **Probability Management**:
+  - Keep track of discarded cards to estimate the likelihood of drawing positive or negative cards.
+- **Opponent Monitoring**:
+  - Observe your opponent's score to decide when to play conservatively or take risks.
+- **Endgame Planning**:
+  - Near the end of the deck, calculate potential outcomes based on remaining cards.
+
+## Summary
+
+Positive-Negative is a simple yet strategic game that tests players' risk management and decision-making skills. By carefully choosing when to accept or discard cards, players can outmaneuver their opponent and secure a higher score. The game's straightforward mechanics and quick pace make it ideal for command-line implementation and enjoyable for players seeking a blend of luck and strategy.

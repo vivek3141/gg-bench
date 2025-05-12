@@ -1,0 +1,178 @@
+**Sequence Duel**
+
+---
+
+**Objective**
+
+Sequence Duel is a two-player, turn-based game where players compete to be the first to create a sequence in which the sum of the last three numbers equals a predetermined target sum. The primary goal is to strategically select numbers to build this sequence while potentially blocking your opponent from doing the same. The player who successfully forms such a sequence first wins the game. There is no possibility of a draw.
+
+---
+
+**Setup**
+
+1. **Determine the Target Sum**: Before the game begins, both players agree on a target sum that the last three numbers in the sequence must add up to for a win (e.g., 15).
+
+2. **Starting Conditions**:
+   - The shared sequence starts empty.
+   - Both players have access to numbers 1 through 9 for selection each turn.
+
+3. **Player Positions**:
+   - Players decide who will take the first turn (Player 1 and Player 2) by mutual agreement or random selection.
+
+---
+
+**Game Components**
+
+1. **Numbers (1-9)**:
+   - Digits from 1 to 9 are the fundamental elements used in the game.
+   - All numbers are available to both players on every turn.
+   - Numbers can be reused multiple times throughout the game.
+
+2. **Shared Sequence**:
+   - A single sequence of numbers is shared between both players.
+   - The sequence grows as players alternately append numbers to it.
+   - The sequence is visible to both players at all times.
+
+3. **Target Sum**:
+   - A specific sum agreed upon before the game starts (e.g., 10, 12, 15).
+   - The objective revolves around achieving this sum with the last three numbers in the sequence.
+
+---
+
+**Turns**
+
+1. **Turn Order**:
+   - The game proceeds in alternating turns starting with Player 1.
+
+2. **Actions During a Turn**:
+   - **Select a Number**: The player chooses any number from 1 to 9.
+   - **Append to Sequence**: The chosen number is added to the end of the shared sequence.
+
+3. **Turn Progression**:
+   - After a player makes their move, the turn passes to the other player.
+   - The sequence continues to build with each turn until a win condition is met.
+
+---
+
+**Rules and Mechanics**
+
+1. **Number Selection**:
+   - Players may select any number from 1 to 9 on their turn.
+   - Numbers are not removed from play after being selected and can be chosen multiple times by either player.
+
+2. **Building the Sequence**:
+   - The game revolves around a single, continuous sequence.
+   - Each player's chosen number is added to the end of this sequence.
+
+3. **Winning Condition**:
+   - A player wins if, after their turn, the sum of the last three numbers in the sequence equals the target sum.
+   - Only the last three numbers are considered when checking for a win.
+   - The sequence must have at least three numbers before a win is possible.
+
+4. **No Draws or Stalemates**:
+   - The game continues indefinitely until a player meets the winning condition.
+   - There are no circumstances under which the game can end in a draw.
+
+5. **Strategy and Blocking**:
+   - Players must balance between advancing toward the target sum and preventing their opponent from reaching it.
+   - Strategic selection of numbers can block an opponent's potential to win on their next turn.
+
+6. **Invalid Moves**:
+   - All moves consist of selecting a number from 1 to 9 and are inherently valid.
+   - Players cannot skip a turn or pass; they must select a number on each turn.
+
+7. **Game End**:
+   - The game ends immediately when a player achieves the target sum with the last three numbers.
+   - The victorious player is declared the winner.
+
+---
+
+**Scoring**
+
+- The game does not utilize a point-based scoring system.
+- Victory is solely determined by fulfilling the winning condition.
+- The player who achieves the target sum with the last three numbers of the sequence wins the game.
+
+---
+
+**Examples**
+
+*Example 1: Target Sum is 15*
+
+- **Sequence Progression**:
+  1. **Player 1** chooses **5**. Sequence: **5**
+  2. **Player 2** chooses **7**. Sequence: **5, 7**
+  3. **Player 1** chooses **3**. Sequence: **5, 7, 3**
+     - Sum of last three numbers: **5 + 7 + 3 = 15**
+     - **Player 1 wins**
+
+*Example 2: Target Sum is 12*
+
+- **Sequence Progression**:
+  1. **Player 1** chooses **2**. Sequence: **2**
+  2. **Player 2** chooses **4**. Sequence: **2, 4**
+  3. **Player 1** chooses **6**. Sequence: **2, 4, 6**
+     - Sum: **2 + 4 + 6 = 12**
+     - **Player 1 wins**
+
+*Example 3: Target Sum is 10*
+
+- **Sequence Progression**:
+  1. **Player 1** chooses **1**. Sequence: **1**
+  2. **Player 2** chooses **2**. Sequence: **1, 2**
+  3. **Player 1** chooses **3**. Sequence: **1, 2, 3**
+     - Sum: **1 + 2 + 3 = 6** (No win)
+  4. **Player 2** chooses **4**. Sequence: **1, 2, 3, 4**
+     - Sum of last three: **2 + 3 + 4 = 9** (No win)
+  5. **Player 1** chooses **5**. Sequence: **1, 2, 3, 4, 5**
+     - Sum of last three: **3 + 4 + 5 = 12** (No win)
+  6. **Player 2** chooses **2**. Sequence: **1, 2, 3, 4, 5, 2**
+     - Sum of last three: **4 + 5 + 2 = 11** (No win)
+  7. **Player 1** chooses **2**. Sequence: **1, 2, 3, 4, 5, 2, 2**
+     - Sum of last three: **5 + 2 + 2 = 9** (No win)
+  8. **Player 2** chooses **3**. Sequence: **1, 2, 3, 4, 5, 2, 2, 3**
+     - Sum of last three: **2 + 2 + 3 = 7** (No win)
+  9. **Player 1** chooses **5**. Sequence: **1, 2, 3, 4, 5, 2, 2, 3, 5**
+     - Sum of last three: **2 + 3 + 5 = 10**
+     - **Player 1 wins**
+
+---
+
+**Sample Command-Line Interaction**
+
+*Assuming the target sum is 12.*
+
+```
+Game Start: Target Sum is 12
+
+Sequence: 
+Player 1's turn. Choose a number (1-9): 3
+
+Sequence: 3
+Player 2's turn. Choose a number (1-9): 5
+
+Sequence: 3, 5
+Player 1's turn. Choose a number (1-9): 4
+
+Sequence: 3, 5, 4
+Sum of last three numbers: 3 + 5 + 4 = 12
+Player 1 wins!
+```
+
+---
+
+**Strategic Tips**
+
+- **Anticipate Opponent Moves**: Pay attention to the sequence progression to anticipate which numbers your opponent might choose next.
+
+- **Control the Sum**: Aim to select numbers that contribute to your potential winning sum while preventing the opponent from achieving theirs.
+
+- **Flexibility**: Be prepared to adjust your strategy based on the numbers added to the sequence.
+
+- **Calculation**: Continuously calculate the sum of the last two numbers to determine which number you need to select to achieve the target sum.
+
+---
+
+**Summary**
+
+Sequence Duel is a simple yet strategic game that requires players to think ahead and make calculated choices. With straightforward rules and minimal components, it is easy to code for a command-line interface and engages players in quick, competitive play. The game's unique mechanics ensure that each match is dynamic, and skilled players can consistently outmaneuver less experienced opponents.

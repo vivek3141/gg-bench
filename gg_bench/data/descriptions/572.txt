@@ -1,0 +1,278 @@
+# Number Stack Duel
+
+## Objective
+
+Be the first player to build a stack of numbers that sums **exactly to 10** without exceeding it. Alternatively, force your opponent to exceed a sum of 10 on their stack, causing them to lose.
+
+---
+
+## Setup
+
+- **Players**: Two players are required.
+- **Stacks**: Each player starts with an empty stack.
+- **Number Pool**: An unlimited supply of numbers ranging from **1 to 4** is available for both players to draw from.
+
+---
+
+## Game Components
+
+### Player Stacks
+
+- Each player has their own stack where numbers are placed.
+- Stacks start empty and grow as numbers are added.
+- The sum of the numbers in a player's stack is their **stack total**.
+
+### Number Pool
+
+- Numbers **1**, **2**, **3**, and **4**.
+- Unlimited copies of each number are available.
+- Numbers are used to build stacks and perform attacks.
+
+### Stack Sum Tracker
+
+- Players keep track of their own stack totals.
+- Monitoring the opponent's stack total is crucial for strategic play.
+
+---
+
+## Turns
+
+- Players take turns **alternately**.
+- On each turn, a player must choose one of the following actions:
+
+  1. **Add Number**: Add a number to the top of their own stack.
+  2. **Attack**: Remove the top number from the opponent's stack under certain conditions.
+
+---
+
+## Rules and Mechanics
+
+### Adding Numbers
+
+- **Choose a Number**: Select a number from **1** to **4**.
+- **Add to Stack**: Place the chosen number on top of your stack.
+- **Update Total**: Add the number to your stack total.
+- **Bust Condition**: If your stack total **exceeds 10**, you **immediately lose** the game.
+
+### Attacking
+
+- **Conditions to Attack**:
+
+  - Your stack must **not be empty**.
+  - The opponent's stack must **not be empty**.
+  - The **top number** of your stack must **match** the top number of the opponent's stack.
+
+- **Performing an Attack**:
+
+  - Remove the top number from the opponent's stack.
+  - Your own stack remains **unchanged**.
+  - The opponent's stack total is updated accordingly.
+
+- **Strategic Use**:
+
+  - Use attacks to lower the opponent's stack total.
+  - Prevent the opponent from reaching a total of 10.
+
+### Winning the Game
+
+- **Victory Conditions**:
+
+  - **Achieve a Stack Total of 10**: If, after adding a number, your stack total is exactly **10**, you **win**.
+  - **Opponent Bust**: If your opponent's stack total **exceeds 10**, they lose, and you **win**.
+  
+- **Losing the Game**:
+
+  - **Bust**: If your own stack total exceeds 10, you **immediately lose**.
+
+---
+
+## Scoring
+
+- There is no point system.
+- The game is won by meeting the victory conditions outlined above.
+- The game ends immediately when a player wins or loses.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Starting State
+
+- **Player 1's Stack**: Empty, Total = 0
+- **Player 2's Stack**: Empty, Total = 0
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Add Number
+- **Number Chosen**: 3
+- **Player 1's Stack**: [3], Total = 3
+
+#### Turn 2: Player 2
+
+- **Action**: Add Number
+- **Number Chosen**: 4
+- **Player 2's Stack**: [4], Total = 4
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Add Number
+- **Number Chosen**: 4
+- **Player 1's Stack**: [3, 4], Total = 7
+
+#### Turn 4: Player 2
+
+- **Action**: Attack
+- **Condition**: Player 2's top number (4) matches Player 1's top number (4)
+- **Result**: Player 1's top number removed
+- **Player 1's Stack**: [3], Total = 3
+- **Player 2's Stack**: [4], Total = 4
+
+---
+
+#### Turn 5: Player 1
+
+- **Action**: Add Number
+- **Number Chosen**: 7
+- **Invalid Choice**: Number must be between 1 and 4
+- **Corrected Action**: Add Number
+- **Number Chosen**: 4
+- **Player 1's Stack**: [3, 4], Total = 7
+
+#### Turn 6: Player 2
+
+- **Action**: Add Number
+- **Number Chosen**: 4
+- **Player 2's Stack**: [4, 4], Total = 8
+
+---
+
+#### Turn 7: Player 1
+
+- **Action**: Attack
+- **Condition**: Player 1's top number (4) matches Player 2's top number (4)
+- **Result**: Player 2's top number removed
+- **Player 2's Stack**: [4], Total = 4
+
+#### Turn 8: Player 2
+
+- **Action**: Add Number
+- **Number Chosen**: 6
+- **Invalid Choice**: Number must be between 1 and 4
+- **Corrected Action**: Add Number
+- **Number Chosen**: 2
+- **Player 2's Stack**: [4, 2], Total = 6
+
+---
+
+#### Turn 9: Player 1
+
+- **Action**: Add Number
+- **Number Chosen**: 3
+- **Player 1's Stack**: [3, 4, 3], Total = 10
+- **Result**: Player 1 wins by reaching exactly 10!
+
+---
+
+## Command-Line Interaction Example
+
+### Turn Structure
+
+1. **Prompt Action**:
+
+   ```
+   Player [X], choose your action:
+   1. Add Number
+   2. Attack
+   Enter the number of your chosen action:
+   ```
+
+2. **Perform Action**:
+
+   - **Add Number**:
+
+     ```
+     Choose a number to add to your stack (1-4):
+     ```
+
+   - **Attack**:
+
+     - System checks if attack conditions are met.
+     - If valid, performs attack.
+     - If invalid, displays an error and prompts for action again.
+
+### Sample Turn
+
+#### Player 1's Turn
+
+```
+Player 1, choose your action:
+1. Add Number
+2. Attack
+Enter the number of your chosen action: 1
+Choose a number to add to your stack (1-4): 3
+You added 3 to your stack. Your stack total is now 3.
+```
+
+#### Player 2's Turn
+
+```
+Player 2, choose your action:
+1. Add Number
+2. Attack
+Enter the number of your chosen action: 1
+Choose a number to add to your stack (1-4): 4
+You added 4 to your stack. Your stack total is now 4.
+```
+
+#### Subsequent Turns
+
+- Continue alternating turns following the same structure.
+- The system should update and display stack totals after each action.
+- Announce the winner immediately when a victory condition is met.
+
+---
+
+## Ensure Fair Play
+
+- **Input Validation**: The system should validate all player inputs.
+- **Visibility**: Players should be able to see the contents and totals of both stacks at all times.
+- **Honesty**: Trust that both players and the system maintain integrity in tracking stack totals.
+
+---
+
+## Strategic Depth
+
+- **Number Selection**:
+
+  - Choose numbers that move you closer to a total of 10 without overshooting.
+  - Anticipate the potential for the opponent to attack.
+
+- **Attacking**:
+
+  - Use attacks to disrupt the opponent's progress.
+  - Be mindful of leaving yourself open to attacks by matching the opponent's top number.
+
+- **Bluffing**:
+
+  - Sometimes adding a number that matches the opponent's top number can bait them into an unwise attack.
+
+- **Risk Management**:
+
+  - Avoid pushing your stack total too high too quickly.
+  - Keep options open for low-number additions in later turns.
+
+---
+
+## Summary
+
+"Number Stack Duel" is a simple yet strategic game that tests players' decision-making and foresight. By carefully choosing numbers to add and timing attacks, players can outmaneuver their opponent to achieve a stack total of exactly 10. The game is quick to play and easy to implement in a command-line interface, making it accessible and engaging for players of all skill levels.
+
+---
+
+Enjoy the game, and may the best strategist win!

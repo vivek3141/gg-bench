@@ -1,0 +1,151 @@
+# Sum Trap
+
+## Objective
+
+Be the first to force your opponent into a position where any available move will cause the cumulative total to reach or exceed **50**. The player who causes the total to reach or exceed 50 **loses** the game.
+
+## Setup
+
+1. **Cumulative Total**: Initialize the cumulative total to **0**.
+2. **Number Pool**: Create a shared pool of numbers from **1** to **10**. Each number can be used only **once** per game.
+
+## Game Components
+
+- **Cumulative Total**: A running total of numbers added by both players, starting at 0.
+- **Number Pool**: Numbers **1** through **10**, each available once per game.
+- **Players**: Two players take turns selecting numbers from the number pool.
+
+## Turns
+
+1. **Determine First Player**: Players decide who goes first (e.g., by coin toss).
+2. **Taking Turns**: Players alternate turns throughout the game.
+3. **Selecting a Number**:
+   - On their turn, a player selects an available number from the number pool.
+   - The selected number is added to the cumulative total.
+   - The chosen number is then removed from the number pool.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must select a number from the available numbers in the pool.
+   - Each number from **1** to **10** can be selected only once during the game.
+2. **Updating the Total**:
+   - Add the selected number to the cumulative total immediately.
+   - Announce or display the new cumulative total after each turn.
+3. **Winning and Losing**:
+   - **Objective**: Avoid being the player who causes the cumulative total to reach or exceed **50**.
+   - **Winning**: If your opponent has no valid moves without reaching or exceeding **50**, you win.
+   - **Losing**: If you select a number that brings the total to **50** or more, you lose.
+4. **End of Game Conditions**:
+   - The game ends immediately when the cumulative total reaches or exceeds **50**.
+   - If all numbers have been used and the cumulative total is below **50**, the player who made the last move **loses** the game.
+
+## Scoring
+
+- There is no point system.
+- The outcome is a straightforward **win** or **loss**.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+- Cumulative Total: 0
+- Numbers Available: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+#### Turn 1
+- **Player 1** selects **9**.
+- Cumulative Total: 0 + 9 = **9**
+- Numbers Available: 1, 2, 3, 4, 5, 6, 7, 8, 10
+
+#### Turn 2
+- **Player 2** selects **8**.
+- Cumulative Total: 9 + 8 = **17**
+- Numbers Available: 1, 2, 3, 4, 5, 6, 7, 10
+
+#### Turn 3
+- **Player 1** selects **10**.
+- Cumulative Total: 17 + 10 = **27**
+- Numbers Available: 1, 2, 3, 4, 5, 6, 7
+
+#### Turn 4
+- **Player 2** selects **7**.
+- Cumulative Total: 27 + 7 = **34**
+- Numbers Available: 1, 2, 3, 4, 5, 6
+
+#### Turn 5
+- **Player 1** selects **6**.
+- Cumulative Total: 34 + 6 = **40**
+- Numbers Available: 1, 2, 3, 4, 5
+
+#### Turn 6
+- **Player 2** selects **5**.
+- Cumulative Total: 40 + 5 = **45**
+- Numbers Available: 1, 2, 3, 4
+
+#### Turn 7
+- **Player 1** selects **4**.
+- Cumulative Total: 45 + 4 = **49**
+- Numbers Available: 1, 2, 3
+
+#### Turn 8
+- **Player 2** has the numbers 1, 2, and 3 to choose from.
+- Any choice will cause the total to reach or exceed 50.
+- **Player 2** cannot avoid the loss.
+- **Player 2 loses** the game.
+
+## Command-Line Interaction Example
+
+```plaintext
+Welcome to Sum Trap!
+
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+Cumulative Total: 0
+
+Player 1's Turn:
+Select a number to add (1-10): 9
+You chose 9.
+New Cumulative Total: 9
+
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 10
+Cumulative Total: 9
+
+Player 2's Turn:
+Select a number to add (1-10): 8
+You chose 8.
+New Cumulative Total: 17
+
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 10
+Cumulative Total: 17
+
+Player 1's Turn:
+Select a number to add (1-10): 10
+You chose 10.
+New Cumulative Total: 27
+
+... (game continues)
+
+Available Numbers: 1, 2, 3
+Cumulative Total: 49
+
+Player 2's Turn:
+Select a number to add (1-10): 1
+You chose 1.
+New Cumulative Total: 50
+
+Cumulative total has reached 50.
+Player 2 loses the game. Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of the cumulative total and the remaining numbers to anticipate future moves.
+- **Control the Game**: Try to force the cumulative total into a range where your opponent has no safe options.
+- **Number Awareness**: Be mindful of which numbers have been used to avoid unexpected outcomes.
+- **Going First**: Decide strategically whether to go first or second based on your gameplay style.
+
+## Summary
+
+Sum Trap is a quick and simple game that requires strategic thinking and foresight. Players must carefully choose numbers to control the cumulative total and force their opponent into an impossible position. With easy-to-understand rules and the requirement for skillful play, Sum Trap offers engaging gameplay suitable for a command-line interface.
+
+Enjoy the challenge and may the best strategist win!

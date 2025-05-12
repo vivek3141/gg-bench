@@ -1,0 +1,119 @@
+# Number Battle: Rule Book
+
+## Objective
+
+**Number Battle** is a strategic two-player turn-based game where players aim to reduce their opponent's Health Points (HP) to zero or less by selecting numbers from a shared pool. The primary goal is to outmaneuver your opponent by choosing numbers that maximize damage while limiting their options. The first player to reduce their opponent's HP to zero or below wins the game.
+
+## Setup
+
+1. **Health Points**: Each player starts with **15 HP**.
+2. **Number Pool**: A shared pool of numbers from **1 to 9** is established at the beginning of the game:
+   ```
+   Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+   ```
+
+## Game Components
+
+- **Health Points (HP)**: Represents each player's vitality. When a player's HP reaches zero or less, they lose the game.
+- **Number Pool**: A list of numbers from 1 to 9 that players can select from during their turns.
+- **Player Indicators**: Labels to distinguish between **Player 1** and **Player 2** during gameplay.
+- **Command-Line Interface**: The game is played via text input and output in a command-line environment.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., by coin toss or mutual agreement). Players then alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Display Status**: At the start of each turn, the game displays both players' current HP and the available numbers in the pool.
+  2. **Select Number**: The active player selects a number from the available pool.
+  3. **Apply Damage**: The selected number is subtracted from the opponent's HP.
+  4. **Update Pool**: The chosen number is removed from the pool.
+  5. **Check for Victory**: If the opponent's HP is reduced to zero or less, the active player wins.
+  6. **End Turn**: If no victory condition is met, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On their turn, a player must select **one** number from the available pool.
+   - Only numbers present in the pool can be selected.
+2. **Applying Damage**:
+   - The opponent's HP is reduced by the **value of the selected number**.
+   - Example: If Player 1 selects **7**, Player 2's HP is reduced by **7**.
+3. **Number Pool Management**:
+   - Once a number is selected, it is **removed** from the pool and cannot be selected again by either player.
+4. **Winning the Game**:
+   - A player wins when their opponent's HP reaches **zero or less** after applying damage.
+5. **No Skipping Turns**:
+   - Players **cannot skip** their turn; they must select a number if any are available.
+6. **End of Numbers**:
+   - If all numbers have been used and both players still have HP remaining, the game continues without further moves until a player's HP naturally reaches zero or less, which is not possible under standard play. Therefore, the game cannot end in a draw.
+
+## Scoring
+
+- **Victory**: The winning player is the one who reduces their opponent's HP to zero or below.
+- **Health Remaining**: Players may keep track of their remaining HP to analyze performance and strategy effectiveness for future games.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup
+- **Player 1 HP**: 15
+- **Player 2 HP**: 15
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+#### Turn 1: Player 1
+- **Action**: Player 1 selects **9**.
+- **Effect**: Player 2's HP reduces from 15 to **6** (15 - 9).
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8
+
+#### Turn 2: Player 2
+- **Action**: Player 2 selects **8**.
+- **Effect**: Player 1's HP reduces from 15 to **7** (15 - 8).
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7
+
+#### Turn 3: Player 1
+- **Action**: Player 1 selects **7**.
+- **Effect**: Player 2's HP reduces from 6 to **-1** (6 - 7).
+- **Outcome**: Player 2's HP is below zero. **Player 1 wins**.
+
+### Command-Line Interaction Example
+
+```
+--- Number Battle ---
+Player 1 HP: 15
+Player 2 HP: 15
+Available Numbers: 1,2,3,4,5,6,7,8,9
+
+Player 1's turn.
+Select a number from the available pool: 9
+
+Player 1 chose 9.
+Player 2's HP is now 6.
+Available Numbers: 1,2,3,4,5,6,7,8
+
+Player 2's turn.
+Select a number from the available pool: 8
+
+Player 2 chose 8.
+Player 1's HP is now 7.
+Available Numbers: 1,2,3,4,5,6,7
+
+Player 1's turn.
+Select a number from the available pool: 7
+
+Player 1 chose 7.
+Player 2's HP is now -1.
+
+Player 2 has been defeated!
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **High-Value Numbers Early**: Selecting higher numbers early can quickly reduce your opponent's HP but may leave you with low-value options later.
+- **Anticipate Opponent Moves**: Pay attention to the remaining numbers to predict potential damage your opponent can inflict.
+- **Balance Offense and Defense**: While dealing maximum damage is crucial, consider conserving certain numbers to control the flow of the game.
+
+---
+
+By mastering number selection and anticipating your opponent's moves, you can develop winning strategies to consistently outperform less experienced players in **Number Battle**.

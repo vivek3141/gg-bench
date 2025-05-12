@@ -1,0 +1,269 @@
+# Number Sequence Showdown: Rule Book
+
+## Objective
+
+**Number Sequence Showdown** is a two-player, turn-based game. The primary goal is to be the last player to successfully add a valid number to the sequence according to the game's rules. By strategically selecting numbers, you aim to force your opponent into a position where they cannot make a valid move, thereby securing your victory.
+
+## Setup
+
+- **Starting the Game:**
+  - Begin with an **empty sequence**.
+  - Determine who will take the first turn (e.g., coin toss, mutual agreement).
+
+## Game Components
+
+- **Sequence List:**
+  - A list that records the numbers played during the game.
+- **Available Numbers:**
+  - Integers from **1 to 100**, inclusive.
+- **Players:**
+  - Two players who will alternate turns.
+
+## Turns
+
+- **Turn Order:**
+  - Players alternate turns throughout the game.
+- **Turn Actions:**
+  - On your turn, you must add a valid number to the sequence following the game rules.
+
+## Rules and Mechanics
+
+### 1. First Turn
+
+- The first player selects **any integer** between **1 and 100** to start the sequence.
+- This number is added to the sequence list.
+
+### 2. Subsequent Turns
+
+- Each subsequent number must satisfy the following conditions:
+  - It must be a **divisor** or a **multiple** of the **immediately preceding number** in the sequence.
+  - It must be an integer between **1 and 100**, inclusive.
+  - It **cannot** be a number that has already been used in the sequence.
+  - It **cannot** be the same as the immediately preceding number (no consecutive repeats).
+
+### 3. Valid Moves
+
+- **Divisors:**
+  - A number that divides the previous number **evenly** (without leaving a remainder).
+  - Example: Divisors of **10** are **1, 2, 5, 10**.
+- **Multiples:**
+  - A number that the previous number divides into **evenly**.
+  - Example: Multiples of **10** up to **100** are **10, 20, 30, ..., 100**.
+- **Exclusions:**
+  - Numbers already used in the sequence cannot be selected again.
+  - The same number cannot be played on consecutive turns.
+
+### 4. Winning the Game
+
+- **Winning Condition:**
+  - You win if your opponent cannot make a valid move on their turn.
+- **Invalid Moves:**
+  - If you make an invalid move (violate any game rule), you **immediately lose** the game.
+
+## Scoring
+
+- **Single-Round Victory:**
+  - The game is won by the player who successfully forces their opponent into an inability to make a valid move.
+- **Match Play (Optional):**
+  - Players can agree to play multiple rounds.
+  - Keep track of victories to determine an overall winner after a set number of rounds.
+
+## Examples
+
+### Sample Game Play
+
+#### Starting the Game
+
+- **Player 1's Turn:**
+  - Chooses **16** to start the sequence.
+  - Sequence: **[16]**
+
+#### Continuing the Game
+
+- **Player 2's Turn:**
+  - Previous number: **16**
+  - Valid choices (divisors and multiples of **16**, excluding **16** and numbers >100):
+    - Divisors: **1, 2, 4, 8**
+    - Multiples: **32, 48, 64, 80, 96**
+  - Chooses **8**
+  - Sequence: **[16, 8]**
+
+- **Player 1's Turn:**
+  - Previous number: **8**
+  - Valid choices:
+    - Divisors: **1, 2, 4**
+    - Multiples: **16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96**
+    - Excluding used numbers: **16, 8**
+  - Chooses **4**
+  - Sequence: **[16, 8, 4]**
+
+#### Mid-Game
+
+- **Player 2's Turn:**
+  - Previous number: **4**
+  - Valid choices:
+    - Divisors: **1, 2**
+    - Multiples: **8, 12, 16, 20, ..., 100**
+    - Excluding used numbers: **16, 8, 4**
+  - Chooses **2**
+  - Sequence: **[16, 8, 4, 2]**
+
+- **Player 1's Turn:**
+  - Previous number: **2**
+  - Valid choices:
+    - Divisors: **1**
+    - Multiples: **4, 6, 8, ..., 100**
+    - Excluding used numbers: **16, 8, 4, 2**
+  - Chooses **6**
+  - Sequence: **[16, 8, 4, 2, 6]**
+
+#### End-Game Scenario
+
+- **Player 2's Turn:**
+  - Previous number: **6**
+  - Valid choices:
+    - Divisors: **1, 2, 3**
+    - Multiples: **12, 18, 24, ..., 96**
+    - Excluding used numbers: **16, 8, 4, 2, 6**
+  - Chooses **3**
+  - Sequence: **[16, 8, 4, 2, 6, 3]**
+
+- **Player 1's Turn:**
+  - Previous number: **3**
+  - Valid choices:
+    - Divisors: **1**
+    - Multiples: **6, 9, 12, ..., 99**
+    - Excluding used numbers: **16, 8, 4, 2, 6, 3**
+  - Chooses **9**
+  - Sequence: **[16, 8, 4, 2, 6, 3, 9]**
+
+- **Player 2's Turn:**
+  - Previous number: **9**
+  - Valid choices:
+    - Divisors: **1, 3**
+    - Multiples: **18, 27, 36, ..., 99**
+    - Excluding used numbers: **16, 8, 4, 2, 6, 3, 9**
+  - Chooses **18**
+  - Sequence: **[16, 8, 4, 2, 6, 3, 9, 18]**
+
+- **Player 1's Turn:**
+  - Previous number: **18**
+  - Valid choices:
+    - Divisors: **1, 2, 3, 6, 9**
+    - Multiples: **36, 54, 72, 90**
+    - Excluding used numbers: **16, 8, 4, 2, 6, 3, 9, 18**
+  - Chooses **36**
+  - Sequence: **[16, 8, 4, 2, 6, 3, 9, 18, 36]**
+
+- **Player 2's Turn:**
+  - Previous number: **36**
+  - Valid choices:
+    - Divisors: **1, 2, 3, 4, 6, 9, 12, 18**
+    - Multiples: **72**
+    - Excluding used numbers: **16, 8, 4, 2, 6, 3, 9, 18, 36**
+  - Chooses **12**
+  - Sequence: **[16, 8, 4, 2, 6, 3, 9, 18, 36, 12]**
+
+- **Player 1's Turn:**
+  - Previous number: **12**
+  - Valid choices:
+    - Divisors: **1, 2, 3, 4, 6**
+    - Multiples: **24, 36, 48, 60, 72, 84, 96**
+    - Excluding used numbers: **16, 8, 4, 2, 6, 3, 9, 18, 36, 12**
+  - All valid numbers are either used or exceed 100.
+  - **Player 1 cannot make a valid move and loses the game.**
+
+### Command-Line Interaction Sample
+
+```plaintext
+Welcome to Number Sequence Showdown!
+Available numbers: 1 to 100
+
+Player 1, please start the sequence by choosing a number between 1 and 100:
+> Player 1 inputs: 15
+Sequence: [15]
+
+Player 2, choose a divisor or multiple of 15, excluding used numbers.
+Valid options:
+- Divisors: 1, 3, 5
+- Multiples: 30, 45, 60, 75, 90
+Your choice:
+> Player 2 inputs: 5
+Sequence: [15, 5]
+
+Player 1, choose a divisor or multiple of 5, excluding used numbers.
+Valid options:
+- Divisors: 1
+- Multiples: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100
+Your choice:
+> Player 1 inputs: 25
+Sequence: [15, 5, 25]
+
+Player 2, choose a divisor or multiple of 25, excluding used numbers.
+Valid options:
+- Divisors: 1, 5
+- Multiples: 50, 75, 100
+Your choice:
+> Player 2 inputs: 50
+Sequence: [15, 5, 25, 50]
+
+Player 1, choose a divisor or multiple of 50, excluding used numbers.
+Valid options:
+- Divisors: 1, 2, 5, 10, 25
+- Multiples: 100
+Your choice:
+> Player 1 inputs: 100
+Sequence: [15, 5, 25, 50, 100]
+
+Player 2, choose a divisor or multiple of 100, excluding used numbers.
+Valid options:
+- Divisors: 1, 2, 4, 5, 10, 20, 25, 50
+- Multiples: None (since 100 is the maximum number)
+Your choice:
+> Player 2 inputs: 20
+Sequence: [15, 5, 25, 50, 100, 20]
+
+Player 1, choose a divisor or multiple of 20, excluding used numbers.
+Valid options:
+- Divisors: 1, 2, 4, 5, 10
+- Multiples: 40, 60, 80
+Your choice:
+> Player 1 inputs: 80
+Sequence: [15, 5, 25, 50, 100, 20, 80]
+
+Player 2, choose a divisor or multiple of 80, excluding used numbers.
+Valid options:
+- Divisors: 1, 2, 4, 5, 8, 10, 16, 20, 40
+- Multiples: None (exceeds 100)
+Your choice:
+> Player 2 inputs: 16
+Sequence: [15, 5, 25, 50, 100, 20, 80, 16]
+
+Player 1, choose a divisor or multiple of 16....
+(Continue the game following the same pattern)
+
+```
+
+### End of Game Scenario
+
+- If a player cannot make a valid move on their turn, they lose, and the opponent wins.
+- If all valid numbers are exhausted, and it's a player's turn, that player loses.
+
+## Strategy Tips
+
+- **Think Ahead:**
+  - Anticipate the possible numbers your opponent can play based on your move.
+- **Control the Sequence:**
+  - Choose numbers with fewer divisors and multiples to limit your opponent's options.
+- **Avoid Repeats:**
+  - Remember the numbers that have been used to prevent accidental repeats.
+- **Balance Divisors and Multiples:**
+  - Use both divisors and multiples strategically to navigate the sequence.
+
+## Conclusion
+
+**Number Sequence Showdown** offers strategic depth and requires players to think critically about numeric relationships. By mastering the rules and employing tactical play, you can outmaneuver your opponent and claim victory. Enjoy the challenge and have fun enhancing your numerical prowess!
+
+---
+
+Happy gaming!

@@ -1,0 +1,271 @@
+**Game Name:** Multiplication Duel
+
+---
+
+### **Objective**
+
+Multiplication Duel is a strategic two-player, turn-based game played in a command-line interface. The goal is to compel your opponent to exceed a target number by sequentially multiplying a shared current number. Players take turns multiplying the current number by an integer between 2 and 9 (inclusive). The player who causes the current number to exceed **1,000** loses the game.
+
+---
+
+### **Setup**
+
+1. **Starting the Game:**
+   - The shared **Current Number** is initialized to **1**.
+   - Decide which player will take the first turn (Player 1 and Player 2).
+
+2. **Game Environment:**
+   - The game is played in a command-line interface where players input their chosen multipliers when prompted.
+
+---
+
+### **Game Components**
+
+- **Current Number:**
+  - A shared integer value that starts at **1** and is updated every turn based on player actions.
+
+- **Allowed Multipliers:**
+  - Integers from **2** to **9**, inclusive.
+  - These are the only valid numbers players can use to multiply the Current Number.
+
+- **Target Number:**
+  - The threshold value of **1,000**.
+  - Players aim to keep the Current Number at or below this value.
+
+- **Players:**
+  - **Player 1** and **Player 2**, who alternate turns throughout the game.
+
+---
+
+### **Turns**
+
+1. **Turn Order:**
+   - The game proceeds in alternating turns starting with Player 1.
+
+2. **Player Actions During a Turn:**
+   - **Input Multiplier:**
+     - When prompted, the player selects an integer between **2** and **9**.
+     - Input is provided via the command line.
+   - **Update Current Number:**
+     - Multiply the Current Number by the chosen multiplier.
+     - The result becomes the new Current Number.
+
+3. **Progression of Turns:**
+   - After a player's turn, control passes to the other player unless the game-ending condition is met.
+   - The game continues until the Current Number exceeds **1,000**.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Selecting a Multiplier:**
+   - On each turn, a player must choose a valid multiplier (an integer from **2** to **9**).
+   - If an invalid multiplier is chosen (outside the allowed range), the player is prompted again.
+   - No penalties are imposed for invalid inputs, but the turn cannot proceed until a valid input is provided.
+
+2. **Updating the Current Number:**
+   - The Current Number is updated by multiplying it with the chosen multiplier.
+   - **Formula:** `Current Number = Current Number × Multiplier`
+
+3. **Winning and Losing Conditions:**
+   - **Loss Condition:**
+     - If a player's action causes the Current Number to exceed **1,000**, that player **loses** the game.
+   - **Win Condition:**
+     - The opposing player is declared the **winner**.
+   - **Continuation Condition:**
+     - If the Current Number equals exactly **1,000**, the game continues.
+     - Players must still avoid exceeding the Target Number on subsequent turns.
+
+4. **No Draws:**
+   - The game cannot end in a draw; there is always a winner and a loser.
+
+5. **Strategy:**
+   - Players should plan ahead to avoid exceeding the Target Number.
+   - Anticipate possible multipliers that the opponent can use on their next turn.
+
+---
+
+### **Scoring**
+
+- There is no point-based scoring system.
+- The outcome is determined by the win or loss condition.
+- **Winning the Game:**
+  - Successfully forcing your opponent to exceed the Target Number results in a win.
+- **Losing the Game:**
+  - Causing the Current Number to exceed **1,000** on your turn results in a loss.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+*This example illustrates a sample game with command-line interactions.*
+
+**Starting the Game:**
+
+- **Current Number:** 1
+- **Player 1** begins the game.
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Number:** 1
+- **Action:**
+  - Prompt: `Player 1, enter your multiplier (2-9):`
+  - Input: `5`
+- **Calculation:**
+  - `1 × 5 = 5`
+- **Updated Current Number:** 5
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Number:** 5
+- **Action:**
+  - Prompt: `Player 2, enter your multiplier (2-9):`
+  - Input: `9`
+- **Calculation:**
+  - `5 × 9 = 45`
+- **Updated Current Number:** 45
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Number:** 45
+- **Action:**
+  - Prompt: `Player 1, enter your multiplier (2-9):`
+  - Input: `2`
+- **Calculation:**
+  - `45 × 2 = 90`
+- **Updated Current Number:** 90
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Number:** 90
+- **Action:**
+  - Prompt: `Player 2, enter your multiplier (2-9):`
+  - Input: `9`
+- **Calculation:**
+  - `90 × 9 = 810`
+- **Updated Current Number:** 810
+
+---
+
+**Turn 5: Player 1**
+
+- **Current Number:** 810
+- **Action:**
+  - Prompt: `Player 1, enter your multiplier (2-9):`
+  - Input: `2`
+- **Calculation:**
+  - `810 × 2 = 1,620`
+- **Updated Current Number:** 1,620
+- **Result:** Current Number exceeds 1,000.
+
+---
+
+**Game Over:**
+
+- **Player 1** caused the Current Number to exceed **1,000**.
+- **Player 2** is declared the winner.
+
+---
+
+#### **Strategic Play Example**
+
+*This example demonstrates strategic decision-making to force a win.*
+
+**Starting the Game:**
+
+- **Current Number:** 1
+- **Player 1** begins the game.
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Number:** 1
+- **Action:**
+  - Prompt: `Player 1, enter your multiplier (2-9):`
+  - Input: `7`
+- **Calculation:**
+  - `1 × 7 = 7`
+- **Updated Current Number:** 7
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Number:** 7
+- **Action:**
+  - Prompt: `Player 2, enter your multiplier (2-9):`
+  - Input: `9`
+- **Calculation:**
+  - `7 × 9 = 63`
+- **Updated Current Number:** 63
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Number:** 63
+- **Action:**
+  - Prompt: `Player 1, enter your multiplier (2-9):`
+  - Input: `8`
+- **Calculation:**
+  - `63 × 8 = 504`
+- **Updated Current Number:** 504
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Number:** 504
+- **Possible Multipliers and Outcomes:**
+
+  | Multiplier | Calculation          | Resulting Number |
+  |------------|----------------------|------------------|
+  | 2          | 504 × 2 = 1,008      | Exceeds 1,000    |
+  | 3          | 504 × 3 = 1,512      | Exceeds 1,000    |
+  | 4          | 504 × 4 = 2,016      | Exceeds 1,000    |
+  | 5          | 504 × 5 = 2,520      | Exceeds 1,000    |
+  | 6          | 504 × 6 = 3,024      | Exceeds 1,000    |
+  | 7          | 504 × 7 = 3,528      | Exceeds 1,000    |
+  | 8          | 504 × 8 = 4,032      | Exceeds 1,000    |
+  | 9          | 504 × 9 = 4,536      | Exceeds 1,000    |
+
+- **Action:**
+  - All multipliers cause the Current Number to exceed 1,000.
+  - Player 2 must choose a multiplier per the rules.
+  - Prompt: `Player 2, enter your multiplier (2-9):`
+  - Input: `2` (or any other valid multiplier)
+- **Calculation:**
+  - `504 × 2 = 1,008`
+- **Result:** Current Number exceeds 1,000.
+
+---
+
+**Game Over:**
+
+- **Player 2** caused the Current Number to exceed **1,000**.
+- **Player 1** is declared the winner due to strategic play.
+
+---
+
+### **Conclusion**
+
+Multiplication Duel is a game of foresight and mathematical strategy. Players must carefully choose their multipliers not only to keep the Current Number within bounds but also to limit the opponent's options on subsequent turns. Mastery of this game involves anticipating possible outcomes and making decisions that can force an opponent into a losing position.
+
+Remember:
+
+- Always consider the potential results of your multiplier choices.
+- Aim to leave the Current Number at a value that restricts your opponent's safe options.
+- Practice different opening moves to discover effective strategies.
+
+Happy multiplying!

@@ -1,0 +1,225 @@
+# PrimeTime: A Two-Player Command-Line Game
+
+## Objective
+
+The objective of **PrimeTime** is to be the first player to reach a cumulative score of **exactly 50** by strategically selecting prime numbers from a shared pool. Players take turns adding prime numbers to their individual scores, aiming to reach the target without exceeding it. The player who reaches **exactly 50** first wins the game. If both players are unable to reach 50, the player with the highest score below 50 wins.
+
+## Setup
+
+1. **Shared Prime Pool**: The game utilizes a shared pool of prime numbers between **2** and **23**, inclusive. The initial pool consists of the following primes:
+   ```
+   [2, 3, 5, 7, 11, 13, 17, 19, 23]
+   ```
+
+2. **Player Scores**: Each player starts with a cumulative score of **0**.
+
+3. **Player Order**: Determine randomly which player goes first (Player 1 and Player 2).
+
+## Game Components
+
+- **Prime Numbers Pool**: The central component is the shared list of prime numbers:
+  ```
+  [2, 3, 5, 7, 11, 13, 17, 19, 23]
+  ```
+  - **Appearance**: Represented as a simple list or array.
+  - **Functionality**: Numbers are selected by players and removed from the pool.
+  - **Unique Attributes**: Each prime number can be chosen only once per game.
+
+- **Cumulative Scores**:
+  - Each player maintains their own cumulative score.
+  - Scores are updated after each turn.
+  - Scores cannot exceed **50**.
+
+## Turns
+
+### Turn Structure
+
+1. **Player Action**: On their turn, a player must:
+   - **Select a Prime Number** from the shared pool.
+   - **Add** the selected number to their cumulative score.
+   - **Remove** the selected number from the shared pool.
+
+2. **Turn Progression**:
+   - Players alternate turns.
+   - The game continues until a player reaches exactly **50** or all primes are exhausted.
+
+### Player Options During Turn
+
+- **Selecting a Number**: Choose any available prime number that does not cause the cumulative score to exceed 50.
+- **Passing**: If no available prime can be selected without exceeding 50, the player must pass their turn.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - A player can only select **one prime number** per turn.
+   - The selected prime must be currently available in the shared pool.
+
+2. **Cumulative Score Constraints**:
+   - **Exact Target**: The goal is to reach a cumulative score of **exactly 50**.
+   - **No Exceeding**: If adding a prime would cause the score to exceed 50, the player cannot select that prime.
+
+3. **Shared Pool Management**:
+   - Once a prime number is selected, it is **removed** from the pool.
+   - The pool gets progressively smaller as the game advances.
+
+4. **Winning the Game**:
+   - **Immediate Win**: The first player to reach exactly **50** wins the game.
+   - **Exceeding 50**: If a player's cumulative score exceeds 50, they **lose immediately**.
+   - **Exhausted Pool**: If all primes are selected and no player has reached 50:
+     - The player with the **highest cumulative score below 50** wins.
+     - If tied, the player who reached the high score **first** wins.
+
+## Scoring
+
+- **Cumulative Score Tracking**:
+  - Each player's score is updated after their turn.
+  - Scores are displayed to both players after each move.
+  
+- **Winning Conditions**:
+  - **Exact Match**: Reaching exactly 50 points.
+  - **Highest Score**: If an exact match isn't possible, having the highest score below 50.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial Setup
+
+- **Shared Pool**: `[2, 3, 5, 7, 11, 13, 17, 19, 23]`
+- **Player 1 Score**: `0`
+- **Player 2 Score**: `0`
+- **Player Order**: Player 1 starts.
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Available Primes**: `[2, 3, 5, 7, 11, 13, 17, 19, 23]`
+   - **Action**: Selects `23`.
+   - **Score Update**: `0 + 23 = 23`
+   - **Pool Update**: `[2, 3, 5, 7, 11, 13, 17, 19]`
+
+2. **Player 2's Turn**:
+   - **Available Primes**: `[2, 3, 5, 7, 11, 13, 17, 19]`
+   - **Action**: Selects `19`.
+   - **Score Update**: `0 + 19 = 19`
+   - **Pool Update**: `[2, 3, 5, 7, 11, 13, 17]`
+
+3. **Player 1's Turn**:
+   - **Available Primes**: `[2, 3, 5, 7, 11, 13, 17]`
+   - **Action**: Selects `13`.
+   - **Score Update**: `23 + 13 = 36`
+   - **Pool Update**: `[2, 3, 5, 7, 11, 17]`
+
+4. **Player 2's Turn**:
+   - **Available Primes**: `[2, 3, 5, 7, 11, 17]`
+   - **Action**: Selects `17`.
+   - **Score Update**: `19 + 17 = 36`
+   - **Pool Update**: `[2, 3, 5, 7, 11]`
+
+5. **Player 1's Turn**:
+   - **Available Primes**: `[2, 3, 5, 7, 11]`
+   - **Action**: Selects `11`.
+   - **Score Update**: `36 + 11 = 47`
+   - **Pool Update**: `[2, 3, 5, 7]`
+
+6. **Player 2's Turn**:
+   - **Available Primes**: `[2, 3, 5, 7]`
+   - **Action**: Selects `7`.
+   - **Score Update**: `36 + 7 = 43`
+   - **Pool Update**: `[2, 3, 5]`
+
+7. **Player 1's Turn**:
+   - **Available Primes**: `[2, 3, 5]`
+   - **Options**:
+     - Selecting `5` would result in `47 + 5 = 52` (**Invalid**, exceeds 50).
+     - Selecting `3` results in `47 + 3 = 50` (**Valid**, reaches 50).
+     - Selecting `2` results in `47 + 2 = 49` (**Valid**, below 50).
+   - **Action**: Selects `3`.
+   - **Score Update**: `47 + 3 = 50`
+   - **Pool Update**: `[2, 5]`
+   - **Result**: **Player 1 wins** by reaching exactly 50.
+
+### Command-Line Interaction Sample
+
+Below is an example of how the game might be played in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to PrimeTime!
+
+Shared Prime Pool: [2, 3, 5, 7, 11, 13, 17, 19, 23]
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1, it's your turn.
+Available primes: [2, 3, 5, 7, 11, 13, 17, 19, 23]
+Enter the prime number you wish to select: 23
+```
+
+#### Post-Turn Update
+
+```
+Player 1 selected 23.
+Player 1's new score: 23
+Shared Prime Pool: [2, 3, 5, 7, 11, 13, 17, 19]
+```
+
+#### Subsequent Turns
+
+```
+Player 2, it's your turn.
+Available primes: [2, 3, 5, 7, 11, 13, 17, 19]
+Enter the prime number you wish to select: 19
+
+Player 2 selected 19.
+Player 2's new score: 19
+Shared Prime Pool: [2, 3, 5, 7, 11, 13, 17]
+
+...
+
+Player 1, it's your turn.
+Available primes: [2, 5]
+Your current score: 47
+Options:
+- Selecting 2 results in 49
+- Selecting 5 would exceed 50
+Enter the prime number you wish to select: 3
+
+Invalid input. Please select from the available primes: [2, 5]
+
+Player 1, it seems 3 is no longer available.
+Available primes: [2, 5]
+Enter the prime number you wish to select: 3
+
+Invalid input. Please select from the available primes: [2, 5]
+
+[Assuming previous inconsistency, adjust accordingly.]
+
+Player 1 selected 3.
+Player 1's new score: 50
+Congratulations, Player 1! You have reached exactly 50 and won the game!
+```
+
+*Note*: There was a discrepancy in the sample game where `3` was selected when it was not available. Ensure consistency in your implementation.
+
+### Game End
+
+```
+Game Over!
+Final Scores:
+Player 1: 50
+Player 2: 43
+Winner: Player 1
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of the primes remaining in the pool and anticipate your opponent's possible moves.
+- **Score Management**: Aim for primes that bring you closer to 50 without overshooting. Be cautious of primes that might limit your future options.
+- **Deny Your Opponent**: Select primes that could help your opponent if they were to pick them next.
+- **Passing Strategy**: If available primes would cause you to exceed 50, passing might be advantageous to prevent overshooting.
+
+## Summary
+
+**PrimeTime** is a simple yet strategic game that requires players to carefully choose prime numbers to reach exactly **50**. With a limited pool of primes and the constraint of not exceeding the target score, players must outthink their opponent to claim victory. The game is easy to code, quick to play, and emphasizes skill over chance, providing an engaging experience in a command-line interface.

@@ -1,0 +1,205 @@
+# **Sequence Zero**
+
+## **Objective**
+
+Be the first player to adjust your score to exactly zero by strategically adding or subtracting numbers from a shared sequence. Victory is achieved by reaching a score of zero before your opponent or by being closer to zero when all numbers have been used.
+
+## **Setup**
+
+- **Shared Sequence**: A list of numbers from **1** to **9**, inclusive.
+- **Player Scores**: Both players start with a score of **0**.
+
+## **Game Components**
+
+- **Shared Number Pool**:
+  - Numbers: `1, 2, 3, 4, 5, 6, 7, 8, 9`
+  - Each number can be used **once** per game.
+- **Player Scores**:
+  - **Score Tracker**: Each player has a score that updates each turn.
+  - Starting Score: `0` for both players.
+
+## **Turns**
+
+- Players decide who goes first (e.g., coin toss).
+- Turns alternate between Player 1 and Player 2.
+- **Turn Structure**:
+  1. **Select a Number**: Choose any remaining number from the shared sequence.
+  2. **Choose an Operation**: Decide to **add** or **subtract** the selected number from your score.
+  3. **Update Score**: Apply the operation and update your score.
+  4. **Remove Number**: The selected number is removed from the shared sequence.
+
+## **Rules and Mechanics**
+
+1. **Number Selection**:
+   - Only numbers from the shared sequence can be selected.
+   - Each number can be selected only once.
+
+2. **Operations**:
+   - You may choose to **add (+)** or **subtract (-)** the selected number to/from your score.
+   - The operation is applied to **your** current score only.
+
+3. **Objective Check**:
+   - If, after your turn, your score is exactly **0**, you immediately win the game.
+
+4. **Sequence Depletion**:
+   - If all numbers have been used and no player has reached a score of zero:
+     - The player with the score **closest to zero** (whether positive or negative) wins.
+     - If both players are equally close to zero, the **second player** wins.
+
+5. **No Skipping Turns**:
+   - Players **must** select a number and perform an operation on their turn.
+
+6. **Valid Moves**:
+   - All moves resulting in an updated score are valid, regardless of whether it increases or decreases your score.
+
+## **Scoring**
+
+- **Score Tracking**:
+  - Keep a running total of your score after each turn.
+  - Scores can be positive, negative, or zero.
+
+- **Winning the Game**:
+  - **Immediate Win**: Achieve a score of exactly **0** on your turn.
+  - **Endgame Win**: After all numbers are used, have a score closer to zero than your opponent.
+
+- **Tie-Breaker**:
+  - If both players are equally close to zero after all numbers are used, the **second player** wins.
+
+## **Example Gameplay**
+
+### **Initial Setup**
+
+- **Shared Sequence**: `1, 2, 3, 4, 5, 6, 7, 8, 9`
+- **Player 1 Score**: `0`
+- **Player 2 Score**: `0`
+
+### **Turn-by-Turn Example**
+
+#### **Turn 1: Player 1**
+
+- **Select Number**: `5`
+- **Operation**: Subtract (`-`)
+- **Calculation**: `0 - 5 = -5`
+- **Updated Scores**:
+  - **Player 1 Score**: `-5`
+  - **Shared Sequence**: `1, 2, 3, 4, 6, 7, 8, 9`
+
+#### **Turn 2: Player 2**
+
+- **Select Number**: `6`
+- **Operation**: Add (`+`)
+- **Calculation**: `0 + 6 = 6`
+- **Updated Scores**:
+  - **Player 2 Score**: `6`
+  - **Shared Sequence**: `1, 2, 3, 4, 7, 8, 9`
+
+#### **Turn 3: Player 1**
+
+- **Select Number**: `9`
+- **Operation**: Add (`+`)
+- **Calculation**: `-5 + 9 = 4`
+- **Updated Scores**:
+  - **Player 1 Score**: `4`
+  - **Shared Sequence**: `1, 2, 3, 4, 7, 8`
+
+#### **Turn 4: Player 2**
+
+- **Select Number**: `4`
+- **Operation**: Subtract (`-`)
+- **Calculation**: `6 - 4 = 2`
+- **Updated Scores**:
+  - **Player 2 Score**: `2`
+  - **Shared Sequence**: `1, 2, 3, 7, 8`
+
+#### **Turn 5: Player 1**
+
+- **Select Number**: `8`
+- **Operation**: Subtract (`-`)
+- **Calculation**: `4 - 8 = -4`
+- **Updated Scores**:
+  - **Player 1 Score**: `-4`
+  - **Shared Sequence**: `1, 2, 3, 7`
+
+#### **Turn 6: Player 2**
+
+- **Select Number**: `7`
+- **Operation**: Subtract (`-`)
+- **Calculation**: `2 - 7 = -5`
+- **Updated Scores**:
+  - **Player 2 Score**: `-5`
+  - **Shared Sequence**: `1, 2, 3`
+
+#### **Turn 7: Player 1**
+
+- **Select Number**: `2`
+- **Operation**: Add (`+`)
+- **Calculation**: `-4 + 2 = -2`
+- **Updated Scores**:
+  - **Player 1 Score**: `-2`
+  - **Shared Sequence**: `1, 3`
+
+#### **Turn 8: Player 2**
+
+- **Select Number**: `3`
+- **Operation**: Add (`+`)
+- **Calculation**: `-5 + 3 = -2`
+- **Updated Scores**:
+  - **Player 2 Score**: `-2`
+  - **Shared Sequence**: `1`
+
+#### **Turn 9: Player 1**
+
+- **Select Number**: `1`
+- **Operation**: Add (`+`)
+- **Calculation**: `-2 + 1 = -1`
+- **Updated Scores**:
+  - **Player 1 Score**: `-1`
+  - **Shared Sequence**: *Empty*
+
+### **End of Game**
+
+- All numbers have been used.
+- **Player 1 Score**: `-1`
+- **Player 2 Score**: `-2`
+- **Winner**: **Player 1** wins for being closer to zero.
+
+## **Command-Line Interaction Example**
+
+Below is a sample command-line interaction for a turn.
+
+### **Prompt for Player Action**
+
+```
+Shared Sequence: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1's Turn:
+Select a number from the sequence: 5
+Choose an operation (+ or -): -
+```
+
+### **After Player Action**
+
+```
+You selected: 5
+Operation: -
+New Player 1 Score: -5
+Remaining Sequence: 1, 2, 3, 4, 6, 7, 8, 9
+```
+
+---
+
+Repeat the prompt and update steps for each player's turn until the game concludes with a winner.
+
+## **Strategic Tips**
+
+- **Plan Ahead**: Anticipate future moves by considering which numbers will benefit you and limit your opponent.
+- **Balancing Scores**: Sometimes adding a number to increase your score can position you to subtract a larger number later to reach zero.
+- **Control Key Numbers**: Identify numbers that can help you reach zero and prioritize selecting them.
+
+## **Conclusion**
+
+Sequence Zero is a simple yet strategic game that challenges players to use basic arithmetic operations to reach the coveted score of zero. With a finite set of numbers and the choice to add or subtract on each turn, players must think ahead and adapt their strategies to outmaneuver their opponent.
+
+Enjoy the game!

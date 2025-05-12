@@ -1,0 +1,198 @@
+# Number Line Duel
+
+## Objective
+
+Be the first player to **capture your opponent's token** by landing on it, or **reach your opponent's base position** without being captured. Success requires strategic movement and anticipation of your opponent's actions.
+
+## Setup
+
+1. **Number Line Creation**: Draw a number line with positions labeled from **0** to **10**.
+2. **Player Assignment**:
+   - **Player 1**: Starts at **position 0** (left end of the line), which is their base.
+   - **Player 2**: Starts at **position 10** (right end of the line), which is their base.
+3. **Token Placement**: Each player places their token on their respective base positions.
+
+## Game Components
+
+- **Number Line**: A linear arrangement of numbered positions from **0** to **10**.
+- **Tokens**: Two distinct tokens representing each player (e.g., `A` for Player 1 and `B` for Player 2).
+  - **Appearance**: Simple text characters or symbols in the command-line interface.
+  - **Functionality**: Move along the number line according to the rules.
+- **Positions**: Numerical markers indicating each spot on the line.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions Per Turn**:
+  1. Decide on the **direction** of movement:
+     - **Forward**: Towards the opponent's base.
+     - **Backward**: Towards your own base.
+  2. Choose to move your token **1 or 2 positions** in the chosen direction.
+- **Turn Progression**: After a player completes their move, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - Players may move **either forward or backward** on their turn.
+   - Movement must be **1 or 2 positions**; you cannot skip your turn or move zero positions.
+   - **Example Moves**:
+     - From position `3`, you can move to positions `1`, `2`, `4`, or `5`.
+   - Tokens **cannot move beyond** the number line (positions less than `0` or greater than `10` are invalid).
+2. **Capturing the Opponent's Token**:
+   - If you land on the **same position** as your opponent's token, you **capture** it and **win immediately**.
+   - **Example**: If Player 1 moves to position `5` where Player 2 is located, Player 1 captures Player 2's token.
+3. **Winning by Reaching the Opponent's Base**:
+   - If you reach the opponent's **base position** (Player 1 reaching position `10` or Player 2 reaching position `0`) without being captured, you **win the game**.
+4. **Strategic Considerations**:
+   - Anticipate your opponent's moves to avoid being captured.
+   - Balance between advancing towards the opponent's base and protecting your own token.
+5. **Game End Conditions**:
+   - **Capture Victory**: Capturing the opponent's token.
+   - **Base Victory**: Reaching the opponent's base position without being captured.
+
+## Scoring
+
+- The game does not involve point tracking.
+- **Winning the Game**:
+  - The player who first **captures the opponent's token** or **reaches the opponent's base** position **wins**.
+- There are **no draws**; the game continues until one player wins.
+
+## Examples
+
+Below are example scenarios illustrating gameplay and command-line interactions.
+
+### Example Game
+
+**Starting Positions**:
+
+- Player 1 (`A`) at position `0`.
+- Player 2 (`B`) at position `10`.
+
+#### Turn 1
+
+- **Player 1's Move**:
+  - Chooses to move **forward**.
+  - Moves **2 positions** to position `2`.
+  - **Command**: `move 2`
+- **Player 2's Move**:
+  - Chooses to move **backward**.
+  - Moves **2 positions** to position `8`.
+  - **Command**: `move -2`
+
+**Positions After Turn 1**:
+
+```
+0   1   2   3   4   5   6   7   8   9   10
+A                       B
+```
+
+#### Turn 2
+
+- **Player 1's Move**:
+  - Chooses to move **forward**.
+  - Moves **2 positions** to position `4`.
+  - **Command**: `move 2`
+- **Player 2's Move**:
+  - Chooses to move **backward**.
+  - Moves **1 position** to position `7`.
+  - **Command**: `move -1`
+
+**Positions After Turn 2**:
+
+```
+0   1   2   3   4   5   6   7   8   9   10
+            A           B
+```
+
+#### Turn 3
+
+- **Player 1's Move**:
+  - Anticipating Player 2's position, chooses to move **forward**.
+  - Moves **1 position** to position `5`.
+  - **Command**: `move 1`
+- **Player 2's Move**:
+  - Chooses to move **backward**.
+  - Moves **2 positions** to position `5`.
+  - **Command**: `move -2`
+- **Capture Occurs**:
+  - Both tokens are now at position `5`.
+  - Player 2 captures Player 1's token and **wins the game**.
+
+**Final Positions**:
+
+```
+0   1   2   3   4   5   6   7   8   9   10
+                    A/B
+```
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction for the above example:
+
+```
+--- Number Line Duel ---
+
+Position Status:
+0[A] 1   2   3   4   5   6   7   8   9   10[B]
+
+Player 1's turn. Your token is at position 0.
+Enter your move (1 or 2): 2
+Direction (forward/backward): forward
+Player 1 moves forward 2 positions to position 2.
+
+Position Status:
+0   1   2[A] 3   4   5   6   7   8   9   10[B]
+
+Player 2's turn. Your token is at position 10.
+Enter your move (1 or 2): 2
+Direction (forward/backward): backward
+Player 2 moves backward 2 positions to position 8.
+
+Position Status:
+0   1   2[A] 3   4   5   6   7   8[B] 9   10
+
+Player 1's turn. Your token is at position 2.
+Enter your move (1 or 2): 2
+Direction (forward/backward): forward
+Player 1 moves forward 2 positions to position 4.
+
+Position Status:
+0   1   2   3   4[A] 5   6   7   8[B] 9   10
+
+Player 2's turn. Your token is at position 8.
+Enter your move (1 or 2): 1
+Direction (forward/backward): backward
+Player 2 moves backward 1 position to position 7.
+
+Position Status:
+0   1   2   3   4[A] 5   6   7[B] 8   9   10
+
+Player 1's turn. Your token is at position 4.
+Enter your move (1 or 2): 1
+Direction (forward/backward): forward
+Player 1 moves forward 1 position to position 5.
+
+Position Status:
+0   1   2   3   4   5[A] 6   7[B] 8   9   10
+
+Player 2's turn. Your token is at position 7.
+Enter your move (1 or 2): 2
+Direction (forward/backward): backward
+Player 2 moves backward 2 positions to position 5.
+
+Player 2 lands on position 5 and captures Player 1's token!
+Player 2 wins the game!
+```
+
+## Strategic Tips
+
+- **Predict Opponent's Moves**: Try to anticipate where your opponent might move to avoid being captured.
+- **Control the Center**: Occupying central positions can give you more flexibility in movement.
+- **Balancing Act**: Decide when to advance towards the opponent's base and when to retreat to avoid capture.
+- **Forced Moves**: Try to force your opponent into a position where they have limited safe moves.
+
+## Conclusion
+
+Number Line Duel is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With clear rules and straightforward mechanics, it is easy to play in a command-line interface and provides depth for skilled players to consistently triumph over unskilled ones.
+
+Enjoy the duel, and may the best strategist win!

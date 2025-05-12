@@ -1,0 +1,297 @@
+# Blockade - Game Rule Book
+
+## Objective
+
+**Blockade** is a strategic two-player, turn-based game played on a linear board. The primary goal is to be the last player able to make a valid move. Players achieve victory by strategically claiming positions and blocking their opponent's options, ultimately forcing the opponent into a position where they have no available moves, thus constituting a win for the last player who made a move.
+
+---
+
+## Setup
+
+- **Game Board**: The game is played on a linear board consisting of **13 consecutive positions** numbered from **1 to 13**.
+- **Starting Condition**: All positions are initially **unclaimed** and **unblocked**.
+- **Player Markers**: Each player uses a unique marker to represent claimed positions:
+  - **Player 1**: `X`
+  - **Player 2**: `O`
+- **Blocked Positions**: Blocked positions are represented with a dash `-`.
+
+---
+
+## Game Components
+
+- **Positions**: Numbers **1** through **13** represent the positions on the board.
+- **Markers**:
+  - **`X`**: Indicates a position claimed by **Player 1**.
+  - **`O`**: Indicates a position claimed by **Player 2**.
+  - **`-`**: Indicates a position that has been **blocked** and is unavailable to both players.
+- **Board Visualization**: The board is displayed as a sequence of numbers and markers to represent the current state.
+
+---
+
+## Turns
+
+- **Turn Order**: 
+  - **Player 1** takes the first turn.
+  - Players alternate turns thereafter.
+- **Turn Structure**:
+  1. **Display Available Positions**: At the start of each turn, the game displays all available (unclaimed and unblocked) positions.
+  2. **Player Action**: The current player selects one available position to claim.
+  3. **Update Board**:
+     - The selected position is marked with the player's marker (`X` or `O`).
+     - Adjacent positions are blocked (marked with `-`).
+  4. **Check for Available Moves**: If the opponent has no available moves, the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Claiming Positions**:
+   - On your turn, you **must** claim **one** available position by entering its corresponding number.
+   - The position must be **unclaimed** and **unblocked**.
+
+2. **Blocking Mechanics**:
+   - After claiming a position, the game automatically **blocks the adjacent positions**:
+     - If you claim position `n`, positions `n-1` and `n+1` (if they exist) become blocked.
+     - Blocked positions are marked with a dash `-` and cannot be claimed by either player for the remainder of the game.
+
+3. **End of Game**:
+   - The game ends when **no available positions** remain for the next player to make a move.
+   - The player who last claimed a position **wins** the game.
+   - There are **no draws**; a win is always achieved.
+
+4. **Valid Moves**:
+   - A move is valid if it involves claiming an available position as per the rules above.
+   - If a player has no valid moves on their turn, they lose.
+
+---
+
+## Scoring
+
+- **Winning the Game**: Victory is determined by being the last player to make a valid move.
+- **No Point System**: There is no point or scoring system; the outcome is a win or loss.
+- **Tracking Progress**: Players can track progress through the visual representation of the board after each turn.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Board State
+
+```
+Positions: 1 2 3 4 5 6 7 8 9 10 11 12 13
+Markers:   1 2 3 4 5 6 7 8 9 10 11 12 13
+```
+
+---
+
+#### Turn 1: Player 1
+
+- **Available Positions**: 1-13
+- **Player 1 selects position** `7`.
+
+**Board Update**:
+
+- Position `7` is claimed and marked with `X`.
+- Positions `6` and `8` are blocked (`-`).
+
+```
+Positions: 1 2 3 4 5 - X - 9 10 11 12 13
+Markers:   1 2 3 4 5 - X - 9 10 11 12 13
+```
+
+---
+
+#### Turn 2: Player 2
+
+- **Available Positions**: 1 2 3 4 5 9 10 11 12 13
+- **Player 2 selects position** `4`.
+
+**Board Update**:
+
+- Position `4` is claimed and marked with `O`.
+- Positions `3` and `5` are blocked (`-`).
+
+```
+Positions: 1 2 - O - - X - 9 10 11 12 13
+Markers:   1 2 - O - - X - 9 10 11 12 13
+```
+
+---
+
+#### Turn 3: Player 1
+
+- **Available Positions**: 1 2 9 10 11 12 13
+- **Player 1 selects position** `10`.
+
+**Board Update**:
+
+- Position `10` is claimed and marked with `X`.
+- Positions `9` and `11` are blocked (`-`).
+
+```
+Positions: 1 2 - O - - X - - X - 12 13
+Markers:   1 2 - O - - X - - X - 12 13
+```
+
+---
+
+#### Turn 4: Player 2
+
+- **Available Positions**: 1 2 12 13
+- **Player 2 selects position** `12`.
+
+**Board Update**:
+
+- Position `12` is claimed and marked with `O`.
+- Positions `11` and `13` are blocked (`-`).
+
+```
+Positions: 1 2 - O - - X - - X - O -
+Markers:   1 2 - O - - X - - X - O -
+```
+
+---
+
+#### Turn 5: Player 1
+
+- **Available Positions**: 1 2
+- **Player 1 selects position** `2`.
+
+**Board Update**:
+
+- Position `2` is claimed and marked with `X`.
+- Positions `1` and `3` are blocked (`-`).
+
+```
+Positions: - X - O - - X - - X - O -
+Markers:   - X - O - - X - - X - O -
+```
+
+---
+
+#### Turn 6: Player 2
+
+- **Available Positions**: None
+- **Player 2 has no valid moves**.
+
+**Result**:
+
+- **Player 1 wins the game**.
+
+---
+
+## Command-Line Interaction Example
+
+Below is a simulated command-line interaction for the game:
+
+---
+
+**Game Start**
+
+```
+Welcome to Blockade!
+
+Initial Positions:
+1 2 3 4 5 6 7 8 9 10 11 12 13
+
+Player 1's Turn
+Available Positions: 1 2 3 4 5 6 7 8 9 10 11 12 13
+Enter the position you want to claim: 7
+Position 7 claimed by Player 1.
+Positions 6 and 8 are now blocked.
+
+Current Board:
+1 2 3 4 5 - X - 9 10 11 12 13
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2's Turn
+Available Positions: 1 2 3 4 5 9 10 11 12 13
+Enter the position you want to claim: 4
+Position 4 claimed by Player 2.
+Positions 3 and 5 are now blocked.
+
+Current Board:
+1 2 - O - - X - 9 10 11 12 13
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1's Turn
+Available Positions: 1 2 9 10 11 12 13
+Enter the position you want to claim: 10
+Position 10 claimed by Player 1.
+Positions 9 and 11 are now blocked.
+
+Current Board:
+1 2 - O - - X - - X - 12 13
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2's Turn
+Available Positions: 1 2 12 13
+Enter the position you want to claim: 12
+Position 12 claimed by Player 2.
+Positions 11 and 13 are now blocked.
+
+Current Board:
+1 2 - O - - X - - X - O -
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1's Turn
+Available Positions: 1 2
+Enter the position you want to claim: 2
+Position 2 claimed by Player 1.
+Positions 1 and 3 are now blocked.
+
+Current Board:
+- X - O - - X - - X - O -
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2's Turn
+Available Positions: None
+No available moves for Player 2.
+Player 1 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Central Control**: Claiming central positions (like 7) can block more options for your opponent due to the immediate blocking of adjacent positions.
+- **Anticipate Moves**: Try to predict which positions your opponent may aim for and block their strategic options.
+- **Forced Moves**: Guide the game in a way that forces your opponent into areas with fewer available positions.
+- **Endgame Planning**: Keep track of the remaining positions to ensure you are not left without a move on your turn.
+
+---
+
+## Conclusion
+
+Blockade is a simple yet strategically deep game that requires foresight and planning. By understanding the mechanics of blocking and claiming positions, players can develop strategies to outmaneuver their opponent and secure victory. The game's straightforward rules make it easy to learn, while the potential for complex strategic play offers depth for skilled players.
+
+Enjoy the challenge and may the best strategist win!
+
+---

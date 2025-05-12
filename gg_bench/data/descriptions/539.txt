@@ -1,0 +1,201 @@
+# Stack Attack: Rule Book
+
+## Objective
+
+**Stack Attack** is a two-player turn-based strategy game where the objective is to be the last player to successfully place a number on the stack according to the game's rules. Players take turns placing numbers on a shared stack, following specific mathematical relationships. The game requires strategic planning and mathematical reasoning, ensuring that a skilled player can consistently outperform an unskilled opponent.
+
+## Setup
+
+- **Starting Condition**: The game begins with an empty stack.
+- **Player Positions**: Decide which player goes first (Player 1) and which goes second (Player 2). This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **The Stack**: A conceptual pile where numbers are placed one on top of another. This can be represented as a list in the command-line interface.
+- **Numbers**: Integers ranging from **1 to 100**. Each number can only be used once in the game.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Player Action**: On their turn, a player must place a valid number on top of the stack according to the game's rules.
+  2. **Verification**: The move is checked for validity—ensuring the number hasn't been used before and follows the placement rules.
+  3. **Turn Progression**: If the move is valid, the turn passes to the other player. If not, the game ends, and the last player to place a valid number wins.
+
+- **Order of Play**: Players alternate turns starting with Player 1.
+
+## Rules and Mechanics
+
+### Core Rules:
+
+1. **First Move**:
+   - The first player starts the game by placing any number from **1 to 10** on the empty stack.
+
+2. **Subsequent Moves**:
+   - On their turn, a player must place a number between **1 and 100** on top of the stack.
+   - The number must be **either**:
+     - A **multiple** of the top number on the stack.
+     - A **factor** of the top number on the stack.
+   - **Previously used numbers cannot be reused** in the game.
+
+3. **Valid Moves**:
+   - A number is considered a **valid move** if it satisfies the following conditions:
+     - It is **between 1 and 100**.
+     - It is a **multiple or factor** of the current top number.
+     - It has **not been used** earlier in the game.
+
+4. **Winning the Game**:
+   - If a player **cannot place a valid number** on their turn, they **lose the game**.
+   - The **last player** to have placed a valid number on the stack is declared the **winner**.
+
+### Additional Mechanics:
+
+- **Number Repetition**:
+  - **No number** can appear more than **once** in the game. Keep track of all numbers that have been used.
+  
+- **Examples of Multiples and Factors**:
+  - If the top number is **6**:
+    - **Factors**: 1, 2, 3, 6
+    - **Multiples**: 6, 12, 18, 24, ..., up to 100, excluding numbers already used.
+
+- **Strategic Considerations**:
+  - Players should plan ahead to avoid leaving themselves without valid moves.
+  - Tracking used numbers and anticipating the opponent's options is key.
+
+## Scoring
+
+- **Victory**: The game is won by the player who successfully places a valid number when the opponent cannot.
+- **No Point System**: There is no point or scoring system; the focus is on strategy and winning the individual game.
+
+## Examples
+
+### Sample Game Play:
+
+#### Initial Moves:
+
+1. **Player 1's Turn**:
+   - Chooses **5** (since it's the first move, any number from 1 to 10 is valid).
+   - Stack: `[5]`
+
+2. **Player 2's Turn**:
+   - Must choose a factor or multiple of **5**.
+   - Chooses **10** (a multiple of 5).
+   - Stack: `[5, 10]`
+
+#### Mid-Game Moves:
+
+3. **Player 1's Turn**:
+   - Top number is **10**.
+   - Possible choices (excluding used numbers **5** and **10**): factors (1, 2, 5) or multiples (20, 30, ..., 100).
+   - Chooses **2** (a factor of 10).
+   - Stack: `[5, 10, 2]`
+
+4. **Player 2's Turn**:
+   - Top number is **2**.
+   - Possible choices: factors (1, 2) or multiples (4, 6, 8, ..., 100), excluding used numbers.
+   - Chooses **4** (a multiple of 2).
+   - Stack: `[5, 10, 2, 4]`
+
+#### End-Game Scenario:
+
+5. **Player 1's Turn**:
+   - Top number is **4**.
+   - Possible choices: factors (1, 2, 4) or multiples (8, 12, ..., 100), excluding used numbers.
+   - Used numbers so far: 2, 4, 5, 10.
+   - Chooses **8**.
+   - Stack: `[5, 10, 2, 4, 8]`
+
+6. **Player 2's Turn**:
+   - Top number is **8**.
+   - Possible choices: factors (1, 2, 4, 8) or multiples (16, 24, ..., 100), excluding used numbers.
+   - Chooses **16**.
+   - Stack: `[5, 10, 2, 4, 8, 16]`
+
+7. **Player 1's Turn**:
+   - Top number is **16**.
+   - Possible choices: factors (1, 2, 4, 8, 16) or multiples (32, 48, ..., 100), excluding used numbers.
+   - Chooses **32**.
+   - Stack: `[5, 10, 2, 4, 8, 16, 32]`
+
+8. **Player 2's Turn**:
+   - Top number is **32**.
+   - Possible choices: factors (1, 2, 4, 8, 16, 32) or multiples (64, 96), excluding used numbers.
+   - Chooses **64**.
+   - Stack: `[5, 10, 2, 4, 8, 16, 32, 64]`
+
+9. **Player 1's Turn**:
+   - Top number is **64**.
+   - Possible choices: factors (1, 2, 4, 8, 16, 32, 64) or multiples (none under 100), excluding used numbers.
+   - Options are running out.
+
+   - Chooses **1**.
+   - Stack: `[5, 10, 2, 4, 8, 16, 32, 64, 1]`
+
+10. **Player 2's Turn**:
+    - Top number is **1**.
+    - Possible choices: factors (1) and multiples (2, 3, ..., 100), excluding used numbers.
+    - Chooses **3**.
+    - Stack: `[5, 10, 2, 4, 8, 16, 32, 64, 1, 3]`
+
+11. **Player 1's Turn**:
+    - Top number is **3**.
+    - Possible choices: factors (1, 3) and multiples (6, 9, ..., 99), excluding used numbers.
+    - Chooses **9**.
+    - Stack: `[5, 10, 2, 4, 8, 16, 32, 64, 1, 3, 9]`
+
+12. **Player 2's Turn**:
+    - Top number is **9**.
+    - Possible choices: factors (1, 3, 9) and multiples (18, 27, ..., 99), excluding used numbers.
+    - Chooses **27**.
+    - Stack: `[5, 10, 2, 4, 8, 16, 32, 64, 1, 3, 9, 27]`
+
+13. **Player 1's Turn**:
+    - Top number is **27**.
+    - Possible choices: factors (1, 3, 9, 27) and multiples (54, 81), excluding used numbers.
+    - Chooses **81**.
+    - Stack: `[5, 10, 2, 4, 8, 16, 32, 64, 1, 3, 9, 27, 81]`
+
+14. **Player 2's Turn**:
+    - Top number is **81**.
+    - Possible choices: factors (1, 3, 9, 27, 81), excluding used numbers.
+    - **All factors have been used** (1, 3, 9, 27, 81).
+    - No multiples under 100 are available (multiples would be 162, etc.).
+    - **Player 2 cannot make a valid move and loses**.
+
+### Command-Line Interaction Example:
+
+```plaintext
+Welcome to Stack Attack!
+
+Player 1's turn.
+Current Stack: []
+Available Numbers: 1-10
+Enter a number to place on the stack: 5
+
+Player 2's turn.
+Current Stack: [5]
+Available Numbers: 1-100 (excluding used numbers)
+Top of the stack is 5.
+Enter a multiple or factor of 5: 10
+
+Player 1's turn.
+Current Stack: [5, 10]
+Available Numbers: 1-100 (excluding used numbers)
+Top of the stack is 10.
+Enter a multiple or factor of 10: 2
+
+...
+
+Player 2's turn.
+Current Stack: [5, 10, 2, 4, 8, 16, 32, 64, 1, 3, 9, 27, 81]
+Top of the stack is 81.
+Available Numbers: 1-100 (excluding used numbers)
+Enter a multiple or factor of 81: 
+
+No valid moves available. Player 1 wins!
+```
+
+## Conclusion
+
+**Stack Attack** is a simple yet strategic game that combines mathematical concepts with tactical gameplay. Its minimal components and straightforward rules make it easy to code and play in a command-line interface. The game is designed to end quickly with a clear winner, and its strategic depth ensures that skilled players have a significant advantage over unskilled opponents.
+
+Enjoy the challenge, and may the best strategist win!

@@ -1,0 +1,157 @@
+# Divisor Duel Rule Book
+
+## Objective
+
+The goal of **Divisor Duel** is to be the first player to construct a shared number that is divisible by a predetermined target divisor. Players take turns adding single digits to the end of the shared number, strategically aiming to create a number divisible by the target while preventing their opponent from doing the same.
+
+## Setup
+
+1. **Choose Target Divisor (D):** At the start of the game, both players agree on a target divisor, **D**, which is a positive integer greater than 1 (e.g., 7).
+2. **Initialize Shared Number (N):** The shared number, **N**, starts as an empty string or zero value. This number will grow as players append digits during the game.
+
+## Game Components
+
+- **Shared Number (N):** A mutable number that both players build upon by adding digits. It starts empty and grows with each turn.
+- **Target Divisor (D):** A mutually agreed-upon positive integer greater than 1. This is the number players aim to create a multiple of.
+- **Digits (0-9):** The characters players can append to the shared number **N** during their turn.
+
+## Turns
+
+- **Turn Order:** Players decide who goes first (e.g., by coin toss). Turns alternate between Player 1 and Player 2.
+- **Player Actions on Their Turn:**
+  - **Append a Digit:** The player chooses a single digit (0 through 9) and appends it to the end of the shared number **N**.
+  - **Update N:** After appending, **N** becomes the new number formed by the existing digits plus the new digit.
+- **Turn Progression:** After a player completes their turn, control passes to the other player.
+
+## Rules and Mechanics
+
+1. **Appending Digits:**
+   - Players must append **exactly one** digit to the shared number **N** on their turn.
+   - The digit can be any number from 0 to 9.
+
+2. **Winning the Game:**
+   - If, after a player appends a digit, the new shared number **N** is **divisible by the target divisor D**, that player **wins the game**.
+   - **Divisibility Condition:** A number **N** is divisible by **D** if `N mod D == 0`.
+
+3. **Avoiding Divisibility:**
+   - Players should aim to avoid making **N** divisible by **D** on their turn unless they are executing a winning strategy.
+   - Strategic play involves forcing the opponent into a position where they must make **N** divisible by **D**.
+
+4. **Number Length Limit (Optional):**
+   - To ensure the game ends in a reasonable time, players may agree on a maximum length for **N** (e.g., 20 digits).
+   - If the maximum length is reached without a winner, the game continues without limits until someone wins.
+
+5. **Invalid Moves:**
+   - If a player fails to append a digit or tries to append more than one digit, it is considered an invalid move.
+   - Making an invalid move can result in forfeiture, and the opposing player wins by default.
+
+## Scoring
+
+- **Winning the Game:** The player who creates a shared number **N** that is divisible by the target divisor **D** wins the game.
+- **No Point System:** There is no point tracking; the outcome is a win or loss based on the game's objective.
+
+## Examples
+
+### Example 1: Target Divisor D = 7
+
+#### Gameplay Sequence
+
+1. **Initial State:**
+   - **N:** (empty)
+   - **D:** 7
+
+2. **Player 1's Turn:**
+   - Appends digit **'3'**.
+   - **N:** '3'
+   - **Calculation:** 3 mod 7 = 3 (not divisible)
+   - No winner.
+
+3. **Player 2's Turn:**
+   - Appends digit **'1'**.
+   - **N:** '31'
+   - **Calculation:** 31 mod 7 = 3
+   - No winner.
+
+4. **Player 1's Turn:**
+   - Appends digit **'4'**.
+   - **N:** '314'
+   - **Calculation:** 314 mod 7 = 6
+   - No winner.
+
+5. **Player 2's Turn:**
+   - Appends digit **'2'**.
+   - **N:** '3142'
+   - **Calculation:** 3142 mod 7 = 6
+   - No winner.
+
+6. **Player 1's Turn:**
+   - Appends digit **'8'**.
+   - **N:** '31428'
+   - **Calculation:** 31428 mod 7 = 0
+   - **Player 1 wins!**
+
+### Example 2: Target Divisor D = 5
+
+#### Gameplay Sequence
+
+1. **Initial State:**
+   - **N:** (empty)
+   - **D:** 5
+
+2. **Player 1's Turn:**
+   - Appends digit **'1'**.
+   - **N:** '1'
+   - **Calculation:** 1 mod 5 = 1
+   - No winner.
+
+3. **Player 2's Turn:**
+   - Appends digit **'2'**.
+   - **N:** '12'
+   - **Calculation:** 12 mod 5 = 2
+   - No winner.
+
+4. **Player 1's Turn:**
+   - Appends digit **'3'**.
+   - **N:** '123'
+   - **Calculation:** 123 mod 5 = 3
+   - No winner.
+
+5. **Player 2's Turn:**
+   - Appends digit **'5'**.
+   - **N:** '1235'
+   - **Calculation:** 1235 mod 5 = 0
+   - **Player 2 wins!**
+
+## Command-Line Interaction Example
+
+Below is a sample command-line interaction for **Divisor Duel** with Target Divisor D = 3.
+
+```plaintext
+Welcome to Divisor Duel!
+Target Divisor (D): 3
+Shared Number (N): 
+
+Player 1's turn.
+Enter a digit to append: 4
+Shared Number (N): 4
+4 mod 3 = 1
+No winner yet.
+
+Player 2's turn.
+Enter a digit to append: 5
+Shared Number (N): 45
+45 mod 3 = 0
+Player 2 wins!
+```
+
+In this example, Player 2 wins by creating the number 45, which is divisible by 3.
+
+## Strategic Considerations
+
+- **Modular Arithmetic Mastery:** Players benefit from understanding modular arithmetic to predict the outcome after each move.
+- **Forcing Moves:** Skilled players can plan ahead to force their opponent into making the divisible number.
+- **Digit Selection:** Choosing which digit to append can set traps or open opportunities for victory.
+
+Remember, the key to **Divisor Duel** is not just in the digits you choose but in anticipating and influencing the cumulative outcome of **N mod D** after each turn.
+
+Good luck, and may the best strategist win!

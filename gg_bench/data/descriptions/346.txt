@@ -1,0 +1,198 @@
+# Adjacency Block
+
+## Objective
+
+Adjacency Block is a two-player, turn-based strategy game played on a linear grid. Players take turns placing their tokens onto a row of cells with the goal of being the last player able to make a legal move. A player wins by successfully placing a token when their opponent cannot.
+
+---
+
+## Setup
+
+- **Game Grid**: A linear row of **10 cells**, labeled from positions **1** to **10**.
+- **Initial State**: All cells are empty at the start of the game.
+- **Player Assignments**:
+  - **Player 1**: Uses the token `'X'`.
+  - **Player 2**: Uses the token `'O'`.
+- Decide which player goes first (you can flip a coin or let the program choose randomly).
+
+---
+
+## Game Components
+
+- **Grid**: Represents the playing area, displayed as a row with positions numbered 1 to 10.
+- **Tokens**:
+  - **Player 1 Token**: `'X'`.
+  - **Player 2 Token**: `'O'`.
+- **Command-Line Interface**: Players interact with the game by entering the position number where they wish to place their token.
+
+---
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Display** the current state of the grid.
+  2. **Input**: The current player enters the position number where they wish to place their token.
+  3. **Validation**: The game checks if the move is legal according to the placement rules.
+     - If the move is legal, the token is placed, and the turn ends.
+     - If the move is illegal, the player is prompted to choose a different position.
+- The game continues until a player cannot make a legal move on their turn.
+
+---
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **Choosing a Position**:
+   - On your turn, you must place your token `'X'` or `'O'` on an **empty cell**.
+2. **Adjacency Restriction**:
+   - **You cannot place your token in a cell that is adjacent to any of your opponent's tokens**.
+   - **Adjacency** is defined as cells immediately next to each other (e.g., positions 4 and 5 are adjacent).
+   - **You can place your token adjacent to your own tokens**.
+3. **Winning Condition**:
+   - If you cannot make a legal move on your turn (no valid cells available), you **lose** the game.
+   - Your opponent wins by default.
+
+### Gameplay Mechanics
+
+- Players must strategically choose where to place their tokens to maximize future placement options and limit their opponent's moves.
+- Consider both offensive moves (restricting your opponent) and defensive moves (keeping your options open).
+
+---
+
+## Scoring
+
+- **Winning the Game**: The player who successfully places a token when their opponent cannot is declared the winner.
+- **Match Play**: For extended play, track the number of games won by each player over multiple rounds.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Grid
+
+```
+Positions: 1 2 3 4 5 6 7 8 9 10
+Cells:     _ _ _ _ _ _ _ _ _ _
+```
+
+#### Player 1's Turn
+
+- **Action**: Places `'X'` on position **5**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     _ _ _ _ X _ _ _ _ _
+  ```
+
+#### Player 2's Turn
+
+- **Cannot place on positions 4 or 6** (adjacent to `'X'` at position 5).
+- **Action**: Places `'O'` on position **1**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     O _ _ _ X _ _ _ _ _
+  ```
+
+#### Player 1's Turn
+
+- **Cannot place on position 2** (adjacent to `'O'` at position 1).
+- **Action**: Places `'X'` on position **6**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     O _ _ _ X X _ _ _ _
+  ```
+
+#### Player 2's Turn
+
+- **Cannot place on positions 4, 5, or 6**.
+- **Action**: Places `'O'` on position **10**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     O _ _ _ X X _ _ _ O
+  ```
+
+#### Player 1's Turn
+
+- **Cannot place on positions 2 or 9** (adjacent to opponent's tokens).
+- **Action**: Places `'X'` on position **7**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     O _ _ _ X X X _ _ O
+  ```
+
+#### Player 2's Turn
+
+- **Cannot place on positions 2, 4, 6, 8, 9**.
+- **Action**: Places `'O'` on position **3**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     O _ O _ X X X _ _ O
+  ```
+
+#### Player 1's Turn
+
+- **Cannot place on positions 2, 8, 9**.
+- **Action**: Places `'X'` on position **4**.
+- **Grid**:
+  ```
+  Positions: 1 2 3 4 5 6 7 8 9 10
+  Cells:     O _ O X X X X _ _ O
+  ```
+
+#### Player 2's Turn
+
+- **No legal moves available**.
+- **Outcome**: Player 2 cannot make a move. **Player 1 wins**.
+
+---
+
+## Command-Line Interaction Example
+
+1. **Display Grid**:
+   ```
+   Positions: 1 2 3 4 5 6 7 8 9 10
+   Cells:     _ _ _ _ _ _ _ _ _ _
+   ```
+2. **Player 1's Input**:
+   ```
+   Player 1 ('X'), enter position to place your token: 5
+   ```
+3. **Updated Grid**:
+   ```
+   Positions: 1 2 3 4 5 6 7 8 9 10
+   Cells:     _ _ _ _ X _ _ _ _ _
+   ```
+4. **Player 2's Input**:
+   ```
+   Player 2 ('O'), enter position to place your token: 4
+   Invalid move. You cannot place next to your opponent's token.
+   Player 2 ('O'), enter position to place your token: 1
+   ```
+5. **Updated Grid**:
+   ```
+   Positions: 1 2 3 4 5 6 7 8 9 10
+   Cells:     O _ _ _ X _ _ _ _ _
+   ```
+6. **Continue Game**: Follow the same pattern until a player wins.
+
+---
+
+## Strategies
+
+- **Control Key Positions**: Occupy central cells to maximize your placement options.
+- **Avoid Self-Blocking**: Be cautious about clustering your tokens in a way that limits your own future moves.
+- **Force Opponent's Moves**: Position your tokens to restrict where your opponent can legally place theirs.
+- **Plan Ahead**: Anticipate the consequences of each move, considering both current and future turns.
+
+---
+
+Enjoy playing Adjacency Block, and may the most strategic player win!

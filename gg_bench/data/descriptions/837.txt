@@ -1,0 +1,236 @@
+# Grid Runner
+
+## Objective
+
+Be the first player to reach your opponent's starting position on a 5x5 grid while navigating around obstacles. Outsmart your opponent by choosing the optimal path and blocking their progress.
+
+## Setup
+
+1. **Grid Creation**:
+   - The game is played on a 5x5 grid, with rows labeled **1** to **5** (top to bottom) and columns labeled **A** to **E** (left to right).
+   - The grid cells are identified by their column and row labels (e.g., **A1**, **B3**).
+
+2. **Starting Positions**:
+   - **Player 1** starts at the top-left corner, cell **A1**.
+   - **Player 2** starts at the bottom-right corner, cell **E5**.
+
+3. **Obstacles Placement**:
+   - Obstacles are placed on the grid to create strategic pathways. Obstacles are located at:
+     - **A3**, **C1**, **C3**, **C5**, **E3**.
+   - Obstacles are represented by an **'X'**.
+
+4. **Game Initialization**:
+   - The grid is displayed with players' starting positions and obstacles.
+   - Example Initial Grid:
+
+     ```
+         A   B   C   D   E
+       +---+---+---+---+---+
+     1 | P1|   | X |   |   |
+       +---+---+---+---+---+
+     2 |   |   |   |   |   |
+       +---+---+---+---+---+
+     3 | X |   | X |   | X |
+       +---+---+---+---+---+
+     4 |   |   |   |   |   |
+       +---+---+---+---+---+
+     5 |   |   |   |   | P2|
+       +---+---+---+---+---+
+     ```
+
+## Game Components
+
+- **Grid**: A 5x5 playing field where the game takes place.
+  - Each cell can be empty, contain a player marker, or an obstacle.
+- **Player Markers**:
+  - **Player 1**: Represented by **'P1'**.
+  - **Player 2**: Represented by **'P2'**.
+- **Obstacles**: Cells that cannot be entered or passed through, represented by **'X'**.
+- **Movement Commands**: Players input commands to move their markers.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns.
+   - **Player 1** moves first.
+
+2. **Player Actions During a Turn**:
+   - View the current state of the grid.
+   - Decide on a move direction: **up**, **down**, **left**, or **right**.
+   - Enter the move command.
+   - The game updates the grid and checks for a win condition.
+
+3. **Turn Progression**:
+   - After a player completes their move, it becomes the other player's turn.
+   - The game continues until a player reaches the opponent's starting position.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Valid Moves**:
+  - Move one cell per turn in one of the four cardinal directions.
+    - **Up**: Decrease row number by 1 (e.g., from **A2** to **A1**).
+    - **Down**: Increase row number by 1 (e.g., from **B4** to **B5**).
+    - **Left**: Move to the previous column (e.g., from **D3** to **C3**).
+    - **Right**: Move to the next column (e.g., from **C5** to **D5**).
+- **Restrictions**:
+  - Cannot move into a cell containing an obstacle (**'X'**).
+  - Cannot move into a cell occupied by the other player.
+  - Cannot move outside the boundaries of the grid.
+- **Invalid Moves**:
+  - If a player attempts an invalid move, they are prompted to enter a different move.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - A player wins by moving their marker onto the opponent's starting position:
+    - **Player 1** wins by reaching **E5**.
+    - **Player 2** wins by reaching **A1**.
+- **No Draws**:
+  - Since players alternate turns and cannot occupy the same cell, a tie is impossible.
+
+### Interaction Between Players
+
+- **Blocking**:
+  - Players cannot move through or onto the opponent's current position.
+  - Players can strategically position themselves to block the opponent's path.
+- **Obstacles**:
+  - Obstacle positions are static and cannot be removed or altered during the game.
+
+## Scoring
+
+- **No Point System**:
+  - The game does not use a scoring system.
+  - The focus is on strategic movement to achieve the objective.
+- **Outcome**:
+  - The first player to reach the opponent's starting cell wins.
+  - The opponent loses the game.
+
+## Examples
+
+### Example Turn
+
+**Current Positions**:
+- **Player 1** at **B1**.
+- **Player 2** at **E4**.
+
+**Player 1's Turn**:
+
+1. **Grid Displayed**:
+
+   ```
+       A   B   C   D   E
+     +---+---+---+---+---+
+   1 |   |P1 | X |   |   |
+     +---+---+---+---+---+
+   2 |   |   |   |   |   |
+     +---+---+---+---+---+
+   3 | X |   | X |   | X |
+     +---+---+---+---+---+
+   4 |   |   |   |   |P2 |
+     +---+---+---+---+---+
+   5 |   |   |   |   |   |
+     +---+---+---+---+---+
+   ```
+
+2. **Available Moves** for **Player 1** at **B1**:
+   - **Up**: Invalid (outside grid).
+   - **Down**: Move to **B2**.
+   - **Left**: Move to **A1**.
+   - **Right**: Cell **C1** contains an obstacle (**'X'**); move invalid.
+
+3. **Player 1** decides to move **Down** to **B2**.
+
+4. **Grid After Move**:
+
+   ```
+       A   B   C   D   E
+     +---+---+---+---+---+
+   1 |   |   | X |   |   |
+     +---+---+---+---+---+
+   2 |   |P1 |   |   |   |
+     +---+---+---+---+---+
+   3 | X |   | X |   | X |
+     +---+---+---+---+---+
+   4 |   |   |   |   |P2 |
+     +---+---+---+---+---+
+   5 |   |   |   |   |   |
+     +---+---+---+---+---+
+   ```
+
+**Player 2's Turn**:
+
+1. **Available Moves** for **Player 2** at **E4**:
+   - **Up**: Move to **E3** (obstacle at **E3**, move invalid).
+   - **Down**: Move to **E5**.
+   - **Left**: Move to **D4**.
+   - **Right**: Invalid (outside grid).
+
+2. **Player 2** decides to move **Down** to **E5**.
+
+3. **Grid After Move**:
+
+   ```
+       A   B   C   D   E
+     +---+---+---+---+---+
+   1 |   |   | X |   |   |
+     +---+---+---+---+---+
+   2 |   |P1 |   |   |   |
+     +---+---+---+---+---+
+   3 | X |   | X |   | X |
+     +---+---+---+---+---+
+   4 |   |   |   |   |   |
+     +---+---+---+---+---+
+   5 |   |   |   |   |P2 |
+     +---+---+---+---+---+
+   ```
+
+### Example Winning Move
+
+**Scenario**:
+
+- **Player 1** is at **D5**.
+- **Player 2** is at **A2**.
+
+**Player 1's Turn**:
+
+1. **Available Moves**:
+   - **Up**: Move to **D4**.
+   - **Down**: Invalid (outside grid).
+   - **Left**: Move to **C5** (obstacle at **C5**, move invalid).
+   - **Right**: Move to **E5**.
+
+2. **Player 1** moves **Right** to **E5**, which is **Player 2's starting position**.
+
+3. **Result**:
+   - **Player 1** reaches **E5** and wins the game.
+
+## Command-Line Interaction
+
+**Startup**:
+
+- The game displays the initial grid.
+- Prompts **Player 1** to make the first move.
+
+**Sample Turn Input**:
+
+- **Prompt**: "Player 1 (P1) at B1, enter move (up/down/left/right): "
+- **Player Input**: `down`
+- The game processes the move, updates the grid, and checks for a win.
+
+**Error Handling**:
+
+- If a player enters an invalid move:
+  - **Game Response**: "Invalid move. Please choose a different direction."
+  - The player is prompted again.
+
+**Game End**:
+
+- When a player wins:
+  - **Game Announcement**: "Player X wins by reaching the opponent's starting position at Cell Y!"
+  - The game terminates or offers an option to restart.
+
+## Conclusion
+
+"Grid Runner" is an engaging, strategic game that combines simplicity with depth. Players must plan their routes carefully, anticipate their opponent's moves, and adapt their strategy on the fly. The game's design ensures quick play sessions, making it ideal for a command-line interface. Mastery comes from understanding the grid, leveraging obstacles to your advantage, and outmaneuvering your opponent. Enjoy the challenge and may the best strategist win!

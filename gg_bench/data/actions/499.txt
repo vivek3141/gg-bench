@@ -1,0 +1,14 @@
+The action space indices in the game map to the combination of movement directions and block placements. Each action index in the range of 0 to 91 is calculated as:
+
+\[ \text{action\_index} = (\text{move\_direction} \times \text{num\_block\_positions}) + \text{block\_position\_index} \]
+
+Where:
+- **`move_direction`** (0 to 3) maps to one of the four possible movement directions: 
+  - 0: Up (-1, 0)
+  - 1: Down (1, 0)
+  - 2: Left (0, -1)
+  - 3: Right (0, 1)
+- **`num_block_positions`** is 23, representing the total number of possible block positions.
+- **`block_position_index`** maps to a specific valid block position on the grid.
+
+This index calculation ensures that each action uniquely corresponds to a pair of movement and block placement choices.

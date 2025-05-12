@@ -1,0 +1,281 @@
+# Factor Challenge
+
+## Objective
+
+**Factor Challenge** is a two-player turn-based strategy game that combines strategic planning with number theory. Players take turns selecting numbers from a shared pool, aiming to force their opponent into a position where they cannot make a valid move. The primary goal is to outmaneuver your opponent by carefully choosing numbers that limit their options while maintaining your own. The player who successfully prevents their opponent from making a valid move wins the game.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - The game begins with a shared pool of numbers ranging from **2** to **20**.
+   - All numbers are available for selection and are unique; once a number is chosen, it cannot be selected again.
+
+2. **Determine Starting Player**:
+   - Decide who will take the first turn. This can be done by mutual agreement or a random method such as a coin toss.
+
+3. **Player Collections**:
+   - Each player has their own collection where they will keep track of the numbers they have selected during the game.
+   - Initially, both players' collections are empty.
+
+---
+
+## Game Components
+
+1. **Number Pool**:
+   - A list of numbers from **2** to **20** inclusive.
+   - Represents the available numbers that players can select during their turns.
+   - Example: `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]`
+
+2. **Player Collections**:
+   - Each player maintains a personal collection of numbers they have selected.
+   - This collection is used to determine valid moves based on the last number picked.
+
+3. **Game Interface**:
+   - The game is played through a command-line interface where players input their choices when prompted.
+   - Displays the current state of the game, including available numbers and player collections.
+
+---
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Display Information**:
+     - Show the current state of the number pool and both players' collections.
+  2. **Player's Move**:
+     - The player selects a valid number from the number pool according to the game rules.
+  3. **Update Game State**:
+     - Remove the selected number from the number pool.
+     - Add the selected number to the player's collection.
+  4. **Check for Game End**:
+     - Determine if the next player has any valid moves available.
+     - If not, the current player wins the game.
+
+---
+
+## Rules and Mechanics
+
+1. **First Turn**:
+   - The first player can select **any** number from the number pool.
+
+2. **Subsequent Turns**:
+   - On your turn, you must select a number that shares at least one common factor **greater than 1** with the **last number you picked**.
+   - You cannot select a number that has no common factors other than 1 with your last selected number.
+   - **Example**: If your last number was **8**, valid next moves are numbers that share factors like 2 or 4 with 8.
+
+3. **Valid Moves**:
+   - A move is valid if:
+     - The number is still in the number pool.
+     - The number shares a common factor greater than 1 with your last selected number.
+   - If it's your first turn (and not the very first turn of the game), you can select any number.
+
+4. **Number Selection**:
+   - Once a number is selected, it is removed from the number pool and added to the player's collection.
+   - Each number can only be selected once during the game.
+
+5. **Forcing a Win**:
+   - The objective is to force your opponent into a position where they have no valid moves on their turn.
+   - Strategic selection of numbers can limit your opponent's options.
+
+6. **Game End Conditions**:
+   - The game ends immediately when a player has no valid moves on their turn.
+   - The player who made the last valid move wins the game.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The winner is the player who successfully prevents their opponent from making a valid move.
+- **No Point System**:
+  - There are no points or scores accumulated during the game.
+  - Victory is determined solely by incapacitating the opponent.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Number Pool**:
+`[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]`
+
+**Player 1's Collection**: `[]`
+
+**Player 2's Collection**: `[]`
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Selects **8** (any number is valid on the first turn).
+- **Reasoning**: Chooses 8 to start with a number that has multiple factors (2 and 4), providing more options on the next turn.
+- **Updated Number Pool**:
+  `[2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]`
+- **Player 1's Collection**: `[8]`
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Selects **9** (any number is valid on their first turn).
+- **Reasoning**: Picks 9 for its factors (3), planning to limit Player 1's options.
+- **Updated Number Pool**:
+  `[2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]`
+- **Player 2's Collection**: `[9]`
+
+---
+
+#### Turn 3: Player 1
+
+- **Last Number Picked**: **8**
+- **Possible Factors**: 2, 4
+- **Valid Choices**: Numbers in the pool that share factors 2 or 4.
+  - Valid numbers: **2, 4, 6, 10, 12, 14, 16, 18, 20**
+- **Action**: Selects **14**
+- **Reasoning**: Chooses 14 to continue having options related to factors 2 and 7.
+- **Updated Number Pool**:
+  `[2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20]`
+- **Player 1's Collection**: `[8, 14]`
+
+---
+
+#### Turn 4: Player 2
+
+- **Last Number Picked**: **9**
+- **Possible Factors**: 3
+- **Valid Choices**: Numbers in the pool that share factor 3.
+  - Valid numbers: **3, 6, 12, 15, 18**
+- **Action**: Selects **15**
+- **Reasoning**: 15 shares factor 3 (3 x 5), and opens up options for factor 5.
+- **Updated Number Pool**:
+  `[2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 16, 17, 18, 19, 20]`
+- **Player 2's Collection**: `[9, 15]`
+
+---
+
+#### Turn 5: Player 1
+
+- **Last Number Picked**: **14**
+- **Possible Factors**: 2, 7
+- **Valid Choices**: Numbers in the pool that share factors 2 or 7.
+  - Valid numbers: **2, 4, 6, 7, 10, 12, 16, 18, 20**
+- **Action**: Selects **10**
+- **Reasoning**: Picks 10 to maintain options with factors 2 and 5.
+- **Updated Number Pool**:
+  `[2, 3, 4, 5, 6, 7, 11, 12, 13, 16, 17, 18, 19, 20]`
+- **Player 1's Collection**: `[8, 14, 10]`
+
+---
+
+#### Turn 6: Player 2
+
+- **Last Number Picked**: **15**
+- **Possible Factors**: 3, 5
+- **Valid Choices**: Numbers in the pool that share factors 3 or 5.
+  - Valid numbers: **3, 5, 6, 12, 18**
+- **Action**: Selects **12**
+- **Reasoning**: Chooses 12 as it shares factor 3 and provides future options.
+- **Updated Number Pool**:
+  `[2, 3, 4, 5, 6, 7, 11, 13, 16, 17, 18, 19, 20]`
+- **Player 2's Collection**: `[9, 15, 12]`
+
+---
+
+#### Turn 7: Player 1
+
+- **Last Number Picked**: **10**
+- **Possible Factors**: 2, 5
+- **Valid Choices**: Numbers in the pool that share factors 2 or 5.
+  - Valid numbers: **2, 4, 5, 6, 16, 18, 20**
+- **Action**: Selects **5**
+- **Reasoning**: Picks 5 to limit Player 2's access to numbers with factor 5.
+- **Updated Number Pool**:
+  `[2, 3, 4, 6, 7, 11, 13, 16, 17, 18, 19, 20]`
+- **Player 1's Collection**: `[8, 14, 10, 5]`
+
+---
+
+#### Turn 8: Player 2
+
+- **Last Number Picked**: **12**
+- **Possible Factors**: 2, 3, 4, 6
+- **Valid Choices**: Numbers in the pool that share factors 2, 3, 4, or 6.
+  - Valid numbers: **2, 3, 4, 6, 16, 18, 20**
+- **Action**: Selects **18**
+- **Reasoning**: Chooses 18 to maintain options with factors 2 and 3.
+- **Updated Number Pool**:
+  `[2, 3, 4, 6, 7, 11, 13, 16, 17, 19, 20]`
+- **Player 2's Collection**: `[9, 15, 12, 18]`
+
+---
+
+#### Turn 9: Player 1
+
+- **Last Number Picked**: **5**
+- **Possible Factors**: 5
+- **Valid Choices**: Numbers in the pool that share factor 5.
+  - Valid numbers: **None** (5, 10, 15, 20 are taken or not sharing factors)
+- **Outcome**: Player 1 has no valid moves.
+- **Winner**: **Player 2**
+
+---
+
+### Command-Line Interaction Example
+
+```
+Welcome to Factor Challenge!
+
+Available Numbers: 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+Player 1's Collection: []
+Player 2's Collection: []
+
+Player 1, it's your turn.
+Enter your selection: 8
+
+Available Numbers: 2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20
+Player 1's Collection: [8]
+Player 2's Collection: []
+
+Player 2, it's your turn.
+Enter your selection: 9
+
+Available Numbers: 2,3,4,5,6,7,10,11,12,13,14,15,16,17,18,19,20
+Player 1's Collection: [8]
+Player 2's Collection: [9]
+
+Player 1, it's your turn.
+Your last number was 8.
+Valid numbers share a factor with 8 (2,4).
+Available Numbers: 2,3,4,5,6,7,10,11,12,13,14,15,16,17,18,19,20
+Valid selections: 2,4,6,10,12,14,16,18,20
+Enter your selection: 14
+
+(Continue gameplay as in the example above...)
+
+Player 1, it's your turn.
+Your last number was 5.
+Valid numbers share a factor with 5.
+Available Numbers: 2,3,4,6,7,11,13,16,17,18,19,20
+Valid selections: None
+You have no valid moves. Player 2 wins!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider not just your next move but how it will affect your options in future turns.
+- **Limit Opponent's Options**: Choose numbers that reduce the factors available to your opponent.
+- **Factor Awareness**: Familiarize yourself with the factors of numbers 2 through 20 to make quick decisions.
+- **Flexibility**: Keep your options open by selecting numbers with multiple factors.
+
+---
+
+## Conclusion
+
+**Factor Challenge** offers a simple yet strategically rich gameplay experience. Its straightforward rules make it easy to implement in a command-line interface, and the reliance on number factors adds a layer of complexity that rewards strategic planning. With no possibility of a draw and the potential for quick game endings, it ensures engaging and decisive matches where skillful play can consistently outperform luck.
+
+Enjoy the game and may the best strategist win!

@@ -1,0 +1,159 @@
+# Odd and Even Challenge
+
+## Objective
+
+Be the first player to reach **exactly 20 points** by strategically rolling a die and accumulating points. The game requires players to balance risk and reward, deciding whether to roll again for more points or pass to avoid overshooting the target score.
+
+## Setup
+
+1. **Players**: Two players participate in the game.
+2. **Starting Scores**: Both players begin with a score of **0**.
+3. **Die**: A virtual six-sided die is used, generating numbers from 1 to 6.
+4. **Turn Order**: Determine who goes first (e.g., by coin toss or agreement).
+
+## Game Components
+
+- **Virtual Die**: Simulated six-sided die that produces a random integer between 1 and 6.
+- **Scoreboard**: Tracks each player's current score throughout the game.
+
+## Turns
+
+- Players take turns alternately.
+- During a turn, a player can choose one of the following actions:
+  - **Roll the Die**: Attempt to increase their score.
+  - **Pass**: End their turn to secure their current score.
+
+## Rules and Mechanics
+
+### 1. Rolling the Die
+
+- **Action**: The player rolls the virtual die.
+- **Outcome**:
+  - The number rolled is added to the player's current score.
+  - **Odd Number Rolled (1, 3, 5)**:
+    - The player may choose to **roll again** or **pass**.
+  - **Even Number Rolled (2, 4, 6)**:
+    - The player's turn **ends immediately**.
+- **Risk of Overshooting**:
+  - If a player's score exceeds **20** at any point, their score is reset to **0**, and their turn ends.
+
+### 2. Passing
+
+- A player may choose to pass at any time during their turn, even before rolling.
+- Passing ends the player's turn, and their current score remains unchanged.
+- Strategically passing can prevent the risk of overshooting the target score.
+
+### 3. Scoring
+
+- **Score Accumulation**: Players accumulate points based on the numbers rolled.
+- **Score Reset**:
+  - Exceeding a score of 20 resets the player's score to **0**.
+  - Example: A player with 18 points rolls a 4, bringing the total to 22. Their score resets to 0.
+
+## Winning the Game
+
+- The first player to reach **exactly 20 points** wins.
+- If both players reach 20 in the same round, the player who reached it on their turn wins.
+- There is **no draw mechanism**; gameplay continues until one player wins.
+
+## Examples
+
+### Example Turn Sequence
+
+**Player 1's Turn:**
+
+1. **Current Score**: 0
+2. **Action**: Chooses to roll.
+3. **Rolls**: 5 (odd number).
+4. **New Score**: 0 + 5 = **5**
+5. **Decision**: Chooses to roll again.
+6. **Rolls**: 3 (odd number).
+7. **New Score**: 5 + 3 = **8**
+8. **Decision**: Chooses to roll again.
+9. **Rolls**: 2 (even number).
+10. **New Score**: 8 + 2 = **10**
+11. **Turn Ends**: Due to rolling an even number.
+
+**Player 2's Turn:**
+
+1. **Current Score**: 0
+2. **Action**: Chooses to roll.
+3. **Rolls**: 6 (even number).
+4. **New Score**: 0 + 6 = **6**
+5. **Turn Ends**: Due to rolling an even number.
+
+**Player 1's Next Turn:**
+
+1. **Current Score**: 10
+2. **Action**: Chooses to roll.
+3. **Rolls**: 5 (odd number).
+4. **New Score**: 10 + 5 = **15**
+5. **Decision**: Chooses to pass to avoid overshooting.
+6. **Turn Ends**: Score remains at **15**.
+
+**Player 2's Next Turn:**
+
+1. **Current Score**: 6
+2. **Action**: Chooses to roll.
+3. **Rolls**: 5 (odd number).
+4. **New Score**: 6 + 5 = **11**
+5. **Decision**: Chooses to roll again.
+6. **Rolls**: 4 (even number).
+7. **New Score**: 11 + 4 = **15**
+8. **Turn Ends**: Due to rolling an even number.
+
+### Winning Scenario
+
+- **Player 1's Turn**:
+  - Current Score: **15**
+  - Chooses to roll.
+  - Rolls: **5** (odd number).
+  - New Score: 15 + 5 = **20**
+  - **Player 1 wins** by reaching exactly 20 points.
+
+## Command-Line Interaction Examples
+
+**Example 1: Player Chooses to Roll and Then Pass**
+
+```
+Player 1's turn.
+Current score: 15
+Do you want to roll or pass? (r/p): r
+You rolled a 3 (odd number).
+Your new score is 18.
+Do you want to roll again or pass? (r/p): p
+You passed. Turn ends with a score of 18.
+```
+
+**Example 2: Player Overshoots and Score Resets**
+
+```
+Player 2's turn.
+Current score: 18
+Do you want to roll or pass? (r/p): r
+You rolled a 4 (even number).
+Your new score is 22.
+You exceeded 20! Your score resets to 0.
+Turn ends.
+```
+
+**Example 3: Player Wins the Game**
+
+```
+Player 1's turn.
+Current score: 18
+Do you want to roll or pass? (r/p): r
+You rolled a 2 (even number).
+Your new score is 20.
+Congratulations! You reached exactly 20 and win the game!
+```
+
+## Strategy Tips
+
+- **Assess Risk**: If close to 20, consider passing to avoid resetting your score.
+- **Opponent's Score**: Be mindful of your opponent's score when deciding to take risks.
+- **Probability**: Remember that rolling an even number ends your turn and increases the chance of overshooting if you're close to 20.
+
+---
+
+Enjoy the **Odd and Even Challenge** and may the best strategist win!

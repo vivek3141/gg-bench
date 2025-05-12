@@ -1,0 +1,296 @@
+# Adjacent Capture: A Two-Player Strategy Game
+
+## Objective
+
+**Adjacent Capture** is a turn-based strategy game for two players. The primary goal is to be the first player to control a majority of cells on a 5x5 grid, which means claiming at least **13 cells**. Players achieve victory by strategically claiming cells and capturing opponent's cells through adjacency mechanics. The game ends immediately when a player controls 13 or more cells, declaring them the winner. There is no possibility of a draw in this game.
+
+---
+
+## Setup
+
+1. **Game Grid**: The game is played on a 5x5 grid consisting of 25 cells. Each cell is identified by its row and column coordinates `(row, column)`, both ranging from 1 to 5.
+
+2. **Player Symbols**:
+   - **Player 1**: Uses the symbol `X`.
+   - **Player 2**: Uses the symbol `O`.
+
+3. **Initial State**: All cells on the grid are initially unclaimed and empty.
+
+---
+
+## Game Components
+
+- **Grid Cells**: Each cell on the grid can be in one of three states:
+  - **Empty**: Represented by a dot `.`.
+  - **Claimed by Player 1**: Contains `X`.
+  - **Claimed by Player 2**: Contains `O`.
+
+- **Player's Claim**: When a player claims a cell, their symbol (`X` or `O`) marks that cell.
+
+- **Adjacency**: Cells are considered adjacent if they are directly above, below, to the left, or to the right of a given cell (no diagonal adjacency).
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Player Order**: Players alternate turns, starting with **Player 1**.
+
+2. **Actions during a Turn**:
+   - **Claiming a Cell**: The player selects any unclaimed (empty) cell to claim.
+   - **Capturing Adjacent Cells** (if applicable): After claiming a cell, the player may capture one adjacent opponent's cell according to the capture rules.
+
+3. **Turn Progression**:
+   - The turn ends after the player has:
+     - Claimed one cell.
+     - Optionally captured one adjacent opponent's cell, if possible.
+   - Control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+### Claiming Cells
+
+- On each turn, a player **must** claim one unclaimed cell on the grid by placing their symbol (`X` or `O`) in that cell.
+
+### Capturing Opponent’s Cells
+
+- **Eligibility for Capture**:
+  - A player may capture **one** adjacent opponent's cell immediately after claiming a cell if:
+    - The newly claimed cell is **adjacent** (up, down, left, or right) to one or more cells already claimed by the same player.
+    - There is at least one opponent's cell that is **adjacent** to the newly claimed cell.
+
+- **Capture Mechanics**:
+  - The player chooses **one** adjacent opponent's cell to capture.
+  - The captured cell is converted to the current player's symbol.
+  - Only **one** opponent's cell can be captured per turn, regardless of the number of adjacent opponent cells.
+
+- **No Capture Scenario**:
+  - If the newly claimed cell is not adjacent to any of the player's own cells (other than itself), the player cannot capture any opponent's cells on that turn.
+  - If there are no adjacent opponent's cells, no capture occurs.
+
+### Adjacent Cells Definition
+
+- Cells are adjacent if they are directly:
+  - Above `(row - 1, column)`
+  - Below `(row + 1, column)`
+  - Left `(row, column - 1)`
+  - Right `(row, column + 1)`
+- Diagonal cells are **not** considered adjacent.
+
+### Winning the Game
+
+- The game ends immediately when a player controls **13 or more cells**.
+- The player who first achieves this majority is declared the winner.
+
+---
+
+## Scoring
+
+- **Cell Control Count**: Players keep track of the number of cells they control.
+  - A player's score is the number of cells marked with their symbol on the grid.
+- **Winning Condition**: No points are awarded; the winner is determined by achieving control over at least 13 cells.
+
+---
+
+## Example Gameplay
+
+### Initial Grid
+
+All cells are empty:
+
+```
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Action**: Claims cell `(3, 3)`.
+- **Grid Update**:
+
+```
+. . . . .
+. . . . .
+. . X . .
+. . . . .
+. . . . .
+```
+
+- **Capture**: No capture possible (no adjacent own cells yet).
+
+#### Turn 2: Player 2
+
+- **Action**: Claims cell `(3, 4)`.
+- **Grid Update**:
+
+```
+. . . . .
+. . . . .
+. . X O .
+. . . . .
+. . . . .
+```
+
+- **Capture**: No capture possible (newly claimed cell not adjacent to any of Player 2’s own cells).
+
+#### Turn 3: Player 1
+
+- **Action**: Claims cell `(3, 2)`.
+- **Grid Update**:
+
+```
+. . . . .
+. . . . .
+. X X O .
+. . . . .
+. . . . .
+```
+
+- **Capture Eligibility**:
+  - Newly claimed cell `(3, 2)` is adjacent to Player 1’s cell at `(3, 3)`.
+  - There is an adjacent opponent's cell at `(3, 4)`.
+
+- **Capture**:
+  - Player 1 captures cell `(3, 4)`.
+- **Grid After Capture**:
+
+```
+. . . . .
+. . . . .
+. X X X .
+. . . . .
+. . . . .
+```
+
+- **Player 1 Control Count**: 3 cells.
+
+#### Turn 4: Player 2
+
+- **Action**: Claims cell `(2, 3)`.
+- **Grid Update**:
+
+```
+. . . . .
+. . X . .
+. X X X .
+. . . . .
+. . . . .
+```
+
+- **Capture**: No capture possible (newly claimed cell not adjacent to any of Player 2’s own cells).
+
+#### Turn 5: Player 1
+
+- **Action**: Claims cell `(3, 1)`.
+- **Grid Update**:
+
+```
+. . . . .
+. . X . .
+X X X X .
+. . . . .
+. . . . .
+```
+
+- **Capture Eligibility**:
+  - Newly claimed cell `(3, 1)` is adjacent to Player 1’s cell at `(3, 2)`.
+  - No adjacent opponent's cells to capture.
+
+- **Capture**: No capture executed.
+
+- **Player 1 Control Count**: 4 cells.
+
+---
+
+## Command-Line Interaction Examples
+
+### Claiming a Cell
+
+- **Player Prompt**:
+  ```
+  Player 1 (X), enter the row and column to claim (e.g., "3 3"): 
+  ```
+- **Player Input**:
+  ```
+  3 3
+  ```
+- **Game Response**:
+  ```
+  You have claimed cell (3, 3).
+  ```
+
+### Checking for Capture
+
+- **Game Prompt**:
+  ```
+  Checking for capture opportunities...
+  ```
+- **Game Response**:
+  ```
+  No adjacent own cells. No capture this turn.
+  ```
+
+### Capture Execution
+
+- **Game Prompt**:
+  ```
+  You can capture an adjacent opponent's cell.
+  Opponent's adjacent cells:
+  - (2, 3)
+  - (3, 4)
+  Enter the row and column of the opponent's cell to capture: 
+  ```
+- **Player Input**:
+  ```
+  3 4
+  ```
+- **Game Response**:
+  ```
+  You have captured cell (3, 4).
+  ```
+
+### End of Turn Summary
+
+- **Game Output**:
+  ```
+  End of turn summary:
+  - Player 1 controls 4 cells.
+  - Player 2 controls 1 cell.
+  ```
+
+### Winning the Game
+
+- **Game Check**:
+  ```
+  Player 1 now controls 13 cells and wins the game!
+  ```
+
+---
+
+## Additional Rules and Clarifications
+
+- **Invalid Moves**:
+  - If a player attempts to claim an already claimed cell, they are prompted to choose another cell.
+  - If a player tries to capture a cell without meeting the capture conditions, the capture is not allowed.
+
+- **Adjacency Edge Cases**:
+  - Edge and corner cells have fewer adjacent cells but follow the same adjacency rules.
+  - Players should consider grid boundaries when planning moves.
+
+- **Capture Strategy**:
+  - Players can only capture **one** opponent's cell per turn, even if multiple captures are possible.
+  - Choosing which opponent's cell to capture can impact the opponent's future move options.
+
+---
+
+## Conclusion
+
+Adjacent Capture is a game of strategy and foresight. By carefully planning cell claims and utilizing the capture mechanic, players can gain control over the grid and outmaneuver their opponent. The balance between expanding territory and disrupting the opponent's control adds depth and excitement to each turn. Mastery comes from anticipating moves and strategically positioning for captures. Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,202 @@
+# Operation Target: A Two-Player Turn-Based Game
+
+## Objective
+
+**Operation Target** is a strategic two-player game where the primary goal is to be the first player to reach the **Target Number** exactly. Players take turns applying mathematical operations to a **Current Number**, navigating operational restrictions to outmaneuver their opponent. The game requires foresight and planning, ensuring that a skilled player can consistently secure victory over an unskilled opponent.
+
+## Setup
+
+1. **Choose the Target Number**: Agree upon a positive integer to serve as the Target Number for the game. For a standard game, the Target Number is **23**, but players may choose any suitable number for variation.
+
+2. **Initialize the Current Number**: Set the Current Number to **1** at the start of the game.
+
+3. **Determine the First Player**: Decide which player will take the first turn. This can be done by mutual agreement or by a random method such as a coin toss.
+
+## Game Components
+
+- **Target Number**: The specific positive integer that players aim to reach exactly.
+  
+- **Current Number**: The number that is modified each turn based on players' chosen operations. It begins at **1** and changes as the game progresses.
+
+- **Allowed Operations**:
+  - **Addition (+1)**: Add 1 to the Current Number.
+  - **Multiplication (×2)**: Multiply the Current Number by 2.
+
+- **Operational Record**:
+  - Each player keeps track of the operation they performed on their previous turn to adhere to operational restrictions.
+
+## Turns
+
+- Players alternate turns throughout the game.
+  
+- **Turn Structure**:
+  1. **Review Restrictions**: Before choosing an operation, the player must consider which operation they performed on their previous turn.
+  2. **Select an Operation**: Choose either addition (+1) or multiplication (×2), adhering to the operational restrictions.
+  3. **Apply the Operation**: Perform the chosen operation on the Current Number.
+  4. **Update the Current Number**: The result becomes the new Current Number.
+  5. **Check for Victory/Loss**:
+     - If the Current Number exactly equals the Target Number, the player wins.
+     - If the Current Number exceeds the Target Number, the player loses immediately.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Operational Choices**:
+   - On each turn, a player may choose to:
+     - **Add 1** to the Current Number, or
+     - **Multiply** the Current Number **by 2**.
+
+2. **Operational Restrictions**:
+   - A player **cannot choose the same operation** that they performed on their **previous turn**.
+   - Players **are allowed** to choose the operation that their **opponent** used on the preceding turn.
+
+3. **Winning the Game**:
+   - The first player to reach a Current Number that is **exactly equal** to the Target Number **wins** the game.
+
+4. **Exceeding the Target Number**:
+   - If a player's operation results in a Current Number that **exceeds** the Target Number, they **immediately lose** the game.
+
+5. **No Skipping Turns**:
+   - Players **must** perform an operation on their turn. If both operations are disallowed by the rules, the player loses (though this situation cannot occur under the operational restrictions provided).
+
+### Example of Operational Restrictions
+
+- If **Player A** performed **addition (+1)** on their previous turn, they **cannot** choose addition on their current turn but may choose multiplication (×2).
+  
+- **Player B** is not restricted by Player A's previous operation and may choose either operation unless restricted by their own previous turn's operation.
+
+## Scoring
+
+- **Victory**: Achieved by the player who reaches the Target Number exactly.
+  
+- **Defeat**: Occurs when a player's operation causes the Current Number to exceed the Target Number.
+
+- There are no points or secondary scoring methods; the outcome is determined solely by which player achieves the objective.
+
+## Examples
+
+### Sample Game Play
+
+- **Target Number**: 23
+
+- **Current Number**: Starts at 1
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - **Previous Operation**: None
+   - **Available Operations**: Add 1 or Multiply by 2
+   - **Chooses**: Multiply by 2
+   - **Calculation**: 1 × 2 = 2
+   - **Current Number**: 2
+
+2. **Player 2's Turn**:
+   - **Previous Operation**: None
+   - **Available Operations**: Add 1 or Multiply by 2
+   - **Chooses**: Multiply by 2
+   - **Calculation**: 2 × 2 = 4
+   - **Current Number**: 4
+
+3. **Player 1's Turn**:
+   - **Previous Operation**: Multiply by 2
+   - **Cannot Choose**: Multiply by 2
+   - **Available Operation**: Add 1
+   - **Chooses**: Add 1
+   - **Calculation**: 4 + 1 = 5
+   - **Current Number**: 5
+
+4. **Player 2's Turn**:
+   - **Previous Operation**: Multiply by 2
+   - **Cannot Choose**: Multiply by 2
+   - **Available Operation**: Add 1
+   - **Chooses**: Add 1
+   - **Calculation**: 5 + 1 = 6
+   - **Current Number**: 6
+
+5. **Player 1's Turn**:
+   - **Previous Operation**: Add 1
+   - **Cannot Choose**: Add 1
+   - **Available Operation**: Multiply by 2
+   - **Chooses**: Multiply by 2
+   - **Calculation**: 6 × 2 = 12
+   - **Current Number**: 12
+
+6. **Player 2's Turn**:
+   - **Previous Operation**: Add 1
+   - **Cannot Choose**: Add 1
+   - **Available Operation**: Multiply by 2
+   - **Chooses**: Multiply by 2
+   - **Calculation**: 12 × 2 = 24
+   - **Current Number**: 24
+   - **Result**: Exceeds the Target Number (23). **Player 2 loses**.
+
+7. **Outcome**:
+   - **Player 1 wins** as Player 2 exceeded the Target Number.
+
+### Strategic Considerations
+
+- **Plan Ahead**: Anticipate the operational restrictions on future turns. Choose operations that set you up for favorable options on your next turn.
+
+- **Control the Current Number**: Keep the Current Number within a range that offers you flexibility while pressuring your opponent.
+
+- **Force Mistakes**: Maneuver the Current Number to values that may compel your opponent to exceed the Target Number or limit their operational choices.
+
+## Command-Line Interaction Example
+
+Below is how the game might proceed in a command-line interface:
+
+```
+Game Start!
+Target Number: 23
+Current Number: 1
+
+Player 1's Turn:
+Previous Operation: None
+Available Operations: [1] Add 1, [2] Multiply by 2
+Enter the number of your chosen operation: 2
+You chose to Multiply by 2.
+New Current Number: 2
+
+Player 2's Turn:
+Previous Operation: None
+Available Operations: [1] Add 1, [2] Multiply by 2
+Enter the number of your chosen operation: 2
+You chose to Multiply by 2.
+New Current Number: 4
+
+Player 1's Turn:
+Previous Operation: Multiply by 2
+Available Operation: [1] Add 1
+Enter the number of your chosen operation: 1
+You chose to Add 1.
+New Current Number: 5
+
+Player 2's Turn:
+Previous Operation: Multiply by 2
+Available Operation: [1] Add 1
+Enter the number of your chosen operation: 1
+You chose to Add 1.
+New Current Number: 6
+
+Player 1's Turn:
+Previous Operation: Add 1
+Available Operation: [1] Multiply by 2
+Enter the number of your chosen operation: 1
+You chose to Multiply by 2.
+New Current Number: 12
+
+Player 2's Turn:
+Previous Operation: Add 1
+Available Operation: [1] Multiply by 2
+Enter the number of your chosen operation: 1
+You chose to Multiply by 2.
+New Current Number: 24
+
+Player 2 has exceeded the Target Number!
+Player 1 wins the game!
+```
+
+## Summary
+
+**Operation Target** is an engaging, strategic game that challenges players to think ahead and manipulate the Current Number within operational constraints. Its simple rules make it easy to code and suitable for a command-line interface, while the strategic depth ensures that skillful play is rewarded. With each move, players must balance immediate gains against future possibilities, making every turn critical in the pursuit of victory.

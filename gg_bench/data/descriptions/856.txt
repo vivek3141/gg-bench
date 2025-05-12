@@ -1,0 +1,220 @@
+# Parity Flip: A Two-Player Command-Line Game
+
+## Objective
+
+**Parity Flip** is a strategic two-player turn-based game played on a linear array of numbers. Each player is assigned a parity—either **even** or **odd**. The primary goal is to be the first player to convert all the numbers in the array to your assigned parity. Victory is achieved when every number in the array matches your parity, signaling a win and ending the game.
+
+## Setup
+
+1. **Initialize the Game Array**:
+   - Create a linear array of **7 integers**.
+   - Each element in the array is initialized with a random integer between **1** and **9**, inclusive.
+
+2. **Assign Parities to Players**:
+   - **Player 1** is assigned **even** parity.
+   - **Player 2** is assigned **odd** parity.
+
+3. **Display Initial State**:
+   - The initial array and player assignments are displayed to both players.
+
+## Game Components
+
+- **Game Array**:
+  - A simple list of 7 integers (e.g., `[3, 4, 5, 6, 7, 8, 9]`).
+  - Represents the current state of the game.
+
+- **Players**:
+  - **Player 1**:
+    - Aims to make all numbers in the array **even**.
+    - Uses strategies to change numbers to even values.
+  - **Player 2**:
+    - Aims to make all numbers in the array **odd**.
+    - Uses strategies to change numbers to odd values.
+
+- **Operations**:
+  - **Increment (+1)**: Increases a selected number by 1.
+  - **Decrement (-1)**: Decreases a selected number by 1.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Turn Structure**:
+   - **Select an Index**:
+     - Choose a valid index (position) in the array (0 to 6).
+   - **Choose an Operation**:
+     - Decide to **increment (+1)** or **decrement (-1)** the selected number.
+   - **Execute the Operation**:
+     - Update the number at the selected index accordingly.
+   - **Display the Updated Array**:
+     - Show the current state of the array after the operation.
+
+3. **Valid Moves**:
+   - Players can only alter numbers within the array bounds.
+   - Only increment or decrement by 1 is allowed per turn.
+
+4. **Turn Progression**:
+   - After a player completes their turn, control passes to the other player.
+   - The game continues until a player wins.
+
+## Rules and Mechanics
+
+- **Parity Goals**:
+  - **Player 1 (Even)** aims to convert all numbers in the array to even numbers.
+  - **Player 2 (Odd)** aims to convert all numbers in the array to odd numbers.
+
+- **Operations**:
+  - **Increment (+1)**:
+    - Adds 1 to the chosen number.
+    - Example: If the number is 3, it becomes 4.
+  - **Decrement (-1)**:
+    - Subtracts 1 from the chosen number.
+    - Example: If the number is 4, it becomes 3.
+
+- **Number Bounds**:
+  - Numbers are constrained between **1** and **9**.
+  - If an operation would move a number outside these bounds, it is invalid, and the player must choose a different move.
+
+- **Winning the Game**:
+  - A player wins immediately when all numbers in the array match their assigned parity.
+  - The game cannot end in a draw.
+
+- **Strategic Considerations**:
+  - Players must balance advancing their parity goals while impeding their opponent's progress.
+  - Anticipate the opponent's moves and plan accordingly.
+
+## Scoring
+
+- **Victory**:
+  - The first player to have all numbers in the array matching their assigned parity (even or odd) wins the game.
+  - No points are tracked beyond determining the winner.
+
+- **Game End**:
+  - The game ends immediately upon a player's victory.
+  - If a player cannot make a valid move, they must pass their turn (though this scenario is unlikely given the operations allowed).
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Setup**:
+
+- **Array**: `[3, 4, 5, 6, 7, 8, 9]`
+- **Player 1**: Even
+- **Player 2**: Odd
+
+**Turn 1 - Player 1**:
+
+- **Action**: Increment index **0**.
+- **Before**: `3` (odd)
+- **After**: `4` (even)
+- **Updated Array**: `[4, 4, 5, 6, 7, 8, 9]`
+
+**Turn 2 - Player 2**:
+
+- **Action**: Decrement index **1**.
+- **Before**: `4` (even)
+- **After**: `3` (odd)
+- **Updated Array**: `[4, 3, 5, 6, 7, 8, 9]`
+
+**Turn 3 - Player 1**:
+
+- **Action**: Increment index **2**.
+- **Before**: `5` (odd)
+- **After**: `6` (even)
+- **Updated Array**: `[4, 3, 6, 6, 7, 8, 9]`
+
+**Turn 4 - Player 2**:
+
+- **Action**: Increment index **1**.
+- **Before**: `3` (odd)
+- **After**: `4` (even)
+- **Updated Array**: `[4, 4, 6, 6, 7, 8, 9]`
+
+**Turn 5 - Player 1**:
+
+- **Action**: Decrement index **4**.
+- **Before**: `7` (odd)
+- **After**: `6` (even)
+- **Updated Array**: `[4, 4, 6, 6, 6, 8, 9]`
+
+**Turn 6 - Player 2**:
+
+- **Action**: Decrement index **6**.
+- **Before**: `9` (odd)
+- **After**: `8` (even)
+- **Updated Array**: `[4, 4, 6, 6, 6, 8, 8]`
+
+**Turn 7 - Player 1**:
+
+- **Action**: No valid odd numbers remain to change.
+- **Check for Victory**:
+  - All numbers are **even**.
+- **Result**: **Player 1 wins!**
+
+### Command-Line Interaction Sample
+
+**Game Start**:
+```
+Welcome to Parity Flip!
+
+Initial Array: [3, 4, 5, 6, 7, 8, 9]
+Player 1 is Even.
+Player 2 is Odd.
+
+Player 1's turn.
+Select an index (0-6): 0
+Increment or Decrement (enter '+' or '-'): +
+Updated Array: [4, 4, 5, 6, 7, 8, 9]
+```
+
+**Next Turn**:
+```
+Player 2's turn.
+Select an index (0-6): 1
+Increment or Decrement (enter '+' or '-'): -
+Updated Array: [4, 3, 5, 6, 7, 8, 9]
+```
+
+*(Subsequent turns continue in this manner.)*
+
+**Game End**:
+```
+Player 1's turn.
+No valid moves remain for Player 1.
+All numbers are even.
+Player 1 wins the game!
+```
+
+## Additional Rules
+
+- **Invalid Input Handling**:
+  - If a player selects an invalid index or operation, prompt them to try again.
+  - Invalid inputs do not count as a turn.
+
+- **Tie-Breaking**:
+  - As the game cannot end in a draw, tie-breaking rules are unnecessary.
+
+- **Passing Turns**:
+  - If a player cannot make a valid move (e.g., no numbers can be altered without exceeding bounds), they forfeit the turn.
+
+## Strategy Tips
+
+- **Control the Middle**:
+  - Focus on numbers that are most contested to prevent your opponent from gaining an advantage.
+
+- **Balance Offense and Defense**:
+  - While advancing your parity, sometimes it's beneficial to revert your opponent's progress.
+
+- **Plan Ahead**:
+  - Anticipate how the array will look in a few turns to make strategic moves.
+
+- **Resource Management**:
+  - Remember that numbers have bounds (1-9). Avoid pushing numbers to the limits too early.
+
+## Conclusion
+
+Parity Flip is a simple yet strategic game that tests players' ability to think ahead and manipulate numerical parity. Its straightforward mechanics make it easy to code and play in a command-line interface, while the depth of strategy ensures that skilled players can consistently outperform their opponents.
+
+Enjoy the game, and may the best strategist win!

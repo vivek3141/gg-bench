@@ -1,0 +1,149 @@
+# Sum31 Game Rule Book
+
+## Objective
+
+Sum31 is a two-player turn-based numerical strategy game played in a command-line interface. The primary goal is to be the player who reaches a cumulative total of **exactly 31** by strategically selecting numbers from a shared pool. Players take turns picking numbers, and the first to bring the shared total to 31 wins the game. If a player causes the total to exceed 31, they lose immediately. The game combines simple arithmetic with strategic planning, allowing skilled players to consistently outperform less experienced opponents.
+
+## Setup
+
+- **Starting Total**: The game begins with a cumulative total (`Total`) of **0**.
+- **Available Numbers**: A shared pool of numbers from **1 to 9** is available. Each number can be selected only once during the game.
+- **Player Order**: Players decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Shared Total (`Total`)**: An integer variable that holds the cumulative sum of the numbers selected by both players. It starts at 0 and changes as the game progresses.
+- **Available Numbers Pool**: A list containing numbers **1** through **9**. This pool is updated after each turn to remove numbers that have been selected.
+- **Player Inputs**: Each player will input their chosen number during their turn.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions During a Turn**:
+  1. **View Game State**: At the start of their turn, the player is informed of the current `Total` and the list of `Available Numbers`.
+  2. **Select a Number**: The player selects one number from the `Available Numbers` pool.
+  3. **Update Total**: The selected number is added to the `Total`.
+  4. **Update Available Numbers**: The selected number is removed from the `Available Numbers` pool.
+  5. **End of Turn**: The turn ends, and control passes to the other player.
+
+## Rules and Mechanics
+
+- **Number Selection**:
+  - Players must select a number from the `Available Numbers` pool.
+  - Each number from 1 to 9 can be selected only once per game.
+- **Calculating the Total**:
+  - The selected number is added to the shared `Total`.
+  - If the `Total` after addition is exactly **31**, the player who made the selection wins the game.
+  - If the `Total` exceeds **31**, the player who made the selection loses the game immediately.
+- **Winning the Game**:
+  - **Victory Condition**: Be the player who brings the shared `Total` to exactly **31**.
+- **Losing the Game**:
+  - **Defeat Condition**: Select a number that causes the `Total` to exceed **31**.
+
+## Scoring
+
+- **Win/Loss Outcome**: The game outcome is binary—one player wins, and the other loses.
+- **No Points System**: There is no point scoring; the focus is on winning the game.
+- **Skill Recognition**: Over multiple games, skilled players will demonstrate superior strategic planning by consistently winning.
+
+## Examples
+
+Below are example scenarios and command-line interactions to illustrate how the game is played.
+
+### Example Game Playthrough
+
+#### Start of Game
+- **Total**: 0
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+#### Player 1's Turn
+- **Current Total**: 0
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+- **Action**: Player 1 selects **5**.
+- **Updated Total**: 0 + 5 = **5**
+- **Available Numbers**: [1, 2, 3, 4, 6, 7, 8, 9]
+
+#### Player 2's Turn
+- **Current Total**: 5
+- **Available Numbers**: [1, 2, 3, 4, 6, 7, 8, 9]
+- **Action**: Player 2 selects **6**.
+- **Updated Total**: 5 + 6 = **11**
+- **Available Numbers**: [1, 2, 3, 4, 7, 8, 9]
+
+#### Player 1's Turn
+- **Current Total**: 11
+- **Available Numbers**: [1, 2, 3, 4, 7, 8, 9]
+- **Action**: Player 1 selects **9**.
+- **Updated Total**: 11 + 9 = **20**
+- **Available Numbers**: [1, 2, 3, 4, 7, 8]
+
+#### Player 2's Turn
+- **Current Total**: 20
+- **Available Numbers**: [1, 2, 3, 4, 7, 8]
+- **Action**: Player 2 selects **8**.
+- **Updated Total**: 20 + 8 = **28**
+- **Available Numbers**: [1, 2, 3, 4, 7]
+
+#### Player 1's Turn
+- **Current Total**: 28
+- **Available Numbers**: [1, 2, 3, 4, 7]
+- **Action**: Player 1 selects **3**.
+- **Updated Total**: 28 + 3 = **31**
+- **Available Numbers**: [1, 2, 4, 7]
+- **Outcome**: Player 1 wins by reaching exactly 31.
+
+### Command-Line Interaction Sample
+
+```
+--- Sum31 Game Start ---
+Total: 0
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1's Turn:
+Enter a number from the available numbers: 5
+
+Total is now 5
+Available Numbers: [1, 2, 3, 4, 6, 7, 8, 9]
+
+Player 2's Turn:
+Enter a number from the available numbers: 6
+
+Total is now 11
+Available Numbers: [1, 2, 3, 4, 7, 8, 9]
+
+Player 1's Turn:
+Enter a number from the available numbers: 9
+
+Total is now 20
+Available Numbers: [1, 2, 3, 4, 7, 8]
+
+Player 2's Turn:
+Enter a number from the available numbers: 8
+
+Total is now 28
+Available Numbers: [1, 2, 3, 4, 7]
+
+Player 1's Turn:
+Enter a number from the available numbers: 3
+
+Total is now 31
+Available Numbers: [1, 2, 4, 7]
+
+Player 1 wins! The total is exactly 31.
+```
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate future moves, considering which numbers remain available and how they can reach 31 on their turn.
+- **Forced Moves**: A skilled player can control the game by forcing the opponent into a position where any move they make will cause the total to exceed 31.
+- **Number Selection**: Choosing higher or lower numbers strategically can help manipulate the total to your advantage.
+
+## Additional Notes
+
+- **Invalid Moves**: If a player selects a number not in the `Available Numbers` pool or inputs an invalid value (e.g., a number outside 1-9), they should be prompted to select again.
+- **Exceeding 31**: If a player's selection causes the `Total` to exceed 31, they lose immediately, emphasizing careful calculation.
+- **Game Repetition**: Sum31 is quick to play, allowing players to engage in multiple rounds and refine their strategies over time.
+
+---
+
+By following this rulebook, players will have a clear understanding of how to play Sum31. The game's simplicity makes it easy to code and learn, while the strategic depth offers engaging gameplay where skill can triumph over chance.

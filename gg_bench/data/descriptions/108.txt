@@ -1,0 +1,138 @@
+# Number Merge Duel
+
+## Objective
+
+In **Number Merge Duel**, two players engage in a battle of wit and strategy to force their opponent into a position where they cannot make a valid move. The primary goal is to be the last player to successfully merge numbers according to the game rules. The player who cannot make a move on their turn loses the game.
+
+## Setup
+
+1. **Initial Pool**: Begin with a shared pool of numbers:
+   - `[1, 1, 2, 2, 3, 3]`
+2. **Starting Player**: Decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Number Pool**: A shared list of numbers that both players can see and interact with. The initial numbers are:
+  - Two `1`s
+  - Two `2`s
+  - Two `3`s
+- **Numbers**: Each number in the pool is an integer and can be combined with another identical number to form a new number.
+
+## Turns
+
+- Players take turns alternately.
+- On each turn, a player must perform the following actions:
+  1. **Select Numbers**: Choose any two identical numbers from the pool.
+  2. **Merge Numbers**: Remove the selected numbers from the pool and add their sum back into the pool.
+- If a player cannot perform a merge on their turn because no identical numbers are available, they lose the game.
+
+## Rules and Mechanics
+
+1. **Merging Numbers**:
+   - Only **two identical numbers** can be merged.
+   - The merged number is the **sum** of the two numbers.
+   - Example: Merging two `2`s results in a `4`.
+2. **Updating the Pool**:
+   - After merging, remove the two original numbers from the pool.
+   - Add the new merged number to the pool.
+3. **Valid Moves**:
+   - A move is valid if there are at least two identical numbers available in the pool.
+4. **End of Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The player who made the last valid move **wins**.
+5. **No Draws**:
+   - The game cannot end in a draw. There is always a winner and a loser.
+
+## Scoring
+
+- The game is won by strategic play; there is no point scoring system.
+- Victory is achieved by forcing the opponent into a position with no valid moves.
+
+## Example Gameplay
+
+Below is an example of how a game might progress, including sample command-line interactions.
+
+### Initial Setup
+
+- **Number Pool**: `[1, 1, 2, 2, 3, 3]`
+- **Players**: Player 1 and Player 2
+- **Starting Player**: Player 1
+
+### Turn-by-Turn Example
+
+#### **Player 1's Turn**
+
+1. **Available Numbers**: `[1, 1, 2, 2, 3, 3]`
+2. **Action**:
+   - Chooses to merge two `1`s.
+   - Removes the two `1`s and adds `2` to the pool.
+3. **Updated Pool**: `[2, 2, 2, 3, 3]`
+4. **Command-Line Interaction**:
+   ```
+   Player 1, select two identical numbers to merge: 1, 1
+   You have merged two 1s into a 2.
+   New pool: [2, 2, 2, 3, 3]
+   ```
+
+#### **Player 2's Turn**
+
+1. **Available Numbers**: `[2, 2, 2, 3, 3]`
+2. **Action**:
+   - Chooses to merge two `2`s.
+   - Removes the two `2`s and adds `4` to the pool.
+3. **Updated Pool**: `[2, 3, 3, 4]`
+4. **Command-Line Interaction**:
+   ```
+   Player 2, select two identical numbers to merge: 2, 2
+   You have merged two 2s into a 4.
+   New pool: [2, 3, 3, 4]
+   ```
+
+#### **Player 1's Turn**
+
+1. **Available Numbers**: `[2, 3, 3, 4]`
+2. **Action**:
+   - Chooses to merge two `3`s.
+   - Removes the two `3`s and adds `6` to the pool.
+3. **Updated Pool**: `[2, 4, 6]`
+4. **Command-Line Interaction**:
+   ```
+   Player 1, select two identical numbers to merge: 3, 3
+   You have merged two 3s into a 6.
+   New pool: [2, 4, 6]
+   ```
+
+#### **Player 2's Turn**
+
+1. **Available Numbers**: `[2, 4, 6]`
+2. **Action**:
+   - Chooses to merge two `2`s (only one `2` is available).
+   - Cannot perform a valid move.
+3. **Result**:
+   - Player 2 cannot make a move and loses.
+4. **Command-Line Interaction**:
+   ```
+   Player 2, select two identical numbers to merge: No valid pairs available.
+   Player 2 cannot make a move.
+   Player 1 wins the game!
+   ```
+
+### Notes on Strategy
+
+- **Planning Ahead**: Players should plan their moves to control which numbers remain in the pool, forcing the opponent into a position with no valid merges.
+- **Number Awareness**: Keeping track of the numbers in the pool and potential future merges is crucial.
+- **Forcing Moves**: Try to leave the pool in a state where only you can make the next move.
+
+## Command-Line Interaction Overview
+
+- **Prompt**: The game prompts each player to select numbers to merge.
+- **Input**: Players input the two numbers they wish to merge.
+- **Validation**: The game checks for valid moves and updates the pool accordingly.
+- **Feedback**: The game displays the result of the move and the updated pool.
+- **Game Over**: When a player cannot make a move, the game announces the winner.
+
+## Summary
+
+**Number Merge Duel** is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With straightforward rules and easy implementation in a command-line interface, it's an engaging game where skill and strategy determine the winner.
+
+Enjoy the duel, and may the best strategist win!

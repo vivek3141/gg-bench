@@ -1,0 +1,207 @@
+# **Factor Duel**
+
+## **Objective**
+
+Be the last player able to make a valid move by strategically selecting factors of the shared number. Win by forcing your opponent into a position where no valid factors remain for selection.
+
+---
+
+## **Setup**
+
+1. **Starting Number**: Both players agree on a positive integer to start the game. This is called the **Current Number**. For example, the game could start with **100**.
+
+2. **Determine Turn Order**: Decide who goes first (e.g., flip a coin or mutual agreement).
+
+---
+
+## **Game Components**
+
+- **Current Number**: An integer that changes throughout the game as players select factors.
+
+- **Factors**: Numbers that divide the Current Number evenly (excluding 1 and the Current Number itself).
+
+- **Used Factors List**: A record of all factors that have been selected during the game to prevent reuse.
+
+---
+
+## **Turns**
+
+### **Turn Structure**
+
+1. **Player's Action**:
+
+   - **Select a Valid Factor**: Choose a proper factor of the Current Number that has not been previously selected.
+     - *Proper factors* exclude 1 and the number itself.
+     - Factors already used by either player cannot be selected again.
+
+   - **Update the Current Number**:
+     - Divide the Current Number by the selected factor.
+     - The result becomes the new Current Number for the next turn.
+
+2. **Turn Progression**:
+
+   - Players alternate turns following the same structure.
+   - The game continues until a player cannot make a valid move on their turn.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Valid Moves**:
+
+   - A move is valid if:
+     - The selected factor is a proper factor of the Current Number.
+     - The factor has not been previously used.
+
+2. **Invalid Moves**:
+
+   - If a player cannot select a valid factor (no proper unused factors remain), they lose the game.
+
+3. **Winning the Game**:
+
+   - The last player to make a valid move wins.
+   - A player wins by forcing their opponent into a position where no valid moves are possible.
+
+4. **Restrictions**:
+
+   - **Reuse of Factors**: Once a factor has been used, it cannot be selected again by either player.
+   - **Exclusion of 1 and the Current Number**: These are not considered valid factors for selection.
+
+5. **Example of Valid Factors**:
+
+   - If the Current Number is 100, the valid proper factors are 2, 4, 5, 10, 20, 25, 50.
+
+6. **Prime Numbers**:
+
+   - If the Current Number becomes a prime number greater than 2, and no valid factors remain, the next player loses their turn and the game.
+
+---
+
+## **Scoring**
+
+- There is no point system.
+- The winner is the player who makes the last valid move.
+- The game focuses on strategic play rather than accumulating points.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Starting Number**: 60
+
+**Turn 1**:
+
+- **Player 1**:
+
+  - **Valid Factors of 60**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30.
+  - **Selection**: Chooses **6**.
+  - **Calculation**: 60 ÷ 6 = **10**.
+  - **Used Factors**: 6.
+
+**Turn 2**:
+
+- **Player 2**:
+
+  - **Current Number**: 10.
+  - **Valid Factors of 10**: 2, 5.
+  - **Selection**: Chooses **5**.
+  - **Calculation**: 10 ÷ 5 = **2**.
+  - **Used Factors**: 6, 5.
+
+**Turn 3**:
+
+- **Player 1**:
+
+  - **Current Number**: 2.
+  - **Valid Factors of 2**: None (since 1 and 2 are excluded).
+  - **Result**: No valid moves.
+  - **Player 1 loses**.
+
+**Winner**: Player 2.
+
+---
+
+### **Alternate Scenario**
+
+**Starting Number**: 48
+
+**Turn 1**:
+
+- **Player 1**:
+
+  - **Valid Factors of 48**: 2, 3, 4, 6, 8, 12, 16, 24.
+  - **Selection**: Chooses **8**.
+  - **Calculation**: 48 ÷ 8 = **6**.
+  - **Used Factors**: 8.
+
+**Turn 2**:
+
+- **Player 2**:
+
+  - **Current Number**: 6.
+  - **Valid Factors of 6**: 2, 3.
+  - **Selection**: Chooses **3**.
+  - **Calculation**: 6 ÷ 3 = **2**.
+  - **Used Factors**: 8, 3.
+
+**Turn 3**:
+
+- **Player 1**:
+
+  - **Current Number**: 2.
+  - **Valid Factors of 2**: None.
+  - **Result**: No valid moves.
+  - **Player 1 loses**.
+
+**Winner**: Player 2.
+
+---
+
+### **Command-Line Interaction Sample**
+
+Assuming a command-line interface where players input their chosen factors:
+
+**Starting Number**: 30
+
+**Used Factors**: None
+
+---
+
+**Player 1's Turn**
+
+- **Current Number**: 30
+- **Valid Factors**: 2, 3, 5, 6, 10, 15
+- **Used Factors**: None
+- **Input Prompt**: "Player 1, enter a valid factor of 30:"
+- **Player 1 Input**: `15`
+- **Calculation**: 30 ÷ 15 = **2**
+- **Used Factors**: 15
+- **Output**: "Player 1 selected 15. Current Number is now 2."
+
+---
+
+**Player 2's Turn**
+
+- **Current Number**: 2
+- **Valid Factors**: None
+- **Used Factors**: 15
+- **Input Prompt**: "Player 2, no valid moves remaining. You lose."
+- **Game Over**: Player 1 wins.
+
+---
+
+### **Strategic Considerations**
+
+- **Early Moves**: Selecting larger factors may reduce the Current Number quickly but could leave yourself vulnerable.
+
+- **Planning Ahead**: Anticipate the factors that will be available to your opponent after your move.
+
+- **Control the Game**: Aim to force the Current Number into a prime number or a number with limited factors on your opponent's turn.
+
+---
+
+## **Summary**
+
+**Factor Duel** is a simple yet strategic two-player game that involves basic arithmetic and tactical foresight. Players must balance the immediate advantage of reducing the Current Number with the long-term goal of limiting their opponent's options. The game's simplicity makes it easy to implement in a command-line interface, while its strategic depth ensures that skilled players can consistently outperform less experienced opponents. With no possibility of a draw and quick gameplay, **Factor Duel** offers an engaging and competitive experience.

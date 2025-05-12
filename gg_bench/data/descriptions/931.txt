@@ -1,0 +1,221 @@
+**Game Name:** Sequence Avoidance
+
+---
+
+### **Objective**
+
+The primary goal of *Sequence Avoidance* is to **avoid creating a specific forbidden sequence of digits** within a shared sequence. Players take turns appending digits to the end of the sequence. The **first player whose move results in the forbidden sequence appearing loses the game**.
+
+---
+
+### **Setup**
+
+1. **Agree on a Forbidden Sequence:**
+   - Before starting, both players agree on a specific sequence of digits to avoid (e.g., "123", "777", "2468").
+   - The forbidden sequence can be any set of digits and can vary in length and complexity to adjust the game's difficulty.
+
+2. **Initial Shared Sequence:**
+   - The shared sequence starts **empty**.
+
+3. **Determine Turn Order:**
+   - Decide who will take the first turn (e.g., by coin toss or mutual agreement).
+
+---
+
+### **Game Components**
+
+- **Digits (1-9):**
+  - Players can choose any digit from **1 to 9** on their turn.
+  - Digits may be repeated and are **not removed** from a pool after being used.
+
+- **Shared Sequence:**
+  - A central sequence of digits that both players contribute to on their turns.
+  - The sequence is continuously updated and visible to both players after each turn.
+
+- **Forbidden Sequence:**
+  - The specific sequence of digits that players aim to avoid creating within the shared sequence.
+  - Example forbidden sequences:
+    - Specific numbers: "1234", "2468"
+    - Patterns: Three consecutive identical digits like "777"
+    - Palindromes: "121", "1331"
+    - Arithmetic sequences: Four numbers increasing by 2, e.g., "2468"
+
+---
+
+### **Turns**
+
+1. **Taking Turns:**
+   - Players alternate turns throughout the game.
+   - On their turn, a player must perform the required action; skipping a turn is not allowed.
+
+2. **Player Actions During a Turn:**
+   - **Select a Digit:**
+     - Choose a single digit between **1 and 9**.
+   - **Append to Shared Sequence:**
+     - Add the chosen digit to the **end** of the shared sequence.
+
+3. **Viewing the Sequence:**
+   - After each turn, the updated shared sequence is displayed.
+   - Both players can see the entire sequence at all times.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Adding Digits:**
+   - Only one digit is added per turn.
+   - Digits are added to the **end** of the shared sequence.
+
+2. **Forbidden Sequence Detection:**
+   - After a digit is added, check if the forbidden sequence appears **anywhere** within the shared sequence.
+   - The forbidden sequence must match exactly and can overlap previous entries.
+
+3. **Determining the Loser:**
+   - If a player's move causes the forbidden sequence to appear, that player **immediately loses**.
+   - If the forbidden sequence does not appear, the game continues with the next player's turn.
+
+4. **Valid Moves:**
+   - All digits between 1 and 9 are valid choices unless restricted by additional agreed-upon rules.
+   - Players should strategize to avoid setting up the forbidden sequence for themselves while possibly forcing the opponent into a difficult position.
+
+---
+
+### **Scoring**
+
+- **Win Condition:**
+  - A player wins when their opponent creates the forbidden sequence on their turn.
+- **No Draws:**
+  - The game continues indefinitely until the forbidden sequence is created.
+- **Match Play (Optional):**
+  - Players can play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+### **Examples**
+
+#### **Example 1: Forbidden Sequence "123"**
+
+**Gameplay:**
+
+- **Turn 1: Player 1**
+  - Chooses digit: **1**
+  - Shared Sequence: **1**
+- **Turn 2: Player 2**
+  - Chooses digit: **5**
+  - Shared Sequence: **1 5**
+- **Turn 3: Player 1**
+  - Chooses digit: **2**
+  - Shared Sequence: **1 5 2**
+- **Turn 4: Player 2**
+  - Chooses digit: **3**
+  - Shared Sequence: **1 5 2 3**
+  - **Result:** The forbidden sequence "1 2 3" does not appear.
+- **Turn 5: Player 1**
+  - Chooses digit: **1**
+  - Shared Sequence: **1 5 2 3 1**
+- **Turn 6: Player 2**
+  - Chooses digit: **2**
+  - Shared Sequence: **1 5 2 3 1 2**
+- **Turn 7: Player 1**
+  - Chooses digit: **3**
+  - Shared Sequence: **1 5 2 3 1 2 3**
+  - **Result:** The forbidden sequence "1 2 3" appears starting at position 5.
+  - **Player 1 loses.**
+
+#### **Example 2: Forbidden Sequence "777"**
+
+**Gameplay:**
+
+- **Turn 1: Player 1**
+  - Chooses digit: **7**
+  - Shared Sequence: **7**
+- **Turn 2: Player 2**
+  - Chooses digit: **7**
+  - Shared Sequence: **7 7**
+- **Turn 3: Player 1**
+  - Avoids choosing **7** to prevent "777"
+  - Chooses digit: **4**
+  - Shared Sequence: **7 7 4**
+- **Turn 4: Player 2**
+  - Chooses digit: **7**
+  - Shared Sequence: **7 7 4 7**
+- **Turn 5: Player 1**
+  - Chooses digit: **7**
+  - Shared Sequence: **7 7 4 7 7**
+- **Turn 6: Player 2**
+  - Cannot choose **7** without creating "777"
+  - Chooses digit: **5**
+  - Shared Sequence: **7 7 4 7 7 5**
+- **Turn 7: Player 1**
+  - Chooses digit: **7**
+  - Shared Sequence: **7 7 4 7 7 5 7**
+- **Turn 8: Player 2**
+  - Chooses digit: **7**
+  - Shared Sequence: **7 7 4 7 7 5 7 7**
+  - **Result:** The forbidden sequence "7 7 7" appears starting at position 6.
+  - **Player 2 loses.**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start:**
+
+- **Forbidden Sequence:** "456"
+
+**Gameplay:**
+
+- **Shared Sequence:** *(empty)*
+
+- **Player 1's Turn:**
+  - **Input:** `4`
+  - **Shared Sequence:** `4`
+
+- **Player 2's Turn:**
+  - **Input:** `5`
+  - **Shared Sequence:** `4 5`
+
+- **Player 1's Turn:**
+  - **Input:** `6`
+  - **Shared Sequence:** `4 5 6`
+  - **Result:** The forbidden sequence "4 5 6" appears.
+  - **Player 1 loses.**
+
+---
+
+### **Strategy Tips**
+
+- **Anticipate Future Moves:**
+  - Think ahead to how your choice will affect the sequence and what options it leaves for your opponent.
+
+- **Avoid Obvious Setups:**
+  - Do not add digits that bring the sequence closer to the forbidden pattern unless you have a plan to force a win.
+
+- **Force the Opponent's Hand:**
+  - Try to put your opponent in a position where any move they make could result in the forbidden sequence.
+
+- **Remember the Sequence:**
+   - Keep track of the last few digits to ensure you don't accidentally complete the forbidden sequence.
+
+---
+
+### **Variations**
+
+- **Different Forbidden Sequences:**
+  - Change the forbidden sequence to adjust difficulty or to refresh the game.
+
+- **Multiple Forbidden Sequences:**
+  - Agree on more than one forbidden sequence to increase complexity.
+
+- **Pattern-Based Forbidden Sequences:**
+  - Use patterns such as an increasing sequence of any three consecutive numbers or palindromes.
+
+---
+
+### **Conclusion**
+
+*Sequence Avoidance* is a simple yet strategically rich game that challenges players to think ahead and consider the consequences of each digit they add to the shared sequence. It's easy to learn and quick to play, making it perfect for a command-line interface. The game's unique mechanics ensure a skilled player can consistently outmaneuver an unskilled opponent, providing both fun and a test of strategic planning.
+
+---
+
+Enjoy the game, and may the most strategic player win!

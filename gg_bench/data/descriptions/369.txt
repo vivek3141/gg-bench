@@ -1,0 +1,166 @@
+# Divisor Duel
+
+## Objective
+
+Be the player to make the last valid move by forcing your opponent into a position where they cannot subtract a proper divisor from the current number.
+
+---
+
+## Setup
+
+1. **Initial Number (\( N \))**: The game starts with a shared positive integer \( N \). For quick gameplay, it is recommended to start with \( N = 12 \).
+2. **Turn Order**: Players decide who goes first (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Shared Number (\( N \))**: The current number from which players subtract proper divisors.
+- **Proper Divisors**: Divisors of \( N \) excluding 1 and \( N \) itself.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Identify Proper Divisors**: On your turn, list all proper divisors of the current \( N \) (excluding 1 and \( N \) itself).
+  2. **Choose a Divisor**: Select one proper divisor to subtract from \( N \).
+  3. **Calculate New \( N \)**: Subtract the chosen divisor from \( N \) to get the new \( N \).
+  4. **Announce Move**: Declare the chosen divisor and the new value of \( N \).
+
+- **Turn Progression**: Players alternate turns until the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - You must subtract a proper divisor of the current \( N \) (excluding 1 and \( N \) itself).
+   - The subtraction must result in a positive \( N \).
+   
+2. **Invalid Moves**:
+   - Subtracting 1 or \( N \) itself is not allowed.
+   - Subtracting a non-divisor or resulting in zero or negative \( N \) is prohibited.
+
+3. **No Valid Moves**:
+   - If \( N \) has no proper divisors (it is  prime or less than 4), the player cannot make a move and loses the game.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who makes the last valid move wins.
+  - The opponent loses when they have no valid moves on their turn.
+
+- **No Points System**:
+  - There is no point tracking. Each game results in a win or loss.
+
+---
+
+## Example Gameplay
+
+### Starting with \( N = 12 \)
+
+1. **Initial State**:
+   - \( N = 12 \)
+
+2. **Player 1's Turn**:
+   - **Proper Divisors**: 2, 3, 4, 6
+   - **Move**: Subtract 6
+   - **Calculation**: \( 12 - 6 = 6 \)
+   - **Announcement**: "I subtract 6 from 12. New \( N \) is 6."
+
+3. **Player 2's Turn**:
+   - **Proper Divisors**: 2, 3
+   - **Move**: Subtract 2
+   - **Calculation**: \( 6 - 2 = 4 \)
+   - **Announcement**: "I subtract 2 from 6. New \( N \) is 4."
+
+4. **Player 1's Turn**:
+   - **Proper Divisors**: 2
+   - **Move**: Subtract 2
+   - **Calculation**: \( 4 - 2 = 2 \)
+   - **Announcement**: "I subtract 2 from 4. New \( N \) is 2."
+
+5. **Player 2's Turn**:
+   - **Proper Divisors**: None (since 2 is prime)
+   - **Outcome**: Player 2 cannot make a move and loses.
+   - **Announcement**: "No valid moves. I cannot subtract any proper divisors from 2."
+
+6. **Result**:
+   - **Player 1 Wins**
+
+---
+
+## Command-Line Interaction Example
+
+Assuming players are named **Alice** and **Bob**.
+
+### Game Start
+
+- **Initial \( N \)**: 15
+- **Turn Order**: Alice goes first.
+
+---
+
+### Gameplay
+
+1. **Alice's Turn**:
+   - **Current \( N \)**: 15
+   - **Proper Divisors**: 3, 5
+   - **Input**: `Subtract 5`
+   - **New \( N \)**: \( 15 - 5 = 10 \)
+   - **Output**: "Alice subtracts 5. New \( N \) is 10."
+
+2. **Bob's Turn**:
+   - **Current \( N \)**: 10
+   - **Proper Divisors**: 2, 5
+   - **Input**: `Subtract 2`
+   - **New \( N \)**: \( 10 - 2 = 8 \)
+   - **Output**: "Bob subtracts 2. New \( N \) is 8."
+
+3. **Alice's Turn**:
+   - **Current \( N \)**: 8
+   - **Proper Divisors**: 2, 4
+   - **Input**: `Subtract 4`
+   - **New \( N \)**: \( 8 - 4 = 4 \)
+   - **Output**: "Alice subtracts 4. New \( N \) is 4."
+
+4. **Bob's Turn**:
+   - **Current \( N \)**: 4
+   - **Proper Divisors**: 2
+   - **Input**: `Subtract 2`
+   - **New \( N \)**: \( 4 - 2 = 2 \)
+   - **Output**: "Bob subtracts 2. New \( N \) is 2."
+
+5. **Alice's Turn**:
+   - **Current \( N \)**: 2
+   - **Proper Divisors**: None
+   - **Outcome**: Alice cannot make a move.
+   - **Output**: "Alice cannot make a valid move. Bob wins the game!"
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate how your move will affect the next \( N \) and limit your opponent's options.
+- **Avoid Prime Numbers**: Try not to leave \( N \) as a prime number greater than 3 for your turn to avoid losing.
+- **Control the Flow**: Subtract divisors that lead to \( N \) values with fewer proper divisors.
+
+---
+
+## Game Variations
+
+- **Different Starting \( N \)**: Players can start with any composite number greater than 3 to vary game length and complexity.
+- **Time Limits**: Implement a time limit per turn to increase difficulty and pace.
+
+---
+
+## Summary
+
+**Divisor Duel** is a simple, strategic game perfect for a command-line interface. It combines basic arithmetic with strategic planning, offering depth despite its simplicity. The game's unique mechanic of subtracting proper divisors sets it apart from traditional subtraction games, ensuring a fresh and engaging experience for both new and seasoned players.
+
+---
+
+Enjoy the duel, and may the smartest strategist win!

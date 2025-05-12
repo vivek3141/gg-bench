@@ -1,0 +1,193 @@
+# Dual Direction
+
+## Objective
+
+**Dual Direction** is a strategic two-player, turn-based game played on a number line. The primary goal is to be the first player to move the shared marker to your designated goal position while preventing your opponent from reaching theirs. Players must carefully choose their moves to advance toward their own goal without enabling their opponent to win.
+
+## Setup
+
+1. **Number Line Creation**: Draw a number line ranging from **1** to **11**, with each number representing a position on the line.
+2. **Starting Position**: Place a shared marker (e.g., an asterisk `*`) on position **6**, the center of the number line.
+3. **Player Assignment**:
+   - **Player 1**: Aims to move the marker to position **1**.
+   - **Player 2**: Aims to move the marker to position **11**.
+
+## Game Components
+
+- **Number Line**: Positions numbered from **1** to **11**.
+- **Shared Marker**: A token or symbol representing the current position on the number line (e.g., `*`).
+- **Players**: Two participants designated as **Player 1** and **Player 2**.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss). Turns alternate between players.
+- **Player Actions**:
+  - On your turn, you must move the shared marker **one space** either **towards** or **away** from your goal position.
+  - You cannot skip your turn or refuse to move.
+- **Turn Progression**: The game continues with players alternating turns until one player wins.
+
+## Rules and Mechanics
+
+1. **Marker Movement**:
+   - The marker must move exactly **one position** per turn.
+   - Movement can be in **either direction** along the number line.
+   - Players may not move the marker beyond positions **1** or **11**.
+2. **Winning the Game**:
+   - **Victory Condition**: You win if you move the marker onto your own goal position (Player 1 to **1**, Player 2 to **11**).
+   - **Losing Condition**: You lose immediately if the marker reaches your opponent's goal position, regardless of who moved it there.
+3. **Strategic Considerations**:
+   - **Blocking**: Players can move the marker away from their opponent's goal to hinder their progress.
+   - **Forcing Moves**: Anticipate your opponent's options to force them into moving the marker toward your goal.
+
+## Scoring
+
+- **Winning the Game**: Successfully moving the marker to your goal position earns you a win.
+- **Match Play**: For extended play, compete in a series of games, keeping track of wins. The player with the most wins after an agreed number of games is the overall champion.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11
+                          *
+Player 1 Goal: Position 1
+Player 2 Goal: Position 11
+```
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Moves marker from position **6** to **5** (toward their goal).
+   - Updated Position: `1 2 3 4 5 * 6 7 8 9 10 11`
+
+2. **Player 2's Turn**:
+   - Moves marker from position **5** back to **6** (away from Player 1's goal).
+   - Updated Position: `1 2 3 4 5 6* 7 8 9 10 11`
+
+3. **Player 1's Turn**:
+   - Moves marker from position **6** to **5** again.
+   - Updated Position: `1 2 3 4 5 * 6 7 8 9 10 11`
+
+4. **Player 2's Turn**:
+   - Chooses to move marker from position **5** to **6**, recognizing the cycle is unfavorable.
+   - Updated Position: `1 2 3 4 5 6* 7 8 9 10 11`
+
+5. **Player 1's Turn**:
+   - Anticipating Player 2's strategy, moves marker from position **6** to **7** (toward Player 2's goal).
+   - Updated Position: `1 2 3 4 5 6 7* 8 9 10 11`
+
+6. **Player 2's Turn**:
+   - Moves marker from position **7** to **8** (toward their own goal).
+   - Updated Position: `1 2 3 4 5 6 7 8* 9 10 11`
+
+7. **Player 1's Turn**:
+   - Moves marker from position **8** back to **7**.
+   - Updated Position: `1 2 3 4 5 6 7* 8 9 10 11`
+
+8. **Player 2's Turn**:
+   - Moves marker from position **7** to **8** again.
+   - Updated Position: `1 2 3 4 5 6 7 8* 9 10 11`
+
+9. **Player 1's Turn**:
+   - Moves marker from position **8** back to **7**, attempting to prolong the game.
+   - Updated Position: `1 2 3 4 5 6 7* 8 9 10 11`
+
+10. **Player 2's Turn**:
+    - Decides to break the loop by moving from position **7** to **6**.
+    - Updated Position: `1 2 3 4 5 6* 7 8 9 10 11`
+
+11. **Player 1's Turn**:
+    - Moves marker from position **6** to **5**.
+    - Updated Position: `1 2 3 4 5 * 6 7 8 9 10 11`
+
+12. **Player 2's Turn**:
+    - Cannot prevent Player 1 from winning next turn.
+    - Moves marker from position **5** to **6**.
+
+13. **Player 1's Turn**:
+    - Moves marker from position **6** to **5**.
+
+The game continues until one player reaches their goal position or is forced to move the marker to their opponent's goal position. Strategic foresight is critical to force your opponent into a position where they have no choice but to enable your victory.
+
+## Command-Line Interaction Example
+
+Below is an example of how the game might be played in a command-line interface.
+
+```plaintext
+Welcome to Dual Direction!
+
+Player 1 Goal: Position 1
+Player 2 Goal: Position 11
+Starting Position: 6
+
+Player 1's turn.
+Current Position: 6
+Enter your move (left/right): left
+Moved left to position 5.
+
+Player 2's turn.
+Current Position: 5
+Enter your move (left/right): right
+Moved right to position 6.
+
+Player 1's turn.
+Current Position: 6
+Enter your move (left/right): right
+Moved right to position 7.
+
+Player 2's turn.
+Current Position: 7
+Enter your move (left/right): right
+Moved right to position 8.
+
+Player 1's turn.
+Current Position: 8
+Enter your move (left/right): left
+Moved left to position 7.
+
+Player 2's turn.
+Current Position: 7
+Enter your move (left/right): left
+Moved left to position 6.
+
+Player 1's turn.
+Current Position: 6
+Enter your move (left/right): left
+Moved left to position 5.
+
+Player 2's turn.
+Current Position: 5
+Enter your move (left/right): left
+Moved left to position 4.
+
+Player 1's turn.
+Current Position: 4
+Enter your move (left/right): left
+Moved left to position 3.
+
+Player 2's turn.
+Current Position: 3
+Enter your move (left/right): left
+Moved left to position 2.
+
+Player 1's turn.
+Current Position: 2
+Enter your move (left/right): left
+Moved left to position 1.
+
+Player 1 has reached their goal and wins the game!
+```
+
+## Strategic Tips
+
+- **Control the Center**: Early in the game, control movements around the center to limit your opponent's options.
+- **Anticipate Moves**: Think ahead about how your opponent might respond to your moves.
+- **Forced Moves**: Try to force your opponent into a position where their only option is to move the marker closer to your goal.
+- **Symmetry**: Be cautious of symmetrical play, which can lead to unfavorable outcomes.
+
+---
+
+**Dual Direction** offers a blend of simplicity and strategic depth, making it easy to learn but challenging to master. The game's unique tug-of-war mechanic on a number line provides a fresh experience distinct from traditional games.

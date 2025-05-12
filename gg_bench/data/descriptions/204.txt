@@ -1,0 +1,268 @@
+# **Digit Poison**
+
+## **Objective**
+
+**Digit Poison** is a strategic two-player, turn-based game where players take turns adding digits to a shared number. The primary goal is to avoid being the player who creates a number divisible by a predetermined target divisor. The player who causes the shared number to be divisible by the target divisor loses the game.
+
+---
+
+## **Setup**
+
+1. **Choose the Target Divisor:**
+   - Before the game begins, both players agree on a target divisor (e.g., 3, 7, or 11).
+   - The target divisor remains constant throughout the game.
+
+2. **Initialize the Shared Number:**
+   - The shared number starts as an empty string or zero length.
+
+3. **Determine Player Order:**
+   - Decide who will be **Player 1** and **Player 2**. This can be done by mutual agreement or by a simple method like a coin toss.
+
+---
+
+## **Game Components**
+
+- **Digits (0-9):**
+  - The available digits for selection are numerals **0** through **9**.
+  - Each digit can be selected multiple times; there is no limit on how many times a digit can be used.
+
+- **Shared Number:**
+  - A concatenated sequence of digits chosen by both players during their turns.
+  - The number grows longer with each turn as digits are added.
+  - Example: If the sequence of chosen digits is 2, 5, 7, the shared number is 257.
+
+- **Target Divisor:**
+  - A positive integer agreed upon before the game starts.
+  - Players aim to avoid creating a shared number divisible by this number.
+  - Common choices are small primes or single-digit numbers for simplicity.
+
+---
+
+## **Turns**
+
+### **Turn Structure**
+
+1. **Digit Selection:**
+   - The current player selects a single digit from **0** to **9**.
+
+2. **Updating the Shared Number:**
+   - The chosen digit is appended to the right end of the shared number.
+   - Example: If the shared number is 34 and the player selects 7, the new shared number becomes 347.
+
+3. **Divisibility Check:**
+   - After updating, check if the new shared number is divisible by the target divisor.
+   - If it **is divisible**, the current player **loses**.
+   - If it **is not divisible**, the game continues, and the next player takes their turn.
+
+4. **Turn Progression:**
+   - Players alternate turns following the same structure until the game ends.
+
+### **Actions During a Turn**
+
+- **Mandatory Move:**
+  - Players must select a digit on their turn; skipping a turn is not allowed.
+  
+- **No Changes to Previous Digits:**
+  - Players cannot alter digits previously added to the shared number.
+
+- **Time Limit (Optional):**
+  - For added challenge, impose a reasonable time limit for each turn to encourage prompt play.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Divisibility Rules:**
+   - **Player's Objective:**
+     - Avoid creating a shared number that is divisible by the target divisor.
+   - **Divisibility Detection:**
+     - Use standard mathematical rules to determine divisibility.
+     - Players may perform calculations mentally or use scratch paper.
+
+2. **Winning and Losing Conditions:**
+   - **Loss Condition:**
+     - A player **loses** if they create a shared number divisible by the target divisor on their turn.
+   - **No Draws:**
+     - The game cannot end in a draw. If a maximum length is reached without a loss, the last player to move loses (see Maximum Length Rule).
+
+3. **Maximum Length Rule (Optional):**
+   - **Purpose:**
+     - Prevent excessively long games and ensure a decisive outcome.
+   - **Implementation:**
+     - Agree upon a maximum number of digits (e.g., 10 digits).
+     - If the shared number reaches this length without a player losing, the last player to add a digit loses the game.
+
+4. **Validity of Moves:**
+   - **Valid Moves:**
+     - Any single digit from 0 to 9 can be chosen.
+   - **Invalid Moves:**
+     - Attempting to alter the shared number in ways other than appending a digit is invalid.
+
+5. **Strategic Considerations:**
+   - Players should consider not only the immediate effect of their chosen digit but also anticipate potential future moves and how their opponent might respond.
+
+---
+
+## **Scoring**
+
+- **Victory Condition:**
+  - The game is won by the player who **does not** create a shared number divisible by the target divisor.
+
+- **No Point Tracking:**
+  - There is no cumulative scoring system; each game is a standalone contest.
+
+- **Match Play (Optional):**
+  - Players can compete in multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+## **Examples**
+
+### **Example Game with Target Divisor 3**
+
+#### **Game Start**
+
+- **Target Divisor:** 3
+- **Shared Number:** (empty)
+- **Players:** Player 1 and Player 2
+
+---
+
+#### **Turn 1**
+
+- **Player 1's Move:**
+  - Selects digit **2**
+- **Shared Number:** 2
+- **Divisibility Check:**
+  - 2 ÷ 3 = 0.666... (Not divisible)
+- **Game Continues**
+
+#### **Turn 2**
+
+- **Player 2's Move:**
+  - Selects digit **1**
+- **Shared Number:** 21
+- **Divisibility Check:**
+  - 21 ÷ 3 = 7 (Divisible)
+- **Outcome:**
+  - **Player 2 loses**, **Player 1 wins**
+
+**Explanation:**
+
+- Player 2 added '1' creating '21', which is divisible by 3.
+
+---
+
+### **Example Game with Target Divisor 7**
+
+#### **Game Start**
+
+- **Target Divisor:** 7
+- **Shared Number:** (empty)
+- **Players:** Player 1 and Player 2
+
+---
+
+#### **Turn 1**
+
+- **Player 1's Move:**
+  - Selects digit **5**
+- **Shared Number:** 5
+- **Divisibility Check:**
+  - 5 ÷ 7 = 0.714... (Not divisible)
+- **Game Continues**
+
+#### **Turn 2**
+
+- **Player 2's Move:**
+  - Selects digit **6**
+- **Shared Number:** 56
+- **Divisibility Check:**
+  - 56 ÷ 7 = 8 (Divisible)
+- **Outcome:**
+  - **Player 2 loses**, **Player 1 wins**
+
+**Explanation:**
+
+- Player 2 added '6' creating '56', which is divisible by 7.
+
+---
+
+## **Command-Line Interaction Example**
+
+### **Game Start**
+
+```plaintext
+Welcome to Digit Poison!
+Target Divisor: 5
+Player 1 and Player 2, let's begin.
+
+Shared Number: (empty)
+```
+
+---
+
+### **Turn 1**
+
+```plaintext
+Player 1's Turn:
+Current Shared Number: 
+Select a digit (0-9): 1
+Updated Shared Number: 1
+1 is not divisible by 5.
+```
+
+### **Turn 2**
+
+```plaintext
+Player 2's Turn:
+Current Shared Number: 1
+Select a digit (0-9): 2
+Updated Shared Number: 12
+12 is not divisible by 5.
+```
+
+### **Turn 3**
+
+```plaintext
+Player 1's Turn:
+Current Shared Number: 12
+Select a digit (0-9): 3
+Updated Shared Number: 123
+123 is not divisible by 5.
+```
+
+### **Turn 4**
+
+```plaintext
+Player 2's Turn:
+Current Shared Number: 123
+Select a digit (0-9): 5
+Updated Shared Number: 1235
+1235 is divisible by 5.
+Player 2 loses!
+Congratulations, Player 1 wins!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Understanding Divisibility:**
+  - For **divisor 3**: A number is divisible if the sum of its digits is divisible by 3.
+  - For **divisor 5**: A number is divisible if it ends with 0 or 5.
+  - For **divisor 7** and **11**: Utilize known divisibility rules or perform quick calculations.
+
+- **Anticipate Opponent's Moves:**
+  - Consider how your chosen digit will set up the shared number for your opponent's next turn.
+
+- **Control the Game Flow:**
+  - Manipulate the shared number to force your opponent into a losing position.
+
+---
+
+## **Conclusion**
+
+**Digit Poison** is a simple yet strategically rich game that tests numerical reasoning and foresight. It's quick to learn and ideal for play in a command-line interface, making it both accessible and engaging. Players must balance immediate safety with long-term strategy to outmaneuver their opponent and avoid the "poison" of creating a divisible number.
+
+Enjoy the challenge and may the most cunning player win!

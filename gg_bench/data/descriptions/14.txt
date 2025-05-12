@@ -1,0 +1,345 @@
+# High-Low Battle
+
+**A Two-Player Strategic Card Game for the Command-Line Interface**
+
+---
+
+## Objective
+
+High-Low Battle is a strategic two-player turn-based card game played in a command-line interface. The primary goal is to outscore your opponent over a series of rounds by strategically playing numbered cards from your hand. Victory is achieved by having the highest total score after all rounds are completed. There are no draws in High-Low Battle; a winner is always determined.
+
+---
+
+## Setup
+
+- **Player Hands**: Each player receives a hand of cards numbered from **1** to **9**. Each card has a unique number and can be used only once per game.
+- **Rounds**: The game is played over **five rounds**.
+- **Score Tracker**: Both players start with a score of **0 points**.
+
+---
+
+## Game Components
+
+- **Cards**:
+  - Numbered **1** through **9**.
+  - Each card is unique within a player's hand.
+  - Cards are played secretly and revealed simultaneously.
+- **Hands**:
+  - Each player holds their own hand of nine cards.
+  - Cards once played are discarded and cannot be reused.
+- **Scoreboard**:
+  - Tracks the cumulative score of each player throughout the game.
+- **Rounds**:
+  - A total of five rounds are played.
+  - Each round consists of card selection, reveal, comparison, and scoring.
+
+---
+
+## Turns
+
+### Structure of a Round
+
+1. **Card Selection**:
+   - Both players select one card from their remaining hand.
+   - Selection is done secretly.
+   - Once a card is selected, it cannot be changed.
+
+2. **Card Reveal**:
+   - Players simultaneously reveal their selected cards.
+   - The values are compared to determine the winner of the round.
+
+3. **Scoring**:
+   - Points are awarded based on the comparison of the cards.
+   - The scoreboard is updated with the new scores.
+
+4. **Progression**:
+   - The played cards are discarded from the players' hands.
+   - The game proceeds to the next round until all five rounds are completed.
+
+---
+
+## Rules and Mechanics
+
+### 1. Card Selection
+
+- Players must choose one card per round from their remaining cards.
+- Cards are chosen without knowledge of the opponent's selection.
+- Each card can only be played once per game.
+
+### 2. Card Reveal and Comparison
+
+- After selection, both players reveal their cards at the same time.
+- The numbers on the cards are compared to determine the outcome:
+
+  - **Higher Card Wins**:
+    - The player with the higher number wins the round.
+    - The winner earns **1 point**.
+  - **Tie**:
+    - If both players reveal cards with the same number, the tie-breaker rule is applied.
+
+### 3. Tie-Breaker Rule
+
+- **Tie in the First Round**:
+  - If a tie occurs in the first round, neither player earns points for that round.
+- **Tie in Subsequent Rounds**:
+  - The player who played the **lower-numbered card in the previous round** wins the tie.
+  - The tie-breaker winner earns **2 points** for the round.
+- **No Previous Round Difference (Another Tie)**:
+  - If the previous round was also a tie, compare the last round where the cards were different.
+  - Continue backward until a difference is found.
+  - If all previous rounds are ties, neither player earns points for the current round.
+
+### 4. Scoring
+
+- **Winning a Round**: The player earns **1 point**.
+- **Winning a Tie via Tie-Breaker**: The player earns **2 points**.
+- **Tie with No Tie-Breaker Winner**: No points are awarded.
+
+### 5. End of the Game
+
+- After five rounds, the player with the **highest total score** wins.
+- Since the total number of points possible is odd, a tie in total score is impossible.
+
+---
+
+## Scoring Summary
+
+- **Win a Round (Higher Card)**: +1 point
+- **Win a Tie (Tie-Breaker)**: +2 points
+- **Tie with No Winner**: +0 points
+
+---
+
+## Examples
+
+### Example Game Play:
+
+**Initial Setup**
+
+- **Player 1's Hand**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 2's Hand**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Scores**: Player 1 - 0 points, Player 2 - 0 points
+
+---
+
+**Round 1**
+
+- **Selections**:
+  - Player 1 selects **6**.
+  - Player 2 selects **6**.
+- **Reveal**:
+  - Both players reveal **6**.
+- **Outcome**:
+  - It's a tie.
+  - No previous round to determine a tie-breaker.
+  - No points awarded.
+- **Scores**:
+  - Player 1 - 0 points
+  - Player 2 - 0 points
+
+---
+
+**Round 2**
+
+- **Remaining Hands**:
+  - Player 1: 1, 2, 3, 4, 5, 7, 8, 9
+  - Player 2: 1, 2, 3, 4, 5, 7, 8, 9
+- **Selections**:
+  - Player 1 selects **9**.
+  - Player 2 selects **8**.
+- **Reveal**:
+  - Player 1 reveals **9**.
+  - Player 2 reveals **8**.
+- **Outcome**:
+  - Player 1 wins the round.
+  - Player 1 earns **1 point**.
+- **Scores**:
+  - Player 1 - 1 point
+  - Player 2 - 0 points
+
+---
+
+**Round 3**
+
+- **Remaining Hands**:
+  - Player 1: 1, 2, 3, 4, 5, 7, 8
+  - Player 2: 1, 2, 3, 4, 5, 7, 9
+- **Selections**:
+  - Player 1 selects **5**.
+  - Player 2 selects **5**.
+- **Reveal**:
+  - Both players reveal **5**.
+- **Outcome**:
+  - It's a tie.
+  - **Tie-Breaker**:
+    - Previous round cards:
+      - Player 1 played **9**.
+      - Player 2 played **8**.
+    - Player 2 played the lower card in the previous round.
+    - Player 2 wins the tie and earns **2 points**.
+- **Scores**:
+  - Player 1 - 1 point
+  - Player 2 - 2 points
+
+---
+
+**Round 4**
+
+- **Remaining Hands**:
+  - Player 1: 1, 2, 3, 4, 7, 8
+  - Player 2: 1, 2, 3, 4, 7, 9
+- **Selections**:
+  - Player 1 selects **7**.
+  - Player 2 selects **9**.
+- **Reveal**:
+  - Player 1 reveals **7**.
+  - Player 2 reveals **9**.
+- **Outcome**:
+  - Player 2 wins the round.
+  - Player 2 earns **1 point**.
+- **Scores**:
+  - Player 1 - 1 point
+  - Player 2 - 3 points
+
+---
+
+**Round 5**
+
+- **Remaining Hands**:
+  - Player 1: 1, 2, 3, 4, 8
+  - Player 2: 1, 2, 3, 4, 7
+- **Selections**:
+  - Player 1 selects **8**.
+  - Player 2 selects **7**.
+- **Reveal**:
+  - Player 1 reveals **8**.
+  - Player 2 reveals **7**.
+- **Outcome**:
+  - Player 1 wins the round.
+  - Player 1 earns **1 point**.
+- **Scores**:
+  - Player 1 - 2 points
+  - Player 2 - 3 points
+
+---
+
+**Game Conclusion**
+
+- **Final Scores**:
+  - Player 1 - 2 points
+  - Player 2 - 3 points
+- **Winner**: Player 2 wins the game.
+
+---
+
+## Sample Command-Line Interaction
+
+**Round 1**
+
+```plaintext
+[Round 1]
+Player 1, enter the number of the card you wish to play: 6
+Player 2, enter the number of the card you wish to play: 6
+
+Both players reveal their cards.
+Player 1 played: 6
+Player 2 played: 6
+
+It's a tie! No previous round to determine tie-breaker. No points awarded.
+Current Score - Player 1: 0 points | Player 2: 0 points
+```
+
+---
+
+**Round 2**
+
+```plaintext
+[Round 2]
+Player 1, enter the number of the card you wish to play: 9
+Player 2, enter the number of the card you wish to play: 8
+
+Both players reveal their cards.
+Player 1 played: 9
+Player 2 played: 8
+
+Player 1 wins the round and earns 1 point.
+Current Score - Player 1: 1 point | Player 2: 0 points
+```
+
+---
+
+**Round 3**
+
+```plaintext
+[Round 3]
+Player 1, enter the number of the card you wish to play: 5
+Player 2, enter the number of the card you wish to play: 5
+
+Both players reveal their cards.
+Player 1 played: 5
+Player 2 played: 5
+
+It's a tie!
+Previous round cards:
+  Player 1 played: 9
+  Player 2 played: 8
+Player 2 played the lower card in the previous round and wins the tie.
+Player 2 earns 2 points!
+Current Score - Player 1: 1 point | Player 2: 2 points
+```
+
+---
+
+**Round 4**
+
+```plaintext
+[Round 4]
+Player 1, enter the number of the card you wish to play: 7
+Player 2, enter the number of the card you wish to play: 9
+
+Both players reveal their cards.
+Player 1 played: 7
+Player 2 played: 9
+
+Player 2 wins the round and earns 1 point.
+Current Score - Player 1: 1 point | Player 2: 3 points
+```
+
+---
+
+**Round 5**
+
+```plaintext
+[Round 5]
+Player 1, enter the number of the card you wish to play: 8
+Player 2, enter the number of the card you wish to play: 7
+
+Both players reveal their cards.
+Player 1 played: 8
+Player 2 played: 7
+
+Player 1 wins the round and earns 1 point.
+Current Score - Player 1: 2 points | Player 2: 3 points
+
+Game Over!
+Player 2 wins the game with 3 points!
+```
+
+---
+
+## Strategic Tips
+
+- **Card Management**: Balance the use of high and low cards. Playing all high cards early may leave you vulnerable in later rounds.
+- **Predict Opponent's Moves**: Consider which cards your opponent has left and what they might play next.
+- **Tie-Breaker Strategy**: Sometimes playing a lower card can be advantageous in setting up a tie-breaker win in future rounds.
+- **Adaptability**: Adjust your strategy based on the current score and remaining cards.
+
+---
+
+## Conclusion
+
+High-Low Battle is a quick and engaging game that combines luck and strategy. Players must carefully consider their card choices each round to outmaneuver their opponent. With simple mechanics and deep strategic possibilities, High-Low Battle offers a compelling experience suitable for a command-line interface.
+
+Enjoy the battle, and may the best strategist win!
+
+---

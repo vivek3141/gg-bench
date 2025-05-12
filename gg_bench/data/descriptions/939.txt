@@ -1,0 +1,167 @@
+# Countdown Clash
+
+## Objective
+
+**Countdown Clash** is a strategic two-player, turn-based game where players compete to be the first to reduce a shared countdown number to exactly zero. On each turn, players subtract a prime number from a specified set from the shared number. The player who brings the countdown to zero wins the game. If a player cannot make a valid move without causing the countdown to go negative, they lose.
+
+## Setup
+
+1. **Select the Starting Number (N):**
+   - The game begins with a shared countdown number, **N**.
+   - **N** should be a positive integer agreed upon by both players before the game starts. For a quick game, it's recommended to choose a number between 15 and 30.
+
+2. **Determine Player Order:**
+   - Decide which player goes first. This can be done by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Shared Countdown Number (N):**
+  - A positive integer that both players will reduce with each turn.
+
+- **Allowed Prime Numbers:**
+  - The set of prime numbers that can be subtracted from **N** on each turn:
+    - **2, 3, 5, 7**
+
+## Turns
+
+1. **Player Action:**
+   - On their turn, a player must subtract one of the allowed prime numbers from the current value of **N**.
+
+2. **Valid Moves:**
+   - The chosen prime number must not reduce **N** below zero.
+   - If no valid moves are available (all allowed primes are greater than **N**), the player loses.
+
+3. **Turn Progression:**
+   - Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Subtracting Primes:**
+   - Players can only subtract from the list of allowed prime numbers: **2, 3, 5, 7**.
+
+2. **Updating the Countdown:**
+   - After a player subtracts a prime number, **N** is updated to reflect the new value (N = N - prime number).
+
+3. **Winning the Game:**
+   - The player who reduces **N** to exactly zero wins the game.
+
+4. **Losing the Game:**
+   - A player loses if:
+     - They cannot make a valid move on their turn (no allowed primes can be subtracted without making **N** negative).
+     - They reduce **N** to a negative number (an invalid move).
+
+5. **No Skipping Turns:**
+   - Players cannot skip their turn. If a player has at least one valid move, they must make a move.
+
+## Scoring
+
+- **Winning:**
+  - The winner is the player who successfully reduces **N** to zero or forces the opponent into a position with no valid moves.
+
+- **Tracking Wins:**
+  - Players can track the number of games won if playing multiple rounds.
+
+## Examples
+
+### Example Game Play
+
+**Starting Number (N):** 23
+
+**Turn Sequence:**
+
+1. **Player 1's Turn (N = 23):**
+   - Player 1 subtracts **5**.
+   - **N** is now **18** (23 - 5).
+
+2. **Player 2's Turn (N = 18):**
+   - Player 2 subtracts **7**.
+   - **N** is now **11** (18 - 7).
+
+3. **Player 1's Turn (N = 11):**
+   - Player 1 subtracts **5**.
+   - **N** is now **6** (11 - 5).
+
+4. **Player 2's Turn (N = 6):**
+   - Player 2 subtracts **2**.
+   - **N** is now **4** (6 - 2).
+
+5. **Player 1's Turn (N = 4):**
+   - Player 1 subtracts **2**.
+   - **N** is now **2** (4 - 2).
+
+6. **Player 2's Turn (N = 2):**
+   - Player 2 subtracts **2**.
+   - **N** is now **0** (2 - 2).
+   - **Player 2 wins**.
+
+### Command-Line Interaction Sample
+
+```
+Game Start: N = 23
+
+Player 1's turn.
+Available primes to subtract: 2, 3, 5, 7
+N = 23
+Enter the prime number to subtract: 5
+N is now 18
+
+Player 2's turn.
+Available primes to subtract: 2, 3, 5, 7
+N = 18
+Enter the prime number to subtract: 7
+N is now 11
+
+Player 1's turn.
+Available primes to subtract: 2, 3, 5, 7
+N = 11
+Enter the prime number to subtract: 5
+N is now 6
+
+Player 2's turn.
+Available primes to subtract: 2, 3, 5, 7
+N = 6
+Enter the prime number to subtract: 2
+N is now 4
+
+Player 1's turn.
+Available primes to subtract: 2, 3, 5, 7
+N = 4
+Enter the prime number to subtract: 2
+N is now 2
+
+Player 2's turn.
+Available primes to subtract: 2, 3, 5, 7
+N = 2
+Enter the prime number to subtract: 2
+N is now 0
+
+Player 2 wins!
+```
+
+## Strategic Tips
+
+- **Planning Ahead:**
+  - Anticipate the results of your move and how it will affect your opponent's options.
+  
+- **Controlling the Game:**
+  - Try to leave **N** in a state where the opponent has limited choices, potentially forcing them into a losing position.
+  
+- **Prime Selection:**
+  - Use higher primes early to reduce **N** quickly, but be cautious of the remaining options as **N** decreases.
+
+## Game Variations
+
+- **Changing Allowed Primes:**
+  - Modify the list of allowed primes to adjust game difficulty (e.g., use only 2, 3, and 5).
+
+- **Different Starting Number:**
+  - Start with a higher **N** for a longer game or a lower **N** for a quicker game.
+
+- **Additional Primes:**
+  - Include more prime numbers (e.g., 11, 13) to add complexity.
+
+## Summary
+
+**Countdown Clash** is a simple yet strategic game that requires foresight and planning. It's easy to implement in a command-line interface and provides a quick and competitive experience. By understanding the game's mechanics and carefully selecting which prime numbers to subtract, a skilled player can consistently triumph over their opponent.
+
+Have fun clashing!

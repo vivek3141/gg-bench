@@ -1,0 +1,211 @@
+**Locked Grid Duel**
+
+*Rule Book*
+
+---
+
+**Objective**
+
+Become the last player able to make a valid move on the grid by strategically placing your markers and locking out your opponent. A player wins by making the final move that leaves the opponent with no available cells to mark.
+
+**Setup**
+
+- Create a square grid of size 5x5 cells.
+- All cells are initially empty and unlocked.
+- Decide which player goes first (Player A and Player B). This can be done by a coin toss or mutual agreement.
+
+**Game Components**
+
+- **Grid**: A 5x5 matrix representing the playing field. Each cell can be in one of three states:
+  - *Empty and Unlocked*: Available for marking.
+  - *Marked*: Occupied by a player's marker (A or B).
+  - *Locked*: Unavailable for marking for the rest of the game.
+- **Player Markers**:
+  - Player A uses marker 'A'.
+  - Player B uses marker 'B'.
+
+**Turns**
+
+- Players take turns alternately, starting with the player decided during setup.
+- **On a player's turn**:
+  1. The player selects an empty and unlocked cell on the grid to place their marker.
+  2. The selected cell becomes *Marked* with the player's marker.
+  3. The selected cell and all **orthogonally adjacent** cells (up, down, left, right) become *Locked*. If an adjacent cell is already *Marked* or *Locked*, its state remains unchanged.
+  4. The turn passes to the next player.
+
+**Rules and Mechanics**
+
+1. **Cell Selection**:
+   - Players can only select cells that are *Empty and Unlocked*.
+   - *Locked* or *Marked* cells cannot be chosen.
+
+2. **Locking Mechanism**:
+   - Upon placing a marker, both the chosen cell and its orthogonally adjacent cells become *Locked*.
+   - Diagonally adjacent cells are unaffected and remain in their current state.
+   - Locking is permanent; once a cell is *Locked*, it cannot be unlocked or played on for the remainder of the game.
+
+3. **Valid Moves**:
+   - A move consists of selecting an available cell and placing a marker as per the rules.
+   - If a player has no valid moves on their turn, they lose the game.
+
+4. **Winning the Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The last player who made a move wins the game.
+
+5. **No Draws**:
+   - There are no draw conditions in this game. The nature of the locking mechanism ensures that the game will always result in a win for one of the players.
+
+**Scoring**
+
+- **Winning**: The winner is the player who successfully makes the last valid move.
+
+- **Optional Scoring System** (for multiple rounds):
+  - Keep track of the number of wins each player has in a series of games.
+  - Alternatively, assign points equal to the number of *Marked* cells a player has at the end of the game.
+  - Players can agree on a target score or number of rounds to determine an overall winner.
+
+**Examples**
+
+Below is a sample game to illustrate how the rules are applied in practice. The grid positions are referenced by row and column numbers starting from (1,1) at the top-left corner.
+
+**Initial Grid (All cells are empty and unlocked):**
+
+```
+   1   2   3   4   5
+1 [ ] [ ] [ ] [ ] [ ]
+2 [ ] [ ] [ ] [ ] [ ]
+3 [ ] [ ] [ ] [ ] [ ]
+4 [ ] [ ] [ ] [ ] [ ]
+5 [ ] [ ] [ ] [ ] [ ]
+```
+
+**Turn 1: Player A**
+
+- Player A places their marker at cell (3,3).
+
+- Cell (3,3) becomes *Marked* with 'A'.
+
+- Cells to be *Locked*: (3,3), (2,3), (3,2), (3,4), (4,3).
+
+- The grid now looks like:
+
+```
+   1   2   3   4   5
+1 [ ] [ ] [ ] [ ] [ ]
+2 [ ] [ ] [L] [ ] [ ]
+3 [ ] [L] [A] [L] [ ]
+4 [ ] [ ] [L] [ ] [ ]
+5 [ ] [ ] [ ] [ ] [ ]
+```
+(*L* indicates a *Locked* cell)
+
+**Turn 2: Player B**
+
+- Available cells are any *Empty and Unlocked* cells.
+
+- Player B chooses cell (1,3).
+
+- Cell (1,3) becomes *Marked* with 'B'.
+
+- Cells to be *Locked*: (1,3), (1,2), (1,4), (2,3).
+
+- The grid now looks like:
+
+```
+   1   2   3   4   5
+1 [ ] [L] [B] [L] [ ]
+2 [ ] [ ] [L] [ ] [ ]
+3 [ ] [L] [A] [L] [ ]
+4 [ ] [ ] [L] [ ] [ ]
+5 [ ] [ ] [ ] [ ] [ ]
+```
+
+**Turn 3: Player A**
+
+- Player A cannot choose cells (1,2), (1,3), (1,4), (2,3), (3,2), (3,3), (3,4), (4,3) as they are *Locked* or *Marked*.
+
+- Player A selects cell (4,2).
+
+- Cell (4,2) becomes *Marked* with 'A'.
+
+- Cells to be *Locked*: (4,2), (3,2), (4,1), (4,3), (5,2).
+
+- The grid updates accordingly:
+
+```
+   1   2   3   4   5
+1 [ ] [L] [B] [L] [ ]
+2 [ ] [ ] [L] [ ] [ ]
+3 [ ] [L] [A] [L] [ ]
+4 [L] [A] [L] [L] [ ]
+5 [ ] [L] [ ] [ ] [ ]
+```
+
+**Turn 4: Player B**
+
+- Player B selects cell (2,5).
+
+- Cell (2,5) becomes *Marked* with 'B'.
+
+- Cells to be *Locked*: (2,5), (1,5), (2,4), (2,6), (3,5) [Note: Cells outside the grid are ignored].
+
+- The grid updates:
+
+```
+   1   2   3   4   5
+1 [ ] [L] [B] [L] [L]
+2 [ ] [ ] [L] [L] [B]
+3 [ ] [L] [A] [L] [L]
+4 [L] [A] [L] [L] [ ]
+5 [ ] [L] [ ] [ ] [ ]
+```
+
+**Game Continues**
+
+Players continue to take turns, selecting available cells and locking adjacent ones, until one player cannot make a valid move.
+
+**Strategic Considerations**
+
+- **Planning Ahead**: Players should anticipate how their move will affect the available spaces for both themselves and their opponent.
+
+- **Blocking**: Players can try to limit the opponent's options by strategically placing markers to lock key areas of the grid.
+
+- **Area Control**: Controlling the center or corners may offer an advantage by affecting more adjacent cells.
+
+**Command-Line Interaction Example**
+
+Assuming a command-line interface where players input their moves by specifying the row and column numbers.
+
+**Sample Interaction:**
+
+```
+Player A's turn.
+Available cells: (list of coordinates)
+Enter the row number (1-5): 3
+Enter the column number (1-5): 3
+
+You placed 'A' at (3,3).
+Cells locked: (3,3), (2,3), (3,2), (3,4), (4,3)
+
+Player B's turn.
+Available cells: (list of coordinates)
+Enter the row number (1-5): 1
+Enter the column number (1-5): 3
+
+You placed 'B' at (1,3).
+Cells locked: (1,3), (1,2), (1,4), (2,3)
+
+...
+
+Player A's turn.
+No valid moves available.
+Player B wins the game!
+```
+
+**Conclusion**
+
+Locked Grid Duel is a strategic game that combines spatial reasoning with tactical planning. The simplicity of the rules makes it easy to learn, but the depth of possible strategies provides complexity and replayability. The game is well-suited for a command-line interface and offers a quick and engaging experience where skilled players can consistently excel.
+
+---
+
+I hope this rulebook provides a clear and comprehensive understanding of how to play **Locked Grid Duel**.

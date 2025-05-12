@@ -1,0 +1,215 @@
+**ZeroSum: A Two-Player Strategic Number Game**
+
+---
+
+### **Objective**
+
+ZeroSum is a turn-based strategic game for two players. The primary goal is to be the last player to make a valid move without reducing the running total to zero on your turn. Players take turns selecting numbers and either adding or subtracting them from a running total, with the aim of avoiding creating a total of zero during their turn. A player loses if they cause the running total to become exactly zero on their turn.
+
+---
+
+### **Setup**
+
+- **Number Pool**: The game begins with a shared pool of numbers ranging from **1** to **9**.
+- **Running Total**: The running total starts at **zero (0)**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**, decide who goes first (coin toss, mutual agreement, etc.).
+
+---
+
+### **Game Components**
+
+- **Number Pool**: A list of integers from **1** to **9**. Each number can be used only once per game.
+  - **Appearance**: Displayed as a list or array in the command-line interface, e.g., `[1, 2, 3, 4, 5, 6, 7, 8, 9]`.
+- **Running Total**: A single integer value that changes as players make moves.
+  - **Functionality**: Updated after each turn to reflect the cumulative sum of all moves made.
+- **Player Actions**: Each player can perform two actions on their turn:
+  - **Select a Number**: Choose an unused number from the number pool.
+  - **Choose an Operation**: Decide to **add (+)** or **subtract (-)** the selected number from the running total.
+
+---
+
+### **Turns**
+
+- **Turn Structure**:
+  1. **Display Available Numbers**: Show the current number pool.
+  2. **Show Running Total**: Display the current running total.
+  3. **Player's Move**:
+     - **Select a Number**: The player chooses an unused number from the pool.
+     - **Choose an Operation**: The player decides to add or subtract the selected number.
+  4. **Update Running Total**: Calculate the new running total based on the player's move.
+  5. **Check for Zero**:
+     - If the running total is exactly **zero (0)** after the player's move, the player **loses**, and the opponent **wins**.
+     - If the running total is not zero, proceed to the next player's turn.
+  6. **Remove Used Number**: The selected number is removed from the number pool.
+- **Turn Progression**: Players alternate turns until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection**:
+   - Players must select a number from the available number pool on their turn.
+   - Each number can only be used **once** per game.
+2. **Operation Choice**:
+   - Players can choose to **add (+)** or **subtract (-)** the selected number to/from the running total.
+3. **Running Total**:
+   - The running total is updated after each move.
+   - Starting at **zero (0)**, it changes based on players' additions and subtractions.
+4. **Losing Condition**:
+   - If a player's move results in the running total being exactly **zero (0)**, they **lose** the game.
+5. **Winning Condition**:
+   - A player wins if their opponent causes the running total to become zero on their turn.
+6. **Unavailable Moves**:
+   - If a player cannot make a valid move (no numbers left in the pool), and the running total is not zero, the **last player to have made a move wins**.
+
+---
+
+### **Scoring**
+
+- **Victory Determination**:
+  - There is no point scoring system.
+  - The game is won by forcing the opponent into a losing condition.
+- **Tracking Progress**:
+  - Players keep track of the running total and the remaining numbers in the pool to strategize their moves.
+
+---
+
+### **Examples**
+
+#### **Sample Game Play**
+
+**Initial Setup**:
+
+- **Number Pool**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- **Running Total**: `0`
+
+---
+
+**Turn 1**: *Player 1*
+
+- **Available Numbers**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- **Running Total**: `0`
+- **Player 1's Move**:
+  - Selects number **5**.
+  - Chooses to **add (+)**.
+- **Calculation**: `0 + 5 = 5`
+- **Updated Running Total**: `5`
+- **Number Pool After Move**: `[1, 2, 3, 4, 6, 7, 8, 9]`
+
+---
+
+**Turn 2**: *Player 2*
+
+- **Available Numbers**: `[1, 2, 3, 4, 6, 7, 8, 9]`
+- **Running Total**: `5`
+- **Player 2's Move**:
+  - Selects number **3**.
+  - Chooses to **subtract (-)**.
+- **Calculation**: `5 - 3 = 2`
+- **Updated Running Total**: `2`
+- **Number Pool After Move**: `[1, 2, 4, 6, 7, 8, 9]`
+
+---
+
+**Turn 3**: *Player 1*
+
+- **Available Numbers**: `[1, 2, 4, 6, 7, 8, 9]`
+- **Running Total**: `2`
+- **Player 1's Move**:
+  - Selects number **7**.
+  - Chooses to **subtract (-)**.
+- **Calculation**: `2 - 7 = -5`
+- **Updated Running Total**: `-5`
+- **Number Pool After Move**: `[1, 2, 4, 6, 8, 9]`
+
+---
+
+**Turn 4**: *Player 2*
+
+- **Available Numbers**: `[1, 2, 4, 6, 8, 9]`
+- **Running Total**: `-5`
+- **Player 2's Move**:
+  - Selects number **9**.
+  - Chooses to **add (+)**.
+- **Calculation**: `-5 + 9 = 4`
+- **Updated Running Total**: `4`
+- **Number Pool After Move**: `[1, 2, 4, 6, 8]`
+
+---
+
+**Turn 5**: *Player 1*
+
+- **Available Numbers**: `[1, 2, 4, 6, 8]`
+- **Running Total**: `4`
+- **Player 1's Move**:
+  - Selects number **4**.
+  - Chooses to **subtract (-)**.
+- **Calculation**: `4 - 4 = 0`
+- **Updated Running Total**: `0`
+- **Result**: **Player 1 Loses** (running total is zero on their turn).
+- **Winner**: **Player 2**
+
+---
+
+### **Strategic Considerations**
+
+- **Anticipate Opponent's Moves**: Keep track of the remaining numbers and possible outcomes to avoid setting up the opponent for a winning move.
+- **Control the Running Total**: Aim to force the running total into a range that limits the opponent's safe options.
+- **Number Selection**: Choose numbers that maximize your control over the game's progression and minimize risk.
+
+---
+
+### **Sample Command-Line Interaction**
+
+```plaintext
+Welcome to ZeroSum!
+
+Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Running Total: 0
+
+Player 1's turn.
+Select a number from the pool: 6
+Add or subtract this number? (+/-): +
+You chose to add 6.
+New Running Total: 6
+
+Number Pool: [1, 2, 3, 4, 5, 7, 8, 9]
+Running Total: 6
+
+Player 2's turn.
+Select a number from the pool: 7
+Add or subtract this number? (+/-): -
+You chose to subtract 7.
+New Running Total: -1
+
+Number Pool: [1, 2, 3, 4, 5, 8, 9]
+Running Total: -1
+
+Player 1's turn.
+Select a number from the pool: 1
+Add or subtract this number? (+/-): -
+You chose to subtract 1.
+New Running Total: -2
+
+Number Pool: [2, 3, 4, 5, 8, 9]
+Running Total: -2
+
+Player 2's turn.
+Select a number from the pool: 2
+Add or subtract this number? (+/-): +
+You chose to add 2.
+New Running Total: 0
+
+Player 2 loses! The running total is zero.
+Winner: Player 1
+```
+
+---
+
+### **Conclusion**
+
+ZeroSum is a simple yet strategically deep game that challenges players to think ahead and anticipate their opponent's moves. With straightforward rules and minimal components, it's easy to code and perfect for command-line play. The absence of a draw condition ensures that each game concludes decisively, typically within a few minutes, making it engaging and fast-paced.
+
+---
+
+**Enjoy playing ZeroSum, and may the best strategist win!**

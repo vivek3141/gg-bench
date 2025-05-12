@@ -1,0 +1,158 @@
+# Token Chase
+
+## Objective
+
+**Token Chase** is a two-player, turn-based strategy game played on a linear track. The primary goal is to be the first player to reach the **Golden Token** located at the center of the track. Players achieve victory by strategically moving their tokens towards the Golden Token and landing on its position exactly. The player who reaches the Golden Token first wins the game; the opponent loses.
+
+## Setup
+
+1. **Game Track**: A linear track consisting of 11 sequentially numbered positions from **0** to **10**.
+2. **Player Tokens**:
+   - **Player 1**'s token starts at position **0**.
+   - **Player 2**'s token starts at position **10**.
+3. **Golden Token**: Placed at the center position **5** on the track.
+
+The initial arrangement is as follows:
+
+```
+[0][1][2][3][4][5][6][7][8][9][10]
+ P1                      G       P2
+```
+
+- `P1`: Player 1's token
+- `P2`: Player 2's token
+- `G`: Golden Token
+
+## Game Components
+
+- **Linear Track**: Represents the path on which players move their tokens. Positions are numbered from **0** (Player 1's starting position) to **10** (Player 2's starting position).
+- **Player Tokens**: Unique markers for each player (`P1` and `P2`) used to indicate their current position on the track.
+- **Golden Token**: A special token placed at position **5**; the objective is to reach this token.
+- **Allowed Moves**: On their turn, players can move their token forward towards the Golden Token by **1**, **2**, or **3** positions.
+
+## Turns
+
+- **Turn Order**: Player 1 takes the first turn, followed by Player 2. Turns alternate thereafter.
+- **Player Actions During a Turn**:
+  1. **Choose Move Distance**: Select a movement distance of **1**, **2**, or **3** positions.
+  2. **Move Token**: Advance your token towards the Golden Token by the chosen distance.
+- **Restrictions**:
+  - A player **cannot** move past the Golden Token (position **5**).
+  - Moves must result in landing on a valid position within the track bounds.
+- **End of Turn**: After moving, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Movement**:
+   - Players must move their token towards the Golden Token.
+   - Allowed move distances are **1**, **2**, or **3** positions per turn.
+   - Players cannot overshoot the Golden Token; moves that would place them beyond position **5** are invalid.
+2. **Winning the Game**:
+   - The first player to land **exactly** on the Golden Token's position (**5**) wins the game.
+   - If a player cannot make a valid move (e.g., all possible moves would overshoot the Golden Token), they lose their turn but do not lose the game.
+3. **Simultaneous Arrival**:
+   - If Player 2 reaches the Golden Token immediately after Player 1 in their respective turns, Player 1 is declared the winner since they arrived first.
+
+## Scoring
+
+- **Victory Condition**: Reaching the Golden Token first.
+- There are no points or ongoing scoring; the game is won by accomplishing the objective.
+- **Win/Loss**:
+  - **Winner**: The player who lands on position **5** first.
+  - **Loser**: The other player.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+```
+Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+Markers:     P1                      G       P2
+```
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Chooses to move **3** positions.
+  - Moves from position **0** to position **3**.
+- **Track State**:
+  ```
+  Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+  Markers:                   P1     G       P2
+  ```
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - Chooses to move **3** positions.
+  - Moves from position **10** to position **7**.
+- **Track State**:
+  ```
+  Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+  Markers:                   P1     G   P2
+  ```
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - Chooses to move **2** positions.
+  - Moves from position **3** to position **5** (Golden Token).
+- **Result**:
+  - **Player 1 wins** by reaching the Golden Token first.
+- **Final Track State**:
+  ```
+  Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+  Markers:                         P1 G   P2
+  ```
+
+### Command-Line Interaction Sample
+
+Below is a simulated interaction for the game in a command-line interface.
+
+**Game Start**
+
+```
+Welcome to Token Chase!
+
+Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+Markers:     P1                      G       P2
+
+Player 1 starts at position 0.
+Player 2 starts at position 10.
+Golden Token is at position 5.
+
+Player 1's turn.
+Enter your move (1, 2, or 3): 3
+Player 1 moves to position 3.
+
+Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+Markers:                   P1     G       P2
+
+Player 2's turn.
+Enter your move (1, 2, or 3): 3
+Player 2 moves to position 7.
+
+Positions:  [0][1][2][3][4][5][6][7][8][9][10]
+Markers:                   P1     G   P2
+
+Player 1's turn.
+Enter your move (1, 2, or 3): 2
+Player 1 moves to position 5.
+
+Player 1 has reached the Golden Token and wins the game!
+```
+
+### Strategic Considerations
+
+- **Planning Ahead**: Anticipate the opponent's possible moves to choose the optimal move distance.
+- **Move Options Relative to Position**:
+  - From position **0**:
+    - Moving **1**, **2**, or **3** positions are all valid.
+  - As you get closer to the Golden Token, calculate the exact move needed to land on position **5**.
+- **Blocking**:
+  - While you cannot block directly, you can create scenarios where the opponent cannot reach the Golden Token before you.
+
+## Conclusion
+
+**Token Chase** is a simple yet strategic game that requires foresight and planning. By carefully choosing move distances, players can control the pace of the game and outmaneuver their opponent to reach the Golden Token first.
+
+Enjoy the game!

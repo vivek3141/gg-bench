@@ -1,0 +1,209 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a two-player, turn-based strategy game played in a command-line interface. Players take turns selecting numbers according to specific rules. The primary goal is to force your opponent into a position where they cannot make a valid move on their turn, thereby securing a win.
+
+---
+
+## Setup
+
+- **Number Pool**: The game begins with a shared pool of numbers from **1** to **30**.
+- **Initial Conditions**:
+  - All numbers are unclaimed and available for selection.
+  - Players agree on who takes the first turn (e.g., by mutual agreement or random selection).
+
+---
+
+## Game Components
+
+- **Number Pool**: A list of numbers from **1** to **30** displayed to both players.
+- **Selected Numbers List**: Keeps track of numbers that have been chosen and removes them from the available pool.
+- **Player Indicators**: Each player is identified (e.g., *Player 1* and *Player 2*).
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Display Available Numbers**: At the start of each turn, the game displays the current list of available numbers.
+2. **Player Action**:
+   - The player selects an available number following the game rules.
+   - The selected number is recorded and removed from the number pool.
+3. **Turn Progression**: The turn passes to the other player.
+
+### Order of Play
+
+- Players alternate turns throughout the game.
+- The game continues until a player cannot make a valid move on their turn.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - *Player 1* may select **any number** from **2** to **30**.
+   - The number **1** cannot be selected on the first move.
+
+2. **Subsequent Moves**:
+   - On each turn after the first, the player **must select a number** that is an **available divisor or multiple** of the **most recently selected number** by their opponent.
+   - The selected number must not have been previously chosen.
+
+3. **Selecting the Number 1**:
+   - The number **1** can be selected only if no other valid moves are available.
+   - Once **1** is selected, subsequent players can choose any remaining number (since all numbers are multiples of 1).
+
+4. **Invalid Moves**:
+   - If a player cannot select any valid number on their turn, they **lose the game**.
+   - If all numbers have been selected and the player cannot make a move, they lose.
+
+### Additional Mechanics
+
+- **Valid Numbers**: Numbers must be integers within the range of **1** to **30** inclusive.
+- **Tracking**: The game must keep an accurate record of selected numbers to prevent illegal moves.
+
+---
+
+## Scoring
+
+- **Win Condition**: The game is won when a player cannot make a valid move on their turn.
+- **No Points System**: The game does not use a points system; the outcome is a straightforward win or loss.
+- **Match Play (Optional)**: Players can play multiple rounds, keeping track of wins to decide an overall champion.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+#### Starting the Game
+
+- **Available Numbers**: 1-30
+
+#### Turn 1: Player 1
+
+- **Action**: Selects **15** (any number from 2-30).
+- **Explanation**: *Player 1* chooses 15 as a strategic starting point.
+
+#### Turn 2: Player 2
+
+- **Available Numbers Divisible by or Multiples of 15**:
+  - Divisors of 15: **1**, **3**, **5**
+  - Multiples of 15: **30**
+- **Action**: Selects **5**.
+- **Explanation**: *Player 2* picks 5, a divisor of 15, narrowing options for *Player 1*.
+
+#### Turn 3: Player 1
+
+- **Available Numbers Divisible by or Multiples of 5**:
+  - Divisors: **1**
+  - Multiples: **10**, **20**, **25**
+- **Action**: Selects **10**.
+- **Explanation**: *Player 1* chooses 10, a multiple of 5.
+
+#### Turn 4: Player 2
+
+- **Available Numbers Divisible by or Multiples of 10**:
+  - Divisors: **1**, **2**, **5**
+  - Multiples: **20**, **30**
+- **Already Selected Numbers**: **1**, **5**, **10**, **15**
+- **Available Choices**: **2**, **20**, **30**
+- **Action**: Selects **20**.
+- **Explanation**: *Player 2* picks 20 to continue the chain.
+
+#### Turn 5: Player 1
+
+- **Available Numbers Divisible by or Multiples of 20**:
+  - Divisors: **1**, **2**, **4**, **5**, **10**
+  - Multiples: None (since 40 is beyond 30)
+- **Already Selected Numbers**: **1**, **2**, **4**, **5**, **10**, **15**, **20**
+- **Available Choices**: **4**
+- **Action**: Selects **4**.
+- **Explanation**: *Player 1* selects 4 to stay in the game.
+
+#### Turn 6: Player 2
+
+- **Available Numbers Divisible by or Multiples of 4**:
+  - Divisors: **1**, **2**
+  - Multiples: **8**, **12**, **16**, **20**, **24**, **28**
+- **Already Selected Numbers**: **1**, **2**, **4**, **5**, **10**, **15**, **20**
+- **Available Choices**: **8**, **12**, **16**, **24**, **28**
+- **Action**: Selects **8**.
+- **Explanation**: *Player 2* picks 8 to limit *Player 1*'s options.
+
+#### Turn 7: Player 1
+
+- **Available Numbers Divisible by or Multiples of 8**:
+  - Divisors: **1**, **2**, **4**
+  - Multiples: **16**, **24**
+- **Already Selected Numbers**: **1**, **2**, **4**, **5**, **8**, **10**, **15**, **20**
+- **Available Choices**: **16**, **24**
+- **Action**: Selects **16**.
+- **Explanation**: *Player 1* chooses 16 to continue the sequence.
+
+#### Turn 8: Player 2
+
+- **Available Numbers Divisible by or Multiples of 16**:
+  - Divisors: **1**, **2**, **4**, **8**
+  - Multiples: None (since 32 is beyond 30)
+- **Already Selected Numbers**: **1**, **2**, **4**, **5**, **8**, **10**, **15**, **16**, **20**
+- **Available Choices**: None.
+- **Action**: Cannot make a valid move.
+- **Result**: *Player 2* loses the game.
+- **Explanation**: No available numbers are divisors or multiples of 16 that haven't been selected.
+
+---
+
+### Sample Command-Line Interaction
+
+```plaintext
+Welcome to Divisor Duel!
+
+Available Numbers: 2, 3, 4, ..., 30
+
+Player 1's Turn:
+Select any number from 2 to 30: 15
+
+Available Numbers: 2-14, 16-30 (excluding 15)
+
+Player 2's Turn:
+Numbers available that are divisors or multiples of 15: 3, 5, 30
+Select a number: 5
+
+Available Numbers: 2-4, 6-14, 16-29 (excluding 5,15)
+
+Player 1's Turn:
+Numbers available that are divisors or multiples of 5: 10, 20, 25
+Select a number: 10
+
+Available Numbers: 2-4, 6-9, 11-14, 16-19, 21-29 (excluding 5,10,15,20)
+
+Player 2's Turn:
+Numbers available that are divisors or multiples of 10: 20
+Select a number: 20
+
+...
+
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate the numbers that will be available to your opponent after your turn.
+- **Control the Game**: Choose numbers that limit your opponent's options.
+- **Avoid Dead Ends**: Be cautious of numbers that could leave you without valid moves on your next turn.
+- **Use the Number 1 Wisely**: Remember that selecting **1** can reset the game, but it can also open up options for your opponent.
+
+---
+
+## Conclusion
+
+Divisor Duel is a simple yet strategically deep game that challenges players to think ahead and outmaneuver their opponent. It's easy to code and play within a command-line interface, making it an excellent choice for quick, skill-based gameplay without the possibility of a draw.
+
+Enjoy the duel!

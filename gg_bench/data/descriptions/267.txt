@@ -1,0 +1,178 @@
+**Game Name: Prime Division**
+
+---
+
+### **Objective**
+
+The primary goal of **Prime Division** is to be the player who reduces the shared number **N** to exactly **1** by dividing it by specific prime numbers. Players take turns dividing **N** by a valid prime factor. The player who reduces **N** to **1** on their turn **wins** the game. If a player cannot make a valid move (i.e., there are no allowable prime factors of **N**), that player **loses**.
+
+---
+
+### **Setup**
+
+1. **Initial Number (N):**
+   - Choose a starting number **N**, which must be a positive integer greater than **1**.
+   - For a quick game, it's recommended to start with a moderately sized number like **210**.
+
+2. **Players:**
+   - This is a two-player game: **Player 1** and **Player 2**.
+   - Decide who will take the first turn (e.g., flip a coin or agree amicably).
+
+3. **Prime Divisors:**
+   - The allowable prime numbers for division are **2**, **3**, **5**, and **7**.
+
+---
+
+### **Game Components**
+
+- **Shared Number (N):** The current number that players will manipulate during the game.
+- **Prime Divisors List:** The set of primes **[2, 3, 5, 7]** that players can use to divide **N**.
+- **Command-Line Interface (CLI):** Players will input their chosen prime numbers and receive updates through the CLI.
+
+---
+
+### **Turns**
+
+- **Turn Order:**
+  - Players alternate turns starting with **Player 1**.
+
+- **Player Actions:**
+  - On their turn, a player must:
+    1. **Identify Valid Primes:** Determine which primes from **[2, 3, 5, 7]** are factors of the current **N**.
+    2. **Choose a Prime:** Select one of the valid prime factors.
+    3. **Divide N:** Divide the current **N** by the chosen prime, resulting in a new **N**.
+    4. **Announce Move:** Declare the chosen prime and the new value of **N**.
+
+- **Turn Progression:**
+  - The new **N** becomes the starting point for the next player's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves:**
+   - Players can only divide **N** by **2**, **3**, **5**, or **7**, and only if the prime is a factor of **N**.
+   - If none of these primes are factors of **N**, the player cannot make a move and loses the game.
+
+2. **Division:**
+   - The division must result in an integer with no remainder.
+   - Example: If **N = 30**, valid divisions are by **2**, **3**, or **5**.
+
+3. **Winning the Game:**
+   - A player wins by reducing **N** to exactly **1** on their turn.
+
+4. **Losing the Game:**
+   - A player loses if:
+     - They cannot make a valid move on their turn.
+     - They make an invalid move (e.g., dividing by a prime that is not a factor of **N**).
+
+5. **No Skipping Turns:**
+   - Players must make a valid move if possible; skipping a turn is not allowed.
+
+6. **Example Moves:**
+   - **Valid Move:** N = 14; player divides by 7; new N = 2.
+   - **Invalid Move:** N = 14; player attempts to divide by 5 (since 5 is not a factor of 14).
+
+---
+
+### **Scoring**
+
+- **Victory Condition:**
+  - The game is won immediately when a player reduces **N** to **1**.
+- **No Points System:**
+  - There are no points or scoring beyond determining the winner of the game.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Setup:**
+
+- Starting **N**: **210**
+- Players: **Player 1** and **Player 2**
+
+**Game Progression:**
+
+1. **Player 1's Turn:**
+   - **N = 210**
+   - Valid primes: **2**, **3**, **5**, **7**
+   - Chooses to divide by **7**
+   - Calculation: **210 ÷ 7 = 30**
+   - Announces: "I divide 210 by 7. New N is 30."
+
+2. **Player 2's Turn:**
+   - **N = 30**
+   - Valid primes: **2**, **3**, **5**
+   - Chooses to divide by **5**
+   - Calculation: **30 ÷ 5 = 6**
+   - Announces: "I divide 30 by 5. New N is 6."
+
+3. **Player 1's Turn:**
+   - **N = 6**
+   - Valid primes: **2**, **3**
+   - Chooses to divide by **3**
+   - Calculation: **6 ÷ 3 = 2**
+   - Announces: "I divide 6 by 3. New N is 2."
+
+4. **Player 2's Turn:**
+   - **N = 2**
+   - Valid prime: **2**
+   - Chooses to divide by **2**
+   - Calculation: **2 ÷ 2 = 1**
+   - Announces: "I divide 2 by 2. New N is 1."
+   - **Player 2 wins the game!**
+
+#### **Command-Line Interaction Example**
+
+```
+Welcome to Prime Division!
+
+Starting N is 210.
+
+Player 1's turn.
+Available primes to divide 210: [2, 3, 5, 7]
+Enter prime to divide N: 7
+Player 1 divides 210 by 7. New N is 30.
+
+Player 2's turn.
+Available primes to divide 30: [2, 3, 5]
+Enter prime to divide N: 5
+Player 2 divides 30 by 5. New N is 6.
+
+Player 1's turn.
+Available primes to divide 6: [2, 3]
+Enter prime to divide N: 3
+Player 1 divides 6 by 3. New N is 2.
+
+Player 2's turn.
+Available primes to divide 2: [2]
+Enter prime to divide N: 2
+Player 2 divides 2 by 2. New N is 1.
+
+Congratulations, Player 2! You have reduced N to 1 and won the game!
+```
+
+---
+
+### **Strategic Tips**
+
+- **Plan Ahead:**
+  - Anticipate the results of your move on future turns.
+  - Try to force your opponent into a position where they have no valid moves.
+
+- **Prime Factorization:**
+  - Understanding the prime factors of numbers can give you an advantage.
+  - Aim to leave **N** as a prime number that only you can exploit.
+
+- **Control the Game Pace:**
+  - Decide whether to reduce **N** quickly or slowly based on your strategy.
+
+---
+
+### **Conclusion**
+
+**Prime Division** is a simple yet strategic game that challenges players' mathematical skills and foresight. It's easy to code for a command-line interface and provides an engaging experience where a skilled player can consistently outperform an unskilled one. The game ends decisively with a victory for one player and has no mechanism for a draw, ensuring quick and clear outcomes.
+
+Enjoy the challenge of prime numbers and may the best strategist win!

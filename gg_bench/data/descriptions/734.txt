@@ -1,0 +1,195 @@
+**Blockade: Rule Book**
+
+---
+
+### **Objective**
+
+Be the last player able to make a valid move. The game ends when a player cannot place a block on the board during their turn, resulting in a win for the other player. Strategic placement of blocks to limit your opponent's options while maximizing your own is key to victory.
+
+---
+
+### **Setup**
+
+1. **Game Board**: A 6x6 grid representing the playing field.
+2. **Initial State**: All cells on the grid are empty at the start of the game.
+3. **Player Assignment**:
+   - Player 1: Uses symbol 'X'.
+   - Player 2: Uses symbol 'O'.
+
+Players decide who will take the first turn (e.g., coin toss, mutual agreement).
+
+---
+
+### **Game Components**
+
+- **Grid Cells**:
+  - **Empty Cell**: Represented by a dot `.`.
+  - **Player Block**: Represented by 'X' (Player 1) or 'O' (Player 2).
+  - **Blocked Cell**: Represented by `#`, indicating the cell is unavailable for future moves.
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Players alternate turns, starting with the player chosen during setup.
+2. **Actions per Turn**:
+   - **Place a Block**: Select an empty cell to place your block.
+   - **Block Adjacent Cells**: After placing your block, all orthogonally adjacent empty cells (up, down, left, right) become blocked and are marked with `#`.
+3. **Turn Progression**: Once a player completes their action, the turn passes to the opponent.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Placing Blocks**:
+   - A block can only be placed on an empty cell (`.`).
+   - You cannot place a block on a cell that is already occupied (`X` or `O`) or blocked (`#`).
+2. **Blocking Cells**:
+   - Only orthogonally adjacent empty cells are blocked (diagonals are not affected).
+   - Blocked cells (`#`) are unavailable for the remainder of the game.
+3. **Winning the Game**:
+   - If a player has no valid moves on their turn (no empty cells to place a block), they lose the game.
+   - The opponent is declared the winner.
+4. **Invalid Moves**:
+   - If a player attempts to make an invalid move, they must choose a different move.
+   - If no valid moves are available, the player loses.
+
+---
+
+### **Scoring**
+
+This game does not use a scoring system. Victory is determined solely by being the last player able to make a valid move.
+
+---
+
+### **Example Gameplay**
+
+Below is a sample game illustrating the rules and command-line interactions.
+
+**Initial Board State:**
+
+```
+. . . . . .
+. . . . . .
+. . . . . .
+. . . . . .
+. . . . . .
+. . . . . .
+```
+
+**Turn 1: Player 1**
+
+- **Action**: Places 'X' at position (2, 2).
+- **Blocks**: Cells at positions (1,2), (3,2), (2,1), (2,3).
+
+**Board State:**
+
+```
+. . . . . .
+. . # . . .
+. # X # . .
+. . # . . .
+. . . . . .
+. . . . . .
+```
+
+**Turn 2: Player 2**
+
+- **Action**: Places 'O' at position (0, 0).
+- **Blocks**: Cells at positions (0,1), (1,0).
+
+**Board State:**
+
+```
+O # . . . .
+# . . . . .
+. # X # . .
+. . # . . .
+. . . . . .
+. . . . . .
+```
+
+**Turn 3: Player 1**
+
+- **Action**: Places 'X' at position (4, 2).
+- **Blocks**: Cells at positions (3,2), (5,2), (4,1), (4,3).
+
+**Note**: Cell (3,2) is already blocked; it remains blocked.
+
+**Board State:**
+
+```
+O # . . . .
+# . . . . .
+. # X # . .
+. . # . . .
+. . # X # .
+. . . # . .
+```
+
+**Gameplay Continues...**
+
+Players continue to alternate turns, placing their blocks and blocking adjacent cells.
+
+**Endgame Scenario:**
+
+Suppose the board reaches a state where Player 2 has no valid moves.
+
+**Final Board State:**
+
+```
+O # O # X #
+# # # # # #
+# # X # # #
+# # # # # #
+# # # X # #
+# # # # # #
+```
+
+**Outcome**:
+
+- **Player 2** cannot place a block (no empty cells available).
+- **Player 1** wins the game.
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is how the game might proceed in a command-line interface.
+
+**Turn 1: Player 1**
+
+```
+Player 1 (X), enter your move (row and column): 2 2
+You placed an 'X' at (2,2).
+Blocked cells at: (1,2), (3,2), (2,1), (2,3).
+```
+
+**Turn 2: Player 2**
+
+```
+Player 2 (O), enter your move (row and column): 0 0
+You placed an 'O' at (0,0).
+Blocked cells at: (0,1), (1,0).
+```
+
+**...**
+
+**Turn N: Player 2**
+
+```
+Player 2 (O), no valid moves remaining.
+Player 1 (X) wins the game!
+```
+
+---
+
+### **Strategies for Players**
+
+- **Control the Center**: Placing blocks towards the center can limit your opponent's options more effectively.
+- **Anticipate Moves**: Think ahead to block paths your opponent might use in future turns.
+- **Avoid Corners Early**: Early moves in corners may limit your own options.
+
+---
+
+**Enjoy playing Blockade, and may the best strategist win!**

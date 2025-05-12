@@ -1,0 +1,185 @@
+# **Capture the Line**: Rule Book
+
+---
+
+## **Objective**
+
+Be the first player to reach the center point of a linear path by strategically advancing your position. The primary goal is to occupy the central point (Point 6) before your opponent does, thereby achieving victory. A player wins by being the first to land exactly on Point 6 according to the movement rules.
+
+---
+
+## **Setup**
+
+- **Game Path**: A linear sequence of 11 consecutive points numbered from 1 to 11.
+- **Starting Positions**:
+  - **Player 1** starts on **Point 1**.
+  - **Player 2** starts on **Point 11**.
+  
+At the beginning of the game, both players are positioned at opposite ends of the line, ready to advance towards the center point.
+
+---
+
+## **Game Components**
+
+- **Linear Path**: Represented in the command-line interface as a series of numbered positions from 1 to 11.
+  
+  Example representation:
+
+  ```
+  [1] - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 - [11]
+  ```
+  
+- **Player Markers**: Each player is represented by their position number on the path.
+  - **Player 1**: Travels from Point 1 towards Point 6.
+  - **Player 2**: Travels from Point 11 towards Point 6.
+
+No physical pieces are required; the game state is maintained through numerical positions within the interface.
+
+---
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions per Turn**:
+  - A player may move their marker **1 or 2 points forward** towards the center (Point 6).
+  
+---
+
+## **Rules and Mechanics**
+
+1. **Movement**:
+   - On your turn, choose to move **either 1 or 2 points forward** along the path towards Point 6.
+   - Movement is only towards the center; you cannot move backward.
+
+2. **Occupied Points**:
+   - Both players cannot occupy the same point simultaneously.
+   - Players **cannot pass each other**. If a player's move would land them on or beyond the opponent's current position, they must adjust their move:
+     - If moving 2 points would cause them to pass or land on the opponent, they must move only 1 point.
+     - If moving 1 point would also result in passing or landing on the opponent, the player **cannot move** and **loses their turn**.
+
+3. **Winning the Game**:
+   - The first player to land **exactly on Point 6** wins the game.
+   - If a player cannot make a valid move on their turn per the movement rules, they **lose their turn**, and play passes to the opponent.
+   - **No Draws**: The gameplay mechanics ensure that one player will reach the center point before the other, making draws impossible.
+
+4. **Special Conditions**:
+   - If a move would cause a player to go beyond Point 6, they must adjust their move to land exactly on Point 6 if possible.
+   - If neither a 1-point nor a 2-point move lands a player on Point 6 without violating the occupied points rule, they must **skip their turn**.
+
+---
+
+## **Scoring**
+
+- **Victory**: Achieved by the first player to reach Point 6.
+- **No Point System**: The game does not use a scoring system; the outcome is win or loss based on reaching the objective.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Initial Setup**
+
+```
+Player Positions:
+- Player 1: Point 1
+- Player 2: Point 11
+```
+
+#### **Turn 1**
+
+- **Player 1's Move**:
+  - Moves **2 points** forward to Point 3.
+  - **Reason**: Chooses to advance quickly towards the center.
+
+```
+Player Positions:
+- Player 1: Point 3
+- Player 2: Point 11
+```
+
+#### **Turn 2**
+
+- **Player 2's Move**:
+  - Moves **2 points** forward to Point 9.
+  - **Reason**: Matches Player 1's strategy to stay competitive.
+
+```
+Player Positions:
+- Player 1: Point 3
+- Player 2: Point 9
+```
+
+#### **Turn 3**
+
+- **Player 1's Move**:
+  - Moves **2 points** forward to Point 5.
+  - **Reason**: Plans to reach Point 6 on the next turn.
+
+```
+Player Positions:
+- Player 1: Point 5
+- Player 2: Point 9
+```
+
+#### **Turn 4**
+
+- **Player 2's Move**:
+  - Attempts to move **2 points** forward to Point 11, but Point 11 is beyond the center.
+  - Adjusts move to **1 point** forward to Point 10.
+
+```
+Player Positions:
+- Player 1: Point 5
+- Player 2: Point 10
+```
+
+#### **Turn 5**
+
+- **Player 1's Move**:
+  - Moves **1 point** forward to **Point 6**, reaching the center.
+  - **Result**: Player 1 wins the game.
+
+```
+Player Positions:
+- Player 1: Point 6 (Victory)
+- Player 2: Point 10
+```
+
+### **Command-Line Interaction**
+
+#### **Example Turn for Player 1**
+
+```
+It's Player 1's turn.
+Current Positions: Player 1 at Point 3, Player 2 at Point 9.
+Choose your move (enter 1 or 2 to move forward that many points): 2
+
+Player 1 moves to Point 5.
+```
+
+#### **Example Turn for Player 2**
+
+```
+It's Player 2's turn.
+Current Positions: Player 2 at Point 9, Player 1 at Point 5.
+Choose your move (enter 1 or 2 to move forward that many points): 2
+
+Cannot move 2 points; this would pass Player 1's position.
+Adjusted move to 1 point.
+
+Player 2 moves to Point 10.
+```
+
+---
+
+## **Strategic Tips**
+
+- **Plan Ahead**: Anticipate your opponent's possible moves to position yourself advantageously.
+- **Control the Center**: Aim to reach positions that give you the opportunity to land on Point 6 on your next turn.
+- **Forced Moves**: Try to put your opponent in a position where their options are limited, potentially causing them to lose a turn.
+
+---
+
+By understanding and applying these rules and strategies, players can engage in a challenging and competitive game of **Capture the Line**. Enjoy the duel!

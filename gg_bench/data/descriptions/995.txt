@@ -1,0 +1,239 @@
+**Prime Total**
+
+**Rule Book**
+
+---
+
+### **Objective**
+
+**Primary Goal:**  
+In **Prime Total**, two players compete by alternately adding numbers to a shared total sum. The main objective is to avoid making the total sum a prime number. The first player who causes the total sum to become a prime number **loses** the game. Victory is achieved by strategically adding numbers to force the opponent into making the total sum prime on their turn.
+
+---
+
+### **Setup**
+
+1. **Initial Total Sum:**  
+   - The game begins with a total sum of **0**.
+  
+2. **Player Designation:**  
+   - Determine which player goes **first** (Player 1) and which goes **second** (Player 2). This can be decided by mutual agreement or by a random method such as a coin toss.
+
+3. **Available Numbers:**  
+   - Both players have access to numbers **1** through **10** inclusive. These numbers can be used multiple times throughout the game.
+
+---
+
+### **Game Components**
+
+1. **Shared Total Sum:**  
+   - A number representing the cumulative sum of all numbers added by both players during the game.
+   - **Functionality:** Tracks the progress of the game and determines when a player loses.
+
+2. **Number Selection (1-10):**  
+   - Players choose from integers **1** to **10** on their turn.
+   - **Attributes:**
+     - Each number is available for selection on every turn.
+     - Numbers can be reused multiple times by either player.
+
+3. **Command-Line Interface:**  
+   - The game is played via a command-line interface where players input their chosen numbers.
+   - **Functionality:** Facilitates the game by accepting player inputs and displaying the current total sum after each turn.
+
+---
+
+### **Turns**
+
+1. **Turn Structure:**
+   - Players take **alternate turns** starting with Player 1.
+   - On each turn, the player performs the following actions:
+     1. **Select a Number:** Choose a number between **1** and **10** inclusive.
+     2. **Add to Total Sum:** Add the selected number to the shared total sum.
+     3. **Check for Prime Total:** Determine if the new total sum is a prime number.
+
+2. **Turn Progression:**
+   - After a player completes their turn, the next player proceeds with their turn following the same steps.
+   - The game continues until a player causes the total sum to be a prime number.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection Rules:**
+   - On their turn, a player **must** choose a number between **1** and **10** inclusive.
+   - **No Restrictions** on reusing numbers; any number can be chosen regardless of previous selections.
+
+2. **Adding to Total Sum:**
+   - The chosen number is added to the current total sum to form a new total sum.
+   - Example: If the current total sum is **7** and the player adds **4**, the new total sum becomes **11**.
+
+3. **Prime Number Check:**
+   - After adding the chosen number, the player must check if the new total sum is a **prime number**.
+     - **Prime Number Definition:** A natural number greater than 1 that has no positive divisors other than 1 and itself.
+   - If the total sum is **prime**, the player who made the move **loses** immediately.
+   - If the total sum is **not prime**, the game continues to the next player's turn.
+
+4. **Winning the Game:**
+   - A player **wins** when their opponent adds a number that causes the total sum to become a prime number.
+
+5. **Losing the Game:**
+   - A player **loses** when they add a number that results in the total sum being a prime number.
+
+6. **Continued Play:**
+   - The game continues indefinitely until a player loses.
+   - There is **no draw** condition in this game.
+
+---
+
+### **Scoring**
+
+- **Victory Condition:**
+  - The game is won by **direct elimination**, not by accumulating points.
+  - The player who avoids making the total sum prime and forces their opponent to cause a prime total sum **wins**.
+  
+- **No Point Tracking:**
+  - There is no scoring system or points to track.
+  - Focus is on strategic play to avoid losing conditions.
+
+---
+
+### **Examples**
+
+Below are example scenarios to illustrate how the game is played in practice using command-line interactions.
+
+#### **Example Game Play**
+
+---
+
+**Starting the Game:**
+
+- **Total Sum:** 0
+
+---
+
+**Player 1's Turn:**
+
+- **Action:** Chooses number **4**.
+- **Calculation:** 0 (current total sum) + 4 = **4**.
+- **Prime Check:** 4 is **not prime**.
+- **Output:**
+  ```
+  Player 1 adds 4. Total sum is now 4.
+  ```
+
+---
+
+**Player 2's Turn:**
+
+- **Action:** Chooses number **5**.
+- **Calculation:** 4 + 5 = **9**.
+- **Prime Check:** 9 is **not prime**.
+- **Output:**
+  ```
+  Player 2 adds 5. Total sum is now 9.
+  ```
+
+---
+
+**Player 1's Turn:**
+
+- **Action:** Chooses number **2**.
+- **Calculation:** 9 + 2 = **11**.
+- **Prime Check:** 11 is **prime**.
+- **Outcome:**
+  ```
+  Player 1 adds 2. Total sum is now 11.
+  11 is a prime number. Player 1 loses!
+  ```
+
+- **Winner:** **Player 2**
+
+---
+
+#### **Strategic Play Example**
+
+**Starting the Game:**
+
+- **Total Sum:** 0
+
+---
+
+**Player 1's Turn:**
+
+- **Action:** Chooses number **1**.
+- **Calculation:** 0 + 1 = **1**.
+- **Prime Check:** 1 is **not prime**.
+- **Output:**
+  ```
+  Player 1 adds 1. Total sum is now 1.
+  ```
+
+---
+
+**Player 2's Turn:**
+
+- **Action:** Chooses number **2**.
+- **Calculation:** 1 + 2 = **3**.
+- **Prime Check:** 3 is **prime**.
+- **Outcome:**
+  ```
+  Player 2 adds 2. Total sum is now 3.
+  3 is a prime number. Player 2 loses!
+  ```
+
+- **Winner:** **Player 1**
+
+---
+
+**Explanation:**
+
+- **Player 1** smartly started with **1**, keeping the total sum low.
+- **Player 2** chose **2**, perhaps not considering that **1 + 2 = 3**, which is prime.
+- **Player 2** loses by making the total sum a prime number.
+
+---
+
+### **Command-Line Interaction Sample**
+
+**Game Start:**
+
+```
+Welcome to Prime Total!
+Starting Total Sum: 0
+
+Player 1, enter a number between 1 and 10: 6
+Player 1 adds 6. Total sum is now 6.
+6 is not prime.
+
+Player 2, enter a number between 1 and 10: 4
+Player 2 adds 4. Total sum is now 10.
+10 is not prime.
+
+Player 1, enter a number between 1 and 10: 7
+Player 1 adds 7. Total sum is now 17.
+17 is a prime number. Player 1 loses!
+
+Player 2 wins the game!
+```
+
+---
+
+### **Strategies for Players**
+
+- **Avoid Prime Totals:**  
+  - Be cautious with your additions to ensure the total sum does not become prime.
+
+- **Calculate Ahead:**  
+  - Anticipate possible totals resulting from your move and the opponent's potential responses.
+
+- **Control the Game Flow:**  
+  - Try to force the total sum into ranges where the next available totals are primes for the opponent.
+
+- **Memorize Prime Numbers:**  
+  - Familiarize yourself with prime numbers within the possible total sum range to make informed decisions.
+
+---
+
+**Enjoy playing Prime Total, and may the most strategic player win!**
+
+---

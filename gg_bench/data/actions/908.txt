@@ -1,0 +1,11 @@
+The action space in the game consists of 525 discrete actions that map to the player's moves:
+
+1. **Place Actions (0-224)**: These represent placing numbers on the grid. The action index can be divided into two parts:
+   - Numbers (1-9): Each number has a chunk of 25 actions. For number `n`, the range is `[(n-1)*25, n*25 - 1]`.
+   - Grid cells (A1 to E5): Each number can be placed in one of 25 positions (5 rows × 5 columns). The cell index is calculated using modulo (`% 25`) for the specific action within the chunk.
+
+   For an action index `a < 225`, the number placed is `(a // 25) + 1`, and the grid cell index is `a % 25`, which corresponds to row and column using `divmod(cell_index, 5)`.
+
+2. **Swap Actions (225-524)**: These actions swap the positions of two numbers on the grid. There are 300 possible swaps. For an action index `a >= 225`, the swap action index is `a - 225`. This index is mapped to two grid cell indices through `self._swap_index_to_cells(swap_index)` method, allowing the player to define which two cells' contents are swapped.
+
+This mapping effectively transforms a single action index into specific game moves, whether placing a number on an empty cell or swapping existing numbers on the grid.

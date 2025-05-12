@@ -1,0 +1,254 @@
+# Line Runner: A Two-Player Strategic Race
+
+## Objective
+
+Be the first player to reach or pass the end of the line at position **20** by strategically moving your token forward, while tactically obstructing your opponent's progress when possible.
+
+---
+
+## Setup
+
+1. **The Line:**
+   - Imagine a straight line divided into positions numbered from **0** to **20**.
+   - Positions are sequential and represent spaces on the path players will move along.
+
+2. **Starting Positions:**
+   - Both players begin with their tokens at **position 0**.
+
+3. **Player Tokens:**
+   - **Player 1** uses the token `"A"`.
+   - **Player 2** uses the token `"B"`.
+
+4. **Decide Starting Player:**
+   - Determine who takes the first turn by mutual agreement or by a random method (e.g., coin toss).
+
+---
+
+## Game Components
+
+- **The Line:** A shared linear path with positions numbered from **0** to **20**.
+- **Player Tokens:** Symbols representing each player's current position on the line.
+  - **Player 1's Token:** `"A"`
+  - **Player 2's Token:** `"B"`
+
+---
+
+## Turns
+
+- Players take turns alternately.
+- On each turn, a player will:
+  1. Choose a movement option.
+  2. Advance their token along the line according to the rules.
+
+---
+
+## Rules and Mechanics
+
+### 1. Movement Options
+
+- On your turn, you must move your token forward by **exactly** **1**, **2**, or **3** positions.
+- You **cannot** choose to move fewer than 1 or more than 3 positions.
+- You **cannot** move backward.
+
+### 2. Occupied Positions and Blocking
+
+- **Single Occupancy:** No two tokens can occupy the same position on the line.
+- **Dealing with Occupied Positions:**
+  - If your chosen move would land you on a position occupied by your opponent, you must stop at the **nearest unoccupied position behind** the opponent's token.
+  - If multiple consecutive positions ahead are occupied, you stop at the first unoccupied position before those positions.
+  - If no forward movement is possible due to occupation, you remain on your current position.
+
+### 3. Winning the Game
+
+- **Victory Condition:** The first player to reach or pass **position 20** wins the game.
+- **Exact Movement Not Required:** You can win by moving beyond position 20; an exact landing is not necessary.
+- **Movement Limitations:** If none of the movement options (1, 2, or 3) allow you to move forward (e.g., all result in occupied positions), you must skip your turn.
+
+---
+
+## Scoring
+
+- The game is won immediately when a player reaches or surpasses position 20 during their turn.
+- There are no points or secondary scoring methods.
+- No draws are possible under the game rules.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Setup:**
+
+- Positions: `0 1 2 3 4 5 6 7 8 9 ... 20`
+- Player Positions:
+  - **Player A** (Token `"A"`): Position `0`
+  - **Player B** (Token `"B"`): Position `0`
+
+**Turn-by-Turn Breakdown:**
+
+1. **Turn 1 - Player A:**
+   - **Action:** Moves forward by **3** positions.
+   - **New Position:** `0 + 3 = 3`
+   - **Board State:**
+     - Positions: `0 1 2 3(A) 4 5 6 7 8 9 ... 20`
+
+2. **Turn 2 - Player B:**
+   - **Action:** Attempts to move forward by **3** positions to position `3`.
+   - **Conflict:** Position `3` is occupied by Player A.
+   - **Resolution:** Player B stops at position `2`.
+   - **New Position:** `0 + 2 = 2`
+   - **Board State:**
+     - Positions: `0 1 2(B) 3(A) 4 5 6 7 8 9 ... 20`
+
+3. **Turn 3 - Player A:**
+   - **Action:** Moves forward by **2** positions.
+   - **New Position:** `3 + 2 = 5`
+   - **Board State:**
+     - Positions: `0 1 2(B) 3 4 5(A) 6 7 8 9 ... 20`
+
+4. **Turn 4 - Player B:**
+   - **Action:** Attempts to move forward by **3** positions to position `5`.
+   - **Conflict:** Position `5` is occupied by Player A.
+   - **Resolution:** Player B stops at position `4`.
+   - **New Position:** `2 + 2 = 4`
+   - **Board State:**
+     - Positions: `0 1 2 3 4(B) 5(A) 6 7 8 9 ... 20`
+
+5. **Turn 5 - Player A:**
+   - **Action:** Moves forward by **3** positions.
+   - **New Position:** `5 + 3 = 8`
+   - **Board State:**
+     - Positions: `0 1 2 3 4(B) 5 6 7 8(A) 9 ... 20`
+
+6. **Turn 6 - Player B:**
+   - **Action:** Moves forward by **3** positions.
+   - **New Position:** `4 + 3 = 7`
+   - **Board State:**
+     - Positions: `0 1 2 3 4 5 6 7(B) 8(A) 9 ... 20`
+
+7. **Turn 7 - Player A:**
+   - **Action:** Moves forward by **1** position.
+   - **New Position:** `8 + 1 = 9`
+   - **Board State:**
+     - Positions: `0 1 2 3 4 5 6 7(B) 8 9(A) ... 20`
+
+8. **Turn 8 - Player B:**
+   - **Action:** Attempts to move forward by **3** positions to position `10`.
+   - **Conflict:** No conflict; position `10` is unoccupied.
+   - **New Position:** `7 + 3 = 10`
+   - **Board State:**
+     - Positions: `0 1 2 3 4 5 6 7 8 9(A) 10(B) ... 20`
+
+9. **Turn 9 - Player A:**
+   - **Action:** Moves forward by **3** positions.
+   - **New Position:** `9 + 3 = 12`
+   - **Board State:**
+     - Positions: `0 1 2 3 4 5 6 7 8 9 10(B) 11 12(A) ... 20`
+
+10. **Turn 10 - Player B:**
+    - **Action:** Attempts to move forward by **3** positions to position `13`.
+    - **Conflict:** No conflict; position `13` is unoccupied.
+    - **New Position:** `10 + 3 = 13`
+    - **Board State:**
+      - Positions: `0 1 2 3 4 5 6 7 8 9 10 11 12(A) 13(B) ... 20`
+
+11. **Turn 11 - Player A:**
+    - **Action:** Moves forward by **3** positions.
+    - **New Position:** `12 + 3 = 15`
+    - **Board State:**
+      - Positions: `0 1 2 3 4 5 6 7 8 9 10 11 12 13(B) 14 15(A) ... 20`
+
+12. **Continue Turns:**
+    - Players continue taking turns, moving strategically to reach or pass position `20`, while potentially blocking each other.
+
+13. **Winning Move:**
+    - Suppose **Player A** on their turn moves from position `18` to `21` (by moving **3** positions).
+    - Since position `21` surpasses the end, **Player A** wins the game.
+
+---
+
+## Command-Line Interaction Example
+
+**Game Start:**
+
+```
+Welcome to Line Runner!
+
+Positions: 0 1 2 3 4 5 6 7 8 9 10 ... 20
+Player A is at position 0
+Player B is at position 0
+
+Player A's turn.
+Enter your move (1, 2, or 3):
+```
+
+**Player Input and Game State Update:**
+
+- **Player A inputs:** `3`
+- **Game updates positions and displays:**
+
+```
+Player A moves to position 3.
+
+Positions: 0 1 2 3(A) 4 5 6 7 8 9 10 ... 20
+Player B is at position 0
+
+Player B's turn.
+Enter your move (1, 2, or 3):
+```
+
+**Handling Occupied Positions:**
+
+- **Player B inputs:** `3`
+- **Attempted move to position 3 is blocked (occupied by A).**
+- **Player B moves to position 2.**
+
+```
+Position 3 is occupied by Player A.
+Player B moves to position 2 instead.
+
+Positions: 0 1 2(B) 3(A) 4 5 6 7 8 9 10 ... 20
+
+Player A's turn.
+Enter your move (1, 2, or 3):
+```
+
+**Continuation and Victory Check:**
+
+- The game continues with players inputting their moves.
+- After each move, the game state is updated and displayed.
+- When a player reaches or passes position `20`, the game announces the winner.
+
+**Winning Announcement:**
+
+```
+Player A moves to position 21.
+
+Player A has reached the end of the line and wins the game! Congratulations!
+
+Final Positions:
+Player A: 21
+Player B: 17
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate your opponent's possible moves to block them effectively.
+- **Control Key Positions:** Occupying positions just ahead of your opponent can slow their progress.
+- **Flexible Movement:** Vary your movement distances to adapt to the evolving game state.
+- **Avoid Being Blocked:** Be cautious of moving just behind your opponent, as it may limit your next moves.
+
+---
+
+## Game Variations
+
+- **Variable Line Length:** Adjust the line to be shorter or longer for quicker or more extended games.
+- **Different Movement Options:** Allow moves of different ranges (e.g., 1-4 positions) for varied strategy.
+- **Multiple Tokens:** Each player controls two tokens, adding complexity and additional strategy.
+
+---
+
+Enjoy the challenge of outmaneuvering your opponent in Line Runner, a game of strategy, foresight, and tactical positioning!

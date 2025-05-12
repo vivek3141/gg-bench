@@ -1,0 +1,380 @@
+# Cipher Shift
+
+## Objective
+
+Cipher Shift is a two-player turn-based game where the primary goal is to be the first player to transform the shared current word into the target word. Players achieve victory by strategically incrementing letters of the current word to match the target word before their opponent does. There are no draws in Cipher Shift; the game continues until one player wins.
+
+## Setup
+
+- **Target Word**: Both players agree on a target word of the same length, composed of uppercase letters A-Z (e.g., "CODE").
+- **Current Word**: The game starts with a current word where all letters are set to 'A', matching the length of the target word (e.g., "AAAA" for a four-letter target word).
+
+## Game Components
+
+- **Current Word**: The mutable word that players modify during the game. It is displayed prominently on the command line.
+- **Target Word**: The word that players aim to transform the current word into. It remains constant throughout the game.
+- **Letters**: Each position in the words contains a letter from 'A' to 'Z'.
+  
+  Example:
+  
+  ```
+  Target Word : C O D E
+  Current Word: A A A A
+  ```
+
+## Turns
+
+- Players take turns alternately, starting with Player 1.
+- **During a Turn**:
+  - A player must increment **one letter** of the current word.
+  - The chosen letter moves to the **next character** in the alphabet.
+    - 'A' becomes 'B', 'B' becomes 'C', ..., 'Z' wraps around to 'A'.
+  - Players can choose **any position** in the current word to increment.
+- After the player's turn, the updated current word is displayed.
+
+## Rules and Mechanics
+
+1. **Letter Incrementing**:
+   - Only **one letter** can be incremented per turn.
+   - Alphabet wraps around: Incrementing 'Z' results in 'A'.
+2. **Winning the Game**:
+   - A player wins immediately when the current word **exactly matches** the target word after their turn.
+3. **No Skipping Turns**:
+   - Players **must** make a move on their turn.
+4. **Valid Moves**:
+   - Only the next alphabetical letter is valid; players cannot skip letters or decrement letters.
+5. **Gameplay Ethics**:
+   - Players should not interfere with the opponent's turn.
+   - Unsportsmanlike conduct (e.g., deliberately entering invalid input) is discouraged.
+
+## Scoring
+
+- **Winning**: The player who first matches the current word to the target word wins the game.
+- No points are tracked beyond determining the winner of each game.
+- Players may choose to play multiple rounds and tally wins for extended play.
+
+## Examples
+
+### Example Scenario
+
+**Target Word**: `CODE`  
+**Current Word** starts as: `AAAA`
+
+**Game Start**
+
+```
+Target Word : C O D E
+Current Word: A A A A
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Increment letter at position 1.
+- **Position Indexed**: Positions are numbered from 1 to 4.
+- **Incremented Letter**: Position 1, 'A' → 'B'.
+- **New Current Word**: `BAAA`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 1
+Current Word is now: B A A A
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Increment letter at position 1.
+- **Incremented Letter**: Position 1, 'B' → 'C'.
+- **New Current Word**: `CAAA`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 1
+Current Word is now: C A A A
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Increment letter at position 2.
+- **Incremented Letter**: Position 2, 'A' → 'B'.
+- **New Current Word**: `CBAA`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 2
+Current Word is now: C B A A
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Increment letter at position 3.
+- **Incremented Letter**: Position 3, 'A' → 'B'.
+- **New Current Word**: `CBB A`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 3
+Current Word is now: C B B A
+```
+
+#### Turn 5: Player 1
+
+- **Action**: Increment letter at position 2.
+- **Incremented Letter**: Position 2, 'B' → 'C'.
+- **New Current Word**: `C C B A`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 2
+Current Word is now: C C B A
+```
+
+#### Turn 6: Player 2
+
+- **Action**: Increment letter at position 4.
+- **Incremented Letter**: Position 4, 'A' → 'B'.
+- **New Current Word**: `C C B B`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 4
+Current Word is now: C C B B
+```
+
+#### Turn 7: Player 1
+
+- **Action**: Increment letter at position 3.
+- **Incremented Letter**: Position 3, 'B' → 'C'.
+- **New Current Word**: `C C C B`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 3
+Current Word is now: C C C B
+```
+
+#### Turn 8: Player 2
+
+- **Action**: Increment letter at position 4.
+- **Incremented Letter**: Position 4, 'B' → 'C'.
+- **New Current Word**: `C C C C`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 4
+Current Word is now: C C C C
+```
+
+#### Turn 9: Player 1
+
+- **Action**: Increment letter at position 2.
+- **Incremented Letter**: Position 2, 'C' → 'D'.
+- **New Current Word**: `C D C C`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 2
+Current Word is now: C D C C
+```
+
+#### Turn 10: Player 2
+
+- **Action**: Increment letter at position 3.
+- **Incremented Letter**: Position 3, 'C' → 'D'.
+- **New Current Word**: `C D D C`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 3
+Current Word is now: C D D C
+```
+
+#### Turn 11: Player 1
+
+- **Action**: Increment letter at position 4.
+- **Incremented Letter**: Position 4, 'C' → 'D'.
+- **New Current Word**: `C D D D`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 4
+Current Word is now: C D D D
+```
+
+#### Turn 12: Player 2
+
+- **Action**: Increment letter at position 2.
+- **Incremented Letter**: Position 2, 'D' → 'E'.
+- **New Current Word**: `C E D D`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 2
+Current Word is now: C E D D
+```
+
+#### Turn 13: Player 1
+
+- **Action**: Increment letter at position 1.
+- **Incremented Letter**: Position 1, 'C' → 'D'.
+- **New Current Word**: `D E D D`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 1
+Current Word is now: D E D D
+```
+
+#### Turn 14: Player 2
+
+- **Action**: Increment letter at position 1.
+- **Incremented Letter**: Position 1, 'D' → 'E'.
+- **New Current Word**: `E E D D`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 1
+Current Word is now: E E D D
+```
+
+#### Turn 15: Player 1
+
+- **Action**: Increment letter at position 3.
+- **Incremented Letter**: Position 3, 'D' → 'E'.
+- **New Current Word**: `E E E D`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 3
+Current Word is now: E E E D
+```
+
+#### Turn 16: Player 2
+
+- **Action**: Increment letter at position 4.
+- **Incremented Letter**: Position 4, 'D' → 'E'.
+- **New Current Word**: `E E E E`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 4
+Current Word is now: E E E E
+```
+
+#### Turn 17: Player 1
+
+- **Action**: Increment letter at position 1.
+- **Incremented Letter**: Position 1, 'E' → 'F'.
+- **New Current Word**: `F E E E`
+
+**Output**:
+
+```
+Player 1's turn:
+Enter position to increment (1-4): 1
+Current Word is now: F E E E
+```
+
+#### Turn 18: Player 2
+
+- **Action**: Increment letter at position 2.
+- **Incremented Letter**: Position 2, 'E' → 'F'.
+- **New Current Word**: `F F E E`
+
+**Output**:
+
+```
+Player 2's turn:
+Enter position to increment (1-4): 2
+Current Word is now: F F E E
+```
+
+*(The game continues in this manner until one player updates the Current Word to match the Target Word "CODE".)*
+
+### Winning the Game
+
+Suppose after several more turns, the Current Word becomes `C O D E`.
+
+- **Player's Turn**: The player who made the move resulting in `C O D E`.
+- **Outcome**: That player wins the game.
+
+**Winning Output**:
+
+```
+Player X's turn:
+Enter position to increment (1-4): N
+Current Word is now: C O D E
+Congratulations! Player X wins!
+```
+
+## Command-Line Interaction Sample
+
+Below is a sample of how command-line interaction might look:
+
+```
+Welcome to Cipher Shift!
+
+Target Word : C O D E
+Current Word: A A A A
+
+Player 1's turn:
+Enter position to increment (1-4): 1
+Current Word is now: B A A A
+
+Player 2's turn:
+Enter position to increment (1-4): 2
+Current Word is now: B B A A
+
+Player 1's turn:
+Enter position to increment (1-4): 1
+Current Word is now: C B A A
+
+...
+
+Player 2's turn:
+Enter position to increment (1-4): 4
+Current Word is now: C O D E
+Congratulations! Player 2 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of which letters need to be changed to reach the target word.
+- **Prioritize Rare Letters**: Letters that are further from 'A' will take more turns to reach. Consider incrementing those early.
+- **Anticipate Opponent Moves**: Watch which letters your opponent is incrementing. You might need to adjust your strategy accordingly.
+- **Balance Progress**: Try to increment letters such that you can win on your turn, preventing your opponent from winning before you.
+
+## Conclusion
+
+Cipher Shift is a simple yet strategic game that tests players' foresight and planning abilities. Its straightforward mechanics make it easy to code and play in a command-line interface, while the strategic depth ensures skilled players can consistently outperform less experienced opponents. Enjoy the challenge of racing to uncover the cipher!

@@ -1,0 +1,253 @@
+# Energy Duel: Rule Book
+
+**Objective**
+
+Become the first player to reduce your opponent's energy to **zero** by strategically managing your energy units through attacking and defending actions.
+
+---
+
+**Setup**
+
+- **Players**: Two players.
+- **Starting Energy**: Each player begins the game with **10 energy units**.
+- **Game Start**: Determine which player goes first (e.g., by coin toss or mutual agreement).
+
+---
+
+**Game Components**
+
+- **Energy Units**: Numerical representation of a player's vitality and ability to perform actions. Each player starts with 10 energy units.
+- **Actions**:
+  - **Attack**: An offensive move to reduce the opponent's energy.
+  - **Defend**: A protective move to mitigate damage from the opponent's next attack.
+- **Tracking**: Players keep track of their own and their opponent's energy units throughout the game.
+
+---
+
+**Turns**
+
+- **Turn Structure**:
+  1. **Action Selection**: On their turn, a player chooses one action: **Attack** or **Defend**.
+  2. **Energy Adjustment**: The chosen action affects energy units accordingly.
+  3. **Status Update**: Update both players on the current energy levels.
+- **Turn Order**: Players alternate turns throughout the game.
+
+---
+
+**Rules and Mechanics**
+
+1. **Actions**:
+   - **Attack**:
+     - **Cost**: Consumes **2 energy units** from the attacker.
+     - **Effect**: Reduces the opponent's energy by **3 units**.
+   - **Defend**:
+     - **Cost**: Consumes **1 energy unit** from the defender.
+     - **Effect**: Reduces damage from the opponent's **next attack** by **2 units**.
+     - **Note**: The defense effect is only applicable against the next attack and does not stack if multiple defenses are performed consecutively.
+2. **Energy Management**:
+   - Players cannot perform an action if they lack sufficient energy units to pay its cost.
+   - A player's energy cannot drop below zero; any excess damage or cost is disregarded.
+3. **Defend Mechanics**:
+   - If a player defends and the opponent does not attack on their next turn, the defense effect expires.
+   - Defense only applies to the immediate next attack.
+4. **Winning the Game**:
+   - The game ends immediately when a player's energy is reduced to **zero**.
+   - The player who reduces their opponent's energy to zero **wins the game**.
+
+---
+
+**Scoring**
+
+- **Victory Condition**: Reduce your opponent's energy units to zero before they do the same to you.
+- **No Points System**: The game is won by meeting the victory condition, not by accumulating points.
+
+---
+
+**Examples**
+
+Below are sample turns to illustrate gameplay.
+
+**Starting Situation**
+
+- Player 1 Energy: 10
+- Player 2 Energy: 10
+
+---
+
+**Turn 1**
+
+- **Player 1's Turn**:
+  - **Action**: Attack
+  - **Energy Cost**: -2 (Player 1 energy becomes 8)
+  - **Effect on Opponent**: Player 2's energy -3 (Player 2 energy becomes 7)
+  - **Status Update**:
+    - Player 1 Energy: 8
+    - Player 2 Energy: 7
+
+---
+
+**Turn 2**
+
+- **Player 2's Turn**:
+  - **Action**: Defend
+  - **Energy Cost**: -1 (Player 2 energy becomes 6)
+  - **Effect**: Will reduce damage from the next attack by 2.
+  - **Status Update**:
+    - Player 1 Energy: 8
+    - Player 2 Energy: 6
+
+---
+
+**Turn 3**
+
+- **Player 1's Turn**:
+  - **Action**: Attack
+  - **Energy Cost**: -2 (Player 1 energy becomes 6)
+  - **Effect on Opponent**:
+    - Normal Damage: 3
+    - Defense Reduction: -2
+    - Total Damage: 1
+    - Player 2's energy -1 (Player 2 energy becomes 5)
+  - **Status Update**:
+    - Player 1 Energy: 6
+    - Player 2 Energy: 5
+
+---
+
+**Turn 4**
+
+- **Player 2's Turn**:
+  - **Action**: Attack
+  - **Energy Cost**: -2 (Player 2 energy becomes 3)
+  - **Effect on Opponent**: Player 1's energy -3 (Player 1 energy becomes 3)
+  - **Status Update**:
+    - Player 1 Energy: 3
+    - Player 2 Energy: 3
+
+---
+
+**Turn 5**
+
+- **Player 1's Turn**:
+  - **Action**: Defend
+  - **Energy Cost**: -1 (Player 1 energy becomes 2)
+  - **Effect**: Will reduce damage from the next attack by 2.
+  - **Status Update**:
+    - Player 1 Energy: 2
+    - Player 2 Energy: 3
+
+---
+
+**Turn 6**
+
+- **Player 2's Turn**:
+  - **Action**: Attack
+  - **Energy Cost**: -2 (Player 2 energy becomes 1)
+  - **Effect on Opponent**:
+    - Normal Damage: 3
+    - Defense Reduction: -2
+    - Total Damage: 1
+    - Player 1's energy -1 (Player 1 energy becomes 1)
+  - **Status Update**:
+    - Player 1 Energy: 1
+    - Player 2 Energy: 1
+
+---
+
+**Turn 7**
+
+- **Player 1's Turn**:
+  - **Action**: Attack
+  - **Energy Cost**: -2
+  - **Note**: Insufficient energy to perform attack (needs 2, has 1).
+  - **Alternative Action**: Player must choose Defend or Pass.
+  - **Action**: Defend
+  - **Energy Cost**: -1 (Player 1 energy becomes 0)
+  - **Effect**: Will reduce damage from the next attack by 2.
+  - **Status Update**:
+    - Player 1 Energy: 0
+    - Player 2 Energy: 1
+
+---
+
+**Turn 8**
+
+- **Player 2's Turn**:
+  - **Action**: Attack
+  - **Energy Cost**: -2
+  - **Note**: Insufficient energy to perform attack (needs 2, has 1).
+  - **Alternative Action**: Defend (but no energy to pay the cost) or Pass.
+  - **Action**: Pass (no energy cost)
+  - **Status Update**:
+    - Player 1 Energy: 0
+    - Player 2 Energy: 1
+
+---
+
+**Turn 9**
+
+- **Player 1's Turn**:
+  - **Energy**: 0
+  - **Note**: Cannot perform any actions.
+  - **Game Over**: Player 1 cannot prevent defeat.
+- **Result**: **Player 2 Wins** (as Player 1 cannot reduce Player 2's energy and cannot avoid defeat).
+
+---
+
+**Command-Line Interaction Example**
+
+Below is a simplified version of how the game might look in a command-line interface.
+
+```plaintext
+--- Energy Duel ---
+Player 1 Energy: 10
+Player 2 Energy: 10
+
+Player 1's Turn:
+Choose your action:
+1. Attack (Cost: 2 energy)
+2. Defend (Cost: 1 energy)
+Enter choice (1 or 2): 1
+Player 1 attacks!
+Player 1 Energy: 8
+Player 2 Energy: 7
+
+Player 2's Turn:
+Choose your action:
+1. Attack (Cost: 2 energy)
+2. Defend (Cost: 1 energy)
+Enter choice (1 or 2): 2
+Player 2 defends!
+Player 2 Energy: 6
+
+Player 1's Turn:
+Choose your action:
+1. Attack (Cost: 2 energy)
+2. Defend (Cost: 1 energy)
+Enter choice (1 or 2): 1
+Player 1 attacks!
+Defense reduces damage by 2!
+Player 1 Energy: 6
+Player 2 Energy: 5
+
+... [Gameplay Continues] ...
+
+Player 2 Wins!
+```
+
+---
+
+**Strategic Depth**
+
+- **Energy Conservation**: Players must manage their limited energy resources to maximize damage while ensuring they have enough energy to continue performing actions.
+- **Predictive Play**: Anticipating the opponent's moves (e.g., attacking when the opponent might defend) can provide a strategic advantage.
+- **Defensive Timing**: Using the defend action at the right moment can significantly reduce incoming damage and alter the game's outcome.
+- **Resource Denial**: Forcing the opponent into situations where they lack sufficient energy to attack can create openings for victory.
+
+---
+
+**Conclusion**
+
+"Energy Duel" is a simple yet strategically rich game that can be easily implemented in a command-line interface. With straightforward mechanics and a clear objective, players can quickly learn the rules but will find depth in mastering the optimal balance between attacking and defending. The game is designed to end swiftly, ensuring quick matches where skillful play is rewarded with consistent victories.
+
+Enjoy the duel!

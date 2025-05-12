@@ -1,0 +1,282 @@
+**Game Name:** Digit Append
+
+---
+
+### **Objective**
+
+The primary goal of Digit Append is to be the first player to reach **exactly 100** by strategically appending digits to a cumulative number. Players take turns adding single-digit numbers to the end of the current cumulative number, aiming to reach the target without exceeding it. Victory is achieved by the player who successfully forms the number 100. If a player cannot make a valid move without exceeding 100, they lose the game.
+
+---
+
+### **Setup**
+
+- **Starting Condition:** The game begins with a cumulative number set to **0**.
+- **Player Positions:** Two players participate in the game, alternating turns.
+- **Available Digits:** Digits from **1 to 9** are used in the game. Each digit can be used multiple times throughout the game.
+
+---
+
+### **Game Components**
+
+- **Cumulative Number:** A shared number that both players manipulate during their turns. It starts at 0 and grows as digits are appended.
+- **Digits (1-9):** The numbers that players can append to the cumulative number on their turn. Each digit represents itself and has no special attributes.
+- **Command-Line Interface:** Players input their chosen digits via command-line prompts, and the game displays the updated cumulative number after each turn.
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players alternate turns throughout the game. Decide who goes first by mutual agreement or a random method.
+- **Player Actions:**
+  - On their turn, a player selects a digit between 1 and 9.
+  - The chosen digit is appended to the right end of the cumulative number, forming a new number.
+- **Turn Progression:**
+  1. **Prompt:** The game prompts the current player to enter a digit.
+  2. **Input Validation:** The game checks if appending the chosen digit would result in a number exceeding 100.
+     - If valid, the digit is appended, and the cumulative number is updated.
+     - If invalid, the player loses the game.
+  3. **Display:** The new cumulative number is displayed.
+  4. **Check Victory Condition:** If the cumulative number is exactly 100, the current player wins.
+  5. **Next Turn:** If no victory condition is met, the turn passes to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Appending Digits:**
+   - Players may only append **single digits (1-9)** to the cumulative number.
+   - The digit is concatenated to the end of the current cumulative number (e.g., appending 5 to 7 results in 75).
+
+2. **Cumulative Number Restrictions:**
+   - The cumulative number must not exceed **100** at any point.
+   - If appending any digit would cause the cumulative number to surpass 100, the player cannot make a move and **loses the game**.
+
+3. **Winning the Game:**
+   - A player wins by creating a cumulative number that is **exactly 100** on their turn.
+
+4. **Invalid Moves:**
+   - Selecting a digit that causes the cumulative number to exceed 100 results in an immediate loss.
+
+5. **Repeated Digits:**
+   - Digits from 1 to 9 can be used multiple times throughout the game without restriction.
+
+6. **Strategic Depth:**
+   - Players must plan ahead to avoid setting up the opponent for a winning move.
+   - Understanding the implications of each appended digit is crucial to success.
+
+---
+
+### **Scoring**
+
+- **Victory Condition:** The game does not use a point system. Instead, the primary goal is to reach the cumulative number of 100.
+- **Win/Loss:**
+  - **Win:** Achieved by reaching exactly 100 on your turn.
+  - **Loss:** Occurs if a player cannot make a valid move without exceeding 100.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting the Game:**
+
+- The cumulative number is initialized to **0**.
+- Player 1 and Player 2 decide that Player 1 will start.
+
+---
+
+**Turn 1: Player 1**
+
+- **Cumulative Number:** 0
+- **Action:** Player 1 chooses to append **1**.
+- **Calculation:** 0 appended with 1 becomes **1**.
+- **Result:** Cumulative number is now **1**.
+
+---
+
+**Turn 2: Player 2**
+
+- **Cumulative Number:** 1
+- **Action:** Player 2 chooses to append **5**.
+- **Calculation:** 1 appended with 5 becomes **15**.
+- **Result:** Cumulative number is now **15**.
+
+---
+
+**Turn 3: Player 1**
+
+- **Cumulative Number:** 15
+- **Action:** Player 1 chooses to append **9**.
+- **Calculation:** 15 appended with 9 becomes **159**.
+- **Validation:** 159 exceeds 100.
+- **Outcome:** Invalid move. Player 1 loses the game.
+
+---
+
+**Corrected Turn 3: Player 1 (Alternate Scenario)**
+
+- **Cumulative Number:** 15
+- **Action:** Player 1 chooses to append **8**.
+- **Calculation:** 15 appended with 8 becomes **158**.
+- **Validation:** 158 exceeds 100.
+- **Outcome:** Invalid move. Player 1 loses the game.
+
+---
+
+**Alternate Turn 3 (Valid Move): Player 1**
+
+- **Cumulative Number:** 15
+- **Action:** Player 1 chooses to append **2**.
+- **Calculation:** 15 appended with 2 becomes **152**.
+- **Validation:** 152 exceeds 100.
+- **Outcome:** Invalid move. Player 1 loses the game.
+
+---
+
+**Realization:**
+
+In the previous examples, Player 1 cannot make a valid move without exceeding 100. Therefore, they lose. 
+
+However, let's adjust the game to showcase more strategic play.
+
+---
+
+#### **New Game Example**
+
+**Turn 1: Player 1**
+
+- **Cumulative Number:** 0
+- **Action:** Player 1 appends **1**.
+- **Resulting Number:** **1**
+
+---
+
+**Turn 2: Player 2**
+
+- **Cumulative Number:** 1
+- **Action:** Player 2 appends **0** (invalid as digits must be between 1 and 9).
+- **Correction:** Player 2 must choose between 1 and 9.
+- **Action:** Player 2 appends **2**.
+- **Resulting Number:** **12**
+
+---
+
+**Turn 3: Player 1**
+
+- **Cumulative Number:** 12
+- **Action:** Player 1 appends **3**.
+- **Resulting Number:** **123**
+
+- **Validation:** 123 exceeds 100.
+- **Outcome:** Player 1 loses.
+
+---
+
+#### **Strategic Gameplay Example**
+
+Players need to avoid exceeding 100 while also not setting up the opponent for a win.
+
+**Turn 1: Player 1**
+
+- **Cumulative Number:** 0
+- **Action:** Appends **1**.
+- **Resulting Number:** **1**
+
+---
+
+**Turn 2: Player 2**
+
+- **Cumulative Number:** 1
+- **Action:** Appends **0** (invalid).
+- **Action:** Appends **9**.
+- **Resulting Number:** **19**
+
+---
+
+**Turn 3: Player 1**
+
+- **Cumulative Number:** 19
+- **Action:** Appends **8**.
+- **Resulting Number:** **198**
+- **Validation:** Exceeds 100.
+- **Outcome:** Player 1 loses.
+
+---
+
+**Adjusted Turn 3: Player 1**
+
+- **Cumulative Number:** 19
+- **Action:** Appends **1**.
+- **Resulting Number:** **191**
+- **Validation:** Exceeds 100.
+- **Outcome:** Player 1 loses.
+
+---
+
+**Correct Turn 3: Player 1**
+
+- **Cumulative Number:** 19
+- **Action:** Appends **0** (invalid).
+- **Action:** Appends **8**.
+- **Resulting Number:** **198**
+- **Validation:** Exceeds 100.
+- **Outcome:** Player 1 loses.
+
+---
+
+**Conclusion:**
+
+Players must be cautious about the digits they choose to append, considering how it will affect the cumulative number. 
+
+---
+
+### **Winning Strategy Tips**
+
+- **Avoid Large Digits Early:** Appending large digits early can quickly exceed 100.
+- **Plan Ahead:** Consider the possible next moves for both yourself and your opponent.
+- **Force the Opponent's Hand:** Try to leave the cumulative number in a state where any move by the opponent will cause them to exceed 100.
+- **Stay Below Key Thresholds:** Be mindful of the cumulative number approaching critical points like 9, 99, etc.
+
+---
+
+### **Command-Line Interaction Sample**
+
+**Game Start**
+
+- **Cumulative Number:** 0
+
+---
+
+**Player 1's Turn**
+
+- **Prompt:** "Player 1, enter a digit (1-9) to append:"
+- **Input:** 1
+- **Output:** "Cumulative number is now: 1"
+
+---
+
+**Player 2's Turn**
+
+- **Prompt:** "Player 2, enter a digit (1-9) to append:"
+- **Input:** 2
+- **Output:** "Cumulative number is now: 12"
+
+---
+
+**Player 1's Turn**
+
+- **Prompt:** "Player 1, enter a digit (1-9) to append:"
+- **Input:** 3
+- **Output:** "Cumulative number is now: 123"
+- **Validation:** "123 exceeds 100. Player 1 loses. Player 2 wins!"
+
+---
+
+### **Final Notes**
+
+Digit Append is a simple yet strategic game that challenges players to think ahead and anticipate the consequences of their choices. By focusing on number manipulation and foresight, players can develop strategies to outmaneuver their opponents. The game's simplicity makes it easy to implement in a command-line interface, ensuring quick gameplay and clear outcomes without the possibility of a draw.
+
+---
+
+Enjoy playing Digit Append and may the best strategist win!

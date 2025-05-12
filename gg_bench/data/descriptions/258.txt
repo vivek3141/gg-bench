@@ -1,0 +1,178 @@
+# Number Ladder
+
+---
+
+## Objective
+
+Be the first player to **reach or exceed a total of 30** by strategically selecting numbers from a shared pool, following specific multiple and factor rules. Alternatively, win by forcing your opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+- **Shared Number Pool**: Numbers from **2** to **10** inclusive.
+- **Player Totals**: Each player starts with a total of **0**.
+- **Starting Player**: Decide who goes first (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Shared Number Pool**:
+  - Numbers **2, 3, 4, 5, 6, 7, 8, 9, 10**.
+  - Once a number is selected, it is **removed** from the pool.
+- **Player Totals**:
+  - Each player keeps a running total of their selected numbers.
+
+---
+
+## Turns
+
+1. **Initial Turn**:
+   - The first player selects **any number** from the shared pool.
+2. **Subsequent Turns**:
+   - On their turn, a player selects a number that is a **factor or multiple** of the **opponent's last chosen number**.
+   - The selected number is added to the player's total.
+   - The number is then removed from the shared pool.
+3. **Turn Order**:
+   - Players alternate turns until the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Number Selection**:
+   - The number must be a **factor or multiple** of the opponent's previously selected number.
+   - If no valid numbers are available, the player loses.
+2. **Number Removal**:
+   - Once selected, numbers are **removed** from the pool and cannot be used again.
+3. **Winning the Game**:
+   - **Victory Condition 1**: Be the first to **reach or exceed a total of 30**.
+   - **Victory Condition 2**: Force your opponent into a position where they cannot make a valid move.
+4. **No Draws**:
+   - The game cannot end in a draw. Play continues until one player meets a victory condition.
+
+---
+
+## Scoring
+
+- **Running Total**:
+  - Keep a cumulative sum of the numbers each player selects.
+- **Winning**:
+  - The first player to reach or exceed **30** points wins.
+  - Alternatively, if the opponent cannot make a valid move, you win.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Numbers Available**: 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+1. **Player 1's Turn**:
+   - Selects **5**.
+   - **Player 1 Total**: 5
+   - **Numbers Remaining**: 2, 3, 4, 6, 7, 8, 9, 10
+
+2. **Player 2's Turn**:
+   - Must select a factor or multiple of **5**.
+     - **Valid Choices**: **10** (since 5 is removed).
+   - Selects **10**.
+   - **Player 2 Total**: 10
+   - **Numbers Remaining**: 2, 3, 4, 6, 7, 8, 9
+
+3. **Player 1's Turn**:
+   - Must select a factor or multiple of **10**.
+     - **Valid Choices**: 2, 5 (used), **10** (used)
+     - **Available Valid Choices**: 2
+   - Selects **2**.
+   - **Player 1 Total**: 7 (5 + 2)
+   - **Numbers Remaining**: 3, 4, 6, 7, 8, 9
+
+4. **Player 2's Turn**:
+   - Must select a factor or multiple of **2**.
+     - **Valid Choices**: **4**, **6**, **8**
+   - Selects **8**.
+   - **Player 2 Total**: 18 (10 + 8)
+   - **Numbers Remaining**: 3, 4, 6, 7, 9
+
+5. **Player 1's Turn**:
+   - Must select a factor or multiple of **8**.
+     - **Valid Choices**: **4**
+   - Selects **4**.
+   - **Player 1 Total**: 11 (7 + 4)
+   - **Numbers Remaining**: 3, 6, 7, 9
+
+6. **Player 2's Turn**:
+   - Must select a factor or multiple of **4**.
+     - **Valid Choices**: None available.
+   - **Player 2 cannot make a valid move and loses**.
+
+**Result**: Player 1 wins.
+
+---
+
+## Command-Line Interaction Sample
+
+```
+Game Start!
+Numbers available: 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+Player 1's turn.
+Select a number from the pool: 5
+Player 1 selects 5.
+Player 1 Total: 5
+Numbers remaining: 2, 3, 4, 6, 7, 8, 9, 10
+
+Player 2's turn.
+Opponent's last number: 5
+Valid choices are multiples or factors of 5: 10
+Select a number from the pool: 10
+Player 2 selects 10.
+Player 2 Total: 10
+Numbers remaining: 2, 3, 4, 6, 7, 8, 9
+
+Player 1's turn.
+Opponent's last number: 10
+Valid choices are multiples or factors of 10: 2
+Select a number from the pool: 2
+Player 1 selects 2.
+Player 1 Total: 7
+Numbers remaining: 3, 4, 6, 7, 8, 9
+
+Player 2's turn.
+Opponent's last number: 2
+Valid choices are multiples or factors of 2: 4, 6, 8
+Select a number from the pool: 8
+Player 2 selects 8.
+Player 2 Total: 18
+Numbers remaining: 3, 4, 6, 7, 9
+
+Player 1's turn.
+Opponent's last number: 8
+Valid choices are multiples or factors of 8: 4
+Select a number from the pool: 4
+Player 1 selects 4.
+Player 1 Total: 11
+Numbers remaining: 3, 6, 7, 9
+
+Player 2's turn.
+Opponent's last number: 4
+Valid choices are multiples or factors of 4: None
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Anticipate Moves**: Consider which numbers will be available to your opponent after your turn.
+- **Control the Game**: Choose numbers that limit your opponent's options.
+- **Balance Scoring**: Weigh the benefits of choosing high numbers to increase your total against the risk of providing advantageous numbers to your opponent.
+- **Plan Ahead**: Aim to force your opponent into a position where they cannot make a valid move.
+
+---
+
+Enjoy playing **Number Ladder** and may your strategy lead you to victory!

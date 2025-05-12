@@ -1,0 +1,208 @@
+# Rule Book for "Numerical Nexus"
+
+## Objective
+
+**Be the first player to reach exactly 50 points.**
+
+Players take turns performing mathematical operations to increase their individual scores. The primary goal is to reach a score of exactly 50 points before your opponent does. Strategic selection and management of operations are key to victory.
+
+## Setup
+
+- **Players:** 2
+- **Starting Scores:** Both players begin with a score of **0**.
+- **Operations Pool:** Each player has access to a set of mathematical operations with limited uses.
+- **Interface:** The game is played in a command-line interface where players input their commands.
+
+## Game Components
+
+### Operations
+
+Each player can perform the following operations on their score:
+
+1. **Addition (+):**
+   - **+1** (usable **3** times)
+   - **+3** (usable **2** times)
+   - **+5** (usable **1** time)
+
+2. **Multiplication (×):**
+   - **×2** (usable **2** times)
+   - **×3** (usable **1** time)
+
+3. **Special Operation:**
+   - **Reset to 0** (usable **once** per game)
+
+**Notes:**
+
+- Each operation has a limited number of uses per player.
+- Players must track their remaining uses for each operation.
+
+## Turns
+
+1. **Turn Order:** Players alternate turns, starting with **Player 1**.
+2. **Turn Actions:** On their turn, a player must:
+   - Select an available operation.
+   - Apply the operation to their score.
+   - Announce their new score and remaining uses of that operation.
+
+## Rules and Mechanics
+
+### Performing Operations
+
+- **Valid Operations:** A player may only use an operation if they have remaining uses for it.
+- **Score Limit:** A player's score must not exceed **50**. If an operation would cause the score to surpass 50, that operation is invalid and cannot be used.
+- **Exact Victory:** A player wins by reaching a score of **exactly 50**.
+- **Special Operation - Reset to 0:**
+  - Can be used on **either player's score**.
+  - Resets the chosen player's score back to **0**.
+  - Counts as the player's turn action.
+  - Usable **once per game** by each player.
+
+### Winning the Game
+
+- **Victory Condition:** The first player to reach exactly **50** points wins.
+- **Forced Loss:** If a player cannot make a valid move on their turn (no operations can be performed without exceeding 50 or no operations remain), they lose the game.
+
+### Game End Scenarios
+
+- **Win:** A player reaches exactly 50 points.
+- **Loss:** A player cannot perform any valid operation on their turn.
+- **Forfeit:** A player chooses to concede the game.
+
+## Scoring
+
+- **Tracking Scores:** Players must keep an accurate record of their current score after each turn.
+- **Operation Usage:** Players must also track the number of uses remaining for each operation.
+
+## Examples
+
+### Sample Gameplay
+
+**Initial State:**
+
+- Player 1 Score: 0
+- Player 2 Score: 0
+
+#### Turn 1: Player 1
+
+- **Action:** Uses **+5**.
+- **Calculation:** 0 + 5 = **5**.
+- **Remaining Uses of +5:** 0.
+- **Announcement:** "Player 1's score is now 5. Remaining +5 uses: 0."
+
+#### Turn 2: Player 2
+
+- **Action:** Uses **×2**.
+- **Calculation:** 0 × 2 = **0** (since 0 × 2 = 0).
+- **Strategic Choice:** Realizing multiplication won't help at zero, decides to use **+3** instead.
+- **Calculation:** 0 + 3 = **3**.
+- **Remaining Uses of +3:** 1.
+- **Announcement:** "Player 2's score is now 3. Remaining +3 uses: 1."
+
+#### Turn 3: Player 1
+
+- **Action:** Uses **×2**.
+- **Calculation:** 5 × 2 = **10**.
+- **Remaining Uses of ×2:** 1.
+- **Announcement:** "Player 1's score is now 10. Remaining ×2 uses: 1."
+
+#### Turn 4: Player 2
+
+- **Action:** Uses **+5**.
+- **Calculation:** 3 + 5 = **8**.
+- **Remaining Uses of +5:** 0.
+- **Announcement:** "Player 2's score is now 8. Remaining +5 uses: 0."
+
+#### Turn 5: Player 1
+
+- **Action:** Uses **×2**.
+- **Calculation:** 10 × 2 = **20**.
+- **Remaining Uses of ×2:** 0.
+- **Announcement:** "Player 1's score is now 20. Remaining ×2 uses: 0."
+
+#### Turn 6: Player 2
+
+- **Action:** Uses **×3**.
+- **Calculation:** 8 × 3 = **24**.
+- **Remaining Uses of ×3:** 0.
+- **Announcement:** "Player 2's score is now 24. Remaining ×3 uses: 0."
+
+#### Turn 7: Player 1
+
+- **Action:** Uses **+5** (no remaining uses).
+- **Alternate Action:** Uses **+3**.
+- **Calculation:** 20 + 3 = **23**.
+- **Remaining Uses of +3:** 1.
+- **Announcement:** "Player 1's score is now 23. Remaining +3 uses: 1."
+
+#### Turn 8: Player 2
+
+- **Action:** Uses **Reset to 0** on **Player 1**.
+- **Remaining Uses of Reset:** 0.
+- **Announcement:** "Player 2 resets Player 1's score to 0. No remaining resets."
+
+#### Turn 9: Player 1
+
+- **Action:** Uses **Reset to 0** on **Player 2**.
+- **Remaining Uses of Reset:** 0.
+- **Announcement:** "Player 1 resets Player 2's score to 0. No remaining resets."
+
+#### Turn 10: Player 2
+
+- **Action:** Uses **+5** (no remaining uses).
+- **Alternate Action:** Uses **+3**.
+- **Calculation:** 0 + 3 = **3**.
+- **Remaining Uses of +3:** 0.
+- **Announcement:** "Player 2's score is now 3. Remaining +3 uses: 0."
+
+*(Game continues with players strategically using their remaining operations.)*
+
+### Strategy Tips
+
+- **Operation Management:** Carefully consider when to use your limited operations, especially high-value ones like **+5** or **×3**.
+- **Anticipate Opponent Moves:** Keep track of your opponent's remaining operations to predict their potential moves.
+- **Use Resets Wisely:** The reset can drastically alter the game's state; use it strategically to hinder your opponent when they are close to winning.
+- **Avoid Overstepping 50:** Plan your moves to avoid situations where any operation would push your score over 50.
+
+## Command-Line Interaction Example
+
+```
+Player 1, enter your move: +5
+Player 1's score is now 5. Remaining +5 uses: 0.
+
+Player 2, enter your move: +3
+Player 2's score is now 3. Remaining +3 uses: 1.
+
+Player 1, enter your move: ×2
+Player 1's score is now 10. Remaining ×2 uses: 1.
+
+Player 2, enter your move: ×3
+Player 2's score is now 9. Remaining ×3 uses: 0.
+
+Player 1, enter your move: +3
+Player 1's score is now 13. Remaining +3 uses: 0.
+
+Player 2, enter your move: +5
+Player 2's score is now 14. Remaining +5 uses: 0.
+
+Player 1, enter your move: ×2
+Player 1's score is now 13 × 2 = 26. Remaining ×2 uses: 0.
+
+Player 2, enter your move: ×2
+Player 2's score is now 14 × 2 = 28. Remaining ×2 uses: 1.
+
+...
+
+Player 1, enter your move: +1
+Player 1's score is now 49. Remaining +1 uses: 2.
+
+Player 2, enter your move: +1
+Player 2's score is now 49. Remaining +1 uses: 2.
+
+Player 1, enter your move: +1
+Player 1's score is now 50. Remaining +1 uses: 1.
+Congratulations, Player 1! You've reached exactly 50 and won the game.
+```
+
+## Conclusion
+
+"**Numerical Nexus**" is a strategic numerical game that challenges players to reach a precise target through careful planning and operation management. Balancing the use of limited operations while anticipating your opponent's moves adds depth and excitement to each match. Enjoy testing your numerical prowess in this duel of digits!

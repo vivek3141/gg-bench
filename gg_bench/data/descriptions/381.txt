@@ -1,0 +1,180 @@
+# Bit Flip Showdown Rule Book
+
+## Objective
+
+Be the player to flip the last `0` to `1` in a shared binary string, thus completing the string entirely with `1`s. Victory is achieved by strategically flipping bits to force your opponent into flipping the final `0`.
+
+---
+
+## Setup
+
+- **Binary String Initialization**: Create a binary string of fixed length `N`, initialized to all zeros. For a standard game, use `N = 10`:
+  ```
+  0 0 0 0 0 0 0 0 0 0
+  ```
+- **Decide First Player**: Flip a coin, or decide amicably who will take the first turn.
+
+---
+
+## Game Components
+
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Binary String**: A shared sequence of bits (`0`s and `1`s). Initially, all bits are `0`.
+- **Bit Positions**: Each bit in the string has a position number starting from `1` on the left to `N` on the right.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns. **Player 1** begins the game.
+- **Actions per Turn**:
+  - On their turn, a player **must flip** either **one or two adjacent `0`s** to `1`s.
+  - The bits chosen must be **adjacent** (next to each other) and currently set to `0`.
+  - Players **cannot** flip bits that are already `1`.
+- **Turn Progression**:
+  - After flipping the bits, the updated binary string is displayed.
+  - The turn passes to the next player.
+
+---
+
+## Rules and Mechanics
+
+### Flipping Bits
+
+- **Valid Moves**:
+  - Flip **one** `0` to `1`.
+  - Flip **two adjacent** `0`s to `1`s.
+- **Invalid Moves**:
+  - Flipping non-adjacent bits.
+  - Flipping more than two bits.
+  - Flipping bits already set to `1`.
+  - Skipping a turn.
+
+### Game Progression
+
+- **Objective Enforcement**: Players aim to avoid being the one to flip the final `0` to `1`.
+- **Winning the Game**: The player who flips the **last** `0` to `1` **wins** the game.
+- **Game End Condition**: The game ends immediately when the binary string contains only `1`s.
+
+---
+
+## Scoring
+
+- **Winner**: The player who flips the final `0` to `1`.
+- **No Draws**: The game cannot end in a draw; there is always a winner due to the finite number of bits and mandatory moves.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+Binary String:
+```
+Positions: 1 2 3 4 5 6 7 8 9 10
+Values:    0 0 0 0 0 0 0 0 0  0
+```
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - **Action**: Flips bits at positions **3** and **4**.
+   - **Input**: `flip 3 4`
+   - **Updated String**:
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9 10
+     Values:    0 0 1 1 0 0 0 0 0  0
+     ```
+
+2. **Player 2's Turn**:
+   - **Action**: Flips bit at position **5**.
+   - **Input**: `flip 5`
+   - **Updated String**:
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9 10
+     Values:    0 0 1 1 1 0 0 0 0  0
+     ```
+
+3. **Player 1's Turn**:
+   - **Action**: Flips bits at positions **1** and **2**.
+   - **Input**: `flip 1 2`
+   - **Updated String**:
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9 10
+     Values:    1 1 1 1 1 0 0 0 0  0
+     ```
+
+4. **Player 2's Turn**:
+   - **Action**: Flips bits at positions **6** and **7**.
+   - **Input**: `flip 6 7`
+   - **Updated String**:
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9 10
+     Values:    1 1 1 1 1 1 1 0 0  0
+     ```
+
+5. **Player 1's Turn**:
+   - **Action**: Flips bit at position **8**.
+   - **Input**: `flip 8`
+   - **Updated String**:
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9 10
+     Values:    1 1 1 1 1 1 1 1 0  0
+     ```
+
+6. **Player 2's Turn**:
+   - **Action**: Flips bits at positions **9** and **10**.
+   - **Input**: `flip 9 10`
+   - **Updated String**:
+     ```
+     Positions: 1 2 3 4 5 6 7 8 9 10
+     Values:    1 1 1 1 1 1 1 1 1  1
+     ```
+   - **Result**: **Player 2 wins!**
+
+### Strategic Notes
+
+- **Control the Game**: By forcing the number of remaining `0`s to a multiple of three, a skilled player can control the flow of the game.
+- **Anticipate Moves**: Predict your opponent's options after your move to avoid giving them a winning position.
+
+---
+
+## Command-Line Interaction Examples
+
+- **Flipping One Bit**:
+  - **Command**: `flip 5`
+    - Flips bit at position `5`.
+
+- **Flipping Two Bits**:
+  - **Command**: `flip 7 8`
+    - Flips bits at positions `7` and `8`.
+
+- **Invalid Move**:
+  - **Command**: `flip 3 5`
+    - **Invalid** because bits `3` and `5` are not adjacent.
+
+---
+
+## Additional Information
+
+### Customizing the Game
+
+- **Variable String Length**: Adjust the length of the binary string for different difficulty levels.
+- **Changing Flip Limits**: Allow flipping more bits per turn (e.g., up to three adjacent bits) for added complexity.
+
+### Game Implementation Tips
+
+- **Data Representation**: Use an array or list to represent the binary string for easy manipulation.
+- **Input Validation**: Ensure that player inputs are valid—correct positions, bits are `0`, and bits are adjacent.
+
+---
+
+## Conclusion
+
+**Bit Flip Showdown** is a simple yet strategically rich game suitable for a command-line interface. By making carefully planned moves, a skilled player can consistently outsmart an unskilled opponent. The game's simplicity in rules but depth in strategy provides engaging and quick matches with a definite winner.
+
+---
+
+Enjoy the challenge of **Bit Flip Showdown** and may the best strategist win!

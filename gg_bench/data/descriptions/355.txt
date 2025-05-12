@@ -1,0 +1,153 @@
+# Number Tower: A Two-Player Turn-Based Game
+
+## Objective
+
+In **Number Tower**, two players compete to be the first to build a tower of numbers that reaches **exactly** the target height. The primary goal is to strategically select numbers to add to your tower without exceeding the height limit. The player who reaches the target height exactly wins the game. If a player cannot make a valid move without surpassing the target height, they lose.
+
+## Setup
+
+1. **Determine the Target Height:** Agree on a target height for the towers. The recommended default target height is **15**, but players can choose any reasonable positive integer to vary the game's difficulty.
+2. **Prepare Player Towers:** Each player has their own tower, which starts empty at the beginning of the game.
+3. **Available Numbers:** Players can use numbers from **1** to **9** inclusive.
+
+## Game Components
+
+- **Player Towers:** Each player maintains a personal list representing their tower. The tower is built by adding numbers together, and the sum of the numbers represents the current height of the tower.
+- **Numbers (1-9):** The numbers from **1** to **9** are used to build the towers. Each number represents a building block with a height equivalent to its numerical value.
+- **Target Height:** A shared value that both players aim to reach exactly. Exceeding this height is not permitted.
+
+## Turns
+
+- The game is played in alternating turns, starting with **Player 1**.
+- **During a Turn:**
+  - A player selects a number between **1** and **9** inclusive that they have not previously used in their tower.
+  - The chosen number is added to the top of their tower.
+  - The player updates the total height of their tower by adding the new number to the existing total.
+- **Turn Progression:**
+  - Players continue to alternate turns until one player reaches the target height exactly and wins, or a player cannot make a valid move and loses.
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - On each turn, a player must choose a number between **1** and **9** inclusive.
+   - A player **cannot** use the same number more than once in their tower. Once a number is used, it is no longer available to that player for the remainder of the game.
+2. **Building the Tower:**
+   - Add the selected number to the player's tower.
+   - Update the tower's total height accordingly.
+3. **Height Limit:**
+   - The total height of the tower **must not exceed** the target height.
+   - If a player cannot select any available number without exceeding the target height, they lose the game.
+4. **Winning the Game:**
+   - The first player to reach a tower height that **exactly equals** the target height wins the game.
+5. **Losing the Game:**
+   - If a player cannot make a valid move on their turn because all remaining available numbers would cause the tower to exceed the target height, they lose the game.
+6. **Valid Moves:**
+   - A move is valid if the selected number is available to the player (not previously used by them) and adding it to the tower does not exceed the target height.
+7. **No Draws:**
+   - The game cannot end in a draw. Play continues until there is a winner and a loser according to the rules above.
+
+## Scoring
+
+- **Winning:** Successfully reaching the target height exactly results in a win for the player.
+- **Losing:** Being unable to make a valid move without exceeding the target height results in a loss.
+- There is no point tracking beyond winning or losing the game.
+
+## Examples
+
+### Example Game Playthrough
+
+**Target Height:** 15
+
+**Initial State:**
+- Player 1's Tower: (empty), Total Height: 0
+- Player 2's Tower: (empty), Total Height: 0
+
+---
+
+**Turn 1: Player 1**
+- Available Numbers: 1-9
+- Chooses **7**
+- Adds 7 to their tower.
+- Tower now: [7], Total Height: 7
+
+**Turn 2: Player 2**
+- Available Numbers: 1-9
+- Chooses **8**
+- Adds 8 to their tower.
+- Tower now: [8], Total Height: 8
+
+**Turn 3: Player 1**
+- Available Numbers: 1-6, 8-9 (Cannot reuse 7)
+- Chooses **5**
+- Adds 5 to their tower.
+- Tower now: [7, 5], Total Height: 12
+
+**Turn 4: Player 2**
+- Available Numbers: 1-7, 9 (Cannot reuse 8)
+- Chooses **5**
+- Adds 5 to their tower.
+- Tower now: [8, 5], Total Height: 13
+
+**Turn 5: Player 1**
+- Available Numbers: 1-4, 6, 8-9
+- Chooses **3**
+- Adds 3 to their tower.
+- Tower now: [7, 5, 3], Total Height: 15
+- **Player 1 wins by reaching the target height exactly.**
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction for implementing the game in a command-line interface.
+
+```
+Welcome to Number Tower!
+Target Height is 15.
+
+Player 1's turn.
+Available Numbers: 1,2,3,4,5,6,7,8,9
+Your Tower: []
+Total Height: 0
+Select a number to add to your tower: 7
+You added 7 to your tower.
+
+Player 2's turn.
+Available Numbers: 1,2,3,4,5,6,7,8,9
+Your Tower: []
+Total Height: 0
+Select a number to add to your tower: 8
+You added 8 to your tower.
+
+Player 1's turn.
+Available Numbers: 1,2,3,4,5,6,8,9
+Your Tower: [7]
+Total Height: 7
+Select a number to add to your tower: 5
+You added 5 to your tower.
+
+Player 2's turn.
+Available Numbers: 1,2,3,4,5,6,7,9
+Your Tower: [8]
+Total Height: 8
+Select a number to add to your tower: 5
+You added 5 to your tower.
+
+Player 1's turn.
+Available Numbers: 1,2,3,4,6,8,9
+Your Tower: [7,5]
+Total Height: 12
+Select a number to add to your tower: 3
+You added 3 to your tower.
+Congratulations! You reached the target height.
+Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Plan Ahead:** Keep track of which numbers you have already used and which ones remain available.
+- **Observe Opponent's Moves:** Pay attention to your opponent's tower height and the numbers they've used to anticipate their possible moves.
+- **Avoid High Numbers Early:** Using high numbers at the beginning may limit your options later in the game.
+- **Force Your Opponent's Hand:** Try to leave numbers available that would force your opponent to exceed the target height on their turn.
+
+---
+
+Enjoy building your numerical towers and may the most strategic player win!

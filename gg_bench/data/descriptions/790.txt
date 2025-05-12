@@ -1,0 +1,172 @@
+# Sequence Master
+
+## Objective
+
+The primary goal of **Sequence Master** is to be the first player to collect **three numbers** that form an **arithmetic sequence**. An arithmetic sequence is a set of numbers where the difference between consecutive numbers is constant. For example:
+
+- **Ascending sequence**: 2, 4, 6 (common difference of +2)
+- **Descending sequence**: 7, 5, 3 (common difference of -2)
+
+Players take turns selecting numbers from a shared pool, aiming to form such a sequence before their opponent does.
+
+## Setup
+
+- **Number Pool**: A shared pool containing the numbers **1** through **10**.
+- **Player Hands**: Each player starts with an empty hand to collect numbers.
+- **Turn Order**: Decide who goes first (Player 1 and Player 2). This can be done by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Number Pool**: A list or array displaying available numbers `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.
+- **Player Hands**:
+  - **Player 1 Hand**: Stores numbers chosen by Player 1.
+  - **Player 2 Hand**: Stores numbers chosen by Player 2.
+- **Command-Line Interface**: Players interact with the game by entering numbers when prompted.
+
+## Turns
+
+1. **Player Prompt**: The current player is prompted to select a number from the available Number Pool.
+2. **Number Selection**:
+   - The player inputs a number from the pool.
+   - The chosen number is removed from the Number Pool.
+   - The number is added to the player's hand.
+3. **Sequence Check**:
+   - After each turn, the game checks if the player has an arithmetic sequence.
+   - If a sequence is formed, the game ends, and that player wins.
+4. **Turn Progression**:
+   - Turns alternate between Player 1 and Player 2.
+   - The game continues until a player wins.
+
+## Rules and Mechanics
+
+- **Number Selection**:
+  - Players can only select numbers from the current Number Pool.
+  - Each number can only be selected once (no repeats).
+- **Arithmetic Sequence Formation**:
+  - A valid sequence consists of **three numbers** with a constant common difference (positive or negative).
+  - The numbers in the player's hand can be in any order.
+  - Sequences can ascend or descend.
+- **Winning the Game**:
+  - The first player to have a valid arithmetic sequence in their hand wins immediately.
+- **Example of Valid Sequences**:
+  - 3, 5, 7 (common difference of +2)
+  - 9, 6, 3 (common difference of -3)
+  - 4, 4, 4 (common difference of 0) - **Note**: Since all numbers are unique and cannot be repeated, a common difference of 0 is not possible in this game.
+
+## Scoring
+
+There is no point system in **Sequence Master**. The game is won by achieving the objective of forming an arithmetic sequence before your opponent.
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial State**:
+- **Number Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+- **Player 1 Hand**: []
+- **Player 2 Hand**: []
+
+---
+
+**Turn 1**:
+- **Player 1's Turn**
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+- **Player 1 selects**: **5**
+- **Player 1 Hand**: [5]
+- **Number Pool**: [1, 2, 3, 4, 6, 7, 8, 9, 10]
+
+**Sequence Check**: No sequence yet.
+
+---
+
+**Turn 2**:
+- **Player 2's Turn**
+- **Available Numbers**: [1, 2, 3, 4, 6, 7, 8, 9, 10]
+- **Player 2 selects**: **2**
+- **Player 2 Hand**: [2]
+- **Number Pool**: [1, 3, 4, 6, 7, 8, 9, 10]
+
+**Sequence Check**: No sequence yet.
+
+---
+
+**Turn 3**:
+- **Player 1's Turn**
+- **Available Numbers**: [1, 3, 4, 6, 7, 8, 9, 10]
+- **Player 1 selects**: **7**
+- **Player 1 Hand**: [5, 7]
+- **Number Pool**: [1, 3, 4, 6, 8, 9, 10]
+
+**Sequence Check**: No sequence yet.
+
+---
+
+**Turn 4**:
+- **Player 2's Turn**
+- **Available Numbers**: [1, 3, 4, 6, 8, 9, 10]
+- **Player 2 selects**: **4**
+- **Player 2 Hand**: [2, 4]
+- **Number Pool**: [1, 3, 6, 8, 9, 10]
+
+**Sequence Check**: No sequence yet.
+
+---
+
+**Turn 5**:
+- **Player 1's Turn**
+- **Available Numbers**: [1, 3, 6, 8, 9, 10]
+- **Player 1 selects**: **6**
+- **Player 1 Hand**: [5, 7, 6]
+- **Number Pool**: [1, 3, 8, 9, 10]
+
+**Sequence Check**:
+- **Player 1's Numbers**: [5, 6, 7]
+- **Possible Sequences**:
+  - 5, 6, 7 (common difference of +1)
+- **Sequence Found**: Yes
+
+---
+
+**Game Over**:
+- **Winner**: **Player 1**
+
+### Command-Line Interaction Example
+
+```
+Number Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Player 1, select a number: 5
+
+Number Pool: [1, 2, 3, 4, 6, 7, 8, 9, 10]
+Player 2, select a number: 2
+
+Number Pool: [1, 3, 4, 6, 7, 8, 9, 10]
+Player 1, select a number: 7
+
+Number Pool: [1, 3, 4, 6, 8, 9, 10]
+Player 2, select a number: 4
+
+Number Pool: [1, 3, 6, 8, 9, 10]
+Player 1, select a number: 6
+
+Player 1's Hand: [5, 6, 7]
+Player 1 has formed an arithmetic sequence!
+Congratulations, Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Planning Ahead**: Keep track of which numbers you'll need to form a sequence and prioritize selecting them.
+- **Blocking**: Pay attention to your opponent's picks. If you notice they are collecting numbers that could form a sequence, try to select numbers they might need.
+- **Flexibility**: Have multiple potential sequences in mind in case some numbers are taken by your opponent.
+- **Sequence Variations**: Remember that sequences can be ascending or descending, expanding your options.
+
+## Additional Rules
+
+- **Invalid Input Handling**:
+  - If a player selects a number not in the Number Pool, prompt them to choose a valid number.
+- **Draw Scenario**:
+  - Given the finite set of numbers and the win condition, a draw is impossible in **Sequence Master**.
+
+---
+
+Enjoy the game, and may the best strategist win!

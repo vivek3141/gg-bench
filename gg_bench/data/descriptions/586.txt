@@ -1,0 +1,205 @@
+# Product 100 - A Strategic Number Game
+
+## Objective
+
+Be the first player to **collect numbers that multiply together to exactly 100**. Players take turns selecting numbers from **1 to 10**. The first player whose set of selected numbers has a product equal to **exactly 100** wins the game. If a player’s product exceeds 100, they **lose** immediately.
+
+---
+
+## Setup
+
+1. **Players**: Two players are required.
+2. **Starting Conditions**:
+   - Both players begin with an **empty set** of numbers.
+   - Each player's initial product is **1** (since multiplying by 1 does not change the product).
+3. **Number Pool**:
+   - A shared pool containing numbers **1** through **10**.
+   - All numbers are **always available** and can be selected multiple times by either player.
+4. **Determine First Player**:
+   - Decide who goes first (e.g., by flipping a coin).
+
+---
+
+## Game Components
+
+- **Shared Number Pool**:
+  - Numbers **1** through **10** inclusive.
+  - Unlimited availability; numbers can be chosen multiple times.
+- **Player Sets**:
+  - Each player maintains their own set of selected numbers.
+- **Products**:
+  - Players calculate the **product** of their selected numbers after each turn.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players alternate turns throughout the game.
+   - On each turn, a player:
+     - **Selects a number** from **1** to **10**.
+     - **Adds** the selected number to their set.
+     - **Calculates** the new product of their set.
+2. **Turn Order**:
+   - The game proceeds with players taking turns one after the other until the game ends.
+3. **Actions During a Turn**:
+   - **Select Number**: Choose any number between **1** and **10**.
+   - **Update Set and Product**:
+     - Add the selected number to your set.
+     - Multiply the selected number with your current product to get the new product.
+   - **Check for Win/Loss Conditions**:
+     - If the product equals **100**, you win.
+     - If the product exceeds **100**, you lose immediately.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Valid Numbers**:
+  - Any integer from **1** to **10** inclusive.
+- **Repeated Selections**:
+  - Numbers can be selected **multiple times** by either player.
+- **Strategic Considerations**:
+  - Choose numbers that help you reach a product of **100**.
+  - Anticipate and block your opponent's potential moves.
+
+### Product Calculation
+
+- **Updating Product**:
+  - **Product** = **Current Product** × **Selected Number**.
+- **Initial Product**:
+  - Starts at **1** before any numbers are selected.
+- **Product Tracking**:
+  - Players must keep track of their product after each turn.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - Achieve a product that is **exactly 100**.
+- **Immediate Loss**:
+  - If your product **exceeds 100**, you **lose immediately**.
+- **Opponent Exceeds 100**:
+  - If your opponent's product exceeds 100 on their turn, you **win**.
+
+### Game End
+
+- **Game Ends When**:
+  - A player reaches a product of **exactly 100**.
+  - A player exceeds a product of **100**.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - The winning player is the one who first achieves a product of exactly **100**.
+- **No Point System**:
+  - The game does not use a point system; it is a win/loss outcome based on the product of selected numbers.
+
+---
+
+## Examples
+
+### Example Gameplay
+
+#### Starting the Game
+
+- **Player 1** and **Player 2** begin with empty sets and a product of **1**.
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - **Selects** number **5**.
+   - **Player 1's Set**: [5].
+   - **Product**: 1 × 5 = **5**.
+2. **Player 2's Turn**:
+   - **Selects** number **2**.
+   - **Player 2's Set**: [2].
+   - **Product**: 1 × 2 = **2**.
+3. **Player 1's Turn**:
+   - **Selects** number **5**.
+   - **Player 1's Set**: [5, 5].
+   - **Product**: 5 × 5 = **25**.
+4. **Player 2's Turn**:
+   - **Selects** number **5**.
+   - **Player 2's Set**: [2, 5].
+   - **Product**: 2 × 5 = **10**.
+5. **Player 1's Turn**:
+   - **Selects** number **4**.
+   - **Player 1's Set**: [5, 5, 4].
+   - **Product**: 25 × 4 = **100**.
+   - **Player 1 wins** by reaching a product of **100**.
+
+#### Game End
+
+- **Result**: Player 1 wins the game.
+
+### Command-Line Interaction Example
+
+```plaintext
+Welcome to Product 100!
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10
+Enter a number to select: 5
+Player 1 selects 5.
+Player 1's set: [5]
+Player 1's product: 5
+
+Player 2's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10
+Enter a number to select: 2
+Player 2 selects 2.
+Player 2's set: [2]
+Player 2's product: 2
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10
+Enter a number to select: 5
+Player 1 selects 5.
+Player 1's set: [5, 5]
+Player 1's product: 25
+
+Player 2's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10
+Enter a number to select: 5
+Player 2 selects 5.
+Player 2's set: [2, 5]
+Player 2's product: 10
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10
+Enter a number to select: 4
+Player 1 selects 4.
+Player 1's set: [5, 5, 4]
+Player 1's product: 100
+
+Congratulations! Player 1 wins by reaching a product of exactly 100!
+```
+
+---
+
+## Strategy Tips
+
+- **Factorization Awareness**:
+  - Remember that 100 factors into **2 × 2 × 5 × 5**.
+  - Selecting numbers that are factors of 100 increases your chances.
+- **Blocking**:
+  - Pay attention to your opponent's set.
+  - If your opponent is close to reaching 100, consider selecting numbers they may need.
+- **Avoid Overrunning**:
+  - Be cautious not to select numbers that will cause your product to exceed 100.
+- **Planning Ahead**:
+  - Think a few moves ahead to set up for victory while preventing your opponent's progress.
+
+---
+
+## Conclusion
+
+**Product 100** is a simple yet strategically rich game that requires careful calculation and foresight. By selecting numbers thoughtfully and anticipating your opponent's moves, you can master the game and consistently outperform less skilled players. Enjoy the challenge and may the best mathematician win!
+
+---
+
+*Happy Gaming!*

@@ -1,0 +1,406 @@
+# Command Line Conquer: Rule Book
+
+## Objective
+
+**Command Line Conquer** is a two-player turn-based strategy game played on a linear battlefield. The primary goal of the game is to capture your opponent's base by advancing your units across the battlefield. Players must strategically recruit and maneuver their units to overpower the enemy forces and reach the opponent's base. The first player to successfully move a unit into the opponent's base wins the game.
+
+---
+
+## Setup
+
+1. **Battlefield Initialization**:
+   - The battlefield is represented as a straight line consisting of **11 positions**, numbered from **0** to **10**.
+     - **Position 0**: Player 1's base.
+     - **Position 10**: Player 2's base.
+     - Positions **1-9**: Neutral territory.
+
+2. **Starting Units**:
+   - Each player begins with **one unit** placed at their respective bases.
+     - Player 1 places a unit at **position 0**.
+     - Player 2 places a unit at **position 10**.
+
+3. **Unit Strength**:
+   - All starting units have an initial **strength of 1**.
+
+---
+
+## Game Components
+
+1. **Battlefield**:
+   - A linear array representing positions **0** through **10**.
+   - Positions can be occupied by units from either player.
+
+2. **Units**:
+   - Represented by:
+     - **Player 1's units**: `P1(S)` where `S` is the unit's strength.
+     - **Player 2's units**: `P2(S)` where `S` is the unit's strength.
+   - **Attributes**:
+     - **Position**: The current location on the battlefield.
+     - **Strength**: An integer between **1** and **5** indicating the unit's power.
+
+3. **Bases**:
+   - **Player 1's base**: Position **0**.
+   - **Player 2's base**: Position **10**.
+   - Bases are crucial positions that players must defend and attempt to capture.
+
+---
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure** for each player:
+  1. **Action Phase**:
+     - Choose **one** of the following actions:
+       - **Move**: Advance one of your units towards the opponent's base.
+       - **Recruit**: Add a new unit to your base (if conditions allow).
+  2. **Resolution Phase**:
+     - Resolve any battles resulting from movements.
+     - Check for victory conditions.
+
+- **Starting the Game**:
+  - **Player 1** takes the first turn.
+
+---
+
+## Rules and Mechanics
+
+### Movement
+
+- **Moving Units**:
+  - Units can only move **one position** per turn.
+  - Units must move **towards the opponent's base**:
+    - Player 1 units move from lower to higher positions (e.g., from 3 to 4).
+    - Player 2 units move from higher to lower positions (e.g., from 7 to 6).
+  - **Strength Increase**:
+    - When a unit moves, its strength **increases by 1**.
+    - Maximum strength is **5**; a unit cannot exceed this limit.
+
+### Recruiting
+
+- **Adding New Units**:
+  - A player can recruit a new unit at their base if they have **fewer than 3 units** on the battlefield.
+  - The new unit is placed at the player's base position with a **strength of 1**.
+
+### Battles
+
+- **Engagement**:
+  - If a unit moves into a position occupied by an enemy unit, a **battle** occurs.
+- **Battle Resolution**:
+  - Compare the **strength** of the opposing units.
+    - **Stronger Unit Wins**:
+      - The unit with the higher strength remains on the position.
+      - The weaker unit is **removed from the battlefield**.
+    - **Tie**:
+      - If both units have equal strength, **both units are removed** from the battlefield.
+- **Post-Battle**:
+  - The winning unit (if any) remains at the contested position.
+  - There is **no additional strength gain** from winning a battle.
+
+### Movement Restrictions
+
+- **Maximum Units**:
+  - A player can have a maximum of **3 units** on the battlefield at any time.
+- **Occupying Bases**:
+  - Players cannot have units at the opponent's base unless it's a move to **capture** it.
+- **Strength Cap**:
+  - Units cannot exceed a strength of **5**, even if they move multiple times.
+
+### Victory Conditions
+
+- **Winning the Game**:
+  - A player **wins immediately** if one of their units moves into the opponent's base.
+- **Defeat**:
+  - A player **loses** if their base is captured by an opponent's unit.
+
+### Additional Mechanics
+
+- **Visibility**:
+  - Both players can see the entire battlefield and the positions and strengths of all units.
+- **No Skipping Turns**:
+  - Players must perform an action on their turn; they cannot pass.
+
+---
+
+## Scoring
+
+- **Win Condition**:
+  - The game does not use a point-based scoring system.
+  - Victory is achieved by **capturing the opponent's base**.
+- **Tracking Progress**:
+  - Players should keep track of unit positions and strengths to plan their strategies effectively.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Battlefield State:
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+Units:     P1(1)                             P2(1)
+```
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - **Action**: Move unit from position **0** to **1**.
+   - **Strength Update**: Unit's strength increases to **2**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:         P1(2)                     P2(1)
+     ```
+
+2. **Player 2's Turn**:
+   - **Action**: Recruit a new unit at position **10**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:         P1(2)                 P2(1), P2(1)
+     ```
+
+3. **Player 1's Turn**:
+   - **Action**: Move unit from position **1** to **2**.
+   - **Strength Update**: Unit's strength increases to **3**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:             P1(3)             P2(1), P2(1)
+     ```
+
+4. **Player 2's Turn**:
+   - **Action**: Move one unit from position **10** to **9**.
+   - **Strength Update**: Unit's strength increases to **2**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:             P1(3)         P2(2)    P2(1)
+     ```
+
+5. **Player 1's Turn**:
+   - **Action**: Recruit a new unit at position **0**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:     P1(1)  P1(3)         P2(2)    P2(1)
+     ```
+
+6. **Player 2's Turn**:
+   - **Action**: Move unit from position **9** to **8**.
+   - **Strength Update**: Unit's strength increases to **3**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:     P1(1)  P1(3)       P2(3)       P2(1)
+     ```
+
+7. **Player 1's Turn**:
+   - **Action**: Move unit from position **0** to **1**.
+   - **Strength Update**: Unit's strength increases to **2**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:         P1(2), P1(3)   P2(3)       P2(1)
+     ```
+
+8. **Player 2's Turn**:
+   - **Action**: Move unit from position **8** to **7**.
+   - **Strength Update**: Unit's strength increases to **4**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:         P1(2), P1(3) P2(4)         P2(1)
+     ```
+
+9. **Player 1's Turn**:
+   - **Action**: Move unit from position **1** to **2**.
+   - **Strength Update**: Unit's strength increases to **3**.
+   - **Battlefield**:
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+     Units:             P1(3), P1(3) P2(4)     P2(1)
+     ```
+
+10. **Player 2's Turn**:
+    - **Action**: Move unit from position **7** to **6**.
+    - **Strength Update**: Unit's strength increases to **5**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:             P1(3), P1(3) P2(5)     P2(1)
+      ```
+
+11. **Player 1's Turn**:
+    - **Action**: Move unit from position **2** to **3**.
+    - **Strength Update**: Unit's strength increases to **4**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:               P1(4), P1(3) P2(5)   P2(1)
+      ```
+
+12. **Player 2's Turn**:
+    - **Action**: Move unit from position **6** to **5**.
+    - **Strength Update**: Unit's strength remains at **5** (already at max strength).
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:               P1(4), P1(3) P2(5)   P2(1)
+      ```
+
+13. **Player 1's Turn**:
+    - **Action**: Move unit from position **3** to **4**.
+    - **Strength Update**: Unit's strength remains at **5** (now at max strength).
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                 P1(5), P1(3) P2(5) P2(1)
+      ```
+
+14. **Player 2's Turn**:
+    - **Action**: Move unit from position **5** to **4**.
+    - **Battle**: P2's unit (strength **5**) vs. P1's unit at position **4** (strength **5**).
+    - **Result**: Both units have equal strength. **Both units are destroyed**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:               P1(3)         P2(1)
+      ```
+
+15. **Player 1's Turn**:
+    - **Action**: Move unit from position **2** to **3**.
+    - **Strength Update**: Unit's strength increases to **4**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                 P1(4)       P2(1)
+      ```
+
+16. **Player 2's Turn**:
+    - **Action**: Move unit from position **10** to **9**.
+    - **Strength Update**: Unit's strength increases to **2**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                 P1(4)     P2(2)
+      ```
+
+17. **Player 1's Turn**:
+    - **Action**: Move unit from position **3** to **4**.
+    - **Strength Update**: Unit's strength increases to **5**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                   P1(5)   P2(2)
+      ```
+
+18. **Player 2's Turn**:
+    - **Action**: Move unit from position **9** to **8**.
+    - **Strength Update**: Unit's strength increases to **3**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                   P1(5) P2(3)
+      ```
+
+19. **Player 1's Turn**:
+    - **Action**: Move unit from position **4** to **5**.
+    - **Strength Update**: Unit's strength remains at **5** (already at max strength).
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                     P1(5) P2(3)
+      ```
+
+20. **Player 2's Turn**:
+    - **Action**: Move unit from position **8** to **7**.
+    - **Strength Update**: Unit's strength increases to **4**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                     P1(5) P2(4)
+      ```
+
+21. **Player 1's Turn**:
+    - **Action**: Move unit from position **5** to **6**.
+    - **Strength Update**: Unit's strength remains at **5**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                       P1(5) P2(4)
+      ```
+
+22. **Player 2's Turn**:
+    - **Action**: Move unit from position **7** to **6**.
+    - **Battle**: P2's unit (strength **4**) vs. P1's unit at position **6** (strength **5**).
+    - **Result**: P1's unit wins; P2's unit is **removed**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                       P1(5)
+      ```
+
+23. **Player 1's Turn**:
+    - **Action**: Move unit from position **6** to **7**.
+    - **Strength Update**: Unit's strength remains at **5**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                         P1(5)
+      ```
+
+24. **Player 2's Turn**:
+    - **Action**: No units remaining on the battlefield to move or recruit (if already at max units).
+    - **Assuming they can recruit**, they **recruit** a new unit at position **10**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                         P1(5)         P2(1)
+      ```
+
+25. **Player 1's Turn**:
+    - **Action**: Move unit from position **7** to **8**.
+    - **Strength Update**: Unit's strength remains at **5**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                           P1(5)       P2(1)
+      ```
+
+26. **Player 2's Turn**:
+    - **Action**: Move unit from position **10** to **9**.
+    - **Strength Update**: Unit's strength increases to **2**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                           P1(5)     P2(2)
+      ```
+
+27. **Player 1's Turn**:
+    - **Action**: Move unit from position **8** to **9**.
+    - **Battle**: P1's unit (strength **5**) vs. P2's unit at position **9** (strength **2**).
+    - **Result**: P1's unit wins; P2's unit is **removed**.
+    - **Battlefield**:
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+      Units:                             P1(5)
+      ```
+
+28. **Player 2's Turn**:
+    - **Action**: Unable to prevent the impending capture.
+
+29. **Player 1's Turn**:
+    - **Action**: Move unit from position **9** to **10** (Player 2's base).
+    - **Victory**: Player 1 has captured Player 2's base and **wins the game**.
+
+---
+
+## Conclusion
+
+**Command Line Conquer** is a strategic game that requires players to balance offense and defense while managing their limited units. By carefully deciding when to advance units, when to recruit new ones, and how to engage with enemy forces, a skilled player can outmaneuver their opponent and achieve victory. The simplicity of the game's mechanics allows for quick gameplay, yet offers depth and complexity for strategic planning.
+
+---
+
+Remember to use the command-line interface to represent the battlefield and units, updating the display after each turn to reflect the current game state. Enjoy the battle of wits in **Command Line Conquer**!

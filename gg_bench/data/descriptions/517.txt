@@ -1,0 +1,230 @@
+# Dominion Duel Rule Book
+
+## Objective
+
+**Dominion Duel** is a two-player strategic game where players vie for control over a series of territories. The primary goal is to claim more territories than your opponent. The player who controls the majority of territories at the end of the game wins. With a total of nine territories, ties are impossible, ensuring a decisive victory for one player.
+
+## Setup
+
+1. **Game Board Initialization**: The game consists of a linear map of nine territories. These territories are represented by numbers from 1 to 9 arranged in sequential order:
+
+   ```
+   [1] [2] [3] [4] [5] [6] [7] [8] [9]
+   ```
+
+2. **Starting Conditions**: At the beginning of the game, all territories are unclaimed and unlocked. There are no player tokens on the board yet.
+
+3. **Player Assignments**:
+
+   - **Player 1**: Uses the symbol `X` to mark claimed territories.
+   - **Player 2**: Uses the symbol `O` to mark claimed territories.
+
+4. **Initial Display**: The command-line interface will display the territories with their numbers:
+
+   ```
+   [1] [2] [3] [4] [5] [6] [7] [8] [9]
+   ```
+
+## Game Components
+
+1. **Territories**:
+
+   - **Representation**: Each territory is represented by a numbered slot in the command-line interface.
+   - **States**:
+
+     - **Unclaimed**: Displayed with its territory number (e.g., `[5]`).
+     - **Claimed**: Marked with the player's symbol (`[X]` or `[O]`).
+     - **Locked**: Indicated with a lock symbol (e.g., `[🔒]`).
+
+2. **Player Symbols**:
+
+   - **Player 1**: `X`
+   - **Player 2**: `O`
+
+3. **Command-Line Interface**: The game operates entirely through text input and output, displaying the current state of the board after each turn.
+
+## Turns
+
+1. **Turn Order**:
+
+   - The game begins with Player 1.
+   - Players alternate turns thereafter.
+
+2. **Turn Structure**:
+
+   - **Claiming a Territory**:
+
+     - On their turn, a player chooses an unclaimed and unlocked territory to claim by entering its number.
+     - The chosen territory is marked with the player's symbol.
+
+   - **Locking Adjacent Territories**:
+
+     - After claiming a territory, any directly adjacent unclaimed territories become locked.
+     - Locked territories cannot be claimed by either player for the remainder of the game.
+
+3. **Turn Progression**:
+
+   - After a player completes their turn, the game displays the updated board.
+   - The next player then takes their turn following the same rules.
+
+## Rules and Mechanics
+
+1. **Claiming Territories**:
+
+   - Players can only claim one territory per turn.
+   - Only unclaimed and unlocked territories can be claimed.
+
+2. **Locking Mechanism**:
+
+   - When a territory is claimed, it causes immediate locking of adjacent unclaimed territories.
+   - Adjacent territories are those directly next to the claimed territory (one number lower and one number higher).
+   - Locked territories remain inaccessible for the rest of the game.
+
+3. **End of the Game**:
+
+   - The game ends when there are no unclaimed and unlocked territories remaining.
+   - The player who has claimed the majority of territories wins.
+
+4. **Invalid Moves**:
+
+   - If a player attempts to claim a locked or already claimed territory, they are prompted to choose again.
+   - The turn is only completed when a valid territory is claimed.
+
+## Scoring
+
+1. **Tracking Claims**:
+
+   - Each player's claimed territories are tracked throughout the game.
+   - The command-line interface displays claimed territories with the respective player's symbol.
+
+2. **Determining the Winner**:
+
+   - At game end, the number of territories claimed by each player is counted.
+   - The player with the higher count of claimed territories is declared the winner.
+
+3. **Tie Scenario**:
+
+   - With a total of nine territories, it is impossible to have a tie.
+   - The final score will always be 5-4, ensuring a decisive victory.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Board:
+
+```
+[1] [2] [3] [4] [5] [6] [7] [8] [9]
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 decides to claim territory **5**.
+- **Locks**: Territories **4** and **6** become locked.
+- **Board After Turn**:
+
+  ```
+  [1] [2] [3] [🔒] [X] [🔒] [7] [8] [9]
+  ```
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 claims territory **2**.
+- **Locks**: Territories **1** and **3** become locked.
+- **Board After Turn**:
+
+  ```
+  [🔒] [O] [🔒] [🔒] [X] [🔒] [7] [8] [9]
+  ```
+
+#### Turn 3: Player 1
+
+- **Action**: Player 1 claims territory **8**.
+- **Locks**: Territories **7** and **9** become locked.
+- **Board After Turn**:
+
+  ```
+  [🔒] [O] [🔒] [🔒] [X] [🔒] [🔒] [X] [🔒]
+  ```
+
+#### End of Game
+
+- **No Unclaimed and Unlocked Territories Remaining**.
+- **Player 1 Territories**: 5 and 8 (Total: 2)
+- **Player 2 Territories**: 2 (Total: 1)
+- **Winner**: Player 1
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Welcome to Dominion Duel!
+
+Current Board:
+[1] [2] [3] [4] [5] [6] [7] [8] [9]
+
+Player 1 (X), it's your turn.
+Enter the number of the territory you wish to claim:
+```
+
+#### Player 1 Turn Input
+
+```
+> 5
+
+You have claimed territory 5.
+Territories 4 and 6 are now locked.
+
+Current Board:
+[1] [2] [3] [🔒] [X] [🔒] [7] [8] [9]
+
+Player 2 (O), it's your turn.
+Enter the number of the territory you wish to claim:
+```
+
+#### Player 2 Turn Input
+
+```
+> 2
+
+You have claimed territory 2.
+Territories 1 and 3 are now locked.
+
+Current Board:
+[🔒] [O] [🔒] [🔒] [X] [🔒] [7] [8] [9]
+
+Player 1 (X), it's your turn.
+Enter the number of the territory you wish to claim:
+```
+
+#### Player 1 Second Turn Input
+
+```
+> 8
+
+You have claimed territory 8.
+Territories 7 and 9 are now locked.
+
+Current Board:
+[🔒] [O] [🔒] [🔒] [X] [🔒] [🔒] [X] [🔒]
+
+No more moves available.
+
+Game Over!
+Player 1 claimed territories: 5, 8
+Player 2 claimed territories: 2
+Winner: Player 1
+```
+
+## Strategic Tips
+
+- **Central Territories**: Claiming central territories (like 5) can lock more potential territories for your opponent.
+- **Anticipate Opponent Moves**: Consider which territories your opponent might aim for and block their access by effectively choosing your claims.
+- **Maximize Claims**: Aim to claim territories that will prevent your opponent from gaining more than you.
+
+## Summary
+
+**Dominion Duel** is a quick, strategic game where every decision impacts both players significantly. By carefully choosing which territories to claim and understanding the locking mechanism, a skilled player can consistently outmaneuver their opponent and secure victory.
+
+Enjoy the duel, and may the best strategist win!

@@ -1,0 +1,162 @@
+# String Duel
+
+## Objective
+
+**String Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to create the specific sequence "ABBA" within a shared string. Players take turns appending characters to the string, carefully planning their moves to form "ABBA" while preventing their opponent from doing the same. If the string reaches a length of 10 characters without "ABBA" being formed, the player who made the last move loses the game.
+
+## Setup
+
+1. **Starting the Game**: No physical setup is required. The game begins with an empty string.
+2. **Player Assignment**: Decide who will be Player 1 and Player 2. This can be determined randomly or by mutual agreement.
+3. **Initial Conditions**: The shared string is empty (`""`), and it's Player 1's turn to start the game.
+
+## Game Components
+
+- **Shared String**: A mutable string that both players append characters to during their turns.
+- **Characters**: The letters `'A'` and `'B'`, which players use to build the shared string.
+- **Turn Indicator**: Keeps track of whose turn it is to play.
+- **Win Condition Checker**: A function or mechanism to check if "ABBA" has been formed in the shared string after each turn.
+- **Move Limit**: The game has a maximum of 10 moves in total (since each player adds one character per turn, and the string cannot exceed 10 characters).
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with Player 1.
+2. **Player Actions**:
+   - On their turn, a player chooses to append either `'A'` or `'B'` to the end of the shared string.
+3. **Progression of Turns**:
+   - After a player makes their move, the game checks for the win condition.
+   - If neither player has won and the string length is less than 10, the turn passes to the other player.
+   - The game continues until a player wins or the string reaches 10 characters.
+
+## Rules and Mechanics
+
+1. **Appending Characters**:
+   - On each turn, a player must append exactly one character, either `'A'` or `'B'`, to the shared string.
+2. **Win Condition**:
+   - A player wins immediately if, after their turn, the shared string contains the sequence `'ABBA'`.
+   - The sequence can appear anywhere within the string.
+3. **Move Limit and Loss Condition**:
+   - If the shared string reaches 10 characters without the sequence `'ABBA'` being formed, the player who just made the last move loses the game.
+4. **Valid Moves**:
+   - Players can choose any character (`'A'` or `'B'`) on their turn, regardless of previous moves.
+5. **Strategy**:
+   - Players must balance between creating opportunities to form `'ABBA'` and blocking their opponent from doing so.
+6. **No Skipping Turns**:
+   - Players cannot skip their turn; they must make a move when it is their turn.
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who successfully creates the sequence `'ABBA'` in the shared string wins the game.
+- **Losing the Game**:
+  - If the string reaches 10 characters without `'ABBA'` being formed, the player who made the last move loses.
+- **No Draws**:
+  - The game cannot end in a draw due to the explicit loss condition when the string reaches the maximum length.
+
+## Examples
+
+### Example Scenario 1: Player 1 Wins
+
+1. **Initial State**:
+   - Shared String: `""` (empty)
+   - Player 1's Turn
+
+2. **Turn 1 - Player 1**:
+   - Appends `'A'`
+   - Shared String: `"A"`
+   - No win condition met.
+   - Turn passes to Player 2.
+
+3. **Turn 2 - Player 2**:
+   - Appends `'B'`
+   - Shared String: `"AB"`
+   - No win condition met.
+   - Turn passes to Player 1.
+
+4. **Turn 3 - Player 1**:
+   - Appends `'B'`
+   - Shared String: `"ABB"`
+   - No win condition met.
+   - Turn passes to Player 2.
+
+5. **Turn 4 - Player 2**:
+   - Appends `'A'`
+   - Shared String: `"ABBA"`
+   - The sequence `'ABBA'` is formed.
+   - **Player 2** wins.
+
+### Example Scenario 2: Player 1 Wins by Forcing a Loss on Player 2
+
+1. **Initial State**:
+   - Shared String: `""` (empty)
+   - Player 1's Turn
+
+2. **Turns 1-9**:
+   - Players append characters without forming `'ABBA'`.
+   - Assume the shared string becomes `"BABABABAB"` after Turn 9.
+   - Shared String Length: 9
+   - It's Player 1's turn.
+
+3. **Turn 10 - Player 1**:
+   - Appends `'A'`
+   - Shared String: `"BABABABABA"`
+   - String length reaches 10.
+   - No `'ABBA'` sequence is formed.
+   - **Player 1** made the last move.
+   - **Player 1** loses the game.
+
+### Command-Line Interaction Sample
+
+#### Beginning of the Game:
+
+```
+Shared String: ""
+Player 1's Turn. Enter 'A' or 'B': A
+```
+
+#### After Player 1's Move:
+
+```
+Shared String: "A"
+No winner yet.
+Player 2's Turn. Enter 'A' or 'B': B
+```
+
+#### After Player 2's Move:
+
+```
+Shared String: "AB"
+No winner yet.
+Player 1's Turn. Enter 'A' or 'B': B
+```
+
+#### After Player 1's Move:
+
+```
+Shared String: "ABB"
+No winner yet.
+Player 2's Turn. Enter 'A' or 'B': A
+```
+
+#### After Player 2's Move and Win:
+
+```
+Shared String: "ABBA"
+Player 2 wins! The sequence 'ABBA' was formed.
+```
+
+## Strategic Tips
+
+- **Offensive Play**:
+  - Try to set up parts of the `'ABBA'` sequence early, forcing your opponent to block you.
+- **Defensive Play**:
+  - Pay attention to the shared string to prevent your opponent from completing the sequence.
+  - Sometimes it's better to block your opponent's progress rather than advance your own.
+- **Balancing Moves**:
+  - Alternate between `'A'` and `'B'` to create flexibility in building the sequence.
+- **Predicting Ahead**:
+  - Think a few moves ahead to anticipate how the string could evolve.
+
+## Summary
+
+**String Duel** is a game of strategy and foresight. Each move can bring you closer to victory or open up opportunities for your opponent. By carefully choosing which character to append, you can steer the game toward a win while blocking your opponent's plans. With simple rules and quick gameplay, **String Duel** offers depth and challenge in a compact format.

@@ -1,0 +1,184 @@
+# Switch Battle Rule Book
+
+---
+
+## Objective
+
+**Switch Battle** is a two-player turn-based strategy game played on a sequence of switches. The primary goal is to be the first player to change all switches to the "on" position (represented by `1`). Players achieve victory by strategically flipping switches according to the game rules to reach the winning pattern before their opponent.
+
+---
+
+## Setup
+
+- **Switch Sequence**: The game consists of a sequence of **7 switches**, arranged in order from left to right, labeled positions **1** through **7**.
+- **Initial State**: At the start of the game, all switches are set to **`0`** (off). The switch sequence appears as:
+
+  ```
+  0 0 0 0 0 0 0
+  ```
+
+- **Player Assignment**: Two players are designated as **Player 1** and **Player 2**. Decide who goes first by mutual agreement or a random method (e.g., coin toss).
+
+---
+
+## Game Components
+
+- **Switches**: Each switch has two states:
+  - **`0`**: Representing the "off" state.
+  - **`1`**: Representing the "on" state.
+- **Switch Sequence**: The linear arrangement of the 7 switches that players will interact with during the game.
+- **Command-Line Interface**: Players input commands to flip switches using a text-based interface. The game displays the current state of the switches after each move.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Actions Per Turn**: On each turn, a player must perform **one** of the following actions:
+  - **Flip a Single Switch**: Change the state of any one switch.
+  - **Flip Two Adjacent Switches**: Change the states of two switches that are next to each other.
+- **Input Format**:
+  - For flipping a single switch: `flip [position]` (e.g., `flip 4`).
+  - For flipping two adjacent switches: `flip [position1] [position2]` (positions must be adjacent, e.g., `flip 3 4`).
+
+---
+
+## Rules and Mechanics
+
+1. **Switch Flipping Rules**:
+   - **Flipping a Single Switch**:
+     - The player selects any switch from positions **1** to **7**.
+     - The switch changes state: `0` becomes `1`, and `1` becomes `0`.
+   - **Flipping Two Adjacent Switches**:
+     - The player selects a pair of switches that are next to each other (e.g., switches 2 and 3).
+     - Valid starting positions for flipping two adjacent switches are **1** to **6**.
+     - Both switches change state simultaneously.
+2. **Winning Condition**:
+   - A player wins immediately upon changing all switches to the "on" position:
+     ```
+     1 1 1 1 1 1 1
+     ```
+3. **No Draws**:
+   - The game continues until one player achieves the winning condition.
+4. **Invalid Moves**:
+   - If a player attempts an invalid action (e.g., flipping non-adjacent switches or selecting out-of-range positions), they are prompted to make a valid move without penalty.
+
+---
+
+## Scoring
+
+- There is no point or scoring system in **Switch Battle**.
+- Victory is achieved by meeting the winning condition during gameplay.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Initial State**:
+```
+0 0 0 0 0 0 0
+```
+
+1. **Player 1's Turn**:
+   - Action: `flip 4`
+   - Flips switch at position 4.
+   - **Game State**:
+     ```
+     0 0 0 1 0 0 0
+     ```
+
+2. **Player 2's Turn**:
+   - Action: `flip 3 4`
+   - Flips switches at positions 3 and 4.
+   - **Game State**:
+     ```
+     0 0 1 0 0 0 0
+     ```
+
+3. **Player 1's Turn**:
+   - Action: `flip 1 2`
+   - Flips switches at positions 1 and 2.
+   - **Game State**:
+     ```
+     1 1 1 0 0 0 0
+     ```
+
+4. **Player 2's Turn**:
+   - Action: `flip 5`
+   - Flips switch at position 5.
+   - **Game State**:
+     ```
+     1 1 1 0 1 0 0
+     ```
+
+5. **Player 1's Turn**:
+   - Action: `flip 4 5`
+   - Flips switches at positions 4 and 5.
+   - **Game State**:
+     ```
+     1 1 1 1 0 0 0
+     ```
+
+6. **Player 2's Turn**:
+   - Action: `flip 6 7`
+   - Flips switches at positions 6 and 7.
+   - **Game State**:
+     ```
+     1 1 1 1 0 1 1
+     ```
+
+7. **Player 1's Turn**:
+   - Action: `flip 5`
+   - Flips switch at position 5.
+   - **Game State**:
+     ```
+     1 1 1 1 1 1 1
+     ```
+   - **Player 1 Wins!**
+
+### Command-Line Interaction Example
+
+- **Player Prompt**:
+  ```
+  Current State: 0 0 0 1 0 1 0
+  Player 1, it's your turn.
+  Enter your move:
+  ```
+- **Player Input**:
+  ```
+  flip 4 5
+  ```
+- **Game Response**:
+  ```
+  You flipped switches 4 and 5.
+  New State: 0 0 0 0 1 1 0
+  ```
+
+- **Invalid Move Example**:
+  - **Player Input**:
+    ```
+    flip 7 8
+    ```
+  - **Game Response**:
+    ```
+    Invalid move. Please select valid adjacent positions between 1 and 7.
+    ```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your strategy several turns in advance.
+- **Control the Center**: Flipping switches in the center offers more flexibility due to the higher number of adjacent pairs.
+- **Force Moves**: Set up the game state to limit your opponent's options or force them into making moves that benefit you.
+- **Balance**: Mix between flipping single switches and pairs to keep your opponent guessing.
+
+---
+
+By understanding the rules and employing strategic thinking, players can enjoy a quick and engaging game of **Switch Battle**. The simplicity of gameplay combined with strategic depth makes it a game where skillful play is rewarded, allowing a skilled player to consistently beat an unskilled player.
+
+---
+
+Good luck and have fun battling for control of the switches!

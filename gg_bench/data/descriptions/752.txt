@@ -1,0 +1,182 @@
+# Secret Paths: A Two-Player Strategic Grid Game
+
+## Objective
+
+In **Secret Paths**, two players compete to be the first to guide a shared token—the **Seeker**—to their secretly chosen **Goal Cell** on a 5x5 grid. Players must strategically move the Seeker while deducing their opponent's Goal Cell and thwarting their progress. The first player to move the Seeker onto their own Goal Cell wins the game.
+
+---
+
+## Setup
+
+1. **Grid Creation**: The game is played on a 5x5 grid, with rows and columns numbered from 1 to 5.
+   - Rows are numbered 1 to 5 from top to bottom.
+   - Columns are numbered 1 to 5 from left to right.
+
+2. **Goal Cell Selection**:
+   - **Player 1** chooses a Goal Cell located in **Row 5** (the bottom row).
+   - **Player 2** chooses a Goal Cell located in **Row 1** (the top row).
+   - Goal Cells are selected secretly and not disclosed to the opponent.
+   - Players should note down their chosen Goal Cell coordinates for verification at the end of the game.
+
+3. **Placement of the Seeker**:
+   - The Seeker starts on the central cell of the grid at position **(Row 3, Column 3)**.
+
+---
+
+## Game Components
+
+- **5x5 Grid**:
+  - A virtual grid represented in the command-line interface.
+  - Cells are identified by their row and column numbers (e.g., cell at Row 2, Column 4 is `(2,4)`).
+
+- **The Seeker**:
+  - A shared token representing both players' movement on the grid.
+  - Denoted by `S` on the grid during display.
+
+- **Goal Cells**:
+  - Secretly chosen cells where each player aims to move the Seeker.
+  - Not marked on the grid to maintain secrecy.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players decide who goes first (e.g., coin toss, mutual agreement).
+  - Players alternate turns throughout the game.
+
+- **Player Actions During a Turn**:
+  - **Movement**:
+    - Move the Seeker to any **adjacent cell** (horizontally, vertically, or diagonally).
+    - The Seeker can move to any of the up to eight adjacent cells.
+  - **Objective**:
+    - Strategically move the Seeker towards your own Goal Cell.
+    - Attempt to deduce and block your opponent's path to their Goal Cell.
+
+- **Turn Progression**:
+  - After moving the Seeker, the turn passes to the opponent.
+  - The game continues until one player wins by moving the Seeker onto their Goal Cell.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Rules**:
+   - The Seeker must move to an adjacent cell on each turn.
+   - Adjacent cells include cells directly horizontal, vertical, or diagonal to the current position.
+   - The Seeker cannot skip over cells or stay in the same cell.
+
+2. **Winning the Game**:
+   - A player wins immediately if they move the Seeker onto their own Goal Cell.
+   - The Goal Cell is verified against the player's noted selection at the game's start.
+
+3. **Strategic Blocking**:
+   - Players can move the Seeker away from suspected opponent Goal Cells.
+   - Utilizing movement options to limit the opponent's potential paths is encouraged.
+
+4. **Revealing the Goal Cell**:
+   - Upon winning, the player must reveal their Goal Cell for verification.
+   - If a dispute arises, the noted Goal Cell from the game's start is used to confirm.
+
+5. **Invalid Moves and Penalties**:
+   - If a player makes an invalid move (e.g., moving the Seeker to a non-adjacent cell), they must redo their turn with a valid move.
+   - Repeated invalid moves can result in forfeiture at the opponent's discretion.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - The player who moves the Seeker onto their own Goal Cell wins the game.
+- **No Points System**:
+  - There is no points or scoring system; the game is won by achieving the objective.
+
+---
+
+## Example Gameplay
+
+### Initial Setup
+
+- **Player 1** secretly chooses Goal Cell `(5,2)`.
+- **Player 2** secretly chooses Goal Cell `(1,4)`.
+- The Seeker starts at `(3,3)`.
+
+### Sample Turns
+
+1. **Player 1's Turn**:
+   - Moves the Seeker from `(3,3)` to `(4,2)`.
+   - Moving diagonally towards their Goal Cell in Row 5.
+
+2. **Player 2's Turn**:
+   - Observing Player 1's move, suspects their Goal Cell is in the lower rows.
+   - Moves the Seeker from `(4,2)` to `(3,3)` to bring it back towards the center.
+
+3. **Player 1's Turn**:
+   - Moves the Seeker from `(3,3)` to `(2,4)`, aiming to mislead Player 2.
+
+4. **Player 2's Turn**:
+   - Seizes the opportunity and moves the Seeker from `(2,4)` to `(1,4)`, reaching their Goal Cell.
+   - **Player 2 wins the game**.
+
+### Post-Game Verification
+
+- **Player 2** reveals their Goal Cell was `(1,4)`, matching the Seeker's final position.
+- **Player 1** reveals their Goal Cell was `(5,2)`.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input commands to move the Seeker.
+
+### Game Start
+
+```
+Welcome to Secret Paths!
+
+Player 1, choose your Goal Cell (Row 5, any Column 1-5): Goal Cell selected.
+Player 2, choose your Goal Cell (Row 1, any Column 1-5): Goal Cell selected.
+
+The Seeker starts at (3,3).
+```
+
+### Turn Sequence
+
+```
+Player 1's turn.
+Enter your move (e.g., 'move to 4,2'): move to 4,2
+Seeker moved to (4,2).
+
+Player 2's turn.
+Enter your move: move to 3,3
+Seeker moved to (3,3).
+
+Player 1's turn.
+Enter your move: move to 2,4
+Seeker moved to (2,4).
+
+Player 2's turn.
+Enter your move: move to 1,4
+Seeker moved to (1,4).
+
+Player 2 has moved the Seeker to their Goal Cell and wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Deception**:
+  - Consider misleading your opponent by moving the Seeker in unexpected directions.
+- **Observation**:
+  - Pay attention to your opponent's moves to infer their Goal Cell location.
+- **Blocking**:
+  - Position the Seeker to make it harder for your opponent to reach their Goal Cell.
+- **Balance**:
+  - Balance between advancing towards your Goal Cell and preventing your opponent's progress.
+
+---
+
+## Conclusion
+
+**Secret Paths** is a game of strategy, deception, and deduction. With simple rules and deep strategic potential, it offers an engaging experience that tests players' tactical thinking. Enjoy outmaneuvering your opponent in this battle of wits!

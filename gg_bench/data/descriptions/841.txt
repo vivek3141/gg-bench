@@ -1,0 +1,386 @@
+# Tug of War
+
+## Objective
+
+**Tug of War** is a strategic two-player, turn-based game played on a virtual rope represented by a number line. The primary goal is to pull the marker (representing the rope's knot) to your own goal position before your opponent does. Each player must carefully decide how far to pull the marker each turn to outmaneuver their opponent and achieve victory.
+
+- **Goal for Player Left**: Move the marker to position `-7`.
+- **Goal for Player Right**: Move the marker to position `+7`.
+
+## Setup
+
+1. **Initial Position**: The game begins with the marker at the central position `0` on the number line.
+2. **Assigning Players**:
+   - **Player Left**: This player aims to move the marker towards the negative positions.
+   - **Player Right**: This player aims to move the marker towards the positive positions.
+3. **Starting the Game**: Decide who takes the first turn (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Number Line**: Represents the rope with positions ranging from `-7` to `+7`.
+- **Marker**: Indicates the current position on the number line.
+- **Command-Line Interface**: Players input their moves through textual commands.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the player decided during setup.
+2. **Player Actions**:
+   - On their turn, a player moves the marker towards their goal position.
+   - A player can choose to move the marker **1**, **2**, or **3** units per turn.
+3. **Input Format**: Players enter the number of units they wish to move (e.g., `1`, `2`, or `3`).
+
+## Rules and Mechanics
+
+1. **Movement Direction**:
+   - **Player Left** moves the marker towards the negative end (`-7`).
+   - **Player Right** moves the marker towards the positive end (`+7`).
+2. **Valid Moves**:
+   - A move is valid if it does not move the marker beyond the goal positions.
+   - If a move would place the marker past the goal (less than `-7` or greater than `+7`), it is invalid, and the player must choose a different move.
+3. **Winning the Game**:
+   - The first player to move the marker exactly onto their goal position (`-7` for Player Left or `+7` for Player Right) **wins** the game.
+4. **Forfeiting a Turn**:
+   - If a player cannot make a valid move (which should never happen under normal play), they forfeit their turn.
+
+## Scoring
+
+- The game is won by the player who successfully moves the marker to their goal position.
+- There is no point system; the outcome is a win or loss.
+
+## Examples
+
+### Example Game
+
+#### Game Start
+
+- The marker is at position `0`.
+- **Player Left** and **Player Right** are determined.
+- **Player Left** takes the first turn.
+
+---
+
+#### Turn 1: Player Left
+
+- **Current Position**: `0`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `0 - 3 = -3`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -3.
+  ```
+
+---
+
+#### Turn 2: Player Right
+
+- **Current Position**: `-3`
+- **Action**: Player Right chooses to move `2` units.
+- **New Position**: `-3 + 2 = -1`
+- **Output**:
+  ```
+  Player Right moves 2 units to position -1.
+  ```
+
+---
+
+#### Turn 3: Player Left
+
+- **Current Position**: `-1`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-1 - 3 = -4`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -4.
+  ```
+
+---
+
+#### Turn 4: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-4 + 3 = -1`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -1.
+  ```
+
+---
+
+#### Turn 5: Player Left
+
+- **Current Position**: `-1`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-1 - 3 = -4`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -4.
+  ```
+
+---
+
+#### Turn 6: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right chooses to move `2` units.
+- **New Position**: `-4 + 2 = -2`
+- **Output**:
+  ```
+  Player Right moves 2 units to position -2.
+  ```
+
+---
+
+#### Turn 7: Player Left
+
+- **Current Position**: `-2`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-2 - 3 = -5`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -5.
+  ```
+
+---
+
+#### Turn 8: Player Right
+
+- **Current Position**: `-5`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-5 + 3 = -2`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -2.
+  ```
+
+---
+
+#### Turn 9: Player Left
+
+- **Current Position**: `-2`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-2 - 3 = -5`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -5.
+  ```
+
+---
+
+#### Turn 10: Player Right
+
+- **Current Position**: `-5`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-5 + 3 = -2`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -2.
+  ```
+
+---
+
+#### Turn 11: Player Left
+
+- **Current Position**: `-2`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-2 - 3 = -5`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -5.
+  ```
+
+---
+
+#### Turn 12: Player Right
+
+- **Current Position**: `-5`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-5 + 3 = -2`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -2.
+  ```
+
+---
+
+#### Turn 13: Player Left
+
+- **Current Position**: `-2`
+- **Action**: Player Left chooses to move `2` units.
+- **New Position**: `-2 - 2 = -4`
+- **Output**:
+  ```
+  Player Left moves 2 units to position -4.
+  ```
+
+---
+
+#### Turn 14: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-4 + 3 = -1`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -1.
+  ```
+
+---
+
+#### Turn 15: Player Left
+
+- **Current Position**: `-1`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-1 - 3 = -4`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -4.
+  ```
+
+---
+
+#### Turn 16: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-4 + 3 = -1`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -1.
+  ```
+
+---
+
+#### Turn 17: Player Left
+
+- **Current Position**: `-1`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-1 - 3 = -4`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -4.
+  ```
+
+---
+
+#### Turn 18: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-4 + 3 = -1`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -1.
+  ```
+
+---
+
+*Note: The game continues in this loop because both players are making moves that negate each other's progress. A skilled player would recognize this and adjust their strategy.*
+
+### Winning Move Example
+
+#### Turn 5: Player Left
+
+- **Current Position**: `-3`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-3 - 3 = -6`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -6.
+  ```
+
+---
+
+#### Turn 6: Player Right
+
+- **Current Position**: `-6`
+- **Action**: Player Right cannot move `3` units (would only bring it to `-3`), so chooses `3` units.
+- **New Position**: `-6 + 3 = -3`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -3.
+  ```
+
+---
+
+#### Turn 7: Player Left
+
+- **Current Position**: `-3`
+- **Action**: Player Left chooses to move `1` unit.
+- **New Position**: `-3 - 1 = -4`
+- **Output**:
+  ```
+  Player Left moves 1 unit to position -4.
+  ```
+
+---
+
+#### Turn 8: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right chooses to move `3` units.
+- **New Position**: `-4 + 3 = -1`
+- **Output**:
+  ```
+  Player Right moves 3 units to position -1.
+  ```
+
+---
+
+#### Turn 9: Player Left
+
+- **Current Position**: `-1`
+- **Action**: Player Left chooses to move `3` units.
+- **New Position**: `-1 - 3 = -4`
+- **Output**:
+  ```
+  Player Left moves 3 units to position -4.
+  ```
+
+---
+
+#### Turn 10: Player Right
+
+- **Current Position**: `-4`
+- **Action**: Player Right cannot prevent Player Left from winning next turn.
+- **Outcome**:
+  ```
+  Player Right concedes. Player Left wins!
+  ```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your strategy several turns in advance.
+- **Control the Center**: Maintaining control near the center can give you more flexibility in your moves.
+- **Vary Your Moves**: Avoid falling into predictable patterns that your opponent can exploit.
+- **Force Moves**: Try to force your opponent into positions where their options are limited.
+
+## Command-Line Interaction Example
+
+```
+Game Start!
+Marker is at position 0.
+Player Left's turn. Enter units to move (1, 2, or 3):
+> 3
+Player Left moves 3 units to position -3.
+
+Player Right's turn. Enter units to move (1, 2, or 3):
+> 2
+Player Right moves 2 units to position -1.
+
+Player Left's turn. Enter units to move (1, 2, or 3):
+> 3
+Player Left moves 3 units to position -4.
+
+...
+
+Player Left moves 3 units to position -7.
+Player Left has reached the goal position!
+Player Left wins the game!
+```
+
+---
+
+Enjoy playing **Tug of War** and may the best strategist win!

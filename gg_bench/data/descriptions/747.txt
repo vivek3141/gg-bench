@@ -1,0 +1,130 @@
+# Digit Duel
+
+## Objective
+
+The primary goal of Digit Duel is to reduce your opponent's number to zero before they reduce yours. Players strategically use the digits of their own number to subtract from their opponent's number. The first player to bring their opponent's number down to zero wins the game.
+
+## Setup
+
+1. **Initial Numbers**: At the start of the game, each player is assigned a three-digit number: **999**.
+2. **Display**: Both players' numbers are visible to each other throughout the game.
+3. **Starting Player**: Decide who goes first (e.g., by mutual agreement, coin toss, or random selection).
+
+## Game Components
+
+- **Player Numbers**: Each player has a three-digit number comprising digits from 0 to 9.
+  - **Digits**: The digits are in the hundreds, tens, and ones places (left to right).
+- **Digits Decrement**: Digits in a player's number can decrease but never go below zero.
+- **Command-Line Interface**: Players input commands to perform actions on their turn.
+
+## Turns
+
+- **Turn Order**: Players take turns alternately.
+- **Player Actions**: On their turn, a player must:
+  1. **Select a Digit**: Choose one of the digits from their own number (hundreds, tens, or ones place).
+  2. **Subtract Digit**: Subtract the chosen digit from the opponent's number.
+  3. **Update Own Digit**: Decrement the chosen digit in their own number by **1** (cannot go below zero).
+- **Turn Progression**: After a player completes their action, it's the opponent's turn.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - Players can choose any digit from their own number that is greater than zero.
+   - Digits are identified by their position: hundreds (leftmost), tens (middle), ones (rightmost).
+
+2. **Subtracting from Opponent's Number**:
+   - The chosen digit's value is subtracted from the opponent's current number.
+   - The opponent's number cannot go below zero; if the subtraction would result in a negative number, the opponent's number becomes zero.
+
+3. **Decrementing Own Digit**:
+   - After using a digit to subtract, the digit in the player's own number decreases by **1**.
+   - If the digit is already zero, it cannot be selected.
+
+4. **Zero Digits**:
+   - If all digits in a player's number are zero, they cannot perform any action on their turn and must pass.
+
+5. **Winning the Game**:
+   - The game ends immediately when a player's number is reduced to zero.
+   - The player who reduces their opponent's number to zero is declared the winner.
+
+6. **No Draws**:
+   - The game cannot end in a draw; it continues until one player's number reaches zero.
+
+## Examples
+
+### Example Scenario
+
+**Initial State**:
+- Player 1's Number: **9 9 9**
+- Player 2's Number: **9 9 9**
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses the ones digit (**9**) to subtract.
+- **Subtracting**: Subtracts **9** from Player 2's number.
+  - Player 2's new number: **990** (999 - 9)
+- **Updating Own Number**: Decrements ones digit by 1.
+  - Player 1's new number: **9 9 8**
+
+#### Turn 2: Player 2
+
+- **Action**: Chooses the hundreds digit (**9**) to subtract.
+- **Subtracting**: Subtracts **9** from Player 1's number.
+  - Player 1's new number: **989** (998 - 9)
+- **Updating Own Number**: Decrements hundreds digit by 1.
+  - Player 2's new number: **8 9 9**
+
+#### Turn 3: Player 1
+
+- **Action**: Chooses the tens digit (**9**) to subtract.
+- **Subtracting**: Subtracts **9** from Player 2's number.
+  - Player 2's new number: **890** (899 - 9)
+- **Updating Own Number**: Decrements tens digit by 1.
+  - Player 1's new number: **9 8 8**
+
+#### Turn 4: Player 2
+
+- **Action**: Chooses the hundreds digit (**8**) to subtract.
+- **Subtracting**: Subtracts **8** from Player 1's number.
+  - Player 1's new number: **981** (989 - 8)
+- **Updating Own Number**: Decrements hundreds digit by 1.
+  - Player 2's new number: **7 9 9**
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**:
+```
+Your Number: 9 8 8
+Opponent's Number: 8 9 0
+
+Choose a digit to use (hundreds/tens/ones): ones
+You selected the ones digit with value 8.
+Subtracting 8 from opponent's number...
+Opponent's new number: 882
+Decrementing your ones digit by 1.
+Your new number: 9 8 7
+```
+
+**Player 2's Turn**:
+```
+Your Number: 7 9 9
+Opponent's Number: 9 8 7
+
+Choose a digit to use (hundreds/tens/ones): tens
+You selected the tens digit with value 9.
+Subtracting 9 from opponent's number...
+Opponent's new number: 898
+Decrementing your tens digit by 1.
+Your new number: 7 8 9
+```
+
+## Strategic Tips
+
+- **Balance Digit Use**: Avoid depleting a single digit too quickly; maintain options for future turns.
+- **Predict Opponent's Moves**: Anticipate which digits your opponent might use and plan accordingly.
+- **Maximize Impact**: Use higher digits to subtract larger amounts when advantageous.
+- **Preserve High Digits**: Keep your higher digits for critical moments to finish off your opponent.
+
+## Conclusion
+
+Digit Duel is a game of tactical decision-making and foresight. By carefully choosing which digits to use and considering the state of both your own and your opponent's numbers, you can outmaneuver your opponent and claim victory. Enjoy the challenge and may the best strategist win!

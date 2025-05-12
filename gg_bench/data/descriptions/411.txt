@@ -1,0 +1,263 @@
+# Number Cross: A Competitive Two-Player Turn-Based Game
+
+Welcome to **Number Cross**, a strategic and engaging two-player turn-based game designed for the command-line interface. This game combines simple mechanics with deep strategic opportunities, ensuring that skilled players can consistently outmaneuver their opponents. Easy to code and quick to play, Number Cross is perfect for those seeking a new and unique gaming challenge.
+
+---
+
+## Objective
+
+The primary goal of **Number Cross** is to outscore your opponent by strategically claiming rows and columns on a shared 3x3 grid. Each cell on the grid contains a unique number from 1 to 9. Players take turns claiming rows or columns, and after both players have made their selections, the sums of the numbers in their claimed rows and columns are calculated. The player with the higher total sum wins the game.
+
+---
+
+## Setup
+
+1. **Game Grid Initialization**:
+   - Create a 3x3 grid representing the game board.
+   - Populate each cell of the grid with the numbers 1 through 9.
+   - Assign the numbers randomly to the cells without any repeats.
+
+2. **Player Initialization**:
+   - Determine which player will take the first turn (this can be decided randomly or by agreement).
+   - Both players begin with zero claimed rows or columns.
+
+---
+
+## Game Components
+
+1. **Grid Cells**:
+   - A total of 9 cells arranged in 3 rows and 3 columns.
+   - Each cell contains a unique number from 1 to 9.
+
+2. **Rows and Columns**:
+   - There are 3 rows (Row 1, Row 2, Row 3) and 3 columns (Column 1, Column 2, Column 3).
+   - Rows are horizontal lines of cells; columns are vertical lines of cells.
+
+3. **Player Selections**:
+   - Each player can claim up to 3 lines (rows or columns) during the game.
+   - Claimed lines are tracked throughout the game to prevent duplicate selections.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with Player 1.
+   - On each turn, a player selects an unclaimed row or column to claim.
+
+2. **Turn Actions**:
+   - **Selection**: Choose one unclaimed row or column to claim.
+   - **Announcement**: Declare the selected row or column to the opponent.
+
+3. **Progression**:
+   - Continue alternating turns until both players have each claimed 3 lines.
+   - The game consists of a total of 6 turns (3 per player).
+
+---
+
+## Rules and Mechanics
+
+1. **Claiming Lines**:
+   - Players can claim any unclaimed row or column on their turn.
+   - Once a line is claimed by any player, it cannot be claimed again.
+
+2. **Selection Restrictions**:
+   - Players cannot select diagonals—only rows and columns are valid choices.
+   - Players may choose any combination of rows and columns (e.g., 2 rows and 1 column).
+
+3. **Overlap of Lines**:
+   - Lines may overlap in cells (e.g., Row 1 and Column 1 both include the top-left cell).
+   - Players can tactically select lines that overlap with their opponent's choices.
+
+4. **Game End Condition**:
+   - The game ends after both players have claimed 3 lines each.
+   - Proceed to calculate the scores based on the numbers in the claimed lines.
+
+---
+
+## Scoring
+
+1. **Calculating Sums**:
+   - For each player, sum the numbers in all their claimed lines.
+   - If a cell is included in multiple claimed lines for the same player, its number is counted multiple times.
+
+2. **Determining the Winner**:
+   - The player with the **higher total sum** wins the game.
+   - **No Draws**: Since the total sum of all numbers from 1 to 9 is 45 and there are no fractional values, ties are impossible under normal gameplay.
+
+3. **Example of Overlaps in Scoring**:
+   - If a player claims both Row 1 and Column 1, the top-left cell's number is counted twice in their total sum.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Grid**:
+
+```
++-----+-----+-----+
+|  4  |  9  |  2  |  Row 1
++-----+-----+-----+
+|  3  |  5  |  7  |  Row 2
++-----+-----+-----+
+|  8  |  1  |  6  |  Row 3
++-----+-----+-----+
+  C1    C2    C3
+```
+
+**Turn Sequence**:
+
+1. **Player 1's Turn**:
+   - Claims **Row 2**.
+
+2. **Player 2's Turn**:
+   - Claims **Column 3**.
+
+3. **Player 1's Turn**:
+   - Claims **Column 2**.
+
+4. **Player 2's Turn**:
+   - Claims **Row 1**.
+
+5. **Player 1's Turn**:
+   - Claims **Row 3**.
+
+6. **Player 2's Turn**:
+   - Claims **Column 1**.
+
+**Player 1's Claimed Lines**:
+- Row 2: 3, 5, 7
+- Column 2: 9, 5, 1
+- Row 3: 8, 1, 6
+
+**Player 2's Claimed Lines**:
+- Column 3: 2, 7, 6
+- Row 1: 4, 9, 2
+- Column 1: 4, 3, 8
+
+**Calculating Player 1's Total Sum**:
+- Row 2: 3 + 5 + 7 = 15
+- Column 2: 9 + 5 + 1 = 15
+- Row 3: 8 + 1 + 6 = 15
+- **Total Sum**: 15 + 15 + 15 = **45**
+
+**Calculating Player 2's Total Sum**:
+- Column 3: 2 + 7 + 6 = 15
+- Row 1: 4 + 9 + 2 = 15
+- Column 1: 4 + 3 + 8 = 15
+- **Total Sum**: 15 + 15 + 15 = **45**
+
+**Determining the Winner**:
+
+- Since both players have the same total sum, refer to the tiebreaker rule (if a tie is possible, but as per earlier rule, ties are impossible under normal gameplay). However, since in this specific scenario a tie occurred due to symmetrical play, we can implement a tiebreaker:
+
+**Tiebreaker Rule**:
+
+- In the event of a tie (extremely rare), the **player who moved second wins**. This encourages strategic play in earlier turns to avoid ties.
+
+**Result**:
+
+- **Player 2 wins** the game.
+
+---
+
+## Command-Line Interaction Example
+
+Below is an example of how players might interact with the game via a command-line interface.
+
+### Game Start
+
+```plaintext
+Welcome to Number Cross!
+
+Initializing the game grid...
++-----+-----+-----+
+|  4  |  9  |  2  |  Row 1
++-----+-----+-----+
+|  3  |  5  |  7  |  Row 2
++-----+-----+-----+
+|  8  |  1  |  6  |  Row 3
++-----+-----+-----+
+  C1    C2    C3
+
+Player 1, you will go first.
+```
+
+### Turns
+
+```plaintext
+Player 1's Turn:
+Available lines to claim: Row1, Row2, Row3, Col1, Col2, Col3
+Enter the line you want to claim: Row2
+
+Player 1 has claimed Row2.
+
+Player 2's Turn:
+Available lines to claim: Row1, Row3, Col1, Col2, Col3
+Enter the line you want to claim: Col3
+
+Player 2 has claimed Col3.
+
+Player 1's Turn:
+Available lines to claim: Row1, Row3, Col1, Col2
+Enter the line you want to claim: Col2
+
+Player 1 has claimed Col2.
+
+Player 2's Turn:
+Available lines to claim: Row1, Row3, Col1
+Enter the line you want to claim: Row1
+
+Player 2 has claimed Row1.
+
+Player 1's Turn:
+Available lines to claim: Row3, Col1
+Enter the line you want to claim: Row3
+
+Player 1 has claimed Row3.
+
+Player 2's Turn:
+Available lines to claim: Col1
+Enter the line you want to claim: Col1
+
+Player 2 has claimed Col1.
+```
+
+### Game End and Scoring
+
+```plaintext
+All lines have been claimed. Calculating scores...
+
+Player 1's claimed lines:
+- Row2: 3 + 5 + 7 = 15
+- Col2: 9 + 5 + 1 = 15
+- Row3: 8 + 1 + 6 = 15
+Total Sum: 45
+
+Player 2's claimed lines:
+- Col3: 2 + 7 + 6 = 15
+- Row1: 4 + 9 + 2 = 15
+- Col1: 4 + 3 + 8 = 15
+Total Sum: 45
+
+It's a tie!
+
+According to the tiebreaker rule, Player 2 wins the game!
+
+Congratulations, Player 2!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider the sums of the lines before claiming to maximize your total.
+- **Block Opponent**: Anticipate which lines the opponent may want and claim them first.
+- **Overlap Advantage**: Claim lines that overlap with your existing lines to count high-value cells multiple times.
+- **Balance**: Choose a mix of rows and columns to spread your control over the grid.
+
+---
+
+Enjoy playing **Number Cross**, and may the most strategic player win!

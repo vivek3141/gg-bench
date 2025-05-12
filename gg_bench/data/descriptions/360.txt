@@ -1,0 +1,193 @@
+# Gridlock Showdown
+
+## Objective
+
+Be the last player able to make a legal move by strategically placing your markers on the grid while blocking your opponent's options. The game ends when one player cannot place a marker on their turn, resulting in their loss. There are no draws; a game of Gridlock Showdown always concludes with a clear winner and a loser.
+
+## Setup
+
+- **Grid Size**: A 5x5 grid (5 rows and 5 columns) is used for the game.
+- **Initial State**: All cells in the grid are empty at the start.
+- **Players**: Two players, designated as Player 1 and Player 2.
+  - **Player 1 Marker**: `X`
+  - **Player 2 Marker**: `O`
+- **Starting Player**: Determine randomly or agree upon who will take the first turn.
+
+## Game Components
+
+- **Grid**: A virtual 5x5 grid displayed in the command-line interface. Each cell is identified by its row (1-5) and column (1-5) numbers.
+- **Markers**: Symbols representing each player's moves.
+  - **Player 1** uses `X`
+  - **Player 2** uses `O`
+- **Command-Line Interface**: Players input commands to place their markers on the grid.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the designated starting player.
+- **Player Actions During a Turn**:
+  1. **Input Move**: Select an empty cell to place your marker by specifying the row and column numbers.
+  2. **Validation**: Ensure the chosen cell is empty and not adjacent (including diagonally) to any of the opponent's markers.
+  3. **Placement**: Place your marker on the validated cell.
+- **Turn Progression**: Once a player has placed their marker, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+- **Placement Rules**:
+  - A player may place their marker on any empty cell that is **not adjacent** to any of the opponent's markers.
+  - Adjacency includes all eight cells surrounding a given cell (horizontal, vertical, and diagonal neighbors).
+- **Illegal Moves**:
+  - Placing a marker on a cell adjacent to an opponent's marker.
+  - Selecting a cell that is already occupied.
+- **Winning the Game**:
+  - If a player has no legal moves on their turn, they lose the game.
+  - There are no draw conditions; the game must result in a win for one player.
+
+## Scoring
+
+- **Winning**: The player who successfully blocks their opponent from making a legal move is declared the winner.
+- **Tracking Score** (Optional for multiple games):
+  - Players can keep a tally of wins if playing multiple rounds.
+  - No points are assigned; simply count the number of games won by each player.
+
+## Example Gameplay
+
+### Initial Grid State
+
+All cells are empty at the start of the game:
+
+```
+   1   2   3   4   5
+1  . | . | . | . | .
+  ---+---+---+---+---
+2  . | . | . | . | .
+  ---+---+---+---+---
+3  . | . | . | . | .
+  ---+---+---+---+---
+4  . | . | . | . | .
+  ---+---+---+---+---
+5  . | . | . | . | .
+```
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 places an `X` at cell (3, 3).
+- **Command-Line Input**: `Place X at row 3 column 3`
+
+**Grid State**:
+
+```
+   1   2   3   4   5
+1  . | . | . | . | .
+  ---+---+---+---+---
+2  . | . | . | . | .
+  ---+---+---+---+---
+3  . | . | X | . | .
+  ---+---+---+---+---
+4  . | . | . | . | .
+  ---+---+---+---+---
+5  . | . | . | . | .
+```
+
+#### Turn 2: Player 2
+
+- **Available Moves**: Any empty cell not adjacent to (3, 3).
+- **Invalid Cells**: Cells adjacent to (3, 3) are (2,2), (2,3), (2,4), (3,2), (3,4), (4,2), (4,3), (4,4).
+- **Action**: Player 2 places an `O` at cell (1, 1).
+- **Command-Line Input**: `Place O at row 1 column 1`
+
+**Grid State**:
+
+```
+   1   2   3   4   5
+1  O | . | . | . | .
+  ---+---+---+---+---
+2  . | . | . | . | .
+  ---+---+---+---+---
+3  . | . | X | . | .
+  ---+---+---+---+---
+4  . | . | . | . | .
+  ---+---+---+---+---
+5  . | . | . | . | .
+```
+
+#### Turn 3: Player 1
+
+- **Invalid Cells**: Cells adjacent to opponent's `O` at (1,1) are blocked: (1,1), (1,2), (2,1), (2,2).
+- **Action**: Player 1 places an `X` at cell (5, 5).
+- **Command-Line Input**: `Place X at row 5 column 5`
+
+**Grid State**:
+
+```
+   1   2   3   4   5
+1  O | . | . | . | .
+  ---+---+---+---+---
+2  . | . | . | . | .
+  ---+---+---+---+---
+3  . | . | X | . | .
+  ---+---+---+---+---
+4  . | . | . | . | .
+  ---+---+---+---+---
+5  . | . | . | . | X
+```
+
+#### Subsequent Turns
+
+Players continue placing their markers, avoiding cells adjacent to the opponent's markers.
+
+#### Endgame Scenario
+
+If at any point a player cannot find a legal cell to place their marker because all available cells are adjacent to the opponent's markers or occupied, that player loses the game.
+
+## Strategy Tips
+
+- **Central Control**: Placing markers toward the center can limit your opponent's options more effectively.
+- **Block Opponent's Access**: Aim to section off parts of the grid, forcing your opponent into areas where they have fewer options.
+- **Plan Ahead**: Anticipate your opponent's potential moves and position your markers to block them.
+- **Stay Flexible**: Keep your options open by avoiding placing your markers too close to each other unless strategically beneficial.
+
+## Command-Line Interaction Example
+
+**Player 1's Turn**:
+
+```
+Player 1 (X), enter your move (row and column): 3 3
+You placed an X at (3, 3).
+```
+
+**Player 2's Turn**:
+
+```
+Player 2 (O), enter your move (row and column): 2 2
+Invalid move. The cell is adjacent to your opponent's marker.
+Available cells: [(1,1), (1,2), (1,4), (1,5), (2,5), ...]
+Player 2 (O), enter your move (row and column): 1 1
+You placed an O at (1, 1).
+```
+
+**Player 1's Turn**:
+
+```
+Player 1 (X), enter your move (row and column): 2 2
+Invalid move. The cell is adjacent to your opponent's marker.
+Available cells: [(1,5), (2,5), (4,1), (5,5), ...]
+Player 1 (X), enter your move (row and column): 5 5
+You placed an X at (5, 5).
+```
+
+**...**
+
+**Ending the Game**:
+
+If Player 2 cannot find a legal move:
+
+```
+Player 2 (O), you have no legal moves available.
+Player 1 (X) wins the game!
+```
+
+## Conclusion
+
+Gridlock Showdown is a game of strategic placement and foresight. Simple to learn yet rich in tactical depth, it challenges players to think ahead and control the board. Enjoy the battle of wits!

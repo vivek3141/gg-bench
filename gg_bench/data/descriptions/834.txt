@@ -1,0 +1,213 @@
+**Sum Battle**
+
+---
+
+**Objective**
+
+Sum Battle is a two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to reach an exact cumulative total of **15** by selecting numbers from a shared pool. A player wins by achieving a cumulative score of **15** without exceeding it. If a player's cumulative score exceeds **15**, they lose immediately. The game emphasizes strategic selection to reach the target while potentially blocking the opponent.
+
+---
+
+**Setup**
+
+1. **Shared Number Pool**: Initialize the game with a shared pool of numbers from **1** to **9**.
+   - *Shared Pool*: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+2. **Player Scores**: Both players start with a cumulative score of **0**.
+   - *Player 1 Score*: `0`
+   - *Player 2 Score*: `0`
+
+3. **Determine First Player**: Decide which player will take the first turn.
+   - This can be done by mutual agreement or by using a random method such as a coin toss.
+
+---
+
+**Game Components**
+
+- **Shared Number Pool**:
+  - A collection of numbers from **1** to **9** available for selection.
+  - Numbers are removed from the pool once selected.
+
+- **Player Scores**:
+  - Each player maintains their own cumulative score.
+  - Scores are updated each turn by adding the selected number.
+
+---
+
+**Turns**
+
+Players take turns performing the following actions:
+
+1. **Select a Number**:
+   - Choose one available number from the shared pool.
+   - Example command: `select 5`
+
+2. **Update Score**:
+   - Add the selected number to your cumulative score.
+   - Example: If your score was `7` and you selected `5`, your new score is `12`.
+
+3. **Remove Number from Pool**:
+   - The selected number is removed from the shared pool and cannot be selected again.
+
+4. **Turn Progression**:
+   - The turn passes to the other player after the above actions are completed.
+
+---
+
+**Rules and Mechanics**
+
+1. **Number Selection**:
+   - On your turn, you **must** select one number from the available numbers in the shared pool.
+   - You cannot skip a turn or pass.
+
+2. **Score Limit**:
+   - Your cumulative score must not exceed **15**.
+   - If selecting a number would cause your score to exceed **15**, you **still must select a number** and consequently lose the game.
+
+3. **Winning the Game**:
+   - You win if:
+     - Your cumulative score reaches exactly **15**.
+     - Your opponent's score exceeds **15**.
+
+4. **Losing the Game**:
+   - You lose if:
+     - Your cumulative score exceeds **15**.
+     - Your opponent reaches a cumulative score of **15** before you.
+
+5. **End of Numbers**:
+   - If all numbers are exhausted from the pool and no player has reached a cumulative score of **15**, the player with the **highest cumulative score without exceeding 15** wins the game.
+
+6. **No Draws**:
+   - The game cannot end in a draw due to the finite pool of numbers and the win/loss conditions.
+
+---
+
+**Scoring**
+
+- **Cumulative Score Tracking**:
+  - Keep a running total of the numbers you have selected.
+  - Example:
+    - Turn 1: Select `4` → Cumulative Score: `4`
+    - Turn 2: Select `6` → Cumulative Score: `10`
+
+- **Winning Condition**:
+  - Achieve a cumulative score of exactly **15**.
+
+- **Losing Condition**:
+  - Exceed a cumulative score of **15**.
+
+---
+
+**Examples**
+
+**Example Game Playthrough**
+
+*Shared Pool at Start*: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+**Turn 1**
+- **Player 1** selects **7**.
+  - *Player 1 Score*: `0 + 7 = 7`
+  - *Shared Pool*: `[1, 2, 3, 4, 5, 6, 8, 9]`
+
+**Turn 2**
+- **Player 2** selects **8**.
+  - *Player 2 Score*: `0 + 8 = 8`
+  - *Shared Pool*: `[1, 2, 3, 4, 5, 6, 9]`
+
+**Turn 3**
+- **Player 1** selects **6**.
+  - *Player 1 Score*: `7 + 6 = 13`
+  - *Shared Pool*: `[1, 2, 3, 4, 5, 9]`
+
+**Turn 4**
+- **Player 2** selects **7**.
+  - *Invalid Selection*: `7` is not in the pool.
+  - **Player 2** must choose from `[1, 2, 3, 4, 5, 9]`.
+
+- **Player 2** selects **9**.
+  - *Player 2 Score*: `8 + 9 = 17`
+  - *Player 2 Score Exceeds 15*. **Player 2 loses**.
+  - **Player 1 wins**.
+
+---
+
+**Example Command-Line Interaction**
+
+*Assuming commands are entered by the players as prompted by the game.*
+
+```
+Shared Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1's turn.
+Available numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Enter number to select: 5
+
+Player 1 selected 5.
+Player 1 Score: 5
+Shared Pool: [1, 2, 3, 4, 6, 7, 8, 9]
+
+Player 2's turn.
+Available numbers: [1, 2, 3, 4, 6, 7, 8, 9]
+Enter number to select: 8
+
+Player 2 selected 8.
+Player 2 Score: 8
+Shared Pool: [1, 2, 3, 4, 6, 7, 9]
+
+Player 1's turn.
+Available numbers: [1, 2, 3, 4, 6, 7, 9]
+Enter number to select: 9
+
+Player 1 selected 9.
+Player 1 Score: 5 + 9 = 14
+Shared Pool: [1, 2, 3, 4, 6, 7]
+
+Player 2's turn.
+Available numbers: [1, 2, 3, 4, 6, 7]
+Enter number to select: 1
+
+Player 2 selected 1.
+Player 2 Score: 8 + 1 = 9
+Shared Pool: [2, 3, 4, 6, 7]
+
+Player 1's turn.
+Available numbers: [2, 3, 4, 6, 7]
+Enter number to select: 1
+
+Invalid selection. Number not available.
+Available numbers: [2, 3, 4, 6, 7]
+Enter number to select: 2
+
+Player 1 selected 2.
+Player 1 Score: 14 + 2 = 16
+Player 1 Score exceeds 15. **Player 1 loses**.
+**Player 2 wins**.
+```
+
+---
+
+**Strategic Notes**
+
+- **Planning Ahead**:
+  - Keep track of both your own and your opponent's cumulative scores.
+  - Anticipate which numbers your opponent might need and consider selecting them to block their path to 15.
+
+- **Avoiding Overextension**:
+  - Be cautious when your cumulative score is close to 15.
+  - Selecting a number that causes you to exceed 15 results in an immediate loss.
+
+- **Forcing Opponent's Hand**:
+  - Leave numbers in the pool that, if taken by your opponent, would cause them to exceed 15.
+  - This can pressure your opponent into a difficult decision.
+
+---
+
+**Conclusion**
+
+Sum Battle is a quick and engaging game that combines simple arithmetic with strategic decision-making. By carefully selecting numbers and anticipating your opponent's moves, you can navigate your way to the exact total of 15 and claim victory. The game's straightforward mechanics make it easy to learn and code, while the strategic depth ensures that skilled players can consistently outmaneuver less experienced opponents.
+
+---
+
+**Happy Gaming!**

@@ -1,0 +1,211 @@
+# **Number Quest: A Strategic Turn-Based Game**
+
+---
+
+## **Objective**
+
+The objective of **Number Quest** is to be the first player to reach exactly **50 points** by strategically selecting numbers from a shared pool and applying mathematical operations. Players aim to outmaneuver their opponent by planning ahead and utilizing available numbers to their advantage. The game ends when a player reaches exactly 50 points, resulting in their victory. Overshooting 50 points results in an immediate loss.
+
+---
+
+## **Setup**
+
+1. **Number Pool Initialization**:
+   - A shared pool of numbers ranging from **1 to 9** is created.
+   - Each number from 1 to 9 appears **twice** in the pool, resulting in a total of **18 numbers**.
+
+2. **Starting Points**:
+   - Both players begin with **0 points**.
+
+3. **Player Designation**:
+   - Determine who will be **Player 1** and **Player 2**. This can be decided by a coin toss or mutual agreement.
+
+---
+
+## **Game Components**
+
+1. **Number Pool**:
+   - Contains numbers **1** through **9**, with each number duplicated once.
+   - Numbers are removed from the pool once selected.
+
+2. **Player Scores**:
+   - Each player has a **score counter** starting at **0**.
+   - Scores are updated based on the numbers selected and operations applied.
+
+3. **Operations**:
+   - Players can perform one of the following operations on their turn:
+     - **Addition (+)**
+     - **Subtraction (-)**
+     - **Multiplication (×)**
+     - **Division (÷)**
+
+---
+
+## **Turns**
+
+1. **Turn Structure**:
+   - Players take turns in sequence, starting with **Player 1**.
+
+2. **Actions per Turn**:
+   - On a player's turn, they must:
+     1. **Select a Number** from the number pool.
+     2. **Choose an Operation** to apply with the selected number and their current score.
+     3. **Update their Score** based on the operation.
+     4. **Check for Victory or Loss Conditions**.
+
+3. **Turn Progression**:
+   - After completing the above actions, the turn passes to the other player.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Selection**:
+   - Players can select **any number** from the available numbers in the pool.
+
+2. **Operations**:
+   - **Addition (+)**: Add the selected number to your current score.
+   - **Subtraction (-)**: Subtract the selected number from your current score.
+   - **Multiplication (×)**: Multiply your current score by the selected number.
+   - **Division (÷)**: Divide your current score by the selected number. 
+     - **Note**: Division is **integer division**; fractions are discarded.
+     - Division by zero is **not allowed**.
+
+3. **Valid Moves**:
+   - The result of the operation **must always be a non-negative integer**.
+   - If no valid operation can be performed without causing the score to become negative or fractional, the player **loses their turn**.
+
+4. **Victory Condition**:
+   - The first player to reach a score of **exactly 50 points** wins the game.
+
+5. **Loss Conditions**:
+   - If a player's score **exceeds 50 points**, they **immediately lose** the game.
+   - If a player cannot make a valid move on their turn, they **lose their turn**, but not the game.
+
+6. **No Draws**:
+   - Due to the finite number pool and the overshooting rule, the game cannot end in a draw.
+
+7. **Strategic Depth**:
+   - Players must plan ahead to manage their score carefully.
+   - Since numbers are limited and operations have significant impacts, skilled players can anticipate outcomes and force wins.
+
+---
+
+## **Scoring**
+
+- **Score Tracking**:
+  - Keep track of scores after each turn.
+  - Ensure that scores are updated correctly based on the operation used.
+
+- **Reaching the Target Score**:
+  - Pay attention to the available numbers and operations to reach exactly **50 points**.
+  - Be cautious not to exceed 50 points, as this results in a loss.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Initial Setup**:
+
+- Number Pool: `[1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]`
+- Player 1 Score: `0`
+- Player 2 Score: `0`
+
+#### **Turn-by-Turn Example**:
+
+---
+
+**__Turn 1: Player 1__**
+
+- **Selects Number**: `5`
+- **Chooses Operation**: `Addition (+)`
+- **Calculation**: `0 + 5 = 5`
+- **Updates Score**: Player 1 Score is now `5`
+- **Number Pool**: `[1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9]`
+
+---
+
+**__Turn 2: Player 2__**
+
+- **Selects Number**: `2`
+- **Chooses Operation**: `Multiplication (×)`
+- **Calculation**: `0 × 2 = 0`
+- **Updates Score**: Player 2 Score remains `0`
+- **Number Pool**: `[1, 1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9]`
+
+---
+
+**__Turn 3: Player 1__**
+
+- **Selects Number**: `9`
+- **Chooses Operation**: `Addition (+)`
+- **Calculation**: `5 + 9 = 14`
+- **Updates Score**: Player 1 Score is now `14`
+- **Number Pool**: `[1, 1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9]`
+
+---
+
+**__Turn 4: Player 2__**
+
+- **Selects Number**: `8`
+- **Chooses Operation**: `Addition (+)`
+- **Calculation**: `0 + 8 = 8`
+- **Updates Score**: Player 2 Score is now `8`
+- **Number Pool**: `[1, 1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9]`
+
+---
+
+**__Turn 5: Player 1__**
+
+- **Selects Number**: `6`
+- **Chooses Operation**: `Multiplication (×)`
+- **Calculation**: `14 × 6 = 84`
+- **Updates Score**: **Overshoots 50**
+- **Result**: Player 1's score exceeds 50. **Player 1 loses the game**.
+- **Winner**: **Player 2**
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is an example of how a turn might look in a command-line interface.
+
+---
+
+**Player 1's Turn**
+
+```
+Current Score: 14
+Available Numbers: 1, 1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9
+Select a number: 6
+Choose an operation (+, -, *, /): *
+Calculation: 14 * 6 = 84
+Your score is now 84
+You have exceeded 50 points. You lose!
+```
+
+**Player 2 Wins the Game!**
+
+---
+
+## **Additional Notes**
+
+- **Strategic Tips**:
+  - Keep track of both players' scores and available numbers.
+  - Plan several moves ahead to avoid overshooting 50 points.
+  - Use subtraction and division to adjust your score when necessary.
+  - Monitor which numbers the opponent might need and consider selecting them first.
+
+- **Handling Invalid Moves**:
+  - If a player selects a number or operation that results in a negative score or non-integer (in case of division), they lose their turn.
+
+- **Implementation Advice**:
+  - Implement input validation to ensure players make valid selections.
+  - Display the current scores and available numbers at the start of each turn.
+  - Clearly communicate the result of each operation and update the scores accordingly.
+
+---
+
+Enjoy playing **Number Quest**! May the most strategic player win.

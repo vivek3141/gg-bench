@@ -1,0 +1,152 @@
+# Rule Book for "Digit Stack"
+
+## Objective
+
+**Digit Stack** is a two-player turn-based game where players take turns adding digits to build a shared number. The primary goal is to avoid being the player who causes the shared number to exceed the target value of **1,000**. The player who forces the current number to surpass 1,000 loses the game. Victory is achieved by strategic digit selection to corner your opponent into exceeding the limit.
+
+## Setup
+
+- **Starting Condition**: The game begins with an empty current number (no digits).
+- **Player Arrangement**: Two players decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+### Current Number
+
+- **Definition**: A shared number constructed by players during the game.
+- **Initial State**: Begins as an empty value with no digits.
+- **Functionality**: Players append digits to this number, building it incrementally.
+- **Representation**: Displayed on the command-line interface after each turn.
+
+### Allowed Digits
+
+- **Digits**: Players can choose any single digit from **1** to **9** inclusive.
+- **Usage**: Digits are appended to the right end of the current number.
+- **Unique Attributes**: Digits cannot be skipped or repeated; only one digit is added per turn.
+
+### Target Number
+
+- **Value**: The critical value is **1,000**.
+- **Purpose**: Serves as the threshold that players must avoid exceeding.
+- **Winning Condition**: The player who causes the current number to exceed this value loses.
+
+## Turns
+
+### Turn Structure
+
+1. **Player's Choice**: On their turn, a player selects a digit between **1** and **9**.
+2. **Action**: The chosen digit is appended to the right end of the current number.
+3. **Update**: The current number is updated and displayed.
+4. **Progression**: The turn passes to the other player.
+
+### Turn Order
+
+- Players alternate turns throughout the game.
+- The starting player is determined before the game begins.
+
+### Player Actions
+
+- **Valid Actions**: Selecting any digit from **1** to **9**.
+- **Restrictions**: Only one digit may be added per turn.
+- **Strategic Considerations**: Players should consider the resulting number and potential future moves.
+
+## Rules and Mechanics
+
+1. **Building the Number**: Players collaboratively build a single number by appending digits.
+2. **Digit Selection**: Players must choose digits between **1** and **9** inclusive.
+3. **Appending Digits**: The selected digit is added to the end of the current number. For example, if the current number is `57` and a player adds `3`, the new current number becomes `573`.
+4. **Exceeding the Target**: If a player's action causes the current number to become greater than **1,000**, that player loses the game immediately.
+5. **Winning the Game**: The opposing player wins if their opponent exceeds the target number.
+6. **Continuation**: If the current number is exactly **1,000**, the player who made the move wins.
+7. **Invalid Moves**: Selecting a digit outside the allowed range or attempting to skip a turn is not permitted.
+8. **No Draws**: The game cannot end in a draw; there will always be a winner and a loser.
+
+## Scoring
+
+- **Tracking**: The game does not use a point system; the outcome is solely win or lose.
+- **Victory**: Achieved by forcing the opponent to exceed the current number beyond **1,000** or by strategically reaching exactly **1,000**.
+- **Loss**: Occurs when a player's move results in the current number exceeding **1,000**.
+
+## Examples
+
+### Example Scenario 1
+
+**Initial State**: Current Number is empty.
+
+- **Player 1's Turn**:
+  - Chooses digit **5**.
+  - Current Number becomes **5**.
+- **Player 2's Turn**:
+  - Chooses digit **9**.
+  - Current Number becomes **59**.
+- **Player 1's Turn**:
+  - Chooses digit **1**.
+  - Current Number becomes **591**.
+- **Player 2's Turn**:
+  - Chooses digit **6**.
+  - Current Number becomes **5916**.
+- **Outcome**:
+  - The current number **5916** exceeds **1,000**.
+  - **Player 2** loses the game.
+  - **Player 1** wins the game.
+
+### Example Scenario 2
+
+**Initial State**: Current Number is empty.
+
+- **Player 1's Turn**:
+  - Chooses digit **1**.
+  - Current Number becomes **1**.
+- **Player 2's Turn**:
+  - Chooses digit **2**.
+  - Current Number becomes **12**.
+- **Player 1's Turn**:
+  - Chooses digit **3**.
+  - Current Number becomes **123**.
+- **Player 2's Turn**:
+  - Chooses digit **4**.
+  - Current Number becomes **1234**.
+- **Outcome**:
+  - The current number **1234** exceeds **1,000**.
+  - **Player 2** loses the game.
+  - **Player 1** wins the game.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Game Start! The current number is empty.
+
+Player 1, please choose a digit (1-9): 2
+Current number is now: 2
+
+Player 2, please choose a digit (1-9): 5
+Current number is now: 25
+
+Player 1, please choose a digit (1-9): 8
+Current number is now: 258
+
+Player 2, please choose a digit (1-9): 9
+Current number is now: 2589
+
+Player 2 has exceeded 1,000!
+Player 2 loses the game.
+Player 1 wins!
+```
+
+## Strategic Depth
+
+- **Forward Thinking**: Players must anticipate future moves and consider how their chosen digit affects the possibilities for the opponent.
+- **Digit Selection**: Choosing lower digits can prolong the game and increase pressure on the opponent.
+- **Psychological Play**: Players can bluff or bait opponents into making risky moves.
+- **Avoiding Traps**: Being aware of critical thresholds (e.g., approaching 1,000) to avoid inadvertently losing.
+
+## Additional Notes
+
+- **Simplicity**: The game is designed to be simple and quick, suitable for a command-line interface.
+- **Skill Over Luck**: Success depends on strategic planning rather than chance.
+- **Uniqueness**: This game offers a new twist on numerical strategy games and is not based on any existing game like Go, Nim, Tic-Tac-Toe, or Chess.
+- **No Draw Mechanism**: The game rules ensure that every game results in a clear winner and loser.
+
+---
+
+Enjoy playing **Digit Stack**, and may the best strategist win!

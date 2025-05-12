@@ -1,0 +1,161 @@
+# Number Flip: Rule Book
+
+## Objective
+
+**Number Flip** is a two-player, turn-based strategy game where players take turns adding numbers to a cumulative total. The primary goal is to **force your opponent to reach or exceed a total of 50**. The player who causes the cumulative total to reach exactly 50 or surpass it **loses** the game.
+
+---
+
+## Setup
+
+- **Cumulative Total**: Initialize the game's cumulative total to **0** at the start.
+- **Available Numbers**: Players can choose any integer from **1 to 10** inclusive.
+- **First Player**: Decide which player goes first (e.g., by a coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Cumulative Total**: A shared running total that both players contribute to.
+- **Numbers (1-10)**: The set of integers players can choose from on their turn.
+- **Command-Line Interface**: The game is played by entering numbers via the command line.
+
+---
+
+## Turns
+
+1. **Player Action**: On their turn, a player selects a number from **1 to 10**.
+2. **Updating Total**: The chosen number is **added** to the cumulative total.
+3. **Turn Restrictions**:
+   - **No Repeat**: A player **cannot** choose the same number that was selected on the **immediately preceding turn** by the opponent.
+4. **Turn End**: After updating the total, the turn passes to the other player.
+5. **Victory Check**: If the cumulative total is **50 or more**, the player who made the move **loses**, and the opponent wins.
+
+---
+
+## Rules and Mechanics
+
+- **Number Selection**:
+  - Players must choose a number between **1 and 10** inclusive.
+  - The number selected cannot be the same as the opponent's last chosen number.
+- **Cumulative Total Management**:
+  - The cumulative total starts at **0** and increases as players add numbers.
+  - Players aim to avoid making the total reach **50 or more** on their turn.
+- **Winning the Game**:
+  - If a player causes the cumulative total to reach **exactly 50** or to exceed **50**, that player **loses**.
+  - If a player has **no legal moves** (all available numbers would result in a total of 50 or more), that player **loses**.
+- **Illegal Moves**:
+  - Selecting a number outside the **1-10** range is not allowed.
+  - Choosing the same number as the opponent's last turn is not allowed.
+  - If an illegal move is made, the player may be prompted to choose again or may automatically lose (as per agreed rules before the game starts).
+
+---
+
+## Scoring
+
+- **Winning**: The opponent of the player who causes the cumulative total to reach or exceed **50** is declared the **winner**.
+- **Game Tracking**: Players keep track of:
+  - The cumulative total after each turn.
+  - The last number selected (to enforce the "No Repeat" rule).
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Cumulative Total**: 0
+- **Player 1's Turn**:
+  - Chooses **8**.
+  - **Cumulative Total**: 0 + 8 = **8**
+- **Player 2's Turn**:
+  - Cannot choose **8** (since Player 1 just chose it).
+  - Chooses **7**.
+  - **Cumulative Total**: 8 + 7 = **15**
+
+#### Mid-Game
+
+- **Player 1's Turn**:
+  - Cannot choose **7** (Player 2's last number).
+  - Chooses **9**.
+  - **Cumulative Total**: 15 + 9 = **24**
+- **Player 2's Turn**:
+  - Cannot choose **9**.
+  - Chooses **8**.
+  - **Cumulative Total**: 24 + 8 = **32**
+
+#### End Game Scenario
+
+- **Player 1's Turn**:
+  - Cannot choose **8**.
+  - Chooses **7**.
+  - **Cumulative Total**: 32 + 7 = **39**
+- **Player 2's Turn**:
+  - Cannot choose **7**.
+  - Chooses **6**.
+  - **Cumulative Total**: 39 + 6 = **45**
+- **Player 1's Turn**:
+  - Cannot choose **6**.
+  - **Options**: 1-5, and 9-10.
+  - Chooses **5**.
+  - **Cumulative Total**: 45 + 5 = **50**
+  - **Player 1 loses** (total is exactly 50).
+- **Result**: **Player 2 wins**.
+
+---
+
+### Command-Line Interaction Sample
+
+```
+Game Start!
+Cumulative Total: 0
+
+Player 1's Turn:
+- Choose a number (1-10), not repeating opponent's last number.
+- Your choice: 8
+Cumulative Total is now 8.
+
+Player 2's Turn:
+- Last number played by opponent: 8
+- You cannot choose 8.
+- Your choice: 7
+Cumulative Total is now 15.
+
+Player 1's Turn:
+- Last number played by opponent: 7
+- You cannot choose 7.
+- Your choice: 9
+Cumulative Total is now 24.
+
+... [Game continues] ...
+
+Player 1's Turn:
+- Last number played by opponent: 6
+- You cannot choose 6.
+- Your choice: 5
+Cumulative Total is now 50.
+Total has reached 50. Player 1 loses.
+
+Game Over. Player 2 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Avoid Critical Numbers**: Keep track of the cumulative total to avoid being forced into a losing move.
+- **Force the Opponent's Hand**: Choose numbers that limit your opponent's options, potentially forcing them to reach 50.
+- **Remember the Restrictions**: Always be mindful of the "No Repeat" rule to plan your moves effectively.
+- **Calculate Ahead**: Think a few moves ahead to anticipate possible totals and avoid traps.
+
+---
+
+## Conclusion
+
+**Number Flip** is a simple yet strategic game that tests numerical skills and forward planning. By carefully selecting numbers and considering the cumulative total, players can outmaneuver their opponent and secure a win.
+
+Enjoy the game and may the best strategist win!
+
+---

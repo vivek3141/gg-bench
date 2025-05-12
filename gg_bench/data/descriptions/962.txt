@@ -1,0 +1,210 @@
+# Defense Grid: Rule Book
+
+## Objective
+
+**Defense Grid** is a two-player turn-based strategy game where each player aims to destroy all of the opponent's defense positions. Players strategically allocate defense points and attack the opponent's positions to reduce their defense to zero. The first player to reduce all of the opponent's positions to zero wins the game.
+
+## Setup
+
+1. **Defense Line Creation**: Each player has a line of **five positions**, numbered from **1** to **5**.
+2. **Defense Point Allocation**: Each player has **5 defense points** to allocate among their five positions. Allocation is done secretly at the beginning of the game.
+   - **Minimum per Position**: A position can have a minimum of **0** defense points.
+   - **Maximum per Position**: A position can have a maximum of **5** defense points.
+   - **Total Defense Points**: The sum of defense points across all positions must equal **5**.
+3. **Starting Conditions**:
+   - Players do not know the opponent's defense point allocation.
+   - Both players start with all positions intact.
+
+## Game Components
+
+- **Positions**: Each player has five positions in their defense line:
+  - **Position Numbers**: Positions are numbered **1** through **5**.
+  - **Defense Points**: Each position has assigned defense points based on the player's secret allocation.
+- **Defense Points (DP)**:
+  - **Representation**: Numerical values assigned to positions, representing their defense strength.
+  - **Functionality**: Indicates how many times a position can be attacked before being destroyed.
+- **Attack Action**:
+  - **Damage**: Each attack reduces the targeted position's defense points by **1**.
+
+## Turns
+
+1. **Turn Order**:
+   - Players take turns alternately.
+   - Decide who starts first by mutual agreement or random determination.
+2. **Player Actions**:
+   - On their turn, a player chooses **one** of the opponent's positions to attack.
+3. **Attack Restrictions**:
+   - Players **cannot** attack the **same position** on two consecutive turns.
+   - Players **can only** attack positions that have **remaining defense points** (positions not yet destroyed).
+
+## Rules and Mechanics
+
+1. **Attacking**:
+   - **Selecting a Target**: Choose an opponent's position numbered **1** to **5** that is not destroyed.
+   - **Executing the Attack**: Announce the target position to the opponent.
+   - **Resolving the Attack**: The opponent reduces the defense points of the targeted position by **1**.
+2. **Position Destruction**:
+   - When a position's defense points are reduced to **zero**, it is considered **destroyed**.
+   - Destroyed positions cannot be targeted or attacked again.
+3. **Attack Prohibitions**:
+   - A player cannot attack the same position they attacked on their **previous turn**.
+   - If no other positions are available to attack (all other positions are destroyed), the player may attack the same position consecutively.
+4. **Victory Conditions**:
+   - The game ends when all of a player's positions have been destroyed.
+   - The player who still has at least one position remaining is declared the **winner**.
+
+## Scoring
+
+- **Tracking Defense Points**:
+  - Players keep track of the remaining defense points for each of their positions.
+  - It is recommended to note down the defense points after each turn for clarity.
+- **Winning the Game**:
+  - There are no points awarded beyond the basic mechanics.
+  - Victory is achieved by being the first to destroy all of the opponent's positions.
+
+## Examples
+
+### Example Scenario
+
+**Initial Defense Point Allocation**:
+
+- **Player 1** secretly allocates defense points:
+  - Position 1: 2 DP
+  - Position 2: 1 DP
+  - Position 3: 0 DP
+  - Position 4: 1 DP
+  - Position 5: 1 DP
+- **Player 2** secretly allocates defense points:
+  - Position 1: 0 DP
+  - Position 2: 3 DP
+  - Position 3: 1 DP
+  - Position 4: 1 DP
+  - Position 5: 0 DP
+
+### Sample Turns
+
+**Turn 1**:
+
+- **Player 1's Turn**:
+  - Attacks **Player 2's Position 2**.
+  - **Player 2's Position 2** defense points reduce from **3** to **2**.
+- **Player 2's Turn**:
+  - Attacks **Player 1's Position 1**.
+  - **Player 1's Position 1** defense points reduce from **2** to **1**.
+
+**Turn 2**:
+
+- **Player 1's Turn**:
+  - Cannot attack **Position 2** again (attacked on the previous turn).
+  - Chooses to attack **Player 2's Position 3**.
+  - **Player 2's Position 3** defense points reduce from **1** to **0** (Position destroyed).
+- **Player 2's Turn**:
+  - Cannot attack **Position 1** again (attacked on the previous turn).
+  - Chooses to attack **Player 1's Position 2**.
+  - **Player 1's Position 2** defense points reduce from **1** to **0** (Position destroyed).
+
+**Turn 3**:
+
+- **Player 1's Turn**:
+  - Can now attack **Player 2's Position 2** again.
+  - Attacks **Position 2**.
+  - **Player 2's Position 2** defense points reduce from **2** to **1**.
+- **Player 2's Turn**:
+  - Can now attack **Player 1's Position 1** again.
+  - Attacks **Position 1**.
+  - **Player 1's Position 1** defense points reduce from **1** to **0** (Position destroyed).
+
+**Turn 4**:
+
+- **Player 1's Turn**:
+  - Cannot attack **Position 2** again.
+  - Chooses to attack **Player 2's Position 4**.
+  - **Player 2's Position 4** defense points reduce from **1** to **0** (Position destroyed).
+- **Player 2's Turn**:
+  - Cannot attack **Position 1** again (it's destroyed).
+  - Chooses to attack **Player 1's Position 4**.
+  - **Player 1's Position 4** defense points reduce from **1** to **0** (Position destroyed).
+
+**Turn 5**:
+
+- **Player 1's Turn**:
+  - Can now attack **Player 2's Position 2** again.
+  - Attacks **Position 2**.
+  - **Player 2's Position 2** defense points reduce from **1** to **0** (Position destroyed).
+- **Player 2's Turn**:
+  - Remaining positions are **Position 5** with **0** DP (destroyed).
+  - No valid positions to attack.
+  - **Player 2** cannot perform an action.
+
+**Game End**:
+
+- **Player 2** has no positions with remaining defense points.
+- **Player 1** has **Position 5** with **1** DP remaining.
+- **Player 1** is declared the **winner**.
+
+### Command-Line Interaction Sample
+
+```plaintext
+--- Defense Grid Game Start ---
+
+Player 1, allocate your defense points among positions 1-5 (total points = 5).
+Enter defense points for Position 1: 2
+Enter defense points for Position 2: 1
+Enter defense points for Position 3: 0
+Enter defense points for Position 4: 1
+Enter defense points for Position 5: 1
+
+Player 2, allocate your defense points among positions 1-5 (total points = 5).
+Enter defense points for Position 1: 0
+Enter defense points for Position 2: 3
+Enter defense points for Position 3: 1
+Enter defense points for Position 4: 1
+Enter defense points for Position 5: 0
+
+--- Game Begins ---
+
+Player 1's Turn:
+Available positions to attack: 1, 2, 3, 4, 5
+(Note: Cannot attack the same position as last turn.)
+Enter the position number of Player 2 to attack: 2
+Player 2's Position 2 defense reduced to 2.
+
+Player 2's Turn:
+Available positions to attack: 1, 2, 3, 4, 5
+Enter the position number of Player 1 to attack: 1
+Player 1's Position 1 defense reduced to 1.
+
+Player 1's Turn:
+Available positions to attack: 1, 2, 3, 4, 5
+(Note: Cannot attack the same position as last turn.)
+Enter the position number of Player 2 to attack: 3
+Player 2's Position 3 defense reduced to 0 (Position destroyed).
+
+Player 2's Turn:
+Available positions to attack: 2, 3, 4, 5
+(Note: Cannot attack the same position as last turn.)
+Enter the position number of Player 1 to attack: 2
+Player 1's Position 2 defense reduced to 0 (Position destroyed).
+
+... [Game continues as per the sample turns above] ...
+
+--- Game Over ---
+Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Defense Allocation**:
+  - Consider spreading defense points to prevent quick destruction of any single position.
+  - Alternatively, concentrate defense points on key positions to create strongholds.
+- **Attack Pattern**:
+  - Observe which positions the opponent avoids attacking; they may have higher defense.
+  - Rotate your attacks to prevent the opponent from predicting your strategy.
+- **Tracking Opponent's Defense**:
+  - Keep note of the revealed defense points after each attack to plan future moves.
+
+## Conclusion
+
+**Defense Grid** is a game of hidden information and strategic planning. By carefully allocating defense points and choosing which positions to attack, players can outmaneuver their opponent. The game's simple mechanics make it easy to learn and quick to play, while the depth of strategy ensures engaging and competitive gameplay.
+
+Enjoy the battle of wits on the Defense Grid!

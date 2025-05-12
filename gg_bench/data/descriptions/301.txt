@@ -1,0 +1,301 @@
+**Energy Duel: Rule Book**
+
+---
+
+### **Objective**
+
+Energy Duel is a two-player turn-based strategy game where each player aims to reduce their opponent's energy points (EP) from **10** to **0**. The primary goal is to outmaneuver your opponent through a series of actions that manage and deplete energy resources. A player wins the game by bringing their opponent's EP to zero or below while maintaining at least one EP themselves.
+
+---
+
+### **Setup**
+
+- **Starting Energy Points (EP):** Both players begin with **10 EP**.
+- **Actions Available:** Each player has access to three actions:
+  - **Charge**
+  - **Shield**
+  - **Blast**
+- **No Physical Components Required:** The game is played via a command-line interface where players input their chosen actions each turn.
+- **Player Designations:** Players are identified as **Player 1** and **Player 2**.
+
+---
+
+### **Game Components**
+
+1. **Energy Points (EP):**
+   - Represents a player's vitality and ability to perform actions.
+   - Tracked numerically for each player (e.g., `Player 1 EP: 10`).
+
+2. **Actions:**
+   - **Charge**
+     - **Description:** Increases player's EP by 1.
+     - **Functionality:** Allows building up energy for future actions.
+   - **Shield**
+     - **Description:** Protects against opponent's Blast.
+     - **Functionality:** Negates damage from a Blast but prevents Charging on the next turn.
+     - **Unique Attribute:** If used, the player cannot select Charge on their immediately following turn.
+   - **Blast**
+     - **Description:** Consumes EP to attempt damaging the opponent.
+     - **Functionality:** Costs 2 EP to use and can deal 3 damage to the opponent's EP.
+
+---
+
+### **Turns**
+
+- **Simultaneous Action Selection:**
+  - Both players secretly choose their action each turn.
+  - Actions are inputted simultaneously in the command-line interface.
+- **Turn Structure:**
+  1. **Action Declaration:**
+     - Players input their chosen action (`Charge`, `Shield`, or `Blast`).
+  2. **Action Resolution:**
+     - The game processes both actions according to the rules.
+     - EPs are adjusted based on the outcome.
+  3. **EP Update:**
+     - The game displays updated EP totals for both players.
+  4. **Restriction Check:**
+     - If a player used Shield, they are reminded they cannot Charge next turn.
+  5. **Victory Condition Check:**
+     - The game checks if either player's EP has reached zero or below.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Action Effects:**
+
+   - **Charge:**
+     - **Effect:** Player gains 1 EP.
+     - **Restrictions:** Cannot be used if the player used Shield on the previous turn.
+   - **Shield:**
+     - **Effect:** Blocks damage from opponent's Blast.
+     - **Side Effect:** Player cannot select Charge on their next turn.
+   - **Blast:**
+     - **Effect:** Costs the player 2 EP to cast.
+     - **Outcome:**
+       - If successful, deals 3 damage to the opponent's EP.
+       - If blocked by Shield, deals no damage but still costs the user 2 EP.
+
+2. **Action Interactions:**
+
+   - **Charge vs. Charge:**
+     - Both players gain 1 EP.
+   - **Charge vs. Shield:**
+     - Charging player gains 1 EP.
+     - Shielding player sets up defense, cannot Charge next turn.
+   - **Charge vs. Blast:**
+     - Charging player gains 1 EP, then loses 3 EP due to Blast (net loss of 2 EP).
+     - Blasting player loses 2 EP (cost of Blast).
+   - **Shield vs. Shield:**
+     - No effect on EP.
+     - Both players cannot Charge next turn.
+   - **Shield vs. Blast:**
+     - Shielding player takes no damage.
+     - Blasting player loses 2 EP.
+     - Shielding player cannot Charge next turn.
+   - **Blast vs. Blast:**
+     - Both players lose 2 EP (cost of Blast).
+     - Both take 3 damage to their EP (net loss of 5 EP each).
+
+3. **Restrictions:**
+
+   - **Post-Shield Limitation:**
+     - After using Shield, a player cannot select Charge on their next turn.
+     - They may choose Shield or Blast.
+   - **Energy Management:**
+     - Players cannot select Blast if they have less than 2 EP.
+     - If a player attempts to Blast without sufficient EP, they forfeit their action, and a warning is displayed.
+
+---
+
+### **Scoring**
+
+- **Energy Points (EP):**
+  - The game revolves around managing and reducing EP.
+  - **Starting EP:** 10 for each player.
+  - **Winning the Game:**
+    - A player wins by reducing their opponent's EP to **0** or below while having at least **1 EP** themselves.
+  - **Draws:**
+    - The game cannot end in a draw. If both players' EP reaches zero or below simultaneously, the player who initiated the action causing the final reduction loses the game.
+
+---
+
+### **Examples**
+
+#### **Sample Turn Sequence**
+
+**Initial State:**
+```
+Player 1 EP: 10
+Player 2 EP: 10
+Previous Actions: None
+```
+
+**Turn 1:**
+
+- **Players Input Actions:**
+  - Player 1 selects **Charge**.
+  - Player 2 selects **Blast**.
+
+- **Action Resolution:**
+  - **Player 1 (Charge):**
+    - Gains 1 EP (New EP: 11).
+  - **Player 2 (Blast):**
+    - Loses 2 EP for Blast cost (New EP: 8).
+    - Deals 3 damage to Player 1 (Player 1 EP: 11 - 3 = 8).
+
+- **Updated EP:**
+  ```
+  Player 1 EP: 8
+  Player 2 EP: 8
+  ```
+
+**Turn 2:**
+
+- **Players Input Actions:**
+  - Player 1 selects **Blast**.
+  - Player 2 selects **Shield**.
+
+- **Action Resolution:**
+  - **Player 1 (Blast):**
+    - Loses 2 EP (New EP: 6).
+    - Attempts to deal 3 damage to Player 2.
+  - **Player 2 (Shield):**
+    - Blocks incoming Blast.
+    - Cannot select Charge next turn.
+
+- **Updated EP:**
+  ```
+  Player 1 EP: 6
+  Player 2 EP: 8
+  ```
+
+- **Reminder:** Player 2 cannot select Charge next turn.
+
+**Turn 3:**
+
+- **Players Input Actions:**
+  - Player 1 selects **Charge**.
+  - Player 2 selects **Blast**.
+
+- **Action Resolution:**
+  - **Player 1 (Charge):**
+    - Gains 1 EP (New EP: 7).
+  - **Player 2 (Blast):**
+    - Loses 2 EP (New EP: 6).
+    - Deals 3 damage to Player 1 (Player 1 EP: 7 - 3 = 4).
+
+- **Updated EP:**
+  ```
+  Player 1 EP: 4
+  Player 2 EP: 6
+  ```
+
+**Turn 4:**
+
+- **Players Input Actions:**
+  - Player 1 selects **Blast**.
+  - Player 2 selects **Blast**.
+
+- **Action Resolution:**
+  - **Player 1 (Blast):**
+    - Loses 2 EP (New EP: 2).
+    - Deals 3 damage to Player 2 (Player 2 EP: 6 - 3 = 3).
+  - **Player 2 (Blast):**
+    - Loses 2 EP (New EP: 4).
+    - Deals 3 damage to Player 1 (Player 1 EP: 2 - 3 = -1).
+
+- **Updated EP:**
+  ```
+  Player 1 EP: -1
+  Player 2 EP: 3
+  ```
+
+**Game Over:**
+
+- **Result:** Player 1's EP fell below zero.
+- **Winner:** Player 2 wins the game.
+
+#### **Sample Command-Line Interaction**
+
+```
+--- Energy Duel ---
+Player 1 EP: 10
+Player 2 EP: 10
+
+Turn 1:
+Player 1, enter your action (Charge, Shield, Blast): Charge
+Player 2, enter your action (Charge, Shield, Blast): Blast
+
+Resolving Actions...
+Player 1 charges and gains 1 EP.
+Player 2 blasts and spends 2 EP.
+Player 1 takes 3 damage from blast.
+
+Updated EP:
+Player 1 EP: 8
+Player 2 EP: 8
+
+Turn 2:
+Player 1, enter your action (Charge, Shield, Blast): Blast
+Player 2, enter your action (Charge, Shield, Blast): Shield
+
+Resolving Actions...
+Player 1 blasts and spends 2 EP.
+Player 2 shields and prepares defense.
+Player 2 blocks the blast.
+
+Player 2 cannot Charge next turn.
+
+Updated EP:
+Player 1 EP: 6
+Player 2 EP: 8
+
+Turn 3:
+Player 1, enter your action (Charge, Shield, Blast): Blast
+Player 2, enter your action (Shield, Blast): Blast
+
+Resolving Actions...
+Player 1 blasts and spends 2 EP.
+Player 2 blasts and spends 2 EP.
+Player 1 takes 3 damage from blast.
+Player 2 takes 3 damage from blast.
+
+Updated EP:
+Player 1 EP: 1
+Player 2 EP: 3
+
+Turn 4:
+Player 1, enter your action (Charge, Shield, Blast): Blast
+Player 2, enter your action (Charge, Shield, Blast): Blast
+
+Resolving Actions...
+Player 1 blasts and spends 2 EP.
+Player 2 blasts and spends 2 EP.
+Player 1 takes 3 damage from blast.
+Player 2 takes 3 damage from blast.
+
+Updated EP:
+Player 1 EP: -2
+Player 2 EP: 0
+
+Game Over.
+Player 2 wins the game!
+```
+
+---
+
+### **Strategic Depth**
+
+- **Energy Management:**
+  - Balancing when to Charge to gain EP versus when to Blast to deal damage is crucial.
+- **Predicting Opponent's Moves:**
+  - Anticipate if the opponent will Shield, allowing you to avoid wasting a Blast.
+- **Action Restrictions:**
+  - Utilize the knowledge that a Shielding player cannot Charge next turn to plan your strategy.
+- **Risk vs. Reward:**
+  - Blasting drains your own EP; consider if the potential damage is worth the cost.
+
+---
+
+Enjoy playing **Energy Duel** and may the most strategic player win!

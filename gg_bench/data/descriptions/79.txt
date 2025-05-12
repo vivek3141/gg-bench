@@ -1,0 +1,274 @@
+**Game Title:** Adjacent Claim
+
+---
+
+## **Objective**
+
+The primary goal of **Adjacent Claim** is to control more cells on a 5x5 grid than your opponent by the time the grid is completely claimed. Players take turns claiming cells, strategically expanding their territory while limiting their opponent's options. The player who has claimed the most cells when the game ends is declared the winner.
+
+---
+
+## **Setup**
+
+1. **Grid Initialization:**
+   - A 5x5 grid is prepared, consisting of 25 cells labeled by rows (A-E) and columns (1-5). For example, the top-left cell is A1, and the bottom-right cell is E5.
+   - All cells are initially unclaimed and available for occupation.
+
+2. **Player Assignment:**
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Players decide who takes the first turn (Player 1) by mutual agreement or a random method.
+
+---
+
+## **Game Components**
+
+- **5x5 Grid:**
+  - Represents the playing area where players will claim cells.
+  - Each cell is uniquely identified by a combination of a letter (A-E) and a number (1-5).
+
+- **Markers:**
+  - Each player has a unique marker or symbol to indicate claimed cells (e.g., Player 1 uses 'X', Player 2 uses 'O').
+
+- **Command-Line Interface:**
+  - Players interact with the game by entering commands corresponding to cell positions (e.g., "claim A3").
+
+---
+
+## **Turns**
+
+1. **Turn Order:**
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Actions per Turn:**
+   - **Claim a Cell:**
+     - On their turn, a player attempts to claim an unclaimed cell according to the rules.
+   - **Pass:**
+     - If a player has no valid moves, they pass their turn.
+
+3. **Turn Progression:**
+   - The game continues with players alternating turns until the game ends.
+
+---
+
+## **Rules and Mechanics**
+
+1. **First Move:**
+   - **Player 1** begins by claiming any one cell on the grid.
+
+2. **Claiming Cells:**
+   - On subsequent turns, players can only claim unclaimed cells that are **adjacent** to cells they have already claimed.
+   - **Adjacency Rules:**
+     - Cells are adjacent if they are directly **horizontal** or **vertical** neighbors.
+     - Diagonal adjacency is **not** allowed.
+   - If a player has more than one group of claimed cells, they can claim adjacent to any cell from any group.
+
+3. **Restrictions:**
+   - A player **cannot** claim a cell that is not adjacent to their existing claimed cells.
+   - Players **cannot** claim cells that have already been claimed by either player.
+
+4. **Passing Turns:**
+   - If a player has no valid adjacent cells to claim, they must pass their turn.
+   - The game continues with the other player.
+
+5. **Game End:**
+   - The game ends when:
+     - All cells on the grid have been claimed, **or**
+     - Both players consecutively pass their turns (no further moves can be made).
+
+---
+
+## **Scoring**
+
+- **Counting Claimed Cells:**
+  - Each player counts the number of cells they have claimed on the grid.
+
+- **Determining the Winner:**
+  - The player with the **most claimed cells** at the end of the game wins.
+  - Since the grid has 25 cells, there **cannot** be a tie.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Initial Grid:**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [ ] [ ] [ ] [ ]
+C [ ] [ ] [ ] [ ] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+**Player Symbols:**
+
+- **Player 1:** X
+- **Player 2:** O
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Claims cell **C3**.
+- **Command:** `claim C3`
+- **Grid:**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [ ] [ ] [ ] [ ]
+C [ ] [ ] [X] [ ] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Claims cell **C4** (adjacent to C3).
+- **Command:** `claim C4`
+- **Note:** This move is **invalid** because Player 2 has no claimed cells yet and must claim a cell adjacent to their own cells.
+- **Correction:** Player 2 can claim **any** unclaimed cell because they haven't claimed any cells yet (this rule needs adjustment according to initial rules).
+
+**Correction in Rules:**
+
+- **Rule Adjustment:** Both players on their **first turn** can claim any unclaimed cell.
+
+- **Action:** Claims cell **C4**.
+- **Command:** `claim C4`
+- **Grid:**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [ ] [ ] [ ] [ ]
+C [ ] [ ] [X] [O] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Claims cell **C2** (adjacent to C3).
+- **Command:** `claim C2`
+- **Grid:**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [ ] [ ] [ ] [ ]
+C [ ] [X] [X] [O] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Claims cell **C5** (adjacent to C4).
+- **Command:** `claim C5`
+- **Grid:**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [ ] [ ] [ ] [ ]
+C [ ] [X] [X] [O] [O]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Claims cell **B2** (adjacent to C2).
+- **Command:** `claim B2`
+- **Grid:**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [X] [ ] [ ] [ ]
+C [ ] [X] [X] [O] [O]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+---
+
+**Game Continues:**
+
+- Players continue claiming adjacent cells.
+- They may block each other's expansion by controlling key cells.
+
+---
+
+**End of Game:**
+
+- The grid is fully claimed, or no further moves can be made.
+- **Final Scores:**
+  - **Player 1:** 13 cells
+  - **Player 2:** 12 cells
+- **Winner:** **Player 1**
+
+---
+
+## **Command-Line Interaction Sample**
+
+**Starting the Game:**
+
+```
+Welcome to Adjacent Claim!
+
+Player 1, enter your first claim (e.g., C3): C3
+Player 1 claimed C3.
+
+Player 2, enter your first claim: C4
+Player 2 claimed C4.
+
+Player 1, enter your claim: C2
+Player 1 claimed C2.
+
+Player 2, enter your claim: C5
+Player 2 claimed C5.
+
+...
+```
+
+**Invalid Move Example:**
+
+```
+Player 2, enter your claim: A1
+Invalid move. You must claim a cell adjacent to your existing cells.
+Available moves: [list of valid cells]
+Enter a valid claim: D4
+Player 2 claimed D4.
+```
+
+---
+
+## **Additional Rules and Clarifications**
+
+- **Adjacency Clarification:**
+  - Only horizontal and vertical neighbors are considered adjacent.
+  - For cell **C3**, adjacent cells are **B3**, **C2**, **C4**, **D3**.
+
+- **Multiple Groups:**
+  - If a player has non-connected groups of claimed cells, they can claim adjacent to any of their groups.
+
+- **Strategy Tips:**
+  - **Expansion:** Focus on expanding your territory early to maximize future options.
+  - **Blocking:** Position your claims to limit your opponent's ability to expand.
+  - **Control Corners and Edges:** These positions have fewer adjacent cells and can be strategic in blocking.
+
+---
+
+**Enjoy the strategic challenge of Adjacent Claim, and may the best strategist win!**

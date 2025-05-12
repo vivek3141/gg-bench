@@ -1,0 +1,269 @@
+# **Grid Lock**
+
+## **Objective**
+
+Be the last player able to make a valid move on the grid by strategically claiming cells and blocking your opponent's options. The game ends when a player cannot make a valid move on their turn; the other player is declared the winner.
+
+---
+
+## **Setup**
+
+1. **Grid Initialization**:
+   - The game is played on a 4x4 grid consisting of 16 cells.
+   - Cells are numbered from **1** to **16**, arranged sequentially from left to right, top to bottom.
+
+     ```
+     1   2   3   4
+     5   6   7   8
+     9  10  11  12
+     13 14  15  16
+     ```
+
+2. **Starting Conditions**:
+   - All cells are initially unclaimed and unblocked.
+   - Players decide who takes the first turn (Player 1 and Player 2).
+
+---
+
+## **Game Components**
+
+1. **The Grid**:
+   - A 4x4 grid with cells numbered **1** to **16**.
+   - Cells can be in one of three states:
+     - **Unclaimed**: Available for players to claim.
+     - **Claimed**: Occupied by a player and marked with their symbol ('X' for Player 1, 'O' for Player 2).
+     - **Blocked**: Unavailable for claiming, marked with a '-' symbol.
+
+2. **Players**:
+   - **Player 1**: Uses the symbol 'X'.
+   - **Player 2**: Uses the symbol 'O'.
+
+3. **Markers**:
+   - **'X'**: Indicates a cell claimed by Player 1.
+   - **'O'**: Indicates a cell claimed by Player 2.
+   - **'-'**: Indicates a blocked cell.
+
+---
+
+## **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns, starting with Player 1.
+
+2. **Player Actions**:
+   - **Claiming a Cell**:
+     - On their turn, a player selects an unclaimed and unblocked cell by entering its number.
+     - The selected cell is marked with the player's symbol on the grid.
+     - All adjacent cells become blocked.
+
+3. **Adjacency**:
+   - Adjacent cells include all cells horizontally, vertically, and diagonally surrounding the claimed cell.
+
+4. **Turn Progression**:
+   - After a player completes their move, the turn passes to the other player.
+   - The game continues until a player cannot make a valid move on their turn.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Claiming Cells**:
+   - Players can only claim cells that are unclaimed and unblocked.
+   - Once a cell is claimed, it remains occupied by that player for the rest of the game.
+
+2. **Blocking Cells**:
+   - When a cell is claimed, all adjacent cells become blocked.
+   - Blocked cells are marked with a '-' and cannot be claimed by either player.
+   - Blocking occurs immediately after a cell is claimed.
+
+3. **Valid Moves**:
+   - A valid move consists of selecting an unclaimed, unblocked cell.
+   - If a player has no valid moves on their turn, they lose the game.
+
+4. **Winning the Game**:
+   - The last player able to make a valid move wins.
+   - If a player cannot make a move on their turn, the other player wins.
+
+---
+
+## **Scoring**
+
+- There is no point-based scoring system.
+- Victory is determined by being the last player able to make a valid move.
+
+---
+
+## **Examples**
+
+### **Example Game Progression**
+
+**Initial Grid:**
+
+```
+1   2   3   4
+5   6   7   8
+9  10  11  12
+13 14  15  16
+```
+
+---
+
+**Turn 1 - Player 1**
+
+- **Action**: Claims cell **6**.
+- **Grid Update**:
+  - Cell 6 is marked with 'X'.
+  - Adjacent cells (1, 2, 5, 7, 10, 11) are blocked ('-').
+
+**Grid After Turn 1:**
+
+```
+-   -   3   4
+-   X   -   8
+9   -   -  12
+13 14  15  16
+```
+
+---
+
+**Turn 2 - Player 2**
+
+- **Action**: Claims cell **15**.
+- **Grid Update**:
+  - Cell 15 is marked with 'O'.
+  - Adjacent cells (10, 11, 14, 16) are blocked ('-').
+
+**Grid After Turn 2:**
+
+```
+-   -   3   4
+-   X   -   8
+9   -   -  12
+13  -   O   -
+```
+
+---
+
+**Turn 3 - Player 1**
+
+- **Action**: Claims cell **12**.
+- **Grid Update**:
+  - Cell 12 is marked with 'X'.
+  - Adjacent cells (7, 8,11,15,16) are blocked ('-').
+
+**Grid After Turn 3:**
+
+```
+-   -   3   4
+-   X   -   -
+9   -   -   X
+13  -   O   -
+```
+
+---
+
+**Turn 4 - Player 2**
+
+- **Action**: Claims cell **9**.
+- **Grid Update**:
+  - Cell 9 is marked with 'O'.
+  - Adjacent cells (5,6,10,13,14) are blocked ('-').
+
+**Grid After Turn 4:**
+
+```
+-   -   3   4
+-   X   -   -
+O   -   -   X
+-   -   O   -
+```
+
+---
+
+**Turn 5 - Player 1**
+
+- **Action**: Claims cell **3**.
+- **Grid Update**:
+  - Cell 3 is marked with 'X'.
+  - Adjacent cells (2,4,6,7) are blocked ('-').
+
+**Grid After Turn 5:**
+
+```
+-   -   X   -
+-   X   -   -
+O   -   -   X
+-   -   O   -
+```
+
+---
+
+**Turn 6 - Player 2**
+
+- **Available Moves**: No unblocked, unclaimed cells remain.
+
+**Result**: Player 2 has no valid moves and loses the game.
+
+---
+
+## **Command-Line Interaction Example**
+
+**Initial Prompt:**
+
+```
+Grid:
+1   2   3   4
+5   6   7   8
+9  10  11  12
+13 14  15  16
+
+Player 1, enter the number of the cell you want to claim:
+```
+
+---
+
+**Sample Turns:**
+
+- **Player 1's Turn:**
+
+  ```
+  Player 1, enter the number of the cell you want to claim: 6
+
+  Updated Grid:
+  -   -   3   4
+  -   X   -   8
+  9   -   -  12
+ 13 14  15  16
+  ```
+
+- **Player 2's Turn:**
+
+  ```
+  Player 2, enter the number of the cell you want to claim: 15
+
+  Updated Grid:
+  -   -   3   4
+  -   X   -   8
+  9   -   -  12
+ 13  -   O   -
+  ```
+
+- **Continue Until Game Conclusion**
+
+---
+
+## **Strategy Tips**
+
+- **Plan Ahead**:
+  - Consider the impact of your move on future options.
+  - Aim to maximize your accessible cells while minimizing your opponent's choices.
+
+- **Control the Center**:
+  - Claiming central cells can block more adjacent cells, restricting your opponent.
+
+- **Force Your Opponent's Moves**:
+  - Guide your opponent into areas of the grid with fewer options.
+
+---
+
+By understanding the rules and planning strategically, you can outmaneuver your opponent and secure victory in **Grid Lock**!

@@ -1,0 +1,7 @@
+In the "Cipher Clash" game environment, the action space consists of indices representing possible moves:
+
+1. **Indices 0-129:** Each index corresponds to a specific combination of letter and position guess. There are 26 letters (A to Z) and 5 positions (1 to 5), resulting in 130 possible letter-position combinations (26 letters * 5 positions = 130 combinations). Each index from 0 to 129 maps to a unique letter-position pair, which is calculated by:
+   - `position_index` = action // 26
+   - `letter_index` = action % 26 (maps to the letter by converting it to a character with `chr(ord("A") + letter_index)`)
+
+2. **Indices 130 onwards:** These indices correspond to full word guesses from the available word list. The index minus 130 gives the position of the word in the list (e.g., action 130 corresponds to the first word, action 131 corresponds to the second word, etc.).

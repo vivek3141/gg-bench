@@ -1,0 +1,278 @@
+# Prime Claim
+
+## Objective
+
+**Prime Claim** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reach **exactly 50 points** by claiming numbers from a shared pool. Players must strategically select numbers to accumulate points while considering the impact on their opponent. If a player exceeds 50 points, they lose the game. Victory is achieved by reaching exactly 50 points or forcing the opponent to surpass 50 points.
+
+## Setup
+
+1. **Number Pool**: A shared list of numbers from **1 to 25** is presented to both players at the start of the game. All numbers are initially unclaimed.
+
+2. **Player Scores**: Both players begin with a score of **0**.
+
+3. **Starting Player**: Decide randomly or by mutual agreement which player takes the first turn.
+
+Example of the initial number pool:
+
+```
+Numbers Available: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+```
+
+## Game Components
+
+- **Numbers (1-25)**: These are the central elements of the game. Each number can be claimed by a player during their turn and has specific effects based on its properties.
+
+  - **Prime Numbers**: Numbers greater than 1 that have no positive divisors other than 1 and themselves (e.g., 2, 3, 5, 7, 11, 13, 17, 19, 23).
+  
+  - **Composite Numbers**: Numbers that have positive divisors other than 1 and themselves (e.g., 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25).
+
+- **Score Tracker**: A simple display or variable to keep track of each player's current score.
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately. On each turn, a player performs the following actions:
+
+   - **Select a Number**: Choose any unclaimed number from the available number pool.
+
+2. **Action Resolution**:
+
+   - **Update Scores**: Based on the selected number (prime or composite), scores are adjusted according to the game rules.
+
+   - **Update Number Pool**: The chosen number is marked as claimed and is no longer available.
+
+3. **Progression**:
+
+   - **Check for Victory Conditions**: After each turn, check if either player has reached exactly 50 points or if any player has exceeded 50 points.
+
+   - **Proceed to Next Turn**: If the game hasn't ended, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+
+   - Players may select **any unclaimed number** from 1 to 25 during their turn.
+
+2. **Claiming Prime Numbers**:
+
+   - When a player claims a **prime number**, they **add the value** of that number to **their own score only**.
+
+   - *Example*: If a player claims **7**, they gain **+7 points**.
+
+3. **Claiming Composite Numbers**:
+
+   - When a player claims a **composite number**, they **add the value** of that number to **their own score**.
+   
+   - Additionally, the **opponent** receives points equal to the sum of all **prime factors** of the claimed composite number.
+
+   - *Example*: If a player claims **15**, they gain **+15 points**, and the opponent gains **+8 points** (since 15's prime factors are 3 and 5, and 3 + 5 = 8).
+
+4. **Victory Conditions**:
+
+   - **Exact Score Win**: The first player to reach **exactly 50 points** wins the game.
+
+   - **Over Scoring Loss**: If a player's score **exceeds 50 points** after their turn, they **lose** the game.
+
+   - **Opponent Over Scores**: If a player's action causes **both players' scores** to exceed 50, the **active player loses**.
+
+5. **Number Availability**:
+
+   - Once a number is claimed by a player, it is **removed** from the number pool and cannot be selected again.
+
+## Scoring
+
+- **Tracking Scores**: Keep a running total of each player's score after every turn.
+
+- **Score Adjustments**:
+
+  - **Prime Number Claimed**:
+    - **Active Player**: Adds the prime number's value to their score.
+    - **Opponent**: No change.
+
+  - **Composite Number Claimed**:
+    - **Active Player**: Adds the composite number's value to their score.
+    - **Opponent**: Adds the sum of the prime factors of the composite number to their score.
+
+- **Victory Check**:
+
+  - After score adjustments, check if either player has **exactly 50 points** or if any player has **exceeded 50 points**.
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial Setup
+
+```
+Numbers Available: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+
+Player 1 Score: 0
+Player 2 Score: 0
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 claims **13** (a prime number).
+
+- **Outcome**:
+  - Player 1 gains **+13 points**.
+  - Player 2 gains **0 points**.
+
+- **Updated Scores**:
+  - Player 1 Score: **13**
+  - Player 2 Score: **0**
+
+- **Numbers Available**: 1 2 3 4 5 6 7 8 9 10 11 12 14 15 16 17 18 19 20 21 22 23 24 25
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 claims **15** (a composite number).
+
+- **Prime Factors of 15**: 3 and 5 (since 3 × 5 = 15).
+
+- **Outcome**:
+  - Player 2 gains **+15 points**.
+  - Player 1 gains **+8 points** (3 + 5).
+
+- **Updated Scores**:
+  - Player 1 Score: **13 + 8 = 21**
+  - Player 2 Score: **15**
+
+- **Numbers Available**: 1 2 3 4 5 6 7 8 9 10 11 12 14 16 17 18 19 20 21 22 23 24 25
+
+#### Turn 3: Player 1
+
+- **Action**: Player 1 claims **7** (a prime number).
+
+- **Outcome**:
+  - Player 1 gains **+7 points**.
+  - Player 2 gains **0 points**.
+
+- **Updated Scores**:
+  - Player 1 Score: **21 + 7 = 28**
+  - Player 2 Score: **15**
+
+- **Numbers Available**: 1 2 3 4 5 6 8 9 10 11 12 14 16 17 18 19 20 21 22 23 24 25
+
+#### Turn 4: Player 2
+
+- **Action**: Player 2 claims **24** (a composite number).
+
+- **Prime Factors of 24**: 2, 2, 2, 3 (since 2 × 2 × 2 × 3 = 24).
+
+- **Unique Prime Factors**: 2 and 3.
+
+- **Sum of Unique Prime Factors**: 2 + 3 = **5**
+
+- **Outcome**:
+  - Player 2 gains **+24 points**.
+  - Player 1 gains **+5 points**.
+
+- **Updated Scores**:
+  - Player 1 Score: **28 + 5 = 33**
+  - Player 2 Score: **15 + 24 = 39**
+
+- **Numbers Available**: 1 2 3 4 5 6 8 9 10 11 12 14 16 17 18 19 20 21 22 23 25
+
+#### Turn 5: Player 1
+
+- **Action**: Player 1 claims **17** (a prime number).
+
+- **Outcome**:
+  - Player 1 gains **+17 points**.
+  - Player 2 gains **0 points**.
+
+- **Updated Scores**:
+  - Player 1 Score: **33 + 17 = 50**
+  - Player 2 Score: **39**
+
+- **Victory Check**:
+  - **Player 1** has reached **exactly 50 points** and **wins the game**.
+
+### Command-Line Interaction Example
+
+Below is how the game might look in a command-line interface:
+
+```
+--- Prime Claim ---
+
+Numbers Available: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1, it's your turn.
+Enter the number you wish to claim: 13
+
+You have claimed number 13 (Prime).
+You gain 13 points.
+
+Updated Scores:
+Player 1 Score: 13
+Player 2 Score: 0
+
+Numbers Available: 1 2 3 4 5 6 7 8 9 10 11 12 14 15 16 17 18 19 20 21 22 23 24 25
+
+Player 2, it's your turn.
+Enter the number you wish to claim: 15
+
+You have claimed number 15 (Composite).
+Its prime factors are: 3, 5
+You gain 15 points.
+Player 1 gains 8 points from the prime factors.
+
+Updated Scores:
+Player 1 Score: 21
+Player 2 Score: 15
+
+Numbers Available: 1 2 3 4 5 6 7 8 9 10 11 12 14 16 17 18 19 20 21 22 23 24 25
+
+Player 1, it's your turn.
+Enter the number you wish to claim: 7
+
+You have claimed number 7 (Prime).
+You gain 7 points.
+
+Updated Scores:
+Player 1 Score: 28
+Player 2 Score: 15
+
+... [Game continues as in the sample playthrough] ...
+
+Player 1, it's your turn.
+Enter the number you wish to claim: 17
+
+You have claimed number 17 (Prime).
+You gain 17 points.
+
+Updated Scores:
+Player 1 Score: 50
+Player 2 Score: 39
+
+Congratulations, Player 1! You have reached exactly 50 points and win the game!
+```
+
+### Strategic Considerations
+
+- **Choosing Primes vs. Composites**:
+
+  - **Primes**: Safe choice for accumulating points without benefiting the opponent.
+
+  - **Composites**: High-risk, high-reward. They offer more points but can boost the opponent's score significantly.
+
+- **Monitoring Opponent's Score**:
+
+  - Be cautious when your opponent is close to 50 points. Claiming a composite number might inadvertently allow them to win.
+
+- **Avoiding Over Scoring**:
+
+  - Plan your selections to avoid exceeding 50 points. Selecting a number that causes you to surpass 50 results in an immediate loss.
+
+- **Denying Numbers**:
+
+  - Consider claiming numbers that your opponent might use to reach 50 points, especially if they are within winning range.
+
+## Conclusion
+
+**Prime Claim** offers strategic depth through careful selection and timing of number claims. Players must balance the desire for high-point composite numbers against the risk of empowering their opponent. By planning ahead and anticipating the opponent's moves, skilled players can consistently outperform less experienced players.
+
+Enjoy the challenge and may the most strategic player win!

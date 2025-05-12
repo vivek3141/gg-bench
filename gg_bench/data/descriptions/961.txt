@@ -1,0 +1,208 @@
+**Divisor Duel**
+
+---
+
+### **Objective**
+
+Be the last player able to make a valid move by strategically reducing the shared number to prevent your opponent from making a move. The primary goal is to force your opponent into a position where they cannot subtract a proper divisor from the current number, thereby securing your victory.
+
+---
+
+### **Setup**
+
+1. **Initial Number Selection**:
+   - Decide on a positive integer to start the game. This number is referred to as the **Current Number (N)**.
+   - For a quick game, it's recommended to start with a number between **15 and 30**. For a longer game, choose a larger number.
+
+2. **Player Positions**:
+   - The game is played by **two players**, referred to as **Player 1** and **Player 2**.
+   - Determine who goes first through mutual agreement or by a random method (e.g., coin toss).
+
+---
+
+### **Game Components**
+
+- **Current Number (N)**:
+  - A positive integer that players will successively reduce by subtracting its proper divisors.
+  - Initially set to the chosen starting number.
+
+- **Proper Divisors**:
+  - Positive integers less than **N** that divide **N** evenly (no remainder).
+  - For example, proper divisors of **20** are **1, 2, 4, 5, 10**.
+
+---
+
+### **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Turn Structure**:
+   - **Announcement**: The **Current Number (N)** is announced at the beginning of each turn.
+   - **Action**: The active player selects a proper divisor of **N** and subtracts it from **N**.
+   - **Update**: The result becomes the new **Current Number (N)** for the next turn.
+
+3. **Example Turn**:
+   - **Current Number (N)**: 18
+   - **Player's Move**: Player selects proper divisor **9**.
+   - **Calculation**: 18 - 9 = 9
+   - **New N**: 9
+
+---
+
+### **Rules and Mechanics**
+
+1. **Proper Divisor Selection**:
+   - On each turn, a player **must** subtract a proper divisor of the **Current Number (N)**.
+   - The selected divisor must be a positive integer less than **N** that divides **N** without a remainder.
+
+2. **Valid Moves**:
+   - If the **Current Number (N)** is **2**, the only proper divisor is **1**.
+   - If **N** is **1**, there are no proper divisors, and the player cannot make a move.
+
+3. **Forced Moves and Loss Condition**:
+   - A player **loses** if they cannot make a valid move on their turn because **N** has no proper divisors.
+   - The game cannot end in a draw; there will always be a winner.
+
+4. **Gameplay Strategies**:
+   - Players should anticipate future moves and plan to leave their opponent with a **Current Number** that is a **prime number**, forcing them into a limited set of options.
+   - Recognizing patterns in the divisibility of numbers can provide a strategic advantage.
+
+---
+
+### **Scoring**
+
+- **Victory**:
+  - The player who forces their opponent into a position where no valid moves are possible **wins** the game.
+- **Tracking**:
+  - No point system is required. Players only need to keep track of the **Current Number (N)**.
+
+---
+
+### **Examples**
+
+#### **Example Game Playthrough**
+
+**Starting Number (N)**: 18
+
+- **Turn 1**:
+  - **Player 1**:
+    - **Current N**: 18
+    - **Proper Divisors of 18**: 1, 2, 3, 6, 9
+    - **Action**: Subtracts 9
+    - **Calculation**: 18 - 9 = 9
+    - **New N**: 9
+
+- **Turn 2**:
+  - **Player 2**:
+    - **Current N**: 9
+    - **Proper Divisors of 9**: 1, 3
+    - **Action**: Subtracts 3
+    - **Calculation**: 9 - 3 = 6
+    - **New N**: 6
+
+- **Turn 3**:
+  - **Player 1**:
+    - **Current N**: 6
+    - **Proper Divisors of 6**: 1, 2, 3
+    - **Action**: Subtracts 3
+    - **Calculation**: 6 - 3 = 3
+    - **New N**: 3
+
+- **Turn 4**:
+  - **Player 2**:
+    - **Current N**: 3
+    - **Proper Divisors of 3**: 1
+    - **Action**: Subtracts 1
+    - **Calculation**: 3 - 1 = 2
+    - **New N**: 2
+
+- **Turn 5**:
+  - **Player 1**:
+    - **Current N**: 2
+    - **Proper Divisors of 2**: 1
+    - **Action**: Subtracts 1
+    - **Calculation**: 2 - 1 = 1
+    - **New N**: 1
+
+- **Turn 6**:
+  - **Player 2**:
+    - **Current N**: 1
+    - **Proper Divisors of 1**: None
+    - **Action**: Cannot make a move.
+    - **Result**: **Player 2 loses**.
+
+**Winner**: **Player 1**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+- **Starting N**: 15
+- **Players**: Player 1 and Player 2
+
+**Turn Sequence**
+
+1. **Player 1's Turn**:
+   - **Current N**: 15
+   - **Proper Divisors**: 1, 3, 5
+   - **Command Prompt**: `Player 1, enter a proper divisor of 15: `
+   - **Player Input**: `5`
+   - **Result**: `15 - 5 = 10`
+
+2. **Player 2's Turn**:
+   - **Current N**: 10
+   - **Proper Divisors**: 1, 2, 5
+   - **Command Prompt**: `Player 2, enter a proper divisor of 10: `
+   - **Player Input**: `5`
+   - **Result**: `10 - 5 = 5`
+
+3. **Player 1's Turn**:
+   - **Current N**: 5
+   - **Proper Divisors**: 1
+   - **Command Prompt**: `Player 1, enter a proper divisor of 5: `
+   - **Player Input**: `1`
+   - **Result**: `5 - 1 = 4`
+
+4. **Player 2's Turn**:
+   - **Current N**: 4
+   - **Proper Divisors**: 1, 2
+   - **Command Prompt**: `Player 2, enter a proper divisor of 4: `
+   - **Player Input**: `2`
+   - **Result**: `4 - 2 = 2`
+
+5. **Player 1's Turn**:
+   - **Current N**: 2
+   - **Proper Divisors**: 1
+   - **Command Prompt**: `Player 1, enter a proper divisor of 2: `
+   - **Player Input**: `1`
+   - **Result**: `2 - 1 = 1`
+
+6. **Player 2's Turn**:
+   - **Current N**: 1
+   - **Proper Divisors**: None
+   - **Command Prompt**: `Player 2 cannot make a move and loses the game.`
+
+**Game Over**
+
+- **Winner**: **Player 1**
+
+---
+
+### **Strategic Tips**
+
+- **Control the Number**: Aim to leave the **Current Number (N)** as a prime number after your turn, limiting your opponent's options.
+- **Plan Ahead**: Anticipate possible moves by your opponent and choose divisors that force them into difficult positions.
+- **Avoid Low Numbers on Your Turn**: Try not to reduce **N** to **1** or **2** on your turn unless it ensures a win, as it might give your opponent the upper hand.
+
+---
+
+### **Conclusion**
+
+"Divisor Duel" is a simple yet strategic game that challenges players to think ahead and utilize their understanding of numbers and divisibility. Its minimal components and straightforward rules make it easy to code and play in a command-line interface, while the depth of strategy ensures that skilled players can consistently outperform unskilled opponents.
+
+---
+
+Enjoy the game and may the best strategist win!

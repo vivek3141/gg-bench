@@ -1,0 +1,14 @@
+In the `Blockade Runner` gym environment, actions in the action space are mapped as follows:
+
+- **Indices 0-3**: Correspond to movement actions:
+  - 0: Move up (offset: (-1, 0))
+  - 1: Move down (offset: (1, 0))
+  - 2: Move left (offset: (0, -1))
+  - 3: Move right (offset: (0, 1))
+
+- **Indices 4-28**: Correspond to obstacle placements:
+  - For each index `i` from 4 to 28, the action places an obstacle on the grid cell at coordinates `(i - 4)`, derived using:
+    - `x = (i - 4) % grid_size`
+    - `y = (i - 4) // grid_size`
+
+These indices allow players to control their piece movements or place obstacles strategically within a 5x5 grid, aligning with the constraints and objectives of the game.

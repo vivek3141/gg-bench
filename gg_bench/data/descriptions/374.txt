@@ -1,0 +1,177 @@
+# Bit Flip Challenge: Rule Book
+
+## Objective
+
+The goal of **Bit Flip Challenge** is to be the player who flips the last bit in a binary sequence from `0` to `1`. Players take turns flipping bits, and the player who makes the final move wins the game.
+
+## Setup
+
+- The game starts with a binary sequence of **10 bits**, all set to `0`:
+  ```
+  0 0 0 0 0 0 0 0 0 0
+  ```
+- There are two players: **Player 1** and **Player 2**.
+- Players decide who goes first (e.g., by coin toss).
+
+## Game Components
+
+- **Binary Sequence**: A list of 10 bits (`0`s and `1`s) representing the game's state.
+- **Bits**: Individual positions in the sequence that players can flip from `0` to `1`.
+- **Command-Line Interface**: The game is played by entering commands in a command-line environment.
+
+## Turns
+
+- Players alternate turns starting with the designated first player.
+- **On their turn**, a player must flip **at least one** bit from `0` to `1`.
+- The bits flipped must adhere to the rules outlined in the **Rules and Mechanics** section.
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - On your turn, you can flip **one or more consecutive bits** from `0` to `1`.
+   - The bits you flip must be **adjacent** and in a single sequence (no skipping bits).
+   - You can only flip bits that are currently set to `0`.
+   - You may choose any group of consecutive `0`s anywhere in the sequence.
+
+2. **Valid Moves**:
+   - A move is valid if it flips at least one `0` bit to `1` and follows the flipping rules.
+   - If a player cannot make a valid move (no `0`s remain), the game ends.
+
+3. **Winning the Game**:
+   - The player who flips the **last `0` bit** to `1` wins the game.
+
+## Scoring
+
+- **No point tracking** is needed.
+- The game is won by fulfilling the objective, not by accumulating points.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+```
+Bit Positions: 1 2 3 4 5 6 7 8 9 10
+Bit Values:    0 0 0 0 0 0 0 0 0 0
+```
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Chooses to flip bits at positions **1** and **2**.
+   - **Action**: Flips bits 1-2 from `0` to `1`.
+   - **Resulting State**:
+     ```
+     Bit Values: 1 1 0 0 0 0 0 0 0 0
+     ```
+   
+2. **Player 2's Turn**:
+   - Chooses to flip bit at position **5**.
+   - **Action**: Flips bit 5 from `0` to `1`.
+   - **Resulting State**:
+     ```
+     Bit Values: 1 1 0 0 1 0 0 0 0 0
+     ```
+
+3. **Player 1's Turn**:
+   - Chooses to flip bits at positions **3** and **4**.
+   - **Action**: Flips bits 3-4 from `0` to `1`.
+   - **Resulting State**:
+     ```
+     Bit Values: 1 1 1 1 1 0 0 0 0 0
+     ```
+
+4. **Player 2's Turn**:
+   - Chooses to flip bits at positions **6**, **7**, and **8**.
+   - **Action**: Flips bits 6-8 from `0` to `1`.
+   - **Resulting State**:
+     ```
+     Bit Values: 1 1 1 1 1 1 1 1 0 0
+     ```
+
+5. **Player 1's Turn**:
+   - Chooses to flip bits at positions **9** and **10**.
+   - **Action**: Flips bits 9-10 from `0` to `1`.
+   - **Resulting State**:
+     ```
+     Bit Values: 1 1 1 1 1 1 1 1 1 1
+     ```
+
+- **Game Over**: Player 1 flipped the last bits and wins the game.
+
+### Sample Command-Line Interaction
+
+Below is a sample interaction between two players in a command-line interface.
+
+#### Starting the Game
+
+```
+Welcome to Bit Flip Challenge!
+Player 1 and Player 2, get ready to play.
+Current Bit Sequence: 0 0 0 0 0 0 0 0 0 0
+Player 1, it's your turn.
+```
+
+#### Player 1's Turn
+
+```
+Enter the starting bit position to flip: 1
+Enter the ending bit position to flip: 2
+Flipping bits 1 to 2...
+Current Bit Sequence: 1 1 0 0 0 0 0 0 0 0
+```
+
+#### Player 2's Turn
+
+```
+Player 2, it's your turn.
+Enter the starting bit position to flip: 5
+Enter the ending bit position to flip: 5
+Flipping bit 5...
+Current Bit Sequence: 1 1 0 0 1 0 0 0 0 0
+```
+
+#### Player 1's Turn
+
+```
+Player 1, it's your turn.
+Enter the starting bit position to flip: 3
+Enter the ending bit position to flip: 4
+Flipping bits 3 to 4...
+Current Bit Sequence: 1 1 1 1 1 0 0 0 0 0
+```
+
+#### Player 2's Turn
+
+```
+Player 2, it's your turn.
+Enter the starting bit position to flip: 6
+Enter the ending bit position to flip: 8
+Flipping bits 6 to 8...
+Current Bit Sequence: 1 1 1 1 1 1 1 1 0 0
+```
+
+#### Player 1's Turn
+
+```
+Player 1, it's your turn.
+Enter the starting bit position to flip: 9
+Enter the ending bit position to flip: 10
+Flipping bits 9 to 10...
+Current Bit Sequence: 1 1 1 1 1 1 1 1 1 1
+All bits have been flipped.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the number of remaining `0`s and plan your flips to force the opponent into a position where they have no good moves.
+- **Control the Center**: Flipping bits in the center can limit your opponent's options.
+- **Leave Gaps**: Sometimes leaving a single `0` between your flipped bits can create challenges for your opponent.
+
+## Summary
+
+Bit Flip Challenge is a simple yet strategic game that's easy to code and play in a command-line environment. The clear objectives and straightforward rules make it accessible, while the need for strategic planning offers depth for skilled players to consistently outperform less experienced opponents.
+
+Enjoy the game and may the best player flip the last bit!

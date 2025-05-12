@@ -1,0 +1,235 @@
+**Magic Square Duel**
+
+**Objective:**
+The primary goal of Magic Square Duel is to be the first player to complete a line—horizontal, vertical, or diagonal—of numbers that add up to **15** in a shared 3x3 grid. Victory is achieved by strategically selecting and placing numbers to form the sum of 15 while preventing your opponent from doing the same.
+
+---
+
+**Setup:**
+
+1. **Game Grid:**
+   - A 3x3 grid is used for gameplay. The grid positions are identified by their coordinates (row, column), ranging from (1,1) at the top-left corner to (3,3) at the bottom-right corner.
+
+2. **Number Pool:**
+   - Numbers from **1** to **9** are available for placement. Each number can be used only once in the game.
+
+3. **Player Assignment:**
+   - Decide which player will go first (Player 1) and which will be second (Player 2). This can be determined randomly or by mutual agreement.
+
+4. **Starting Conditions:**
+   - The grid starts empty.
+   - All numbers from 1 to 9 are unclaimed and available for placement.
+
+---
+
+**Game Components:**
+
+1. **Grid Positions:**
+   - The grid consists of 9 cells arranged in 3 rows and 3 columns.
+   - Each cell is identified by its row and column numbers.
+
+2. **Number Tokens:**
+   - Digits **1** through **9**, each represented as an individual token or identifier.
+   - Numbers have unique attributes:
+     - Each number can only be placed once.
+     - Once placed, a number occupies its cell for the remainder of the game.
+
+3. **Player Marks:**
+   - Players may be represented by their names or symbols (e.g., Player 1: X, Player 2: O) for command-line identification purposes.
+
+---
+
+**Turns:**
+
+1. **Turn Order:**
+   - Players alternate turns starting with Player 1.
+
+2. **Actions During a Turn:**
+   - **Select a Number:**
+     - Choose an unclaimed number from 1 to 9.
+   - **Place the Number:**
+     - Assign the selected number to any empty cell in the grid by specifying the cell's coordinates.
+   - **End Turn:**
+     - After placing the number, the turn ends, and control passes to the other player.
+
+3. **Turn Progression:**
+   - The game continues with players alternately selecting and placing numbers until one player achieves the objective or all cells are filled without a winner.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Number Selection and Placement:**
+   - A player must select a number that has not yet been placed on the grid.
+   - The selected number is placed in any empty cell chosen by the player.
+
+2. **Winning Condition:**
+   - A player wins by having any row, column, or diagonal filled with their placed numbers that sum to exactly **15**.
+   - The line of numbers can consist of numbers placed by both players, but the winning player must have placed the majority (at least two out of three numbers in the line).
+
+3. **Preventing Opponent's Victory:**
+   - Players should strategize not only to achieve their own line summing to 15 but also to block their opponent from doing so.
+
+4. **Draw Condition:**
+   - **Note:** There is no draw mechanism in this game. If all numbers are placed and no player has achieved the sum of 15 in a line where they have placed at least two numbers, the game continues into the **Sudden Death** phase.
+
+5. **Sudden Death Phase:**
+   - If the initial placements do not yield a winner, players take turns swapping the positions of any two numbers on the grid, regardless of who placed them, aiming to create a line summing to 15 with the majority of their own numbers.
+   - Swapping continues until a player wins.
+
+---
+
+**Scoring:**
+
+- **Victory:**
+  - The player who first achieves a line (row, column, or diagonal) with numbers summing to 15, and with at least two of those numbers placed by them, wins the game.
+- **Sudden Death Victory:**
+  - If a player achieves the winning condition during the Sudden Death phase, they are declared the winner.
+
+---
+
+**Examples:**
+
+**Example Game Playthrough:**
+
+1. **Initial Turns:**
+
+   - **Player 1's Turn:**
+     - Selects number **5**.
+     - Places **5** at position (2,2):
+
+       ```
+       [ ][ ][ ]
+       [ ][5][ ]
+       [ ][ ][ ]
+       ```
+
+   - **Player 2's Turn:**
+     - Selects number **6**.
+     - Places **6** at position (1,1):
+
+       ```
+       [6][ ][ ]
+       [ ][5][ ]
+       [ ][ ][ ]
+       ```
+
+2. **Subsequent Turns:**
+
+   - **Player 1's Turn:**
+     - Selects number **4**.
+     - Places **4** at position (3,1):
+
+       ```
+       [6][ ][ ]
+       [ ][5][ ]
+       [4][ ][ ]
+       ```
+
+   - **Player 2's Turn:**
+     - Selects number **7**.
+     - Places **7** at position (1,3):
+
+       ```
+       [6][ ][7]
+       [ ][5][ ]
+       [4][ ][ ]
+       ```
+
+3. **Winning Move:**
+
+   - **Player 1's Turn:**
+     - Notes that numbers at positions (3,1), (2,2), and needs a number at (1,3) summing to 15.
+     - **However**, (1,3) is occupied.
+     - Instead, aims for the column (1,1), (2,2), (3,3).
+     - Selects number **9**.
+     - Places **9** at position (3,3):
+
+       ```
+       [6][ ][7]
+       [ ][5][ ]
+       [4][ ][9]
+       ```
+
+   - Now, Player 1 has numbers **6**, **5**, and **4** at positions forming a diagonal or column? No.
+
+4. **Player 2's Turn:**
+
+   - Selects number **2**.
+   - Places **2** at position (2,3):
+
+     ```
+     [6][ ][7]
+     [ ][5][2]
+     [4][ ][9]
+     ```
+
+5. **Player 1's Winning Move:**
+
+   - **Player 1's Turn:**
+     - Selects number **3**.
+     - Places **3** at position (1,2):
+
+       ```
+       [6][3][7]
+       [ ][5][2]
+       [4][ ][9]
+       ```
+
+   - Checks for winning condition:
+     - Row 1: **6 + 3 + 7 = 16**.
+     - Column 2: **3 + 5 + (empty)**.
+     - Diagonal from (1,2) to (3,2): Not valid.
+
+   - No win yet.
+
+6. **Continued Play:**
+
+   - Players continue placing numbers and attempting to form the sum of 15 in a line where they have majority control.
+
+**Command-Line Interaction Sample:**
+
+- **Player 1's Turn:**
+  ```
+  Available Numbers: [1,2,3,4,5,6,7,8,9]
+  Player 1, select a number: 5
+  Select position to place 5 (row,column): 2,2
+  Grid after your move:
+  [ ][ ][ ]
+  [ ][5][ ]
+  [ ][ ][ ]
+  ```
+
+- **Player 2's Turn:**
+  ```
+  Available Numbers: [1,2,3,4,6,7,8,9]
+  Player 2, select a number: 6
+  Select position to place 6 (row,column): 1,1
+  Grid after your move:
+  [6][ ][ ]
+  [ ][5][ ]
+  [ ][ ][ ]
+  ```
+
+- **...**
+
+---
+
+**Strategy Tips:**
+
+- **Plan Ahead:**
+  - Think several moves ahead to set up potential lines that sum to 15.
+
+- **Control Key Numbers:**
+  - Numbers like **5** are central in forming sums of 15; securing them early can be advantageous.
+
+- **Blocking:**
+  - Pay attention to your opponent's moves and place numbers to block their potential lines.
+
+- **Number Combinations:**
+  - Familiarize yourself with combinations of numbers that add up to 15:
+    - 8+6+1, 9+5+1, 7+5+3, etc.
+
+---
+
+By carefully selecting numbers and strategically placing them on the grid, players engage in a battle of wits to outmaneuver their opponent and achieve the magical sum of 15. Enjoy the challenge and may the keenest mind win!

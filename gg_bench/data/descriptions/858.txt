@@ -1,0 +1,242 @@
+# Binary Race
+
+## Objective
+
+**Be the first player to reach exactly 64 by sequentially transforming a shared total starting from 1 using only addition or multiplication by 2.**
+
+Players take turns applying one of two operations—addition or multiplication by 2—to a shared total. The goal is to be the player who reaches exactly **64** on your turn without exceeding it. Strategic choice of operations will determine the winner.
+
+## Setup
+
+1. **Shared Total Initialization**: The game begins with a shared total of **1**.
+2. **Determine First Player**: Decide which player will take the first turn. This can be done through any random method, such as a coin toss.
+3. **Game Interface**: Since the game is played in a command-line interface, ensure both players have access to input commands and view the shared total after each turn.
+
+## Game Components
+
+- **Shared Total**: An integer value that starts at **1** and is updated each turn based on player actions.
+- **Allowed Operations**:
+  - **Addition by 2**: Increase the shared total by adding 2.
+  - **Multiplication by 2**: Multiply the shared total by 2.
+
+## Turns
+
+1. **Player Action**:
+   - On your turn, choose one of the two allowed operations to apply to the shared total:
+     - **Add 2**: `total = total + 2`
+     - **Multiply by 2**: `total = total * 2`
+2. **Update Total**:
+   - Apply the chosen operation to the shared total.
+   - The new total becomes the current shared total.
+3. **Display**:
+   - The updated total is displayed for both players to see.
+4. **Turn Progression**:
+   - Turns alternate between the two players until the game ends.
+
+## Rules and Mechanics
+
+- **Operation Restrictions**:
+  - Only the two specified operations (addition or multiplication by 2) are allowed.
+  - No other numbers or operations can be used.
+- **Winning the Game**:
+  - The first player to make the shared total exactly **64** on their turn wins the game.
+- **Exceeding 64**:
+  - If a player's operation causes the shared total to exceed 64, they lose the game immediately.
+- **Strategic Considerations**:
+  - Players must plan ahead to avoid exceeding 64 while striving to reach it before their opponent.
+  - Careful selection between addition and multiplication is crucial.
+
+## Scoring
+
+- **Winning**:
+  - The winner is the player who reaches exactly **64** on their turn without exceeding it.
+- **Losing**:
+  - A player loses if:
+    - Their operation causes the shared total to exceed 64.
+    - The opponent reaches exactly 64 first.
+- **Match Play**:
+  - Players can play multiple rounds, keeping track of victories to determine an overall winner.
+
+## Examples
+
+### Example Game Playthrough
+
+**Starting Total**: 1
+
+---
+
+**Player 1's Turn**
+
+- **Options**:
+  - **Add 2**: `1 + 2 = 3`
+  - **Multiply by 2**: `1 * 2 = 2`
+- **Choice**: Multiply by 2
+- **New Total**: 2
+
+**Command-Line Interaction**:
+```
+Player 1, choose an operation:
+1. Add 2
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+New total is 2.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Options**:
+  - **Add 2**: `2 + 2 = 4`
+  - **Multiply by 2**: `2 * 2 = 4`
+- **Choice**: Add 2 (either choice results in 4)
+- **New Total**: 4
+
+**Command-Line Interaction**:
+```
+Player 2, choose an operation:
+1. Add 2
+2. Multiply by 2
+Enter your choice (1 or 2): 1
+New total is 4.
+```
+
+---
+
+**Player 1's Turn**
+
+- **Options**:
+  - **Add 2**: `4 + 2 = 6`
+  - **Multiply by 2**: `4 * 2 = 8`
+- **Choice**: Multiply by 2
+- **New Total**: 8
+
+**Command-Line Interaction**:
+```
+Player 1, choose an operation:
+1. Add 2
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+New total is 8.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Options**:
+  - **Add 2**: `8 + 2 = 10`
+  - **Multiply by 2**: `8 * 2 = 16`
+- **Choice**: Multiply by 2
+- **New Total**: 16
+
+**Command-Line Interaction**:
+```
+Player 2, choose an operation:
+1. Add 2
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+New total is 16.
+```
+
+---
+
+**Player 1's Turn**
+
+- **Options**:
+  - **Add 2**: `16 + 2 = 18`
+  - **Multiply by 2**: `16 * 2 = 32`
+- **Choice**: Multiply by 2
+- **New Total**: 32
+
+**Command-Line Interaction**:
+```
+Player 1, choose an operation:
+1. Add 2
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+New total is 32.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Options**:
+  - **Add 2**: `32 + 2 = 34`
+  - **Multiply by 2**: `32 * 2 = 64`
+- **Choice**: Multiply by 2
+- **New Total**: 64
+
+**Command-Line Interaction**:
+```
+Player 2, choose an operation:
+1. Add 2
+2. Multiply by 2
+Enter your choice (1 or 2): 2
+New total is 64.
+```
+
+**Result**:
+- **Player 2** wins by reaching exactly 64.
+
+---
+
+### Strategic Insights
+
+- **Avoiding Over-Exceeding**: Players must be cautious not to overshoot 64. For example, if the total is 48, multiplying by 2 would result in 96, causing a loss.
+- **Forcing Moves**: Players can force their opponent into a losing position by carefully choosing operations that limit the opponent's options.
+
+**Example**:
+
+If the shared total is 56:
+
+- **Options**:
+  - **Add 2**: `56 + 2 = 58` (safe)
+  - **Multiply by 2**: `56 * 2 = 112` (lose)
+
+A skilled player will recognize that adding 2 is the only viable option.
+
+## Command-Line Interaction Overview
+
+- **Prompting the Player**: Each turn, the player is prompted to select an operation.
+- **Input Validation**: The game should validate inputs to ensure that only valid choices (1 or 2) are accepted.
+- **Updating and Displaying Total**: After each move, the new total is calculated and displayed.
+- **Checking for Win/Loss**:
+  - After a move, the game checks if the total is exactly 64 or has exceeded 64.
+  - If exactly 64, the current player wins.
+  - If the total exceeds 64, the current player loses.
+
+## Game Flow Diagram
+
+1. **Initialize Game**:
+   - Set `total = 1`.
+   - Determine `current_player`.
+
+2. **Player Turn**:
+   - Prompt `current_player` to choose an operation (1 or 2).
+   - Validate input.
+   - Apply operation to `total`.
+   - Display new `total`.
+
+3. **Check for Win/Loss**:
+   - If `total == 64`:
+     - Declare `current_player` as the winner.
+     - End game.
+   - Else if `total > 64`:
+     - Declare `current_player` as the loser.
+     - End game.
+
+4. **Switch Player**:
+   - Change `current_player` to the other player.
+
+5. **Repeat**:
+   - Go back to **Player Turn**.
+
+## Conclusion
+
+Binary Race is a simple yet strategically rich game that challenges players to think ahead and make optimal choices each turn. Its straightforward rules make it easy to learn and implement in a command-line interface, while the strategic depth ensures engaging and competitive play. Mastery of Binary Race involves anticipating your opponent's moves and manipulating the shared total to your advantage.
+
+---
+
+**Enjoy the game, and may the best strategist win!**

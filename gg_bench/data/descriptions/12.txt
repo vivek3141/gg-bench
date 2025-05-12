@@ -1,0 +1,194 @@
+# Prime Duel
+
+## Objective
+
+Be the first player to reach a cumulative total score of exactly **50**. Utilize strategic decisions to manage your score, capitalize on prime number bonuses, and outmaneuver your opponent to achieve victory.
+
+## Setup
+
+1. **Players**: Two players are needed to play Prime Duel.
+2. **Starting Scores**: Both players start with a score of **0**.
+3. **Deck Preparation**:
+   - A virtual deck is created consisting of cards numbered **1** to **10**.
+   - There are **four copies** of each card number, resulting in a total of **40 cards**.
+   - The deck is **shuffled** thoroughly at the start of the game.
+
+## Game Components
+
+### Virtual Deck
+
+- **Cards**: Numbered from **1** to **10**.
+- **Quantity**: Four of each number (e.g., four `1`s, four `2`s, ..., four `10`s).
+- **Total Cards**: **40**.
+- **Representation**: In a command-line interface, cards are represented by their numerical value when drawn (e.g., `Card drawn: 7`).
+
+### Scores
+
+- **Player Scores**: Each player has an individual cumulative score starting at **0**.
+- **Target Score**: The goal is to reach exactly **50**.
+
+### Prime Numbers
+
+- **Prime Numbers up to 50**: `2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47`.
+- **Prime Bonus**: Landing on a prime cumulative score grants an extra turn.
+
+## Turns
+
+### Turn Structure
+
+1. **Draw a Card**: The player draws the **top card** from the deck.
+2. **Decision Phase**:
+   - **Keep**: Add the card's value to your cumulative score.
+   - **Discard**: Reject the first card and draw a second card, which **must be kept**.
+3. **Score Update**: Update your cumulative score based on the card kept.
+4. **Prime Check**:
+   - If the new cumulative score is a **prime number**, the player receives an **extra turn**.
+   - If not, the turn passes to the opponent.
+5. **Win Condition Check**: If a player reaches a cumulative score of exactly **50**, they win the game.
+
+### Turn Progression
+
+- **Normal Play**: Players alternate turns unless an extra turn is earned.
+- **Extra Turns**: A player may have multiple consecutive turns if they land on prime cumulative scores each time.
+
+## Rules and Mechanics
+
+### Card Drawing and Decisions
+
+- **First Draw**: On each turn, draw the top card from the deck.
+- **Keep or Discard**:
+  - **Keep**: Choose to add the card's value to your score.
+  - **Discard**: Opt to discard the first card and **automatically** keep the second draw.
+- **Mandatory Second Keep**: If you discard the first card, you **must** keep the second card, regardless of its value.
+
+### Score Management
+
+- **Not Exceeding 50**:
+  - If keeping a card would cause your cumulative score to exceed **50**, you **cannot keep** that card.
+  - In this case, you must discard it and draw a second card, which you must keep.
+  - If the second card also causes the score to exceed 50, it is discarded, and your turn ends without increasing your score.
+
+### Prime Bonus
+
+- **Extra Turn Conditions**:
+  - After adding a card's value, check if your new cumulative score is a **prime number**.
+  - If it is, you earn an **extra turn** immediately.
+- **Consecutive Primes**:
+  - It's possible to earn multiple extra turns by consecutively landing on prime numbers.
+
+### Deck Depletion
+
+- **Reshuffling**:
+  - If the deck runs out of cards before a player reaches 50, reshuffle the discard pile to form a new deck.
+
+## Scoring
+
+- **Cumulative Score Tracking**: Each player keeps a running total of their scores after each turn.
+- **Winning the Game**: The first player to reach a cumulative score of exactly **50** wins.
+- **Prohibited Scores**: Players cannot exceed a cumulative score of **50**.
+
+## Examples
+
+### Example Turn Sequence
+
+#### Turn 1 - Player 1
+
+- **Current Score**: 0
+- **Draws**: Card `7`
+- **Decides to**: Keep
+- **New Cumulative Score**: `0 + 7 = 7`
+- **Prime Check**: 7 is a prime number.
+- **Result**: Player 1 earns an extra turn.
+
+#### Extra Turn - Player 1
+
+- **Current Score**: 7
+- **Draws**: Card `10`
+- **Decides to**: Keep
+- **New Cumulative Score**: `7 + 10 = 17`
+- **Prime Check**: 17 is a prime number.
+- **Result**: Player 1 earns another extra turn.
+
+#### Extra Turn - Player 1
+
+- **Current Score**: 17
+- **Draws**: Card `9`
+- **Decides to**: Keep
+- **New Cumulative Score**: `17 + 9 = 26`
+- **Prime Check**: 26 is not a prime number.
+- **Turn Ends**: Passes to Player 2.
+
+#### Turn 2 - Player 2
+
+- **Current Score**: 0
+- **Draws**: Card `8`
+- **Decides to**: Discard
+- **Second Draw**: Card `3` (must keep)
+- **New Cumulative Score**: `0 + 3 = 3`
+- **Prime Check**: 3 is a prime number.
+- **Result**: Player 2 earns an extra turn.
+
+#### Extra Turn - Player 2
+
+- **Current Score**: 3
+- **Draws**: Card `5`
+- **Decides to**: Keep
+- **New Cumulative Score**: `3 + 5 = 8`
+- **Prime Check**: 8 is not a prime number.
+- **Turn Ends**: Passes back to Player 1.
+
+### Command-Line Interaction Sample
+
+```
+Player 1 Turn:
+Current Score: 0
+Card drawn: 7
+Do you want to keep this card? (yes/no): yes
+New Score: 7
+Prime number! You get an extra turn.
+
+Player 1 Extra Turn:
+Current Score: 7
+Card drawn: 10
+Do you want to keep this card? (yes/no): yes
+New Score: 17
+Prime number! You get an extra turn.
+
+Player 1 Extra Turn:
+Current Score: 17
+Card drawn: 9
+Do you want to keep this card? (yes/no): yes
+New Score: 26
+No prime number. Turn ends.
+
+Player 2 Turn:
+Current Score: 0
+Card drawn: 8
+Do you want to keep this card? (yes/no): no
+Card drawn: 3 (must keep)
+New Score: 3
+Prime number! You get an extra turn.
+
+Player 2 Extra Turn:
+Current Score: 3
+Card drawn: 5
+Do you want to keep this card? (yes/no): yes
+New Score: 8
+No prime number. Turn ends.
+```
+
+## Strategic Considerations
+
+- **Managing Risk**:
+  - Deciding when to **keep** or **discard** a card is crucial.
+  - Discarding may lead to a better card but carries the risk of drawing a worse one.
+- **Prime Number Planning**:
+  - Aim to land on prime cumulative scores to maximize turns.
+  - Keep track of your current score and calculate which card values will result in a prime.
+- **Avoiding Overruns**:
+  - Be cautious as you approach a cumulative score of **50**.
+  - Discard cards that would cause you to exceed 50, but remember that you must keep the second draw.
+
+## Conclusion
+
+Prime Duel is a game of numerical strategy and chance, where managing your cumulative score and capitalizing on prime numbers can lead you to victory. Use your turns wisely, weigh your decisions carefully, and aim to outsmart your opponent in this exciting numerical showdown!

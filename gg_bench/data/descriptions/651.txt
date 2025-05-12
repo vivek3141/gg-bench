@@ -1,0 +1,177 @@
+# Divisor Line
+
+## Objective
+
+Divisor Line is a strategic two-player turn-based game where players compete to be the first to occupy three numbers on a number line that satisfy a specific divisor relationship. The primary goal is to strategically place your markers on numbers such that within your occupied numbers, one number divides another without a remainder. The first player to meet this condition wins the game.
+
+## Setup
+
+- **Number Line**: A linear arrangement of numbers from **1** to **20**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Markers**: Each player has a set of unique markers (e.g., `X` for Player 1 and `O` for Player 2) to place on the number line.
+- **Starting Conditions**: The number line is initially unoccupied. Players decide who takes the first turn (e.g., by coin toss).
+
+## Game Components
+
+### Number Line
+
+- **Appearance**: A sequence of numbers from **1** to **20**, displayed in the command-line interface.
+- **Functionality**: Serves as the game board where players place their markers.
+- **Unique Attributes**: Each number can be occupied by only one player's marker.
+
+### Markers
+
+- **Player 1's Markers**: Represented by `X`.
+- **Player 2's Markers**: Represented by `O`.
+- **Functionality**: Used to claim numbers on the number line.
+- **Unique Attributes**: Distinct symbols for each player to identify occupied numbers.
+
+## Turns
+
+### Turn Structure
+
+1. **Display the Number Line**: The current state of the number line is shown, indicating unoccupied numbers and those occupied by players.
+2. **Player's Action**: The current player selects an unoccupied number from the number line.
+3. **Placement**: The player's marker is placed on the chosen number.
+4. **Check for Victory**: After placement, check if the player has achieved the winning condition.
+5. **Turn Progression**: The turn passes to the other player.
+
+### Order of Actions
+
+- Players alternate turns throughout the game.
+- The game continues until a player wins by meeting the victory condition.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Selecting Numbers**: On their turn, a player chooses any unoccupied number between **1** and **20** inclusive.
+2. **Placing Markers**: The chosen number is marked with the player's unique marker (`X` or `O`).
+3. **Occupation Limit**: Each number can be occupied by only one player.
+4. **Winning Condition**: A player wins by occupying at least **three numbers** where at least one of the numbers divides another without a remainder among their own occupied numbers.
+   - **Example**: If Player 1 occupies numbers **4**, **8**, and **12**, they win because:
+     - **4** divides **8** (since `8 ÷ 4 = 2`).
+     - **4** divides **12** (`12 ÷ 4 = 3`).
+     - **8** divides **12** (`12 ÷ 8 = 1.5`, which is not an integer, so this does not contribute).
+5. **Divisor Relationship**: The divisor relationship must be between the numbers occupied by the same player.
+6. **No Draws**: The game continues until a player meets the winning condition; draws are not possible.
+
+### Special Considerations
+
+- **Strategic Blocking**: Players may choose numbers that block their opponent's potential to form a winning set.
+- **Victory Check**: After each turn, the game must check if the current player has achieved the winning condition before proceeding.
+
+## Scoring
+
+- **Winning the Game**: The first player to satisfy the winning condition is declared the **winner**.
+- **No Point System**: The game does not use points; victory is achieved by meeting the divisor condition.
+- **Game Conclusion**: Once a player wins, the game ends immediately.
+
+## Examples
+
+### Example Scenario
+
+Let's illustrate a sample gameplay between Player 1 (`X`) and Player 2 (`O`).
+
+#### Initial State
+
+The number line is unoccupied:
+
+```
+1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses number **4**.
+- **Number Line**:
+
+```
+1  2  3  [X] 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Chooses number **5**.
+- **Number Line**:
+
+```
+1  2  3  [X] [O] 6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Chooses number **8**.
+- **Number Line**:
+
+```
+1  2  3  [X] [O] 6  7 [X] 9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Chooses number **9**.
+- **Number Line**:
+
+```
+1  2  3  [X] [O] 6  7 [X] [O]10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Turn 5: Player 1
+
+- **Action**: Chooses number **12**.
+- **Number Line**:
+
+```
+1  2  3  [X] [O] 6  7 [X] [O]10 11 [X]13 14 15 16 17 18 19 20
+```
+
+#### Victory Check
+
+- **Player 1's Numbers**: **4**, **8**, **12**.
+- **Divisor Relationships**:
+  - **4** divides **8** (`8 ÷ 4 = 2`).
+  - **4** divides **12** (`12 ÷ 4 = 3`).
+- **Result**: Player 1 has met the winning condition and **wins the game**.
+
+### Command-Line Interaction Example
+
+```
+Player 1's turn. Available numbers: 1-20
+Enter a number to occupy: 4
+
+Number line:
+1  2  3  [X] 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 2's turn. Available numbers: 1-3,5-20
+Enter a number to occupy: 5
+
+Number line:
+1  2  3  [X] [O] 6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 1's turn. Available numbers: 1-3,6-20 (excluding 4,5)
+Enter a number to occupy: 8
+
+Number line:
+1  2  3  [X] [O] 6  7 [X] 9 10 11 12 13 14 15 16 17 18 19 20
+
+Player 2's turn. Available numbers: 1-3,6-7,9-20
+Enter a number to occupy: 9
+
+Number line:
+1  2  3  [X] [O] 6  7 [X] [O]10 11 12 13 14 15 16 17 18 19 20
+
+Player 1's turn. Available numbers: 1-3,6-7,10-20
+Enter a number to occupy: 12
+
+Number line:
+1  2  3  [X] [O] 6  7 [X] [O]10 11 [X]13 14 15 16 17 18 19 20
+
+Player 1 has occupied numbers: 4,8,12
+
+Congratulations, Player 1! You have won the game by occupying numbers with divisor relationships.
+```
+
+## Summary
+
+Divisor Line challenges players to think strategically about number properties and opponent blocking tactics. By focusing on divisor relationships, players must plan their moves to achieve victory while preventing their opponent from doing the same. The simple setup and clear rules make it easy to play in a command-line interface, providing a quick yet intellectually stimulating game.

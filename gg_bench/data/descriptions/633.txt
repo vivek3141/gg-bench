@@ -1,0 +1,192 @@
+# **Factor Frenzy**
+
+## **Objective**
+
+Be the first player to reduce the shared number to exactly **1** by strategically dividing it by its prime factors. The game requires players to factorize numbers and make calculated decisions to outmaneuver their opponent. Victory is achieved by the player who successfully brings the shared number down to **1** on their turn.
+
+---
+
+## **Setup**
+
+1. **Initial Number Selection**: Decide on a starting number **N** greater than **1**. For a balanced game that ends quickly, choose a composite number (a number with more than one prime factor) between **30** and **100**. Examples include **60**, **72**, or **84**.
+   
+2. **Determine Turn Order**: Flip a coin or agree on who will take the first turn.
+
+3. **Game Interface**: Set up a simple command-line interface where the current value of **N** and its available prime factors are displayed after each turn.
+
+---
+
+## **Game Components**
+
+- **Shared Number (N)**: A positive integer greater than **1** that both players will manipulate. It changes throughout the game based on players' moves.
+
+- **Prime Factors**: The prime numbers that exactly divide **N** without leaving a remainder. These change as **N** changes.
+
+- **Players**: Two participants who will take turns manipulating **N**.
+
+---
+
+## **Turns**
+
+1. **Player's Turn Structure**:
+   - **Display Current N**: At the start of each turn, announce the current value of **N**.
+   - **Identify Prime Factors**: List all the prime factors of **N**.
+   - **Choose a Prime Factor**: The player selects one of the available prime factors.
+   - **Divide N**: Replace **N** with the result of dividing it by the chosen prime factor.
+   - **Announce New N**: Display the new value of **N** after the division.
+
+2. **Turn Progression**:
+   - Players alternate turns following the above structure.
+   - The game continues until one player reduces **N** to exactly **1** on their turn.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - On your turn, you **must** divide **N** by one of its **prime factors**.
+   - The prime factor chosen must exactly divide **N** without leaving a remainder.
+
+2. **Calculation of Prime Factors**:
+   - Prime factors are the prime numbers that multiply together to give **N**.
+   - For example, if **N = 18**, its prime factors are **2** and **3** (since \(18 = 2 \times 3 \times 3\)).
+
+3. **Division Process**:
+   - The selected prime factor divides **N** once per turn.
+   - After division, update **N** to the new value for the next turn.
+
+4. **Winning the Game**:
+   - If a player reduces **N** to exactly **1** on their turn, they win the game.
+   - If a player is unable to perform a valid move (which should not happen if rules are followed), they lose their turn.
+
+5. **No Skipping Turns**:
+   - Players cannot skip their turn. A move must be made if there is a valid prime factor.
+
+6. **No Reversing Moves**:
+   - Once **N** has been updated, the move cannot be reversed.
+
+7. **Input Validation**:
+   - Players must select a valid prime factor from the list provided.
+   - Invalid inputs result in a prompt to choose again.
+
+---
+
+## **Scoring**
+
+- **Winning**: The player who reduces **N** to exactly **1** on their turn wins the game.
+- **Strategy**: Success relies on prime factorization skills and foresight to control the flow of the game.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+Let's play a sample game with **N = 36**.
+
+#### **Initial Setup**
+
+- **N = 36**
+- **Players**: Alice (Player 1) and Bob (Player 2)
+
+#### **Game Begins**
+
+---
+
+**Turn 1: Alice**
+
+- **Current N**: 36
+- **Prime Factors of N**: 2, 3
+- **Alice's Move**: Chooses 3
+- **Calculation**: \(36 ÷ 3 = 12\)
+- **New N**: 12
+
+---
+
+**Turn 2: Bob**
+
+- **Current N**: 12
+- **Prime Factors of N**: 2, 3
+- **Bob's Move**: Chooses 2
+- **Calculation**: \(12 ÷ 2 = 6\)
+- **New N**: 6
+
+---
+
+**Turn 3: Alice**
+
+- **Current N**: 6
+- **Prime Factors of N**: 2, 3
+- **Alice's Move**: Chooses 3
+- **Calculation**: \(6 ÷ 3 = 2\)
+- **New N**: 2
+
+---
+
+**Turn 4: Bob**
+
+- **Current N**: 2
+- **Prime Factors of N**: 2
+- **Bob's Move**: Chooses 2
+- **Calculation**: \(2 ÷ 2 = 1\)
+- **New N**: 1
+
+**Bob wins the game!**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Game Start**
+
+```
+Welcome to Factor Frenzy!
+Starting number (N): 30
+
+Player 1: Alice
+Player 2: Bob
+
+Alice's turn.
+Current N: 30
+Available prime factors: 2, 3, 5
+Select a prime factor to divide N: 5
+
+You chose 5.
+New N is 6.
+
+Bob's turn.
+Current N: 6
+Available prime factors: 2, 3
+Select a prime factor to divide N: 2
+
+You chose 2.
+New N is 3.
+
+Alice's turn.
+Current N: 3
+Available prime factors: 3
+Select a prime factor to divide N: 3
+
+You chose 3.
+New N is 1.
+
+Alice wins the game!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Plan Ahead**: Anticipate your opponent's possible moves by considering how your choice will affect the subsequent value of **N**.
+
+- **Control the Game**: Try to manipulate **N** into values where your opponent has limited options.
+
+- **Prime Awareness**: Familiarize yourself with prime numbers and their factors to make quicker decisions.
+
+- **Avoid Giving an Advantage**: Be cautious of moves that could allow your opponent to win on their next turn.
+
+---
+
+## **Conclusion**
+
+Factor Frenzy is a fast-paced, strategic numerical game that sharpens your prime factorization skills. The simplicity of its rules combined with the depth of strategy makes it both easy to code and engaging to play. Enjoy challenging your friends and honing your math prowess in this exciting duel to **1**!

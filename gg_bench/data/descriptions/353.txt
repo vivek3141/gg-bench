@@ -1,0 +1,212 @@
+# Coordinate Conquer
+
+## Objective
+
+Be the first player to **claim all three of your secret target coordinates** on the grid. Use strategy and deduction to select coordinates that help you achieve your goal while hindering your opponent.
+
+- **Victory Condition:** The first player to claim all three of their secret target coordinates wins the game.
+- **Win:** Successfully claim all three of your secret coordinates.
+- **Loss:** Fail to claim your three secret coordinates before your opponent claims theirs.
+
+## Setup
+
+1. **Create the Grid:**
+   - Use a coordinate grid with rows and columns numbered from **1 to 5**, forming a 5x5 grid.
+   - Coordinates are represented as `(x, y)` where `x` is the column number and `y` is the row number.
+
+2. **Select Target Coordinates:**
+   - Each player **secretly chooses three unique coordinates** from the grid as their target coordinates.
+   - Write down your target coordinates privately; do not reveal them to your opponent.
+   - Target coordinates must be unclaimed and can be any position on the grid.
+
+3. **Determine Turn Order:**
+   - Decide which player will take the first turn (e.g., flip a coin).
+
+## Game Components
+
+- **Coordinate Grid (5x5):**
+  ```
+    y
+    ↑
+    5  (1,5) (2,5) (3,5) (4,5) (5,5)
+    4  (1,4) (2,4) (3,4) (4,4) (5,4)
+    3  (1,3) (2,3) (3,3) (4,3) (5,3)
+    2  (1,2) (2,2) (3,2) (4,2) (5,2)
+    1  (1,1) (2,1) (3,1) (4,1) (5,1)
+        ↓    ↓    ↓    ↓    ↓
+        1    2    3    4    5  → x
+  ```
+- **Player's Target Coordinates:**
+  - Three secret coordinates selected by each player at the start.
+  - Keep track of which targets have been claimed.
+
+- **Claimed Coordinates:**
+  - A communal record of all coordinates claimed during the game.
+  - Coordinates cannot be selected again once claimed.
+
+## Turns
+
+- **Turn Order:**
+  - Players alternate turns, starting with the player determined during setup.
+
+- **Actions per Turn:**
+  1. **Select an Unclaimed Coordinate:**
+     - Choose any unclaimed coordinate on the grid by specifying its `(x, y)` values.
+     - Example: "I select coordinate (3,4)."
+
+ 2. **Resolve Claims and Revelations:**
+    - Based on the selected coordinate, follow the rules in the **Rules and Mechanics** section.
+
+- **Turn Completion:**
+  - The turn ends after any necessary claims or revelations have been resolved.
+
+## Rules and Mechanics
+
+1. **Selecting Coordinates:**
+   - On your turn, you must select an **unclaimed** coordinate.
+   - If you select a coordinate that has already been claimed, you **forfeit your turn**.
+
+2. **Claiming Your Target Coordinate:**
+   - If the selected coordinate is on **your** secret target list:
+     - **Claim it** by marking it as claimed on your list.
+     - **Announce** to your opponent: "I have claimed one of my target coordinates."
+     - The coordinate is now considered **claimed** and cannot be selected again.
+
+3. **Opponent's Target Coordinate:**
+   - If the selected coordinate is on your **opponent's** target list:
+     - Your opponent must **reveal**: "That coordinate is on my target list."
+     - The coordinate becomes **claimed** and is removed from their target list.
+     - They must **immediately select a new target coordinate** (see Rule 5).
+
+4. **Shared Target Coordinates:**
+   - If the selected coordinate is on **both** players' target lists:
+     - The player who selected it **claims** the coordinate.
+     - The opponent must remove it from their target list and select a new target (see Rule 5).
+     - Announce if it was one of your target coordinates.
+
+5. **Replacing Lost Target Coordinates:**
+   - If you lose a target coordinate (because your opponent claimed it first):
+     - **Immediately select a new unclaimed coordinate** as a replacement.
+     - Do **not** reveal the new target to your opponent.
+     - You must always have **three** target coordinates to win the game.
+
+6. **Victory Condition:**
+   - The first player to **claim all three** of their target coordinates **wins the game**.
+   - If both players claim their third target coordinate on the same turn, the player who took the first turn **wins**.
+
+## Scoring
+
+- **No point system is used.**
+- The game is won by fulfilling the victory condition outlined above.
+- Keep track of claimed coordinates and remaining targets to monitor progress.
+
+## Examples
+
+### Example Scenario
+
+**Setup:**
+
+- **Player 1's Secret Targets:** (2,3), (4,1), (5,5)
+- **Player 2's Secret Targets:** (1,2), (3,3), (5,5)
+
+**Gameplay:**
+
+1. **Player 1's Turn:**
+   - Selects **(3,3)**.
+   - **Player 2 reveals:** "That coordinate is on my target list."
+   - Coordinate **(3,3)** is now claimed.
+   - **Player 2** selects a new target coordinate in secret (e.g., (2,5)).
+
+2. **Player 2's Turn:**
+   - Selects **(4,1)**.
+   - **Player 1 reveals:** "That coordinate is on my target list."
+   - Coordinate **(4,1)** is now claimed.
+   - **Player 1** selects a new target coordinate in secret (e.g., (1,1)).
+
+3. **Player 1's Turn:**
+   - Selects **(5,5)**.
+   - Since **both players** had (5,5) as a target:
+     - **Player 1 claims** coordinate **(5,5)**.
+     - **Player 2** removes (5,5) from their target list and selects a new target (e.g., (3,5)).
+
+4. **Player 2's Turn:**
+   - Selects **(2,3)**.
+   - **Player 1 reveals:** "That coordinate is on my target list."
+   - Coordinate **(2,3)** is now claimed.
+   - **Player 1** selects a new target coordinate in secret (e.g., (4,5)).
+
+5. **Player 1's Turn:**
+   - Selects **(1,2)**.
+   - **Player 2 reveals:** "That coordinate is on my target list."
+   - Coordinate **(1,2)** is now claimed.
+   - **Player 2** selects a new target coordinate in secret (e.g., (2,2)).
+
+6. **Player 1's Status:**
+   - Target Coordinates Claimed:
+     - (5,5)
+     - Replacement for (4,1): (1,1) (not yet claimed)
+     - Replacement for (2,3): (4,5) (not yet claimed)
+   - **Player 1 has not yet claimed all targets.**
+
+7. **Player 2's Status:**
+   - Target Coordinates Claimed:
+     - None
+   - Target Coordinates Remaining:
+     - Replacement for (3,3): (2,5)
+     - Replacement for (5,5): (3,5)
+     - Replacement for (1,2): (2,2)
+
+8. **Game Continues:**
+   - Players continue selecting coordinates following the rules until one player claims all three of their target coordinates.
+
+### Command-Line Interaction Sample
+
+```
+--- Player 1's Turn ---
+Select a coordinate to claim (e.g., 3,4): 3,3
+Player 2 reveals: "That coordinate is on my target list."
+Coordinate (3,3) is now claimed.
+Player 2 selects a new target coordinate.
+
+--- Player 2's Turn ---
+Select a coordinate to claim: 4,1
+Player 1 reveals: "That coordinate is on my target list."
+Coordinate (4,1) is now claimed.
+Player 1 selects a new target coordinate.
+
+--- Player 1's Turn ---
+Select a coordinate to claim: 5,5
+Player 1 reveals: "That coordinate is on my target list."
+Player 2 reveals: "That coordinate is on my target list."
+Coordinate (5,5) is now claimed by Player 1.
+Player 2 selects a new target coordinate.
+
+--- Player 2's Turn ---
+Select a coordinate to claim: 2,3
+Player 1 reveals: "That coordinate is on my target list."
+Coordinate (2,3) is now claimed.
+Player 1 selects a new target coordinate.
+
+--- Player 1's Turn ---
+Select a coordinate to claim: 1,2
+Player 2 reveals: "That coordinate is on my target list."
+Coordinate (1,2) is now claimed.
+Player 2 selects a new target coordinate.
+
+[...Game continues...]
+
+--- Game Over ---
+Player 1 has claimed all three of their target coordinates!
+**Player 1 wins the game.**
+```
+
+## Strategic Tips
+
+- **Deduction:** Pay attention to which coordinates your opponent reacts to; this can give clues about their target coordinates.
+- **Interference:** Try selecting coordinates that you think might be your opponent's targets to force them to select new ones.
+- **Replacement Choices:** When selecting new target coordinates, choose ones less likely to be picked by your opponent.
+- **Avoid Patterns:** Don't choose target coordinates that form obvious patterns on the grid.
+
+---
+
+Enjoy playing **Coordinate Conquer** and may the best strategist win!

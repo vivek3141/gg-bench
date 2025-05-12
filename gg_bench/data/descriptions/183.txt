@@ -1,0 +1,198 @@
+# Divisibility Duel
+
+## Objective
+
+**Be the last player able to make a valid move by strategically selecting numbers based on divisibility rules.** Players take turns choosing numbers from a shared list, following specific divisibility criteria. The player who forces their opponent into a position where they cannot make a valid move wins the game.
+
+## Setup
+
+1. **Number List Initialization**: Create a list of integers starting from **2** up to **50**. This list represents the available numbers for selection.
+
+   ```
+   Available Numbers: 2, 3, 4, 5, ..., 49, 50
+   ```
+
+2. **Starting Conditions**:
+   - No numbers have been selected yet.
+   - Decide which player goes first (can be determined randomly or by mutual agreement).
+
+## Game Components
+
+- **Number List**: A mutable list containing integers from **2** to **50**.
+- **Selected Number**: The most recently chosen number that determines the valid options for the next player.
+- **Players**: Two participants who will alternately select numbers according to the game rules.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Turn Actions**:
+  1. **Select a Valid Number**: On their turn, a player must choose a number from the *Available Numbers* list that is either a **factor** or a **multiple** of the *Selected Number* from the previous turn.
+  2. **Update the Game State**:
+     - Remove the chosen number from the *Available Numbers* list.
+     - Update the *Selected Number* to the number just chosen.
+
+- **First Turn Special Rule**:
+  - The first player can select **any number** from the *Available Numbers* list since there is no previous *Selected Number*.
+
+## Rules and Mechanics
+
+1. **Valid Move Criteria**:
+   - The chosen number must be a **factor** or a **multiple** of the *Selected Number* from the previous turn.
+   - The number must be present in the *Available Numbers* list.
+
+2. **Definitions**:
+   - **Factor**: A number that divides another number evenly (without leaving a remainder).
+   - **Multiple**: A number that is the product of an integer and another number.
+
+3. **Gameplay Sequence**:
+   - **Player 1** starts by selecting any number from the list.
+   - **Player 2** must select a number that is a factor or multiple of the number chosen by Player 1.
+   - The game continues with players alternating turns and selecting valid numbers based on the most recently selected number.
+
+4. **No Repeats**:
+   - Once a number has been selected and removed from the *Available Numbers* list, it cannot be chosen again.
+
+5. **Invalid Moves**:
+   - If a player cannot select any valid number on their turn (no numbers in the *Available Numbers* list meet the criteria), they lose the game.
+
+6. **Forfeiting**:
+   - A player may forfeit on their turn if they choose not to make a move, resulting in their loss.
+
+## Scoring
+
+- **Winning the Game**: The player who successfully forces their opponent into a position where they cannot make a valid move wins.
+- **No Point System**: There is no scoring or point-tracking mechanism; the game outcome is a win or loss based on the ability to make valid moves.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Available Numbers**:
+```
+2, 3, 4, 5, 6, 7, ..., 49, 50
+```
+
+**Turn 1**:
+- **Player 1** picks **10** (can choose any number on the first turn).
+- **Selected Number** is now **10**.
+- **Available Numbers** are updated (10 is removed):
+  ```
+  2, 3, 4, 5, 6, 7, 8, 9, 11, ..., 49, 50
+  ```
+
+**Turn 2**:
+- **Player 2** must pick a number that is a factor or multiple of **10**.
+- Valid options: **2, 5, 20, 30, 40, 50** (if they are in the list).
+- **Player 2** picks **5**.
+- **Selected Number** is now **5**.
+- **Available Numbers** are updated (5 is removed):
+  ```
+  2, 3, 4, 6, 7, 8, 9, 11, ..., 49, 50
+  ```
+
+**Turn 3**:
+- **Player 1** must pick a factor or multiple of **5**.
+- Valid options: **10, 15, 20, 25, 30, 35, 40, 45, 50**
+- **Available Numbers** among these are: **15, 20, 25, 30, 35, 40, 45, 50**
+- **Player 1** picks **15**.
+- **Selected Number** is now **15**.
+- **Available Numbers** are updated (15 is removed):
+  ```
+  2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, ..., 49, 50
+  ```
+
+**Turn 4**:
+- **Player 2** must pick a factor or multiple of **15**.
+- Valid options: **3, 5, 30, 45**
+- **Available Numbers** among these are: **3, 30, 45**
+- **Player 2** picks **30**.
+- **Selected Number** is now **30**.
+- **Available Numbers** are updated (30 is removed):
+  ```
+  2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, ..., 49, 50
+  ```
+
+**Turn 5**:
+- **Player 1** must pick a factor or multiple of **30**.
+- Valid options: **2, 3, 5, 6, 10, 15, 60** (but only up to 50)
+- **Available Numbers** among these are: **2, 3, 6**
+- **Player 1** picks **6**.
+- **Selected Number** is now **6**.
+- **Available Numbers** are updated (6 is removed):
+  ```
+  2, 3, 4, 7, 8, 9, 11, 12, 13, 14, 16, ..., 49, 50
+  ```
+
+**Turn 6**:
+- **Player 2** must pick a factor or multiple of **6**.
+- Valid options: **2, 3, 12, 18, 24, 30, 36, 42, 48**
+- **Available Numbers** among these are: **2, 3, 12, 18, 24, 36, 42, 48**
+- **Player 2** picks **12**.
+- **Selected Number** is now **12**.
+- **Available Numbers** are updated (12 is removed):
+  ```
+  2, 3, 4, 7, 8, 9, 11, 13, 14, 16, 17, ..., 49, 50
+  ```
+
+**Play continues** until a player cannot make a valid move.
+
+**Possible Ending**:
+- Suppose **Player 1** cannot find a valid number to select on their turn because none of the remaining numbers are a factor or multiple of the last selected number.
+- **Player 2** wins the game.
+
+### Command-Line Interaction Example
+
+**Note**: This example demonstrates how the game might proceed in a command-line interface.
+
+```
+Welcome to Divisibility Duel!
+
+Available Numbers:
+2, 3, 4, 5, ..., 49, 50
+
+Player 1, it's your turn.
+Enter your chosen number: 8
+
+You selected 8.
+
+Available Numbers:
+2, 3, 4, 5, 6, 7, 9, ..., 49, 50
+
+Player 2, it's your turn.
+Valid options are factors or multiples of 8:
+2, 4, 16, 24, 32, 40, 48
+
+Enter your chosen number: 4
+
+You selected 4.
+
+Available Numbers:
+2, 3, 5, 6, 7, 9, ..., 49, 50
+
+Player 1, it's your turn.
+Valid options are factors or multiples of 4:
+2, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48
+
+Enter your chosen number: 12
+
+You selected 12.
+
+...
+
+Player 2, it's your turn.
+No valid moves available.
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Try to select numbers that leave your opponent with fewer options.
+- **Control the Game**: Early in the game, picking numbers with unique factors or multiples can limit your opponent's choices.
+- **Avoid Common Numbers**: Be cautious when selecting numbers that have many factors or multiples remaining in the *Available Numbers* list.
+- **Force Moves**: Aim to force your opponent into a position where they have only one possible move or none at all.
+
+## Conclusion
+
+Divisibility Duel is a strategic and engaging game that challenges players to think ahead and apply their knowledge of factors and multiples. With simple rules and quick gameplay, it's perfect for command-line interfaces and players looking for a quick mental exercise.
+
+Enjoy the game and may the best strategist win!

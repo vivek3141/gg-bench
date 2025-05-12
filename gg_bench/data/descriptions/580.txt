@@ -1,0 +1,257 @@
+**Game Title:** Grid Blockade
+
+---
+
+### **Objective**
+
+Be the first player to reach your opponent's starting position on a 5x5 grid while strategically placing blocks to hinder their progress. Utilize movement and blocking to outmaneuver your opponent and claim victory.
+
+---
+
+### **Setup**
+
+1. **Grid Creation:** Create a 5x5 grid, consisting of 25 cells arranged in 5 rows and 5 columns. Each cell is identified by its coordinates `(row, column)`, where both `row` and `column` range from 0 to 4.
+
+2. **Starting Positions:**
+   - **Player 1** starts at the top-left corner of the grid at position `(0, 0)`.
+   - **Player 2** starts at the bottom-right corner of the grid at position `(4, 4)`.
+
+3. **Initial Conditions:** All other cells on the grid are empty and unblocked at the start of the game.
+
+---
+
+### **Game Components**
+
+1. **Grid Cells:**
+   - Represented by coordinate pairs `(row, column)`.
+   - Can be in one of three states: empty, occupied by a player, or blocked.
+
+2. **Player Tokens:**
+   - **Player 1 Token:** Represents Player 1's current position on the grid.
+   - **Player 2 Token:** Represents Player 2's current position on the grid.
+
+3. **Blocking Tokens:**
+   - Used to block cells on the grid.
+   - A blocked cell cannot be entered or passed through by either player.
+
+---
+
+### **Turns**
+
+- Players alternate turns, starting with **Player 1**.
+- On each turn, a player must choose one of the following actions:
+  1. **Move Action:** Move their token to an adjacent cell (up, down, left, or right).
+  2. **Block Action:** Place a blocking token on any unoccupied and unblockaded cell that is not the opponent's current position or starting position.
+
+---
+
+### **Rules and Mechanics**
+
+#### **Movement Rules**
+
+- **Adjacency:** A move can only be made to a cell that is directly adjacent horizontally or vertically (no diagonal moves).
+- **Occupied and Blocked Cells:** Players cannot move into a cell that is occupied by the other player or that is blocked.
+- **Staying in Place:** A player cannot choose to skip a move; they must either move or place a block.
+
+#### **Blocking Rules**
+
+- **Placement:** Blocks can be placed on any unoccupied and unblockaded cell that is not:
+  - The current position of either player.
+  - The starting position of either player.
+- **Effect of Blocks:**
+  - Once placed, blocks remain on the grid for the duration of the game.
+  - Blocks prevent movement into or through the blocked cell.
+
+#### **Winning the Game**
+
+- **Victory Condition:** The first player to reach the opponent's starting position wins the game.
+- **Impeded Progress:**
+  - If a player cannot make any legal moves on their turn (i.e., they are completely blocked), they lose the game.
+  - If both players are blocked simultaneously and cannot reach the opponent's starting position, the player who is closer to the opponent's starting position wins.
+  - Closeness is determined by the Manhattan distance (the sum of the absolute differences of their coordinates) to the opponent's starting position.
+
+---
+
+### **Scoring**
+
+- This game does not involve point scoring.
+- The objective is to win the game by reaching the opponent's starting position.
+- Each game results in a clear win or loss—there are no draws.
+
+---
+
+### **Examples**
+
+#### **Sample Turn Sequence**
+
+**Initial Setup:**
+
+- **Player 1 Position:** `(0, 0)`
+- **Player 2 Position:** `(4, 4)`
+- **Grid Status:** All other cells are empty.
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Moves to `(0, 1)`.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Places a block on `(0, 2)` to hinder Player 1's progress along the top row.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Moves to `(1, 1)`.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Moves to `(4, 3)`.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Places a block on `(4, 3)` to block Player 2's recent position.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action:** Moves to `(3, 4)`.
+
+---
+
+**Turn 7: Player 1**
+
+- **Action:** Moves to `(2, 1)`.
+
+---
+
+**Turn 8: Player 2**
+
+- **Action:** Places a block on `(2, 1)` to block Player 1's current path.
+
+---
+
+**Turn 9: Player 1**
+
+- **Action:** Moves to `(2, 0)`.
+
+---
+
+**Turn 10: Player 2**
+
+- **Action:** Moves to `(2, 4)`.
+
+---
+
+**Turn 11: Player 1**
+
+- **Action:** Places a block on `(2, 2)` to prevent Player 2 from taking a direct path.
+
+---
+
+**Turn 12: Player 2**
+
+- **Action:** Moves to `(1, 4)`.
+
+---
+
+**Turn 13: Player 1**
+
+- **Action:** Moves to `(3, 0)`.
+
+---
+
+**Turn 14: Player 2**
+
+- **Action:** Moves to `(0, 4)`.
+
+---
+
+**Turn 15: Player 1**
+
+- **Action:** Moves to `(4, 0)`.
+
+- **Result:** Player 1 has reached Player 2's starting position `(4, 4)`.
+
+---
+
+**Game Over: Player 1 Wins**
+
+---
+
+### **Strategy Tips**
+
+- **Balance Movement and Blocking:** Wisely choose between advancing toward your opponent's starting position and placing blocks to hinder their progress.
+- **Predict Opponent's Moves:** Anticipate the paths your opponent may take and block critical cells to force them into longer routes.
+- **Maintain Options:** Avoid creating situations where you have limited movement options. Keep multiple paths open toward your goal.
+- **Control the Center:** Dominating the center of the grid can provide more movement options and blocking opportunities.
+
+---
+
+### **Command-Line Interaction Example**
+
+Assuming commands are entered in the format specified for the game implementation.
+
+**Game Start**
+
+```
+Player 1 starts at (0,0).
+Player 2 starts at (4,4).
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Enter your move, Player 1:
+Options:
+1. Move
+2. Block
+Choice: 1
+Enter move direction (up/down/left/right): right
+Player 1 moves to (0,1).
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Enter your move, Player 2:
+Options:
+1. Move
+2. Block
+Choice: 2
+Enter block position (row,column):  (0,2)
+Player 2 places a block at (0,2).
+```
+
+---
+
+**Continuing Turns**
+
+Players continue to alternate turns, entering their moves or block placements as shown.
+
+---
+
+**End of Game Example**
+
+```
+Player 1 moves to (4,4).
+Player 1 has reached Player 2's starting position.
+Player 1 wins the game!
+```
+
+---
+
+This game offers strategic depth through its simple mechanics, making it easy to code and quick to play while providing seasoned players with the opportunity to consistently outplay novices. The blend of movement and blocking actions ensures engaging gameplay with each decision impacting the path to victory.

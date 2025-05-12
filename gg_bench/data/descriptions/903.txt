@@ -1,0 +1,224 @@
+# Divisor Duel
+
+Welcome to **Divisor Duel**, a strategic two-player, turn-based game played in a command-line interface. Outsmart your opponent by carefully selecting numbers and become the last player able to make a valid move. This rule book will guide you through the game's objective, setup, components, turns, rules, scoring, and provide examples to help you master the game.
+
+---
+
+## Objective
+
+The primary goal of **Divisor Duel** is to be the last player able to make a valid move. Players take turns selecting numbers from a shared pool based on divisibility rules. A player loses when they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - A shared pool of numbers ranging from **2 to 50** is established. These numbers are unclaimed and available for selection.
+   
+2. **Starting Numbers**:
+   - Both players begin with a **Current Number** of **1**.
+
+3. **Player Designation**:
+   - Determine who will be **Player 1** and **Player 2**. This can be decided randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Shared Number Pool**:
+  - Numbers from **2 to 50** inclusive.
+  - Represents the available numbers players can select during the game.
+  
+- **Current Number for Each Player**:
+  - Tracks the last number each player selected.
+  - Initially set to **1** for both players.
+  
+- **Player Identifiers**:
+  - **Player 1** and **Player 2**.
+
+- **Command-Line Interface**:
+  - Used for displaying the game state and for players to input their selections.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, starting with **Player 1**.
+
+- **Turn Structure**:
+  1. **Display Game State**:
+     - Show the current number pool.
+     - Show both players' current numbers.
+  2. **Player Action**:
+     - The active player selects a valid number from the pool based on the rules.
+  3. **Update Game State**:
+     - Remove the selected number from the pool.
+     - Update the player's current number to the selected number.
+  4. **Check for Game End**:
+     - Determine if the next player has any valid moves remaining.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On your turn, you must select a number from the pool that is a **multiple** of your **current number** (excluding 1).
+     - The selected number must be greater than your current number unless your current number is 1.
+   - The selected number becomes your new **current number**.
+   - Remove the selected number from the pool.
+   
+2. **Constraints**:
+   - You **cannot** select a number that is already removed from the pool.
+   - If there are no valid multiples of your current number available in the pool, you lose your turn and the game.
+   
+3. **Special Notes**:
+   - **Current Number Initialization**:
+     - Both players start with a current number of **1**, allowing them to pick any number from the pool on their first turn.
+   - **Selection Strategy**:
+     - Choosing larger numbers may limit your future options. Plan ahead to avoid losing available moves.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - You win if your opponent cannot make a valid move on their turn.
+  - This occurs when there are no remaining numbers in the pool that are multiples of their current number.
+
+- **Tracking Progress**:
+  - Keep an eye on your current number and the remaining numbers in the pool to anticipate future moves.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+- Number Pool: **2-50**
+- Player 1 Current Number: **1**
+- Player 2 Current Number: **1**
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Available Numbers**: 2-50
+- **Current Number**: 1
+- **Action**: Player 1 selects **5** (valid since any number is a multiple of 1).
+- **Update**:
+  - Remove **5** from the pool.
+  - Player 1's current number is now **5**.
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Available Numbers**: 2-4, 6-50 (excluding 5)
+- **Current Number**: 1
+- **Action**: Player 2 selects **7**.
+- **Update**:
+  - Remove **7** from the pool.
+  - Player 2's current number is now **7**.
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Available Numbers**: 2-4, 6, 8-50 (excluding 5 and 7)
+- **Current Number**: 5
+- **Valid Options**: Numbers that are multiples of **5** (10,15,20,25,30,35,40,45,50)
+- **Action**: Player 1 selects **10**.
+- **Update**:
+  - Remove **10** from the pool.
+  - Player 1's current number is now **10**.
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Available Numbers**: 2-4,6,8,9,11-50 (excluding 5,7,10)
+- **Current Number**: 7
+- **Valid Options**: Multiples of **7** (14,21,28,35,42,49)
+- **Action**: Player 2 selects **14**.
+- **Update**:
+  - Remove **14** from the pool.
+  - Player 2's current number is now **14**.
+
+---
+
+#### **Progressing the Game**
+
+Players continue in this manner, selecting valid multiples of their current numbers.
+
+---
+
+#### **Late Game Scenario**
+
+Assume the game has progressed, and the number pool is reduced.
+
+---
+
+**Player 1's Turn**
+
+- **Available Numbers**: 22, 30, 33, 38, 44, 46
+- **Current Number**: 22
+- **Valid Options**: Multiples of **22** (44)
+- **Action**: Player 1 selects **44**.
+- **Update**:
+  - Remove **44** from the pool.
+  - Player 1's current number is now **44**.
+
+---
+
+**Player 2's Turn**
+
+- **Available Numbers**: 30, 33, 38, 46
+- **Current Number**: 14
+- **Valid Options**: Multiples of **14** (None in the pool)
+- **Outcome**:
+  - Player 2 cannot make a valid move.
+  - **Player 1 wins the game**.
+
+---
+
+## Command-Line Interaction Example
+
+**Game Prompt**:
+```
+Current Number Pool: [2, 3, 4, 6, 8, 9, 11-50 (excluding previously selected numbers)]
+Player 1's Current Number: 10
+Player 2's Current Number: 14
+
+Player 1, it's your turn.
+Your Current Number: 10
+Select a number that is a multiple of 10 from the pool:
+```
+
+**Player Input**:
+```
+20
+```
+
+**Game Response**:
+```
+You have selected 20.
+20 is removed from the pool.
+Player 1's Current Number is now 20.
+
+Player 2, it's your turn.
+...
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which numbers will be available on your future turns based on your current number.
+- **Limit Opponent's Options**: Choose numbers that may restrict the multiples available to your opponent on their turn.
+- **Balance Your Choices**: While larger numbers give immediate advantage, they may reduce your valid moves later.
+
+---
+
+Enjoy playing **Divisor Duel** and may the most strategic player win!

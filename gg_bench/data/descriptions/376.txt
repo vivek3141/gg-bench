@@ -1,0 +1,176 @@
+# Pixel Runner
+
+## Objective
+
+Be the first player to reach or pass the finish line at cell **7** on the grid. Use strategic movement to advance while hindering your opponent's progress. If you land on the same cell as your opponent, you can send them back to the starting position, giving you a tactical advantage.
+
+## Setup
+
+1. **Game Grid**: A linear grid consisting of **8 cells** numbered from **0** to **7**. Cell **0** is the **starting position**, and cell **7** is the **finish line**.
+2. **Player Positions**: Both players start at cell **0**.
+
+```
+[Start] 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 [Finish]
+           ^                           ^
+        Player 1                    Player 2
+```
+
+## Game Components
+
+- **Grid Cells**: Each cell is a position on the grid where players can land. Cells are numbered from **0** (start) to **7** (finish).
+- **Player Tokens**: Represented by player numbers or symbols (e.g., **Player 1: X**, **Player 2: O**), these indicate each player's current position on the grid.
+- **Command-Line Interface**: Players input their moves through text commands, and the game displays the grid and player positions after each turn.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with **Player 1**.
+2. **Player Actions**: On your turn, you must choose to move your token forward by **1**, **2**, or **3** cells.
+3. **Movement Restrictions**:
+   - You cannot move beyond the finish line (cell **7**). Any move that would place you beyond cell **7** is adjusted to land exactly on cell **7**.
+   - If you land on the same cell as your opponent, you **push** them back to **cell 0**.
+
+## Rules and Mechanics
+
+### Movement
+
+- **Advancing**: On each turn, input the number of cells you wish to move forward (**1**, **2**, or **3**).
+- **Finish Line**: Reaching or passing cell **7** results in an immediate win.
+- **Adjusting Moves**: If your chosen move would take you past cell **7**, your token stops at cell **7**.
+
+### Pushing Mechanic
+
+- **Landing on Opponent's Cell**:
+  - If you land on the same cell occupied by your opponent, you **push** them back to **cell 0**.
+  - The opponent must restart from the beginning on their next turn.
+- **Blocking**: There is no concept of blocking; only the player who moves last occupies the cell.
+
+### Winning the Game
+
+- The first player to reach or surpass the finish line at cell **7** wins the game.
+- The game cannot end in a draw.
+
+## Scoring
+
+- **Victory**: No points are tracked; the aim is to win each game individually.
+- **Matches**: Players may agree to play multiple games, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Scenario
+
+#### Initial State
+
+```
+[Start] 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 [Finish]
+Players start at cell 0.
+```
+
+#### Turn Sequence
+
+1. **Player 1's Turn**
+   - Chooses to move **3** steps.
+   - **Player 1** moves to cell **3**.
+   ```
+   Positions:
+   Player 1: Cell 3
+   Player 2: Cell 0
+   ```
+
+2. **Player 2's Turn**
+   - Chooses to move **2** steps.
+   - **Player 2** moves to cell **2**.
+   ```
+   Positions:
+   Player 1: Cell 3
+   Player 2: Cell 2
+   ```
+
+3. **Player 1's Turn**
+   - Chooses to move **1** step.
+   - **Player 1** moves to cell **4**.
+   ```
+   Positions:
+   Player 1: Cell 4
+   Player 2: Cell 2
+   ```
+
+4. **Player 2's Turn**
+   - Chooses to move **3** steps.
+   - **Player 2** moves to cell **5**.
+   ```
+   Positions:
+   Player 1: Cell 4
+   Player 2: Cell 5
+   ```
+
+5. **Player 1's Turn**
+   - Chooses to move **3** steps.
+   - **Player 1** moves to cell **7** (can't move beyond cell 7).
+   - **Player 1 wins the game** by reaching the finish line.
+   ```
+   Positions:
+   Player 1: Cell 7 (Finish Line)
+   Player 2: Cell 5
+   ```
+
+### Command-Line Interaction
+
+Below is a sample of how the game might be played in a command-line interface.
+
+#### Start of Game
+
+```
+Welcome to Pixel Runner!
+
+[Start] 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 [Finish]
+Player 1 (X) and Player 2 (O) are at cell 0.
+
+Player 1's turn.
+Enter the number of steps to move forward (1, 2, or 3):
+```
+
+#### Turn Example
+
+**Player 1's Input**
+
+```
+3
+```
+
+**Game Response**
+
+```
+Player 1 moves 3 steps to cell 3.
+
+[Start] 0 - 1 - 2 - X - 4 - 5 - 6 - 7 [Finish]
+Player 2 is at cell 0.
+```
+
+**Player 2's Input**
+
+```
+2
+```
+
+**Game Response**
+
+```
+Player 2 moves 2 steps to cell 2.
+
+[Start] 0 - 1 - O - X - 4 - 5 - 6 - 7 [Finish]
+```
+
+**Continuing the Game**
+
+Players continue to input their moves, and the game updates the grid and positions after each turn, indicating any pushing events or victories.
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves to avoid being pushed back.
+- **Control the Lead**: Staying ahead can prevent your opponent from landing on your cell.
+- **Use Pushing Tactically**: Landing on your opponent's cell can significantly hinder their progress.
+- **Calculate Winning Moves**: Be mindful of your moves to land exactly on cell **7** when possible.
+
+## Conclusion
+
+Pixel Runner is a game of strategy and foresight. By carefully choosing your moves and anticipating your opponent's actions, you can race to the finish line and claim victory. Enjoy the challenge and may the best runner win!

@@ -1,0 +1,257 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+**Divisor Duel** is a two-player, turn-based mathematical strategy game. The primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns selecting divisors of a shared number and reducing that number until one player is unable to perform a valid action, thereby losing the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared positive integer, referred to as the **Current Number**. The default starting number is **60**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Current Number**: A positive integer that is manipulated throughout the game.
+- **Divisors**: Numbers that divide the Current Number evenly (without leaving a remainder), excluding **1** and the Current Number itself.
+  
+  For example, if the Current Number is 60, its divisors (excluding 1 and 60) are:
+
+  ```
+  2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+  ```
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Player Actions**: On their turn, a player must:
+  1. **Select a Divisor**: Choose any valid divisor of the Current Number (excluding 1 and the number itself).
+  2. **Subtract the Divisor**: Subtract the chosen divisor from the Current Number to create a **New Current Number**.
+- **Passing the Turn**: The New Current Number becomes the Current Number for the next player's turn.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - Players must select a divisor of the Current Number excluding 1 and the Current Number itself.
+   - The chosen divisor must be less than the Current Number.
+2. **Calculating Divisors**:
+   - Divisors are positive integers that divide the Current Number evenly.
+   - Divisors must satisfy:
+
+     ```
+     Current Number % Divisor == 0
+     ```
+3. **Updating the Current Number**:
+   - Subtract the chosen divisor from the Current Number:
+
+     ```
+     New Current Number = Current Number - Divisor
+     ```
+   - The New Current Number must remain a positive integer.
+4. **Invalid Moves**:
+   - If a player cannot find a valid divisor (i.e., when the Current Number is a prime number or 2), they lose their turn and the game.
+5. **Winning the Game**:
+   - The player who forces their opponent into a position where no valid moves are possible wins the game.
+
+## Scoring
+
+- **Victory Condition**: Victory is achieved by creating a situation where the opponent has no valid moves on their turn.
+- **No Point System**: There is no point or scoring system; the game is won solely through strategic play leading to the opponent's loss.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Setup
+
+- **Current Number**: 60
+- **Player 1** and **Player 2** decide who goes first (default is Player 1).
+
+---
+
+#### Turn 1: Player 1
+
+- **Current Number**: 60
+- **Divisors of 60** (excluding 1 and 60): 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- **Player 1's Choice**: Chooses divisor **15**.
+- **Calculation**:
+  ```
+  New Current Number = 60 - 15 = 45
+  ```
+- **Pass Turn**: Current Number is now **45** for Player 2.
+
+---
+
+#### Turn 2: Player 2
+
+- **Current Number**: 45
+- **Divisors of 45** (excluding 1 and 45): 3, 5, 9, 15
+- **Player 2's Choice**: Chooses divisor **15**.
+- **Calculation**:
+  ```
+  New Current Number = 45 - 15 = 30
+  ```
+- **Pass Turn**: Current Number is now **30** for Player 1.
+
+---
+
+#### Turn 3: Player 1
+
+- **Current Number**: 30
+- **Divisors of 30** (excluding 1 and 30): 2, 3, 5, 6, 10, 15
+- **Player 1's Choice**: Chooses divisor **10**.
+- **Calculation**:
+  ```
+  New Current Number = 30 - 10 = 20
+  ```
+- **Pass Turn**: Current Number is now **20** for Player 2.
+
+---
+
+#### Turn 4: Player 2
+
+- **Current Number**: 20
+- **Divisors of 20** (excluding 1 and 20): 2, 4, 5, 10
+- **Player 2's Choice**: Chooses divisor **5**.
+- **Calculation**:
+  ```
+  New Current Number = 20 - 5 = 15
+  ```
+- **Pass Turn**: Current Number is now **15** for Player 1.
+
+---
+
+#### Turn 5: Player 1
+
+- **Current Number**: 15
+- **Divisors of 15** (excluding 1 and 15): 3, 5
+- **Player 1's Choice**: Chooses divisor **5**.
+- **Calculation**:
+  ```
+  New Current Number = 15 - 5 = 10
+  ```
+- **Pass Turn**: Current Number is now **10** for Player 2.
+
+---
+
+#### Turn 6: Player 2
+
+- **Current Number**: 10
+- **Divisors of 10** (excluding 1 and 10): 2, 5
+- **Player 2's Choice**: Chooses divisor **2**.
+- **Calculation**:
+  ```
+  New Current Number = 10 - 2 = 8
+  ```
+- **Pass Turn**: Current Number is now **8** for Player 1.
+
+---
+
+#### Turn 7: Player 1
+
+- **Current Number**: 8
+- **Divisors of 8** (excluding 1 and 8): 2, 4
+- **Player 1's Choice**: Chooses divisor **4**.
+- **Calculation**:
+  ```
+  New Current Number = 8 - 4 = 4
+  ```
+- **Pass Turn**: Current Number is now **4** for Player 2.
+
+---
+
+#### Turn 8: Player 2
+
+- **Current Number**: 4
+- **Divisors of 4** (excluding 1 and 4): 2
+- **Player 2's Choice**: Chooses divisor **2**.
+- **Calculation**:
+  ```
+  New Current Number = 4 - 2 = 2
+  ```
+- **Pass Turn**: Current Number is now **2** for Player 1.
+
+---
+
+#### Turn 9: Player 1
+
+- **Current Number**: 2
+- **Divisors of 2** (excluding 1 and 2): None
+- **Player 1** has no valid moves and **loses** the game.
+- **Player 2** **wins**!
+
+## Command-Line Interaction Example
+
+Below is an example of how the game might proceed in a command-line interface:
+
+```
+----------------------------------------
+Welcome to Divisor Duel!
+
+Starting Number: 60
+
+Player 1's Turn
+Current Number: 60
+Divisors available: [2, 3, 4, 5, 6, 10, 12, 15, 20, 30]
+Enter your chosen divisor: 15
+New Current Number is 45
+
+Player 2's Turn
+Current Number: 45
+Divisors available: [3, 5, 9, 15]
+Enter your chosen divisor: 15
+New Current Number is 30
+
+Player 1's Turn
+Current Number: 30
+Divisors available: [2, 3, 5, 6, 10, 15]
+Enter your chosen divisor: 10
+New Current Number is 20
+
+Player 2's Turn
+Current Number: 20
+Divisors available: [2, 4, 5, 10]
+Enter your chosen divisor: 5
+New Current Number is 15
+
+Player 1's Turn
+Current Number: 15
+Divisors available: [3, 5]
+Enter your chosen divisor: 5
+New Current Number is 10
+
+Player 2's Turn
+Current Number: 10
+Divisors available: [2, 5]
+Enter your chosen divisor: 2
+New Current Number is 8
+
+Player 1's Turn
+Current Number: 8
+Divisors available: [2, 4]
+Enter your chosen divisor: 4
+New Current Number is 4
+
+Player 2's Turn
+Current Number: 4
+Divisors available: [2]
+Enter your chosen divisor: 2
+New Current Number is 2
+
+Player 1's Turn
+Current Number: 2
+Divisors available: []
+No valid moves available!
+Player 2 wins the game!
+----------------------------------------
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the Current Number you pass to them.
+- **Avoid Prime Numbers**: Try not to reduce the Current Number to a prime number on your turn unless it forces a win.
+- **Control Divisors**: Select divisors that leave your opponent with fewer options.
+- **Mathematical Familiarity**: Being quick with factoring numbers can provide a strategic advantage.
+
+---
+
+Enjoy playing **Divisor Duel**, and may the most strategic player win!

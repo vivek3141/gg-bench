@@ -1,0 +1,233 @@
+# Elemental Clash: Rule Book
+
+## Objective
+
+**Primary Goal:**  
+Reduce your opponent's Life Points (LP) to zero before they do the same to you.
+
+**Victory Conditions:**
+
+- **Win:** Reduce your opponent's LP to zero.
+- **Loss:** Your own LP is reduced to zero.
+- **Tie-Breaker:** If both players reach zero LP in the same round, the player with the higher LP before that round wins.
+
+---
+
+## Setup
+
+1. **Life Points:** Both players start with **15 Life Points**.
+2. **Elements:** Each player has access to the following **five elements**:
+   - Fire
+   - Water
+   - Earth
+   - Air
+   - Lightning
+3. **Element Pool:** Players maintain their own pool of elements. Each element can be used **once per game**.
+
+---
+
+## Game Components
+
+### Elements
+
+1. **Fire**
+   - **Strengths:** Beats Earth and Lightning.
+2. **Water**
+   - **Strengths:** Beats Fire and Air.
+3. **Earth**
+   - **Strengths:** Beats Water and Lightning.
+4. **Air**
+   - **Strengths:** Beats Earth and Fire.
+5. **Lightning**
+   - **Strengths:** Beats Water and Air.
+
+**Functionality:**
+
+- Elements are used to attack the opponent.
+- Each element has specific strengths against two other elements.
+- After use, an element is **discarded** and cannot be used again.
+
+---
+
+## Turns
+
+1. **Simultaneous Selection:**
+   - Both players secretly choose one of their remaining elements.
+2. **Reveal:**
+   - Players reveal their chosen elements simultaneously.
+3. **Resolution:**
+   - Determine the outcome based on the interaction of the chosen elements.
+4. **End of Turn:**
+   - Apply damage.
+   - Discard used elements.
+   - Check for victory conditions.
+   - Proceed to the next turn if neither player has won.
+
+---
+
+## Rules and Mechanics
+
+### Elemental Strengths and Outcomes
+
+- **Outcome Determination:**
+  - **Winning Element:** If one player's element beats the opponent's, the **winning player deals 3 damage** to the opponent.
+  - **Draw:** If neither element beats the other (elements are neutral to each other), **both players take 1 damage**.
+  
+- **Element Strengths:**
+
+  | Element   | Defeats            |
+  |-----------|--------------------|
+  | Fire      | Earth, Lightning   |
+  | Water     | Fire, Air          |
+  | Earth     | Water, Lightning   |
+  | Air       | Earth, Fire        |
+  | Lightning | Water, Air         |
+
+- **Element Weaknesses:**
+  - An element is defeated by the elements it does not beat.
+
+### Life Points (LP)
+
+- **Starting LP:** Each player begins with 15 LP.
+- **Damage Application:**
+  - **Winning Attack:** Opponent loses 3 LP.
+  - **Draw:** Both players lose 1 LP.
+  
+### Element Usage
+
+- **Single Use:** Each element can be used only once per game.
+- **Discarding Elements:** After an element is used, it is discarded and cannot be selected again.
+
+### Victory Conditions and Tie-Breakers
+
+- **Victory:** A player wins if the opponent's LP drops to zero.
+- **Tie-Breaker:** If both players reach zero LP in the same round:
+  - The player with the **higher LP before the round** wins.
+  - If LPs were equal before the round, the game continues until a winner is determined.
+
+---
+
+## Scoring
+
+- **Damage Inflicted:**
+  - **Winning Element:** Deal **3 damage** to the opponent.
+  - **Draw:** Each player takes **1 damage**.
+
+- **Tracking LP:**
+  - Keep a running total of each player's LP after every turn.
+  
+- **Winning the Game:**
+  - Monitor LP to determine when a player's LP reaches zero.
+
+---
+
+## Examples
+
+### Sample Turn Structure
+
+1. **Both Players Choose Elements:**
+   - Player 1 selects **Fire** (secretly).
+   - Player 2 selects **Earth** (secretly).
+
+2. **Reveal Elements:**
+   - Both players reveal their choices.
+   - Player 1 reveals **Fire**.
+   - Player 2 reveals **Earth**.
+
+3. **Determine Outcome:**
+   - **Fire beats Earth** (Fire defeats Earth).
+   - Player 1 wins the round.
+
+4. **Apply Damage:**
+   - Player 2 loses **3 LP**.
+   - Player 2's LP decreases from 15 to **12 LP**.
+
+5. **Discard Used Elements:**
+   - Both players discard their used elements (**Fire** and **Earth**).
+
+6. **Check for Victory:**
+   - Neither player has zero LP.
+   - Proceed to next turn.
+
+### Command-Line Interaction Example
+
+**Game Start:**
+
+```
+Player 1 and Player 2 start with 15 LP.
+Available Elements: Fire, Water, Earth, Air, Lightning
+```
+
+**Turn 1:**
+
+```
+Player 1, choose your element: [Fire, Water, Earth, Air, Lightning]
+>> (Player 1 inputs their choice secretly)
+
+Player 2, choose your element: [Fire, Water, Earth, Air, Lightning]
+>> (Player 2 inputs their choice secretly)
+
+Both players reveal their elements!
+Player 1 chose Fire.
+Player 2 chose Earth.
+
+Outcome: Fire beats Earth.
+Player 2 loses 3 LP.
+
+LP Standings:
+Player 1: 15 LP
+Player 2: 12 LP
+
+Used Elements:
+Player 1 has used: Fire
+Player 2 has used: Earth
+```
+
+**Turn 2:**
+
+```
+Player 1, choose your element: [Water, Earth, Air, Lightning]
+Player 2, choose your element: [Fire, Water, Air, Lightning]
+
+(Both players make their selections)
+
+Both players reveal their elements!
+Player 1 chose Water.
+Player 2 chose Air.
+
+Outcome: Water beats Air.
+Player 2 loses 3 LP.
+
+LP Standings:
+Player 1: 15 LP
+Player 2: 9 LP
+
+Used Elements:
+Player 1 has used: Fire, Water
+Player 2 has used: Earth, Air
+```
+
+**Turn 3:**
+
+```
+(Player selections continue...)
+
+(The game proceeds until one player reaches zero LP.)
+```
+
+---
+
+## Strategy Tips
+
+- **Anticipate Opponent Choices:** Try to predict which element your opponent will play based on their remaining elements.
+- **Element Strengths:** Remember which elements beat others to make strategic choices.
+- **LP Management:** Keep track of both players' LP to plan when to play certain elements.
+- **Used Elements:** Pay attention to the elements that have been discarded to narrow down opponent's options.
+
+---
+
+## Summary
+
+**Elemental Clash** is a strategic two-player game that combines prediction and careful resource management. By understanding the elemental strengths and planning ahead, a skilled player can consistently outperform an unskilled opponent. The game's simplicity makes it easy to code in a command-line interface, ensuring quick and decisive matches without the possibility of a draw.
+
+Enjoy the battle of the elements and may the best strategist win!

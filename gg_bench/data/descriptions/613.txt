@@ -1,0 +1,201 @@
+# Number Capture
+
+## Objective
+
+**Number Capture** is a strategic two-player, turn-based game. The primary goal is to outscore your opponent by strategically claiming numbers from a shared number line. Players take turns selecting numbers, aiming to maximize their total while blocking their opponent's options. The player with the higher total sum of claimed numbers at the end of the game wins.
+
+## Setup
+
+- **Number Line**: A sequence of consecutive integers from **1** to **21** (inclusive). All numbers are initially unclaimed.
+- **Player Assignment**: Decide which player will go first (e.g., by coin toss).
+
+## Game Components
+
+- **The Number Line**: Displayed as a list of numbers from 1 to 21.
+- **Player Markers**: Each player has a unique marker to indicate their claimed numbers. For example:
+  - Player 1: `P1`
+  - Player 2: `P2`
+- **Score Tracker**: A means to keep track of each player's claimed numbers and total score.
+
+## Turns
+
+### Turn Structure
+
+1. **Player Prompt**: The current player is prompted to select a number.
+2. **Selection**: The player selects an unclaimed number from the number line.
+3. **Update**: The selected number is marked with the player's marker on the number line.
+4. **Blocking**: The player notes which numbers are now blocked for themselves (adjacent numbers to their claimed numbers).
+5. **Turn Progression**: The turn passes to the next player.
+
+### Order of Actions
+
+- **Selection Phase**: Choose an unclaimed number.
+- **Claiming Phase**: Mark the number as claimed.
+- **Blocking Phase**: Identify blocked numbers for future turns.
+- **End of Turn**: Pass turn to the opponent.
+
+## Rules and Mechanics
+
+### Claiming Numbers
+
+- **Selection**: On your turn, you may claim any **unclaimed** number from the number line.
+- **Uniqueness**: Once a number is claimed by any player, it cannot be claimed again.
+
+### Blocking Mechanism
+
+- **Adjacent Numbers**: When you claim a number, **you cannot claim** the numbers immediately adjacent to it (i.e., the numbers that are one more or one less than the claimed number) in future turns.
+- **Self-Blocking**: This restriction applies **only to your own claimed numbers**. You cannot claim numbers adjacent to your own claimed numbers.
+- **Opponent's Numbers**: You **can** claim numbers adjacent to your opponent's claimed numbers.
+
+### Game End
+
+- **Termination Condition**: The game ends when neither player can make a valid move (no unclaimed numbers are available that are not blocked for them).
+- **Final Scoring**: Each player's total score is calculated by summing their claimed numbers.
+
+## Scoring
+
+- **Total Sum**: At the end of the game, sum the values of all the numbers you have claimed.
+- **Winning the Game**: The player with the higher total sum wins.
+- **Tiebreaker**: If both players have the same total sum:
+  - The player who claimed the **higher individual number first** wins.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Number Line
+
+```
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+```
+
+#### Turn Sequence
+
+1. **Player 1's Turn**
+   - **Selection**: Chooses **11**.
+   - **Update**: Marks **11** as `[P1]`.
+   - **Blocking**: Cannot claim **10** and **12** in future turns.
+   - **Number Line**:
+     ```
+     1 2 3 4 5 6 7 8 9 10 [P1]11 12 13 14 15 16 17 18 19 20 21
+     ```
+
+2. **Player 2's Turn**
+   - **Selection**: Chooses **13**.
+   - **Update**: Marks **13** as `[P2]`.
+   - **Blocking**: Cannot claim **12** and **14** in future turns.
+   - **Number Line**:
+     ```
+     1 2 3 4 5 6 7 8 9 10 [P1]11 12 [P2]13 14 15 16 17 18 19 20 21
+     ```
+
+3. **Player 1's Turn**
+   - **Selection**: Chooses **9** (adjacent to opponent's number is allowed).
+   - **Update**: Marks **9** as `[P1]`.
+   - **Blocking**: Cannot claim **8** and **10** in future turns.
+   - **Number Line**:
+     ```
+     1 2 3 4 5 6 7 8 [P1]9 10 [P1]11 12 [P2]13 14 15 16 17 18 19 20 21
+     ```
+
+4. **Player 2's Turn**
+   - **Selection**: Chooses **12**.
+   - **Update**: Marks **12** as `[P2]`.
+   - **Blocking**: Cannot claim **11** and **13** (already claimed) in future turns.
+   - **Number Line**:
+     ```
+     1 2 3 4 5 6 7 8 [P1]9 10 [P1]11 [P2]12 [P2]13 14 15 16 17 18 19 20 21
+     ```
+
+5. **Game Continues**: Players continue to take turns until no valid moves remain.
+
+### Final Scoring
+
+- **Player 1's Claimed Numbers**: 9, 11, 17, 19
+- **Player 2's Claimed Numbers**: 12, 13, 15, 16
+- **Player 1's Total Score**: 9 + 11 + 17 + 19 = **56**
+- **Player 2's Total Score**: 12 + 13 + 15 + 16 = **56**
+- **Tiebreaker**:
+  - Player 1 claimed the higher individual number **19** before Player 2 claimed their highest number **16**.
+  - **Winner**: Player 1
+
+## Command-Line Interaction Examples
+
+### Initial Game State
+
+```
+Number Line:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+
+Player 1's Claimed Numbers: None
+Player 2's Claimed Numbers: None
+```
+
+### Player Turns
+
+1. **Player 1's Turn**
+   - **Prompt**: "Player 1, select an unclaimed number:"
+   - **Input**: `11`
+   - **Output**:
+     ```
+     Player 1 has claimed number 11.
+     Blocked for Player 1: 10, 12
+     ```
+
+2. **Player 2's Turn**
+   - **Prompt**: "Player 2, select an unclaimed number:"
+   - **Input**: `12`
+   - **Output**:
+     ```
+     Player 2 has claimed number 12.
+     Blocked for Player 2: 11, 13
+     ```
+
+3. **Player 1's Turn**
+   - **Cannot Choose**: 10 and 12 (blocked), 11 (already claimed).
+   - **Prompt**: "Player 1, select an unclaimed number:"
+   - **Input**: `13`
+   - **Output**:
+     ```
+     Player 1 has claimed number 13.
+     Blocked for Player 1: 12, 14
+     ```
+
+4. **Player 2's Turn**
+   - **Prompt**: "Player 2, select an unclaimed number:"
+   - **Input**: `9`
+   - **Output**:
+     ```
+     Player 2 has claimed number 9.
+     Blocked for Player 2: 8, 10
+     ```
+
+### Updated Number Line
+
+```
+Number Line:
+1 2 3 4 5 6 7 8 9[P2] 10 11[P1] 12[P2] 13[P1] 14 15 16 17 18 19 20 21
+
+Player 1's Claimed Numbers: 11, 13
+Player 2's Claimed Numbers: 9, 12
+```
+
+## Additional Rules Clarifications
+
+- **Blocked Numbers Reminder**: It's recommended for players to keep track of which numbers are blocked for them to avoid illegal moves.
+- **Illegal Moves**: If a player attempts to claim a blocked or already claimed number, they are prompted to choose again.
+- **No Skipping Turns**: Players must make a valid move on their turn if possible. If no valid moves are available for a player, they pass their turn.
+- **Game Continuation**: The game continues until both players have no valid moves remaining.
+
+## Strategy Tips
+
+- **Early Game**: Focus on claiming central, higher-value numbers to maximize your score and block your opponent's access to adjacent high numbers.
+- **Blocking**: Use the blocking mechanism to prevent your opponent from accessing numbers that would significantly boost their score.
+- **Flexibility**: Be prepared to adjust your strategy based on your opponent's moves. Stay aware of which numbers are still available to you.
+- **Anticipation**: Try to anticipate which numbers your opponent is aiming for and block their access by strategically claiming adjacent numbers.
+
+## Conclusion
+
+**Number Capture** is a simple yet strategically rich game that tests players' tactical decision-making and foresight. By carefully selecting which numbers to claim and considering the blocking rules, skilled players can consistently outmaneuver their opponents and secure victory.
+
+Have fun capturing numbers and outsmarting your opponent!

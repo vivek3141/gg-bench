@@ -1,0 +1,134 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+**Divisor Duel** is a strategic two-player turn-based game where the primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns reducing a shared number by choosing its proper divisors. The player who reduces the number to 1, leaving the opponent with no valid moves, wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a positive integer called the **Starting Number**. For a standard game, the Starting Number is **50**, but players can agree on any positive integer.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players manipulate during the game. It starts at the Starting Number and decreases as the game progresses.
+- **Proper Divisors**: All positive integers that divide N evenly, excluding N itself.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions per Turn**:
+  1. **Determine Divisors**: Identify all proper divisors of the current shared number N.
+  2. **Choose Divisor**: Select one proper divisor to subtract from N.
+  3. **Update N**: Subtract the chosen divisor from N to get the new N.
+- The updated N becomes the shared number for the next player's turn.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On their turn, a player **must** choose a proper divisor of N.
+   - A proper divisor is any positive integer that divides N evenly, excluding N itself.
+2. **Subtracting the Divisor**:
+   - The chosen divisor is subtracted from N:  
+     New N = Current N - Chosen Divisor
+3. **Winning the Game**:
+   - If a player reduces N to **1** on their turn, leaving the opponent with no valid moves, that player **wins**.
+4. **Losing the Game**:
+   - If a player has no valid moves (i.e., N is 1 at the start of their turn), they **lose** the game.
+5. **No Skipping Turns**:
+   - Players cannot skip their turn; if a valid move exists, they must make one.
+6. **No Repetition**:
+   - Divisors can be reused in subsequent turns as long as they are valid for the current N.
+
+## Scoring
+
+- This game does not have a point-based scoring system.
+- **Victory Condition**: The player who forces the shared number N to 1 on their turn, leaving the opponent without a valid move, wins the game.
+- **Loss Condition**: A player loses if they start their turn when N is 1, leaving them with no valid moves.
+
+## Example Gameplay
+
+### Starting the Game
+
+- Starting Number (N): **50**
+- Players: **Player 1** and **Player 2**
+
+### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Current N**: 50
+   - **Proper Divisors of 50**: 1, 2, 5, 10, 25
+   - **Chosen Divisor**: 25
+   - **New N**: 50 - 25 = **25**
+
+2. **Player 2's Turn**:
+   - **Current N**: 25
+   - **Proper Divisors of 25**: 1, 5
+   - **Chosen Divisor**: 5
+   - **New N**: 25 - 5 = **20**
+
+3. **Player 1's Turn**:
+   - **Current N**: 20
+   - **Proper Divisors of 20**: 1, 2, 4, 5, 10
+   - **Chosen Divisor**: 10
+   - **New N**: 20 - 10 = **10**
+
+4. **Player 2's Turn**:
+   - **Current N**: 10
+   - **Proper Divisors of 10**: 1, 2, 5
+   - **Chosen Divisor**: 5
+   - **New N**: 10 - 5 = **5**
+
+5. **Player 1's Turn**:
+   - **Current N**: 5
+   - **Proper Divisors of 5**: 1
+   - **Chosen Divisor**: 1
+   - **New N**: 5 - 1 = **4**
+
+6. **Player 2's Turn**:
+   - **Current N**: 4
+   - **Proper Divisors of 4**: 1, 2
+   - **Chosen Divisor**: 2
+   - **New N**: 4 - 2 = **2**
+
+7. **Player 1's Turn**:
+   - **Current N**: 2
+   - **Proper Divisors of 2**: 1
+   - **Chosen Divisor**: 1
+   - **New N**: 2 - 1 = **1**
+
+8. **Player 2's Turn**:
+   - **Current N**: 1
+   - **No proper divisors** (since 1 has no divisors other than itself)
+   - **Player 2 Cannot Move**: N is 1, so Player 2 loses.
+   - **Winner**: **Player 1**
+
+### Command-Line Interaction Example
+
+- **Player 1's Turn**:
+  ```
+  Current N: 50
+  Proper divisors: 1, 2, 5, 10, 25
+  Choose a divisor to subtract from N: 25
+  New N is 25
+  ```
+
+- **Player 2's Turn**:
+  ```
+  Current N: 25
+  Proper divisors: 1, 5
+  Choose a divisor to subtract from N: 5
+  New N is 20
+  ```
+
+*(Subsequent turns follow the same pattern.)*
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the new N you leave them with.
+- **Avoid Leaving Low N**: Try not to reduce N to a small number where your opponent can control the endgame.
+- **Force the Win**: Aim to reduce N to numbers where the available divisors work in your favor for the next turn.
+
+## Summary
+
+**Divisor Duel** is a simple yet strategic game that challenges players to think ahead and manipulate numbers. With straightforward rules and mechanics, it is easy to code and play in a command-line interface. The absence of chance elements ensures that skillful play is rewarded, allowing a proficient player to consistently triumph over a less experienced one. Enjoy the duel of wits and numbers!

@@ -1,0 +1,15 @@
+The action space in this environment has 625 discrete actions, each representing a combination of a move and a blockade placement. The mapping is as follows:
+
+1. **Move Encoding:**
+   - The grid is 5x5, providing 25 possible move positions.
+   - Each move is represented by indices from 0 to 24 (`move_index`), calculated as `move_row * 5 + move_col`.
+
+2. **Blockade Placement Encoding:**
+   - After a move, a blockade can be placed in any of the 25 grid positions.
+   - This is represented by indices from 0 to 24 (`blockade_index`), calculated as `blockade_row * 5 + blockade_col`.
+
+3. **Combined Action Encoding:**
+   - Each action is a combination of one move and one blockade placement: `action = move_index * 25 + blockade_index`.
+   - This results in 625 total actions (`25 moves * 25 blockades`). 
+
+Thus, each action index uniquely specifies both a move and a subsequent blockade placement on the grid.

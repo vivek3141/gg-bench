@@ -1,0 +1,263 @@
+# Cross Over: Rule Book
+
+## Overview
+
+**Cross Over** is a strategic two-player, turn-based game designed for play in a command-line interface. The game is simple to learn and code, ends quickly with no possibility of a draw, and rewards strategic planning and foresight. Players control pieces on a linear track, aiming to either cross into the opponent's territory or capture all opposing pieces.
+
+---
+
+## Objective
+
+- **Primary Goal:** Be the first player to move one of your pieces into or beyond the opponent's starting positions.
+- **Alternate Victory Condition:** Capture all of the opponent's pieces.
+  
+Achieving either of these conditions results in an immediate win.
+
+---
+
+## Setup
+
+### Game Board
+
+- **Structure:** A linear track consisting of **11 positions**, numbered from **0** to **10**.
+- **Positions:**
+  - **Positions 0-2:** Player 1's starting area.
+  - **Positions 8-10:** Player 2's starting area.
+  - **Positions 3-7:** Neutral territory.
+
+### Player Pieces
+
+- **Each Player Has:**
+  - **Three pieces**, uniquely labeled for identification.
+    - **Player 1's Pieces:** `P1-A`, `P1-B`, `P1-C`.
+    - **Player 2's Pieces:** `P2-A`, `P2-B`, `P2-C`.
+- **Starting Positions:**
+  - **Player 1:**
+    - `P1-A` at position **0**.
+    - `P1-B` at position **1**.
+    - `P1-C` at position **2**.
+  - **Player 2:**
+    - `P2-A` at position **10**.
+    - `P2-B` at position **9**.
+    - `P2-C` at position **8**.
+
+---
+
+## Game Components
+
+### Game Board
+
+- **Linear Track:** Positions numbered from **0** (left end) to **10** (right end).
+- **Visual Representation:** A sequential arrangement of positions that pieces move across.
+
+### Player Pieces
+
+- **Identifiers:**
+  - **Player 1:** `P1-A`, `P1-B`, `P1-C`.
+  - **Player 2:** `P2-A`, `P2-B`, `P2-C`.
+- **Attributes:**
+  - **Position:** Current location on the track.
+  - **Ownership:** Controlled by the respective player.
+
+---
+
+## Turns
+
+### Turn Order
+
+- **Initial Turn:** Player 1 begins the game.
+- **Subsequent Turns:** Players alternate turns thereafter.
+
+### Turn Actions
+
+- **On Your Turn:**
+  1. **Select a Piece:** Choose one of your pieces to move.
+  2. **Determine Movement:** Decide to move the piece forward by **one** or **two** positions.
+  3. **Execute Move:** Move the piece according to the rules.
+
+### Turn Progression
+
+- After completing your move, it becomes the other player's turn.
+- The game continues until a player achieves a win condition.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Direction of Movement:**
+   - **Player 1:** Moves pieces towards higher-numbered positions (right).
+   - **Player 2:** Moves pieces towards lower-numbered positions (left).
+
+2. **Movement Options:**
+   - **Advance by One Position:**
+     - Move your piece to the next position in your movement direction.
+   - **Advance by Two Positions:**
+     - Move your piece two positions ahead in your movement direction.
+
+3. **Restrictions:**
+   - **Own Pieces Block Movement:**
+     - You cannot move a piece into a position occupied by another of your pieces.
+   - **Board Limits:**
+     - You cannot move beyond position **10** (Player 1) or below position **0** (Player 2).
+
+### Capturing Pieces
+
+1. **Capturing Opponent's Pieces:**
+   - If you move your piece into a position occupied by an opponent's piece, you capture it.
+   - **Captured Piece:** Removed from the game permanently.
+
+2. **Capturing Mechanics:**
+   - **Capture and Move:**
+     - Your piece replaces the opponent's piece on the board.
+   - **No Simultaneous Occupation:**
+     - Only one piece can occupy a position at any time.
+
+### Winning the Game
+
+1. **Crossing Over:**
+   - **Player 1 Wins:** By moving any piece into positions **8**, **9**, or **10**.
+   - **Player 2 Wins:** By moving any piece into positions **0**, **1**, or **2**.
+   - **Immediate Victory:** The game ends as soon as the crossover occurs.
+
+2. **Capturing All Opponent's Pieces:**
+   - If you capture all three of the opponent's pieces, you win.
+   - **Game End:** The game ends immediately when the last opponent's piece is captured.
+
+### Legal Moves
+
+1. **No Available Moves:**
+   - If you have no legal moves (all moves blocked), you must pass your turn.
+   - **Stalemate Avoidance:** The game continues until a win condition is met.
+
+2. **Mandatory Forward Movement:**
+   - You must always move your pieces forward in your designated direction.
+
+---
+
+## Scoring
+
+- **No Point System:** The game is won by meeting the victory conditions, not by accumulating points.
+- **Win Conditions:**
+  - **Primary:** Crossing into or beyond the opponent's starting positions.
+  - **Secondary:** Capturing all of the opponent's pieces.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Board State
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+           P1-A P1-B P1-C           P2-C P2-B P2-A
+```
+
+#### Turn-by-Turn Example
+
+**Turn 1 - Player 1:**
+
+- **Action:** Move `P1-A` from position **0** to **2** (forward 2).
+- **Result:** `P1-A` is now at position **2**.
+
+**Turn 2 - Player 2:**
+
+- **Action:** Move `P2-A` from position **10** to **9** (forward 1).
+- **Result:** `P2-A` is now at position **9**.
+
+**Turn 3 - Player 1:**
+
+- **Action:** Move `P1-A` from position **2** to **3** (forward 1).
+- **Result:** `P1-A` is now at position **3**.
+
+**Turn 4 - Player 2:**
+
+- **Action:** Move `P2-C` from position **8** to **6** (forward 2).
+- **Result:** `P2-C` is now at position **6**.
+
+**Turn 5 - Player 1:**
+
+- **Action:** Move `P1-A` from position **3** to **5** (forward 2).
+- **Result:** `P1-A` is now at position **5**.
+
+**Turn 6 - Player 2:**
+
+- **Action:** Move `P2-C` from position **6** to **5** (forward 1) to capture `P1-A`.
+- **Result:** `P1-A` is captured and removed from the game. `P2-C` occupies position **5**.
+
+**Game Continues...**
+
+Players continue to take turns, moving and capturing, until one achieves a win condition.
+
+### Command-Line Interaction Sample
+
+**Player 1's Turn:**
+
+```
+Your Pieces:
+- P1-B at position 1
+- P1-C at position 2
+
+Opponent's Pieces:
+- P2-A at position 9
+- P2-B at position 9
+- P2-C at position 5
+
+Available Moves:
+1. Move P1-B from position 1 to 2 (forward 1)
+2. Move P1-B from position 1 to 3 (forward 2)
+3. Move P1-C from position 2 to 3 (forward 1)
+4. Move P1-C from position 2 to 4 (forward 2)
+
+Enter the number of your chosen move: 2
+
+Result:
+- You moved P1-B to position 3.
+
+```
+
+**Player 2's Turn:**
+
+```
+Your Pieces:
+- P2-A at position 9
+- P2-B at position 9
+- P2-C at position 5
+
+Opponent's Pieces:
+- P1-B at position 3
+- P1-C at position 2
+
+Available Moves:
+1. Move P2-A from position 9 to 8 (forward 1)
+2. Move P2-A from position 9 to 7 (forward 2)
+3. Move P2-B from position 9 to 8 (forward 1)
+4. Move P2-B from position 9 to 7 (forward 2)
+5. Move P2-C from position 5 to 4 (forward 1) to capture P1-B.
+
+Enter the number of your chosen move: 5
+
+Result:
+- You moved P2-C to position 4 and captured P1-B!
+
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate your opponent's possible moves and plan your strategy accordingly.
+- **Balance Offense and Defense:** While advancing towards the opponent's territory, protect your own pieces from capture.
+- **Control the Center:** Holding positions in the middle of the board can provide tactical advantages.
+- **Forced Moves:** Try to force your opponent into positions where they have limited or no good moves.
+
+---
+
+## Summary
+
+**Cross Over** is a simple yet strategically rich game that tests players' planning and tactical skills. With straightforward rules and fast-paced gameplay, it offers an engaging experience that rewards foresight and strategic thinking. Perfect for quick matches, the game ensures that a skilled player can consistently outmaneuver an unskilled opponent.
+
+Have fun crossing over to victory!

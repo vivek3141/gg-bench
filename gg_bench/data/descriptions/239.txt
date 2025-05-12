@@ -1,0 +1,143 @@
+# StackUp: A Two-Player Command-Line Game
+
+## Objective
+
+Be the first player to collect sticks whose total value adds up to **exactly 10** points. Use strategic planning to choose sticks that help you reach the target while preventing your opponent from doing the same.
+
+## Setup
+
+- **Sticks** numbered **1** to **5** are placed on the table.
+- Each stick is worth a number of points equal to its number.
+- All sticks are initially available for both players to pick.
+
+## Game Components
+
+- **Sticks Numbered 1 to 5**: Each stick represents both an item to be collected and its point value.
+  - **Appearance**: Represented by their numbers (1, 2, 3, 4, 5) in the command-line interface.
+  - **Functionality**: Picking up a stick adds its number to the player's total score.
+  - **Unique Attributes**: Each stick can only be picked once during the game.
+
+## Turns
+
+- Players decide who goes first (e.g., by coin toss or mutual agreement).
+- Players take turns alternately.
+- **During a Turn**:
+  - A player may pick up **one or two sticks** from the available sticks.
+  - The sticks chosen are removed from the available pool.
+  - The values of the picked sticks are added to the player's cumulative score.
+- **Turn Progression**:
+  - After a player has picked their sticks and updated their score, the turn passes to the other player.
+  - The game continues until a player wins or no valid moves remain.
+
+## Rules and Mechanics
+
+1. **Picking Sticks**:
+   - On your turn, you may pick **one or two sticks** from the remaining available sticks.
+   - You cannot pick more than two sticks in a single turn.
+   - Once a stick is picked, it is no longer available for either player.
+
+2. **Scoring Limit**:
+   - The goal is to reach a total score of **exactly 10 points**.
+   - If picking a stick would cause your total score to **exceed 10**, you cannot pick that stick.
+   - If you cannot pick any sticks without exceeding a total of 10, you must **skip your turn**.
+
+3. **Winning the Game**:
+   - The first player to reach a total score of **exactly 10 points** wins the game.
+   - If no player can make a valid move, the player with the total score **closest to 10 without exceeding it** wins.
+   - There is **no draw** mechanism; the game will always have a winner.
+
+4. **Strategy Considerations**:
+   - Plan your picks to reach exactly 10 while preventing your opponent from doing so.
+   - Keep track of which sticks have been picked to anticipate possible moves.
+   - Decide whether to pick one or two sticks based on the current scores and remaining sticks.
+
+## Scoring
+
+- **Player Scores**:
+  - Each player's score is the sum of the values of the sticks they have picked.
+  - Scores are updated after each turn.
+- **Winning Condition**:
+  - Reaching **exactly 10 points** results in an immediate win.
+  - If the game ends with no valid moves, the player with the higher score **not exceeding 10** wins.
+
+## Examples
+
+### Example Game Playthrough
+
+**Available Sticks**: 1, 2, 3, 4, 5
+
+**Player 1's Turn**
+- Picks stick **4**.
+- **Player 1's Score**: 4
+- **Remaining Sticks**: 1, 2, 3, 5
+
+**Player 2's Turn**
+- Picks sticks **5** and **1**.
+- **Player 2's Score**: 5 + 1 = 6
+- **Remaining Sticks**: 2, 3
+
+**Player 1's Turn**
+- Picks stick **3**.
+- **Player 1's Score**: 4 + 3 = 7
+- **Remaining Sticks**: 2
+
+**Player 2's Turn**
+- Picks stick **2**.
+- **Player 2's Score**: 6 + 2 = 8
+- **Remaining Sticks**: None
+
+**Game End Condition**
+- All sticks have been picked.
+- **Player 1's Score**: 7
+- **Player 2's Score**: 8
+- Neither player reached exactly 10.
+- **Player 2 wins** for being closest to 10 without exceeding it.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Available sticks: 1, 2, 3, 4, 5
+
+Player 1's turn.
+Your current score: 0
+Choose sticks to pick (enter numbers separated by spaces): 4
+You picked stick 4.
+Your new score: 4
+
+Available sticks: 1, 2, 3, 5
+
+Player 2's turn.
+Your current score: 0
+Choose sticks to pick (enter numbers separated by spaces): 5 1
+You picked sticks 5 and 1.
+Your new score: 6
+
+Available sticks: 2, 3
+
+Player 1's turn.
+Your current score: 4
+Choose sticks to pick (enter numbers separated by spaces): 3
+You picked stick 3.
+Your new score: 7
+
+Available sticks: 2
+
+Player 2's turn.
+Your current score: 6
+Choose sticks to pick (enter numbers separated by spaces): 2
+You picked stick 2.
+Your new score: 8
+
+No sticks remaining.
+Final Scores - Player 1: 7, Player 2: 8
+Player 2 wins!
+```
+
+## Additional Notes
+
+- **Fair Play**: Players should ensure they do not pick sticks that would cause their score to exceed 10.
+- **Strategy Tip**: Pay attention to the sticks your opponent picks to anticipate their possible moves.
+- **Game Length**: The game is designed to be quick, typically ending in a few minutes.
+- **Skill Advantage**: Strategic players who plan ahead and consider the consequences of their picks will have an advantage over less attentive players.
+
+Enjoy playing StackUp, and may the best strategist win!

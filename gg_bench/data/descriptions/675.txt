@@ -1,0 +1,185 @@
+# Path Capture
+
+## Objective
+
+**Path Capture** is a two-player turn-based strategy game played on a linear path. The primary goal is to capture your opponent by landing on the same node after them. Players start at opposite ends of the path and move towards each other. The player who successfully lands on the same node occupied by their opponent **after** their opponent has moved there captures them and wins the game. There is no possibility of a draw; the game ends when one player captures the other.
+
+## Setup
+
+- **Game Path**: A linear sequence of **11 nodes** numbered from **0** to **10**.
+- **Starting Positions**:
+  - **Player 1** begins on **Node 0**.
+  - **Player 2** begins on **Node 10**.
+- **Initial State**: Both players' pieces are placed on their respective starting nodes.
+
+## Game Components
+
+- **Nodes**: Represented by numbers from **0** to **10**.
+- **Player Pieces**: Each player has a unique marker or identifier:
+  - **Player 1**: Represented by `P1`.
+  - **Player 2**: Represented by `P2`.
+- **Game Board Representation**:
+  - A simple array or list displaying the nodes and the players' positions.
+  - Example: `[P1][ ][ ][ ][ ][ ][ ][ ][ ][ ][P2]`
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Display Current Positions**: Show the current state of the path with both players' positions.
+  2. **Player's Move**: The active player chooses their move.
+  3. **Update Position**: The player's piece is moved accordingly.
+  4. **Check for Capture**: Determine if the move results in a capture.
+  5. **Pass Turn**: The next player takes their turn if the game has not ended.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- On their turn, a player must move their piece **forward** towards their opponent's end of the path.
+- **Move Options**: A player can move their piece forward by **1**, **2**, or **3** nodes.
+- **Movement Restrictions**:
+  - A player **cannot** move beyond the opponent's starting node (the path endpoints).
+  - Players cannot skip their turn; a move must be made if available.
+
+### Capture Mechanism
+
+- A capture occurs when a player **lands on the node currently occupied by the opponent** **after** the opponent has moved there.
+- **Winning Condition**:
+  - If **Player 1** moves to a node already occupied by **Player 2**, and **Player 2** was the last to move there, **Player 1** captures **Player 2** and wins.
+  - Similarly for **Player 2** capturing **Player 1**.
+
+### Special Conditions
+
+- **Passing Each Other**:
+  - If players pass each other without landing on the same node, the game continues.
+  - Both players continue moving towards the opponent's end of the path.
+- **End Nodes**:
+  - Players cannot move beyond **Node 10** or below **Node 0**.
+  - If a player is at **Node 10** (for **Player 1**) or **Node 0** (for **Player 2**), they cannot move further in that direction and must choose moves accordingly.
+
+## Scoring
+
+- **Victory**: The player who captures the opponent is declared the winner.
+- **No Points System**: There is no point or scoring system; the game is won by capture alone.
+- **Match Play**: For extended play, players can keep track of wins over multiple games to determine an overall champion.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Initial Setup
+
+```
+[ P1 ][   ][   ][   ][   ][   ][   ][   ][   ][   ][ P2 ]
+ Nodes:  0    1    2    3    4    5    6    7    8    9    10
+```
+
+#### Turn 1: Player 1
+
+- **Player 1's Move**: Moves forward **3** nodes to **Node 3**.
+- **Updated Positions**:
+
+```
+[   ][   ][   ][ P1 ][   ][   ][   ][   ][   ][   ][ P2 ]
+ Nodes:  0    1    2    3    4    5    6    7    8    9    10
+```
+
+#### Turn 2: Player 2
+
+- **Player 2's Move**: Moves forward **2** nodes to **Node 8** (moving towards Node 0).
+- **Updated Positions**:
+
+```
+[   ][   ][   ][ P1 ][   ][   ][   ][   ][ P2 ][   ][   ]
+ Nodes:  0    1    2    3    4    5    6    7    8    9    10
+```
+
+#### Turn 3: Player 1
+
+- **Player 1's Move**: Moves forward **2** nodes to **Node 5**.
+- **Updated Positions**:
+
+```
+[   ][   ][   ][   ][   ][ P1 ][   ][   ][ P2 ][   ][   ]
+ Nodes:  0    1    2    3    4    5    6    7    8    9    10
+```
+
+#### Turn 4: Player 2
+
+- **Player 2's Move**: Moves forward **3** nodes to **Node 5**.
+- **Updated Positions**:
+
+```
+[   ][   ][   ][   ][   ][ P2 ][   ][   ][   ][   ][   ]
+ Nodes:  0    1    2    3    4    5    6    7    8    9    10
+```
+
+- **Capture Check**:
+  - **Player 2** has moved onto **Node 5**, which is currently occupied by **Player 1**.
+  - Since **Player 1** was the last to move to **Node 5**, and **Player 2** landed there **after** them, **Player 2** captures **Player 1** and wins the game.
+
+### Command-Line Interaction Example
+
+#### Starting the Game
+
+```
+Welcome to Path Capture!
+
+Player 1 starts at Node 0.
+Player 2 starts at Node 10.
+
+Player 1's turn.
+Current Positions: [P1][ ][ ][ ][ ][ ][ ][ ][ ][ ][P2]
+Choose your move (1, 2, or 3 nodes forward):
+```
+
+#### Player Input and Movement
+
+```
+Player 1 moves forward 3 nodes to Node 3.
+Updated Positions: [ ][ ][ ][P1][ ][ ][ ][ ][ ][ ][P2]
+
+Player 2's turn.
+Current Positions: [ ][ ][ ][P1][ ][ ][ ][ ][ ][ ][P2]
+Choose your move (1, 2, or 3 nodes forward):
+```
+
+#### Continuing Turns
+
+```
+Player 2 moves forward 2 nodes to Node 8.
+Updated Positions: [ ][ ][ ][P1][ ][ ][ ][ ][P2][ ][ ]
+
+Player 1's turn.
+Current Positions: [ ][ ][ ][P1][ ][ ][ ][ ][P2][ ][ ]
+Choose your move (1, 2, or 3 nodes forward):
+```
+
+#### Capturing the Opponent
+
+```
+Player 1 moves forward 2 nodes to Node 5.
+Updated Positions: [ ][ ][ ][ ][ ][P1][ ][ ][P2][ ][ ]
+
+Player 2's turn.
+Current Positions: [ ][ ][ ][ ][ ][P1][ ][ ][P2][ ][ ]
+Choose your move (1, 2, or 3 nodes forward):
+
+Player 2 moves forward 3 nodes to Node 5.
+Updated Positions: [ ][ ][ ][ ][ ][P2][ ][ ][ ][ ][ ]
+
+Player 2 has captured Player 1 on Node 5!
+Player 2 wins the game!
+```
+
+## Strategic Tips
+
+- **Anticipate Opponent's Moves**: Try to predict how far your opponent will move and plan your moves to land on their node after they arrive.
+- **Control the Center**: Moving strategically to the middle nodes can give you more options for next moves.
+- **Forced Moves**: Put your opponent in a position where their only safe moves lead them into a trap.
+- **Mirror Strategy**: Reflect your opponent's moves to control the pacing of the game.
+
+---
+
+Enjoy playing **Path Capture**! May the best strategist win.

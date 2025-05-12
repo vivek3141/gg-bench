@@ -1,0 +1,188 @@
+# Binary Battle: Rule Book
+
+## Objective
+
+**Binary Battle** is a two-player turn-based strategy game. The primary goal is to be the first player to set all bits in your 4-bit binary number to `1` (i.e., achieve `1111`). Players can flip bits in their own number and reset bits in their opponent's number, adding strategic depth to the gameplay. The first player to reach `1111` wins the game; if a player cannot make a valid move, they lose.
+
+---
+
+## Setup
+
+- **Players**: Two players
+- **Starting Condition**: 
+  - Each player begins with a 4-bit binary number initialized to `0000`.
+- **Decide Turn Order**:
+  - Flip a coin or have each player enter a number; the system can randomly select who goes first.
+  
+---
+
+## Game Components
+
+- **Binary Numbers**:
+  - Each player has their own 4-bit binary number displayed as `b3b2b1b0`, where each `b` represents a bit.
+  - The bits are ordered from left (most significant bit, `b3`) to right (least significant bit, `b0`).
+
+- **Actions**:
+  - **Flip Own Bit**: Change one of your own bits from `0` to `1`.
+  - **Reset Opponent's Bit**: Change one of your opponent's bits from `1` to `0`.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns throughout the game.
+  - On your turn, you must perform one of the available actions.
+
+- **Available Actions on a Turn**:
+  1. **Flip Own Bit**:
+     - Choose any of your bits that is set to `0` and flip it to `1`.
+  2. **Reset Opponent's Bit**:
+     - Choose any of your opponent's bits that is set to `1` and reset it to `0`.
+
+- **Progression of Turns**:
+  - The game continues with players alternating turns until one player wins or cannot make a valid move.
+
+---
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - You can only flip your own bits from `0` to `1`.
+   - You cannot flip a bit that is already `1`.
+
+2. **Resetting Opponent's Bits**:
+   - You can reset your opponent's bits from `1` to `0`.
+   - You cannot reset a bit that is already `0`.
+
+3. **Winning the Game**:
+   - The first player to have all their bits set to `1` (`1111`) wins the game immediately.
+
+4. **Valid Moves**:
+   - If a player has no valid moves (i.e., all their bits are `1` and the opponent's bits are all `0`), they lose their turn.
+   - If both players have no valid moves, the game ends, and the player with more bits set to `1` wins.
+   - If both players have the same number of bits set to `1`, the player who last made a move wins.
+
+---
+
+## Scoring
+
+- **No Point System**:
+  - The game does not employ a scoring system.
+  - Victory is achieved by meeting the objective conditions outlined above.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+- **Player 1**: `0000`
+- **Player 2**: `0000`
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Action: Flip own bit `b3` from `0` to `1`.
+   - **Player 1's Number**: `1000`
+   - **Command-Line Interaction**:
+     ```
+     Player 1, choose action:
+     1. Flip own bit
+     2. Reset opponent's bit
+     Enter choice (1 or 2): 1
+     Enter bit position to flip (0-3): 3
+     ```
+
+2. **Player 2's Turn**:
+   - Action: Flip own bit `b3` from `0` to `1`.
+   - **Player 2's Number**: `1000`
+
+3. **Player 1's Turn**:
+   - Action: Flip own bit `b2` from `0` to `1`.
+   - **Player 1's Number**: `1100`
+
+4. **Player 2's Turn**:
+   - Action: Reset opponent's bit `b3` from `1` to `0`.
+   - **Player 1's Number**: `0100`
+
+5. **Player 1's Turn**:
+   - Action: Flip own bit `b3` from `0` to `1`.
+   - **Player 1's Number**: `1100`
+
+6. **Player 2's Turn**:
+   - Action: Flip own bit `b2` from `0` to `1`.
+   - **Player 2's Number**: `1100`
+
+7. **Player 1's Turn**:
+   - Action: Flip own bit `b1` from `0` to `1`.
+   - **Player 1's Number**: `1110`
+
+8. **Player 2's Turn**:
+   - Action: Reset opponent's bit `b2` from `1` to `0`.
+   - **Player 1's Number**: `1010`
+
+9. **Player 1's Turn**:
+   - Action: Flip own bit `b2` from `0` to `1`.
+   - **Player 1's Number**: `1110`
+
+10. **Player 2's Turn**:
+    - Action: Flip own bit `b1` from `0` to `1`.
+    - **Player 2's Number**: `1110`
+
+11. **Player 1's Turn**:
+    - Action: Flip own bit `b0` from `0` to `1`.
+    - **Player 1's Number**: `1111`
+    - **Player 1 Wins!**
+
+### Command-Line Interaction Example
+
+```
+Welcome to Binary Battle!
+
+Player 1 and Player 2 start with 0000.
+
+Player 1's Turn:
+Your Number: 0000
+Opponent's Number: 0000
+Choose action:
+1. Flip own bit
+2. Reset opponent's bit
+Enter choice (1 or 2): 1
+Enter bit position to flip (0-3): 3
+
+Player 1 flips their bit 3.
+Player 1's Number is now 1000.
+
+Player 2's Turn:
+Your Number: 0000
+Opponent's Number: 1000
+Choose action:
+1. Flip own bit
+2. Reset opponent's bit
+Enter choice (1 or 2): 1
+Enter bit position to flip (0-3): 3
+```
+
+*...and so on until one player wins.*
+
+---
+
+## Strategy Tips
+
+- **Balance Offense and Defense**:
+  - Decide when to advance your own position and when to hinder your opponent.
+- **Priority of Bits**:
+  - Consider flipping bits that are less likely to be reset or are crucial to your win.
+- **Anticipate Moves**:
+  - Predict your opponent's strategy and counteract it.
+
+---
+
+## Conclusion
+
+**Binary Battle** is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and minimal components, it's perfect for quick matches and can be easily implemented in a command-line interface.
+
+Enjoy the game and may the best strategist win!

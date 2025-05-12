@@ -1,0 +1,235 @@
+# Blockade: Rule Book
+
+## Objective
+
+**Blockade** is a strategic two-player, turn-based game played on a grid. The primary goal is to be the last player able to make a valid move. Players alternately place their blocks on the grid following specific placement rules. The player who forces their opponent into a position where they cannot place a block on their turn wins the game.
+
+---
+
+## Setup
+
+- **Game Board**: A 5x5 grid, consisting of 25 empty cells.
+- **Players**: Two players, designated as **Player 1** and **Player 2**.
+- **Starting Conditions**: The grid is empty at the start of the game. Players decide who goes first (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Grid Cells**: Each cell can be empty or contain a player's block.
+- **Player Blocks**: Each player has an unlimited supply of their own blocks for placement:
+  - **Player 1** uses `X` to represent their blocks.
+  - **Player 2** uses `O` to represent their blocks.
+
+---
+
+## Turns
+
+- **Turn Order**: Players take turns alternately. The player designated to go first begins the game.
+- **Actions per Turn**: On their turn, a player must place one block (`X` or `O`) on an empty cell of the grid, adhering to the placement rules.
+- **Progression**: Turns continue until a player cannot make a valid move on their turn.
+
+---
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **Empty Cell Requirement**: Blocks can only be placed on empty cells.
+2. **Adjacency Restriction**: A block **cannot** be placed on a cell that is adjacent (horizontally, vertically, or diagonally) to an opponent's block.
+   - **Adjacency** includes all eight surrounding cells around a given cell.
+3. **Own Blocks**: Blocks can be placed adjacent to the player's own blocks, provided they do not violate rule 2.
+
+### Game End Conditions
+
+- **Winning the Game**: A player wins if their opponent cannot place a block on their turn due to no valid cells being available.
+- **Losing the Game**: A player loses if they are unable to make a valid move on their turn.
+- **No Draws**: The game cannot end in a draw; play continues until one player wins.
+
+---
+
+## Scoring
+
+- **Single-Game Victory**: The winner is the player who forces their opponent into a position where they cannot make a valid move.
+- **Match Play (Optional)**:
+  - Players may agree to play multiple rounds.
+  - Keep track of victories, and the player with the most wins after a set number of rounds is the overall winner.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid
+
+All cells are empty at the start.
+
+```
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+```
+
+#### Turn 1: Player 1 (`X`)
+
+- **Action**: Places an `X` in the center cell (row 3, column 3).
+
+```
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+```
+
+#### Turn 2: Player 2 (`O`)
+
+- **Invalid Adjacent Cells**: Cannot place next to `X` at (3,3).
+- **Action**: Places an `O` at (1,1).
+
+```
+[O][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+```
+
+#### Turn 3: Player 1 (`X`)
+
+- **Invalid Cells**: Cannot place adjacent to `O` at (1,1).
+- **Action**: Places an `X` at (2,2), which is adjacent to their own block at (3,3).
+
+```
+[O][ ][ ][ ][ ]
+[ ][X][ ][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+```
+
+#### Turn 4: Player 2 (`O`)
+
+- **Invalid Cells**: Cannot place adjacent to `X` blocks at (2,2) and (3,3).
+- **Action**: Places an `O` at (5,5).
+
+```
+[O][ ][ ][ ][ ]
+[ ][X][ ][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][O]
+```
+
+#### Continuing the Game
+
+Players continue to alternate turns, placing their blocks while adhering to the placement rules. They must avoid cells adjacent to the opponent's blocks and strategically position their own to limit the opponent's options.
+
+#### End Game Scenario
+
+Suppose the grid reaches a state where Player 2 cannot make a valid move.
+
+- **Player 1's Last Move**:
+
+  - Places an `X` at (4,3).
+
+```
+[O][ ][ ][ ][ ]
+[ ][X][ ][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][ ][ ][O]
+```
+
+- **Player 2's Turn**:
+
+  - No valid cells remain where `O` can be placed without being adjacent to an `X`.
+  - **Result**: Player 2 cannot make a move and loses the game.
+  - **Winner**: Player 1 (`X`).
+
+---
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Welcome to Blockade!
+
+Player 1 is 'X'
+Player 2 is 'O'
+
+Player 1 goes first.
+```
+
+### Turn Structure
+
+#### Player 1's Turn
+
+```
+Current Grid:
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+
+Player 1 ('X'), enter your move (row and column): 3 3
+
+Placed 'X' at (3,3)
+```
+
+#### Player 2's Turn
+
+```
+Current Grid:
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][X][ ][ ]
+[ ][ ][ ][ ][ ]
+[ ][ ][ ][ ][ ]
+
+Invalid positions are adjacent to opponent's blocks.
+
+Player 2 ('O'), enter your move (row and column): 1 1
+
+Placed 'O' at (1,1)
+```
+
+### Detecting Invalid Moves
+
+If a player attempts to place a block in an invalid position:
+
+```
+Player 1 ('X'), enter your move (row and column): 1 2
+
+Invalid move! You cannot place next to an opponent's block.
+
+Please choose a different position.
+```
+
+### Game Over
+
+```
+Player 2 ('O'), no valid moves remaining.
+
+Player 1 ('X') wins the game!
+
+Game Over.
+```
+
+---
+
+## Strategy Tips
+
+- **Control the Center**: Placing your blocks strategically can limit your opponent's options.
+- **Avoid Isolation**: Keep your blocks connected when possible to maximize your placement options.
+- **Block Opponent's Moves**: Position your blocks to create zones that restrict where your opponent can play.
+- **Plan Ahead**: Anticipate your opponent's potential moves and plan your placements to counter them.
+
+---
+
+Enjoy playing **Blockade** and may the best strategist win!

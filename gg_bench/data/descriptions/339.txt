@@ -1,0 +1,475 @@
+**Game Name**: Factor Frenzy
+
+---
+
+### **Objective**
+
+Become the last player able to make a valid move by strategically selecting numbers that are either factors or multiples of your opponent’s last chosen number. Force your opponent into a position where no valid moves are available to them, thereby securing your victory.
+
+---
+
+### **Setup**
+
+1. **Number Pool Initialization**:
+   - Create a list of integers from **2** to **50** inclusive. This will be the **Number Pool**.
+   - Example Number Pool: 2, 3, 4, 5, 6, ..., 50.
+
+2. **Game Start**:
+   - Decide which player goes first (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+   - Player 1 begins the game by selecting any one number from the Number Pool.
+
+---
+
+### **Game Components**
+
+1. **Number Pool**:
+   - A shared list containing all unused numbers from **2** to **50**.
+   - Numbers are removed from the pool once selected.
+
+2. **Used Numbers List**:
+   - A record of all numbers that have been selected during the game.
+   - Helps players keep track of unavailable numbers.
+
+3. **Current Number**:
+   - The most recently selected number.
+   - Determines valid options for the next player’s move.
+
+4. **Players**:
+   - **Player 1** and **Player 2** alternate turns.
+   - Each player must follow the game rules to make valid moves.
+
+---
+
+### **Turns**
+
+1. **Turn Structure**:
+   - **Player Action**: On their turn, a player must select a valid number from the Number Pool according to the game rules.
+   - **Update Game State**: Remove the selected number from the Number Pool, add it to the Used Numbers List, and update the Current Number.
+
+2. **Order of Play**:
+   - Turns alternate between Player 1 and Player 2.
+   - The game continues until one player cannot make a valid move.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - On their turn, a player must select a number that is **either a factor or a multiple** of the **Current Number** (the opponent's last chosen number).
+   - The chosen number must be **present in the Number Pool** (i.e., it hasn't been used already).
+
+2. **Selection Constraints**:
+   - **Factors**: Numbers that divide the Current Number without leaving a remainder.
+     - Example: Factors of 20 are 2, 4, 5, 10, 20.
+   - **Multiples**: Numbers that are divisible by the Current Number without leaving a remainder.
+     - Example: Multiples of 5 within 2-50 are 5, 10, 15, ..., 50.
+
+3. **Invalid Moves**:
+   - If a player selects a number that is neither a factor nor a multiple of the Current Number, the move is invalid.
+   - Selecting a number not in the Number Pool is invalid.
+
+4. **Winning the Game**:
+   - If a player cannot make a valid move on their turn, they **lose**, and the other player **wins**.
+
+5. **Game End**:
+   - The game ends immediately when a player wins.
+   - There are no draws in Factor Frenzy.
+
+---
+
+### **Scoring**
+
+- **Victory Condition**: Win by being the last player to make a valid move.
+- **No Points System**: The game does not use points or scoring. It is a win-lose outcome based on strategic play.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Setup**:
+- Number Pool: 2 to 50.
+- Used Numbers List: Empty.
+- Player 1 begins the game.
+
+---
+
+**Turn 1**: *Player 1*
+
+- **Current Number**: *None (since this is the first move)*.
+- **Action**: Player 1 selects **21** from the Number Pool.
+- **Reasoning**: As the starting player, any number from the Number Pool can be chosen.
+- **Game State Update**:
+  - Number Pool removes 21.
+  - Used Numbers List adds 21.
+  - Current Number is now **21**.
+
+---
+
+**Turn 2**: *Player 2*
+
+- **Current Number**: **21** (Player 1's last number).
+- **Valid Options**: Factors or multiples of 21 that are still in the Number Pool.
+  - **Factors of 21**: 3, 7, 21.
+  - **Multiples of 21**: 42.
+- **Available Choices**: 3, 7, 42 (since 21 is already used).
+- **Action**: Player 2 selects **7**.
+- **Game State Update**:
+  - Number Pool removes 7.
+  - Used Numbers List adds 7.
+  - Current Number is now **7**.
+
+---
+
+**Turn 3**: *Player 1*
+
+- **Current Number**: **7** (Player 2's last number).
+- **Valid Options**: Factors or multiples of 7 in the Number Pool.
+  - **Factors of 7**: 7.
+  - **Multiples of 7**: 14, 21, 28, 35, 42, 49.
+- **Available Choices**: 14, 28, 35, 42, 49 (7 and 21 are used).
+- **Action**: Player 1 selects **14**.
+- **Game State Update**:
+  - Number Pool removes 14.
+  - Used Numbers List adds 14.
+  - Current Number is now **14**.
+
+---
+
+**Turn 4**: *Player 2*
+
+- **Current Number**: **14**.
+- **Valid Options**: Factors or multiples of 14.
+  - **Factors of 14**: 2, 7, 14.
+  - **Multiples of 14**: 28, 42.
+- **Available Choices**: 2, 28, 42 (7 and 14 are used).
+- **Action**: Player 2 selects **28**.
+- **Game State Update**:
+  - Number Pool removes 28.
+  - Used Numbers List adds 28.
+  - Current Number is now **28**.
+
+---
+
+**Turn 5**: *Player 1*
+
+- **Current Number**: **28**.
+- **Valid Options**: Factors or multiples of 28.
+  - **Factors of 28**: 2, 4, 7, 14, 28.
+  - **Multiples of 28**: No multiples within 2-50 remain (56 is beyond 50).
+- **Available Choices**: 2, 4 (7, 14, 28 are used).
+- **Action**: Player 1 selects **4**.
+- **Game State Update**:
+  - Number Pool removes 4.
+  - Used Numbers List adds 4.
+  - Current Number is now **4**.
+
+---
+
+**Turn 6**: *Player 2*
+
+- **Current Number**: **4**.
+- **Valid Options**: Factors or multiples of 4.
+  - **Factors of 4**: 2, 4.
+  - **Multiples of 4**: 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48.
+- **Available Choices**: 2, 8, 12, 16, 20, 24, 32, 36, 40, 44, 48 (4 and 28 are used).
+- **Action**: Player 2 selects **8**.
+- **Game State Update**:
+  - Number Pool removes 8.
+  - Used Numbers List adds 8.
+  - Current Number is now **8**.
+
+---
+
+**Turn 7**: *Player 1*
+
+- **Current Number**: **8**.
+- **Valid Options**: Factors or multiples of 8.
+  - **Factors of 8**: 2, 4, 8.
+  - **Multiples of 8**: 16, 24, 32, 40, 48.
+- **Available Choices**: 2, 16, 24, 32, 40, 48.
+- **Action**: Player 1 selects **16**.
+- **Game State Update**:
+  - Number Pool removes 16.
+  - Used Numbers List adds 16.
+  - Current Number is now **16**.
+
+---
+
+**Turn 8**: *Player 2*
+
+- **Current Number**: **16**.
+- **Valid Options**: Factors or multiples of 16.
+  - **Factors of 16**: 2, 4, 8, 16.
+  - **Multiples of 16**: 32, 48 (since 64 is beyond 50).
+- **Available Choices**: 2, 24, 32, 48.
+- **Action**: Player 2 selects **32**.
+- **Game State Update**:
+  - Number Pool removes 32.
+  - Used Numbers List adds 32.
+  - Current Number is now **32**.
+
+---
+
+**Turn 9**: *Player 1*
+
+- **Current Number**: **32**.
+- **Valid Options**: Factors or multiples of 32.
+  - **Factors of 32**: 2, 4, 8, 16, 32.
+  - **Multiples of 32**: 48 (since 64 is beyond 50).
+- **Available Choices**: 2, 24, 48.
+- **Action**: Player 1 selects **48**.
+- **Game State Update**:
+  - Number Pool removes 48.
+  - Used Numbers List adds 48.
+  - Current Number is now **48**.
+
+---
+
+**Turn 10**: *Player 2*
+
+- **Current Number**: **48**.
+- **Valid Options**: Factors or multiples of 48.
+  - **Factors of 48**: 2, 3, 4, 6, 8, 12, 16, 24, 48.
+  - **Multiples**: None within the range (since 96 is beyond 50).
+- **Available Choices**: 2, 3, 6, 12, 24 (4, 8, 16, 48 are used).
+- **Action**: Player 2 selects **24**.
+- **Game State Update**:
+  - Number Pool removes 24.
+  - Used Numbers List adds 24.
+  - Current Number is now **24**.
+
+---
+
+**Turn 11**: *Player 1*
+
+- **Current Number**: **24**.
+- **Valid Options**: Factors or multiples of 24.
+  - **Factors of 24**: 2, 3, 4, 6, 8, 12, 24.
+  - **Multiples**: None within the range (since 48 is used).
+- **Available Choices**: 2, 3, 6, 12 (4, 8, 16, 24, 48 are used).
+- **Action**: Player 1 selects **12**.
+- **Game State Update**:
+  - Number Pool removes 12.
+  - Used Numbers List adds 12.
+  - Current Number is now **12**.
+
+---
+
+**Turn 12**: *Player 2*
+
+- **Current Number**: **12**.
+- **Valid Options**: Factors or multiples of 12.
+  - **Factors of 12**: 2, 3, 4, 6, 12.
+  - **Multiples**: None (since 24 and 48 are used).
+- **Available Choices**: 2, 3, 6 (4, 8, 12, 16, 24, 48 are used).
+- **Action**: Player 2 selects **6**.
+- **Game State Update**:
+  - Number Pool removes 6.
+  - Used Numbers List adds 6.
+  - Current Number is now **6**.
+
+---
+
+**Turn 13**: *Player 1*
+
+- **Current Number**: **6**.
+- **Valid Options**: Factors or multiples of 6.
+  - **Factors of 6**: 2, 3, 6.
+  - **Multiples of 6**: 18, 30, 42 (unused).
+- **Available Choices**: 2, 3, 18, 30, 42.
+- **Action**: Player 1 selects **18**.
+- **Game State Update**:
+  - Number Pool removes 18.
+  - Used Numbers List adds 18.
+  - Current Number is now **18**.
+
+---
+
+**Turn 14**: *Player 2*
+
+- **Current Number**: **18**.
+- **Valid Options**: Factors or multiples of 18.
+  - **Factors**: 2, 3, 6, 9, 18.
+  - **Multiples**: 36 (unused).
+- **Available Choices**: 2, 3, 9, 36 (6 and 18 are used).
+- **Action**: Player 2 selects **36**.
+- **Game State Update**:
+  - Number Pool removes 36.
+  - Used Numbers List adds 36.
+  - Current Number is now **36**.
+
+---
+
+**Turn 15**: *Player 1*
+
+- **Current Number**: **36**.
+- **Valid Options**: Factors or multiples of 36.
+  - **Factors**: 2, 3, 4, 6, 9, 12, 18, 36.
+  - **Multiples**: None within range (72 is beyond 50).
+- **Available Choices**: 2, 3, 9 (others are used).
+- **Action**: Player 1 selects **9**.
+- **Game State Update**:
+  - Number Pool removes 9.
+  - Used Numbers List adds 9.
+  - Current Number is now **9**.
+
+---
+
+**Turn 16**: *Player 2*
+
+- **Current Number**: **9**.
+- **Valid Options**: Factors or multiples of 9.
+  - **Factors**: 3, 9.
+  - **Multiples**: 18, 27, 36, 45 (18 and 36 are used).
+- **Available Choices**: 3, 27, 45 (9, 18, 36 are used).
+- **Action**: Player 2 selects **27**.
+- **Game State Update**:
+  - Number Pool removes 27.
+  - Used Numbers List adds 27.
+  - Current Number is now **27**.
+
+---
+
+**Turn 17**: *Player 1*
+
+- **Current Number**: **27**.
+- **Valid Options**: Factors or multiples of 27.
+  - **Factors**: 3, 9, 27.
+  - **Multiples**: None within range (54 is beyond 50).
+- **Available Choices**: 3 (9 and 27 are used).
+- **Action**: Player 1 selects **3**.
+- **Game State Update**:
+  - Number Pool removes 3.
+  - Used Numbers List adds 3.
+  - Current Number is now **3**.
+
+---
+
+**Turn 18**: *Player 2*
+
+- **Current Number**: **3**.
+- **Valid Options**: Factors or multiples of 3.
+  - **Factors**: 3.
+  - **Multiples**: 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48.
+- **Available Choices**: 15, 30, 33, 39, 42, 45 (others are used).
+- **Action**: Player 2 selects **15**.
+- **Game State Update**:
+  - Number Pool removes 15.
+  - Used Numbers List adds 15.
+  - Current Number is now **15**.
+
+---
+
+**Turn 19**: *Player 1*
+
+- **Current Number**: **15**.
+- **Valid Options**: Factors or multiples of 15.
+  - **Factors**: 3, 5, 15.
+  - **Multiples**: 30, 45 (within range).
+- **Available Choices**: 5, 30, 45 (3, 9, 15, 18, 27 are used).
+- **Action**: Player 1 selects **5**.
+- **Game State Update**:
+  - Number Pool removes 5.
+  - Used Numbers List adds 5.
+  - Current Number is now **5**.
+
+---
+
+**Turn 20**: *Player 2*
+
+- **Current Number**: **5**.
+- **Valid Options**: Factors or multiples of 5.
+  - **Factors**: 5.
+  - **Multiples**: 10, 15, 20, 25, 30, 35, 40, 45, 50.
+- **Available Choices**: 10, 20, 25, 30, 35, 40, 45, 50 (5 and 15 are used).
+- **Action**: Player 2 selects **50**.
+- **Game State Update**:
+  - Number Pool removes 50.
+  - Used Numbers List adds 50.
+  - Current Number is now **50**.
+
+---
+
+**Turn 21**: *Player 1*
+
+- **Current Number**: **50**.
+- **Valid Options**: Factors or multiples of 50.
+  - **Factors**: 2, 5, 10, 25, 50.
+  - **Multiples**: None within range.
+- **Available Choices**: 10, 20, 25, 35, 40, 45 (5, 50 are used).
+- **Action**: Player 1 selects **25**.
+- **Game State Update**:
+  - Number Pool removes 25.
+  - Used Numbers List adds 25.
+  - Current Number is now **25**.
+
+---
+
+**Turn 22**: *Player 2*
+
+- **Current Number**: **25**.
+- **Valid Options**: Factors or multiples of 25.
+  - **Factors**: 5, 25.
+  - **Multiples**: 50 (used).
+- **Available Choices**: None (5, 25, and 50 are used).
+
+---
+
+**Game End**:
+
+- **Player 2** cannot make a valid move since all factors and multiples of **25** have been used.
+- **Player 1** wins the game.
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is a simplified example of how the game might look in a command-line interface:
+
+```
+Welcome to Factor Frenzy!
+
+Player 1, it's your turn.
+Available Numbers: [2, 3, 4, 5, 6, ..., 50]
+Enter a number to start the game: 21
+
+Player 2, it's your turn.
+Opponent's Number: 21
+Available Numbers: [2, 3, 4, 5, 6, ..., 50]
+Valid Options (Factors or Multiples of 21): [3, 7, 42]
+Enter your number: 7
+
+Player 1, it's your turn.
+Opponent's Number: 7
+Available Numbers: [2, 3, 4, 5, 6, ..., 50]
+Valid Options (Factors or Multiples of 7): [14, 28, 35, 42, 49]
+Enter your number: 14
+
+... (game continues as per the example above) ...
+
+Player 2, it's your turn.
+Opponent's Number: 25
+Available Numbers: [10, 20, 30, 35, 40, 45] 
+Valid Options (Factors or Multiples of 25): None
+
+No valid moves available. Player 1 wins!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Anticipate your opponent’s possible moves and plan your selections to limit their options.
+- **Control the Game**: By choosing numbers with fewer factors or multiples remaining in the Number Pool, you can corner your opponent.
+- **Track Used Numbers**: Keep a careful record of used numbers to avoid invalid moves and to better strategize your next move.
+- **Balance Factors and Multiples**: Sometimes it's advantageous to switch between selecting factors and multiples to disrupt your opponent's strategy.
+
+---
+
+### **Conclusion**
+
+Factor Frenzy is a game of numerical strategy and foresight. By understanding the relationships between numbers and carefully selecting your moves, you can outmaneuver your opponent and secure victory. Enjoy the challenge of mathematics and strategic planning as you engage in this exciting numerical duel!
+
+---

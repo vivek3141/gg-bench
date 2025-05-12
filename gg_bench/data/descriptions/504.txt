@@ -1,0 +1,274 @@
+# **Prime Seize**: A Strategic Number Elimination Game
+
+---
+
+## **Objective**
+
+Be the player to make the last valid move by strategically selecting prime numbers from a shared list and eliminating options for your opponent.
+
+---
+
+## **Setup**
+
+1. **Number Range**
+
+   - The game begins with a sequential list of integers starting from **2** up to a predetermined maximum number **N** (e.g., N = 50).
+   - Example Starting List: `[2, 3, 4, 5, 6, ..., 50]`
+
+2. **Display the List**
+
+   - The list of available numbers is displayed to both players in the command-line interface.
+
+3. **Player Assignment**
+
+   - Decide which player will take the first turn (**Player 1** and **Player 2**).
+   - This can be determined by mutual agreement or randomly (e.g., coin toss).
+
+---
+
+## **Game Components**
+
+1. **Number List**
+
+   - A shared, dynamic list of integers from **2** to **N**.
+   - The list is updated after each turn based on the selections made.
+
+2. **Players**
+
+   - **Player 1** and **Player 2**, who alternate turns throughout the game.
+
+3. **Command-Line Interface**
+
+   - The game is played via a command-line interface where the list of numbers and prompts are displayed.
+
+4. **Prime Selection Mechanism**
+
+   - A function or process to verify if a chosen number is prime.
+   - Mechanism to remove the selected prime and its multiples from the list.
+
+---
+
+## **Turns**
+
+### **Turn Order**
+
+- Players alternate turns, starting with **Player 1**.
+
+### **Turn Actions**
+
+On each turn, a player must perform the following steps:
+
+1. **Select a Number**
+
+   - Choose a number from the current list of available numbers.
+
+2. **Validity Check**
+
+   - Ensure the selected number is **prime**.
+
+3. **Eliminate Multiples**
+
+   - Remove the selected prime number and all of its multiples from the list.
+
+4. **Update the List**
+
+   - Display the updated list of available numbers to both players.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Valid Moves**
+
+   - Only prime numbers that are present in the current list can be selected.
+   - A move is valid if it satisfies both conditions:
+     - The number is **prime**.
+     - The number is **available** in the list.
+
+2. **Elimination of Numbers**
+
+   - Upon selecting a prime number, the following numbers are removed from the list:
+     - The selected prime number itself.
+     - All multiples of the selected prime number.
+
+3. **Unavailable Choices**
+
+   - Non-prime numbers or numbers not in the list cannot be selected.
+   - Attempting to select such numbers results in an invalid move.
+
+4. **End of Game Condition**
+
+   - If a player cannot select a valid prime number on their turn because no primes remain in the list, they **lose** the game.
+   - The opponent is declared the **winner**.
+
+5. **Invalid Moves**
+
+   - If a player selects an invalid number:
+     - The move is declared invalid.
+     - The player **immediately loses** the game.
+     - The opponent is declared the **winner**.
+
+6. **Time Limits (Optional)**
+
+   - A time limit per turn (e.g., 30 seconds) may be enforced to keep the game progressing quickly.
+   - Exceeding the time limit results in an automatic loss.
+
+---
+
+## **Scoring**
+
+- The game does not involve point accumulation.
+- Winning is based solely on being the player to make the last valid move.
+- The winner is the player who successfully forces their opponent into a position where no valid moves remain.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+**Starting List:**  
+`[2, 3, 4, 5, 6, 7, ..., 50]`
+
+---
+
+**Turn 1: Player 1**
+
+- **Selection:** `2`
+- **Reasoning:** `2` is the smallest prime number.
+- **Action:** Remove `2` and all multiples of `2` from the list.
+- **Numbers Eliminated:** `2, 4, 6, 8, 10, ..., 50`
+- **Updated List:**  
+  `[3, 5, 7, 9, 11, 13, 15, ..., 49]`
+
+---
+
+**Turn 2: Player 2**
+
+- **Selection:** `3`
+- **Reasoning:** `3` is the next smallest available prime.
+- **Action:** Remove `3` and all multiples of `3` from the list.
+- **Numbers Eliminated:** `3, 9, 15, 21, 27, 33, 39, 45`
+- **Updated List:**  
+  `[5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49]`
+
+---
+
+**Turn 3: Player 1**
+
+- **Selection:** `5`
+- **Reasoning:** `5` is the next available prime.
+- **Action:** Remove `5` and all multiples of `5` from the list.
+- **Numbers Eliminated:** `5, 25, 35, 45`
+- **Updated List:**  
+  `[7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 49]`
+
+---
+
+**Turn 4: Player 2**
+
+- **Selection:** `7`
+- **Reasoning:** `7` is the next available prime.
+- **Action:** Remove `7` and all multiples of `7` from the list.
+- **Numbers Eliminated:** `7, 49`
+- **Updated List:**  
+  `[11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]`
+
+---
+
+**Turn 5: Player 1**
+
+- **Selection:** `11`
+- **Action:** Remove `11` (multiples beyond 50 are not in the list).
+- **Updated List:**  
+  `[13, 17, 19, 23, 29, 31, 37, 41, 43, 47]`
+
+---
+
+*The game continues in this fashion until no valid moves remain for the player whose turn it is.*
+
+### **Command-Line Interaction Example**
+
+**Turn 1: Player 1**
+
+```
+Available Numbers: [2, 3, 4, ..., 50]
+Player 1, select a prime number: 2
+You have selected 2.
+2 and its multiples are removed.
+Updated Numbers: [3, 5, 7, ..., 49]
+```
+
+---
+
+**Turn 2: Player 2**
+
+```
+Available Numbers: [3, 5, 7, ..., 49]
+Player 2, select a prime number: 3
+You have selected 3.
+3 and its multiples are removed.
+Updated Numbers: [5, 7, 11, ..., 49]
+```
+
+---
+
+**Turn 3: Player 1**
+
+```
+Available Numbers: [5, 7, 11, ..., 49]
+Player 1, select a prime number: 5
+You have selected 5.
+5 and its multiples are removed.
+Updated Numbers: [7, 11, 13, ..., 47]
+```
+
+---
+
+## **Strategic Considerations**
+
+1. **Prime Number Knowledge**
+
+   - Familiarity with prime numbers up to **N** is advantageous.
+   - This knowledge helps in quickly identifying valid moves.
+
+2. **Anticipate Opponent's Options**
+
+   - Consider which primes will remain after your move.
+   - Aim to limit the available primes for your opponent.
+
+3. **Forcing Moves**
+
+   - Plan moves that force your opponent into a position with no valid primes.
+   - Controlling the flow of the game increases your chances of winning.
+
+4. **Avoid Invalid Moves**
+
+   - Double-check your selections to ensure they are both prime and available.
+   - An invalid move results in an immediate loss.
+
+5. **Time Management**
+
+   - If a time limit is enforced, manage your time wisely.
+   - Quick decision-making can put pressure on your opponent.
+
+---
+
+## **Game End and Winning**
+
+- The game ends when a player cannot make a valid move on their turn.
+- The last player to make a valid move is declared the **winner**.
+- The losing player is the one who:
+  - Has no valid primes to select on their turn.
+  - Makes an invalid move (selects a non-prime or unavailable number).
+  - Exceeds the time limit per turn (if applicable).
+
+---
+
+## **Summary**
+
+"Prime Seize" is a strategic two-player game that combines basic arithmetic with tactical foresight. By selecting prime numbers and eliminating options, players engage in a battle of wits to outmaneuver their opponent. The simplicity of the rules makes it easy to learn and code, while the depth of strategy ensures replayability and competitive gameplay.
+
+---
+
+**Enjoy the game, and may the best strategist win!**

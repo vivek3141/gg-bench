@@ -1,0 +1,202 @@
+# Number Sequence Showdown
+
+## Objective
+
+**Number Sequence Showdown** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is for a player to be the first to collect three unique numbers that form an arithmetic sequence (a sequence where the difference between consecutive numbers is constant). Players take turns selecting numbers from a shared pool, strategically blocking their opponent while advancing their path to victory. There are no draws in this game; the first player to achieve an arithmetic sequence wins.
+
+## Setup
+
+1. **Shared Number Pool**: The game uses numbers from **1** to **9**.
+2. **Initial Conditions**:
+   - All numbers from 1 to 9 are available in the shared pool at the start.
+   - Both players start with an empty collection.
+
+## Game Components
+
+- **Numbers (1-9)**:
+  - Represented as individual numerals.
+  - Once a number is selected by a player, it is removed from the shared pool and cannot be selected again.
+- **Player Collections**:
+  - Each player has a personal collection where they keep their selected numbers.
+  - Collections are visible to both players for strategic planning.
+
+## Turns
+
+- **Turn Order**:
+  - Players decide who goes first (e.g., by coin toss or mutual agreement).
+  - Turns alternate between Player 1 and Player 2.
+- **Player Actions During a Turn**:
+  - **Select a Number**:
+    - Choose any available number from the shared pool.
+    - Add the selected number to your collection.
+  - **Pass Turn**:
+    - Optional; a player may choose to pass their turn, but this is generally disadvantageous.
+- **Progression of Turns**:
+  - Turns continue to alternate until one player wins by forming an arithmetic sequence.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection**:
+   - On their turn, a player must select one available number from the shared pool.
+   - The selected number is added to the player's collection and removed from the shared pool.
+2. **Unique Numbers**:
+   - Each number can only be selected once during the game.
+   - Players cannot have duplicate numbers in their collection.
+3. **Winning Condition**:
+   - A player wins immediately when they have any three numbers that form an arithmetic sequence.
+   - The sequence does not need to be in order of selection.
+   - Examples of valid sequences:
+     - 2, 4, 6 (common difference of 2)
+     - 5, 7, 9 (common difference of 2)
+     - 3, 5, 7 (common difference of 2)
+     - 4, 5, 6 (common difference of 1)
+     - 1, 5, 9 (common difference of 4)
+4. **Game End without a Winner**:
+   - If all numbers have been selected and neither player has formed an arithmetic sequence, the game enters sudden death:
+     - The player with the higher total sum of their numbers wins.
+     - If the sums are equal, the player with the highest individual number wins.
+
+### Strategic Considerations
+
+- **Blocking**:
+  - Players can select numbers that their opponent may need to complete a sequence.
+- **Sequencing**:
+  - Players should plan ahead to identify potential sequences they can form with the available numbers.
+
+### Special Mechanics
+
+- **Visibility**:
+  - Both players' collections are open information.
+  - Players can see which numbers their opponent has selected.
+
+## Scoring
+
+- **Winning**:
+  - The first player to form an arithmetic sequence with three of their numbers wins the game.
+- **Sudden Death Scoring**:
+  - If no arithmetic sequence is formed by either player:
+    - **Primary Criterion**: Higher total sum of collected numbers.
+    - **Secondary Criterion**: Highest individual number collected.
+- **No Points System**:
+  - This game does not track points beyond determining the winner.
+
+## Examples
+
+### Example Scenario 1
+
+**Turn 1**:
+- **Player 1** selects **5**.
+  - Player 1's collection: [5]
+  - Numbers remaining: 1-4, 6-9
+- **Player 2** selects **3**.
+  - Player 2's collection: [3]
+  - Numbers remaining: 1-2, 4-9
+
+**Turn 2**:
+- **Player 1** selects **7**.
+  - Player 1's collection: [5, 7]
+  - Numbers remaining: 1-2, 4, 6, 8-9
+- **Player 2** selects **9**.
+  - Player 2's collection: [3, 9]
+  - Numbers remaining: 1-2, 4, 6, 8
+
+**Turn 3**:
+- **Player 1** selects **6**.
+  - Player 1's collection: [5, 6, 7]
+  - **Player 1 wins**, as they have formed the sequence **5, 6, 7** (common difference of 1).
+
+### Example Scenario 2
+
+**Turn 1**:
+- **Player 1** selects **4**.
+  - Player 1's collection: [4]
+  - Numbers remaining: 1-3, 5-9
+- **Player 2** selects **6**.
+  - Player 2's collection: [6]
+  - Numbers remaining: 1-3, 5, 7-9
+
+**Turn 2**:
+- **Player 1** selects **8**.
+  - Player 1's collection: [4, 8]
+  - Numbers remaining: 1-3, 5-7, 9
+- **Player 2** selects **2**.
+  - Player 2's collection: [6, 2]
+  - Numbers remaining: 1, 3, 5, 7, 9
+
+**Turn 3**:
+- **Player 1** selects **5**.
+  - Player 1's collection: [4, 5, 8]
+  - Numbers remaining: 1, 3, 7, 9
+- **Player 1** has not yet formed an arithmetic sequence.
+
+**Turn 4**:
+- **Player 2** selects **4**.
+  - **Invalid Move** (Number already taken by Player 1).
+  - **Player 2** selects **7** instead.
+  - Player 2's collection: [6, 2, 7]
+  - Numbers remaining: 1, 3, 9
+- **Player 2** wins, having the sequence **2, 4, 6** (common difference of 2).
+  - Note: In this example, Player 2 mistakenly attempted to select an already chosen number. The game continues after correcting the move.
+
+## Command-Line Interaction Example
+
+Below is a sample interaction between the players and the game in a command-line interface.
+
+```
+Game Start!
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1's Turn.
+Your Collection: []
+Enter a number to select: 2
+
+Player 1 selected 2.
+Available Numbers: 1, 3, 4, 5, 6, 7, 8, 9
+
+Player 2's Turn.
+Your Collection: []
+Enter a number to select: 4
+
+Player 2 selected 4.
+Available Numbers: 1, 3, 5, 6, 7, 8, 9
+
+Player 1's Turn.
+Your Collection: [2]
+Enter a number to select: 5
+
+Player 1 selected 5.
+Available Numbers: 1, 3, 6, 7, 8, 9
+
+Player 2's Turn.
+Your Collection: [4]
+Enter a number to select: 6
+
+Player 2 selected 6.
+Available Numbers: 1, 3, 7, 8, 9
+
+Player 1's Turn.
+Your Collection: [2, 5]
+Enter a number to select: 8
+
+Player 1 selected 8.
+Available Numbers: 1, 3, 7, 9
+
+Player 1 has numbers: [2, 5, 8]
+Player 1 wins! They have formed an arithmetic sequence: 2, 5, 8 (common difference of 3).
+```
+
+## Notes
+
+- **Valid Arithmetic Sequences**:
+  - Players can form sequences with any common difference as long as it is consistent between the numbers.
+  - Sequences can be ascending or descending.
+- **Strategy Tips**:
+  - Pay attention to the numbers your opponent is collecting and anticipate their potential sequences.
+  - Block your opponent by selecting numbers they may need.
+  - Focus on multiple sequence possibilities to increase your chances of winning.
+
+---
+
+Enjoy the challenge of **Number Sequence Showdown** and may the best strategist win!

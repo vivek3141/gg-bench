@@ -1,0 +1,185 @@
+# Multiplier: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+**Multiplier** is a strategic two-player game where opponents take turns multiplying a shared cumulative number by integers between 2 and 9. The primary goal is to avoid being the player who causes the cumulative number to **reach or exceed a target value** (default is 1,000). Victory is achieved by forcing your opponent into a position where any legal move results in the cumulative number meeting or surpassing the target value, thus causing them to lose.
+
+---
+
+## Setup
+
+1. **Starting Cumulative Number**: The game begins with a shared cumulative number set to **1**.
+2. **Target Value**: Players agree on a target value that the cumulative number should not reach or exceed. The default target value is **1,000**.
+3. **Determine First Player**: Decide who takes the first turn (e.g., flip a coin, mutual agreement).
+4. **Game Interface**: The game is played in a command-line interface where inputs and outputs are text-based.
+
+---
+
+## Game Components
+
+- **Shared Cumulative Number**: A number visible to both players, starting at **1** and updated after each turn.
+- **Multipliers**: Integers from **2** to **9** inclusive. These are the allowable numbers players can use to multiply the cumulative number on their turn.
+- **Target Value**: The agreed-upon number (default **1,000**) that players strive to avoid reaching or exceeding.
+- **Command-Line Interface**: Text-based input/output for players to enter their moves and receive game updates.
+
+---
+
+## Turns
+
+1. **Player Action**: On their turn, a player must:
+   - Choose a multiplier between **2** and **9**.
+   - Multiply the shared cumulative number by the chosen multiplier.
+2. **Turn Progression**:
+   - The game alternates between Player 1 and Player 2.
+   - Each turn consists of:
+     - Displaying the current cumulative number.
+     - Prompting the current player for their multiplier choice.
+     - Updating and displaying the new cumulative number.
+3. **No Skipping**: Players cannot skip their turn or choose invalid multipliers.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Multipliers**:
+   - Only integers between **2** and **9** inclusive are allowed.
+   - Multipliers can be reused any number of times by either player.
+2. **Updating the Cumulative Number**:
+   - Multiply the current cumulative number by the chosen multiplier.
+   - The result becomes the new cumulative number.
+3. **Losing the Game**:
+   - If after a player's turn the cumulative number **equals or exceeds the target value**, that player **loses**.
+4. **Winning the Game**:
+   - If your opponent causes the cumulative number to equal or exceed the target value on their turn, you **win**.
+5. **Mandatory Moves**:
+   - Players must make a move on their turn; passing is not permitted.
+
+### Strategic Considerations
+
+- Players should plan ahead to avoid reaching a position where any legal move results in a loss.
+- Anticipate the results of potential multipliers to force your opponent into a losing position.
+- The game requires foresight and calculation to manage the growth of the cumulative number.
+
+---
+
+## Scoring
+
+- **Win/Loss Outcome**: The game concludes with one player winning and the other losing based on the core rules.
+- **No Point System**: There is no accumulation of points beyond determining the winner and the loser.
+- **Match Play**: Players may agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Game Start**
+
+- **Target Value**: 1,000
+- **Starting Cumulative Number**: 1
+
+**Turn Sequence**
+
+1. **Player 1's Turn**
+   - Current Number: **1**
+   - Player 1 chooses multiplier **5**.
+   - Calculation: 1 × 5 = **5**
+   - Updated Number: **5**
+
+2. **Player 2's Turn**
+   - Current Number: **5**
+   - Player 2 chooses multiplier **7**.
+   - Calculation: 5 × 7 = **35**
+   - Updated Number: **35**
+
+3. **Player 1's Turn**
+   - Current Number: **35**
+   - Player 1 chooses multiplier **3**.
+   - Calculation: 35 × 3 = **105**
+   - Updated Number: **105**
+
+4. **Player 2's Turn**
+   - Current Number: **105**
+   - Player 2 chooses multiplier **9**.
+   - Calculation: 105 × 9 = **945**
+   - Updated Number: **945**
+
+5. **Player 1's Turn**
+   - Current Number: **945**
+   - Player 1 must choose a multiplier between 2 and 9.
+   - Any choice will cause the cumulative number to reach or exceed 1,000.
+   - Player 1 chooses multiplier **2**.
+   - Calculation: 945 × 2 = **1,890**
+   - Updated Number: **1,890**
+   - **Player 1 loses**, as the cumulative number exceeds 1,000.
+   - **Player 2 wins** the game.
+
+### Command-Line Interaction
+
+```
+=== Multiplier Game Start ===
+Target Value: 1000
+Starting Cumulative Number: 1
+
+--- Player 1's Turn ---
+Current Cumulative Number: 1
+Choose a multiplier between 2 and 9: 5
+You chose: 5
+Updated Cumulative Number: 5
+
+--- Player 2's Turn ---
+Current Cumulative Number: 5
+Choose a multiplier between 2 and 9: 7
+You chose: 7
+Updated Cumulative Number: 35
+
+--- Player 1's Turn ---
+Current Cumulative Number: 35
+Choose a multiplier between 2 and 9: 3
+You chose: 3
+Updated Cumulative Number: 105
+
+--- Player 2's Turn ---
+Current Cumulative Number: 105
+Choose a multiplier between 2 and 9: 9
+You chose: 9
+Updated Cumulative Number: 945
+
+--- Player 1's Turn ---
+Current Cumulative Number: 945
+Choose a multiplier between 2 and 9: 2
+You chose: 2
+Updated Cumulative Number: 1890
+
+The cumulative number has reached or exceeded the target value of 1000.
+Player 1 loses!
+Player 2 wins the game!
+```
+
+---
+
+## Strategic Depth
+
+**Multiplier** offers significant strategic depth despite its simple rules:
+
+- **Mathematical Planning**: Players must perform calculations to predict future cumulative numbers based on possible multipliers.
+- **Forced Moves**: Skilled players can force their opponents into positions where all options result in a loss.
+- **Decision Making**: Choosing when to use higher or lower multipliers can change the game's outcome.
+- **Adaptability**: Players must adapt their strategies based on their opponent's moves.
+
+---
+
+## Game Variations
+
+To add variety and complexity, players can agree on different target values or restrict available multipliers. Examples include:
+
+- **Lower Target Value**: Setting the target value to 500 for a quicker game.
+- **Restricted Multipliers**: Limiting multipliers to a smaller range, such as 2 to 5.
+- **Multiple Rounds**: Playing best-of-three or best-of-five matches to determine the overall winner.
+
+---
+
+Enjoy testing your strategic skills and mathematical prowess in **Multiplier**!

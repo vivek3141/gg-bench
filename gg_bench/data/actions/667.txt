@@ -1,0 +1,7 @@
+In the gym environment for the "Number Morph" game, each action space index corresponds to a specific move in the game based on a mapping derived from the digit positions and possible new digit values. The action space ranges from 0 to 29, with each index representing a combination of a digit position and a new digit value:
+
+- **Position 0-9**: Map to changing the hundreds digit (hundreds place) with new digits 1-9 (leading digit cannot be 0). Actions 0-8 change to new digits 1-9 respectively.
+- **Position 10-19**: Map to changing the tens digit (tens place) with new digits 0-9. Actions 10-19 change to new digits 0-9 respectively.
+- **Position 20-29**: Map to changing the units digit (units place) with new digits 0-9. Actions 20-29 change to new digits 0-9 respectively.
+
+The action index is calculated as `position * 10 + new_digit` where `position` is 0 for hundreds, 1 for tens, 2 for units, and `new_digit` is the digit to be placed in the selected position.

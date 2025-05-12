@@ -1,0 +1,206 @@
+# **Key Lock: A Two-Player Command-Line Game**
+
+## **Objective**
+
+Be the first player to reduce your opponent's Lock Strength to zero by correctly guessing their secret Key Numbers and unlocking their Lock. Strategic probing and deduction are essential to achieve victory.
+
+## **Setup**
+
+1. **Initial Lock Strength:** Both players start with a Lock Strength of **10**.
+2. **Key Numbers:** Each player secretly selects a Key Number between **1** and **5** (inclusive). This number represents the code to their Lock.
+
+## **Game Components**
+
+- **Lock Strength Counter:** Displays each player's current Lock Strength, starting at 10.
+- **Key Numbers:** Secret numbers between 1 and 5 chosen by each player at the beginning and after each successful unlock.
+- **Actions:** Players can choose to **Probe** or **Unlock** on their turn.
+
+## **Turns**
+
+- Players alternate turns, starting with Player 1.
+- On each turn, a player must choose one of the following actions:
+  - **Probe:** Attempt to discover the opponent's Key Number.
+  - **Unlock:** Try to unlock the opponent's Lock if the Key Number has been correctly identified.
+
+## **Rules and Mechanics**
+
+### **1. Probing**
+
+- **Objective:** Determine the opponent's Key Number.
+- **How to Probe:**
+  - Guess a number between **1** and **5**.
+  - The opponent must respond with "**Correct**" if the guess matches their Key Number or "**Incorrect**" if it does not.
+- **Probe Limitations:**
+  - You can probe as many times as needed until you discover the Key Number.
+  - Probing does not affect Lock Strength.
+
+### **2. Unlocking**
+
+- **Prerequisite:** You must have correctly guessed the opponent's Key Number in a previous Probe.
+- **How to Unlock:**
+  - Declare an **Unlock** attempt.
+  - The opponent's Lock Strength is reduced by **5** points.
+- **After a Successful Unlock:**
+  - The opponent must select a new Key Number between **1** and **5**.
+  - The game continues with the opponent's turn.
+- **Failed Unlock:**
+  - If you attempt to Unlock without having correctly probed the Key Number, the action fails, and your turn ends.
+
+### **3. Lock Strength**
+
+- **Starting Value:** Each player begins with a Lock Strength of **10**.
+- **Reduction:** A successful Unlock reduces the opponent's Lock Strength by **5** points.
+- **Winning the Game:** Reduce your opponent's Lock Strength to **0** to win.
+- **No Negative Values:** Lock Strength cannot go below 0.
+
+## **Scoring**
+
+- **Victory Condition:** The first player to reduce the opponent's Lock Strength to **0** wins the game.
+- **No Draws:** Since Lock Strength is reduced in increments of 5 from 10, and there are no mechanisms to restore Lock Strength, a winner will always emerge.
+
+## **Examples**
+
+### **Sample Game Play**
+
+**Initial Setup:**
+
+- Both players set their Lock Strength to 10.
+- Player 1 secretly selects Key Number **3**.
+- Player 2 secretly selects Key Number **2**.
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Probe
+- **Guess:** 2
+- **Player 2 Responds:** "Correct."
+- **Outcome:** Player 1 has discovered Player 2's Key Number and can attempt to Unlock on their next turn.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Probe
+- **Guess:** 4
+- **Player 1 Responds:** "Incorrect."
+- **Outcome:** Player 2 did not discover Player 1's Key Number.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Unlock
+- **Outcome:** Player 2's Lock Strength is reduced from 10 to **5**.
+- **Player 2 Chooses a New Key Number:** 5
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Probe
+- **Guess:** 3
+- **Player 1 Responds:** "Correct."
+- **Outcome:** Player 2 has discovered Player 1's Key Number and can attempt to Unlock on their next turn.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Probe
+- **Guess:** 5
+- **Player 2 Responds:** "Correct."
+- **Outcome:** Player 1 has discovered Player 2's new Key Number.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action:** Unlock
+- **Outcome:** Player 1's Lock Strength is reduced from 10 to **5**.
+- **Player 1 Chooses a New Key Number:** 1
+
+---
+
+**Turn 7: Player 1**
+
+- **Action:** Unlock
+- **Outcome:** Player 2's Lock Strength is reduced from 5 to **0**.
+- **Game Over:** Player 1 wins the game.
+
+---
+
+### **Command-Line Interaction Example**
+
+```plaintext
+--- Player 1's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 1
+Enter your probe guess (1-5): 2
+Player 2 responds: Correct.
+
+--- Player 2's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 1
+Enter your probe guess (1-5): 4
+Player 1 responds: Incorrect.
+
+--- Player 1's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 2
+Attempting to unlock...
+Success! Player 2's Lock Strength reduced to 5.
+Player 2, choose a new Key Number.
+
+--- Player 2's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 1
+Enter your probe guess (1-5): 3
+Player 1 responds: Correct.
+
+--- Player 1's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 1
+Enter your probe guess (1-5): 5
+Player 2 responds: Correct.
+
+--- Player 2's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 2
+Attempting to unlock...
+Success! Player 1's Lock Strength reduced to 5.
+Player 1, choose a new Key Number.
+
+--- Player 1's Turn ---
+Choose an action:
+1. Probe
+2. Unlock
+Enter your choice: 2
+Attempting to unlock...
+Success! Player 2's Lock Strength reduced to 0.
+Player 1 wins the game!
+```
+
+## **Strategic Tips**
+
+- **Balance Probing and Unlocking:** Always ensure you've correctly probed the opponent's Key Number before attempting to Unlock.
+- **Memory and Deduction:** Keep track of numbers already guessed to efficiently determine the opponent's Key Number.
+- **Mind Games:** Consider how your opponent responds to your probes to anticipate their strategies.
+
+## **Conclusion**
+
+"Key Lock" is a game of deduction, memory, and strategic planning. Its simple mechanics make it easy to code and play in a command-line interface, while providing depth and competitive gameplay. Mastery comes from predicting your opponent's choices and guarding your own secrets.
+
+Enjoy the challenge and may the best code-breaker win!

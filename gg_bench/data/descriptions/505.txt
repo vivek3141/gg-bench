@@ -1,0 +1,239 @@
+# Cipher Siege
+
+## Objective
+
+The primary goal of **Cipher Siege** is to reduce your opponent's Code Integrity (CI) to zero by strategically playing number cards to launch attacks, defend your own CI, and manipulate the flow of the game. Victory is achieved when one player's CI reaches zero or below, indicating their code has been cracked.
+
+---
+
+## Setup
+
+1. **Code Integrity (CI):**
+   - Both players start with a CI of **15**.
+
+2. **Cipher Deck:**
+   - A shared deck consisting of number cards ranging from **1** to **5**.
+   - Equal quantities of each card ensure a balanced deck.
+
+3. **Player Hands:**
+   - Each player draws an initial hand of **3** cards from the Cipher Deck.
+
+4. **Turn Order:**
+   - Determine which player goes first (e.g., coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+### Cipher Deck
+
+- **Number Cards (Cipher Fragments):**
+  - Values range from **1** to **5**.
+  - Represent pieces of code used to attack or defend.
+  - Cards have no suits or colors—only numerical values.
+
+### Code Integrity (CI)
+
+- A numerical value representing a player's code strength.
+- Starts at **15** for both players.
+- Cannot exceed **15** but can drop below zero (indicating defeat).
+
+### Player Hands
+
+- Each player maintains a personal hand of cipher fragments.
+- Hand size can vary but cannot exceed **5** cards.
+- Cards are kept hidden from the opponent.
+
+---
+
+## Turns
+
+Each turn consists of the following phases:
+
+### 1. Draw Phase
+
+- **Action:** Draw **one** card from the top of the Cipher Deck.
+- If the deck is empty, shuffle the discard pile to form a new deck.
+
+### 2. Action Phase
+
+Choose **one** of the following actions:
+
+#### a. Attack
+
+- **Play** one or more cards from your hand to launch an attack.
+- **Calculate Attack Value:**
+  - Sum the values of the played cards.
+  - If the cards form a **sequence** (consecutive numbers), add a **Sequence Bonus** equal to the number of cards in the sequence.
+- **Apply Damage:**
+  - Subtract the total attack value (including any bonuses) from the opponent's CI.
+
+#### b. Defend
+
+- **Discard** one card from your hand to restore your own CI.
+- **Restore CI:**
+  - Increase your CI by the value of the discarded card.
+  - CI cannot exceed the starting value of **15**.
+
+#### c. Swap
+
+- **Exchange** one card from your hand with a random card from the opponent's hand.
+- Both players select one card to swap without revealing its value.
+
+### 3. End Phase
+
+- **Discard** any cards used in an attack.
+- Ensure hand size does not exceed **5** cards.
+- **Turn passes** to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### Attacking
+
+- **Playing Cards:**
+  - Can play any number of cards during an attack, provided they are from your hand.
+- **Sequences:**
+  - A sequence is a set of two or more consecutive numbers (e.g., 2, 3, 4).
+  - **Sequence Bonus:** Adds strategic depth by rewarding structured attacks.
+- **Example Attack Calculation:**
+  - Cards Played: 2, 3, 4 (Sequence)
+  - Attack Value: 2 + 3 + 4 = 9
+  - Sequence Bonus: +3 (length of the sequence)
+  - **Total Attack:** 9 + 3 = **12**
+
+### Defending
+
+- **Restoration Limit:**
+  - CI cannot exceed **15**.
+- **Strategic Use:**
+  - Sacrificing high-value cards can significantly boost CI but may limit offensive options.
+
+### Swapping
+
+- **Uncertainty Factor:**
+  - Swapping adds unpredictability and can disrupt the opponent's strategy.
+- **Restriction:**
+  - Only one card can be swapped per action phase.
+
+### Hand Management
+
+- **Maximum Hand Size:** 5 cards.
+- **Drawing Cards:**
+  - If the hand is already at maximum size, you must play or discard during your turn.
+- **Running Out of Cards:**
+  - If both the deck and discard pile are empty, play continues with remaining cards in hand.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The game is won when a player's attack reduces the opponent's CI to **zero or below**.
+- **No Draws:**
+  - The game cannot end in a draw; play continues until one player's CI reaches zero.
+
+---
+
+## Examples
+
+### Sample Turn Sequence
+
+**Player 1 Turn:**
+
+- **CI:** 15
+- **Hand:** [2, 3, 5]
+- **Draw Phase:**
+  - Draws a card: **3**
+  - New Hand: [2, 3, 5, 3]
+- **Action Phase:**
+  - Chooses to **Attack**.
+  - Plays cards: **2**, **3**, **5**
+    - Attack Value: 2 + 3 + 5 = **10**
+    - No sequence bonus (numbers are not consecutive).
+  - Opponent's CI is reduced from 15 to **5** (15 - 10).
+- **End Phase:**
+  - Discards used cards: [2, 3, 5]
+  - Hand now: [3]
+
+**Player 2 Turn:**
+
+- **CI:** 5
+- **Hand:** [1, 4, 4]
+- **Draw Phase:**
+  - Draws a card: **4**
+  - New Hand: [1, 4, 4, 4]
+- **Action Phase:**
+  - Chooses to **Attack**.
+  - Plays cards: **4**, **4**, **4**
+    - Attack Value: 4 + 4 + 4 = **12**
+    - No sequence bonus.
+  - Player 1's CI reduced from 15 to **3** (15 - 12).
+- **End Phase:**
+  - Discards used cards: [4, 4, 4]
+  - Hand now: [1]
+
+### Command-Line Interaction
+
+```
+=== Player 1 Turn ===
+CI: 15
+Hand: [2, 3, 5]
+Draws card: 3
+New Hand: [2, 3, 5, 3]
+Choose action: Attack
+Select cards to play: 2, 3, 5
+Attack Value: 10
+Opponent's CI reduced to 5
+Discards used cards: 2, 3, 5
+End of turn.
+
+=== Player 2 Turn ===
+CI: 5
+Hand: [1, 4, 4]
+Draws card: 4
+New Hand: [1, 4, 4, 4]
+Choose action: Attack
+Select cards to play: 4, 4, 4
+Attack Value: 12
+Opponent's CI reduced to 3
+Discards used cards: 4, 4, 4
+End of turn.
+```
+
+---
+
+## Strategic Depth
+
+- **Timing Attacks:**
+  - Deciding when to launch a big attack versus conserving cards is crucial.
+- **Sequences:**
+  - Forming sequences can maximize damage with the sequence bonus.
+- **Defensive Play:**
+  - Sacrificing a turn to defend can prolong the game and provide a comeback opportunity.
+- **Swapping Cards:**
+  - Use swapping to try to gain high-value cards or disrupt the opponent's potential sequences.
+- **Hand Management:**
+  - Balancing the number of cards in hand to maintain flexibility without exceeding limits.
+
+---
+
+## Additional Rules
+
+- **Zero CI Scenario:**
+  - If both players' CIs reach zero in the same turn, the player who initiated the attack wins.
+- **Card Visibility:**
+  - Players keep their hands hidden, but discarded cards are visible to both players.
+- **Deck Depletion:**
+  - If both the deck and discard pile are exhausted, and neither player can perform an action, the player with the higher CI wins.
+  
+---
+
+## Conclusion
+
+**Cipher Siege** is an engaging, turn-based strategy game perfect for a command-line interface. It combines simple mechanics with strategic complexity, allowing skilled players to consistently outperform less experienced opponents. The game progresses quickly, ensuring that matches are concise and exciting.
+
+By balancing offensive and defensive strategies, managing your hand effectively, and anticipating your opponent's moves, you can master the art of code warfare and emerge victorious in the Cipher Siege.
+
+---

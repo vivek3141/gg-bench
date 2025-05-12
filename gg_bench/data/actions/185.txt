@@ -1,0 +1,12 @@
+The action space in the **Equation Duel** gym environment is represented by a single integer that corresponds to a specific move. Each move consists of selecting two numbers and one operation. The mapping works as follows:
+
+1. **Pairs of Numbers**: Every action is derived from selecting a unique ordered pair of numbers, with their indices in the `numbers` array being combined. The possible pairs are given by the list `self.pairs`.
+
+2. **Operations**: For each pair, there are four possible operations (`+`, `-`, `*`, `/`). The index of the operation is combined with the pair index to form the unique action index.
+
+3. **Action Index Calculation**:
+   - The overall action index is computed as `pair_index * number_of_operations + operation_index`.
+   - `pair_index` corresponds to the position of the number pair in `self.pairs`.
+   - `operation_index` indicates which of the four operations is applied to the selected pair.
+
+Thus, the action space index is a unique identifier for a combined selection of two different numbers and a single operation to form an equation.

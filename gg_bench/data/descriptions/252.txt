@@ -1,0 +1,239 @@
+**Game Title:** Bit Flip Duel
+
+---
+
+### **Objective**
+
+Be the first player to turn all bits in your binary sequence to **1**. Use strategic bit flipping to optimize your own sequence while influencing your opponent's sequence. The player who successfully changes all bits in their binary sequence to **1** wins the game.
+
+---
+
+### **Setup**
+
+- Each player has a binary sequence containing **5 bits**, initially set to **0**. That is, both players start with **`00000`**.
+- Players agree on who takes the first turn (e.g., by coin toss).
+
+---
+
+### **Game Components**
+
+- **Player Binary Sequences:** Each player maintains their own sequence of 5 bits.
+  - **Appearance:** A sequence of 5 binary digits, e.g., `0 0 0 0 0`.
+  - **Functionality:** Bits can be flipped from **0** to **1** or from **1** to **0**.
+- **Bit Positions:** The bits are numbered from **1** to **5**, left to right.
+  - **Position 1:** Leftmost bit.
+  - **Position 5:** Rightmost bit.
+
+---
+
+### **Turns**
+
+1. **Turn Order:** Players take turns alternately. The player determined during setup begins.
+2. **Player Actions on Their Turn:**
+   - **Select a Bit to Flip:** Choose a bit position between **1** and **5**.
+   - **Flip the Bit in Your Own Sequence:** Change the selected bit from **0** to **1** or from **1** to **0**.
+   - **Simultaneous Flip in Opponent's Sequence:** The same bit in your opponent's sequence will also flip.
+3. **Turn Progression:** After completing your action, the turn passes to your opponent.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Flipping Bits:**
+   - On your turn, you must flip **one** bit in your own sequence.
+   - Flipping a bit changes its value:
+     - **0** becomes **1**.
+     - **1** becomes **0**.
+   - The corresponding bit in your opponent's sequence **also flips** simultaneously.
+2. **Legal Moves:**
+   - You must flip a bit in your own sequence; passing is not allowed.
+   - You can select any bit from positions **1** to **5**.
+3. **Winning the Game:**
+   - The first player whose binary sequence consists entirely of **1s** (`1 1 1 1 1`) wins immediately.
+4. **Game Continuation:**
+   - If neither player has all bits set to **1** after a move, the game continues with the next player's turn.
+5. **No Draws:**
+   - Due to the nature of the game mechanics, a draw is impossible. The game will continue until one player achieves a sequence of all **1s**.
+
+---
+
+### **Scoring**
+
+- **Victory:** Winning the game by turning all your bits to **1**.
+- **No Point System:** The game does not utilize points; victory is determined purely by achieving the objective.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial State:**
+
+- **Player 1 Sequence:** `0 0 0 0 0`
+- **Player 2 Sequence:** `0 0 0 0 0`
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Flip bit **3**.
+- **Player 1 Sequence After Move:** `0 0 **1** 0 0`
+- **Player 2 Sequence After Move:** `0 0 **1** 0 0`
+- **Explanation:** Both players' bit 3 flips from **0** to **1**.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Flip bit **5**.
+- **Player 2 Sequence After Move:** `0 0 1 0 **1**`
+- **Player 1 Sequence After Move:** `0 0 1 0 **1**`
+- **Explanation:** Both players' bit 5 flips from **0** to **1**.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Flip bit **2**.
+- **Player 1 Sequence After Move:** `0 **1** 1 0 1`
+- **Player 2 Sequence After Move:** `0 **1** 1 0 1`
+- **Explanation:** Both players' bit 2 flips from **0** to **1**.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Flip bit **4**.
+- **Player 2 Sequence After Move:** `0 1 1 **1** 1`
+- **Player 1 Sequence After Move:** `0 1 1 **1** 1`
+- **Explanation:** Both players' bit 4 flips from **0** to **1**.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Flip bit **1**.
+- **Player 1 Sequence After Move:** `**1** 1 1 1 1`
+- **Player 2 Sequence After Move:** `**1** 1 1 1 1`
+- **Explanation:** Both players' bit 1 flips from **0** to **1**.
+
+---
+
+**Outcome:**
+
+- **Player 1's Sequence:** `1 1 1 1 1` (All bits are **1**)
+- **Player 2's Sequence:** `1 1 1 1 1` (All bits are **1**)
+- **Winner:** **Player 1**, as they achieved all **1s** at the end of their turn.
+
+---
+
+#### **Strategic Considerations**
+
+- **Mirrored Impact:** Every move affects both your sequence and your opponent's sequence equally. Plan your moves to benefit you more than your opponent.
+- **Timing:** Think ahead to anticipate how flipping a bit will bring you closer to victory while considering the potential benefits to your opponent.
+- **Bit Selection:** Choosing which bit to flip is crucial. Consider the current state of both sequences before deciding.
+
+---
+
+### **Command-Line Interaction Sample**
+
+**Notation:**
+- **P1:** Player 1
+- **P2:** Player 2
+- **Sequences are displayed as:** `Bit1 Bit2 Bit3 Bit4 Bit5`
+
+---
+
+**Game Start**
+
+```
+P1 Sequence: 0 0 0 0 0
+P2 Sequence: 0 0 0 0 0
+```
+
+---
+
+**P1's Turn**
+
+```
+P1, enter bit position to flip (1-5): 3
+
+P1 flips bit 3.
+
+New Sequences:
+P1 Sequence: 0 0 1 0 0
+P2 Sequence: 0 0 1 0 0
+```
+
+---
+
+**P2's Turn**
+
+```
+P2, enter bit position to flip (1-5): 5
+
+P2 flips bit 5.
+
+New Sequences:
+P1 Sequence: 0 0 1 0 1
+P2 Sequence: 0 0 1 0 1
+```
+
+---
+
+**P1's Turn**
+
+```
+P1, enter bit position to flip (1-5): 2
+
+P1 flips bit 2.
+
+New Sequences:
+P1 Sequence: 0 1 1 0 1
+P2 Sequence: 0 1 1 0 1
+```
+
+---
+
+**P2's Turn**
+
+```
+P2, enter bit position to flip (1-5): 4
+
+P2 flips bit 4.
+
+New Sequences:
+P1 Sequence: 0 1 1 1 1
+P2 Sequence: 0 1 1 1 1
+```
+
+---
+
+**P1's Turn**
+
+```
+P1, enter bit position to flip (1-5): 1
+
+P1 flips bit 1.
+
+New Sequences:
+P1 Sequence: 1 1 1 1 1
+P2 Sequence: 1 1 1 1 1
+
+Congratulations, P1 has turned all bits to 1 and wins the game!
+```
+
+---
+
+### **Game End**
+
+The game concludes when a player achieves a sequence where all bits are **1**. In the example above, **Player 1** wins on their third turn by flipping bit **1**, resulting in a sequence of `1 1 1 1 1`.
+
+---
+
+**Note:** This game is designed for quick play and strategic depth. Players must think ahead and consider the consequences of each bit flip, as it affects both players equally.
+
+---
+
+Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,212 @@
+# Game Name: Divisor Duel
+
+---
+
+### Objective
+
+Be the last player to make a valid move by reducing the current number such that your opponent cannot make a move. A player wins by forcing their opponent into a position where the opponent cannot subtract a proper divisor from the current number.
+
+---
+
+### Setup
+
+1. **Starting Number**: The game begins with a positive integer called the **current number**. This number is agreed upon by both players before the game starts. For a standard game, the starting number is **60**.
+
+2. **Players**: Two players participate in the game, referred to as **Player 1** and **Player 2**.
+
+3. **Starting Player**: Decide who will take the first turn. This can be determined randomly or by mutual agreement.
+
+---
+
+### Game Components
+
+- **Current Number**: A positive integer visible to both players at all times. It is updated after each move.
+
+- **Proper Divisors**: For the purposes of the game, proper divisors of a number are integers greater than 1 and less than the current number that divide it evenly (without leaving a remainder).
+
+---
+
+### Turns
+
+- **Turn Order**: Players alternate turns, starting with the designated starting player.
+
+- **Player Actions on Their Turn**:
+  1. **Identify Proper Divisors**: Determine all proper divisors of the current number.
+  2. **Choose a Divisor**: Select any one proper divisor.
+  3. **Subtract Divisor**: Subtract the chosen divisor from the current number.
+  4. **Update Current Number**: The result becomes the new current number for the next turn.
+
+---
+
+### Rules and Mechanics
+
+1. **Valid Moves**:
+   - On each turn, a player must subtract a proper divisor of the current number.
+   - The chosen divisor must be greater than 1 and less than the current number.
+   - The divisor must divide the current number evenly.
+
+2. **Winning the Game**:
+   - If a player cannot make a valid move on their turn (i.e., the current number has no proper divisors), they lose the game.
+   - The opponent is declared the winner.
+
+3. **No Skipping Turns**:
+   - Players cannot skip their turn. If a valid move is possible, it must be made.
+
+4. **No Repeats**:
+   - The same move combinations can occur multiple times; there are no restrictions on repeating previous moves.
+
+---
+
+### Scoring
+
+- **Victory**: The player who makes the last valid move wins the game.
+
+- **Record Keeping**: Players may keep track of moves made for strategic purposes, but no formal scoring system is required beyond determining the winner.
+
+---
+
+### Examples
+
+#### Example Game Play
+
+**Start with Current Number = 60**
+
+**Turn 1: Player 1**
+
+- **Proper Divisors of 60**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- **Player 1 Chooses**: 15
+- **Current Number**: 60 - 15 = **45**
+
+---
+
+**Turn 2: Player 2**
+
+- **Proper Divisors of 45**: 3, 5, 9, 15
+- **Player 2 Chooses**: 15
+- **Current Number**: 45 - 15 = **30**
+
+---
+
+**Turn 3: Player 1**
+
+- **Proper Divisors of 30**: 2, 3, 5, 6, 10, 15
+- **Player 1 Chooses**: 15
+- **Current Number**: 30 - 15 = **15**
+
+---
+
+**Turn 4: Player 2**
+
+- **Proper Divisors of 15**: 3, 5
+- **Player 2 Chooses**: 5
+- **Current Number**: 15 - 5 = **10**
+
+---
+
+**Turn 5: Player 1**
+
+- **Proper Divisors of 10**: 2, 5
+- **Player 1 Chooses**: 2
+- **Current Number**: 10 - 2 = **8**
+
+---
+
+**Turn 6: Player 2**
+
+- **Proper Divisors of 8**: 2, 4
+- **Player 2 Chooses**: 4
+- **Current Number**: 8 - 4 = **4**
+
+---
+
+**Turn 7: Player 1**
+
+- **Proper Divisors of 4**: 2
+- **Player 1 Chooses**: 2
+- **Current Number**: 4 - 2 = **2**
+
+---
+
+**Turn 8: Player 2**
+
+- **Proper Divisors of 2**: _None_ (since 2 is a prime number)
+- **Player 2 Cannot Move**: No valid moves available.
+- **Player 1 Wins**: Player 1 is declared the winner.
+
+---
+
+#### Command-Line Interaction Sample
+
+Assuming players input their moves via the command line.
+
+```
+Game Start: Current Number is 60
+
+Player 1's Turn
+Proper Divisors of 60: 2 3 4 5 6 10 12 15 20 30
+Choose a divisor to subtract: 15
+New Current Number: 45
+
+Player 2's Turn
+Proper Divisors of 45: 3 5 9 15
+Choose a divisor to subtract: 15
+New Current Number: 30
+
+Player 1's Turn
+Proper Divisors of 30: 2 3 5 6 10 15
+Choose a divisor to subtract: 15
+New Current Number: 15
+
+Player 2's Turn
+Proper Divisors of 15: 3 5
+Choose a divisor to subtract: 5
+New Current Number: 10
+
+Player 1's Turn
+Proper Divisors of 10: 2 5
+Choose a divisor to subtract: 2
+New Current Number: 8
+
+Player 2's Turn
+Proper Divisors of 8: 2 4
+Choose a divisor to subtract: 4
+New Current Number: 4
+
+Player 1's Turn
+Proper Divisors of 4: 2
+Choose a divisor to subtract: 2
+New Current Number: 2
+
+Player 2's Turn
+Proper Divisors of 2: None
+No valid moves available. Player 2 loses.
+Player 1 wins the game!
+```
+
+---
+
+### Strategy Tips
+
+- **Plan Ahead**: Anticipate the results of your move on the subsequent options available to your opponent. Try to leave them with numbers that have limited proper divisors.
+
+- **Prime Awareness**: Forcing the current number to a prime number on your opponent's turn can guarantee a win, as they will have no valid moves.
+
+- **Divisor Selection**: Choosing larger divisors may accelerate the game but consider how it affects future moves. Sometimes choosing a smaller divisor can be strategically advantageous.
+
+- **Control the Game Flow**: Aim to control the progression of the current number to navigate towards a winning position.
+
+---
+
+### Ensuring Fair Play
+
+- **Valid Divisors Only**: Always verify that the chosen divisor is a proper divisor of the current number.
+
+- **Accurate Calculations**: Carefully perform subtraction and update the current number correctly.
+
+- **Open Communication**: Both players should agree on the list of proper divisors each turn to prevent misunderstandings.
+
+---
+
+**Divisor Duel** offers a blend of arithmetic skill and strategic depth within a simple framework. The game is designed to be easily implemented in a command-line interface, ensuring quick gameplay without the possibility of a draw. Skilled players can develop strategies to consistently outperform less experienced opponents, making each game both challenging and engaging.
+
+Enjoy the duel!

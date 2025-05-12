@@ -1,0 +1,254 @@
+**Game Name:** Blockade
+
+---
+
+### **Objective**
+
+Blockade is a strategic two-player game played on a 5x5 grid. The primary goal is to be the first player to reach your opponent's starting position while strategically placing blockades to hinder their progress. Victory can be achieved in two ways:
+
+- **Reach the Opponent's Start:** Move your marker to the opponent's starting square before they reach yours.
+- **Block the Opponent:** Prevent your opponent from making any valid moves on their turn, effectively trapping them.
+
+---
+
+### **Setup**
+
+1. **Game Grid:**
+   - The game is played on a 5x5 grid, represented in the command-line interface.
+   - Rows and columns are indexed from 0 to 4.
+
+2. **Starting Positions:**
+   - **Player A:** Starts at the top-left corner of the grid at position `(0, 0)`, represented by the marker `'A'`.
+   - **Player B:** Starts at the bottom-right corner of the grid at position `(4, 4)`, represented by the marker `'B'`.
+
+3. **Initial Grid State:**
+   - All other cells are empty and represented by `'.'`.
+   - No blockades (`'X'`) are on the grid at the start.
+
+**Example Initial Grid:**
+
+```
+A . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . B
+```
+
+---
+
+### **Game Components**
+
+1. **Grid Cells:**
+   - **Empty Cell (`'.'`):** A cell that can be moved into or have a blockade placed upon if adjacent to a player's marker.
+   - **Player Markers (`'A'` and `'B'`):** Represent the current positions of Player A and Player B, respectively.
+   - **Blockades (`'X'`):** Obstructions placed by players to block movement paths.
+
+2. **Markers:**
+   - Each player has a unique marker:
+     - Player A: `'A'`
+     - Player B: `'B'`
+
+3. **Blockades:**
+   - Represented by `'X'`, blockades are used strategically to impede the opponent's movements.
+   - Once placed, blockades remain on the grid for the duration of the game.
+
+---
+
+### **Turns**
+
+1. **Turn Order:**
+   - Players alternate turns starting with **Player A**.
+
+2. **Turn Actions:**
+   - On your turn, you must perform the following actions in order:
+     1. **Move Your Marker:**
+        - Move to an adjacent cell (up, down, left, or right).
+        - Diagonal movements are not allowed.
+     2. **Place a Blockade:**
+        - After moving, place a blockade (`'X'`) on any empty cell adjacent to your marker's **new position**. Adjacent cells include diagonals for placing blockades.
+        - You cannot place a blockade on a cell occupied by any player's marker or an existing blockade.
+
+3. **Movement Restrictions:**
+   - You cannot move into a cell occupied by an opponent's marker or a blockade.
+   - If you have no valid moves, you lose the game.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement Rules:**
+   - **Valid Moves:** Up, down, left, or right to an empty cell.
+   - **Movement Limitation:** You cannot move off the grid or onto a cell with a blockade or the opponent's marker.
+
+2. **Blockade Placement:**
+   - Must be placed immediately after moving.
+   - Can be placed on any empty cell adjacent (including diagonally) to your marker's new position.
+   - Cannot be placed on a cell already occupied by a marker or another blockade.
+
+3. **Winning Conditions:**
+   - **Reaching Opponent's Start:** Move your marker onto the opponent's starting cell.
+   - **Blocking the Opponent:**
+     - If the opponent has no valid moves on their turn, they lose.
+     - If both players have no valid moves, the player who moved last wins.
+
+4. **Game End:**
+   - The game ends immediately when a player achieves a winning condition.
+
+---
+
+### **Scoring**
+
+- **Victory:** The game is won by meeting one of the winning conditions.
+- **No Point System:** There is no point tracking; the focus is on strategy and achieving the objective.
+- **Skill Advantage:** Strategic placement of blockades and movement can give a skilled player a consistent edge over an unskilled player.
+
+---
+
+### **Examples**
+
+#### **Sample Gameplay**
+
+**Initial Grid:**
+
+```
+A . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . B
+```
+
+**Player A's Turn:**
+
+1. **Move:**
+   - Moves marker from `(0, 0)` to `(0, 1)`.
+
+2. **Place Blockade:**
+   - Places `'X'` at `(1, 0)`.
+
+**Grid After Player A's Turn:**
+
+```
+. A . . .
+X . . . .
+. . . . .
+. . . . .
+. . . . B
+```
+
+**Player B's Turn:**
+
+1. **Move:**
+   - Moves marker from `(4, 4)` to `(3, 4)`.
+
+2. **Place Blockade:**
+   - Places `'X'` at `(3, 3)`.
+
+**Grid After Player B's Turn:**
+
+```
+. A . . .
+X . . . .
+. . . . .
+. . . X B
+. . . . .
+```
+
+**Player A's Turn:**
+
+1. **Move:**
+   - Moves marker from `(0, 1)` to `(0, 2)`.
+
+2. **Place Blockade:**
+   - Places `'X'` at `(1, 2)`.
+
+**Grid After Player A's Turn:**
+
+```
+. . A . .
+X . X . .
+. . . . .
+. . . X B
+. . . . .
+```
+
+#### **Strategic Considerations**
+
+- **Blocking Paths:**
+  - Players should aim to place blockades to hinder the opponent while keeping their own paths clear.
+  - Anticipate the opponent's moves and block critical cells that could expedite their progress.
+
+- **Movement Balance:**
+  - Balancing offensive moves towards the goal with defensive blockade placement is key.
+  - Overcommitting to blocking may leave you without a clear path.
+
+#### **Sample Command-Line Interaction**
+
+**Player A's Turn:**
+
+```
+Player A's Turn
+---------------
+Current Position: (0, 1)
+Available Moves:
+1. Up to (0, 0)
+2. Right to (0, 2)
+3. Down to (1, 1)
+
+Enter the number of your move choice: 2
+
+You moved to (0, 2).
+
+Available Blockade Placements:
+1. (0, 1)
+2. (0, 3)
+3. (1, 1)
+4. (1, 2)
+5. (1, 3)
+
+Enter the number of your blockade placement choice: 4
+
+You placed a blockade at (1, 2).
+```
+
+**Player B's Turn:**
+
+```
+Player B's Turn
+---------------
+Current Position: (3, 4)
+Available Moves:
+1. Left to (3, 3)
+2. Up to (2, 4)
+3. Down to (4, 4)
+
+Enter the number of your move choice: 1
+
+You moved to (3, 3).
+
+Available Blockade Placements:
+1. (2, 2)
+2. (2, 3)
+3. (2, 4)
+4. (3, 2)
+5. (4, 2)
+6. (4, 3)
+7. (4, 4)
+
+Enter the number of your blockade placement choice: 2
+
+You placed a blockade at (2, 3).
+```
+
+---
+
+### **Conclusion**
+
+Blockade is a simple yet strategically deep game that challenges players to think ahead and balance offensive and defensive tactics. Its straightforward rules make it easy to code and play in a command-line interface, and the absence of a draw mechanism ensures that games conclude quickly with a clear winner. Mastery of blockade placement and movement will enable skilled players to consistently outmaneuver less experienced opponents.
+
+Enjoy the game, and may the best strategist win!
+
+---
+
+© 2023 Blockade Game Rulebook

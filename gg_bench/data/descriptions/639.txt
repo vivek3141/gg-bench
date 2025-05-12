@@ -1,0 +1,200 @@
+# Shadows and Light: A Strategic Two-Player Command-Line Game
+
+## Objective
+
+In **Shadows and Light**, two players engage in a tactical battle to control the majority of energy nodes on a grid-based board. The primary goal is to be the first player to capture a set number of nodes by strategically placing and moving your tokens while converting your opponent's tokens to your own. Victory is achieved by skillful planning and execution, allowing a skilled player to consistently outperform an unskilled one.
+
+## Setup
+
+- **Players**: Two players, referred to as **Player 1 (Shadows)** and **Player 2 (Light)**.
+- **Game Board**: A 5x5 grid representing the battlefield.
+- **Starting Tokens**: Each player begins with three tokens.
+- **Initial Arrangement**: The board starts empty. Players decide who goes first (e.g., by mutual agreement or randomly).
+- **Starting Conditions**: Both players have their tokens ready to place on the board during their turns.
+
+## Game Components
+
+### Game Board
+
+- **Grid Size**: 5 rows x 5 columns.
+- **Nodes**: Each cell in the grid is called a "node," identified by coordinates `(row, column)` ranging from 1 to 5.
+- **Representation**: Empty nodes are displayed as `.`
+
+### Tokens
+
+- **Shadows Tokens**: Represented by `S` on the board for Player 1.
+- **Light Tokens**: Represented by `L` on the board for Player 2.
+- **Functionality**: Tokens are used to control nodes and capture opponent's tokens.
+- **Unique Attributes**:
+  - Can be placed or moved to influence the board.
+  - Capable of converting opponent's adjacent tokens.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the player chosen to go first.
+- **Actions Per Turn**: On their turn, a player must perform one of the following actions:
+  1. **Place a Token**: Place one of their remaining tokens onto any empty node.
+  2. **Move a Token**: Move one of their tokens already on the board to an adjacent empty node (horizontally or vertically).
+- **Turn Progression**:
+  - After performing an action, check for any captures (see Rules and Mechanics).
+  - Update the board state.
+  - The turn passes to the other player.
+
+## Rules and Mechanics
+
+### Token Placement
+
+- Players can place a token on any empty node.
+- Each player has a limited number of tokens (three) to introduce onto the board.
+- Once all tokens are placed, players must move tokens instead.
+
+### Token Movement
+
+- Tokens can be moved to an adjacent empty node (no diagonal moves).
+- Moving a token counts as the player's action for that turn.
+- Tokens cannot "jump" over other tokens.
+
+### Capturing Tokens
+
+- **Conversion**: If a player moves or places a token next to an opponent's token (horizontally or vertically), they capture it.
+- **Capture Conditions**:
+  - The opponent's token is immediately converted to the capturing player's token.
+  - Diagonal adjacency does not result in a capture.
+- **Chain Reactions**: Capturing can create new opportunities for additional captures in subsequent turns.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to control 13 or more nodes wins the game.
+- **Alternate Victory**: If a player reduces the opponent to having no tokens on the board, they win immediately.
+- **No Draws**: The game cannot end in a tie due to the grid size and victory conditions.
+
+## Scoring
+
+- **Controlled Nodes**: Each node occupied by a player's token counts as one point.
+- **Score Tracking**:
+  - Scores are updated after each turn and any captures.
+  - Both players can see the current scores before starting their turn.
+- **Winning Score**: Reach 13 points to win the game.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Board State
+
+```
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+#### Turn 1: Player 1 (Shadows)
+
+- **Action**: Place a token at `(3, 3)`.
+- **Command**: `place 3 3`
+  
+Board:
+
+```
+. . . . .
+. . . . .
+. . S . .
+. . . . .
+. . . . .
+```
+
+#### Turn 2: Player 2 (Light)
+
+- **Action**: Place a token at `(3, 4)`.
+- **Command**: `place 3 4`
+
+Board:
+
+```
+. . . . .
+. . . . .
+. . S L .
+. . . . .
+. . . . .
+```
+
+#### Turn 3: Player 1 (Shadows)
+
+- **Action**: Place a token at `(4, 4)`.
+- **Command**: `place 4 4`
+- **Capture**: Adjacent to `L` at `(3, 4)`, so capture occurs.
+
+Board after capture:
+
+```
+. . . . .
+. . . . .
+. . S S .
+. . . S .
+. . . . .
+```
+
+- **Score Update**:
+  - Player 1: 3 points
+  - Player 2: 0 points
+
+#### Turn 4: Player 2 (Light)
+
+- **Action**: Place a token at `(2, 3)`.
+- **Command**: `place 2 3`
+
+Board:
+
+```
+. . . . .
+. . L . .
+. . S S .
+. . . S .
+. . . . .
+```
+
+#### Turn 5: Player 1 (Shadows)
+
+- **Action**: Move token from `(3, 3)` to `(2, 3)`.
+- **Command**: `move 3 3 2 3`
+- **Capture**: Captures `L` at `(2, 3)`.
+
+Board after move and capture:
+
+```
+. . . . .
+. . S . .
+. . . S .
+. . . S .
+. . . . .
+```
+
+- **Score Update**:
+  - Player 1: 4 points
+  - Player 2: 0 points
+
+#### ... (Game continues until a player reaches 13 points)
+
+### Command-Line Interaction
+
+- **Placing a Token**:
+  - Syntax: `place <row> <column>`
+  - Example: `place 3 3`
+- **Moving a Token**:
+  - Syntax: `move <from_row> <from_column> <to_row> <to_column>`
+  - Example: `move 3 3 2 3`
+- **System Responses**:
+  - Confirmations: "Token placed at (3,3)."
+  - Captures: "Token at (3,4) captured!"
+  - Invalid Moves: "Invalid move. Please try again."
+  - Score Updates: "Shadows: 4 points | Light: 0 points"
+
+## Conclusion
+
+**Shadows and Light** is a game of tactical positioning and strategic foresight. The simple mechanics make it easy to learn, while the depth of strategy provides a challenging experience. The absence of a draw mechanism and the clear victory conditions ensure that each game concludes swiftly, allowing players to engage in multiple rounds and refine their skills. May the best strategist prevail in controlling the battlefield of shadows and light!
+
+---
+
+Enjoy your battle, and may your strategies bring you victory!

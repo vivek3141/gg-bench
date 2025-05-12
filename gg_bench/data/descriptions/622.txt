@@ -1,0 +1,150 @@
+# Divisor Duel: Rule Book
+
+## Objective
+
+Divisor Duel is a two-player, turn-based mathematical strategy game. The primary goal is to force your opponent into a position where they cannot make a valid move, thus securing your victory. Players achieve this by strategically selecting proper divisors to reduce the shared number to a prime number or 1 on their opponent's turn.
+
+- **Victory Condition:** You win if your opponent is unable to make a valid move on their turn because the current number is prime (has no proper divisors other than 1 and itself) or equals 1.
+
+## Setup
+
+1. **Initial Number Selection:**
+   - Agree on a starting number **N**, which must be a positive integer greater than 1.
+   - For a quick game, it's recommended to choose a moderate number (e.g., 30, 48, 60).
+
+2. **Determine Turn Order:**
+   - Decide which player goes first. This can be done by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Shared Number (**N**):**
+  - A positive integer that both players will manipulate throughout the game.
+  - Starts at the initial number agreed upon during setup.
+  
+- **Proper Divisors:**
+  - Numbers greater than 1 and less than **N** that divide **N** without leaving a remainder.
+  - Excludes 1 and **N** itself.
+
+- **Player Roles:**
+  - **Player 1** and **Player 2** alternate turns manipulating the shared number.
+
+## Turns
+
+- **Turn Structure:**
+  1. **Identify Proper Divisors:**
+     - At the start of your turn, list all proper divisors of the current **N**.
+  2. **Select a Divisor:**
+     - Choose one proper divisor **d** from the list.
+  3. **Divide and Update:**
+     - Divide **N** by **d**: **N = N / d**.
+  4. **Announce Move:**
+     - Inform the opponent of the chosen divisor and the new value of **N**.
+  
+- **Turn Progression:**
+  - Players alternate turns following the above structure until the game ends.
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - On your turn, you must select a proper divisor **d** of the current **N** (where 1 < **d** < **N**) and divide **N** by **d**.
+   - **Example:** If **N = 18**, valid divisors are 2, 3, 6, and 9.
+
+2. **Invalid Moves:**
+   - If **N** is prime or equals 1 at the start of your turn, and you have no valid proper divisors to choose from, you cannot make a move.
+
+3. **Winning the Game:**
+   - If your opponent cannot make a valid move on their turn, you win.
+
+4. **Losing the Game:**
+   - If you cannot make a valid move on your turn because **N** is prime or equals 1, you lose.
+
+5. **Additional Guidelines:**
+   - Divisors must be integers greater than 1.
+   - Division must result in an integer (no fractional results).
+
+## Scoring
+
+- **Win Tracking:**
+  - Keep track of wins if playing multiple rounds.
+  - Optionally, assign points for each win and set a target score for an overall match victory.
+
+- **No Point System:**
+  - There are no points awarded during individual games, only a win or loss outcome.
+
+## Examples
+
+### Example Game
+
+**Initial Setup:**
+
+- Starting number **N = 60**.
+- Player 1 goes first.
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 60
+- **Proper Divisors of 60:** 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- **Selected Divisor:** 6
+- **Calculation:** 60 / 6 = **10**
+- **Announcement:** "I divide 60 by 6. The new N is 10."
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** 10
+- **Proper Divisors of 10:** 2, 5
+- **Selected Divisor:** 2
+- **Calculation:** 10 / 2 = **5**
+- **Announcement:** "I divide 10 by 2. The new N is 5."
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** 5
+- **Proper Divisors of 5:** None (5 is prime)
+- **Cannot make a move.**
+- **Result:** Player 1 loses because they cannot make a valid move.
+
+---
+
+**Winner:** Player 2
+
+### Command-Line Interaction Sample
+
+Below is a sample of how the game might proceed in a command-line interface.
+
+```
+Game Start! Initial N is 60.
+
+Player 1's Turn:
+Current N: 60
+Proper Divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+Enter your chosen divisor: 6
+You divided 60 by 6. New N is 10.
+
+Player 2's Turn:
+Current N: 10
+Proper Divisors: 2, 5
+Enter your chosen divisor: 2
+You divided 10 by 2. New N is 5.
+
+Player 1's Turn:
+Current N: 5
+5 is prime. No valid moves.
+Player 1 cannot make a move. Player 2 wins!
+```
+
+## Strategy Tips
+
+- **Aim for Primes:** Try to leave your opponent with a prime number on their turn.
+- **Avoid Small Numbers Early:** Reducing **N** to a small composite number may limit your options later.
+- **Calculate Ahead:** Consider potential future moves resulting from your chosen divisor.
+- **Divisor Selection:** Choosing the largest or smallest divisor isn't always the best move; analyze the consequences.
+
+---
+
+Enjoy playing Divisor Duel and may the best strategist win!

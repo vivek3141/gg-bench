@@ -1,0 +1,187 @@
+# Stack Attack: Rule Book
+
+## Objective
+
+**Stack Attack** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to eliminate all the blocks from your opponent's stack before they eliminate yours. Players take turns attacking each other's stacks using their own blocks, employing strategy to outmaneuver their opponent. The player who successfully eliminates all of their opponent's blocks wins the game.
+
+## Setup
+
+1. **Initial Stacks**: Each player starts with their own stack of numbered blocks arranged from bottom to top:
+   - **Player 1's Stack**: Blocks numbered 1 (bottom) to 5 (top)
+   - **Player 2's Stack**: Blocks numbered 1 (bottom) to 5 (top)
+2. **Starting Positions**: Both players have their stacks in front of them, and the game begins with Player 1 taking the first turn.
+3. **Block Arrangement**: Blocks are stacked in ascending order with block 1 at the bottom and block 5 at the top.
+
+## Game Components
+
+- **Stacks**: Each player's stack consists of five blocks numbered 1 through 5.
+- **Blocks**: Individual units numbered from 1 (weakest) to 5 (strongest).
+  - **Appearance**: Represented by their numbers in the command-line interface.
+  - **Functionality**: Used to attack and eliminate opponent's blocks.
+  - **Attributes**:
+    - **Strength**: Determined by the block's number (higher numbers are stronger).
+    - **Position**: Blocks are arranged from bottom (1) to top (5).
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with Player 1.
+2. **Actions per Turn**: On their turn, a player must perform the following actions:
+   - **Select an Attacking Block**: Choose the topmost block remaining in their own stack.
+   - **Attack Opponent's Block**: Use the selected block to attack one of the opponent's blocks.
+3. **Turn Progression**:
+   - Players continue taking turns until one player's stack has been completely eliminated.
+
+## Rules and Mechanics
+
+### Attacking
+
+- **Selecting a Block to Attack**:
+  - A player can only use their **topmost block** (the highest-numbered remaining block in their stack) to attack.
+- **Targeting Opponent's Blocks**:
+  - The attacking block can eliminate **any one** of the opponent's blocks **with an equal or lower number**.
+  - Example: A block numbered 4 can attack opponent's blocks numbered 4, 3, 2, or 1.
+- **Eliminating Blocks**:
+  - When a block is successfully attacked, it is removed from the opponent's stack.
+  - The attacking block is also removed from the game after the attack.
+- **Invalid Attacks**:
+  - If the opponent has no blocks equal to or lower than the attacking block, the attack fails, and only the attacking block is removed from the game.
+
+### Winning and Losing
+
+- **Winning the Game**:
+  - A player wins by eliminating **all blocks** from the opponent's stack.
+- **Unable to Attack**:
+  - If a player has no remaining blocks to attack with, they lose the game.
+
+### Additional Rules
+
+- **Block Removal**:
+  - Once a block is used for an attack (successful or not), it is removed from play.
+- **Stack Integrity**:
+  - Players cannot rearrange the order of their blocks.
+- **Ties**:
+  - The game cannot end in a draw; play continues until one player wins.
+
+## Scoring
+
+- **Tracking Progress**:
+  - The game does not use a point system; instead, players track the remaining blocks in each stack.
+- **Victory Condition**:
+  - The elimination of the opponent's entire stack constitutes a win.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Setup**:
+
+- **Player 1's Stack**: [1, 2, 3, 4, 5]
+- **Player 2's Stack**: [1, 2, 3, 4, 5]
+
+### Turn-by-Turn Breakdown
+
+**Turn 1**: *Player 1's Turn*
+
+- **Attacking Block**: 5 (top of Player 1's stack)
+- **Available Targets**: Opponent's blocks [1, 2, 3, 4, 5]
+- **Action**: Player 1 chooses to attack block 5 in Player 2's stack.
+- **Result**:
+  - Player 2's block 5 is eliminated.
+  - Player 1's block 5 is removed from play.
+- **Stacks After Turn**:
+  - **Player 1**: [1, 2, 3, 4]
+  - **Player 2**: [1, 2, 3, 4]
+
+**Turn 2**: *Player 2's Turn*
+
+- **Attacking Block**: 4 (top of Player 2's stack)
+- **Available Targets**: Opponent's blocks [1, 2, 3, 4]
+- **Action**: Player 2 attacks block 4 in Player 1's stack.
+- **Result**:
+  - Player 1's block 4 is eliminated.
+  - Player 2's block 4 is removed from play.
+- **Stacks After Turn**:
+  - **Player 1**: [1, 2, 3]
+  - **Player 2**: [1, 2, 3]
+
+**Turn 3**: *Player 1's Turn*
+
+- **Attacking Block**: 3
+- **Available Targets**: Player 2's blocks [1, 2, 3]
+- **Action**: Player 1 attacks block 3 in Player 2's stack.
+- **Result**:
+  - Player 2's block 3 is eliminated.
+  - Player 1's block 3 is removed from play.
+- **Stacks After Turn**:
+  - **Player 1**: [1, 2]
+  - **Player 2**: [1, 2]
+
+**Turn 4**: *Player 2's Turn*
+
+- **Attacking Block**: 2
+- **Available Targets**: Player 1's blocks [1, 2]
+- **Action**: Player 2 attacks block 2 in Player 1's stack.
+- **Result**:
+  - Player 1's block 2 is eliminated.
+  - Player 2's block 2 is removed from play.
+- **Stacks After Turn**:
+  - **Player 1**: [1]
+  - **Player 2**: [1]
+
+**Turn 5**: *Player 1's Turn*
+
+- **Attacking Block**: 1
+- **Available Targets**: Player 2's block [1]
+- **Action**: Player 1 attacks block 1 in Player 2's stack.
+- **Result**:
+  - Player 2's block 1 is eliminated.
+  - Player 1's block 1 is removed from play.
+- **Stacks After Turn**:
+  - **Player 1**: []
+  - **Player 2**: []
+
+**Outcome**:
+
+- Both players have no blocks remaining.
+- **Since Player 2 has no blocks left to attack with, and it was Player 1's attack that eliminated the last opponent's block, Player 1 wins the game.**
+
+### Command-Line Interaction Sample
+
+Below is a sample interaction between the players and the game in a command-line interface.
+
+**Game Start**
+
+```
+Player 1's Stack: [1, 2, 3, 4, 5]
+Player 2's Stack: [1, 2, 3, 4, 5]
+Player 1's Turn.
+Top Block: 5
+Choose an opponent's block to attack (Blocks ≤ 5): [1, 2, 3, 4, 5]
+Player 1 attacks block 5.
+Result: Player 2's block 5 is eliminated.
+Player 1's block 5 is removed.
+```
+
+**Updated Stacks**
+
+```
+Player 1's Stack: [1, 2, 3, 4]
+Player 2's Stack: [1, 2, 3, 4]
+```
+
+**Subsequent Turns**
+
+- *The game continues with similar prompts and updates, as in the sample game play above.*
+
+## Strategy Tips
+
+- **Prioritize Strong Blocks**: Use higher-numbered blocks to eliminate the opponent's strongest blocks early.
+- **Conserve Blocks**: Assess whether it's advantageous to attack a lower-numbered block or save your higher block for a bigger threat.
+- **Anticipate Moves**: Try to predict which blocks your opponent will target and plan your attacks accordingly.
+- **Forced Moves**: When possible, force your opponent into a position where they have no valid attacks.
+
+## Conclusion
+
+**Stack Attack** is a simple yet strategically rich game that challenges players to think ahead and outmaneuver their opponent. With its easy-to-understand rules and quick gameplay, it offers an engaging experience where skill triumphs over chance.
+
+Enjoy the battle, and may the best strategist win!

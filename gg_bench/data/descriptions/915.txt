@@ -1,0 +1,214 @@
+# Quantum Duel
+
+## Objective
+
+Be the first player to reduce your opponent's energy level to **zero or below**, or cause them to lose through a **paradox encounter**. Utilize strategic choices of **Attack**, **Defend**, and a one-time **Paradox** to outwit your opponent.
+
+## Setup
+
+- **Players**: 2
+- **Starting Energy**: Each player begins with **10 energy units**.
+- **Initial Conditions**: No additional setup is required.
+
+## Game Components
+
+- **Energy Level Tracker**: A variable or counter for each player to keep track of their current energy level (starting at 10).
+- **Actions**:
+  - **Attack**: An offensive move to reduce the opponent's energy.
+  - **Defend**: A defensive move to protect and potentially counter an opponent's attack.
+  - **Paradox**: A special action that can alter the outcome dramatically, usable **only once per player per game**.
+
+## Turns
+
+- The game is played in **rounds**, with each round consisting of both players making their moves.
+- **Order of Play**:
+  - **Player 1** takes their turn by selecting an action.
+  - **Player 2** then takes their turn by selecting an action.
+- **Action Selection**:
+  - Players choose their actions independently and secretly.
+  - In a command-line interface, this can be simulated by having each player input their action without the other seeing.
+
+## Rules and Mechanics
+
+### Available Actions
+
+1. **Attack**
+   - Attempt to reduce the opponent's energy.
+2. **Defend**
+   - Protect against an opponent's attack.
+3. **Paradox**
+   - A unique move that can change the tide of the game but can only be used **once per game** by each player.
+
+### Action Resolution
+
+After both players have chosen their actions for the round, the actions are revealed and resolved according to the following rules:
+
+1. **Attack vs. Attack**
+   - Both players lose **2 energy units**.
+   - *Example*: Player 1 and Player 2 both choose Attack.
+     - Player 1 energy: -2
+     - Player 2 energy: -2
+
+2. **Attack vs. Defend**
+   - The attacking player **steals 1 energy unit** from the defending player.
+   - *Example*: Player 1 attacks, Player 2 defends.
+     - Player 1 energy: +1
+     - Player 2 energy: -1
+     - **Note**: Player 1 cannot exceed the maximum of 10 energy units.
+
+3. **Defend vs. Defend**
+   - No change in energy levels.
+   - *Example*: Both players choose Defend.
+     - Player 1 energy: No change
+     - Player 2 energy: No change
+
+4. **Paradox Usage**
+   - **Paradox vs. Attack**
+     - The player who chose Paradox **immediately wins**; the attacking player loses.
+   - **Paradox vs. Defend**
+     - No effect; the game continues with no change in energy levels.
+   - **Paradox vs. Paradox**
+     - **Both players lose**, resulting in a loss for both.
+   - **Restrictions on Paradox**:
+     - Each player can only use Paradox **once per game**.
+     - After a Paradox is used by a player, they cannot select it again.
+
+### Energy Rules
+
+- **Starting Energy**: 10 units per player.
+- **Maximum Energy**: A player cannot exceed 10 energy units.
+- **Energy Loss**:
+  - If a player's energy drops to **zero or below**, they lose the game.
+  - Energy cannot be negative for game continuation purposes.
+
+## Scoring
+
+- The game is won by either:
+  - Reducing the opponent's energy to **zero or below**.
+  - Causing the opponent to lose through a **Paradox vs. Attack** interaction.
+- There are no points; it's a win/loss outcome.
+
+## Examples
+
+### Example Game Play
+
+#### Starting Energy Levels
+
+- Player 1: 10 energy units
+- Player 2: 10 energy units
+
+#### Round 1
+
+- **Player 1** chooses to **Attack**.
+- **Player 2** chooses to **Defend**.
+- **Resolution**:
+  - Player 1 steals 1 energy unit from Player 2.
+  - **Energy Levels**:
+    - Player 1: 10 (cannot exceed 10)
+    - Player 2: 9
+
+#### Round 2
+
+- **Player 1** chooses to **Attack**.
+- **Player 2** chooses to **Attack**.
+- **Resolution**:
+  - Both players lose 2 energy units.
+  - **Energy Levels**:
+    - Player 1: 8
+    - Player 2: 7
+
+#### Round 3
+
+- **Player 1** chooses to **Defend**.
+- **Player 2** chooses to **Attack**.
+- **Resolution**:
+  - Player 2 steals 1 energy unit from Player 1.
+  - **Energy Levels**:
+    - Player 1: 7
+    - Player 2: 8
+
+#### Round 4
+
+- **Player 1** chooses **Paradox**.
+- **Player 2** chooses to **Attack**.
+- **Resolution**:
+  - Player 1 wins immediately.
+  - **Outcome**: Player 1 wins the game.
+
+### Command-Line Interaction Example
+
+```
+--- Round 1 ---
+Player 1 Energy: 10
+Player 2 Energy: 10
+
+Player 1, enter your action (Attack, Defend, Paradox): Attack
+Player 2, enter your action (Attack, Defend, Paradox): Defend
+
+Resolving actions...
+Player 1 attacks while Player 2 defends.
+Player 1 steals 1 energy unit from Player 2.
+
+Updated Energy Levels:
+Player 1 Energy: 10
+Player 2 Energy: 9
+
+--- Round 2 ---
+Player 1 Energy: 10
+Player 2 Energy: 9
+
+Player 1, enter your action (Attack, Defend, Paradox): Attack
+Player 2, enter your action (Attack, Defend, Paradox): Attack
+
+Resolving actions...
+Both players attacked.
+Both players lose 2 energy units.
+
+Updated Energy Levels:
+Player 1 Energy: 8
+Player 2 Energy: 7
+
+--- Round 3 ---
+Player 1 Energy: 8
+Player 2 Energy: 7
+
+Player 1, enter your action (Attack, Defend, Paradox): Defend
+Player 2, enter your action (Attack, Defend, Paradox): Attack
+
+Resolving actions...
+Player 1 defends while Player 2 attacks.
+Player 2 steals 1 energy unit from Player 1.
+
+Updated Energy Levels:
+Player 1 Energy: 7
+Player 2 Energy: 8
+
+--- Round 4 ---
+Player 1 Energy: 7
+Player 2 Energy: 8
+
+Player 1, enter your action (Attack, Defend, Paradox): Paradox
+Player 2, enter your action (Attack, Defend, Paradox): Attack
+
+Resolving actions...
+Player 1 uses Paradox against Player 2's Attack.
+Paradox succeeds! Player 2 loses the game.
+
+--- Game Over ---
+Winner: Player 1
+```
+
+## Strategy Tips
+
+- **Predict Opponent Behavior**: Try to anticipate whether your opponent is likely to attack or defend based on their energy level and previous moves.
+- **Paradox Timing**: Use your Paradox strategically when you believe your opponent will attack, maximizing the chances of an immediate win.
+- **Energy Management**: Keep an eye on both your own and your opponent's energy levels to decide when to attack aggressively or defend.
+- **Deception**: Occasionally vary your moves to prevent your opponent from easily predicting your strategy.
+
+## Final Notes
+
+- The game encourages players to think ahead and read their opponent's intentions.
+- Because each player can only use **Paradox** once, deciding when to use it adds a layer of strategic depth.
+- There are no draws in this game; a scenario where both players lose (double Paradox) still results in a loss for both.
+
+Enjoy playing **Quantum Duel**, and may the most strategic mind win!

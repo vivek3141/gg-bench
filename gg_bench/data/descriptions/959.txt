@@ -1,0 +1,222 @@
+# Number Battle
+
+## Objective
+
+Be the first player to reduce your opponent's health points to zero or below by strategically choosing attack values while managing your own health and available actions.
+
+---
+
+## Setup
+
+- **Players:** 2
+- **Initial Health:** Both players start with **100 Health Points (HP)**.
+- **Attack Values:** Each player has a personal list of attack values ranging from **1** to **10**.
+  - Each attack value can be used **only once** by each player.
+
+---
+
+## Game Components
+
+- **Health Points (HP):** Tracks each player's current health.
+- **Attack Values (1-10):** Numerical values representing the strength of an attack.
+  - Once used by a player, an attack value cannot be used again by that player.
+- **Defend Action:** A strategic action to reduce incoming damage.
+
+---
+
+## Turns
+
+1. **Turn Order:** Decide who goes first (e.g., coin toss, random selection).
+2. **Player Actions:** On your turn, you must choose one of the following actions:
+   - **Attack:** Select an available attack value to inflict damage.
+   - **Defend:** Activate defense to reduce damage from the next incoming attack.
+3. **Turn Progression:** Players alternate turns until the game ends.
+
+---
+
+## Rules and Mechanics
+
+### 1. Attack Action
+
+- **Selecting an Attack:**
+  - Choose an unused attack value from **1** to **10**.
+  - Declare the chosen attack value.
+- **Inflicting Damage:**
+  - Subtract the attack value from the opponent's HP.
+  - Example: If you attack with **7**, the opponent loses **7 HP**.
+- **Attack Availability:**
+  - Each attack value can be used only once per player.
+  - Attack values used are tracked separately for each player.
+
+### 2. Defend Action
+
+- **Activating Defense:**
+  - Announce your decision to defend instead of attacking.
+- **Effect of Defense:**
+  - Reduces damage from the opponent's next attack by **half** (rounded down).
+  - Example: If the opponent attacks with **7**, damage is reduced to **3**.
+- **Defense Cooldown:**
+  - After defending, you cannot defend again on your immediate next turn.
+  - You must perform an attack on your next turn before defending again.
+
+### 3. Health Points (HP)
+
+- **Starting HP:** Both players begin with **100 HP**.
+- **Health Reduction:**
+  - HP decreases when a player takes damage from an attack.
+  - HP cannot go below **0 HP**.
+- **Health Tracking:**
+  - Both players must keep an accurate record of their own and their opponent's HP.
+  - Health points are public and must be disclosed upon request.
+
+### 4. Winning the Game
+
+- **Victory Condition:**
+  - Reduce your opponent's HP to **0** or below.
+- **Simultaneous Defeat:**
+  - If both players reach **0 HP** on the same turn, the player who initiated the attack wins.
+
+---
+
+## Scoring
+
+- **Health Points:** The only score metric.
+- **Winning:** Achieved by depleting the opponent's HP to **0** or below.
+- **No Point System:** There are no additional points or scoring methods.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial State:**
+
+- **Player 1 HP:** 100
+- **Player 2 HP:** 100
+- **Available Attacks (Both Players):** 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Attack with **8**.
+- **Effect on Player 2:**
+  - Player 2 HP drops from **100** to **92**.
+- **Player 1's Used Attacks:** 8
+- **Defense Cooldown:** Not applicable (Player 1 did not defend).
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Defend.
+- **Next Turn Effect:** Incoming damage will be halved.
+- **Defense Cooldown:** Player 2 cannot defend on their next turn.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Attack with **10**.
+- **Defense Effect:**
+  - Damage is halved from **10** to **5** (rounded down).
+- **Effect on Player 2:**
+  - Player 2 HP drops from **92** to **87**.
+- **Player 1's Used Attacks:** 8, 10
+- **Defense Cooldown:** Not applicable.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Attack with **9** (cannot defend this turn).
+- **Effect on Player 1:**
+  - Player 1 HP drops from **100** to **91**.
+- **Player 2's Used Attacks:** 9
+- **Defense Cooldown:** Can defend on the next turn.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Defend.
+- **Next Turn Effect:** Incoming damage will be halved.
+- **Defense Cooldown:** Cannot defend on the next turn.
+
+---
+
+**Turn 6: Player 2**
+
+- **Action:** Attack with **8**.
+- **Defense Effect:**
+  - Damage is halved from **8** to **4**.
+- **Effect on Player 1:**
+  - Player 1 HP drops from **91** to **87**.
+- **Player 2's Used Attacks:** 9, 8
+- **Defense Cooldown:** Can defend on the next turn.
+
+---
+
+**Game Continues:**
+
+Players continue to alternate turns, choosing to attack with remaining attack values or defend when strategic until one player's HP reaches **0** or below.
+
+---
+
+## Command-Line Interaction Examples
+
+### Player's Turn Prompt
+
+```
+----------------------------------------
+It's your turn, Player 1!
+Your HP: 87
+Opponent's HP: 87
+Your Available Attacks: 1, 2, 3, 4, 5, 6, 7, 9
+Actions Available: attack, defend
+Enter your action: attack
+Enter attack value from your available attacks: 7
+You attack with a value of 7!
+Opponent's HP is now 80.
+----------------------------------------
+```
+
+### Defense Action Prompt
+
+```
+----------------------------------------
+It's your turn, Player 2!
+Your HP: 87
+Opponent's HP: 80
+Your Available Attacks: 1, 2, 3, 4, 5, 6, 7, 10
+Actions Available: attack, defend
+Enter your action: defend
+You have chosen to defend.
+(You cannot defend on your next turn.)
+----------------------------------------
+```
+
+---
+
+## Strategic Considerations
+
+- **Attack Value Management:**
+  - Use high attack values to deal significant damage but save them for critical moments.
+  - Be aware of which attack values you have left to avoid being forced into low-damage attacks.
+
+- **Predicting Opponent Moves:**
+  - Keep track of the opponent's used attacks to anticipate their potential moves.
+  - If the opponent has used their high attack values, it might be safer to attack rather than defend.
+
+- **Optimal Use of Defense:**
+  - Defend when you suspect the opponent will use a high attack value.
+  - Remember the cooldown; plan your defense turns accordingly.
+
+- **Balancing Offense and Defense:**
+  - Overusing defense may leave you without progress in reducing the opponent's HP.
+  - Constant attacking without considering defense may expose you to significant damage.
+
+---
+
+Make strategic decisions each turn to outmaneuver your opponent. Manage your attack resources wisely and use defense at pivotal moments to gain the upper hand in this battle of numbers!

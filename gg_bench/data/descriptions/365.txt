@@ -1,0 +1,281 @@
+# Number Quest: A Strategic Grid Game
+
+## Objective
+
+**Number Quest** is a two-player, turn-based strategy game played on a numerical grid. The primary goal is to accumulate the highest total score by strategically selecting cells from a hidden number grid. Players use provided sum clues to deduce high-value numbers' locations. The player with the highest total score after all cells have been revealed wins the game.
+
+## Setup
+
+- **Game Grid**: A 3x3 grid, forming nine cells in total.
+- **Hidden Numbers**: Each cell contains a unique number from **1** to **9**, randomly assigned without repeats.
+- **Sum Clues**: The sums of the numbers in each **row**, **column**, and **diagonal** are calculated and displayed to both players.
+- **Initial Display**:
+
+  ```
+   Positions:    Grid:          Clues:
+
+    [1][2][3]     [ ][ ][ ]     Row 1 Sum: XX
+    [4][5][6]     [ ][ ][ ]     Row 2 Sum: XX
+    [7][8][9]     [ ][ ][ ]     Row 3 Sum: XX
+
+    Column Sums:  Col 1: XX, Col 2: XX, Col 3: XX
+    Diagonal Sums: Diag1: XX, Diag2: XX
+  ```
+
+- **Starting Conditions**: Both players begin with a score of **0**.
+
+## Game Components
+
+- **Grid Positions**: Cells are numbered from **1** to **9** for selection purposes.
+- **Hidden Numbers**: Unique integers from **1** to **9** placed randomly in the grid.
+- **Sum Clues**:
+  - **Row Sums**: Total of numbers in each horizontal row.
+  - **Column Sums**: Total of numbers in each vertical column.
+  - **Diagonal Sums**: Total of numbers in the two diagonals.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss). Turns alternate between Player 1 and Player 2.
+- **During a Turn**:
+  1. **Select a Cell**: The player chooses an unrevealed cell by its position number (1-9).
+  2. **Reveal the Number**: The hidden number in the selected cell is revealed to both players.
+  3. **Update Score**: The player's score increases by the value of the revealed number.
+  4. **Update Grid**: The grid display updates to show the revealed number in its position.
+
+- **Turn Progression**: Turns continue alternately until all cells have been revealed.
+
+## Rules and Mechanics
+
+- **Cell Selection**:
+  - Players may only select from unrevealed cells.
+  - Once a cell is chosen, it cannot be selected again.
+
+- **Information Usage**:
+  - Players use the provided sum clues to deduce the possible numbers in each cell.
+  - Logical reasoning helps identify high-value numbers to maximize scoring.
+
+- **Number Uniqueness**:
+  - Each number from **1** to **9** appears exactly once in the grid.
+
+- **Game End**:
+  - The game concludes after nine turns when all cells have been revealed.
+
+## Scoring
+
+- **Score Calculation**:
+  - Each player’s score is the sum of the numbers they have revealed during their turns.
+- **Winning the Game**:
+  - The player with the **higher total score** at the end of the game wins.
+  - In the case of equal scores (which is highly unlikely due to number uniqueness and strategic play), the last player to take a turn is declared the winner, ensuring no draw.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Game State
+
+```
+Positions:    Grid:          Clues:
+
+[1][2][3]     [ ][ ][ ]     Row 1 Sum: 15
+[4][5][6]     [ ][ ][ ]     Row 2 Sum: 15
+[7][8][9]     [ ][ ][ ]     Row 3 Sum: 15
+
+Column Sums:  Col 1: 15, Col 2: 15, Col 3: 15
+Diagonal Sums: Diag1: 15, Diag2: 15
+```
+
+_Note: In this simplified example, all sums are 15, indicating that the numbers are arranged such that each row, column, and diagonal sums to 15._
+
+#### Turn-by-Turn Interaction
+
+**Turn 1: Player 1**
+
+- **Action**: Selects position **5**.
+- **Reveal**: Number **5** is revealed at position **5**.
+- **Score Update**: Player 1's score is now **5**.
+
+**Updated Grid**:
+
+```
+[ ][ ][ ]
+[ ][5][ ]
+[ ][ ][ ]
+
+Scores:
+Player 1: 5
+Player 2: 0
+```
+
+**Turn 2: Player 2**
+
+- **Action**: Analyzing clues and the revealed **5**, selects position **1**.
+- **Reveal**: Number **8** is revealed at position **1**.
+- **Score Update**: Player 2's score is now **8**.
+
+**Updated Grid**:
+
+```
+[8][ ][ ]
+[ ][5][ ]
+[ ][ ][ ]
+
+Scores:
+Player 1: 5
+Player 2: 8
+```
+
+**Turn 3: Player 1**
+
+- **Action**: Uses clues and existing numbers, selects position **9**.
+- **Reveal**: Number **2** is revealed at position **9**.
+- **Score Update**: Player 1's score is now **7** (previous 5 + 2).
+
+**Updated Grid**:
+
+```
+[8][ ][ ]
+[ ][5][ ]
+[ ][ ][2]
+
+Scores:
+Player 1: 7
+Player 2: 8
+```
+
+**Turn 4: Player 2**
+
+- **Action**: Selects position **3**.
+- **Reveal**: Number **4** is revealed at position **3**.
+- **Score Update**: Player 2's score is now **12** (previous 8 + 4).
+
+**Updated Grid**:
+
+```
+[8][ ][4]
+[ ][5][ ]
+[ ][ ][2]
+
+Scores:
+Player 1: 7
+Player 2: 12
+```
+
+_...Game continues until all cells are revealed..._
+
+#### Final Scores
+
+After all turns:
+
+**Final Grid**:
+
+```
+[8][1][4]
+[3][5][7]
+[6][9][2]
+```
+
+**Final Scores**:
+
+- **Player 1**: Sum of numbers picked (5 + 2 + 7 + 6 + 1) = **21**
+- **Player 2**: Sum of numbers picked (8 + 4 + 3 + 9) = **24**
+
+**Winner**: **Player 2** wins with a higher total score of **24**.
+
+### Command-Line Interaction Sample
+
+**Game Start**:
+
+```
+Welcome to Number Quest!
+
+Grid Positions:
+
+[1][2][3]
+[4][5][6]
+[7][8][9]
+
+Row Sums:
+Row 1 Sum: 15
+Row 2 Sum: 15
+Row 3 Sum: 15
+
+Column Sums:
+Col 1: 15, Col 2: 15, Col 3: 15
+
+Diagonal Sums:
+Diag1: 15, Diag2: 15
+
+Player 1, it's your turn.
+Select a position (1-9): 5
+
+You revealed number 5 at position 5.
+Your current score: 5
+
+Grid:
+
+[ ][ ][ ]
+[ ][5][ ]
+[ ][ ][ ]
+
+Player 2, it's your turn.
+Select a position (1-9): 1
+
+You revealed number 8 at position 1.
+Your current score: 8
+
+Grid:
+
+[8][ ][ ]
+[ ][5][ ]
+[ ][ ][ ]
+
+...
+
+[Game continues]
+
+...
+
+Game Over!
+
+Final Scores:
+Player 1: 21
+Player 2: 24
+
+Congratulations Player 2! You win!
+```
+
+## Strategy Tips
+
+- **Analyze Sum Clues**: Use the row, column, and diagonal sums to narrow down possible numbers in unrevealed cells.
+- **Target High Sums**: Rows or columns with higher sums are likely to contain higher numbers.
+- **Track Revealed Numbers**: Keep track of numbers already revealed to refine your deductions.
+- **Block Opponent**: Anticipate your opponent's moves and select high-value cells before they do.
+- **Plan Ahead**: Think several moves ahead to maximize your total score over the course of the game.
+
+## Game Example with Reasoning
+
+Suppose the initial sum clues are as follows:
+
+```
+Row Sums: Row 1: 17, Row 2: 13, Row 3: 15
+Column Sums: Col 1: 15, Col 2: 11, Col 3: 19
+Diagonal Sums: Diag1: 15, Diag2: 15
+```
+
+**Deduction Steps**:
+
+- **Row 1 Sum is 17**: The numbers in Row 1 sum to 17.
+- **Highest Possible Sum in a Row with 3 Numbers**: 9 + 8 + 7 = 24, so 17 is relatively moderate, indicating middle-range numbers.
+- **Column 3 Sum is 19**: High sum suggests high numbers in Column 3.
+
+**Potential Strategy**:
+
+- **Player 1** might choose a cell in Column 3, say position **3**, aiming for a high number.
+- **Player 2** might then select another high-sum area, perhaps position **7** in Row 3.
+
+By combining the clues and strategic thinking, players can make informed choices to maximize their scores.
+
+---
+
+Enjoy playing **Number Quest** and may the best strategist win!

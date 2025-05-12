@@ -1,0 +1,263 @@
+**Rule Book for "Sequence Shift"**
+
+---
+
+**Objective:**
+
+The primary goal of "Sequence Shift" is to be the first player to arrange a shared sequence of numbers into ascending order from left to right. Players achieve victory by strategically swapping adjacent numbers during their turns to sort the sequence before their opponent does.
+
+---
+
+**Setup:**
+
+1. **Sequence Initialization:**
+   - The game begins with a sequence of five unique numbers from 1 to 5 arranged in a random order. For example: `3 1 4 5 2`.
+   
+2. **Player Positions:**
+   - There are two players: Player 1 and Player 2.
+   - Players decide who takes the first turn (e.g., by mutual agreement or a coin toss).
+
+3. **Starting Conditions:**
+   - The initial random sequence is shared and visible to both players.
+   - The sequence remains constant throughout the game and is modified only by player moves.
+
+---
+
+**Game Components:**
+
+1. **Number Sequence:**
+   - A list of five integers ranging from 1 to 5 in a random order.
+   - The sequence is displayed horizontally, with each number occupying positions 1 to 5 from left to right.
+
+2. **Positions:**
+   - Each number in the sequence has a positional index from 1 to 5.
+   - Positions help players specify which adjacent numbers to swap.
+
+3. **Swapping Mechanism:**
+   - Players interact with the sequence by swapping two adjacent numbers.
+
+---
+
+**Turns:**
+
+1. **Turn Structure:**
+   - Players take turns alternately, starting with the designated first player.
+   - During each turn, a player performs one action: swapping two adjacent numbers.
+
+2. **Allowed Actions During a Turn:**
+   - Swap any two adjacent numbers in the sequence.
+   - Swaps must involve positions that are next to each other (e.g., positions 2 and 3).
+
+3. **Progression of Turns:**
+   - After a player completes their swap, the turn passes to the other player.
+   - The updated sequence is immediately visible to both players.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Swapping Rules:**
+   - **Valid Swap:** Players can only swap two numbers that are adjacent in the sequence.
+   - **Single Swap Per Turn:** Only one swap is allowed during a player's turn.
+   - **Mandatory Move:** Players must make a valid swap on their turn; skipping a turn is not permitted.
+
+2. **Winning Condition:**
+   - **Victory:** The game is won by the player who results in the sequence being in complete ascending order (`1 2 3 4 5`) after their swap.
+   - **Immediate Win:** If the sequence is already in ascending order at the start of a player's turn, that player wins immediately.
+
+3. **Game Continuation:**
+   - If neither player achieves the ascending sequence after their swap, the game continues with the next player's turn.
+   - The sequence evolves based on the swaps made by both players.
+
+4. **Invalid Moves:**
+   - **Invalid Swap:** Attempting to swap non-adjacent numbers is not allowed.
+   - **Consequence:** If a player attempts an invalid move, they forfeit their turn.
+
+---
+
+**Scoring:**
+
+- **No Points System:** The game does not utilize a point-based scoring system.
+- **Winning the Game:** Victory is achieved by arranging the sequence in ascending order during your turn.
+- **Game End:** The first player to accomplish this wins the game immediately.
+
+---
+
+**Examples:**
+
+*Example Game Play:*
+
+- **Initial Sequence:**
+  ```
+  Position: 1 2 3 4 5
+  Numbers:  3 1 4 5 2
+  ```
+
+- **Player 1's Turn:**
+  - **Action:** Swaps positions **1 and 2** (`3` and `1`).
+  - **New Sequence:**
+    ```
+    Position: 1 2 3 4 5
+    Numbers:  1 3 4 5 2
+    ```
+
+- **Player 2's Turn:**
+  - **Action:** Swaps positions **4 and 5** (`5` and `2`).
+  - **New Sequence:**
+    ```
+    Position: 1 2 3 4 5
+    Numbers:  1 3 4 2 5
+    ```
+
+- **Player 1's Turn:**
+  - **Action:** Swaps positions **3 and 4** (`4` and `2`).
+  - **New Sequence:**
+    ```
+    Position: 1 2 3 4 5
+    Numbers:  1 3 2 4 5
+    ```
+
+- **Player 2's Turn:**
+  - **Action:** Swaps positions **2 and 3** (`3` and `2`).
+  - **New Sequence:**
+    ```
+    Position: 1 2 3 4 5
+    Numbers:  1 2 3 4 5
+    ```
+  - **Outcome:** The sequence is now in ascending order. **Player 2 wins the game.**
+
+*Command-Line Interaction Example:*
+
+- **Game Start:**
+  ```
+  Initial Sequence:
+  Position: 1 2 3 4 5
+  Numbers:  4 2 5 1 3
+  ```
+
+- **Player 1's Turn:**
+  - **Input:** "Swap positions 3 and 4"
+  - **Output:**
+    ```
+    You swapped positions 3 and 4.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  4 2 1 5 3
+    ```
+
+- **Player 2's Turn:**
+  - **Input:** "Swap positions 1 and 2"
+  - **Output:**
+    ```
+    You swapped positions 1 and 2.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  2 4 1 5 3
+    ```
+
+- **Player 1's Turn:**
+  - **Input:** "Swap positions 2 and 3"
+  - **Output:**
+    ```
+    You swapped positions 2 and 3.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  2 1 4 5 3
+    ```
+
+- **Player 2's Turn:**
+  - **Input:** "Swap positions 1 and 2"
+  - **Output:**
+    ```
+    You swapped positions 1 and 2.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  1 2 4 5 3
+    ```
+
+- **Player 2's Victory Check:**
+  - **Sequence Check:** The sequence is not yet in ascending order.
+  - **Game Continues.**
+
+- **Player 1's Turn:**
+  - **Input:** "Swap positions 3 and 4"
+  - **Output:**
+    ```
+    You swapped positions 3 and 4.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  1 2 5 4 3
+    ```
+
+- **Player 2's Turn:**
+  - **Input:** "Swap positions 4 and 5"
+  - **Output:**
+    ```
+    You swapped positions 4 and 5.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  1 2 5 3 4
+    ```
+
+- **Player 2's Victory Check:**
+  - **Sequence Check:** The sequence is not yet in ascending order.
+  - **Game Continues.**
+
+- **Player 1's Turn:**
+  - **Input:** "Swap positions 3 and 4"
+  - **Output:**
+    ```
+    You swapped positions 3 and 4.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  1 2 3 5 4
+    ```
+
+- **Player 1's Victory Check:**
+  - **Sequence Check:** The sequence is not yet in ascending order.
+  - **Game Continues.**
+
+- **Player 2's Turn:**
+  - **Input:** "Swap positions 4 and 5"
+  - **Output:**
+    ```
+    You swapped positions 4 and 5.
+    New Sequence:
+    Position: 1 2 3 4 5
+    Numbers:  1 2 3 4 5
+    ```
+  - **Outcome:** The sequence is now in ascending order. **Player 2 wins the game.**
+
+---
+
+**Strategic Tips:**
+
+- **Plan Ahead:** Look several moves ahead to anticipate your opponent's actions and plan your swaps accordingly.
+- **Control Key Positions:** Focus on moving the smallest numbers toward the front and the largest toward the back to facilitate the ascending order.
+- **Force Opportunities:** Create situations where, regardless of your opponent's move, you can complete the sequence on your next turn.
+- **Block Your Opponent:** Identify and disrupt your opponent's strategy by swapping numbers that interfere with their potential winning moves.
+
+---
+
+**Game Implementation in Command-Line Interface:**
+
+- **User Inputs:**
+  - Players input the positions of the two adjacent numbers they wish to swap (e.g., "Swap positions 2 and 3").
+- **Display Updates:**
+  - After each move, the program updates and displays the new sequence.
+- **Victory Check:**
+  - After each turn, the program checks if the sequence is in ascending order.
+  - If so, it declares the current player as the winner and ends the game.
+- **Validation:**
+  - The program ensures that only valid moves are made (swapping adjacent positions and within the valid range).
+  - Invalid inputs result in a prompt to retry or may forfeit the player's turn, depending on the implementation.
+
+---
+
+**Notes:**
+
+- **Game Duration:** "Sequence Shift" is designed to be a quick game, typically ending within a few minutes.
+- **Skill and Strategy:** While simple to understand, the game offers strategic depth. Skilled players can plan and predict moves to outmaneuver their opponent.
+- **Uniqueness:** This game is distinct from traditional games like Go, Nim, Tic-Tac-Toe, or Chess, providing a new and unique experience.
+
+Enjoy playing "Sequence Shift" and may the best strategist win!

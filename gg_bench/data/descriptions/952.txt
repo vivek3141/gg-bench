@@ -1,0 +1,213 @@
+# Number Path
+
+## Objective
+
+Be the first player to reach the end of the number path while maximizing your score. The player who reaches the end of the path first wins. In the event both players reach the end on the same turn, the player with the higher score wins. There are no draws in Number Path.
+
+## Setup
+
+1. **Create the Number Path**: Generate a sequence of nine numbers from 1 to 9 arranged in a specific order. For simplicity, use each number from 1 to 9 exactly once in a random sequence. Example:
+   ```
+   3 - 5 - 2 - 4 - 6 - 1 - 7 - 9 - 8
+   ```
+2. **Player Positions**: Both players start off the path, before the first number.
+3. **Starting Scores**: Both players begin with a score of zero.
+
+## Game Components
+
+- **Number Path**: A linear sequence of numbers representing the path players will move along.
+- **Player Tokens**: Represented virtually in the command-line interface to track each player's position on the path.
+- **Scores**: Numerical values that keep track of each player's total accumulated from the numbers landed upon.
+
+## Turns
+
+- **Turn Order**: Decide which player goes first (e.g., by coin toss or mutual agreement).
+- **Player Actions**:
+  - On your turn, you may move your token forward **1**, **2**, or **3** positions along the path.
+  - You cannot move beyond the end of the path.
+- **Turn Progression**: Players alternate turns until one player reaches or passes the end of the path.
+
+## Rules and Mechanics
+
+1. **Movement**:
+   - Players choose to move forward 1, 2, or 3 positions on their turn.
+   - Movement is always forward; you cannot move backward.
+2. **Scoring**:
+   - When you land on a number, add its value to your total score.
+   - Each number on the path can be landed on by both players; there is no exclusion.
+3. **Winning the Game**:
+   - The first player to reach or pass the end of the number path wins.
+   - If both players reach or pass the end of the path on the same turn, the player with the higher total score wins.
+   - There are no draws; the game always results in a win for one player.
+
+## Scoring
+
+- **Tracking Scores**: Keep a running total of each player's score throughout the game.
+- **Calculating Score**: Upon moving, add the value of the number you land on to your total score.
+  - Example: If you move to a space with the number **5**, add **5** to your total score.
+- **Winning by Score**:
+  - If both players finish on the same turn, compare total scores to determine the winner.
+  - The higher total score wins the game.
+
+## Examples
+
+### Example Game Play
+
+**Initial Number Path**:
+```
+Position: 1   2   3   4   5   6   7   8   9
+Number:   3 - 5 - 2 - 4 - 6 - 1 - 7 - 9 - 8
+```
+
+**Players**:
+- Player 1 (P1)
+- Player 2 (P2)
+
+**Scores**:
+- P1 Score: 0
+- P2 Score: 0
+
+#### Turn-by-Turn Breakdown
+
+**Turn 1**:
+- **P1's Move**:
+  - Chooses to move **3** positions.
+  - Moves to Position **3** (Number **2**).
+  - Adds **2** to their score.
+  - **P1 Score: 2**
+- **P2's Move**:
+  - Chooses to move **2** positions.
+  - Moves to Position **2** (Number **5**).
+  - Adds **5** to their score.
+  - **P2 Score: 5**
+
+**Turn 2**:
+- **P1's Move**:
+  - Chooses to move **3** positions.
+  - Moves from Position **3** to Position **6** (Number **1**).
+  - Adds **1** to their score.
+  - **P1 Score: 3**
+- **P2's Move**:
+  - Chooses to move **3** positions.
+  - Moves from Position **2** to Position **5** (Number **6**).
+  - Adds **6** to their score.
+  - **P2 Score: 11**
+
+**Turn 3**:
+- **P1's Move**:
+  - Chooses to move **3** positions.
+  - Moves from Position **6** to Position **9** (Number **8**).
+  - Adds **8** to their score.
+  - **P1 Score: 11**
+  - **P1 has reached the end of the path.**
+- **P2's Move**:
+  - Chooses to move **3** positions.
+  - Moves from Position **5** to Position **8** (Number **9**).
+  - Adds **9** to their score.
+  - **P2 Score: 20**
+  - **P2 has not yet reached the end of the path.**
+
+**Game Conclusion**:
+- **P1** has reached the end of the path first and wins the game.
+
+### Edge Case Example (Both Players Reach the End)
+
+**Assuming Different Moves**:
+
+**Turn 3**:
+- **P1's Move**:
+  - Chooses to move **2** positions.
+  - Moves from Position **6** to Position **8** (Number **9**).
+  - Adds **9** to their score.
+  - **P1 Score: 12**
+- **P2's Move**:
+  - Chooses to move **4** positions (cannot move 4, maximum is 3), so must choose 3.
+  - Chooses to move **3** positions.
+  - Moves from Position **5** to Position **8** (Number **9**).
+  - Adds **9** to their score.
+  - **P2 Score: 20**
+- **Both Players are now at Position **8**.**
+
+**Turn 4**:
+- **P1's Move**:
+  - Chooses to move **1** position.
+  - Moves to Position **9** (Number **8**).
+  - Adds **8** to their score.
+  - **P1 Score: 20**
+  - **P1 has reached the end of the path.**
+- **P2's Move**:
+  - Chooses to move **1** position.
+  - Moves to Position **9** (Number **8**).
+  - Adds **8** to their score.
+  - **P2 Score: 28**
+  - **P2 has reached the end of the path.**
+
+**Game Conclusion**:
+- Both players have reached the end on the same turn.
+- Compare scores:
+  - **P1 Score: 20**
+  - **P2 Score: 28**
+- **P2 wins the game due to the higher score.**
+
+## Command-Line Interaction Example
+
+**Game Start**:
+```
+Welcome to Number Path!
+Player 1 and Player 2 start the game.
+
+Number Path:
+Position: 1   2   3   4   5   6   7   8   9
+Number:   3 - 5 - 2 - 4 - 6 - 1 - 7 - 9 - 8
+
+Player 1's turn.
+Current Position: Start
+Current Score: 0
+Choose your move distance (1, 2, or 3):
+```
+**Player Input**:
+```
+3
+```
+**Game Response**:
+```
+Player 1 moves 3 steps to Position 3 (Number 2).
+Player 1's new score: 2
+
+Player 2's turn.
+Current Position: Start
+Current Score: 0
+Choose your move distance (1, 2, or 3):
+```
+**Player Input**:
+```
+2
+```
+**Game Response**:
+```
+Player 2 moves 2 steps to Position 2 (Number 5).
+Player 2's new score: 5
+```
+*...and so on for subsequent turns...*
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the remaining numbers on the path and plan your moves to maximize your score while ensuring you reach the end first.
+- **Balance Speed and Score**: Moving the maximum distance may get you to the end faster but could result in landing on lower-value numbers.
+- **Anticipate Opponent's Moves**: Keep track of your opponent's position and score to decide whether to prioritize speed or points.
+
+## End of Game
+
+- At the end of the game, clearly announce the winner and display both players' final scores and positions.
+- Example:
+  ```
+  Player 1 has reached the end of the path!
+  Final Scores:
+  Player 1 Score: 20
+  Player 2 Score: 28
+  Player 2 wins the game!
+  ```
+
+---
+
+Thank you for playing Number Path! Enjoy strategizing your way to victory.

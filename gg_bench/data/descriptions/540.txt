@@ -1,0 +1,243 @@
+**Game Title: Matrix Capture**
+
+---
+
+### **Objective**
+
+Matrix Capture is a strategic two-player turn-based game played on a numerical matrix. The primary goal is to accumulate the highest total sum of numbers by selectively capturing cells from the matrix. Players take turns choosing numbers, strategically blocking their opponent's options while maximizing their own score. The player with the highest total sum at the end of the game wins. To ensure a decisive outcome, tie-breaker rules are in place to prevent draws.
+
+---
+
+### **Setup**
+
+1. **Matrix Creation**:
+   - Generate a square matrix (grid) of size 4x4.
+   - Populate each cell of the matrix with a random integer between 1 and 9, inclusive.
+   - The numbers should be visible to both players.
+
+2. **Player Identification**:
+   - Assign Player 1 and Player 2. This can be random or decided by a pre-game agreement.
+
+3. **Initial Conditions**:
+   - No numbers are claimed at the beginning.
+   - Both players start with a total sum of zero.
+
+---
+
+### **Game Components**
+
+- **Matrix (4x4 Grid)**:
+  - Consists of 16 cells arranged in 4 rows and 4 columns.
+  - Each cell contains a randomly assigned integer between 1 and 9.
+  
+- **Numbers**:
+  - The integers within the cells, ranging from 1 to 9.
+  - Each number represents a value that contributes to a player's total sum when captured.
+
+- **Markers**:
+  - Not physically present but can be represented in the command-line interface.
+  - Used to indicate cells that have been captured and are no longer available.
+
+---
+
+### **Turns**
+
+- Players alternate turns starting with Player 1.
+- **Turn Structure**:
+  1. **Selection Phase**:
+     - The current player selects an available number from the matrix.
+  2. **Capture Phase**:
+     - Upon selection, the chosen number is added to the player's total sum.
+     - The selected cell, along with its entire row and column, become unavailable for the rest of the game.
+  3. **Update Phase**:
+     - The game interface updates to reflect the cells that are no longer available.
+     - Display the updated matrix and both players' current total sums.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Selection Rules**:
+   - On their turn, a player must select one available number from the matrix.
+   - An available number is one that has not been previously selected and is not in a removed row or column.
+
+2. **Capture Mechanism**:
+   - When a number is selected, the entire row and column containing that number are removed from play.
+   - Removed rows and columns are no longer available for selection by either player.
+   - The selected number is added to the player's total sum.
+
+3. **Unavailable Cells**:
+   - Cells in removed rows and columns are considered unavailable.
+   - Players cannot select numbers from unavailable cells.
+
+4. **End of Game**:
+   - The game ends when all numbers have been captured (i.e., there are no available cells left in the matrix).
+
+5. **Winning the Game**:
+   - The player with the highest total sum at the end of the game wins.
+   - **Tie-Breaker Rule**:
+     - If both players have the same total sum, the player who took the **second turn** (Player 2) wins.
+     - This ensures that there is no draw mechanism in the game.
+
+---
+
+### **Scoring**
+
+- **Total Sum**:
+  - Each player's score is the sum of the numbers they have captured during the game.
+  - The scores are tracked and displayed after each turn.
+
+- **Winning Condition**:
+  - The player with the higher total sum at the end of the game is declared the winner.
+
+- **Tie-Breaker**:
+  - In the event of a tie in total sums, Player 2 is declared the winner as per the tie-breaker rule.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Matrix**:
+
+|     | **Col 1** | **Col 2** | **Col 3** | **Col 4** |
+|-----|-----------|-----------|-----------|-----------|
+| **Row 1** |     5     |     3     |     6     |     2     |
+| **Row 2** |     4     |     7     |     1     |     8     |
+| **Row 3** |     9     |     2     |     5     |     3     |
+| **Row 4** |     6     |     4     |     7     |     1     |
+
+**Turn 1 - Player 1**:
+
+- **Selection**: Player 1 selects the number **7** at **Row 2, Col 2**.
+- **Capture**:
+  - Adds **7** to Player 1's total sum (Total Sum = 7).
+  - Removes **Row 2** and **Col 2** from play.
+- **Updated Matrix**:
+
+|     | **Col 1** | **Col 2** | **Col 3** | **Col 4** |
+|-----|-----------|-----------|-----------|-----------|
+| **Row 1** |     5     |    X    |     6     |     2     |
+| **Row 2** |    X    |    X    |    X    |    X    |
+| **Row 3** |     9     |    X    |     5     |     3     |
+| **Row 4** |     6     |    X    |     7     |     1     |
+
+**Turn 2 - Player 2**:
+
+- **Selection**: Player 2 selects the number **5** at **Row 1, Col 3**.
+- **Capture**:
+  - Adds **5** to Player 2's total sum (Total Sum = 5).
+  - Removes **Row 1** and **Col 3** from play.
+- **Updated Matrix**:
+
+|     | **Col 1** | **Col 2** | **Col 3** | **Col 4** |
+|-----|-----------|-----------|-----------|-----------|
+| **Row 1** |    X    |    X    |    X    |    X    |
+| **Row 2** |    X    |    X    |    X    |    X    |
+| **Row 3** |     9     |    X    |    X    |     3     |
+| **Row 4** |     6     |    X    |    X    |     1     |
+
+**Turn 3 - Player 1**:
+
+- **Selection**: Player 1 selects the number **3** at **Row 3, Col 4**.
+- **Capture**:
+  - Adds **3** to Player 1's total sum (Total Sum = 10).
+  - Removes **Row 3** and **Col 4** from play.
+- **Updated Matrix**:
+
+|     | **Col 1** | **Col 2** | **Col 3** | **Col 4** |
+|-----|-----------|-----------|-----------|-----------|
+| **Row 1** |    X    |    X    |    X    |    X    |
+| **Row 2** |    X    |    X    |    X    |    X    |
+| **Row 3** |    X    |    X    |    X    |    X    |
+| **Row 4** |     6     |    X    |    X    |    X    |
+
+**Turn 4 - Player 2**:
+
+- **Selection**: Player 2 selects the number **6** at **Row 4, Col 1**.
+- **Capture**:
+  - Adds **6** to Player 2's total sum (Total Sum = 11).
+  - Removes **Row 4** and **Col 1** from play.
+- **Updated Matrix**:
+
+All rows and columns have been removed from play.
+
+**End of Game**:
+
+- **Player 1's Total Sum**: 10
+- **Player 2's Total Sum**: 11
+- **Winner**: Player 2 wins with a higher total sum.
+
+#### **Command-Line Interaction Sample**
+
+**Game Start**
+
+```
+Welcome to Matrix Capture!
+
+Initial Matrix:
+     C1  C2  C3  C4
+R1:  5   3   6   2
+R2:  4   7   1   8
+R3:  9   2   5   3
+R4:  6   4   7   1
+
+Player 1 starts the game.
+```
+
+**Turn 1 - Player 1**
+
+```
+Player 1's turn.
+Available cells:
+R1C1: 5, R1C2: 3, R1C3: 6, R1C4: 2
+R2C1: 4, R2C2: 7, R2C3: 1, R2C4: 8
+R3C1: 9, R3C2: 2, R3C3: 5, R3C4: 3
+R4C1: 6, R4C2: 4, R4C3: 7, R4C4: 1
+
+Enter the row and column of your selected number (e.g., R2C2): R2C2
+
+You selected number 7 at R2C2.
+Your total sum is now 7.
+
+Rows and columns removed: Row 2 and Column 2
+```
+
+**Turn 2 - Player 2**
+
+```
+Player 2's turn.
+Available cells:
+R1C1: 5, R1C3: 6, R1C4: 2
+R3C1: 9, R3C3: 5, R3C4: 3
+R4C1: 6, R4C3: 7, R4C4: 1
+
+Enter the row and column of your selected number (e.g., R3C1): R1C3
+
+You selected number 6 at R1C3.
+Your total sum is now 6.
+
+Rows and columns removed: Row 1 and Column 3
+```
+
+**Remaining Turns**
+
+The game continues in this manner until all cells have been selected.
+
+---
+
+### **Strategy Tips**
+
+- **Maximize Your Sum**:
+  - Aim to select high-value numbers to increase your total sum.
+
+- **Block Your Opponent**:
+  - By removing strategic rows and columns, you can limit your opponent's options, potentially forcing them to select lower-value numbers.
+
+- **Plan Ahead**:
+  - Consider the consequences of your selection on future moves. Try to anticipate your opponent's options after your turn.
+
+---
+
+**Note**: Matrix Capture combines strategic planning with numerical analysis, offering depth and complexity in a simple and easy-to-code game suitable for a command-line interface. The clear rules and decisive outcome ensure an engaging experience where skill determines the victor.

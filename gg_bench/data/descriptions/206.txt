@@ -1,0 +1,183 @@
+# Factor Collapse
+
+## Objective
+
+**Primary Goal:**  
+Be the player who reduces the shared total number to **1** by strategically subtracting proper divisors. The player who achieves this first **wins** the game. If a player cannot make a valid move on their turn, they **lose** the game.
+
+## Setup
+
+1. **Initial Total:**  
+   Begin the game with a shared composite number **T**, agreed upon by both players (e.g., **T = 30**).
+   
+2. **Player Order:**  
+   Decide which player goes first. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Shared Total (T):**  
+  A positive integer that both players will manipulate throughout the game. Initially a composite number (not prime and greater than 1).
+
+- **Proper Divisors:**  
+  Numbers that divide the total **T** evenly, excluding **1** and **T** itself.
+
+- **Players:**  
+  Two players who will take turns subtracting proper divisors from the shared total.
+
+## Turns
+
+1. **Turn Structure:**  
+   Players alternate turns, starting with Player 1.
+
+2. **Actions per Turn:**  
+   - **Identify Proper Divisors:** Determine all proper divisors of the current total **T**.
+   - **Choose a Divisor:** Select one proper divisor to subtract from **T**.
+   - **Subtract:** Reduce **T** by the chosen proper divisor.
+   - **Announce Move:** Declare the chosen divisor and the new value of **T**.
+
+3. **Turn Progression:**  
+   The turn passes to the other player after a move is made.
+
+## Rules and Mechanics
+
+1. **Valid Moves:**  
+   - On your turn, you **must** subtract a proper divisor of **T** (excluding **1** and **T**).
+   - The chosen divisor must be a positive integer that divides **T** without a remainder.
+
+2. **Winning the Game:**  
+   - If you reduce **T** to exactly **1** on your turn, you **win**.
+   - If your opponent cannot make a valid move on their turn (because **T** is prime or **1**), they **lose**.
+
+3. **Invalid Moves:**  
+   - If a player cannot make a valid move (no proper divisors exist), they **lose**.
+   - If a player attempts to subtract an invalid number (not a proper divisor), they must choose a valid divisor.
+
+4. **No Skipping Turns:**  
+   - Players cannot skip their turn; they must make a valid move if possible.
+
+## Scoring
+
+- **Winning the Game:**  
+  The game is won outright by the player who reduces **T** to **1** or forces the opponent into a position with no valid moves.
+
+- **No Points System:**  
+  There is no point tracking; the game outcome is simply a win or loss.
+
+## Examples
+
+### Example Game
+
+**Initial Total (**T**):** 30
+
+**Player 1 Starts**
+
+---
+
+**Player 1's Turn:**
+
+- **Proper Divisors of 30:** 2, 3, 5, 6, 10, 15
+- **Player 1 Chooses:** 15
+- **Calculation:** 30 - 15 = 15
+- **Announces:** "I subtract 15. New total is 15."
+
+---
+
+**Player 2's Turn:**
+
+- **Proper Divisors of 15:** 3, 5
+- **Player 2 Chooses:** 5
+- **Calculation:** 15 - 5 = 10
+- **Announces:** "I subtract 5. New total is 10."
+
+---
+
+**Player 1's Turn:**
+
+- **Proper Divisors of 10:** 2, 5
+- **Player 1 Chooses:** 2
+- **Calculation:** 10 - 2 = 8
+- **Announces:** "I subtract 2. New total is 8."
+
+---
+
+**Player 2's Turn:**
+
+- **Proper Divisors of 8:** 2, 4
+- **Player 2 Chooses:** 4
+- **Calculation:** 8 - 4 = 4
+- **Announces:** "I subtract 4. New total is 4."
+
+---
+
+**Player 1's Turn:**
+
+- **Proper Divisors of 4:** 2
+- **Player 1 Chooses:** 2
+- **Calculation:** 4 - 2 = 2
+- **Announces:** "I subtract 2. New total is 2."
+
+---
+
+**Player 2's Turn:**
+
+- **Proper Divisors of 2:** None (2 is prime)
+- **Player 2 Cannot Move:** No valid proper divisors.
+- **Player 2 Loses.**
+
+**Player 1 Wins the Game!**
+
+---
+
+### Command-Line Interaction Sample
+
+Assuming players input their moves in a command-line interface:
+
+```
+Game Start! Initial total is 30.
+
+Player 1's Turn:
+Proper divisors of 30 are: 2, 3, 5, 6, 10, 15
+Enter the number to subtract: 15
+You subtracted 15. New total is 15.
+
+Player 2's Turn:
+Proper divisors of 15 are: 3, 5
+Enter the number to subtract: 5
+You subtracted 5. New total is 10.
+
+Player 1's Turn:
+Proper divisors of 10 are: 2, 5
+Enter the number to subtract: 2
+You subtracted 2. New total is 8.
+
+Player 2's Turn:
+Proper divisors of 8 are: 2, 4
+Enter the number to subtract: 4
+You subtracted 4. New total is 4.
+
+Player 1's Turn:
+Proper divisors of 4 are: 2
+Enter the number to subtract: 2
+You subtracted 2. New total is 2.
+
+Player 2's Turn:
+No valid moves! 2 is prime.
+Player 2 loses. Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:**  
+  Anticipate the results of your move to avoid leaving your opponent with a winning position.
+
+- **Prime Awareness:**  
+  Try to force the total to a prime number on your turn, leaving your opponent without a valid move.
+
+- **Divisor Selection:**  
+  Choosing larger divisors can rapidly reduce the total, but consider potential repercussions.
+
+## Conclusion
+
+"Factor Collapse" is a game of numerical strategy and foresight. By understanding the properties of numbers and thinking ahead, a skilled player can consistently outmaneuver an unskilled opponent. The simplicity of the rules makes it easy to code and quick to play, providing an engaging challenge in a command-line setting.

@@ -1,0 +1,259 @@
+# Trap Avoidance: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+**Trap Avoidance** is a strategic numerical game for two players. The primary goal is to be the last player to make a valid move. Players take turns selecting numbers from a shared list while avoiding "traps" set by the previous number chosen. A player loses if they cannot select a valid number on their turn.
+
+## Setup
+
+- **Number List**: A sequential list of integers from **1 to 20**.
+- **Starting Condition**: All numbers from 1 to 20 are available for selection.
+- **Player Positions**: Two players designated as **Player 1** and **Player 2**. Decide who goes first by mutual agreement or random choice.
+
+## Game Components
+
+- **Number List**:
+  - A list containing the integers **1 to 20**.
+  - Numbers are removed from the list once selected.
+- **Players**:
+  - **Player 1** and **Player 2** alternate turns.
+- **Selections**:
+  - On each turn, a player selects a number from the available list following the game rules.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Selection Phase**: The current player selects a valid number from the list.
+  2. **Validation Phase**: Ensure the selected number complies with the rules.
+  3. **Update Phase**: Remove the selected number from the list.
+- **Order of Play**:
+  - Players alternate turns, starting with **Player 1**.
+- **Turn Progression**:
+  - The game continues until a player cannot make a valid selection on their turn.
+
+## Rules and Mechanics
+
+1. **First Move**:
+   - **Player 1** may select any number from **1 to 20** on their first turn.
+   
+2. **Valid Selections**:
+   - On subsequent turns, a player must select a number that is **neither a factor nor a multiple** of the **last number** selected by their opponent.
+   - **Factors**: Numbers that divide evenly into the last number (excluding 1 if the last number is 1).
+   - **Multiples**: Numbers that are evenly divisible by the last number.
+   - **Invalid Selections**:
+     - Any number that is a factor or multiple of the last number chosen by the opponent.
+     - Numbers that have already been selected and removed from the list.
+
+3. **Losing the Game**:
+   - If a player has **no valid moves** on their turn, they lose the game.
+   - The opposing player is declared the winner.
+
+4. **Examples of Invalid Moves**:
+   - If the last number was **6**, the following numbers cannot be selected:
+     - **Factors of 6**: 1, 2, 3, 6.
+     - **Multiples of 6**: 12, 18.
+
+5. **Game End Conditions**:
+   - The game ends immediately when a player cannot make a valid selection.
+   - There are no draws or ties in **Trap Avoidance**.
+
+## Scoring
+
+- There is no point tracking in **Trap Avoidance**.
+- The winner is simply the player who makes the **last valid move**.
+- The game can be played in multiple rounds, and players can keep track of wins to determine an overall champion.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Number List**:  
+`1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 1:
+- **Player 1** selects **7**.
+  - **Reason**: First move; any number can be chosen.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 2:
+- **Player 2** must avoid factors and multiples of **7**.
+  - **Factors of 7**: 1, 7 (already removed).
+  - **Multiples of 7**: 14.
+- **Invalid Numbers**: 1, 14.
+- **Available Choices**: 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20.
+- **Player 2** selects **9**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 3:
+- **Player 1** must avoid factors and multiples of **9**.
+  - **Factors of 9**: 1, 3, 9 (already removed).
+  - **Multiples of 9**: 18.
+- **Invalid Numbers**: 1, 3, 9, 18.
+- **Available Choices**: 2, 4, 5, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20.
+- **Player 1** selects **10**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 6, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 4:
+- **Player 2** must avoid factors and multiples of **10**.
+  - **Factors of 10**: 1, 2, 5, 10 (already removed).
+  - **Multiples of 10**: 20.
+- **Invalid Numbers**: 1, 2, 5, 10, 20.
+- **Available Choices**: 3, 4, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19.
+- **Player 2** selects **13**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 6, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 5:
+- **Player 1** must avoid factors and multiples of **13**.
+  - **Factors of 13**: 1, 13 (already removed).
+  - **Multiples of 13**: None within the list.
+- **Invalid Numbers**: 1.
+- **Available Choices**: 2, 3, 4, 5, 6, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20.
+- **Player 1** selects **6**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 6:
+- **Player 2** must avoid factors and multiples of **6**.
+  - **Factors of 6**: 1, 2, 3, 6 (already removed).
+  - **Multiples of 6**: 12, 18.
+- **Invalid Numbers**: 1, 2, 3, 6, 12, 18.
+- **Available Choices**: 4, 5, 8, 9, 11, 14, 15, 16, 17, 19, 20.
+- **Player 2** selects **11**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 8, 12, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 7:
+- **Player 1** must avoid factors and multiples of **11**.
+  - **Factors of 11**: 1, 11 (already removed).
+  - **Multiples of 11**: None within the list.
+- **Invalid Numbers**: 1.
+- **Available Choices**: 2, 3, 4, 5, 6, 8, 9, 12, 14, 15, 16, 17, 18, 19, 20.
+- **Player 1** selects **8**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 12, 14, 15, 16, 17, 18, 19, 20`
+
+#### Turn 8:
+- **Player 2** must avoid factors and multiples of **8**.
+  - **Factors of 8**: 1, 2, 4, 8 (already removed).
+  - **Multiples of 8**: 16.
+- **Invalid Numbers**: 1, 2, 4, 8, 16.
+- **Available Choices**: 3, 5, 6, 9, 12, 14, 15, 17, 18, 19, 20.
+- **Player 2** selects **14**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 12, 15, 16, 17, 18, 19, 20`
+
+#### Turn 9:
+- **Player 1** must avoid factors and multiples of **14**.
+  - **Factors of 14**: 1, 2, 7, 14 (already removed).
+  - **Multiples of 14**: None within the list.
+- **Invalid Numbers**: 1, 2, 7, 14.
+- **Available Choices**: 3, 4, 5, 6, 8, 9, 12, 15, 16, 17, 18, 19, 20.
+- **Player 1** selects **15**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 12, 16, 17, 18, 19, 20`
+
+#### Turn 10:
+- **Player 2** must avoid factors and multiples of **15**.
+  - **Factors of 15**: 1, 3, 5, 15 (already removed).
+  - **Multiples of 15**: None within the list.
+- **Invalid Numbers**: 1, 3, 5, 15.
+- **Available Choices**: 2, 4, 6, 8, 9, 12, 16, 17, 18, 19, 20.
+- **Player 2** selects **17**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 12, 16, 18, 19, 20`
+
+#### Turn 11:
+- **Player 1** must avoid factors and multiples of **17**.
+  - **Factors of 17**: 1, 17 (already removed).
+  - **Multiples of 17**: None within the list.
+- **Invalid Numbers**: 1.
+- **Available Choices**: 2, 3, 4, 5, 6, 8, 9, 12, 16, 18, 19, 20.
+- **Player 1** selects **18**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 12, 16, 19, 20`
+
+#### Turn 12:
+- **Player 2** must avoid factors and multiples of **18**.
+  - **Factors of 18**: 1, 2, 3, 6, 9, 18 (already removed).
+  - **Multiples of 18**: None within the list.
+- **Invalid Numbers**: 1, 2, 3, 6, 9, 18.
+- **Available Choices**: 4, 5, 8, 12, 16, 17, 19, 20.
+- **Player 2** selects **19**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 5, 12, 16, 20`
+
+#### Turn 13:
+- **Player 1** must avoid factors and multiples of **19**.
+  - **Factors of 19**: 1, 19 (already removed).
+  - **Multiples of 19**: None within the list.
+- **Invalid Numbers**: 1.
+- **Available Choices**: 2, 3, 4, 5, 6, 8, 9, 12, 16, 18, 20.
+- **Player 1** selects **5**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 12, 16, 20`
+
+#### Turn 14:
+- **Player 2** must avoid factors and multiples of **5**.
+  - **Factors of 5**: 1, 5 (already removed).
+  - **Multiples of 5**: 10, 15, 20.
+- **Invalid Numbers**: 1, 10, 15, 20.
+- **Available Choices**: 2, 3, 4, 6, 8, 9, 12, 16, 17, 18.
+- **Player 2** selects **12**.
+- **Updated Number List**:
+  - `1, 2, 3, 4, 16, 20`
+
+#### Turn 15:
+- **Player 1** must avoid factors and multiples of **12**.
+  - **Factors of 12**: 1, 2, 3, 4, 6, 12 (already removed).
+  - **Multiples of 12**: None within the list.
+- **Invalid Numbers**: 1, 2, 3, 4, 6.
+- **Available Choices**: 5, 8, 9, 16, 17, 18, 19, 20.
+- **Player 1** has no valid moves because all remaining numbers are either invalid or already removed.
+- **Player 1** loses the game.
+- **Player 2** wins!
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Available Numbers: 1-20
+Player 1, select your number: 7
+```
+
+**Player 2's Turn**
+
+```
+Previous Number: 7
+Invalid Numbers: 1, 7, 14
+Available Numbers: 2-6, 8-13, 15-20
+Player 2, select your number: 9
+```
+
+**Player 1's Turn**
+
+```
+Previous Number: 9
+Invalid Numbers: 1, 3, 9, 18
+Available Numbers: 2, 4-8, 10-17, 19, 20
+Player 1, select your number: 10
+```
+
+*...and so on, until the game concludes as in the sample game play.*
+
+## Strategy Tips
+
+- **Avoid Low Numbers Early**: Selecting numbers like 1, 2, or small primes early can limit your options later.
+- **Force Invalid Moves**: Try to choose numbers that block multiple options for your opponent.
+- **Keep Track of Removed Numbers**: Remember which numbers are no longer available to avoid invalid selections.
+- **Consider Future Moves**: Anticipate how your selection affects the next turn for both you and your opponent.
+
+## Conclusion
+
+**Trap Avoidance** is a simple yet strategically rich game that tests numerical agility and foresight. With straightforward rules and quick gameplay, it provides an engaging experience that rewards planning and tactical thinking.
+
+Enjoy the challenge of outmaneuvering your opponent in this exciting numerical showdown!

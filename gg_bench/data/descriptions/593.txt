@@ -1,0 +1,137 @@
+# Prime Reduction
+
+Prime Reduction is a two-player, turn-based strategy game played in a command-line interface. Players take turns reducing a shared number by dividing it with prime numbers, aiming to force their opponent into a position where they cannot make a valid move. The game is simple to code, ends quickly, and relies on strategic thinking, ensuring that a skilled player can consistently outperform an unskilled opponent.
+
+## Objective
+
+Be the first player to reduce the shared number to **1** on your turn, or force your opponent into a position where they cannot make a valid move. A valid move consists of dividing the current number by an allowed prime divisor. Winning requires careful selection of divisors to control the flow of the game and outmaneuver your opponent.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared positive integer **N**. The default starting number is **60**, but players can agree on any suitable starting number greater than **1**.
+- **Allowed Primes**: The prime numbers allowed for division are **2**, **3**, **5**, and **7**.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer that both players will manipulate during the game.
+- **Allowed Primes**: The set of prime numbers \[2, 3, 5, 7\] that can be used to divide **N**.
+- **Player Indicators**: Denote players as **Player 1** and **Player 2**.
+
+## Turns
+
+- **Turn Order**: Players decide who takes the first turn (e.g., by a coin toss). Turns alternate between players.
+- **Turn Actions**:
+  1. **Choose a Divisor**: Select a prime number from the allowed set that divides **N** exactly.
+  2. **Divide N**: Update **N** by dividing it by the chosen prime number.
+  3. **Announce Move**: Declare the chosen prime and the new value of **N**.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - On your turn, you **must** divide **N** by one of the allowed primes \[2, 3, 5, 7\].
+   - The chosen prime must divide **N** exactly (i.e., **N mod prime == 0**).
+2. **Updating N**:
+   - After division, **N** becomes the quotient of the division.
+   - Example: If **N = 60** and you divide by **5**, the new **N** is **12**.
+3. **Winning the Game**:
+   - **Objective Victory**: If you reduce **N** to **1** on your turn, you win the game.
+   - **Forced Victory**: If your opponent cannot make a valid move on their turn (i.e., no allowed primes divide **N** exactly), you win the game.
+4. **Losing the Game**:
+   - If you cannot make a valid move on your turn, you lose the game.
+5. **No Skipping Turns**:
+   - You cannot pass or skip your turn. If a valid move is possible, you must make one.
+6. **Allowed Primes Only**:
+   - Division by primes outside the allowed set \[2, 3, 5, 7\] is not permitted, even if they divide **N** exactly.
+
+## Scoring
+
+- The game is won by the player who achieves the **Objective Victory** or **Forced Victory** conditions.
+- No points are tracked beyond determining the winner of each game.
+- Players may keep track of wins over multiple games for match play.
+
+## Examples
+
+### Example 1: Strategic Play
+
+**Starting N = 60**
+
+- **Player 1's Turn**:
+  - Chooses to divide by **5**.
+  - **N** becomes **12** (60 ÷ 5).
+  - Announces: "Divided by 5, N is now 12."
+- **Player 2's Turn**:
+  - Chooses to divide by **2**.
+  - **N** becomes **6** (12 ÷ 2).
+  - Announces: "Divided by 2, N is now 6."
+- **Player 1's Turn**:
+  - Chooses to divide by **2**.
+  - **N** becomes **3** (6 ÷ 2).
+  - Announces: "Divided by 2, N is now 3."
+- **Player 2's Turn**:
+  - Chooses to divide by **3**.
+  - **N** becomes **1** (3 ÷ 3).
+  - Announces: "Divided by 3, N is now 1. I win!"
+
+**Result**: Player 2 wins by reducing **N** to **1**.
+
+### Example 2: Forced Victory
+
+**Starting N = 52**
+
+- **Player 1's Turn**:
+  - Divides by **2**.
+  - **N** becomes **26**.
+- **Player 2's Turn**:
+  - Divides by **2**.
+  - **N** becomes **13**.
+- **Player 1's Turn**:
+  - Attempts to find a valid divisor from \[2, 3, 5, 7\].
+  - None of the allowed primes divide **13** exactly.
+  - **Player 1** cannot make a valid move and loses.
+
+**Result**: Player 2 wins because Player 1 cannot make a valid move.
+
+## Command-Line Interaction Example
+
+Below is a sample interaction between two players using a command-line interface.
+
+**Starting N = 45**
+
+```
+Player 1's Turn:
+Available primes: 2, 3, 5, 7
+Current N: 45
+Choose a prime to divide N: 5
+After division, N is now 9.
+
+Player 2's Turn:
+Available primes: 2, 3, 5, 7
+Current N: 9
+Choose a prime to divide N: 3
+After division, N is now 3.
+
+Player 1's Turn:
+Available primes: 2, 3, 5, 7
+Current N: 3
+Choose a prime to divide N: 3
+After division, N is now 1.
+Player 1 wins by reducing N to 1!
+```
+
+**Result**: Player 1 wins.
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves based on the remaining value of **N**.
+- **Control the Game**: Aim to leave **N** in a state where your opponent has limited options.
+- **Prime Selection**: Choose divisors that reduce **N** to a number that is not divisible by the allowed primes on your opponent's turn.
+
+## Variations
+
+- **Different Starting N**: Players can agree on a different starting number to vary the length and complexity of the game.
+- **Allowed Primes Set**: Adjust the set of allowed primes to include more or fewer primes for increased difficulty or simplicity.
+- **Multiple Rounds**: Play multiple rounds with different starting numbers and keep score of wins to determine an overall champion.
+
+---
+
+Prime Reduction offers a simple yet deep strategic experience that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and minimal components, it is perfectly suited for quick games in a command-line environment.

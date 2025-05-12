@@ -1,0 +1,187 @@
+# **Lock and Key**
+
+---
+
+## **Objective**
+
+Be the first player to find and open the lock that contains the hidden key. Use logical deduction based on the system's feedback after each turn to locate the key before your opponent does.
+
+---
+
+## **Setup**
+
+1. **Locks Arrangement**:
+   - There are **10 locks** numbered from **1 to 10**.
+   - All locks are initially **closed**.
+
+2. **Hidden Key**:
+   - At the start of the game, the system randomly selects one lock to hide the key.
+   - The key's location is **hidden from both players**.
+
+3. **Players**:
+   - Two players: **Player 1** and **Player 2**.
+   - Decide who takes the first turn by mutual agreement or by a random method (e.g., coin toss).
+
+---
+
+## **Game Components**
+
+- **Locks**:
+  - Represented by numbers **1 to 10**.
+  - Each lock can be either **closed** or **opened**.
+  - Once a lock is opened, it cannot be selected again.
+
+- **Hidden Key**:
+  - Randomly assigned to one of the locks at the beginning of the game.
+  - The key remains hidden until a player opens the correct lock.
+
+- **Command-Line Interface**:
+  - Players interact with the game by entering commands to open locks.
+  - The interface displays available locks and prompts for player input.
+
+---
+
+## **Turns**
+
+1. **Turn Structure**:
+   - Players alternate turns starting with **Player 1**.
+   - During a turn, a player selects **one unopened lock** to open.
+
+2. **Player Actions**:
+   - **Select a Lock**: Choose a lock number between **1 and 10** that has not been opened.
+   - **Receive Feedback**: After opening a lock, the system provides feedback.
+
+3. **Turn Progression**:
+   - The game continues with players taking turns until one player opens the lock containing the key.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Opening Locks**:
+   - On your turn, you must open **one** unopened lock.
+   - Input the lock number when prompted.
+   - Example: Enter `5` to open lock number 5.
+
+2. **System Feedback**:
+   - After a lock is opened, the system provides feedback to **both players**:
+     - **If the opened lock does not contain the key**:
+       - The system indicates whether the hidden key is in a **higher** or **lower** numbered lock compared to the one just opened.
+       - Example: "The key is in a higher-numbered lock."
+     - **If the opened lock contains the key**:
+       - The system announces the finding, and the player who opened it **wins the game**.
+
+3. **Information Sharing**:
+   - All feedback is **public** and known to both players.
+   - Players should keep track of opened locks and feedback to deduce the key's location.
+
+4. **No Skipping Turns**:
+   - Players cannot skip their turn or pass; they must open a lock when it's their turn.
+
+5. **Invalid Inputs**:
+   - If a player selects an invalid lock (e.g., a lock that's already opened or out of range), they are prompted again.
+   - Repeated invalid inputs may result in losing a turn (optional rule agreed upon before starting).
+
+---
+
+## **Scoring**
+
+- **Winning the Game**:
+  - The first player to open the lock containing the hidden key **wins**.
+- **No Points System**:
+  - The game is won by locating the key; there are no points or scoring beyond determining the winner.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Initial Setup**
+
+- Locks **1 to 10** are closed.
+- The system randomly selects lock **7** to hide the key (players do not know this).
+
+#### **Turn 1: Player 1**
+
+- **Available Locks**: 1-10
+- **Action**: Player 1 selects lock **5**.
+- **System Feedback**: "The key is in a higher-numbered lock."
+- **Opened Locks**: 5
+
+#### **Turn 2: Player 2**
+
+- **Available Locks**: 1-4, 6-10
+- **Action**: Player 2 selects lock **8**.
+- **System Feedback**: "The key is in a lower-numbered lock."
+- **Opened Locks**: 5, 8
+
+#### **Turn 3: Player 1**
+
+- **Available Locks**: 1-4, 6-7, 9-10
+- **Action**: Player 1 selects lock **7**.
+- **System Feedback**: "Congratulations! You have found the key. Player 1 wins!"
+
+---
+
+### **Command-Line Interaction**
+
+#### **Player 1's Turn**
+
+```
+----------------------------------------
+Available Locks: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+Player 1, choose a lock to open (1-10): 5
+Feedback: The key is in a higher-numbered lock.
+----------------------------------------
+```
+
+#### **Player 2's Turn**
+
+```
+----------------------------------------
+Available Locks: 1, 2, 3, 4, 6, 7, 8, 9, 10
+Player 2, choose a lock to open (1-10): 8
+Feedback: The key is in a lower-numbered lock.
+----------------------------------------
+```
+
+#### **Player 1's Turn**
+
+```
+----------------------------------------
+Available Locks: 1, 2, 3, 4, 6, 7, 9, 10
+Player 1, choose a lock to open (1-10): 7
+Feedback: Congratulations! You have found the key. Player 1 wins!
+----------------------------------------
+```
+
+---
+
+## **Strategic Tips**
+
+- **Logical Deduction**:
+  - Use the feedback to narrow down the possible range where the key could be.
+  - Keep track of all opened locks and the associated feedback.
+
+- **Process of Elimination**:
+  - Each piece of feedback eliminates at least one lock from consideration.
+  - Try to select locks that will provide the most information.
+
+- **Observing Opponent**:
+  - Pay attention to which locks your opponent opens.
+  - Use all available information to make informed decisions.
+
+- **Optimal Choices**:
+  - Aim to split the remaining range to maximize information gain.
+  - For example, if the key is higher than 5 and lower than 8, opening lock 6 or 7 will help pinpoint the key's location.
+
+---
+
+## **Conclusion**
+
+"Lock and Key" is a quick and engaging game that tests your logical reasoning and deductive skills. By carefully selecting locks and analyzing the system's feedback, you can outsmart your opponent and be the first to discover the hidden key. The simplicity of the game's mechanics makes it easy to play in a command-line interface, while the depth of strategy offers a rewarding challenge for players looking to hone their skills.
+
+Good luck, and may the best codebreaker win!
+
+---

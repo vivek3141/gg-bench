@@ -1,0 +1,218 @@
+# Target Sum - Rule Book
+
+---
+
+## Objective
+
+**"Target Sum"** is a two-player, turn-based game where the goal is to be the first player to reach an exact total sum of **25** by selecting numbers from a shared pool. Players take turns picking numbers and adding them to their personal total. The first player to reach **exactly 25** wins. If a player's total exceeds **25**, they lose immediately. If all numbers are exhausted and neither player has reached **25**, the player with the higher total wins.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - Create a common pool of numbers from **1** to **10**.
+   - All numbers are available for selection at the start of the game.
+
+2. **Player Totals**:
+   - Both players begin with a personal total sum of **0**.
+
+---
+
+## Game Components
+
+- **Number Pool**:
+  - A set of integers from **1** to **10**.
+  - Represents the numbers available for selection.
+  
+- **Player Totals**:
+  - Each player maintains their personal total sum.
+  - Starts at **0** and increases as numbers are selected.
+
+---
+
+## Turns
+
+- The game is turn-based, with players alternating turns.
+- **Player 1** starts the game.
+- On each turn:
+  - The current player selects one number from the available pool.
+  - The selected number is added to their personal total sum.
+  - The selected number is then removed from the pool.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, you **must** select one number from the remaining numbers in the pool.
+   - You cannot skip your turn or pass.
+
+2. **Updating Total Sum**:
+   - Add the selected number to your personal total sum.
+   - Keep track of your total sum after each selection.
+
+3. **Winning the Game**:
+   - If, after your turn, your total sum is **exactly 25**, you win the game immediately.
+
+4. **Exceeding 25**:
+   - If your total sum **exceeds 25** after adding the selected number, you lose the game immediately.
+   - The game ends, and your opponent wins.
+
+5. **End of Number Pool**:
+   - If all numbers have been selected and neither player has reached **25**:
+     - The player with the **higher total sum** wins the game.
+     - There are no ties; since the total sum of numbers from 1 to 10 is **55**, and both players cannot have the same total unless they reach 25.
+
+6. **No Draws**:
+   - The game cannot end in a draw due to the mechanics of number selection and total sums.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - Reach an exact total of **25** points before your opponent.
+  - Or have the higher total when all numbers are exhausted.
+
+- **Losing**:
+  - Exceed a total of **25** points.
+  - Have a lower total when all numbers are exhausted.
+
+- **Tracking**:
+  - Each player keeps a personal tally of their total sum.
+  - The number pool is updated after each turn.
+
+---
+
+## Example Gameplay
+
+### Initial State:
+
+- **Number Pool**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+- **Player Totals**:
+  - Player 1: 0
+  - Player 2: 0
+
+### Turn Sequence:
+
+1. **Player 1's Turn**:
+   - Selects **8**.
+   - Player 1's total: 0 + 8 = **8**.
+   - Number Pool: 1, 2, 3, 4, 5, 6, 7, 9, 10
+
+2. **Player 2's Turn**:
+   - Selects **9**.
+   - Player 2's total: 0 + 9 = **9**.
+   - Number Pool: 1, 2, 3, 4, 5, 6, 7, 10
+
+3. **Player 1's Turn**:
+   - Selects **7**.
+   - Player 1's total: 8 + 7 = **15**.
+   - Number Pool: 1, 2, 3, 4, 5, 6, 10
+
+4. **Player 2's Turn**:
+   - Selects **10**.
+   - Player 2's total: 9 + 10 = **19**.
+   - Number Pool: 1, 2, 3, 4, 5, 6
+
+5. **Player 1's Turn**:
+   - Selects **6**.
+   - Player 1's total: 15 + 6 = **21**.
+   - Number Pool: 1, 2, 3, 4, 5
+
+6. **Player 2's Turn**:
+   - Selects **5**.
+   - Player 2's total: 19 + 5 = **24**.
+   - Number Pool: 1, 2, 3, 4
+
+7. **Player 1's Turn**:
+   - Selects **4**.
+   - Player 1's total: 21 + 4 = **25**.
+   - **Player 1 wins** by reaching exactly 25.
+
+---
+
+## Command-Line Interaction Example
+
+**Game Start**
+
+```
+Welcome to Target Sum!
+
+Numbers available: 1,2,3,4,5,6,7,8,9,10
+
+Player 1 total: 0
+
+Player 2 total: 0
+```
+
+**Turn 1 - Player 1**
+
+```
+Player 1, select a number from the available pool: 8
+
+You selected 8.
+
+Your total sum is now 8.
+
+Numbers remaining: 1,2,3,4,5,6,7,9,10
+```
+
+**Turn 2 - Player 2**
+
+```
+Player 2, select a number from the available pool: 9
+
+You selected 9.
+
+Your total sum is now 9.
+
+Numbers remaining: 1,2,3,4,5,6,7,10
+```
+
+*(Gameplay continues in this manner until a player wins or loses.)*
+
+---
+
+## Strategic Considerations
+
+- **Planning Ahead**:
+  - Keep track of which numbers remain in the pool.
+  - Calculate future totals to determine which numbers you'll need.
+
+- **Blocking Opponent**:
+  - Anticipate which numbers your opponent needs and select them first.
+  - Force your opponent into a position where they must exceed 25 or cannot reach 25.
+
+- **Resource Management**:
+  - Balance taking high-value numbers to reach 25 quickly with not exceeding the limit.
+  - Consider leaving specific numbers in the pool to create opportunities for yourself later.
+
+---
+
+## Examples of Strategy
+
+- If your total is **15**, you need a combination of numbers that add up to **10** to reach 25.
+  - Potential combinations: 6+4, 7+3, 5+5.
+  - If key numbers are still available, plan to acquire them in future turns.
+
+- If your opponent's total is **19**, they need a **6** to reach 25.
+  - If the **6** is still in the pool, consider taking it to prevent their win.
+
+---
+
+## Ensuring No Draws
+
+- Since the total sum of all numbers from 1 to 10 is **55**, and both players start from **0**, it's impossible for both players to reach 25 simultaneously.
+- If both players cannot reach 25, the one with the higher total when all numbers are exhausted wins.
+
+---
+
+## Conclusion
+
+**"Target Sum"** is a strategic numerical game that combines elements of planning, anticipation, and mathematical calculation. Its simple rules make it easy to code and play in a command-line interface, while the depth of strategy ensures engaging and competitive gameplay. With quick turns and definitive outcomes, players can enjoy multiple rounds and develop skills to consistently outperform less experienced opponents.
+
+---
+
+Enjoy playing **"Target Sum"** and may the best strategist win!

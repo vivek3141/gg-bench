@@ -1,0 +1,209 @@
+# Prime Duel: Rule Book
+
+## Objective
+
+**Prime Duel** is a two-player, turn-based numerical strategy game played in a command-line interface. The primary goal is to be the first player to reach **exactly 1,000** by strategically multiplying your current score with prime numbers while preventing your opponent from doing the same. Players must carefully select prime numbers to multiply their score without exceeding the target. Overshooting the target results in a loss, adding a layer of caution to each move.
+
+## Setup
+
+- **Starting Scores**: Both players begin with a score of **1**.
+- **Prime Number Pool**: A shared list of prime numbers under **30** is available for both players:
+  - **Primes**: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+- **Turn Order**: Decide who goes first (e.g., Player 1) by mutual agreement or a random method.
+
+## Game Components
+
+- **Scores**: Numerical values representing each player's current total.
+- **Prime Number Pool**: The list of available prime numbers for multiplication.
+- **Command-Line Interface**: Players input their chosen prime numbers and receive updates on scores through text prompts.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Current Score Display**: The game displays both players' current scores.
+  2. **Prime Selection**: The active player selects a prime number from the pool.
+  3. **Score Update**: The player's score is multiplied by the chosen prime number.
+  4. **Turn Switch**: The next player takes their turn following the same steps.
+
+- **Order of Actions**:
+  - Players alternate turns.
+  - Each turn consists of a single action: selecting one prime number for multiplication.
+
+## Rules and Mechanics
+
+### Core Rules
+
+- **Prime Selection**:
+  - Players choose any prime number from the shared pool on their turn.
+  - There are no restrictions on selecting the same prime multiple times.
+
+- **Score Multiplication**:
+  - The chosen prime number multiplies the player's current score.
+  - Example: If your score is 1 and you choose 5, your new score is 1 × 5 = 5.
+
+- **Winning the Game**:
+  - The first player to reach **exactly 1,000** wins.
+  - If a player's score exceeds 1,000 after their turn, they **lose** immediately.
+
+### Special Mechanics
+
+- **Exact Target Rule**:
+  - Players must land exactly on 1,000; exceeding it results in a loss.
+
+- **Awareness of Opponent's Score**:
+  - Players can see each other's current scores at the beginning of each turn.
+
+- **No Skipping Turns**:
+  - Players must perform an action on their turn; skipping is not allowed.
+
+## Scoring
+
+- **Score Tracking**:
+  - Scores are updated after each turn and displayed to both players.
+  - Both players start at 1 and progress by valid multiplications.
+
+- **Winning Condition**:
+  - Reach exactly 1,000 points first to win the game.
+
+- **Losing Conditions**:
+  - Exceeding 1,000 points on your turn.
+  - Allowing your opponent to reach exactly 1,000 before you.
+
+## Examples
+
+### Sample Game Play
+
+**Initial State**:
+
+- Player 1 Score: 1
+- Player 2 Score: 1
+
+**Turn 1: Player 1**
+
+- Current Scores:
+  - Player 1: 1
+  - Player 2: 1
+
+- Player 1 selects prime **5**.
+- New Score: 1 × 5 = **5**
+
+**Turn 2: Player 2**
+
+- Current Scores:
+  - Player 1: 5
+  - Player 2: 1
+
+- Player 2 selects prime **7**.
+- New Score: 1 × 7 = **7**
+
+**Turn 3: Player 1**
+
+- Current Scores:
+  - Player 1: 5
+  - Player 2: 7
+
+- Player 1 selects prime **13**.
+- New Score: 5 × 13 = **65**
+
+**Turn 4: Player 2**
+
+- Current Scores:
+  - Player 1: 65
+  - Player 2: 7
+
+- Player 2 selects prime **11**.
+- New Score: 7 × 11 = **77**
+
+**Turn 5: Player 1**
+
+- Current Scores:
+  - Player 1: 65
+  - Player 2: 77
+
+- Player 1 selects prime **2**.
+- New Score: 65 × 2 = **130**
+
+**Turn 6: Player 2**
+
+- Current Scores:
+  - Player 1: 130
+  - Player 2: 77
+
+- Player 2 selects prime **2**.
+- New Score: 77 × 2 = **154**
+
+**Turn 7: Player 1**
+
+- Current Scores:
+  - Player 1: 130
+  - Player 2: 154
+
+- Player 1 selects prime **7**.
+- New Score: 130 × 7 = **910**
+
+**Turn 8: Player 2**
+
+- Current Scores:
+  - Player 1: 910
+  - Player 2: 154
+
+- Player 2 analyzes options to reach 1,000 without exceeding it.
+
+- Player 2 selects prime **5**.
+- New Score: 154 × 5 = **770**
+
+**Turn 9: Player 1**
+
+- Current Scores:
+  - Player 1: 910
+  - Player 2: 770
+
+- Player 1 needs to reach exactly 1,000.
+
+- Possible primes to consider:
+  - **2**: 910 × 2 = 1,820 (Over 1,000; player loses if selected)
+  - **3**: 910 × 3 = 2,730 (Over 1,000; player loses if selected)
+  - **5**: 910 × 5 = 4,550 (Over 1,000; player loses if selected)
+  - **To reach exactly 1,000**, player calculates needed multiplier:
+    - Required multiplier: 1,000 / 910 ≈ 1.098 (No such prime)
+  
+- **Player 1 cannot make a valid move to reach 1,000 without exceeding it and must choose carefully.**
+
+- Player 1 selects prime **1** (if allowed), but since **1** is not a prime, they cannot proceed.
+
+- Realizing that any multiplication will exceed 1,000, **Player 1 loses the game**.
+
+### Command-Line Interaction Example
+
+**Turn 1:**
+
+```
+Player 1 Turn:
+Current Scores - You: 1, Opponent: 1
+Available Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+Select a prime number to multiply your score: 5
+Your new score is 5.
+```
+
+**Turn 2:**
+
+```
+Player 2 Turn:
+Current Scores - You: 1, Opponent: 5
+Available Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+Select a prime number to multiply your score: 7
+Your new score is 7.
+```
+
+*...and so on until the game concludes.*
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future multiplications to avoid overshooting the target.
+- **Monitor Opponent's Score**: Adjust your strategy based on how close your opponent is to 1,000.
+- **Prime Number Selection**: Use smaller primes to fine-tune your score as you approach the target.
+- **Calculate Outcomes**: Before selecting a prime, compute the potential new score to ensure it doesn't exceed 1,000.
+
+---
+
+Enjoy playing **Prime Duel** and may the most strategic player win!

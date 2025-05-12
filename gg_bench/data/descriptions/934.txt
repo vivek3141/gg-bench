@@ -1,0 +1,193 @@
+# Ten Stack Duel
+
+## Objective
+
+The objective of **Ten Stack Duel** is to be the first player to create a sum of **exactly 10** with the top two numbers on the stack. You win the game when the number you place on top of the stack, combined with the number immediately beneath it, sums to 10. Be careful not to exceed a sum of 10, or you'll lose the game!
+
+---
+
+## Setup
+
+- **Number Stack**: Start with an empty stack in the game.
+- **Number Pool**: Both players have unlimited access to numbers from **1** to **9**.
+
+---
+
+## Game Components
+
+### Number Stack
+
+- A shared stack where players place numbers during their turns.
+- It grows as numbers are added and is central to gameplay.
+
+### Number Pool
+
+- Numbers **1** through **9** are available for both players to use.
+- Each number can be selected multiple times; there is an unlimited supply.
+
+---
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- On your turn, you must choose a number from the Number Pool and place it on top of the Number Stack.
+
+---
+
+## Rules and Mechanics
+
+1. **Adding Numbers**:
+   - On your turn, select any number between **1** and **9** (inclusive) and place it on top of the Number Stack.
+
+2. **Winning Condition**:
+   - **Win the game** if the sum of the number you place and the number immediately beneath it equals **exactly 10**.
+   - Example: If the top number is **6** and you place a **4**, the sum is **6 + 4 = 10**, and you win.
+
+3. **Losing Condition**:
+   - **Lose the game** if, after your move, the sum of the top two numbers exceeds **10**.
+   - Example: If the top number is **7** and you place a **5**, the sum is **7 + 5 = 12**, which exceeds 10, and you lose.
+
+4. **Continuing Play**:
+   - If the sum of the top two numbers is **less than 10**, the game continues with the next player's turn.
+   - Example: If the top number is **3** and you place a **4**, the sum is **3 + 4 = 7**.
+
+5. **First Move Exception**:
+   - On the **first turn**, since there is no number beneath, you cannot win or lose the game.
+   - The game proceeds to the next player's turn.
+
+6. **Number Reusability**:
+   - Numbers from **1** to **9** can be used repeatedly.
+   - There is an unlimited supply of each number in the Number Pool.
+
+---
+
+## Scoring
+
+- **Victory**: You win the game by creating a sum of exactly **10** with the top two numbers on the stack.
+- **Defeat**: You lose the game if you create a sum that **exceeds 10**.
+
+---
+
+## Examples
+
+### Example Game 1
+
+**Turn 1: Player 1**
+
+- **Action**: Places a **6** on the stack.
+- **Stack**: [6]
+
+**Turn 2: Player 2**
+
+- **Top of Stack**: 6
+- **Goal**: Sum to 10 to win.
+- **Action**: Places a **4**.
+- **Sum**: 6 + 4 = 10
+- **Result**: Player 2 **wins** the game.
+
+---
+
+### Example Game 2
+
+**Turn 1: Player 1**
+
+- **Action**: Places a **5** on the stack.
+- **Stack**: [5]
+
+**Turn 2: Player 2**
+
+- **Top of Stack**: 5
+- **Options**:
+  - **Winning Move**: Place **5** (5 + 5 = 10).
+  - **Losing Move**: Place **6** (5 + 6 = 11, exceeds 10).
+  - **Safe Move**: Place any number from 1 to 4.
+- **Action**: Places a **5**.
+- **Sum**: 5 + 5 = 10
+- **Result**: Player 2 **wins** the game.
+
+---
+
+### Example Game 3
+
+**Turn 1: Player 1**
+
+- **Action**: Places a **2** on the stack.
+- **Stack**: [2]
+
+**Turn 2: Player 2**
+
+- **Top of Stack**: 2
+- **Options**:
+  - **Winning Move**: Place **8** (2 + 8 = 10).
+  - **Safe Move**: Place any number that does not sum to or exceed 10.
+- **Action**: Places a **5**.
+- **Sum**: 2 + 5 = 7 (game continues).
+- **Stack**: [2, 5]
+
+**Turn 3: Player 1**
+
+- **Top of Stack**: 5
+- **Options**:
+  - **Winning Move**: Place **5** (5 + 5 = 10).
+  - **Safe Move**: Place any number from 1 to 4.
+- **Action**: Places a **5**.
+- **Sum**: 5 + 5 = 10
+- **Result**: Player 1 **wins** the game.
+
+---
+
+## Command-Line Interaction Examples
+
+Assuming players input their chosen numbers when prompted.
+
+**Game Start**
+
+```
+Welcome to Ten Stack Duel!
+
+Player 1's turn.
+Enter a number between 1-9: 7
+Stack: [7]
+
+Player 2's turn.
+Top of Stack is 7.
+Enter a number between 1-9: 3
+Sum of top two numbers: 7 + 3 = 10
+
+Player 2 wins!
+```
+
+---
+
+**Another Game**
+
+```
+Welcome to Ten Stack Duel!
+
+Player 1's turn.
+Enter a number between 1-9: 9
+Stack: [9]
+
+Player 2's turn.
+Top of Stack is 9.
+Enter a number between 1-9: 2
+Sum of top two numbers: 9 + 2 = 11
+
+Sum exceeds 10.
+Player 2 loses!
+
+Player 1 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Aim for Ten**: Keep an eye on the top number of the stack and calculate which number you need to win.
+- **Avoid Exceeding Ten**: Be cautious not to place a number that will make the sum exceed 10, resulting in an immediate loss.
+- **Anticipate Your Opponent**: Consider which numbers your opponent might use on their next turn and plan accordingly.
+- **Control the Game**: Sometimes it's strategic to avoid winning immediately to set a trap for your opponent on their next turn.
+
+---
+
+Enjoy playing **Ten Stack Duel**, and may the best strategist win!

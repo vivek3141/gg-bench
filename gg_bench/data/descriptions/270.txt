@@ -1,0 +1,157 @@
+# Game Title: **Divisor Duel**
+
+## Objective
+
+Become the last player able to make a valid move by strategically selecting divisors of the current number. The player who reduces the number to 1 (where no further valid moves are possible) wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a positive integer, referred to as **N**. The default starting number is **100**, but players can agree on any positive integer to start.
+- **Players**: Two players participate in the game, identified as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Current Number (N)**: A shared positive integer that changes throughout the game based on player actions.
+- **Divisors List**: A record of all valid divisors of the current number **N** at each turn.
+- **Used Divisors List**: A list tracking all divisors that have been previously selected during the game.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Actions**:
+  1. **Display Current Number**: At the beginning of a turn, the current value of **N** is displayed.
+  2. **List Valid Divisors**: The game lists all positive integer divisors of **N** that have not been used yet.
+  3. **Player Selects Divisor**: The player chooses one of the available divisors.
+  4. **Update N**: The current number **N** is divided by the chosen divisor to get a new **N**.
+  5. **Record Divisor**: The selected divisor is added to the **Used Divisors List**.
+
+## Rules and Mechanics
+
+1. **Valid Divisors**:
+   - A **valid divisor** is any positive integer greater than 1 that divides **N** evenly (no remainder) and has not been previously selected.
+   - The divisor **1** is **not** considered a valid move and cannot be selected.
+
+2. **Selecting a Divisor**:
+   - On their turn, a player must select a valid divisor from the list.
+   - If a player cannot select a valid divisor (i.e., there are none available), they lose the game.
+
+3. **Updating N**:
+   - After a valid divisor **d** is selected, update the current number: **N = N / d**.
+   - The new **N** becomes the starting point for the next player's turn.
+
+4. **Used Divisors**:
+   - Once a divisor has been selected, it cannot be used again for the remainder of the game.
+   - The **Used Divisors List** is shared between players and updated each turn.
+
+5. **Winning the Game**:
+   - A player wins if they reduce **N** to **1** on their turn.
+   - A player loses if they cannot make a valid move on their turn.
+
+## Scoring
+
+- **Victory**: The winner is the player who successfully reduces **N** to **1** or forces the opponent into a position where they have no valid moves.
+- **No Points System**: The game does not track points; it is a win/loss outcome per match.
+- **Match Play (Optional)**: Players may choose to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Example Gameplay
+
+### Sample Game
+
+#### Starting the Game
+
+- **Starting Number (N)**: 100
+- **Used Divisors List**: Empty
+
+#### Turn 1: Player 1
+
+1. **Current N**: 100
+2. **Valid Divisors**: 2, 4, 5, 10, 20, 25, 50, 100
+3. **Player 1 Selects**: 10
+4. **Update N**: N = 100 / 10 = 10
+5. **Used Divisors List**: [10]
+
+#### Turn 2: Player 2
+
+1. **Current N**: 10
+2. **Valid Divisors**: 2, 5, 10
+3. **Player 2 Selects**: 5
+4. **Update N**: N = 10 / 5 = 2
+5. **Used Divisors List**: [10, 5]
+
+#### Turn 3: Player 1
+
+1. **Current N**: 2
+2. **Valid Divisors**: 2
+3. **Player 1 Selects**: 2
+4. **Update N**: N = 2 / 2 = 1
+5. **Used Divisors List**: [10, 5, 2]
+6. **Player 1 Wins**: N has been reduced to 1.
+
+### Command-Line Interaction Example
+
+Below is how the game might look in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to Divisor Duel!
+Starting Number (N): 100
+Player 1 begins.
+
+-----------------------------
+Player 1's Turn
+Current Number (N): 100
+Available Divisors: 2, 4, 5, 10, 20, 25, 50, 100
+Enter a divisor: 10
+
+You chose divisor 10.
+Updated Number (N): 10
+-----------------------------
+```
+
+#### Next Turn
+
+```
+-----------------------------
+Player 2's Turn
+Current Number (N): 10
+Available Divisors: 2, 5, 10
+Enter a divisor: 5
+
+You chose divisor 5.
+Updated Number (N): 2
+-----------------------------
+```
+
+#### Final Turn
+
+```
+-----------------------------
+Player 1's Turn
+Current Number (N): 2
+Available Divisors: 2
+Enter a divisor: 2
+
+You chose divisor 2.
+Updated Number (N): 1
+-----------------------------
+
+Player 1 has reduced N to 1 and wins the game!
+Congratulations Player 1!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider the consequences of your moves on future turns. Try to force your opponent into a position with no valid moves.
+- **Divisor Selection**: Choosing smaller divisors prolongs the game but may provide strategic advantages.
+- **Used Divisors Awareness**: Keep track of the divisors that have been used to anticipate which options will be available on your next turn.
+
+## Variations
+
+- **Different Starting Numbers**: To increase complexity, start with larger numbers.
+- **Restricted Divisors**: Limit the set of valid divisors to prime numbers or another subset.
+- **Multiple Rounds**: Play best-of-three or more to determine the overall winner.
+
+---
+
+Enjoy playing **Divisor Duel** and may the best strategist win!

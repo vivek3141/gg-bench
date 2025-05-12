@@ -1,0 +1,239 @@
+# **GridLock**
+
+## **Objective**
+
+Become the last player able to make a valid move on the grid. Players take turns placing their markers on a shared grid. With each move, players strategically block portions of the grid to limit their opponent's options. The player who forces their opponent into a position where they cannot make a move wins the game.
+
+---
+
+## **Setup**
+
+1. **Grid Initialization**:
+   - The game is played on a **5x5 grid**.
+   - All cells are initially **empty** and **unblocked**.
+   - The grid cells are labeled with row and column numbers from **1 to 5**.
+
+2. **Player Assignment**:
+   - This is a two-player game: **Player 1** and **Player 2**.
+   - Each player selects a unique marker symbol:
+     - **Player 1**: `X`
+     - **Player 2**: `O`
+
+3. **Determine First Player**:
+   - Decide who takes the first turn (e.g., by flipping a coin).
+
+---
+
+## **Game Components**
+
+1. **Grid**:
+   - A **5x5 grid** displayed in the command-line interface.
+   - Each cell in the grid can be:
+     - **Empty**: Available for placement.
+     - **Occupied**: Contains a player's marker (`X` or `O`).
+     - **Blocked**: Marked with `#`, cannot be used.
+
+2. **Markers**:
+   - **Player 1's Marker**: `X`
+   - **Player 2's Marker**: `O`
+
+3. **Symbols**:
+   - **Empty Cell**: `_`
+   - **Blocked Cell**: `#`
+
+---
+
+## **Turns**
+
+1. Players alternate turns, starting with the player determined in the setup.
+2. **On Your Turn**:
+   - **Select a Cell**:
+     - Choose any **empty and unblocked** cell to place your marker.
+     - Input the **row** and **column** numbers when prompted.
+   - **Update the Grid**:
+     - Place your marker (`X` or `O`) on the chosen cell.
+     - Block the necessary cells as per the rules.
+
+3. **Turn Progression**:
+   - After a player completes their turn, control passes to the other player.
+   - The game continues until a player cannot make a valid move on their turn.
+
+---
+
+## **Rules and Mechanics**
+
+### **1. Placing a Marker**
+
+- **Valid Moves**:
+  - You must place your marker on an **empty** and **unblocked** cell.
+  - Input must correspond to valid grid coordinates (rows and columns from 1 to 5).
+
+### **2. Blocking Cells**
+
+- **Blocking Mechanism**:
+  - When you place your marker, the following cells become **blocked**:
+    - The cell where you placed your marker.
+    - All **adjacent cells** (up, down, left, right) from your marker.
+    - **Example**: Placing at (3,3) blocks (3,3), (2,3), (4,3), (3,2), and (3,4).
+- **Blocked Cells**:
+  - Blocked cells are marked with `#`.
+  - They **cannot** be used by either player for the remainder of the game.
+
+### **3. Winning the Game**
+
+- **Victory Condition**:
+  - You win if your opponent cannot make a valid move on their turn.
+- **Losing the Game**:
+  - You lose if you cannot make a valid move when it's your turn.
+
+### **4. Invalid Moves**
+
+- **Occupied or Blocked Cells**:
+  - You **cannot** place your marker on a cell that is blocked or already occupied.
+  - If you attempt an invalid move, you will be prompted to choose again.
+- **No Available Moves**:
+  - If there are no valid moves available, the game ends, and your opponent wins.
+
+### **5. Game End**
+
+- **Game Over**:
+  - The game concludes when a player cannot make a valid move on their turn.
+  - Announce the winner in the command-line interface.
+
+---
+
+## **Scoring**
+
+- **Win/Lose Outcome**:
+  - This game does not utilize a points system.
+  - The outcome is determined by the last player able to make a valid move.
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds.
+  - Keep track of the number of games won by each player.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+#### **Initial Grid**
+
+```
+    1 2 3 4 5
+  -------------
+1 | _ _ _ _ _
+2 | _ _ _ _ _
+3 | _ _ _ _ _
+4 | _ _ _ _ _
+5 | _ _ _ _ _
+```
+
+#### **Player 1's Turn**
+
+- **Action**: Places `X` at **(3,3)**.
+- **Cells Blocked**:
+  - (3,3): Marker placed here.
+  - (2,3): Above.
+  - (4,3): Below.
+  - (3,2): Left.
+  - (3,4): Right.
+- **Updated Grid**:
+
+```
+    1 2 3 4 5
+  -------------
+1 | _ _ _ _ _
+2 | _ _ # _ _
+3 | _ # X # _
+4 | _ _ # _ _
+5 | _ _ _ _ _
+```
+
+#### **Player 2's Turn**
+
+- **Action**: Places `O` at **(2,2)**.
+- **Cells Blocked**:
+  - (2,2): Marker placed here.
+  - (1,2): Above.
+  - (3,2): Below (already blocked).
+  - (2,1): Left.
+  - (2,3): Right (already blocked).
+- **Updated Grid**:
+
+```
+    1 2 3 4 5
+  -------------
+1 | _ # _ _ _
+2 | # O # # _
+3 | _ # X # _
+4 | _ _ # _ _
+5 | _ _ _ _ _
+```
+
+#### **Player 1's Next Turn**
+
+- **Available Moves**: Needs to choose an unblocked cell.
+- **Action**: Places `X` at **(4,2)**.
+- **Cells Blocked**:
+  - (4,2): Marker placed here.
+  - (3,2): Above (already blocked).
+  - (5,2): Below.
+  - (4,1): Left.
+  - (4,3): Right.
+- **Updated Grid**:
+
+```
+    1 2 3 4 5
+  -------------
+1 | _ # _ _ _
+2 | # O # # _
+3 | _ # X # _
+4 | # # # _ _
+5 | _ # _ _ _
+```
+
+#### **Continuing the Game**
+
+- **Players Alternate Turns**:
+  - Each player continues to strategically place markers and block cells.
+- **Potential End Game**:
+  - If at any point a player cannot place their marker, they lose.
+
+### **Command-Line Interaction Examples**
+
+- **Prompting a Player's Move**:
+
+  ```
+  Player 1 (X), enter your move (row and column): 3 3
+  ```
+
+- **Displaying an Invalid Move**:
+
+  ```
+  That cell is blocked or occupied. Please choose a different cell.
+  ```
+
+- **Announcing the Winner**:
+
+  ```
+  No valid moves remaining for Player 2 (O).
+  Player 1 (X) wins the game!
+  ```
+
+---
+
+## **Strategy Tips**
+
+- **Plan Ahead**:
+  - Consider how your move will affect not only the current turn but also future options for both players.
+- **Control the Center**:
+  - Occupying central cells can block more cells, limiting your opponent's moves.
+- **Limit Opponent's Options**:
+  - Aim to force your opponent into a position where their choices are restricted.
+- **Protect Your Options**:
+  - Avoid moves that excessively block potential spaces you may need later.
+
+---
+
+Enjoy playing **GridLock**, and may the most strategic player win!

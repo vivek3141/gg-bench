@@ -1,0 +1,186 @@
+# **Clash of Numbers**
+
+## **Objective**
+
+The primary goal of Clash of Numbers is to be the first player to reach a target score by strategically selecting numbers from a shared pool. Players achieve victory by accumulating points through careful number selection, aiming to outmaneuver their opponent. A player wins when they reach or exceed the target score while preventing their opponent from doing the same.
+
+## **Setup**
+
+- **Target Score**: Agree on a target score to win the game (e.g., 50 points).
+- **Number Pool**: A shared pool of numbers from 1 to 9 is available for selection.
+- **Starting Player**: Decide which player goes first (e.g., coin toss).
+
+## **Game Components**
+
+- **Number Pool (1-9)**: Numbers available for players to select during their turns.
+- **Player Score**: Each player has a score that starts at zero.
+- **Turn Indicator**: Keeps track of whose turn it is.
+
+## **Turns**
+
+- Players take turns in alternating order.
+- **Turn Structure**:
+  1. **Select a Number**: Choose a number from the number pool (numbers 1-9).
+  2. **Update Score**: Add the selected number to your score.
+  3. **Modify Number Pool**: The selected number remains available in the pool for future turns.
+
+## **Rules and Mechanics**
+
+1. **Number Selection**:
+   - On your turn, select any number between 1 and 9 from the number pool.
+   - The number pool always contains numbers 1 through 9; numbers are not removed after selection.
+
+2. **Scoring Mechanism**:
+   - Add the selected number to your current score.
+
+3. **Strategic Twist – Multiples and Factors**:
+   - **If your selected number is a multiple of your opponent's last selected number**:
+     - **Subtract** your opponent's last selected number from **their** score.
+   - **If your selected number is a factor of your opponent's last selected number**:
+     - **Subtract** your selected number from **their** score.
+   - *Note*: This rule does not apply on the very first turn for each player, as there is no previous number from the opponent.
+
+4. **Score Boundaries**:
+   - A player's score cannot go below zero. If a subtraction would result in a negative score, set their score to zero instead.
+
+5. **Winning the Game**:
+   - The first player to reach **or exceed** the target score at the end of their turn wins the game.
+   - If both players reach or exceed the target score in the same round, the player with the higher score wins.
+   - If scores are equal after both players reach the target score, the next player to have a higher score at the end of their turn wins.
+
+## **Scoring**
+
+- **Accumulating Points**: Players accumulate points by adding selected numbers to their scores each turn.
+- **Strategic Subtractions**: Utilize the multiples and factors rule to reduce your opponent's score strategically.
+- **Tracking Scores**: Keep a running total of both players' scores after each turn.
+
+## **Examples**
+
+### **Sample Turn Sequence**
+
+**Target Score**: 20 points
+
+**Initial Scores**: Player 1: 0, Player 2: 0
+
+#### **Turn 1**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 7
+  - **Updates Score**: 0 + 7 = **7**
+  - **No Subtraction**: Since it's the first turn, no subtraction occurs.
+  - **Scores**: Player 1: 7, Player 2: 0
+
+#### **Turn 2**
+
+- **Player 2's Turn**:
+  - **Selects Number**: 6
+  - **Updates Score**: 0 + 6 = **6**
+  - **Checks Multiples/Factors**:
+    - 6 is not a multiple or factor of 7.
+  - **Scores**: Player 1: 7, Player 2: 6
+
+#### **Turn 3**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 3
+  - **Updates Score**: 7 + 3 = **10**
+  - **Checks Multiples/Factors**:
+    - 3 is a factor of 6.
+    - **Subtracts**: 3 from Player 2's score.
+    - **Player 2's Score**: 6 - 3 = **3**
+  - **Scores**: Player 1: 10, Player 2: 3
+
+#### **Turn 4**
+
+- **Player 2's Turn**:
+  - **Selects Number**: 9
+  - **Updates Score**: 3 + 9 = **12**
+  - **Checks Multiples/Factors**:
+    - 9 is a multiple of 3 (Player 1's last number).
+    - **Subtracts**: 3 from Player 1's score.
+    - **Player 1's Score**: 10 - 3 = **7**
+  - **Scores**: Player 1: 7, Player 2: 12
+
+#### **Turn 5**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 8
+  - **Updates Score**: 7 + 8 = **15**
+  - **Checks Multiples/Factors**:
+    - 8 is not a multiple or factor of 9.
+  - **Scores**: Player 1: 15, Player 2: 12
+
+#### **Turn 6**
+
+- **Player 2's Turn**:
+  - **Selects Number**: 4
+  - **Updates Score**: 12 + 4 = **16**
+  - **Checks Multiples/Factors**:
+    - 4 is a factor of 8.
+    - **Subtracts**: 4 from Player 1's score.
+    - **Player 1's Score**: 15 - 4 = **11**
+  - **Scores**: Player 1: 11, Player 2: 16
+
+#### **Turn 7**
+
+- **Player 1's Turn**:
+  - **Selects Number**: 9
+  - **Updates Score**: 11 + 9 = **20**
+  - **Checks Multiples/Factors**:
+    - 9 is not a multiple or factor of 4.
+  - **Scores**: Player 1: 20, Player 2: 16
+  - **Win Condition Met**: Player 1 has reached the target score of 20.
+
+### **Sample Command-Line Interaction**
+
+```plaintext
+--- Clash of Numbers ---
+Target Score: 20
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1's Turn
+Select a number (1-9): 7
+Player 1 selects 7.
+No subtraction this turn.
+Scores -> Player 1: 7, Player 2: 0
+
+Player 2's Turn
+Select a number (1-9): 6
+Player 2 selects 6.
+No subtraction this turn.
+Scores -> Player 1: 7, Player 2: 6
+
+Player 1's Turn
+Select a number (1-9): 3
+Player 1 selects 3.
+3 is a factor of Player 2's last number (6).
+Subtracting 3 from Player 2's score.
+Scores -> Player 1: 10, Player 2: 3
+
+Player 2's Turn
+Select a number (1-9): 9
+Player 2 selects 9.
+9 is a multiple of Player 1's last number (3).
+Subtracting 3 from Player 1's score.
+Scores -> Player 1: 7, Player 2: 12
+
+... (game continues) ...
+
+Player 1's Turn
+Select a number (1-9): 9
+Player 1 selects 9.
+No subtraction this turn.
+Scores -> Player 1: 20, Player 2: 16
+Player 1 has reached the target score and wins the game!
+```
+
+## **Strategy Tips**
+
+- **Monitor Opponent's Choices**: Pay attention to the numbers your opponent selects to plan your moves.
+- **Optimal Number Selection**: Choose numbers that can trigger the subtraction rule against your opponent.
+- **Balance Scoring and Sabotage**: Weigh the benefits of adding high numbers to your score against the possibility of subtracting from your opponent.
+
+## **Summary**
+
+Clash of Numbers is a simple yet strategic numerical game where careful selection and timing can lead to victory. By understanding the interplay of multiples and factors, players can not only advance their own score but also hinder their opponent's progress. The game encourages forward-thinking and planning, making it a quick and engaging challenge on the command-line interface.

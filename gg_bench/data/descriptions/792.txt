@@ -1,0 +1,223 @@
+**Code Breaker Duel**
+
+---
+
+**Objective:**
+
+The primary goal of *Code Breaker Duel* is to be the first player to correctly guess your opponent's secret three-digit code. Victory is achieved by using logical deduction and strategic guessing based on feedback provided after each guess. A player wins by accurately identifying the opponent's code before their own code is guessed.
+
+---
+
+**Setup:**
+
+1. **Secret Code Selection:**
+   - Each player secretly selects a three-digit code composed of digits ranging from **1** to **5**.
+   - Digits may be repeated in the code (e.g., codes like `1-1-1` or `2-3-2` are valid).
+   - Players write down their secret code and keep it hidden from their opponent.
+
+2. **Determine Turn Order:**
+   - Decide who will take the first turn. This can be done via mutual agreement or a simple method like a coin toss.
+
+---
+
+**Game Components:**
+
+1. **Secret Codes:**
+   - Each player has a unique three-digit secret code that remains concealed until correctly guessed by the opponent.
+
+2. **Guess Log:**
+   - Players may keep a personal log of guesses and feedback to aid in tracking information and formulating future guesses.
+
+3. **Feedback Indicators:**
+   - **Hit:** Indicates a digit in the guess that matches a digit in the opponent's secret code **in the exact position**.
+   - **Miss:** Indicates a digit in the guess that matches a digit in the opponent's secret code but **in a different position**.
+
+---
+
+**Turns:**
+
+1. **Turn Structure:**
+   - Players alternate turns throughout the game.
+   - On each turn, the active player performs the following actions:
+     - **Make a Guess:** Propose a three-digit code as a guess for the opponent's secret code.
+     - **Receive Feedback:** The opponent provides feedback based on the guess.
+
+2. **Making a Guess:**
+   - The guess must be a valid three-digit code using digits from **1** to **5**.
+   - The guess is announced clearly to the opponent.
+
+3. **Providing Feedback:**
+   - The opponent analyzes the guess in relation to their secret code and provides feedback:
+     - Count the number of **Hits** and **Misses**.
+     - Do **not** reveal which specific digits are Hits or Misses.
+     - Feedback is communicated in terms of the total number of Hits and Misses.
+
+4. **Example Feedback:**
+   - "Your guess has **1 Hit** and **2 Misses**."
+
+5. **Ending a Turn:**
+   - After receiving feedback, the turn passes to the other player.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Valid Digits:**
+   - Only digits from **1** to **5** are used in codes and guesses.
+
+2. **Digit Positions:**
+   - Positions in the code are numbered from left to right as the first, second, and third digits.
+
+3. **Feedback Details:**
+   - **Hit:**
+     - A guessed digit matches a digit in the opponent's code **exactly in both digit and position**.
+   - **Miss:**
+     - A guessed digit matches a digit in the opponent's code but is **in a different position**.
+   - **No Match:**
+     - A guessed digit does not appear in the opponent's code at all.
+
+4. **Winning the Game:**
+   - A player wins immediately upon receiving feedback of **3 Hits**, meaning their guess exactly matches the opponent's secret code.
+
+5. **Tie Scenario:**
+   - If both players guess each other's codes correctly on the same turn, the player who took the **first turn** is declared the winner to avoid a draw.
+
+6. **Honesty and Integrity:**
+   - Players must provide accurate and truthful feedback.
+   - Once chosen, a secret code cannot be changed during the game.
+
+---
+
+**Scoring:**
+
+- *Code Breaker Duel* is a win-lose game without point tracking.
+- The player who first guesses the opponent's secret code wins the game.
+- For extended matches, players can keep track of the number of games won over multiple rounds.
+
+---
+
+**Examples:**
+
+**Sample Game Play:**
+
+*Assume Player 1 and Player 2 have selected their secret codes.*
+
+- **Player 1's Secret Code:** `2-3-4`
+- **Player 2's Secret Code:** `4-2-5`
+
+---
+
+**Turn 1:**
+
+- **Player 1's Guess:** `1-2-3`
+  - **Player 2's Feedback:** "0 Hits, 2 Misses."
+    - *Explanation:* Digits `2` and `3` are in Player 2's code but in different positions.
+
+- **Player 2's Guess:** `2-2-2`
+  - **Player 1's Feedback:** "1 Hit, 0 Misses."
+    - *Explanation:* One `2` is in the correct position.
+
+---
+
+**Turn 2:**
+
+- **Player 1's Guess:** `2-4-3`
+  - **Player 2's Feedback:** "0 Hits, 3 Misses."
+    - *Explanation:* All digits are in the code but in different positions.
+
+- **Player 2's Guess:** `2-4-5`
+  - **Player 1's Feedback:** "1 Hit, 1 Miss."
+    - *Explanation:* Digit `4` is a Hit; digit `2` is a Miss.
+
+---
+
+**Turn 3:**
+
+- **Player 1's Guess:** `4-2-3`
+  - **Player 2's Feedback:** "1 Hit, 2 Misses."
+    - *Explanation:* Digit `2` is a Hit; digits `4` and `3` are Misses.
+
+- **Player 2's Guess:** `4-2-5`
+  - **Player 1's Feedback:** "1 Hit, 1 Miss."
+    - *Explanation:* Same as previous feedback since the guess is the same.
+
+---
+
+**Turn 4:**
+
+- **Player 1's Guess:** `2-3-4`
+  - **Player 2's Feedback:** "3 Hits, 0 Misses."
+    - *Explanation:* Player 1 has correctly guessed Player 2's secret code.
+    - **Player 1 Wins!**
+
+---
+
+**Command-Line Interaction Example:**
+
+*Below is an example of how the game might proceed in a command-line interface.*
+
+**Game Start**
+
+```
+Welcome to Code Breaker Duel!
+
+Player 1 and Player 2, please select your secret codes (three digits from 1 to 5).
+
+[Secret codes are selected.]
+
+Player 1 will take the first turn.
+
+---
+
+Turn 1:
+
+Player 1's Guess: 1 2 3
+Player 2's Feedback: 0 Hits, 2 Misses
+
+Player 2's Guess: 3 2 1
+Player 1's Feedback: 0 Hits, 1 Miss
+
+---
+
+Turn 2:
+
+Player 1's Guess: 2 3 4
+Player 2's Feedback: 1 Hit, 2 Misses
+
+Player 2's Guess: 2 4 1
+Player 1's Feedback: 1 Hit, 0 Misses
+
+---
+
+Turn 3:
+
+Player 1's Guess: 2 4 3
+Player 2's Feedback: 0 Hits, 3 Misses
+
+Player 2's Guess: 2 5 1
+Player 1's Feedback: 1 Hit, 0 Misses
+
+---
+
+Turn 4:
+
+Player 1's Guess: 2 3 4
+Player 2's Feedback: 3 Hits, 0 Misses
+
+Congratulations, Player 1! You've guessed the secret code.
+
+Player 1 wins the game!
+```
+
+---
+
+**Strategy Tips:**
+
+- Keep track of all feedback to narrow down possible digits and positions.
+- Use process of elimination to determine which digits are Hits and which are Misses.
+- Pay attention to repeated digits and consider all possible positions for Misses.
+- Remember that a digit can appear more than once in the secret code.
+
+---
+
+Enjoy playing *Code Breaker Duel*, and may the best codebreaker win!

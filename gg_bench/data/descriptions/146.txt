@@ -1,0 +1,208 @@
+# Double or Add One: Game Rule Book
+
+## Objective
+
+**Double or Add One** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to reach **exactly 20** by manipulating a shared number starting from **1**. On each turn, a player can choose to either **double** the current number or **add one** to it. The player who reaches **20** on their turn wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with the shared number set to **1**.
+- **Players**: Two players are required. Decide who will take the first turn (e.g., coin toss or mutual agreement).
+
+## Game Components
+
+- **Shared Number**: An integer value that both players manipulate during the game.
+  - **Initial Value**: Starts at **1**.
+  - **Range**: Must always be a positive integer not exceeding **20**.
+- **Command-Line Interface**: Players input their choices via the command line.
+  - **Inputs**: Players will enter **1** to add one or **2** to double the current number.
+  - **Outputs**: The game displays the current number and prompts players for input.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Display Current Number**: The game shows the current shared number.
+  2. **Player's Choice**: The active player chooses an action:
+     - Enter **1** to **add one** to the current number.
+     - Enter **2** to **double** the current number.
+  3. **Invalid Moves**: If both actions result in a number exceeding **20**, the player loses their turn.
+  4. **Update**: The current number is updated based on the player's action.
+  5. **Check for Win**: If the current number is **exactly 20**, the active player wins.
+  6. **Next Turn**: If no one has won, the turn passes to the other player.
+
+## Rules and Mechanics
+
+- **Actions per Turn**: On their turn, players must choose one of the following:
+  - **Add One**:
+    - Increment the current number by **1**.
+  - **Double**:
+    - Multiply the current number by **2**.
+- **Number Limit**: The current number must **not exceed 20** after an action.
+  - If an action would cause the number to exceed **20**, that action is invalid.
+  - If both actions are invalid, the player loses their turn.
+- **Winning the Game**: The first player to reach **exactly 20** on their turn **wins**.
+- **Losing a Turn**:
+  - If a player cannot make a valid move, their turn is skipped.
+  - The other player then attempts to reach **20** on their turn.
+
+## Scoring
+
+- **Victory Condition**: Reach exactly **20** to win the game.
+- **No Points System**: The game does not use a points system; it's a win/loss outcome based on achieving the objective.
+
+## Examples
+
+### Example Game Play
+
+#### Turn 1
+
+- **Current Number**: 1
+- **Player 1's Turn**:
+  - Choices:
+    - **Add One** to make it **2**.
+    - **Double** to make it **2**.
+  - **Player 1 chooses to add one**.
+- **Updated Number**: 2
+
+#### Turn 2
+
+- **Current Number**: 2
+- **Player 2's Turn**:
+  - Choices:
+    - **Add One** to make it **3**.
+    - **Double** to make it **4**.
+  - **Player 2 chooses to double**.
+- **Updated Number**: 4
+
+#### Turn 3
+
+- **Current Number**: 4
+- **Player 1's Turn**:
+  - Choices:
+    - **Add One** to make it **5**.
+    - **Double** to make it **8**.
+  - **Player 1 chooses to double**.
+- **Updated Number**: 8
+
+#### Turn 4
+
+- **Current Number**: 8
+- **Player 2's Turn**:
+  - Choices:
+    - **Add One** to make it **9**.
+    - **Double** to make it **16**.
+  - **Player 2 chooses to double**.
+- **Updated Number**: 16
+
+#### Turn 5
+
+- **Current Number**: 16
+- **Player 1's Turn**:
+  - Choices:
+    - **Add One** to make it **17**.
+    - **Double** to make it **32** (invalid move).
+  - **Player 1 cannot double** (would exceed 20).
+  - **Player 1 chooses to add one**.
+- **Updated Number**: 17
+
+#### Turn 6
+
+- **Current Number**: 17
+- **Player 2's Turn**:
+  - Choices:
+    - **Add One** to make it **18**.
+    - **Double** to make it **34** (invalid move).
+  - **Player 2 cannot double** (would exceed 20).
+  - **Player 2 chooses to add one**.
+- **Updated Number**: 18
+
+#### Turn 7
+
+- **Current Number**: 18
+- **Player 1's Turn**:
+  - Choices:
+    - **Add One** to make it **19**.
+    - **Double** to make it **36** (invalid move).
+  - **Player 1 cannot double** (would exceed 20).
+  - **Player 1 chooses to add one**.
+- **Updated Number**: 19
+
+#### Turn 8
+
+- **Current Number**: 19
+- **Player 2's Turn**:
+  - Choices:
+    - **Add One** to make it **20**.
+    - **Double** to make it **38** (invalid move).
+  - **Player 2 cannot double** (would exceed 20).
+  - **Player 2 chooses to add one**.
+- **Updated Number**: 20
+- **Player 2 Wins!**
+
+### Sample Command-Line Interaction
+
+```
+Current number: 1
+Player 1's Turn
+Choose an action:
+1. Add one
+2. Double
+Enter your choice (1 or 2): 2
+You chose to double.
+New current number: 2
+
+Current number: 2
+Player 2's Turn
+Choose an action:
+1. Add one
+2. Double
+Enter your choice (1 or 2): 2
+You chose to double.
+New current number: 4
+
+Current number: 4
+Player 1's Turn
+Choose an action:
+1. Add one
+2. Double
+Enter your choice (1 or 2): 1
+You chose to add one.
+New current number: 5
+
+Current number: 5
+Player 2's Turn
+Choose an action:
+1. Add one
+2. Double
+Enter your choice (1 or 2): 2
+You chose to double.
+New current number: 10
+
+Current number: 10
+Player 1's Turn
+Choose an action:
+1. Add one
+2. Double
+Enter your choice (1 or 2): 2
+You chose to double.
+New current number: 20
+Player 1 wins by reaching 20!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the results of both your actions and your opponent's potential responses.
+- **Control the Game**: Try to force the game into states where your opponent has limited options.
+- **Avoid Giving Advantage**: Be cautious of moves that give your opponent a direct path to win on their next turn.
+- **Mathematical Patterns**: Recognize patterns in the numbers to make strategic decisions.
+
+## Game End
+
+- The game ends when a player reaches **exactly 20**.
+- If a player cannot make a valid move (both options exceed 20), they lose their turn, but the game continues until someone reaches 20.
+- **No Draws**: The game cannot end in a draw due to the structure of the gameplay.
+
+---
+
+Enjoy the challenge of **Double or Add One**, and may the most strategic player win!

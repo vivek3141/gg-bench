@@ -1,0 +1,195 @@
+# Light Cycle Duel
+
+## Objective
+
+**Light Cycle Duel** is a two-player, turn-based strategy game played on a grid. The primary goal is to be the last player able to make a valid move. Players maneuver their light cycles around the grid, leaving a trail of blocked spaces behind them. A player loses if they cannot move without colliding with a blocked space or the edge of the grid on their turn.
+
+## Setup
+
+- **Game Grid**: A square grid of size 5x5 cells.
+- **Starting Positions**:
+  - **Player 1** starts at the center cell of the leftmost column (row 3, column 1).
+  - **Player 2** starts at the center cell of the rightmost column (row 3, column 5).
+- All grid cells are initially empty except for the starting positions of the players.
+
+## Game Components
+
+- **Grid Cells**: Each cell on the grid can be in one of three states:
+  - **Empty (`.`)**: The cell is unoccupied and can be moved into.
+  - **Player Position (`1` or `2`)**: Indicates the current position of Player 1 or Player 2.
+  - **Blocked (`#`)**: Cells that have been left behind by players and cannot be moved into.
+- **Players**:
+  - **Player 1**: Represented by the number `1`.
+  - **Player 2**: Represented by the number `2`.
+- **Movement Directions**: Up, down, left, or right (no diagonal movements).
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- On each turn, a player performs the following actions:
+  1. **Move**: Move their light cycle one cell in an orthogonal direction (up, down, left, or right) into an empty cell.
+  2. **Block**: Upon leaving a cell, that cell becomes blocked (`#`).
+- Players cannot move into blocked cells (`#`), the opponent's current position (`1` or `2`), or off the grid.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A move is valid if the destination cell is empty (`.`) and within the bounds of the grid.
+2. **Blocking**:
+   - After a player moves, the cell they moved from becomes blocked (`#`).
+   - Blocked cells remain blocked for the remainder of the game.
+3. **Game End Condition**:
+   - A player loses if, on their turn, they have no valid moves available.
+4. **No Draws**:
+   - The game cannot end in a draw; play continues until one player cannot make a valid move.
+5. **Win Condition**:
+   - The last player able to make a valid move wins the game.
+
+## Scoring
+
+- **Victory**: The player who forces their opponent into a position where they cannot make a valid move wins.
+- **No Points System**: There is no point tracking; the outcome is simply win or loss.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid
+
+```
+. . . . .
+. . . . .
+1 . . . 2
+. . . . .
+. . . . .
+```
+
+- `1` is Player 1's starting position.
+- `2` is Player 2's starting position.
+- `.` represents empty cells.
+
+#### Turn-by-Turn Breakdown
+
+**Turn 1: Player 1**
+
+- **Action**: Moves right to cell (3,2).
+- **Movement**: `(3,1)` → `(3,2)`
+- **Blocking**: Cell `(3,1)` becomes blocked (`#`).
+- **Grid After Move**:
+
+  ```
+  . . . . .
+  . . . . .
+  # 1 . . 2
+  . . . . .
+  . . . . .
+  ```
+
+**Turn 2: Player 2**
+
+- **Action**: Moves left to cell (3,4).
+- **Movement**: `(3,5)` → `(3,4)`
+- **Blocking**: Cell `(3,5)` becomes blocked (`#`).
+- **Grid After Move**:
+
+  ```
+  . . . . .
+  . . . . .
+  # 1 . 2 #
+  . . . . .
+  . . . . .
+  ```
+
+**Turn 3: Player 1**
+
+- **Action**: Moves up to cell (2,2).
+- **Movement**: `(3,2)` → `(2,2)`
+- **Blocking**: Cell `(3,2)` becomes blocked (`#`).
+- **Grid After Move**:
+
+  ```
+  . . . . .
+  . 1 . . .
+  # # . 2 #
+  . . . . .
+  . . . . .
+  ```
+
+**Turn 4: Player 2**
+
+- **Action**: Moves down to cell (4,4).
+- **Movement**: `(3,4)` → `(4,4)`
+- **Blocking**: Cell `(3,4)` becomes blocked (`#`).
+- **Grid After Move**:
+
+  ```
+  . . . . .
+  . 1 . . .
+  # # . # #
+  . . . 2 .
+  . . . . .
+  ```
+
+**Turn 5: Player 1**
+
+- **Action**: Moves up to cell (1,2).
+- **Movement**: `(2,2)` → `(1,2)`
+- **Blocking**: Cell `(2,2)` becomes blocked (`#`).
+- **Grid After Move**:
+
+  ```
+  . 1 . . .
+  . # . . .
+  # # . # #
+  . . . 2 .
+  . . . . .
+  ```
+
+**...**
+
+*Play continues until one player cannot move.*
+
+### Command-Line Interaction Example
+
+**Notation**:
+
+- Grid positions are given in `(row,column)` format, with the top-left corner being `(1,1)`.
+
+**Sample Turn**:
+
+- **Prompt**: `Player 1's turn. Enter move direction (up/down/left/right):`
+- **Input**: `up`
+- **Validation**:
+  - Current position: `(3,2)`
+  - Desired move: `(2,2)`
+  - Is `(2,2)` empty and within bounds? Yes.
+- **Outcome**:
+  - Move executed.
+  - Cell `(3,2)` marked as blocked (`#`).
+  - Grid updated.
+
+## Game Flow Summary
+
+1. **Start Game**: Initialize grid and place players at starting positions.
+2. **Player Turns**:
+   - Prompt the current player for a move direction.
+   - Validate the move.
+     - If there are no valid moves, the player loses.
+   - Update the player's position.
+   - Block the previous cell.
+   - Display the updated grid.
+3. **Check for Game End**:
+   - If a player cannot make a valid move on their turn, the game ends.
+4. **Declare Winner**:
+   - Announce the winning player.
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and aim to limit their options.
+- **Control the Center**: Occupying central positions can give more movement choices.
+- **Create Barriers**: Use your blocked paths to restrict your opponent's movements.
+- **Avoid Corners Early**: Moving into corners reduces your escape routes.
+
+## Conclusion
+
+**Light Cycle Duel** offers strategic depth in a simple, easy-to-code, command-line game. With no possibility of a draw and quick gameplay, it challenges players to outmaneuver their opponent on a shrinking grid. Mastering movement and foresight is key to consistently securing victory.

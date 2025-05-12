@@ -1,0 +1,223 @@
+# **Mystic Numbers**
+
+## **Objective**
+
+Be the first player to reach the mystical number 21 exactly by strategically selecting and manipulating numbers from a shared pool. The player who achieves a total sum of exactly 21 wins the game. If a player exceeds a total sum of 21, they lose immediately. There is no draw mechanism, ensuring a decisive outcome each game. Skillful calculation and strategic planning will lead a player to victory over an unskilled opponent.
+
+## **Setup**
+
+1. **Number Pool Initialization**: Create a shared pool containing the numbers from 1 to 9, each appearing twice (for a total of 18 numbers). The numbers are randomly shuffled to form a draw pile.
+
+2. **Player Totals**: Each player starts with a total sum of 0.
+
+3. **Turn Order**: Decide which player goes first (e.g., by random selection or mutual agreement).
+
+## **Game Components**
+
+- **Number Pool (Draw Pile)**: A list containing numbers 1 through 9, each appearing twice, shuffled randomly.
+
+- **Player Totals**: An individual sum that each player maintains, starting at 0 and updated throughout the game.
+
+- **Mystical Number**: The target total sum of **21** that players aim to reach exactly.
+
+## **Turns**
+
+1. **Draw Phase**: On their turn, the player draws the top number from the shared draw pile.
+
+2. **Action Phase**: The player chooses one of the following actions:
+   - **Add** the drawn number to their total sum.
+   - **Subtract** the drawn number from their total sum.
+   - **Pass** the drawn number to the opponent, who **must** add it to their total sum on their next turn before drawing a new number.
+
+3. **End of Turn**: The turn ends after the player completes the Action Phase. The next player then takes their turn.
+
+## **Rules and Mechanics**
+
+- **Adding/Subtracting Numbers**:
+  - Players may add or subtract the drawn number to/from their total sum during their Action Phase.
+  - The total sum must always be between 0 and 21, inclusive. Negative totals are not allowed.
+
+- **Passing Numbers**:
+  - A player may choose to pass the drawn number to the opponent instead of adding or subtracting it.
+  - The opponent is **obligated** to add the passed number to their total sum at the **start** of their next turn before drawing a new number.
+  - A passed number cannot be passed back.
+
+- **Winning the Game**:
+  - A player wins if they reach a total sum of **exactly 21** on their turn.
+  - If a player's total sum exceeds 21 at any point (immediately after adding a number), they lose the game.
+  - If the draw pile is exhausted without any player reaching 21, the player with the total sum closest to 21 without exceeding it wins.
+
+- **Ending Conditions**:
+  - **Victory**: Achieving a total sum of exactly 21.
+  - **Defeat**: Exceeding a total sum of 21.
+  - **Exhausted Draw Pile**: If all numbers have been drawn, the player with the highest total sum not exceeding 21 wins.
+
+## **Scoring**
+
+- **Winning the Game**: The winner is declared based on the rules above. No ongoing scoring is needed beyond determining the winner of each game.
+
+- **Strategic Depth**: Players can develop strategies around when to pass challenging numbers to opponents or how to manipulate their total sums to approach 21 efficiently.
+
+## **Examples**
+
+### **Example Game Play**
+
+**Initial Setup**:
+- Draw Pile (example order): [3, 7, 1, 5, 2, 8, 9, 4, 6, 2, 5, 7, 1, 6, 8, 9, 4, 3]
+- Player 1 Total: 0
+- Player 2 Total: 0
+
+---
+
+**Turn 1: Player 1**
+- **Draws**: 3
+- **Action**: Adds 3 to their total.
+- **Player 1 Total**: 0 + 3 = **3**
+
+**Turn 2: Player 2**
+- **Draws**: 7
+- **Action**: Adds 7 to their total.
+- **Player 2 Total**: 0 + 7 = **7**
+
+---
+
+**Turn 3: Player 1**
+- **Draws**: 1
+- **Action**: Adds 1 to their total.
+- **Player 1 Total**: 3 + 1 = **4**
+
+**Turn 4: Player 2**
+- **Draws**: 5
+- **Action**: Passes 5 to Player 1.
+- **Player 2 Total**: Remains at **7**
+
+---
+
+**Turn 5: Player 1**
+- **Mandatory Addition**: Adds passed 5 to their total.
+- **Player 1 Total**: 4 + 5 = **9**
+- **Draws**: 2
+- **Action**: Adds 2 to their total.
+- **Player 1 Total**: 9 + 2 = **11**
+
+**Turn 6: Player 2**
+- **Draws**: 8
+- **Action**: Adds 8 to their total.
+- **Player 2 Total**: 7 + 8 = **15**
+
+---
+
+**Turn 7: Player 1**
+- **Draws**: 9
+- **Action**: Passes 9 to Player 2.
+- **Player 1 Total**: Remains at **11**
+
+**Turn 8: Player 2**
+- **Mandatory Addition**: Adds passed 9 to their total.
+- **Player 2 Total**: 15 + 9 = **24**
+- **Bust**: Player 2 exceeds 21 and loses the game.
+- **Winner**: Player 1
+
+### **Command-Line Interaction Sample**
+
+**Game Start**
+
+```
+Welcome to Mystic Numbers!
+Player 1 and Player 2, aim to reach exactly 21.
+
+Player 1's Turn:
+Current Total: 0
+You drew a 3.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 1
+You added 3 to your total.
+New Total: 3
+---
+
+Player 2's Turn:
+Current Total: 0
+You drew a 7.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 1
+You added 7 to your total.
+New Total: 7
+---
+
+Player 1's Turn:
+Current Total: 3
+You drew a 1.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 1
+You added 1 to your total.
+New Total: 4
+---
+
+Player 2's Turn:
+Current Total: 7
+You drew a 5.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 3
+You passed 5 to your opponent.
+---
+
+Player 1's Turn:
+Current Total: 4
+You must add the passed number: 5
+New Total: 9
+You drew a 2.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 1
+You added 2 to your total.
+New Total: 11
+---
+
+Player 2's Turn:
+Current Total: 7
+You drew an 8.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 1
+You added 8 to your total.
+New Total: 15
+---
+
+Player 1's Turn:
+Current Total: 11
+You drew a 9.
+Choose an action:
+1. Add
+2. Subtract
+3. Pass to Opponent
+Enter the number of your choice: 3
+You passed 9 to your opponent.
+---
+
+Player 2's Turn:
+Current Total: 15
+You must add the passed number: 9
+New Total: 24
+You have exceeded 21!
+Player 1 wins the game!
+```
+
+## **Conclusion**
+
+Mystic Numbers is a simple yet strategically rich game that is easy to implement in a command-line interface. With a clear objective and straightforward mechanics, players can focus on developing strategies to outsmart their opponent. The passing mechanic introduces depth, as players must decide when to burden their opponent with challenging numbers. The game ends quickly and decisively, with no possibility of a draw, ensuring an engaging and competitive experience every time.

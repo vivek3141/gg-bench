@@ -1,0 +1,196 @@
+**Divisor Duel: A Two-Player Command-Line Game**
+
+---
+
+### **Objective**
+
+Divisor Duel is a strategic two-player turn-based game where players take turns reducing a shared number by dividing it by one of its prime divisors. The primary goal is to be the player who reduces the shared number to exactly **1** on their turn. Victory is achieved by making strategic choices that leave your opponent with no valid moves, forcing them into a loss.
+
+---
+
+### **Setup**
+
+- **Starting Number**: The game begins with a shared positive integer, **N**. The recommended default starting number is **60** for a balanced game length, but players can agree on any suitable positive integer greater than 1.
+- **Player Positions**: Players decide who takes the first turn. This can be determined by a coin toss, mutual agreement, or any other method of choice.
+- **Game Interface**: The game is played in a command-line interface where players input their chosen prime divisors when prompted.
+
+---
+
+### **Game Components**
+
+- **Shared Number (N)**: This is the current number that players will manipulate throughout the game. It starts at the initial value agreed upon during setup.
+- **Prime Divisors**: These are the prime numbers that exactly divide the current shared number without leaving a remainder. Only prime divisors greater than 1 are valid.
+- **Player Inputs**: On their turn, each player inputs a valid prime divisor of the current shared number.
+
+---
+
+### **Turns**
+
+- **Turn Structure**:
+  - **Prime Divisor Selection**: The active player selects a prime number that is a divisor of the current shared number, **N**.
+  - **Number Reduction**: The shared number, **N**, is divided by the selected prime divisor. The result becomes the new value of **N**.
+- **Order of Play**: Players alternate turns, with the first player making the initial move.
+- **Valid Actions**: On their turn, players must perform the following:
+  - Identify all prime divisors of the current **N**.
+  - Choose any one of these prime divisors.
+  - Divide **N** by the chosen prime divisor to obtain the new **N**.
+- **Turn Progression**: The game continues with the new **N** passed to the next player for their turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - Players must select a prime divisor of the current shared number **N**.
+   - The prime divisor must be greater than 1 and exactly divide **N** without leaving a remainder.
+2. **Number Reduction**:
+   - On each turn, **N** is updated by dividing it by the chosen prime divisor:
+     \[
+     N_{\text{new}} = \frac{N_{\text{current}}}{\text{Prime Divisor}}
+     \]
+3. **Winning the Game**:
+   - The player who reduces **N** to exactly **1** on their turn wins the game.
+4. **Invalid Moves and Loss Conditions**:
+   - If a player cannot find a valid prime divisor greater than 1 (i.e., **N** is already **1** or **N** is a prime number and they cannot divide it further), they lose their turn, and the opponent wins the game.
+5. **Special Conditions**:
+   - **N** must always remain a positive integer greater than or equal to 1 throughout the game.
+   - Players cannot pass their turn; they must make a valid move if one is available.
+
+---
+
+### **Scoring**
+
+- **Victory**: The player who reduces the shared number **N** to exactly **1** on their turn wins the game.
+- **Loss**: A player loses if:
+  - They cannot perform a valid move on their turn (i.e., there are no prime divisors greater than 1 for the current **N**).
+  - They make an invalid input (select a number that is not a prime divisor of **N**).
+- **No Draws**: The game is designed to ensure there are no draws; a winner is determined by the gameplay.
+
+---
+
+### **Examples**
+
+#### **Example 1: Gameplay Overview**
+
+**Starting Number (N):** 60
+
+**Player 1 and Player 2 alternate turns.**
+
+1. **Player 1's Turn**
+   - **Current N:** 60
+   - **Prime Divisors of 60:** 2, 3, 5
+   - **Player 1 selects:** 5
+   - **Calculation:** \( N = 60 \div 5 = 12 \)
+   - **New N:** 12
+
+2. **Player 2's Turn**
+   - **Current N:** 12
+   - **Prime Divisors of 12:** 2, 3
+   - **Player 2 selects:** 2
+   - **Calculation:** \( N = 12 \div 2 = 6 \)
+   - **New N:** 6
+
+3. **Player 1's Turn**
+   - **Current N:** 6
+   - **Prime Divisors of 6:** 2, 3
+   - **Player 1 selects:** 3
+   - **Calculation:** \( N = 6 \div 3 = 2 \)
+   - **New N:** 2
+
+4. **Player 2's Turn**
+   - **Current N:** 2
+   - **Prime Divisors of 2:** 2
+   - **Player 2 selects:** 2
+   - **Calculation:** \( N = 2 \div 2 = 1 \)
+   - **New N:** 1
+
+**Result:** Player 2 reduces **N** to 1 and wins the game.
+
+---
+
+#### **Example 2: Command-Line Interaction**
+
+**Starting Number (N):** 45
+
+**Player 1 goes first.**
+
+**Game Start**
+
+---
+
+**Player 1's Turn**
+
+- **Current N:** 45
+- **Prime Divisors of 45:** 3, 5
+- **Command-Line Prompt:**
+  ```
+  Player 1, enter a prime divisor of 45: 
+  ```
+- **Player 1 enters:** `5`
+- **Calculation:** \( N = 45 \div 5 = 9 \)
+- **Output:**
+  ```
+  You selected 5. The new N is 9.
+  ```
+
+---
+
+**Player 2's Turn**
+
+- **Current N:** 9
+- **Prime Divisors of 9:** 3
+- **Command-Line Prompt:**
+  ```
+  Player 2, enter a prime divisor of 9: 
+  ```
+- **Player 2 enters:** `3`
+- **Calculation:** \( N = 9 \div 3 = 3 \)
+- **Output:**
+  ```
+  You selected 3. The new N is 3.
+  ```
+
+---
+
+**Player 1's Turn**
+
+- **Current N:** 3
+- **Prime Divisors of 3:** 3
+- **Command-Line Prompt:**
+  ```
+  Player 1, enter a prime divisor of 3: 
+  ```
+- **Player 1 enters:** `3`
+- **Calculation:** \( N = 3 \div 3 = 1 \)
+- **Output:**
+  ```
+  You selected 3. The new N is 1.
+  ```
+- **Result:**
+  ```
+  Player 1 has reduced N to 1 and wins the game!
+  ```
+
+---
+
+### **Strategies and Tips**
+
+- **Plan Ahead**: Anticipate future moves by considering how your choice will affect the remaining prime divisors for your opponent.
+- **Prime Awareness**: Familiarize yourself with prime numbers and their factors to make quick and valid decisions.
+- **Forced Moves**: Try to force your opponent into a position where the only available moves benefit you or limit their options.
+- **Avoid Reducing N to a Prime on Opponent's Turn**: If possible, avoid leaving the shared number as a prime greater than 1 on your opponent's turn, as it gives them an immediate win.
+
+---
+
+### **Game Flow Summary**
+
+1. **Initialize** the shared number **N**.
+2. **Player 1** starts the game by selecting a valid prime divisor of **N**.
+3. **Update** **N** by dividing it by the selected prime divisor.
+4. **Alternate Turns**: Players continue to take turns following the same process.
+5. **Win Condition**: The player who reduces **N** to exactly **1** on their turn wins the game.
+6. **Loss Condition**: If a player cannot make a valid move when **N** is greater than **1**, they lose the game.
+
+---
+
+**Enjoy playing Divisor Duel, and may the most strategic player win!**

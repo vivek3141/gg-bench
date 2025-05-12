@@ -1,0 +1,166 @@
+# Number Duel
+
+## Objective
+
+The objective of **Number Duel** is to eliminate all of your opponent's numbers by strategically challenging them with your own numbers. Use careful planning and anticipation to outmaneuver your opponent and be the last player with remaining numbers.
+
+## Setup
+
+1. **Players**: Two players are required.
+2. **Number Sets**: Each player receives a set of numbers from **1** to **5**.
+3. **Starting Hand**: Players keep their numbers hidden from the opponent.
+
+## Game Components
+
+- **Number Tokens**: Each player has five number tokens representing the numbers **1**, **2**, **3**, **4**, and **5**.
+  - **Appearance**: Tokens can simply be represented by their numerical value in the command-line interface.
+  - **Functionality**: Each number token represents a "unit" with a strength equal to its numerical value.
+  - **Unique Attributes**:
+    - **Uniqueness**: Each number can be used only once during the game.
+    - **Hidden Information**: Players keep their remaining numbers hidden from the opponent.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Selection Phase**: The attacking player selects one of their remaining numbers to use in the attack.
+  2. **Targeting Phase**: The attacking player chooses one of the opponent's numbers to attack.
+  3. **Reveal Phase**: Both players reveal their chosen numbers.
+  4. **Resolution Phase**: Determine the outcome based on the revealed numbers.
+- **Order of Play**: Players alternate turns, with one player designated to go first at the start of the game.
+- **Actions During a Turn**: On their turn, the attacking player performs the actions listed in the turn structure.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Attacking**:
+   - The attacking player selects one of their own numbers to challenge one of the opponent's numbers.
+   - The opponent does not know which number the attacker has chosen until the Reveal Phase.
+2. **Defending**:
+   - The defending player does not select a number; they simply reveal the targeted number during the Reveal Phase.
+3. **Outcome**:
+   - **Higher Number Wins**: The number with the higher value wins the encounter.
+     - The player controlling the lower number removes it from the game.
+   - **Tie**:
+     - If both numbers are equal, **both numbers are eliminated** from the game.
+4. **Elimination**:
+   - Eliminated numbers are removed from the player's remaining numbers and cannot be used again.
+5. **Number Usage**:
+   - Each number can only be used **once** per game.
+   - Once a number has been used in an attack or has been eliminated, it cannot be reused.
+6. **Hidden Information**:
+   - Players keep track of their own remaining numbers privately.
+   - Players do not know which numbers the opponent has remaining, except through deduction based on previous moves.
+
+### Winning the Game
+
+- **Victory Condition**: A player wins the game when their opponent has no numbers remaining.
+- **Game End**: The game ends immediately when the victory condition is met.
+
+## Scoring
+
+- **Winning**: The winner is the player who successfully eliminates all of their opponent's numbers.
+- **No Point System**: There is no point scoring—victory is determined solely by eliminating the opponent's numbers.
+
+## Examples
+
+### Sample Game Play
+
+**Starting the Game**
+
+- **Player 1's Numbers**: 1, 2, 3, 4, 5
+- **Player 2's Numbers**: 1, 2, 3, 4, 5
+
+**Turn 1**
+
+- **Player 1's Turn**:
+  - **Selection**: Chooses number **3** to attack.
+  - **Targeting**: Targets Player 2's number in position 2.
+  - **Reveal**:
+    - Player 1 reveals **3**.
+    - Player 2 reveals **(number in position 2)**, let's say **4**.
+  - **Resolution**:
+    - Player 2's **4** defeats Player 1's **3**.
+    - Player 1 removes **3** from their remaining numbers.
+  
+**Turn 2**
+
+- **Player 2's Turn**:
+  - **Selection**: Chooses number **2** to attack.
+  - **Targeting**: Targets Player 1's number in position 5.
+  - **Reveal**:
+    - Player 2 reveals **2**.
+    - Player 1 reveals **5**.
+  - **Resolution**:
+    - Player 1's **5** defeats Player 2's **2**.
+    - Player 2 removes **2** from their remaining numbers.
+
+**Turn 3**
+
+- **Player 1's Turn**:
+  - **Selection**: Chooses number **5** to attack.
+  - **Targeting**: Targets Player 2's number in position 4.
+  - **Reveal**:
+    - Player 1 reveals **5**.
+    - Player 2 reveals **1**.
+  - **Resolution**:
+    - Player 1's **5** defeats Player 2's **1**.
+    - Player 2 removes **1** from their remaining numbers.
+
+**Remaining Numbers**
+
+- **Player 1**: 1, 2, 4, **(used: 3, 5)**
+- **Player 2**: 3, 4, 5, **(used: 1, 2)**
+
+**Game Continues**
+
+- The players continue taking turns, following the same structure, until one player has all their numbers eliminated.
+
+**Ending the Game**
+
+- Suppose the game proceeds and Player 1 eliminates all of Player 2's numbers.
+- **Player 1 Wins**: Player 2 has no numbers remaining.
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**
+
+```
+Your Remaining Numbers: 1, 2, 4
+Select a number to attack with: 2
+Select the position of the opponent's number to attack (positions 1-3): 1
+```
+
+**Player 2's Response**
+
+```
+Opponent has attacked your position 1.
+Reveal your number at position 1: 3
+```
+
+**Resolution**
+
+```
+Player 1 attacks with 2.
+Player 2 defends with 3.
+Player 2's 3 defeats Player 1's 2.
+Player 1 removes 2 from the game.
+```
+
+**Game State Update**
+
+```
+Player 1's Remaining Numbers: 1, 4
+Player 2's Remaining Numbers: 3, 4, 5
+```
+
+## Strategy Tips
+
+- **Predict Opponent's Moves**: Try to anticipate which numbers your opponent might use next based on the numbers they've already played.
+- **Number Management**: Save your higher numbers for when you think the opponent might use their high numbers.
+- **Bluffing**: Use lower numbers to bait out your opponent's higher numbers.
+- **Tracking**: Keep track of which numbers your opponent has used to better predict their remaining options.
+
+## Conclusion
+
+**Number Duel** is a game of strategy, prediction, and psychological warfare. By carefully choosing when to use your strongest numbers and anticipating your opponent's moves, you can outsmart them and emerge victorious. Enjoy the duel!

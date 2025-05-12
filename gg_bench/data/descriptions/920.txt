@@ -1,0 +1,231 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to force your opponent to reduce the current number to **1**, thereby winning the game. Players achieve victory by strategically selecting divisors and anticipating their opponent's moves.
+
+---
+
+## Setup
+
+- **Starting Number (N):** The game begins with a positive integer. By default, **N = 100**, but players can agree on a different starting number for variation.
+
+---
+
+## Game Components
+
+- **Current Number (N):** The central element of the game, which changes as players take turns.
+- **Proper Divisors:** Whole numbers greater than **1** and less than **N** that divide **N** without a remainder.
+  
+  - **Example:** Proper divisors of **100** are **2, 4, 5, 10, 20, 25, 50**.
+
+- **Operations:**
+  - **Division by a Proper Divisor**
+  - **Subtraction of 1**
+
+---
+
+## Turns
+
+- **Turn Order:**
+  - Players alternate turns.
+  - **Player 1** starts the game.
+
+- **Turn Structure:**
+  1. **Assess the Current Number (N):** Determine if **N** has any proper divisors.
+  2. **Choose an Action:**
+     - **If N has proper divisors:** Divide **N** by one of its proper divisors.
+     - **If N is prime or no proper divisors exist:** Subtract **1** from **N**.
+
+- **Update N:** The result becomes the new current number for the next player's turn.
+
+---
+
+## Rules and Mechanics
+
+### 1. Dividing the Current Number
+
+- **Conditions:**
+  - **N** must have proper divisors other than **1** and itself.
+  - The chosen divisor must divide **N** exactly (no remainders).
+  - The result after division must be an integer greater than **1**.
+  
+- **Process:**
+  - Select a proper divisor of **N**.
+  - Divide **N** by the chosen divisor.
+  - The quotient becomes the new **N**.
+
+- **Example:**
+  - If **N = 100**, possible divisors are **2, 4, 5, 10, 20, 25, 50**.
+  - Choosing **5**, **N** becomes \( \frac{100}{5} = 20 \).
+
+### 2. Subtracting One When Prime
+
+- **Conditions:**
+  - **N** is a prime number greater than **2**.
+  - No proper divisors other than **1** and **N** exist.
+  
+- **Process:**
+  - Subtract **1** from **N**.
+  - The result becomes the new **N**.
+
+- **Example:**
+  - If **N = 7** (a prime number), subtract **1** to get **N = 6**.
+
+### 3. Endgame with Number 2
+
+- **Condition:**
+  - When **N = 2**.
+
+- **Process:**
+  - The next player must subtract **1** from **N**, resulting in **N = 1**.
+  - The player who reduces **N** to **1** loses the game.
+
+### 4. Winning the Game
+
+- The **winner** is the player who forces their opponent to reduce **N** to **1** on their turn.
+- The game cannot end in a draw.
+
+---
+
+## Scoring
+
+- **Victory:** Achieved by strategic play that forces the opponent into a position where they must reduce **N** to **1**.
+- **Tracking Progress:**
+  - Keep a log of the current number **N** after each turn.
+  - Note the actions taken (division or subtraction).
+
+---
+
+## Example Game
+
+### Starting Number: N = 100
+
+#### Turn 1
+- **Player 1's Turn**
+  - **N = 100**
+  - Proper divisors: **2, 4, 5, 10, 20, 25, 50**
+  - **Action:** Divide by **2**.
+  - **Calculation:** \( 100 \div 2 = 50 \)
+  - **New N:** **50**
+
+#### Turn 2
+- **Player 2's Turn**
+  - **N = 50**
+  - Proper divisors: **2, 5, 10, 25**
+  - **Action:** Divide by **5**.
+  - **Calculation:** \( 50 \div 5 = 10 \)
+  - **New N:** **10**
+
+#### Turn 3
+- **Player 1's Turn**
+  - **N = 10**
+  - Proper divisors: **2, 5**
+  - **Action:** Divide by **2**.
+  - **Calculation:** \( 10 \div 2 = 5 \)
+  - **New N:** **5**
+
+#### Turn 4
+- **Player 2's Turn**
+  - **N = 5** (prime number)
+  - No proper divisors other than **1** and **5**.
+  - **Action:** Subtract **1**.
+  - **Calculation:** \( 5 - 1 = 4 \)
+  - **New N:** **4**
+
+#### Turn 5
+- **Player 1's Turn**
+  - **N = 4**
+  - Proper divisors: **2**
+  - **Action:** Divide by **2**.
+  - **Calculation:** \( 4 \div 2 = 2 \)
+  - **New N:** **2**
+
+#### Turn 6
+- **Player 2's Turn**
+  - **N = 2** (prime number)
+  - No proper divisors other than **1** and **2**.
+  - **Action:** Subtract **1**.
+  - **Calculation:** \( 2 - 1 = 1 \)
+  - **New N:** **1**
+- **Outcome:** Player 2 reduces **N** to **1** and **loses**.
+- **Winner:** **Player 1**
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Anticipate the results of your move on future turns. Avoid leaving a prime number for your opponent when possible.
+- **Divisor Selection:** Choose divisors that will leave your opponent with fewer options.
+- **Force Primes:** Strategically reduce **N** to a prime number on your opponent's turn, forcing them to subtract and edge closer to **1**.
+- **Avoid Reducing to 2 on Your Turn:** If you reduce **N** to **2**, your opponent must subtract **1** and will lose, so aim to set up this scenario.
+
+---
+
+## Command-Line Interaction Example
+
+**Game Start:**
+```
+Starting Number (N): 100
+Player 1's Turn
+Current N: 100
+Proper Divisors: 2, 4, 5, 10, 20, 25, 50
+Choose a divisor to divide N: 2
+New N after division: 50
+```
+
+**Player 2's Turn:**
+```
+Current N: 50
+Proper Divisors: 2, 5, 10, 25
+Choose a divisor to divide N: 5
+New N after division: 10
+```
+
+**Player 1's Turn:**
+```
+Current N: 10
+Proper Divisors: 2, 5
+Choose a divisor to divide N: 2
+New N after division: 5
+```
+
+**Player 2's Turn (Prime Number):**
+```
+Current N: 5
+No proper divisors. N is prime.
+Subtracting 1 from N.
+New N: 4
+```
+
+**Player 1's Turn:**
+```
+Current N: 4
+Proper Divisors: 2
+Choose a divisor to divide N: 2
+New N after division: 2
+```
+
+**Player 2's Turn (Prime Number):**
+```
+Current N: 2
+No proper divisors. N is prime.
+Subtracting 1 from N.
+New N: 1
+```
+
+**Game Over:**
+```
+Player 2 has reduced N to 1 and loses.
+Winner: Player 1
+```
+
+---
+
+## Conclusion
+
+**Divisor Duel** is a simple yet strategic game that combines mathematical thinking with tactical planning. It is easy to code for a command-line interface and ensures that a skilled player can consistently outperform an unskilled opponent. The clear rules and turn-based structure make it an engaging game that ends quickly and cannot result in a draw.
+
+---
+
+Enjoy challenging your friends and honing your strategic skills with **Divisor Duel**!

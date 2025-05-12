@@ -1,0 +1,11 @@
+The action space indices range from 0 to 544, mapping game actions as follows:
+
+1. **Action Indices 0 to 524: Placement + Optional Shift**
+   - **Placement Cell Index**: Dividing the action index by 21 gives the placement cell index (0 to 24), representing where the marker is placed on the grid.
+   - **Shift Option Index**: The remainder when dividing the action index by 21 is the shift option index (0 to 20), indicating optional shifts.
+     - **0**: No shift.
+     - **1 to 10**: Row shifts; `(index-1)//2` selects the row (0 to 4), with even indices shifting left and odd indices shifting right.
+     - **11 to 20**: Column shifts; `(index-11)//2` selects the column (0 to 4), with even indices shifting up and odd indices shifting down.
+
+2. **Action Indices 525 to 544: Shift-Only (Grid Full)**
+   - When the grid is full, indices 525 to 544 map directly to shift option indices 1 to 20 for row and column shifts as described above.

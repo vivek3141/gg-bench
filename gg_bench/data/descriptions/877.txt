@@ -1,0 +1,237 @@
+# Divisible Duel: Rule Book
+
+Welcome to **Divisible Duel**, a strategic two-player turn-based game designed for play in a command-line interface. Sharpen your numerical skills and outwit your opponent in a race to create a number divisible by a target value without falling into forbidden traps.
+
+---
+
+## Objective
+
+The primary goal of **Divisible Duel** is to be the first player to create a shared number that is **divisible by the target number** (which is **7** by default). Players take turns appending digits to the end of a growing number, carefully avoiding making the number divisible by any forbidden numbers. The player who successfully makes the number divisible by the target number **wins the game**. Conversely, if a player cannot make a valid move on their turn, they **lose the game**.
+
+---
+
+## Setup
+
+1. **Initial Number**: The game starts with a shared number initialized to **0**.
+2. **Target Number**: The target divisor is set to **7**.
+3. **Forbidden Numbers**: The forbidden divisors are **2**, **3**, and **5**.
+4. **Digit Pool**: Digits from **1** to **9** are available for both players to use throughout the game.
+5. **Starting Player**: Determine who goes first (Player 1) by mutual agreement or random selection.
+
+---
+
+## Game Components
+
+- **Shared Number**: A number that both players build upon during the game. It starts at `0` and grows as digits are appended.
+  
+- **Digit Pool (1-9)**: The digits that players can choose from on their turn to append to the shared number.
+
+- **Target Number (7)**: The number that players aim to make the shared number divisible by to win the game.
+
+- **Forbidden Numbers (2, 3, 5)**: Numbers by which the shared number must **not** be divisible after a player appends a digit.
+
+- **Player Indicators**: Simply labeled as **Player 1** and **Player 2**.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+
+- **Turn Actions**:
+  1. **Select a Digit**: Choose a digit from `1` to `9`.
+  2. **Append the Digit**: Add the selected digit to the right end of the shared number.
+  3. **Validate the Move**:
+     - Ensure that the new shared number is **not divisible** by any of the forbidden numbers (`2`, `3`, or `5`).
+     - Check if the new shared number is **divisible by the target number** (`7`).
+  4. **End Turn**: If the game hasn't ended, the turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Appending Digits**:
+   - On each turn, a player must append **one digit** (`1`-`9`) to the shared number.
+   - Digits can be reused; there are no limits on how many times a digit can be used in the game.
+
+2. **Forbidden Divisibility**:
+   - After appending a digit, the new shared number **must not** be divisible by **`2`**, **`3`**, or **`5`**.
+   - If appending any digit would cause the shared number to be divisible by a forbidden number, the player **loses** the game.
+
+3. **Winning Condition**:
+   - If after appending a digit, the shared number is **divisible by the target number** (`7`) **without** being divisible by any forbidden numbers, the player **wins** the game.
+
+4. **No Valid Move**:
+   - If a player has **no valid digit** to append (all choices result in a number divisible by a forbidden number), they **lose** the game.
+
+### Special Mechanics
+
+- **Shared Knowledge**: Both players can see the current shared number and must plan their moves accordingly.
+
+- **Strategic Play**: Players must anticipate future moves, considering how their appended digit affects the next player's options.
+
+- **No Draws**: The game cannot end in a draw; a win or loss will occur based on the rules above.
+
+---
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who first creates a shared number divisible by the **target number** (`7`) without violating the forbidden divisibility rules.
+
+- **Losing the Game**:
+  - A player loses if they cannot make a valid move on their turn.
+  - A player loses if they violate the forbidden divisibility rules after appending a digit.
+
+- **No Point System**: There are no points to track; the game outcome is determined solely by the win/loss condition.
+
+---
+
+## Examples
+
+Below are example scenarios and command-line interactions to illustrate how the game is played.
+
+### Example Game
+
+#### Initial State
+
+- **Shared Number**: `0`
+- **Player 1's Turn**
+
+#### Turn 1: Player 1
+
+1. **Selects Digit**: `1`
+2. **Appends Digit**: Shared number becomes `1`.
+3. **Validation**:
+   - `1` is not divisible by `2`, `3`, or `5`.
+   - `1` is not divisible by `7`.
+4. **Turn Ends**: Valid move. Turn passes to Player 2.
+
+#### Turn 2: Player 2
+
+1. **Selects Digit**: `4`
+2. **Appends Digit**: Shared number becomes `14`.
+3. **Validation**:
+   - `14` is divisible by `7`.
+   - `14` is divisible by `2` (forbidden).
+4. **Result**: Move invalid. Player 2 **loses** the game.
+
+#### Game Outcome
+
+- **Winner**: Player 1
+- **Reason**: Player 2 created a number divisible by a forbidden number (`2`).
+
+### Additional Scenario
+
+#### Continuing from Turn 1
+
+Assuming Player 1's move resulted in a shared number of `1`.
+
+#### Turn 2: Player 2
+
+1. **Selects Digit**: `3`
+2. **Appends Digit**: Shared number becomes `13`.
+3. **Validation**:
+   - `13` is not divisible by `2`, `3`, or `5`.
+   - `13` is not divisible by `7`.
+4. **Turn Ends**: Valid move. Turn passes to Player 1.
+
+#### Turn 3: Player 1
+
+1. **Selects Digit**: `9`
+2. **Appends Digit**: Shared number becomes `139`.
+3. **Validation**:
+   - `139` is not divisible by `2`, `3`, or `5`.
+   - `139` is not divisible by `7`.
+4. **Turn Ends**: Valid move. Turn passes to Player 2.
+
+#### Turn 4: Player 2
+
+1. **Selects Digit**: `7`
+2. **Appends Digit**: Shared number becomes `1397`.
+3. **Validation**:
+   - `1397` is not divisible by `2`, `3`, or `5`.
+   - `1397` divided by `7` equals `199.571428...` (not a whole number).
+4. **Turn Ends**: Valid move. Turn passes to Player 1.
+
+#### Turn 5: Player 1
+
+1. **Selects Digit**: `0` (invalid choice since digits `1`-`9` only)
+   - **Note**: Digits must be between `1` and `9`. Player 1 must select a valid digit.
+
+2. **Selects Digit**: `1`
+3. **Appends Digit**: Shared number becomes `13971`.
+4. **Validation**:
+   - `13971` is divisible by `3` (forbidden).
+5. **Result**: Move invalid. Player 1 **loses** the game.
+
+#### Game Outcome
+
+- **Winner**: Player 2
+- **Reason**: Player 1 created a number divisible by a forbidden number (`3`).
+
+---
+
+## Command-Line Interaction Example
+
+Here's how players might interact with the game in a command-line interface.
+
+```plaintext
+Game Start!
+Target Number: 7
+Forbidden Numbers: 2, 3, 5
+
+Current Number: 0
+Player 1's turn.
+Choose a digit to append (1-9): 1
+
+New Number: 1
+Valid move.
+---
+Current Number: 1
+Player 2's turn.
+Choose a digit to append (1-9): 3
+
+New Number: 13
+Valid move.
+---
+Current Number: 13
+Player 1's turn.
+Choose a digit to append (1-9): 9
+
+New Number: 139
+Valid move.
+---
+Current Number: 139
+Player 2's turn.
+Choose a digit to append (1-9): 7
+
+New Number: 1397
+Valid move.
+---
+Current Number: 1397
+Player 1's turn.
+Choose a digit to append (1-9): 1
+
+New Number: 13971
+Oops! 13971 is divisible by 3 (forbidden number).
+Player 1 loses.
+Player 2 wins!
+```
+
+---
+
+## Strategies and Tips
+
+- **Avoid Forbidden Traps**: Before selecting a digit, calculate whether the new number will be divisible by `2`, `3`, or `5`.
+
+- **Plan Ahead**: Consider how your move will limit or expand your opponent's options on their next turn.
+
+- **Target Divisibility**: Keep track of how close the current number is to being divisible by the target number (`7`). Use this to your advantage.
+
+- **Digit Selection**: Sometimes, selecting a less obvious digit can create a difficult situation for your opponent.
+
+---
+
+Enjoy the challenge of **Divisible Duel**, and may the most strategic player win!

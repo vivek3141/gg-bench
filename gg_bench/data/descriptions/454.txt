@@ -1,0 +1,155 @@
+# Pass the Bomb
+
+## Objective
+
+**Pass the Bomb** is a two-player, turn-based strategy game played in a command-line interface. Players take turns adding numbers to a shared total. The primary goal is **to avoid causing the shared total to become a multiple of 13**. If a player's move results in the total being exactly divisible by 13, the "bomb" explodes, and that player loses the game. The game is designed to be quick, strategic, and allows skilled players to consistently beat unskilled players.
+
+---
+
+## Setup
+
+- **Shared Total**: Initialize the shared total to **0**.
+- **Players**: Decide who will be **Player 1** and **Player 2**. Player 1 takes the first turn.
+
+---
+
+## Game Components
+
+- **Shared Total**: A cumulative sum that starts at 0 and increases as players add numbers.
+- **Available Numbers**: On each turn, players may choose to add any integer from **1 to 5** inclusive.
+- **Bomb Condition**: The shared total being a multiple of 13 (i.e., total modulo 13 equals 0).
+
+---
+
+## Turns
+
+- Players alternate turns starting with **Player 1**.
+- On each turn:
+  - The player selects a number between **1 and 5**.
+  - The chosen number is added to the shared total.
+  - The new total is announced.
+
+---
+
+## Rules and Mechanics
+
+1. **Choosing Numbers**:
+   - On your turn, select an integer between **1 and 5** (inclusive).
+   - Only whole numbers within this range are allowed.
+
+2. **Updating the Total**:
+   - Add your chosen number to the shared total.
+   - Announce the new shared total.
+
+3. **Bomb Explosion**:
+   - If the new shared total is a **multiple of 13**, the bomb explodes.
+   - The player who causes the total to be divisible by 13 **loses the game**.
+
+4. **Victory Condition**:
+   - The opponent of the player who causes the bomb to explode **wins the game**.
+   - There are no draws; the game continues until one player loses.
+
+5. **Strategy**:
+   - Plan ahead to avoid totals that give your opponent a chance to force you into losing.
+   - Use mathematical reasoning to control the flow of the game.
+
+---
+
+## Scoring
+
+- No point system is used.
+- The game is won by the player who **does not cause** the bomb to explode.
+- Keep track of wins over multiple rounds if desired.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Shared Total: **0**
+- Player 1 and Player 2 decide who goes first (let's say **Player 1**).
+
+---
+
+**Turn 1**: *Player 1*
+
+- Chooses to add **4**.
+- Shared Total: **0 + 4 = 4**
+- Announces: "*I choose 4. The total is now 4.*"
+
+---
+
+**Turn 2**: *Player 2*
+
+- Chooses to add **3**.
+- Shared Total: **4 + 3 = 7**
+- Announces: "*I choose 3. The total is now 7.*"
+
+---
+
+**Turn 3**: *Player 1*
+
+- Chooses to add **5**.
+- Shared Total: **7 + 5 = 12**
+- Announces: "*I choose 5. The total is now 12.*"
+
+---
+
+**Turn 4**: *Player 2*
+
+- Chooses to add **1**.
+- Shared Total: **12 + 1 = 13**
+- Since **13** is a multiple of 13, the bomb explodes.
+- *Player 2* loses the game.
+- Announces: "*I choose 1. The total is now 13. Oh no, I lose!*"
+
+---
+
+**Result**:
+
+- **Player 1** wins the game.
+
+---
+
+### Strategic Note
+
+- In the example above, Player 2 could have avoided losing by not letting the total reach 12 on their turn, or by recognizing that adding 1 would lead to 13.
+
+---
+
+## Command-Line Interaction Sample
+
+**Player 1's Turn**:
+
+```plaintext
+Player 1, the current total is 0. Choose a number between 1 and 5 to add:
+> 4
+Player 1 adds 4. New total is 4.
+```
+
+---
+
+**Player 2's Turn**:
+
+```plaintext
+Player 2, the current total is 4. Choose a number between 1 and 5 to add:
+> 3
+Player 2 adds 3. New total is 7.
+```
+
+---
+
+**Continues until a player causes the total to be a multiple of 13 and loses.**
+
+---
+
+## Summary
+
+**Pass the Bomb** is a simple yet strategic game that can be easily coded and played in a command-line interface. With straightforward rules and quick gameplay, it challenges players to think ahead and plan their moves carefully. The absence of a draw mechanism ensures a clear winner in each game, and the strategic depth allows skilled players to consistently outperform unskilled opponents.
+
+---
+
+*Enjoy playing Pass the Bomb, and may the best strategist win!*

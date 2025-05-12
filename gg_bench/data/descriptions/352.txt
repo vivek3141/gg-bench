@@ -1,0 +1,242 @@
+# Tower Defense Duel: Rule Book
+
+## Objective
+
+Be the first player to build your tower to **exactly 15 units tall**. Employ strategic decisions to either **build up your own tower** or **dismantle your opponent's tower** to reach the objective. Overshooting the height will result in a loss, so plan your moves carefully.
+
+---
+
+## Setup
+
+- **Players**: Two players are required.
+- **Starting Conditions**:
+  - Both players begin with a tower height of **0 units**.
+  - Each player has access to an unlimited supply of tower units.
+  
+---
+
+## Game Components
+
+- **Tower Units**: Represented numerically, these are the building blocks of each player's tower.
+  - **Appearance**: In a command-line interface, the tower's height is displayed as a number.
+  - **Functionality**: Units can be added to increase your tower's height or removed to decrease your opponent's tower height.
+- **Player Towers**: Each player has their own tower.
+  - Tracked separately, displaying each player's current tower height.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns. Decide who goes first by mutual agreement or a random method.
+- **Actions Per Turn**:
+  - On your turn, you must choose **one** of the following actions:
+    1. **Build**: Add units to your own tower.
+    2. **Attack**: Remove units from your opponent's tower.
+- **Turn Progression**:
+  - After performing your action, the turn passes to the other player.
+  
+---
+
+## Rules and Mechanics
+
+### Building Rules
+
+- **Adding Units**:
+  - You may choose to add **1**, **2**, or **4** units to your own tower.
+- **Tower Height Limit**:
+  - If your tower exceeds a height of **15 units** as a result of adding units, you **lose** the game immediately.
+  - Plan your additions to reach **exactly 15 units**.
+
+### Attacking Rules
+
+- **Removing Units**:
+  - You may choose to remove **3 units** from your opponent's tower.
+- **Conditions for Attacking**:
+  - You can only remove units if your opponent's tower has **3 or more units**.
+  - If the opponent's tower has less than 3 units, you **cannot** perform an attack and must choose to build instead.
+  
+### General Rules
+
+- **No Skipping Turns**: You must perform an action each turn; skipping is not allowed.
+- **Winning the Game**:
+  - **Victory Condition**: Be the first to reach a tower height of **exactly 15 units**.
+  - **Losing Conditions**:
+    - If your tower exceeds **15 units**, you **immediately lose**.
+    - If your opponent reaches **exactly 15 units** first, you lose.
+- **Tie Situation**: There are no tie conditions; the game continues until one player wins according to the rules.
+
+---
+
+## Scoring
+
+- **Tower Height Tracking**:
+  - Each player's tower height is tracked and displayed after every turn.
+- **No Points System**:
+  - The game does not use a points system; victory is achieved by meeting the objective.
+  
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+#### Initial State
+
+- **Player 1 Tower Height**: 0 units
+- **Player 2 Tower Height**: 0 units
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Builds by adding **4 units**.
+- **Player 1 Tower Height**: 0 + 4 = **4 units**
+- **Command Input**: `build 4`
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Builds by adding **4 units**.
+- **Player 2 Tower Height**: 0 + 4 = **4 units**
+- **Command Input**: `build 4`
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Builds by adding **4 units**.
+- **Player 1 Tower Height**: 4 + 4 = **8 units**
+- **Command Input**: `build 4`
+
+---
+
+#### Turn 4: Player 2
+
+- **Action**: Attacks Player 1.
+- **Condition Check**: Player 1's tower has **8 units** (≥3 units), attack allowed.
+- **Effect**: Removes **3 units** from Player 1's tower.
+- **Player 1 Tower Height**: 8 - 3 = **5 units**
+- **Command Input**: `attack`
+
+---
+
+#### Turn 5: Player 1
+
+- **Action**: Builds by adding **2 units**.
+- **Player 1 Tower Height**: 5 + 2 = **7 units**
+- **Command Input**: `build 2`
+
+---
+
+#### Turn 6: Player 2
+
+- **Action**: Builds by adding **4 units**.
+- **Player 2 Tower Height**: 4 + 4 = **8 units**
+- **Command Input**: `build 4`
+
+---
+
+#### Turn 7: Player 1
+
+- **Action**: Attacks Player 2.
+- **Condition Check**: Player 2's tower has **8 units** (≥3 units), attack allowed.
+- **Effect**: Removes **3 units** from Player 2's tower.
+- **Player 2 Tower Height**: 8 - 3 = **5 units**
+- **Command Input**: `attack`
+
+---
+
+#### Turn 8: Player 2
+
+- **Action**: Builds by adding **2 units**.
+- **Player 2 Tower Height**: 5 + 2 = **7 units**
+- **Command Input**: `build 2`
+
+---
+
+#### Turn 9: Player 1
+
+- **Action**: Builds by adding **4 units**.
+- **Player 1 Tower Height**: 7 + 4 = **11 units**
+- **Command Input**: `build 4`
+
+---
+
+#### Turn 10: Player 2
+
+- **Action**: Builds by adding **4 units**.
+- **Player 2 Tower Height**: 7 + 4 = **11 units**
+- **Command Input**: `build 4`
+
+---
+
+#### Turn 11: Player 1
+
+- **Action**: Builds by adding **4 units**.
+- **Player 1 Tower Height**: 11 + 4 = **15 units**
+- **Command Input**: `build 4`
+- **Result**: Player 1's tower is now exactly **15 units** tall.
+
+---
+
+### Conclusion
+
+- **Winner**: Player 1
+- **Winning Condition**: First to reach exactly **15 units** in tower height.
+
+---
+
+## Command-Line Interaction
+
+### Commands
+
+- **To Build**: `build <units>`
+  - `<units>` can be **1**, **2**, or **4**.
+  - Example: `build 2`
+- **To Attack**: `attack`
+  - No additional parameters.
+  - Example: `attack`
+
+### Sample Turn Input and Output
+
+#### Player Input
+
+```plaintext
+Player 1, it's your turn.
+Your tower height: 5
+Opponent's tower height: 8
+Enter your move: build 4
+```
+
+#### Game Output
+
+```plaintext
+Player 1 builds 4 units.
+Your tower height is now 9.
+```
+
+---
+
+## Strategic Tips
+
+- **Balancing Act**: Decide between building your tower and hindering your opponent.
+- **Prevent Overshooting**:
+  - Keep track of your current height to avoid exceeding 15 units.
+  - Plan ahead to reach exactly 15 units.
+- **Attacking Wisely**:
+  - Attack when your opponent is close to 15 units to set them back.
+  - Remember that attacking uses your turn; assess if building is more advantageous.
+- **Predict Opponent Moves**:
+  - Anticipate your opponent's actions based on their tower height.
+  - Use attacks to disrupt their progress at critical moments.
+
+---
+
+## Summary
+
+**Tower Defense Duel** is a strategic two-player game that challenges you to outmaneuver your opponent through tactical building and timely attacks. With simple rules and quick gameplay, it offers depth and complexity suitable for both casual and competitive play in a command-line interface.
+
+---
+
+**Enjoy the game and may the best strategist win!**

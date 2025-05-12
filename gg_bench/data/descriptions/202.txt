@@ -1,0 +1,284 @@
+# GridLock: A Two-Player Strategy Game
+
+## Objective
+
+GridLock is a two-player, turn-based strategy game played on a 5x5 grid. The primary goal is to be the last player able to legally place a marker on the grid following the placement rules. A player wins by strategically placing markers to block their opponent until the opponent has no legal moves left.
+
+## Setup
+
+- **Grid**: A 5x5 empty grid is displayed at the start of the game. Each cell in the grid is identified by its row and column numbers ranging from 1 to 5.
+  
+- **Players**:
+  - **Player 1**: Uses the marker **'X'**.
+  - **Player 2**: Uses the marker **'O'**.
+
+- **Initial State**: The grid is empty, and no markers are placed. Player 1 makes the first move.
+
+## Game Components
+
+- **Grid Cells**: Each cell can be in one of three states:
+  - **Empty**: No marker placed.
+  - **'X'**: Occupied by Player 1's marker.
+  - **'O'**: Occupied by Player 2's marker.
+
+- **Markers**: Symbols representing each player's moves.
+  - **'X'**: Represents Player 1's marker.
+  - **'O'**: Represents Player 2's marker.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+
+- **Turn Structure**:
+  1. **Display Grid**: The current state of the grid is displayed.
+  2. **Player's Move**: The active player selects an empty cell to place their marker, adhering to the placement rules.
+  3. **Validation**: The game checks if the chosen cell is a legal move.
+     - If legal, the marker is placed, and the turn ends.
+     - If illegal, the player is prompted to choose a different cell.
+  4. **Check for Legal Moves**: After a marker is placed, the game checks if the next player has any legal moves remaining.
+     - If the next player has legal moves, the game continues.
+     - If not, the active player wins the game.
+
+## Rules and Mechanics
+
+### Placement Rules
+
+1. **First Move**:
+   - Player 1 can place their marker on any empty cell.
+
+2. **Subsequent Moves**:
+   - A player cannot place their marker in any cell that shares the same **row**, **column**, or **diagonal** with any of the opponent's markers already on the grid.
+   - Cells that are invalid due to these restrictions are considered **blocked**.
+
+3. **Valid Moves**:
+   - A player must choose from the remaining unblocked and empty cells.
+   - If a player has no valid moves on their turn, they lose the game.
+
+### Diagonals Definition
+
+- **Primary Diagonal**: Cells where the row and column numbers are equal (e.g., (1,1), (2,2), ..., (5,5)).
+- **Secondary Diagonal**: Cells where the sum of the row and column numbers is equal to 6 (e.g., (1,5), (2,4), ..., (5,1)).
+
+### Winning the Game
+
+- **Victory Condition**: A player wins if their opponent has no legal moves remaining on their turn.
+
+- **No Draws**: There are no draw conditions in GridLock; the game continues until one player wins.
+
+## Scoring
+
+- **Single Game Win**: The winning player is the one who forces their opponent into a position with no legal moves.
+
+- **Match Play (Optional)**:
+  - Players can agree to play multiple rounds.
+  - Keep track of wins per player.
+  - The player with the most wins after an agreed number of rounds is the overall winner.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Empty Grid**:
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+**Player 1's Turn**:
+
+- **Action**: Player 1 places an 'X' at cell (3,3).
+- **Grid**:
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+- **Blocked Cells for Player 2**:
+  - **Row 3**: Cells (3,1), (3,2), (3,4), (3,5)
+  - **Column 3**: Cells (1,3), (2,3), (4,3), (5,3)
+  - **Diagonals**:
+    - Primary Diagonal: Cells (1,1), (2,2), (4,4), (5,5)
+    - Secondary Diagonal: Cells (1,5), (2,4), (4,2), (5,1)
+
+**Player 2's Turn**:
+
+- **Available Cells**: All cells except the blocked ones.
+- **Action**: Player 2 places an 'O' at cell (1,2).
+- **Grid**:
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   | O |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+- **Blocked Cells for Player 1** (in addition to previous blocks):
+  - **Row 1**: Cells (1,1), (1,3), (1,4), (1,5)
+  - **Column 2**: Cells (2,2), (3,2), (4,2), (5,2)
+  - **Diagonals**:
+    - Cells (2,3), (3,4), (4,5) [These are now blocked because they share the secondary diagonal with cell (1,2)]
+
+**Player 1's Turn**:
+
+- **Available Cells**: Remaining unblocked and empty cells.
+- **Action**: Player 1 places an 'X' at cell (5,2).
+- **Grid**:
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   | O |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   | X |   |   |   |
+  +---+---+---+---+---+
+```
+
+- **Blocked Cells for Player 2** (additional blocks due to new 'X' at (5,2)):
+  - **Row 5**: Cells (5,1), (5,3), (5,4), (5,5)
+  - **Column 2**: Already blocked.
+  - **Diagonals**:
+    - Cells (4,1), (3,0) [Out of bounds, ignore], (6,3) [Out of bounds, ignore]
+
+**Player 2's Turn**:
+
+- **Available Cells**: Must choose from remaining unblocked and empty cells.
+- **Action**: Player 2 places an 'O' at cell (4,5).
+- **Grid**:
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   | O |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   | O |
+  +---+---+---+---+---+
+5 |   | X |   |   |   |
+  +---+---+---+---+---+
+```
+
+- **Blocked Cells for Player 1** (additional blocks due to new 'O' at (4,5)):
+  - **Row 4**: Cells (4,1), (4,2), (4,3), (4,4)
+  - **Column 5**: Cells (1,5), (2,5), (3,5), (5,5)
+  - **Diagonals**:
+    - Cells (3,4), (2,3), (1,2) [Already occupied], (5,6) [Out of bounds, ignore]
+
+**Player 1's Turn**:
+
+- **Available Cells**: Remaining unblocked and empty cells.
+- **Action**: Player 1 finds that there are no legal moves left.
+- **Result**: Player 2 wins the game.
+
+## Command-Line Interaction Example
+
+**Start of the Game**
+
+```
+Welcome to GridLock!
+
+Player 1 ('X'), it's your turn.
+Current Grid:
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+
+Enter the row and column to place your 'X' (e.g., 3 3): **3 3**
+
+Player 1 placed an 'X' at (3,3).
+```
+
+**Player 2's Turn**
+
+```
+Player 2 ('O'), it's your turn.
+Current Grid:
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+
+Blocked cells:
+- Rows: 3
+- Columns: 3
+- Diagonals: primary and secondary
+
+Enter the row and column to place your 'O': **1 2**
+
+Player 2 placed an 'O' at (1,2).
+```
+
+**Continuing the Game**
+
+- The game continues with each player taking turns, following the same interaction pattern.
+- The program keeps track of blocked cells and informs the players if they attempt to make an illegal move.
+- Once a player has no legal moves, the game announces the winner.
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider how your move will impact your opponent's options.
+- **Control the Center**: Placing markers toward the center can block more cells due to the increased number of shared rows, columns, and diagonals.
+- **Force Moves**: Try to force your opponent into areas of the grid where they have fewer options.
+- **Avoid Isolation**: Be cautious of leaving large areas open for your opponent while limiting your own future moves.
+
+## Conclusion
+
+GridLock is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With straightforward rules and an easy command-line interface, it's quick to learn and play, offering depth and replayability for both casual and competitive players.
+
+Enjoy the game and may the best strategist win!

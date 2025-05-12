@@ -1,0 +1,241 @@
+# Odd and Even Duel
+
+## Objective
+
+Become the last player able to make a valid move by strategically removing numbers from a shared list, forcing your opponent into a position where they cannot make a valid move on their turn.
+
+---
+
+## Setup
+
+- **Number List**: A shared list of consecutive integers from **1** to **20**.
+- At the start of the game, all numbers from **1** to **20** are available for selection.
+
+---
+
+## Game Components
+
+- **Number List**: Contains numbers **1** through **20**.
+- **Removed Numbers**: As the game progresses, numbers selected by players are removed from this list.
+  
+---
+
+## Turns
+
+- Players decide who takes the first turn (e.g., coin toss, mutual agreement).
+- Players alternate turns throughout the game.
+- On each turn, a player must:
+
+  1. **Select and remove one number** from the number list following the game rules.
+  2. Announce the number removed and its parity (odd or even).
+  3. Indicate the parity requirement for the next player.
+
+---
+
+## Rules and Mechanics
+
+### Number Removal
+
+- On your turn, **remove one number** from the number list.
+- The **number must adhere to the parity requirement** based on the previous player's move.
+
+### Parity Rule
+
+- **If the number you remove is _even_**, the **next player must remove an _odd_** number on their turn.
+- **If the number you remove is _odd_**, the **next player must remove an _even_** number on their turn.
+
+### Valid Moves
+
+- A move is **valid** if there are still numbers of the required parity (odd or even) available in the number list.
+- **If you cannot make a valid move** because there are no numbers of the required parity left, **you lose the game**.
+
+### Restrictions
+
+- **Once a number is removed**, it **cannot be selected again**.
+- Players **must adhere** to the parity requirement; selecting a number of the incorrect parity is **not allowed**.
+
+---
+
+## Scoring
+
+- There is **no point system**.
+- **Victory Condition**: You win if your opponent cannot make a valid move on their turn.
+- The game ends immediately when a player cannot make a valid move.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Number List
+
+```
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+#### Turn 1
+
+- **Player 1** removes **4** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+  
+#### Turn 2
+
+- **Player 2** removes **9** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+  
+#### Turn 3
+
+- **Player 1** removes **2** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 4
+
+- **Player 2** removes **15** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 5
+
+- **Player 1** removes **6** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 6
+
+- **Player 2** removes **11** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 7
+
+- **Player 1** removes **8** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 8
+
+- **Player 2** checks the remaining numbers for an **odd** number.
+- Remaining odd numbers: **1**, **3**, **5**, **7**, **13**, **17**, **19**.
+- **Player 2** removes **13** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 9
+
+- **Player 1** removes **10** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 10
+
+- **Player 2** removes **1** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 11
+
+- **Player 1** removes **12** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 12
+
+- **Player 2** removes **17** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 13
+
+- **Player 1** removes **14** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 14
+
+- **Player 2** removes **19** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 15
+
+- **Player 1** removes **16** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 16
+
+- **Player 2** checks the remaining numbers for an **odd** number.
+- Remaining odd numbers: **3**, **5**, **7**.
+- **Player 2** removes **5** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 17
+
+- **Player 1** removes **18** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 18
+
+- **Player 2** removes **3** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 19
+
+- **Player 1** removes **20** _(even)_.
+- **Parity Requirement**: Next player must remove an **odd** number.
+
+#### Turn 20
+
+- **Player 2** checks the remaining numbers for an **odd** number.
+- Remaining odd number: **7**.
+- **Player 2** removes **7** _(odd)_.
+- **Parity Requirement**: Next player must remove an **even** number.
+
+#### Turn 21
+
+- **Player 1** checks the remaining numbers for an **even** number.
+- Remaining numbers: **None**.
+- **Player 1** cannot make a valid move.
+- **Player 2 wins the game!**
+
+---
+
+## Command-Line Interaction Example
+
+```
+Game Start! Available numbers: 1 to 20
+
+Player 1's turn.
+Available numbers: [1, 2, 3, ..., 20]
+Select a number to remove:
+> 4
+You removed 4 (Even).
+Next player must remove an ODD number.
+
+Player 2's turn.
+Available numbers: [1, 2, 3, 5, 6, ..., 20]
+Select an ODD number to remove:
+> 9
+You removed 9 (Odd).
+Next player must remove an EVEN number.
+
+...
+
+Player 2's turn.
+Available numbers: [7]
+Select an ODD number to remove:
+> 7
+You removed 7 (Odd).
+Next player must remove an EVEN number.
+
+Player 1's turn.
+Available numbers: []
+No EVEN numbers remaining. You cannot make a valid move.
+Player 2 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Monitor Parity Balance**: Keep track of how many odd and even numbers remain to anticipate future parity requirements.
+- **Control the Game Flow**: Strategically choose numbers to force your opponent into a corner where they have no valid moves.
+- **Parity Switching**: Be mindful of when to switch the parity requirement to limit your opponent's options.
+- **Delay Tactics**: If one parity has fewer numbers left, try to avoid triggering that requirement until it benefits you.
+
+---
+
+## Conclusion
+
+"Odd and Even Duel" is a game of strategy and foresight. By carefully choosing which numbers to remove and manipulating the parity requirement, players can outmaneuver their opponents. The simplicity of the rules makes it easy to learn and code in a command-line interface, while the depth of strategy provides an engaging challenge that ensures skilled players can consistently secure victory.
+
+Enjoy the duel!

@@ -1,0 +1,296 @@
+**Parity Game Rule Book**
+
+---
+
+### **Objective**
+
+The Parity Game is a two-player turn-based game where players strategically select numbers from a shared pool. The primary goal is to avoid being the player who picks the last remaining number. Players must consider the parity (odd or even nature) of the numbers they select to influence their opponent's options. The player forced to pick the last number loses the game.
+
+---
+
+### **Setup**
+
+- **Number Pool:** A list of consecutive integers from **1 to 15**.
+- Display the initial pool of numbers to both players in the command-line interface.
+- Decide which player goes first (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+
+---
+
+### **Game Components**
+
+- **Number Pool:** The central component of the game is the shared pool of numbers from **1 to 15**. Each number is available for selection at the start of the game.
+- **Player Positions:** Two players (Player 1 and Player 2) alternate turns throughout the game.
+- **Command-Line Interface:** Players interact with the game by entering commands to select numbers.
+
+---
+
+### **Turns**
+
+- The game is played in turns, starting with **Player 1**.
+- During a turn, a player performs the following actions:
+  1. **Select a Number:** Choose an available number from the number pool.
+  2. **Update Pool:** The selected number is removed from the pool and is no longer available.
+  3. **Parity Declaration:** The parity (odd or even) of the selected number dictates the parity that the opponent must choose on their next turn.
+- Players continue to alternate turns until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection:**
+   - On their turn, a player selects any available number from the number pool.
+   - The number must be present in the current pool of numbers.
+
+2. **Parity Influence:**
+   - The parity (odd or even) of the number selected by a player determines the required parity for the opponent's next selection:
+     - **If an odd number is selected:** The opponent must select an **odd** number on their next turn.
+     - **If an even number is selected:** The opponent must select an **even** number on their next turn.
+
+3. **Parity Availability:**
+   - **If the required parity is not available** (no numbers of the required parity remain in the pool), the opponent may select **any** available number on their turn.
+
+4. **Number Removal:**
+   - Once a number is selected, it is removed from the pool and cannot be selected again.
+
+5. **Game End:**
+   - The game continues until only one number remains in the pool.
+   - **The player who is forced to pick the last remaining number loses the game.**
+
+---
+
+### **Scoring**
+
+- The Parity Game does not involve point scoring. It is a win-or-lose game.
+- The player who avoids picking the last number is declared the **winner**.
+- The player who picks the last remaining number is the **loser**.
+
+---
+
+### **Example Gameplay**
+
+Below is an example scenario illustrating how the game is played:
+
+**Initial Number Pool:**
+```
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+```
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Action:** Picks **5** (odd number).
+- **Pool Update:** Number **5** is removed.
+- **Parity Declaration:** Player 2 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+  ```
+
+#### **Turn 2: Player 2**
+
+- **Action:** Picks **11** (odd number).
+- **Pool Update:** Number **11** is removed.
+- **Parity Declaration:** Player 1 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15
+  ```
+
+#### **Turn 3: Player 1**
+
+- **Action:** Picks **1** (odd number).
+- **Pool Update:** Number **1** is removed.
+- **Parity Declaration:** Player 2 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15
+  ```
+
+#### **Turn 4: Player 2**
+
+- **Action:** Picks **3** (odd number).
+- **Pool Update:** Number **3** is removed.
+- **Parity Declaration:** Player 1 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  2, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15
+  ```
+
+#### **Turn 5: Player 1**
+
+- **Action:** Picks **7** (odd number).
+- **Pool Update:** Number **7** is removed.
+- **Parity Declaration:** Player 2 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  2, 4, 6, 8, 9, 10, 12, 13, 14, 15
+  ```
+
+#### **Turn 6: Player 2**
+
+- **Action:** Picks **9** (odd number).
+- **Pool Update:** Number **9** is removed.
+- **Parity Declaration:** Player 1 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  2, 4, 6, 8, 10, 12, 13, 14, 15
+  ```
+
+#### **Turn 7: Player 1**
+
+- **Action:** Picks **13** (odd number).
+- **Pool Update:** Number **13** is removed.
+- **Parity Declaration:** Player 2 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  2, 4, 6, 8, 10, 12, 14, 15
+  ```
+
+#### **Turn 8: Player 2**
+
+- **Action:** Picks **15** (odd number).
+- **Pool Update:** Number **15** is removed.
+- **Parity Declaration:** Player 1 must pick an **odd** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  2, 4, 6, 8, 10, 12, 14
+  ```
+
+#### **Turn 9: Player 1**
+
+- **Parity Availability Check:** No odd numbers remain in the pool.
+- **Action:** Since there are no odd numbers, Player 1 can pick any number. Picks **2** (even number).
+- **Pool Update:** Number **2** is removed.
+- **Parity Declaration:** Player 2 must pick an **even** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  4, 6, 8, 10, 12, 14
+  ```
+
+#### **Turn 10: Player 2**
+
+- **Action:** Picks **4** (even number).
+- **Pool Update:** Number **4** is removed.
+- **Parity Declaration:** Player 1 must pick an **even** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  6, 8, 10, 12, 14
+  ```
+
+#### **Turn 11: Player 1**
+
+- **Action:** Picks **6** (even number).
+- **Pool Update:** Number **6** is removed.
+- **Parity Declaration:** Player 2 must pick an **even** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  8, 10, 12, 14
+  ```
+
+#### **Turn 12: Player 2**
+
+- **Action:** Picks **8** (even number).
+- **Pool Update:** Number **8** is removed.
+- **Parity Declaration:** Player 1 must pick an **even** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  10, 12, 14
+  ```
+
+#### **Turn 13: Player 1**
+
+- **Action:** Picks **10** (even number).
+- **Pool Update:** Number **10** is removed.
+- **Parity Declaration:** Player 2 must pick an **even** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  12, 14
+  ```
+
+#### **Turn 14: Player 2**
+
+- **Action:** Picks **12** (even number).
+- **Pool Update:** Number **12** is removed.
+- **Parity Declaration:** Player 1 must pick an **even** number on their next turn.
+- **Remaining Numbers:**
+  ```
+  14
+  ```
+
+#### **Turn 15: Player 1**
+
+- **Action:** Picks **14** (even number).
+- **Pool Update:** Number **14** is removed.
+- **Remaining Numbers:**
+  ```
+  (none)
+  ```
+
+---
+
+### **Game Conclusion**
+
+- **Last Number Picked:** Player 1 picked the last number (**14**).
+- **Result:** Player 1 loses the game.
+- **Winner:** Player 2 is declared the winner.
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is an example of how the game might proceed in a command-line interface:
+
+```
+Welcome to the Parity Game!
+
+Initial Numbers: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+
+Player 1's turn.
+Available numbers: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+Please select a number: 5
+
+You picked 5 (odd).
+Player 2 must pick an odd number on their next turn.
+
+Player 2's turn.
+Available numbers: 1 2 3 4 6 7 8 9 10 11 12 13 14 15
+Required parity: odd
+Please select a number: 11
+
+You picked 11 (odd).
+Player 1 must pick an odd number on their next turn.
+
+...
+
+[Continues in the same pattern until the game ends]
+
+...
+
+Player 1's turn.
+Available numbers: 14
+Please select a number: 14
+
+You picked 14 (even).
+No numbers remain.
+You picked the last number and lose the game.
+Congratulations, Player 2! You win!
+```
+
+---
+
+### **Strategic Considerations**
+
+- **Parity Control:** Players can strategize to control the parity required for their opponent, potentially limiting their options.
+- **Parity Availability Awareness:** Keep track of the remaining odd and even numbers to plan moves that may force the opponent into a losing position.
+- **Endgame Planning:** Anticipate the endgame by calculating ahead to avoid being the player who must pick the last number.
+
+---
+
+### **Conclusion**
+
+The Parity Game combines simple rules with strategic depth, offering players the opportunity to outmaneuver their opponent through careful planning and foresight. Its straightforward mechanics make it easy to code and play in a command-line interface, ensuring quick and decisive games where skilled players can consistently demonstrate their mastery.
+
+---
+
+Enjoy the game and may the best strategist win!

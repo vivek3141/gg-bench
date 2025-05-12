@@ -1,0 +1,233 @@
+# **Game Rule Book: "Sequence Duel"**
+
+## **Objective**
+
+Be the first player to create a sequence of numbers whose sum is exactly **15** by strategically selecting numbers from a shared pool. The player who achieves this goal first wins the game. If neither player reaches an exact sum of 15, the player with the sum closest to 15 without exceeding it wins.
+
+---
+
+## **Setup**
+
+1. **Shared Number Pool**: A communal list of numbers from **1** to **9**.
+2. **Player Sequences**: Each player starts with an empty sequence to which they will add numbers during the game.
+3. **First Player**: Decide who goes first (e.g., coin toss, mutual agreement).
+
+---
+
+## **Game Components**
+
+- **Numbers (1-9)**: Single-digit positive integers available for selection.
+  - **Appearance**: Simply represented as their numerical value (e.g., `1`, `2`, ..., `9`).
+  - **Functionality**: Once a number is selected by a player, it is removed from the shared pool and added to the player's sequence.
+  - **Unique Attributes**: Each number can be selected only once during the game.
+
+---
+
+## **Turns**
+
+1. **Turn Order**: Players alternate turns starting with the first player determined during setup.
+2. **Actions per Turn**:
+   - **Select Number**: Choose any remaining number from the shared pool.
+   - **Update Sequence**: Add the selected number to your sequence.
+   - **Feedback**: Announce the selected number and your current sequence sum.
+3. **Progression**: The game continues with players alternating turns until a win condition is met or all numbers are exhausted.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Number Selection**:
+   - On your turn, you must select **one** number from the shared pool.
+   - You cannot skip a turn or pass; a selection is mandatory if numbers remain.
+2. **Sequence Building**:
+   - Add the selected number to your personal sequence.
+   - Keep track of the **sum** of your sequence.
+3. **Winning the Game**:
+   - **Exact Sum Victory**: The first player whose sequence sums to exactly **15** wins immediately.
+   - **Closest Sum Victory**: If no player reaches an exact sum of 15 and all numbers are exhausted, the player with the highest sum **not exceeding** 15 wins.
+4. **Tie-Breaker**:
+   - If both players have the same sum not exceeding 15, the player with **fewer numbers** in their sequence wins.
+   - If still tied, the game proceeds to a sudden death round with any unused numbers (if available), or ends in a victory for the second player (since the first player had the advantage of the first move, the second player wins the tie).
+5. **Invalid Moves**:
+   - Selecting a number not in the shared pool is not allowed.
+   - If a player cannot make a valid move (no numbers remain), their turn is skipped.
+
+---
+
+## **Scoring**
+
+- **Primary Goal**: Achieve a sequence sum of exactly **15**.
+- **Secondary Goal**: If exact sum isn't possible, aim for the highest sum below 15.
+- **Tracking**: Players should keep a visible record of their sequences and current sums after each turn.
+
+---
+
+## **Examples**
+
+### **Sample Game Play**
+
+**Initial Shared Pool**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+---
+
+**Turn 1**
+
+- **Player 1**:
+  - **Selects**: `8`
+  - **Sequence**: `[8]`
+  - **Sum**: `8`
+  - **Announces**: "I pick 8. My current sum is 8."
+
+---
+
+**Turn 2**
+
+- **Player 2**:
+  - **Selects**: `7`
+  - **Sequence**: `[7]`
+  - **Sum**: `7`
+  - **Announces**: "I pick 7. My current sum is 7."
+
+---
+
+**Turn 3**
+
+- **Player 1**:
+  - **Selects**: `2`
+  - **Sequence**: `[8, 2]`
+  - **Sum**: `10`
+  - **Announces**: "I pick 2. My current sum is 10."
+
+---
+
+**Turn 4**
+
+- **Player 2**:
+  - **Selects**: `8` *(Invalid Move)*
+
+  - **Correction**: Number `8` is no longer in the shared pool.
+  - **Selects**: `9`
+  - **Sequence**: `[7, 9]`
+  - **Sum**: `16`
+  - **Announces**: "I pick 9. My current sum is 16."
+
+  - **Note**: Player 2 has exceeded 15 and cannot win unless Player 1 also exceeds 15.
+
+---
+
+**Turn 5**
+
+- **Player 1**:
+  - **Selects**: `5`
+  - **Sequence**: `[8, 2, 5]`
+  - **Sum**: `15`
+  - **Announces**: "I pick 5. My current sum is 15."
+  - **Result**: Player 1 wins by reaching an exact sum of 15.
+
+---
+
+### **Alternate Ending**
+
+If neither player reaches a sum of 15:
+
+**Final Sequences**:
+
+- **Player 1**: `[8, 2, 1]` (Sum: 11)
+- **Player 2**: `[7, 3, 4]` (Sum: 14)
+
+**Outcome**:
+
+- **Winner**: Player 2, having the highest sum not exceeding 15.
+
+---
+
+## **Command-Line Interaction Example**
+
+Assuming inputs are entered when prompted.
+
+---
+
+**Game Start**
+
+```
+Welcome to Sequence Duel!
+Player 1 and Player 2, get ready.
+Shared Pool: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Enter the number you wish to select: 6
+You have selected 6.
+Your Sequence: [6] | Sum: 6
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Available Numbers: [1, 2, 3, 4, 5, 7, 8, 9]
+Enter the number you wish to select: 9
+You have selected 9.
+Your Sequence: [9] | Sum: 9
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available Numbers: [1, 2, 3, 4, 5, 7, 8]
+Enter the number you wish to select: 8
+You have selected 8.
+Your Sequence: [6, 8] | Sum: 14
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, it's your turn.
+Available Numbers: [1, 2, 3, 4, 5, 7]
+Enter the number you wish to select: 5
+You have selected 5.
+Your Sequence: [9, 5] | Sum: 14
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, it's your turn.
+Available Numbers: [1, 2, 3, 4, 7]
+Enter the number you wish to select: 1
+You have selected 1.
+Your Sequence: [6, 8, 1] | Sum: 15
+Congratulations! You have reached a sum of 15.
+Player 1 wins the game!
+```
+
+---
+
+## **Strategic Tips**
+
+- **Aim for Combinations**: Plan ahead to select numbers that can combine to 15.
+- **Block Opponent**: Observe the numbers your opponent selects and anticipate their potential to reach 15.
+- **Balance Risk**: Be cautious not to exceed a sum of 15, as this limits your chances of winning.
+- **Number Availability**: Be aware of which numbers remain in the shared pool to adjust your strategy accordingly.
+
+---
+
+## **Conclusion**
+
+"Sequence Duel" is a game of strategy, planning, and anticipation. Each decision can bring you closer to victory or open an opportunity for your opponent. Stay sharp, calculate your moves, and may the best strategist win!

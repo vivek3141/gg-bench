@@ -1,0 +1,180 @@
+# Bid and Build: A Strategic Two-Player Game
+
+## Objective
+
+Bid and Build is a strategic bidding game where two players compete to construct a tower of blocks. The primary goal is to be the first player to build a tower consisting of **five blocks**. Players must wisely manage their limited resources (points) and anticipate their opponent's moves to achieve victory. A player wins by constructing their fifth block before their opponent does or by outlasting their opponent when they deplete their points.
+
+## Setup
+
+- Each player starts with **10 points**.
+- Both players have their own virtual "tower" with zero blocks at the start.
+- A coin toss or mutual agreement determines which player takes the first turn.
+- The game is played over several bidding rounds until a win condition is met.
+
+## Game Components
+
+- **Points**: Each player has 10 points used for bidding.
+- **Blocks**: Represented numerically to indicate the height of each player's tower (0 to 5).
+- **Bids**: Secret amounts (integers) chosen by players during each round.
+- **Command-Line Interface**: All interactions and inputs are performed via text commands.
+
+## Turns
+
+- The game consists of simultaneous turns called **bidding rounds**.
+- In each round:
+  - Both players secretly choose a bid (an integer between **0** and the number of points they currently have).
+  - Bids are revealed simultaneously.
+  - The player with the higher bid wins the round.
+- After resolving bids, the game proceeds to the next round unless a win condition is met.
+
+## Rules and Mechanics
+
+### Bidding
+
+- **Valid Bids**: A bid must be an integer between **0** and the player's current points.
+- **Submitting Bids**: Players privately input their bid using the command-line interface.
+- **Revealing Bids**: After both players have submitted their bids, the bids are revealed simultaneously.
+
+### Resolving Bids
+
+- **Higher Bid Wins**: The player with the higher bid wins the round.
+- **Adding Blocks**: The winning player adds **one block** to their tower.
+- **Deducting Points**: Both players subtract their bids from their points total.
+- **Tie Breaker**:
+  - If both players bid the same amount, **no blocks are added**, but points are still deducted.
+  - In case of a tie, no player wins the round.
+
+### Winning the Game
+
+- **Victory Conditions**:
+  1. A player builds their tower to a height of **five blocks**.
+  2. The opposing player cannot place any further bids because they have **zero points** remaining after a tied bid.
+- **No Draws**: The game cannot end in a draw due to the bidding and win conditions.
+
+### Game End
+
+- The game ends immediately when one of the victory conditions is met.
+- The player who meets the victory condition is declared the winner.
+
+## Scoring
+
+- **Points Tracking**: Players keep track of their remaining points throughout the game.
+- **Tower Height**: Players track the number of blocks in their tower (0 to 5).
+- **Strategy**: Effective management of points and prediction of opponent's bids are crucial for winning.
+
+## Examples
+
+Below are sample command-line interactions and scenarios to illustrate the gameplay.
+
+### Example 1: Basic Gameplay
+
+**Starting Points**:
+- Player 1 Points: 10
+- Player 2 Points: 10
+- Player 1 Tower Height: 0
+- Player 2 Tower Height: 0
+
+**Round 1**:
+- Both players input their bids secretly.
+
+**Player Inputs**:
+- Player 1 bids **3**.
+- Player 2 bids **2**.
+
+**Round Resolution**:
+- Bids are revealed: Player 1 bids 3, Player 2 bids 2.
+- Player 1 wins the round.
+- **Points Deducted**: Player 1 has 7 points left, Player 2 has 8 points left.
+- **Tower Update**: Player 1's tower is now 1 block high.
+
+### Example 2: Tie Scenario
+
+**Round 2**:
+- Current Points: Player 1 has 7, Player 2 has 8.
+- Current Towers: Player 1 has 1 block, Player 2 has 0 blocks.
+
+**Player Inputs**:
+- Player 1 bids **4**.
+- Player 2 bids **4**.
+
+**Round Resolution**:
+- Bids are revealed: Both players bid 4.
+- It's a tie; no blocks are added.
+- **Points Deducted**: Player 1 has 3 points left, Player 2 has 4 points left.
+- **Tower Update**: No change.
+
+### Example 3: Winning the Game
+
+**Round 3**:
+- Current Points: Player 1 has 3, Player 2 has 4.
+- Current Towers: Player 1 has 1 block, Player 2 has 0 blocks.
+
+**Player Inputs**:
+- Player 1 bids **3**.
+- Player 2 bids **2**.
+
+**Round Resolution**:
+- Bids are revealed: Player 1 bids 3, Player 2 bids 2.
+- Player 1 wins the round.
+- **Points Deducted**: Player 1 has 0 points left, Player 2 has 2 points left.
+- **Tower Update**: Player 1's tower is now 2 blocks high.
+
+**Subsequent Rounds**:
+- Player 1 cannot bid more points but can bid **0**.
+- Player 2 may outbid Player 1 easily due to having points.
+- However, with strategic play, Player 1 might force situations leading to a win if Player 2 mismanages bids.
+
+**Final Round**:
+- Suppose Player 2 misbids and loses remaining points.
+- If Player 1 builds the fifth block first, Player 1 wins.
+
+## Command-Line Interaction Sample
+
+Below is a sample interaction between the players and the game system.
+
+**Round Start Message**:
+```
+Round 1:
+Player 1 Points: 10, Tower Height: 0
+Player 2 Points: 10, Tower Height: 0
+```
+
+**Players Input Bids**:
+```
+Player 1, enter your bid: [Input hidden]
+Player 2, enter your bid: [Input hidden]
+```
+
+**Revealing Bids and Round Resolution**:
+```
+Player 1 bid: 3
+Player 2 bid: 2
+Player 1 wins the round and adds a block to their tower!
+Player 1 Points Remaining: 7
+Player 2 Points Remaining: 8
+Player 1 Tower Height: 1
+Player 2 Tower Height: 0
+```
+
+**Next Round Prompt**:
+```
+Round 2:
+Player 1 Points: 7, Tower Height: 1
+Player 2 Points: 8, Tower Height: 0
+```
+
+**Continuation**:
+Players continue bidding in subsequent rounds following the same process until a win condition is met.
+
+## Strategic Tips
+
+- **Point Management**: Conserve points for crucial rounds; avoid overspending early.
+- **Predict Opponent**: Try to anticipate your opponent's bids based on their remaining points.
+- **Bluffing**: Use unexpected bids to throw off your opponent's strategy.
+- **Tied Bids**: Be cautious of ties, as both players lose points without gaining blocks.
+
+## Game Summary
+
+Bid and Build is a simple yet strategic game that requires players to balance aggression with resource conservation. The simultaneous bidding mechanic adds a layer of psychological warfare, as players must outthink and outmaneuver their opponent to build their tower first. With quick rounds and straightforward rules, this game is perfect for a command-line interface and offers depth for skilled players to consistently outperform novices.
+
+Enjoy the battle of wits and may the best builder win!

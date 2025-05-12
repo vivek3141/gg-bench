@@ -1,0 +1,222 @@
+# Binary Battle Rule Book
+
+## Objective
+
+**Binary Battle** is a two-player turn-based game where each player aims to be the first to match a secret 5-bit binary target number. By strategically toggling bits in their own binary number, players receive feedback to guide their next move. Victory is achieved when a player's binary number exactly matches the secret target number.
+
+## Setup
+
+1. **Secret Target Number Generation:**
+   - At the start of the game, a random 5-bit binary number is generated as the secret target number (e.g., `01101`). This number remains constant throughout the game and is unknown to both players.
+2. **Initial Binary Numbers:**
+   - Both players begin with their own binary number set to `00000`.
+3. **Player Designation:**
+   - Players decide who will take the first turn. This can be determined by mutual agreement or by a random method such as a coin toss.
+
+## Game Components
+
+- **Secret Target Number:**
+  - A randomly generated 5-bit binary number (e.g., `01101`), representing a number between 0 and 31 in decimal.
+  - Hidden from both players; only feedback about their own binary number relative to the target is provided.
+  
+- **Player Binary Numbers:**
+  - Each player maintains their own 5-bit binary number, starting at `00000`.
+  - The binary number consists of five bits, labeled from **Bit 1** to **Bit 5**, from left to right.
+
+    ```
+    Bit Positions:  [1][2][3][4][5]
+                     0  0  0  0  0   (Initial State)
+    ```
+
+- **Bit Positions:**
+  - **Bit 1:** Leftmost bit (highest value).
+  - **Bit 5:** Rightmost bit (lowest value).
+
+- **Actions:**
+  - Players can toggle bits in their binary number (change a bit from `0` to `1` or from `1` to `0`).
+
+## Turns
+
+### Turn Structure
+
+- Players alternate turns, starting with the designated first player.
+- On a player's turn:
+  1. **Select a Bit to Toggle:**
+     - The player chooses one bit position (1 to 5) to toggle in their binary number.
+     - Toggling changes the bit's value:
+       - If the bit is `0`, it becomes `1`.
+       - If the bit is `1`, it becomes `0`.
+  2. **Update Binary Number:**
+     - The player's binary number is updated to reflect the toggled bit.
+  3. **Receive Feedback:**
+     - The game provides feedback indicating whether the player's updated binary number is:
+       - **Equal to the target number:** The player wins the game.
+       - **Less than the target number:** The player continues playing.
+       - **Greater than the target number:** The player continues playing.
+  4. **End Turn:**
+     - The turn ends, and control passes to the other player.
+
+### Example of a Turn
+
+- **Player Action:**
+  - Player chooses to toggle **Bit 3**.
+- **Before Toggling:**
+  - Player's binary number: `01000` (`8` in decimal).
+- **After Toggling:**
+  - New binary number: `01100` (`12` in decimal).
+- **Feedback:**
+  - Game says: "Your number is less than the target."
+
+## Rules and Mechanics
+
+### Toggling Bits
+
+- **Valid Actions:**
+  - Players may only toggle one bit per turn.
+  - Bit positions are numbered 1 through 5, from left to right.
+- **Bit Position Values:**
+  - Each bit position represents a value based on its position:
+
+    | Bit Position | Decimal Value |
+    |--------------|---------------|
+    |      1       |       16      |
+    |      2       |        8      |
+    |      3       |        4      |
+    |      4       |        2      |
+    |      5       |        1      |
+
+- **Calculating Binary Number Value:**
+  - Sum the values of all bits set to `1`.
+
+### Feedback Mechanics
+
+- After each turn, feedback is provided to the player who just moved.
+- **Possible Feedback Messages:**
+  - **"Your number matches the target. You win!"**
+    - The player's binary number exactly matches the secret target number.
+  - **"Your number is less than the target."**
+    - The player's binary number value is numerically less than the target number.
+  - **"Your number is greater than the target."**
+    - The player's binary number value is numerically greater than the target number.
+- **No Additional Information:**
+  - Players receive no further clues about the target number or the opponent's number.
+
+### Winning the Game
+
+- **Victory Condition:**
+  - A player wins immediately upon their binary number matching the secret target number after their turn.
+- **Simultaneous Victory:**
+  - If both players reach the target number on the same number of turns (e.g., Player 1 on Turn 5 and Player 2 on Turn 5), the player who achieved the match on their own turn is declared the winner.
+
+### Other Rules
+
+- **No Skipping Turns:**
+  - Players must take their turn when it comes; there's no option to pass.
+- **Game Integrity:**
+  - Players should not attempt to view or deduce the secret target number except through the allowed game mechanics.
+- **Command-Line Interaction:**
+  - All game actions and feedback are performed through command-line inputs and outputs.
+
+## Scoring
+
+- **No Point Tracking:**
+  - The game does not use a point system.
+- **Victory Determination:**
+  - The outcome is determined solely by matching the secret target number.
+- **Optional Match Play:**
+  - Players may choose to play multiple rounds, keeping track of wins to determine an overall champion.
+
+## Examples
+
+### Example Game Play
+
+#### Setup
+
+- **Secret Target Number:** `01101` (which is `13` in decimal).
+- **Both Players Start With:** `00000`.
+
+#### Game Progression
+
+1. **Player 1 Turn 1:**
+   - **Action:** Toggles **Bit 4**.
+   - **Binary Number:** `00010` (`2` in decimal).
+   - **Feedback:** "Your number is less than the target."
+
+2. **Player 2 Turn 1:**
+   - **Action:** Toggles **Bit 1**.
+   - **Binary Number:** `10000` (`16` in decimal).
+   - **Feedback:** "Your number is greater than the target."
+
+3. **Player 1 Turn 2:**
+   - **Action:** Toggles **Bit 5**.
+   - **Binary Number:** `00011` (`3` in decimal).
+   - **Feedback:** "Your number is less than the target."
+
+4. **Player 2 Turn 2:**
+   - **Action:** Toggles **Bit 2**.
+   - **Binary Number:** `11000` (`24` in decimal).
+   - **Feedback:** "Your number is greater than the target."
+
+5. **Player 1 Turn 3:**
+   - **Action:** Toggles **Bit 3**.
+   - **Binary Number:** `00111` (`7` in decimal).
+   - **Feedback:** "Your number is less than the target."
+
+6. **Player 2 Turn 3:**
+   - **Action:** Toggles **Bit 1** (toggles back to `0`).
+   - **Binary Number:** `01000` (`8` in decimal).
+   - **Feedback:** "Your number is less than the target."
+
+7. **Player 1 Turn 4:**
+   - **Action:** Toggles **Bit 2**.
+   - **Binary Number:** `01111` (`15` in decimal).
+   - **Feedback:** "Your number is greater than the target."
+
+8. **Player 2 Turn 4:**
+   - **Action:** Toggles **Bit 5**.
+   - **Binary Number:** `01001` (`9` in decimal).
+   - **Feedback:** "Your number is less than the target."
+
+9. **Player 1 Turn 5:**
+   - **Action:** Toggles **Bit 4** (toggles back to `0`).
+   - **Binary Number:** `01101` (`13` in decimal).
+   - **Feedback:** "Your number matches the target. You win!"
+
+### Command-Line Interaction Example
+
+#### Player 1 Turn
+
+- **Prompt:** "Player 1, enter the bit position to toggle (1-5): "
+- **Input:** `4`
+- **Game Output:**
+  ```
+  You toggled Bit 4.
+  Your new binary number is: 00010
+  Your number is less than the target.
+  ```
+
+#### Player 2 Turn
+
+- **Prompt:** "Player 2, enter the bit position to toggle (1-5): "
+- **Input:** `1`
+- **Game Output:**
+  ```
+  You toggled Bit 1.
+  Your new binary number is: 10000
+  Your number is greater than the target.
+  ```
+
+## Strategy Tips
+
+- **Bit Value Awareness:**
+  - Understanding the decimal value of each bit aids in making strategic decisions.
+- **Feedback Utilization:**
+  - Use the feedback from each turn to deduce whether to increase or decrease your number.
+- **Tracking Changes:**
+  - Keep a record of your previous binary numbers and the feedback received to plan your next move.
+- **Opponent Observation:**
+  - While you cannot see the opponent's number, considering the length of the game and their reactions may provide subtle clues.
+
+## Conclusion
+
+**Binary Battle** combines logical reasoning with strategic planning in a simple yet challenging game. By toggling bits and interpreting feedback, players engage in a mental contest to outwit their opponent and be the first to unlock the secret target number. Enjoy the thrill of binary strategy in this fast-paced command-line game!

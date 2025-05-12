@@ -1,0 +1,9 @@
+The action space in the game is represented by 90 discrete actions, mapping directly to combinations of placing a marker and swapping an opponent's marker. Each action index can be understood as follows:
+
+- The action index `a` is split into two parts: `a = 10 * place_cell + swap_cell_index`.
+- `place_cell` ranges from 0 to 8, corresponding to the 9 cells on the grid (1-based: 1 to 9). This determines where the player's marker is placed.
+- `swap_cell_index` indicates swap possibilities as follows:
+  - `0`: No swap occurs.
+  - `1 to 9`: The player's marker is swapped with the opponent's marker in the corresponding cell (1-based), if adjacent and occupied by the opponent.
+
+Thus, each action index uniquely determines a specific move combining placement and an optional swap.

@@ -1,0 +1,280 @@
+# Equation Duel Rule Book
+
+## 1. Objective
+
+**Equation Duel** is a two-player turn-based game where players compete to be the first to reach **exactly 50 points** by creating equations using shared numbers and mathematical operations. Strategic selection of numbers and operations is key, as players must balance advancing their own score while preventing their opponent from reaching the target.
+
+## 2. Setup
+
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Starting Scores**: Both players begin with a score of **0 points**.
+- **Number Pool**: Shared between both players, containing the integers **1** through **9**, each available once.
+- **Operation Set**: The mathematical operations **addition (+)**, **subtraction (-)**, **multiplication (*)**, and **integer division (/**).
+
+At the start of the game, all numbers and operations are available to both players.
+
+## 3. Game Components
+
+### Number Pool
+
+- **Numbers**: The integers **1, 2, 3, 4, 5, 6, 7, 8, 9**.
+- **Usage**: Each number can be used **only once** throughout the game.
+- **Availability**: Numbers are removed from the pool once used.
+
+### Operation Set
+
+- **Operations**: The symbols **`+`**, **`-`**, **`*`**, **`/`**.
+- **Usage**: Operations can be used multiple times; there is no limit on operation usage.
+
+### Player Scores
+
+- **Tracking**: Both players keep a running total of their scores.
+- **Scoring Range**: Scores can be positive or negative; there is no minimum or maximum until a player reaches or exceeds 50.
+
+### Used Numbers List
+
+- **Purpose**: To keep track of which numbers from the Number Pool have been used.
+- **Visibility**: Both players have access to the list of used and available numbers.
+
+## 4. Turns
+
+Players alternate turns throughout the game.
+
+### Turn Structure
+
+1. **Number Selection**:
+   - The active player selects **two different unused numbers** from the Number Pool.
+2. **Operation Selection**:
+   - The player chooses one operation from the Operation Set (**`+`**, **`-`**, **`*`**, **`/`**).
+3. **Equation Formation**:
+   - The player forms an equation using the selected numbers and operation in the format:  
+     `number1 operation number2`
+4. **Calculation**:
+   - The result of the equation is calculated.
+   - For division:
+     - Perform **integer division**, where the result is the quotient without the remainder (e.g., `7 / 2 = 3`).
+5. **Score Update**:
+   - The result is **added** to the player's total score.
+   - If the result is negative, it decreases the player's score.
+6. **Number Pool Update**:
+   - The used numbers are removed from the Number Pool and added to the Used Numbers List.
+
+### Example Turn
+
+- **Player's Action**:
+  - Selects numbers **4** and **5**.
+  - Chooses operation **`*`**.
+  - Forms the equation: `4 * 5`.
+- **Calculation**:
+  - Result: `20`.
+- **Score Update**:
+  - New score: Previous score + `20`.
+- **Number Pool Update**:
+  - Numbers **4** and **5** are removed from the Number Pool.
+
+## 5. Rules and Mechanics
+
+### Number Selection Rules
+
+- Players must select **two different numbers** from the available numbers in the Number Pool.
+- Numbers already used (in previous turns) cannot be selected again.
+- Both numbers must be selected **before** choosing the operation.
+
+### Operation Rules
+
+- Players can choose any one of the four operations during their turn.
+- There is **no limit** on how many times an operation can be used throughout the game.
+
+### Equation and Calculation Rules
+
+- Equations must be formed using the chosen numbers and operation in the specified format.
+- **Integer Division**:
+  - When using division (**`/`**), perform integer division.
+  - Example: `5 / 2` results in `2`.
+- **Negative Results**:
+  - Negative results from subtraction or other operations are valid.
+  - Negative results **subtract** from the player's total score.
+
+### Scoring Rules
+
+- The result of the equation is **added** to the player's total score.
+- **Exact Score of 50**:
+  - The primary goal is to reach **exactly 50 points**.
+- **Exceeding 50 Points**:
+  - If a player's score **exceeds 50**, they **immediately lose**, and the opponent wins.
+- **Ending with Closest Score**:
+  - If all numbers are used and no player has reached 50, the player with the score **closest to 50 without exceeding it** wins.
+
+### Game End Conditions
+
+- **Win by Reaching 50**:
+  - A player wins instantly upon reaching exactly 50 points.
+- **Loss by Exceeding 50**:
+  - A player loses instantly if their score exceeds 50 points.
+- **Draw**:
+  - There are no draws; if both players exceed 50 in the same round, the player with the **lower score** wins.
+
+## 6. Scoring
+
+- **Score Calculation**:
+  - **New Score** = **Current Score** + **Equation Result**.
+- **Score Tracking**:
+  - Players must keep an accurate log of their score after each turn.
+- **Negative Scores**:
+  - It's possible for a player's score to become negative.
+
+## 7. Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Available Numbers**: `1 2 3 4 5 6 7 8 9`
+- **Scores**: Player 1: `0`, Player 2: `0`
+- **Turn**: Player 1 begins.
+
+#### Player 1's Turn
+
+1. **Number Selection**:
+   - Chooses **6** and **7**.
+2. **Operation Selection**:
+   - Chooses **`*`**.
+3. **Equation Formation**:
+   - `6 * 7`
+4. **Calculation**:
+   - Result: `42`
+5. **Score Update**:
+   - Player 1's score: `0 + 42 = 42`
+6. **Number Pool Update**:
+   - Numbers **6** and **7** are removed.
+- **Available Numbers**: `1 2 3 4 5 8 9`
+
+#### Player 2's Turn
+
+1. **Number Selection**:
+   - Chooses **9** and **5**.
+2. **Operation Selection**:
+   - Chooses **`-`**.
+3. **Equation Formation**:
+   - `9 - 5`
+4. **Calculation**:
+   - Result: `4`
+5. **Score Update**:
+   - Player 2's score: `0 + 4 = 4`
+6. **Number Pool Update**:
+   - Numbers **9** and **5** are removed.
+- **Available Numbers**: `1 2 3 4 8`
+
+#### Subsequent Turns
+
+- Players continue selecting numbers and operations following the same rules.
+- They must be cautious not to exceed 50 points.
+
+### Example Winning Move
+
+#### Player 1's Turn
+
+- **Current Score**: `42`
+- **Available Numbers**: `1 2 3 4 8`
+1. **Number Selection**:
+   - Chooses **8** and **2**.
+2. **Operation Selection**:
+   - Chooses **`+`**.
+3. **Equation Formation**:
+   - `8 + 2`
+4. **Calculation**:
+   - Result: `10`
+5. **Score Update**:
+   - New score: `42 + 10 = 52`
+6. **Outcome**:
+   - Player 1's score exceeds 50.
+   - Player 1 **loses**, and Player 2 **wins**.
+
+### Example of Game Ending Closest to 50
+
+- **Final Scores**:
+  - Player 1: `47`
+  - Player 2: `49`
+- **All Numbers Used**: No available numbers remain.
+- **Outcome**:
+  - Neither player reached 50.
+  - Player 2 wins for being the closest to 50 without exceeding it.
+
+## 8. Command-Line Interaction Examples
+
+### Game Start
+
+```
+Welcome to Equation Duel!
+Player 1 and Player 2 start with 0 points.
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1 will go first.
+```
+
+### Player 1's Turn
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1's Score: 0
+Player 1, select your first number:
+> 3
+Player 1, select your second number:
+> 8
+Player 1, choose an operation (+, -, *, /):
+> *
+Equation: 3 * 8 = 24
+Player 1's new score: 0 + 24 = 24
+Numbers 3 and 8 are now used.
+```
+
+### Player 2's Turn
+
+```
+Available Numbers: 1 2 4 5 6 7 9
+Player 2's Score: 0
+Player 2, select your first number:
+> 7
+Player 2, select your second number:
+> 2
+Player 2, choose an operation (+, -, *, /):
+> +
+Equation: 7 + 2 = 9
+Player 2's new score: 0 + 9 = 9
+Numbers 7 and 2 are now used.
+```
+
+### Continuing Play
+
+Players continue to alternate turns, updating scores and available numbers.
+
+### Potential Winning Turn
+
+```
+Available Numbers: 1 4 5 6 9
+Player 1's Score: 45
+Player 1, select your first number:
+> 5
+Player 1, select your second number:
+> 5
+Error: Numbers must be different and unused.
+Player 1, select your second number:
+> 4
+Player 1, choose an operation (+, -, *, /):
+> +
+Equation: 5 + 4 = 9
+Player 1's new score: 45 + 9 = 54
+Player 1's score exceeds 50.
+Player 1 loses. Player 2 wins!
+```
+
+## 9. Strategy Tips
+
+- **Plan Ahead**: Consider the impact of your move on both your score and the numbers remaining for your opponent.
+- **Monitor Scores**: Keep track of both players' scores to make informed decisions.
+- **Control the Number Pool**: Choose numbers that limit your opponent's options.
+- **Avoid Exceeding 50**: If you're close to 50, select operations that minimize the risk of exceeding the target score.
+- **Use Negative Results**: Strategic use of subtraction or division can adjust your score to better position yourself.
+
+---
+
+Enjoy playing **Equation Duel**, and may the most strategic mathematician win!

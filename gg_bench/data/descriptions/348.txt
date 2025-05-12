@@ -1,0 +1,394 @@
+# Number Snatch: Rule Book
+
+---
+
+## Objective
+
+**Number Snatch** is a two-player turn-based strategy game played in a command-line interface. The primary goal is to accumulate the highest total score by strategically selecting numbers from a shared list while employing the "Snatch" mechanic to reduce your opponent's score and enhance your own. The game ends when all numbers have been selected, and the player with the highest score is declared the winner. There are no draws in Number Snatch.
+
+---
+
+## Setup
+
+1. **Generate the Number List**:
+
+   - At the beginning of the game, a shared list of **10 unique positive integers** ranging from **1 to 20** is randomly generated.
+   - Example Number List: `[2, 5, 7, 10, 12, 13, 15, 17, 18, 20]`
+
+2. **Initialize Player Scores**:
+
+   - Both players start with a score of **zero**.
+   - Player identifiers are established as **Player 1** and **Player 2**.
+
+3. **Determine Turn Order**:
+
+   - Decide which player takes the first turn. This can be done randomly or by agreement.
+   - The game proceeds with players alternating turns.
+
+---
+
+## Game Components
+
+1. **Number List**:
+
+   - A shared list of **10 unique positive integers** between **1 and 20**.
+   - Numbers are displayed to both players at all times.
+   - Once a number is selected, it is removed from the list and is no longer available.
+
+2. **Player Scores**:
+
+   - Each player has an individual score that is updated throughout the game.
+   - Scores reflect the sum of numbers selected and any points gained or lost through the Snatch mechanic.
+
+3. **Snatch Mechanic**:
+
+   - A unique game mechanic where players can steal points from their opponent under specific conditions.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+
+   - Players alternate turns, starting with Player 1.
+   - On a player's turn, they:
+
+     a. Review the available numbers in the Number List.
+
+     b. Select one number from the list.
+
+     c. The selected number is added to their score.
+
+     d. The selected number is removed from the Number List.
+
+     e. Check for a **Snatch** opportunity.
+
+     f. Update scores accordingly.
+
+2. **Actions During a Turn**:
+
+   - **Number Selection**: Choose one number from the available numbers.
+   - **Snatch Check**: Determine if the selected number triggers the Snatch mechanic.
+   - **Score Update**: Adjust both players' scores based on the selection and any Snatch effect.
+   - **Turn Completion**: End the turn, passing control to the opponent.
+
+---
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- **Unique Selection**: Each number in the Number List can be selected only once.
+- **Available Numbers**: Players can only select from the current Number List displayed at the start of their turn.
+
+### 2. Scoring Points
+
+- **Adding to Score**: The number a player selects is added to their personal score.
+- **Score Visibility**: Both players' scores are visible to each other after each turn.
+
+### 3. Snatch Mechanic
+
+- **Triggering a Snatch**:
+
+  - A Snatch occurs when the number a player selects is a **multiple** of the **last number selected by their opponent**.
+  - Formula: `If Player's Selected Number % Opponent's Last Selected Number == 0`
+
+- **Snatch Effects**:
+
+  - **Opponent's Score Reduction**:
+
+    - The opponent loses points equal to their last selected number.
+    - The opponent's score cannot go below zero. If the deduction exceeds their current score, their score becomes zero.
+
+  - **Player's Score Increase**:
+
+    - The player gains points equal to the actual points deducted from the opponent.
+    - This represents the "snatched" points.
+
+- **Example**:
+
+  - Opponent's Last Number: `5`
+  - Player Selects: `15` (which is a multiple of `5`)
+  - Snatch Occurs:
+    - Opponent loses `5` points (their last number).
+    - Player gains `5` points.
+
+### 4. Game End and Victory
+
+- **Game Conclusion**:
+
+  - The game ends when all numbers have been selected from the Number List.
+
+- **Determining the Winner**:
+
+  - The player with the **highest total score** at the end of the game wins.
+  - There are no draws; ties are impossible due to the game's mechanics and the Snatch feature.
+
+- **Victory Conditions**:
+
+  - **Skilled Play**: Strategic selection and utilization of the Snatch mechanic can provide a significant advantage.
+  - **Consistent Winning**: A skilled player can consistently beat an unskilled player by anticipating moves and maximizing Snatch opportunities.
+
+---
+
+## Scoring
+
+- **Score Components**:
+
+  - **Selected Numbers**: Sum of all numbers a player has selected.
+  - **Snatch Gains**: Points gained from the opponent through Snatches.
+  - **Snatch Losses**: Points lost due to the opponent's Snatches.
+
+- **Score Calculation**:
+
+  ```
+  Player's Score = (Sum of Selected Numbers) + (Snatch Gains) - (Snatch Losses)
+  ```
+
+- **Score Tracking**:
+
+  - Scores are updated and displayed after each turn.
+  - Both players can see the current scores and plan their strategies accordingly.
+
+---
+
+## Examples
+
+### Example Game Walkthrough
+
+**Initial Setup**:
+
+- **Number List**: `[2, 5, 7, 10, 12, 13, 15, 17, 18, 20]`
+- **Player 1 Score**: `0`
+- **Player 2 Score**: `0`
+
+---
+
+#### **Player 1 Turn 1**
+
+- **Available Numbers**: `[2, 5, 7, 10, 12, 13, 15, 17, 18, 20]`
+- **Action**:
+  - Selects `13`.
+- **Score Update**:
+  - Player 1 Score: `0 + 13 = 13`
+- **Snatch Check**:
+  - No Snatch (first turn).
+- **Last Number Selected**:
+  - Player 1's Last Number: `13`
+
+---
+
+#### **Player 2 Turn 1**
+
+- **Available Numbers**: `[2, 5, 7, 10, 12, 15, 17, 18, 20]`
+- **Action**:
+  - Selects `5`.
+- **Score Update**:
+  - Player 2 Score: `0 + 5 = 5`
+- **Snatch Check**:
+  - No Snatch (`5` is not a multiple of `13`).
+- **Last Number Selected**:
+  - Player 2's Last Number: `5`
+
+---
+
+#### **Player 1 Turn 2**
+
+- **Available Numbers**: `[2, 7, 10, 12, 15, 17, 18, 20]`
+- **Action**:
+  - Selects `15`.
+- **Score Update**:
+  - Player 1 Score: `13 + 15 = 28`
+- **Snatch Check**:
+  - `15` is a multiple of `5` (opponent's last number).
+  - **Snatch Occurs**:
+    - Player 2 loses `5` points: `5 - 5 = 0`
+    - Player 1 gains `5` points: `28 + 5 = 33`
+- **Updated Scores**:
+  - Player 1 Score: `33`
+  - Player 2 Score: `0`
+- **Last Number Selected**:
+  - Player 1's Last Number: `15`
+
+---
+
+#### **Player 2 Turn 2**
+
+- **Available Numbers**: `[2, 7, 10, 12, 17, 18, 20]`
+- **Action**:
+  - Selects `2`.
+- **Score Update**:
+  - Player 2 Score: `0 + 2 = 2`
+- **Snatch Check**:
+  - `2` is not a multiple of `15`.
+- **Last Number Selected**:
+  - Player 2's Last Number: `2`
+
+---
+
+#### **Player 1 Turn 3**
+
+- **Available Numbers**: `[7, 10, 12, 17, 18, 20]`
+- **Action**:
+  - Selects `10`.
+- **Score Update**:
+  - Player 1 Score: `33 + 10 = 43`
+- **Snatch Check**:
+  - `10` is a multiple of `2` (opponent's last number).
+  - **Snatch Occurs**:
+    - Player 2 loses `2` points: `2 - 2 = 0`
+    - Player 1 gains `2` points: `43 + 2 = 45`
+- **Updated Scores**:
+  - Player 1 Score: `45`
+  - Player 2 Score: `0`
+- **Last Number Selected**:
+  - Player 1's Last Number: `10`
+
+---
+
+#### **Player 2 Turn 3**
+
+- **Available Numbers**: `[7, 12, 17, 18, 20]`
+- **Action**:
+  - Selects `18`.
+- **Score Update**:
+  - Player 2 Score: `0 + 18 = 18`
+- **Snatch Check**:
+  - `18` is not a multiple of `10`.
+- **Last Number Selected**:
+  - Player 2's Last Number: `18`
+
+---
+
+#### **Player 1 Turn 4**
+
+- **Available Numbers**: `[7, 12, 17, 20]`
+- **Action**:
+  - Selects `12`.
+- **Score Update**:
+  - Player 1 Score: `45 + 12 = 57`
+- **Snatch Check**:
+  - `12` is not a multiple of `18`.
+- **Last Number Selected**:
+  - Player 1's Last Number: `12`
+
+---
+
+#### **Player 2 Turn 4**
+
+- **Available Numbers**: `[7, 17, 20]`
+- **Action**:
+  - Selects `20`.
+- **Score Update**:
+  - Player 2 Score: `18 + 20 = 38`
+- **Snatch Check**:
+  - `20` is a multiple of `12` (opponent's last number).
+  - **Snatch Occurs**:
+    - Player 1 loses `12` points: `57 - 12 = 45`
+    - Player 2 gains `12` points: `38 + 12 = 50`
+- **Updated Scores**:
+  - Player 1 Score: `45`
+  - Player 2 Score: `50`
+- **Last Number Selected**:
+  - Player 2's Last Number: `20`
+
+---
+
+#### **Player 1 Turn 5**
+
+- **Available Numbers**: `[7, 17]`
+- **Action**:
+  - Selects `17`.
+- **Score Update**:
+  - Player 1 Score: `45 + 17 = 62`
+- **Snatch Check**:
+  - `17` is not a multiple of `20`.
+- **Last Number Selected**:
+  - Player 1's Last Number: `17`
+
+---
+
+#### **Player 2 Turn 5**
+
+- **Available Number**: `[7]`
+- **Action**:
+  - Selects `7`.
+- **Score Update**:
+  - Player 2 Score: `50 + 7 = 57`
+- **Snatch Check**:
+  - `7` is not a multiple of `17`.
+- **Last Number Selected**:
+  - Player 2's Last Number: `7`
+
+---
+
+#### **Game End**
+
+- **All numbers have been selected.**
+- **Final Scores**:
+  - Player 1 Score: `62`
+  - Player 2 Score: `57`
+- **Winner**: **Player 1**
+
+---
+
+### Command-Line Interaction Example
+
+Below is an example of how the game flow might look in a command-line interface:
+
+```
+Welcome to Number Snatch!
+
+Initial Number List: [2, 5, 7, 10, 12, 13, 15, 17, 18, 20]
+
+Scores:
+Player 1: 0
+Player 2: 0
+
+Player 1's turn.
+Available Numbers: [2, 5, 7, 10, 12, 13, 15, 17, 18, 20]
+Enter the number you wish to select: 13
+You selected 13.
+Player 1's score: 13
+
+Player 2's turn.
+Available Numbers: [2, 5, 7, 10, 12, 15, 17, 18, 20]
+Enter the number you wish to select: 5
+You selected 5.
+Player 2's score: 5
+
+Player 1's turn.
+Available Numbers: [2, 7, 10, 12, 15, 17, 18, 20]
+Enter the number you wish to select: 15
+You selected 15.
+Snatch! 15 is a multiple of Player 2's last number (5).
+Player 2 loses 5 points. Player 1 gains 5 points.
+Player 1's score: 33
+Player 2's score: 0
+
+...
+
+Game Over!
+Final Scores:
+Player 1: 62
+Player 2: 57
+Winner: Player 1
+Congratulations!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate which numbers your opponent may choose and how you can use the Snatch mechanic to your advantage.
+- **Control the Snatch**: By carefully selecting your numbers, you can limit your opponent's ability to snatch points from you.
+- **Balance Risk and Reward**: Sometimes selecting a lower number can prevent your opponent from performing a Snatch on their next turn.
+- **Maximize Gains**: Look for opportunities to select numbers that are multiples of your opponent's last number to snatch points.
+
+---
+
+# Summary
+
+Number Snatch is a unique and strategic two-player game that is simple to learn but offers depth and complexity for skilled players. By combining basic arithmetic with strategic decision-making, players engage in a battle of wits to outscore their opponent through careful number selection and the clever use of the Snatch mechanic. With clear rules and straightforward gameplay, Number Snatch is both easy to code for a command-line interface and engaging to play.
+
+Good luck, and happy snatching!

@@ -1,0 +1,178 @@
+**Divide and Conquer: Rule Book**
+
+---
+
+### **Objective**
+
+The primary goal of **Divide and Conquer** is to be the player who reduces the shared number to exactly **1**. Players take turns dividing the current number by a whole number greater than 1. The first player to reach a current number of **1** on their turn **wins the game**.
+
+---
+
+### **Setup**
+
+- **Starting Number**: The game begins with a shared positive whole number. By default, this number is **100**, but players can agree on a different positive whole number before starting the game.
+- **Players**: Two players are designated as **Player 1** and **Player 2**.
+- **Interface**: The game is played through a command-line interface where players input their chosen divisors.
+
+---
+
+### **Game Components**
+
+- **Starting Number**
+
+  - A positive whole number (default is **100**).
+  - This number is shared between both players and changes as the game progresses.
+
+- **Divisors**
+
+  - Whole numbers **greater than 1** that exactly divide the current number (resulting in a whole number with no remainder).
+  - Players choose from these divisors during their turns.
+
+- **Players**
+
+  - **Player 1** and **Player 2** alternate turns throughout the game.
+  - Each player strategically selects divisors to reduce the current number.
+
+---
+
+### **Turns**
+
+- **Turn Order**
+
+  - **Player 1** takes the first turn.
+  - Players alternate turns thereafter.
+
+- **Turn Actions**
+
+  1. **Display Current Number**: At the start of a turn, the current number is presented.
+  2. **Available Divisors**: All valid divisors greater than 1 for the current number are listed.
+  3. **Player Input**: The player selects one of the available divisors.
+  4. **Update Current Number**: The current number is divided by the chosen divisor.
+  5. **Check for Win Condition**: If the current number becomes 1, the player wins the game.
+
+- **Progression**
+
+  - The game continues with players dividing the current number until a player reduces it to **1** and wins.
+
+---
+
+### **Rules and Mechanics**
+
+- **Valid Moves**
+
+  - On their turn, a player must choose a whole number **greater than 1** that exactly divides the current number.
+  - The divisor must result in a whole number when the current number is divided by it.
+
+- **Forbidden Moves**
+
+  - **Dividing by 1** is not allowed.
+  - Choosing a divisor that does not exactly divide the current number is invalid.
+
+- **Winning the Game**
+
+  - A player wins immediately when they reduce the current number to exactly **1** on their turn.
+
+- **Losing the Game**
+
+  - If a player has no valid divisors on their turn (i.e., the current number is a prime number greater than 2), they lose, and the other player wins.
+
+- **Special Conditions**
+
+  - If the current number is **2**, the only valid divisor is **2**. Dividing by 2 reduces the number to **1**, resulting in a win for the current player.
+
+- **Game End**
+
+  - The game ends when a player wins by reducing the current number to **1** or when a player cannot make a valid move.
+
+---
+
+### **Scoring**
+
+- **Win-Loss Outcome**
+
+  - **No points are tracked** during the game.
+  - The game results in a win for one player and a loss for the other.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+- **Starting Number**: 100
+
+##### **Turn 1: Player 1**
+
+- **Current Number**: 100
+- **Available Divisors**: 2, 4, 5, 10, 20, 25, 50, 100
+- **Player 1's Choice**: 2
+- **Calculation**: 100 ÷ 2 = 50
+- **New Current Number**: 50
+
+##### **Turn 2: Player 2**
+
+- **Current Number**: 50
+- **Available Divisors**: 2, 5, 10, 25, 50
+- **Player 2's Choice**: 5
+- **Calculation**: 50 ÷ 5 = 10
+- **New Current Number**: 10
+
+##### **Turn 3: Player 1**
+
+- **Current Number**: 10
+- **Available Divisors**: 2, 5, 10
+- **Player 1's Choice**: 2
+- **Calculation**: 10 ÷ 2 = 5
+- **New Current Number**: 5
+
+##### **Turn 4: Player 2**
+
+- **Current Number**: 5
+- **Available Divisors**: 5
+- **Player 2's Choice**: 5
+- **Calculation**: 5 ÷ 5 = 1
+- **New Current Number**: 1
+- **Outcome**: Player 2 reduces the number to 1 and **wins the game**!
+
+#### **Sample Command-Line Interaction**
+
+```plaintext
+Game Start: The starting number is 100.
+
+Player 1's Turn:
+Current Number: 100
+Available Divisors: 2, 4, 5, 10, 20, 25, 50, 100
+Enter your divisor, Player 1: 2
+New Current Number is 50.
+
+Player 2's Turn:
+Current Number: 50
+Available Divisors: 2, 5, 10, 25, 50
+Enter your divisor, Player 2: 5
+New Current Number is 10.
+
+Player 1's Turn:
+Current Number: 10
+Available Divisors: 2, 5, 10
+Enter your divisor, Player 1: 2
+New Current Number is 5.
+
+Player 2's Turn:
+Current Number: 5
+Available Divisors: 5
+Enter your divisor, Player 2: 5
+New Current Number is 1.
+Player 2 reduces the number to 1 and wins the game!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Anticipate future moves by considering how your choice of divisor will affect the available options for your opponent.
+- **Prime Numbers**: Try to force your opponent to encounter a prime number greater than 2 on their turn, limiting their options.
+- **Divisor Selection**: Choosing smaller divisors may prolong the game, but strategic larger divisors can control the flow of the game.
+
+---
+
+**Enjoy the challenge of Divide and Conquer, and may the best strategist win!**

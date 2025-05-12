@@ -1,0 +1,289 @@
+**Prime Conquest**
+
+---
+
+**Objective:**
+
+Be the first player to collect a total of **five unique prime numbers** by strategically selecting numbers and challenging your opponent's choices.
+
+---
+
+**Setup:**
+
+- **Number Pool:** A shared pool of numbers ranging from **2 to 100**.
+- **Player Collections:** Both players start with an empty collection of prime numbers.
+- **First Turn:** Decide randomly (e.g., coin toss) which player goes first.
+
+---
+
+**Game Components:**
+
+1. **Number Pool (2-100):**
+   - A list of integers from 2 to 100 inclusive.
+   - Represents the available numbers that players can select.
+
+2. **Player Collections:**
+   - Each player maintains a personal list of prime numbers they have collected.
+   - Tracks progress toward the goal of collecting five primes.
+
+3. **Prime Verification Mechanism:**
+   - A method (algorithm or function) to determine if a selected number is prime.
+   - Essential for validating selections and resolving challenges.
+
+---
+
+**Turns:**
+
+- Players take turns in an alternating fashion.
+- On your turn, you must choose to either:
+  1. **Select a Number** from the pool.
+  2. **Challenge** the opponent's last selected number.
+
+---
+
+**Rules and Mechanics:**
+
+### 1. Selecting Numbers:
+
+- **Choosing a Number:**
+  - On your turn, you may select any remaining number from the number pool.
+  - Announce your selection to your opponent.
+
+- **Prime Verification:**
+  - After a number is selected, its primality is verified using the Prime Verification Mechanism.
+  - **If the number is prime:**
+    - It is added to your collection.
+  - **If the number is composite:**
+    - It is discarded from the game.
+    - **Penalty:** You lose your next turn.
+
+### 2. Challenging Opponent's Selection:
+
+- **When to Challenge:**
+  - Instead of selecting a number, you may challenge the opponent's **last selected number** if you believe it is not prime.
+  - You cannot challenge any earlier selections.
+
+- **Challenge Resolution:**
+  - The challenged number's primality is verified.
+  - **Successful Challenge (Number is composite):**
+    - The number is discarded.
+    - **Reward:** You steal one prime number from the opponent's collection (if any).
+    - **Penalty for Opponent:** They lose their next turn.
+  - **Failed Challenge (Number is prime):**
+    - **Penalty:** You lose one prime number from your collection (if any).
+    - **Reward for Opponent:** They gain an extra turn immediately after.
+
+- **Limitations:**
+  - You cannot challenge if the opponent has not made a selection on their last turn (e.g., if they skipped a turn due to a penalty).
+  - A number can only be challenged once.
+
+### 3. General Rules:
+
+- **Unique Numbers:**
+  - Once a number is selected and resolved, it is removed from the number pool and cannot be selected again.
+- **Collections:**
+  - Players cannot have duplicate prime numbers in their collection.
+- **Zero Primes Situation:**
+  - If a penalty requires a player to lose a prime number but their collection is empty, no primes are lost.
+- **Winning Condition:**
+  - The first player to have **five unique prime numbers** in their collection wins the game.
+
+---
+
+**Scoring:**
+
+- **Tracking Collections:**
+  - Players keep a visible record of their collected prime numbers.
+  - Collections are updated after each turn.
+
+- **Winning the Game:**
+  - Monitor the number of primes in both collections.
+  - The game ends immediately when a player reaches five primes.
+
+---
+
+**Example Gameplay:**
+
+### Initial Setup:
+
+- Number Pool: 2 to 100.
+- Player A and Player B have empty collections.
+- Player A goes first.
+
+### Turn Sequence:
+
+#### **Turn 1 - Player A:**
+
+- **Action:** Selects number **17**.
+- **Resolution:** 17 is prime.
+- **Result:** Added to Player A's collection.
+- **Player A's Collection:** [17]
+
+#### **Turn 2 - Player B:**
+
+- **Action:** Selects number **20**.
+- **Resolution:** 20 is composite.
+- **Result:** Discarded from the game.
+- **Penalty:** Player B loses their next turn.
+- **Player B's Collection:** []
+
+#### **Turn 3 - Player A:**
+
+- **Action:** Selects number **23**.
+- **Resolution:** 23 is prime.
+- **Result:** Added to Player A's collection.
+- **Player A's Collection:** [17, 23]
+
+#### **Turn 4 - Player B:**
+
+- **Action:** **Turn Skipped** due to previous penalty.
+- **Player B's Collection:** []
+
+#### **Turn 5 - Player A:**
+
+- **Action:** Selects number **39**.
+- **Resolution:** 39 is composite.
+- **Result:** Discarded from the game.
+- **Penalty:** Player A loses their next turn.
+- **Player A's Collection:** [17, 23]
+
+#### **Turn 6 - Player B:**
+
+- **Action:** Selects number **19**.
+- **Resolution:** 19 is prime.
+- **Result:** Added to Player B's collection.
+- **Player B's Collection:** [19]
+
+#### **Turn 7 - Player A:**
+
+- **Action:** **Turn Skipped** due to previous penalty.
+- **Player A's Collection:** [17, 23]
+
+#### **Turn 8 - Player B:**
+
+- **Action:** Selects number **15**.
+- **Resolution:** 15 is composite.
+- **Result:** Discarded from the game.
+- **Penalty:** Player B loses their next turn.
+- **Player B's Collection:** [19]
+
+#### **Turn 9 - Player A:**
+
+- **Action:** Chooses to **Challenge** Player B's last selection (**15**).
+- **Resolution:** Cannot challenge because Player B's last action was a penalty, not a selection.
+- **Result:** Challenge is invalid.
+- **Rule Reminder:** Challenges can only target the opponent's last selection.
+- **Action Adjustment:** Player A decides to select number **29** instead.
+- **Resolution:** 29 is prime.
+- **Result:** Added to Player A's collection.
+- **Player A's Collection:** [17, 23, 29]
+
+#### **Turn 10 - Player B:**
+
+- **Action:** **Turn Skipped** due to penalty from selecting 15.
+- **Player B's Collection:** [19]
+
+#### **Turn 11 - Player A:**
+
+- **Action:** Selects number **25**.
+- **Resolution:** 25 is composite.
+- **Result:** Discarded from the game.
+- **Penalty:** Player A loses their next turn.
+- **Player A's Collection:** [17, 23, 29]
+
+#### **Turn 12 - Player B:**
+
+- **Action:** Chooses to **Challenge** Player A's last selection (**25**).
+- **Resolution:** Cannot challenge because Player A's last action resulted in a penalty, not a valid selection.
+- **Result:** Challenge is invalid.
+- **Rule Reminder:** Challenges can only target the opponent's last selection.
+- **Action Adjustment:** Player B decides to select number **31** instead.
+- **Resolution:** 31 is prime.
+- **Result:** Added to Player B's collection.
+- **Player B's Collection:** [19, 31]
+
+---
+
+**Command-Line Interaction Example:**
+
+Below is a sample interaction for a single turn in the game.
+
+#### **Player A's Turn:**
+
+```
+Available Numbers: [2-16,18-100]
+Your Primes: [17, 23, 29]
+Opponent's Primes: [19, 31]
+Choose your action:
+1. Select a number
+2. Challenge opponent's last selection
+Enter 1 or 2: 2
+You have chosen to challenge your opponent's last selection.
+
+Opponent's last selected number: 31
+Checking if 31 is prime...
+
+Result: 31 is prime.
+Challenge failed.
+Penalty: You lose one of your prime numbers.
+
+Removing the highest prime from your collection: 29
+Opponent gains an extra turn.
+```
+
+#### **Player B's Extra Turn:**
+
+```
+Available Numbers: [2-16,18-28,30-100]
+Your Primes: [19, 31]
+Opponent's Primes: [17, 23]
+
+It's your extra turn.
+Choose your action:
+1. Select a number
+2. Challenge opponent's last selection
+Enter 1 or 2: 1
+Enter the number you wish to select: 37
+You have selected 37.
+Checking if 37 is prime...
+
+Result: 37 is prime.
+37 added to your collection.
+```
+
+---
+
+**Strategies and Tips:**
+
+- **Prime Selection Knowledge:**
+  - Familiarize yourself with prime numbers between 2 and 100.
+  - This will improve your selection accuracy and challenge success.
+
+- **Risk Management:**
+  - Be cautious when selecting numbers you're unsure about to avoid penalties.
+  - Evaluate the risk and reward before deciding to challenge.
+
+- **Observing Opponent's Behavior:**
+  - Keep track of the numbers your opponent selects.
+  - If they seem uncertain, it might be an opportunity to challenge.
+
+- **Managing Your Collection:**
+  - Protect your prime numbers by avoiding unnecessary challenges.
+  - Remember that losing primes can set back your progress toward victory.
+
+- **Turn Penalties:**
+  - Take advantage when your opponent loses a turn by selecting primes or strategically challenging.
+
+---
+
+**Conclusion:**
+
+"Prime Conquest" is a strategic game that combines number theory with tactical decision-making. Players must use their knowledge of prime numbers and anticipate their opponent's moves to outmaneuver them. The balance of selecting primes and challenging opponents creates a dynamic and competitive environment, ensuring that skilled players can consistently excel.
+
+---
+
+**Note to Players:**
+
+- Use available resources wisely; consider keeping a list of primes handy if allowed.
+- Stay engaged and think ahead to maximize your chances of winning.
+- Enjoy the challenge and have fun mastering the "Prime Conquest"!

@@ -1,0 +1,143 @@
+# Digit Dilemma
+
+## Objective
+
+The primary goal of **Digit Dilemma** is to be the first player to reduce the shared number **N** to exactly **zero** by strategically subtracting digits from it. Players take turns subtracting digits present in the current value of **N**. The player who reduces **N** to zero on their turn wins the game. If a player cannot make a valid move on their turn, they lose.
+
+## Setup
+
+1. **Starting Number**: The game begins with a shared positive integer **N**. The recommended starting value is **15**, but players can agree on any positive integer to increase or decrease the game's difficulty.
+2. **Player Order**: Decide which player will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Shared Number (N)**: A positive integer visible to both players. It is updated after each turn.
+- **Digits of N**: The individual digits that make up the current value of **N** in its decimal representation. These are the possible numbers a player can subtract on their turn.
+
+*Note*: No physical components are required. The game can be played entirely within a command-line interface where players input their chosen digits, and the program updates and displays the current value of **N**.
+
+## Turns
+
+1. **Turn Structure**:
+   - On their turn, a player performs the following actions:
+     - **View N**: Observe the current value of **N**.
+     - **List Digits**: Identify the digits present in **N**.
+     - **Choose Digit**: Select one digit from the list of digits.
+     - **Subtract Digit**: Subtract the chosen digit from **N** to create a new **N**.
+   - The turn ends, and the next player takes their turn with the updated value of **N**.
+
+2. **Turn Order**:
+   - Players alternate turns until the game ends.
+   - Ensure that each player inputs their move promptly to keep the game progressing smoothly.
+
+## Rules and Mechanics
+
+1. **Subtracting Digits**:
+   - A player must subtract **one and only one digit** from the digits present in the current value of **N**.
+   - Digits considered are based on the **current value** of **N** at the start of the player's turn.
+   - If **N** has repeating digits, each occurrence is considered identical; the player can only subtract the value once per turn.
+
+2. **Valid Moves**:
+   - The chosen digit must be **greater than zero** (i.e., digits 1-9). If **N** contains a zero, it cannot be subtracted.
+   - The result of subtracting the digit from **N** must be **non-negative** (i.e., the new **N** cannot be less than zero).
+   - If a player cannot make a valid move (no valid digits to subtract without making **N** negative), they lose the game.
+
+3. **Winning the Game**:
+   - The player who reduces **N** to **exactly zero** on their turn wins the game.
+   - There are no draws; the game will always result in a win or loss.
+
+4. **Example of Digits Extraction**:
+   - For **N = 124**, the digits are **1**, **2**, and **4**.
+   - For **N = 301**, the digits are **3**, **0**, and **1** (only **3** and **1** can be subtracted).
+
+## Scoring
+
+- **Winning the Game**: The player who reduces **N** to zero scores a win.
+- **Losing the Game**: The player who cannot make a valid move on their turn loses.
+- **Tracking Wins**: Players can keep track of the number of games won if playing multiple rounds.
+
+## Examples
+
+### Example Scenario 1
+
+**Starting N = 15**
+
+- **Player 1's Turn**:
+  - **N** is **15**.
+  - Digits are **1** and **5**.
+  - Chooses to subtract **5**.
+  - **N** becomes **15 - 5 = 10**.
+- **Player 2's Turn**:
+  - **N** is **10**.
+  - Digits are **1** and **0** (ignore **0**).
+  - Chooses to subtract **1**.
+  - **N** becomes **10 - 1 = 9**.
+- **Player 1's Turn**:
+  - **N** is **9**.
+  - Digit is **9**.
+  - Chooses to subtract **9**.
+  - **N** becomes **9 - 9 = 0**.
+- **Result**: Player 1 wins by reducing **N** to zero.
+
+### Example Scenario 2
+
+**Starting N = 13**
+
+- **Player 1's Turn**:
+  - **N** is **13**.
+  - Digits are **1** and **3**.
+  - Chooses to subtract **3**.
+  - **N** becomes **13 - 3 = 10**.
+- **Player 2's Turn**:
+  - **N** is **10**.
+  - Digits are **1** and **0**.
+  - Chooses to subtract **1**.
+  - **N** becomes **10 - 1 = 9**.
+- **Player 1's Turn**:
+  - **N** is **9**.
+  - Digit is **9**.
+  - Chooses to subtract **9**.
+  - **N** becomes **9 - 9 = 0**.
+- **Result**: Player 1 wins.
+
+### Command-Line Interaction Sample
+
+```
+Starting N: 15
+
+Player 1's Turn:
+Current N: 15
+Digits to choose from: [1, 5]
+Enter digit to subtract: 5
+New N: 10
+
+Player 2's Turn:
+Current N: 10
+Digits to choose from: [1]
+Enter digit to subtract: 1
+New N: 9
+
+Player 1's Turn:
+Current N: 9
+Digits to choose from: [9]
+Enter digit to subtract: 9
+New N: 0
+
+Player 1 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves by considering how your subtraction will affect the digits available to your opponent.
+- **Minimize N Strategically**: Reducing **N** to numbers with fewer or less advantageous digits can put your opponent at a disadvantage.
+- **Avoid Leaving Zeroes**: Try not to leave your opponent with an **N** that contains a zero and a small digit, as this may help them reach zero on their next turn.
+
+## Ending the Game
+
+- The game ends immediately when:
+  - A player reduces **N** to exactly zero on their turn (they win).
+  - A player cannot make a valid move because subtracting any available digit would make **N** negative (they lose).
+
+---
+
+Enjoy playing **Digit Dilemma**! May the best strategist win.

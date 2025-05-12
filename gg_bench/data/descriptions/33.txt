@@ -1,0 +1,169 @@
+# Divider Duel: Rule Book
+
+## Objective
+
+**Divider Duel** is a two-player, turn-based strategy game. The primary goal is to be the player who removes the last number from a shared list of integers. Players achieve victory by strategically selecting numbers to remove and triggering the removal of additional numbers based on divisibility rules. The player who removes the last remaining number wins the game.
+
+## Setup
+
+1. **Shared Number List**: Begin with a shared list of integers from **2** to **9**, inclusive.
+
+   ```
+   Shared List: [2, 3, 4, 5, 6, 7, 8, 9]
+   ```
+
+2. **Starting Player**: Decide which player goes first. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Shared Number List**: A list containing the numbers **2** through **9**. This list is visible to both players and is updated throughout the game as numbers are removed.
+
+- **Players**: Two participants who will take turns removing numbers from the shared list.
+
+- **Turn Indicator**: A simple way to keep track of whose turn it is. This can be as straightforward as alternating turns or using a command-line prompt indicating the active player.
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with the designated first player.
+
+- **Player Actions**: On each turn, the active player performs the following steps:
+  1. **Select a Number**: Choose any one number from the current shared list to remove.
+  2. **Remove Divisible Numbers**: After removing the chosen number, automatically remove all remaining numbers in the list that are divisible by the chosen number.
+
+- **Turn Progression**: Once a player has completed their turn by removing the appropriate numbers, the turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - The active player must remove **one** number from the shared list on their turn.
+   - The chosen number must be present in the shared list.
+
+2. **Divisibility Rule**:
+   - Upon removing the selected number, immediately remove all other numbers in the shared list that are divisible by the chosen number.
+   - The numbers removed due to divisibility are not chosen directly by the player but are a consequence of the initial selection.
+
+3. **Winning the Game**:
+   - The player who removes the **last remaining number** from the shared list wins the game.
+   - If a player's action results in the shared list becoming empty, that player is declared the winner.
+
+4. **No Skipping Turns**:
+   - Players cannot pass or skip their turn. A number must be selected and removed if any numbers remain in the shared list.
+
+5. **No Reversal**:
+   - Once numbers are removed from the shared list, they cannot be returned or reinstated.
+
+## Scoring
+
+- **Victory Condition**: The game does not use a point system. Instead, the win is determined by the player who successfully removes the last number from the shared list according to the rules.
+
+- **Match Play**: For extended play, players may decide to play multiple rounds, keeping track of the number of games won. The player with the most victories after a predetermined number of rounds is the overall winner.
+
+## Examples
+
+### Example Game Play
+
+**Initial Shared List**:
+```
+[2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - **Selection**: Removes **5**.
+  - **Divisibility Check**:
+    - Numbers divisible by **5**: **5** (already removed).
+  - **Updated Shared List**:
+    ```
+    [2, 3, 4, 6, 7, 8, 9]
+    ```
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - **Selection**: Removes **3**.
+  - **Divisibility Check**:
+    - Numbers divisible by **3**: **3** (already removed), **6**, **9**.
+  - **Updated Shared List**:
+    ```
+    [2, 4, 7, 8]
+    ```
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - **Selection**: Removes **2**.
+  - **Divisibility Check**:
+    - Numbers divisible by **2**: **2** (already removed), **4**, **8**.
+  - **Updated Shared List**:
+    ```
+    [7]
+    ```
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - **Selection**: Removes **7**.
+  - **Divisibility Check**:
+    - Numbers divisible by **7**: **7** (already removed).
+  - **Updated Shared List**:
+    ```
+    []
+    ```
+- **Result**: Player 2 has removed the last number and **wins the game**.
+
+### Command-Line Interaction Example
+
+Assuming a simple command-line implementation where players input commands to select numbers.
+
+**Game Start**
+
+```
+Shared List: [2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1, it's your turn.
+Enter the number you wish to remove: 5
+
+You removed 5.
+Numbers divisible by 5 have been removed.
+Updated Shared List: [2, 3, 4, 6, 7, 8, 9]
+```
+
+**Next Turn**
+
+```
+Player 2, it's your turn.
+Enter the number you wish to remove: 3
+
+You removed 3.
+Numbers divisible by 3 have been removed.
+Updated Shared List: [2, 4, 7, 8]
+```
+
+**Subsequent Turns**
+
+```
+Player 1, it's your turn.
+Enter the number you wish to remove: 2
+
+You removed 2.
+Numbers divisible by 2 have been removed.
+Updated Shared List: [7]
+
+Player 2, it's your turn.
+Enter the number you wish to remove: 7
+
+You removed 7.
+Numbers divisible by 7 have been removed.
+Updated Shared List: []
+
+Player 2 wins the game!
+```
+
+### Strategic Considerations
+
+- **Anticipate Opponent's Moves**: Pay attention to which numbers remain and how your choice will affect the shared list after divisibility removals.
+
+- **Control Key Numbers**: Removing numbers that have multiple divisibility relations can significantly reduce the shared list, potentially forcing your opponent into a losing position.
+
+- **Plan Ahead**: Think several moves ahead to avoid setting up the opponent for a win on their next turn.
+
+## Conclusion
+
+**Divider Duel** is a game of strategic planning and foresight. While the rules are simple and the game is easy to play in a command-line interface, mastering the strategy requires skill. By understanding the interactions between numbers and how removing one can affect the rest, a skilled player can consistently outperform an unskilled opponent. Enjoy the challenge and may the best strategist win!

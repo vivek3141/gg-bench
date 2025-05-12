@@ -1,0 +1,200 @@
+**Number Connect**  
+*A Two-Player Turn-Based Strategy Game*  
+
+---
+
+### **Objective**
+
+**Primary Goal:**  
+Be the first player to create a contiguous sequence of numbers that sums exactly to **15** within a shared sequence built during the game.
+
+**Victory Conditions:**
+
+- **Win:** Form a contiguous subsequence that sums to 15 on your turn.
+- **Loss:** If all numbers are exhausted without forming such a sequence, the player who placed the last number loses.
+- **No Draws:** The game is designed so that a draw is not possible.
+
+---
+
+### **Setup**
+
+1. **Number Pool:** Begin with numbers **1** through **9** available for selection.
+2. **Shared Sequence:** Start with an empty sequence where numbers will be placed.
+3. **Determine First Player:** Decide who will be **Player 1** and **Player 2** (e.g., by a coin toss).
+4. **Command-Line Interface:** Ensure both players have access to input commands and view outputs.
+
+---
+
+### **Game Components**
+
+- **Numbers (1-9):**
+  - Represented by digits **1** through **9**.
+  - Each number is unique and can only be selected once.
+- **Shared Sequence:**
+  - A growing list where numbers selected by players are added in order.
+  - Visible to both players after each move.
+- **Players:**
+  - **Player 1** and **Player 2**, taking turns alternately.
+- **Command-Line Interface:**
+  - The medium through which players interact with the game.
+  - Displays available numbers, the shared sequence, and prompts for input.
+
+---
+
+### **Turns**
+
+1. **Turn Order:**
+   - Players alternate turns, starting with **Player 1**.
+2. **Actions During a Turn:**
+   - **Select a Number:**
+     - Choose an available number from **1** to **9** that hasn't been selected.
+   - **Place the Number:**
+     - Add the selected number to the **end** of the shared sequence.
+   - **Check for Victory:**
+     - Analyze the shared sequence to see if a contiguous subsequence sums to **15**.
+     - The subsequence must end with the number you just placed.
+3. **Progression:**
+   - If no winning sequence is formed, the turn passes to the other player.
+   - Continue until a player wins or all numbers are used.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection Rules:**
+   - Only numbers **1** to **9** are used.
+   - Each number can be selected **once**.
+   - Numbers are selected from the **remaining** pool.
+
+2. **Sequence Building Rules:**
+   - Numbers are added to a **shared sequence** visible to both players.
+   - The sequence grows with each turn.
+   - The order of numbers is important for forming sequences.
+
+3. **Winning the Game:**
+   - After placing a number, check all possible contiguous subsequences ending with that number.
+   - If any of these subsequences sum to exactly **15**, you win.
+   - Only the player whose turn it is can win on their move.
+
+4. **No Draw Scenario:**
+   - If all numbers are used without a winning sequence:
+     - The player who placed the **last** number **loses**.
+     - This rule ensures that there can be no draw.
+
+5. **Strategic Considerations:**
+   - Anticipate your opponent's moves.
+   - Choose numbers that benefit you but avoid setting up your opponent.
+   - Keep track of which numbers have been used.
+
+---
+
+### **Scoring**
+
+- **No Points System:**
+  - The game does not use points or scoring.
+- **Winning:**
+  - Victory is achieved by forming a valid sequence as per the rules.
+- **Losing:**
+  - Failing to form such a sequence before the numbers run out results in a loss for the player who makes the last move.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting the Game:**
+
+- **Available Numbers:** 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Shared Sequence:** _(empty)_
+
+---
+
+**Turn 1 - Player 1:**
+
+- **Action:**
+  - Selects **5**.
+  - Adds **5** to the shared sequence.
+- **Shared Sequence:** 5
+- **Checks for Victory:**
+  - Sequences to check: [5]
+  - Sum: 5 (no win)
+- **Result:** No winning sequence. Turn passes to Player 2.
+
+---
+
+**Turn 2 - Player 2:**
+
+- **Available Numbers:** 1, 2, 3, 4, 6, 7, 8, 9
+- **Action:**
+  - Selects **9**.
+  - Adds **9** to the shared sequence.
+- **Shared Sequence:** 5, 9
+- **Checks for Victory:**
+  - Sequences to check: [9], [5, 9]
+  - Sums: 9, 14 (no win)
+- **Result:** No winning sequence. Turn passes to Player 1.
+
+---
+
+**Turn 3 - Player 1:**
+
+- **Available Numbers:** 1, 2, 3, 4, 6, 7, 8
+- **Action:**
+  - Selects **1**.
+  - Adds **1** to the shared sequence.
+- **Shared Sequence:** 5, 9, 1
+- **Checks for Victory:**
+  - Sequences to check: [1], [9, 1], [5, 9, 1]
+  - Sums: 1, 10, 15
+- **Result:** Sum of [5, 9, 1] is **15**.
+- **Outcome:** **Player 1 wins** by forming the sequence [5, 9, 1].
+
+---
+
+#### **Command-Line Interaction Sample**
+
+**Player 1's Turn:**
+
+```
+Available Numbers: 1, 2, 3, 4, 6, 7, 8
+Shared Sequence: 5, 9
+Choose a number: 1
+
+You selected 1.
+Shared Sequence is now: 5, 9, 1
+
+Checking for winning sequences...
+- Sequence [1]: Sum = 1
+- Sequence [9, 1]: Sum = 10
+- Sequence [5, 9, 1]: Sum = 15
+
+Congratulations! You formed a sequence that sums to 15.
+Player 1 wins!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead:**
+  - Keep track of sums of potential sequences.
+  - Anticipate which numbers can help you reach 15.
+
+- **Defensive Play:**
+  - Avoid selecting numbers that could help your opponent win on their next turn.
+  - Consider the possible sequences your opponent can form.
+
+- **Number Awareness:**
+  - Remember which numbers are still available.
+  - Use this information to make informed decisions.
+
+---
+
+### **Summary**
+
+**Number Connect** is a fast-paced, strategic game that challenges players to think ahead and outmaneuver their opponent by forming number sequences that sum to **15**. With simple rules and deep strategic potential, it provides an engaging experience where skill prevails over luck.
+
+---
+
+**Enjoy the game, and may the best strategist win!**

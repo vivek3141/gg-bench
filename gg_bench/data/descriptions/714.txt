@@ -1,0 +1,238 @@
+# Number Line Duel Rule Book
+
+## Objective
+
+**Number Line Duel** is a strategic two-player game where the primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns crossing out numbers on a shared number line. The player who makes the last valid move wins the game.
+
+---
+
+## Setup
+
+1. **Number Line Creation**:
+   - The game is played with a number line containing the integers from **1 to 10**, arranged sequentially.
+   - Initially, none of the numbers are crossed out.
+
+2. **Player Assignment**:
+   - Two players are needed: **Player 1** and **Player 2**.
+   - Decide who will be Player 1 and Player 2 (e.g., by coin toss or mutual agreement).
+
+3. **Starting the Game**:
+   - The game begins with Player 1 taking the first turn.
+
+---
+
+## Game Components
+
+1. **Number Line**:
+   - A shared linear arrangement of numbers from **1** to **10**.
+   - Example of the initial number line:
+
+     ```
+     1 2 3 4 5 6 7 8 9 10
+     ```
+
+2. **Markers**:
+   - A way to indicate crossed-out numbers (e.g., replacing the number with an `X` or enclosing it in brackets).
+
+3. **Players**:
+   - **Player 1** and **Player 2**, who will alternate turns.
+
+4. **Interface**:
+   - A command-line interface where players input their moves and see the updated number line after each turn.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns starting with **Player 1**.
+
+2. **Player Actions**:
+   - On their turn, a player must perform one of the following actions:
+     - **Cross out one single number**.
+     - **Cross out two consecutive numbers** (numbers that are next to each other on the number line and neither is crossed out).
+
+3. **Move Input**:
+   - Players input the number or numbers they wish to cross out.
+   - Input should be in the form of the number(s), e.g., `5` or `5 6`.
+
+4. **Validation**:
+   - The game validates the player's input to ensure the move is legal according to the game rules.
+
+5. **Turn Completion**:
+   - After a valid move, the game updates the number line and displays it to both players.
+   - If a player cannot make a valid move on their turn, the game ends.
+
+---
+
+## Rules and Mechanics
+
+1. **Crossing Out Numbers**:
+   - **Single Number**:
+     - A player may cross out any **one** number that is not already crossed out.
+   - **Two Consecutive Numbers**:
+     - A player may cross out any **two numbers** that are adjacent on the number line, provided neither number is already crossed out.
+     - Consecutive numbers are numbers that are next to each other in the sequence (e.g., `3` and `4`).
+
+2. **Valid Moves**:
+   - A move is valid if:
+     - At least one number is crossed out.
+     - For crossing out two numbers, they must be consecutive and both unmarked.
+   - Players **must** make a valid move if possible; skipping a turn is not allowed.
+
+3. **Winning Condition**:
+   - The game ends when a player cannot make any valid move on their turn.
+   - The player who made the **last valid move** wins the game.
+
+4. **Illegal Moves**:
+   - Attempting to cross out numbers that are already crossed out.
+   - Attempting to cross out two numbers that are not consecutive.
+   - If an illegal move is attempted, the player will be prompted to try again.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The player who forces their opponent into a position with no valid moves is declared the **winner**.
+- **No Point System**:
+  - There is no point accumulation; the game outcome is a win or loss.
+- **Game End**:
+  - The game ends immediately when a player cannot make a valid move.
+
+---
+
+## Examples
+
+### Example Scenario
+
+**Initial Number Line**:
+
+```
+1 2 3 4 5 6 7 8 9 10
+```
+
+**Gameplay**:
+
+1. **Turn 1 - Player 1**:
+   - Player 1 decides to cross out numbers **5** and **6**.
+   - Numbers 5 and 6 are consecutive and unmarked.
+   - **Updated Number Line**:
+
+     ```
+     1 2 3 4 X X 7 8 9 10
+     ```
+
+2. **Turn 2 - Player 2**:
+   - Player 2 crosses out number **8**.
+   - **Updated Number Line**:
+
+     ```
+     1 2 3 4 X X 7 X 9 10
+     ```
+
+3. **Turn 3 - Player 1**:
+   - Player 1 crosses out numbers **9** and **10**.
+   - **Updated Number Line**:
+
+     ```
+     1 2 3 4 X X 7 X X X
+     ```
+
+4. **Turn 4 - Player 2**:
+   - Player 2 crosses out numbers **1** and **2**.
+   - **Updated Number Line**:
+
+     ```
+     X X 3 4 X X 7 X X X
+     ```
+
+5. **Turn 5 - Player 1**:
+   - Player 1 crosses out number **3**.
+   - **Updated Number Line**:
+
+     ```
+     X X X 4 X X 7 X X X
+     ```
+
+6. **Turn 6 - Player 2**:
+   - Player 2 crosses out number **4**.
+   - **Updated Number Line**:
+
+     ```
+     X X X X X X 7 X X X
+     ```
+
+7. **Turn 7 - Player 1**:
+   - Player 1 crosses out number **7**.
+   - **Updated Number Line**:
+
+     ```
+     X X X X X X X X X X
+     ```
+
+8. **Game End**:
+   - All numbers are crossed out.
+   - Player 1 made the last valid move.
+   - **Player 1 wins the game**.
+
+### Command-Line Interaction Example
+
+Below is how a sample game might look in a command-line interface.
+
+**Game Start**:
+
+```
+Welcome to Number Line Duel!
+Number Line: 1 2 3 4 5 6 7 8 9 10
+
+Player 1's turn.
+Enter numbers to cross out (e.g., '5' or '5 6'):
+```
+
+**Player 1 Enters**:
+
+```
+5 6
+```
+
+**System Response**:
+
+```
+Player 1 crossed out: 5 6
+Updated Number Line: 1 2 3 4 X X 7 8 9 10
+
+Player 2's turn.
+Enter numbers to cross out:
+```
+
+**Player 2 Enters**:
+
+```
+8
+```
+
+**System Response**:
+
+```
+Player 2 crossed out: 8
+Updated Number Line: 1 2 3 4 X X 7 X 9 10
+
+Player 1's turn.
+Enter numbers to cross out:
+```
+
+*...and so on until the game concludes as in the example above.*
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Think about the consequences of your moves on future turns.
+- **Control Key Numbers**: Crossing out numbers that limit your opponent's options can be advantageous.
+- **Force Moves**: Try to force your opponent into a position where only one move is available.
+- **Pay Attention**: Always be aware of the remaining numbers and possible consecutive pairs.
+
+---
+
+Enjoy playing **Number Line Duel**! May the best strategist win.

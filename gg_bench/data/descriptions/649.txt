@@ -1,0 +1,186 @@
+# Binary Race
+
+## Objective
+
+Be the first player to set all bits in your 4-bit binary number to `1` (i.e., achieve the binary number `1111`). Use strategic bit flipping and, when advantageous, reset your opponent's bits to outpace them in this binary showdown.
+
+## Setup
+
+- **Players**: Two.
+- **Starting State**:
+  - Each player begins with a 4-bit binary number initialized to `0 0 0 0`.
+  - Bits are numbered from left to right as positions `1` to `4`.
+- **First Player**: Determined by any agreed method (e.g., coin toss).
+
+## Game Components
+
+- **Binary Numbers**: Each player has their own 4-bit binary number.
+- **Bits**: Individual positions in the binary number, which can be either `0` (off) or `1` (on).
+
+## Turns
+
+- Players alternate turns.
+- On each turn, a player may perform **one** of the following actions:
+  1. **Flip Own Bit**: Change one of their own bits from `0` to `1`, following the Flipping Rule.
+  2. **Reset Opponent's Bit**: Change one of the opponent's bits from `1` to `0`, following the Resetting Rule.
+
+## Rules and Mechanics
+
+### 1. Flipping Rule
+
+- **First Move Exception**: On the **very first turn of the game**, Player 1 may flip **any** one of their bits from `0` to `1`.
+- **Subsequent Flips**:
+  - A player can flip one of their own bits from `0` to `1` **only if** at least one adjacent bit is already `1`.
+  - **Adjacency**:
+    - Bit `1` is adjacent to bit `2`.
+    - Bit `2` is adjacent to bits `1` and `3`.
+    - Bit `3` is adjacent to bits `2` and `4`.
+    - Bit `4` is adjacent to bit `3`.
+  - **Example**:
+    - If your binary number is `0 1 0 0`, you can flip bit `1` or bit `3` (adjacent to bit `2` which is `1`).
+
+### 2. Resetting Rule
+
+- Instead of flipping a bit, a player can reset one of the opponent's bits from `1` to `0`, with the following conditions:
+  - The opponent's bit to be reset **must not** have both adjacent bits set to `1`.
+  - **Cannot Reset**:
+    - A bit where **both** adjacent bits are `1`.
+  - **Can Reset**:
+    - A bit where **at least one** adjacent bit is `0` or if it has only one neighbor and that neighbor is `0`.
+  - **Example**:
+    - If the opponent's binary number is `1 1 1 0`, you **cannot** reset bit `2` (adjacent bits `1` and `3` are both `1`).
+    - You **can** reset bit `1` (adjacent bit `2` is `1`, but the other side is the edge).
+
+### 3. Winning the Game
+
+- The first player to have all bits set to `1` (`1 1 1 1`) wins immediately.
+- If neither player can make a valid move, the game ends in a stalemate (though with proper play, this should be rare).
+
+### 4. Additional Rules
+
+- **No Available Moves**:
+  - If a player cannot flip any of their own bits and cannot reset any of the opponent's bits, they pass their turn.
+- **Turn Actions**:
+  - Players must perform an action if able; passing is only allowed when no valid moves exist.
+
+## Scoring
+
+- **Winning**: Achieve `1 1 1 1` on your binary number.
+- There is no point accumulation; the game is won by meeting the objective.
+
+## Examples
+
+### Sample Game Play
+
+**Initial State:**
+
+```
+Player 1: 0 0 0 0
+Positions: 1 2 3 4
+
+Player 2: 0 0 0 0
+```
+
+**Turn 1 - Player 1:**
+
+- **Action**: Flips bit `2` to `1` (First Move Exception).
+- **Result**:
+  ```
+  Player 1: 0 1 0 0
+  ```
+
+**Turn 2 - Player 2:**
+
+- **Action**: Flips bit `3` to `1` (First Move Exception).
+- **Result**:
+  ```
+  Player 2: 0 0 1 0
+  ```
+
+**Turn 3 - Player 1:**
+
+- **Possible Bits to Flip**: Bits `1` and `3` (adjacent to bit `2` which is `1`).
+- **Action**: Flips bit `1` to `1`.
+- **Result**:
+  ```
+  Player 1: 1 1 0 0
+  ```
+
+**Turn 4 - Player 2:**
+
+- **Possible Bits to Flip**: Bits `2` and `4` (adjacent to bit `3` which is `1`).
+- **Action**: Flips bit `2` to `1`.
+- **Result**:
+  ```
+  Player 2: 0 1 1 0
+  ```
+
+**Turn 5 - Player 1:**
+
+- **Possible Bits to Flip**: Bit `3` (adjacent to bits `2` which is `1`).
+- **Action**: Flips bit `3` to `1`.
+- **Result**:
+  ```
+  Player 1: 1 1 1 0
+  ```
+
+**Turn 6 - Player 2:**
+
+- **Possible Bits to Flip**: Bit `4` (adjacent to bit `3` which is `1`).
+- **Action**: Flips bit `4` to `1`.
+- **Result**:
+  ```
+  Player 2: 0 1 1 1
+  ```
+
+**Turn 7 - Player 1:**
+
+- **Possible Bits to Flip**: Bit `4` (adjacent to bit `3` which is `1`).
+- **Action**: Flips bit `4` to `1`.
+- **Result**:
+  ```
+  Player 1: 1 1 1 1
+  ```
+
+**Winner**: Player 1.
+
+### Command-Line Interaction
+
+**Turn 1 - Player 1:**
+
+```
+Player 1's turn.
+Your bits: 0 0 0 0
+Available actions:
+- Flip one of your bits from 0 to 1.
+  (First move: you can flip any bit.)
+Enter the bit position to flip: 2
+You flipped bit 2 to 1.
+```
+
+**Turn 2 - Player 2:**
+
+```
+Player 2's turn.
+Your bits: 0 0 0 0
+Available actions:
+- Flip one of your bits from 0 to 1.
+  (First move: you can flip any bit.)
+Enter the bit position to flip: 3
+You flipped bit 3 to 1.
+```
+
+**Subsequent turns follow similarly, indicating available actions, and updating the state accordingly.**
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the implications of each move, not only for yourself but also how it affects your opponent.
+- **Control the Center**: Flipping central bits early may give more options for flipping adjacent bits.
+- **Defense via Reset**: If your opponent is close to winning, resetting a critical bit can delay them, giving you time to catch up.
+- **Monitor Opponent's Options**: Be aware of which bits your opponent can flip or reset.
+
+## Conclusion
+
+Binary Race is a game of strategic bit manipulation. By carefully choosing which bits to flip or when to reset your opponent's bits, you can outmaneuver your opponent and be the first to achieve the coveted `1 1 1 1`.
+
+Enjoy the challenge, and may the best strategist win!

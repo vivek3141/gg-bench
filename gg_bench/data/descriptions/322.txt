@@ -1,0 +1,153 @@
+**Game Name:** Adjacent Numbers
+
+---
+
+### **Objective**
+
+Be the player to pick the last number from a shared list of numbers, following specific adjacency rules. The goal is to outmaneuver your opponent by strategically selecting numbers that limit their options, ultimately forcing them into a position where you can claim the final number and secure victory.
+
+---
+
+### **Setup**
+
+- **Number List:** A sequential list of integers from **1 to 20**.
+- **Player Order:** Determine who will be **Player 1** and **Player 2** (e.g., by coin toss or mutual agreement).
+
+---
+
+### **Game Components**
+
+- **Number List (1-20):** This is the central element of the game. Numbers are selected from this list and are removed once picked.
+- **Player Selections:** Each player maintains a record of the numbers they have picked.
+- **Opponent's Numbers:** Players need to be aware of the numbers their opponent has picked to apply the adjacency rules.
+
+---
+
+### **Turns**
+
+- **Turn Order:** Players alternate turns, starting with **Player 1**.
+- **Actions During a Turn:**
+  1. **Select a Number:** Choose any available number from the list that complies with the adjacency rules.
+  2. **Update Lists:** Remove the selected number from the available numbers and add it to your list of picked numbers.
+  3. **Inform Opponent:** Announce the picked number so the opponent can update their records.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Number Selection:**
+   - On your turn, you may pick any **remaining number** from the list **1 to 20**.
+   
+2. **Adjacency Restriction:**
+   - **You cannot pick a number that is numerically adjacent to any number previously picked by your opponent.**
+   - Numerically adjacent numbers are those that are exactly **1 higher or 1 lower** than a number your opponent has picked.
+   - For example, if your opponent has picked **10**, you cannot pick **9** or **11** on your subsequent turns.
+
+3. **Unavailable Numbers:**
+   - Numbers already picked by either player are no longer available for selection.
+   - Keep a shared record of all numbers that have been picked to avoid confusion.
+
+4. **Winning the Game:**
+   - The game continues until all numbers have been picked.
+   - **The player who picks the last remaining number wins the game.**
+
+---
+
+### **Scoring**
+
+- **Victory Condition:** Successfully picking the last available number grants you the win.
+- **No Points System:** The game does not use a point-based scoring system; victory is based solely on picking the final number according to the rules.
+
+---
+
+### **Examples**
+
+#### **Example Game Playthrough**
+
+**Initial Available Numbers:** 1 through 20
+
+**Player 1's Turn:**
+
+- Picks **10**
+- **Available Numbers:** 1-9, 11-20
+- **Numbers Player 2 Cannot Pick Next Turn:** 9, 11 (adjacent to 10)
+
+**Player 2's Turn:**
+
+- Cannot pick **9** or **11**
+- Picks **13**
+- **Available Numbers:** 1-9, 11-12, 14-20
+- **Numbers Player 1 Cannot Pick Next Turn:** 12, 14 (adjacent to 13)
+
+**Player 1's Turn:**
+
+- Cannot pick **12** or **14**
+- Picks **7**
+- **Available Numbers:** 1-6, 8-9, 11-12, 14-20
+- **Numbers Player 2 Cannot Pick Next Turn:** 6, 8 (adjacent to 7)
+
+**Player 2's Turn:**
+
+- Cannot pick **6** or **8**
+- Picks **15**
+- **Available Numbers:** 1-6, 8-9, 11-12, 14, 16-20
+- **Numbers Player 1 Cannot Pick Next Turn:** 14, 16 (adjacent to 15)
+
+**Player 1's Turn:**
+
+- Cannot pick **14** or **16**
+- Picks **5**
+- **Available Numbers:** 1-4, 6, 8-9, 11-12, 14, 16-20
+- **Numbers Player 2 Cannot Pick Next Turn:** 4, 6 (adjacent to 5)
+
+*...and so on until all numbers are picked.*
+
+**Final Moves:**
+
+- **Second-to-Last Number Available:** Let's say **2**
+- **Player 2's Turn:**
+  - Picks **2**
+  - **Numbers Player 1 Cannot Pick:** **1** and **3** (but if those numbers have already been picked, this doesn't affect Player 1)
+- **Last Number Available:** **17**
+- **Player 1's Turn:**
+  - Picks **17**
+  - **Player 1 wins the game by picking the last number.**
+
+---
+
+### **Command-Line Interaction Example**
+
+**Turn 1:**
+
+- **Player 1, enter your pick from available numbers [1-20]:** `10`
+- **Player 1 picked 10.**
+- **Numbers Player 2 cannot pick next turn:** 9, 11
+
+**Turn 2:**
+
+- **Player 2, enter your pick from available numbers [1-9, 11-20], excluding [9, 11]:** `13`
+- **Player 2 picked 13.**
+- **Numbers Player 1 cannot pick next turn:** 12, 14
+
+**Turn 3:**
+
+- **Player 1, enter your pick from available numbers [1-9, 11-12, 14-20], excluding [12, 14]:** `7`
+- **Player 1 picked 7.**
+- **Numbers Player 2 cannot pick next turn:** 6, 8
+
+*...and the interaction continues until all numbers are picked.*
+
+---
+
+### **Strategic Tips**
+
+- **Block Your Opponent:** Try to pick numbers that create the most restrictions for your opponent's next turn.
+- **Plan Ahead:** Keep track not only of which numbers are unavailable but also of the potential impact your pick will have on future moves.
+- **Avoid Self-Restriction:** Be cautious not to limit your own future options by picking numbers that may block you in subsequent turns.
+- **Think Multiple Moves Ahead:** Anticipate your opponent's possible picks and plan how you can respond.
+
+---
+
+### **Conclusion**
+
+Adjacent Numbers is a game of strategy and foresight. While the rules are straightforward, winning requires careful planning and consideration of both players' options. With each pick affecting the choices available to the opponent, every move is crucial. Enjoy the challenge of outsmarting your opponent in this unique and engaging numerical duel!

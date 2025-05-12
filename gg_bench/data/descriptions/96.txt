@@ -1,0 +1,185 @@
+# Bit Flip Duel
+
+## Objective
+
+Become the first player to transform the shared binary string into all ones (`1`s). Players achieve victory by strategically flipping bits and swapping bits within the binary string to reach the target pattern before their opponent.
+
+## Setup
+
+- **Starting Binary String**: `0 0 0 0 0` (a five-bit binary string with all bits set to zero).
+- **Player Roles**: Two players compete against each other, taking turns to manipulate the binary string.
+
+## Game Components
+
+- **Binary String**: A sequence of five bits displayed as `0`s and `1`s (e.g., `0 1 0 1 1`).
+  - **Bit Positions**: Each bit in the string has a position from 1 to 5, left to right.
+- **Actions**: Players have two types of actions they can perform on their turn:
+  1. **Flip a Bit**: Change a single bit from `0` to `1` or from `1` to `0`.
+  2. **Swap Bits**: Exchange the positions of any two bits in the string.
+
+## Turns
+
+- **Turn Order**: Players decide who goes first (e.g., coin toss), and turns alternate between players.
+- **Player Actions**: On their turn, a player must perform **one** of the following actions:
+  1. **Flip a Bit**: Select one bit to flip.
+  2. **Swap Bits**: Choose any two bits to swap their positions.
+- **Turn Progression**:
+  1. **Action Declaration**: The player announces their chosen action and specifies the bit positions involved.
+  2. **Action Execution**: The player performs the action on the binary string.
+  3. **Display Update**: The new state of the binary string is displayed.
+  4. **Victory Check**: If the binary string is all ones (`1 1 1 1 1`), the game ends, and the current player wins.
+  5. **Turn End**: If no victory, the turn passes to the other player.
+
+## Rules and Mechanics
+
+### Action Details
+
+1. **Flip a Bit**:
+   - **Purpose**: Change the state of a specific bit.
+   - **How to Perform**:
+     - Specify the position (1-5) of the bit to flip.
+     - Change the bit at that position from `0` to `1` or from `1` to `0`.
+
+2. **Swap Bits**:
+   - **Purpose**: Rearrange the positions of two bits to strategically align `1`s.
+   - **How to Perform**:
+     - Specify the two positions (1-5) of the bits to swap.
+     - Exchange the bits at the chosen positions.
+
+### Game Mechanics
+
+- **Valid Actions**: Players must perform one of the two actions on their turn; skipping a turn or performing both actions is not allowed.
+- **Binary String State**: The binary string is shared and updated after each turn, reflecting the current state of the game.
+- **Victory Condition**: The game ends immediately when the binary string becomes `1 1 1 1 1`. The player who made the last action wins the game.
+
+## Scoring
+
+- **Winning the Game**: The player who successfully transforms the binary string into all ones (`1 1 1 1 1`) wins.
+- **No Points System**: The game is a single-round duel with no point tracking. The focus is on strategic play to achieve the victory condition.
+- **No Draws**: The game cannot end in a draw; play continues until one player wins.
+
+## Examples
+
+### Example Game Play
+
+#### Starting State
+
+- **Binary String**: `0 0 0 0 0`
+
+#### Turn 1: Player 1
+
+- **Action**: Flip a Bit at Position 3.
+- **Announcement**: "I flip bit at position 3."
+- **Execution**: Bit at position 3 changes from `0` to `1`.
+- **New Binary String**: `0 0 1 0 0`
+
+#### Turn 2: Player 2
+
+- **Action**: Swap Bits at Positions 1 and 3.
+- **Announcement**: "I swap bits at positions 1 and 3."
+- **Execution**: Bits at positions 1 and 3 are swapped.
+- **New Binary String**: `1 0 0 0 0`
+
+#### Turn 3: Player 1
+
+- **Action**: Flip a Bit at Position 2.
+- **Announcement**: "I flip bit at position 2."
+- **Execution**: Bit at position 2 changes from `0` to `1`.
+- **New Binary String**: `1 1 0 0 0`
+
+#### Turn 4: Player 2
+
+- **Action**: Swap Bits at Positions 4 and 5.
+- **Announcement**: "I swap bits at positions 4 and 5."
+- **Execution**: Bits at positions 4 and 5 are swapped (both are `0`; state remains the same).
+- **New Binary String**: `1 1 0 0 0`
+
+#### Turn 5: Player 1
+
+- **Action**: Flip a Bit at Position 3.
+- **Announcement**: "I flip bit at position 3."
+- **Execution**: Bit at position 3 changes from `0` to `1`.
+- **New Binary String**: `1 1 1 0 0`
+
+#### Turn 6: Player 2
+
+- **Action**: Swap Bits at Positions 1 and 5.
+- **Announcement**: "I swap bits at positions 1 and 5."
+- **Execution**: Bit at position 1 (`1`) swaps with bit at position 5 (`0`).
+- **New Binary String**: `0 1 1 0 1`
+
+#### Turn 7: Player 1
+
+- **Action**: Flip a Bit at Position 4.
+- **Announcement**: "I flip bit at position 4."
+- **Execution**: Bit at position 4 changes from `0` to `1`.
+- **New Binary String**: `0 1 1 1 1`
+
+#### Turn 8: Player 2
+
+- **Action**: Swap Bits at Positions 1 and 2.
+- **Announcement**: "I swap bits at positions 1 and 2."
+- **Execution**: Bit at position 1 (`0`) swaps with bit at position 2 (`1`).
+- **New Binary String**: `1 0 1 1 1`
+
+#### Turn 9: Player 1
+
+- **Action**: Flip a Bit at Position 2.
+- **Announcement**: "I flip bit at position 2."
+- **Execution**: Bit at position 2 changes from `0` to `1`.
+- **New Binary String**: `1 1 1 1 1`
+
+- **Victory Check**: The binary string is now all ones.
+- **Result**: **Player 1 wins the game!**
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input commands, here's how a few turns might look:
+
+```
+Starting Binary String: 0 0 0 0 0
+
+Player 1's Turn
+Choose an action:
+1. Flip a bit
+2. Swap bits
+Enter action number: 1
+Enter bit position to flip (1-5): 3
+Binary String after move: 0 0 1 0 0
+
+Player 2's Turn
+Choose an action:
+1. Flip a bit
+2. Swap bits
+Enter action number: 2
+Enter first bit position to swap (1-5): 1
+Enter second bit position to swap (1-5): 3
+Binary String after move: 1 0 0 0 0
+
+...
+
+Player 1's Turn
+Choose an action:
+1. Flip a bit
+2. Swap bits
+Enter action number: 1
+Enter bit position to flip (1-5): 2
+Binary String after move: 1 1 1 1 1
+
+Victory! Player 1 has turned all bits to 1. Player 1 wins!
+```
+
+## Strategic Depth and Complexity
+
+While the game mechanics are simple, "Bit Flip Duel" offers strategic depth:
+
+- **Planning Ahead**: Players must anticipate their opponent's potential moves and plan several turns ahead.
+- **Decision Making**: Choosing between flipping a bit and swapping bits can create opportunities or thwart the opponent's plans.
+- **Bit Positioning**: Swapping bits can be used defensively or offensively to rearrange the string in advantageous ways.
+- **Resource Management**: Since the game state is shared, each action directly affects both players, making each decision impactful.
+
+## Summary
+
+"Bit Flip Duel" is an engaging, turn-based strategy game that is easy to learn and quick to play. Players must think critically and adapt to their opponent's moves to achieve victory. The game is well-suited for a command-line interface and offers a unique experience distinct from traditional games like Nim or Tic-Tac-Toe.
+
+Enjoy the challenge and may the best strategist win!

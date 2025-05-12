@@ -1,0 +1,259 @@
+# Token Sprint: Rule Book
+
+## Objective
+
+**Token Sprint** is a competitive two-player turn-based game where each player aims to be the first to reach the end of a numbered path. The primary goal is to strategically move your token along the path to land exactly on the final position, **Position 20**, before your opponent does. Careful planning is required to navigate skip-turn positions and outmaneuver your opponent.
+
+---
+
+## Setup
+
+### Game Board
+
+- **Path Length**: A linear path consisting of positions numbered from **1** to **20**.
+- **Starting Position**: Both players begin off the path at **Position 0**.
+
+### Players
+
+- **Player Tokens**: Each player has a unique token to represent their position on the path.
+  - **Player 1**: Token `"X"`
+  - **Player 2**: Token `"O"`
+
+### Starting the Game
+
+- Decide which player will take the first turn. This can be determined by mutual agreement or a simple random method (e.g., coin toss).
+
+---
+
+## Game Components
+
+- **Path Positions**: Numbers **1** through **20**, representing the steps along the path.
+- **Player Tokens**: Symbols representing each player on the path.
+  - Tokens are moved forward along the path according to the rules.
+
+---
+
+## Turns
+
+- Players take turns alternately.
+- **Turn Structure**:
+  1. **Movement Phase**: The player moves their token forward by **1**, **2**, or **3** positions.
+  2. **Skip Mechanic**: If the player lands on a skip-turn position, they will miss their next turn.
+
+- **Skip-Turn Positions**:
+  - Positions that are **multiples of 5** (**5, 10, 15, 20**).
+  - Landing on these positions triggers the skip mechanic.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Moving the Token**:
+   - On your turn, choose to move your token forward by **1**, **2**, or **3** positions.
+   - Movement must be within the path boundaries (Positions **1** to **20**).
+
+2. **Exact Landing Required to Win**:
+   - To win, you must land **exactly** on **Position 20**.
+   - If you cannot move exactly to Position 20 on your turn, you must choose a smaller move or forfeit the move if no valid options exist.
+
+### Skip-Turn Mechanic
+
+- **Triggering a Skip**:
+  - If you land on a skip-turn position (**5, 10, 15, 20**), you **skip your next turn**.
+- **Consecutive Skips**:
+  - Skipping turns can accumulate. If a player lands on multiple skip-turn positions consecutively (e.g., by opponent's missed turns), they skip the corresponding number of future turns.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The first player to move their token to **Position 20** wins the game.
+- **Invalid Moves**:
+  - If a player cannot make a valid move without overshooting Position 20, they must pass their turn.
+
+### Additional Rules
+
+- **Passing Turns**:
+  - If no valid moves are available (e.g., all options overshoot Position 20), the player must pass, and the turn goes to the opponent.
+- **Skip Overrides Pass**:
+  - If a player is supposed to skip a turn but has no valid moves, the skip is consumed, and play proceeds to the other player.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - The player who reaches Position 20 first is declared the winner.
+- **No Point System**:
+  - There is no cumulative scoring; each game is a standalone contest to reach Position 20.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+- **Player Positions**: Player 1 (`X`) at Position 0, Player 2 (`O`) at Position 0.
+- **Player 1** begins the game.
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Moves **3** steps to Position **3**.
+   - **Position**: Player 1 at Position 3.
+
+2. **Player 2's Turn**:
+   - Moves **2** steps to Position **2**.
+   - **Position**: Player 2 at Position 2.
+
+3. **Player 1's Turn**:
+   - Moves **2** steps to Position **5** (skip-turn position).
+   - **Position**: Player 1 at Position 5.
+   - **Skip**: Player 1 will skip their next turn.
+
+4. **Player 2's Turn**:
+   - Moves **3** steps to Position **5** (skip-turn position).
+   - **Position**: Player 2 at Position 5.
+   - **Skip**: Player 2 will skip their next turn.
+
+5. **Player 1's Turn**:
+   - **Skipped** due to landing on Position 5.
+
+6. **Player 2's Turn**:
+   - **Skipped** due to landing on Position 5.
+
+7. **Player 1's Turn**:
+   - Moves **3** steps to Position **8**.
+   - **Position**: Player 1 at Position 8.
+
+8. **Player 2's Turn**:
+   - Moves **2** steps to Position **7**.
+   - **Position**: Player 2 at Position 7.
+
+9. **Player 1's Turn**:
+   - Moves **2** steps to Position **10** (skip-turn position).
+   - **Position**: Player 1 at Position 10.
+   - **Skip**: Player 1 will skip their next turn.
+
+10. **Player 2's Turn**:
+    - Moves **3** steps to Position **10** (skip-turn position).
+    - **Position**: Player 2 at Position 10.
+    - **Skip**: Player 2 will skip their next turn.
+
+11. **Player 1's Turn**:
+    - **Skipped** due to landing on Position 10.
+
+12. **Player 2's Turn**:
+    - **Skipped** due to landing on Position 10.
+
+13. **Player 1's Turn**:
+    - Attempts to move **3** steps to Position **13**.
+    - **Position**: Player 1 at Position 13.
+
+14. **Player 2's Turn**:
+    - Moves **2** steps to Position **12**.
+    - **Position**: Player 2 at Position 12.
+
+15. **Player 1's Turn**:
+    - Moves **2** steps to Position **15** (skip-turn position).
+    - **Position**: Player 1 at Position 15.
+    - **Skip**: Player 1 will skip their next turn.
+
+16. **Player 2's Turn**:
+    - Moves **3** steps to Position **15** (skip-turn position).
+    - **Position**: Player 2 at Position 15.
+    - **Skip**: Player 2 will skip their next turn.
+
+17. **Player 1's Turn**:
+    - **Skipped** due to landing on Position 15.
+
+18. **Player 2's Turn**:
+    - **Skipped** due to landing on Position 15.
+
+19. **Player 1's Turn**:
+    - Moves **1** step to Position **16**.
+    - **Position**: Player 1 at Position 16.
+
+20. **Player 2's Turn**:
+    - Moves **3** steps to Position **18**.
+    - **Position**: Player 2 at Position 18.
+
+21. **Player 1's Turn**:
+    - Moves **3** steps but cannot move to Position **19** (would need to move beyond Position 20).
+    - Moves **1** step to Position **17**.
+    - **Position**: Player 1 at Position 17.
+
+22. **Player 2's Turn**:
+    - Moves **2** steps to Position **20**.
+    - **Position**: Player 2 at Position 20.
+    - **Victory**: Player 2 wins the game by landing exactly on Position 20.
+
+---
+
+## Command-Line Interaction Sample
+
+Below is a sample interaction illustrating how the game might be played in a command-line interface.
+
+### Game Start
+
+```
+Welcome to Token Sprint!
+
+Player 1 (X) and Player 2 (O) are at Position 0.
+
+Player 1's turn.
+Enter move (1, 2, or 3): 3
+Player 1 moves to Position 3.
+
+Player 2's turn.
+Enter move (1, 2, or 3): 2
+Player 2 moves to Position 2.
+
+Player 1's turn.
+Enter move (1, 2, or 3): 2
+Player 1 moves to Position 5.
+Player 1 landed on a skip-turn position and will miss the next turn.
+
+Player 2's turn.
+Enter move (1, 2, or 3): 3
+Player 2 moves to Position 5.
+Player 2 landed on a skip-turn position and will miss the next turn.
+
+Player 1's turn is skipped.
+
+Player 2's turn is skipped.
+
+Player 1's turn.
+Enter move (1, 2, or 3): 3
+Player 1 moves to Position 8.
+
+Player 2's turn.
+Enter move (1, 2, or 3): 2
+Player 2 moves to Position 7.
+
+... (additional turns)
+
+Player 2's turn.
+Enter move (1, 2, or 3): 2
+Player 2 moves to Position 20.
+Congratulations! Player 2 wins the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate the consequences of landing on skip-turn positions. Sometimes it's advantageous to land on them to control the flow of the game.
+- **Count Remaining Spaces**: Keep track of the number of positions left to Position 20 to avoid overshooting.
+- **Force Opponent's Moves**: Position yourself to limit your opponent's options, potentially forcing them into unfavorable moves.
+
+---
+
+## Conclusion
+
+**Token Sprint** is a simple yet strategic game that can be easily played in a command-line environment. It emphasizes forward-thinking and planning, providing a quick and engaging experience where skill prevails over chance.
+
+Enjoy the race to Position 20, and may the best strategist win!

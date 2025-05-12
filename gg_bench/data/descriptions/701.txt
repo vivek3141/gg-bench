@@ -1,0 +1,323 @@
+# Grid Runner: Rule Book
+
+Welcome to **Grid Runner**, an exciting two-player, turn-based strategy game designed for quick play and easy implementation in a command-line interface. Outsmart your opponent by navigating a grid filled with obstacles to reach the opposite side first. Simple to learn but rich in strategic possibilities, Grid Runner ensures that skillful play leads to consistent victories.
+
+---
+
+## Objective
+
+Be the first player to reach the opposite side of a 5×5 grid by strategically moving your piece, navigating around walls, and outmaneuvering your opponent.
+
+---
+
+## Setup
+
+1. **Initialize the Grid**:
+   - The game is played on a 5×5 grid, represented as a matrix of cells with rows numbered from 1 to 5 (top to bottom) and columns numbered from 1 to 5 (left to right).
+   - Each cell is identified by its coordinates `(row, column)`.
+
+2. **Place Walls**:
+   - Randomly place **5 walls** (`X`) on the grid to create obstacles.
+   - Walls cannot occupy the starting positions of the players.
+   - Walls are impassable and block movement.
+
+3. **Starting Positions**:
+   - **Player 1 (P1)**:
+     - Chooses any cell in the **leftmost column** (column 1) as their starting position.
+   - **Player 2 (P2)**:
+     - Chooses any cell in the **rightmost column** (column 5) as their starting position.
+
+4. **Display the Initial Grid**:
+   - The command-line interface displays the grid with the players' positions (`P1` and `P2`), walls (`X`), and empty cells (`.`).
+
+---
+
+## Game Components
+
+- **Grid**:
+  - A 5×5 matrix representing the playing field.
+  - Cells can be empty (`.`), occupied by a player (`P1` or `P2`), or contain a wall (`X`).
+
+- **Players**:
+  - **Player 1 (P1)**: Starts on the leftmost column.
+  - **Player 2 (P2)**: Starts on the rightmost column.
+
+- **Walls (`X`)**:
+  - Static obstacles placed randomly at the start.
+  - Cannot be moved or passed through.
+
+- **Empty Cells (`.`)**:
+  - Open spaces where players can move.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, starting with **Player 1**.
+
+- **Player Actions**:
+  - On their turn, a player may move their piece one cell in any **cardinal direction**: up, down, left, or right.
+  - No diagonal movement is allowed.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Legal Moves**:
+   - A move must stay within the bounds of the grid (rows and columns 1-5).
+   - A player cannot move into a cell occupied by a wall (`X`) or the opposing player.
+   - If a player has no legal moves, they forfeit their turn.
+
+2. **Executing a Move**:
+   - The player inputs their desired direction (`up`, `down`, `left`, `right`).
+   - The game updates the grid to reflect the new position.
+
+### Winning the Game
+
+- **Player 1 Wins**:
+  - If `P1` reaches any cell in the **rightmost column** (column 5).
+
+- **Player 2 Wins**:
+  - If `P2` reaches any cell in the **leftmost column** (column 1).
+
+- **No Draws**:
+  - The game continues until a player wins. There are no tied games.
+
+### Additional Mechanics
+
+- **Blocked Paths**:
+  - Players must navigate around walls and anticipate the opponent’s moves.
+  - Strategic positioning can block an opponent’s path without occupying the same cell.
+
+- **No Passing**:
+  - Players cannot skip their turn unless they have no legal moves.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - The game is won by the first player to reach their goal side of the grid.
+  - No points are tracked; the outcome is a straightforward win or loss.
+
+---
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid Setup
+
+```
+1  2  3  4  5
+--------------
+1 | P1 .  .  .  P2
+2 | .  X  .  X  .
+3 | .  .  .  .  .
+4 | .  X  .  X  .
+5 | .  .  .  .  .
+```
+
+- **Walls (`X`)** are placed at positions `(2,2)`, `(2,4)`, `(4,2)`, and `(4,4)`.
+- **Player 1 (`P1`)** starts at `(1,1)`.
+- **Player 2 (`P2`)** starts at `(1,5)`.
+
+#### Sample Turns
+
+1. **Player 1's Turn**:
+   - Current Position: `(1,1)`
+   - Possible Moves: Down `(2,1)`, Right `(1,2)`
+   - **Move**: Right to `(1,2)`
+   - **Updated Grid**:
+
+     ```
+     1 | .  P1 .  .  P2
+     2 | .  X  .  X  .
+     3 | .  .  .  .  .
+     4 | .  X  .  X  .
+     5 | .  .  .  .  .
+     ```
+
+2. **Player 2's Turn**:
+   - Current Position: `(1,5)`
+   - Possible Moves: Down `(2,5)`, Left `(1,4)`
+   - **Move**: Down to `(2,5)`
+   - **Updated Grid**:
+
+     ```
+     1 | .  P1 .  .  .
+     2 | .  X  .  X  P2
+     3 | .  .  .  .  .
+     4 | .  X  .  X  .
+     5 | .  .  .  .  .
+     ```
+
+3. **Player 1's Turn**:
+   - Current Position: `(1,2)`
+   - Possible Moves: Up `(this move is off the grid, not allowed)`, Down `(2,2, blocked by wall)`, Left `(1,1)`, Right `(1,3)`
+   - **Move**: Right to `(1,3)`
+   - **Updated Grid**:
+
+     ```
+     1 | .  .  P1 .  .
+     2 | .  X  .  X  P2
+     3 | .  .  .  .  .
+     4 | .  X  .  X  .
+     5 | .  .  .  .  .
+     ```
+
+4. **Player 2's Turn**:
+   - Current Position: `(2,5)`
+   - Possible Moves: Up `(1,5)`, Down `(3,5)`, Left `(2,4, blocked by wall)`
+   - **Move**: Down to `(3,5)`
+   - **Updated Grid**:
+
+     ```
+     1 | .  .  P1 .  .
+     2 | .  X  .  X  .
+     3 | .  .  .  .  P2
+     4 | .  X  .  X  .
+     5 | .  .  .  .  .
+     ```
+
+5. **Player 1's Turn**:
+   - Current Position: `(1,3)`
+   - Possible Moves: Down `(2,3)`, Left `(1,2)`, Right `(1,4)`
+   - **Move**: Right to `(1,4)`
+   - **Updated Grid**:
+
+     ```
+     1 | .  .  .  P1 .
+     2 | .  X  .  X  .
+     3 | .  .  .  .  P2
+     4 | .  X  .  X  .
+     5 | .  .  .  .  .
+     ```
+
+6. **Player 2's Turn**:
+   - Current Position: `(3,5)`
+   - Possible Moves: Up `(2,5)`, Down `(4,5)`, Left `(3,4)`
+   - **Move**: Left to `(3,4)`
+   - **Updated Grid**:
+
+     ```
+     1 | .  .  .  P1 .
+     2 | .  X  .  X  .
+     3 | .  .  .  P2 .
+     4 | .  X  .  X  .
+     5 | .  .  .  .  .
+     ```
+
+7. **Player 1's Turn**:
+   - Current Position: `(1,4)`
+   - Possible Moves: Down `(2,4, blocked by wall)`, Left `(1,3)`, Right `(1,5)`
+   - **Move**: Right to `(1,5)`
+   - **Player 1 reaches the rightmost column and wins the game.**
+
+---
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Welcome to Grid Runner!
+
+Player 1, choose your starting row (1-5) in column 1:
+> 1
+
+Player 2, choose your starting row (1-5) in column 5:
+> 1
+
+Initial Grid:
+1 | P1 .  .  .  P2
+2 | .  X  .  X  .
+3 | .  .  .  .  .
+4 | .  X  .  X  .
+5 | .  .  .  .  .
+
+Let the game begin!
+```
+
+### Player Turns
+
+#### Player 1's Turn
+
+```
+Player 1's turn. Current position: (1,1)
+Available moves: down, right
+Enter your move:
+> right
+
+Player 1 moved right to (1,2).
+
+Updated Grid:
+1 | .  P1 .  .  P2
+2 | .  X  .  X  .
+3 | .  .  .  .  .
+4 | .  X  .  X  .
+5 | .  .  .  .  .
+```
+
+#### Player 2's Turn
+
+```
+Player 2's turn. Current position: (1,5)
+Available moves: down, left
+Enter your move:
+> down
+
+Player 2 moved down to (2,5).
+
+Updated Grid:
+1 | .  P1 .  .  .
+2 | .  X  .  X  P2
+3 | .  .  .  .  .
+4 | .  X  .  X  .
+5 | .  .  .  .  .
+```
+
+### Winning the Game
+
+After several turns:
+
+```
+Player 1's turn. Current position: (1,4)
+Available moves: left, right
+Enter your move:
+> right
+
+Player 1 moved right to (1,5).
+
+Player 1 has reached the rightmost column and wins the game!
+
+Final Grid:
+1 | .  .  .  .  P1
+2 | .  X  .  X  .
+3 | .  .  .  P2 .
+4 | .  X  .  X  .
+5 | .  .  .  .  .
+```
+
+---
+
+## Strategies and Tips
+
+- **Plan Ahead**:
+  - Anticipate your opponent's moves and plan routes that minimize the risk of being blocked.
+
+- **Control the Center**:
+  - Moving through the center rows may offer more options to adjust your path as the game progresses.
+
+- **Use Walls to Your Advantage**:
+  - The walls can help protect your flanks or funnel your opponent into a less favorable path.
+
+- **Blocking**:
+  - While you cannot occupy the same cell as your opponent, positioning yourself can limit their movement options.
+
+---
+
+Enjoy playing Grid Runner, and may the best strategist win!

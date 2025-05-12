@@ -1,0 +1,124 @@
+# Treasure Hunt Duel
+
+## Objective
+
+Be the first player to discover the hidden treasure on the grid by correctly guessing its exact location. Players use clues provided after each guess to narrow down the treasure's position.
+
+## Setup
+
+- **Grid**: The game is played on an 8x8 grid.
+  - **Rows** are labeled with letters `A` to `H`.
+  - **Columns** are labeled with numbers `1` to `8`.
+- **Treasure Placement**: At the start of the game, the system randomly selects one grid cell to hide the treasure. The treasure's location is unknown to both players.
+
+## Game Components
+
+- **8x8 Grid**: A virtual grid with coordinates from `A1` to `H8`.
+  - Each cell can be referenced by combining its row letter and column number (e.g., `A1`, `B5`, `H8`).
+- **Coordinate System**: Used for players to input their guesses.
+- **Manhattan Distance Calculator**: The system calculates the distance between the guessed coordinate and the treasure's location.
+
+## Turns
+
+1. **Starting the Game**:
+   - Decide who goes first (e.g., by coin toss).
+2. **Player Turns**:
+   - Players alternate turns throughout the game.
+   - On a player's turn, they perform the following action:
+     - **Guess a Coordinate**: Input a grid coordinate to search for the treasure (e.g., `D4`).
+
+## Rules and Mechanics
+
+- **Guessing**:
+  - **Valid Inputs**: Coordinates must be within `A1` to `H8`.
+  - **Feedback**:
+    - After each guess, the system provides the **Manhattan distance** between the guessed coordinate and the treasure.
+      - **Manhattan Distance**: Calculated as the sum of the absolute differences between the row indices and the column indices of the two coordinates.
+        - **Formula**: `Distance = |Row₁ - Row₂| + |Column₁ - Column₂|`
+        - Rows `A` to `H` are assigned indices `1` to `8` respectively.
+        - Columns `1` to `8` maintain their numerical values.
+    - The feedback does **not** include directional hints.
+- **Winning the Game**:
+  - The first player to correctly guess the exact location of the hidden treasure wins.
+  - The game ends immediately when the treasure is found.
+
+## Scoring
+
+- **No Points System**: The game does not track points. Victory is achieved by finding the treasure first.
+- **Tracking Progress**:
+  - Players may keep notes of their own and their opponent's guesses and the corresponding distances to strategize effectively.
+
+## Examples
+
+### Example Game Play
+
+Assume the treasure is hidden at coordinate `D5`.
+
+1. **Player 1's Turn**:
+   - Guesses `A1`.
+   - **Feedback**: Distance `7`.
+     - Calculation: `|Row_D (4) - Row_A (1)| + |Column_5 - Column_1| = 3 + 4 = 7`.
+2. **Player 2's Turn**:
+   - Guesses `E3`.
+   - **Feedback**: Distance `3`.
+     - Calculation: `|Row_D (4) - Row_E (5)| + |Column_5 - Column_3| = 1 + 2 = 3`.
+3. **Player 1's Turn**:
+   - Guesses `C5`.
+   - **Feedback**: Distance `1`.
+     - Calculation: `|Row_D (4) - Row_C (3)| + |Column_5 - Column_5| = 1 + 0 = 1`.
+4. **Player 2's Turn**:
+   - Guesses `D5`.
+   - **Feedback**: `Treasure found!`
+   - **Player 2 Wins**.
+
+### Command-Line Interaction
+
+```
+[Game Start]
+The treasure has been hidden on the grid.
+
+Player 1's turn.
+Enter your guess (e.g., A1): A1
+Distance: 7
+
+Player 2's turn.
+Enter your guess (e.g., A1): E3
+Distance: 3
+
+Player 1's turn.
+Enter your guess (e.g., A1): C5
+Distance: 1
+
+Player 2's turn.
+Enter your guess (e.g., A1): D5
+Treasure found! Player 2 wins!
+```
+
+## Strategic Tips
+
+- **Keep Track of All Guesses**:
+  - Note down both your own and your opponent's guesses along with the distances provided.
+- **Narrow Down the Possible Locations**:
+  - Use the distances to eliminate impossible coordinates.
+  - The intersection of all possible coordinates based on previous distances will guide you towards the treasure.
+- **Understand Manhattan Distance**:
+  - Familiarize yourself with how Manhattan distance works on a grid to make more informed guesses.
+- **Predict Opponent's Strategy**:
+  - Pay attention to your opponent's guesses; they might lead you to the treasure if they get closer.
+
+## Additional Rules
+
+- **Invalid Inputs**:
+  - If a player enters an invalid coordinate (outside `A1` to `H8`), they forfeit their turn.
+- **No Repeated Guesses**:
+  - Players cannot guess a coordinate that has already been guessed by either player.
+  - If a repeated guess is made, the player is informed, and they may guess again.
+- **Time Limit (Optional Rule)**:
+  - To keep the game flowing, players may have a time limit (e.g., 30 seconds) to make their guess.
+  - If a player exceeds the time limit, they forfeit their turn.
+
+## Conclusion
+
+Treasure Hunt Duel is a game of logic and deduction. By strategically analyzing the feedback after each guess, players can effectively narrow down the treasure's location. The game combines elements of probability, spatial reasoning, and strategic planning, offering depth and complexity while remaining easy to understand and quick to play.
+
+Enjoy your hunt for the treasure, and may the best treasure hunter win!

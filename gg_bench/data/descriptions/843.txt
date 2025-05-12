@@ -1,0 +1,273 @@
+# Inversion Race
+
+## Objective
+
+Inversion Race is a two-player, turn-based strategy game played on a linear track. The primary goal is to be the first player to move your marker to the designated goal cell—either cell **0** or cell **10**, depending on the game's state. Strategic movement and anticipation of your opponent's actions are key to achieving victory.
+
+- **Initial Goal**: Reach cell **0**.
+- **Post-Inversion Goal**: If an inversion occurs, reach cell **10**.
+
+There are no draws in Inversion Race; the game continues until one player reaches the goal cell, resulting in a win for that player and a loss for the other.
+
+## Setup
+
+1. **Game Board**: A linear track consisting of 11 consecutive cells numbered from **0** to **10**.
+2. **Starting Positions**:
+   - Both players' markers start on cell **5**.
+3. **Initial Conditions**:
+   - The initial objective for both players is to reach cell **0**.
+   - The game inversion has not occurred at the start.
+
+Sample representation:
+
+```
+Cells:   0 1 2 3 4 5 6 7 8 9 10
+Markers:             A B
+```
+
+## Game Components
+
+1. **Game Board**:
+   - A one-dimensional track with cells numbered **0** to **10**.
+   - Can be represented in a command-line interface as a simple array or list.
+
+2. **Player Markers**:
+   - **Player A** uses marker `'A'`.
+   - **Player B** uses marker `'B'`.
+   - Markers occupy cells on the game board.
+
+3. **Goal Cells**:
+   - **Cell 0**: Initial goal for both players.
+   - **Cell 10**: Goal after an inversion occurs.
+
+4. **Inversion State**:
+   - A boolean flag indicating whether the game has inverted.
+   - Starts as `false` and becomes `true` upon inversion.
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (coin toss, agreement, etc.).
+   - Players alternate turns thereafter.
+
+2. **Player Actions**:
+   - On your turn, you must move your marker one cell to the left or right.
+
+3. **Turn Structure**:
+   - **Input Phase**: Player selects their move.
+   - **Validation Phase**: Move is validated against game rules.
+   - **Update Phase**: Game state is updated with the new position.
+   - **Inversion Check**: Determine if an inversion occurs due to the move.
+   - **Win Check**: Determine if the move results in a win.
+
+## Rules and Mechanics
+
+### 1. Movement
+
+- **Options**:
+  - Move your marker **one cell to the left** (`-1`).
+  - Move your marker **one cell to the right** (`+1`).
+- **Constraints**:
+  - **No Off-Board Moves**: You cannot move beyond cell **0** on the left or cell **10** on the right.
+  - **Occupied Cells**: You cannot move onto a cell occupied by your opponent's marker.
+  - **Blocked Movement**: If both possible moves are invalid (off-board or occupied), you lose your turn.
+
+### 2. Inversion Mechanic
+
+- **Triggering Inversion**:
+  - An inversion occurs **immediately** when your marker moves **past** your opponent's marker.
+  - Passing happens if your marker moves from a cell number less than your opponent's to a cell number greater than theirs, or vice versa.
+
+- **Effect of Inversion**:
+  - **Goal Changes**: The goal for both players switches from cell **0** to cell **10**.
+  - **One-Time Event**: Inversion can only occur **once per game**. After inversion, the goal remains at cell **10** for the duration of the game.
+
+### 3. Winning the Game
+
+- **Victory Conditions**:
+  - **Before Inversion**: First player to reach **cell 0** wins.
+  - **After Inversion**: First player to reach **cell 10** wins.
+- **No Draws**: The game continues until one player reaches the goal cell.
+
+### 4. Additional Rules
+
+- **Passing Turns**:
+  - If you have no legal moves, you must pass your turn.
+- **Game Continuation**:
+  - The game cannot end prematurely; it must conclude with a player's victory.
+
+## Scoring
+
+Inversion Race does not utilize a scoring system. The game outcome is binary:
+
+- **Win**: Reach the goal cell (0 or 10) before your opponent.
+- **Loss**: Your opponent reaches the goal cell before you.
+
+## Examples
+
+### Example 1: Game Without Inversion
+
+**Initial Setup**:
+
+```
+Cells:   0 1 2 3 4 5 6 7 8 9 10
+Markers:             A B
+Goal: Cell 0
+```
+
+**Gameplay**:
+
+1. **Player A's Turn**:
+   - Moves left to cell **4**.
+2. **Player B's Turn**:
+   - Cannot move left to cell **4** (occupied).
+   - Moves right to cell **6**.
+3. **Player A's Turn**:
+   - Moves left to cell **3**.
+4. **Player B's Turn**:
+   - Moves right to cell **7**.
+5. **Player A's Turns**:
+   - Continues moving left towards cell **0**.
+6. **Player A Reaches Cell 0**:
+   - Player A wins the game.
+
+**Visualization**:
+
+```
+Turn  Player A   Player B
+1     Cell 4     Cell 5
+2     Cell 4     Cell 6
+3     Cell 3     Cell 6
+4     Cell 3     Cell 7
+...   ...        ...
+Final Cell 0     Cell 7
+```
+
+### Example 2: Game With Inversion
+
+**Initial Setup**:
+
+```
+Cells:   0 1 2 3 4 5 6 7 8 9 10
+Markers:             A B
+Goal: Cell 0
+```
+
+**Gameplay**:
+
+1. **Player A's Turn**:
+   - Moves right to cell **6**.
+2. **Player B's Turn**:
+   - Moves left to cell **4**.
+3. **Player A's Turn**:
+   - Moves right to cell **7**.
+4. **Player B's Turn**:
+   - Moves left to cell **3**.
+5. **Player A's Turn**:
+   - Moves right to cell **8**.
+6. **Player B's Turn**:
+   - Moves right to cell **4** (cannot, occupied).
+   - Moves left to cell **2**.
+7. **Player A's Turn**:
+   - Moves right to cell **9**.
+8. **Player B's Turn**:
+   - Moves left to cell **1**.
+9. **Player A's Turn**:
+   - Moves right to cell **10**.
+
+**Inversion Occurs**:
+
+- **When**: Player A moves from cell **6** to **7** while Player B is on cell **4**.
+- **Effect**:
+  - Goal changes to **cell 10**.
+  - Players adjust strategies accordingly.
+
+**Outcome**:
+
+- **Player A Reaches Cell 10 First**:
+  - Player A wins the game.
+
+**Visualization**:
+
+```
+Turn  Player A   Player B  Inversion
+1     Cell 6     Cell 5    No
+2     Cell 6     Cell 4    No
+3     Cell 7     Cell 4    Yes (Inversion)
+...
+Final Cell 10    Cell 1    Yes
+```
+
+## Command-Line Interaction Example
+
+**Starting Position**:
+
+```
+Cells:   0 1 2 3 4 5 6 7 8 9 10
+Markers:             A B
+Goal: Cell 0
+Inversion: False
+```
+
+**Player A's Turn**:
+
+```
+Player A (Marker 'A') is at cell 5.
+Your goal is cell 0.
+
+Available moves:
+1. Move left to cell 4
+2. Move right to cell 6
+
+Enter your choice (1 or 2): 1
+```
+
+**Game State Update**:
+
+- Player A moves to cell **4**.
+
+**Player B's Turn**:
+
+```
+Player B (Marker 'B') is at cell 5.
+Your goal is cell 0.
+
+Available moves:
+1. Move left to cell 4 (occupied)
+2. Move right to cell 6
+
+Cell 4 is occupied.
+Enter your choice (2): 2
+```
+
+**Game State Update**:
+
+- Player B moves to cell **6**.
+
+**Inversion Check**:
+
+- No inversion occurs since markers have not passed each other.
+
+**Subsequent Turns**:
+
+- Players continue moving, with the inversion state updated accordingly if markers pass each other.
+
+## Strategy Tips
+
+1. **Anticipate Inversion**:
+   - Be mindful of the inversion trigger. Decide whether to force an inversion to change the goal if it benefits you.
+
+2. **Control Movement Space**:
+   - Position your marker to limit your opponent's options, potentially forcing them to waste turns.
+
+3. **Plan Ahead**:
+   - Think several moves ahead to avoid getting trapped or helping your opponent reach their goal.
+
+4. **Adapt Strategy Post-Inversion**:
+   - If inversion occurs, adjust your tactics quickly to focus on the new goal.
+
+## Summary
+
+Inversion Race combines simple movement mechanics with strategic depth, making it an engaging and challenging game. Players must balance offensive moves towards their goal with defensive tactics to hinder their opponent. The inversion mechanic adds an extra layer of complexity, requiring players to adapt their strategies mid-game.
+
+Enjoy the race to the edge, and may the best strategist win!

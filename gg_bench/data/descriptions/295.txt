@@ -1,0 +1,393 @@
+**Command Line Conquer: Rule Book**
+
+---
+
+### **Objective**
+
+Be the first player to reduce your opponent's Health Points (HP) from 10 to **0** by strategically choosing actions to attack, defend, or heal. Players must anticipate their opponent's moves and make tactical decisions to outmaneuver them and achieve victory.
+
+---
+
+### **Setup**
+
+- **Players**: Two players.
+- **Starting Health Points**: Each player begins with **10 HP**.
+- **Action Options**: Both players have access to the same set of actions:
+  - **Attack**
+  - **Defend**
+  - **Heal**
+- **Game Start**: Decide which player goes first (e.g., by mutual agreement or coin toss).
+
+---
+
+### **Game Components**
+
+- **Health Points (HP)**:
+  - Represents a player's vitality.
+  - Ranges from **0** to a maximum of **10**.
+
+- **Actions**:
+  - **Attack**:
+    - Deals damage to the opponent.
+  - **Defend**:
+    - Blocks incoming attacks.
+  - **Heal**:
+    - Restores the player's own HP.
+
+- **Command-Line Interface**:
+  - Players input their chosen actions via text commands.
+  - The game displays current HP and action outcomes after each turn.
+
+---
+
+### **Turns**
+
+- Players take turns in an alternating fashion.
+- **Turn Structure**:
+  1. **Action Selection**:
+     - The player whose turn it is selects one of the available actions: `Attack`, `Defend`, or `Heal`.
+  2. **Resolution**:
+     - The chosen action is executed, affecting the game state according to the rules.
+  3. **Status Update**:
+     - The game displays the result of the action and updates both players on their current HP.
+  4. **Next Player's Turn**:
+     - The turn passes to the opponent.
+
+---
+
+### **Rules and Mechanics**
+
+#### **Actions Explanation**
+
+1. **Attack**
+
+   - **Effect**: Deals **2 damage** to the opponent's HP.
+   - **Conditions**:
+     - If the opponent is **Defending**, the attack deals **no damage**.
+     - If the opponent is **Healing**, the attack deals **double damage** (**4 damage**).
+
+2. **Defend**
+
+   - **Effect**: Blocks incoming damage from the opponent's next attack.
+   - **Conditions**:
+     - While defending, the player cannot perform an **Attack** on their following turn.
+     - On the turn after defending, the player may choose to **Defend** again or **Heal**, but not **Attack**.
+
+3. **Heal**
+
+   - **Effect**: Restores **1 HP** to the player, up to the maximum of **10 HP**.
+   - **Conditions**:
+     - If the opponent chooses to **Attack** while the player is healing, the player takes **double damage** (**4 damage**), unless the player was **Defending**.
+     - Healing does not affect the opponent.
+
+#### **Additional Rules**
+
+- **Health Points Boundaries**:
+  - A player's HP cannot exceed **10**.
+  - If a player's HP drops to **0** or below, they lose the game.
+
+- **Defending Mechanics**:
+  - Defending only blocks damage from an **Attack**.
+  - It does not prevent other effects such as the opponent **Healing**.
+  - After defending, players are restricted from attacking on their next turn to prevent consecutive defenses followed by immediate attacks.
+
+- **Double Damage**:
+  - Occurs when a player **Attacks** an opponent who is **Healing**.
+  - The opponent takes **4 damage** instead of **2**.
+
+- **Turn Restrictions After Defending**:
+  - A player who has just defended can only choose to **Defend** again or **Heal** on their next turn.
+  - This adds a strategic component to planning future moves.
+
+---
+
+### **Scoring**
+
+- **Winning the Game**:
+  - The game is won when a player reduces their opponent's HP to **0** or below through strategic use of actions.
+  - The victorious player is declared the winner immediately when this condition is met.
+
+- **Losing the Game**:
+  - A player loses when their own HP is reduced to **0** or below.
+
+- **No Draws**:
+  - Since actions are resolved sequentially and HP cannot be reduced simultaneously during the same action, the game cannot end in a draw.
+
+---
+
+### **Examples**
+
+#### **Sample Turn Sequence**
+
+*Let's walk through a series of turns to illustrate how the game plays out.*
+
+---
+
+**Initial State**:
+
+- **Player 1 HP**: 10
+- **Player 2 HP**: 10
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 1 attacks Player 2.
+  - Player 2 is not defending.
+  - Player 2 takes **2 damage**.
+- **Updated HP**:
+  - **Player 2 HP**: 10 - 2 = **8**
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: `Defend`
+- **Resolution**:
+  - Player 2 prepares to block the next attack.
+  - Player 2 cannot attack on their next turn.
+- **Status**:
+  - Player 2 is now defending.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 1 attacks Player 2.
+  - Player 2 is defending.
+  - Attack is blocked; Player 2 takes **no damage**.
+- **Updated HP**:
+  - **No change**.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: `Heal` (Note: Cannot attack after defending)
+- **Resolution**:
+  - Player 2 heals for **1 HP**.
+  - Player 2's HP cannot exceed 10.
+  - Player 2's HP increases from **8 to 9**.
+- **Updated HP**:
+  - **Player 2 HP**: **9**
+
+---
+
+**Turn 5: Player 1**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 1 attacks Player 2.
+  - Player 2 is not defending or healing.
+  - Player 2 takes **2 damage**.
+- **Updated HP**:
+  - **Player 2 HP**: 9 - 2 = **7**
+
+---
+
+**Turn 6: Player 2**
+
+- **Action**: `Attack` (Can attack again after healing)
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is not defending.
+  - Player 1 takes **2 damage**.
+- **Updated HP**:
+  - **Player 1 HP**: 10 - 2 = **8**
+
+---
+
+**Turn 7: Player 1**
+
+- **Action**: `Defend`
+- **Resolution**:
+  - Player 1 prepares to block the next attack.
+  - Cannot attack on next turn.
+- **Status**:
+  - Player 1 is now defending.
+
+---
+
+**Turn 8: Player 2**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is defending.
+  - Attack is blocked; Player 1 takes **no damage**.
+- **Updated HP**:
+  - **No change**.
+
+---
+
+**Turn 9: Player 1**
+
+- **Action**: `Heal` (Cannot attack after defending)
+- **Resolution**:
+  - Player 1 heals for **1 HP**.
+  - Player 1's HP increases from **8 to 9**.
+- **Updated HP**:
+  - **Player 1 HP**: **9**
+
+---
+
+**Turn 10: Player 2**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is not defending or healing.
+  - Player 1 takes **2 damage**.
+- **Updated HP**:
+  - **Player 1 HP**: 9 - 2 = **7**
+
+---
+
+**Turn 11: Player 1**
+
+- **Action**: `Heal`
+- **Resolution**:
+  - Player 1 heals for **1 HP**.
+  - Player 1's HP increases from **7 to 8**.
+- **Updated HP**:
+  - **Player 1 HP**: **8**
+
+---
+
+**Turn 12: Player 2**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is healing.
+  - Player 1 takes **double damage** (**4 damage**).
+- **Updated HP**:
+  - **Player 1 HP**: 8 - 4 = **4**
+
+---
+
+**Turn 13: Player 1**
+
+- **Action**: `Defend`
+- **Resolution**:
+  - Player 1 prepares to block the next attack.
+  - Cannot attack on next turn.
+- **Status**:
+  - Player 1 is now defending.
+
+---
+
+**Turn 14: Player 2**
+
+- **Action**: `Heal`
+- **Resolution**:
+  - Player 2 heals for **1 HP**.
+  - Player 2's HP increases from **7 to 8**.
+- **Updated HP**:
+  - **Player 2 HP**: **8**
+
+---
+
+**Turn 15: Player 1**
+
+- **Action**: `Heal` (Cannot attack after defending)
+- **Resolution**:
+  - Player 1 heals for **1 HP**.
+  - Player 1's HP increases from **4 to 5**.
+- **Updated HP**:
+  - **Player 1 HP**: **5**
+
+---
+
+**Turn 16: Player 2**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is not defending or healing.
+  - Player 1 takes **2 damage**.
+- **Updated HP**:
+  - **Player 1 HP**: 5 - 2 = **3**
+
+---
+
+**Turn 17: Player 1**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 1 attacks Player 2.
+  - Player 2 is not defending.
+  - Player 2 takes **2 damage**.
+- **Updated HP**:
+  - **Player 2 HP**: 8 - 2 = **6**
+
+---
+
+**Turn 18: Player 2**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is not defending.
+  - Player 1 takes **2 damage**.
+- **Updated HP**:
+  - **Player 1 HP**: 3 - 2 = **1**
+
+---
+
+**Turn 19: Player 1**
+
+- **Action**: `Heal`
+- **Resolution**:
+  - Player 1 heals for **1 HP**.
+  - Player 1's HP increases from **1 to 2**.
+- **Updated HP**:
+  - **Player 1 HP**: **2**
+
+---
+
+**Turn 20: Player 2**
+
+- **Action**: `Attack`
+- **Resolution**:
+  - Player 2 attacks Player 1.
+  - Player 1 is healing.
+  - Player 1 takes **double damage** (**4 damage**).
+- **Updated HP**:
+  - **Player 1 HP**: 2 - 4 = **-2**
+
+---
+
+**Outcome**:
+
+- **Player 1's HP** is **-2**, which is **0 or below**.
+- **Player 2 Wins** the game.
+
+---
+
+### **Game Summary**
+
+This game requires players to:
+
+- **Strategize**: Choose the best action based on their current HP and the likely action of their opponent.
+- **Predict Opponent Moves**: Anticipate whether the opponent will attack, defend, or heal.
+- **Manage Resources**: Decide when to heal or defend to prolong survival, and when to attack to maximize damage.
+
+---
+
+**Notes for Players**:
+
+- **Defending** is useful when you expect an incoming attack, but it limits your options on the next turn.
+- **Healing** can be risky if the opponent chooses to attack since it can result in double damage.
+- **Attacking** is straightforward but may be ineffective if the opponent is defending.
+- **Balancing Actions**: Successful players balance attacking to reduce the opponent's HP, defending to protect themselves, and healing to stay in the game.
+
+---
+
+### **End of Rule Book**
+
+Enjoy playing **Command Line Conquer** and may the best strategist win!

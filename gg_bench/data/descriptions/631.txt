@@ -1,0 +1,153 @@
+# Prime Reduction
+
+## Objective
+
+Reduce the shared total number to exactly zero by strategically subtracting prime numbers less than 20. The player who achieves this first wins the game. Be cautious not to reduce the total below zero, as this results in an immediate loss.
+
+---
+
+## Setup
+
+1. **Starting Total**: Decide on a starting total number (recommended between 20 and 100 for optimal gameplay). For example, **100**.
+2. **Player Order**: Determine who goes first (e.g., by mutual agreement or random selection).
+3. **Prime Numbers List**: Use the list of prime numbers less than 20:
+   - **Primes**: 2, 3, 5, 7, 11, 13, 17, 19
+4. **Game Interface**: Ensure both players have access to the command-line interface where the game will be played.
+
+---
+
+## Game Components
+
+- **Shared Total Number**: The central number from which players subtract primes (e.g., starts at 100).
+- **Prime Numbers**: The set of prime numbers less than 20 available for subtraction.
+- **Players**: Two players competing against each other.
+- **Command-Line Interface**: The medium through which players input their moves and receive game updates.
+
+---
+
+## Turns
+
+1. **Turn Sequence**: Players alternate turns, starting with the player designated to go first.
+2. **Player Actions During Turn**:
+   - **Input Move**: Enter a prime number less than 20 to subtract from the shared total.
+   - **Validation**: Ensure the chosen prime does not reduce the total below zero.
+3. **Updating Total**:
+   - After a valid move, subtract the prime from the shared total.
+   - Announce the new total to both players.
+4. **Turn Progression**: The turn passes to the next player after a valid move or if a player loses by making an invalid move.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Primes Only**: Players can only subtract prime numbers less than 20 (2, 3, 5, 7, 11, 13, 17, 19).
+2. **No Negative Totals**: A move that would reduce the shared total below zero is invalid and results in an immediate loss.
+3. **Exact Zero to Win**: The objective is to be the player who reduces the shared total to exactly zero.
+4. **No Passes**: Players cannot skip their turn; a prime number must be subtracted if possible.
+5. **Unique Moves**: There is no restriction on reusing primes; any prime less than 20 can be used multiple times throughout the game.
+
+### Special Conditions
+
+- **Immediate Loss**: If a player cannot make a valid move on their turn (e.g., all primes would reduce the total below zero), they lose the game.
+- **Invalid Input**: Entering a non-prime number, a prime not less than 20, or invalid data prompts a reminder of valid options without penalty.
+
+---
+
+## Scoring
+
+- **Winning**: The player who reduces the shared total to exactly zero wins the game.
+- **Losing**: A player loses if they:
+  - Subtract a prime that reduces the total below zero.
+  - Cannot make a valid move on their turn due to the remaining total.
+- **No Point System**: The game operates on a win/loss basis without tracking points.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Starting Total**: 23
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**
+   - Chooses to subtract **5**.
+   - Calculation: 23 - 5 = **18**
+   - Announces new total: **18**
+
+2. **Player 2's Turn**
+   - Chooses to subtract **7**.
+   - Calculation: 18 - 7 = **11**
+   - Announces new total: **11**
+
+3. **Player 1's Turn**
+   - Chooses to subtract **11**.
+   - Calculation: 11 - 11 = **0**
+   - Announces new total: **0**
+   - **Player 1 wins!**
+
+### Losing Move Example
+
+**Starting Total**: 4
+
+#### Turn Sequence:
+
+1. **Player 1's Turn**
+   - Available primes: 2, 3
+   - Chooses to subtract **5**.
+   - **Invalid Move**: 5 is a prime less than 20, but 4 - 5 = -1 (below zero).
+   - **Player 1 loses** due to reducing total below zero.
+
+### Command-Line Interaction
+
+```plaintext
+Game Start! The starting total is 23.
+Available primes: 2, 3, 5, 7, 11, 13, 17, 19
+
+Player 1's turn.
+Enter a prime number to subtract: 5
+You subtracted 5. New total is 18.
+
+Player 2's turn.
+Enter a prime number to subtract: 7
+You subtracted 7. New total is 11.
+
+Player 1's turn.
+Enter a prime number to subtract: 11
+You subtracted 11. New total is 0.
+Player 1 wins! Congratulations!
+```
+
+### Invalid Move Interaction
+
+```plaintext
+Player 1's turn.
+The current total is 4.
+Available primes: 2, 3
+
+Enter a prime number to subtract: 5
+Invalid move! Subtracting 5 would reduce the total below zero.
+Player 1 loses. Player 2 wins by default.
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the impact of your move on future turns. Aim to set up totals that are unfavorable for your opponent.
+- **Control Key Totals**: Familiarize yourself with key totals that can force a win or prevent a loss.
+- **Force Errors**: Try to leave the total in a state where your opponent has no valid moves or is forced into a losing scenario.
+- **Prime Awareness**: Keep track of available primes and how they can be combined to reach the remaining total.
+
+---
+
+## Conclusion
+
+**Prime Reduction** is a simple yet strategically rich game that combines basic arithmetic with forward-thinking strategy. Its straightforward rules make it easy to code in a command-line interface, and the need for planning ensures that skilled players can consistently outperform less experienced opponents. Enjoy the challenge of outsmarting your opponent in this battle of numbers!
+
+---
+
+Happy gaming!

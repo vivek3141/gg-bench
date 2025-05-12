@@ -1,0 +1,10 @@
+In the Word Clash environment, actions are encoded as a single integer index that maps to a move in the game using the following structure:
+
+1. **Letter Selection**: The action space first determines the letter selected, indexed from 0 to 25, corresponding to letters A to Z.
+2. **Board Selection**: The action is further divided by selecting the board. Index 0 corresponds to placing the letter on the player's own board, while index 1 corresponds to placing it on the opponent's board.
+3. **Slot Placement**: Finally, the action specifies the slot index on the selected board where the letter will be placed. Slots are indexed from 0 to 4 for a 5-letter board.
+
+The overall action index is calculated by combining these components: 
+\[ \text{action} = (\text{letter\_index} \times (\text{number\_of\_boards} \times \text{number\_of\_slots})) + (\text{board\_index} \times \text{number\_of\_slots}) + \text{slot\_index} \]
+
+This structured approach allows for a compact representation of the possible moves in the game by encoding each potential move as a unique integer within a discrete action space.

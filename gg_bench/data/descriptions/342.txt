@@ -1,0 +1,311 @@
+**Game Name:** Prime Duel
+
+---
+
+### **Objective**
+
+Be the first player to reduce your opponent’s Health Points (HP) to zero by strategically selecting numbers and applying arithmetic rules. The player who successfully brings their opponent's HP to zero or below wins the game.
+
+---
+
+### **Setup**
+
+1. **Players:** Two players are required.
+2. **Health Points:** Each player starts with **20 Health Points (HP)**.
+3. **Number Pool:** A shared pool of numbers from **2 to 20** inclusive. Each number can be selected only once during the game.
+4. **Game Start:** Determine who goes first (e.g., coin toss, random selection).
+
+---
+
+### **Game Components**
+
+1. **Health Points (HP):** Numeric values representing each player's vitality.
+   - **Player 1 HP:** Starts at 20.
+   - **Player 2 HP:** Starts at 20.
+
+2. **Number Pool:** Numbers from **2 to 20**, inclusive.
+   - Each number represents a potential attack and can be used only once.
+   - Numbers are removed from the pool once used.
+
+3. **Attack Values:** Calculated based on the chosen number's properties (prime or composite).
+
+---
+
+### **Turns**
+
+- Players take turns selecting numbers from the number pool.
+- During a turn, a player:
+  1. Chooses an **unused number** from the pool.
+  2. Calculates the **damage** based on the number's properties.
+  3. **Deals damage** to the opponent.
+  4. **Removes** the selected number from the pool.
+
+---
+
+### **Rules and Mechanics**
+
+#### **1. Selecting Numbers**
+
+- **Unused Numbers Only:** Players must select a number that has not been previously chosen.
+- **Valid Range:** Numbers must be between **2 and 20**, inclusive.
+
+#### **2. Calculating Damage**
+
+- **Prime Numbers:**
+  - If the selected number is **prime**, the damage dealt is **equal to the number itself**.
+  - Example: Selecting **7** deals **7 damage**.
+
+- **Composite Numbers:**
+  - If the selected number is **composite**, factor it into its prime factors.
+  - **Sum the prime factors** to determine the damage.
+  - Example: Selecting **12** (which factors into 2, 2, 3) deals **7 damage** (2 + 2 + 3).
+
+#### **3. Applying Damage**
+
+- Subtract the calculated damage from the opponent's HP.
+- The opponent's HP cannot go below zero.
+- Example: If a player with **5 HP** takes **7 damage**, their HP becomes **0**.
+
+#### **4. Number Usage**
+
+- Once a number has been selected, it is **removed** from the number pool.
+- **No Repeats:** Numbers cannot be used more than once, even by the opposing player.
+
+#### **5. Invalid Moves**
+
+- **Used Numbers:** Selecting a number that has already been used is an invalid move.
+- **Penalty:** The player loses their turn, and no damage is dealt.
+- **Opponent’s Turn:** The game proceeds with the opponent's next turn.
+
+#### **6. Winning the Game**
+
+- The game continues until a player's HP is reduced to **zero or below**.
+- The first player to achieve this wins the game.
+
+---
+
+### **Scoring**
+
+- **Health Points (HP):** Each player's HP is tracked throughout the game.
+- **Victory:** Achieved by reducing the opponent's HP to zero or less.
+- **No Draws:** The game cannot end in a draw; one player will always win.
+
+---
+
+### **Examples**
+
+#### **Sample Game Play**
+
+**Game Start**
+
+- **Player 1 HP:** 20
+- **Player 2 HP:** 20
+- **Available Numbers:** 2 to 20 inclusive
+
+---
+
+**Turn 1: Player 1**
+
+- **Selection:** 7 (prime)
+- **Damage Calculation:** 7 (prime number deals its own value)
+- **Action:**
+  - *Player 1* deals **7 damage** to *Player 2*.
+  - *Player 2 HP* reduces from **20 to 13**.
+- **Number Pool Update:** Remove **7** from available numbers.
+
+---
+
+**Turn 2: Player 2**
+
+- **Selection:** 4 (composite)
+- **Prime Factors of 4:** 2, 2
+- **Damage Calculation:** 2 + 2 = **4**
+- **Action:**
+  - *Player 2* deals **4 damage** to *Player 1*.
+  - *Player 1 HP* reduces from **20 to 16**.
+- **Number Pool Update:** Remove **4** from available numbers.
+
+---
+
+**Turn 3: Player 1**
+
+- **Selection:** 9 (composite)
+- **Prime Factors of 9:** 3, 3
+- **Damage Calculation:** 3 + 3 = **6**
+- **Action:**
+  - *Player 1* deals **6 damage** to *Player 2*.
+  - *Player 2 HP* reduces from **13 to 7**.
+- **Number Pool Update:** Remove **9** from available numbers.
+
+---
+
+**Turn 4: Player 2**
+
+- **Selection:** 5 (prime)
+- **Damage Calculation:** 5 (prime number deals its own value)
+- **Action:**
+  - *Player 2* deals **5 damage** to *Player 1*.
+  - *Player 1 HP* reduces from **16 to 11**.
+- **Number Pool Update:** Remove **5** from available numbers.
+
+---
+
+**Turn 5: Player 1**
+
+- **Selection:** 6 (composite)
+- **Prime Factors of 6:** 2, 3
+- **Damage Calculation:** 2 + 3 = **5**
+- **Action:**
+  - *Player 1* deals **5 damage** to *Player 2*.
+  - *Player 2 HP* reduces from **7 to 2**.
+- **Number Pool Update:** Remove **6** from available numbers.
+
+---
+
+**Turn 6: Player 2**
+
+- **Selection Attempt:** 4
+- **Invalid Move:** 4 has already been used.
+- **Penalty:** *Player 2* loses their turn, no damage dealt.
+
+---
+
+**Turn 7: Player 1**
+
+- **Selection:** 2 (prime)
+- **Damage Calculation:** 2
+- **Action:**
+  - *Player 1* deals **2 damage** to *Player 2*.
+  - *Player 2 HP* reduces from **2 to 0**.
+- **Result:** *Player 1* wins the game.
+
+---
+
+### **Sample Command-Line Interaction**
+
+```
+Game Start
+----------
+Player 1 HP: 20
+Player 2 HP: 20
+Available Numbers: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 1's Turn
+Select a number: 7
+You chose 7 (prime).
+Damage Dealt: 7
+Player 2 HP: 13
+Available Numbers: [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 2's Turn
+Select a number: 4
+You chose 4 (composite).
+Prime Factors: 2, 2
+Damage Dealt: 4
+Player 1 HP: 16
+Available Numbers: [2, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 1's Turn
+Select a number: 9
+You chose 9 (composite).
+Prime Factors: 3, 3
+Damage Dealt: 6
+Player 2 HP: 7
+Available Numbers: [2, 3, 5, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 2's Turn
+Select a number: 5
+You chose 5 (prime).
+Damage Dealt: 5
+Player 1 HP: 11
+Available Numbers: [2, 3, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 1's Turn
+Select a number: 6
+You chose 6 (composite).
+Prime Factors: 2, 3
+Damage Dealt: 5
+Player 2 HP: 2
+Available Numbers: [2, 3, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+Player 2's Turn
+Select a number: 4
+Invalid Selection. Number 4 has already been used.
+You lose your turn.
+
+Player 1's Turn
+Select a number: 2
+You chose 2 (prime).
+Damage Dealt: 2
+Player 2 HP: 0
+Player 1 wins the game!
+```
+
+---
+
+### **Strategic Tips**
+
+1. **Prioritize High Primes:**
+   - Using high prime numbers early (e.g., 19, 17, 13, 11) deals significant damage.
+
+2. **Maximize Composite Numbers:**
+   - Some composite numbers have higher sum of prime factors than certain primes.
+   - Example: 14 (2 + 7 = 9) deals more damage than selecting 7.
+
+3. **Monitor Number Pool:**
+   - Keep track of used numbers to avoid invalid moves.
+   - Anticipate opponent’s possible selections.
+
+4. **Balance Offense and Defense:**
+   - Decide when to use high-damage numbers or leave them to limit the opponent's options.
+
+5. **Force Opponent’s Error:**
+   - By carefully choosing numbers, you can limit the opponent's choices, increasing the chance of an invalid move.
+
+---
+
+### **Examples of Prime Factors and Damage**
+
+| Number | Prime Factors          | Damage Calculation          | Total Damage |
+|--------|------------------------|-----------------------------|--------------|
+| 8      | 2, 2, 2                | 2 + 2 + 2                   | 6            |
+| 12     | 2, 2, 3                | 2 + 2 + 3                   | 7            |
+| 15     | 3, 5                   | 3 + 5                       | 8            |
+| 16     | 2, 2, 2, 2             | 2 + 2 + 2 + 2               | 8            |
+| 18     | 2, 3, 3                | 2 + 3 + 3                   | 8            |
+| 20     | 2, 2, 5                | 2 + 2 + 5                   | 9            |
+| 13     | Prime                  | 13                          | 13           |
+
+---
+
+### **Implementation Notes**
+
+- **Programming Simplicity:**
+  - The game is straightforward to code using basic programming constructs.
+  - Use arrays or lists to manage the number pool and track HP.
+
+- **Command-Line Interface:**
+  - Input and output are text-based, suitable for a command-line environment.
+
+- **No Draw Mechanism:**
+  - The game design ensures that one player will win, with no possibility of a draw.
+
+- **Quick Gameplay:**
+  - High damage potential leads to short game duration.
+
+- **Skill-Based Outcome:**
+  - Players with better knowledge of prime numbers and factorization have a strategic advantage.
+
+---
+
+### **Recap**
+
+- **Objective:** Reduce your opponent's HP to zero.
+- **Setup:** Start with 20 HP each; numbers 2-20 are available.
+- **Components:** HP, number pool, attack values.
+- **Turns:** Alternate turns; select unused numbers.
+- **Rules:** Calculate damage based on primes and composite numbers' prime factors.
+- **Winning:** First to bring opponent's HP to zero wins.
+- **Strategy:** Use knowledge of numbers to maximize damage and outmaneuver opponent.
+
+Enjoy playing **Prime Duel** and may the best strategist win!

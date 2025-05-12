@@ -1,0 +1,292 @@
+# Fibonacci Challenge
+
+## Objective
+
+The objective of **Fibonacci Challenge** is to avoid being the player who adds a number greater than or equal to the target number **\( N \)** to the shared Fibonacci sequence. Players take turns extending the Fibonacci sequence by adding valid numbers. The player who is forced to add a number that is greater than or equal to **\( N \)** loses the game.
+
+---
+
+## Setup
+
+1. **Choose the Target Number \( N \):**
+   - Before the game begins, both players agree upon a target number **\( N \)**.
+   - This number determines the threshold that players must avoid reaching or exceeding.
+   - Example target numbers: **21**, **34**, **55**, or **100**, depending on the desired game length and complexity.
+
+2. **Initialize the Fibonacci Sequence:**
+   - The game starts with the initial Fibonacci sequence: **\[1, 1\]**.
+
+3. **Decide Who Goes First:**
+   - Players decide who will take the first turn.
+   - This can be determined by mutual agreement, a coin toss, or any other method of choice.
+
+---
+
+## Game Components
+
+- **Fibonacci Sequence:**
+  - A shared list that holds the sequence of numbers generated during the game.
+  - Initially, this sequence is **\[1, 1\]**.
+
+- **Target Number \( N \):**
+  - An agreed-upon positive integer that players aim to stay below when adding numbers to the sequence.
+
+---
+
+## Turns
+
+### Turn Structure
+
+- **Players alternate turns** throughout the game.
+- **On a player's turn**, they must add **one valid number** to the end of the Fibonacci sequence according to the game rules.
+
+### Actions During a Turn
+
+1. **Review the Current Sequence:**
+   - Examine the existing Fibonacci sequence to identify possible moves.
+
+2. **Select Adjacent Numbers:**
+   - Choose any two **adjacent numbers** in the sequence to sum.
+   - Adjacent numbers are any two numbers that are next to each other in the sequence.
+
+3. **Calculate the Sum:**
+   - Add the two selected numbers to calculate the sum.
+
+4. **Validate the Sum:**
+   - Ensure that the calculated sum is **less than \( N \)**.
+   - **Note:** Sums equal to or exceeding \( N \) are not valid and cannot be played.
+
+5. **Append the Sum to the Sequence:**
+   - Add the valid sum to the **end** of the Fibonacci sequence.
+
+6. **End of Turn:**
+   - The turn ends, and control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Adding to the Sequence:**
+   - On each turn, a player must select any two **adjacent** numbers in the current sequence.
+   - Calculate the sum of these two numbers.
+   - The **sum must be less than \( N \)**.
+   - Append the valid sum to the **end** of the sequence.
+
+2. **Valid Moves:**
+   - Only sums of **adjacent** numbers can be added.
+   - The selected pair can be any adjacent numbers within the sequence, not necessarily the last two.
+   - **You cannot add a sum that is already present at the end of the sequence** from the previous turn.
+
+3. **Losing Condition:**
+   - If a player is unable to make a valid move on their turn, they **lose** the game.
+   - This occurs when all possible sums of adjacent numbers are equal to or exceed \( N \).
+
+### Additional Rules
+
+- **Unique Moves:**
+  - Players cannot repeat the same move that was just made by the opponent in the immediate previous turn.
+  - This encourages strategic play and prevents stalemates.
+
+- **Integrity of the Sequence:**
+  - Players must not alter any numbers in the sequence other than appending their valid sum.
+
+- **Honesty and Verification:**
+  - Both players should keep track of the sequence and verify the validity of each move.
+  - Disputes should be resolved by reviewing the sequence and calculations together.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The game is won by the player who forces their opponent into a position where the opponent cannot make a valid move without exceeding or equaling \( N \).
+  - There are no points; the outcome is a simple win/loss based on the game's objective.
+
+---
+
+## Examples
+
+### Example Game with \( N = 21 \)
+
+#### Initial Setup
+
+- **Target Number \( N \):** 21
+- **Initial Sequence:** \[1, 1\]
+
+---
+
+#### **Player 1's Turn**
+
+- **Available Adjacent Sums:**
+  - \( 1 + 1 = 2 \)
+- **Action:**
+  - Adds **2** to the sequence.
+- **Sequence Now:** \[1, 1, 2\]
+
+---
+
+#### **Player 2's Turn**
+
+- **Available Adjacent Sums:**
+  - \( 1 + 1 = 2 \)
+  - \( 1 + 2 = 3 \)
+- **Action:**
+  - Adds **3** to the sequence.
+- **Sequence Now:** \[1, 1, 2, 3\]
+
+---
+
+#### **Player 1's Turn**
+
+- **Available Adjacent Sums:**
+  - \( 1 + 1 = 2 \) (Cannot use: already at end of sequence)
+  - \( 1 + 2 = 3 \)
+  - \( 2 + 3 = 5 \)
+- **Action:**
+  - Adds **5** to the sequence.
+- **Sequence Now:** \[1, 1, 2, 3, 5\]
+
+---
+
+#### **Player 2's Turn**
+
+- **Available Adjacent Sums:**
+  - \( 1 + 2 = 3 \)
+  - \( 2 + 3 = 5 \)
+  - \( 3 + 5 = 8 \)
+- **Action:**
+  - Adds **8** to the sequence.
+- **Sequence Now:** \[1, 1, 2, 3, 5, 8\]
+
+---
+
+#### **Player 1's Turn**
+
+- **Available Adjacent Sums:**
+  - \( 2 + 3 = 5 \)
+  - \( 3 + 5 = 8 \)
+  - \( 5 + 8 = 13 \)
+- **Action:**
+  - Adds **13** to the sequence.
+- **Sequence Now:** \[1, 1, 2, 3, 5, 8, 13\]
+
+---
+
+#### **Player 2's Turn**
+
+- **Available Adjacent Sums:**
+  - \( 3 + 5 = 8 \)
+  - \( 5 + 8 = 13 \)
+  - \( 8 + 13 = 21 \)
+- **Validation:**
+  - \( 21 \) is **not less than \( N \)**; cannot add.
+- **Other Sums:**
+  - All other possible adjacent sums have already been used or would repeat the last move.
+- **Outcome:**
+  - **Player 2 cannot make a valid move and loses the game.**
+
+---
+
+## Command-Line Interaction Example
+
+### Game Start
+
+- **Target Number \( N = 21 \)**
+- **Initial Sequence:** \[1, 1\]
+
+---
+
+#### **Player 1's Turn**
+
+- **Available Moves:** \(1 + 1 = 2\)
+- **Command:** `add 2`
+- **Sequence Updates To:** \[1, 1, 2\]
+- **Output:**
+  ```
+  Player 1 adds 2 to the sequence.
+  Sequence: [1, 1, 2]
+  ```
+
+---
+
+#### **Player 2's Turn**
+
+- **Available Moves:** \(1 + 2 = 3\)
+- **Command:** `add 3`
+- **Sequence Updates To:** \[1, 1, 2, 3\]
+- **Output:**
+  ```
+  Player 2 adds 3 to the sequence.
+  Sequence: [1, 1, 2, 3]
+  ```
+
+---
+
+#### **Player 1's Turn**
+
+- **Available Moves:** \(2 + 3 = 5\)
+- **Command:** `add 5`
+- **Sequence Updates To:** \[1, 1, 2, 3, 5\]
+- **Output:**
+  ```
+  Player 1 adds 5 to the sequence.
+  Sequence: [1, 1, 2, 3, 5]
+  ```
+
+---
+
+#### **Player 2's Turn**
+
+- **Available Moves:** \(3 + 5 = 8\)
+- **Command:** `add 8`
+- **Sequence Updates To:** \[1, 1, 2, 3, 5, 8\]
+- **Output:**
+  ```
+  Player 2 adds 8 to the sequence.
+  Sequence: [1, 1, 2, 3, 5, 8]
+  ```
+
+---
+
+#### **Player 1's Turn**
+
+- **Available Moves:** \(5 + 8 = 13\)
+- **Command:** `add 13`
+- **Sequence Updates To:** \[1, 1, 2, 3, 5, 8, 13\]
+- **Output:**
+  ```
+  Player 1 adds 13 to the sequence.
+  Sequence: [1, 1, 2, 3, 5, 8, 13]
+  ```
+
+---
+
+#### **Player 2's Turn**
+
+- **Available Moves:** \(8 + 13 = 21\)
+- **Validation:** \(21\) is **not less than \( N \)**
+- **No Other Valid Moves**
+- **Output:**
+  ```
+  Player 2 cannot make a valid move. Player 2 loses.
+  ```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Anticipate future moves and the sums they will produce to avoid being trapped.
+- **Control the Sequence:** By adding certain sums, you can limit your opponent's options in future turns.
+- **Stay Alert:** Keep track of the numbers already in the sequence to avoid invalid moves.
+
+---
+
+## Summary
+
+**Fibonacci Challenge** is a simple yet strategic game that involves extending the Fibonacci sequence without reaching or exceeding a predetermined target number. With clear rules and straightforward mechanics, it's easy to learn and play, but mastering the strategy can provide significant depth and challenge.
+
+---
+
+Enjoy your game of Fibonacci Challenge, and may the best strategist win!

@@ -1,0 +1,200 @@
+# Sequence Duel
+
+## Objective
+
+Sequence Duel is a strategic two-player, turn-based game played on a shared number line. The primary goal is to be the last player able to make a valid move by claiming numbers according to the game rules. A player wins by forcing their opponent into a position where they cannot claim any more numbers on their turn.
+
+## Setup
+
+- **Number Line**: The game uses a number line containing integers from **1** to **20**.
+- **Starting Player**: Decide which player goes first (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+- **Initial State**: At the start, all numbers are unclaimed and available for selection.
+
+## Game Components
+
+- **Number Line (1-20)**: Represents the pool of numbers available for players to claim. Each number is either unclaimed, claimed by Player 1, or claimed by Player 2.
+- **Player Tokens**: While not physical tokens, each player will have a record of the numbers they've claimed.
+  - **Player 1**: Represented by `P1`.
+  - **Player 2**: Represented by `P2`.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Turn Actions**:
+  1. **Select a Number**: On their turn, a player selects an unclaimed number from the number line that is **not adjacent** to any number claimed by the opponent.
+  2. **Claim the Number**: The selected number is marked as claimed by the player.
+- **Progression**: The game continues with players alternating turns until a player is unable to make a valid move on their turn.
+
+## Rules and Mechanics
+
+### Number Selection Rules
+
+- **Valid Selection**: A player can select any unclaimed number that is **not adjacent** (i.e., does not have a difference of 1) to any number already claimed by the opponent.
+  - **Adjacency**: Two numbers are adjacent if the absolute difference between them is **1**.
+- **Invalid Selection**: A player **cannot** select:
+  - A number already claimed by either player.
+  - A number adjacent to any of the opponent's claimed numbers.
+
+### Claiming Numbers
+
+- Once a number is claimed by a player, it remains under their control for the rest of the game.
+- Each player's claimed numbers are recorded and visible to both players.
+
+### Winning the Game
+
+- **Win Condition**: A player wins if their opponent has no valid numbers to select on their turn.
+- **Loss Condition**: A player loses if they have no valid numbers to select when it's their turn.
+
+### Additional Mechanics
+
+- **Strategy**: Players can block their opponent's options by strategically claiming numbers that limit available moves.
+- **No Draws**: The game is designed to always produce a winner; there are no scenarios where a draw is possible.
+
+## Scoring
+
+- **Single-Game Victory**: The winner is the player who successfully prevents their opponent from making a valid move.
+- **Match Play**: For extended play, players can compete in multiple rounds, keeping track of victories:
+  - **Win**: 1 point
+  - **Loss**: 0 points
+- **Overall Winner**: The player with the most points after a predetermined number of rounds wins the match.
+
+## Examples
+
+### Sample Game Turn-by-Turn
+
+#### Initial State
+
+- **Number Line (Unclaimed Numbers)**: 1, 2, 3, ..., 20
+- **Player 1 Claimed Numbers**: None
+- **Player 2 Claimed Numbers**: None
+
+#### Turn 1: Player 1
+
+- **Action**: Player 1 selects number **10**.
+- **Reason**: It's the center number, providing strategic options.
+- **Updated State**:
+  - **Player 1 Claimed Numbers**: 10
+  - **Number Line**: 1-9, 11-20 (10 is marked as `P1`)
+
+#### Turn 2: Player 2
+
+- **Action**: Player 2 cannot select numbers **9** or **11** (adjacent to 10).
+- **Valid Options**: Any number except 9, 10, 11.
+- **Selection**: Player 2 selects number **13**.
+- **Updated State**:
+  - **Player 2 Claimed Numbers**: 13
+  - **Number Line**: 1-9, 11,12,14-20 (10 is `P1`, 13 is `P2`)
+
+#### Turn 3: Player 1
+
+- **Action**: Cannot select numbers adjacent to **13** (12 and 14).
+- **Valid Options**: Numbers not adjacent to opponent's numbers or already claimed.
+- **Selection**: Player 1 selects **7**.
+- **Updated State**:
+  - **Player 1 Claimed Numbers**: 10, 7
+  - **Number Line**: 1-6,8,9,11,12,14-20
+
+#### Turn 4: Player 2
+
+- **Action**: Cannot select numbers adjacent to **10** or **7** (6,8,9,11).
+- **Selection**: Player 2 selects **16**.
+- **Updated State**:
+  - **Player 2 Claimed Numbers**: 13,16
+  - **Number Line**: 1-6,8,9,11,12,14,15,17-20
+
+#### Subsequent Turns
+
+- Players continue selecting numbers following the rules.
+- Players aim to limit the opponent's options by blocking.
+- The game proceeds until a player cannot make a valid move.
+
+### Sample Command-Line Interaction
+
+Below is a simulated command-line interaction between the game and the players.
+
+#### Game Start
+
+```plaintext
+Welcome to Sequence Duel!
+
+Numbers Available: [1-20]
+
+Player 1, enter your name: Alice
+Player 2, enter your name: Bob
+
+Alice will go first.
+```
+
+#### Turn 1: Alice
+
+```plaintext
+Numbers Available: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+Alice's Claimed Numbers: []
+Bob's Claimed Numbers: []
+
+Alice, select a number: 10
+
+You have claimed number 10.
+```
+
+#### Turn 2: Bob
+
+```plaintext
+Numbers Available: [1-9,11-20] (Note: 10 is claimed by Alice)
+Numbers adjacent to Alice's numbers (cannot be selected): [9,11]
+Bob's Claimed Numbers: []
+
+Bob, select a number: 13
+
+You have claimed number 13.
+```
+
+#### Turn 3: Alice
+
+```plaintext
+Numbers Available: [1-9,11,12,14-20]
+Numbers adjacent to Bob's numbers (cannot be selected): [12,14]
+Alice's Claimed Numbers: [10]
+
+Alice, select a number: 7
+
+You have claimed number 7.
+```
+
+#### Turn 4: Bob
+
+```plaintext
+Numbers Available: [1-6,8,9,11,12,14-20]
+Numbers adjacent to Alice's numbers (cannot be selected): [6,8]
+Bob's Claimed Numbers: [13]
+
+Bob, select a number: 16
+
+You have claimed number 16.
+```
+
+#### Turns Continue...
+
+The game continues in this fashion until a player cannot make a valid move.
+
+#### Ending the Game
+
+Suppose later in the game, Bob cannot make a move.
+
+```plaintext
+Bob, you have no valid moves left.
+Alice wins the game!
+```
+
+## Strategies and Tips
+
+- **Center Control**: Claiming central numbers like 10 can maximize your options.
+- **Blocking**: Anticipate your opponent's possible moves and claim numbers that limit their options.
+- **Avoid Isolation**: Be cautious about selecting numbers that don't contribute to blocking your opponent.
+- **Plan Ahead**: Think several moves ahead to create a path to victory.
+
+## Conclusion
+
+Sequence Duel is a simple yet strategic game that tests players' foresight and planning abilities. With easy-to-understand rules and quick gameplay, it's perfect for a command-line interface and provides a competitive experience where skillful play is rewarded.
+
+Enjoy your game of Sequence Duel!

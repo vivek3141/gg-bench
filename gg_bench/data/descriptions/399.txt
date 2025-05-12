@@ -1,0 +1,221 @@
+# **Game Title: Quantum Flip**
+
+---
+
+## **Objective**
+
+The primary goal of **Quantum Flip** is to be the first player to accumulate exactly **21 points**. Players earn points by strategically flipping quantum tiles to reveal hidden values. A player wins by reaching a total score of 21 points before their opponent does. Overshooting 21 points results in a loss, adding a strategic element to decision-making.
+
+---
+
+## **Setup**
+
+1. **Game Board**: The game uses a virtual 5x5 grid of tiles, numbered from **A1** to **E5**.
+2. **Tile Values**: Each tile has a hidden value ranging from **1 to 5**.
+3. **Initialization**:
+   - All tiles start in a hidden state with their values concealed.
+   - Players begin with a score of **0 points**.
+   - Determine the first player (Player 1) randomly or by mutual agreement.
+
+---
+
+## **Game Components**
+
+- **Tiles**:
+  - **Appearance**: Represented by their grid coordinates (e.g., A1, B3) in the command-line interface.
+  - **Functionality**: Flipping a tile reveals its hidden value, which is added to the player's score.
+  - **Unique Attributes**: Once a tile is flipped, it cannot be flipped again.
+
+- **Scoreboard**:
+  - Displays the current scores of both players after each turn.
+
+- **Grid Coordinates**:
+  - Rows labeled **A** to **E**.
+  - Columns numbered **1** to **5**.
+
+---
+
+## **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns starting with Player 1.
+
+2. **Turn Structure**:
+   - **Step 1**: Select a tile to flip by specifying its grid coordinate (e.g., C4).
+   - **Step 2**: The hidden value of the selected tile is revealed.
+   - **Step 3**: The tile's value is added to the player's score.
+   - **Step 4**: The tile is marked as flipped and cannot be selected again.
+   - **Step 5**: The game checks for a winning condition.
+
+3. **Turn Progression**:
+   - After completing the steps above, the turn passes to the opponent.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Tile Selection**:
+   - Players can choose any unflipped tile on the grid during their turn.
+
+2. **Scoring Limits**:
+   - **Exact Win Condition**: A player must reach **exactly 21 points** to win.
+   - **Overshooting**:
+     - If a player's score exceeds 21 after a flip, they **lose the game immediately**.
+     - The opponent is declared the winner.
+
+3. **Strategic Elements**:
+   - **Memory**: Remembering the values of previously revealed tiles adds a layer of strategy.
+   - **Probability**: Estimating the likelihood of flipping a certain value based on remaining tiles.
+
+4. **Special Mechanics**:
+   - **Quantum Flip**:
+     - Once per game, a player can perform a 'Quantum Flip' instead of a regular flip.
+     - **Functionality**:
+       - Flip **two adjacent tiles** simultaneously.
+       - Choose which one of the two revealed values to add to their score.
+       - The unchosen tile remains unflipped and reverts to a hidden state.
+     - **Usage**:
+       - Can only be used once per player per game.
+
+---
+
+## **Scoring**
+
+- **Point Accumulation**:
+  - Players accumulate points by adding the value of flipped tiles to their score.
+- **Winning the Game**:
+  - Achieve a total score of **exactly 21 points**.
+- **Losing the Game**:
+  - Exceed a total score of 21 points.
+  - Opponent reaches exactly 21 points first.
+
+---
+
+## **Examples**
+
+### **Example Scenario**
+
+#### **Initial Grid (All tiles are hidden)**
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [ ] [ ] [ ] [ ]
+C [ ] [ ] [ ] [ ] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+#### **Player 1's Turn**
+
+1. **Action**:
+   - Chooses to flip tile **B2**.
+2. **Outcome**:
+   - Tile **B2** reveals a **4**.
+   - Player 1's score increases from **0** to **4**.
+3. **Grid Update**:
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [4] [ ] [ ] [ ]
+C [ ] [ ] [ ] [ ] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+4. **Scoreboard**:
+   - Player 1: **4 points**
+   - Player 2: **0 points**
+
+#### **Player 2's Turn**
+
+1. **Action**:
+   - Chooses to flip tile **C3**.
+2. **Outcome**:
+   - Tile **C3** reveals a **5**.
+   - Player 2's score increases from **0** to **5**.
+3. **Grid Update**:
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [4] [ ] [ ] [ ]
+C [ ] [ ] [5] [ ] [ ]
+D [ ] [ ] [ ] [ ] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+4. **Scoreboard**:
+   - Player 1: **4 points**
+   - Player 2: **5 points**
+
+#### **Player 1's Turn**
+
+1. **Action**:
+   - Opts to use the **Quantum Flip** on tiles **D4** and **D5**.
+2. **Outcome**:
+   - Tiles **D4** and **D5** reveal **2** and **5**, respectively.
+   - Player 1 chooses the **2** to add to their score (safer choice to avoid overshooting).
+   - Player 1's score increases from **4** to **6**.
+   - Tile **D5** reverts to hidden.
+3. **Grid Update**:
+
+```
+   1   2   3   4   5
+A [ ] [ ] [ ] [ ] [ ]
+B [ ] [4] [ ] [ ] [ ]
+C [ ] [ ] [5] [ ] [ ]
+D [ ] [ ] [ ] [2] [ ]
+E [ ] [ ] [ ] [ ] [ ]
+```
+
+4. **Scoreboard**:
+   - Player 1: **6 points**
+   - Player 2: **5 points**
+
+---
+
+## **Command-Line Interaction Sample**
+
+### **Player Prompts**
+
+- **Flip a Tile**:
+  ```
+  Player 1, enter the coordinate of the tile you wish to flip (e.g., A3): B2
+  ```
+- **Quantum Flip**:
+  ```
+  Player 1, enter 'Q' to perform a Quantum Flip or 'F' to flip a single tile: Q
+  Enter the coordinates of the first tile: D4
+  Enter the coordinates of the adjacent second tile: D5
+  ```
+
+### **Game Feedback**
+
+- **Tile Revealed**:
+  ```
+  You flipped tile B2 revealing a 4.
+  ```
+- **Quantum Flip Result**:
+  ```
+  Quantum Flip revealed tiles D4:2 and D5:5.
+  Which value do you choose to add to your score? Enter 2 or 5: 2
+  You chose 2. Your new score is 6.
+  ```
+- **Invalid Move**:
+  ```
+  Tile A1 has already been flipped. Please choose a different tile.
+  ```
+- **Overshooting 21 Points**:
+  ```
+  You flipped tile C5 revealing a 5.
+  Your total score is now 23, which exceeds 21.
+  You lose the game. Player 2 wins!
+  ```
+
+---
+
+## **Conclusion**
+
+**Quantum Flip** combines elements of memory, probability, and strategy in a simple command-line game. Its easy-to-understand rules and quick gameplay make it accessible, while the strategic depth ensures skilled players are rewarded. The unique mechanics, such as the Quantum Flip, provide opportunities for clever play and exciting turns. Enjoy competing to be the first to reach exactly 21 points!

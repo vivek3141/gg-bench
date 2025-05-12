@@ -1,0 +1,243 @@
+**Game Name:** Sequence Split
+
+---
+
+### **Objective**
+
+Sequence Split is a strategic two-player game where players take turns dividing a sequence of numbers to accumulate the highest total score. The primary goal is to outsmart your opponent by carefully choosing where to split the sequence and which portion to claim. The player with the higher total score at the end of the game wins.
+
+---
+
+### **Setup**
+
+1. **Initial Sequence:**
+   - The game starts with a randomly arranged sequence of the numbers from **1** to **9**, without repeats.
+   - Example starting sequence: `[4, 1, 7, 3, 9, 2, 6, 8, 5]`
+
+2. **Player Positions:**
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Players decide who takes the first turn (e.g., by mutual agreement or a random method).
+
+3. **Starting Conditions:**
+   - Both players begin with a score of **0**.
+   - The full sequence is visible to both players.
+
+---
+
+### **Game Components**
+
+1. **Number Tiles:**
+   - Represented by the numbers **1** through **9**.
+   - Each number appears exactly once in the sequence.
+
+2. **Sequence Display:**
+   - The sequence is displayed in a linear format for both players to see.
+   - Example: `[4, 1, 7, 3, 9, 2, 6, 8, 5]`
+
+3. **Player Scores:**
+   - A tally of each player's accumulated points.
+   - Updated after each turn based on the numbers selected.
+
+---
+
+### **Turns**
+
+1. **Turn Structure:**
+   - Players alternate turns throughout the game.
+   - On a player's turn, they perform the following steps:
+     a. **Split the Sequence:** Choose a position to divide the current sequence into two non-empty parts.
+     b. **Select a Part:** Choose one of the two parts to keep.
+     c. **Update Score:** Add the sum of the numbers in the chosen part to their total score.
+     d. **Pass Remaining Sequence:** The unchosen part becomes the sequence for the opponent's next turn.
+
+2. **Order of Actions:**
+   - **Display Current Sequence:** The current sequence is shown to the player.
+   - **Player Input:** The player selects a split position.
+   - **Display Split Parts:** Both resulting parts are displayed.
+   - **Player Selection:** The player chooses one part to keep.
+   - **Update Scores and Sequence:** Scores are updated, and the remaining sequence is set for the next player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Splitting the Sequence:**
+   - The sequence must be split into two non-empty parts; neither part can be empty.
+   - Splitting is done between any two adjacent numbers.
+   - Example: Splitting `[4, 1, 7, 3, 9]` between `7` and `3` results in:
+     - Left Part: `[4, 1, 7]`
+     - Right Part: `[3, 9]`
+
+2. **Selecting a Part:**
+   - After splitting, the player selects one part to add to their score.
+   - The sum of the numbers in the selected part is calculated and added to the player's total score.
+
+3. **Passing the Remaining Sequence:**
+   - The part not selected by the player becomes the new sequence for the opponent.
+   - The game continues with the next player repeating the turn steps with the new sequence.
+
+4. **End of Game:**
+   - The game ends when a player receives a sequence that can no longer be split (i.e., it contains only one number).
+   - The final player takes the remaining number, adds it to their score, and the totals are compared.
+   - The player with the higher total score wins.
+   - There are no draws; the total sum of numbers from 1 to 9 ensures a decisive outcome.
+
+---
+
+### **Scoring**
+
+- **Point Calculation:** Players accumulate points by summing the numbers in the parts they select.
+- **Tracking Scores:** Scores are tracked throughout the game and updated after each turn.
+- **Winning the Game:** The player with the higher total score after all numbers have been claimed wins the game.
+
+---
+
+### **Examples**
+
+#### *Example Game Play:*
+
+**Initial Sequence:**
+```
+[4, 1, 7, 3, 9, 2, 6, 8, 5]
+Player 1 Score: 0
+Player 2 Score: 0
+```
+
+---
+
+**Player 1's Turn:**
+
+1. **Splitting the Sequence:**
+   - Chooses to split between the 3rd and 4th numbers.
+   - Splits into:
+     - Part A (Left): `[4, 1, 7]`
+     - Part B (Right): `[3, 9, 2, 6, 8, 5]`
+
+2. **Selecting a Part:**
+   - Chooses Part A.
+   - Adds `4 + 1 + 7 = 12` to their score.
+   - **Updated Score:** Player 1 Score: **12**
+
+3. **Passing Remaining Sequence:**
+   - Remaining sequence for Player 2: `[3, 9, 2, 6, 8, 5]`
+
+---
+
+**Player 2's Turn:**
+
+1. **Splitting the Sequence:**
+   - Chooses to split between the 4th and 5th numbers.
+   - Splits into:
+     - Part A (Left): `[3, 9, 2, 6]`
+     - Part B (Right): `[8, 5]`
+
+2. **Selecting a Part:**
+   - Chooses Part A.
+   - Adds `3 + 9 + 2 + 6 = 20` to their score.
+   - **Updated Score:** Player 2 Score: **20**
+
+3. **Passing Remaining Sequence:**
+   - Remaining sequence for Player 1: `[8, 5]`
+
+---
+
+**Player 1's Turn:**
+
+1. **Splitting the Sequence:**
+   - Chooses to split between the 1st and 2nd numbers.
+   - Splits into:
+     - Part A (Left): `[8]`
+     - Part B (Right): `[5]`
+
+2. **Selecting a Part:**
+   - Chooses Part B.
+   - Adds `5` to their score.
+   - **Updated Score:** Player 1 Score: **17**
+
+3. **Passing Remaining Sequence:**
+   - Remaining sequence for Player 2: `[8]`
+
+---
+
+**Player 2's Turn:**
+
+1. **Final Move:**
+   - Only one number left: `[8]`
+   - Adds `8` to their score.
+   - **Updated Score:** Player 2 Score: **28**
+
+---
+
+**Final Scores:**
+
+- **Player 1 Total Score:** **17**
+- **Player 2 Total Score:** **28**
+
+**Winner:** Player 2 wins the game with a higher total score.
+
+---
+
+### **Command-Line Interaction**
+
+**Example Interaction:**
+
+- **Display Sequence:**
+  ```
+  Current Sequence: [4, 1, 7, 3, 9, 2, 6, 8, 5]
+  ```
+
+- **Player Prompt:**
+  ```
+  Player 1, choose a position to split the sequence (between 1 and 8):
+  ```
+
+- **Player Input:**
+  ```
+  Enter split position: 3
+  ```
+
+- **Display Split Parts:**
+  ```
+  Left Part (1): [4, 1, 7]
+  Right Part (2): [3, 9, 2, 6, 8, 5]
+  ```
+
+- **Player Selection:**
+  ```
+  Choose a part to keep (1 or 2):
+  ```
+
+- **Player Input:**
+  ```
+  Enter your choice: 1
+  ```
+
+- **Update Score and Sequence:**
+  ```
+  You selected [4, 1, 7]. Added 12 to your score.
+  Remaining sequence for next player: [3, 9, 2, 6, 8, 5]
+  ```
+
+- **Scores Display:**
+  ```
+  Player 1 Score: 12
+  Player 2 Score: 0
+  ```
+
+*(This process repeats for each player's turn.)*
+
+---
+
+### **Strategic Depth**
+
+- **Optimal Splits:**
+  - Players must consider not only their immediate gain but also the potential sequences they leave for their opponent.
+  - Splitting the sequence to force the opponent into less favorable positions is key.
+
+- **Anticipation:**
+  - Predicting the opponent's moves can provide an advantage.
+  - Balancing between maximizing one's score and minimizing the opponent's opportunities enhances strategic complexity.
+
+---
+
+Sequence Split combines simple mechanics with strategic decision-making, making it easy to learn but challenging to master. Enjoy the game, and may the best strategist win!

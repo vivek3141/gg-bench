@@ -1,0 +1,204 @@
+# Zero Sum Duel
+
+## Objective
+
+Be the first player to reduce the **shared number** to exactly **zero** on your turn by strategically adding or subtracting numbers from **1** to **10**.
+
+---
+
+## Setup
+
+- **Shared Number**: The game starts with a shared number of **20**.
+- **Number Pool**: Numbers from **1** to **10** are available for both players to use. Numbers can be selected multiple times without restriction.
+- **Players**: Two players participate, taking turns manipulating the shared number.
+
+---
+
+## Game Components
+
+- **Shared Number**: A single number that both players manipulate during the game. It starts at **20** and must stay within the range of **0** to **40** throughout the game.
+- **Number Selection**: Numbers from **1** to **10** that players choose to add to or subtract from the shared number.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Select a Number**: On your turn, choose a number **n**, where **1 ≤ n ≤ 10**.
+2. **Choose an Operation**: Decide to **add** or **subtract** the selected number to/from the shared number.
+3. **Update Shared Number**: Calculate the new shared number after the operation.
+   - **Addition**: Shared Number = Shared Number + n
+   - **Subtraction**: Shared Number = Shared Number - n
+4. **Check for Victory**: If the new shared number is exactly **0**, you win the game.
+5. **Validity of Move**: Ensure the new shared number stays within **0** to **40**.
+   - If the move would cause the shared number to go below **0** or above **40**, the move is invalid, and you lose your turn.
+
+### Order of Play
+
+- Players alternate turns throughout the game.
+- **Player 1** starts the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - You may select any number from **1** to **10** on your turn.
+   - You may choose to either **add** or **subtract** this number from the shared number.
+   - The resulting shared number must remain between **0** and **40**, inclusive.
+
+2. **Winning the Game**:
+   - The game is won by the player who reduces the shared number to exactly **zero** on their turn.
+
+3. **Invalid Moves**:
+   - If a move would cause the shared number to go below **0** or above **40**, it is invalid.
+   - If you have no valid moves, you **lose your turn**.
+   - If both players consecutively have no valid moves, the player who first could not make a move **loses the game**.
+
+4. **Number Reuse**:
+   - Numbers from **1** to **10** can be used multiple times by both players.
+
+5. **Strategy**:
+   - You must balance between advancing the game toward zero and preventing your opponent from winning.
+   - Consider the implications of both adding and subtracting numbers in relation to the shared number and potential future moves.
+
+---
+
+## Scoring
+
+- **Victory**: Achieved by reducing the shared number to exactly **zero** on your turn.
+- **Defeat**: Occurs if you cannot make a valid move and your opponent subsequently cannot make a valid move either.
+
+---
+
+## Examples
+
+### Example Game 1
+
+**Starting Shared Number**: 20
+
+**Player 1's Turn**:
+- **Selects**: 5
+- **Action**: Subtract
+- **Calculation**: 20 - 5 = **15**
+- **Shared Number**: 15
+
+**Player 2's Turn**:
+- **Selects**: 7
+- **Action**: Add
+- **Calculation**: 15 + 7 = **22**
+- **Shared Number**: 22
+
+**Player 1's Turn**:
+- **Selects**: 2
+- **Action**: Subtract
+- **Calculation**: 22 - 2 = **20**
+- **Shared Number**: 20
+
+**Player 2's Turn**:
+- **Selects**: 10
+- **Action**: Subtract
+- **Calculation**: 20 - 10 = **10**
+- **Shared Number**: 10
+
+**Player 1's Turn**:
+- **Selects**: 10
+- **Action**: Subtract
+- **Calculation**: 10 - 10 = **0**
+- **Shared Number**: 0
+
+**Result**: **Player 1 wins** by reducing the shared number to zero.
+
+---
+
+### Example Game 2
+
+**Starting Shared Number**: 5
+
+**Player 1's Turn**:
+- **Cannot Subtract**: Subtracting any number from 1 to 10 would result in a negative number.
+- **Selects**: 5
+- **Action**: Add
+- **Calculation**: 5 + 5 = **10**
+- **Shared Number**: 10
+
+**Player 2's Turn**:
+- **Selects**: 10
+- **Action**: Subtract
+- **Calculation**: 10 - 10 = **0**
+- **Shared Number**: 0
+
+**Result**: **Player 2 wins** by reducing the shared number to zero.
+
+---
+
+### Example Game 3
+
+**Starting Shared Number**: 1
+
+**Player 1's Turn**:
+- **Cannot Subtract**: Subtracting any number would result in a negative number.
+- **Selects**: 9
+- **Action**: Add
+- **Calculation**: 1 + 9 = **10**
+- **Shared Number**: 10
+
+**Player 2's Turn**:
+- **Selects**: 10
+- **Action**: Subtract
+- **Calculation**: 10 - 10 = **0**
+- **Shared Number**: 0
+
+**Result**: **Player 2 wins** by reducing the shared number to zero.
+
+---
+
+## Command-Line Interaction Examples
+
+### Sample Turn
+
+```
+Current Shared Number: 20
+
+Player 1's Turn:
+- Enter a number between 1 and 10: 5
+- Do you want to add or subtract this number? subtract
+- You chose to subtract 5.
+- New Shared Number: 15
+
+---
+
+Current Shared Number: 15
+
+Player 2's Turn:
+- Enter a number between 1 and 10: 7
+- Do you want to add or subtract this number? add
+- You chose to add 7.
+- New Shared Number: 22
+```
+
+### Invalid Move Example
+
+```
+Current Shared Number: 2
+
+Player 1's Turn:
+- Enter a number between 1 and 10: 3
+- Do you want to add or subtract this number? subtract
+- Invalid move: Resulting shared number would be negative.
+- You lose your turn.
+```
+
+---
+
+## Tips and Strategies
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your strategy accordingly.
+- **Control the Shared Number**: Manipulate the shared number to limit your opponent's options.
+- **Balance Actions**: Use addition and subtraction strategically to navigate towards victory.
+- **Force Errors**: Aim to create situations where your opponent has no valid moves or is forced into making a move that sets you up to win.
+
+---
+
+By understanding the rules and employing strategic thinking, you can outmaneuver your opponent and become the champion of **Zero Sum Duel**!

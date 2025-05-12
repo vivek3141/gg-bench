@@ -1,0 +1,168 @@
+# Number Collision
+
+## Objective
+
+**Number Collision** is a two-player, turn-based strategy game where players take turns placing numbers onto a shared line. The primary goal is to force your opponent into a position where they cannot make a valid move. Players achieve victory by strategically placing numbers to create collisions, removing numbers from play, and limiting the opponent's options.
+
+## Setup
+
+1. **Game Board**: Prepare a linear array (the "Number Line") with 10 empty positions, numbered from 1 to 10.
+2. **Number Pool**: A shared pool of numbers from 1 to 5, with each number available in unlimited quantity.
+3. **Starting Player**: Decide which player will take the first turn (Player 1 and Player 2). This can be done via coin toss or mutual agreement.
+
+The initial game state is an empty Number Line with positions 1 to 10 unoccupied.
+
+## Game Components
+
+- **Number Line**: A linear array of 10 positions where numbers will be placed. It represents the playing field.
+- **Number Pool**: A collection of numbers from 1 to 5 that players will use during the game. Each number is available in unlimited supply.
+- **Markers**: Players can use symbols or notation to represent their placed numbers on the Number Line in the command-line interface.
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with Player 1.
+- **Player Actions During a Turn**:
+  1. **Select a Number**: Choose a number (1 to 5) from the Number Pool.
+  2. **Place the Number**: Place the chosen number onto any empty position on the Number Line.
+  3. **Resolve Collisions**: If the placed number is adjacent to an identical number, a collision occurs.
+     - **Collision Outcome**: Remove both collided numbers from the Number Line.
+- **Turn End**: The turn ends after resolving any collisions resulting from the placement.
+
+## Rules and Mechanics
+
+1. **Number Placement**:
+   - Players can place their chosen number on any unoccupied position (1-10) on the Number Line.
+   - Numbers are placed one at a time per turn.
+
+2. **Collisions**:
+   - A collision occurs when a newly placed number is adjacent (left, right, or both) to an identical number.
+   - When a collision happens, immediately remove all connected identical numbers from the Number Line.
+     - Example: Placing a '3' next to existing '3's results in all adjacent '3's (including the newly placed one) being removed.
+   - After collision removal, the Number Line may have new empty positions for future placements.
+
+3. **Adjacency**:
+   - Positions are considered adjacent if they are next to each other numerically (e.g., positions 4 and 5).
+   - The Number Line is linear and does not wrap around; position 1 is only adjacent to position 2, and position 10 is only adjacent to position 9.
+
+4. **Number Pool**:
+   - Players can choose any number between 1 and 5 on their turn.
+   - There is an unlimited supply of each number.
+
+5. **End of Game Conditions**:
+   - **Victory**: A player wins if their opponent cannot make a valid move on their turn.
+   - **Valid Move Requirement**: A move is valid if there is at least one empty position on the Number Line where a number can be placed.
+   - **No Draws**: The game cannot end in a draw; play continues until one player wins.
+
+## Scoring
+
+- **Winning the Game**: The player who forces their opponent into a position where there are no valid moves remaining wins the game.
+
+- **Strategy**: Success depends on strategic placement to create collisions, manage the Number Line's occupancy, and limit the opponent's options.
+
+## Examples
+
+### Example Game Play
+
+Below is a sample game illustrating the rules and command-line interactions.
+
+#### Initial State
+
+```
+Number Line Positions: [1][2][3][4][5][6][7][8][9][10]
+Current State:         [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
+```
+
+#### Turn 1: Player 1
+
+- **Action**: Places a '3' at position 5.
+- **Command**: `place 3 at 5`
+- **Collision Check**: No adjacent '3's. No collision.
+- **Number Line**:
+
+```
+[ ][ ][ ][ ][3][ ][ ][ ][ ][ ]
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Places a '3' at position 6.
+- **Command**: `place 3 at 6`
+- **Collision Check**: Adjacent to '3' at position 5.
+- **Collision Resolution**: Remove '3's at positions 5 and 6.
+- **Number Line**:
+
+```
+[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Places a '2' at position 1.
+- **Command**: `place 2 at 1`
+- **Collision Check**: No adjacent '2's.
+- **Number Line**:
+
+```
+[2][ ][ ][ ][ ][ ][ ][ ][ ][ ]
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Places a '2' at position 2.
+- **Command**: `place 2 at 2`
+- **Collision Check**: Adjacent to '2' at position 1.
+- **Collision Resolution**: Remove '2's at positions 1 and 2.
+- **Number Line**:
+
+```
+[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]
+```
+
+#### Turn 5: Player 1
+
+- **Action**: Places a '1' at position 10.
+- **Command**: `place 1 at 10`
+- **Collision Check**: No adjacent '1's.
+- **Number Line**:
+
+```
+[ ][ ][ ][ ][ ][ ][ ][ ][ ][1]
+```
+
+#### Turns Continue...
+
+Players continue to take turns, strategically placing numbers to create collisions and remove numbers from play.
+
+#### Endgame Scenario
+
+Assume the Number Line reaches a state where only one position remains empty.
+
+- **Current Number Line**:
+
+```
+[4][5][1][2][4][3][2][5][3][1]
+```
+
+- **Empty Positions**: None.
+- **Player's Turn**: Player 1.
+- **Action**: No valid moves (no empty positions).
+- **Result**: Player 1 cannot make a valid move and loses.
+- **Winner**: Player 2.
+
+### Command-Line Interaction Sample
+
+#### Player Commands
+
+- **Placing a Number**: `place <number> at <position>`
+  - Example: `place 3 at 5`
+
+#### Game Feedback
+
+- **Acknowledgment**: `Player 1 placed a 3 at position 5.`
+- **Collision Notification**: `Collision! Numbers at positions 5 and 6 have been removed.`
+- **Invalid Move**: `Invalid move. Position 5 is already occupied. Try again.`
+- **Victory Announcement**: `Player 2 has no valid moves remaining. Player 1 wins!`
+
+---
+
+By adhering to these rules and understanding the mechanics, players can engage in a strategic and competitive game of **Number Collision**, where foresight and tactical placements lead to victory.

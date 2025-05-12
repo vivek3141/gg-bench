@@ -1,0 +1,178 @@
+# Game Name: Pattern Builder
+
+## Objective
+
+Be the first player to collect a set of four numbers that can form an arithmetic progression. Players must strategically select numbers to build their sequences while preventing their opponent from completing theirs. An arithmetic progression is a sequence of numbers such that the difference between consecutive terms is constant.
+
+## Setup
+
+1. **Available Numbers**: A shared pool of numbers ranging from 1 to 9.
+2. **Player Sequences**: Each player has their own sequence (initially empty) to which they will add numbers during the game.
+3. **Starting Player**: Decide who goes first (e.g., coin toss, random selection).
+
+## Game Components
+
+- **Numbers Pool**: The integers from 1 to 9, each number can only be selected once per game.
+- **Player Sequences**: Lists where players record their selected numbers.
+- **Turn Indicator**: Keeps track of whose turn it is.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns starting with the designated first player.
+2. **Actions During a Turn**:
+   - **Select a Number**: Choose any remaining number from the available pool.
+   - **Update Sequence**: Add the selected number to your sequence.
+3. **Turn Progression**: After a player completes their action, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, you must select one number from the available pool.
+   - You cannot select a number that has already been chosen by either player.
+2. **Building Sequences**:
+   - Add the selected number to your sequence.
+   - Your sequence can be rearranged at any time to form potential arithmetic progressions.
+3. **Winning the Game**:
+   - The first player to have four numbers in their sequence that can be arranged into an arithmetic progression wins.
+   - An arithmetic progression must have a common difference between consecutive numbers (e.g., 2, 4, 6, 8 with a common difference of 2).
+4. **Preventing Opponent's Progression**:
+   - Players may strategically select numbers to block their opponent from forming an arithmetic progression.
+5. **No Draws**:
+   - There is always a winner; the game continues until one player forms a valid arithmetic progression of four numbers.
+
+## Scoring
+
+- **Winning**: The player who first creates a valid arithmetic progression of four numbers wins the game.
+- **No Point System**: There is no point tracking; the focus is on achieving the objective before the opponent.
+
+## Examples
+
+### Example Game Play
+
+**Available Numbers at Start**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+#### Turn 1:
+- **Player 1** selects **5**.
+  - **Player 1's Sequence**: [5]
+  - **Available Numbers**: 1, 2, 3, 4, 6, 7, 8, 9
+
+#### Turn 2:
+- **Player 2** selects **3**.
+  - **Player 2's Sequence**: [3]
+  - **Available Numbers**: 1, 2, 4, 6, 7, 8, 9
+
+#### Turn 3:
+- **Player 1** selects **7**.
+  - **Player 1's Sequence**: [5, 7]
+  - **Available Numbers**: 1, 2, 4, 6, 8, 9
+
+#### Turn 4:
+- **Player 2** selects **1**.
+  - **Player 2's Sequence**: [3, 1]
+  - **Available Numbers**: 2, 4, 6, 8, 9
+
+#### Turn 5:
+- **Player 1** selects **9**.
+  - **Player 1's Sequence**: [5, 7, 9]
+  - **Available Numbers**: 2, 4, 6, 8
+
+#### Turn 6:
+- **Player 2** selects **4**.
+  - **Player 2's Sequence**: [3, 1, 4]
+  - **Available Numbers**: 2, 6, 8
+
+#### Turn 7:
+- **Player 1** selects **3**.
+  - **Invalid Move**: **3** has already been selected by **Player 2**.
+  - **Corrected Action**: **Player 1** selects **2** instead.
+  - **Player 1's Sequence**: [5, 7, 9, 2]
+  - **Available Numbers**: 6, 8
+
+#### Checking for Win:
+- **Player 1's Sequence**: [2, 5, 7, 9]
+  - Rearranged to [2, 5, 8, 11] is invalid because 8 and 11 are not in the pool.
+  - Correct rearrangement: [2, 5, 7, 9]
+    - Differences: 5-2=3, 7-5=2, 9-7=2 (Not consistent)
+- **No win yet**.
+
+#### Turn 8:
+- **Player 2** selects **6**.
+  - **Player 2's Sequence**: [3, 1, 4, 6]
+  - **Available Numbers**: 8
+
+#### Checking for Win:
+- **Player 2's Sequence**: [1, 3, 4, 6]
+  - Rearranged to [1, 3, 4, 6]
+    - Differences: 3-1=2, 4-3=1, 6-4=2 (Not consistent)
+- **No win yet**.
+
+#### Turn 9:
+- **Player 1** selects **8**.
+  - **Player 1's Sequence**: [5, 7, 9, 2, 8]
+  - **Available Numbers**: None
+
+#### Checking for Win:
+- **Player 1's Sequence**: [2, 5, 8, 11]
+  - Since 11 is not available, try another combination.
+- Try [2, 5, 8, 9]
+  - Differences: 5-2=3, 8-5=3, 9-8=1 (Not consistent)
+- Try [5, 7, 9, 2]
+  - Rearranged to [2, 5, 7, 9]
+    - Differences: 5-2=3, 7-5=2, 9-7=2 (Not consistent)
+- **No win yet**.
+
+#### Turn 10:
+- **Player 2** cannot select any more numbers.
+
+#### End of Game:
+- Since all numbers have been selected and neither player has formed an arithmetic progression of four numbers, the game continues into a tie-breaker round or sudden death based on predefined agreements (e.g., using the sequences built to form the longest possible arithmetic progression).
+
+## Command-Line Interaction Sample
+
+### Start of Game
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Player 1's Sequence: []
+Player 2's Sequence: []
+```
+
+### Player Turns
+
+**Player 1's Turn**
+```
+Player 1, select a number: 5
+Available Numbers after selection: 1 2 3 4 6 7 8 9
+Player 1's Sequence: [5]
+```
+
+**Player 2's Turn**
+```
+Player 2, select a number: 3
+Available Numbers after selection: 1 2 4 6 7 8 9
+Player 2's Sequence: [3]
+```
+
+*(Subsequent turns continue in this pattern)*
+
+When a player forms an arithmetic progression:
+
+**Player Announcement**
+```
+Player 1 has formed an arithmetic progression: [3, 5, 7, 9]
+Player 1 wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which numbers are available and which ones your opponent is collecting.
+- **Blocking**: If you notice your opponent is close to completing an arithmetic progression, consider selecting numbers they need.
+- **Multiple Options**: Try to collect numbers that give you multiple ways to form an arithmetic progression.
+- **Flexibility**: Remember you can rearrange your sequence to find a valid progression.
+
+## Conclusion
+
+"Pattern Builder" is a simple yet strategic game that challenges players to think ahead and anticipate their opponent's moves. Its straightforward rules make it easy to learn and play in a command-line interface, while the strategic depth ensures engaging and competitive gameplay.
+
+---
+
+Enjoy playing "Pattern Builder" and may the best strategist win!

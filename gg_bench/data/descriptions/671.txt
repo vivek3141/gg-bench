@@ -1,0 +1,177 @@
+**Divisor Duel**  
+*Rule Book*
+
+---
+
+### **Objective**
+
+**Divisor Duel** is a two-player, turn-based strategy game played via a command-line interface. Players take turns dividing a shared number by its proper divisors in an attempt to be the first to reduce the number to exactly **1**. The player who reduces the current number to **1** on their turn wins the game. There are no draws, and skilled players can leverage mathematical strategies to consistently outperform less experienced opponents.
+
+---
+
+### **Setup**
+
+1. **Starting Number**: Agree on a positive integer greater than **1** to be the **Starting Number**. The default starting number is **60**, but players can choose any suitable number for variation.
+
+2. **Determine First Player**: Decide which player goes first by mutual agreement, coin toss, or random selection.
+
+3. **Initialize Game State**: Set the **Current Number** to the **Starting Number**.
+
+---
+
+### **Game Components**
+
+1. **Current Number**: The shared number that players manipulate during the game. It starts as the **Starting Number** and changes as players divide it.
+
+2. **Proper Divisors**: For any given **Current Number**, these are all positive integers greater than **1** and less than the **Current Number** that divide it evenly (without leaving a remainder).
+
+3. **Command-Line Interface**: The game operates via text-based inputs and outputs. Players input their chosen divisors, and the game displays the updated **Current Number** and other relevant information.
+
+---
+
+### **Turns**
+
+1. **Turn Order**: Players alternate turns, starting with the player designated during setup.
+
+2. **Actions During a Turn**:
+
+   - **List Divisors**: The game lists all proper divisors of the **Current Number**.
+   - **Choose Divisor**: The active player selects one proper divisor from the list.
+   - **Divide**: The **Current Number** is divided by the chosen divisor to obtain a new **Current Number**.
+   - **Announce Move**: The player announces their chosen divisor and the new **Current Number**.
+
+3. **End of Turn**: The turn ends after the player announces their move. The new **Current Number** is now used for the next player's turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Divisors**: Players must choose a divisor that is a proper divisor of the **Current Number** (greater than **1** and less than the **Current Number**) and that divides evenly into it.
+
+2. **Division Result**: The division must result in a whole number without any remainder.
+
+3. **Winning the Game**:
+
+   - A player wins if they reduce the **Current Number** to exactly **1** on their turn.
+   - If a player cannot make a valid move (i.e., there are no proper divisors greater than **1**), they lose the game.
+
+4. **Invalid Moves**:
+
+   - If a player selects an invalid divisor (not a proper divisor or does not divide evenly), they immediately forfeit the game.
+   - Players are encouraged to double-check their choices before confirming.
+
+5. **Prime Number Scenario**:
+
+   - If the **Current Number** is a prime number greater than **2**, the player cannot make a move (as there are no proper divisors greater than **1**), resulting in a loss.
+
+6. **No Skipping Turns**: Players cannot skip their turn. They must select a valid divisor or lose the game if none are available.
+
+---
+
+### **Scoring**
+
+- **Winning the Game**: The objective is to win by reducing the **Current Number** to exactly **1** on your turn.
+- **No Point System**: There are no points or scores tracked during the game. The focus is on strategic play leading to a win.
+- **Match Play**: Players may agree to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+### **Examples**
+
+#### **Example 1: Standard Gameplay**
+
+**Starting Number**: 60
+
+**Player 1's Turn**:
+
+- Proper Divisors of 60: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- Player 1 chooses **15**.
+- Calculation: 60 ÷ 15 = **4**
+- Player 1 announces: "I divide by 15. The new number is 4."
+
+**Player 2's Turn**:
+
+- Proper Divisors of 4: 2
+- Player 2 chooses **2**.
+- Calculation: 4 ÷ 2 = **2**
+- Player 2 announces: "I divide by 2. The new number is 2."
+
+**Player 1's Turn**:
+
+- Proper Divisors of 2: None (since 2 is prime and proper divisors exclude 1 and the number itself).
+- Player 1 cannot make a move and **loses the game**.
+- **Player 2 wins!**
+
+#### **Example 2: Strategic Play**
+
+**Starting Number**: 100
+
+**Player 1's Turn**:
+
+- Proper Divisors of 100: 2, 4, 5, 10, 20, 25, 50
+- Player 1 chooses **25**.
+- Calculation: 100 ÷ 25 = **4**
+- Player 1 announces: "I divide by 25. The new number is 4."
+
+**Player 2's Turn**:
+
+- Proper Divisors of 4: 2
+- Player 2 chooses **2**.
+- Calculation: 4 ÷ 2 = **2**
+- Player 2 announces: "I divide by 2. The new number is 2."
+
+**Player 1's Turn**:
+
+- Proper Divisors of 2: None
+- Player 1 cannot make a move and **loses the game**.
+- **Player 2 wins!**
+
+#### **Example 3: Invalid Move**
+
+**Starting Number**: 30
+
+**Player 1's Turn**:
+
+- Proper Divisors of 30: 2, 3, 5, 6, 10, 15
+- Player 1 chooses **7** (invalid, as 7 is not a divisor of 30).
+- This is an **invalid move**.
+- **Player 1 forfeits the game**.
+- **Player 2 wins by default!**
+
+---
+
+### **Sample Command-Line Interaction**
+
+```
+Game Start! The starting number is 60.
+
+Player 1's Turn:
+Proper divisors of 60 are: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+Enter your divisor: 12
+You chose divisor 12.
+60 / 12 = 5
+The new number is 5.
+
+Player 2's Turn:
+Proper divisors of 5 are: None
+Player 2 cannot make a move.
+Player 2 loses the game!
+Player 1 wins!
+```
+
+---
+
+### **Strategies**
+
+- **Plan Ahead**: Anticipate the results of your moves to avoid setting up your opponent for a win.
+- **Force Prime Numbers**: Try to reduce the **Current Number** to a prime number on your opponent's turn, leaving them without valid moves.
+- **Avoid Even Numbers Early**: Dividing to an even number may give your opponent more options.
+- **Memorize Divisor Chains**: Familiarize yourself with divisor relationships of common numbers to make quicker, smarter decisions.
+
+---
+
+**Note**: While the game mechanics are simple, mastering **Divisor Duel** requires strategic thinking and a good understanding of number properties. Practice and experience will enhance your ability to predict outcomes and control the flow of the game.
+
+---
+
+Happy dueling!

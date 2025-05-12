@@ -1,0 +1,249 @@
+# Number Split Duel Rule Book
+
+## Objective
+
+**Be the player who forces your opponent into a position where they cannot make a valid move by strategically splitting numbers.** The primary goal is to make the opponent unable to split the given number according to the game rules on their turn.
+
+---
+
+## Setup
+
+1. **Starting Number (N):**
+   - Agree upon a positive integer **N** to start the game. For a quick and engaging game, choose a number between **15 and 25**.
+   - Example: `N = 16`
+
+2. **Player Order:**
+   - Decide who will take the first turn. This can be done randomly or by mutual agreement.
+   - Players will be referred to as **Player 1** and **Player 2**.
+
+3. **Command-Line Interface:**
+   - The game is played in a command-line environment.
+   - Keep track of the current number **N** and display it at the start of each turn.
+
+---
+
+## Game Components
+
+- **Current Number (N):**
+  - A positive integer that players manipulate during the game.
+  - No physical components are required; everything is tracked via the command line.
+
+---
+
+## Turns
+
+- **Turn Structure:**
+  - Players alternate turns starting with **Player 1**.
+  - On each turn, the active player performs the following steps:
+    1. **View the Current Number (N):**
+       - The game displays the current value of **N**.
+    2. **Determine Possible Splits:**
+       - List all possible ways to split **N** into two unequal positive integers greater than zero that sum to **N**.
+    3. **Choose a Split:**
+       - Select one valid split from the list.
+    4. **Select the New N:**
+       - Choose one of the two numbers from the split to become the new **N** for the next player.
+    5. **Display Move:**
+       - Announce the chosen split and the new **N**.
+
+- **Progression of Turns:**
+  - After completing the steps, the turn passes to the other player.
+  - The game continues until a player cannot make a valid move on their turn.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Splitting:**
+
+   - **On Your Turn:**
+     - You must split the current number **N** into **two unequal positive integers greater than zero** that sum up to **N**.
+     - **Equal splits are not allowed.** For example, splitting 8 into 4 and 4 is invalid.
+     - **All resulting numbers must be positive integers.** Zero or negative numbers are not permitted.
+
+   - **Example Valid Splits:**
+     - If `N = 9`, valid splits include `(8,1)`, `(7,2)`, `(6,3)`, `(5,4)`.
+
+2. **Choosing the New N:**
+
+   - After splitting, you must select **one** of the two numbers from your split to be the new **N** for your opponent's next turn.
+
+   - **Strategic Selection:**
+     - Choose the new **N** carefully to limit your opponent's options.
+
+3. **Winning the Game:**
+
+   - **Unable to Split:**
+     - If a player cannot make a valid split on their turn because no unequal positive integers sum up to the current **N**, they lose the game.
+     - The last player to make a valid move wins.
+
+4. **Mandatory Moves:**
+
+   - **No Passing:**
+     - Players must make a valid move if one is available.
+     - Skipping a turn or passing is not allowed.
+
+5. **Integrity of the Game:**
+
+   - **Honesty in Calculation:**
+     - Players should accurately determine all possible splits.
+     - Misrepresenting available moves is against the rules.
+
+---
+
+## Scoring
+
+- **Victory Conditions:**
+  - The player who forces their opponent into a position where they cannot perform a valid split wins the game.
+
+- **No Draws:**
+  - The game cannot end in a tie; play continues until one player wins according to the rules.
+
+---
+
+## Examples
+
+### Example Game
+
+**Starting N:** `16`
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** `16`
+- **Possible Splits:** `(15,1)`, `(14,2)`, `(13,3)`, `(12,4)`, `(11,5)`, `(10,6)`, `(9,7)`, `(8,8)` (Note: `(8,8)` is invalid because the numbers are equal.)
+- **Player 1 Chooses Split:** `10` and `6`
+- **Selects New N:** `6` for Player 2
+- **Announces Move:**
+  ```
+  Player 1 splits 16 into 10 and 6.
+  Player 1 selects N = 6 for Player 2.
+  ```
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** `6`
+- **Possible Splits:** `(5,1)`, `(4,2)` (Note: `(3,3)` is invalid as the numbers are equal.)
+- **Player 2 Chooses Split:** `5` and `1`
+- **Selects New N:** `5` for Player 1
+- **Announces Move:**
+  ```
+  Player 2 splits 6 into 5 and 1.
+  Player 2 selects N = 5 for Player 1.
+  ```
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** `5`
+- **Possible Splits:** `(4,1)` (Only valid split.)
+- **Player 1 Chooses Split:** `4` and `1`
+- **Selects New N:** `4` for Player 2
+- **Announces Move:**
+  ```
+  Player 1 splits 5 into 4 and 1.
+  Player 1 selects N = 4 for Player 2.
+  ```
+
+---
+
+**Player 2's Turn:**
+
+- **Current N:** `4`
+- **Possible Splits:** `(3,1)` (Only valid split.)
+- **Player 2 Chooses Split:** `3` and `1`
+- **Selects New N:** `1` for Player 1
+- **Announces Move:**
+  ```
+  Player 2 splits 4 into 3 and 1.
+  Player 2 selects N = 1 for Player 1.
+  ```
+
+---
+
+**Player 1's Turn:**
+
+- **Current N:** `1`
+- **Possible Splits:** None (Cannot split 1 into two unequal positive integers.)
+- **Player 1 Cannot Make a Valid Move**
+- **Game Over:**
+  ```
+  Player 1 cannot make a valid move.
+  Player 2 wins the game!
+  ```
+
+---
+
+## Command-Line Interaction Sample
+
+```
+Game Start: N = 16
+
+Player 1's Turn:
+- Current N: 16
+- Possible Splits: (15,1), (14,2), (13,3), (12,4), (11,5), (10,6), (9,7)
+- Choose a split: 10 and 6
+- Select new N for Player 2: 6
+- Output: "Player 1 splits 16 into 10 and 6. New N for Player 2 is 6."
+
+Player 2's Turn:
+- Current N: 6
+- Possible Splits: (5,1), (4,2)
+- Choose a split: 5 and 1
+- Select new N for Player 1: 5
+- Output: "Player 2 splits 6 into 5 and 1. New N for Player 1 is 5."
+
+Player 1's Turn:
+- Current N: 5
+- Possible Splits: (4,1)
+- Choose a split: 4 and 1
+- Select new N for Player 2: 4
+- Output: "Player 1 splits 5 into 4 and 1. New N for Player 2 is 4."
+
+Player 2's Turn:
+- Current N: 4
+- Possible Splits: (3,1)
+- Choose a split: 3 and 1
+- Select new N for Player 1: 1
+- Output: "Player 2 splits 4 into 3 and 1. New N for Player 1 is 1."
+
+Player 1's Turn:
+- Current N: 1
+- Possible Splits: None
+- Output: "Player 1 cannot make a valid move. Player 2 wins the game!"
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:**
+  - Before making a move, consider the possible splits your opponent will have.
+  - Aim to leave your opponent with numbers that have limited or no valid splits.
+
+- **Control the Game:**
+  - Try to steer the game toward smaller numbers where your strategic advantage increases.
+  - Be cautious when splitting larger numbers; giving the opponent a small N may backfire if they can manipulate it against you.
+
+- **Avoid Equal Opportunities:**
+  - Do not leave an N that provides your opponent with the same strategic options you just had.
+  - For example, avoid selecting N that is just slightly smaller than previous N unless it limits their moves.
+
+- **Force Unwinnable Positions:**
+  - If possible, create a sequence where no matter what the opponent does, they will eventually run out of valid moves.
+
+---
+
+## Conclusion
+
+**Number Split Duel** is a simple yet strategic two-player game perfect for a command-line interface. With minimal setup and easy-to-understand rules, players engage in a battle of wits, trying to outmaneuver each other by cleverly splitting numbers. The game's depth lies in its simplicity, offering endless possibilities for strategic play and mental challenges.
+
+Enjoy the duel, and may the best strategist win!
+
+---
+
+*Happy Gaming!*

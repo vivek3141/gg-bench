@@ -1,0 +1,191 @@
+**Game Name:** Last Digit Duel
+
+---
+
+### **Objective**
+
+Be the first player to reach or exceed a target score by strategically selecting numbers based on their last digits. The primary goal is to outmaneuver your opponent by limiting their available choices while maximizing your own score.
+
+### **Setup**
+
+1. **Number Pool:** Create a shared pool of numbers ranging from **1** to **50**. All numbers are initially unclaimed and available for selection.
+
+2. **Target Score:** Set a target score of **100** points. The first player to reach or surpass this score wins the game.
+
+3. **Starting Player:** Determine who goes first (e.g., by coin toss or agreement).
+
+4. **Player Scores:** Both players start with a score of **0**.
+
+### **Game Components**
+
+- **Number Pool (1-50):** A list of numbers from which players will select during their turns. Each number can only be selected once and is then removed from the pool.
+
+- **Player Scores:** Each player has an individual score that accumulates based on the numbers they've selected.
+
+- **Last Selected Number:** Tracks the most recently selected number by each player, which influences the opponent's available choices.
+
+### **Turns**
+
+- Players take turns alternately. Each turn consists of:
+
+  1. **Selection Phase:** Choose an available number from the number pool based on the game rules.
+
+  2. **Scoring Phase:** Add the selected number to the player's total score.
+
+  3. **Update Phase:** Remove the selected number from the number pool and record it as the player's last selected number.
+
+- **Turn Progression:** The turn passes to the opponent after the current player has completed these phases.
+
+### **Rules and Mechanics**
+
+1. **First Turn:**
+
+   - The first player can select **any number** from the number pool.
+
+2. **Subsequent Turns:**
+
+   - A player **must select** an available number that **ends with the same last digit** as the opponent's last selected number.
+
+   - If multiple numbers share that last digit, the player can choose any of them.
+
+   - **Example:** If the opponent's last selected number is **23** (ending with **3**), the player must choose a number ending with **3** (e.g., **3**, **13**, **33**, **43**).
+
+3. **No Available Numbers:**
+
+   - If no numbers are available that match the required last digit, the player **skips their turn**.
+
+4. **Number Selection:**
+
+   - Once a number is selected, it is **removed** from the number pool and cannot be chosen again.
+
+5. **Scoring:**
+
+   - The value of the selected number is **added** to the player's total score.
+
+6. **Winning the Game:**
+
+   - The game continues until a player reaches or exceeds the **target score of 100** points.
+
+   - If both players reach or exceed 100 points in the same round, the player with the **higher score** wins.
+
+7. **Endgame Condition:**
+
+   - If no players can make a valid move (all numbers are exhausted or no valid last digits remain), the player with the **highest score** wins.
+
+   - **No Draws:** There are no tie games. If scores are equal when no moves are possible, the **last player who made a selection** wins.
+
+### **Scoring**
+
+- **Score Calculation:**
+
+  - Each player's score is the **sum** of the numbers they've selected throughout the game.
+
+- **Tracking Scores:**
+
+  - Scores should be updated and displayed after each turn for both players.
+
+- **Winning the Game:**
+
+  - The first player to reach a total score of **100** or more points **wins immediately**.
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Setup:**
+
+- **Number Pool:** Numbers **1** to **50** unclaimed.
+- **Player Scores:** Player 1: **0**, Player 2: **0**.
+- **Target Score:** **100** points.
+- **First Player:** Player 1.
+
+---
+
+**Turn 1 - Player 1:**
+
+- **Selection Phase:** Player 1 selects **17** (any number, as it's the first turn).
+- **Scoring Phase:** Adds **17** to their score. Player 1 score: **17**.
+- **Update Phase:** Number **17** is removed from the pool. Player 1's last selected number: **17**.
+- **Available Numbers:** **1-16, 18-50**.
+
+**Turn 2 - Player 2:**
+
+- **Requirement:** Must select a number ending with the last digit **7** (from Player 1's last number **17**).
+- **Available Numbers Ending with 7:** **7, 27, 37, 47**.
+- **Selection Phase:** Player 2 selects **47**.
+- **Scoring Phase:** Adds **47** to their score. Player 2 score: **47**.
+- **Update Phase:** Number **47** is removed from the pool. Player 2's last selected number: **47**.
+- **Available Numbers:** **1-16, 18-46, 48-50**.
+
+**Turn 3 - Player 1:**
+
+- **Requirement:** Must select a number ending with **7** (from Player 2's last number **47**).
+- **Available Numbers Ending with 7:** **7, 27, 37**.
+- **Selection Phase:** Player 1 selects **37**.
+- **Scoring Phase:** Adds **37** to their score. Player 1 score: **17 + 37 = 54**.
+- **Update Phase:** Number **37** is removed from the pool. Player 1's last selected number: **37**.
+- **Available Numbers:** **1-16, 18-36, 38-46, 48-50**.
+
+**Turn 4 - Player 2:**
+
+- **Requirement:** Must select a number ending with **7** (from Player 1's last number **37**).
+- **Available Numbers Ending with 7:** **7, 27**.
+- **Selection Phase:** Player 2 selects **27**.
+- **Scoring Phase:** Adds **27** to their score. Player 2 score: **47 + 27 = 74**.
+- **Update Phase:** Number **27** is removed from the pool. Player 2's last selected number: **27**.
+- **Available Numbers:** **1-16, 18-26, 28-36, 38-46, 48-50**.
+
+**Turn 5 - Player 1:**
+
+- **Requirement:** Must select a number ending with **7** (from Player 2's last number **27**).
+- **Available Numbers Ending with 7:** **7**.
+- **Selection Phase:** Player 1 selects **7**.
+- **Scoring Phase:** Adds **7** to their score. Player 1 score: **54 + 7 = 61**.
+- **Update Phase:** Number **7** is removed from the pool. Player 1's last selected number: **7**.
+- **Available Numbers:** **1-6, 8-26, 28-36, 38-46, 48-50**.
+
+**Turn 6 - Player 2:**
+
+- **Requirement:** Must select a number ending with **7** (from Player 1's last number **7**).
+- **Available Numbers Ending with 7:** **No numbers left**.
+- **No Available Numbers:** Player 2 skips this turn.
+
+**Turn 7 - Player 1:**
+
+- **Requirement:** Must select a number ending with **7** (from Player 2's last number **27**).
+
+- **Available Numbers Ending with 7:** **No numbers left**.
+
+- **No Available Numbers:** Player 1 skips this turn.
+
+**Turn 8 - Player 2:**
+
+- **Requirement:** Must select a number ending with **7** (from Player 1's last number **7**).
+
+- **Available Numbers Ending with 7:** **No numbers left**.
+
+- **No Available Numbers:** Player 2 skips this turn.
+
+**Endgame Condition Reached:**
+
+- Both players cannot make a move.
+
+- **Final Scores:** Player 1: **61**, Player 2: **74**.
+
+- **Winner:** Player 2 wins with a higher score of **74** points.
+
+---
+
+### **Strategic Tips**
+
+- **Planning Ahead:** Pay attention to which numbers are still available with specific last digits to avoid getting stuck.
+
+- **Limiting Opponent's Options:** Choose numbers that force your opponent into a position with few or no valid moves.
+
+- **Balancing Score and Control:** While higher numbers boost your score, they might also open opportunities for your opponent. Sometimes selecting a lower number might be strategically better.
+
+- **Tracking Numbers:** Keep track of the remaining numbers ending with each digit to inform your choices.
+
+---
+
+By adhering to these rules and understanding the mechanics, players can engage in a strategic and competitive duel. The game is designed to be simple to play yet offers depth for those who plan ahead and strategize effectively.

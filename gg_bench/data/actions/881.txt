@@ -1,0 +1,13 @@
+The action space indices in the environment map to game moves as follows:
+
+1. **Action Indices 0-8**: Correspond to "Claim an Empty Cell" actions. Each index directly maps to claiming one of the 9 cells on the grid (0-indexed).
+
+2. **Action Indices 9-233**: Correspond to "Challenge an Opponent's Cell" actions. The challenge actions are structured as:
+   - Each cell (0 to 8) can be challenged, represented as `225 = 9 cells * 25 scenarios per cell`.
+   - Each scenario consists of all combinations of the player's and opponent's challenge numbers (5 each), totaling 25 combinations per cell.
+   - The index calculation for a challenge action is: 
+     - Cell to challenge: `(action_id - 9) // 25`
+     - Player's challenge number: `((action_id - 9) % 25) // 5 + 1`
+     - Opponent's challenge number: `((action_id - 9) % 25) % 5 + 1`
+
+This mapping ensures every possible player action in the game within the constraints of the game rules is represented as a unique index in the action space.

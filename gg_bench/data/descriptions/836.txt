@@ -1,0 +1,228 @@
+# Forbidden Adjacent
+
+## Objective
+
+Be the last player able to make a valid move by strategically claiming numbers and blocking your opponent. The goal is to force your opponent into a position where they cannot claim any more numbers.
+
+## Setup
+
+- **Number Line**: A sequential list of numbers from **1** to **9**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Initial State**: All numbers are unclaimed and not forbidden at the start of the game.
+- **First Turn**: Decide who goes first by mutual agreement or a random method (e.g., coin toss).
+
+## Game Components
+
+- **Number Line**: Represents the playable numbers, displayed as:
+
+  ```
+  1 2 3 4 5 6 7 8 9
+  ```
+
+- **Claimed Numbers**: Numbers that have been selected by players during the game.
+  - Each player's claimed numbers are tracked separately.
+- **Forbidden Numbers**: Numbers that cannot be claimed by either player due to adjacency rules.
+  - These are numbers immediately adjacent (±1) to any claimed number.
+- **Markers**:
+  - **Unclaimed Numbers**: Displayed as normal digits (e.g., `3`).
+  - **Claimed Numbers**: Marked with the player's identifier (e.g., `P1` or `P2`).
+  - **Forbidden Numbers**: Enclosed in square brackets (e.g., `[4]`).
+
+## Turns
+
+Players take turns alternately, starting with **Player 1**.
+
+### On Your Turn:
+
+1. **Select a Number**:
+   - Choose an unclaimed, non-forbidden number from the number line.
+2. **Claim the Number**:
+   - Mark the chosen number as claimed with your player identifier.
+3. **Update Forbidden Numbers**:
+   - Identify the adjacent numbers (±1) to the number you claimed.
+   - Mark these adjacent numbers as forbidden by enclosing them in square brackets.
+
+   **Note**:
+   - If an adjacent number is already claimed or forbidden, no additional action is needed.
+   - The number line does not wrap around; numbers beyond `1` and `9` are ignored.
+
+## Rules and Mechanics
+
+1. **Claiming Numbers**:
+   - A number can only be claimed once.
+   - You cannot claim a number that is forbidden.
+2. **Forbidden Numbers**:
+   - When you claim a number, both adjacent numbers become forbidden.
+   - Forbidden numbers cannot be claimed by either player for the remainder of the game.
+3. **Adjacency**:
+   - For number `1`, only number `2` is adjacent.
+   - For number `9`, only number `8` is adjacent.
+4. **Winning the Game**:
+   - If you cannot claim any unclaimed, non-forbidden numbers on your turn, you lose.
+   - The opposing player is declared the winner.
+5. **No Draws**:
+   - The game cannot end in a draw; a winner emerges once a player cannot make a valid move.
+
+## Scoring
+
+- **Victory**: The player who successfully forces their opponent into a position with no valid moves wins the game.
+- **Multiple Rounds** (Optional):
+  - Keep track of games won if playing multiple rounds.
+  - Determine an overall winner after a set number of games.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9
+Forbidden Numbers: None
+Player 1's claimed numbers: None
+Player 2's claimed numbers: None
+```
+
+#### Turn Sequence
+
+1. **Player 1's Turn**:
+   - Claims number **5**.
+   - Numbers **4** and **6** become forbidden.
+   - **Updated State**:
+     ```
+     Number Line: 1 2 3 [4] P1 [6] 7 8 9
+     Forbidden Numbers: 4, 6
+     Player 1's claimed numbers: 5
+     ```
+
+2. **Player 2's Turn**:
+   - Claims number **7**.
+   - Numbers **6** (already forbidden) and **8** become forbidden.
+   - **Updated State**:
+     ```
+     Number Line: 1 2 3 [4] P1 [6] P2 [8] 9
+     Forbidden Numbers: 4, 6, 8
+     Player 2's claimed numbers: 7
+     ```
+
+3. **Player 1's Turn**:
+   - Claims number **3**.
+   - Numbers **2** and **4** (already forbidden) become forbidden.
+   - **Updated State**:
+     ```
+     Number Line: 1 [2] P1 [4] P1 [6] P2 [8] 9
+     Forbidden Numbers: 2, 4, 6, 8
+     Player 1's claimed numbers: 5, 3
+     ```
+
+4. **Player 2's Turn**:
+   - Claims number **9**.
+   - Numbers **8** (already forbidden) and beyond `9` are ignored.
+   - **Updated State**:
+     ```
+     Number Line: 1 [2] P1 [4] P1 [6] P2 [8] P2
+     Forbidden Numbers: 2, 4, 6, 8
+     Player 2's claimed numbers: 7, 9
+     ```
+
+5. **Player 1's Turn**:
+   - Claims number **1**.
+   - Numbers beyond `1` are ignored and number **2** is already forbidden.
+   - **Updated State**:
+     ```
+     Number Line: P1 [2] P1 [4] P1 [6] P2 [8] P2
+     Forbidden Numbers: 2, 4, 6, 8
+     Player 1's claimed numbers: 5, 3, 1
+     ```
+
+6. **Player 2's Turn**:
+   - No unclaimed, non-forbidden numbers remain.
+   - **Player 2 cannot make a valid move and loses**.
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9
+Forbidden Numbers: 
+Player 1's claimed numbers: 
+Player 2's claimed numbers: 
+
+Player 1, enter a number to claim: 5
+```
+
+#### After Player 1's Turn
+
+```
+Number Line: 1 2 3 [4] P1 [6] 7 8 9
+Forbidden Numbers: 4 6
+Player 1's claimed numbers: 5
+Player 2's claimed numbers: 
+
+Player 2, enter a number to claim: 7
+```
+
+#### After Player 2's Turn
+
+```
+Number Line: 1 2 3 [4] P1 [6] P2 [8] 9
+Forbidden Numbers: 4 6 8
+Player 1's claimed numbers: 5
+Player 2's claimed numbers: 7
+
+Player 1, enter a number to claim: 3
+```
+
+#### Continuing the Game
+
+```
+Number Line: 1 [2] P1 [4] P1 [6] P2 [8] 9
+Forbidden Numbers: 2 4 6 8
+Player 1's claimed numbers: 5 3
+Player 2's claimed numbers: 7
+
+Player 2, enter a number to claim: 9
+```
+
+#### Nearing the End
+
+```
+Number Line: 1 [2] P1 [4] P1 [6] P2 [8] P2
+Forbidden Numbers: 2 4 6 8
+Player 1's claimed numbers: 5 3
+Player 2's claimed numbers: 7 9
+
+Player 1, enter a number to claim: 1
+```
+
+#### Game Over
+
+```
+Number Line: P1 [2] P1 [4] P1 [6] P2 [8] P2
+Forbidden Numbers: 2 4 6 8
+Player 1's claimed numbers: 5 3 1
+Player 2's claimed numbers: 7 9
+
+Player 2, no valid moves remaining. Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Central Control**: Claim central numbers like `5` early to maximize forbidden numbers.
+- **Anticipate Moves**: Pay attention to which numbers are still available and plan to block your opponent.
+- **Force the Endgame**: Try to leave your opponent with no options by carefully choosing numbers that limit their future moves.
+- **Avoid Early Corners**: Claiming edge numbers (`1` or `9`) early might limit your own options.
+
+## Variations
+
+- **Extended Number Line**: Increase the number line beyond `1` to `9` (e.g., `1` to `15`) for a longer game.
+- **Alternate Forbidden Range**:
+  - **Adjacency ±2**: Numbers within two steps become forbidden.
+  - **Custom Forbidden Rules**: Define your own rules for which numbers become forbidden after a claim.
+- **Multiple Claims per Turn**:
+  - Allow players to claim more than one number per turn with adjusted rules for forbidden numbers.
+
+## Conclusion
+
+Forbidden Adjacent is a simple yet strategic game that tests foresight and planning. It's easy to learn and quick to play, making it perfect for casual gaming sessions or as a programming project for a command-line interface. Employ tactics to outmaneuver your opponent and claim victory!

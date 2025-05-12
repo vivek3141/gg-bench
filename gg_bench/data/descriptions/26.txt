@@ -1,0 +1,105 @@
+# Factor Frenzy
+
+## Objective
+
+**Factor Frenzy** is a two-player, turn-based game where players take turns dividing a shared number by one of its proper divisors. The primary goal is to be the player who reduces the shared number to **1** through strategic selection of divisors. A player wins by either reducing the number to **1** on their turn or forcing their opponent into a position where they cannot make a valid move.
+
+## Setup
+
+1. **Starting Number**: The game begins with a shared composite number between **50** and **100**. This number should not be prime and must have at least one proper divisor other than **1** and itself.
+2. **Players**: Two players are required. Decide which player will take the first turn (Player 1) and which will take the second turn (Player 2).
+3. **Display**: The current shared number is displayed prominently for both players to see at all times.
+
+## Game Components
+
+- **Shared Number**: A composite integer between **50** and **100** that both players will manipulate during the game.
+- **Proper Divisors**: Integers between **2** and **(current number - 1)** that evenly divide the current shared number without leaving a remainder.
+- **Command-Line Interface**: Players input their chosen divisors through text commands.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Player Actions**:
+  1. **Select a Divisor**: On their turn, a player must choose a proper divisor of the current shared number.
+  2. **Divide the Shared Number**: The shared number is then divided by the chosen divisor, and the result becomes the new shared number.
+- **Turn Progression**: The updated shared number is displayed, and the turn passes to the next player.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A player must choose a proper divisor of the current shared number. 
+   - **Proper Divisors** are integers greater than **1** and less than the current shared number that divide it evenly.
+2. **Invalid Moves**:
+   - If a player selects a number that is not a proper divisor, their move is invalid, and they must choose again.
+   - Choosing **1** or the current number itself is not allowed.
+3. **Winning the Game**:
+   - A player wins if they reduce the shared number to **1** on their turn.
+   - If a player cannot make a valid move because there are no proper divisors available, they lose, and their opponent wins.
+4. **Reusing Divisors**:
+   - Divisors can be reused in subsequent turns if they remain proper divisors of the new shared number.
+5. **No Draws**:
+   - The game cannot end in a draw; play continues until one player wins according to the rules above.
+
+## Scoring
+
+- **Winning**: The player who reduces the shared number to **1** or forces their opponent into an invalid move wins the game.
+- **No Points System**: There is no point tracking; victory is determined solely by the win condition outlined above.
+
+## Examples
+
+### Example Game
+
+**Starting Number**: 60
+
+1. **Player 1's Turn**:
+   - **Current Number**: 60
+   - **Possible Divisors**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+   - **Player 1 Chooses**: 6
+   - **New Shared Number**: 60 ÷ 6 = 10
+2. **Player 2's Turn**:
+   - **Current Number**: 10
+   - **Possible Divisors**: 2, 5
+   - **Player 2 Chooses**: 2
+   - **New Shared Number**: 10 ÷ 2 = 5
+3. **Player 1's Turn**:
+   - **Current Number**: 5
+   - **Possible Divisors**: None (since 5 is prime)
+   - **Player 1 Cannot Move**: No valid divisors
+   - **Result**: Player 1 loses, Player 2 wins
+
+### Command-Line Interaction
+
+- **Player 1's Turn**:
+  ```
+  Current number: 60
+  Available divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+  Enter your divisor: 6
+  New number is 10.
+  ```
+- **Player 2's Turn**:
+  ```
+  Current number: 10
+  Available divisors: 2, 5
+  Enter your divisor: 2
+  New number is 5.
+  ```
+- **Player 1's Turn**:
+  ```
+  Current number: 5
+  Available divisors: None
+  No valid moves available. You lose.
+  ```
+- **Game Over**:
+  ```
+  Player 2 wins the game!
+  ```
+
+### Strategic Considerations
+
+- Players should aim to leave their opponent with a prime number, forcing a loss since prime numbers have no proper divisors other than **1** and themselves.
+- Selecting divisors that result in prime numbers can be a key strategy.
+- Being familiar with prime numbers and their properties provides a competitive advantage.
+
+## Conclusion
+
+**Factor Frenzy** is a fast-paced, strategic game that tests players' knowledge of numbers and divisibility. Its simple rules make it easy to learn and play, while strategic depth allows skilled players to consistently win. Enjoy challenging your opponents in this numerical battle of wits!

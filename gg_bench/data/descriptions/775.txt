@@ -1,0 +1,131 @@
+# Factor Frenzy
+
+## Objective
+
+**Factor Frenzy** is a two-player, turn-based mathematical strategy game played in a command-line interface. The primary goal is to be the player who reduces the shared current number to a prime number. Players take turns dividing the current number by its proper divisors (excluding 1 and the number itself). The player who successfully reduces the current number to a prime number wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared current number, typically **60**.
+- **Players**: Two players, Player 1 and Player 2.
+- **Initial Conditions**: No prior moves or conditions; the game starts fresh with the current number set.
+
+## Game Components
+
+- **Current Number**: A positive integer that both players manipulate during the game. It changes as players make their moves.
+- **Proper Divisors**: The set of divisors of the current number excluding 1 and the number itself. These are the numbers players can choose to divide the current number.
+- **Command-Line Interface**: The game is played via text inputs and outputs in a command-line environment.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Player Actions**: On their turn, a player must:
+  1. Identify the proper divisors of the current number.
+  2. Choose one proper divisor.
+  3. Divide the current number by the chosen divisor.
+  4. The result becomes the new current number.
+- **Progression**: The game continues with players alternately taking turns until one player reduces the current number to a prime number.
+
+## Rules and Mechanics
+
+1. **Proper Divisors**: 
+   - A proper divisor of a number is a positive integer that divides the number evenly, excluding 1 and the number itself.
+   - For example, the proper divisors of 60 are 2, 3, 4, 5, 6, 10, 12, 15, 20, and 30.
+
+2. **Valid Moves**:
+   - On each turn, a player must select a proper divisor of the current number.
+   - The player divides the current number by this divisor, resulting in a new current number.
+   - The chosen divisor must divide the current number evenly (no remainders).
+
+3. **Winning Condition**:
+   - The player who reduces the current number to a prime number wins immediately.
+   - Prime numbers are numbers greater than 1 that have no positive divisors other than 1 and themselves.
+
+4. **Restrictions**:
+   - Players cannot pass their turn; a move must be made if a proper divisor exists.
+   - If a player cannot make a valid move (i.e., the current number is already prime and it's their turn), they lose the game.
+
+5. **Example of Proper Divisors**:
+   - For current number **30**, the proper divisors are 2, 3, 5, 6, 10, and 15.
+   - For current number **6**, the proper divisors are 2 and 3.
+
+6. **No Repeats**:
+   - Previously used divisors can be used again if they are still proper divisors of the new current number.
+
+## Scoring
+
+- **Win Condition**: The game is won by the player who reduces the current number to a prime number on their turn.
+- **Loss Condition**: A player loses if:
+  - They have no valid moves on their turn (the current number is prime before their move).
+  - They make an invalid move (choose a number that is not a proper divisor).
+
+- **No Points System**: The game does not track points; it is won or lost based on the winning condition.
+
+## Examples
+
+### Example Game
+
+**Starting Current Number**: 60
+
+#### Turn 1: Player 1
+
+- **Proper Divisors of 60**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- **Player 1 Chooses**: 5
+- **Calculation**: 60 ÷ 5 = 12
+- **New Current Number**: 12
+
+#### Turn 2: Player 2
+
+- **Proper Divisors of 12**: 2, 3, 4, 6
+- **Player 2 Chooses**: 3
+- **Calculation**: 12 ÷ 3 = 4
+- **New Current Number**: 4
+
+#### Turn 3: Player 1
+
+- **Proper Divisors of 4**: 2
+- **Player 1 Chooses**: 2
+- **Calculation**: 4 ÷ 2 = 2
+- **New Current Number**: 2
+
+#### Outcome
+
+- **Current Number is Prime (2)**.
+- **Player 1 Wins**: Player 1 reduced the current number to a prime.
+
+### Sample Command-Line Interaction
+
+```
+Starting the Factor Frenzy Game!
+Current Number: 60
+
+Player 1's turn.
+Proper divisors of 60: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+Enter a proper divisor of 60: 6
+You chose 6.
+New current number is 10.
+
+Player 2's turn.
+Proper divisors of 10: 2, 5
+Enter a proper divisor of 10: 2
+You chose 2.
+New current number is 5.
+
+Player 1's turn.
+Current number is 5, which is a prime number.
+Player 1 wins!
+```
+
+### Explanation
+
+- **Player 1** reduces the current number to **5**, a prime number, and wins the game.
+  
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the resulting numbers after your move and how they might benefit your opponent.
+- **Avoid Low Numbers**: Be cautious when the current number becomes small; reducing it without care may allow your opponent to win.
+- **Prime Awareness**: Keep track of prime numbers to avoid inadvertently setting up a win for your opponent.
+
+## Conclusion
+
+Factor Frenzy is a simple yet strategic game that requires players to think ahead and understand factors and prime numbers. By carefully selecting proper divisors, players can control the flow of the game and force a win. Enjoy testing your numerical skills in this engaging mathematical duel!

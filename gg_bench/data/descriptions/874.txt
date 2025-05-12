@@ -1,0 +1,209 @@
+# Prime Duel Rule Book
+
+## Objective
+
+Be the **first player to reach a total score of exactly 50 points**. Players achieve victory by skillfully selecting numbers to add to their score while strategically affecting their opponent's score.
+
+---
+
+## Setup
+
+- **Player Scores**: Each player begins with a score of **0**.
+- **Available Numbers**: A shared list of numbers from **2 to 10** is available for selection.
+
+---
+
+## Game Components
+
+### Numbers (2 to 10)
+
+- **List**: The numbers **2, 3, 4, 5, 6, 7, 8, 9, 10**.
+- **Prime Numbers**: 2, 3, 5, 7.
+  - **Effect**: When selected, they not only add to the player's score but also subtract from the opponent's score.
+- **Composite Numbers**: 4, 6, 8, 9, 10.
+  - **Effect**: When selected, they only add to the player's score.
+
+### Player Scores
+
+- Each player has an individual score that is updated throughout the game based on the numbers selected.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Actions**:
+  1. **Display Status**: Show current scores and available numbers.
+  2. **Number Selection**: The current player selects an available number.
+  3. **Apply Effects**: Update scores based on the selected number.
+  4. **Update Availability**: Remove the selected number from the list.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Unique Choice**: Each number can be selected **only once** during the game.
+- **Available Numbers**: On their turn, players choose from the remaining unselected numbers.
+
+### Applying Number Effects
+
+#### Prime Numbers (2, 3, 5, 7)
+
+- **Player's Score**: The selected prime number is **added** to the player's score.
+- **Opponent's Score**: The same number is **subtracted** from the opponent's score.
+  - **Score Floor**: Opponent's score cannot go below **0**.
+
+#### Composite Numbers (4, 6, 8, 9, 10)
+
+- **Player's Score**: The selected composite number is **added** to the player's score.
+- **Opponent's Score**: No effect on the opponent's score.
+
+### Winning the Game
+
+- **Exact Score**: A player must reach a score of **exactly 50 points** to win.
+- **Over 50 Rule**:
+  - If adding a number would increase a player's score **above 50**, their score remains unchanged for that turn.
+  - **Selected Number Removal**: The number is still removed from the available numbers.
+- **Immediate Victory**: The game ends immediately when a player reaches 50 points.
+
+---
+
+## Scoring
+
+- **Track Scores**: Keep a running total of each player's score after every turn.
+- **Score Adjustments**: Apply additions and subtractions as per the rules.
+- **Score Display**: Show updated scores at the end of each turn.
+
+---
+
+## Examples
+
+### Example Turn Sequence
+
+#### Starting the Game
+
+- **Available Numbers**: 2, 3, 4, 5, 6, 7, 8, 9, 10
+- **Player 1 Score**: 0
+- **Player 2 Score**: 0
+
+#### Player 1's Turn
+
+- **Action**: Chooses **7** (a prime number).
+- **Effects**:
+  - **Player 1 Score**: 0 + 7 = **7**
+  - **Player 2 Score**: 0 - 7 = **0** (cannot go below 0)
+- **Available Numbers**: 2, 3, 4, 5, 6, 8, 9, 10
+
+#### Player 2's Turn
+
+- **Action**: Chooses **9** (a composite number).
+- **Effects**:
+  - **Player 2 Score**: 0 + 9 = **9**
+  - **Player 1 Score**: Unchanged (**7**)
+- **Available Numbers**: 2, 3, 4, 5, 6, 8, 10
+
+#### Player 1's Turn
+
+- **Action**: Chooses **5** (a prime number).
+- **Effects**:
+  - **Player 1 Score**: 7 + 5 = **12**
+  - **Player 2 Score**: 9 - 5 = **4**
+- **Available Numbers**: 2, 3, 4, 6, 8, 10
+
+#### Player 2's Turn
+
+- **Action**: Chooses **10** (a composite number).
+- **Effects**:
+  - **Player 2 Score**: 4 + 10 = **14**
+  - **Player 1 Score**: Unchanged (**12**)
+- **Available Numbers**: 2, 3, 4, 6, 8
+
+#### Player 1's Turn
+
+- **Action**: Chooses **3** (a prime number).
+- **Effects**:
+  - **Player 1 Score**: 12 + 3 = **15**
+  - **Player 2 Score**: 14 - 3 = **11**
+- **Available Numbers**: 2, 4, 6, 8
+
+### Reaching Over 50
+
+- **Player's Current Score**: 47
+- **Available Number**: Chooses **4**
+- **Resulting Score**: 47 + 4 = **51** (over 50)
+- **Over 50 Rule Applied**:
+  - **Player's Score**: Remains at **47**
+  - **Number 4**: Removed from available numbers
+
+---
+
+## Command-Line Interaction Sample
+
+### Turn Interface
+
+```
+--------------------------------------------------
+Player 1's Turn
+Available Numbers: 2, 3, 4, 5, 6, 7, 8, 9, 10
+Your Score: 0
+Opponent's Score: 0
+Select a number to add to your score:
+> 7
+You selected 7.
+7 is a prime number!
+Your score increases by 7 to 7.
+Opponent's score decreases by 7 to 0.
+--------------------------------------------------
+```
+
+### Invalid Selection
+
+```
+--------------------------------------------------
+Player 2's Turn
+Available Numbers: 2, 3, 4, 5, 6, 8, 9, 10
+Your Score: 0
+Opponent's Score: 7
+Select a number to add to your score:
+> 7
+Error: Number 7 has already been selected. Please choose another number.
+> 9
+You selected 9.
+9 is not a prime number.
+Your score increases by 9 to 9.
+Opponent's score remains at 7.
+--------------------------------------------------
+```
+
+### Over 50 Scenario
+
+```
+--------------------------------------------------
+Player 1's Turn
+Available Numbers: 4, 6, 8
+Your Score: 47
+Opponent's Score: 46
+Select a number to add to your score:
+> 4
+Adding 4 would exceed 50. Your score remains at 47.
+Number 4 is no longer available.
+--------------------------------------------------
+```
+
+---
+
+## Strategic Tips
+
+- **Prime Timing**: Use prime numbers strategically to reduce your opponent's score when they are close to winning.
+- **Score Management**: Keep track of both scores to plan your moves effectively.
+- **Number Availability**: Pay attention to the numbers remaining to avoid unintentional score overruns.
+
+---
+
+## Conclusion
+
+**Prime Duel** is a game of strategic number selection and score management. By carefully choosing numbers and considering their effects on both players' scores, skilled players can outmaneuver their opponents and reach the exact score of 50 to claim victory.
+
+Enjoy the challenge and may the best strategist win!

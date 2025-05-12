@@ -1,0 +1,227 @@
+# Divisor Duel
+
+## Objective
+
+**Divisor Duel** is a strategic two-player turn-based game where players compete to be the last to add a valid number to a shared chain. Players take turns selecting numbers from a common pool and adding them to the chain under specific mathematical conditions. The primary goal is to force your opponent into a position where they cannot make a valid move, thus securing your victory.
+
+---
+
+## Setup
+
+- **Number Pool**: Create a shared pool of integers from **2** to **20**, inclusive.
+- **Number Chain**: Start with an empty chain where numbers will be added during the game.
+- **Determine First Player**: Decide who will take the first turn (e.g., by coin toss).
+
+---
+
+## Game Components
+
+- **Number Pool**:
+  - A list of available numbers: **[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]**.
+  - Each number can be selected only once and is removed from the pool after use.
+
+- **Number Chain**:
+  - A sequence where players add numbers according to game rules.
+  - Begins empty and grows with each valid move.
+
+---
+
+## Turns
+
+1. **Player's Turn Structure**:
+   - **Review** the last number in the chain (or any number in the pool if the chain is empty).
+   - **Select** a valid number from the pool based on the Rules and Mechanics.
+   - **Add** the chosen number to the end of the chain.
+   - **Remove** the chosen number from the pool.
+
+2. **Turn Progression**:
+   - Players alternate turns following the same structure.
+   - The game continues until a player cannot make a valid move.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - If the chain is empty, the first player may choose any number from the pool to start the chain.
+
+2. **Valid Moves**:
+   - On subsequent turns, a player must select a number from the pool that is **either a divisor or a multiple of the last number in the chain**.
+   - **Divisors**: Numbers that divide evenly into the last number.
+   - **Multiples**: Numbers that the last number divides evenly into.
+
+3. **Number Usage**:
+   - Each number can be used only once. Once selected, it is removed from the pool.
+
+4. **Mandatory Moves**:
+   - If a valid move exists, the player must make one.
+   - If no valid moves are available on a player's turn, they lose the game.
+
+### Winning the Game
+
+- **Victory Condition**: You win if your opponent cannot make a valid move on their turn.
+- **Loss Condition**: You lose if you cannot make a valid move on your turn.
+
+---
+
+## Scoring
+
+- There is no point system.
+- **Winning** is achieved by strategic play leading to the opponent's inability to move.
+- Each game results in a clear win or loss—no draws are possible.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Number Pool**:
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+**Game Start**
+
+#### Player 1's Turn:
+- **Chain**: Empty
+- **Action**: Chooses **12** to start the chain.
+- **Chain Now**: [12]
+- **Updated Pool**:
+  [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20]
+
+#### Player 2's Turn:
+- **Last Number**: 12
+- **Possible Moves**: Divisors or multiples of 12 from the pool.
+  - **Divisors**: 2, 3, 4, 6
+  - **Multiples**: None (since 24 is beyond the pool range)
+- **Action**: Chooses **4**.
+- **Chain Now**: [12, 4]
+- **Updated Pool**:
+  [2, 3, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20]
+
+#### Player 1's Turn:
+- **Last Number**: 4
+- **Possible Moves**: Divisors or multiples of 4 from the pool.
+  - **Divisors**: 2
+  - **Multiples**: 8, 16, 20
+- **Action**: Chooses **16**.
+- **Chain Now**: [12, 4, 16]
+- **Updated Pool**:
+  [2, 3, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20]
+
+#### Player 2's Turn:
+- **Last Number**: 16
+- **Possible Moves**: Divisors or multiples of 16 from the pool.
+  - **Divisors**: 2, 8
+  - **Multiples**: None
+- **Action**: Chooses **8**.
+- **Chain Now**: [12, 4, 16, 8]
+- **Updated Pool**:
+  [2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20]
+
+#### Player 1's Turn:
+- **Last Number**: 8
+- **Possible Moves**: Divisors or multiples of 8 from the pool.
+  - **Divisors**: 2
+  - **Multiples**: None
+- **Action**: Chooses **2**.
+- **Chain Now**: [12, 4, 16, 8, 2]
+- **Updated Pool**:
+  [3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20]
+
+#### Player 2's Turn:
+- **Last Number**: 2
+- **Possible Moves**: Divisors or multiples of 2 from the pool.
+  - **Multiples**: 6, 10, 14, 18, 20
+- **Action**: Chooses **6**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6]
+- **Updated Pool**:
+  [3, 5, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20]
+
+#### Player 1's Turn:
+- **Last Number**: 6
+- **Possible Moves**: Divisors or multiples of 6 from the pool.
+  - **Divisors**: 3
+  - **Multiples**: 18
+- **Action**: Chooses **18**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18]
+- **Updated Pool**:
+  [3, 5, 7, 9, 10, 11, 13, 14, 15, 17, 19, 20]
+
+#### Player 2's Turn:
+- **Last Number**: 18
+- **Possible Moves**: Divisors or multiples of 18 from the pool.
+  - **Divisors**: 3, 9
+  - **Multiples**: None
+- **Action**: Chooses **9**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18, 9]
+- **Updated Pool**:
+  [3, 5, 7, 10, 11, 13, 14, 15, 17, 19, 20]
+
+#### Player 1's Turn:
+- **Last Number**: 9
+- **Possible Moves**: Divisors or multiples of 9 from the pool.
+  - **Divisors**: 3
+- **Action**: Chooses **3**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18, 9, 3]
+- **Updated Pool**:
+  [5, 7, 10, 11, 13, 14, 15, 17, 19, 20]
+
+#### Player 2's Turn:
+- **Last Number**: 3
+- **Possible Moves**: Multiples of 3 from the pool.
+  - **Multiples**: 15
+- **Action**: Chooses **15**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18, 9, 3, 15]
+- **Updated Pool**:
+  [5, 7, 10, 11, 13, 14, 17, 19, 20]
+
+#### Player 1's Turn:
+- **Last Number**: 15
+- **Possible Moves**: Divisors or multiples of 15 from the pool.
+  - **Divisors**: 5
+- **Action**: Chooses **5**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18, 9, 3, 15, 5]
+- **Updated Pool**:
+  [7, 10, 11, 13, 14, 17, 19, 20]
+
+#### Player 2's Turn:
+- **Last Number**: 5
+- **Possible Moves**: Multiples of 5 from the pool.
+  - **Multiples**: 10
+- **Action**: Chooses **10**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18, 9, 3, 15, 5, 10]
+- **Updated Pool**:
+  [7, 11, 13, 14, 17, 19, 20]
+
+#### Player 1's Turn:
+- **Last Number**: 10
+- **Possible Moves**: Divisors or multiples of 10 from the pool.
+  - **Divisors**: None available (2 and 5 are used)
+  - **Multiples**: 20
+- **Action**: Chooses **20**.
+- **Chain Now**: [12, 4, 16, 8, 2, 6, 18, 9, 3, 15, 5, 10, 20]
+- **Updated Pool**:
+  [7, 11, 13, 14, 17, 19]
+
+#### Player 2's Turn:
+- **Last Number**: 20
+- **Possible Moves**: Divisors or multiples of 20 from the pool.
+  - **Divisors**: None available (2, 4, 5, 10 are used)
+  - **Multiples**: None within pool range
+- **Action**: No valid moves available.
+- **Result**: **Player 2 cannot move and loses the game.**
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate which numbers will be available on your next turn.
+- **Control the Chain**: Select numbers that limit your opponent's options.
+- **Resource Management**: Consider the numbers left in the pool and their potential future connections.
+- **Forcing Moves**: Lead your opponent into a position where they have no valid moves.
+
+---
+
+By understanding the rules and planning strategically, you can enhance your chances of winning **Divisor Duel**. Enjoy the challenge of outsmarting your opponent in this unique mathematical game!

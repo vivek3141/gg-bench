@@ -1,0 +1,256 @@
+**Sequence Shift**
+
+---
+
+### **Objective**
+
+Be the first player to arrange a shared sequence of numbers into your designated target order. Player One aims to organize the sequence in **ascending order** (e.g., `1 2 3 4 5`), while Player Two strives for **descending order** (e.g., `5 4 3 2 1`). Strategic swapping and anticipation of your opponent's moves are key to victory.
+
+---
+
+### **Setup**
+
+1. **Sequence Initialization**:
+   - Begin with a shared sequence of numbers from `1` to `5` in a random order. For example: `3 1 4 5 2`.
+   
+2. **Player Assignment**:
+   - Decide which player will be **Player One** and **Player Two**. This can be determined randomly or by mutual agreement.
+
+3. **Starting Player**:
+   - Determine who takes the first turn. You may flip a coin, have the younger player start, or agree on a method.
+
+---
+
+### **Game Components**
+
+- **Shared Sequence**:
+  - A list of integers from `1` to `5` (inclusive) in random order, visible to both players.
+  
+- **Player Roles**:
+  - **Player One**: Aims to rearrange the sequence into ascending order (`1 2 3 4 5`).
+  - **Player Two**: Aims to rearrange the sequence into descending order (`5 4 3 2 1`).
+
+- **Command-Line Interface**:
+  - Players input commands to perform actions, such as swapping numbers.
+
+---
+
+### **Turns**
+
+1. **Turn Structure**:
+   - Players take turns alternately.
+   - On each turn, a player performs one action: swapping two adjacent numbers in the sequence.
+
+2. **Actions During a Turn**:
+   - **Swap Action**:
+     - Specify the position of the first number to swap with its adjacent neighbor.
+     - Positions are based on the current sequence indices.
+
+3. **Turn Progression**:
+   - After a player completes their swap, the turn passes to the opponent.
+   - The updated sequence is displayed after each turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Swapping Mechanics**:
+   - Players can only swap **two adjacent numbers** in the sequence.
+   - Specify the index (position) of the first number to swap.
+     - For example, in sequence `3 1 4 5 2`, swapping at position `2` swaps `1` and `4`, resulting in `3 4 1 5 2`.
+   - Indices are typically `1`-based for user-friendliness.
+
+2. **Winning Conditions**:
+   - **Player One** wins if, at the end of their turn, the sequence is in ascending order (`1 2 3 4 5`).
+   - **Player Two** wins if, at the end of their turn, the sequence is in descending order (`5 4 3 2 1`).
+
+3. **Game Progression**:
+   - The game continues until one player achieves their target sequence on their turn.
+   - If both players are one move away from winning, the player whose turn it is can secure victory.
+
+4. **Invalid Moves**:
+   - Attempting to swap non-adjacent numbers is not allowed.
+   - Swapping positions outside the valid index range is prohibited.
+
+---
+
+### **Scoring**
+
+- **Victory**:
+  - The winner is the first player to successfully arrange the sequence into their target order during their turn.
+
+- **No Points System**:
+  - The game does not use a points system; it's a win/lose outcome.
+
+- **Match Play (Optional)**:
+  - Players may choose to play multiple rounds, keeping track of victories to determine an overall winner after a set number of games.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Sequence**: `4 1 3 5 2`
+
+**Player Roles**:
+- **Player One**: Ascending order (`1 2 3 4 5`)
+- **Player Two**: Descending order (`5 4 3 2 1`)
+
+---
+
+**Turn 1: Player One**
+
+- **Action**: Swap positions `1` and `2` (`4` and `1`).
+- **Command**: `swap 1`
+- **Sequence After Turn**: `1 4 3 5 2`
+
+---
+
+**Turn 2: Player Two**
+
+- **Action**: Swap positions `4` and `5` (`5` and `2`).
+- **Command**: `swap 4`
+- **Sequence After Turn**: `1 4 3 2 5`
+
+---
+
+**Turn 3: Player One**
+
+- **Action**: Swap positions `2` and `3` (`4` and `3`).
+- **Command**: `swap 2`
+- **Sequence After Turn**: `1 3 4 2 5`
+
+---
+
+**Turn 4: Player Two**
+
+- **Action**: Swap positions `2` and `3` (`3` and `4`).
+- **Command**: `swap 2`
+- **Sequence After Turn**: `1 4 3 2 5`
+
+---
+
+**Turn 5: Player One**
+
+- **Action**: Swap positions `3` and `4` (`3` and `2`).
+- **Command**: `swap 3`
+- **Sequence After Turn**: `1 4 2 3 5`
+
+---
+
+**Turn 6: Player Two**
+
+- **Action**: Swap positions `1` and `2` (`1` and `4`).
+- **Command**: `swap 1`
+- **Sequence After Turn**: `4 1 2 3 5`
+
+---
+
+**Turn 7: Player One**
+
+- **Action**: Swap positions `2` and `3` (`1` and `2`).
+- **Command**: `swap 2`
+- **Sequence After Turn**: `4 2 1 3 5`
+
+---
+
+**Turn 8: Player Two**
+
+- **Action**: Swap positions `2` and `3` (`2` and `1`).
+- **Command**: `swap 2`
+- **Sequence After Turn**: `4 1 2 3 5`
+
+---
+
+**Turn 9: Player One**
+
+- **Action**: Swap positions `3` and `4` (`2` and `3`).
+- **Command**: `swap 3`
+- **Sequence After Turn**: `4 1 3 2 5`
+
+---
+
+**Turn 10: Player Two**
+
+- **Action**: Swap positions `1` and `2` (`4` and `1`).
+- **Command**: `swap 1`
+- **Sequence After Turn**: `1 4 3 2 5`
+
+---
+
+**Turn 11: Player One**
+
+- **Action**: Swap positions `2` and `3` (`4` and `3`).
+- **Command**: `swap 2`
+- **Sequence After Turn**: `1 3 4 2 5`
+
+---
+
+**Turn 12: Player One Wins**
+
+- At the end of Player One's turn, the sequence is `1 3 4 2 5`.
+- Although not in complete ascending order, none of the players have won yet.
+
+*Note: For brevity, let's jump to the winning move.*
+
+**Final Turn: Player One**
+
+- **Action**: Swap positions `3` and `4` (`4` and `2`).
+- **Command**: `swap 3`
+- **Sequence After Turn**: `1 2 3 4 5`
+
+**Outcome**:
+- The sequence is now in ascending order.
+- **Player One Wins!**
+
+---
+
+### **Command-Line Interaction Example**
+
+```plaintext
+Initial sequence: 4 1 3 5 2
+
+Player One's turn.
+Enter the position to swap (1-4): 1
+Sequence after swap: 1 4 3 5 2
+
+Player Two's turn.
+Enter the position to swap (1-4): 4
+Sequence after swap: 1 4 3 2 5
+
+Player One's turn.
+Enter the position to swap (1-4): 2
+Sequence after swap: 1 3 4 2 5
+
+... (turns continue) ...
+
+Player One's turn.
+Enter the position to swap (1-4): 3
+Sequence after swap: 1 2 3 4 5
+
+Player One has arranged the sequence in ascending order.
+**Player One Wins!**
+```
+
+---
+
+### **Strategic Tips**
+
+- **Predict Opponent's Moves**:
+  - Anticipate how your opponent might try to rearrange the sequence and counteract their swaps.
+
+- **Control Key Positions**:
+  - Focus on swapping numbers that are crucial for your target order.
+
+- **Defensive Play**:
+  - Sometimes it's beneficial to undo your opponent's progress rather than advancing your own.
+
+- **Plan Ahead**:
+  - Look several moves ahead to set up a path to victory.
+
+---
+
+### **Conclusion**
+
+"Sequence Shift" is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent by skillfully swapping adjacent numbers. With each move altering the shared sequence, players must balance between advancing their own agenda and disrupting their opponent's plans. Enjoy the battle of wits and may the best strategist win!

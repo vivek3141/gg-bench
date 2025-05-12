@@ -1,0 +1,196 @@
+# Grid Capture
+
+## Objective
+
+The primary goal of **Grid Capture** is to accumulate the highest total score by strategically claiming cells on a grid containing numbers. Players take turns claiming cells, aiming to maximize their own score while limiting their opponent's options. The player with the highest total score at the end of the game wins.
+
+## Setup
+
+1. **Grid Creation**:
+   - Generate a 5x5 grid (rows and columns numbered from 1 to 5) displayed in the command-line interface.
+   - Each cell in the grid is assigned a random integer between 1 and 9, inclusive.
+
+2. **Initial Display**:
+   - The grid is displayed to both players, showing the numbers in each cell.
+   - All cells are unclaimed at the beginning of the game.
+
+3. **Player Identification**:
+   - Decide which player goes first (Player 1 and Player 2). This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+1. **Grid Cells**:
+   - Each cell is uniquely identified by its row and column coordinates (e.g., `(1,1)` for the top-left corner).
+   - Cells contain a numerical value between 1 and 9.
+   - Cells can be in one of three states:
+     - **Unclaimed**: No player has claimed the cell.
+     - **Claimed by Player 1**: The cell is owned by Player 1.
+     - **Claimed by Player 2**: The cell is owned by Player 2.
+
+2. **Player Scores**:
+   - Each player has a running total score, starting at zero.
+
+3. **Markers**:
+   - In the command-line interface, use distinct markers or symbols to denote claimed cells for each player (e.g., `P1` for Player 1, `P2` for Player 2).
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with Player 1.
+
+2. **Turn Actions**:
+   - On their turn, a player claims an unclaimed cell according to the rules specified below.
+
+3. **Turn Progression**:
+   - After a player completes their move, the grid and scores are updated, and it becomes the other player's turn.
+
+## Rules and Mechanics
+
+1. **First Move**:
+   - For their first move, each player may claim **any unclaimed cell located on the outer edge of the grid** (cells where either the row or column is 1 or 5).
+
+2. **Subsequent Moves**:
+   - For all subsequent moves, a player may claim any **unclaimed cell that is adjacent** (up, down, left, or right) to a cell they have already claimed.
+   - **Diagonal adjacency does not count**.
+
+3. **Claiming Cells**:
+   - To claim a cell, the player selects the cell's coordinates.
+   - The cell becomes owned by the player, and its value is added to the player's total score.
+
+4. **Restrictions**:
+   - A player **cannot** claim a cell that is already claimed by the opponent.
+   - A player **cannot** claim a cell that is not adjacent to any of their already claimed cells (after their first move).
+
+5. **Game End**:
+   - The game ends when **neither player can make a valid move**. This occurs when:
+     - All cells have been claimed, or
+     - Neither player has any unclaimed adjacent cells to claim.
+
+## Scoring
+
+1. **Calculating Scores**:
+   - Each time a player claims a cell, they **add the numerical value** of that cell to their total score.
+
+2. **Winning the Game**:
+   - The player with the **higher total score** at the end of the game wins.
+   - **No Draws**: If both players have the same total score, the **last player to make a move is declared the winner**.
+
+## Examples
+
+### Example Turn Sequence
+
+**Initial Grid Display**:
+
+```
+     1    2    3    4    5
+   +----+----+----+----+----+
+1  | 5  | 3  | 2  | 6  | 1  |
+   +----+----+----+----+----+
+2  | 7  | 4  | 9  | 2  | 8  |
+   +----+----+----+----+----+
+3  | 1  | 5  | 3  | 7  | 4  |
+   +----+----+----+----+----+
+4  | 2  | 8  | 6  | 1  | 5  |
+   +----+----+----+----+----+
+5  | 9  | 3  | 2  | 4  | 7  |
+   +----+----+----+----+----+
+```
+
+#### Player 1's First Move:
+
+- **Action**: Chooses cell `(1,1)`, which contains the number `5`.
+- **Result**:
+  - Player 1's claimed cells: `(1,1)`.
+  - Player 1's score: `5`.
+
+#### Player 2's First Move:
+
+- **Action**: Chooses cell `(5,5)`, which contains the number `7`.
+- **Result**:
+  - Player 2's claimed cells: `(5,5)`.
+  - Player 2's score: `7`.
+
+#### Player 1's Second Move:
+
+- **Options**: Can claim any unclaimed cell adjacent to `(1,1)`.
+  - Possible choices: `(1,2)`, `(2,1)`.
+- **Action**: Chooses cell `(1,2)`, which contains the number `3`.
+- **Result**:
+  - Player 1's claimed cells: `(1,1)`, `(1,2)`.
+  - Player 1's score: `5 + 3 = 8`.
+
+#### Player 2's Second Move:
+
+- **Options**: Can claim any unclaimed cell adjacent to `(5,5)`.
+  - Possible choices: `(4,5)`, `(5,4)`.
+- **Action**: Chooses cell `(4,5)`, which contains the number `5`.
+- **Result**:
+  - Player 2's claimed cells: `(5,5)`, `(4,5)`.
+  - Player 2's score: `7 + 5 = 12`.
+
+#### Continuing the Game:
+
+- Players continue to alternate turns, claiming adjacent cells according to the rules.
+- The grid and scores are updated after each move.
+
+### Command-Line Interaction
+
+#### Prompt for Move:
+
+```
+Player 1, enter the coordinates of the cell you wish to claim (row column):
+```
+
+#### Player Input:
+
+```
+1 1
+```
+
+#### System Response:
+
+```
+Player 1 claimed cell (1,1) worth 5 points. Total score: 5.
+```
+
+#### Grid Update:
+
+- The grid now displays `P1` at position `(1,1)` to indicate Player 1's claim.
+
+#### Next Turn:
+
+- The prompt is now:
+
+```
+Player 2, enter the coordinates of the cell you wish to claim (row column):
+```
+
+- This process repeats for each turn, alternating between the players.
+
+## Strategy Tips
+
+1. **Maximize Your Score**:
+   - Prioritize claiming cells with higher numerical values to increase your total score quickly.
+
+2. **Control the Grid**:
+   - Position yourself to access clusters of high-value cells.
+   - Consider the future moves your current claim enables.
+
+3. **Block Your Opponent**:
+   - Claim cells that limit your opponent's ability to reach high-value areas.
+   - Cut off their expansion paths when possible.
+
+4. **Plan Ahead**:
+   - Anticipate your opponent's potential moves based on the grid layout.
+   - Think several moves ahead to set up advantageous positions.
+
+5. **Balance Risk and Reward**:
+   - Weigh the immediate benefit of high-value cells against the strategic positioning they may offer to your opponent.
+
+## Conclusion
+
+Grid Capture is a game of strategic positioning and resource management. Players must balance the immediate gain of high-value cells with the long-term strategy of controlling the grid. By carefully choosing which cells to claim and planning several moves ahead, skilled players can outmaneuver their opponents and secure victory.
+
+---
+
+Enjoy the challenge of Grid Capture, and may the best strategist win!

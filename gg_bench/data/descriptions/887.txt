@@ -1,0 +1,140 @@
+# Number Path
+
+## Objective
+
+**Be the first player to successfully claim all adjacent numbers available to you on the number line, effectively blocking your opponent from making a move.** A player wins the game when their opponent cannot claim any more numbers according to the rules.
+
+---
+
+## Setup
+
+- **Number Line:** A shared number line ranging from **1 to 20**.
+- **Starting Position:** The game begins with an empty number line; no numbers are claimed.
+
+---
+
+## Game Components
+
+- **Number Line (1-20):** Represents the playing field. Numbers are unclaimed at the start.
+- **Player Markers:** Each player uses unique markers to indicate claimed numbers (e.g., `P1` for Player 1 and `P2` for Player 2).
+- **Command-Line Interface:** Players input commands to claim numbers.
+
+---
+
+## Turns
+
+1. **Player 1 begins** by claiming **any one number** on the number line.
+2. **Players alternate turns** after the first move.
+3. On each turn, a player must:
+   - **Claim an unclaimed number** that is **adjacent** (difference of 1) to a number they have already claimed.
+   - **Update the number line** to reflect their claimed number.
+
+---
+
+## Rules and Mechanics
+
+### Claiming Numbers
+
+- **First Move:**
+  - Player 1 can claim **any number** from 1 to 20.
+- **Subsequent Moves:**
+  - Players must claim a number that is **adjacent** to their **own** previously claimed numbers.
+  - A number is adjacent if it is **one more or one less** than a number the player has already claimed.
+  - **Example:** If Player 1 has claimed number 5, they can claim 4 or 6 on their next turn, provided those numbers are unclaimed.
+
+### Restrictions
+
+- **No Reclaiming:** Once a number is claimed, it cannot be claimed by the other player.
+- **Blocked Paths:** If a player's claimed numbers have no unclaimed adjacent numbers, that player **cannot move**.
+- **Winning the Game:** A player **wins** if their opponent cannot claim any more numbers on their turn.
+
+---
+
+## Scoring
+
+- **Winning:** The winner is the player who successfully claims numbers in such a way that their opponent has **no valid moves** remaining.
+- **No Points System:** The game does not use a points system; victory is achieved by strategic claiming of numbers.
+
+---
+
+## Examples
+
+### Example Scenario
+
+#### Initial State
+
+```
+Number Line: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Gameplay
+
+1. **Player 1's Turn:**
+   - Claims number **10**.
+   - **Number Line:** `1 2 3 4 5 6 7 8 9 [P1-10] 11 12 13 14 15 16 17 18 19 20`
+
+2. **Player 2's Turn:**
+   - Claims number **11** (adjacent to 10 is not allowed since 10 is claimed by P1).
+   - Since it's the first move for Player 2, they can claim **any number**.
+   - Chooses number **15**.
+   - **Number Line:** `1 2 3 4 5 6 7 8 9 [P1-10] 11 12 13 14 [P2-15] 16 17 18 19 20`
+
+3. **Player 1's Turn:**
+   - Can claim **9** or **11** (adjacent to their claimed 10).
+   - Chooses **9**.
+   - **Number Line:** `1 2 3 4 5 6 7 8 [P1-9] [P1-10] 11 12 13 14 [P2-15] 16 17 18 19 20`
+
+4. **Player 2's Turn:**
+   - Must claim a number adjacent to **15**.
+   - Options are **14** and **16**.
+   - Chooses **16**.
+   - **Number Line:** `1 2 3 4 5 6 7 8 [P1-9] [P1-10] 11 12 13 14 [P2-15] [P2-16] 17 18 19 20`
+
+5. **Player 1's Turn:**
+   - Options are **8** (adjacent to 9) or **11** (adjacent to 10).
+   - Chooses **11**.
+   - **Number Line:** `1 2 3 4 5 6 7 8 [P1-9] [P1-10] [P1-11] 12 13 14 [P2-15] [P2-16] 17 18 19 20`
+
+6. **Player 2's Turn:**
+   - Options are **14** or **17** (adjacent to their claimed numbers).
+   - Chooses **14**.
+   - **Number Line:** `1 2 3 4 5 6 7 8 [P1-9] [P1-10] [P1-11] 12 13 [P2-14] [P2-15] [P2-16] 17 18 19 20`
+
+7. **Play continues** until a player cannot make a move.
+
+### Command-Line Interaction
+
+#### Player Commands
+
+- To **claim a number**, a player types: `claim [number]`
+
+#### Sample Turn
+
+```
+Player 1's Turn:
+> claim 10
+Number Line Updated:
+1 2 3 4 5 6 7 8 9 [P1-10] 11 12 13 14 15 16 17 18 19 20
+
+Player 2's Turn:
+> claim 15
+Number Line Updated:
+1 2 3 4 5 6 7 8 9 [P1-10] 11 12 13 14 [P2-15] 16 17 18 19 20
+
+Player 1's Turn:
+> claim 9
+Number Line Updated:
+1 2 3 4 5 6 7 8 [P1-9] [P1-10] 11 12 13 14 [P2-15] 16 17 18 19 20
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate your opponent's possible moves and aim to block their paths.
+- **Claim Central Numbers:** Controlling the center can provide more adjacent numbers to choose from.
+- **Prevent Opponent Expansion:** Limit your opponent's options by cutting off their access to unclaimed numbers.
+
+---
+
+Enjoy playing **Number Path**, and may your path lead you to victory!

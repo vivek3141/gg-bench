@@ -1,0 +1,393 @@
+**Game Title:** Number Navigator
+
+---
+
+### **Objective**
+
+Be the first player to reduce your own number to **exactly zero** by strategically applying mathematical operations. Avoid overshooting zero (ending up with a negative number), which results in an immediate loss.
+
+---
+
+### **Setup**
+
+- **Starting Numbers:** Each player begins with a personal number set at **20**.
+- **Interface:** The game is played via a command-line interface where players input their chosen operations during their turns.
+- **Player Order:** Determine randomly or agree on which player takes the first turn.
+
+---
+
+### **Game Components**
+
+- **Player Numbers:**
+  - **Player 1 Number:** Starts at 20.
+  - **Player 2 Number:** Starts at 20.
+
+- **Allowed Operations:**
+  1. **Subtract 1**
+     - Decrease your number by 1.
+     - Always available.
+  2. **Subtract 2**
+     - Decrease your number by 2.
+     - Always available.
+  3. **Multiply by 0.5**
+     - Halve your number.
+     - Available **only if your number is even**.
+  4. **Add 5**
+     - Increase your number by 5.
+     - Available **only if your number is less than 10**.
+
+---
+
+### **Turns**
+
+1. **Turn Order:**
+   - Players alternate turns.
+   - The game begins with Player 1.
+
+2. **During Your Turn:**
+   - **Step 1:** Review your current number.
+   - **Step 2:** Choose one **allowed operation** from the list.
+   - **Step 3:** Apply the operation to your number.
+   - **Step 4:** Ensure your number remains zero or positive.
+   - **Step 5:** Pass the turn to the other player.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Applying Operations:**
+   - You must choose an operation that results in your number being **zero or positive**.
+   - If no valid operation is available that keeps your number zero or positive, you **must choose an operation that results in a negative number**, leading to an immediate loss.
+
+2. **Win Condition:**
+   - You **win** if, after your turn, your number is **exactly zero**.
+
+3. **Loss Condition:**
+   - You **lose** immediately if your number becomes **negative** after applying an operation.
+
+4. **Operation Details:**
+   - **Subtract 1** and **Subtract 2**
+     - Available on any number.
+   - **Multiply by 0.5**
+     - Available only if your current number is **even**.
+     - Results in halving your number.
+   - **Add 5**
+     - Available only if your current number is **less than 10**.
+     - Increases your number, offering strategic flexibility.
+
+5. **Strategic Considerations:**
+   - Plan ahead to set up future moves.
+   - Anticipate your opponent's possible moves.
+   - Balance reducing your number quickly with maintaining options for future turns.
+
+6. **No Draws:**
+   - The game continues until one player wins or loses as per the conditions.
+   - There are **no draw** conditions in this game.
+
+---
+
+### **Scoring**
+
+- **Winning the Game:**
+  - Achieved by reducing your number to **exactly zero**.
+- **Losing the Game:**
+  - Occurs if your number becomes **negative**.
+- **No Points System:**
+  - The game is binary—win or lose.
+  - Each game is independent; there is no cumulative score.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Starting Numbers:**
+- Player 1: 20
+- Player 2: 20
+
+---
+
+**Turn 1: Player 1**
+
+- **Current Number:** 20
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (because 20 is even)
+- **Choice:** Multiply by 0.5
+- **Calculation:** 20 * 0.5 = 10
+- **New Number:** 10
+
+---
+
+**Turn 2: Player 2**
+
+- **Current Number:** 20
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (because 20 is even)
+- **Choice:** Subtract 2
+- **Calculation:** 20 - 2 = 18
+- **New Number:** 18
+
+---
+
+**Turn 3: Player 1**
+
+- **Current Number:** 10
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (10 is even)
+- **Choice:** Multiply by 0.5
+- **Calculation:** 10 * 0.5 = 5
+- **New Number:** 5
+
+---
+
+**Turn 4: Player 2**
+
+- **Current Number:** 18
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (18 is even)
+- **Choice:** Multiply by 0.5
+- **Calculation:** 18 * 0.5 = 9
+- **New Number:** 9
+
+---
+
+**Turn 5: Player 1**
+
+- **Current Number:** 5
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Add 5 (since 5 is less than 10)
+- **Choice:** Add 5
+- **Calculation:** 5 + 5 = 10
+- **New Number:** 10
+
+---
+
+**Turn 6: Player 2**
+
+- **Current Number:** 9
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Add 5 (since 9 is less than 10)
+- **Choice:** Subtract 2
+- **Calculation:** 9 - 2 = 7
+- **New Number:** 7
+
+---
+
+**Turn 7: Player 1**
+
+- **Current Number:** 10
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (10 is even)
+- **Choice:** Subtract 2
+- **Calculation:** 10 - 2 = 8
+- **New Number:** 8
+
+---
+
+**Turn 8: Player 2**
+
+- **Current Number:** 7
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Add 5 (since 7 is less than 10)
+- **Choice:** Subtract 2
+- **Calculation:** 7 - 2 = 5
+- **New Number:** 5
+
+---
+
+**Turn 9: Player 1**
+
+- **Current Number:** 8
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (8 is even)
+- **Choice:** Multiply by 0.5
+- **Calculation:** 8 * 0.5 = 4
+- **New Number:** 4
+
+---
+
+**Turn 10: Player 2**
+
+- **Current Number:** 5
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Add 5 (since 5 is less than 10)
+- **Choice:** Add 5
+- **Calculation:** 5 + 5 = 10
+- **New Number:** 10
+
+---
+
+**Turn 11: Player 1**
+
+- **Current Number:** 4
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (4 is even)
+- **Choice:** Subtract 2
+- **Calculation:** 4 - 2 = 2
+- **New Number:** 2
+
+---
+
+**Turn 12: Player 2**
+
+- **Current Number:** 10
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (10 is even)
+- **Choice:** Subtract 2
+- **Calculation:** 10 - 2 = 8
+- **New Number:** 8
+
+---
+
+**Turn 13: Player 1**
+
+- **Current Number:** 2
+- **Available Operations:**
+  - Subtract 1
+  - Subtract 2
+  - Multiply by 0.5 (2 is even)
+- **Choice:** Subtract 2
+- **Calculation:** 2 - 2 = 0
+- **New Number:** 0
+
+---
+
+**Result:**
+
+- **Player 1 wins** by reducing their number to exactly zero.
+
+---
+
+#### **Sample Command-Line Interaction**
+
+```
+-- Number Navigator Game Start --
+
+Player 1's Turn
+----------------
+Your current number is: 20
+Available operations:
+1) Subtract 1
+2) Subtract 2
+3) Multiply by 0.5 (even number)
+Choose an operation (enter the number): 3
+
+You chose to multiply by 0.5.
+Your new number is: 10
+
+---
+
+Player 2's Turn
+----------------
+Your current number is: 20
+Available operations:
+1) Subtract 1
+2) Subtract 2
+3) Multiply by 0.5 (even number)
+Choose an operation (enter the number): 2
+
+You chose to subtract 2.
+Your new number is: 18
+
+---
+
+Player 1's Turn
+----------------
+Your current number is: 10
+Available operations:
+1) Subtract 1
+2) Subtract 2
+3) Multiply by 0.5 (even number)
+Choose an operation (enter the number): 3
+
+You chose to multiply by 0.5.
+Your new number is: 5
+
+---
+
+Player 2's Turn
+----------------
+Your current number is: 18
+Available operations:
+1) Subtract 1
+2) Subtract 2
+3) Multiply by 0.5 (even number)
+Choose an operation (enter the number): 3
+
+You chose to multiply by 0.5.
+Your new number is: 9
+
+---
+
+Player 1's Turn
+----------------
+Your current number is: 5
+Available operations:
+1) Subtract 1
+2) Subtract 2
+4) Add 5 (number less than 10)
+Choose an operation (enter the number): 4
+
+You chose to add 5.
+Your new number is: 10
+
+---
+
+[Game continues in the same manner...]
+
+---
+
+Player 1's Turn
+----------------
+Your current number is: 2
+Available operations:
+1) Subtract 1
+2) Subtract 2
+3) Multiply by 0.5 (even number)
+Choose an operation (enter the number): 2
+
+You chose to subtract 2.
+Your new number is: 0
+
+---
+
+**Congratulations, Player 1!**
+You have reduced your number to zero and won the game!
+
+-- Game Over --
+```
+
+---
+
+### **Closing Notes**
+
+"Number Navigator" is a game of strategy and foresight. Players must carefully choose operations that not only bring their number closer to zero but also consider the future availability of operations based on the resulting number. By anticipating possible moves and planning ahead, skilled players can consistently outperform unskilled opponents.
+
+Enjoy the challenge of navigating your numbers to victory!
+
+---

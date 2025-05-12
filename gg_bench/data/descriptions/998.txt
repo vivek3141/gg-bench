@@ -1,0 +1,251 @@
+# Color Clash - Rule Book
+
+## Objective
+
+**Color Clash** is a two-player, turn-based strategy game played on a linear track. Each player controls a set of colored disks and aims to be the first to advance all their disks ahead of their opponent's disks. Victory is achieved when all of a player's disks occupy higher-numbered positions on the track than all of the opponent's disks. There are no draws in Color Clash; the game continues until one player wins.
+
+---
+
+## Setup
+
+1. **Game Track**:
+   - The game is played on a linear track with positions numbered from **1** to **9**.
+   - The track is represented as a series of positions that can each hold one disk.
+
+2. **Players and Colors**:
+   - Two players: one controls **Red disks**, and the other controls **Blue disks**.
+
+3. **Initial Disk Placement**:
+   - Each player has **four disks**, labeled for identification:
+     - Red disks: **R1**, **R2**, **R3**, **R4**
+     - Blue disks: **B1**, **B2**, **B3**, **B4**
+   - Disks are placed alternately on the track starting from position 1:
+     - **Position 1**: Red disk **R1**
+     - **Position 2**: Blue disk **B1**
+     - **Position 3**: Red disk **R2**
+     - **Position 4**: Blue disk **B2**
+     - **Position 5**: Red disk **R3**
+     - **Position 6**: Blue disk **B3**
+     - **Position 7**: Red disk **R4**
+     - **Position 8**: Blue disk **B4**
+     - **Position 9**: **Empty**
+
+---
+
+## Game Components
+
+1. **Linear Track**:
+   - A sequence of **9 positions** (numbered 1 to 9) representing the game board.
+
+2. **Disks**:
+   - **Red Disks**: Represented by **R1**, **R2**, **R3**, **R4**.
+   - **Blue Disks**: Represented by **B1**, **B2**, **B3**, **B4**.
+
+3. **Positions**:
+   - Each position on the track holds at most one disk.
+   - Positions are identified by their numbers.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - **Red player** takes the first turn.
+   - Players alternate turns thereafter.
+
+2. **Player Actions During a Turn**:
+   - A player must move one of their disks forward along the track.
+   - Only one disk may be moved per turn.
+
+3. **Turn Progression**:
+   - After a player completes their move, control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+### 1. Movement Rules
+
+- **Forward Movement Only**:
+  - Disks move from lower-numbered to higher-numbered positions.
+  - Disks cannot move backward.
+
+- **Movement Distance**:
+  - A disk may move forward to any unoccupied position ahead of it, bypassing any number of disks (both own and opponent's).
+  - **Example**: Disk **R1** on position 1 can move to any empty position beyond its current position.
+
+- **Jumping Over Disks**:
+  - Disks can jump over any occupied positions but cannot land on them.
+  - There is no limit to the number of disks a moving disk can jump over.
+
+- **Restrictions**:
+  - A disk cannot move beyond position **9**.
+  - If the last position (position 9) is occupied, disks cannot move past it.
+
+### 2. Winning the Game
+
+- **Victory Condition**:
+  - A player wins when **all** their disks are positioned **ahead** of **all** opponent's disks.
+  - This means the lowest-numbered position occupied by a player's disks is higher than the highest-numbered position occupied by the opponent's disks.
+
+- **No Draws**:
+  - The game cannot end in a draw. Play continues until one player meets the victory condition.
+
+### 3. Blocking and Strategy
+
+- **Blocking**:
+  - Players can strategically block their opponent's disks by occupying positions that limit the opponent's movement options.
+
+- **Forced Moves**:
+  - If a player has no valid moves (all disks are blocked by the opponent), they lose the game.
+
+---
+
+## Scoring
+
+- **No Points System**:
+  - Color Clash does not use a points system.
+  
+- **Winning the Game**:
+  - The focus is on meeting the victory condition outlined above.
+  - The first player to successfully advance all their disks ahead of the opponent's disks wins.
+
+---
+
+## Examples
+
+### Initial Game State
+
+```
+Positions: 1  2  3  4  5  6  7  8  9
+          [R1][B1][R2][B2][R3][B3][R4][B4][  ]
+```
+
+### Sample Turns
+
+#### **Turn 1**: Red Player
+
+- **Action**: Move **R4** from position **7** to position **9**.
+- **Explanation**: R4 jumps over positions 8 (occupied by B4) to reach position 9.
+- **Game State**:
+
+  ```
+  Positions: 1  2  3  4  5  6  7  8  9
+            [R1][B1][R2][B2][R3][B3][  ][B4][R4]
+  ```
+
+#### **Turn 2**: Blue Player
+
+- **Action**: Move **B2** from position **4** to position **6**.
+- **Explanation**: B2 jumps over position 5 (occupied by R3) to reach position 6.
+- **Game State**:
+
+  ```
+  Positions: 1  2  3  4  5  6  7  8  9
+            [R1][B1][R2][  ][R3][B2][  ][B4][R4]
+  ```
+
+#### **Turn 3**: Red Player
+
+- **Action**: Move **R3** from position **5** to position **8**.
+- **Explanation**: R3 jumps over position 6 (B2) and 7 (empty) to reach position 8.
+- **Game State**:
+
+  ```
+  Positions: 1  2  3  4  5  6  7  8  9
+            [R1][B1][R2][  ][  ][B2][  ][R3][R4]
+  ```
+
+#### **Turn 4**: Blue Player
+
+- **Action**: Move **B4** from position **8** to position **7**.
+- **Explanation**: B4 moves backward (not allowed). 
+- **Correction**: Blue cannot move backward. Instead, Blue moves **B1** from position **2** to position **5**.
+- **Game State**:
+
+  ```
+  Positions: 1  2  3  4  5  6  7  8  9
+            [R1][  ][R2][  ][B1][B2][  ][R3][R4]
+  ```
+
+#### **Subsequent Turns**
+
+- Players continue moving their disks forward following the rules.
+- The game continues until one player has all their disks ahead of the opponent's disks.
+
+---
+
+## Command-Line Interaction Example
+
+**Notation**:
+
+- Positions are displayed with their current disk or empty brackets `[  ]`.
+- Players input moves in the format: `move <disk> <new position>`
+
+### **Initial Display**
+
+```
+Current Positions:
+1: [R1]  2: [B1]  3: [R2]  4: [B2]  5: [R3]
+6: [B3]  7: [R4]  8: [B4]  9: [  ]
+
+Red's Turn:
+```
+
+### **Red Player's Move**
+
+```
+Enter your move (e.g., move R4 9): move R4 9
+
+Move Accepted: R4 moved to position 9
+
+Updated Positions:
+1: [R1]  2: [B1]  3: [R2]  4: [B2]  5: [R3]
+6: [B3]  7: [  ]  8: [B4]  9: [R4]
+
+Blue's Turn:
+```
+
+### **Blue Player's Move**
+
+```
+Enter your move (e.g., move B2 6): move B2 6
+
+Move Accepted: B2 moved to position 6
+
+Updated Positions:
+1: [R1]  2: [B1]  3: [R2]  4: [  ]  5: [R3]
+6: [B2]  7: [  ]  8: [B4]  9: [R4]
+
+Red's Turn:
+```
+
+---
+
+## Strategy Tips
+
+1. **Advance Strategically**:
+   - Move your disks to higher positions to get ahead of your opponent.
+   - Focus on moving disks that are blocked or have limited movement options.
+
+2. **Block Opponent Disks**:
+   - Position your disks to limit where your opponent can move.
+   - Occupying key positions can force your opponent into disadvantageous moves.
+
+3. **Disk Selection**:
+   - Sometimes, it's better to move a disk that's behind to bring it ahead.
+   - Assess which disk movement will bring you closer to victory.
+
+4. **Anticipate Moves**:
+   - Think ahead about how your opponent might respond.
+   - Plan your moves to counter your opponent's potential strategies.
+
+---
+
+## Conclusion
+
+Color Clash is a simple yet strategically rich game ideal for play in a command-line interface. Its straightforward rules make it easy to code and understand, while the depth of strategy ensures that a skilled player can consistently outperform an unskilled one. With no possibility of a draw and the potential for quick gameplay, Color Clash offers engaging entertainment for players seeking a new challenge.
+
+---
+
+Enjoy your game of Color Clash, and may the best strategist win!

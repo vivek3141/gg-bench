@@ -1,0 +1,246 @@
+**Game Title: Sequence Duel**
+
+---
+
+### **Objective**
+
+Be the last player able to remove a number from the sequence by strategically selecting numbers according to the game's divisibility and multiplicity rules. The player who cannot make a valid move on their turn loses the game.
+
+---
+
+### **Setup**
+
+1. **Initial Sequence:**
+   - Create a sequence of consecutive integers from **1** to **20**.
+   - Example: `1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20`.
+
+2. **Player Assignment:**
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Decide who takes the first turn (e.g., by a coin toss).
+
+3. **Starting Conditions:**
+   - No numbers have been removed yet.
+   - Both players have full visibility of the sequence.
+
+---
+
+### **Game Components**
+
+- **Number Sequence:** A list of numbers from **1** to **20** displayed to both players.
+  - The sequence represents the pool of available numbers for selection.
+  - Numbers are removed from this sequence as the game progresses.
+
+- **Players:**
+  - Each player takes turns removing numbers from the sequence.
+  - No physical pieces or tokens are required.
+
+---
+
+### **Turns**
+
+1. **Turn Structure:**
+   - Players alternate turns starting with **Player 1**.
+   - On each turn, a player removes **one** valid number from the sequence.
+
+2. **Order of Actions on a Turn:**
+   - **Display the Sequence:** The current sequence of available numbers is shown.
+   - **Show Last Number Removed:** Inform the player of the last number removed by the opponent (except on the first turn).
+   - **Valid Numbers Calculation:** Determine and display valid numbers that can be removed based on the game's rules.
+   - **Player's Choice:** The player selects a number to remove from the valid options.
+   - **Update Sequence:** The chosen number is removed from the sequence.
+
+3. **Turn Progression:**
+   - The turn passes to the next player after a number is removed.
+   - The game continues until a player cannot make a valid move on their turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **First Turn:**
+   - **Player 1** may remove **any number** from the initial sequence.
+
+2. **Subsequent Turns:**
+   - A player must remove a number that is either:
+     - **A Divisor** of the last number removed by the opponent.
+     - **A Multiple** of the last number removed by the opponent.
+
+3. **Valid Number Selection:**
+   - The chosen number must still be present in the current sequence.
+   - If no valid numbers are available, the player loses the game.
+
+4. **Number Removal:**
+   - Once a number is removed, it cannot be selected again by either player.
+   - The sequence is updated accordingly after each turn.
+
+5. **Winning the Game:**
+   - The **winner** is the last player to successfully remove a number according to the rules.
+   - The **loser** is the player who cannot make a valid move on their turn.
+
+6. **Example of Divisibility and Multiplicity:**
+   - If the last number removed was **4**, valid numbers to remove are any remaining numbers that:
+     - Divide **4** evenly (e.g., **1**, **2**).
+     - Are multiples of **4** (e.g., **8**, **12**, **16**, **20**).
+
+---
+
+### **Scoring**
+
+- The game is scored as a **win** or **loss**.
+- There are no points or cumulative scoring; each game is independent.
+- The objective is to win more games if playing multiple rounds.
+
+---
+
+### **Example Gameplay**
+
+**Initial Sequence:**
+
+`1 2 3 4 5 6 7 8 9 10`
+
+**Turn-by-Turn Breakdown:**
+
+1. **Player 1's Turn:**
+   - **Sequence:** `1 2 3 4 5 6 7 8 9 10`
+   - **Action:** Removes **6** (any number can be chosen on the first turn).
+   - **Reasoning:** Chooses **6** to limit the opponent's options to numbers that are divisors or multiples of **6**.
+   - **Updated Sequence:** `1 2 3 4 5 7 8 9 10`
+
+2. **Player 2's Turn:**
+   - **Sequence:** `1 2 3 4 5 7 8 9 10`
+   - **Last Number Removed:** **6**
+   - **Valid Numbers to Remove:** Numbers that divide **6** or are multiples of **6**.
+     - **Divisors of 6:** **1**, **2**, **3** (if still in sequence).
+     - **Multiples of 6:** **None** (above 10).
+   - **Available Valid Numbers:** **2**, **3**.
+   - **Action:** Removes **3**.
+   - **Updated Sequence:** `1 2 4 5 7 8 9 10`
+
+3. **Player 1's Turn:**
+   - **Sequence:** `1 2 4 5 7 8 9 10`
+   - **Last Number Removed:** **3**
+   - **Valid Numbers to Remove:** Divisors or multiples of **3**.
+     - **Divisors of 3:** **1**.
+     - **Multiples of 3:** **9**.
+   - **Available Valid Numbers:** **1**, **9**.
+   - **Action:** Removes **9**.
+   - **Updated Sequence:** `1 2 4 5 7 8 10`
+
+4. **Player 2's Turn:**
+   - **Sequence:** `1 2 4 5 7 8 10`
+   - **Last Number Removed:** **9**
+   - **Valid Numbers to Remove:** Divisors or multiples of **9**.
+     - **Divisors of 9:** **1**.
+     - **Multiples of 9:** **None** (above 10).
+   - **Available Valid Numbers:** **1**.
+   - **Action:** Removes **1**.
+   - **Updated Sequence:** `2 4 5 7 8 10`
+
+5. **Player 1's Turn:**
+   - **Sequence:** `2 4 5 7 8 10`
+   - **Last Number Removed:** **1**
+   - **Valid Numbers to Remove:** Divisors or multiples of **1** (which includes all remaining numbers).
+   - **Available Valid Numbers:** `2 4 5 7 8 10`.
+   - **Action:** Removes **8**.
+   - **Updated Sequence:** `2 4 5 7 10`
+
+6. **Player 2's Turn:**
+   - **Sequence:** `2 4 5 7 10`
+   - **Last Number Removed:** **8**
+   - **Valid Numbers to Remove:** Divisors or multiples of **8**.
+     - **Divisors of 8:** **2**, **4**.
+     - **Multiples of 8:** **None**.
+   - **Available Valid Numbers:** **2**, **4**.
+   - **Action:** Removes **2**.
+   - **Updated Sequence:** `4 5 7 10`
+
+7. **Player 1's Turn:**
+   - **Sequence:** `4 5 7 10`
+   - **Last Number Removed:** **2**
+   - **Valid Numbers to Remove:** Divisors or multiples of **2**.
+     - **Divisors of 2:** **None** (already removed).
+     - **Multiples of 2:** **4**, **10**.
+   - **Available Valid Numbers:** **4**, **10**.
+   - **Action:** Removes **10**.
+   - **Updated Sequence:** `4 5 7`
+
+8. **Player 2's Turn:**
+   - **Sequence:** `4 5 7`
+   - **Last Number Removed:** **10**
+   - **Valid Numbers to Remove:** Divisors or multiples of **10**.
+     - **Divisors of 10:** **5**.
+     - **Multiples of 10:** **None**.
+   - **Available Valid Numbers:** **5**.
+   - **Action:** Removes **5**.
+   - **Updated Sequence:** `4 7`
+
+9. **Player 1's Turn:**
+   - **Sequence:** `4 7`
+   - **Last Number Removed:** **5**
+   - **Valid Numbers to Remove:** Divisors or multiples of **5**.
+     - **Divisors of 5:** **None**.
+     - **Multiples of 5:** **None**.
+   - **Available Valid Numbers:** **None**.
+   - **Outcome:** **Player 1 cannot make a valid move and loses the game.**
+
+---
+
+### **Command-Line Interaction Examples**
+
+**Game Start:**
+
+```
+Welcome to Sequence Duel!
+Numbers in sequence: 1 2 3 4 5 6 7 8 9 10
+Player 1's turn.
+Choose a number to remove: 6
+```
+
+**Player 2's Turn:**
+
+```
+Number 6 removed.
+Remaining numbers: 1 2 3 4 5 7 8 9 10
+Player 2's turn.
+Last number removed: 6
+Valid numbers to remove (divisors or multiples of 6): 2 3
+Choose a number to remove: 3
+```
+
+**Player 1's Next Turn:**
+
+```
+Number 3 removed.
+Remaining numbers: 1 2 4 5 7 8 9 10
+Player 1's turn.
+Last number removed: 3
+Valid numbers to remove (divisors or multiples of 3): 9
+Choose a number to remove: 9
+```
+
+**Continuing Gameplay:**
+
+- The game continues with prompts indicating the sequence, last number removed, valid options, and input from the players.
+- Players must follow the prompts and select valid numbers until the game concludes.
+
+---
+
+### **Strategic Considerations**
+
+- **Anticipate Opponent's Moves:** Think ahead to predict which numbers your opponent will have available after your turn.
+- **Control the Game Flow:** Remove numbers that minimize your opponent's options on their next turn.
+- **Key Numbers to Consider:**
+  - **Prime Numbers:** May limit future options due to fewer divisibility relationships.
+  - **Numbers with Multiple Divisors or Multiples:** Can provide more options on your future turns.
+
+---
+
+### **Conclusion**
+
+Sequence Duel is a simple yet strategic game that challenges players to think critically about number relationships. By understanding divisibility and multiplicity, players can devise tactics to outmaneuver their opponent and be the last one standing.
+
+Enjoy testing your numerical prowess in this engaging and competitive duel!
+
+---
+
+**Happy Gaming!**

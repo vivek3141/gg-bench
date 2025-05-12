@@ -1,0 +1,329 @@
+# Line Duel
+
+## Objective
+
+In **Line Duel**, your goal is to strategically push a shared marker along a number line toward your opponent's end. You win the game by moving the marker to your opponent's endpoint through clever use of your move cards while anticipating your opponent's moves.
+
+---
+
+## Setup
+
+1. **Number Line Initialization**:
+   - Draw or represent a number line ranging from **-5** to **+5**, with **0** as the center point.
+   - The number line should include all integers within this range:
+
+     ```
+     -5 -4 -3 -2 -1  0  1  2  3  4  5
+     ```
+
+2. **Marker Placement**:
+   - Place a shared marker (could be any token or symbol) at position **0** on the number line.
+
+3. **Move Cards Distribution**:
+   - Each player receives a set of **five move cards**, numbered **1** through **5**.
+   - The move cards represent the power of your moves.
+   - Cards are held privately in each player's hand.
+
+4. **Player Roles**:
+   - **Player 1** aims to push the marker towards the positive end (**+5**).
+   - **Player 2** aims to push the marker towards the negative end (**-5**).
+
+---
+
+## Game Components
+
+1. **Number Line**:
+   - A linear representation with positions from **-5** to **+5**.
+   - Serves as the battlefield where the marker moves back and forth.
+
+2. **Marker**:
+   - A shared token that moves along the number line based on the players' moves.
+   - Indicates the current state of the game.
+
+3. **Move Cards**:
+   - Each player has an identical set of move cards:
+
+     - **Cards**: Numbers **1**, **2**, **3**, **4**, **5**.
+     - **Function**: Determines the strength of a player's push in a round.
+     - **Usage**: Once a move card is played, it is discarded and cannot be used again.
+
+---
+
+## Turns
+
+1. **Round Structure**:
+   - The game proceeds in a series of rounds.
+   - Each round consists of both players performing actions simultaneously.
+
+2. **Player Actions per Round**:
+   - **Select a Move Card**:
+     - Secretly choose one unused move card from your hand.
+     - This selection should be concealed from your opponent until both players are ready to reveal.
+
+   - **Reveal Move Cards**:
+     - Both players simultaneously reveal their chosen move cards.
+     - This ensures that selections are made without knowledge of the opponent's current move.
+
+   - **Calculate Movement**:
+     - Determine the **Net Movement** by comparing the move cards (details in Rules and Mechanics).
+     - Move the marker accordingly on the number line.
+
+   - **Discard Used Cards**:
+     - Place the used move card face-up in a discard pile.
+     - It cannot be used again for the remainder of the game.
+
+3. **Progression**:
+   - Repeat the round structure until a win condition is met.
+
+---
+
+## Rules and Mechanics
+
+### Movement Calculation
+
+1. **Net Movement Determination**:
+   - **Compare Move Cards**:
+     - Identify the higher and lower move cards played.
+   - **Calculate Net Movement**:
+     - **Net Movement** = Higher Move Card - Lower Move Card.
+   - **Direction of Movement**:
+     - If **Player 1** played the higher card, the marker moves towards the positive end (**+5**).
+     - If **Player 2** played the higher card, the marker moves towards the negative end (**-5**).
+     - If both players played the same card, the Net Movement is **0**, and the marker does not move.
+
+2. **Marker Movement**:
+   - Move the marker along the number line according to the Net Movement and direction.
+   - The marker cannot move beyond the endpoints. If movement would take it past **+5** or **-5**, it stops at the endpoint.
+
+### Winning Conditions
+
+1. **Immediate Win**:
+   - **Endpoint Reach**:
+     - If the marker reaches your opponent's endpoint (**Player 1** reaching **+5**, **Player 2** reaching **-5**), you win the game immediately.
+
+2. **All Move Cards Used**:
+   - If all move cards have been played and no player has reached the opponent's endpoint, determine the winner as follows:
+
+     - **Marker Position**:
+       - If the marker is on the positive side (**positions +1 to +5**), **Player 1** wins.
+       - If the marker is on the negative side (**positions -1 to -5**), **Player 2** wins.
+       - If the marker is at position **0**, proceed to the tiebreaker.
+
+   - **Tiebreaker for Position 0**:
+     - The player who last moved the marker **toward their opponent's end** wins.
+     - If the marker has not moved from position 0 throughout the game, **Player 2** wins (since **Player 1** moves first, this balances first-mover advantage).
+
+### Additional Rules
+
+1. **Simultaneous Action**:
+   - All move selections are made without knowledge of the opponent's current choice.
+   - Encourages strategic thinking and prediction.
+
+2. **No Reuse of Move Cards**:
+   - Once a move card is used, it is out of play.
+   - Players must plan their use of high and low cards carefully.
+
+3. **Command-Line Interface Adaptation**:
+   - Inputs can be made via text commands representing the chosen move card.
+   - The game state (number line and marker position) is displayed after each round.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - Winning the game is the ultimate goal; there is no point system.
+  - The game does not track scores across multiple rounds or matches (unless players choose to).
+
+- **No Draws**:
+  - The game is designed to prevent draws.
+  - Clear win conditions ensure a decisive outcome in every match.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Initial Setup**:
+
+- Marker at position **0**.
+- **Player 1's move cards**: [1, 2, 3, 4, 5]
+- **Player 2's move cards**: [1, 2, 3, 4, 5]
+
+---
+
+**Round 1**:
+
+- **Selections**:
+  - Player 1 chooses **Move Card 3**.
+  - Player 2 chooses **Move Card 4**.
+
+- **Reveal and Calculate**:
+  - Net Movement = 4 (Player 2) - 3 (Player 1) = **1**
+  - Direction: Towards **Player 2's** end (**negative** direction).
+
+- **Marker Movement**:
+  - Marker moves from position **0** to **-1**.
+
+- **Discard Used Cards**:
+  - Player 1 discards **Move Card 3**.
+  - Player 2 discards **Move Card 4**.
+
+---
+
+**Round 2**:
+
+- **Selections**:
+  - Player 1 chooses **Move Card 5**.
+  - Player 2 chooses **Move Card 2**.
+
+- **Reveal and Calculate**:
+  - Net Movement = 5 (Player 1) - 2 (Player 2) = **3**
+  - Direction: Towards **Player 1's** end (**positive** direction).
+
+- **Marker Movement**:
+  - Marker moves from **-1** to **+2** (movement of 3 units towards positive).
+
+- **Discard Used Cards**:
+  - Player 1 discards **Move Card 5**.
+  - Player 2 discards **Move Card 2**.
+
+---
+
+**Round 3**:
+
+- **Selections**:
+  - Player 1 chooses **Move Card 4**.
+  - Player 2 chooses **Move Card 5**.
+
+- **Reveal and Calculate**:
+  - Net Movement = 5 (Player 2) - 4 (Player 1) = **1**
+  - Direction: Towards **Player 2's** end (**negative** direction).
+
+- **Marker Movement**:
+  - Marker moves from **+2** to **+1**.
+
+- **Discard Used Cards**:
+  - Player 1 discards **Move Card 4**.
+  - Player 2 discards **Move Card 5**.
+
+---
+
+**Round 4**:
+
+- **Selections**:
+  - Player 1 chooses **Move Card 2**.
+  - Player 2 chooses **Move Card 3**.
+
+- **Reveal and Calculate**:
+  - Net Movement = 3 (Player 2) - 2 (Player 1) = **1**
+  - Direction: Towards **Player 2's** end (**negative** direction).
+
+- **Marker Movement**:
+  - Marker moves from **+1** to **0**.
+
+- **Discard Used Cards**:
+  - Player 1 discards **Move Card 2**.
+  - Player 2 discards **Move Card 3**.
+
+---
+
+**Round 5**:
+
+- **Selections**:
+  - Player 1 chooses **Move Card 1**.
+  - Player 2 chooses **Move Card 1**.
+
+- **Reveal and Calculate**:
+  - Net Movement = 1 - 1 = **0**
+  - Marker remains at position **0**.
+
+- **Discard Used Cards**:
+  - Both players discard **Move Card 1**.
+
+---
+
+**All Move Cards Used**:
+
+- Both players have no move cards remaining.
+
+**Determining the Winner**:
+
+- **Marker Position**: **0**
+
+- **Last Movement Direction**:
+  - In **Round 4**, the marker moved towards **Player 2's** end.
+
+- **Result**:
+  - Player 2 last moved the marker towards their own end.
+  - **Player 2 loses**; **Player 1 wins**.
+
+---
+
+## Command-Line Interaction Example
+
+Below is an example of how a turn might proceed in a command-line interface.
+
+**Game State Before Round 2**:
+
+```
+Current Marker Position: -1
+
+Player 1's Remaining Move Cards: [1, 2, 4, 5]
+Player 2's Remaining Move Cards: [1, 2, 3, 5]
+```
+
+**Player Inputs**:
+
+- **Player 1**:
+  ```
+  Enter your move card (1, 2, 4, 5): 5
+  ```
+
+- **Player 2**:
+  ```
+  Enter your move card (1, 2, 3, 5): 2
+  ```
+
+**System Output**:
+
+```
+Player 1 played Move Card: 5
+Player 2 played Move Card: 2
+
+Net Movement: 3 (towards positive end)
+
+Marker moved from -1 to +2
+
+Player 1's Discarded Cards: [3, 5]
+Player 2's Discarded Cards: [4, 2]
+```
+
+---
+
+## Strategic Considerations
+
+- **Anticipate Opponent's Moves**:
+  - Try to predict which move card your opponent might play.
+  - Use higher cards when you expect your opponent to play a high card if you need to prevent them from gaining an advantage.
+
+- **Manage Your Move Cards**:
+  - Balance the use of high and low cards.
+  - Saving high cards for crucial moments can be a winning strategy.
+
+- **Consider the Marker Position**:
+  - Be aware of the marker's current location.
+  - If the marker is close to your end, prioritize moves to push it back.
+
+- **Plan for the Endgame**:
+  - Remember that if all cards are used, the marker's position determines the winner.
+  - Aim to have the marker on your opponent's side as move cards run out.
+
+---
+
+## Conclusion
+
+**Line Duel** is a game of strategic planning, anticipation, and careful resource management. By cleverly choosing when to play your high and low move cards, and by accurately predicting your opponent's choices, you can outmaneuver your opponent and push the marker to victory.
+
+Enjoy the challenge of this tactical duel, and may the best strategist win!

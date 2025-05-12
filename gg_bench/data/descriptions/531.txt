@@ -1,0 +1,244 @@
+# Number Sequence Duel
+
+## Objective
+
+**Number Sequence Duel** is a two-player turn-based strategy game. The primary goal is to be the first player to form an arithmetic sequence of four numbers within your collection. An arithmetic sequence is a set of numbers where the difference between consecutive numbers is consistent (e.g., 3, 5, 7, 9 with a common difference of +2). Victory is achieved immediately upon forming such a sequence.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization:**
+   - The game uses numbers from **1 to 20**.
+   - All numbers are initially unclaimed and available in a shared pool.
+
+2. **Player Assignment:**
+   - Two players are required: **Player A** and **Player B**.
+   - Determine who takes the first turn (e.g., coin toss, random selection).
+
+3. **Empty Collections:**
+   - Each player starts with an empty collection to hold their claimed numbers.
+
+---
+
+## Game Components
+
+1. **Number Pool:**
+   - A list of integers from **1 to 20**.
+   - Represents the shared pool of available numbers.
+
+2. **Player Collections:**
+   - **Player A’s Collection:** Holds numbers claimed by Player A.
+   - **Player B’s Collection:** Holds numbers claimed by Player B.
+
+3. **Game Interface (Command-Line):**
+   - Players interact with the game via a command-line interface.
+   - Prompts display available numbers and accept player input.
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns throughout the game.
+   - **Player A** takes the first turn if designated to start.
+
+2. **Turn Structure:**
+   - **Display Available Numbers:** The game shows the current unclaimed numbers.
+   - **Player Selection:** The active player selects one number from the available pool.
+   - **Update Collections:** The selected number is added to the player’s collection and removed from the pool.
+   - **Sequence Check:** After each turn, the player’s collection is checked for an arithmetic sequence of four numbers.
+
+3. **Turn Progression:**
+   - The next player's turn begins after the current player completes their selection and sequence check.
+   - The game continues in this alternating fashion until a player wins.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- On your turn, you **must** select one unclaimed number from the shared pool.
+- Input the chosen number when prompted.
+- If an invalid or already claimed number is selected, you will be prompted to choose again.
+
+### Forming an Arithmetic Sequence
+
+- **Objective:** Collect numbers that form an arithmetic sequence of **exactly four numbers**.
+- **Definition of Arithmetic Sequence:**
+  - A sequence where the **difference between consecutive numbers is constant**.
+  - Common differences can be positive or negative.
+  - Example sequences:
+    - Positive difference: 4, 7, 10, 13 (common difference of +3)
+    - Negative difference: 15, 12, 9, 6 (common difference of -3)
+- **Sequence Formation Rules:**
+  - The numbers in your collection can be arranged in any order to form a sequence.
+  - Only your own collected numbers are considered for your sequence.
+  - You cannot use unclaimed numbers or numbers from your opponent's collection.
+
+### Winning the Game
+
+- The game is won by the first player who successfully forms a valid arithmetic sequence of four numbers within their collection.
+- The win is declared immediately after forming the sequence on your turn.
+- If no player can form a sequence because all numbers have been claimed, the game acknowledges no possible winner (though this scenario is highly unlikely given the game design).
+
+### Strategic Blocking
+
+- Players can select numbers to **block** their opponent from forming their sequence.
+- Pay attention to your opponent's collected numbers to anticipate and prevent their winning moves.
+
+---
+
+## Scoring
+
+- **No Point System:** The game does not track points.
+- **Win Condition:** Victory is solely based on forming the required arithmetic sequence.
+- **Instant Win:** As soon as a player forms the sequence, they win the game.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Setup:**
+
+- **Available Numbers (Pool):** 1 to 20
+- **Player A’s Collection:** Empty
+- **Player B’s Collection:** Empty
+
+---
+
+**Turn 1: Player A**
+- **Available Numbers:** 1-20
+- **Player A selects:** **5**
+- **Player A’s Collection:** [5]
+- **Sequence Check:** No sequence formed.
+
+---
+
+**Turn 2: Player B**
+- **Available Numbers:** 1-4, 6-20
+- **Player B selects:** **9**
+- **Player B’s Collection:** [9]
+- **Sequence Check:** No sequence formed.
+
+---
+
+**Turn 3: Player A**
+- **Available Numbers:** 1-4, 6-8, 10-20
+- **Player A selects:** **10**
+- **Player A’s Collection:** [5, 10]
+- **Sequence Check:** No sequence formed.
+
+---
+
+**Turn 4: Player B**
+- **Available Numbers:** 1-4, 6-8, 11-20
+- **Player B selects:** **13**
+- **Player B’s Collection:** [9, 13]
+- **Sequence Check:** No sequence formed.
+
+---
+
+**Turn 5: Player A**
+- **Available Numbers:** 1-4, 6-8, 11-12, 14-20
+- **Player A selects:** **15**
+- **Player A’s Collection:** [5, 10, 15]
+- **Sequence Check:** No sequence formed.
+
+---
+
+**Turn 6: Player B**
+- **Available Numbers:** 1-4, 6-8, 11-12, 14, 16-20
+- **Player B selects:** **17**
+- **Player B’s Collection:** [9, 13, 17]
+- **Sequence Check:** No sequence formed.
+
+---
+
+**Turn 7: Player A**
+- **Available Numbers:** 1-4, 6-8, 11-12, 14, 16, 18-20
+- **Player A selects:** **20**
+- **Player A’s Collection:** [5, 10, 15, 20]
+- **Sequence Check:**
+  - Possible sequence: 5, 10, 15, 20 (common difference of +5)
+  - **Player A wins the game!**
+
+---
+
+### Command-Line Interaction Example
+
+```
+--- Number Sequence Duel ---
+
+Available Numbers: 1 2 3 4 5 6 ... 20
+
+Player A, it's your turn.
+Select a number: 5
+You have selected: 5
+Your Collection: 5
+No winning sequence yet.
+
+Available Numbers: 1 2 3 4 6 7 ... 20
+
+Player B, it's your turn.
+Select a number: 9
+You have selected: 9
+Your Collection: 9
+No winning sequence yet.
+
+...
+
+Available Numbers: 1 2 3 4 6 7 ... 19
+
+Player A, it's your turn.
+Select a number: 20
+You have selected: 20
+Your Collection: 5 10 15 20
+Checking for winning sequence...
+Congratulations! You've formed an arithmetic sequence: 5, 10, 15, 20
+Player A wins!
+```
+
+---
+
+## Additional Notes
+
+- **Invalid Input Handling:**
+  - If a player inputs a number not in the available pool, an error message is displayed.
+  - The player is prompted to select a valid number.
+
+- **Game Length:**
+  - The game is designed to be quick, typically concluding within 7-10 turns.
+  - There is no possibility of a draw under normal gameplay conditions.
+
+- **Replaying the Game:**
+  - After a win, players can reset the game by reinitializing the number pool and clearing player collections.
+
+---
+
+## Strategy Tips
+
+- **Monitor Opponent's Collection:**
+  - Keep track of the numbers your opponent selects.
+  - Anticipate their potential sequences and act to block them.
+
+- **Plan Multiple Sequences:**
+  - Aim for numbers that fit into more than one potential sequence.
+  - Increases your chances of forming a sequence as the game progresses.
+
+- **Balance Offense and Defense:**
+  - While building your sequence, don't neglect the opportunity to hinder your opponent.
+
+- **Flexibility:**
+  - Be prepared to adjust your strategy based on the numbers available and your opponent's moves.
+
+---
+
+## Conclusion
+
+**Number Sequence Duel** is a simple yet strategically rich game that tests players' foresight and planning abilities. With a straightforward objective and minimal components, it is easy to code and play within a command-line interface. The game's design ensures a skilled player can consistently outmaneuver an unskilled opponent, providing depth and competitiveness in every match.
+
+Enjoy the duel, and may the best strategist win!

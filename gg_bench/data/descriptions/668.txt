@@ -1,0 +1,137 @@
+# Zero Sum Showdown
+
+## Objective
+
+Zero Sum Showdown is a two-player turn-based game where players strategically select numbers to manipulate a cumulative total. The primary goal is to be the first player to bring the cumulative total exactly to zero. The game requires careful planning and foresight, allowing skilled players to consistently outperform unskilled opponents.
+
+## Setup
+
+- **Number Pool**: A shared pool of integers ranging from **-10 to +10**, excluding zero. This results in a total of **20 unique numbers**.
+- **Cumulative Total**: Initiated at **zero**.
+
+At the start of the game, all numbers from **-10** to **-1** and **+1** to **+10** are available for selection. The cumulative total is displayed and updated throughout the game.
+
+## Game Components
+
+- **Number Pool**: The list of available numbers for players to choose from. Each number can be selected only once per game.
+- **Cumulative Total**: A running total that is updated after each player's turn.
+- **Players**: Two participants alternating turns.
+
+All components can be represented textually in a command-line interface:
+
+- The number pool can be displayed as a list: `[-10, -9, ..., -1, +1, +2, ..., +10]`.
+- The cumulative total is a single integer value shown to both players after each turn.
+
+## Turns
+
+- **Turn Order**: Players alternate turns. Determine the first player randomly or by mutual agreement.
+- **Player Actions**:
+  - **Select a Number**: Choose any available number from the number pool.
+  - **Update Total**: Add the selected number to the cumulative total.
+  - **Remove Number**: The chosen number is removed from the number pool and cannot be selected again.
+
+After each turn, the updated cumulative total and the remaining numbers in the pool are displayed.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On their turn, a player must select one available number from the number pool.
+   - The selected number must then be added to the cumulative total.
+   - Zero is not included in the number pool and cannot be selected.
+
+2. **Updating the Total**:
+   - The cumulative total is updated by adding the chosen number.
+   - The new total is announced to both players.
+
+3. **Winning the Game**:
+   - If a player's selection brings the cumulative total to **exactly zero**, that player **wins** the game immediately.
+   - If the total is not zero after a player's turn, the game continues.
+
+4. **Game End without Zero Total**:
+   - If all numbers have been exhausted and neither player has brought the total to zero, the game ends.
+   - The player who made the **last move** loses, and their opponent **wins**.
+   - This rule ensures that the game cannot end in a draw.
+
+5. **Invalid Moves**:
+   - If a player cannot make a move (no available numbers), the above end condition applies.
+   - Players must select a number that is available; selecting an already used number is invalid.
+
+6. **Strategic Considerations**:
+   - Players must plan ahead to avoid setting up their opponent for a win.
+   - Understanding the impact of each number on the cumulative total is crucial.
+
+## Scoring
+
+- **Winning**: The player who brings the cumulative total to exactly zero wins the game.
+- **Losing**: If all numbers are used without reaching zero, the player who made the last move loses.
+- No points are accumulated; each game results in a win or loss.
+
+## Examples
+
+### Example Game 1
+
+**Initial State**:
+- Number Pool: `[-10, -9, -8, ..., -1, +1, +2, ..., +10]`
+- Cumulative Total: `0`
+
+**Turn 1**:
+- **Player 1** selects `+5`.
+- Cumulative Total: `0 + (+5) = +5`
+- Remaining Numbers: `[-10, -9, -8, ..., -1, +1, +2, +3, +4, +6, ..., +10]`
+
+**Turn 2**:
+- **Player 2** selects `-3`.
+- Cumulative Total: `+5 + (-3) = +2`
+- Remaining Numbers: `[-10, -9, -8, ..., -1, +1, +2, +4, +6, ..., +10]`
+
+**Turn 3**:
+- **Player 1** selects `-2`.
+- Cumulative Total: `+2 + (-2) = 0`
+- **Player 1 wins** by bringing the total to zero.
+
+### Example Game 2
+
+**Initial State**:
+- Number Pool: `[-10, -9, -8, ..., -1, +1, +2, ..., +10]`
+- Cumulative Total: `0`
+
+**Turns Progression**:
+
+The players continue to select numbers, but neither is able to bring the cumulative total to zero. Eventually, all numbers are used.
+
+**Final Turn**:
+- **Player 2** makes the last move.
+- Cumulative Total is not zero.
+
+**Outcome**:
+- **Player 2** loses because they made the last move without achieving a zero total.
+- **Player 1** wins.
+
+### Command-Line Interaction Sample
+
+```
+Starting Zero Sum Showdown!
+
+Available Numbers: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, +1, +2, +3, +4, +5, +6, +7, +8, +9, +10]
+Cumulative Total: 0
+
+Player 1's turn.
+Select a number: +4
+Cumulative Total is now: 0 + (+4) = +4
+Remaining Numbers: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, +1, +2, +3, +5, +6, +7, +8, +9, +10]
+
+Player 2's turn.
+Select a number: -4
+Cumulative Total is now: +4 + (-4) = 0
+Player 2 wins!
+```
+
+## Strategy Tips
+
+- **Anticipate Opponent Moves**: Consider which numbers are available to your opponent and how they could use them to reach zero.
+- **Control the Total**: Try to keep the cumulative total in a range where only you can bring it to zero on your next turn.
+- **Balance Number Selection**: Use both positive and negative numbers strategically to manipulate the total.
+
+---
+
+Zero Sum Showdown offers a simple yet deep strategic experience that can be easily implemented in a command-line interface. The clear rules and quick gameplay make it accessible, while the strategic possibilities ensure that skillful players can consistently triumph.

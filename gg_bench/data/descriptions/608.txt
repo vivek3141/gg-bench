@@ -1,0 +1,200 @@
+**Game Title:** Treasure Hunt Duel
+
+---
+
+### **Objective**
+
+Be the first player to locate the hidden treasure on a 5x5 grid by deducing its exact location using the hints provided after each query.
+
+---
+
+### **Setup**
+
+- **Grid Initialization:**
+  - A 5x5 grid is established with rows numbered **1** to **5** and columns labeled **A** to **E**.
+  - Each cell is uniquely identified by its row and column combination (e.g., **3C**).
+
+- **Treasure Placement:**
+  - The treasure is randomly placed in one of the grid's cells at the start of the game.
+  - The treasure's location is unknown to both players.
+
+- **Starting Conditions:**
+  - Both players have no prior information and start with a blank slate.
+  - Players may use a notepad or any method to keep track of their queries and the received hints.
+
+---
+
+### **Game Components**
+
+1. **Grid:**
+   - A simple 5x5 grid representing the game board.
+   - Cells are identified by coordinates combining row numbers and column letters.
+
+2. **Treasure:**
+   - A single hidden treasure located randomly within the grid.
+   - Remains hidden until a player successfully locates it.
+
+3. **Queries:**
+   - Players select grid cells to receive hints about the treasure's location.
+
+4. **Hints:**
+   - After each query, a hint is provided in the form of the **Manhattan distance** from the selected cell to the treasure.
+
+---
+
+### **Turns**
+
+- **Turn Order:**
+  - Players decide who goes first by mutual agreement or by a random method.
+  - Players alternate turns throughout the game.
+
+- **Player Actions During a Turn:**
+  - **Option 1:** **Query a Cell**
+    - Select a cell to receive a hint.
+  - **Option 2:** **Make a Guess**
+    - Attempt to guess the exact location of the treasure.
+
+- **Turn Progression:**
+  - After a player completes their action, the turn passes to the opponent.
+  - If a player makes an incorrect guess, they **lose their next turn**.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Querying Cells:**
+   - A player selects any unqueried cell on their turn.
+   - The game provides the **Manhattan distance** from the chosen cell to the treasure.
+     - **Manhattan Distance Calculation:**
+       - `Distance = |row₁ - row₂| + |column₁ - column₂|`
+       - Columns are converted to numerical values (A=1, B=2, ..., E=5).
+
+2. **Receiving Hints:**
+   - Hints are only provided for the player's own queries.
+   - Players should record their hints to aid in deduction.
+
+3. **Making a Guess:**
+   - Instead of querying, a player can guess the treasure's location.
+   - If the guess is **correct**, the player wins the game.
+   - If the guess is **incorrect**, the player **loses their next turn**.
+
+4. **Invalid Moves:**
+   - Players cannot query a cell that has already been queried by either player.
+   - Guessing the same incorrect location more than once is allowed but not strategic.
+
+5. **Winning the Game:**
+   - The first player to correctly guess the treasure's exact location wins.
+   - If the treasure is not found within a reasonable number of turns, players may agree to start a new game.
+
+---
+
+### **Scoring**
+
+- **Victory Condition:**
+  - Successfully guessing the treasure's location.
+
+- **No Point System:**
+  - The game does not use points or scoring metrics.
+  - Focus is on deduction and strategic querying.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Setup:**
+
+- Grid is set up with cells labeled.
+- Treasure is randomly placed at **Cell 4D** (hidden from players).
+
+---
+
+**Turn 1: Player 1**
+
+- **Action:** Queries **Cell 2B**.
+- **Hint Received:** Distance **4**.
+  - Calculation: `|2 - 4| + |B - D| = |2 - 4| + |2 - 4| = 2 + 2 = 4`.
+
+---
+
+**Turn 2: Player 2**
+
+- **Action:** Queries **Cell 5A**.
+- **Hint Received:** Distance **6**.
+  - Calculation: `|5 - 4| + |A - D| = 1 + 3 = 4`.
+
+---
+
+**Turn 3: Player 1**
+
+- **Action:** Queries **Cell 3C**.
+- **Hint Received:** Distance **2**.
+  - Calculation: `|3 - 4| + |3 - 4| = 1 + 1 = 2`.
+
+---
+
+**Turn 4: Player 2**
+
+- **Action:** Queries **Cell 4B**.
+- **Hint Received:** Distance **2**.
+  - Calculation: `|4 - 4| + |2 - 4| = 0 + 2 = 2`.
+
+---
+
+**Turn 5: Player 1**
+
+- **Action:** Guesses **Cell 4D**.
+- **Result:** **Correct!**
+- **Outcome:** Player 1 wins the game.
+
+---
+
+### **Strategic Tips**
+
+- **Track All Information:**
+  - Keep a record of all queried cells and hints, including those of your opponent if known.
+
+- **Use Process of Elimination:**
+  - Eliminate cells that cannot be the treasure based on the distances provided.
+
+- **Calculate Possible Locations:**
+  - For each hint, map out all possible cells that match the distance.
+
+- **Timing Your Guess:**
+  - Weigh the risk of guessing early against the possibility of your opponent deducing the location first.
+
+- **Consider Opponent's Moves:**
+  - Pay attention to where your opponent queries; their hints can inadvertently provide you with valuable information.
+
+---
+
+### **Command-Line Interaction Examples**
+
+**Querying a Cell:**
+
+- **Player Input:** `QUERY 2B`
+- **System Response:** `Distance: 4`
+
+**Making a Guess:**
+
+- **Player Input:** `GUESS 4D`
+- **System Response:** `Correct! You have found the treasure.`
+
+**Invalid Move (Querying an Already Queried Cell):**
+
+- **Player Input:** `QUERY 2B`
+- **System Response:** `Cell 2B has already been queried. Please select a different cell.`
+
+**Incorrect Guess:**
+
+- **Player Input:** `GUESS 3E`
+- **System Response:** `Incorrect guess. You will lose your next turn.`
+
+---
+
+### **Conclusion**
+
+Treasure Hunt Duel is a game of deduction and strategy that challenges players to locate a hidden treasure using minimal information. By analyzing hints and carefully planning queries, a skilled player can consistently outperform an unskilled opponent. The game's simplicity in design and execution makes it ideal for a command-line interface, ensuring quick gameplay and ease of coding while offering depth and complexity for players.
+
+---

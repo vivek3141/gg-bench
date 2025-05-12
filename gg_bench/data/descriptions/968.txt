@@ -1,0 +1,192 @@
+# Matrix Isolation: Rule Book
+
+## Objective
+
+**Matrix Isolation** is a two-player, turn-based strategy game played on a 4x4 grid. The primary goal is to trap your opponent by strategically moving your piece and blocking cells, ultimately isolating them so they have no legal moves left. The player who successfully isolates their opponent wins the game.
+
+## Setup
+
+- **Game Board**: A 4x4 grid comprising 16 cells.
+- **Player Pieces**:
+  - **Player 1 (P1)** starts at the top-left corner of the grid, position **(1,1)**.
+  - **Player 2 (P2)** starts at the bottom-right corner of the grid, position **(4,4)**.
+- **Initial Conditions**: All other cells are empty and available for movement or blocking.
+
+## Game Components
+
+- **Grid Cells**:
+  - Each cell can be in one of three states:
+    - **Empty ('·')**: The cell is unoccupied and available for movement or blocking.
+    - **Player Piece ('P1' or 'P2')**: Occupied by a player's piece.
+    - **Blocked ('X')**: The cell is blocked and cannot be moved into or through.
+- **Player Pieces**:
+  - Represented by **'P1'** for Player 1 and **'P2'** for Player 2.
+  - Each player has one piece on the board.
+- **Blocked Cells**:
+  - Represented by **'X'**.
+  - Once a cell is blocked, it remains inaccessible for the rest of the game.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Move Phase**:
+     - The player moves their piece to an adjacent empty cell.
+     - Movement can be **up, down, left, or right** (no diagonal moves).
+     - A player cannot move into a blocked cell or off the grid.
+  2. **Block Phase**:
+     - After moving, the player selects any empty cell on the grid to block.
+     - The selected cell is marked with an **'X'** and becomes inaccessible.
+     - Players cannot block a cell occupied by either player's piece.
+
+## Rules and Mechanics
+
+- **Movement Rules**:
+  - Players **must** move their piece each turn unless they are completely isolated.
+  - If a player cannot move during their Move Phase, they lose the game.
+- **Blocking Rules**:
+  - After moving, players **must** block one empty cell.
+  - Players can block any empty cell, not just adjacent ones.
+- **Winning the Game**:
+  - The game ends when a player cannot make a legal move on their turn.
+  - The opposing player is declared the **winner**.
+
+## Scoring
+
+- **Winning**: Successfully isolating your opponent so they cannot move results in a win.
+- **Losing**: Being unable to move on your turn results in a loss.
+- There are no points or draws in **Matrix Isolation**; each game results in a clear victory or defeat.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup:
+
+```
+P1 ·  ·  ·
+·  ·  ·  ·
+·  ·  ·  ·
+·  ·  · P2
+```
+
+- **P1** is at position **(1,1)**.
+- **P2** is at position **(4,4)**.
+- All other cells are empty (**'·'**).
+
+#### Turn 1: Player 1
+
+- **Move Phase**:
+  - P1 moves to position **(1,2)**.
+- **Block Phase**:
+  - P1 blocks cell **(2,2)**.
+
+**Board After Turn 1:**
+
+```
+·  P1 ·  ·
+·  X  ·  ·
+·  ·  ·  ·
+·  ·  · P2
+```
+
+#### Turn 2: Player 2
+
+- **Move Phase**:
+  - P2 moves to position **(4,3)**.
+- **Block Phase**:
+  - P2 blocks cell **(3,3)**.
+
+**Board After Turn 2:**
+
+```
+·  P1 ·  ·
+·  X  ·  ·
+·  ·  X  ·
+·  ·  P2 ·
+```
+
+#### Turn 3: Player 1
+
+- **Move Phase**:
+  - P1 moves to position **(1,3)**.
+- **Block Phase**:
+  - P1 blocks cell **(2,3)**.
+
+**Board After Turn 3:**
+
+```
+·  ·  P1 ·
+·  X  X  ·
+·  ·  X  ·
+·  ·  P2 ·
+```
+
+#### Turn 4: Player 2
+
+- **Move Phase**:
+  - P2 moves to position **(3,3)**. (Note: Cannot move there; cell is blocked.)
+- **Available Moves for P2**:
+  - P2 can move to positions **(4,2)** or **(3,4)**.
+- **P2 chooses to move to (4,2)**.
+- **Block Phase**:
+  - P2 blocks cell **(3,2)**.
+
+**Board After Turn 4:**
+
+```
+·  ·  P1 ·
+·  X  X  ·
+·  X  X  ·
+·  P2 ·  ·
+```
+
+#### Subsequent Turns:
+
+- Players continue to move and block cells.
+- Eventually, one player will have no legal moves on their turn.
+
+### Command-Line Interaction Example
+
+#### Notation:
+
+- Rows and columns are numbered from 1 to 4.
+- Input format for moves: `move_row move_col block_row block_col`
+
+#### Sample Turn:
+
+- **Player 1's Turn**:
+  - **Prompt**: "Player 1, enter your move and block positions:"
+  - **Input**: `1 2 2 2`
+    - Move to row 1, column 2.
+    - Block cell at row 2, column 2.
+- **Game Updates**:
+  - Update P1's position to (1,2).
+  - Mark cell (2,2) with 'X'.
+
+#### Game State Display:
+
+```
+·  P1 ·  ·
+·  X  ·  ·
+·  ·  ·  ·
+·  ·  · P2
+```
+
+## Strategic Depth
+
+- **Movement Strategy**:
+  - Anticipate your opponent's possible moves.
+  - Position your piece to maximize future movement options.
+- **Blocking Strategy**:
+  - Block cells to limit your opponent's mobility.
+  - Consider blocking cells that your opponent could use to escape traps.
+- **Balancing Moves and Blocks**:
+  - Optimize the balance between advancing your position and hindering your opponent.
+  - Avoid self-isolation by not over-blocking near your own piece.
+
+## Conclusion
+
+**Matrix Isolation** is a game of foresight and tactical planning. Each move requires consideration of both your immediate position and the long-term consequences on the board's layout. By effectively combining movement and blocking strategies, skilled players can consistently outmaneuver their opponents and secure victory.
+
+Enjoy the challenge and may the best strategist win!

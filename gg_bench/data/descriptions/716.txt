@@ -1,0 +1,282 @@
+# Crossed Paths - Rule Book
+
+## Objective
+
+**Crossed Paths** is a two-player, turn-based strategy game played on a 7x7 grid. The primary goal is to force your opponent into a position where they cannot make a valid move according to the game rules. The player who successfully does so wins the game.
+
+---
+
+## Setup
+
+- **Game Grid**: A 7x7 grid consisting of 7 rows (numbered 1 to 7 from top to bottom) and 7 columns (labeled A to G from left to right).
+- **Markers**: Each player chooses a unique marker to represent their moves on the grid:
+  - Player 1: `X`
+  - Player 2: `O`
+- **Starting the Game**:
+  - Decide which player will go first (e.g., by coin toss).
+  - The grid starts empty with all cells unoccupied.
+
+---
+
+## Game Components
+
+- **7x7 Grid**:
+  - Cells are identified by their column letter and row number (e.g., `D4`).
+  - The grid coordinates help players identify valid moves.
+
+- **Player Markers**:
+  - `X` for Player 1.
+  - `O` for Player 2.
+  - Markers are placed on the grid to occupy cells.
+
+- **Command-Line Interface**:
+  - Players interact with the game by entering commands in the command line.
+  - The grid is displayed in text format after each move.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players alternate turns, starting with Player 1.
+
+- **Structure of a Turn**:
+  1. **Prompt**: The game prompts the current player to make a move.
+  2. **Input**: The player inputs the cell where they wish to place their marker (e.g., `D4`).
+  3. **Validation**: The game checks if the move is valid according to the game rules.
+     - If the move is valid, the marker is placed on the grid.
+     - If invalid, the player is informed and prompted to make a valid move.
+  4. **Display**: The updated grid is displayed.
+  5. **Next Turn**: The turn passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - Player 1 can place their `X` marker on **any** empty cell on the grid.
+
+2. **Subsequent Moves**:
+   - On each turn after the first, the player must place their marker on an empty cell that is in the **same row**, **same column**, or **same diagonal** as the **last cell** occupied by the opponent.
+   - **Rows and Columns**:
+     - Same row: Any cell with the same row number.
+     - Same column: Any cell with the same column letter.
+   - **Diagonals**:
+     - Cells that are diagonally connected, forming a line from top-left to bottom-right or top-right to bottom-left through the opponent's last move.
+
+3. **Valid Moves**:
+   - The chosen cell must be **empty**.
+   - It must be in the same row, column, or diagonal as the opponent's last move.
+   - If there are multiple options, the player can choose any that meet the criteria.
+
+4. **Inability to Move**:
+   - If a player has **no valid moves** (no empty cells in the required row, column, or diagonals), they lose the game.
+   - The opponent is declared the winner.
+
+5. **Prohibited Moves**:
+   - Players cannot place a marker on an occupied cell.
+   - Players cannot skip their turn.
+
+### Special Cases
+
+- **No Available Moves from the Start**:
+  - If after the first player's move, the second player has no valid moves (this is possible if the grid is very small or certain cells are blocked), the second player loses.
+
+---
+
+## Scoring
+
+- **Winning the Game**:
+  - The game is won by the player who forces their opponent into a position where they cannot make a valid move.
+
+- **No Point System**:
+  - There is no point tracking or cumulative scoring.
+  - Each game results in a win or loss.
+
+---
+
+## Example Gameplay
+
+### Initial Grid
+
+```
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . . . . .
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . .
+```
+
+### Sample Turns
+
+#### Turn 1: Player 1 (`X`)
+
+- **Move**: Player 1 places `X` at `D4`.
+
+- **Grid**:
+
+```
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . X . . .
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . .
+```
+
+#### Turn 2: Player 2 (`O`)
+
+- **Valid Options**: Any cell in:
+  - Row `4`
+  - Column `D`
+  - Diagonals through `D4` (cells at `A1`, `B2`, `C3`, `E5`, `F6`, `G7`, `A7`, `B6`, `C5`, `E3`, `F2`, `G1`).
+
+- **Move**: Player 2 places `O` at `G7` (diagonal from `D4`).
+
+- **Grid**:
+
+```
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . X . . .
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . O
+```
+
+#### Turn 3: Player 1 (`X`)
+
+- **Valid Options**: Any cell in:
+  - Row `7`
+  - Column `G`
+  - Diagonals through `G7`.
+
+- **Move**: Player 1 places `X` at `G4` (same column `G`).
+
+- **Grid**:
+
+```
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . X . . X
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . O
+```
+
+#### Turn 4: Player 2 (`O`)
+
+- **Valid Options**: Any cell in:
+  - Row `4`
+  - Column `G`
+  - Diagonals through `G4`.
+
+- **Available Cells**: `E2`, `F3`, `G4` (already occupied), `E6`, `F5`.
+
+- **Move**: Player 2 places `O` at `F3` (diagonal from `G4`).
+
+- **Grid**:
+
+```
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . O .
+ 4 . . . X . . X
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . O
+```
+
+#### Subsequent Turns
+
+- Players continue to alternate, following the same rules.
+
+#### End of the Game
+
+- If a player cannot find a valid move on their turn, they declare this, and the opponent wins.
+
+---
+
+## Command-Line Interactions
+
+### Example Interaction
+
+#### Start of the Game
+
+```
+Welcome to Crossed Paths!
+
+Player 1 (X), it's your turn.
+Enter the cell to place your marker (e.g., D4): D4
+
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . X . . .
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . .
+
+Player 2 (O), it's your turn.
+Your move must be in the same row, column, or diagonal as the opponent's last move at D4.
+Enter the cell to place your marker: G7
+
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . X . . .
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . O
+
+Player 1 (X), it's your turn.
+Your move must be in the same row, column, or diagonal as the opponent's last move at G7.
+Enter the cell to place your marker: G4
+
+   A B C D E F G
+ 1 . . . . . . .
+ 2 . . . . . . .
+ 3 . . . . . . .
+ 4 . . . X . . X
+ 5 . . . . . . .
+ 6 . . . . . . .
+ 7 . . . . . . O
+```
+
+### Notes for Players
+
+- **Input Format**: Always enter the column letter followed by the row number (e.g., `A1`, `D4`, `G7`).
+- **Invalid Moves**: If you attempt an invalid move, the game will inform you and prompt you to try again.
+- **Available Cells**: Keep track of the grid and plan ahead to avoid running out of moves.
+
+---
+
+## Strategies and Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and try to limit their options.
+- **Control Central Positions**: Placing your markers in central locations can maximize your influence over the grid.
+- **Diagonal Opportunities**: Don't forget to consider diagonal moves, as they can provide unexpected opportunities.
+
+---
+
+## Conclusion
+
+Crossed Paths is a simple yet strategic game that challenges players to think ahead and control the board. By following these rules and understanding the game's mechanics, players can enjoy a competitive experience that tests their tactical skills.
+
+Have fun and may the best strategist win!
+
+---

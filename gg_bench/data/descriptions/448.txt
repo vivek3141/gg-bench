@@ -1,0 +1,220 @@
+# Token Tactics
+
+## Objective
+
+**Token Tactics** is a strategic two-player turn-based game where the primary goal is to accumulate all of your opponent's tokens. Players compete by choosing to fortify their reserves or attack their opponent. Victory is achieved when one player obtains all the tokens in play, resulting in the opponent's loss.
+
+## Setup
+
+- **Tokens**: Each player starts the game with **10 tokens**.
+- **Bank**: There is a common bank of tokens available for fortification. The bank is essentially an unlimited supply for the purpose of this game, but players cannot exceed a maximum reserve limit.
+- **Reserves**: Each player has a reserve where they store their tokens. The reserve includes their starting tokens and any tokens gained during gameplay.
+
+## Game Components
+
+- **Tokens**: Represented numerically in the game, tokens are the primary resource. They are used for fortifying reserves, attacking, and defending.
+  - **Appearance**: Tokens can simply be numbers or symbols representing units.
+  - **Functionality**: Tokens are used to perform actions and determine the outcome of attacks and defenses.
+  - **Unique Attributes**: All tokens are equal in value; there are no special or different types of tokens.
+
+## Turns
+
+- The game progresses in alternating turns between Player 1 and Player 2.
+- **Turn Structure**:
+  1. **Action Selection**: On your turn, choose one of the following actions:
+     - **Fortify**: Add tokens to your reserve.
+     - **Attack**: Initiate an attack against your opponent.
+ 2. **Action Resolution**: Carry out the chosen action according to the rules.
+ 3. **Turn End**: Once the action is resolved, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### Actions
+
+#### 1. Fortify
+
+- **Description**: Increase your token reserve by adding tokens from the bank.
+- **Rules**:
+  - You may add **1 token** to your reserve from the bank.
+  - Your total reserve cannot exceed **15 tokens**. If you have 15 or more tokens, you cannot choose to fortify.
+  - Fortifying does not affect your opponent.
+
+#### 2. Attack
+
+- **Description**: Attempt to take tokens from your opponent by committing tokens to an attack.
+- **Rules**:
+  - **Declaration**: Announce that you are attacking.
+  - **Commit Tokens**: Secretly decide how many tokens to commit to the attack (minimum of 1 token). You cannot commit more tokens than you have in your reserve.
+  - **Opponent's Defense**: The opponent must secretly decide how many tokens to commit to defense (can be zero). They cannot commit more tokens than they have in their reserve.
+  - **Reveal**: Both players reveal their committed tokens simultaneously.
+  - **Resolution**:
+    - **Attacker's Victory**: If the attacker's committed tokens exceed the defender's, the attacker wins the difference.
+      - The attacker takes tokens equal to the difference from the defender's reserve and adds them to their own.
+    - **Defender's Victory**: If the defender's committed tokens are equal to or greater than the attacker's, the defender wins.
+      - The defender takes tokens equal to the difference (or zero if equal) from the attacker's reserve and adds them to their own.
+    - **Tie**: If both players commit the same number of tokens, the defender wins.
+  - **Token Reduction**: Both players subtract the tokens they committed from their reserves. These tokens are considered "spent" and are removed from the game (they do not return to the bank).
+
+### Additional Rules
+
+- **Token Limits**:
+  - Players cannot have negative tokens. If required to lose more tokens than they possess, they lose all remaining tokens.
+  - Reserves cannot exceed 15 tokens through fortification but can exceed 15 tokens through winning tokens from the opponent.
+- **Game End Condition**:
+  - The game ends immediately when a player has **0 tokens** left in their reserve.
+  - The player who accumulates **all of the opponent's tokens** wins the game.
+
+## Scoring
+
+- **Victory**: Winning is achieved by collecting all of the opponent's tokens.
+- **Tracking Tokens**: Players should keep a clear count of their current token reserves after each turn.
+- **No Points System**: There is no points scoring system; the win condition is strictly based on token accumulation.
+
+## Examples
+
+### Example Scenario
+
+#### Initial Setup
+
+- **Player 1 Reserve**: 10 tokens
+- **Player 2 Reserve**: 10 tokens
+
+#### Turn 1: Player 1
+
+- **Action**: Fortify
+- **Result**: Player 1 adds 1 token from the bank to their reserve.
+- **Player 1 Reserve**: 11 tokens
+
+#### Turn 2: Player 2
+
+- **Action**: Attack
+- **Player 2 Commit**: 3 tokens
+- **Player 1 Defense Decision**: Commits 2 tokens
+- **Reveal**:
+  - Player 2 Attack Tokens: 3
+  - Player 1 Defense Tokens: 2
+- **Resolution**:
+  - Attacker wins (3 > 2)
+  - Difference: 1 token (3 - 2 = 1)
+  - Player 2 takes 1 token from Player 1's reserve.
+- **Token Reduction**:
+  - Player 2 subtracts 3 tokens (committed tokens) from their reserve.
+  - Player 1 subtracts 2 tokens (committed tokens) from their reserve.
+- **Updated Reserves**:
+  - **Player 1 Reserve**: 11 - 2 (committed) - 1 (lost) = **8 tokens**
+  - **Player 2 Reserve**: 10 - 3 (committed) + 1 (gained) = **8 tokens**
+
+#### Turn 3: Player 1
+
+- **Action**: Attack
+- **Player 1 Commit**: 5 tokens
+- **Player 2 Defense Decision**: Commits 4 tokens
+- **Reveal**:
+  - Player 1 Attack Tokens: 5
+  - Player 2 Defense Tokens: 4
+- **Resolution**:
+  - Attacker wins (5 > 4)
+  - Difference: 1 token (5 - 4 = 1)
+  - Player 1 takes 1 token from Player 2's reserve.
+- **Token Reduction**:
+  - Player 1 subtracts 5 tokens (committed) from their reserve.
+  - Player 2 subtracts 4 tokens (committed) from their reserve.
+- **Updated Reserves**:
+  - **Player 1 Reserve**: 8 - 5 (committed) + 1 (gained) = **4 tokens**
+  - **Player 2 Reserve**: 8 - 4 (committed) - 1 (lost) = **3 tokens**
+
+#### Turn 4: Player 2
+
+- **Action**: Attack
+- **Player 2 Commit**: 3 tokens
+- **Player 1 Defense Decision**: Commits 0 tokens
+- **Reveal**:
+  - Player 2 Attack Tokens: 3
+  - Player 1 Defense Tokens: 0
+- **Resolution**:
+  - Attacker wins (3 > 0)
+  - Difference: 3 tokens (3 - 0 = 3)
+  - Player 2 takes 3 tokens from Player 1's reserve.
+- **Token Reduction**:
+  - Player 2 subtracts 3 tokens (committed) from their reserve.
+  - Player 1 subtracts 0 tokens (committed) from their reserve.
+- **Updated Reserves**:
+  - **Player 1 Reserve**: 4 - 0 (committed) - 3 (lost) = **1 token**
+  - **Player 2 Reserve**: 3 - 3 (committed) + 3 (gained) = **3 tokens**
+
+#### Turn 5: Player 1
+
+- **Action**: Fortify
+- **Result**: Player 1 adds 1 token from the bank to their reserve.
+- **Player 1 Reserve**: 1 + 1 = **2 tokens**
+
+#### Turn 6: Player 2
+
+- **Action**: Attack
+- **Player 2 Commit**: 3 tokens
+- **Player 1 Defense Decision**: Commits 2 tokens
+- **Reveal**:
+  - Player 2 Attack Tokens: 3
+  - Player 1 Defense Tokens: 2
+- **Resolution**:
+  - Attacker wins (3 > 2)
+  - Difference: 1 token (3 - 2 = 1)
+  - Player 2 takes 1 token from Player 1's reserve.
+- **Token Reduction**:
+  - Player 2 subtracts 3 tokens (committed) from their reserve.
+  - Player 1 subtracts 2 tokens (committed) from their reserve.
+- **Updated Reserves**:
+  - **Player 1 Reserve**: 2 - 2 (committed) - 1 (lost) = **-1 tokens** (since tokens cannot be negative, Player 1 has **0 tokens**)
+  - **Player 2 Reserve**: 3 - 3 (committed) + 1 (gained) = **1 token**
+
+#### Game End
+
+- **Player 1** has **0 tokens** remaining.
+- **Player 2** wins by accumulating all of Player 1's tokens.
+
+### Command-Line Interaction Example
+
+```plaintext
+---- Token Tactics ----
+Player 1 Tokens: 10
+Player 2 Tokens: 10
+
+Player 1's Turn:
+Choose an action: (1) Fortify, (2) Attack
+> 1
+You chose to Fortify.
+Player 1 adds 1 token to their reserve.
+
+Player 2's Turn:
+Choose an action: (1) Fortify, (2) Attack
+> 2
+You chose to Attack.
+Enter the number of tokens to commit (1-10):
+> 3
+Player 1, enter the number of tokens to defend with (0-11):
+> 2
+Reveal:
+- Attacker committed 3 tokens.
+- Defender committed 2 tokens.
+Attacker wins the battle!
+Player 2 takes 1 token from Player 1.
+
+Updated Reserves:
+- Player 1 Tokens: 8
+- Player 2 Tokens: 8
+
+[...game continues as in the example above...]
+
+Game Over!
+Player 2 wins by capturing all of Player 1's tokens.
+```
+
+## Strategy Tips
+
+- **Balancing Fortify and Attack**: Fortifying increases your reserve but gives the opponent time to plan. Attacking can deplete the opponent's tokens but risks losing your own.
+- **Token Commitment**: Committing too many tokens can leave you vulnerable; commit enough to win but not so much that you weaken your reserve excessively.
+- **Predicting Opponent's Moves**: Try to anticipate how many tokens your opponent might commit based on their reserve size and previous actions.
+
+---
+
+Enjoy playing **Token Tactics**! May the most strategic player win.

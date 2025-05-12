@@ -1,0 +1,15 @@
+The action space indices map to the moves in the game by dividing the indices into pairs for each number from 1 to 9. Each pair corresponds to the two possible positions (left and right) where that number can be added. Specifically:
+
+- Index `0` to `1` map to number `1`:
+  - Index `0`: Add `1` to the left end
+  - Index `1`: Add `1` to the right end
+  
+- Index `2` to `3` map to number `2`:
+  - Index `2`: Add `2` to the left end
+  - Index `3`: Add `2` to the right end
+
+- Continue this pattern up to index `16` to `17` for number `9`:
+  - Index `16`: Add `9` to the left end
+  - Index `17`: Add `9` to the right end
+
+The action `(index // 2) + 1` determines the number, and `index % 2` determines if it goes to the left (`0`) or right (`1`) end.

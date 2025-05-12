@@ -1,0 +1,176 @@
+**Game Name**: Digit Duel
+
+---
+
+### **Objective**
+
+Be the first player to reduce the shared number **N** to a single-digit number on your turn. Players achieve victory by strategically manipulating **N** through digit subtraction or digit removal, forcing their opponent into an unwinnable position.
+
+---
+
+### **Setup**
+
+- **Initial Number (N)**: The game starts with a shared positive integer **N** greater than 9. For simplicity, you may start with **N = 100**, but any number over 9 can be used.
+- **Players**: Two players participate in the game—**Player 1** and **Player 2**. Player 1 makes the first move.
+
+---
+
+### **Game Components**
+
+1. **Shared Number (N)**
+   - A positive integer visible to both players throughout the game.
+   - Represents the central element that players will manipulate.
+
+2. **Digits of N**
+   - The individual digits that compose the current number **N**.
+   - Digits range from 0 to 9 but actions may have restrictions on using zero.
+
+---
+
+### **Turns**
+
+- **Turn Order**: Players alternate turns starting with Player 1.
+- **Turn Structure**:
+  1. **Action Selection**: Choose one of the two available actions:
+     - **Subtract Digit**
+     - **Remove Digit**
+  2. **Execute Action**: Perform the chosen action on **N**.
+  3. **Update N**: Announce and record the new value of **N**.
+- **Turn Progression**: The game continues with players alternating turns until the game ends.
+
+---
+
+### **Rules and Mechanics**
+
+#### **Core Actions**
+
+1. **Subtract Digit**
+   - **Description**: Subtract one non-zero digit of **N** from **N** itself.
+   - **How to Perform**:
+     - Select any single non-zero digit present in **N**.
+     - Subtract this digit from **N**: **N = N - digit**.
+   - **Example**:
+     - If **N = 256**, you may subtract **2**, **5**, or **6**, resulting in new **N** values of **254**, **251**, or **250** respectively.
+
+2. **Remove Digit**
+   - **Description**: Remove one occurrence of any digit from **N** to form a new number.
+   - **How to Perform**:
+     - Select any single digit in **N**.
+     - Remove this digit from **N** without altering the order of the remaining digits.
+     - The new **N** is the number formed by the remaining digits.
+   - **Example**:
+     - If **N = 256**, you may remove **2**, **5**, or **6**, resulting in new **N** values of **56**, **26**, or **25** respectively.
+
+#### **Action Rules**
+
+- **Valid Digits**: When subtracting, you cannot subtract zero. When removing, you can remove any digit, including zero (as long as the result doesn't have leading zeros).
+- **Positive Result**: After any action, **N** must remain a positive integer.
+- **Single Digit Victory**: If after your turn **N** becomes a single-digit number (1-9), you win the game.
+- **Mandatory Action**: On your turn, you must perform one of the two actions. Skipping a turn or passing is not allowed.
+- **No Leading Zeros**: When removing digits, the resulting **N** cannot have leading zeros. For example, removing '1' from '103' results in '03', which is not valid.
+
+---
+
+### **Scoring**
+
+- **Win Condition**: The player who reduces **N** to a single-digit number on their turn wins the game.
+- **Lose Condition**: If a player cannot perform any valid action on their turn (rare under normal play), they lose the game.
+- **No Points System**: The game is won by meeting the win condition rather than accumulating points.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial N**: 256
+
+1. **Player 1's Turn**
+   - **Action**: Subtract Digit
+   - **Digit Chosen**: 6
+   - **Calculation**: 256 - 6 = 250
+   - **New N**: 250
+
+2. **Player 2's Turn**
+   - **Action**: Remove Digit
+   - **Digit Removed**: 2
+   - **New N**: 50
+
+3. **Player 1's Turn**
+   - **Action**: Subtract Digit
+   - **Digit Chosen**: 5
+   - **Calculation**: 50 - 5 = 45
+   - **New N**: 45
+
+4. **Player 2's Turn**
+   - **Action**: Remove Digit
+   - **Digit Removed**: 5
+   - **New N**: 4
+   - **Outcome**: **Player 2 wins**, as **N** is now a single-digit number.
+
+#### **Command-Line Interaction**
+
+```
+Game Start! Initial N is 256.
+
+Player 1's turn.
+Choose action: Subtract Digit or Remove Digit? Subtract Digit
+Which digit would you like to subtract from N? 6
+N is now 250.
+
+Player 2's turn.
+Choose action: Remove Digit
+Which digit would you like to remove from N? 2
+N is now 50.
+
+Player 1's turn.
+Choose action: Subtract Digit
+Which digit would you like to subtract from N? 5
+N is now 45.
+
+Player 2's turn.
+Choose action: Remove Digit
+Which digit would you like to remove from N? 5
+N is now 4.
+
+Player 2 has reduced N to a single-digit number and wins the game!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and plan your actions to limit their options.
+- **Control the Flow**: Aim to manipulate **N** in a way that sets up a win on your next turn.
+- **Balance Actions**: Decide between subtracting a digit to lower **N** significantly or removing a digit to alter the composition of **N**.
+- **Force Moves**: Try to force the opponent into positions where their only moves benefit you.
+
+---
+
+### **Clarifications**
+
+- **Multiple Occurrences**: When removing a digit, only one occurrence of that digit is removed per turn.
+- **Zero Digit**:
+  - **Subtract Digit**: You cannot subtract zero since it does not change **N**.
+  - **Remove Digit**: You may remove a zero from **N** as long as the resulting number does not have leading zeros.
+- **Leading Zeros Not Allowed**: If removing a digit results in a number with leading zeros, that move is invalid.
+- **Digit Order**: When removing a digit, the remaining digits keep their original order without gaps.
+
+---
+
+### **Example of Invalid Moves**
+
+- **Invalid Subtract Digit**
+  - Attempting to subtract a digit not in **N** (e.g., subtracting 7 from 256).
+- **Invalid Remove Digit**
+  - Removing a digit resulting in leading zeros (e.g., removing '1' from '103' to get '03').
+
+---
+
+### **Conclusion**
+
+Digit Duel is a simple yet strategic game that challenges players to think ahead and manipulate numbers creatively. By understanding the mechanics and planning your moves, you can outsmart your opponent and be the first to reduce **N** to a single-digit number.
+
+---
+
+Enjoy playing **Digit Duel** and may the best strategist win!

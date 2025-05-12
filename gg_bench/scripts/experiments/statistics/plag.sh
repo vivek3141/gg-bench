@@ -1,0 +1,44 @@
+dolos run -l python -f csv \
+  gg_bench/data/envs/env_272.py gg_bench/data/envs/env_154.py gg_bench/data/envs/env_453.py \
+  gg_bench/data/envs/env_610.py gg_bench/data/envs/env_847.py gg_bench/data/envs/env_480.py \
+  gg_bench/data/envs/env_758.py gg_bench/data/envs/env_573.py gg_bench/data/envs/env_891.py \
+  gg_bench/data/envs/env_977.py gg_bench/data/envs/env_411.py gg_bench/data/envs/env_779.py \
+  gg_bench/data/envs/env_165.py gg_bench/data/envs/env_14.py  gg_bench/data/envs/env_557.py \
+  gg_bench/data/envs/env_939.py gg_bench/data/envs/env_679.py gg_bench/data/envs/env_705.py \
+  gg_bench/data/envs/env_451.py gg_bench/data/envs/env_392.py gg_bench/data/envs/env_80.py  \
+  gg_bench/data/envs/env_897.py gg_bench/data/envs/env_590.py gg_bench/data/envs/env_2.py   \
+  gg_bench/data/envs/env_139.py gg_bench/data/envs/env_712.py gg_bench/data/envs/env_383.py \
+  gg_bench/data/envs/env_707.py gg_bench/data/envs/env_902.py gg_bench/data/envs/env_661.py \
+  gg_bench/data/envs/env_550.py gg_bench/data/envs/env_123.py gg_bench/data/envs/env_810.py \
+  gg_bench/data/envs/env_167.py gg_bench/data/envs/env_781.py gg_bench/data/envs/env_579.py \
+  gg_bench/data/envs/env_640.py gg_bench/data/envs/env_815.py gg_bench/data/envs/env_928.py \
+  gg_bench/data/envs/env_650.py gg_bench/data/envs/env_773.py gg_bench/data/envs/env_251.py \
+  gg_bench/data/envs/env_807.py gg_bench/data/envs/env_714.py gg_bench/data/envs/env_313.py \
+  gg_bench/data/envs/env_243.py gg_bench/data/envs/env_178.py gg_bench/data/envs/env_788.py \
+  gg_bench/data/envs/env_547.py gg_bench/data/envs/env_152.py gg_bench/data/envs/env_721.py \
+  gg_bench/data/envs/env_840.py gg_bench/data/envs/env_241.py gg_bench/data/envs/env_7.py   \
+  gg_bench/data/envs/env_102.py gg_bench/data/envs/env_483.py gg_bench/data/envs/env_477.py \
+  gg_bench/data/envs/env_699.py gg_bench/data/envs/env_496.py gg_bench/data/envs/env_327.py \
+  gg_bench/data/envs/env_676.py gg_bench/data/envs/env_419.py gg_bench/data/envs/env_742.py \
+  gg_bench/data/envs/env_799.py gg_bench/data/envs/env_812.py gg_bench/data/envs/env_855.py \
+  gg_bench/data/envs/env_34.py  gg_bench/data/envs/env_945.py gg_bench/data/envs/env_690.py \
+  gg_bench/data/envs/env_30.py  gg_bench/data/envs/env_423.py \
+  gg_bench/data/envs/env_526.py gg_bench/data/envs/env_389.py gg_bench/data/envs/env_735.py \
+  gg_bench/data/envs/env_965.py gg_bench/data/envs/env_594.py gg_bench/data/envs/env_609.py \
+  gg_bench/data/envs/env_849.py gg_bench/data/envs/env_409.py gg_bench/data/envs/env_333.py \
+  gg_bench/data/envs/env_100.py gg_bench/data/envs/env_155.py gg_bench/data/envs/env_217.py \
+  gg_bench/data/envs/env_631.py gg_bench/data/envs/env_531.py gg_bench/data/envs/env_433.py \
+  gg_bench/data/envs/env_929.py gg_bench/data/envs/env_124.py gg_bench/data/envs/env_441.py \
+  gg_bench/data/envs/env_881.py gg_bench/data/envs/env_66.py  gg_bench/data/envs/env_424.py \
+  gg_bench/data/envs/env_226.py gg_bench/data/envs/env_308.py gg_bench/data/envs/env_733.py \
+  gg_bench/data/envs/env_438.py gg_bench/data/envs/env_117.py gg_bench/data/envs/env_408.py \
+  gg_bench/data/envs/env_551.py gg_bench/data/envs/env_150.py gg_bench/data/envs/env_624.py \
+  gg_bench/data/envs/env_892.py gg_bench/data/envs/env_646.py gg_bench/data/envs/env_417.py \
+  gg_bench/data/envs/env_757.py gg_bench/data/envs/env_377.py gg_bench/data/envs/env_539.py \
+  gg_bench/data/envs/env_924.py gg_bench/data/envs/env_598.py gg_bench/data/envs/env_74.py  \
+  gg_bench/data/envs/env_135.py gg_bench/data/envs/env_804.py gg_bench/data/envs/env_859.py \
+  gg_bench/data/envs/env_564.py gg_bench/data/envs/env_941.py gg_bench/data/envs/env_985.py \
+  gg_bench/data/envs/env_386.py gg_bench/data/envs/env_988.py gg_bench/data/envs/env_71.py  \
+  gg_bench/data/envs/env_554.py gg_bench/data/envs/env_114.py gg_bench/data/envs/env_736.py \
+  gg_bench/data/envs/env_524.py gg_bench/data/envs/env_663.py gg_bench/data/envs/env_932.py \
+  gg_bench/data/envs/env_219.py gg_bench/data/envs/env_876.py

@@ -1,0 +1,150 @@
+# Divisor Duel Rule Book
+
+## Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the last player able to make a valid move by selecting numbers from a shared pool. On each turn, a player must pick a number that is either a **divisor** or a **multiple** of the number selected by the previous player. The player who cannot make a valid move on their turn loses the game.
+
+---
+
+## Setup
+
+1. **Number Pool Initialization**: The game begins with a shared pool of integers ranging from **2 to 50** inclusive.
+2. **Determine First Player**: Decide randomly or by mutual agreement which player will take the first turn.
+
+---
+
+## Game Components
+
+- **Number Pool**: A list of integers from **2 to 50** that are available for selection.
+- **Selected Numbers**: Numbers that have been chosen by the players are removed from the pool and cannot be selected again.
+- **Current Number**: The number selected by the most recent player, which dictates the valid choices for the next player.
+
+---
+
+## Turns
+
+1. **Player 1's Turn**:
+   - Select **any number** from the number pool.
+   - Remove the selected number from the pool.
+2. **Player 2's Turn and Subsequent Turns**:
+   - Choose a number from the pool that is either a **divisor** or a **multiple** of the **current number** (the number chosen by the previous player).
+   - Remove the selected number from the pool.
+3. **Turn Progression**:
+   - Players alternate turns following the above rules.
+   - The **current number** is updated after each valid selection.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A move is valid if the selected number is **unselected** (still in the pool) and is a **divisor** or a **multiple** of the current number.
+   - **Divisors**: Numbers that divide the current number without leaving a remainder.
+   - **Multiples**: Numbers that the current number divides into without leaving a remainder.
+2. **Invalid Moves**:
+   - Selecting a number that is not a divisor or multiple of the current number.
+   - Choosing a number that has already been selected.
+3. **Unable to Move**:
+   - If a player has no valid moves on their turn, they **lose** the game.
+4. **Game End**:
+   - The game ends immediately when a player cannot make a valid move on their turn.
+
+---
+
+## Scoring
+
+- The game uses a **win/loss** scoring system.
+  - **Winner**: The last player able to make a valid move.
+  - **Loser**: The player who cannot make a valid move on their turn.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Initial Number Pool**: [2, 3, 4, 5, 6, ..., 50]
+
+#### Turn 1:
+- **Player 1** selects **12**.
+- **Current Number** is now **12**.
+- **Number Pool** is now missing **12**.
+
+#### Turn 2:
+- **Player 2** must choose a divisor or multiple of **12**.
+- **Possible Choices**: 2, 3, 4, 6, 8, 12 (already selected), 16, 18, 20, 24, 30, 36, 40, 48.
+- **Player 2** selects **6**.
+- **Current Number** is now **6**.
+- **Number Pool** is now missing **6**.
+
+#### Turn 3:
+- **Player 1** must choose a divisor or multiple of **6**.
+- **Possible Choices**: 2, 3, 4, 6 (already selected), 12 (already selected), 18, 24, 30, 36, 42, 48.
+- **Player 1** selects **18**.
+- **Current Number** is now **18**.
+- **Number Pool** is now missing **18**.
+
+#### Turn 4:
+- **Player 2** must choose a divisor or multiple of **18**.
+- **Possible Choices**: 2, 3, 4, 6 (already selected), 9, 12 (already selected), 18 (already selected), 36, 45, 54.
+- **Player 2** selects **9**.
+- **Current Number** is now **9**.
+- **Number Pool** is now missing **9**.
+
+#### Turn 5:
+- **Player 1** must choose a divisor or multiple of **9**.
+- **Possible Choices**: 3, 6 (already selected), 9 (already selected), 12 (already selected), 18 (already selected), 27, 36, 45.
+- **Player 1** selects **3**.
+- **Current Number** is now **3**.
+- **Number Pool** is now missing **3**.
+
+#### Turn 6:
+- **Player 2** must choose a divisor or multiple of **3**.
+- **Possible Choices**: 6 (already selected), 9 (already selected), 12 (already selected), 15, 18 (already selected), 21, 24, 27, 30, 33, 36, 39, 42, 45, 48.
+- **Player 2** selects **15**.
+- **Current Number** is now **15**.
+- **Number Pool** is now missing **15**.
+
+#### Turns Continue...
+
+- The game continues in this manner until a player cannot make a valid move.
+- **Strategy Tip**: Try to force your opponent into numbers with fewer divisors and multiples left in the pool.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming the game is implemented in a command-line interface, here is how a sample turn might look:
+
+```
+[Turn 1] Player 1, select a number from the pool:
+
+Available Numbers: 2, 3, 4, 5, 6, ..., 50
+Player 1 selects: 12
+
+[Turn 2] Player 2, select a divisor or multiple of 12:
+
+Available Numbers: 2, 3, 4, 5, 6, ..., 50 (excluding 12)
+Player 2 selects: 6
+
+[Turn 3] Player 1, select a divisor or multiple of 6:
+
+Available Numbers: 2, 3, 4, 5, 7, 8, ..., 50 (excluding 6, 12)
+Player 1 selects: 18
+
+...
+
+[Final Turn] Player 2, no valid moves available. You lose!
+```
+
+---
+
+## Notes on Strategy
+
+- **Plan Ahead**: Consider the remaining numbers in the pool and anticipate your opponent's possible moves.
+- **Control the Game**: Try to select numbers that limit your opponent's options on their next turn.
+- **Number Properties**: Familiarity with divisibility and multiples can provide a strategic advantage.
+
+---
+
+Enjoy the **Divisor Duel** and may the most strategic player win!

@@ -1,0 +1,134 @@
+# BitFlip: A Two-Player Command-Line Game
+
+## Objective
+
+**BitFlip** is a strategic two-player game where players take turns manipulating the bits of a shared binary number. The primary goal is to be the player who flips the last '1' bit to '0', thereby reducing the shared number to zero. Victory is achieved by carefully planning moves and anticipating the opponent's strategy to force them into flipping the penultimate '1' bit.
+
+## Setup
+
+1. **Starting Number**: The game begins with a shared positive integer, ideally a number with multiple '1's in its binary representation to allow for strategic depth. A common starting number is **31**, whose binary form is **11111**.
+2. **Shared State**: Both players have access to the current state of the number, displayed in both decimal and binary formats.
+3. **Player Assignment**: Decide which player goes first, either by mutual agreement or by a simple method like a coin toss.
+
+## Game Components
+
+- **Shared Number**: The central element of the game, represented in both decimal and binary forms. For example, starting with **31 (binary 11111)**.
+- **Bit Positions**: Positions in the binary representation, numbered from left to right or right to left for clarity.
+- **Players**: Two participants alternating turns, referred to as **Player 1** and **Player 2**.
+
+## Turns
+
+1. **Turn Structure**: Players alternate turns, starting with the designated Player 1.
+2. **Actions Per Turn**:
+   - **View Current Number**: Observe the decimal and binary representation of the shared number.
+   - **Select Bit to Flip**: Choose a '1' bit in the binary representation to flip to '0'.
+   - **Confirm Move**: Execute the move, updating the shared number accordingly.
+3. **Move Example**:
+   - Current Number: **23 (binary 10111)**
+   - Player selects the second bit from the left (value 16).
+   - Flipping the bit changes the number to **7 (binary 00111)**.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - Only '1' bits can be flipped to '0'.
+   - Players can flip **only one bit per turn**.
+   - Flipping '0's to '1's is not allowed.
+2. **Updating the Number**:
+   - After flipping the chosen bit, the binary number is updated.
+   - The decimal equivalent of the new binary number becomes the current shared number.
+3. **End of Game**:
+   - The game continues until all bits have been flipped to '0'.
+   - The player who flips the **last '1' bit to '0' wins** the game.
+4. **Forbidden Moves**:
+   - If a player has no '1' bits left to flip on their turn (number is zero), they **lose their turn**, and the opponent continues.
+   - Since the shared number is zero, the last player to flip a bit is declared the winner.
+
+## Scoring
+
+- **Winning the Game**: The winner is the player who flips the last '1' bit, reducing the shared number to zero.
+- **No Points System**: The game does not track points; victory is determined solely by achieving the objective.
+- **Match Play (Optional)**:
+  - Players can compete in multiple rounds.
+  - Keep track of the number of games won by each player.
+  - The first to win a predetermined number of games (e.g., best of five) is the overall winner.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Starting Number**: 31 (binary 11111)
+- **Player 1** starts the game.
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Current Number: 31 (binary 11111)
+   - Flips the leftmost bit (value 16).
+   - New Number: 15 (binary 01111)
+
+2. **Player 2's Turn**:
+   - Current Number: 15 (binary 01111)
+   - Flips the leftmost bit (now the first '1' bit, value 8).
+   - New Number: 7 (binary 00111)
+
+3. **Player 1's Turn**:
+   - Current Number: 7 (binary 00111)
+   - Flips the rightmost bit (value 1).
+   - New Number: 6 (binary 00110)
+
+4. **Player 2's Turn**:
+   - Current Number: 6 (binary 00110)
+   - Flips the second bit from the right (value 2).
+   - New Number: 4 (binary 00100)
+
+5. **Player 1's Turn**:
+   - Current Number: 4 (binary 00100)
+   - Flips the only remaining '1' bit (value 4).
+   - New Number: 0 (binary 00000)
+   - **Player 1 wins**.
+
+### Sample Command-Line Interaction
+
+```
+Starting BitFlip Game!
+Initial Number: 31 (binary 11111)
+
+Player 1's Turn:
+Current Number: 31 (binary 11111)
+Select a bit to flip (positions 1 to 5, left to right with '1's at positions 1-5): 1
+You flipped bit 1. New Number: 15 (binary 01111)
+
+Player 2's Turn:
+Current Number: 15 (binary 01111)
+Select a bit to flip (positions with '1's at 2-5): 2
+You flipped bit 2. New Number: 7 (binary 00111)
+
+Player 1's Turn:
+Current Number: 7 (binary 00111)
+Select a bit to flip (positions with '1's at 3-5): 5
+You flipped bit 5. New Number: 6 (binary 00110)
+
+Player 2's Turn:
+Current Number: 6 (binary 00110)
+Select a bit to flip (positions with '1's at 3-4): 4
+You flipped bit 4. New Number: 4 (binary 00100)
+
+Player 1's Turn:
+Current Number: 4 (binary 00100)
+Select a bit to flip (position with '1' at 3): 3
+You flipped bit 3. New Number: 0 (binary 00000)
+Congratulations, Player 1! You have won the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate future moves by considering how your flip will affect the number of '1's remaining.
+- **Bit Positioning**: Flipping higher-value bits (leftmost) can rapidly decrease the number, but beware of setting up the opponent for a win.
+- **Parity Consideration**: Pay attention to whether the number of remaining '1's is odd or even to force your opponent into a losing position.
+
+## Conclusion
+
+BitFlip is a quick and engaging game that combines elements of strategy and binary manipulation. Its simplicity makes it easy to code and play in a command-line interface, yet it offers sufficient depth for skilled players to consistently outperform novices. Enjoy testing your tactical prowess in this battle of bits!

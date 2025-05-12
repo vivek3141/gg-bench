@@ -1,0 +1,245 @@
+# Sequence Duel: Rule Book
+
+Welcome to **Sequence Duel**, a strategic two-player turn-based game designed for quick play in a command-line interface. Outsmart your opponent by carefully selecting numbers from a sequence, using factors and multiples to limit their options. Master the sequence, and victory is yours!
+
+---
+
+## Objective
+
+Be the **last player** able to perform a valid move. Players take turns removing numbers from a shared sequence based on specific rules. The player who cannot make a legal move on their turn **loses** the game.
+
+---
+
+## Setup
+
+1. **Determine the Sequence Length (N):** Agree on a maximum number \( N \) to create a sequence from 1 to \( N \). For a quick game, a smaller \( N \) (e.g., 20) is recommended.
+
+2. **Initialize the Sequence:** Generate a list of numbers from **1** to \( N \). This sequence is shared between both players.
+
+3. **Decide the First Player:** Choose who will start the game. This can be done by mutual agreement or a random method.
+
+---
+
+## Game Components
+
+- **Sequence List:** A list of consecutive natural numbers from **1** to \( N \).
+
+  ```
+  Example with N=10:
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  ```
+
+- **Player Actions:**
+
+  - **Number Selection:** Picking a number from the sequence based on the game rules.
+  - **Turn Tracking:** Keeping track of the numbers previously selected to determine valid moves.
+
+---
+
+## Turns
+
+1. **Turn Order:** Players alternate turns, starting with the first player.
+
+2. **Turn Structure:**
+
+   - **Select a Number:** Choose a number from the sequence that adheres to the selection rules.
+   - **Remove the Number:** The chosen number is removed from the sequence and cannot be selected again.
+   - **Update the Game State:** Communicate the selected number to the opponent and display the updated sequence.
+
+---
+
+## Rules and Mechanics
+
+1. **First Turn:**
+
+   - The first player can **remove any number** from the sequence.
+
+2. **Subsequent Turns:**
+
+   - On each turn after the first, the player must select a number that is **either a factor or a multiple** of the **number chosen by the previous player**.
+
+   - **Valid Selection Criteria:**
+
+     - **Factor:** A number that divides evenly into the previous number.
+     - **Multiple:** A number that is evenly divisible by the previous number.
+
+   - The selected number must be **still available** in the sequence.
+
+3. **Invalid Moves:**
+
+   - If a player has no valid numbers to select based on the rules, they **lose** their turn and the game.
+
+4. **Example of Valid Moves:**
+
+   - If the previous number was **4**, valid selections are:
+
+     - **Factors of 4:** 1, 2
+     - **Multiples of 4:** 8 (if within the sequence and not already removed)
+
+5. **Game End:**
+
+   - The game ends when a player cannot make a valid move on their turn.
+   - The **other player wins** the game.
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+
+  - The winner is the player who successfully forces their opponent into a position where they cannot make a valid move.
+
+- **No Point System:**
+
+  - Sequence Duel is a win-or-lose game without a point-based scoring system.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Setup:**
+
+- Sequence: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+- Player 1: Alice
+- Player 2: Bob
+
+**Turn 1:**
+
+- **Alice's Turn:**
+  - Alice can pick any number.
+  - She picks **6**.
+  - Sequence after move: [1, 2, 3, 4, 5, 7, 8, 9, 10]
+  
+**Turn 2:**
+
+- **Bob's Turn:**
+  - Bob must pick a factor or multiple of **6**.
+  - Factors of 6: 1, 2, 3
+  - Multiples of 6: None within the sequence.
+  - Bob chooses **3**.
+  - Sequence after move: [1, 2, 4, 5, 7, 8, 9, 10]
+
+**Turn 3:**
+
+- **Alice's Turn:**
+  - Alice must pick a factor or multiple of **3**.
+  - Factors of 3: 1
+  - Multiples of 3: 9
+  - Alice chooses **9**.
+  - Sequence after move: [1, 2, 4, 5, 7, 8, 10]
+
+**Turn 4:**
+
+- **Bob's Turn:**
+  - Bob must pick a factor or multiple of **9**.
+  - Factors of 9: 1
+  - Multiples of 9: None within the sequence.
+  - Bob chooses **1**.
+  - Sequence after move: [2, 4, 5, 7, 8, 10]
+
+**Turn 5:**
+
+- **Alice's Turn:**
+  - Alice must pick a factor or multiple of **1**.
+  - Factors of 1: None (excluding 1 itself, which has been removed).
+  - Multiples of 1: 2, 4, 5, 7, 8, 10
+  - Alice chooses **8**.
+  - Sequence after move: [2, 4, 5, 7, 10]
+
+**Turn 6:**
+
+- **Bob's Turn:**
+  - Bob must pick a factor or multiple of **8**.
+  - Factors of 8: 2, 4
+  - Multiples of 8: None within the sequence.
+  - Bob chooses **4**.
+  - Sequence after move: [2, 5, 7, 10]
+
+**Turn 7:**
+
+- **Alice's Turn:**
+  - Alice must pick a factor or multiple of **4**.
+  - Factors of 4: 2
+  - Multiples of 4: None within the sequence.
+  - Alice chooses **2**.
+  - Sequence after move: [5, 7, 10]
+
+**Turn 8:**
+
+- **Bob's Turn:**
+  - Bob must pick a factor or multiple of **2**.
+  - Factors of 2: None within the sequence.
+  - Multiples of 2: 10
+  - Bob chooses **10**.
+  - Sequence after move: [5, 7]
+
+**Turn 9:**
+
+- **Alice's Turn:**
+  - Alice must pick a factor or multiple of **10**.
+  - Factors of 10: 5
+  - Multiples of 10: None.
+  - Alice chooses **5**.
+  - Sequence after move: [7]
+
+**Turn 10:**
+
+- **Bob's Turn:**
+  - Bob must pick a factor or multiple of **5**.
+  - Factors of 5: None within the sequence.
+  - Multiples of 5: None.
+  - **Bob has no valid moves.**
+
+**Result:**
+
+- **Alice wins** the game.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a command-line implementation, here's how the interaction might look:
+
+```
+Welcome to Sequence Duel!
+Sequence: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Alice's turn.
+Available numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Enter a number to remove: 6
+
+Sequence: [1, 2, 3, 4, 5, 7, 8, 9, 10]
+Bob's turn.
+Previous number: 6
+Valid options (factors/multiples of 6): [1, 2, 3]
+Enter a number to remove: 3
+
+Sequence: [1, 2, 4, 5, 7, 8, 9, 10]
+Alice's turn.
+Previous number: 3
+Valid options (factors/multiples of 3): [1, 9]
+Enter a number to remove: 9
+
+... [Game continues as in the example above] ...
+
+Bob's turn.
+Previous number: 5
+Valid options (factors/multiples of 5): []
+No valid moves. Bob loses!
+Congratulations, Alice! You win the game.
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Consider the possible numbers available to your opponent after your move.
+
+- **Control the Options:** Try to force your opponent into a position where they have fewer valid moves.
+
+- **Remember Removed Numbers:** Keep track of numbers that have been removed to better predict future valid options.
+
+---
+
+Enjoy the game, and may the best strategist win!

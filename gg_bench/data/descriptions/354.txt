@@ -1,0 +1,212 @@
+# Game Title: **Number Drop**
+
+## Objective
+
+Be the first player to eliminate all the numbers from your opponent's grid by strategically selecting and combining numbers from your own grid. Victory is achieved when your opponent has no numbers left to play.
+
+## Setup
+
+1. **Grid Creation**:
+   - Each player has a personal 3x3 grid (total of 9 cells).
+   - Grids are initialized with the numbers 1 through 9, placed randomly so that each number appears once in each grid.
+
+2. **Starting Conditions**:
+   - Players decide who goes first (e.g., coin toss).
+   - Both players' grids are visible to each other.
+
+## Game Components
+
+- **Player Grids**:
+  - Two separate 3x3 grids (one per player).
+  - Each grid contains numbers 1 to 9, each appearing exactly once.
+
+- **Numbers**:
+  - Digits from 1 to 9.
+  - Each number has two attributes:
+    - **Value**: The numerical value of the digit.
+    - **Position**: Its location in the 3x3 grid.
+
+- **Command-Line Interface**:
+  - Players input commands to select and combine numbers.
+  - The interface displays both grids and prompts for actions.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Selection Phase**:
+     - The active player selects any two numbers from their own grid.
+  2. **Operation Phase**:
+     - The player chooses to either add or subtract the two selected numbers.
+  3. **Attack Phase**:
+     - The result (sum or difference) is used to eliminate the matching number from the opponent's grid, if it exists.
+  4. **Cleanup Phase**:
+     - The two used numbers from the player's grid are removed.
+     - The opponent removes the matching number from their grid, if applicable.
+  5. **Turn Progression**:
+     - The turn ends, and the opponent becomes the active player.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must select two distinct numbers from their own grid.
+   - If only one number remains, the player selects that number alone.
+
+2. **Operations**:
+   - **Addition**: Sum the two numbers.
+   - **Subtraction**: Subtract the smaller number from the larger one.
+   - If only one number is selected (because only one remains), the result is that number.
+
+3. **Elimination**:
+   - If the result matches a number on the opponent's grid, that number is eliminated from their grid.
+   - If the result does not match any number on the opponent's grid, no numbers are eliminated from the opponent's grid.
+
+4. **Number Removal**:
+   - After using numbers in a turn, remove them from the player's own grid.
+   - Removed numbers cannot be used in future turns.
+
+5. **Winning the Game**:
+   - A player wins when their opponent has no numbers left on their grid at the end of a turn.
+   - If both players lose their last numbers simultaneously, the active player wins.
+
+6. **Valid Moves**:
+   - If a player cannot make any valid moves (no numbers left to select), they pass their turn.
+   - If both players cannot make a valid move, the player with numbers remaining on their grid wins.
+
+## Scoring
+
+- **Win Condition**:
+  - The game is won by eliminating all the numbers from the opponent's grid.
+  - There are no points; it's a win/loss outcome.
+
+- **Skill Advantage**:
+  - Players can strategize number combinations to maximize the elimination of opponent numbers while managing their own grid resources.
+
+## Examples
+
+### Example Game Play
+
+**Initial Grids**:
+
+- **Player 1 Grid**:
+  ```
+  [2][9][4]
+  [7][5][3]
+  [6][1][8]
+  ```
+
+- **Player 2 Grid**:
+  ```
+  [6][7][2]
+  [1][5][9]
+  [8][3][4]
+  ```
+
+---
+
+**Turn 1: Player 1**
+
+- **Selection Phase**: Select numbers **7** and **5**.
+- **Operation Phase**: Choose to **add** them (7 + 5 = 12).
+- **Attack Phase**: Result is **12**.
+  - **Player 2** does not have number **12**; no elimination.
+- **Cleanup Phase**:
+  - Remove **7** and **5** from **Player 1**'s grid.
+
+**Grids After Turn 1**:
+
+- **Player 1 Grid**:
+  ```
+  [2][9][4]
+  [ ][ ][3]      <-- 7 and 5 removed
+  [6][1][8]
+  ```
+
+- **Player 2 Grid** remains unchanged.
+
+---
+
+**Turn 2: Player 2**
+
+- **Selection Phase**: Select numbers **6** and **7**.
+- **Operation Phase**: Choose to **subtract** them (7 - 6 = 1).
+- **Attack Phase**: Result is **1**.
+  - **Player 1** has number **1**; eliminate it.
+- **Cleanup Phase**:
+  - Remove **6** and **7** from **Player 2**'s grid.
+  - **Player 1** removes **1** from their grid.
+
+**Grids After Turn 2**:
+
+- **Player 1 Grid**:
+  ```
+  [2][9][4]
+  [ ][ ][3]
+  [6][ ][8]      <-- 1 removed
+  ```
+
+- **Player 2 Grid**:
+  ```
+  [ ][ ][2]      <-- 6 and 7 removed
+  [1][5][9]
+  [8][3][4]
+  ```
+
+---
+
+**Continuing the Game**
+
+Players continue taking turns in this manner, strategically choosing numbers and operations to eliminate their opponent's numbers while preserving their own.
+
+---
+
+### Command-Line Interaction Sample
+
+**Player 1's Turn**
+
+```
+Your Grid:
+[2][9][4]
+[ ][ ][3]
+[6][ ][8]
+
+Opponent's Grid:
+[ ][ ][2]
+[1][5][9]
+[8][3][4]
+
+Select your first number:
+> 3
+
+Select your second number:
+> 9
+
+Choose operation (add/subtract):
+> subtract
+
+Calculating: 9 - 3 = 6
+
+Attempting to eliminate number 6 from opponent's grid...
+
+Result:
+- Number 6 is not on opponent's grid.
+- Removed numbers 3 and 9 from your grid.
+
+Press Enter to end your turn.
+```
+
+**Grids After Turn**
+
+- **Player 1 Grid**:
+  ```
+  [2][ ][4]     <-- 9 removed
+  [ ][ ][ ]     <-- 3 removed
+  [6][ ][8]
+  ```
+
+---
+
+## Conclusion
+
+"Number Drop" is a strategic, turn-based game that combines simple arithmetic with tactical decision-making. Players must manage their limited numerical resources while predicting and countering their opponent's moves. The game is easy to learn, quick to play, and offers depth for those who wish to develop advanced strategies.
+
+Enjoy the duel, and may the best strategist win!

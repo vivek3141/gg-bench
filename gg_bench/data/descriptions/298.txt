@@ -1,0 +1,208 @@
+# Number Collapse
+
+## Objective
+
+**Number Collapse** is a two-player, turn-based strategy game played in a command-line interface. The primary goal of the game is to force your opponent into a position where they cannot make a valid move. This is achieved by skillfully selecting and subtracting proper divisors from a shared number. A player wins by reducing the current number in such a way that the opponent is left with a prime number on their turn, rendering them unable to make a move.
+
+## Setup
+
+1. **Initial Number Selection**:
+   - Agree on a starting positive integer **N** greater than 1. This can be a predetermined number (e.g., 20) or randomly selected.
+
+2. **Player Roles**:
+   - Decide who will be **Player 1** and **Player 2**. This can be determined by mutual agreement or by a random method like flipping a coin.
+
+3. **Starting Conditions**:
+   - The game begins with the current number set to the initial number **N**.
+   - Both players should have access to a method for calculating the divisors of numbers (calculator, divisor table, or mental calculation).
+
+## Game Components
+
+- **Current Number (N)**:
+  - A positive integer that players manipulate during the game.
+  - Updated each turn based on players' actions.
+  
+- **Proper Divisors**:
+  - Positive integers greater than 1 and less than **N** that divide **N** evenly (without leaving a remainder).
+  - **Note**: 1 and **N** itself are not considered proper divisors in this game.
+
+- **Players**:
+  - **Player 1** and **Player 2** take turns modifying the current number **N**.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with **Player 1**.
+
+2. **Player Actions**:
+   - On their turn, a player must perform the following actions:
+     - **Calculate Proper Divisors**: Determine all proper divisors of the current number **N**.
+     - **Select a Divisor**: Choose one proper divisor from the list.
+     - **Subtract the Divisor**: Subtract the chosen divisor from **N** to obtain a new current number.
+     - **Announce the Move**: Clearly state the chosen divisor and the new value of **N**.
+   
+3. **Turn Progression**:
+   - After completing their move, the turn passes to the other player.
+   - The new current number **N** becomes the starting point for the next player's turn.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A move is valid if the player selects a proper divisor of **N** (excluding 1 and **N**) and subtracts it from **N** to yield a positive integer.
+   - The chosen divisor must divide **N** evenly (no remainder).
+
+2. **Prime Numbers**:
+   - If **N** is a prime number (only divisible by 1 and itself), there are no proper divisors to choose from.
+   - A player presented with a prime number on their turn cannot make a valid move and thus loses the game.
+
+3. **Winning the Game**:
+   - A player wins by reducing **N** to a prime number on their turn, leaving the opponent without a valid move.
+   - The game also ends if a player subtracts a proper divisor resulting in **N** equal to 1, in which case the opponent cannot make a move and loses.
+
+4. **Illegal Moves**:
+   - Selecting a number that is not a proper divisor of **N**.
+   - Subtracting a divisor that does not divide **N** evenly.
+   - Attempting to subtract when **N** is prime.
+
+5. **Strategy**:
+   - Players should aim to leave the opponent with a prime number or a number with limited proper divisors.
+   - Anticipate future moves by considering how the current move will affect the list of proper divisors available to the opponent.
+
+## Scoring
+
+- **Winning**:
+  - The winner is the player who successfully leaves the opponent without a valid move.
+  
+- **Tracking Progress**:
+  - Keep a record of each move, including the current number **N**, the chosen divisor, and the resultant new number.
+  - This helps both players follow the game progression and strategize accordingly.
+
+## Examples
+
+### Example Game 1
+
+**Starting Number**: N = 20
+
+#### Turn 1: Player 1
+
+- **Current N**: 20
+- **Proper Divisors of 20**: 2, 4, 5, 10
+- **Player 1's Move**:
+  - Chooses divisor **10**
+  - Calculates new N: 20 - 10 = **10**
+- **Announces**: "I subtract 10 from 20. The new number is 10."
+
+#### Turn 2: Player 2
+
+- **Current N**: 10
+- **Proper Divisors of 10**: 2, 5
+- **Player 2's Move**:
+  - Chooses divisor **5**
+  - Calculates new N: 10 - 5 = **5**
+- **Announces**: "I subtract 5 from 10. The new number is 5."
+
+#### Turn 3: Player 1
+
+- **Current N**: 5 (a prime number)
+- **Proper Divisors of 5**: None (since 1 and 5 are excluded)
+- **Player 1's Situation**:
+  - There are no valid moves.
+- **Result**:
+  - Player 1 cannot make a move and **loses** the game.
+- **Player 2 Wins**.
+
+### Example Game 2
+
+**Starting Number**: N = 30
+
+#### Turn 1: Player 1
+
+- **Current N**: 30
+- **Proper Divisors of 30**: 2, 3, 5, 6, 10, 15
+- **Player 1's Move**:
+  - Chooses divisor **15**
+  - Calculates new N: 30 - 15 = **15**
+- **Announces**: "I subtract 15 from 30. The new number is 15."
+
+#### Turn 2: Player 2
+
+- **Current N**: 15
+- **Proper Divisors of 15**: 3, 5
+- **Player 2's Move**:
+  - Chooses divisor **5**
+  - Calculates new N: 15 - 5 = **10**
+- **Announces**: "I subtract 5 from 15. The new number is 10."
+
+#### Turn 3: Player 1
+
+- **Current N**: 10
+- **Proper Divisors of 10**: 2, 5
+- **Player 1's Move**:
+  - Chooses divisor **2**
+  - Calculates new N: 10 - 2 = **8**
+- **Announces**: "I subtract 2 from 10. The new number is 8."
+
+#### Turn 4: Player 2
+
+- **Current N**: 8
+- **Proper Divisors of 8**: 2, 4
+- **Player 2's Move**:
+  - Chooses divisor **4**
+  - Calculates new N: 8 - 4 = **4**
+- **Announces**: "I subtract 4 from 8. The new number is 4."
+
+#### Turn 5: Player 1
+
+- **Current N**: 4
+- **Proper Divisors of 4**: 2
+- **Player 1's Move**:
+  - Chooses divisor **2**
+  - Calculates new N: 4 - 2 = **2**
+- **Announces**: "I subtract 2 from 4. The new number is 2."
+
+#### Turn 6: Player 2
+
+- **Current N**: 2 (a prime number)
+- **Proper Divisors of 2**: None
+- **Player 2's Situation**:
+  - There are no valid moves.
+- **Result**:
+  - Player 2 cannot make a move and **loses** the game.
+- **Player 1 Wins**.
+
+## Command-Line Interaction Example
+
+**Assumptions**:
+- The game prompts the current player for input.
+- Players input their chosen divisor when prompted.
+
+```plaintext
+Game Start! Initial number is 20.
+Player 1's turn.
+Current number: 20
+Proper divisors of 20 are: 2, 4, 5, 10
+Enter a proper divisor to subtract: 10
+Player 1 subtracts 10 from 20. New number is 10.
+
+Player 2's turn.
+Current number: 10
+Proper divisors of 10 are: 2, 5
+Enter a proper divisor to subtract: 5
+Player 2 subtracts 5 from 10. New number is 5.
+
+Player 1's turn.
+Current number: 5
+No proper divisors available. 5 is a prime number.
+Player 1 cannot make a move.
+Player 2 wins the game!
+```
+
+## Tips for Players
+
+- **Think Ahead**: Anticipate the possible responses from your opponent based on the current number.
+- **Aim for Primes**: Try to reduce the current number to a prime number on your turn, forcing your opponent into a losing position.
+- **Control the Divisors**: Choose divisors that leave the opponent with numbers that have fewer proper divisors.
+
+## Conclusion
+
+**Number Collapse** is a simple yet strategic game that challenges players to think ahead and utilize their knowledge of divisors and prime numbers. With straightforward rules and minimal components, it's easy to code and play in a command-line interface while providing depth and competitive gameplay that rewards skill and strategy.

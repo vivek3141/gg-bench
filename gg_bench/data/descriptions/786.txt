@@ -1,0 +1,148 @@
+# Seven-is-Forbidden
+
+## Objective
+
+The objective of **Seven-is-Forbidden** is to avoid being the player who creates a shared number divisible by 7. Players take turns adding digits to a growing number, strategically aiming to force their opponent into forming a number that is a multiple of 7. The player who, on their turn, creates such a number **loses** the game.
+
+## Setup
+
+- **Players**: Two players.
+- **Starting Condition**: The game begins with an empty shared number (no digits).
+- **Turn Order**: Players decide who goes first (can be determined randomly or by agreement).
+
+## Game Components
+
+- **Shared Number**: An integer that both players build upon during the game. It starts empty and grows as players append digits.
+- **Digits**: The numbers **1** through **9**. Players can choose any of these digits to add to the shared number on their turn. Each digit can be used multiple times without restriction.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Display**: The current shared number is displayed to both players.
+  2. **Action**: The current player selects a digit (1-9) to append to the shared number.
+  3. **Update**: The shared number is updated with the new digit appended at the end.
+  4. **Check**: The updated number is checked for divisibility by 7.
+  5. **Result**:
+     - If **not divisible by 7**, the game continues, and the turn passes to the other player.
+     - If **divisible by 7**, the current player loses, and the game ends.
+
+- **Turn Progression**: Players alternate turns until the game ends.
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - On their turn, a player must choose **one digit** from 1 to 9.
+   - The chosen digit is appended to the **end** of the shared number.
+
+2. **Building the Shared Number**:
+   - The shared number grows with each turn as digits are added.
+   - Example: If the shared number is `53` and the player adds `1`, it becomes `531`.
+
+3. **Divisibility Check**:
+   - After each turn, the updated shared number is checked to see if it is divisible by 7.
+   - Divisibility is determined by calculating `shared_number % 7`.
+   - If `shared_number % 7 == 0`, the number is divisible by 7.
+
+4. **Winning and Losing**:
+   - A player **loses** if they create a shared number divisible by 7 on their turn.
+   - The other player is then declared the **winner**.
+
+5. **Leading Zeros Prohibited**:
+   - The shared number cannot begin with a zero. Players cannot select `0` as a digit.
+
+6. **No Skipping Turns**:
+   - Players must take their turn; skipping is not allowed.
+
+7. **Digit Availability**:
+   - All digits from 1 to 9 are always available, regardless of previous selections.
+
+8. **No Draws**:
+   - The game cannot end in a draw. Play continues until one player loses.
+
+## Scoring
+
+- **Single-Game Outcome**:
+  - **Winner**: The player who **does not** create a number divisible by 7.
+  - **Loser**: The player who creates a number divisible by 7 on their turn.
+
+- **Match Play (Optional)**:
+  - Players may choose to play multiple games.
+  - Keep track of wins and losses over several rounds to determine an overall champion.
+
+## Examples
+
+### Example Game
+
+#### Initial State
+
+- **Shared Number**: (empty)
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Action**: Chooses digit `5`.
+   - **Shared Number**: `5`
+   - **Check**: `5 % 7 = 5` (not divisible)
+   - **Result**: Game continues.
+
+2. **Player 2's Turn**:
+   - **Action**: Chooses digit `3`.
+   - **Shared Number**: `53`
+   - **Check**: `53 % 7 = 4` (not divisible)
+   - **Result**: Game continues.
+
+3. **Player 1's Turn**:
+   - **Action**: Chooses digit `1`.
+   - **Shared Number**: `531`
+   - **Check**: `531 % 7 = 6` (not divisible)
+   - **Result**: Game continues.
+
+4. **Player 2's Turn**:
+   - **Action**: Chooses digit `4`.
+   - **Shared Number**: `5314`
+   - **Check**: `5314 % 7 = 0` (divisible)
+   - **Result**: **Player 2 loses**. Player 1 wins.
+
+### Command-Line Interaction Sample
+
+```
+Game Start!
+Shared Number: [empty]
+
+Player 1's Turn.
+Choose a digit to append (1-9): 5
+Shared Number: 5
+5 is not divisible by 7. Game continues.
+
+Player 2's Turn.
+Choose a digit to append (1-9): 3
+Shared Number: 53
+53 is not divisible by 7. Game continues.
+
+Player 1's Turn.
+Choose a digit to append (1-9): 1
+Shared Number: 531
+531 is not divisible by 7. Game continues.
+
+Player 2's Turn.
+Choose a digit to append (1-9): 4
+Shared Number: 5314
+5314 is divisible by 7.
+Player 2 loses the game. Player 1 wins!
+```
+
+## Strategic Tips
+
+- **Calculating Remainders**:
+  - To play strategically, keep track of the remainder when the shared number is divided by 7.
+  - Aim to select digits that leave a remainder that is advantageous for you and difficult for your opponent.
+
+- **Forcing Moves**:
+  - Try to force your opponent into a position where no matter what digit they choose, they will create a number divisible by 7.
+
+- **Practice Mental Math**:
+  - Improve your ability to calculate large numbers modulo 7 to enhance your strategic advantage.
+
+## Conclusion
+
+Seven-is-Forbidden is a simple yet strategically rich game that combines numerical skill with foresight. Easy to play in a command-line interface and quick to learn, it provides an engaging challenge where a skilled player can consistently outmaneuver an unskilled opponent. Enjoy testing your numerical wits and may the best strategist win!

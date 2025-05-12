@@ -1,0 +1,286 @@
+# Knight's Duel
+
+## Objective
+
+The primary goal of **Knight's Duel** is to **capture your opponent's knight** or to strategically **block them until they have no legal moves left**, resulting in your victory.
+
+---
+
+## Setup
+
+- **Game Board**: A 5x5 grid labeled with rows numbered **1 to 5** (top to bottom) and columns labeled **A to E** (left to right).
+- **Starting Positions**:
+  - **Player 1's Knight**: Placed on the top-left corner square **A1**.
+  - **Player 2's Knight**: Placed on the bottom-right corner square **E5**.
+- All other squares are **empty** at the beginning of the game.
+
+---
+
+## Game Components
+
+### Grid Board
+
+- A **5x5 grid** representing the game board.
+- Each square is identified by a **column letter (A–E)** and a **row number (1–5)**, forming coordinates like **A1**, **B3**, **E5**, etc.
+
+### Knights
+
+- Each player controls one **knight**, represented by their player number or a unique symbol (e.g., **1** for Player 1, **2** for Player 2).
+- **Movement**: Knights move in an **‘L’ shape**, similar to the knight in chess:
+  - Two squares in one cardinal direction (up, down, left, or right) and then one square perpendicular to that direction.
+
+### Blocked Squares
+
+- Represented by a specific symbol (e.g., **`X`**).
+- After a knight moves, the square it **moved from** becomes a blocked square.
+- **Blocked squares cannot be occupied or passed through** by either knight for the remainder of the game.
+
+---
+
+## Turns
+
+- Players **alternate turns**, starting with **Player 1**.
+- On each turn, a player must **move their knight** to a valid square following the movement rules.
+- Players enter their moves using the command line by specifying the **destination square coordinates**.
+
+---
+
+## Rules and Mechanics
+
+### Knight Movement
+
+1. **Movement Pattern**:
+   - Knights move in an **‘L’ shape**:
+     - Move two squares in one of the four cardinal directions (up, down, left, right).
+     - Then move one square perpendicular to that direction.
+   - **Examples from position C3**:
+     - Up two, left one: **B1**.
+     - Up two, right one: **D1**.
+     - Down two, left one: **B5**.
+     - Down two, right one: **D5**.
+     - Left two, up one: **A2**.
+     - Left two, down one: **A4**.
+     - Right two, up one: **E2**.
+     - Right two, down one: **E4**.
+
+2. **Valid Moves**:
+   - Knights **cannot move off the board**.
+   - Knights **cannot land on or pass through blocked squares**.
+   - Knights **can move to the square occupied by the opponent's knight** to capture it.
+
+### Blocked Squares
+
+1. **Creating Blocked Squares**:
+   - After moving, the square your knight **moved from becomes blocked**.
+   - Mark the blocked square with an **`X`** on the grid.
+
+2. **Restrictions**:
+   - Neither knight can **move onto or through** blocked squares.
+   - Blocked squares remain **blocked for the rest of the game**.
+
+### Capturing the Opponent's Knight
+
+- If you **move your knight onto the square occupied by the opponent's knight**, you **capture** it and **win the game**.
+
+### Losing by Inability to Move
+
+- If it's your turn and you have **no legal moves** (all possible moves are blocked or off the board), you **lose the game**.
+
+### No Passing or Skipping Turns
+
+- Players **must move** if they have a legal move.
+- There is **no option to pass** or skip a turn.
+
+---
+
+## Scoring
+
+- The game is a **win/loss** format with **no point system**.
+- **Victory Conditions**:
+  - **Capture** the opponent's knight.
+  - **Block** the opponent until they have no legal moves.
+- There is **no possibility of a draw**.
+
+---
+
+## Examples
+
+### Example Turn
+
+**Player 1's Turn**:
+
+- **Current Position**: `A1`.
+- **Possible Moves**:
+  - `B3` (two right, one down).
+  - `C2` (two down, one right).
+- **Move**: Player 1 moves to `C2`.
+- **Blocked Square**: Mark `A1` as blocked (`X`).
+
+**Player 2's Turn**:
+
+- **Current Position**: `E5`.
+- **Possible Moves**:
+  - `D3` (two left, one up).
+  - `C4` (two up, one left).
+- **Move**: Player 2 moves to `D3`.
+- **Blocked Square**: Mark `E5` as blocked (`X`).
+
+### Sample Game Scenario
+
+**Initial Setup**:
+
+```
+  A B C D E
+1 1 . . . .
+2 . . . . .
+3 . . . . .
+4 . . . . .
+5 . . . . 2
+```
+
+**Turn 1 - Player 1**:
+
+- **Move**: `A1` to `C2`.
+- **Blocked**: `A1`.
+- **Board**:
+
+```
+  A B C D E
+1 X . . . .
+2 . . 1 . .
+3 . . . . .
+4 . . . . .
+5 . . . . 2
+```
+
+**Turn 2 - Player 2**:
+
+- **Move**: `E5` to `D3`.
+- **Blocked**: `E5`.
+- **Board**:
+
+```
+  A B C D E
+1 X . . . .
+2 . . 1 . .
+3 . . . 2 .
+4 . . . . .
+5 . . . . X
+```
+
+**Turn 3 - Player 1**:
+
+- **Move**: `C2` to `E3`.
+- **Blocked**: `C2`.
+- **Board**:
+
+```
+  A B C D E
+1 X . . . .
+2 . . X . .
+3 . . . 2 1
+4 . . . . .
+5 . . . . X
+```
+
+**Turn 4 - Player 2**:
+
+- **Move**: `D3` to `C1`.
+- **Blocked**: `D3`.
+- **Board**:
+
+```
+  A B C D E
+1 X . 2 . .
+2 . . X . .
+3 . . X . 1
+4 . . . . .
+5 . . . . X
+```
+
+**Turn 5 - Player 1**:
+
+- **Move**: `E3` to `D5`.
+- **Blocked**: `E3`.
+- **Board**:
+
+```
+  A B C D E
+1 X . 2 . .
+2 . . X . .
+3 . . X . X
+4 . . . . .
+5 . . . 1 X
+```
+
+**Turn 6 - Player 2**:
+
+- **No Valid Moves**: All possible moves are blocked or off the board.
+- **Result**: Player 2 has no legal moves and **loses the game**.
+
+---
+
+## Command-Line Interaction
+
+- **Game Start**:
+
+  ```
+  Welcome to Knight's Duel!
+  Player 1's Knight is at A1.
+  Player 2's Knight is at E5.
+  ```
+
+- **Player Turn Prompt**:
+
+  ```
+  Player 1, it's your turn.
+  Your Knight is at A1.
+  Available moves: B3, C2
+  Enter your move: C2
+  ```
+
+- **Invalid Move Handling**:
+
+  ```
+  Invalid move. Please enter a valid destination from the list: B3, C2
+  ```
+
+- **Display Board After Each Turn**:
+
+  ```
+  Current Board:
+    A B C D E
+  1 X . . . .
+  2 . . 1 . .
+  3 . . . . .
+  4 . . . . .
+  5 . . . . 2
+  ```
+
+- **Game End Message**:
+
+  ```
+  Player 2 has no legal moves left.
+  Player 1 wins!
+  ```
+
+---
+
+## Strategic Depth
+
+- **Anticipation**: Predict the opponent's possible moves to position your knight advantageously.
+- **Blocking**: Use blocked squares strategically to limit the opponent's mobility while maintaining your own.
+- **Positioning**: Control the center of the board to maximize movement options and apply pressure.
+- **Forced Moves**: Create situations where the opponent's moves are limited, leading them into traps.
+
+---
+
+## Additional Notes
+
+- **Quick Gameplay**: The small grid and blocking mechanics ensure games are fast-paced.
+- **Skill Advantage**: Knowledge of movement combinations and foresight provides a consistent edge to skilled players.
+- **Unique Mechanics**: While inspired by the knight's movement in chess, the addition of blocking squares introduces new strategic elements not found in traditional games.
+
+---
+
+Enjoy playing **Knight's Duel** and may your strategic prowess lead you to victory!

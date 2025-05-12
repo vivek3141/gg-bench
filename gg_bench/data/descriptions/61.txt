@@ -1,0 +1,249 @@
+# Sequence Clash - A Two-Player Strategy Game
+
+## Objective
+
+Be the first player to create a strictly increasing sequence of **five** numbers by strategically selecting numbers from a shared deck. The game tests players' decision-making and foresight, ensuring skill triumphs over luck.
+
+## Setup
+
+- **Deck Preparation**:
+  - Create a deck containing numbers **1** through **9**, with each number appearing **twice** (total **18** cards).
+  - Shuffle the deck thoroughly to randomize the order.
+
+- **Player Sequences**:
+  - Both players start with an **empty sequence**.
+  - Decide who takes the first turn (e.g., flip a coin).
+
+## Game Components
+
+- **Deck of Numbered Cards**:
+  - Numbers **1-9**, two copies of each.
+  - The deck is shared between both players.
+
+- **Player Sequences**:
+  - Each player maintains their own sequence.
+  - Sequences are built by adding numbers from the deck.
+
+- **Discard Pile**:
+  - A shared face-up pile where discarded cards are placed.
+  - Discarded cards are out of play for the remainder of the game.
+
+## Turns
+
+- Players take **turns** alternating between Player 1 and Player 2.
+- **Turn Structure**:
+  1. **Draw Phase**:
+     - Draw the **top card** from the deck.
+     - The drawn card is revealed to both players.
+
+  2. **Decision Phase**:
+     - Choose to **add** the drawn number to your sequence **or** **discard** it.
+     - **Adding to Sequence**:
+       - The number must be **greater** than the last number in your sequence.
+       - If your sequence is empty, any number can be added.
+     - **Discarding**:
+       - Place the card face-up in the discard pile.
+       - Discarded cards cannot be used again.
+
+  3. **End of Turn**:
+     - The turn ends after the decision is made.
+     - Play passes to the other player.
+
+## Rules and Mechanics
+
+- **Sequence Building**:
+  - Sequences must be **strictly increasing**.
+    - Each new number must be **greater** than the previous one.
+  - Once a number is **added**, it **cannot** be removed or changed.
+
+- **Discarding**:
+  - If the drawn number cannot be added (it's not greater), it **must** be discarded.
+  - Players may **choose** to discard even if the number can be added.
+
+- **Winning the Game**:
+  - The first player to build a valid sequence of **five numbers** wins.
+  - If the deck is exhausted before either player completes their sequence:
+    - The player with the **longer** sequence wins.
+    - If sequences are of equal length:
+      - The player whose sequence ends with the **higher number** wins.
+
+- **No Draws**:
+  - If sequences are identical in length and last number:
+    - The player who took the **second turn loses**.
+    - This ensures there is always a winner.
+
+- **Game End**:
+  - The game ends immediately when a player wins based on the rules above.
+
+## Scoring
+
+- **Winning by Sequence Completion**:
+  - Achieve a strictly increasing sequence of five numbers before your opponent.
+
+- **Winning by Sequence Length**:
+  - If neither player reaches five numbers, the player with the **longer sequence** wins.
+
+- **Winning by Higher Last Number**:
+  - If sequences are equal in length, the player with the **higher last number** wins.
+
+- **Tie-Breaker**:
+  - If sequences are identical, the player who went **second loses**.
+
+## Examples
+
+### Example Game Play
+
+**Starting the Game**:
+- Player 1 and Player 2 agree that Player 1 will start.
+
+---
+
+**Turn 1: Player 1**
+- **Draws**: `4`
+- **Decision**: Adds `4` to their sequence.
+- **Sequence**: `[4]`
+
+**Turn 2: Player 2**
+- **Draws**: `7`
+- **Decision**: Adds `7` to their sequence.
+- **Sequence**: `[7]`
+
+---
+
+**Turn 3: Player 1**
+- **Draws**: `2`
+- **Decision**: Cannot add `2` (not greater than `4`), discards it.
+- **Discard Pile**: `[2]`
+
+**Turn 4: Player 2**
+- **Draws**: `5`
+- **Decision**: Discards `5` (chooses not to add, anticipating higher numbers).
+- **Discard Pile**: `[2, 5]`
+
+---
+
+**Turn 5: Player 1**
+- **Draws**: `6`
+- **Decision**: Adds `6` to their sequence.
+- **Sequence**: `[4, 6]`
+
+**Turn 6: Player 2**
+- **Draws**: `8`
+- **Decision**: Adds `8` to their sequence.
+- **Sequence**: `[7, 8]`
+
+---
+
+**Turn 7: Player 1**
+- **Draws**: `9`
+- **Decision**: Adds `9` to their sequence.
+- **Sequence**: `[4, 6, 9]`
+
+**Turn 8: Player 2**
+- **Draws**: `4`
+- **Decision**: Discards `4` (cannot add, it's less than `8`).
+- **Discard Pile**: `[2, 5, 4]`
+
+---
+
+**Turn 9: Player 1**
+- **Draws**: `1`
+- **Decision**: Discards `1`.
+- **Discard Pile**: `[2, 5, 4, 1]`
+
+**Turn 10: Player 2**
+- **Draws**: `6`
+- **Decision**: Discards `6` (less than `8`).
+- **Discard Pile**: `[2, 5, 4, 1, 6]`
+
+---
+
+**Turns Continue** until one player achieves a sequence of five numbers or the deck runs out.
+
+---
+
+**End Game Scenario**:
+- Suppose the deck runs out.
+- **Player Sequences**:
+  - Player 1: `[4, 6, 9]` (Length: 3)
+  - Player 2: `[7, 8, 9]` (Length: 3)
+- **Last Numbers**:
+  - Player 1: `9`
+  - Player 2: `9`
+- **Result**:
+  - Sequences are equal in length and end with the same number.
+  - According to the tie-breaker, **Player 2 loses** (since they went second).
+  - **Winner**: Player 1
+
+## Command-Line Interaction Example
+
+```
+Welcome to Sequence Clash!
+
+Player 1's Sequence: []
+Player 2's Sequence: []
+
+Player 1's turn.
+Deck has 18 cards remaining.
+You draw a '4'.
+Options:
+1. Add '4' to your sequence.
+2. Discard '4'.
+Enter choice (1 or 2): 1
+You added '4' to your sequence.
+Player 1's Sequence: [4]
+
+Player 2's turn.
+Deck has 17 cards remaining.
+You draw a '7'.
+Options:
+1. Add '7' to your sequence.
+2. Discard '7'.
+Enter choice (1 or 2): 1
+You added '7' to your sequence.
+Player 2's Sequence: [7]
+
+Player 1's turn.
+Deck has 16 cards remaining.
+You draw a '2'.
+You cannot add '2' to your sequence and must discard it.
+Discard Pile: [2]
+
+Player 2's turn.
+Deck has 15 cards remaining.
+You draw a '5'.
+Options:
+1. Add '5' to your sequence.
+2. Discard '5'.
+Enter choice (1 or 2): 2
+You discarded '5'.
+Discard Pile: [2, 5]
+
+...
+
+Game Over!
+Player 1 wins with sequence: [4, 6, 9]
+```
+
+## Strategy Tips
+
+- **Balance Risk and Reward**:
+  - Adding low numbers can help build your sequence early but may limit future options.
+  - Holding out for higher numbers can be risky if the deck runs out.
+
+- **Card Counting**:
+  - Pay attention to which numbers have been discarded.
+  - This information can help predict the likelihood of drawing higher numbers.
+
+- **Opponent's Sequence**:
+  - Keep an eye on your opponent's sequence.
+  - Adjust your strategy based on their progress to outpace them.
+
+- **Discard Wisely**:
+  - Sometimes it's better to discard a number to avoid blocking yourself later.
+
+## Conclusion
+
+Sequence Clash is a game of strategic planning and adaptability. Every decision impacts your path to victory, making it crucial to think ahead and anticipate both your draws and your opponent's moves. With simple rules and deep strategy, it's a perfect game for quick matches that test your analytical skills.
+
+Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,238 @@
+# Edge Escape
+
+## Objective
+
+**Edge Escape** is a two-player, turn-based strategy game played on a 5x5 grid. Players take turns moving a shared token starting from the center of the grid. The primary goal is to be the first player to move the token onto an edge cell of the grid. The player who successfully moves the token to any edge cell wins the game. If a player cannot make a legal move on their turn, they lose the game.
+
+## Setup
+
+1. **Game Grid**: The game is played on a 5x5 grid labeled with coordinates (row, column) ranging from (1,1) at the top-left corner to (5,5) at the bottom-right corner.
+2. **Starting Position**: Place the token in the center of the grid at cell **(3,3)**.
+3. **Player Assignment**: Decide which player will take the first turn. Players can agree or flip a coin to determine who starts.
+
+## Game Components
+
+- **Grid**: A 5x5 grid represented in the command-line interface, with rows and columns numbered 1 through 5.
+- **Token**: A marker indicating the current position on the grid (e.g., `T`).
+- **Occupied Cells**: Cells that have been previously visited are marked to indicate they cannot be revisited (e.g., `X` for visited cells).
+
+## Turns
+
+- **Turn Order**: Players alternate turns starting with the first player.
+- **Player Actions**: On each turn, a player must move the token to an unvisited adjacent cell.
+- **Movement Options**: The token can move **up**, **down**, **left**, or **right** to an adjacent cell. Diagonal moves are not allowed.
+- **Progression**: After moving the token, the cell it moved from is marked as visited and cannot be re-entered.
+
+## Rules and Mechanics
+
+1. **Legal Moves**:
+   - The token must move to an **adjacent unvisited cell**.
+   - Adjacent cells are those directly above, below, to the left, or to the right of the current cell.
+   - The token **cannot move diagonally**.
+   - The token **cannot move off the grid**.
+   - The token **cannot move to a visited cell**.
+2. **Winning the Game**:
+   - A player wins by moving the token onto any **edge cell** of the grid. Edge cells are those where the row is 1 or 5, or the column is 1 or 5.
+3. **Losing the Game**:
+   - If a player has **no legal moves** on their turn (i.e., all adjacent cells are either visited or off the grid), they lose the game.
+4. **Visited Cells**:
+   - Once the token leaves a cell, that cell is marked as **visited** and cannot be entered again.
+5. **No Skipping Turns**:
+   - Players **must move** if they have a legal move available.
+6. **No Draws**:
+   - The game continues until one player wins or loses according to the rules above. There is **no possibility of a draw**.
+
+## Scoring
+
+- **Winning**: The player who moves the token onto an edge cell or forces the opponent to have no legal moves **wins the game**.
+- **Losing**: The player who cannot make a legal move on their turn **loses the game**.
+- **Tracking**: No points are accumulated; only the win/loss outcome is recorded per game.
+
+## Examples
+
+### Example Scenario
+
+#### Initial Grid State:
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   | T |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+- `T` represents the token at starting position (3,3).
+- All other cells are unvisited.
+
+#### Turn 1: Player 1
+
+- **Action**: Moves the token **up** to cell **(2,3)**.
+- **Grid Update**:
+  - Mark cell (3,3) as visited (`X`).
+  - Update token position to (2,3).
+
+**Grid State:**
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   | T |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 2: Player 2
+
+- **Action**: Moves the token **left** to cell **(2,2)**.
+- **Grid Update**:
+  - Mark cell (2,3) as visited (`X`).
+  - Update token position to (2,2).
+
+**Grid State:**
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   | T | X |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 3: Player 1
+
+- **Action**: Moves the token **down** to cell **(3,2)**.
+- **Grid Update**:
+  - Mark cell (2,2) as visited (`X`).
+  - Update token position to (3,2).
+
+**Grid State:**
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   | X | X |   |   |
+  +---+---+---+---+---+
+3 |   | T | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 4: Player 2
+
+- **Action**: Moves the token **left** to cell **(3,1)**.
+- **Grid Update**:
+  - Mark cell (3,2) as visited (`X`).
+  - Update token position to (3,1).
+
+**Grid State:**
+
+```
+    1   2   3   4   5
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   | X | X |   |   |
+  +---+---+---+---+---+
+3 | T | X | X |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Outcome:
+
+- Player 2 has moved the token to an **edge cell** at **(3,1)**.
+- **Player 2 wins the game**.
+
+### Sample Command-Line Interaction
+
+#### Starting the Game:
+
+```
+Welcome to Edge Escape!
+
+Player 1, you will make the first move.
+
+Starting position: (3,3)
+```
+
+#### Turn 1: Player 1
+
+```
+Current position: (3,3)
+Available moves: Up (2,3), Down (4,3), Left (3,2), Right (3,4)
+Enter your move (up/down/left/right): up
+
+You moved up to (2,3).
+```
+
+#### Turn 2: Player 2
+
+```
+Current position: (2,3)
+Available moves: Up (1,3), Down (3,3) [visited], Left (2,2), Right (2,4)
+Enter your move (left/right): left
+
+You moved left to (2,2).
+```
+
+#### Turn 3: Player 1
+
+```
+Current position: (2,2)
+Available moves: Up (1,2), Down (3,2), Left (2,1), Right (2,3) [visited]
+Enter your move (down): down
+
+You moved down to (3,2).
+```
+
+#### Turn 4: Player 2
+
+```
+Current position: (3,2)
+Available moves: Up (2,2) [visited], Down (4,2), Left (3,1), Right (3,3) [visited]
+Enter your move (left): left
+
+You moved left to (3,1).
+
+Congratulations! You've moved the token to an edge cell. Player 2 wins!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Consider the possible future moves to avoid being forced into a position with no legal moves.
+- **Control the Center**: Early in the game, maintain positions that give you multiple options.
+- **Force Moves**: Try to limit your opponent's options by guiding the token towards areas with fewer unvisited cells.
+
+## Conclusion
+
+Edge Escape is a simple yet strategic game that requires foresight and planning. By carefully navigating the token and anticipating your opponent's moves, you can consistently outmaneuver less experienced players. Enjoy the challenge and may the best strategist win!

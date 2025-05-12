@@ -1,0 +1,199 @@
+# Prime Time: A Two-Player Strategic Number Game
+
+## Objective
+
+Be the first player to accumulate a total sum of prime numbers that exceeds **50**. Strategic selection of prime numbers will help you reach the goal while preventing your opponent from doing the same.
+
+## Setup
+
+- **Players**: Two players.
+- **Starting Condition**: Both players start with a total sum of **0**.
+- **Number Pool**: A shared pool of prime numbers from **2** to **29**.
+
+## Game Components
+
+- **Prime Number Tokens**: Numbers representing prime numbers between **2** and **29** inclusive. The primes are: **2, 3, 5, 7, 11, 13, 17, 19, 23, 29**.
+  - Each prime number is available as a single token in the shared pool.
+  - **Appearance**: Each token displays the prime number it represents.
+  - **Functionality**: Tokens are selected by players to add to their total sum.
+  
+## Turns
+
+- Players alternate turns starting with Player 1.
+- **On Your Turn**:
+  - **Select a Prime Number Token** from the shared pool.
+  - **Add the Selected Prime** to your total sum.
+  - The selected prime number is **removed** from the shared pool and is **no longer available** for selection.
+- **Turn Progression**:
+  - After a player completes their turn, the next player takes their turn following the same rules.
+  
+## Rules and Mechanics
+
+1. **Prime Selection**:
+   - Only prime numbers from the shared pool can be selected.
+   - Each prime number can be selected **only once** during the game.
+2. **Accumulating Sum**:
+   - Players keep a **running total** of the prime numbers they have selected.
+   - The total sum is updated each turn by adding the newly selected prime number.
+3. **Winning the Game**:
+   - The first player to reach a **total sum greater than 50** wins the game immediately.
+4. **End of Game Conditions**:
+   - If all prime numbers have been selected and **no player has exceeded a total sum of 50**, the player with the **higher total sum** wins.
+   - In the event of both players having **equal total sums** after all primes are selected without exceeding 50, the last player to have taken a turn **loses**. (This ensures there is **no draw**.)
+5. **Strategic Considerations**:
+   - Players must plan their selections to maximize their total while limiting the options available to their opponent.
+   - Being attentive to the remaining primes and the opponent's total sum is crucial.
+
+## Scoring
+
+- **Total Sum Tracking**:
+  - Each player's score is the **sum of their selected prime numbers**.
+  - Scores are updated and announced after each turn.
+- **Winning Score**:
+  - Exceeding a total sum of **50** points results in an immediate win.
+
+## Example Gameplay
+
+### Initial Setup
+
+- **Shared Prime Pool**: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+- **Player Totals**:
+  - Player 1 Total: 0
+  - Player 2 Total: 0
+- **Starting Player**: Player 1
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Available Primes**: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+- **Action**: Player 1 selects **29**.
+- **Updates**:
+  - Player 1 Total: 0 + 29 = **29**
+  - Available Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23
+- **Output**:
+  ```
+  Player 1 selects 29.
+  Player 1 Total Sum: 29
+  ```
+
+#### Turn 2: Player 2
+
+- **Available Primes**: 2, 3, 5, 7, 11, 13, 17, 19, 23
+- **Action**: Player 2 selects **23**.
+- **Updates**:
+  - Player 2 Total: 0 + 23 = **23**
+  - Available Primes: 2, 3, 5, 7, 11, 13, 17, 19
+- **Output**:
+  ```
+  Player 2 selects 23.
+  Player 2 Total Sum: 23
+  ```
+
+#### Turn 3: Player 1
+
+- **Available Primes**: 2, 3, 5, 7, 11, 13, 17, 19
+- **Action**: Player 1 selects **19**.
+- **Updates**:
+  - Player 1 Total: 29 + 19 = **48**
+  - Available Primes: 2, 3, 5, 7, 11, 13, 17
+- **Output**:
+  ```
+  Player 1 selects 19.
+  Player 1 Total Sum: 48
+  ```
+
+#### Turn 4: Player 2
+
+- **Available Primes**: 2, 3, 5, 7, 11, 13, 17
+- **Action**: Player 2 selects **5**.
+- **Updates**:
+  - Player 2 Total: 23 + 5 = **28**
+  - Available Primes: 2, 3, 7, 11, 13, 17
+- **Output**:
+  ```
+  Player 2 selects 5.
+  Player 2 Total Sum: 28
+  ```
+
+#### Turn 5: Player 1
+
+- **Available Primes**: 2, 3, 7, 11, 13, 17
+- **Action**: Player 1 selects **13**.
+- **Updates**:
+  - Player 1 Total: 48 + 13 = **61**
+  - Player 1's total exceeds 50.
+- **Output**:
+  ```
+  Player 1 selects 13.
+  Player 1 Total Sum: 61
+  Player 1 has exceeded 50 and wins the game!
+  ```
+
+### Command-Line Interaction Example
+
+Below is a simplified example of how the game might play out in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to Prime Time!
+
+Primes Available: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+
+Player 1 Total Sum: 0
+Player 2 Total Sum: 0
+
+Player 1, it's your turn.
+Select a prime number: 29
+
+Player 1 selects 29.
+Player 1 Total Sum: 29
+
+Primes Remaining: 2, 3, 5, 7, 11, 13, 17, 19, 23
+
+Player 2, it's your turn.
+Select a prime number: 23
+
+Player 2 selects 23.
+Player 2 Total Sum: 23
+
+Primes Remaining: 2, 3, 5, 7, 11, 13, 17, 19
+
+Player 1, it's your turn.
+Select a prime number: 19
+
+Player 1 selects 19.
+Player 1 Total Sum: 48
+
+Primes Remaining: 2, 3, 5, 7, 11, 13, 17
+
+Player 2, it's your turn.
+Select a prime number: 5
+
+Player 2 selects 5.
+Player 2 Total Sum: 28
+
+Primes Remaining: 2, 3, 7, 11, 13, 17
+
+Player 1, it's your turn.
+Select a prime number: 13
+
+Player 1 selects 13.
+Player 1 Total Sum: 61
+
+Player 1 has exceeded 50 and wins the game!
+
+Congratulations, Player 1!
+```
+
+## Strategic Tips
+
+- **Monitor Totals**: Keep track of both your and your opponent's total sums to inform your strategy.
+- **Prime Selection**: Opt for larger primes early to quickly increase your total, but be cautious of overshooting 50 without securing a win.
+- **Blocking Strategy**: Anticipate which primes your opponent may need and select those to limit their options.
+- **Counting Ahead**: Calculate possible sums remaining with the available primes to plan your moves effectively.
+
+---
+
+Enjoy playing **Prime Time** and may the best strategist win!

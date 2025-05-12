@@ -1,0 +1,384 @@
+# Lock and Key: A Two-Player Strategic Duel
+
+## Objective
+
+**Lock and Key** is a strategic two-player, turn-based game played on a linear board. The primary goal is to capture your opponent's **Key** token before they capture yours. Use your **Lock** tokens to protect your **Key** and strategize movements to outmaneuver your opponent. The first player to capture the opponent's **Key** wins the game.
+
+---
+
+## Setup
+
+1. **Board Layout**: The game is played on a linear board consisting of **7 positions** numbered from **1** to **7**.
+
+2. **Starting Positions**:
+   - **Player 1**:
+     - Places their **Key** token on position **1**.
+     - Places their two **Lock** tokens on any two positions among **2** and **3**.
+   - **Player 2**:
+     - Places their **Key** token on position **7**.
+     - Places their two **Lock** tokens on any two positions among **5** and **6**.
+
+3. **Example Initial Setup**:
+
+   ```
+   Positions:  [1] [2] [3] [4] [5] [6] [7]
+               [K1][L1][L1][  ][L2][L2][K2]
+   ```
+
+   - `K1`: Player 1's Key
+   - `L1`: Player 1's Locks
+   - `K2`: Player 2's Key
+   - `L2`: Player 2's Locks
+
+---
+
+## Game Components
+
+- **Linear Board**: A sequence of positions numbered from 1 to 7.
+- **Tokens**:
+  - **Key Tokens** (`K1` and `K2`):
+    - Each player has one **Key** token.
+    - The Key is the primary piece; losing it means losing the game.
+  - **Lock Tokens** (`L1` and `L2`):
+    - Each player has two **Lock** tokens.
+    - Locks are used to protect your Key and impede your opponent.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Decide who goes first (e.g., by coin toss).
+   - Players take turns alternately throughout the game.
+
+2. **Action on Turn**:
+   - On your turn, you **must** move one of your tokens forward by one position.
+
+3. **Movement Rules**:
+   - **Forward Movement**:
+     - **Player 1** moves tokens to the right (higher-numbered positions).
+     - **Player 2** moves tokens to the left (lower-numbered positions).
+   - **Single Position**:
+     - Tokens move one position per turn; skipping positions is not allowed.
+
+4. **Capturing Tokens**:
+   - If your token lands on a position occupied by an opponent's token, the following rules apply:
+     - **Key vs. Lock**:
+       - Your **Key** can capture an opponent's **Lock**.
+       - Your **Lock** cannot capture an opponent's **Key**.
+     - **Lock vs. Lock**:
+       - Your **Lock** can capture an opponent's **Lock**.
+     - **Key vs. Key**:
+       - Your **Key** can capture the opponent's **Key** to win the game.
+
+---
+
+## Rules and Mechanics
+
+1. **Token Movement**:
+   - **Mandatory Movement**: You must move a token on your turn if possible.
+   - **Blocked Positions**: You cannot move a token into a position already occupied by one of your own tokens.
+
+2. **Capturing Mechanics**:
+   - **Capturing**: When you move onto a position occupied by an opponent's token that you can capture, remove the opponent's token from the board.
+   - **Protection**: Use your Locks to protect your Key by positioning them strategically.
+
+3. **Winning the Game**:
+   - You win the game by capturing your opponent's **Key** token.
+
+4. **Game End Conditions**:
+   - **Victory**: Successfully capture the opponent's Key.
+   - **Stalemate Prevention**:
+     - Since movement is mandatory and the board is limited, the game cannot result in a draw.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - The player who captures the opponent's Key is declared the winner.
+- **No Point System**:
+  - There are no points or scoring beyond the victory condition.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+#### Initial Setup
+
+```
+Positions:  [1] [2] [3] [4] [5] [6] [7]
+            [K1][L1][L1][  ][L2][L2][K2]
+```
+
+- `K1`: Player 1's Key at position 1.
+- `L1`: Player 1's Locks at positions 2 and 3.
+- `L2`: Player 2's Locks at positions 5 and 6.
+- `K2`: Player 2's Key at position 7.
+
+#### Turn by Turn Breakdown
+
+##### Turn 1: Player 1
+
+- **Action**: Move `L1` from position 3 to position 4.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [K1][L1][  ][L1][L2][L2][K2]
+  ```
+
+##### Turn 2: Player 2
+
+- **Action**: Move `L2` from position 5 to position 4.
+- **Result**: Player 2's Lock captures Player 1's Lock at position 4.
+
+  - Remove Player 1's `L1` from position 4.
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [K1][L1][  ][L2][  ][L2][K2]
+  ```
+
+##### Turn 3: Player 1
+
+- **Action**: Move `L1` from position 2 to position 3.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [L1][  ][L2][K2]
+              [K1][  ][  ][L2][  ][L2][K2]
+  ```
+
+##### Turn 4: Player 2
+
+- **Action**: Move `L2` from position 6 to position 5.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [K1][  ][  ][L2][L2][  ][K2]
+  ```
+
+##### Turn 5: Player 1
+
+- **Action**: Move `L1` from position 3 to position 4.
+- **Result**: Player 1's Lock captures Player 2's Lock at position 4.
+
+  - Remove Player 2's `L2` from position 4.
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [K1][  ][  ][L1][L2][  ][K2]
+  ```
+
+##### Turn 6: Player 2
+
+- **Action**: Move `L2` from position 5 to position 4.
+- **Result**: Player 2's Lock captures Player 1's Lock at position 4.
+
+  - Remove Player 1's `L1` from position 4.
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [K1][  ][  ][L2][  ][  ][K2]
+  ```
+
+##### Turn 7: Player 1
+
+- **Action**: Move `K1` from position 1 to position 2.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][K1][  ][L2][  ][  ][K2]
+  ```
+
+##### Turn 8: Player 2
+
+- **Action**: Move `L2` from position 4 to position 3.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][K1][L2][  ][  ][  ][K2]
+  ```
+
+##### Turn 9: Player 1
+
+- **Action**: Move `K1` from position 2 to position 3.
+- **Result**: Player 1's Key captures Player 2's Lock at position 3.
+
+  - Remove Player 2's `L2` from position 3.
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][  ][K1][  ][  ][  ][K2]
+  ```
+
+##### Turn 10: Player 2
+
+- **Action**: Move `K2` from position 7 to position 6.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][  ][K1][  ][  ][K2][  ]
+  ```
+
+##### Turn 11: Player 1
+
+- **Action**: Move `K1` from position 3 to position 4.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][  ][  ][K1][  ][K2][  ]
+  ```
+
+##### Turn 12: Player 2
+
+- **Action**: Move `K2` from position 6 to position 5.
+- **Result**:
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][  ][  ][K1][K2][  ][  ]
+  ```
+
+##### Turn 13: Player 1
+
+- **Action**: Move `K1` from position 4 to position 5.
+- **Result**: Player 1's Key captures Player 2's Key at position 5.
+
+  - Remove Player 2's `K2` from position 5.
+
+  ```
+  Positions:  [1] [2] [3] [4] [5] [6] [7]
+              [  ][  ][  ][  ][K1][  ][  ]
+  ```
+
+- **Outcome**: Player 1 captures Player 2's Key and **wins the game**.
+
+---
+
+## Command-Line Interaction Example
+
+Assuming a simple command-line interface where players input their moves by specifying the token and the target position.
+
+### Symbols:
+
+- `K1`: Player 1's Key
+- `L1a`, `L1b`: Player 1's Locks
+- `K2`: Player 2's Key
+- `L2a`, `L2b`: Player 2's Locks
+
+### Initial Setup:
+
+Player 1:
+- `K1` at position `1`
+- `L1a` at position `2`
+- `L1b` at position `3`
+
+Player 2:
+- `K2` at position `7`
+- `L2a` at position `6`
+- `L2b` at position `5`
+
+### Gameplay Example:
+
+#### Turn 1: Player 1
+
+- **Input**: `move L1b 4`
+- **Output**: `Player 1 moves L1b to position 4.`
+
+#### Turn 2: Player 2
+
+- **Input**: `move L2b 4`
+- **Output**:
+  ```
+  Player 2 moves L2b to position 4.
+  Player 2's L2b captures Player 1's L1b at position 4.
+  ```
+
+#### Turn 3: Player 1
+
+- **Input**: `move L1a 3`
+- **Output**: `Player 1 moves L1a to position 3.`
+
+#### Turn 4: Player 2
+
+- **Input**: `move L2a 5`
+- **Output**: `Player 2 moves L2a to position 5.`
+
+#### Turn 5: Player 1
+
+- **Input**: `move L1a 4`
+- **Output**:
+  ```
+  Player 1 moves L1a to position 4.
+  Player 1's L1a captures Player 2's L2b at position 4.
+  ```
+
+#### Turn 6: Player 2
+
+- **Input**: `move L2a 4`
+- **Output**:
+  ```
+  Player 2 moves L2a to position 4.
+  Player 2's L2a captures Player 1's L1a at position 4.
+  ```
+
+#### Turn 7: Player 1
+
+- **Input**: `move K1 2`
+- **Output**: `Player 1 moves K1 to position 2.`
+
+#### Turn 8: Player 2
+
+- **Input**: `move K2 6`
+- **Output**: `Player 2 moves K2 to position 6.`
+
+#### Turn 9: Player 1
+
+- **Input**: `move K1 3`
+- **Output**:
+  ```
+  Player 1 moves K1 to position 3.
+  Player 1's K1 captures Player 2's L2a at position 3.
+  ```
+
+#### Turn 10: Player 2
+
+- **Input**: `move K2 5`
+- **Output**: `Player 2 moves K2 to position 5.`
+
+#### Turn 11: Player 1
+
+- **Input**: `move K1 4`
+- **Output**: `Player 1 moves K1 to position 4.`
+
+#### Turn 12: Player 2
+
+- **Input**: `move K2 4`
+- **Output**:
+  ```
+  Player 2 moves K2 to position 4.
+  Player 2's K2 captures Player 1's K1 at position 4.
+  Player 2 wins the game!
+  ```
+
+---
+
+## Strategy Tips
+
+- **Protect Your Key**: Use your Locks to block direct paths to your Key.
+- **Control the Center**: Dominating the middle positions can give you an advantage in both offense and defense.
+- **Predict Opponent's Moves**: Anticipate your opponent's strategy to position your tokens effectively.
+- **Forced Moves**: Try to force your opponent into positions where they have limited options.
+
+---
+
+**Enjoy playing Lock and Key, and may the best strategist win!**

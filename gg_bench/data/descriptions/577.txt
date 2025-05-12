@@ -1,0 +1,206 @@
+# Equilibria: A Two-Player Command-Line Strategy Game
+
+## Objective
+
+**Equilibria** is a strategic two-player game where the primary goal is to be the first player to return the shared balance to exactly zero. Players achieve victory by thoughtfully adding or subtracting numbered weights to manipulate the balance, adhering to the game's rules. A player loses if they cannot make a valid move on their turn or if they overshoot the balance beyond the allowable moves.
+
+---
+
+## Setup
+
+1. **Initial Balance**: The game starts with a shared balance set to **zero**.
+2. **Available Weights**: A set of weights numbered from **1** to **10**. All weights are initially **available** for use.
+3. **Player Roles**: Decide which player goes **first**. This can be determined randomly or by mutual agreement.
+
+---
+
+## Game Components
+
+- **Shared Balance**: An integer value representing the current state of the game, starting at zero.
+- **Weights (1 to 10)**: Numerical values that players will add or subtract from the shared balance.
+  - **Appearance**: Represented by their numerical value (e.g., `1`, `2`, ..., `10`).
+  - **Functionality**: Each weight can be used **once per game**.
+- **Turn Indicator**: Keeps track of whose turn it is.
+- **Move History**: A log of all moves made, including the weight used and the operation performed.
+
+---
+
+## Turns
+
+1. **Turn Structure**:
+   - Players take **alternate turns**.
+   - On each turn, a player **selects an available weight** and chooses to either **add** or **subtract** it from the shared balance.
+2. **Order of Actions**:
+   - **Select Weight**: Choose an unused weight from 1 to 10.
+   - **Choose Operation**: Decide to add (`+`) or subtract (`-`) the weight.
+   - **Update Balance**: Apply the operation to the shared balance.
+   - **Update Available Weights**: Remove the used weight from the list of available weights.
+   - **Check for Victory or Defeat**: Determine if the game has been won or if the next player cannot make a valid move.
+3. **Progression of Turns**:
+   - The turn passes to the other player after the current player completes their move.
+   - The game continues until a player **wins** or a player **cannot make a valid move**, resulting in their loss.
+
+---
+
+## Rules and Mechanics
+
+1. **Weight Usage**:
+   - Each weight from **1 to 10** can be used **only once per game**.
+   - Once a weight is used by either player, it is **no longer available**.
+
+2. **Operations**:
+   - On their turn, a player can choose to either **add** (`+`) or **subtract** (`-`) their selected weight from the shared balance.
+   - There are **no restrictions** on choosing the same operation in successive turns.
+
+3. **Valid Moves**:
+   - A move is valid if:
+     - The selected weight is **available**.
+     - The operation results in a new balance within the range of possible future moves (i.e., doesn't make it impossible for the opponent to play unless it's a winning move).
+
+4. **Winning the Game**:
+   - A player wins if they adjust the shared balance to **exactly zero** on their turn.
+   - A player also wins if their opponent has **no valid moves** on their turn.
+
+5. **Losing the Game**:
+   - A player loses if:
+     - They cannot make a valid move when it's their turn.
+     - They make an invalid move (e.g., using an unavailable weight).
+
+6. **Game End Conditions**:
+   - The game ends immediately when either player **wins** or **loses** according to the rules above.
+
+7. **Fair Play**:
+   - Players must adhere strictly to the rules.
+   - Any attempt to cheat or make an illegal move results in an **automatic loss**.
+
+---
+
+## Scoring
+
+- **Victory**: The winning player may be awarded a point in a series of games.
+- **Series Play**: Players can track wins over multiple games to determine an overall champion.
+- **No Draws**: There is no mechanism for a draw; every game has a clear winner.
+
+---
+
+## Examples
+
+### Example Game
+
+**Starting Position**:
+- Shared Balance: `0`
+- Available Weights: `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`
+
+---
+
+**Player 1's Turn**:
+- **Select Weight**: `3`
+- **Operation**: `+`
+- **Calculation**: `0 + 3 = 3`
+- **Shared Balance**: `3`
+- **Available Weights**: `[1, 2, 4, 5, 6, 7, 8, 9, 10]`
+
+_Command-line Interaction_:
+```
+Player 1's Turn:
+Available Weights: [1,2,3,4,5,6,7,8,9,10]
+Select a weight: 3
+Choose operation (+ or -): +
+New Balance: 3
+```
+
+---
+
+**Player 2's Turn**:
+- **Select Weight**: `5`
+- **Operation**: `-`
+- **Calculation**: `3 - 5 = -2`
+- **Shared Balance**: `-2`
+- **Available Weights**: `[1, 2, 4, 6, 7, 8, 9, 10]`
+
+_Command-line Interaction_:
+```
+Player 2's Turn:
+Available Weights: [1,2,4,5,6,7,8,9,10]
+Select a weight: 5
+Choose operation (+ or -): -
+New Balance: -2
+```
+
+---
+
+**Player 1's Turn**:
+- **Select Weight**: `6`
+- **Operation**: `+`
+- **Calculation**: `-2 + 6 = 4`
+- **Shared Balance**: `4`
+- **Available Weights**: `[1, 2, 4, 7, 8, 9, 10]`
+
+---
+
+**Player 2's Turn**:
+- **Select Weight**: `4`
+- **Operation**: `-`
+- **Calculation**: `4 - 4 = 0`
+- **Shared Balance**: `0`
+- **Available Weights**: `[1, 2, 7, 8, 9, 10]`
+
+**Result**:
+- **Player 2 Wins** by bringing the balance to exactly zero.
+
+---
+
+### Strategy Tips
+
+- **Plan Ahead**: Anticipate future moves by keeping track of remaining weights.
+- **Balance Control**: Manipulate the balance to numbers that limit your opponent's options.
+- **Weight Value Awareness**: Use higher weights strategically to reach zero or force the opponent into a difficult position.
+
+---
+
+## Command-Line Interaction Sample
+
+Below is a sample of how the game might be played in a command-line interface:
+
+```
+Welcome to Equilibria!
+
+Starting Balance: 0
+Available Weights: [1,2,3,4,5,6,7,8,9,10]
+
+Player 1's Turn:
+Available Weights: [1,2,3,4,5,6,7,8,9,10]
+Select a weight: 2
+Choose operation (+ or -): +
+New Balance: 2
+
+Player 2's Turn:
+Available Weights: [1,3,4,5,6,7,8,9,10]
+Select a weight: 5
+Choose operation (+ or -): -
+New Balance: 2 - 5 = -3
+
+Player 1's Turn:
+Available Weights: [1,3,4,6,7,8,9,10]
+Select a weight: 7
+Choose operation (+ or -): +
+New Balance: -3 + 7 = 4
+
+Player 2's Turn:
+Available Weights: [1,3,4,6,8,9,10]
+Select a weight: 4
+Choose operation (+ or -): -
+New Balance: 4 - 4 = 0
+
+Player 2 wins by bringing the balance to zero!
+```
+
+---
+
+## Conclusion
+
+**Equilibria** offers a simple yet strategic gaming experience that is easy to code and suitable for a command-line interface. The game ensures quick play sessions with no possibility of a draw, relying on players' strategic planning and foresight. Mastery of the game allows skilled players to consistently outperform less experienced opponents, making it both competitive and engaging.
+
+---
+
+Enjoy the game, and may the best strategist win!

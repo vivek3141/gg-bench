@@ -1,0 +1,225 @@
+# Battle Squares
+
+## Objective
+
+**Battle Squares** is a strategic two-player turn-based game played on a 5x5 grid. The primary goal is to be the first player to move your unit to your opponent's base located at the opposite corner of the grid. Navigate the grid, engage in battles, and outmaneuver your opponent to achieve victory.
+
+---
+
+## Setup
+
+1. **Grid Creation**: Initialize a 5x5 grid represented by coordinates `(x, y)`, where `x` and `y` range from 1 to 5.
+
+2. **Starting Positions**:
+   - **Player 1**:
+     - **Base**: Top-left corner at position `(1, 1)`.
+     - **Unit**: Starts on their base at `(1, 1)`.
+   - **Player 2**:
+     - **Base**: Bottom-right corner at position `(5, 5)`.
+     - **Unit**: Starts on their base at `(5, 5)`.
+
+3. **Decide Turn Order**: Players decide who takes the first turn (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Grid**: A 5x5 grid serving as the game board.
+  - Each cell on the grid can be referenced by its `(x, y)` coordinates.
+  
+- **Units**:
+  - Each player has one unit represented by their player number (`1` or `2`).
+  - Units occupy cells on the grid and can move to adjacent cells.
+
+- **Bases**:
+  - Each player's base is located at their starting position.
+  - The objective is to reach the opponent's base.
+
+---
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **During a turn, a player must**:
+  1. **Move**: Move their unit to an adjacent cell.
+     - Adjacent cells include all eight surrounding cells (up, down, left, right, and diagonals).
+  2. **Engage in Battle (if applicable)**:
+     - If the player's unit is adjacent to the opponent's unit after moving (including diagonally), they may choose to initiate a battle.
+
+---
+
+## Rules and Mechanics
+
+### Movement
+
+- **Legal Moves**:
+  - Units can move to any adjacent cell, including diagonals.
+  - Moves cannot go off the grid (coordinates must remain between 1 and 5).
+
+### Battles
+
+- **Initiating a Battle**:
+  - Battles are optional and can only occur if units are adjacent after movement.
+  - Only the player whose turn it is can initiate a battle.
+
+- **Battle Procedure**:
+  1. **Secret Selection**:
+     - Both players privately choose a number between **1 and 5**.
+  2. **Reveal and Compare**:
+     - Players reveal their chosen numbers simultaneously.
+     - The player who selected the **higher number** wins the battle.
+  3. **Resolving the Outcome**:
+     - **Winner**: The opponent's unit is sent back to their base (original starting position).
+     - **Tie**: If numbers are equal, both units remain in their current positions.
+
+- **Cost of Battle**:
+  - There is no resource or point cost to initiate or participate in a battle.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The first player to move their unit onto the opponent's base cell wins the game.
+
+---
+
+## Scoring
+
+- **No Point Tracking**:
+  - There is no scoring system; the game is won by achieving the objective.
+  - Battles do not accumulate points; they serve to hinder the opponent's progress.
+
+---
+
+## Examples
+
+### Sample Turn Sequence
+
+**Initial Positions**:
+
+- Player 1 Unit: `(1, 1)`
+- Player 2 Unit: `(5, 5)`
+
+---
+
+**Turn 1: Player 1**
+
+- **Move**: `(1, 1)` to `(2, 2)`
+- **No Battle**: Opponent not adjacent.
+  
+**Command-Line Interaction**:
+
+```
+Player 1's turn.
+Enter your move (x y): 2 2
+You moved to (2, 2).
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Move**: `(5, 5)` to `(4, 4)`
+- **No Battle**: Opponent not adjacent.
+
+**Command-Line Interaction**:
+
+```
+Player 2's turn.
+Enter your move (x y): 4 4
+You moved to (4, 4).
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Move**: `(2, 2)` to `(3, 3)`
+- **Battle Option**: Units are now adjacent.
+  
+- **Choose to Battle**: Yes
+
+- **Battle Numbers**:
+  - Player 1 selects `4`.
+  - Player 2 selects `2`.
+
+- **Outcome**:
+  - Player 1 wins.
+  - Player 2's unit returns to `(5, 5)`.
+
+**Command-Line Interaction**:
+
+```
+Player 1's turn.
+Enter your move (x y): 3 3
+You moved to (3, 3).
+Opponent's unit is adjacent. Do you want to battle? (yes/no): yes
+Select your battle number (1-5): 4
+Waiting for opponent...
+Battle numbers revealed.
+You selected 4.
+Opponent selected 2.
+You win the battle!
+Opponent's unit has been sent back to their base.
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Unit Position**: Back at base `(5, 5)`
+  
+- **Move**: `(5, 5)` to `(4, 4)`
+- **No Battle**: Opponent not adjacent.
+
+**Command-Line Interaction**:
+
+```
+Player 2's turn.
+Enter your move (x y): 4 4
+You moved to (4, 4).
+```
+
+---
+
+**Continuation**
+
+Players continue taking turns, moving towards each other's bases, initiating battles when strategically advantageous, until one player reaches the opponent's base.
+
+---
+
+### Winning the Game
+
+**Final Move Example**:
+
+- **Player 1's Unit** moves to `(5, 5)` (Player 2's base).
+
+**Command-Line Interaction**:
+
+```
+Player 1's turn.
+Enter your move (x y): 5 5
+You moved to (5, 5).
+Congratulations! You have reached your opponent's base and won the game!
+```
+
+---
+
+## Strategic Tips
+
+- **Positioning**: Try to stay in the center to intercept your opponent.
+- **Battles**:
+  - Use battles to delay your opponent by sending them back to their base.
+  - Predict your opponent's battle number choice based on previous selections.
+- **Movement**:
+  - Plan your moves anticipating potential battles.
+  - Sometimes avoiding a battle is more beneficial if you're closer to the opponent's base.
+
+---
+
+## Conclusion
+
+**Battle Squares** combines strategic movement with psychological elements in battles. Each decision can bring you closer to victory or open an opportunity for your opponent. Master the balance between offense and defense to outwit your opponent and seize their base first!
+
+---
+
+Happy gaming and may the best strategist win!

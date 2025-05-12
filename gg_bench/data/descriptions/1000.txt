@@ -1,0 +1,157 @@
+# Binary Divisibility Game Rule Book
+
+## Objective
+
+The Binary Divisibility Game is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the first player to create a binary string that represents a decimal number divisible by **5**. Players take turns appending binary digits to a shared string, aiming to manipulate the number toward divisibility while preventing their opponent from doing the same.
+
+## Setup
+
+- **Starting Condition**: The game begins with an empty binary string (`""`).
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+
+## Game Components
+
+- **Binary String**: A shared string that represents a binary number. It starts empty and grows as players append digits.
+- **Binary Digits**: The digits `0` and `1` that players can append to the binary string.
+  
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Actions Per Turn**:
+  - The active player appends either a `0` or a `1` to the end of the binary string.
+  - The updated binary string is evaluated to check if it represents a decimal number divisible by **5**.
+- **Progression**:
+  - The game continues with players alternating turns until a win condition is met or the maximum string length is reached.
+
+## Rules and Mechanics
+
+1. **Appending Digits**:
+   - On their turn, a player must append **one** binary digit (`0` or `1`) to the current binary string.
+   - The choice of digit is strategic, aiming to achieve the objective while hindering the opponent.
+
+2. **Winning Condition**:
+   - After a player appends a digit, the binary string is converted to its decimal equivalent.
+   - **If the resulting decimal number is divisible by `5`**, the player who just played **wins** the game.
+
+3. **String Length Limit**:
+   - If the binary string reaches a length of **20 digits** without any player winning, the game ends.
+   - **The last player to append a digit loses**, and their opponent wins.
+
+4. **Valid Moves**:
+   - Players can only append `0` or `1` and cannot skip a turn.
+   - The game is strictly turn-based with no simultaneous actions.
+
+5. **No Draws**:
+   - The game is designed to have a clear winner with no possibility of a draw.
+
+## Scoring
+
+- **Win**: The player who creates a binary string representing a decimal number divisible by **5** wins the game.
+- **Loss**: The player who either:
+  - Fails to create such a number before the string reaches 20 digits.
+  - Is the last to append a digit in a 20-digit string.
+  
+- **No Point System**: The game does not track points; victory is determined by meeting the winning condition.
+
+## Examples
+
+### Example 1: Quick Win
+- **Starting String**: `""`
+- **Player 1's Turn**:
+  - Appends `'1'`
+  - Binary String: `'1'` (Decimal: `1`)
+  - Not divisible by 5.
+  
+- **Player 2's Turn**:
+  - Appends `'0'`
+  - Binary String: `'10'` (Decimal: `2`)
+  - Not divisible by 5.
+  
+- **Player 1's Turn**:
+  - Appends `'1'`
+  - Binary String: `'101'` (Decimal: `5`)
+  - **5 is divisible by 5**.
+  - **Player 1 wins**.
+
+### Example 2: Strategic Play
+- **Starting String**: `""`
+- **Player 1's Turn**:
+  - Appends `'1'`
+  - Binary String: `'1'` (Decimal: `1`)
+  
+- **Player 2's Turn**:
+  - Appends `'1'`
+  - Binary String: `'11'` (Decimal: `3`)
+  
+- **Player 1's Turn**:
+  - Appends `'0'`
+  - Binary String: `'110'` (Decimal: `6`)
+  
+- **Player 2's Turn**:
+  - Appends `'1'`
+  - Binary String: `'1101'` (Decimal: `13`)
+  
+- **Player 1's Turn**:
+  - Appends `'0'`
+  - Binary String: `'11010'` (Decimal: `26`)
+  
+- **Player 2's Turn**:
+  - Appends `'0'`
+  - Binary String: `'110100'` (Decimal: `52`)
+  
+- **Player 1's Turn**:
+  - Appends `'1'`
+  - Binary String: `'1101001'` (Decimal: `105`)
+  - **105 is divisible by 5**.
+  - **Player 1 wins**.
+
+### Command-Line Interaction Sample
+
+```plaintext
+Game Start!
+Current Binary String: 
+
+Player 1's Turn.
+Enter '0' or '1': 1
+Current Binary String: 1 (Decimal: 1)
+
+Player 2's Turn.
+Enter '0' or '1': 1
+Current Binary String: 11 (Decimal: 3)
+
+Player 1's Turn.
+Enter '0' or '1': 0
+Current Binary String: 110 (Decimal: 6)
+
+Player 2's Turn.
+Enter '0' or '1': 1
+Current Binary String: 1101 (Decimal: 13)
+
+Player 1's Turn.
+Enter '0' or '1': 0
+Current Binary String: 11010 (Decimal: 26)
+
+Player 2's Turn.
+Enter '0' or '1': 0
+Current Binary String: 110100 (Decimal: 52)
+
+Player 1's Turn.
+Enter '0' or '1': 1
+Current Binary String: 1101001 (Decimal: 105)
+
+Player 1 wins! The number 105 is divisible by 5.
+```
+
+## Strategy Tips
+
+- **Understand Divisibility**: Familiarity with binary numbers and their decimal equivalents can provide an advantage.
+- **Predict Opponent Moves**: Anticipate your opponent's strategy to block potential winning moves.
+- **Control the Game Flow**: Aim to manipulate the binary string to numbers that are not near multiples of 5 when it's your opponent's turn.
+
+## Summary
+
+The Binary Divisibility Game combines simple rules with strategic depth, making it easy to learn yet challenging to master. Players must balance offensive and defensive tactics, using their understanding of binary and decimal systems to outmaneuver their opponent. The game's simplicity allows for quick rounds, and the absence of draws ensures a decisive outcome in every match.
+
+---
+
+Enjoy the game and may the best strategist win!

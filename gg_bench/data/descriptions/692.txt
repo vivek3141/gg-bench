@@ -1,0 +1,193 @@
+**Path Blocker**
+
+---
+
+### **Objective**
+
+Be the first player to move your token from your home base to your opponent's home base by strategically moving forward and placing blocks to hinder your opponent's progress. Victory is achieved by reaching the opponent's home base before they reach yours.
+
+---
+
+### **Setup**
+
+- **Game Board**: A linear path consisting of 11 consecutive positions, numbered from `0` to `10`.
+- **Player Tokens**:
+  - **Player 1** places their token on position `0` (Player 1's home base).
+  - **Player 2** places their token on position `10` (Player 2's home base).
+- **Blocks**: No blocks are placed on the board at the start of the game.
+- **Starting Player**: Decide which player takes the first turn (e.g., flip a coin).
+
+---
+
+### **Game Components**
+
+- **Linear Path**:
+  - Represented as positions numbered `0` to `10`.
+  - Visually displayed in the command-line as a sequence of positions.
+
+- **Player Tokens**:
+  - **Token 1** for Player 1, starting at position `0`.
+  - **Token 2** for Player 2, starting at position `10`.
+  - Tokens are displayed on the board to indicate each player's current position.
+
+- **Blocks**:
+  - Represented as barriers that can be placed on positions between `1` and `9`.
+  - Blocks prevent movement through the blocked position.
+
+---
+
+### **Turns**
+
+- **Turn Sequence**:
+  - Players alternate turns throughout the game.
+  - On each turn, a player must choose one of the following actions:
+    1. **Move Forward**: Advance their token one position towards the opponent's home base.
+    2. **Place a Block**: Place a single block on any unblocked position between `1` and `9` that does not currently have a block or a token.
+    3. **Remove a Block**: Remove one of their own previously placed blocks from the board.
+
+- **Action Details**:
+  - **Move Forward**:
+    - A token moves forward by one position towards the opponent's home base.
+    - A token cannot move onto or past a position occupied by a block.
+  - **Place a Block**:
+    - Blocks can be placed on any unblocked, unoccupied positions except for the home bases (`0` and `10`).
+    - A player cannot place a block on a position occupied by either token.
+  - **Remove a Block**:
+    - A player may remove one of their own blocks instead of placing a new block or moving.
+    - Only blocks placed by that player can be removed by them.
+
+- **Turn Progression**:
+  - After a player completes their action, the turn passes to the opponent.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Movement**:
+   - Tokens can only move forward by one position per turn.
+   - Movement is always towards the opponent's home base (Player 1 moves towards `10`, Player 2 moves towards `0`).
+   - Tokens cannot move onto or through a blocked position.
+
+2. **Blocks**:
+   - Blocks act as barriers that prevent both players from moving through the blocked position.
+   - Blocks remain on the board until they are removed by the player who placed them.
+   - Each player can have multiple blocks on the board simultaneously.
+
+3. **Blocking Restrictions**:
+   - Players cannot place a block on:
+     - A position that already has a block.
+     - A position currently occupied by either token.
+     - The opponent's home base or their own home base.
+
+4. **Winning the Game**:
+   - The first player to reach the opponent's home base position wins the game.
+   - The game ends immediately when a token reaches the opponent's home base.
+   - There are no draws; the game continues until a player wins.
+
+5. **Gameplay Strategy**:
+   - Players must balance between advancing their token and hindering the opponent.
+   - Strategic placement and removal of blocks are crucial for both offense and defense.
+
+---
+
+### **Scoring**
+
+- **Win Condition**: The first player to successfully move their token onto the opponent's home base position (`0` for Player 2, `10` for Player 1) wins the game.
+- **No Points System**: There is no cumulative scoring or points. The focus is on reaching the opponent's home base before they reach yours.
+
+---
+
+### **Examples**
+
+**Command-Line Representation**:
+
+- The board is displayed as:
+
+  ```
+  [0][1][2][3][4][5][6][7][8][9][10]
+  ```
+
+- Tokens and blocks are indicated by symbols:
+
+  - **Player 1's Token**: `P1`
+  - **Player 2's Token**: `P2`
+  - **Block**: `XX`
+
+- For example, an initial board state:
+
+  ```
+  [P1][ ][ ][ ][ ][ ][ ][ ][ ][ ][P2]
+  ```
+
+---
+
+**Sample Turns**:
+
+- **Turn 1**: *Player 1's Move*
+
+  - **Action**: Player 1 decides to move forward.
+  - **Result**: Player 1's token moves from position `0` to `1`.
+
+  ```
+  [ ][P1][ ][ ][ ][ ][ ][ ][ ][ ][P2]
+  ```
+
+- **Turn 2**: *Player 2's Move*
+
+  - **Action**: Player 2 places a block on position `2`.
+  - **Result**: A block is placed at position `2`.
+
+  ```
+  [ ][P1][XX][ ][ ][ ][ ][ ][ ][ ][P2]
+  ```
+
+- **Turn 3**: *Player 1's Move*
+
+  - **Action**: Player 1 attempts to move forward but cannot move to position `2` due to the block.
+  - **Alternative Action**: Player 1 places a block on position `9`.
+  - **Result**: A block is placed at position `9`.
+
+  ```
+  [ ][P1][XX][ ][ ][ ][ ][ ][ ][XX][P2]
+  ```
+
+- **Turn 4**: *Player 2's Move*
+
+  - **Action**: Player 2 moves forward from position `10` to `9`.
+  - **Result**: Player 2 cannot move to position `9` because it is blocked.
+  - **Alternative Action**: Player 2 removes their block from position `2`.
+  - **Result**: Block at position `2` is removed.
+
+  ```
+  [ ][P1][ ][ ][ ][ ][ ][ ][ ][XX][P2]
+  ```
+
+- **Turn 5**: *Player 1's Move*
+
+  - **Action**: Player 1 moves forward to position `2`.
+  - **Result**: Player 1's token is now at position `2`.
+
+  ```
+  [ ][ ][P1][ ][ ][ ][ ][ ][ ][XX][P2]
+  ```
+
+- **Gameplay Continues**: Players continue to alternate turns, strategically moving and placing/removing blocks to reach the opponent's home base.
+
+---
+
+### **Strategic Tips**
+
+- **Balancing Actions**: Decide when to advance your token or hinder your opponent. Prioritize actions that give you an advantage.
+- **Block Placement**: Place blocks to create obstacles in your opponent's path, especially on positions they are likely to move to soon.
+- **Block Removal**: Remove your blocks when they hinder your own progress or when repositioning them can offer a better strategic advantage.
+- **Predictive Play**: Anticipate your opponent's moves and plan your blocks accordingly to delay them.
+
+---
+
+### **Conclusion**
+
+"Path Blocker" is a fast-paced, strategic game that combines elements of offense and defense. By carefully choosing when to advance and when to obstruct, skilled players can outmaneuver their opponents and secure victory. The game's simple mechanics make it easy to learn and play on a command-line interface, while its strategic depth offers engaging challenges for players.
+
+--- 
+
+**Enjoy the game and may the best strategist win!**

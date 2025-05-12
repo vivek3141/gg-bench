@@ -1,0 +1,194 @@
+# Beam Balance Game Rule Book
+
+## Objective
+
+**Beam Balance** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to avoid unbalancing the beam. Players take turns placing weights on a numbered balance beam. The player who causes the beam to tip (unbalance) loses the game. A skilled player can consistently outmaneuver an unskilled opponent by strategically placing weights to maintain balance or force the opponent into an impossible position.
+
+## Setup
+
+1. **Beam Representation**: The beam is a straight line segmented into 9 positions, numbered from **1** to **9**, with position **5** being the central pivot point.
+2. **Initial State**: At the start of the game, all positions on the beam are unoccupied.
+3. **Players**: Two players, referred to as **Player 1** and **Player 2**.
+4. **Starting Player**: Decide randomly or agree on who takes the first turn.
+
+## Game Components
+
+- **Beam Positions**:
+  - Positions are numbered **1** through **9**.
+  - Position **5** is the pivot point (fulcrum) of the beam.
+- **Weights**:
+  - Identical weights used by both players.
+  - Unlimited supply, but each position can hold only one weight.
+- **Command-Line Interface**:
+  - Players input commands to place weights on the beam.
+
+## Turns
+
+- Players alternate turns.
+- **During a Turn**, a player:
+  1. Selects an unoccupied position numbered **1-9** (excluding any positions already occupied).
+  2. Places a weight on the chosen position.
+  3. The game calculates the beam's balance state after the placement.
+- **Turn Progression**:
+  - The game continues until the beam becomes unbalanced after a player's move.
+
+## Rules and Mechanics
+
+### Weight Placement
+
+- **Valid Positions**:
+  - Any unoccupied position from **1** to **9**.
+- **One Weight per Turn**:
+  - Only one weight can be placed per turn.
+- **One Weight per Position**:
+  - Each position can hold only one weight.
+
+### Beam Balance Calculation
+
+- **Torque Calculation**:
+  - Torque is calculated for each side of the pivot (positions **1-4** and **6-9**).
+  - **Torque** = **Distance from Pivot** × **Number of Weights at that Position**.
+- **Distance from Pivot**:
+  - Positions left of the pivot (positions **1-4**): Distance is **Pivot Position (5) - Position Number**.
+  - Positions right of the pivot (positions **6-9**): Distance is **Position Number - Pivot Position (5)**.
+- **Total Torque**:
+  - **Left Torque**: Sum of torques from positions **1-4**.
+  - **Right Torque**: Sum of torques from positions **6-9**.
+- **Balance Condition**:
+  - The beam is balanced if **Left Torque** equals **Right Torque**.
+  - The beam remains balanced if there are no weights or only weights symmetrically placed relative to the pivot.
+- **Unbalance Condition**:
+  - If **Left Torque** ≠ **Right Torque**, the beam tips towards the side with greater torque.
+  - The player who causes the beam to unbalance loses the game.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - A player wins if the opponent causes the beam to become unbalanced on their turn.
+- **No Draws**:
+  - The game cannot end in a draw; it continues until one player loses.
+
+## Scoring
+
+- **Match Play**:
+  - Players may agree to play multiple rounds.
+  - Keep track of the number of victories for each player.
+- **Scoring System**:
+  - **Win**: 1 point.
+  - **Loss**: 0 points.
+- **Determining the Winner**:
+  - The player with the most points after the agreed-upon number of rounds wins the match.
+
+## Examples
+
+### Example Scenario
+
+**Initial State**:
+
+- The beam is empty. No weights on any positions.
+
+**Player 1's Turn**:
+
+- Chooses position **7**.
+- Places a weight on position **7**.
+- **Calculates Torque**:
+  - **Left Torque**: 0 (no weights on positions 1-4).
+  - **Right Torque**:
+    - Distance from pivot: **7 - 5 = 2**.
+    - Torque: **2 (distance) × 1 (weight) = 2**.
+  - Beam remains balanced (since Left Torque = 0, Right Torque = 2; beam tips but game continues unless it becomes unbalanced beyond tolerance).
+
+**Player 2's Turn**:
+
+- Chooses position **3**.
+- Places a weight on position **3**.
+- **Calculates Torque**:
+  - **Left Torque**:
+    - Distance from pivot: **5 - 3 = 2**.
+    - Torque: **2 × 1 = 2**.
+  - **Right Torque**: Still **2** from Player 1's weight.
+  - Beam is balanced (Left Torque = Right Torque).
+
+**Player 1's Turn**:
+
+- Chooses position **6**.
+- Places a weight on position **6**.
+- **Calculates Torque**:
+  - **Left Torque**: **2**.
+  - **Right Torque**:
+    - Existing torque: **2** from position **7**.
+    - New torque from position **6**:
+      - Distance: **6 - 5 = 1**.
+      - Torque: **1 × 1 = 1**.
+    - Total Right Torque: **2 + 1 = 3**.
+  - Beam becomes unbalanced (Left Torque = 2, Right Torque = 3).
+- **Result**: Player 1 loses; Player 2 wins.
+
+### Command-Line Interaction Sample
+
+#### Turn 1
+
+```
+Player 1's turn.
+Available positions: 1 2 3 4 5 6 7 8 9
+Enter position to place your weight: 7
+
+[Beam State]
+Positions with weights: 7
+
+Calculating balance...
+Left Torque: 0
+Right Torque: 2
+Beam is balanced.
+
+```
+
+#### Turn 2
+
+```
+Player 2's turn.
+Available positions: 1 2 3 4 5 6 8 9
+Enter position to place your weight: 3
+
+[Beam State]
+Positions with weights: 3 7
+
+Calculating balance...
+Left Torque: 2
+Right Torque: 2
+Beam is balanced.
+
+```
+
+#### Turn 3
+
+```
+Player 1's turn.
+Available positions: 1 2 4 5 6 8 9
+Enter position to place your weight: 6
+
+[Beam State]
+Positions with weights: 3 6 7
+
+Calculating balance...
+Left Torque: 2
+Right Torque: 3
+Beam is unbalanced!
+Player 1 has caused the beam to tip.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Maintain Balance**:
+  - Place weights symmetrically to your opponent's weights to keep the beam balanced.
+- **Force Unbalance**:
+  - Anticipate your opponent's moves and force them into positions where any move they make will unbalance the beam.
+- **Control the Center**:
+  - Positions near the pivot have less impact on balance due to shorter distances. Utilize these to fine-tune the torque.
+- **Counting Torque**:
+  - Keep track of the cumulative torque on each side to make informed decisions.
+
+## Conclusion
+
+**Beam Balance** is a game of calculation and foresight. By understanding and applying the mechanics of torque and balance, players can develop strategies to outwit their opponents. The simplicity of the game's rules combined with the depth of strategic possibilities makes it both easy to code and engaging to play.

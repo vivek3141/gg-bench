@@ -1,0 +1,205 @@
+# Divisor Duel Rule Book
+
+## Objective
+
+**Divisor Duel** is a strategic two-player, turn-based game played in a command-line interface. The primary goal is to be the last player to make a valid move by selecting proper divisors of numbers. Players take turns reducing the current number by choosing its proper divisors, strategically forcing the opponent into a position where they cannot make a valid move. The player who leaves the opponent without a valid divisor to select wins the game.
+
+## Setup
+
+1. **Starting Number (N):** Agree upon a positive integer greater than 1 to start the game. This number will be referred to as the **Current Number** at the beginning of the game.
+   - *Example Starting Number:* `60`
+
+2. **Determine First Player:** Decide which player will take the first turn. This can be done randomly or by mutual agreement.
+
+3. **Initialize Game Components:**
+   - **Current Number:** Set to the Starting Number (`N`).
+   - **Used Numbers List:** An empty list to keep track of numbers that have been selected during the game.
+
+## Game Components
+
+- **Current Number:** The number that players will use to determine valid moves on their turn. It changes throughout the game based on player selections.
+- **Proper Divisors:** Positive integers greater than 1 and less than the Current Number that divide evenly into the Current Number (without remainders). They exclude 1 and the Current Number itself.
+- **Used Numbers List:** A list that records all numbers selected by both players throughout the game to avoid repeats.
+
+## Turns
+
+### Turn Structure
+
+1. **Identify Valid Divisors:**
+   - On your turn, examine the Current Number.
+   - Determine all of its proper divisors that have not been previously used.
+
+2. **Select a Divisor:**
+   - Choose one proper divisor from the list of valid divisors.
+
+3. **Update Game State:**
+   - **Current Number:** Set the Current Number to the divisor you selected.
+   - **Used Numbers List:** Add the selected divisor to this list.
+
+4. **Announce Move:**
+   - Communicate your selected divisor and the new Current Number.
+
+5. **Pass Turn:**
+   - The turn passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - A move is valid if:
+     - The selected number is a proper divisor of the Current Number.
+     - The selected number has not been previously used in the game.
+     - The selected number is greater than 1 and less than the Current Number.
+
+2. **Proper Divisors:**
+   - Exclude 1 and the Current Number itself from the list of valid divisors.
+   - Example: Proper divisors of 15 are 3 and 5.
+
+3. **Used Numbers:**
+   - Keep track of all numbers selected during the game.
+   - A number can be selected only once per game.
+
+4. **No Valid Moves:**
+   - If a player has no valid proper divisors to select on their turn, they lose the game.
+
+5. **Winning the Game:**
+   - A player wins by forcing the opponent into a position where there are no valid moves left on their turn.
+
+6. **Fair Play:**
+   - Players must select valid divisors according to the rules.
+   - Misrepresenting available moves or used numbers is not allowed.
+
+## Scoring
+
+- **Winning Player:** The player who makes the last valid move.
+- **Victory Condition:** Occurs when the opponent cannot make a valid move on their turn.
+- **No Points System:** The game does not track points; victory is determined by the win condition.
+
+## Examples
+
+### Example Game Playthrough
+
+#### Starting the Game
+
+- **Starting Number (N):** `60`
+- **Current Number:** `60`
+- **Used Numbers List:** `[]`
+- **Player 1:** Alice
+- **Player 2:** Bob
+
+#### Gameplay
+
+1. **Alice's Turn**
+   - **Current Number:** `60`
+   - **Valid Proper Divisors of 60 (excluding used numbers):**
+     `2, 3, 4, 5, 6, 10, 12, 15, 20, 30`
+   - **Alice selects:** `30`
+   - **Updates:**
+     - **Current Number:** `30`
+     - **Used Numbers List:** `[30]`
+   - **Announces Move:** "I select 30. The new current number is 30."
+
+2. **Bob's Turn**
+   - **Current Number:** `30`
+   - **Valid Proper Divisors of 30:**
+     `2, 3, 5, 6, 10, 15`
+   - **Bob selects:** `15`
+   - **Updates:**
+     - **Current Number:** `15`
+     - **Used Numbers List:** `[30, 15]`
+   - **Announces Move:** "I select 15. The new current number is 15."
+
+3. **Alice's Turn**
+   - **Current Number:** `15`
+   - **Valid Proper Divisors of 15:**
+     `3, 5`
+   - **Alice selects:** `5`
+   - **Updates:**
+     - **Current Number:** `5`
+     - **Used Numbers List:** `[30, 15, 5]`
+   - **Announces Move:** "I select 5. The new current number is 5."
+
+4. **Bob's Turn**
+   - **Current Number:** `5`
+   - **Valid Proper Divisors of 5:**
+     - None (proper divisors of 5 are only 1, which is excluded).
+   - **Bob cannot make a valid move.**
+   - **Bob announces:** "I have no valid moves left. Congratulations, Alice!"
+
+#### Result
+
+- **Winner:** Alice
+- **Reason:** Bob had no valid moves on his turn.
+
+### Command-Line Interaction Example
+
+Below is a sample command-line interaction for the above gameplay between Alice and Bob.
+
+```plaintext
+Starting Number is 60.
+Used Numbers: []
+
+[Alice's Turn]
+Current Number: 60
+Valid Divisors: [2, 3, 4, 5, 6, 10, 12, 15, 20, 30]
+Enter your selected divisor: 30
+
+Alice selects 30.
+Current Number is now 30.
+Used Numbers: [30]
+
+[Bob's Turn]
+Current Number: 30
+Valid Divisors: [2, 3, 5, 6, 10, 15]
+Enter your selected divisor: 15
+
+Bob selects 15.
+Current Number is now 15.
+Used Numbers: [30, 15]
+
+[Alice's Turn]
+Current Number: 15
+Valid Divisors: [3, 5]
+Enter your selected divisor: 5
+
+Alice selects 5.
+Current Number is now 5.
+Used Numbers: [30, 15, 5]
+
+[Bob's Turn]
+Current Number: 5
+Valid Divisors: None
+Bob has no valid moves left.
+Alice wins the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead:** Consider the possible divisors your opponent will have on their turn based on your current move.
+- **Avoid Low Numbers Early:** Reducing the Current Number to a low number too soon may give your opponent the advantage.
+- **Track Used Numbers:** Keep a careful record of used numbers to avoid suggesting an invalid move.
+- **Force No Moves:** Aim to leave the Current Number at a point where the opponent has no valid divisors.
+
+## Additional Rules Variations (Optional)
+
+To add variety and strategic depth, players may agree to implement one or more of the following optional rules before starting the game.
+
+1. **Include 1 as a Valid Divisor:**
+   - Allow 1 as a valid proper divisor.
+   - This extends the game but requires additional strategic consideration.
+
+2. **Limit Reuse of Numbers:**
+   - Instead of prohibiting reuse entirely, allow each number to be used a fixed number of times (e.g., twice per game).
+
+3. **Multiple Starting Numbers:**
+   - Start with multiple numbers, and players choose which Current Number to act upon each turn.
+
+4. **Time Limits:**
+   - Impose a time limit for each player's turn to increase the challenge.
+
+## Conclusion
+
+Divisor Duel is a simple yet strategically rich game that tests players' number theory skills and foresight. It is easy to implement in a command-line interface, offering quick gameplay without the possibility of a draw. Mastery of Divisor Duel involves anticipating the opponent's moves and manipulating the Current Number to your advantage. Enjoy honing your mathematical strategy in this unique and engaging contest!
+
+---
+
+*Happy gaming! May the best strategist win.*

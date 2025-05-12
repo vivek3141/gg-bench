@@ -1,0 +1,9 @@
+In the CustomEnv gym environment, the action space is represented by discrete indices ranging from 0 to 31, comprising 4 possible move directions and 8 possible block placements. Each action index uniquely maps to a combination of a move followed by a block placement.
+
+- The first 4 actions (0-3) are used for moving the player's marker in one of four directions: 0 = up, 1 = down, 2 = left, 3 = right.
+- For each move direction, 8 subsequent actions (0-7) determine where a block is placed relative to the new marker position:
+  - 0 = North, 1 = Northeast, 2 = East, 3 = Southeast, 4 = South, 5 = Southwest, 6 = West, 7 = Northwest.
+
+Thus, an action index `a` can be seen as:
+- Move direction: `a // 8`
+- Block placement direction: `a % 8`

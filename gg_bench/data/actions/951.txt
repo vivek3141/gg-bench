@@ -1,0 +1,11 @@
+In the game environment, the action space is defined as `Discrete(36)`, which represents combinations of selecting a number (1 to 9) and choosing an operation (+, -, *, /). The mapping is done using the index calculated as follows:
+
+1. **Number Selection**: The number is determined by `number_index = action // 4`, where `action // 4` results in values from 0 to 8, corresponding to numbers 1 through 9 (`number = number_index + 1`).
+
+2. **Operation Selection**: The operation is determined by `operation_index = action % 4`, where `action % 4` results in values from 0 to 3, corresponding to the operations:
+   - 0: Addition (`+`)
+   - 1: Subtraction (`-`)
+   - 2: Multiplication (`*`)
+   - 3: Division (`/`)
+
+Thus, each action index from 0 to 35 uniquely specifies one combination of a number and an operation in the game.

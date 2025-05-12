@@ -1,0 +1,19 @@
+_prompt_template: &_prompt_template |
+  You are tasked with creating a rule book for a new two player turn-based {{ values[0] }} designed to be played in a command-line interface. The game should be easy and simple to code, with no draw mechanism and should end quickly. Furthermore, the game should be designed such that a skilled player should be able to consistently beat an unskilled player. Make sure that the game is unique, and is NOT similar to existing games such as Go, Nim, Tic-Tac-Toe or Chess. The rule book should cover the following aspects:
+  Objective: Clearly define the primary goal of the game. Explain how players can achieve victory and what constitutes a win or loss.
+  Setup: Describe the initial setup of the game, including the arrangement of game elements, player positions, and any starting conditions.
+  Game Components: List and explain all components involved in the game, such as pieces, tokens, boards, or cards. Provide details on their appearance, functionality, and any unique attributes.
+  Turns: Outline the structure of a turn, including the order of actions, what players can do during their turn, and how turns progress.
+  Rules and Mechanics: Detail the core rules and mechanics of the game. This should include movement or action rules, special abilities, interactions between game components, and any unique game mechanics.
+  Scoring: Explain how points or other forms of scoring are tracked and how they contribute to winning the game.
+  Examples: Provide example scenarios and command-line interactions or sample turns to illustrate how the rules are applied in practice.
+  Ensure that the rule book is clear, organized, and comprehensive, providing all necessary information to players while allowing for strategic depth and complexity.
+prompts:
+  - !jinja2 [*_prompt_template, "game"]
+  # - !jinja2 [*_prompt_template, "card game"]
+  # - !jinja2 [*_prompt_template, "word game"]
+  # - !jinja2 [*_prompt_template, "number game"]
+  # - !jinja2 [*_prompt_template, "abstract strategy game"]
+model: o1
+max_tokens: 4096
+num_games: 1000

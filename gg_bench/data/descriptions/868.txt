@@ -1,0 +1,197 @@
+# Number Mines: Rule Book
+
+## Objective
+
+Be the first player to safely navigate from the starting point to the goal without stepping on a hidden mine. Alternatively, outsmart your opponent by strategically placing mines that they cannot avoid, causing them to trigger a mine during their turn. The game ends when a player reaches the goal safely or when a player steps on a mine, resulting in their loss.
+
+---
+
+## Setup
+
+1. **Game Board Creation:**
+   - The game is played on a linear number line ranging from **1** to **20**.
+   - Both players start at **position 1** on the number line.
+
+2. **Mine Placement:**
+   - Each player secretly selects **three** unique positions between **2** and **19** to place their mines.
+   - Mines are hidden from the opponent and are only revealed if stepped on.
+   - Players record their mine positions privately.
+
+---
+
+## Game Components
+
+- **Number Line:**
+  - A sequential list of numbers from **1** to **20** representing the game board.
+  - Can be represented in the command-line interface as a simple list or array.
+
+- **Player Tokens:**
+  - Each player is represented by a token (e.g., `A` for Player A and `B` for Player B).
+  - Tokens indicate the players' current positions on the number line.
+
+- **Mines:**
+  - Hidden traps placed on specific positions of the number line.
+  - Represented internally in the game logic but not displayed to the opponent.
+
+---
+
+## Turns
+
+1. **Turn Order:**
+   - Players decide who goes first (e.g., by coin toss or mutual agreement).
+   - Turns alternate between Player A and Player B.
+
+2. **Player Actions:**
+   - On their turn, a player must move their token forward along the number line.
+   - Movement options are to advance **1**, **2**, or **3** positions forward.
+
+3. **Turn Structure:**
+   - **Input Phase:** The player chooses their movement distance.
+   - **Movement Phase:** The player's token is moved accordingly.
+   - **Check Phase:** The game checks if the new position is a mine or the goal.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Rules:**
+   - Players must move forward; backward movement is not allowed.
+   - Movement must result in landing on a valid position within the number line (no skipping beyond 20).
+
+2. **Mine Interaction:**
+   - If a player lands on a position containing an opponent's mine, they **immediately lose** the game.
+   - The mine is revealed only when stepped on.
+
+3. **Winning the Game:**
+   - **Reaching the Goal:** If a player successfully moves their token to **position 20** without triggering a mine, they win.
+   - **Opponent Error:** If an opponent steps on your mine, you win.
+
+4. **Strategic Considerations:**
+   - Players must infer the possible locations of opponent mines based on their own mine placements and the opponent's movements.
+   - Bluffing and risk assessment are key components of advanced play.
+
+---
+
+## Scoring
+
+- **Victory Conditions:**
+  - The game does not use a point-based scoring system.
+  - Winning is achieved by either reaching **position 20** safely or by the opponent triggering your mine.
+
+- **Game Outcome:**
+  - **Win:** Successfully reach the goal or cause your opponent to step on a mine.
+  - **Loss:** Step on an opponent’s mine or if unable to make a legal move (rare in this game).
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Setup:**
+
+- **Player A** places mines at positions: **5**, **9**, **14**.
+- **Player B** places mines at positions: **6**, **10**, **15**.
+
+**Game Start:**
+
+Both players are at **position 1**.
+
+---
+
+**Turn 1:**
+
+- **Player A's Move:**
+  - Chooses to move **3** steps to **position 4**.
+- **Player B's Move:**
+  - Chooses to move **3** steps to **position 4**.
+
+*Both players are now at position 4.*
+
+---
+
+**Turn 2:**
+
+- **Player A's Move:**
+  - Chooses to move **1** step to **position 5**.
+  - **Checks for mines:** Position 5 is not a mine (for Player A).
+- **Player B's Move:**
+  - Chooses to move **2** steps to **position 6**.
+  - **Triggers a mine!** Position 6 is mined by Player A.
+  - **Player A wins the game.**
+
+---
+
+### Command-Line Interaction Example
+
+```plaintext
+Welcome to Number Mines!
+
+Player A, please enter your 3 mine positions (between 2 and 19, separated by spaces): 5 9 14
+
+Player B, please enter your 3 mine positions (between 2 and 19, separated by spaces): 6 10 15
+
+Game Start! Both players are at position 1.
+
+---
+
+Player A's turn:
+You are at position 1.
+How many steps would you like to move? (1, 2, or 3): 3
+
+Player A moves to position 4.
+
+Player B's turn:
+You are at position 1.
+How many steps would you like to move? (1, 2, or 3): 3
+
+Player B moves to position 4.
+
+---
+
+Player A's turn:
+You are at position 4.
+How many steps would you like to move? (1, 2, or 3): 1
+
+Player A moves to position 5.
+
+---
+
+Player B's turn:
+You are at position 4.
+How many steps would you like to move? (1, 2, or 3): 2
+
+Player B moves to position 6.
+
+Boom! Player B has stepped on a mine at position 6!
+
+Player A wins the game!
+
+Thank you for playing Number Mines!
+```
+
+---
+
+## Additional Information
+
+- **Game Length:**
+  - Designed to be a quick game, typically lasting a few minutes.
+  - Ideal for casual play or multiple rounds in a session.
+
+- **Complexity:**
+  - Simple rules for easy understanding and implementation in a command-line interface.
+  - Depth is added through strategic mine placement and movement decisions.
+
+- **Strategic Depth:**
+  - **Mine Placement Strategies:**
+    - Spread mines evenly to cover more potential paths.
+    - Cluster mines to create dangerous zones.
+  - **Movement Strategies:**
+    - Move cautiously to gather information about safe positions.
+    - Take calculated risks to advance quickly.
+
+---
+
+## Summary
+
+Number Mines is a simple yet strategic two-player game that combines elements of deduction, bluffing, and risk management. Players must balance the desire to progress toward the goal with the need to avoid hidden dangers placed by their opponent. The minimal components and straightforward rules make it an ideal candidate for coding in a command-line interface, ensuring ease of implementation and quick gameplay.

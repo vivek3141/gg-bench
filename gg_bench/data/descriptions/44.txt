@@ -1,0 +1,329 @@
+**Number Tower**
+
+**Objective:**
+
+Number Tower is a two-player, turn-based strategy game where players build a shared tower by stacking numbered blocks. The primary goal is to be the last player to successfully place a block on the tower without violating the balance rules. A player wins by placing all their blocks or by forcing the opponent into a position where they cannot make a valid move.
+
+---
+
+**Setup:**
+
+1. **Block Allocation:**
+   - Each player receives a set of blocks numbered from **1** to **10**. These blocks are unique to each player and are not shared.
+   - The blocks can be represented in the command-line interface as numbers in a list or an array.
+
+2. **Starting the Tower:**
+   - The game begins with an empty tower, considered to have a base value of **0**.
+   - Players decide who will take the first turn (e.g., by mutual agreement or a simple randomization).
+
+---
+
+**Game Components:**
+
+1. **Blocks:**
+   - **Numbered Blocks (1-10):** Each block has a numerical value from **1** to **10**.
+   - **Appearance:** In a command-line interface, blocks are represented by their numerical value.
+   - **Functionality:** Blocks are used to build the tower by stacking them according to the game's balance rules.
+
+2. **Tower:**
+   - **Structure:** A single stack where blocks are placed one on top of another.
+   - **Representation:** The tower can be displayed as a list or array showing the sequence of blocks from the base upwards.
+
+3. **Player Hands:**
+   - Each player's remaining blocks are kept in their hand and displayed to them during their turn.
+
+---
+
+**Turns:**
+
+1. **Turn Order:**
+   - Players alternate turns throughout the game.
+   - On each turn, a player must attempt to place one block from their hand onto the tower.
+
+2. **Actions During a Turn:**
+   - **Select a Block:** Choose a block from your available blocks.
+   - **Place the Block:** Attempt to place the selected block on top of the tower while adhering to the balance rules.
+   - **Update Hands and Tower:** Remove the placed block from your hand and add it to the top of the tower.
+   - **Check for Victory or Loss:** Determine if the move results in a win, loss, or continuation of the game.
+
+3. **Turn Progression:**
+   - After a successful placement, the turn passes to the opponent.
+   - If a player cannot make a valid move on their turn, they lose the game.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Block Placement Rules:**
+   - **Initial Placement:** The first block placed on the empty tower (base value of **0**) can be any block from **1** to **10**.
+   - **Subsequent Placements:** When placing a block on top of the tower, the following balance rule must be observed:
+     - **Balance Rule:** The numerical value of the new block must be **less than or equal to** the **sum** of the numerical values of the **two** blocks immediately beneath it.
+     - If there is only one block beneath (i.e., the tower has only one block), the new block's value must be **less than or equal to** the value of that single block.
+
+2. **Valid Moves:**
+   - A move is valid if the block placement adheres to the balance rule.
+   - Players must select a block from their remaining hand.
+
+3. **Invalid Moves:**
+   - If a player cannot place any of their remaining blocks without violating the balance rule, they lose the game.
+
+4. **Winning the Game:**
+   - A player wins by:
+     - Successfully placing all their blocks onto the tower.
+     - Forcing the opponent into a position where they have no valid moves on their turn.
+
+5. **Tower Stability:**
+   - The tower is considered stable if all blocks have been placed according to the balance rule.
+   - No adjustments are made to the tower after a block is placed.
+
+6. **Example of the Balance Rule:**
+   - If the top two blocks on the tower have numerical values of **3** and **5** (from top to second block), the sum is **8**.
+   - The next block placed must have a value **less than or equal to 8**.
+
+---
+
+**Scoring:**
+
+- **Win/Loss Condition:**
+  - The game does not use a point-based scoring system.
+  - The outcome is determined by the win or loss condition as described in the rules.
+- **Optional Variations:**
+  - Players may agree to play multiple rounds and keep track of victories to determine an overall winner after a set number of games.
+
+---
+
+**Examples:**
+
+**Sample Game Play:**
+
+1. **Starting the Game:**
+   - Player 1 and Player 2 each have blocks numbered 1 through 10.
+   - The tower is currently empty.
+
+2. **Turn 1 - Player 1:**
+   - **Available Blocks:** 1-10
+   - **Action:** Player 1 places block **7** on the tower.
+   - **Tower State:** [7]
+
+3. **Turn 2 - Player 2:**
+   - **Available Blocks:** 1-10
+   - **Balance Calculation:**
+     - Only one block beneath, value **7**.
+     - Can place any block with value **≤ 7**.
+   - **Action:** Player 2 places block **6** on top of the tower.
+   - **Tower State:** [6, 7]
+
+4. **Turn 3 - Player 1:**
+   - **Available Blocks:** 1-6, 8-10
+   - **Balance Calculation:**
+     - Top two blocks: **6** and **7**
+     - Sum: **6 + 7 = 13**
+     - Can place any block with value **≤ 13** (All remaining blocks qualify).
+   - **Action:** Player 1 places block **10** on top of the tower.
+   - **Tower State:** [10, 6, 7]
+
+5. **Turn 4 - Player 2:**
+   - **Available Blocks:** 1-5, 7-10
+   - **Balance Calculation:**
+     - Top two blocks: **10** and **6**
+     - Sum: **10 + 6 = 16**
+     - Can place any block with value **≤ 16** (All remaining blocks qualify).
+   - **Action:** Player 2 places block **9** on top of the tower.
+   - **Tower State:** [9, 10, 6, 7]
+
+6. **Turn 5 - Player 1:**
+   - **Available Blocks:** 1-6, 8, 9
+   - **Balance Calculation:**
+     - Top two blocks: **9** and **10**
+     - Sum: **9 + 10 = 19**
+     - Can place any block with value **≤ 19** (All remaining blocks qualify).
+   - **Action:** Player 1 places block **9** (since they have their own set) on top.
+   - **Tower State:** [9, 9, 10, 6, 7]
+
+7. **Turn 6 - Player 2:**
+   - **Available Blocks:** 1-5, 7, 8, 10
+   - **Balance Calculation:**
+     - Top two blocks: **9** and **9**
+     - Sum: **9 + 9 = 18**
+     - Can place any block with value **≤ 18**.
+   - **Action:** Player 2 places block **10** on top.
+   - **Tower State:** [10, 9, 9, 10, 6, 7]
+
+8. **Turn 7 - Player 1:**
+   - **Available Blocks:** 1-6, 8
+   - **Balance Calculation:**
+     - Top two blocks: **10** and **9**
+     - Sum: **10 + 9 = 19**
+     - Can place any block with value **≤ 19**.
+   - **Action:** Player 1 places block **8** on top.
+   - **Tower State:** [8, 10, 9, 9, 10, 6, 7]
+
+9. **Turn 8 - Player 2:**
+   - **Available Blocks:** 1-5, 7, 8
+   - **Balance Calculation:**
+     - Top two blocks: **8** and **10**
+     - Sum: **8 + 10 = 18**
+     - Can place any block with value **≤ 18**.
+   - **Action:** Player 2 places block **8** (their own) on top.
+   - **Tower State:** [8, 8, 10, 9, 9, 10, 6, 7]
+
+10. **Continuing the Game:**
+    - Players continue to take turns following the same rules.
+    - Eventually, a player may be unable to place any of their remaining blocks without violating the balance rule.
+
+**Example of Losing Move:**
+
+- Suppose it's Player 1's turn:
+  - **Available Blocks:** 1-6
+  - **Balance Calculation:**
+    - Top two blocks: **8** and **8**
+    - Sum: **8 + 8 = 16**
+    - Player 1's highest remaining block is **6**, which is **≤ 16**.
+  - **Action:** Player 1 places block **6** on top.
+  - **Tower State:** [6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Now it's Player 2's turn:
+  - **Available Blocks:** 1-5, 7
+  - **Balance Calculation:**
+    - Top two blocks: **6** and **8**
+    - Sum: **6 + 8 = 14**
+    - Player 2's highest remaining block is **7**, which is **≤ 14**.
+  - **Action:** Player 2 places block **7** on top.
+  - **Tower State:** [7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Back to Player 1:
+  - **Available Blocks:** 1-5
+  - **Balance Calculation:**
+    - Top two blocks: **7** and **6**
+    - Sum: **7 + 6 = 13**
+    - Player 1's highest remaining block is **5**, which is **≤ 13**.
+  - **Action:** Player 1 places block **5** on top.
+  - **Tower State:** [5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 2's turn:
+  - **Available Blocks:** 1-5
+  - **Balance Calculation:**
+    - Top two blocks: **5** and **7**
+    - Sum: **5 + 7 = 12**
+    - Player 2's highest remaining block is **5**, which is **≤ 12**.
+  - **Action:** Player 2 places block **5** on top.
+  - **Tower State:** [5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 1's turn:
+  - **Available Blocks:** 1-4
+  - **Balance Calculation:**
+    - Top two blocks: **5** and **5**
+    - Sum: **5 + 5 = 10**
+    - Player 1's highest remaining block is **4**, which is **≤ 10**.
+  - **Action:** Player 1 places block **4** on top.
+  - **Tower State:** [4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 2's turn:
+  - **Available Blocks:** 1-4
+  - **Balance Calculation:**
+    - Top two blocks: **4** and **5**
+    - Sum: **4 + 5 = 9**
+    - Player 2's highest remaining block is **4**, which is **≤ 9**.
+  - **Action:** Player 2 places block **4** on top.
+  - **Tower State:** [4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 1's turn:
+  - **Available Blocks:** 1-3
+  - **Balance Calculation:**
+    - Top two blocks: **4** and **4**
+    - Sum: **4 + 4 = 8**
+    - Player 1's highest remaining block is **3**, which is **≤ 8**.
+  - **Action:** Player 1 places block **3** on top.
+  - **Tower State:** [3, 4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 2's turn:
+  - **Available Blocks:** 1-3
+  - **Balance Calculation:**
+    - Top two blocks: **3** and **4**
+    - Sum: **3 + 4 = 7**
+    - Player 2's highest remaining block is **3**, which is **≤ 7**.
+  - **Action:** Player 2 places block **3** on top.
+  - **Tower State:** [3, 3, 4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 1's turn:
+  - **Available Blocks:** 1-2
+  - **Balance Calculation:**
+    - Top two blocks: **3** and **3**
+    - Sum: **3 + 3 = 6**
+    - Player 1's highest remaining block is **2**, which is **≤ 6**.
+  - **Action:** Player 1 places block **2** on top.
+  - **Tower State:** [2, 3, 3, 4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 2's turn:
+  - **Available Blocks:** 1-2
+  - **Balance Calculation:**
+    - Top two blocks: **2** and **3**
+    - Sum: **2 + 3 = 5**
+    - Player 2's highest remaining block is **2**, which is **≤ 5**.
+  - **Action:** Player 2 places block **2** on top.
+  - **Tower State:** [2, 2, 3, 3, 4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 1's turn:
+  - **Available Blocks:** **1**
+  - **Balance Calculation:**
+    - Top two blocks: **2** and **2**
+    - Sum: **2 + 2 = 4**
+    - Player 1's remaining block is **1**, which is **≤ 4**.
+  - **Action:** Player 1 places block **1** on top.
+  - **Tower State:** [1, 2, 2, 3, 3, 4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 2's turn:
+  - **Available Blocks:** **1**
+  - **Balance Calculation:**
+    - Top two blocks: **1** and **2**
+    - Sum: **1 + 2 = 3**
+    - Player 2's remaining block is **1**, which is **≤ 3**.
+  - **Action:** Player 2 places block **1** on top.
+  - **Tower State:** [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 7, 6, 8, 8, 10, 9, 9, 10, 6, 7]
+
+- Player 1's turn:
+  - **Available Blocks:** None
+  - **Result:** Player 1 has successfully placed all their blocks and wins the game.
+
+---
+
+**Strategic Tips:**
+
+- **Plan Ahead:** Anticipate which blocks you'll need for future moves based on the possible sums.
+- **Block High Moves:** Try to force your opponent into situations where they must use their higher-numbered blocks early.
+- **Balance Your Hand:** Avoid using all low or high blocks too quickly; keep options open for various sums.
+
+---
+
+**Command-Line Interaction Example:**
+
+- **Display Player Hand:**
+  ```
+  Your Blocks: [1, 2, 3, 4, 5, 6, 8, 9]
+  ```
+- **Display Tower State:**
+  ```
+  Tower (Top to Bottom): [7, 6, 7]
+  ```
+- **Player Prompt:**
+  ```
+  Select a block to place:
+  ```
+- **Player Input:**
+  ```
+  6
+  ```
+- **Validation and Update:**
+  ```
+  Block 6 placed on the tower successfully.
+  ```
+- **Next Turn:**
+  ```
+  It's now Player 2's turn.
+  ```
+
+---
+
+**Conclusion:**
+
+Number Tower is a simple yet strategic game that challenges players to think ahead and make tactical decisions based on the balance rule. With easy-to-understand mechanics and straightforward command-line implementation, it's an enjoyable game that tests numerical reasoning and foresight. The absence of a draw mechanism ensures that each game concludes with a clear winner, and the gameplay is designed to proceed quickly, making it ideal for brief competitive sessions.

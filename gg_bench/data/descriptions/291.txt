@@ -1,0 +1,314 @@
+# Gridlock Duel
+
+## Objective
+
+Gridlock Duel is a strategic two-player turn-based game played on a 3x3 grid. The primary goal is to trap your opponent so they cannot make any valid moves on their turn. The player who successfully blocks the opponent's movement wins the game.
+
+## Setup
+
+- **Grid**: A 3x3 grid represented by coordinates `(row, column)` where `0 <= row <= 2` and `0 <= column <= 2`.
+- **Player Positions**:
+  - **Player 1** starts at the top-left corner `(0, 0)`.
+  - **Player 2** starts at the bottom-right corner `(2, 2)`.
+- **Blocked Cells**: At the beginning of the game, no cells are blocked.
+
+## Game Components
+
+- **Grid Cells**:
+  - Each cell on the grid can be in one of three states:
+    - **Empty**: The cell is unoccupied and unblocked.
+    - **Occupied**: The cell contains a player's piece.
+    - **Blocked**: The cell is blocked and cannot be entered or passed through.
+- **Player Pieces**:
+  - Each player has one piece representing their position on the grid.
+- **Blocking Tokens**:
+  - Imaginary tokens used to mark blocked cells after a player moves.
+
+## Turns
+
+- Players take turns alternately, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Move**: The player moves their piece to an adjacent empty cell.
+     - Adjacent cells are those directly above, below, to the left, or to the right (no diagonal movements).
+  2. **Block**: After moving, the player chooses an adjacent empty cell (including diagonals) to block.
+     - The blocked cell cannot be one currently occupied by either player.
+     - Once a cell is blocked, it remains blocked for the rest of the game.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Valid Moves**:
+  - A player can move to any adjacent **empty** cell (up, down, left, or right).
+  - A player cannot move into a **blocked** or **occupied** cell.
+- **Restrictions**:
+  - Players cannot move diagonally.
+  - If a player has no valid moves at the start of their turn, they lose the game.
+
+### Blocking Rules
+
+- After moving, a player **must** block one adjacent empty cell.
+- **Blocking Options**:
+  - The cell to block can be adjacent in any direction (up, down, left, right, or diagonally).
+- **Restrictions**:
+  - Cannot block a cell that is already occupied or blocked.
+  - Must choose a cell; skipping the blocking phase is not allowed.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - A player wins if their opponent cannot make a valid move on their turn.
+- **Gameplay Continuation**:
+  - The game continues until one player is unable to move.
+
+## Scoring
+
+- **Win/Loss**:
+  - The game is won by trapping the opponent; there is no point system.
+- **No Draws**:
+  - Due to the grid size and rules, a draw is not possible.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial Grid:**
+
+```
+[ P1 ][    ][    ]
+[    ][    ][    ]
+[    ][    ][ P2 ]
+```
+
+- `P1` = Player 1's position
+- `P2` = Player 2's position
+- Empty cells are unmarked.
+
+---
+
+**Turn 1: Player 1**
+
+- **Move**: Player 1 moves to `(0,1)`.
+
+```
+[    ][ P1 ][    ]
+[    ][    ][    ]
+[    ][    ][ P2 ]
+```
+
+- **Block**: Player 1 blocks cell `(1,0)`.
+
+```
+[    ][ P1 ][    ]
+[ X  ][    ][    ]
+[    ][    ][ P2 ]
+```
+
+- `X` = Blocked cell
+
+---
+
+**Turn 2: Player 2**
+
+- **Move**: Player 2 moves to `(2,1)`.
+
+```
+[    ][ P1 ][    ]
+[ X  ][    ][    ]
+[    ][ P2 ][    ]
+```
+
+- **Block**: Player 2 blocks cell `(1,2)`.
+
+```
+[    ][ P1 ][    ]
+[ X  ][    ][ X  ]
+[    ][ P2 ][    ]
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Move**: Player 1 moves to `(0,2)`.
+
+```
+[    ][    ][ P1 ]
+[ X  ][    ][ X  ]
+[    ][ P2 ][    ]
+```
+
+- **Block**: Player 1 blocks cell `(1,1)`.
+
+```
+[    ][    ][ P1 ]
+[ X  ][ X  ][ X  ]
+[    ][ P2 ][    ]
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Move**: Player 2 attempts to move. Possible moves are to `(2,0)` or stay at `(2,1)` if no valid moves.
+
+- **Possible Moves Analysis**:
+  - `(2,0)` is adjacent and empty.
+
+- **Move**: Player 2 moves to `(2,0)`.
+
+```
+[    ][    ][ P1 ]
+[ X  ][ X  ][ X  ]
+[ P2 ][    ][    ]
+```
+
+- **Block**: Player 2 blocks cell `(1,0)`.
+
+```
+[    ][    ][ P1 ]
+[ X  ][ X  ][ X  ]
+[ P2 ][    ][    ]
+```
+
+(Note: Cell `(1,0)` is already blocked, invalid choice. Player 2 must choose another cell.)
+
+- **Valid Block Options**: `(1,1)` and `(1,2)` are blocked, options left are `(2,1)`.
+
+- **Block**: Player 2 blocks cell `(2,1)`.
+
+```
+[    ][    ][ P1 ]
+[ X  ][ X  ][ X  ]
+[ P2 ][ X  ][    ]
+```
+
+---
+
+**Turn 5: Player 1**
+
+- **Move**: Player 1 cannot move; no adjacent empty cells.
+
+- **Adjacent Cells to `(0,2)`**:
+  - `(0,1)`: Occupied by Player 1 (cannot move back onto itself).
+  - `(1,2)`: Blocked.
+  - No other adjacent cells.
+
+- **Result**: Player 1 cannot move and loses the game.
+
+---
+
+**Winner**: **Player 2**
+
+## Command-Line Interaction Example
+
+Below is a sample interaction for the first few turns of the game.
+
+### Notation:
+
+- **Player Input Format**:
+  - For moves: `MOVE row,column`
+  - For blocking: `BLOCK row,column`
+- **Grid Representation**:
+  - `P1`: Player 1
+  - `P2`: Player 2
+  - `X` : Blocked cell
+  - `.` : Empty cell
+
+---
+
+**Initial State**
+
+```
+P1 .  .
+.  .  .
+.  .  P2
+```
+
+---
+
+**Player 1's Turn**
+
+- **Prompt**: `Player 1, enter your move (e.g., MOVE 0,1):`
+- **Input**: `MOVE 0,1`
+- **Prompt**: `Player 1, enter a cell to block (e.g., BLOCK 1,0):`
+- **Input**: `BLOCK 1,0`
+
+**Grid State**
+
+```
+.  P1 .
+X  .  .
+.  .  P2
+```
+
+---
+
+**Player 2's Turn**
+
+- **Prompt**: `Player 2, enter your move (e.g., MOVE 2,1):`
+- **Input**: `MOVE 2,1`
+- **Prompt**: `Player 2, enter a cell to block (e.g., BLOCK 1,2):`
+- **Input**: `BLOCK 1,2`
+
+**Grid State**
+
+```
+.  P1 .
+X  .  X
+.  P2 .
+```
+
+---
+
+**Player 1's Turn**
+
+- **Prompt**: `Player 1, enter your move (e.g., MOVE 0,2):`
+- **Input**: `MOVE 0,2`
+- **Prompt**: `Player 1, enter a cell to block (e.g., BLOCK 1,1):`
+- **Input**: `BLOCK 1,1`
+
+**Grid State**
+
+```
+.  .  P1
+X  X  X
+.  P2 .
+```
+
+---
+
+**Player 2's Turn**
+
+- **Prompt**: `Player 2, enter your move (e.g., MOVE 2,0):`
+- **Input**: `MOVE 2,0`
+- **Prompt**: `Player 2, enter a cell to block (e.g., BLOCK 2,1):`
+- **Input**: `BLOCK 2,1`
+
+**Grid State**
+
+```
+.  .  P1
+X  X  X
+P2 X  .
+```
+
+---
+
+**Player 1's Turn**
+
+- **Prompt**: `Player 1, enter your move (e.g., MOVE 0,1):`
+- **Possible Moves**:
+  - `(0,1)`: Already occupied by Player 1 previously (not current position).
+  - `(1,2)`: Blocked.
+- **Result**: No valid moves.
+
+- **Output**: `Player 1 has no valid moves. Player 2 wins!`
+
+## Strategic Depth
+
+While Gridlock Duel has simple rules and is easy to code for a command-line interface, it offers strategic depth. Skilled players can plan several moves ahead to block their opponent's paths while keeping escape routes open for themselves. The ability to block any adjacent cell (including diagonals) adds complexity and requires players to think tactically about both offensive and defensive positioning.
+
+---
+
+By understanding the rules and mechanics outlined in this guide, players can fully engage with Gridlock Duel, exploring its strategic possibilities and enjoying a quick, decisive game.

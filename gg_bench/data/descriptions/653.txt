@@ -1,0 +1,303 @@
+# **Game Rule Book: Energy Clash**
+
+## **Objective**
+
+**Energy Clash** is a strategic two-player turn-based game where each player manages their energy resources to outmaneuver and defeat their opponent. The primary goal is to reduce your opponent's Energy Points (EP) to zero before they do the same to you. Players must carefully choose their actions each turn to attack, defend, or recharge, balancing aggression with conservation to achieve victory.
+
+## **Setup**
+
+- **Starting Energy**: Each player begins the game with **10 Energy Points (EP)**.
+- **Player Identification**: Assign player names or identifiers (e.g., Player 1 and Player 2).
+- **Starting Conditions**: No additional setup is required. Players are ready to begin the game once initial energy levels are set.
+
+## **Game Components**
+
+- **Energy Points (EP)**: Numerical values representing each player's current energy level. EP can range from **0 to 20** but cannot exceed 20.
+- **Actions**:
+  - **Attack**: An offensive move to reduce the opponent's EP.
+  - **Defend**: A protective stance to mitigate incoming damage.
+  - **Recharge**: An action to increase one's own EP.
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns. Decide who goes first by mutual agreement or a random method.
+- **Turn Structure**:
+  1. **Action Selection**: The active player selects one of the three available actions: Attack, Defend, or Recharge.
+  2. **Action Resolution**: The chosen action is resolved according to the game rules.
+  3. **Status Update**: Update both players' EP based on the action outcomes.
+  4. **End of Turn**: Check for win conditions. If neither player has won, the turn passes to the opponent.
+
+## **Rules and Mechanics**
+
+### **Actions**
+
+1. **Attack**
+   - **Cost**: Consumes **2 EP** from the attacking player.
+   - **Effect**: Potentially reduces the opponent's EP.
+   - **Damage Dealt**:
+     - If the opponent chose **Defend** on their previous turn, the attack deals **1 damage**.
+     - If the opponent did not defend, the attack deals **3 damage**.
+   - **Conditions**: The player must have at least **2 EP** to perform an attack.
+
+2. **Defend**
+   - **Cost**: Consumes **1 EP**.
+   - **Effect**: Reduces damage from the opponent's next attack.
+   - **Defense Duration**: The defend action remains effective until the player's next turn.
+   - **Conditions**: Always available as long as the player has at least **1 EP**.
+
+3. **Recharge**
+   - **Cost**: No EP cost.
+   - **Effect**: Increases the player's EP by **4 points**.
+   - **Maximum EP**: A player's EP cannot exceed **20**. Any excess is not added.
+   - **Conditions**: Always available regardless of current EP.
+
+### **Additional Rules**
+
+- **Energy Limits**: Players' EP cannot go below **0** or above **20**.
+- **Insufficient EP**: If a player does not have enough EP to perform an action (e.g., less than 2 EP to attack), they must choose an action they can afford.
+- **Winning the Game**: The game ends immediately when a player's EP reaches **0**. The other player is declared the winner.
+
+## **Scoring**
+
+- **Tracking EP**: Keep a current tally of each player's EP throughout the game.
+- **Victory Condition**: No point-based scoring system is used. Victory is achieved by reducing the opponent's EP to **0**.
+- **No Draws**: The game cannot end in a draw due to the mechanics of EP reduction.
+
+## **Examples**
+
+### **Sample Turn Sequence**
+
+Below is an example of a few turns in **Energy Clash**, demonstrating command-line interactions between the players.
+
+#### **Initial State**
+
+- **Player 1 EP**: 10
+- **Player 2 EP**: 10
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Action Selection**: Attack
+
+```
+Player 1 chooses to ATTACK.
+```
+
+- **Action Resolution**:
+  - Player 1 spends 2 EP (EP reduces from 10 to 8).
+  - Player 2 did not defend on a previous turn (since it's the first turn), so they take 3 damage.
+  - Player 2's EP reduces from 10 to 7.
+
+- **Status Update**:
+
+```
+Player 1 EP: 8
+Player 2 EP: 7
+```
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Action Selection**: Defend
+
+```
+Player 2 chooses to DEFEND.
+```
+
+- **Action Resolution**:
+  - Player 2 spends 1 EP (EP reduces from 7 to 6).
+  - Player 2 is now in a defensive stance.
+
+- **Status Update**:
+
+```
+Player 1 EP: 8
+Player 2 EP: 6 (Defending)
+```
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Action Selection**: Attack
+
+```
+Player 1 chooses to ATTACK.
+```
+
+- **Action Resolution**:
+  - Player 1 spends 2 EP (EP reduces from 8 to 6).
+  - Player 2 is defending, so they take only 1 damage.
+  - Player 2's EP reduces from 6 to 5.
+  - Player 2's defend status resets (they are no longer defending).
+
+- **Status Update**:
+
+```
+Player 1 EP: 6
+Player 2 EP: 5
+```
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Action Selection**: Recharge
+
+```
+Player 2 chooses to RECHARGE.
+```
+
+- **Action Resolution**:
+  - Player 2 gains 4 EP (EP increases from 5 to 9).
+
+- **Status Update**:
+
+```
+Player 1 EP: 6
+Player 2 EP: 9
+```
+
+---
+
+#### **Turn 5: Player 1**
+
+- **Action Selection**: Attack
+
+```
+Player 1 chooses to ATTACK.
+```
+
+- **Action Resolution**:
+  - Player 1 spends 2 EP (EP reduces from 6 to 4).
+  - Player 2 did not defend, so they take 3 damage.
+  - Player 2's EP reduces from 9 to 6.
+
+- **Status Update**:
+
+```
+Player 1 EP: 4
+Player 2 EP: 6
+```
+
+---
+
+#### **Turn 6: Player 2**
+
+- **Action Selection**: Attack
+
+```
+Player 2 chooses to ATTACK.
+```
+
+- **Action Resolution**:
+  - Player 2 spends 2 EP (EP reduces from 6 to 4).
+  - Player 1 did not defend, so they take 3 damage.
+  - Player 1's EP reduces from 4 to 1.
+
+- **Status Update**:
+
+```
+Player 1 EP: 1
+Player 2 EP: 4
+```
+
+---
+
+#### **Turn 7: Player 1**
+
+- **Action Selection**: Defend
+
+```
+Player 1 chooses to DEFEND.
+```
+
+- **Action Resolution**:
+  - Player 1 spends 1 EP (EP reduces from 1 to 0).
+  - Player 1 is now in a defensive stance.
+
+- **Status Update**:
+
+```
+Player 1 EP: 0 (Defending)
+Player 2 EP: 4
+```
+
+---
+
+#### **Game End Condition Check**
+
+- Player 1's EP has reached **0**.
+- **Player 2 Wins!**
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is a simplified example of how the game might be played in a command-line interface.
+
+```plaintext
+=== Energy Clash ===
+
+Player 1 EP: 10
+Player 2 EP: 10
+
+---
+
+Player 1's Turn:
+Choose an action: [1] Attack, [2] Defend, [3] Recharge
+> 1
+Player 1 attacks!
+
+Player 1 spends 2 EP. (EP: 8)
+Player 2 takes 3 damage. (EP: 7)
+
+---
+
+Player 2's Turn:
+Choose an action: [1] Attack, [2] Defend, [3] Recharge
+> 2
+Player 2 defends!
+
+Player 2 spends 1 EP. (EP: 6)
+Player 2 is defending.
+
+---
+
+Player 1's Turn:
+Choose an action: [1] Attack, [2] Defend, [3] Recharge
+> 1
+Player 1 attacks!
+
+Player 1 spends 2 EP. (EP: 6)
+Player 2 is defending and takes 1 damage. (EP: 5)
+Player 2 is no longer defending.
+
+---
+
+Player 2's Turn:
+Choose an action: [1] Attack, [2] Defend, [3] Recharge
+> 3
+Player 2 recharges!
+
+Player 2 gains 4 EP. (EP: 9)
+
+---
+
+[Game continues...]
+```
+
+### **Strategy Tips**
+
+- **Balancing Acts**: Manage your EP wisely. Attacking depletes your energy, so ensure you have enough to defend or recharge when necessary.
+- **Predicting Opponent's Moves**: Anticipate whether your opponent will attack, defend, or recharge to choose the most effective counter-action.
+- **Defensive Plays**: Use defend when you suspect an incoming attack, especially if your EP is low.
+- **Timing Recharges**: Recharge when your EP is low, but be cautious—recharging leaves you open to full damage from attacks.
+
+---
+
+## **Conclusion**
+
+**Energy Clash** combines resource management with strategic planning in a simple yet engaging command-line game. Each decision can significantly impact the game's outcome, ensuring that skillful play is rewarded. With straightforward mechanics and quick gameplay, Energy Clash offers an exciting experience where a skilled player can consistently triumph over an unskilled opponent.

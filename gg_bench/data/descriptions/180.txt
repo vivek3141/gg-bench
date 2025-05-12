@@ -1,0 +1,199 @@
+# Number Merge
+
+## Objective
+
+Be the first player to create the target number (15) by strategically merging numbers from a shared pool. A player wins immediately upon successfully creating the target number during their turn.
+
+## Setup
+
+- **Target Number**: 15.
+- **Shared Pool**: Contains the numbers 1, 2, 3, 4, and 5 at the start of the game.
+- **Players**: Two players take turns alternately. Decide who goes first by mutual agreement or a random method.
+
+## Game Components
+
+- **Shared Pool of Numbers**: A dynamic list of numbers available to both players. Initially `[1, 2, 3, 4, 5]`.
+- **Target Number**: The number **15**, which players aim to create through merging.
+- **Merge Actions**: Combining two numbers from the shared pool to form a new number.
+
+## Turns
+
+### Turn Structure
+
+- **Merge Action**: On your turn, you must merge two numbers from the shared pool.
+  - **Selection**: Choose any two numbers available in the shared pool.
+  - **Merging**: Add the two numbers together to create a new number.
+- **Adding the New Number**:
+  - If the new number is **less than or equal to 15**, add it to the shared pool.
+  - If the new number is **greater than 15**, it cannot be added to the pool, but the two original numbers are still removed.
+- **Removing Used Numbers**: The two numbers used in the merge are always removed from the shared pool, regardless of whether the new number is added.
+
+## Rules and Mechanics
+
+### Merging Numbers
+
+- **Available Numbers**: Only numbers currently in the shared pool can be selected for merging.
+- **Valid Merges**: The sum of the two selected numbers must be **15 or less** to be added back into the pool.
+  - If the sum is **greater than 15**, the new number is discarded, and the original numbers are removed.
+- **Mandatory Action**: If at least two numbers are in the shared pool, a player must perform a merge on their turn.
+- **No Passes**: Players cannot skip their turn or pass; they must merge if possible.
+  
+### Winning the Game
+
+- **Victory Condition**: A player wins **immediately** when they create the target number (15) and add it to the shared pool during their turn.
+- **Game Continuation**: If neither player has created the target number, the game continues with the next player's turn.
+- **No Draws**: The game cannot end in a draw; play continues until one player wins.
+
+### Strategic Considerations
+
+- **Resource Management**: Players must carefully choose which numbers to merge to avoid helping the opponent.
+- **Anticipation**: Consider which numbers will remain in the shared pool after your turn and how they might benefit your opponent.
+- **Blocking**: Players can attempt to remove numbers that the opponent may need to prevent them from winning.
+
+## Scoring
+
+There is no point system. The first player to successfully create the target number (15) during their turn wins the game.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Shared Pool
+```
+[1, 2, 3, 4, 5]
+```
+
+#### **Player 1's Turn**
+
+- **Action**: Merge 4 and 5.
+- **Calculation**: 4 + 5 = 9.
+- **Add to Pool**: 9 is less than 15; add it to the pool.
+- **Remove Used Numbers**: Remove 4 and 5.
+- **Shared Pool After Turn**:
+  ```
+  [1, 2, 3, 9]
+  ```
+
+#### **Player 2's Turn**
+
+- **Action**: Merge 3 and 9.
+- **Calculation**: 3 + 9 = 12.
+- **Add to Pool**: 12 is less than 15; add it to the pool.
+- **Remove Used Numbers**: Remove 3 and 9.
+- **Shared Pool After Turn**:
+  ```
+  [1, 2, 12]
+  ```
+
+#### **Player 1's Turn**
+
+- **Action**: Merge 2 and 12.
+- **Calculation**: 2 + 12 = 14.
+- **Add to Pool**: 14 is less than 15; add it to the pool.
+- **Remove Used Numbers**: Remove 2 and 12.
+- **Shared Pool After Turn**:
+  ```
+  [1, 14]
+  ```
+
+#### **Player 2's Turn**
+
+- **Action**: Merge 1 and 14.
+- **Calculation**: 1 + 14 = 15.
+- **Add to Pool**: 15 equals the target number; add it to the pool.
+- **Remove Used Numbers**: Remove 1 and 14.
+- **Shared Pool After Turn**:
+  ```
+  [15]
+  ```
+- **Result**: Player 2 has created the target number 15 and **wins the game** immediately.
+
+### Alternative Scenario
+
+If a player makes a merge that results in a number greater than 15:
+
+#### **Player's Turn**
+
+- **Action**: Merge 9 and 7.
+- **Calculation**: 9 + 7 = 16.
+- **Add to Pool**: 16 is greater than 15; do not add to pool.
+- **Remove Used Numbers**: Remove 9 and 7.
+- **Shared Pool After Turn**:
+  ```
+  Remaining numbers after removal.
+  ```
+- **Note**: The player does not win, and the game continues. The opponent now has fewer numbers to work with, which might be advantageous.
+
+## Command-Line Interaction Example
+
+### Start of the Game
+
+```
+Shared Pool: [1, 2, 3, 4, 5]
+Player 1's turn.
+```
+
+### Player 1's Input
+
+```
+Enter two numbers to merge: 5 4
+```
+
+### System Response
+
+```
+You merged 5 and 4 to create 9.
+Shared Pool: [1, 2, 3, 9]
+Player 2's turn.
+```
+
+### Player 2's Input
+
+```
+Enter two numbers to merge: 9 3
+```
+
+### System Response
+
+```
+You merged 9 and 3 to create 12.
+Shared Pool: [1, 2, 12]
+Player 1's turn.
+```
+
+### Player 1's Input
+
+```
+Enter two numbers to merge: 2 12
+```
+
+### System Response
+
+```
+You merged 2 and 12 to create 14.
+Shared Pool: [1, 14]
+Player 2's turn.
+```
+
+### Player 2's Input
+
+```
+Enter two numbers to merge: 1 14
+```
+
+### System Response
+
+```
+You merged 1 and 14 to create 15.
+You have created the target number 15!
+Player 2 wins the game!
+```
+
+## Summary
+
+- **Number Merge** is a simple yet strategic game suitable for a command-line interface.
+- It involves basic arithmetic and strategic planning to outmaneuver your opponent.
+- The game ends quickly and does not allow for a draw.
+- Skilled players can anticipate future moves and influence the shared pool to their advantage.
+
+Enjoy playing Number Merge, and may the best strategist win!

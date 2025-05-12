@@ -1,0 +1,208 @@
+# Deca Sum: A Two-Player Turn-Based Number Strategy Game
+
+## Objective
+
+**Deca Sum** is a strategic two-player game where the goal is to be the first player to accumulate a total sum of numbers that is a multiple of 10 (i.e., 10, 20, or 30). Players achieve victory by carefully selecting numbers from a shared pool and summing them to reach the target total before their opponent.
+
+- **Win Condition**: The first player to reach a total sum exactly divisible by 10 wins the game.
+- **Loss Condition**: If a player cannot make a move (no numbers remain), and neither player has achieved a total sum divisible by 10, the player with the total closest to a multiple of 10 without exceeding it wins.
+
+## Setup
+
+1. **Number Pool**: A shared pool of numbers from **1** to **9** is available for both players.
+2. **Player Scores**: Each player starts with an initial score of **0**.
+3. **First Player**: Decide who goes first (e.g., by coin toss or mutual agreement).
+
+## Game Components
+
+- **Number Pool**: Digits from **1** to **9**, represented as a list or array.
+- **Player Score**: A running total of numbers selected by each player.
+- **Game Interface**: Command-line prompts and inputs for player actions.
+
+## Turns
+
+1. **Turn Order**: Players alternate turns, starting with the first player decided during setup.
+2. **Player Action**: On their turn, a player selects an available number from the shared number pool.
+3. **Updating Scores**: The selected number is added to the player's total score.
+4. **Number Removal**: Once a number is selected, it is removed from the number pool and cannot be selected again.
+5. **End of Turn**: The turn ends after the player updates their score and the number pool is adjusted.
+
+## Rules and Mechanics
+
+- **Number Selection**:
+  - Players can only select numbers that are currently available in the number pool.
+  - Each number from **1** to **9** can be selected only once during the game.
+
+- **Scoring**:
+  - A player's total score is the sum of all numbers they have selected.
+  - Scores are updated immediately after each selection.
+
+- **Winning the Game**:
+  - If a player's total score becomes exactly **10**, **20**, or **30** after their turn, they win the game immediately.
+  
+- **Game End Without Immediate Win**:
+  - If all numbers have been selected and neither player has a total score divisible by **10**, the game ends.
+  - The player with the total score closest to a multiple of **10** without exceeding it wins.
+  - If both players are equally close, the last player to have taken a turn wins.
+
+- **Strategic Considerations**:
+  - Players must anticipate the opponent's possible moves and plan accordingly.
+  - Choosing numbers not only to advance one's own score but also to block the opponent is key.
+
+## Scoring
+
+- **Player Total Score**: Sum of all numbers selected by the player.
+- **Winning Score**: A total score of **10**, **20**, or **30**.
+- **Tiebreaker**:
+  - If both players have the same total score after all numbers are selected, the last player to have taken a turn wins.
+
+## Examples
+
+### Example Game Play
+
+#### Starting the Game
+
+- **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player A Total**: 0
+- **Player B Total**: 0
+
+#### Turn 1: Player A
+
+- **Action**: Selects **6**
+- **Player A Total**: 6
+- **Available Numbers**: 1, 2, 3, 4, 5, 7, 8, 9
+
+#### Turn 2: Player B
+
+- **Action**: Selects **4**
+- **Player B Total**: 4
+- **Available Numbers**: 1, 2, 3, 5, 7, 8, 9
+
+#### Turn 3: Player A
+
+- **Action**: Selects **9**
+- **Player A Total**: 6 + 9 = **15**
+- **Available Numbers**: 1, 2, 3, 5, 7, 8
+
+#### Turn 4: Player B
+
+- **Action**: Selects **5**
+- **Player B Total**: 4 + 5 = **9**
+- **Available Numbers**: 1, 2, 3, 7, 8
+
+#### Turn 5: Player A
+
+- **Action**: Selects **5** (Not available)
+- **Correction**: Number **5** is already taken. Must choose from available numbers.
+- **Action**: Selects **5** (Invalid move)
+- **Available Numbers**: 1, 2, 3, 7, 8
+- **Correction Needed**: Player A must choose a valid available number.
+
+#### Turn 5 Corrected: Player A
+
+- **Action**: Selects **5** (Invalid)
+- **Available Numbers**: 1, 2, 3, 7, 8
+- **Correction**: Since **5** is not available, Player A must select from available numbers.
+- **Action**: Selects **5** (Invalid)
+- **Game Notice**: **Number 5 is not available. Please choose from: 1, 2, 3, 7, 8**
+- **Action**: Selects **8**
+- **Player A Total**: 15 + 8 = **23**
+- **Available Numbers**: 1, 2, 3, 7
+
+#### Turn 6: Player B
+
+- **Action**: Selects **7**
+- **Player B Total**: 9 + 7 = **16**
+- **Available Numbers**: 1, 2, 3
+
+#### Turn 7: Player A
+
+- **Action**: Selects **2**
+- **Player A Total**: 23 + 2 = **25**
+- **Available Numbers**: 1, 3
+
+#### Turn 8: Player B
+
+- **Action**: Selects **3**
+- **Player B Total**: 16 + 3 = **19**
+- **Available Numbers**: 1
+
+#### Turn 9: Player A
+
+- **Action**: Selects **1**
+- **Player A Total**: 25 + 1 = **26**
+- **Available Numbers**: None
+
+#### Game End
+
+- **All Numbers Selected**: Yes
+- **Player A Total**: 26
+- **Player B Total**: 19
+- **Nearest Multiple of 10 Below Player A Total**: 20 (Difference of 6)
+- **Nearest Multiple of 10 Below Player B Total**: 10 (Difference of 9)
+- **Winner**: **Player A**, as they are closer to a multiple of 10 without exceeding it.
+
+### Command-Line Interaction Example
+
+#### Game Start
+
+```
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Player A Total: 0
+Player B Total: 0
+
+Player A, select a number from the available numbers.
+> 6
+
+Player A selected 6.
+Player A Total: 6
+Available Numbers: 1, 2, 3, 4, 5, 7, 8, 9
+
+Player B, select a number from the available numbers.
+> 4
+
+Player B selected 4.
+Player B Total: 4
+Available Numbers: 1, 2, 3, 5, 7, 8, 9
+
+Player A, select a number from the available numbers.
+> 9
+
+Player A selected 9.
+Player A Total: 15
+Available Numbers: 1, 2, 3, 5, 7, 8
+
+Player B, select a number from the available numbers.
+> 5
+
+Player B selected 5.
+Player B Total: 9
+Available Numbers: 1, 2, 3, 7, 8
+
+Player A, select a number from the available numbers.
+> 5
+
+Number 5 is not available. Please choose from: 1, 2, 3, 7, 8
+> 8
+
+Player A selected 8.
+Player A Total: 23
+Available Numbers: 1, 2, 3, 7
+
+...
+
+(All subsequent turns continue similarly.)
+
+Game Over: Player A wins!
+```
+
+## Strategy Tips
+
+- **Monitor Totals**: Keep track of both your total and your opponent's total to anticipate possible winning moves.
+- **Control Key Numbers**: Be aware of numbers that can help you reach multiples of 10 and try to select them before your opponent.
+- **Block Opponent**: If you can't reach a multiple of 10 in your next move, consider selecting numbers that prevent your opponent from doing so.
+- **Plan Ahead**: Think several moves ahead to set up your path to victory.
+
+---
+
+Enjoy playing **Deca Sum**! May the best strategist win.

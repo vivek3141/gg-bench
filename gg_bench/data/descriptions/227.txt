@@ -1,0 +1,302 @@
+# Bit Battle
+
+## Objective
+
+**Bit Battle** is a strategic two-player, turn-based game where each player aims to be the first to match their byte (an 8-bit binary number) to a secret target byte. Players achieve victory by strategically flipping bits in their byte to align with the target byte before their opponent does.
+
+---
+
+## Setup
+
+1. **Initialize Players' Bytes**: Each player starts with their own byte set to `00000000`.
+
+2. **Generate Target Byte**: A secret target byte is randomly generated at the beginning of the game. For example, the target byte could be `11010110`.
+
+3. **Determine Turn Order**: Decide which player goes first. This can be done by a coin toss or mutual agreement.
+
+---
+
+## Game Components
+
+- **Player Bytes**: Each player has an 8-bit binary number (byte), initially set to `00000000`.
+
+- **Target Byte**: An 8-bit binary number randomly generated at the start of the game that both players aim to match with their own bytes.
+
+- **Bit Positions**: Each bit in a byte has a position number from 1 to 8, counted from left (most significant bit) to right (least significant bit):
+  
+  ```
+  Position:   1 2 3 4 5 6 7 8
+  Byte:       x x x x x x x x
+  ```
+
+- **Flip Commands**: Actions taken by players to invert bits (change `0` to `1` or `1` to `0`) at specified positions in their byte.
+
+---
+
+## Turns
+
+- Players take turns to perform actions.
+
+- **Turn Structure**:
+  1. **Decision Phase**: The active player decides which bits to flip.
+  2. **Action Phase**: The player issues a flip command to invert 1 to 3 bits in their byte.
+  3. **Update Phase**: The player's byte is updated to reflect the flipped bits.
+  4. **Check for Victory**: If the player's byte matches the target byte, the game ends with that player victorious.
+  5. **Turn End**: If no victory, the turn passes to the opponent.
+
+---
+
+## Rules and Mechanics
+
+1. **Flipping Bits**:
+   - On their turn, a player may flip **1 to 3 bits** in their byte.
+   - Flipping a bit changes its value: `0` becomes `1`, and `1` becomes `0`.
+
+2. **Issuing Flip Commands**:
+   - Players specify the positions of the bits they wish to flip.
+   - Example command: "Flip bits at positions 2, 5, and 8."
+
+3. **Valid Moves**:
+   - Players must choose valid bit positions between 1 and 8.
+   - Players cannot skip their turn or choose to flip zero bits.
+
+4. **Victory Condition**:
+   - The first player whose byte exactly matches the target byte wins the game.
+   - Matching means all bits in the player's byte are identical to the corresponding bits in the target byte.
+
+5. **No Draws**:
+   - Since the game ends when a player matches the target byte, and there are finite possible states, there is no possibility of a draw.
+
+6. **Strategic Depth**:
+   - Players must plan their flips strategically, considering both their progress and potential countermoves by the opponent.
+   - Anticipating the opponent's moves and adjusting strategy accordingly can provide an advantage.
+
+---
+
+## Scoring
+
+- **Winning the Game**: The primary goal is to win by matching your byte to the target byte.
+
+- **No Points System**: There is no point accumulation. The outcome is binary—either win or lose.
+
+- **Tracking Progress**:
+  - Players may keep track of how many bits match the target byte after each turn to gauge their progress.
+  - However, this is for personal strategic planning and does not affect the win condition.
+
+---
+
+## Examples
+
+### Sample Game Play
+
+**Target Byte**: `11010110`
+
+---
+
+**Initial State**:
+
+- **Player 1's Byte**: `00000000`
+- **Player 2's Byte**: `00000000`
+
+---
+
+### Turn-by-Turn Illustration
+
+**Turn 1: Player 1**
+
+- **Decision Phase**: Decide to flip bits at positions 1, 3, and 5.
+- **Action Phase**: Flip bits at positions **1**, **3**, **5**.
+- **Update Phase**:
+  - Original Byte: `0 0 0 0 0 0 0 0`
+  - Flip Positions: `1 3 5`
+  - Updated Byte: `1 0 1 0 1 0 0 0`
+- **Check for Victory**: The byte `10101000` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 2.
+
+---
+
+**Turn 2: Player 2**
+
+- **Decision Phase**: Decide to flip bits at positions 2, 3, and 7.
+- **Action Phase**: Flip bits at positions **2**, **3**, **7**.
+- **Update Phase**:
+  - Original Byte: `0 0 0 0 0 0 0 0`
+  - Flip Positions: `2 3 7`
+  - Updated Byte: `0 1 1 0 0 0 1 0`
+- **Check for Victory**: The byte `01100010` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 1.
+
+---
+
+**Turn 3: Player 1**
+
+- **Decision Phase**: Decide to flip bit at position 2.
+- **Action Phase**: Flip bit at position **2**.
+- **Update Phase**:
+  - Original Byte: `1 0 1 0 1 0 0 0`
+  - Flip Position: `2`
+  - Updated Byte: `1 1 1 0 1 0 0 0`
+- **Check for Victory**: The byte `11101000` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 2.
+
+---
+
+**Turn 4: Player 2**
+
+- **Decision Phase**: Decide to flip bits at positions 1, 5, and 6.
+- **Action Phase**: Flip bits at positions **1**, **5**, **6**.
+- **Update Phase**:
+  - Original Byte: `0 1 1 0 0 0 1 0`
+  - Flip Positions: `1 5 6`
+  - Updated Byte: `1 1 1 0 1 1 1 0`
+- **Check for Victory**: The byte `11101110` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 1.
+
+---
+
+**Turn 5: Player 1**
+
+- **Decision Phase**: Decide to flip bits at positions 4 and 6.
+- **Action Phase**: Flip bits at positions **4**, **6**.
+- **Update Phase**:
+  - Original Byte: `1 1 1 0 1 0 0 0`
+  - Flip Positions: `4 6`
+  - Updated Byte: `1 1 1 1 1 1 0 0`
+- **Check for Victory**: The byte `11111100` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 2.
+
+---
+
+**Turn 6: Player 2**
+
+- **Decision Phase**: Decide to flip bit at position 8.
+- **Action Phase**: Flip bit at position **8**.
+- **Update Phase**:
+  - Original Byte: `1 1 1 0 1 1 1 0`
+  - Flip Position: `8`
+  - Updated Byte: `1 1 1 0 1 1 1 1`
+- **Check for Victory**: The byte `11101111` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 1.
+
+---
+
+**Turn 7: Player 1**
+
+- **Decision Phase**: Decide to flip bits at positions 2 and 7.
+- **Action Phase**: Flip bits at positions **2**, **7**.
+- **Update Phase**:
+  - Original Byte: `1 1 1 1 1 1 0 0`
+  - Flip Positions: `2 7`
+  - Updated Byte: `1 0 1 1 1 1 1 0`
+- **Check for Victory**: The byte `10111110` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 2.
+
+---
+
+**Turn 8: Player 2**
+
+- **Decision Phase**: Decide to flip bits at positions 2 and 4.
+- **Action Phase**: Flip bits at positions **2**, **4**.
+- **Update Phase**:
+  - Original Byte: `1 1 1 0 1 1 1 1`
+  - Flip Positions: `2 4`
+  - Updated Byte: `1 0 1 1 1 1 1 1`
+- **Check for Victory**: The byte `10111111` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 1.
+
+---
+
+**Turn 9: Player 1**
+
+- **Decision Phase**: Decide to flip bits at positions 1 and 5.
+- **Action Phase**: Flip bits at positions **1**, **5**.
+- **Update Phase**:
+  - Original Byte: `1 0 1 1 1 1 1 0`
+  - Flip Positions: `1 5`
+  - Updated Byte: `0 0 1 1 0 1 1 0`
+- **Check for Victory**: The byte `00110110` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 2.
+
+---
+
+**Turn 10: Player 2**
+
+- **Decision Phase**: Decide to flip bit at position 3.
+- **Action Phase**: Flip bit at position **3**.
+- **Update Phase**:
+  - Original Byte: `1 0 1 1 1 1 1 1`
+  - Flip Position: `3`
+  - Updated Byte: `1 0 0 1 1 1 1 1`
+- **Check for Victory**: The byte `10011111` does not match the target `11010110`.
+- **Turn End**: Pass turn to Player 1.
+
+---
+
+**Turn 11: Player 1**
+
+- **Decision Phase**: Decide to flip bits at positions 1, 2, and 3.
+- **Action Phase**: Flip bits at positions **1**, **2**, **3**.
+- **Update Phase**:
+  - Original Byte: `0 0 1 1 0 1 1 0`
+  - Flip Positions: `1 2 3`
+  - Updated Byte: `1 1 0 1 0 1 1 0`
+- **Check for Victory**: The byte `11010110` matches the target `11010110`.
+- **Victory!** Player 1 wins the game.
+
+---
+
+## Command-Line Interaction Example
+
+**Player 1's Turn**
+
+```
+Your current byte: 00000000
+Target byte: 11010110
+Enter the positions of the bits you want to flip (1-8), separated by spaces (max 3 positions):
+
+> 1 3 5
+
+You flipped bits at positions 1, 3, 5.
+Your new byte: 10101000
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Your current byte: 00000000
+Target byte: 11010110
+Enter the positions of the bits you want to flip (1-8), separated by spaces (max 3 positions):
+
+> 2 3 7
+
+You flipped bits at positions 2, 3, 7.
+Your new byte: 01100010
+```
+
+---
+
+**Continuing Gameplay**
+
+Players continue to alternate turns, inputting their chosen bit positions, receiving updated byte statuses, and assessing whether they've matched the target byte.
+
+---
+
+## Strategy Tips
+
+- **Prioritize Matching Bits**: Focus on flipping bits that are different between your byte and the target byte.
+
+- **Limit Opponent's Options**: Anticipate your opponent's potential moves and adjust your strategy to stay ahead.
+
+- **Memory and Tracking**: Keep track of the bits you've flipped and plan future moves to minimize unnecessary flips.
+
+- **Balancing Flips**: Decide whether to flip the maximum allowed bits or fewer, depending on your strategic needs.
+
+---
+
+## Conclusion
+
+**Bit Battle** combines elements of logic, memory, and strategic planning in a simple yet challenging game suitable for a command-line interface. Its straightforward mechanics make it easy to code and play, while the depth of strategy ensures skilled players can consistently prevail over unskilled opponents.
+
+Enjoy the battle of bits, and may the best strategist win!

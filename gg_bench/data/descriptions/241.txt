@@ -1,0 +1,173 @@
+# Duel of Wits
+
+## Objective
+
+**Duel of Wits** is a strategic two-player turn-based game designed for play in a command-line interface. The primary goal is to be the first player to reach a cumulative total of exactly **50** by strategically choosing actions that increase the total without exceeding it. Players must outmaneuver their opponent by anticipating moves and planning ahead.
+
+## Setup
+
+- **Cumulative Total**: The game starts with a shared cumulative total set to **0**.
+- **Player Roles**: Two players, Player 1 and Player 2, decide who takes the first turn (e.g., by coin toss).
+
+## Game Components
+
+- **Cumulative Total**: A shared numeric value that both players can view and modify through their actions.
+- **Actions**: Two possible actions for each player on their turn:
+  - **Add**: Add an integer between **1** and **10** (inclusive) to the cumulative total.
+  - **Multiply**: Multiply the cumulative total by **2**, provided the result does not exceed **50**.
+
+## Turns
+
+- Players take turns alternately, starting with the player who was chosen to go first.
+- On each turn, a player **must** perform one of the two available actions:
+  1. **Add** a number to the cumulative total.
+  2. **Multiply** the cumulative total by 2.
+
+## Rules and Mechanics
+
+### 1. Adding Numbers
+
+- **Action**: Add any integer from **1** to **10** (inclusive) to the cumulative total.
+- **Restriction**: The cumulative total **must not exceed 50** after the addition.
+- **Procedure**:
+  - Player announces the number they wish to add.
+  - The number is added to the cumulative total immediately.
+
+### 2. Multiplying the Total
+
+- **Action**: Multiply the cumulative total by **2**.
+- **Restriction**: The result of the multiplication **must not exceed 50**.
+- **Procedure**:
+  - Player declares their intention to multiply.
+  - The cumulative total is multiplied by 2 immediately.
+
+### 3. Exceeding 50
+
+- If a player's chosen action would cause the cumulative total to exceed **50**, that action is **not allowed**.
+- If a player has **no legal moves** (i.e., all possible actions would exceed 50), the player **loses the game**.
+
+### 4. Winning the Game
+
+- The player who brings the cumulative total to **exactly 50** **wins** the game.
+- Players must plan their moves to force the cumulative total to 50 on their turn.
+
+### 5. Mandatory Actions
+
+- Players **cannot skip** their turn.
+- If a player has at least one legal action, they **must** perform one.
+- If **no legal actions** are available, the player **loses**, and the opponent wins.
+
+## Scoring
+
+- **Winning**: Achieved by reaching a cumulative total of exactly **50**.
+- **Losing**: Occurs if a player cannot make a legal move on their turn.
+
+## Examples
+
+### Example 1: Strategic Play
+
+**Starting Cumulative Total**: 0
+
+- **Player 1's Turn**:
+  - Chooses to **Add 7**.
+  - Cumulative Total: 0 + 7 = **7**.
+- **Player 2's Turn**:
+  - Chooses to **Add 8**.
+  - Cumulative Total: 7 + 8 = **15**.
+- **Player 1's Turn**:
+  - Chooses to **Multiply**.
+  - Cumulative Total: 15 × 2 = **30**.
+- **Player 2's Turn**:
+  - Chooses to **Add 10**.
+  - Cumulative Total: 30 + 10 = **40**.
+- **Player 1's Turn**:
+  - Multiplying would result in 80 (not allowed).
+  - Chooses to **Add 10**.
+  - Cumulative Total: 40 + 10 = **50**.
+- **Outcome**: **Player 1 wins** by reaching exactly 50.
+
+### Example 2: Forcing a Win
+
+**Starting Cumulative Total**: 0
+
+- **Player 1's Turn**:
+  - Chooses to **Add 1**.
+  - Cumulative Total: 0 + 1 = **1**.
+- **Player 2's Turn**:
+  - Chooses to **Multiply**.
+  - Cumulative Total: 1 × 2 = **2**.
+- **Player 1's Turn**:
+  - Chooses to **Add 3**.
+  - Cumulative Total: 2 + 3 = **5**.
+- **Player 2's Turn**:
+  - Chooses to **Multiply**.
+  - Cumulative Total: 5 × 2 = **10**.
+- **Player 1's Turn**:
+  - Chooses to **Add 10**.
+  - Cumulative Total: 10 + 10 = **20**.
+- **Player 2's Turn**:
+  - Chooses to **Multiply**.
+  - Cumulative Total: 20 × 2 = **40**.
+- **Player 1's Turn**:
+  - Cannot multiply (would be 80).
+  - Chooses to **Add 9**.
+  - Cumulative Total: 40 + 9 = **49**.
+- **Player 2's Turn**:
+  - Cannot multiply (would be 98).
+  - Must add between 1 and 1 (since any higher exceeds 50).
+  - Chooses to **Add 1**.
+  - Cumulative Total: 49 + 1 = **50**.
+- **Outcome**: **Player 2 wins** by reaching exactly 50.
+
+### Command-Line Interaction Example
+
+Below is a sample command-line interaction to illustrate how the game might proceed.
+
+```
+Game Start! Cumulative Total is 0.
+
+Player 1's Turn:
+Choose Action - (1) Add or (2) Multiply: 1
+Enter a number to add (1-10): 6
+Cumulative Total is now 6.
+
+Player 2's Turn:
+Choose Action - (1) Add or (2) Multiply: 2
+Cumulative Total is now 12.
+
+Player 1's Turn:
+Choose Action - (1) Add or (2) Multiply: 2
+Cumulative Total is now 24.
+
+Player 2's Turn:
+Choose Action - (1) Add or (2) Multiply: 1
+Enter a number to add (1-10): 10
+Cumulative Total is now 34.
+
+Player 1's Turn:
+Choose Action - (1) Add or (2) Multiply: 2
+Action not allowed. Multiplying would exceed 50.
+Choose Action - (1) Add or (2) Multiply: 1
+Enter a number to add (1-10): 10
+Cumulative Total is now 44.
+
+Player 2's Turn:
+Choose Action - (1) Add or (2) Multiply: 1
+Enter a number to add (1-6): 6
+Cumulative Total is now 50.
+
+Player 2 wins by reaching exactly 50!
+```
+
+*Note*: In the final turn, Player 2 could only add a maximum of 6, as adding more would exceed 50.
+
+## Strategy Tips
+
+- **Plan Ahead**: Anticipate the results of both adding and multiplying to control the cumulative total.
+- **Force Moves**: Try to leave the cumulative total at a number where your opponent has limited options.
+- **Avoid High Totals Early**: Keeping the cumulative total lower gives you more flexibility in later moves.
+- **Watch Multiplication**: Multiplying can quickly increase the total but can also reduce your options.
+
+---
+
+**Duel of Wits** combines simple arithmetic operations with strategic planning. The game is easy to learn but offers depth for players who like to think ahead and outsmart their opponents. Enjoy testing your wit and strategy in this engaging numerical showdown!

@@ -1,0 +1,150 @@
+# **Power Play**
+
+## **Objective**
+
+Be the player who reduces the shared number to exactly **1**. Players take turns dividing a shared number by its prime factors. The player who successfully reduces the number to **1** on their turn wins the game.
+
+## **Setup**
+
+- **Starting Number**: The game begins with a shared positive integer, **`N = 100`**.
+- **Players**: Two players compete against each other.
+
+## **Game Components**
+
+- **Shared Number (`N`)**: A positive integer that both players manipulate during the game. It starts at **100** and changes as players divide it by its prime factors.
+- **Prime Factors**: Prime numbers that exactly divide the current shared number without leaving a remainder.
+- **Turn Indicator**: Keeps track of whose turn it is.
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns. Decide who goes first by mutual agreement or a random method.
+- **Player Actions**: On their turn, a player must perform the following steps:
+  1. **Identify Prime Factors**: Determine all the prime factors of the current shared number `N`.
+  2. **Choose a Prime Factor**: Select any prime factor greater than **1**.
+  3. **Divide**: Divide `N` by the chosen prime factor to obtain a new `N`.
+  4. **Announce Move**: Declare the chosen prime factor and the new value of `N`.
+
+## **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - A player **must** divide `N` by one of its prime factors greater than **1**.
+   - The result of the division **must** be an integer (no fractions or decimals).
+2. **Winning the Game**:
+   - The player who reduces `N` to exactly **1** on their turn wins.
+3. **Invalid Moves**:
+   - If a player cannot perform a valid division (i.e., `N` is **1** or has no prime factors greater than **1**), they lose their turn, and the other player wins by default.
+   - Dividing by a number that is not a prime factor of `N` is illegal.
+4. **Prime Factors Definition**:
+   - Prime factors are prime numbers that can be multiplied together to get the original number.
+   - For example, the prime factors of **100** are **2** and **5** (since \(2 \times 2 \times 5 \times 5 = 100\)).
+
+## **Scoring**
+
+- **Victory Condition**: The game does not use a point-based scoring system. Instead, the victory condition is reducing `N` to **1** according to the rules.
+- **Winning**: The player who successfully reduces `N` to **1** wins the game.
+- **Losing**: If a player cannot make a valid move on their turn, they lose.
+
+## **Examples**
+
+### **Example Game Play**
+
+**Starting Number (`N`)**: 100
+
+#### **Turn 1**
+
+- **Player 1's Turn**
+  - **Current `N`**: 100
+  - **Prime Factors of 100**: 2, 5
+  - **Player 1 Chooses**: 5
+  - **Calculates New `N`**: \(100 \div 5 = 20\)
+  - **Announces**: "I divide by 5. New `N` is 20."
+
+#### **Turn 2**
+
+- **Player 2's Turn**
+  - **Current `N`**: 20
+  - **Prime Factors of 20**: 2, 5
+  - **Player 2 Chooses**: 2
+  - **Calculates New `N`**: \(20 \div 2 = 10\)
+  - **Announces**: "I divide by 2. New `N` is 10."
+
+#### **Turn 3**
+
+- **Player 1's Turn**
+  - **Current `N`**: 10
+  - **Prime Factors of 10**: 2, 5
+  - **Player 1 Chooses**: 5
+  - **Calculates New `N`**: \(10 \div 5 = 2\)
+  - **Announces**: "I divide by 5. New `N` is 2."
+
+#### **Turn 4**
+
+- **Player 2's Turn**
+  - **Current `N`**: 2
+  - **Prime Factor of 2**: 2
+  - **Player 2 Chooses**: 2
+  - **Calculates New `N`**: \(2 \div 2 = 1\)
+  - **Announces**: "I divide by 2. New `N` is 1."
+- **Outcome**: Player 2 wins by reducing `N` to 1.
+
+### **Command-Line Interaction Example**
+
+Below is an example of how the game might be played in a command-line interface:
+
+```
+Starting the game! N = 100
+
+--- Player 1's Turn ---
+Current N: 100
+Prime factors of 100: [2, 5]
+Enter your chosen prime factor: 5
+You divided by 5. New N is 20.
+
+--- Player 2's Turn ---
+Current N: 20
+Prime factors of 20: [2, 5]
+Enter your chosen prime factor: 2
+You divided by 2. New N is 10.
+
+--- Player 1's Turn ---
+Current N: 10
+Prime factors of 10: [2, 5]
+Enter your chosen prime factor: 5
+You divided by 5. New N is 2.
+
+--- Player 2's Turn ---
+Current N: 2
+Prime factor of 2: [2]
+Enter your chosen prime factor: 2
+You divided by 2. New N is 1.
+
+Player 2 wins! N has been reduced to 1.
+```
+
+## **Strategic Depth and Complexity**
+
+- **Decision Making**: Players must decide which prime factor to use, considering the potential options it leaves for the opponent.
+- **Anticipation**: Predicting the opponent's next moves can influence which prime factor a player chooses.
+- **Prime Factorization Skills**: Players benefit from quick factorization to identify valid moves.
+- **Endgame Strategy**: As `N` decreases, options become limited, increasing the importance of each decision.
+
+## **Tips for Players**
+
+- **Control the Game Flow**: Try to manipulate `N` to limit the opponent's options in their next turn.
+- **Prime Awareness**: Keep track of the remaining prime factors of `N` as the game progresses.
+- **Avoid Immediate Loss**: Don't reduce `N` to a prime number where the opponent can win on their next turn.
+- **Think Ahead**: Plan several moves ahead to set traps for your opponent.
+
+## **Additional Rules (Optional Variations)**
+
+- **Starting Number Variation**: Players can agree on a different starting number (e.g., 60, 84) to change the game's dynamics.
+- **Time Limit**: Implement a time limit per turn to increase difficulty.
+- **Forbidden Primes**: Introduce rules where certain primes cannot be used to add complexity.
+
+## **Conclusion**
+
+"**Power Play**" is a simple yet strategically rich game that tests players' mathematical reasoning and planning skills. By combining fundamental concepts of prime numbers and division, it offers depth and variety in gameplay, ensuring that each match is engaging and challenging.
+
+---
+
+Enjoy the game, and may the best strategist win!

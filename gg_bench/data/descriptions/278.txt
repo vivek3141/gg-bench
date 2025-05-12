@@ -1,0 +1,195 @@
+# Sequence Spot
+
+## Objective
+
+Be the first player to create a straight line (horizontal, vertical, or diagonal) of three of your markers where the numbers in those cells form an arithmetic sequence. An arithmetic sequence is a sequence of numbers with a common difference between consecutive numbers (e.g., 2, 4, 6 or 9, 6, 3). The sequence must follow the direction of the line formed on the grid.
+
+## Setup
+
+1. **Grid Initialization**: Prepare a 3x3 grid. Randomly assign the numbers 1 through 9 to the grid cells, ensuring each number is used exactly once.
+
+   Example Grid:
+
+   ```
+   | 5 | 3 | 8 |
+   | 1 | 6 | 7 |
+   | 4 | 9 | 2 |
+   ```
+
+2. **Player Markers**: Assign each player a unique marker symbol.
+   - Player 1: `X`
+   - Player 2: `O`
+
+3. **Starting Player**: Decide which player goes first (e.g., by a coin toss).
+
+## Game Components
+
+- **Grid**: A 3x3 grid displaying the numbers 1 to 9 in a random arrangement.
+- **Markers**: Symbols used by players to mark selected cells.
+  - Player 1 uses `X`
+  - Player 2 uses `O`
+
+## Turns
+
+1. **Player Action**:
+   - On your turn, select any unmarked cell on the grid.
+   - Place your marker (`X` or `O`) on the chosen cell.
+
+2. **Turn Progression**:
+   - Players alternate turns.
+   - Once a cell is marked, it cannot be selected again.
+
+## Rules and Mechanics
+
+1. **Objective Achievement**:
+   - Form a straight line (horizontal, vertical, or diagonal) of three of your markers.
+   - The numbers in the marked cells must form an arithmetic sequence in the order they appear on the grid according to the direction of the line.
+
+2. **Arithmetic Sequence**:
+   - A sequence where the difference between consecutive numbers is constant.
+   - Common differences can be positive or negative.
+   - Examples:
+     - Positive difference: `2, 4, 6` (common difference of `+2`)
+     - Negative difference: `9, 6, 3` (common difference of `-3`)
+
+3. **Winning the Game**:
+   - The first player to meet the objective wins the game.
+   - If all cells are marked without any player achieving the objective, the game continues until a player wins in a subsequent game.
+
+4. **Invalid Moves**:
+   - Selecting an already marked cell is not allowed.
+   - Forming a line where the numbers do not create an arithmetic sequence does not result in a win.
+
+## Scoring
+
+- **Winning**: The player who successfully forms the required arithmetic sequence wins the game.
+- **No Draws**: The game cannot end in a draw; play continues in subsequent games if necessary until a player wins.
+
+## Examples
+
+### Example 1: Winning with a Positive Common Difference
+
+**Grid Configuration**:
+
+```
+| 5 | 3 | 8 |
+| 1 | 6 | 7 |
+| 4 | 9 | 2 |
+```
+
+**Gameplay**:
+
+1. **Player 1** selects cell `(1,1)` with number `5` and marks it with `X`.
+2. **Player 2** selects cell `(2,2)` with number `6` and marks it with `O`.
+3. **Player 1** selects cell `(1,2)` with number `3` and marks it with `X`.
+4. **Player 2** selects cell `(2,3)` with number `7` and marks it with `O`.
+5. **Player 1** selects cell `(1,3)` with number `8` and marks it with `X`.
+
+**Winning Condition Check**:
+
+- Player 1 has markers on cells `(1,1)`, `(1,2)`, `(1,3)` corresponding to numbers `5`, `3`, `8`.
+- Numbers `5`, `3`, `8` do not form an arithmetic sequence.
+- Check continues.
+
+6. **Player 2** selects cell `(3,2)` with number `9` and marks it with `O`.
+
+**Winning Condition Check**:
+
+- Player 2 has markers on cells `(2,2)`, `(2,3)`, `(3,2)` corresponding to numbers `6`, `7`, `9`.
+- Numbers `6`, `7`, `9` do not form an arithmetic sequence.
+
+7. **Player 1** selects cell `(2,1)` with number `1` and marks it with `X`.
+
+**Winning Condition Check**:
+
+- Player 1 has markers on cells `(1,1)`, `(2,1)`, `(3,1)` corresponding to numbers `5`, `1`, `4`.
+- Numbers `5`, `1`, `4` do not form an arithmetic sequence.
+
+8. **Player 2** selects cell `(3,3)` with number `2` and marks it with `O`.
+
+**Winning Condition Check**:
+
+- Player 2 has markers on cells `(2,3)`, `(3,2)`, `(3,3)` corresponding to numbers `7`, `9`, `2`.
+- Diagonal from `(2,3)` to `(3,3)` is incomplete.
+
+9. **Player 1** selects cell `(2,2)` but it's already marked by Player 2. Must select another.
+
+10. **Player 1** selects cell `(3,1)` with number `4` and marks it with `X`.
+
+**Winning Condition Check**:
+
+- Player 1 has markers on cells `(1,1)`, `(2,1)`, `(3,1)` corresponding to numbers `5`, `1`, `4`.
+- Numbers `5`, `1`, `4` do not form an arithmetic sequence.
+
+**No player has met the winning condition yet**. However, all cells are now marked. According to the rules, since no player has won, the game would continue with a new grid configuration.
+
+### Example 2: Winning with a Negative Common Difference
+
+**Grid Configuration**:
+
+```
+| 2 | 7 | 6 |
+| 9 | 5 | 1 |
+| 4 | 3 | 8 |
+```
+
+**Gameplay**:
+
+1. **Player 1** selects cell `(2,1)` with number `9` and marks it with `X`.
+2. **Player 2** selects cell `(2,2)` with number `5` and marks it with `O`.
+3. **Player 1** selects cell `(2,3)` with number `1` and marks it with `X`.
+
+**Winning Condition Check**:
+
+- Player 1 has markers on cells `(2,1)`, `(2,2)`, `(2,3)` corresponding to numbers `9`, `5`, `1`.
+- Numbers `9`, `5`, `1` form an arithmetic sequence with a common difference of `-4`.
+- **Player 1 wins the game**.
+
+## Strategy Tips
+
+- **Plan Ahead**: Look for potential lines where the numbers can form an arithmetic sequence.
+- **Block Opponent**: If your opponent is close to forming a sequence, consider blocking them by marking a crucial cell.
+- **Common Differences**: Pay attention to possible common differences that can occur with available numbers.
+- **Flexibility**: Be open to both positive and negative common differences when planning your moves.
+
+## Command-Line Interaction Example
+
+Assuming input prompts and a simple text-based grid display:
+
+```
+Current Grid:
+| 5 | 3 | 8 |
+| 1 | 6 | 7 |
+| 4 | 9 | 2 |
+
+Player 1 (X), select your cell (row and column): 1 1
+Player 1 placed an 'X' on cell (1,1)
+
+Current Grid:
+| X | 3 | 8 |
+| 1 | 6 | 7 |
+| 4 | 9 | 2 |
+
+Player 2 (O), select your cell (row and column): 2 2
+Player 2 placed an 'O' on cell (2,2)
+
+Current Grid:
+| X | 3 | 8 |
+| 1 | O | 7 |
+| 4 | 9 | 2 |
+
+[...game continues...]
+
+```
+
+**Winning Announcement**:
+
+```
+Player 1 has formed an arithmetic sequence with numbers 9, 5, 1 (common difference of -4) and wins the game!
+```
+
+## Conclusion
+
+Sequence Spot is a strategic game that combines numerical reasoning with tactical placement. Players must not only focus on occupying spaces but also on the numerical relationships between the numbers in those spaces. Victory requires careful planning, foresight, and the ability to anticipate your opponent's moves.
+
+Enjoy the challenge and may the best strategist win!

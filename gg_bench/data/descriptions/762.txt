@@ -1,0 +1,175 @@
+# Quantum Conquest: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+In **Quantum Conquest**, players aim to be the first to reach a predetermined score by capturing quantum particles on a grid. Victory is achieved by strategically predicting and capturing particles before your opponent does. There are no draws; the first player to reach the target score wins the game.
+
+## Setup
+
+1. **Grid Creation**: The game is played on a 5x5 grid, with rows labeled `A` to `E` and columns labeled `1` to `5`.
+2. **Particle Placement**: At the start of the game, 10 quantum particles are randomly placed on the grid. Each particle has a hidden value between 1 and 3, which determines its point value upon capture.
+3. **Player Positions**: Players do not have physical tokens on the grid. Instead, they interact with the grid by selecting coordinates during their turns.
+4. **Starting Conditions**: Both players begin with a score of zero. A random method (e.g., coin toss) determines which player takes the first turn.
+
+## Game Components
+
+- **Grid**: A 5x5 grid serving as the game board. It is represented in the command-line interface with rows `A-E` and columns `1-5`.
+- **Quantum Particles**: Invisible entities scattered on the grid. Each particle has:
+  - **Position**: A set of coordinates (e.g., `B3`).
+  - **Value**: A hidden point value (1, 2, or 3).
+- **Score Tracker**: Displays each player's current score.
+
+## Turns
+
+- **Turn Order**: Players alternate turns. The player who goes first is determined randomly at the start of the game.
+- **Turn Structure**:
+  1. **Select a Coordinate**: The player chooses a grid coordinate to scan (e.g., `C4`).
+  2. **Receive Feedback**:
+     - If a particle is at the chosen coordinate, the player captures it and gains its point value.
+     - If no particle is present, the player is informed that the scan was empty.
+  3. **Particle Movement**: After each turn, all remaining particles may move to an adjacent cell (including diagonals). Movement is random.
+  4. **Display Scores**: The current scores are displayed after each turn.
+  
+## Rules and Mechanics
+
+1. **Scanning**:
+   - On their turn, a player scans a single coordinate.
+   - Scanning reveals whether a particle is present or not.
+   - If a particle is present:
+     - The particle is captured, and its value is added to the player's score.
+     - The particle is removed from the grid.
+   - If no particle is present:
+     - The player gains no points.
+
+2. **Particle Movement**:
+   - After each turn, each remaining particle has a chance to move to a random adjacent cell (including diagonals).
+   - Particles cannot move off the grid.
+   - If two particles move to the same cell, they both occupy it.
+
+3. **Overlapping Particles**:
+   - Multiple particles can occupy the same cell.
+   - Scanning a cell with multiple particles captures all particles in that cell, and their values are added together.
+
+4. **Winning the Game**:
+   - The first player to reach or exceed **10 points** wins the game.
+   - Since particle values range from 1 to 3, strategic captures are essential.
+  
+5. **End of Game Conditions**:
+   - The game ends immediately when a player reaches at least 10 points.
+   - If all particles are captured and no player has reached 10 points, the player with the higher score wins.
+
+## Scoring
+
+- **Capturing Particles**:
+  - Each captured particle's value is added to the player's score.
+- **Score Tracking**:
+  - Scores are displayed after each turn.
+  - The target score to win is 10 points.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Initial Setup:
+
+- Particles are randomly placed on the grid.
+- Player 1 and Player 2 have 0 points.
+- Player 1 goes first.
+
+#### Turn 1: Player 1
+
+- **Action**: Scans coordinate `B2`.
+- **Outcome**: No particle found.
+- **Score**: Player 1: 0 points, Player 2: 0 points.
+- **Particle Movement**: Particles may move to adjacent cells.
+
+#### Turn 2: Player 2
+
+- **Action**: Scans coordinate `D5`.
+- **Outcome**: Particle found with a value of 2.
+- **Score**: Player 1: 0 points, Player 2: 2 points.
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 3: Player 1
+
+- **Action**: Scans coordinate `C3`.
+- **Outcome**: Particle found with a value of 3.
+- **Score**: Player 1: 3 points, Player 2: 2 points.
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 4: Player 2
+
+- **Action**: Scans coordinate `C3`.
+- **Outcome**: No particle found (was just captured by Player 1).
+- **Score**: Player 1: 3 points, Player 2: 2 points.
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 5: Player 1
+
+- **Action**: Scans coordinate `E4`.
+- **Outcome**: Two particles found (values 1 and 2).
+- **Score**: Player 1: 6 points (3+1+2), Player 2: 2 points.
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 6: Player 2
+
+- **Action**: Scans coordinate `A1`.
+- **Outcome**: Particle found with a value of 3.
+- **Score**: Player 1: 6 points, Player 2: 5 points (2+3).
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 7: Player 1
+
+- **Action**: Scans coordinate `B4`.
+- **Outcome**: Particle found with a value of 2.
+- **Score**: Player 1: 8 points (6+2), Player 2: 5 points.
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 8: Player 2
+
+- **Action**: Scans coordinate `E5`.
+- **Outcome**: No particle found.
+- **Score**: Player 1: 8 points, Player 2: 5 points.
+- **Particle Movement**: Remaining particles may move.
+
+#### Turn 9: Player 1
+
+- **Action**: Scans coordinate `C2`.
+- **Outcome**: Particle found with a value of 3.
+- **Score**: Player 1: 11 points (8+3).
+- **Victory**: Player 1 has reached 11 points and wins the game.
+
+## Command-Line Interaction Example
+
+```
+Welcome to Quantum Conquest!
+
+Particles are being placed on the grid...
+Player 1 and Player 2 both have 0 points.
+Player 1 goes first.
+
+---- Turn 1: Player 1 ----
+Enter coordinate to scan (e.g., A1): B2
+Scanning B2...
+No particle found.
+Scores - Player 1: 0, Player 2: 0
+
+---- Turn 2: Player 2 ----
+Enter coordinate to scan (e.g., A1): D5
+Scanning D5...
+Particle found! You captured it and earned 2 points.
+Scores - Player 1: 0, Player 2: 2
+
+(And so on...)
+```
+
+## Strategic Tips
+
+- **Predict Movement**: Pay attention to which areas have been scanned, and anticipate where particles might move.
+- **Corner Grids**: Particles have fewer movement options in corners; scanning these can be advantageous.
+- **Overlapping Particles**: Targeting areas where particles might converge can yield higher points.
+- **Denying Opponent**: Scanning spots your opponent might aim for can prevent them from gaining points.
+
+---
+
+Enjoy **Quantum Conquest** and may the best strategist win!

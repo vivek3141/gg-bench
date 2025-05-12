@@ -1,0 +1,306 @@
+# Coordinate Clash
+
+## Objective
+
+**Coordinate Clash** is a strategic two-player turn-based game played on a 5x5 grid. The primary goal is to be the first player to align three of your markers in a row—horizontally, vertically, or diagonally—by strategically placing and shifting rows or columns on the grid. Victory is achieved by creating an unbroken line of three of your own markers before your opponent does. There is no draw mechanism; the game continues until one player wins.
+
+---
+
+## Setup
+
+1. **Grid Initialization**: Start with an empty 5x5 grid labeled with rows `1` to `5` from top to bottom and columns `A` to `E` from left to right.
+
+2. **Player Assignment**:
+   - **Player 1**: Uses marker `X`.
+   - **Player 2**: Uses marker `O`.
+
+3. **Starting Conditions**:
+   - The grid is empty with no markers placed.
+   - Players decide who goes first (e.g., by mutual agreement or a random method).
+
+---
+
+## Game Components
+
+1. **5x5 Grid**:
+   - Consists of 25 cells.
+   - Rows are numbered `1` to `5`.
+   - Columns are labeled `A` to `E`.
+
+2. **Player Markers**:
+   - **Player 1 Marker**: `X`
+   - **Player 2 Marker**: `O`
+   - Markers are used to claim cells on the grid.
+   - Appearance: Simple characters suitable for command-line display.
+
+3. **Row and Column Shifting Mechanism**:
+   - Players can shift an entire row or column one position in any direction.
+   - Shifting wraps around the grid (e.g., shifting left moves the leftmost marker to the right end).
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns.
+   - The player designated to go first begins the game.
+
+2. **Turn Structure**:
+   - **Step 1**: **Place a Marker**
+     - Place your marker (`X` or `O`) on any empty cell on the grid.
+   - **Step 2**: **Optional Shift**
+     - You may choose to shift one entire row or column by one position in any direction.
+     - Shifting is optional, but can only be performed immediately after placing a marker.
+     - Only one row or column shift is allowed per turn.
+
+3. **Shifting Mechanics**:
+   - **Row Shifting**:
+     - Shift a row left or right.
+     - Example: Shifting Row `3` to the right moves each marker in that row one cell to the right. The rightmost marker wraps around to the leftmost cell of the same row.
+   - **Column Shifting**:
+     - Shift a column up or down.
+     - Example: Shifting Column `B` down moves each marker in that column one cell down. The bottom marker wraps around to the top cell of the same column.
+
+4. **Turn Progression**:
+   - After completing your turn, control passes to the opponent.
+   - The game continues in this alternating fashion until a player wins.
+
+---
+
+## Rules and Mechanics
+
+1. **Marker Placement**:
+   - You can only place a marker on an empty cell.
+   - You cannot overwrite or remove opponent's markers during placement.
+  
+2. **Row and Column Shifting**:
+   - Shifting is applied to the entire row or column, not individual cells.
+   - Markers pushed off one end of the grid reappear at the opposite end (wrapping around).
+   - Shifting affects both players' markers in the shifted row or column.
+
+3. **Winning the Game**:
+   - A player wins by aligning three of their markers consecutively in a row—horizontally, vertically, or diagonally—after their turn.
+   - The alignment can occur as a result of placing a marker or shifting a row/column.
+   - The game is checked for a winning alignment at the end of each player's turn.
+
+4. **No Draws**:
+   - The game continues indefinitely until one player achieves a line of three markers.
+   - If the grid becomes full without a winner, players continue shifting rows or columns on their turns to create a winning alignment.
+
+5. **Invalid Moves**:
+   - If a player attempts to place a marker on an occupied cell, they must choose a different cell.
+   - If a player attempts to shift a non-existent row or column, they are prompted to select a valid one.
+
+---
+
+## Scoring
+
+- **Winning**: The player who first creates an unbroken line of three of their own markers wins the game.
+- **No Point System**: There is no point accumulation or scoring beyond the win condition.
+- **Match Play (Optional)**:
+  - Players may decide to play multiple rounds.
+  - Keep track of the number of games won to determine an overall champion after a set number of rounds.
+
+---
+
+## Examples
+
+### Example Scenario
+
+Let's walk through a sample game between Player 1 (`X`) and Player 2 (`O`).
+
+#### Initial Grid
+
+```
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 1: Player 1 (`X`)
+
+- **Place Marker**: Places `X` at cell `C3`.
+- **Shift**: Chooses to shift Column `C` up by one.
+
+**Grid After Turn 1**
+
+```
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   | X |   |   |  // `X` wrapped from `C3` to `C1`
+  +---+---+---+---+---+
+2 |   |   |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 2: Player 2 (`O`)
+
+- **Place Marker**: Places `O` at cell `B2`.
+- **Shift**: Chooses not to shift any row or column.
+
+**Grid After Turn 2**
+
+```
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   | X |   |   |
+  +---+---+---+---+---+
+2 |   | O |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 3: Player 1 (`X`)
+
+- **Place Marker**: Places `X` at cell `D4`.
+- **Shift**: Chooses to shift Row `4` left by one.
+
+**Grid After Turn 3**
+
+```
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   | X |   |   |
+  +---+---+---+---+---+
+2 |   | O |   |   |   |
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   |   | X |   |  // `X` moved from `D4` to `C4`
+  +---+---+---+---+---+
+5 |   |   |   |   |   |
+  +---+---+---+---+---+
+```
+
+#### Turn 4: Player 2 (`O`)
+
+- **Place Marker**: Places `O` at cell `C2`.
+- **Shift**: Chooses to shift Column `C` down by one.
+
+**Grid After Turn 4**
+
+```
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   |   |   |   |  // `X` from `C1` moved to `C2`
+  +---+---+---+---+---+
+2 |   | O | X |   |   |  // `O` placed at `C2`; `X` shifted here
+  +---+---+---+---+---+
+3 |   |   |   |   |   |
+  +---+---+---+---+---+
+4 |   |   | X |   |   |  // `X` from `C4` moved to `C5`
+  +---+---+---+---+---+
+5 |   |   |   |   | X |  // `X` wrapped from `C5` to `C1`
+  +---+---+---+---+---+
+```
+
+#### Turn 5: Player 1 (`X`)
+
+- **Place Marker**: Places `X` at cell `C3`.
+- **Shift**: Chooses not to shift any row or column.
+
+**Grid After Turn 5**
+
+```
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   | O | X |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |  // `X` placed at `C3`
+  +---+---+---+---+---+
+4 |   |   | X |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   | X |
+  +---+---+---+---+---+
+```
+
+#### Win Condition Check
+
+- **Player 1 (`X`)** now has three `X`s in Column `C` at rows `2`, `3`, and `4`.
+- **Victory**: Player 1 wins by aligning three markers vertically.
+
+---
+
+## Command-Line Interaction Example
+
+### Prompting the Player
+
+- **Placement**:
+  ```
+  Player X, enter the cell to place your marker (e.g., B3): C3
+  ```
+- **Shifting (Optional)**:
+  ```
+  Do you want to shift a row or column? (yes/no): yes
+  Enter 'row' or 'column' to select: column
+  Enter the row number or column letter to shift: C
+  Enter direction to shift ('up', 'down', 'left', 'right'): down
+  ```
+
+### Displaying the Grid
+
+After each turn, display the updated grid:
+
+```
+Current Grid:
+    A   B   C   D   E  
+  +---+---+---+---+---+
+1 |   |   |   |   |   |
+  +---+---+---+---+---+
+2 |   | O | X |   |   |
+  +---+---+---+---+---+
+3 |   |   | X |   |   |
+  +---+---+---+---+---+
+4 |   |   | X |   |   |
+  +---+---+---+---+---+
+5 |   |   |   |   | X |
+  +---+---+---+---+---+
+```
+
+### Announcing the Winner
+
+```
+Player X wins by aligning three markers in Column C!
+```
+
+---
+
+## Strategic Tips
+
+- **Utilize Shifting**: Use the shifting mechanic to set up your own alignment or disrupt your opponent's plans.
+  
+- **Plan Ahead**: Consider the impact of shifting on both your and your opponent's markers.
+
+- **Control the Center**: Placing markers near the center increases your options for creating alignments.
+
+- **Observe Opponent's Moves**: Anticipate their strategy and use shifts to your advantage.
+
+---
+
+## Conclusion
+
+**Coordinate Clash** combines simple rules with strategic depth, making it easy to learn but challenging to master. The shifting mechanic adds a layer of complexity, ensuring that skilled players can consistently outmaneuver less experienced opponents. Enjoy the game and may the best strategist win!
+
+---

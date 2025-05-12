@@ -1,0 +1,9 @@
+The action space in the custom gym environment consists of 650 actions, covering both normal play and sudden-death phases:
+
+1. **Normal Play**: Actions 0 to 24 correspond to placing a marker on any of the 25 empty cells (0-indexed from 0 to 24).
+
+2. **Sudden-Death Phase**: Actions 25 to 649 cover all possible moves where a player relocates one of their own markers to an empty cell. Each action is calculated as:
+   - Action = 25 + (from_cell_index * 25) + to_cell_index
+   - Here, `from_cell_index` represents the index of the player's current marker, and `to_cell_index` represents the index of the empty cell where the marker will be moved.
+
+This dual indexing scheme ensures all possible placements and relocations are captured in the action space.

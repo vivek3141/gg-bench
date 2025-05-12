@@ -1,0 +1,178 @@
+# Rule Book for "Token Jump"
+
+## Objective
+
+Be the first player to move your token from the starting position (0) to the end position (10) on a shared number line, following the game's movement rules. Strategic planning and careful movement are key to outmaneuvering your opponent and reaching the goal first.
+
+## Setup
+
+- **Number Line**: Create a number line with positions numbered from **0** to **10**.
+- **Player Tokens**: Each player selects a unique token to represent themselves on the number line. For simplicity in a command-line interface:
+  - **Player 1**: Represented by `A`
+  - **Player 2**: Represented by `B`
+- **Starting Positions**: Both player tokens are placed at position **0** on the number line.
+
+## Game Components
+
+- **Number Line (0-10)**: A linear path that players navigate by moving their tokens forward toward the end position.
+- **Player Tokens**: Distinct markers (`A` and `B`) that indicate each player's current position on the number line.
+
+## Turns
+
+- **Turn Order**: Decide which player goes first (e.g., by mutual agreement or a random method like flipping a coin).
+- **Turn Structure**:
+  1. **Movement Choice**: On your turn, choose to move your token forward by **1**, **2**, or **3** positions.
+  2. **Movement Execution**: Advance your token according to your chosen movement, adhering to the movement rules.
+  3. **Turn Completion**: After moving, the turn passes to the other player.
+- **Turn Progression**: Players alternate turns until one player wins by reaching position **10**.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Allowed Movements**: On your turn, you may move your token forward by **1**, **2**, or **3** positions.
+   - **Example**: If your token is at position **4**, you can move to position **5**, **6**, or **7**.
+2. **Movement Restrictions**:
+   - **No Backward Movement**: You cannot move your token backward.
+   - **Exact Landing**: You must land exactly on position **10** to win; you cannot move beyond position **10**.
+   - **Blockade Rule**:
+     - **Cannot Pass or Land On Opponent**: You cannot move your token past or onto the position occupied by your opponent's token.
+     - **Limited Movement**: If your opponent's token is directly ahead within your maximum movement range (1-3 positions), you can only move up to the space just before their token.
+     - **Blocked Movement**: If your opponent's token is immediately ahead (adjacent), and you cannot move without violating the blockade rule, you must forfeit your movement for that turn.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to land exactly on position **10** wins the game.
+- **No Possible Moves**:
+  - **Stalemate Avoidance**: If you cannot move because all possible movements would violate the blockade rule or overshoot position **10**, you must pass your turn. The game continues until a player wins.
+
+## Scoring
+
+- **Win/Loss Outcome**: The game is won by the first player to reach position **10**. There is no point-based scoring system.
+- **No Draws**: The game does not allow for a draw; play continues until a player wins.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial State
+
+- **Player A** (`A`) is at position **0**.
+- **Player B** (`B`) is at position **0**.
+
+#### Turn 1: Player A
+
+- **Choice**: Moves **3** positions.
+- **Result**: `A` moves to position **3**.
+- **Positions**:
+  - `A`: Position **3**
+  - `B`: Position **0**
+
+#### Turn 2: Player B
+
+- **Choice**: Moves **3** positions.
+- **Result**: `B` moves to position **3**.
+- **Positions**:
+  - `A`: Position **3**
+  - `B`: Position **3**
+- **Conflict**: Since `A` is already at position **3**, `B` cannot land there.
+- **Resolution**: `B` must choose a different move.
+- **New Choice**: Moves **2** positions.
+- **Result**: `B` moves to position **2**.
+
+#### Turn 3: Player A
+
+- **Choice**: Moves **3** positions.
+- **Obstacle**: Cannot move past `B` at position **2** to reach positions **6**.
+- **Available Moves**:
+  - **Move 1**: To position **4**
+  - **Move 2**: To position **5**
+- **Decision**: Moves **2** positions to position **5**.
+- **Positions**:
+  - `A`: Position **5**
+  - `B`: Position **2**
+
+#### Turn 4: Player B
+
+- **Choice**: Moves **3** positions.
+- **Result**: `B` moves to position **5**.
+- **Positions**:
+  - `A`: Position **5**
+  - `B`: Position **5**
+- **Conflict**: `B` cannot land on `A`'s position.
+- **Resolution**: `B` must choose a different move.
+- **Available Moves**:
+  - **Move 1**: To position **3**
+  - **Move 2**: To position **4**
+- **Decision**: Moves **2** positions to position **4**.
+- **Positions**:
+  - `A`: Position **5**
+  - `B`: Position **4**
+
+#### Turn 5: Player A
+
+- **Choice**: Moves **3** positions to reach position **8**.
+- **Obstacle**: Cannot move past `B` at position **4**.
+- **Available Moves**:
+  - **Move 1**: To position **6**
+  - **Move 2**: To position **7**
+- **Decision**: Moves **3** positions to position **8** (since moving from **5** to **8** does not pass over `B` at **4**).
+- **Positions**:
+  - `A`: Position **8**
+  - `B`: Position **4**
+
+#### Turn 6: Player B
+
+- **Choice**: Moves **3** positions.
+- **Obstacle**: Cannot move past `A` at position **8**.
+- **Available Moves**:
+  - **Move 1**: To position **5**
+  - **Move 2**: To position **6**
+- **Decision**: Moves **2** positions to position **6**.
+- **Positions**:
+  - `A`: Position **8**
+  - `B`: Position **6**
+
+#### Turn 7: Player A
+
+- **Choice**: Needs to reach position **10**.
+- **Available Moves**:
+  - **Move 1**: To position **9**
+  - **Move 2**: To position **10**
+- **Decision**: Moves **2** positions to position **10**.
+- **Outcome**: `A` reaches position **10** and wins the game.
+
+### Command-Line Interaction Example
+
+#### Player A's Turn
+
+- **Prompt**: "Player A, you are at position **0**. Player B is at position **0**. Choose your move (1, 2, or 3):"
+- **Player A Input**: `3`
+- **Output**: "Player A moves to position **3**."
+
+#### Player B's Turn
+
+- **Prompt**: "Player B, you are at position **0**. Player A is at position **3**. Choose your move (1, 2, or 3):"
+- **Player B Input**: `3`
+- **Output**: "Invalid move. You cannot land on Player A's position at 3. Choose a different move."
+- **Player B Input**: `2`
+- **Output**: "Player B moves to position **2**."
+
+#### Continuing Play
+
+The game proceeds with each player prompted on their turn, informed of both players' positions, and any invalid moves are flagged with explanations.
+
+## Strategy Tips
+
+- **Plan Ahead**: Think several moves in advance to position yourself advantageously.
+- **Block Your Opponent**: Use the blockade rule to limit your opponent's movement options.
+- **Control the Lead**: Stay ahead on the number line to force your opponent into difficult positions.
+- **Exact Counts**: Keep track of the distance to position **10** to ensure you can land there exactly when the opportunity arises.
+
+## Additional Notes
+
+- **Game Speed**: The game is designed to end quickly, typically within a few turns.
+- **Skill Factor**: Mastery of the movement and blockade rules provides a significant advantage to skilled players.
+- **Uniqueness**: "Token Jump" offers a unique blend of simple movement mechanics and strategic depth, differentiating it from traditional games like Nim or Tic-Tac-Toe.
+
+Enjoy playing "Token Jump" and may the best strategist win!

@@ -1,0 +1,174 @@
+# Double or Nothing
+
+## Objective
+
+Be the first player to reach **exactly 10 points** by strategically choosing to either add to or multiply your current score without exceeding the target score.
+
+## Setup
+
+- **Target Score**: 10 points.
+- **Starting Score**: Both players begin with 0 points.
+- **Player Order**: Decide who goes first by mutual agreement or a coin toss.
+  
+No physical components are needed; players track scores mentally or write them down. The game is played in a command-line interface where players enter their choices each turn.
+
+## Game Components
+
+- **Player Scores**: Numerical values starting at 0 for each player.
+- **Actions**: On each turn, players choose one of the following actions:
+  - `Add 1`: Increment your current score by 1 point.
+  - `Double`: Multiply your current score by 2.
+  
+These actions allow players to strategically increase their scores to reach the target.
+
+## Turns
+
+- Players take **alternate turns** starting with the first player.
+- On their turn, a player must choose one of the two actions:
+  - **Add 1** to their current score.
+  - **Double** their current score.
+- After performing the action, the player's new score is updated.
+- The game continues with turns alternating between players.
+
+## Rules and Mechanics
+
+1. **Choosing Actions**:
+   - **Add 1**:
+     - Increases the player's score by 1 point.
+   - **Double**:
+     - Multiplies the player's current score by 2.
+     - If doubling would result in a score **exceeding 10**, this action is **not allowed**, and the player must choose `Add 1` instead.
+     
+2. **Winning the Game**:
+   - The first player to reach **exactly 10 points** wins the game.
+   
+3. **Exceeding the Target Score**:
+   - Players **cannot** perform an action that would cause their score to exceed 10.
+   - If both actions would cause the player's score to exceed 10, the player **loses their turn**, and play passes to the opponent.
+   
+4. **No Further Moves**:
+   - If **both players** are unable to make a valid move on their respective turns (i.e., any action would exceed 10), the **player whose turn it is next loses the game**. This ensures the game cannot end in a draw.
+
+## Scoring
+
+- **Win Condition**: Achieve a score of exactly 10 points.
+- **No Points System**: The game does not use a point-based scoring system beyond reaching the target score.
+- **Victory**: Declared when a player reaches 10 points.
+
+## Examples
+
+### Example Game Play
+
+**Starting Scores**:
+- Player A: 0 points
+- Player B: 0 points
+
+#### Turn 1:
+- **Player A's Turn**:
+  - Chooses to `Add 1`.
+  - New score: 0 + 1 = **1**
+  
+#### Turn 2:
+- **Player B's Turn**:
+  - Chooses to `Double`.
+  - New score: 0 * 2 = **0** (Doubling zero remains zero)
+  
+#### Turn 3:
+- **Player A's Turn**:
+  - Chooses to `Double`.
+  - New score: 1 * 2 = **2**
+  
+#### Turn 4:
+- **Player B's Turn**:
+  - Chooses to `Add 1`.
+  - New score: 0 + 1 = **1**
+  
+#### Turn 5:
+- **Player A's Turn**:
+  - Chooses to `Double`.
+  - New score: 2 * 2 = **4**
+  
+#### Turn 6:
+- **Player B's Turn**:
+  - Chooses to `Double`.
+  - New score: 1 * 2 = **2**
+  
+#### Turn 7:
+- **Player A's Turn**:
+  - Chooses to `Double`.
+  - New score: 4 * 2 = **8**
+  
+#### Turn 8:
+- **Player B's Turn**:
+  - Chooses to `Add 1`.
+  - New score: 2 + 1 = **3**
+  
+#### Turn 9:
+- **Player A's Turn**:
+  - Cannot `Double` (8 * 2 = 16 exceeds 10)
+  - Chooses to `Add 1`.
+  - New score: 8 + 1 = **9**
+  
+#### Turn 10:
+- **Player B's Turn**:
+  - Chooses to `Double`.
+  - New score: 3 * 2 = **6**
+  
+#### Turn 11:
+- **Player A's Turn**:
+  - Cannot `Double` (9 * 2 = 18 exceeds 10)
+  - Chooses to `Add 1`.
+  - New score: 9 + 1 = **10**
+  - **Player A wins!**
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate future moves to avoid being unable to act.
+- **Balancing Actions**: Deciding when to `Double` for rapid progress and when to `Add 1` to avoid overshooting the target is crucial.
+- **Forcing Opponent's Hand**: Players can make moves that limit the opponent's options on their next turn.
+
+## Command-Line Interaction Example
+
+Here is how the game might look in a command-line interface:
+
+```
+Game Start! Target Score: 10
+Player A's Turn:
+- Current Score: 0
+Choose your action: (1) Add 1 or (2) Double
+> 1
+Player A adds 1. New Score: 1
+
+Player B's Turn:
+- Current Score: 0
+Choose your action: (1) Add 1 or (2) Double
+> 2
+Player B doubles their score. New Score: 0
+
+Player A's Turn:
+- Current Score: 1
+Choose your action: (1) Add 1 or (2) Double
+> 2
+Player A doubles their score. New Score: 2
+
+Player B's Turn:
+- Current Score: 0
+Choose your action: (1) Add 1 or (2) Double
+> 1
+Player B adds 1. New Score: 1
+
+... [Game continues as in the example above] ...
+
+Player A's Turn:
+- Current Score: 9
+Choose your action: (1) Add 1 or (2) Double
+> 1
+Player A adds 1. New Score: 10
+Congratulations, Player A! You reached 10 and won the game!
+```
+
+## Conclusion
+
+**Double or Nothing** is a simple yet strategic game that involves mathematical planning and foresight. It is easy to learn and quick to play, making it ideal for a command-line interface. Players must carefully choose when to `Add 1` or `Double` their score to reach the target before their opponent.
+
+Enjoy the game and may the best strategist win!

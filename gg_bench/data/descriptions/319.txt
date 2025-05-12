@@ -1,0 +1,305 @@
+# Capture and Conquer: Rule Book
+
+## Objective
+
+Capture and Conquer is a two-player turn-based strategy game played on a linear board in a command-line interface. The objective of the game is to be the first player to capture your opponent's base by moving your unit across the board to the opponent's base position. Strategic movement and anticipation of your opponent's actions are key to victory.
+
+**Victory Condition:** The first player to move their unit onto the opponent's base position (Player 1 to position 10, Player 2 to position 0) wins the game.
+
+## Setup
+
+1. **Board Initialization:**
+   - The game board is a linear track consisting of 11 positions, numbered from 0 to 10.
+   - Positions are sequential and represent the path between the two bases.
+
+2. **Player Bases:**
+   - **Player 1's base** is at position **0**.
+   - **Player 2's base** is at position **10**.
+
+3. **Unit Placement:**
+   - Each player has one unit.
+   - **Player 1's unit** starts on their base at position **0**.
+   - **Player 2's unit** starts on their base at position **10**.
+
+4. **Starting Player:**
+   - Determine who goes first through mutual agreement or a random method (e.g., coin toss).
+
+## Game Components
+
+- **Linear Board (Positions 0 to 10):** The board represents the path units take to reach the opponent's base.
+- **Player Units:** Each player controls one unit that moves along the board.
+  - **Appearance:** Represented by symbols (e.g., `P1` for Player 1, `P2` for Player 2) in the command-line interface.
+- **Positions:** Numbered markers indicating unit locations.
+- **Bases:** The starting and ending points for units.
+  - **Player 1's Base:** Position 0.
+  - **Player 2's Base:** Position 10.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure for Each Player:**
+  1. **Decision Phase:** Choose to move your unit **1** or **2** positions toward the opponent's base.
+  2. **Movement Phase:** Move your unit according to your decision.
+  3. **Battle Phase (if applicable):** Resolve any battles if both units occupy the same position after movement.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- On your turn, you must move your unit **forward** toward the opponent's base.
+- **Movement Options:**
+  - Move **1** position forward.
+  - Move **2** positions forward.
+- You cannot skip a turn or move backward.
+
+### Battle Rules
+
+- A battle occurs if, after movement, both units occupy the **same position**.
+- **Battle Outcome:**
+  - The **attacking player** (the one who just moved) wins the battle.
+  - The **defending player's unit** is sent back to their own base (position 0 for Player 1, position 10 for Player 2).
+- If the defending player's unit was already at their base, it remains there.
+
+### Winning the Game
+
+- A player **wins immediately** when their unit moves onto the opponent's base position.
+- The game ends, and no further turns are taken.
+
+### Additional Rules
+
+- Players must **always** move; skipping a turn is not allowed.
+- The game cannot end in a draw; a victor will emerge through gameplay.
+- Units cannot occupy positions beyond the board (positions less than 0 or greater than 10).
+
+## Scoring
+
+- **Victory:** The winning player earns 1 game point.
+- **Match Play (Optional):** Players may decide to play multiple games, keeping track of victories to determine an overall winner.
+- There are no points scored during the game; the focus is on achieving the objective.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial Board State
+
+```
+Positions: 0 1 2 3 4 5 6 7 8 9 10
+            P1                         P2
+```
+
+- `P1` represents Player 1's unit at position 0.
+- `P2` represents Player 2's unit at position 10.
+
+#### Turn-by-Turn Example
+
+1. **Player 1's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P1 moves from position 0 to position 2.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                   P1                  P2
+     ```
+
+2. **Player 2's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P2 moves from position 10 to position 8.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                   P1              P2
+     ```
+
+3. **Player 1's Turn:**
+
+   - **Decision:** Move 1 position forward.
+   - **Movement:** P1 moves from position 2 to position 3.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                     P1            P2
+     ```
+
+4. **Player 2's Turn:**
+
+   - **Decision:** Move 1 position forward.
+   - **Movement:** P2 moves from position 8 to position 7.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                     P1          P2
+     ```
+
+5. **Player 1's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P1 moves from position 3 to position 5.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                         P1      P2
+     ```
+
+6. **Player 2's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P2 moves from position 7 to position 5.
+   - **Battle Occurs at Position 5:**
+     - **Attacker:** Player 2 (just moved).
+     - **Defender:** Player 1.
+     - **Outcome:** Player 2 wins the battle.
+     - **Player 1's unit** is sent back to their base at position 0.
+   - **Board State After Battle:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+            P1            P2
+     ```
+
+7. **Player 1's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P1 moves from position 0 to position 2.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                   P1      P2
+     ```
+
+8. **Player 2's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P2 moves from position 5 to position 7.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                   P1          P2
+     ```
+
+9. **Player 1's Turn:**
+
+   - **Decision:** Move 2 positions forward.
+   - **Movement:** P1 moves from position 2 to position 4.
+   - **Board State:**
+
+     ```
+     Positions: 0 1 2 3 4 5 6 7 8 9 10
+                       P1        P2
+     ```
+
+10. **Player 2's Turn:**
+
+    - **Decision:** Move 2 positions forward.
+    - **Movement:** P2 moves from position 7 to position 9.
+    - **Board State:**
+
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+                       P1            P2
+      ```
+
+11. **Player 1's Turn:**
+
+    - **Decision:** Move 2 positions forward.
+    - **Movement:** P1 moves from position 4 to position 6.
+    - **Board State:**
+
+      ```
+      Positions: 0 1 2 3 4 5 6 7 8 9 10
+                           P1      P2
+      ```
+
+12. **Player 2's Turn:**
+
+    - **Decision:** Move 1 position forward.
+    - **Movement:** P2 moves from position 9 to position 10 (Player 1's base).
+    - **Outcome:** Player 2 reaches Player 1's base and wins the game.
+
+### Sample Command-Line Interaction
+
+Below is a simplified example of how the game could be played in a command-line interface.
+
+#### Game Start
+
+```
+Welcome to Capture and Conquer!
+
+Player 1's base is at position 0.
+Player 2's base is at position 10.
+
+Player 1 starts first.
+
+Positions: [0 P1][1][2][3][4][5][6][7][8][9][10 P2]
+```
+
+#### Player Turns
+
+**Player 1's Turn:**
+
+```
+Player 1's turn.
+Enter your move (1 or 2 positions forward): 2
+
+Player 1 moves to position 2.
+Positions: [0][1][2 P1][3][4][5][6][7][8][9][10 P2]
+```
+
+**Player 2's Turn:**
+
+```
+Player 2's turn.
+Enter your move (1 or 2 positions forward): 2
+
+Player 2 moves to position 8.
+Positions: [0][1][2 P1][3][4][5][6][7][8 P2][9][10]
+```
+
+*(Continue turns as per the sample game play above.)*
+
+**Battle Example:**
+
+```
+Player 2's turn.
+Enter your move (1 or 2 positions forward): 2
+
+Player 2 moves to position 5.
+Battle occurs at position 5!
+Player 2 wins the battle.
+Player 1's unit is sent back to base.
+
+Positions: [0 P1][1][2][3][4][5 P2][6][7][8][9][10]
+```
+
+**Winning the Game:**
+
+```
+Player 2's turn.
+Enter your move (1 or 2 positions forward): 1
+
+Player 2 moves to position 10.
+Player 2 has reached Player 1's base!
+Player 2 wins the game!
+
+Final Positions: [0][1][2][3][4][5][6][7][8][9][10 P2]
+```
+
+## Strategy Tips
+
+- **Anticipate Opponent's Moves:** Try to predict whether your opponent will move 1 or 2 positions to plan your own movement strategically.
+- **Control Battles:** Initiate battles when advantageous to send your opponent back to their base.
+- **Mix Up Movements:** Vary your movement choices to keep your opponent guessing.
+- **Protect Your Unit:** Avoid unnecessary battles when you are close to the opponent's base to prevent being sent back.
+
+## Conclusion
+
+Capture and Conquer is a fast-paced game that combines strategy and foresight. Simple to learn yet offering strategic depth, it's perfect for quick matches in a command-line setting. Master the art of movement and anticipation to outmaneuver your opponent and claim victory!

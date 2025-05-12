@@ -1,0 +1,129 @@
+# Multiply or Add
+
+## Objective
+
+The objective of **Multiply or Add** is to be the first player to reach the target number **N** exactly by strategically choosing to either add or multiply numbers during your turn. The player who reaches the target number **N** first wins the game. If a player cannot make a legal move without exceeding **N**, they lose the game.
+
+## Setup
+
+- **Target Number (N):** Decide on a target number to reach. By default, **N = 100**, but players can agree on any reasonable positive integer to suit their desired game length and difficulty.
+- **Starting Number:** The game begins with a current number of **1**.
+- **Player Order:** Decide which player will take the first turn. This can be determined randomly or by mutual agreement.
+
+## Game Components
+
+- **Current Number:** A shared number that starts at **1** and is updated after each turn based on player actions.
+- **Operations:**
+  - **Addition:** Adding an integer from **1** to **9** to the current number.
+  - **Multiplication:** Multiplying the current number by an integer from **2** to **5**.
+- **Target Number (N):** The number players aim to reach exactly to win the game.
+
+## Turns
+
+- Players take turns alternately.
+- During a turn, a player must choose one of the following actions:
+  1. **Add** an integer between **1** and **9** (inclusive) to the current number.
+  2. **Multiply** the current number by an integer between **2** and **5** (inclusive).
+- After performing the operation, the new current number is announced.
+- A player's turn ends after they perform their chosen operation.
+
+## Rules and Mechanics
+
+1. **Legal Moves:**
+   - **Addition:** You may add any integer from **1** to **9** to the current number.
+   - **Multiplication:** You may multiply the current number by any integer from **2** to **5**.
+2. **Staying Within Bounds:**
+   - The result of your operation must not exceed the target number **N**.
+   - If all possible moves would result in a number greater than **N**, the player loses the game.
+3. **Winning the Game:**
+   - The first player to make the current number exactly equal to **N** wins.
+4. **No Skipping Turns:**
+   - Players must make a move on their turn if at least one legal move is available.
+5. **Command-Line Interaction:**
+   - Players input their chosen operation and number during their turn.
+   - Example inputs:
+     - `add 5` (to add 5 to the current number)
+     - `multiply 3` (to multiply the current number by 3)
+
+## Scoring
+
+- **Winning:**
+  - The player who reaches the target number **N** exactly wins the game.
+- **Losing:**
+  - If a player cannot make a legal move without exceeding **N**, they lose the game.
+
+## Examples
+
+### Example Game
+
+**Target Number (N):** 50  
+**Starting Number:** 1
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn:**
+   - **Current Number:** 1
+   - Chooses to **multiply by 5**.
+   - **Calculation:** 1 x 5 = 5
+   - **New Current Number:** 5
+
+2. **Player 2's Turn:**
+   - **Current Number:** 5
+   - Chooses to **add 9**.
+   - **Calculation:** 5 + 9 = 14
+   - **New Current Number:** 14
+
+3. **Player 1's Turn:**
+   - **Current Number:** 14
+   - Chooses to **multiply by 3**.
+   - **Calculation:** 14 x 3 = 42
+   - **New Current Number:** 42
+
+4. **Player 2's Turn:**
+   - **Current Number:** 42
+   - Possible addition moves: Adding any number from 1 to 8 (since 42 + 9 = 51 > 50).
+   - Possible multiplication moves: Multiplying by 2 (since 42 x 3 = 126 > 50).
+   - Chooses to **add 8**.
+   - **Calculation:** 42 + 8 = 50
+   - **New Current Number:** 50
+   - **Player 2 wins!**
+
+### Sample Command-Line Interaction
+
+```
+Game Start!
+Target Number (N): 50
+Starting Number: 1
+
+Player 1's turn.
+Current Number: 1
+Enter your move (e.g., 'add 5' or 'multiply 3'): multiply 5
+New Current Number: 5
+
+Player 2's turn.
+Current Number: 5
+Enter your move: add 9
+New Current Number: 14
+
+Player 1's turn.
+Current Number: 14
+Enter your move: multiply 3
+New Current Number: 42
+
+Player 2's turn.
+Current Number: 42
+Enter your move: add 8
+New Current Number: 50
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Consider the possible results of your move and how it will set up options for your opponent.
+- **Control the Game Flow:** Try to force your opponent into a position where they have no winning moves.
+- **Balance Operations:** Use both addition and multiplication to navigate towards the target number efficiently.
+- **Avoid Overshooting:** Be cautious not to exceed the target number, as this will result in a loss.
+
+---
+
+Enjoy playing **Multiply or Add** and may the best strategist win!

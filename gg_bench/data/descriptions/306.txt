@@ -1,0 +1,175 @@
+# Bit Flip Showdown
+
+## Objective
+
+Be the first player to create a byte (8 bits) where the total number of '1's is exactly **six (6)**. Achieve this by strategically flipping bits during your turn while preventing your opponent from doing the same.
+
+## Setup
+
+- **Initial State:** The game starts with a byte consisting of 8 bits, all set to '0'. This is represented as:
+
+  ```
+  0 0 0 0 0 0 0 0
+  ```
+
+- **Player Assignment:** Two players are designated as **Player 1** and **Player 2**. Decide who goes first—either randomly or by mutual agreement.
+
+## Game Components
+
+- **Byte:** An 8-bit sequence representing the game state.
+- **Bits:** Each bit can be either '0' (off) or '1' (on).
+- **Bit Positions:** The bits are numbered from 1 to 8, from left to right.
+
+  ```
+  Position:    1 2 3 4 5 6 7 8
+  Initial Bit: 0 0 0 0 0 0 0 0
+  ```
+
+## Turns
+
+### Turn Structure
+
+- **Action:** On your turn, you must flip **exactly one bit**. Flipping changes a '0' to a '1' or a '1' to a '0'.
+- **How to Flip:**
+  - Specify the position (1-8) of the bit you wish to flip.
+  - Only one bit can be flipped per turn.
+- **Example:**
+
+  ```
+  Current State: 0 0 0 0 0 0 0 0
+  Player 1's Turn:
+  - Flips bit at position 3.
+  - New State: 0 0 1 0 0 0 0 0
+  ```
+
+### Turn Progression
+
+- Players alternate turns.
+- No skipping turns; each player must flip a bit on their turn.
+
+## Rules and Mechanics
+
+1. **Flipping Bits:**
+   - **Mandatory Move:** Flipping a bit each turn is required.
+   - **Valid Positions:** Only positions 1 through 8 are valid.
+   - **Current State Aware:** Players must flip based on the current state of the byte.
+
+2. **Winning Condition:**
+   - **Victory:** The first player to create a byte with **exactly six '1's** wins.
+   - **Immediate Win:** If your flip results in six '1's, you win instantly.
+   - **Example of Winning State:**
+
+     ```
+     1 1 1 1 1 1 0 0  (Total '1's = 6)
+     ```
+
+3. **Game Continuation:**
+   - The game cannot end in a draw.
+   - Play continues until one player meets the winning condition.
+
+4. **No Reversing Wins:**
+   - Once a player achieves six '1's, the game ends immediately.
+   - The opponent does not get an additional turn to alter the state.
+
+## Scoring
+
+- **Single Round Victory:** Winning is achieved by meeting the winning condition in a round.
+- **No Points System:** There is no point tracking; each game is a standalone win or loss.
+- **Multiple Rounds:** Players may choose to play multiple games, keeping track of wins.
+
+## Examples
+
+### Example Game Play
+
+**Initial State:**
+
+```
+Positions: 1 2 3 4 5 6 7 8
+Bits:      0 0 0 0 0 0 0 0
+```
+
+**Player 1's Turn:**
+
+- Flips bit **3**.
+- New State: `0 0 1 0 0 0 0 0`
+- Total '1's: 1
+
+**Player 2's Turn:**
+
+- Flips bit **5**.
+- New State: `0 0 1 0 1 0 0 0`
+- Total '1's: 2
+
+**Player 1's Turn:**
+
+- Flips bit **4**.
+- New State: `0 0 1 1 1 0 0 0`
+- Total '1's: 3
+
+**Player 2's Turn:**
+
+- Flips bit **6**.
+- New State: `0 0 1 1 1 1 0 0`
+- Total '1's: 4
+
+**Player 1's Turn:**
+
+- Flips bit **7**.
+- New State: `0 0 1 1 1 1 1 0`
+- Total '1's: 5
+
+**Player 2's Turn:**
+
+- Flips bit **8**.
+- New State: `0 0 1 1 1 1 1 1`
+- Total '1's: 6
+
+**Result:**
+
+- **Player 2 Wins!** They have achieved exactly six '1's.
+
+### Command-Line Interaction Example
+
+**Player 1's Turn:**
+
+```
+Current State: 0 0 0 0 0 0 0 0
+Player 1, select a bit to flip (1-8): 3
+New State: 0 0 1 0 0 0 0 0
+```
+
+**Player 2's Turn:**
+
+```
+Current State: 0 0 1 0 0 0 0 0
+Player 2, select a bit to flip (1-8): 5
+New State: 0 0 1 0 1 0 0 0
+```
+
+**...and so on until a player wins.**
+
+## Strategic Considerations
+
+- **Balance Offensive and Defensive Moves:**
+  - Increase the count of '1's to approach six.
+  - Flip a '1' back to '0' to prevent your opponent from reaching six '1's on their next turn.
+
+- **Predict Opponent's Moves:**
+  - Anticipate which bit your opponent might flip.
+  - Plan your flips to set up a win while blocking your opponent.
+
+- **Optimal Play:**
+  - Experienced players can calculate the optimal sequence of flips.
+  - Control the game by maintaining an advantageous number of '1's.
+
+## Tips for Skilled Play
+
+- **Counting:** Keep track of the total number of '1's after each turn.
+- **Positioning:** Focus on flipping bits that are less likely to be reversed immediately.
+- **Forcing Moves:** Create situations where your opponent has no choice but to make a move that benefits you.
+
+## Conclusion
+
+**Bit Flip Showdown** is a fast-paced, strategic game that tests players' analytical and predictive skills. With simple rules and quick gameplay, it's perfect for command-line play and ensures that skillful players can consistently earn victory through thoughtful planning and execution.
+
+Enjoy the showdown!

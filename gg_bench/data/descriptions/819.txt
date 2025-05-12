@@ -1,0 +1,199 @@
+# Trailblazer: Rule Book
+
+## Objective
+
+**Trailblazer** is a two-player turn-based strategy game played on a 7x7 grid. The primary goal is to navigate your player from your starting position to the opponent's starting position before they reach yours or to strategically block your opponent such that they cannot make a valid move on their turn. Players leave impassable trails behind them, adding strategic depth to movement and positioning.
+
+- **Win Conditions:**
+  - Reach the opponent's starting position.
+  - Block your opponent so they have no valid moves on their turn.
+
+## Setup
+
+- **Game Grid:** A 7x7 grid represented in the command-line interface.
+- **Starting Positions:**
+  - **Player 1 (P1):** Top-left corner of the grid at position `(0, 0)`.
+  - **Player 2 (P2):** Bottom-right corner of the grid at position `(6, 6)`.
+- **Initial Grid State:** All cells are empty (`.`) except the starting positions of the players.
+
+```
+P1 .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  P2
+```
+
+## Game Components
+
+- **Grid Cells:**
+  - Represented by characters in the command-line interface.
+  - Empty cells: `.` 
+  - Player 1's current position: `P1`
+  - Player 2's current position: `P2`
+  - Player 1's trail: `1`
+  - Player 2's trail: `2`
+- **Players:**
+  - Each player controls a single piece that moves on the grid.
+- **Trails:**
+  - Impassable paths left behind by the players as they move.
+  
+## Turns
+
+- **Turn Order:**
+  - Player 1 moves first.
+  - Players alternate turns thereafter.
+- **Player Actions:**
+  - On your turn, move your piece to an adjacent unoccupied cell.
+  - Allowed directions: Up, Down, Left, Right (no diagonal moves).
+- **Progression:**
+  - After moving, your previous cell becomes part of your trail.
+  - The game continues until a win condition is met.
+
+## Rules and Mechanics
+
+### Movement
+
+- **Valid Moves:**
+  - Move to an adjacent cell that is not occupied or trailed.
+- **Impassable Cells:**
+  - Cells occupied by `P1`, `P2`, `1`, or `2` cannot be entered.
+  
+### Trails
+
+- **Creating Trails:**
+  - After moving, mark the cell you moved from with your trail symbol (`1` or `2`).
+- **Trail Behavior:**
+  - Trails are permanent and impassable to both players.
+  
+### Winning the Game
+
+- **Victory Conditions:**
+  - **Reach Opponent's Base:** Move your piece to the opponent's starting position.
+  - **Block Opponent:** Prevent your opponent from making any valid moves on their turn.
+- **No Draws:**
+  - The game cannot end in a draw due to the grid's finite size and movement constraints.
+
+## Scoring
+
+- **Win:** The player who meets a victory condition wins the game.
+- **No Points System:** There is no scoring or point tracking; the game is won outright.
+
+## Examples
+
+### Example Game Play
+
+#### Initial Grid
+
+```
+P1 .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .
+.  .  .  .  .  .  P2
+```
+
+#### Turn-by-Turn Example
+
+**Turn 1 (Player 1):**
+
+- **Action:** Move Right to `(0, 1)`.
+- **Update Grid:**
+
+```
+1  P1 .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  P2
+```
+
+- **Explanation:** Player 1 moves from `(0,0)` to `(0,1)`. The previous position `(0,0)` is marked with `1`.
+
+---
+
+**Turn 2 (Player 2):**
+
+- **Action:** Move Left to `(6, 5)`.
+- **Update Grid:**
+
+```
+1  P1 .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  .  .
+.   .  .  .  .  .  P2 .
+.   .  .  .  .   2  .
+```
+
+- **Explanation:** Player 2 moves from `(6,6)` to `(6,5)`. The previous position `(6,6)` is marked with `2`.
+
+---
+
+**Turn 3 (Player 1):**
+
+- **Action:** Move Down to `(1, 1)`.
+- **Update Grid:**
+
+```
+1   1   .  .  .  .  .  .
+.  P1   .  .  .  .  .  .
+.   .   .  .  .  .  .  .
+.   .   .  .  .  .  .  .
+.   .   .  .  .  .  .  .
+.   .   .  .  .  .  P2 .
+.   .   .  .  .   2  .
+```
+
+- **Explanation:** Player 1 moves to `(1,1)`. Previous position `(0,1)` is marked with `1`.
+
+---
+
+**Game Continues:**
+
+- Players continue moving strategically, leaving trails behind.
+- They aim to reach each other's starting positions or block the opponent.
+
+### Win Scenario
+
+Suppose after several turns, the grid looks like this:
+
+```
+1   1   1   1   .  .  .  .
+.  1  P1   .  .  .  .  .
+.  1   1   .  .  .  .  .
+.   .   .   .  .  .  .  .
+.   .   .   .  2  2  2  2
+.   .   .   .  .  P2 2  .
+.   .   .   .  .   2  2
+```
+
+- **Player 1's Next Move:**
+  - Moves to `(4,0)`.
+
+- **Update Grid:**
+
+```
+1   1   1   1   P1 .  .  .
+.  1   1   .   .  .  .  .
+.  1   1   .   .  .  .  .
+.   .   .   .   .  .  .  .
+.   .   .   .   2  2  2  2
+.   .   .   .   .  P2 2  .
+.   .   .   .   .   2  2
+```
+
+- **Outcome:** Player 1 has reached Player 2's starting position `(6,6)`.
+
+- **Result:** Player 1 wins the game.
+
+## Conclusion
+
+Trailblazer is a simple yet strategically rich game that challenges players to outmaneuver their opponent through careful planning and movement. With straightforward rules and mechanics, it is easy to code and play in a command-line interface. The impossibility of draws and the finite grid ensure that games end quickly, while the trail mechanic adds depth and complexity, allowing skilled players to consistently outperform less experienced opponents.

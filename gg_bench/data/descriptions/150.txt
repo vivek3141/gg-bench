@@ -1,0 +1,337 @@
+# Stone Pile Battle
+
+## Objective
+
+**Stone Pile Battle** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reduce your opponent's stone pile to zero. Players must carefully choose actions that deplete their opponent's stones while managing their own pile. The game ends when one player's stone pile reaches zero, resulting in their loss and the opponent's victory.
+
+## Setup
+
+- **Initial Stone Piles**: Each player starts with a pile of **15 stones**.
+- **Player Identification**: Decide who will be **Player 1** and **Player 2**. This can be determined by mutual agreement or a random method.
+- **Starting Player**: Player 1 takes the first turn.
+
+## Game Components
+
+- **Stone Piles**: Two separate counts representing each player's stones.
+  - **Player 1's Stone Pile**: Starts at 15 stones.
+  - **Player 2's Stone Pile**: Starts at 15 stones.
+- **Actions**: Options available to players on their turn.
+  - **Transfer Actions**: Strategies to manipulate stone counts.
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- During a turn, a player must perform **one** of the allowed actions.
+- After the action is completed, the turn passes to the other player.
+
+## Rules and Mechanics
+
+### Allowed Actions
+
+On your turn, you may choose **one** of the following actions:
+
+1. **Self-Reduce and Transfer to Opponent**:
+   - **Remove** 1, 2, or 3 stones from **your own** pile.
+   - **Add** half (rounded down) of the removed stones to your opponent's pile.
+   - **Example**:
+     - Remove 3 stones from your pile.
+     - Add ⎣3 / 2⎦ = 1 stone to your opponent's pile.
+
+2. **Attack Opponent's Pile and Steal Stones**:
+   - **Remove** 1, 2, or 3 stones from your **opponent's** pile.
+   - **Add** half (rounded down) of the removed stones to **your own** pile.
+   - **Example**:
+     - Remove 2 stones from opponent's pile.
+     - Add ⎣2 / 2⎦ = 1 stone to your own pile.
+
+### Additional Rules
+
+- **Stone Removal Limits**:
+  - You cannot remove more stones than are available in the pile you're targeting.
+  - If the pile has fewer stones than the maximum allowed removal (3), you may only remove up to the number of stones remaining.
+- **No Negative Stones**:
+  - Stone piles cannot have negative values. Ensure that stone counts remain zero or positive after each action.
+- **Game End Condition**:
+  - The game ends immediately when **one player's stone pile reaches zero** at the end of any turn.
+  - The player with zero stones **loses** the game.
+
+## Scoring
+
+- **Victory**: Achieved by reducing your opponent's stone pile to zero.
+- **Loss**: Occurs when your stone pile reaches zero.
+- **No Draws**: The game cannot end in a draw; there is always a winner and a loser.
+
+## Examples
+
+Below are example scenarios with command-line interactions to illustrate how the game is played.
+
+### Example Game
+
+#### Initial State
+
+- **Player 1's Stone Pile**: 15 stones
+- **Player 2's Stone Pile**: 15 stones
+
+#### Turn-by-Turn Breakdown
+
+---
+
+**Player 1's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 2's pile (15 - 3 = 12).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 1's pile (15 + 1 = 16).
+- **Result**:
+  - **Player 1's Stone Pile**: 16 stones
+  - **Player 2's Stone Pile**: 12 stones
+
+**Command-Line Interaction**:
+```
+Player 1's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 2 and gained 1 stone.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Action**: Self-reduce and transfer to opponent.
+- **Stones to Remove**: 2
+- **Calculation**:
+  - Remove 2 stones from Player 2's pile (12 - 2 = 10).
+  - Add ⎣2 / 2⎦ = 1 stone to Player 1's pile (16 + 1 = 17).
+- **Result**:
+  - **Player 1's Stone Pile**: 17 stones
+  - **Player 2's Stone Pile**: 10 stones
+
+**Command-Line Interaction**:
+```
+Player 2's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 1
+Enter number of stones to remove from your own pile (1-3): 2
+You removed 2 stones from your pile and transferred 1 stone to Player 1.
+```
+
+---
+
+**Player 1's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 2's pile (10 - 3 = 7).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 1's pile (17 + 1 = 18).
+- **Result**:
+  - **Player 1's Stone Pile**: 18 stones
+  - **Player 2's Stone Pile**: 7 stones
+
+**Command-Line Interaction**:
+```
+Player 1's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 2 and gained 1 stone.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 1's pile (18 - 3 = 15).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 2's pile (7 + 1 = 8).
+- **Result**:
+  - **Player 1's Stone Pile**: 15 stones
+  - **Player 2's Stone Pile**: 8 stones
+
+**Command-Line Interaction**:
+```
+Player 2's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 1 and gained 1 stone.
+```
+
+---
+
+**Player 1's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 2's pile (8 - 3 = 5).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 1's pile (15 + 1 = 16).
+- **Result**:
+  - **Player 1's Stone Pile**: 16 stones
+  - **Player 2's Stone Pile**: 5 stones
+
+**Command-Line Interaction**:
+```
+Player 1's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 2 and gained 1 stone.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 1's pile (16 - 3 = 13).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 2's pile (5 + 1 = 6).
+- **Result**:
+  - **Player 1's Stone Pile**: 13 stones
+  - **Player 2's Stone Pile**: 6 stones
+
+**Command-Line Interaction**:
+```
+Player 2's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 1 and gained 1 stone.
+```
+
+---
+
+**Player 1's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 2's pile (6 - 3 = 3).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 1's pile (13 + 1 = 14).
+- **Result**:
+  - **Player 1's Stone Pile**: 14 stones
+  - **Player 2's Stone Pile**: 3 stones
+
+**Command-Line Interaction**:
+```
+Player 1's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 2 and gained 1 stone.
+```
+
+---
+
+**Player 2's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 1's pile (14 - 3 = 11).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 2's pile (3 + 1 = 4).
+- **Result**:
+  - **Player 1's Stone Pile**: 11 stones
+  - **Player 2's Stone Pile**: 4 stones
+
+**Command-Line Interaction**:
+```
+Player 2's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 1 and gained 1 stone.
+```
+
+---
+
+**Player 1's Turn**
+
+- **Action**: Attack opponent's pile.
+- **Stones to Remove**: 3
+- **Calculation**:
+  - Remove 3 stones from Player 2's pile (4 - 3 = 1).
+  - Add ⎣3 / 2⎦ = 1 stone to Player 1's pile (11 + 1 = 12).
+- **Result**:
+  - **Player 1's Stone Pile**: 12 stones
+  - **Player 2's Stone Pile**: 1 stone
+
+**Command-Line Interaction**:
+```
+Player 1's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 2
+Enter number of stones to remove from opponent's pile (1-3): 3
+You removed 3 stones from Player 2 and gained 1 stone.
+(Note: Since Player 2 only had 4 stones, you could only remove up to 3 stones.)
+```
+
+---
+
+**Player 2's Turn**
+
+- **Action**: Self-reduce and transfer to opponent.
+- **Stones to Remove**: 1
+- **Calculation**:
+  - Remove 1 stone from Player 2's pile (1 - 1 = 0).
+  - Add ⎣1 / 2⎦ = 0 stones to Player 1's pile (no change).
+- **Result**:
+  - **Player 1's Stone Pile**: 12 stones
+  - **Player 2's Stone Pile**: 0 stones
+- **Game Over**: Player 2's stone pile has reached zero.
+
+**Command-Line Interaction**:
+```
+Player 2's turn.
+Choose action:
+1. Remove stones from your pile and transfer to opponent.
+2. Remove stones from opponent's pile and add to your own.
+Enter choice (1 or 2): 1
+Enter number of stones to remove from your own pile (1-3): 1
+You removed 1 stone from your pile and transferred 0 stones to Player 1.
+Player 2's stone pile has reached zero.
+Player 1 wins!
+```
+
+---
+
+### Strategic Considerations
+
+- **Balancing Attacks and Defense**: Players must decide when to deplete their opponent's stones and when to manage their own pile.
+- **Predicting Opponent's Moves**: Anticipate how your opponent might respond to your actions to plan effectively.
+- **Resource Management**: Keep an eye on both stone piles to avoid unintended consequences.
+
+## Conclusion
+
+**Stone Pile Battle** is a simple yet strategic game that tests players' ability to manage resources and anticipate their opponent's moves. With straightforward rules and quick gameplay, it's easy to code and play in a command-line interface. The game's mechanics ensure that there are no draws, and skillful play will consistently lead to victory over less experienced opponents.
+
+Players are encouraged to think critically about each move and consider the long-term effects on both their own and their opponent's stone piles. Enjoy the challenge and may the best strategist win!
+
+---
+
+Feel free to customize the game's starting conditions or rules to introduce new strategic elements or adjust the difficulty level. Have fun battling!

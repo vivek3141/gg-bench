@@ -1,0 +1,8 @@
+The action space in the game is defined as a discrete space with indices ranging from 0 to 8, representing possible moves based on the player's and opponent's elements. The mapping is as follows:
+
+- Each action index corresponds to a combination of selecting one of the player's elements and targeting one of the opponent's elements.
+- The action index can be split into two parts:
+  - The integer division of the index by 3 (`action // 3`) determines the player's element used for the attack, where 0 corresponds to Fire (F), 1 corresponds to Water (W), and 2 corresponds to Earth (E).
+  - The modulus of the index by 3 (`action % 3`) determines the opponent's element that is being targeted, similarly where 0 corresponds to Fire (F), 1 corresponds to Water (W), and 2 corresponds to Earth (E).
+
+For example, an action index of 5 corresponds to the player attacking with Water against the opponent's Earth (`5 // 3 = 1` for Water, `5 % 3 = 2` for Earth).

@@ -1,0 +1,196 @@
+# Palindrome Duel
+
+## Objective
+
+The primary goal of **Palindrome Duel** is to be the **first player to create a palindrome of at least three digits** by sequentially adding digits to a shared number sequence. A palindrome is a number that reads the same backward as forward (e.g., 121, 1331). Players achieve victory by strategically adding digits to either end of the current number sequence to form a palindrome while preventing their opponent from doing so.
+
+## Setup
+
+1. **Starting the Game:**
+   - The game begins with an **empty number sequence**.
+   - Determine who will take the first turn (e.g., by mutual agreement or a coin toss).
+
+2. **Understanding the Components:**
+   - Both players should be familiar with the digits available (0-9) and how to form palindromes.
+   - No physical components are needed other than the command-line interface where the game will be played.
+
+## Game Components
+
+- **Digits (0-9):** These are the elements used to build the number sequence. Each digit can be used multiple times.
+  
+- **Shared Number Sequence:** A sequence of digits that both players contribute to on their turns. It starts empty and grows as the game progresses.
+
+- **Command-Line Interface:** The medium through which players input their choices and view the current state of the game.
+
+## Turns
+
+- **Turn Order:**
+  - Players take turns alternately according to the starting arrangement decided in the setup.
+
+- **Player Actions:**
+  - On their turn, a player must perform the following action:
+    - **Add a Single Digit:** Choose any digit from 0 to 9.
+    - **Placement:** Decide to add the digit to either the **beginning** or the **end** of the shared number sequence.
+
+- **Progression:**
+  - After each turn, the game checks if the current sequence forms a valid palindrome of at least three digits.
+  - The game continues until a player wins by forming a palindrome or the maximum sequence length is reached.
+
+## Rules and Mechanics
+
+1. **Adding Digits:**
+   - **Digit Selection:** On your turn, select any single digit (0-9).
+   - **Placement Choice:** You may add the digit to the **beginning** or **end** of the shared number sequence.
+   - **Example:**
+     - Current sequence: `123`
+     - Player adds `4` to the beginning: New sequence: `4123`
+     - Player adds `5` to the end: New sequence: `1235`
+
+2. **Forming Palindromes:**
+   - **Winning Condition:** If after your turn the shared number sequence reads the same backward and forward and is at least **three digits long**, you win.
+   - **Example Palindromes:**
+     - `121`, `1331`, `12321`
+   - **Non-Palindromes:**
+     - `12`, `123`, `12431`
+   - **Immediate Win Check:** The game checks for a palindrome immediately after a digit is added.
+
+3. **Preventing Opponent's Win:**
+   - **Strategic Blocking:** Players should anticipate potential palindromes and block their opponent by adding digits that prevent a palindrome formation.
+   - **Example:**
+     - If the sequence is `1221`, adding a digit other than `1` or `2` to the appropriate end can prevent the opponent from forming a palindrome on their next turn.
+
+4. **Sequence Length Limit:**
+   - **Maximum Length:** The shared number sequence cannot exceed **15 digits**.
+   - **Game End Condition:** If the sequence reaches 15 digits without a winner, the player who did **not** make the last move (i.e., the second player) wins the game.
+
+5. **No Skipping Turns:**
+   - **Mandatory Action:** Players must add a digit on their turn; passing or skipping a turn is not allowed.
+
+## Scoring
+
+- **Victory:** Winning is achieved by being the **first to form a valid palindrome** as per the rules.
+- **No Points System:** There is no point tracking; the game is won by meeting the objective.
+
+## Examples
+
+### Example Game Play
+
+**Initial State:**
+- Shared sequence: *(empty)*
+
+**Turn 1 (Player 1):**
+- Adds digit **3** to the **end**.
+- New sequence: `3`
+
+**Turn 2 (Player 2):**
+- Adds digit **1** to the **beginning**.
+- New sequence: `13`
+
+**Turn 3 (Player 1):**
+- Adds digit **2** to the **end**.
+- New sequence: `132`
+
+**Turn 4 (Player 2):**
+- Adds digit **1** to the **end**.
+- New sequence: `1321`
+
+**Turn 5 (Player 1):**
+- Adds digit **3** to the **beginning**.
+- New sequence: `31321`
+
+**Check for Palindrome:**
+- The sequence `31321` is not a palindrome.
+
+**Turn 6 (Player 2):**
+- Adds digit **3** to the **end**.
+- New sequence: `313213`
+
+**Check for Palindrome:**
+- The sequence `313213` is not a palindrome.
+
+**Turn 7 (Player 1):**
+- Adds digit **1** to the **end**.
+- New sequence: `3132131`
+
+**Check for Palindrome:**
+- The sequence `3132131` **is a palindrome**.
+- **Player 1 wins the game.**
+
+### Command-Line Interaction Sample
+
+```
+-- Palindrome Duel --
+
+Current Sequence: 
+Player 1's Turn
+Enter the digit to add (0-9): 3
+Add to (B)eginning or (E)nd? E
+New Sequence: 3
+
+---
+
+Current Sequence: 3
+Player 2's Turn
+Enter the digit to add (0-9): 1
+Add to (B)eginning or (E)nd? B
+New Sequence: 13
+
+---
+
+Current Sequence: 13
+Player 1's Turn
+Enter the digit to add (0-9): 2
+Add to (B)eginning or (E)nd? E
+New Sequence: 132
+
+---
+
+Current Sequence: 132
+Player 2's Turn
+Enter the digit to add (0-9): 1
+Add to (B)eginning or (E)nd? E
+New Sequence: 1321
+
+---
+
+Current Sequence: 1321
+Player 1's Turn
+Enter the digit to add (0-9): 3
+Add to (B)eginning or (E)nd? B
+New Sequence: 31321
+
+---
+
+Current Sequence: 31321
+Player 2's Turn
+Enter the digit to add (0-9): 3
+Add to (B)eginning or (E)nd? E
+New Sequence: 313213
+
+---
+
+Current Sequence: 313213
+Player 1's Turn
+Enter the digit to add (0-9): 1
+Add to (B)eginning or (E)nd? E
+New Sequence: 3132131
+
+---
+
+Checking for palindrome...
+The sequence 3132131 is a palindrome!
+Player 1 wins the game!
+```
+
+**Note:** Players should pay close attention to the sequence at each turn to strategize effectively.
+
+## Strategic Tips
+
+- **Plan Ahead:** Anticipate how the sequence could form a palindrome in upcoming turns, both for you and your opponent.
+- **Balance Offense and Defense:** While trying to build towards a palindrome, also consider moves that prevent your opponent from completing one.
+- **Use Symmetry to Your Advantage:** Adding the same digit your opponent adds can sometimes prevent them from achieving a palindrome.
+- **Control the Middle:** Since palindromes read the same backward and forward, the middle digit(s) are pivotal.
+
+## Conclusion
+
+**Palindrome Duel** is a simple yet captivating game that challenges players to think critically and strategically. Its straightforward rules make it easy to learn and code, especially suited for a command-line interface. Despite its simplicity, the game offers depth that allows a skilled player to consistently outmaneuver an unskilled opponent. Enjoy the battle of wits as you and your opponent duel to create the elusive palindrome!

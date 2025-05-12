@@ -1,0 +1,215 @@
+**Divisor Duel**
+
+---
+
+**Objective:**
+
+The objective of **Divisor Duel** is to avoid being the player who creates a cumulative sequence of digits that forms a number divisible by a predetermined target divisor. Players take turns adding single digits to the end of a shared sequence, aiming to force their opponent into making a move that results in divisibility by the target number, thus securing their own victory.
+
+---
+
+**Setup:**
+
+1. **Determine Target Divisor:**
+   - Before starting the game, both players agree upon a positive integer greater than 1 to serve as the **target divisor** (e.g., 7).
+
+2. **Initialize the Sequence:**
+   - The game begins with an **empty sequence**. No digits are on the board at the start.
+
+3. **Decide Turn Order:**
+   - Players decide who takes the first turn (e.g., by coin toss or mutual agreement). Turns will alternate between Player 1 and Player 2 thereafter.
+
+---
+
+**Game Components:**
+
+- **Target Divisor:**
+  - A positive integer greater than 1, chosen and agreed upon by both players before the game commences.
+
+- **Shared Sequence:**
+  - A cumulative sequence of digits that both players contribute to during their turns. It starts empty and grows as the game progresses.
+
+- **Digits (0-9):**
+  - On each turn, players select a **single digit** from 0 to 9 to add to the sequence.
+
+---
+
+**Turns:**
+
+1. **Turn Structure:**
+   - **Digit Selection:** On their turn, a player selects any single digit between 0 and 9.
+   - **Sequence Update:** The selected digit is appended to the end of the shared sequence, forming a new number.
+   - **Divisibility Check:** After updating the sequence, the player checks if the new number is divisible by the target divisor.
+
+2. **Progression:**
+   - Players alternate turns, following the above structure, until the game concludes.
+
+---
+
+**Rules and Mechanics:**
+
+1. **Digit Selection:**
+   - Players may choose **any single digit** from 0 to 9 on their turn.
+   - Digits can be repeated; there are no restrictions on using digits multiple times in the sequence.
+
+2. **Sequence Formation:**
+   - The sequence is built by appending digits to the right end.
+   - Example: If the current sequence is `123`, and the next player adds `4`, the new sequence becomes `1234`.
+
+3. **Divisibility Check:**
+   - After each turn, check if the current sequence number is divisible by the target divisor:
+     - **If the number is not divisible**, the game continues.
+     - **If the number is divisible**, the player who made that move **loses**, and the other player **wins**.
+
+4. **Winning the Game:**
+   - The game ends when a player creates a sequence divisible by the target divisor.
+   - The **winner** is the player who did **not** cause the sequence to be divisible by the target divisor.
+   - There are **no ties or draws** in this game.
+
+---
+
+**Scoring:**
+
+- **Game Outcome:**
+  - The player who causes the sequence to be divisible by the target divisor **loses** the game.
+  - The opposing player **wins** the game.
+
+- **Match Play (Optional):**
+  - Players can play multiple rounds, keeping track of wins to determine an overall champion.
+  - No points are awarded beyond tracking wins and losses.
+
+---
+
+**Examples:**
+
+*Example 1:*
+
+- **Target Divisor:** 7
+
+- **Turn 1 (Player 1):**
+  - **Action:** Adds digit `1`.
+  - **Sequence:** `1`
+  - **Divisibility Check:** `1 % 7 = 1` (Not divisible)
+  
+- **Turn 2 (Player 2):**
+  - **Action:** Adds digit `2`.
+  - **Sequence:** `12`
+  - **Divisibility Check:** `12 % 7 = 5` (Not divisible)
+
+- **Turn 3 (Player 1):**
+  - **Action:** Adds digit `3`.
+  - **Sequence:** `123`
+  - **Divisibility Check:** `123 % 7 = 4` (Not divisible)
+
+- **Turn 4 (Player 2):**
+  - **Action:** Adds digit `4`.
+  - **Sequence:** `1234`
+  - **Divisibility Check:** `1234 % 7 = 5` (Not divisible)
+
+- **Turn 5 (Player 1):**
+  - **Action:** Adds digit `5`.
+  - **Sequence:** `12345`
+  - **Divisibility Check:** `12345 % 7 = 4` (Not divisible)
+
+- **Turn 6 (Player 2):**
+  - **Action:** Adds digit `6`.
+  - **Sequence:** `123456`
+  - **Divisibility Check:** `123456 % 7 = 5` (Not divisible)
+
+- **Turn 7 (Player 1):**
+  - **Action:** Adds digit `7`.
+  - **Sequence:** `1234567`
+  - **Divisibility Check:** `1234567 % 7 = 0` (Divisible)
+  - **Result:** Player 1 **loses**, Player 2 **wins**.
+
+*Example 2:*
+
+- **Target Divisor:** 5
+
+- **Turn 1 (Player 1):**
+  - **Action:** Adds digit `2`.
+  - **Sequence:** `2`
+  - **Divisibility Check:** `2 % 5 = 2` (Not divisible)
+
+- **Turn 2 (Player 2):**
+  - **Action:** Adds digit `3`.
+  - **Sequence:** `23`
+  - **Divisibility Check:** `23 % 5 = 3` (Not divisible)
+
+- **Turn 3 (Player 1):**
+  - **Action:** Adds digit `4`.
+  - **Sequence:** `234`
+  - **Divisibility Check:** `234 % 5 = 4` (Not divisible)
+
+- **Turn 4 (Player 2):**
+  - **Action:** Adds digit `1`.
+  - **Sequence:** `2341`
+  - **Divisibility Check:** `2341 % 5 = 1` (Not divisible)
+
+- **Turn 5 (Player 1):**
+  - **Action:** Adds digit `5`.
+  - **Sequence:** `23415`
+  - **Divisibility Check:** `23415 % 5 = 0` (Divisible)
+  - **Result:** Player 1 **loses**, Player 2 **wins**.
+
+---
+
+**Strategic Tips:**
+
+- **Understand Modulo Operations:**
+  - Familiarity with modular arithmetic helps in predicting how adding certain digits will affect divisibility.
+
+- **Plan Ahead:**
+  - Anticipate the impact of your digit choices on future moves, aiming to leave your opponent with fewer safe options.
+
+- **Manipulate the Sequence:**
+  - Use digits that push the cumulative sequence towards numbers that are non-divisible on your turns but may become divisible on your opponent's turn.
+
+---
+
+**Sample Command-Line Interaction:**
+
+*(Assuming Target Divisor is 7)*
+
+```
+Game Start! Target Divisor is 7.
+Current Sequence: 
+
+Player 1's Turn:
+Enter a digit (0-9): 1
+Current Sequence: 1
+1 is not divisible by 7.
+---
+
+Player 2's Turn:
+Enter a digit (0-9): 2
+Current Sequence: 12
+12 is not divisible by 7.
+---
+
+Player 1's Turn:
+Enter a digit (0-9): 3
+Current Sequence: 123
+123 is not divisible by 7.
+---
+
+Player 2's Turn:
+Enter a digit (0-9): 4
+Current Sequence: 1234
+1234 is not divisible by 7.
+---
+
+Player 1's Turn:
+Enter a digit (0-9): 7
+Current Sequence: 12347
+12347 is divisible by 7!
+Player 1 loses. Player 2 wins!
+```
+
+---
+
+**Conclusion:**
+
+Divisor Duel is a simple yet strategic game that tests numerical understanding and foresight. Easy to play in a command-line interface, it provides depth through mathematical strategy and forward-thinking. Players must carefully choose their moves to avoid creating a sequence divisible by the target number while setting traps for their opponent.
+
+Enjoy the challenge and may the most strategic player win!

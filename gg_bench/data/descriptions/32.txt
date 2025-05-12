@@ -1,0 +1,118 @@
+# Multiplier Showdown Rule Book
+
+## Objective
+
+**Multiplier Showdown** is a two-player, turn-based numerical strategy game played via a command-line interface. The primary goal is to be the first player to reach or exceed a target number by strategically multiplying a shared current number. Players take turns choosing multipliers to apply to the current number, aiming to reach the target number while preventing their opponent from doing so. Victory is achieved by skillful selection of multipliers and anticipation of the opponent's moves. There is no possibility of a draw in this game.
+
+## Setup
+
+1. **Starting Number**: The game begins with a **current number** set to **1**.
+2. **Target Number**: Before the game starts, agree on a **target number** (e.g., **1000**). This number should be large enough to allow for strategic play but small enough to ensure the game concludes quickly.
+3. **Players**: Two players, designated as **Player 1** and **Player 2**, compete against each other.
+
+## Game Components
+
+- **Current Number**: A shared numeric value that changes as players take their turns.
+- **Target Number**: The predefined number that players aim to reach or exceed to win the game.
+- **Multipliers**: Integers from **2** to **9** inclusive. Players use these to multiply the current number on their turn.
+- **Command-Line Interface**: The game is played through text-based input and output, where players enter their chosen multipliers when prompted.
+
+## Turns
+
+- **Turn Order**: The game starts with **Player 1**, and players alternate turns thereafter.
+- **Player Actions During a Turn**:
+  1. **View Current Number**: At the start of a turn, the current number is displayed.
+  2. **Choose Multiplier**: The player selects a multiplier between **2** and **9**.
+  3. **Update Current Number**: The current number is multiplied by the chosen multiplier.
+  4. **Check for Victory**: If the new current number is **greater than or equal to the target number**, the game ends, and the current player wins.
+- **Turn Progression**: After a player completes their turn, control passes to the other player.
+
+## Rules and Mechanics
+
+1. **Valid Multipliers**: On their turn, a player must choose an integer multiplier **between 2 and 9 inclusive**.
+2. **Multiplication**: The chosen multiplier is applied to the current number:
+   ```
+   New Current Number = Current Number × Multiplier
+   ```
+3. **No Skipping Turns**: Players cannot skip their turn or pass; they must choose a valid multiplier.
+4. **Winning the Game**: If a player's move results in the current number being **greater than or equal to the target number**, that player **wins the game** immediately.
+5. **No Exceeding Target**: Exceeding the target number is allowed and results in a win.
+6. **Input Validation**: If a player inputs an invalid multiplier (e.g., a number outside 2-9 or non-numeric input), they should be prompted again until a valid multiplier is provided.
+
+## Scoring
+
+- **Winning**: The winner is the player who first reaches or exceeds the target number during their turn.
+- **No Points System**: There is no cumulative scoring; each game results in a win or loss.
+- **Match Play (Optional)**: Players may agree to play multiple rounds, keeping track of wins to determine a match winner after a set number of games.
+
+## Examples
+
+### Example Game
+
+**Setup**:
+
+- Target Number: **100**
+- Starting Current Number: **1**
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   - Current Number: **1**
+   - Player 1 chooses multiplier: **5**
+   - New Current Number: \( 1 \times 5 = 5 \)
+2. **Player 2's Turn**:
+   - Current Number: **5**
+   - Player 2 chooses multiplier: **9**
+   - New Current Number: \( 5 \times 9 = 45 \)
+3. **Player 1's Turn**:
+   - Current Number: **45**
+   - Player 1 chooses multiplier: **2**
+   - New Current Number: \( 45 \times 2 = 90 \)
+4. **Player 2's Turn**:
+   - Current Number: **90**
+   - Player 2 chooses multiplier: **2**
+   - New Current Number: \( 90 \times 2 = 180 \)
+   - Since **180 ≥ 100**, **Player 2 wins**.
+
+### Command-Line Interaction Sample
+
+```
+--- Multiplier Showdown ---
+Target Number: 100
+Starting Number: 1
+
+Player 1's turn.
+Current Number: 1
+Choose a multiplier (2-9): 5
+
+Player 2's turn.
+Current Number: 5
+Choose a multiplier (2-9): 9
+
+Player 1's turn.
+Current Number: 45
+Choose a multiplier (2-9): 2
+
+Player 2's turn.
+Current Number: 90
+Choose a multiplier (2-9): 2
+
+Player 2 multiplies 90 by 2 to get 180.
+Player 2 has reached the target number and wins the game!
+```
+
+### Strategic Considerations
+
+- **Planning Ahead**: Players should anticipate the results of their multiplier choices, not only for their current turn but also for how it will set up the opponent's next move.
+- **Controlling the Flow**: Selecting multipliers that avoid giving the opponent an easy win is crucial.
+- **Calculation Skills**: Quick mental calculation and understanding of multiplication can provide an advantage.
+
+## Tips for Players
+
+- **Monitor the Current Number**: Always be aware of how close the current number is to the target.
+- **Think Defensively**: Sometimes choosing a smaller multiplier can prevent setting up the opponent to win on their next turn.
+- **Predict Opponent's Moves**: Try to anticipate which multipliers your opponent might use given the current number.
+
+## Conclusion
+
+**Multiplier Showdown** is a simple yet strategically rich game that challenges players' multiplication skills and strategic planning. Its straightforward rules make it easy to code and play in a command-line environment, while the depth of strategy ensures that skilled players can consistently outperform less experienced opponents. Enjoy the battle of wits as you multiply your way to victory!

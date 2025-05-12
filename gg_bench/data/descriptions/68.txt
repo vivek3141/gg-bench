@@ -1,0 +1,196 @@
+# Divisor Duel
+
+## Objective
+
+**Be the first player to force your opponent into a position where they cannot make a valid move** by strategically subtracting proper divisors from a shared number.
+
+---
+
+## Setup
+
+- **Current Number**: Begin with a shared positive integer as the starting point. The recommended starting number is **60**, but players may agree on any positive integer greater than 2.
+- **Players**: Two players, referred to as Player 1 and Player 2.
+- **Turn Order**: Decide who takes the first turn through mutual agreement or a random method like a coin toss.
+
+---
+
+## Game Components
+
+- **Shared Number (Current Number)**: The central number that both players manipulate during the game.
+- **Proper Divisors**: All positive integers that divide the Current Number exactly, **excluding** 1 and the number itself.
+  - *Example*: Proper divisors of 60 are 2, 3, 4, 5, 6, 10, 12, 15, 20, and 30.
+
+---
+
+## Turns
+
+- Players alternate turns, starting with Player 1.
+- **On Each Turn**:
+  1. **Identify** the proper divisors of the Current Number.
+  2. **Choose** one proper divisor to subtract from the Current Number.
+  3. **Announce** the chosen divisor and the new Current Number after subtraction.
+
+---
+
+## Rules and Mechanics
+
+### 1. Valid Moves
+
+- **Subtraction Requirement**: On your turn, you must subtract a proper divisor of the Current Number.
+- **Single Subtraction**: Only one proper divisor can be subtracted per turn.
+- **Proper Divisors Only**: You cannot subtract 1 or the Current Number itself.
+
+### 2. Updating the Current Number
+
+- After subtraction, the result becomes the new Current Number for the next turn.
+  - *Example*: If the Current Number is 60 and you subtract 15, the new Current Number is 45.
+
+### 3. Winning the Game
+
+- **No Valid Divisors**: If a player cannot subtract a proper divisor on their turn (because none exist), they lose the game.
+- **Forcing a Loss**: Strategically reduce the Current Number to a prime number or 1 on your opponent's turn.
+
+### 4. Additional Rules
+
+- **Mandatory Moves**: If at least one proper divisor exists, you must make a move.
+- **Accurate Calculations**: Incorrect identification of proper divisors results in losing your turn (optional rule for added challenge).
+- **No Reversals**: Once a move is made and the Current Number announced, it cannot be changed.
+
+---
+
+## Scoring
+
+- **Victory**: Winning the game occurs by forcing your opponent into a position with no valid moves.
+- **No Points System**: The game focuses on winning individual rounds. Players may keep track of wins over multiple games if desired.
+
+---
+
+## Examples
+
+### Example 1: Gameplay Walkthrough
+
+**Starting Current Number**: 60
+
+#### Player 1's Turn
+
+- **Proper Divisors of 60**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30.
+- **Choice**: Subtract 15.
+- **Calculation**: 60 - 15 = **45**.
+- **Announcement**: "I subtract 15. The new Current Number is 45."
+
+#### Player 2's Turn
+
+- **Proper Divisors of 45**: 3, 5, 9, 15.
+- **Choice**: Subtract 15.
+- **Calculation**: 45 - 15 = **30**.
+- **Announcement**: "I subtract 15. The new Current Number is 30."
+
+#### Player 1's Turn
+
+- **Proper Divisors of 30**: 2, 3, 5, 6, 10, 15.
+- **Choice**: Subtract 15.
+- **Calculation**: 30 - 15 = **15**.
+- **Announcement**: "I subtract 15. The new Current Number is 15."
+
+#### Player 2's Turn
+
+- **Proper Divisors of 15**: 3, 5.
+- **Choice**: Subtract 5.
+- **Calculation**: 15 - 5 = **10**.
+- **Announcement**: "I subtract 5. The new Current Number is 10."
+
+#### Player 1's Turn
+
+- **Proper Divisors of 10**: 2, 5.
+- **Choice**: Subtract 2.
+- **Calculation**: 10 - 2 = **8**.
+- **Announcement**: "I subtract 2. The new Current Number is 8."
+
+#### Player 2's Turn
+
+- **Proper Divisors of 8**: 2, 4.
+- **Choice**: Subtract 4.
+- **Calculation**: 8 - 4 = **4**.
+- **Announcement**: "I subtract 4. The new Current Number is 4."
+
+#### Player 1's Turn
+
+- **Proper Divisors of 4**: 2.
+- **Choice**: Subtract 2.
+- **Calculation**: 4 - 2 = **2**.
+- **Announcement**: "I subtract 2. The new Current Number is 2."
+
+#### Player 2's Turn
+
+- **Proper Divisors of 2**: None (since 2 is prime).
+- **Outcome**: Player 2 cannot make a valid move and **loses the game**.
+- **Player 1 Wins!**
+
+### Example 2: Command-Line Interaction
+
+**Starting Current Number**: 30
+
+#### Player 1's Turn
+
+```
+Player 1, it's your turn.
+Current Number: 30
+Proper Divisors: 2, 3, 5, 6, 10, 15
+Enter the divisor you want to subtract: 15
+
+You subtracted 15.
+New Current Number is 15.
+```
+
+#### Player 2's Turn
+
+```
+Player 2, it's your turn.
+Current Number: 15
+Proper Divisors: 3, 5
+Enter the divisor you want to subtract: 5
+
+You subtracted 5.
+New Current Number is 10.
+```
+
+#### Player 1's Turn
+
+```
+Player 1, it's your turn.
+Current Number: 10
+Proper Divisors: 2, 5
+Enter the divisor you want to subtract: 5
+
+You subtracted 5.
+New Current Number is 5.
+```
+
+#### Player 2's Turn
+
+```
+Player 2, it's your turn.
+Current Number: 5
+Proper Divisors: None
+
+No valid moves left. You lose!
+Player 1 wins the game!
+```
+
+---
+
+## Strategy Tips
+
+- **Force Prime Numbers**: Aim to reduce the Current Number to a prime number on your opponent's turn, leaving them without any proper divisors to subtract.
+- **Analyze Ahead**: Consider the possible results of your move and how it will affect your opponent's options.
+- **Control the Game Flow**: Subtract larger proper divisors when beneficial to limit the range of your opponent's moves.
+
+---
+
+## Conclusion
+
+**Divisor Duel** is a quick, engaging game that tests your number theory skills and strategic thinking. With simple rules and deep strategic potential, it's perfect for players who enjoy mathematical challenges. The game is easily played in a command-line interface and ensures a clear winner without the possibility of a draw.
+
+Enjoy the challenge and may the best strategist win!
+
+---

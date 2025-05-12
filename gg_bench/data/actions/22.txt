@@ -1,0 +1,9 @@
+The action space in the game contains 18 discrete actions, represented by the indices `0` to `17`. Each action consists of two components: selecting a number from `1` to `9` and deciding whether to place it at the front or back of the sequence.
+
+- The number to be placed is determined by the integer division of the action index by `2` (using `action // 2`). This gives a result between `0` and `8`, which corresponds to numbers `1` to `9`.
+- The position is determined by the remainder when the action index is divided by `2` (using `action % 2`): `0` for front and `1` for back.
+
+Therefore:
+- Action indices `0` and `1` map to adding `1`; `0` means add to the front, and `1` means add to the back.
+- Action indices `2` and `3` map to adding `2`; `2` means add to the front, and `3` means add to the back, and so on.
+- Finally, action indices `16` and `17` map to adding `9`; `16` means add to the front, and `17` means add to the back.

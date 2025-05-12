@@ -1,0 +1,158 @@
+# Word Scrape
+
+## Objective
+
+Be the player to remove the last letter(s) from a shared word, thereby winning the game. Players take turns removing one or two adjacent letters from the word, strategically planning to be the one to deplete the word completely.
+
+## Setup
+
+1. **Choose a Starting Word**: Select a word that is at least **seven letters long**. The word should not have repeating sequences of letters to ensure fairness. Examples of suitable words include "EXAMPLE", "BALANCE", "GARDENS".
+
+2. **Decide Player Order**: Determine who will take the first turn. This can be decided by mutual agreement or by a random method such as a coin toss.
+
+3. **Display the Word**: Write down or display the starting word clearly so both players can see it. In a command-line interface, the word can be printed to the screen.
+
+## Game Components
+
+- **Shared Word**: A single word consisting of letters (e.g., "EXAMPLE").
+- **Players**: Two participants who will alternate turns modifying the shared word.
+- **Command-Line Interface**: The medium through which players input their moves and view the game's state.
+
+## Turns
+
+- **Turn Order**: Players alternate turns throughout the game.
+- **Player Actions**:
+  - On their turn, a player must remove either **one** or **two** adjacent letters from the current word.
+  - The letters removed must be next to each other in the word.
+- **Progression**: After letters are removed, the remaining letters shift to close any gaps, forming a new word with the original order preserved.
+
+## Rules and Mechanics
+
+1. **Letter Removal**:
+   - Players can remove either one or two adjacent letters on their turn.
+   - The selected letters must be consecutive within the word.
+   - Only valid if at least one letter remains after the move (unless it's the last move of the game).
+
+2. **Valid Moves**:
+   - A player **cannot skip** their turn.
+   - If a player cannot make a valid move (no letters remain to remove), they **lose** the game.
+   - Players must be careful not to leave themselves without a valid move on their next turn.
+
+3. **Winning the Game**:
+   - The player who removes the **last letter(s)** from the word wins.
+   - Strategy involves not only removing letters but also leaving the opponent with limited options.
+
+4. **Game Integrity**:
+   - Players must not rearrange the letters.
+   - Only removal of letters is allowed; no other modifications can be made.
+   - All moves should be clearly communicated and agreed upon.
+
+## Scoring
+
+- **Single Game Victory**: The player who removes the last letter(s) wins the game.
+- **Match Play**:
+  - Players can agree to play a series of games (e.g., best of three).
+  - Keep track of individual game wins to determine the overall winner.
+
+## Examples
+
+### Example 1: Playing with the Word "BALANCE"
+
+**Starting Word**: BALANCE
+
+**Turn 1: Player 1**
+- Removes: "B"
+- Remaining Word: **A L A N C E**
+
+**Turn 2: Player 2**
+- Removes: "A" (first "A")
+- Remaining Word: **L A N C E**
+
+**Turn 3: Player 1**
+- Removes: "L A" (both letters)
+- Remaining Word: **N C E**
+
+**Turn 4: Player 2**
+- Removes: "N"
+- Remaining Word: **C E**
+
+**Turn 5: Player 1**
+- Removes: "C"
+- Remaining Word: **E**
+
+**Turn 6: Player 2**
+- Removes: "E"
+- Remaining Word: *(Empty)*
+
+**Result**: Player 2 wins.
+
+### Example 2: Command-Line Interaction with "GARDENS"
+
+**Starting Word**: G A R D E N S
+
+**Turn 1: Player 1**
+- **Input**: Remove letters at positions 1-2 ("G A")
+- **Remaining Word**: **R D E N S**
+
+**Turn 2: Player 2**
+- **Input**: Remove letter at position 3 ("E")
+- **Remaining Word**: **R D N S**
+
+**Turn 3: Player 1**
+- **Input**: Remove letters at positions 2-3 ("D N")
+- **Remaining Word**: **R S**
+
+**Turn 4: Player 2**
+- **Input**: Remove letters at positions 1-2 ("R S")
+- **Remaining Word**: *(Empty)*
+
+**Result**: Player 2 wins.
+
+### Example 3: Strategy with "EXAMPLE"
+
+**Starting Word**: E X A M P L E
+
+**Turn 1: Player 1**
+- Removes: "E X"
+- Remaining Word: **A M P L E**
+
+**Turn 2: Player 2**
+- Removes: "P"
+- Remaining Word: **A M L E**
+
+**Turn 3: Player 1**
+- Removes: "A"
+- Remaining Word: **M L E**
+
+**Turn 4: Player 2**
+- Removes: "M"
+- Remaining Word: **L E**
+
+**Turn 5: Player 1**
+- Removes: "L E" (both letters)
+- Remaining Word: *(Empty)*
+
+**Result**: Player 1 wins.
+
+## Additional Notes
+
+- **Strategic Tips**:
+  - Plan ahead to control the game's progression.
+  - Try to force your opponent into a position where they have no winning moves.
+  - Be mindful of the number of letters remaining and the possible combinations.
+
+- **Command-Line Implementation**:
+  - Display the word with letters numbered for clarity.
+  - Players input the positions of the letters they wish to remove.
+  - Validate moves to ensure they follow the rules.
+
+- **Variations**:
+  - Start with longer words for added complexity.
+  - Introduce a time limit per turn to increase the challenge.
+  - Use thematic words related to a particular category (e.g., animals, countries).
+
+## Conclusion
+
+Word Scrape is a simple yet strategic game that tests players' foresight and planning abilities. With straightforward rules and easy command-line implementation, it's perfect for quick matches that still offer depth and competitiveness.
+
+Enjoy the duel of wits as you scrape away letters and outmaneuver your opponent to claim victory!

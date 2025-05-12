@@ -1,0 +1,173 @@
+**Game Title: String Blaster**
+
+---
+
+### Objective
+
+Be the first player to complete a string of exactly **five characters** without creating a **forbidden substring**. If a player adds a character that results in the forbidden substring occurring anywhere in the string, they **lose** immediately. The goal is to strategically build the string to force your opponent into a losing move.
+
+---
+
+### Setup
+
+- **Starting Condition**: The game begins with an **empty string**.
+- **Forbidden Substring**: Agree on a forbidden substring before starting the game. For simplicity, the default forbidden substring is `"AB"`.
+
+---
+
+### Game Components
+
+- **Characters**: The available characters to use are:
+  - **`A`**
+  - **`B`**
+  - **`C`**
+- **String**: A shared string that both players will append characters to during their turns. The string is initially empty.
+
+---
+
+### Turns
+
+- **Turn Order**: Decide who goes first (e.g., flip a coin). Players then alternate turns.
+- **Player Actions During Turn**:
+  1. **Select a Character**: Choose one character (`A`, `B`, or `C`) to append to the string.
+  2. **Append Character**: Add the selected character to the end of the current string.
+  3. **Check for Forbidden Substring**: After the character is added, check if the forbidden substring appears anywhere in the string.
+     - **If the forbidden substring is formed**, the player who added the character **loses immediately**.
+     - **If the forbidden substring is not formed**, the game continues.
+- **Turn Progression**: The next player takes their turn following the same steps.
+
+---
+
+### Rules and Mechanics
+
+1. **Character Selection**:
+   - On each turn, a player must choose one of the available characters (`A`, `B`, or `C`) to add to the string.
+2. **Appending to the String**:
+   - The chosen character is added to the **end** of the string.
+3. **Forbidden Substring**:
+   - The forbidden substring (default `"AB"`) must be avoided.
+   - If at any point after a turn, the string contains the forbidden substring, the player who just played **loses**.
+4. **Winning the Game**:
+   - If a player successfully adds a character such that the string reaches **five characters in length** without containing the forbidden substring, that player **wins**.
+5. **String Length Limit**:
+   - The string cannot exceed five characters. If both players reach a string length of five characters without triggering the forbidden substring, the last player to append a character **wins**.
+6. **No Skipping Turns**:
+   - Players **must** add a character on their turn; skipping a turn is not allowed.
+
+---
+
+### Scoring
+
+- **Winning**: The winning player is the one who either:
+  - Causes the string to reach five characters without forming the forbidden substring.
+  - Forces the opponent to create the forbidden substring on their turn.
+- **Losing**: A player loses if they:
+  - Append a character that results in the forbidden substring appearing in the string.
+
+---
+
+### Examples
+
+#### Example 1: Avoiding the Forbidden Substring
+
+**Forbidden Substring**: `"AB"`
+
+**Gameplay**:
+
+- **Starting String**: `""` (empty string)
+
+1. **Player 1's Turn**:
+   - **Action**: Appends `"A"`
+   - **String**: `"A"`
+   - **Check**: `"A"` does not contain `"AB"` ⇒ Game continues.
+   
+2. **Player 2's Turn**:
+   - **Action**: Appends `"C"`
+   - **String**: `"AC"`
+   - **Check**: `"AC"` does not contain `"AB"` ⇒ Game continues.
+   
+3. **Player 1's Turn**:
+   - **Action**: Appends `"B"`
+   - **String**: `"ACB"`
+   - **Check**: `"ACB"` does not contain `"AB"` ⇒ Game continues.
+   
+4. **Player 2's Turn**:
+   - **Action**: Appends `"C"`
+   - **String**: `"ACBC"`
+   - **Check**: `"ACBC"` does not contain `"AB"` ⇒ Game continues.
+   
+5. **Player 1's Turn**:
+   - **Action**: Appends `"C"`
+   - **String**: `"ACBCC"`
+   - **Check**: `"ACBCC"` does not contain `"AB"` ⇒ Game ends.
+   
+**Result**: **Player 1 wins** by completing a five-character string without the forbidden substring.
+
+#### Example 2: Triggering the Forbidden Substring
+
+**Forbidden Substring**: `"AB"`
+
+**Gameplay**:
+
+- **Starting String**: `""` (empty string)
+
+1. **Player 1's Turn**:
+   - **Action**: Appends `"C"`
+   - **String**: `"C"`
+   - **Check**: `"C"` does not contain `"AB"` ⇒ Game continues.
+   
+2. **Player 2's Turn**:
+   - **Action**: Appends `"A"`
+   - **String**: `"CA"`
+   - **Check**: `"CA"` does not contain `"AB"` ⇒ Game continues.
+   
+3. **Player 1's Turn**:
+   - **Action**: Appends `"B"`
+   - **String**: `"CAB"`
+   - **Check**: `"CAB"` **contains** `"AB"` (positions 2 and 3)
+   
+**Result**: `"AB"` is formed. **Player 1 loses**, **Player 2 wins**.
+
+---
+
+#### Command-Line Interaction Example
+
+**Starting the Game**:
+
+```
+Welcome to String Blaster!
+Forbidden Substring: AB
+Starting Player: Player 1
+Current String: ""
+```
+
+**Gameplay**:
+
+1. **Player 1's Turn**:
+   ```
+   Player 1, choose a character to append (A, B, or C): A
+   Current String after append: "A"
+   No forbidden substring detected. Game continues.
+   ```
+   
+2. **Player 2's Turn**:
+   ```
+   Player 2, choose a character to append (A, B, or C): B
+   Current String after append: "AB"
+   Forbidden substring "AB" detected!
+   Player 2 loses. Player 1 wins!
+   ```
+
+**Note**: In this example, **Player 2 loses** because they formed the forbidden substring `"AB"`.
+
+---
+
+### Strategic Tips
+
+- **Anticipate the Opponent**: Think ahead about which characters might force your opponent into a position where they cannot avoid forming the forbidden substring.
+- **Control the String Length**: Be mindful of the current string length and how many turns are left before reaching five characters.
+- **Forbidden Substring Awareness**: Keep track of the existing string to ensure your chosen character doesn't inadvertently create the forbidden substring.
+
+---
+
+**Enjoy the challenge of String Blaster, and may the most strategic player win!**

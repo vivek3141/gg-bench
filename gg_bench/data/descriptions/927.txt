@@ -1,0 +1,161 @@
+# Factor Duel
+
+## Objective
+
+Be the last player able to make a valid move. Players take turns subtracting proper divisors from a shared number. The player who forces their opponent into a position where they cannot make a valid move (i.e., when the current number has no proper divisors) wins the game.
+
+## Setup
+
+1. **Starting Number (N)**:
+   - Choose a positive integer to start the game. It is recommended that N be a composite number greater than 30 to allow for strategic gameplay.
+   - Players can agree upon the starting number or have it randomly selected.
+
+2. **Player Order**:
+   - Decide which player will go first. This can be determined by mutual agreement, a coin toss, or random selection by the program if implemented.
+
+## Game Components
+
+- **Current Number (N)**:
+  - The shared number that players manipulate during the game.
+  
+- **Proper Divisors**:
+  - Positive integers greater than 1 and less than N that divide N exactly without leaving a remainder.
+
+## Turns
+
+### Turn Order
+
+- Players alternate turns, starting with Player 1.
+
+### Turn Actions
+
+On your turn:
+
+1. **Identify Proper Divisors**:
+   - List all the proper divisors of the current number N (excluding 1 and N).
+
+2. **Select a Proper Divisor (d)**:
+   - Choose one proper divisor from the list.
+
+3. **Subtract the Divisor**:
+   - Subtract the chosen divisor from N: `N = N - d`.
+
+4. **Announce Move**:
+   - State your chosen divisor and the new value of N.
+
+5. **Pass Turn**:
+   - The updated N is now the starting point for the opponent's turn.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - You must subtract a proper divisor of the current N.
+   - Proper divisors are greater than 1 and less than N.
+   - The divisor must divide N exactly (no remainder).
+
+2. **Restrictions**:
+   - You cannot subtract 1 or N itself.
+   - If N has no proper divisors (i.e., it is prime or equal to 2), and it's your turn, you lose.
+
+3. **End of Game**:
+   - The game ends when a player cannot make a valid move on their turn.
+   - The player who cannot move loses; the other player wins.
+
+4. **Invalid Moves**:
+   - If a player attempts an invalid move, they must choose again.
+   - Repeated invalid attempts may result in forfeiture, depending on agreed rules.
+
+## Scoring
+
+- The game is won by the player who forces their opponent into an impossible move.
+- No points are tracked; it's a win/lose outcome.
+
+## Examples
+
+### Example Game Play
+
+**Starting Number**: N = 30
+
+#### Turn 1 - Player 1
+
+- **Current N**: 30
+- **Proper Divisors**: 2, 3, 5, 6, 10, 15
+- **Player 1 chooses**: 15
+- **Calculation**: N = 30 - 15 = 15
+- **Announce**: "I subtract 15. New N is 15."
+
+#### Turn 2 - Player 2
+
+- **Current N**: 15
+- **Proper Divisors**: 3, 5
+- **Player 2 chooses**: 5
+- **Calculation**: N = 15 - 5 = 10
+- **Announce**: "I subtract 5. New N is 10."
+
+#### Turn 3 - Player 1
+
+- **Current N**: 10
+- **Proper Divisors**: 2, 5
+- **Player 1 chooses**: 5
+- **Calculation**: N = 10 - 5 = 5
+- **Announce**: "I subtract 5. New N is 5."
+
+#### Turn 4 - Player 2
+
+- **Current N**: 5
+- **Proper Divisors**: None (5 is prime)
+- **Player 2 cannot move**.
+- **Result**: Player 2 loses.
+- **Announce**: "I cannot make a valid move. I lose."
+
+**Player 1 wins!**
+
+### Command-Line Interaction Example
+
+```
+Game Start
+Starting Number N = 30
+
+Player 1's Turn
+Current N: 30
+Proper Divisors of 30 are: 2, 3, 5, 6, 10, 15
+Player 1, enter your chosen proper divisor: 15
+You subtract 15 from 30.
+New N is 15.
+
+Player 2's Turn
+Current N: 15
+Proper Divisors of 15 are: 3, 5
+Player 2, enter your chosen proper divisor: 5
+You subtract 5 from 15.
+New N is 10.
+
+Player 1's Turn
+Current N: 10
+Proper Divisors of 10 are: 2, 5
+Player 1, enter your chosen proper divisor: 5
+You subtract 5 from 10.
+New N is 5.
+
+Player 2's Turn
+Current N: 5
+No proper divisors available for 5.
+Player 2 cannot make a move and loses.
+Player 1 wins!
+```
+
+## Strategies
+
+- **Plan Ahead**: Anticipate future moves to avoid leaving N as a prime number on your turn.
+- **Control the Number**: Aim to reduce N to numbers with fewer proper divisors when it's your opponent's turn.
+- **Avoid Certain Numbers**: Be cautious of numbers that may allow your opponent to force a win, such as small composites with limited divisors.
+
+## Notes
+
+- **No Draws**: The game cannot end in a draw; there is always a winner.
+- **Skill Advantage**: Strategic planning allows skilled players to consistently outperform less experienced players.
+- **Quick Gameplay**: With simple rules and mechanics, games progress rapidly.
+
+---
+
+Enjoy playing **Factor Duel**! May the best strategist win.

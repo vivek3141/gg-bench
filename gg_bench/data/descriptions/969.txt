@@ -1,0 +1,223 @@
+# Sequence Builder
+
+## Objective
+
+**Goal**: Be the first player to construct a strictly increasing sequence of numbers that sums to **exactly 15**.
+
+Players take turns selecting numbers from a shared pool to build their own sequences. The sequence must be strictly increasing, and the sum of the numbers in the sequence must reach exactly 15 to win. If a player cannot make a valid move without exceeding a sum of 15 or violating the increasing order, they lose.
+
+---
+
+## Setup
+
+1. **Shared Number Pool**:
+   - A pool containing numbers **1 through 9**.
+   - All numbers are available to both players at the start.
+
+2. **Player Sequences**:
+   - Each player has an empty sequence area to build their sequence.
+   - Sequences are initially empty.
+
+3. **Determine the First Player**:
+   - Decide who goes first (e.g., by a coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Numbers (1-9)**:
+  - Represented in the shared pool.
+  - Once a number is selected by a player, it is removed from the pool.
+
+- **Player Sequence Areas**:
+  - Each player has a designated area to display their sequence.
+  - Sequences display the numbers selected in the order they were chosen.
+
+- **Sum Tracker**:
+  - Keeps track of the current total sum of each player's sequence.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with the first player determined during setup.
+
+2. **Player Actions on Their Turn**:
+   - **Select a Number**:
+     - Choose one available number from the shared pool.
+     - The chosen number must be **greater than the last number** in their sequence (maintain strictly increasing order).
+   - **Update Sequence**:
+     - Add the chosen number to the end of their sequence.
+     - Remove the chosen number from the shared pool.
+   - **Sum Calculation**:
+     - Add the chosen number to their sequence's total sum.
+   - **Check for Victory or Loss**:
+     - **Win**: If the sequence sums to exactly 15, the player wins.
+     - **Lose**: If the player cannot make a valid move on their turn, they lose.
+
+3. **Turn Progression**:
+   - After a player completes their turn, control passes to the other player.
+   - The game continues until a win or loss condition is met.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Number Selection**:
+   - Must select a number from the shared pool on each turn.
+   - Cannot skip a turn or pass.
+
+2. **Sequence Building**:
+   - Sequences must be **strictly increasing**.
+   - Each new number must be greater than the previous one in the sequence.
+
+3. **Sum Management**:
+   - The sum of the sequence must not exceed 15.
+   - Aim to reach a total sum of exactly 15.
+
+4. **Winning the Game**:
+   - The first player to reach a sequence sum of exactly 15 wins immediately.
+
+5. **Losing the Game**:
+   - If a player cannot select any number without:
+     - Violating the strictly increasing order.
+     - Causing the sequence's sum to exceed 15.
+   - That player loses the game.
+
+### Additional Mechanics
+
+- **Shared Pool Depletion**:
+  - If all numbers are exhausted without a winner, the player who last made a valid move wins.
+
+- **Strategy**:
+  - Players should consider which numbers to select to build their sequence while potentially restricting the opponent's options.
+
+---
+
+## Scoring
+
+- **Victory Condition**:
+  - Summing your sequence to exactly 15.
+
+- **No Point System**:
+  - The game does not use a point system beyond achieving the sum of 15.
+
+- **Tracking**:
+  - Keep track of your sequence and its sum after each turn.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Starting Shared Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+#### Turn 1: Player 1
+
+- **Action**: Chooses **4**.
+- **Sequence**: [4]
+- **Sum**: 4
+- **Updated Shared Pool**: [1, 2, 3, 5, 6, 7, 8, 9]
+
+#### Turn 2: Player 2
+
+- **Action**: Chooses **5**.
+- **Sequence**: [5]
+- **Sum**: 5
+- **Updated Shared Pool**: [1, 2, 3, 6, 7, 8, 9]
+
+#### Turn 3: Player 1
+
+- **Action**: Chooses **6** (since 6 > 4).
+- **Sequence**: [4, 6]
+- **Sum**: 10
+- **Updated Shared Pool**: [1, 2, 3, 7, 8, 9]
+
+#### Turn 4: Player 2
+
+- **Action**: Chooses **7** (since 7 > 5).
+- **Sequence**: [5, 7]
+- **Sum**: 12
+- **Updated Shared Pool**: [1, 2, 3, 8, 9]
+
+#### Turn 5: Player 1
+
+- **Possible Choices**: 7, 8, 9 (since they must be greater than 6).
+- **Considering Sum**:
+  - Choosing 7: Sum would be 17 (exceeds 15).
+  - Choosing 8: Sum would be 18 (exceeds 15).
+  - Choosing 9: Sum would be 19 (exceeds 15).
+- **Conclusion**: Player 1 cannot make a move without exceeding 15.
+- **Result**: Player 1 loses. **Player 2 wins**.
+
+---
+
+## Command-Line Interaction Example
+
+Below is how the game might proceed in a command-line interface.
+
+**Starting Shared Pool**: `1 2 3 4 5 6 7 8 9`
+
+### Turn Sequence
+
+#### Player 1's Turn
+
+- **Prompt**: "Player 1, your sequence: []. Sum: 0. Available numbers: 1 2 3 4 5 6 7 8 9"
+- **Input**: `4`
+- **Validation**: 4 is available.
+- **Update**:
+  - Player 1's sequence: `[4]`
+  - Sum: `4`
+  - Shared Pool: `1 2 3 5 6 7 8 9`
+
+#### Player 2's Turn
+
+- **Prompt**: "Player 2, your sequence: []. Sum: 0. Available numbers: 1 2 3 5 6 7 8 9"
+- **Input**: `5`
+- **Validation**: 5 is available.
+- **Update**:
+  - Player 2's sequence: `[5]`
+  - Sum: `5`
+  - Shared Pool: `1 2 3 6 7 8 9`
+
+#### Subsequent Turns
+
+Players continue in this manner, with the command-line interface:
+
+- Displaying the player's current sequence and sum.
+- Showing the available numbers.
+- Prompting for input.
+- Validating the input.
+- Updating the sequences, sums, and shared pool.
+- Checking for win/loss conditions after each turn.
+
+---
+
+## Strategic Considerations
+
+- **Number Selection**:
+  - Choose numbers that advance your sequence while considering the impact on your opponent's options.
+  - Be cautious of leaving numbers that your opponent can use to reach 15.
+
+- **Sum Management**:
+  - Keep track of how each selection affects your total sum.
+  - Avoid getting into a position where any available move would cause you to exceed 15.
+
+- **Anticipate Opponent's Moves**:
+  - Pay attention to the numbers your opponent is collecting.
+  - Try to limit their options by selecting numbers they might need.
+
+- **Sequence Planning**:
+  - Plan several moves ahead to ensure you have viable options on future turns.
+
+---
+
+## Conclusion
+
+"Sequence Builder" is a strategic, turn-based game that challenges players to think ahead and manage resources effectively. With simple rules and a focus on numerical strategy, it offers depth and replayability in a command-line interface.
+
+Enjoy the game, and may the best strategist win!

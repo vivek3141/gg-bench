@@ -1,0 +1,225 @@
+# Factor Frenzy
+
+## Objective
+
+**Factor Frenzy** is a two-player, turn-based game of numerical strategy and foresight. The primary goal is to be the first player to claim the number **1** from a shared pool of numbers. Players achieve victory by skillfully selecting numbers that force their opponent into a position where they cannot make a valid move, or by claiming the number **1** themselves. A player loses if they are unable to select a valid number on their turn.
+
+## Setup
+
+1. **Number Pool Initialization**:
+   - Create a list of consecutive integers starting from **1** up to a chosen maximum number **N** (e.g., 1 to 50).
+   - All numbers in this pool are initially unclaimed and available for selection.
+
+2. **Player Assignment**:
+   - Two players are designated as **Player 1** and **Player 2**.
+   - Determine the first player through mutual agreement or a random method (e.g., coin toss).
+
+3. **Game Interface**:
+   - The game is played via a command-line interface that displays the current state of the number pool, including claimed and unclaimed numbers.
+
+## Game Components
+
+- **Number Pool**:
+  - A list of integers from **1** to **N** (e.g., 1 to 50).
+  - Each number can be in one of three states:
+    - **Unclaimed**: Available for selection.
+    - **Claimed by Player 1**: Selected by Player 1 in a previous turn.
+    - **Claimed by Player 2**: Selected by Player 2 in a previous turn.
+
+- **Player Indicators**:
+  - Each player is represented by a unique identifier (e.g., **Player 1** and **Player 2**).
+
+- **Turn Tracker**:
+  - Keeps track of whose turn it is to play.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns starting with **Player 1**.
+
+2. **Turn Actions**:
+   - **Selection Phase**:
+     - The player selects an unclaimed number from the number pool according to the game's selection rules (see **Rules and Mechanics**).
+   - **Validation Phase**:
+     - The game checks if the selected number is a valid choice based on the previous number selected.
+   - **Update Phase**:
+     - The selected number is marked as claimed by the player.
+     - The game state is updated, and the turn passes to the other player.
+
+3. **Turn Progression**:
+   - The game continues with players alternately taking turns until one player wins or loses according to the game rules.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **First Move**:
+   - **Player 1** begins the game by selecting any unclaimed number from the number pool **except the number 1**.
+
+2. **Subsequent Moves**:
+   - Each player must select an unclaimed number that is either a **factor** or a **multiple** of the **last number** selected by the opponent.
+     - A **factor** is a number that divides evenly into another number (e.g., 3 is a factor of 12).
+     - A **multiple** is a number that is evenly divisible by another number (e.g., 12 is a multiple of 3).
+
+3. **Claiming Numbers**:
+   - Once a number is selected by a player, it is marked as claimed and cannot be selected again by either player.
+
+4. **Winning the Game**:
+   - A player **immediately wins** the game by selecting the number **1** on their turn.
+   - If a player is **unable to make a valid selection** on their turn (no unclaimed factors or multiples of the last number selected), they **lose**, and the opponent wins.
+
+### Special Conditions
+
+- **Number 1**:
+  - The number **1** is a special number that can be selected under the normal selection rules.
+  - Since **1** is a factor of every number and a multiple only of itself, it can only be selected if it is a factor or multiple of the last number chosen.
+  - Selecting **1** results in an immediate victory.
+
+- **Invalid Moves**:
+  - If a player attempts to select an invalid number (one that is not an unclaimed factor or multiple of the last number), they must choose again.
+  - If no valid numbers are available, the player loses the game.
+
+## Scoring
+
+- **Win Condition**:
+  - Victory is achieved by one of the following:
+    - Selecting the number **1** according to the selection rules.
+    - Forcing the opponent into a position where they have no valid moves on their turn.
+
+- **Game Outcome**:
+  - The game does not involve point scoring; it ends with a win for one player and a loss for the other.
+  - There is no possibility of a draw.
+
+## Examples
+
+### Example Game Play
+
+**Initial Setup**:
+
+- Number Pool: Numbers from **1** to **20**.
+- All numbers are unclaimed.
+- Player 1 and Player 2 are ready to begin.
+
+---
+
+#### Turn 1: Player 1
+
+- **Available Numbers**: 2-20 (since 1 cannot be selected on the first move).
+- **Action**: Player 1 selects **12**.
+- **Game State**:
+  - Numbers claimed by Player 1: **12**.
+  - Last number selected: **12**.
+
+#### Turn 2: Player 2
+
+- **Available Numbers**: 1-20, excluding **12**.
+- **Selection Rules**:
+  - Must select an unclaimed factor or multiple of **12**.
+- **Possible Choices**:
+  - **Factors of 12**: 2, 3, 4, 6.
+  - **Multiples of 12** (up to 20): None (since 24 exceeds 20).
+- **Action**: Player 2 selects **6**.
+- **Game State**:
+  - Numbers claimed by Player 2: **6**.
+  - Last number selected: **6**.
+
+#### Turn 3: Player 1
+
+- **Available Numbers**: 1-20, excluding **6** and **12**.
+- **Selection Rules**:
+  - Must select an unclaimed factor or multiple of **6**.
+- **Possible Choices**:
+  - **Factors of 6**: 2, 3.
+  - **Multiples of 6** (up to 20): 18.
+- **Action**: Player 1 selects **3**.
+- **Game State**:
+  - Numbers claimed by Player 1: **12**, **3**.
+  - Last number selected: **3**.
+
+#### Turn 4: Player 2
+
+- **Available Numbers**: 1-20, excluding **3**, **6**, **12**.
+- **Selection Rules**:
+  - Must select an unclaimed factor or multiple of **3**.
+- **Possible Choices**:
+  - **Factors of 3**: 1 (win condition), 2 (not a factor), 3 (already claimed).
+  - **Multiples of 3**: 9, 15, 18.
+- **Action**: Player 2 selects **9**.
+- **Game State**:
+  - Numbers claimed by Player 2: **6**, **9**.
+  - Last number selected: **9**.
+
+#### Turn 5: Player 1
+
+- **Available Numbers**: 1-20, excluding **3**, **6**, **9**, **12**.
+- **Selection Rules**:
+  - Must select an unclaimed factor or multiple of **9**.
+- **Possible Choices**:
+  - **Factors of 9**: 1 (win condition), 3 (already claimed).
+  - **Multiples of 9**: 18.
+- **Action**: Player 1 selects **1** (since 1 is a factor of every number).
+- **Outcome**:
+  - Player 1 claims **1** and **wins the game immediately**.
+
+---
+
+### Sample Command-Line Interaction
+
+Below is a simplified representation of how the game might be played on a command-line interface.
+
+```
+Welcome to Factor Frenzy!
+
+Number Pool (Unclaimed Numbers): 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+Player 1's Turn
+Available Numbers (excluding 1): 2, 3, 4, 5, 6, 7, 8, 9, 10
+Select a number: 8
+
+Player 1 has claimed number 8.
+
+Player 2's Turn
+Last number selected: 8
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 9, 10
+Possible Choices (Factors or Multiples of 8): 2, 4
+Select a number: 4
+
+Player 2 has claimed number 4.
+
+Player 1's Turn
+Last number selected: 4
+Available Numbers: 1, 2, 3, 5, 6, 7, 9, 10
+Possible Choices (Factors or Multiples of 4): 2
+Select a number: 2
+
+Player 1 has claimed number 2.
+
+Player 2's Turn
+Last number selected: 2
+Available Numbers: 1, 3, 5, 6, 7, 9, 10
+Possible Choices (Factors or Multiples of 2): 6, 10
+Select a number: 6
+
+Player 2 has claimed number 6.
+
+Player 1's Turn
+Last number selected: 6
+Available Numbers: 1, 3, 5, 7, 9, 10
+Possible Choices (Factors or Multiples of 6): None
+
+Player 1 cannot make a valid move and loses.
+Player 2 wins the game!
+```
+
+In this example, Player 1 is unable to select a number on their turn, resulting in a loss.
+
+## Strategic Tips
+
+- **Plan Ahead**: Anticipate your opponent's possible moves and select numbers that limit their options.
+- **Control Key Numbers**: Claiming numbers with multiple factors and multiples (like 6 or 12) can provide more opportunities for you and restrict your opponent.
+- **Aim for 1**: Keep an eye out for chances to select **1** and win immediately.
+- **Avoid Isolation**: Be cautious when selecting prime numbers (other than 1), as they have fewer factors and may limit your future moves.
+
+## Conclusion
+
+**Factor Frenzy** is a simple yet strategically rich game that challenges players to think ahead and make calculated decisions. By understanding the relationships between numbers and carefully planning each move, skilled players can consistently outperform less experienced opponents. Enjoy the challenge of outwitting your opponent in this exciting numerical showdown!

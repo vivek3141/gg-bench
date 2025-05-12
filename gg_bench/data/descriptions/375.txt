@@ -1,0 +1,232 @@
+# Seek and Score
+
+## Objective
+
+**Seek and Score** is a two-player, turn-based game where players compete to be the first to accumulate **exactly 50 points** without exceeding it. Players strategically decide whether to keep or give drawn tiles to their opponent, balancing the risk of "busting" (exceeding 50 points) against the reward of reaching the target score. The first player to reach **exactly 50 points** wins the game. If a player exceeds 50 points, they "bust" and their score resets to 25 points.
+
+## Setup
+
+1. **Tile Pool Creation**:
+   - Create a shared pool of tiles numbered **1** through **9**, with each number appearing **twice**, resulting in a total of **18 tiles**.
+   - Shuffle the tiles to ensure a random draw order.
+
+2. **Initial Scores**:
+   - Both players start with a score of **25 points**.
+
+3. **Starting Player**:
+   - Determine who goes first (e.g., by a coin toss or mutual agreement).
+
+## Game Components
+
+- **Tiles**:
+  - Numbered tiles from **1** to **9**, with two of each number.
+  - Tiles represent points that can be added to a player's score.
+
+- **Tile Pool**:
+  - A shared, shuffled collection from which tiles are drawn.
+
+- **Scores**:
+  - Each player has an individual score, starting at **25 points**.
+
+- **Command-Line Interface**:
+  - Players interact with the game via text-based commands and receive updates through console messages.
+
+## Turns
+
+The game proceeds in alternating turns with the following structure:
+
+1. **Draw Phase**:
+   - The active player draws the top tile from the tile pool. The drawn tile's number is revealed to both players.
+
+2. **Decision Phase**:
+   - The active player chooses to either:
+     - **Keep** the tile: Add the tile's value to their own score.
+     - **Give** the tile: Pass the tile to the opponent, who must add its value to their score.
+
+3. **Score Update**:
+   - Adjust the relevant player's score based on the decision.
+
+4. **Bust Check**:
+   - If either player's score exceeds **50 points**, they bust:
+     - The busted player's score resets to **25 points**.
+     - The game continues with the next player's turn.
+
+5. **Win Check**:
+   - If a player's score is exactly **50 points**, they win the game.
+
+6. **End Turn**:
+   - The turn ends, and play passes to the other player.
+
+## Rules and Mechanics
+
+### Tile Pool and Drawing
+
+- Tiles are drawn one at a time from the top of the shuffled tile pool.
+- Once a tile is drawn and resolved, it is removed from the game.
+
+### Keep or Give Decision
+
+- **Keep**:
+  - The active player adds the tile's value to their own score.
+- **Give**:
+  - The opponent must accept the tile and add its value to their score.
+  - The opponent cannot refuse a given tile.
+
+### Scoring and Busting
+
+- Players aim to adjust their score to **exactly 50 points**.
+- If a player's score exceeds **50 points** after any action:
+  - The player's score immediately resets to **25 points**.
+  - The game continues with the next player's turn.
+- Strategic giving can force an opponent to bust.
+
+### Game End Conditions
+
+- The game ends immediately when a player's score reaches **exactly 50 points**.
+- The player who achieves this score is declared the **winner**.
+
+### Tile Exhaustion
+
+- If all tiles are drawn without a player winning, reshuffle all tiles (excluding discarded ones) to form a new tile pool, and continue the game.
+
+## Scoring
+
+- **Starting Score**: 25 points for both players.
+- **Adding Tiles**: Adjust the player's score by adding the tile's value when kept or received.
+- **Bust Reset**: Reset to 25 points upon exceeding 50 points.
+
+## Examples
+
+### Sample Turn Breakdown
+
+#### Scenario:
+
+- **Player A's score**: 42
+- **Player B's score**: 47
+- **Tiles remaining**: [Tiles are not revealed until drawn]
+
+#### Player A's Turn
+
+1. **Draw Phase**:
+   - Player A draws a tile numbered **8**.
+   - Both players see that an **8** has been drawn.
+
+2. **Decision Phase**:
+   - Player A evaluates:
+     - Keeping the tile would make their score: 42 + 8 = **50** (winning score).
+     - Giving the tile to Player B would make Player B's score: 47 + 8 = **55** (bust).
+   - Player A decides to **keep** the tile to win.
+
+3. **Score Update**:
+   - Player A's score is updated to **50**.
+
+4. **Win Check**:
+   - Player A's score is exactly **50**.
+   - Player A **wins** the game.
+
+### Command-Line Interaction Example
+
+#### Initial State
+
+```
+Welcome to Seek and Score!
+
+Both players start with 25 points.
+
+Player A's turn.
+Press Enter to draw a tile...
+```
+
+#### Player A's Turn
+
+```
+Player A draws a tile: 7
+
+Player A, do you want to keep the tile or give it to Player B? (Type 'keep' or 'give'):
+```
+
+- **Player A types**: `give`
+
+```
+Player A gives the tile to Player B.
+
+Player B's score increases by 7 points.
+
+Scores:
+- Player A: 25
+- Player B: 32
+
+Player B's turn.
+Press Enter to draw a tile...
+```
+
+#### Player B's Turn
+
+```
+Player B draws a tile: 9
+
+Player B, do you want to keep the tile or give it to Player A? (Type 'keep' or 'give'):
+```
+
+- **Player B types**: `give`
+
+```
+Player B gives the tile to Player A.
+
+Player A's score increases by 9 points.
+
+Scores:
+- Player A: 34
+- Player B: 32
+
+Player A's turn.
+Press Enter to draw a tile...
+```
+
+#### Continuing Play
+
+- Players continue taking turns, making strategic decisions to reach exactly 50 points or cause their opponent to bust.
+
+### Bust Example
+
+#### Scenario:
+
+- **Player B's score**: 46
+
+#### Player A's Turn
+
+```
+Player A draws a tile: 5
+
+Player A, do you want to keep the tile or give it to Player B? (Type 'keep' or 'give'):
+```
+
+- **Player A types**: `give`
+
+```
+Player A gives the tile to Player B.
+
+Player B's score increases by 5 points.
+
+Player B's score is now 51 and has busted!
+
+Player B's score resets to 25 points.
+
+Scores:
+- Player A: [current score]
+- Player B: 25
+
+Player B's turn.
+Press Enter to draw a tile...
+```
+
+## Strategic Tips
+
+- **Monitor Opponent's Score**: Keep track of both scores to decide whether giving a tile could cause your opponent to bust.
+- **Risk Management**: Weigh the benefits of keeping high-value tiles against the risk of busting.
+- **Bluffing**: Use psychological tactics by varying your choices to keep your opponent guessing.
+- **Endgame Strategy**: As either player approaches 50, carefully calculate your moves to reach exactly 50 or force your opponent to bust.
+
+## Conclusion
+
+**Seek and Score** is a game of chance and strategy, where players must make calculated decisions each turn. By managing your own score and manipulating your opponent's score through tactical giving, you can navigate your way to victory. Enjoy the blend of risk and reward as you Seek and Score your way to 50 points!

@@ -1,0 +1,152 @@
+# Race to the Center
+
+## Objective
+
+"Race to the Center" is a two-player turn-based strategy game played on a linear track. The primary goal is to be the first player to land exactly on the center position of the track by strategically moving your marker towards the center. Players take turns moving their markers, and must decide whether to move one or two positions each turn. The player who reaches the center position first wins the game. In the event both players reach the center on the same turn, the second player to move in that turn wins, ensuring there is no draw.
+
+## Setup
+
+- **Game Board**: A linear track consisting of 11 positions numbered from **0** to **10**.
+- **Player Markers**:
+  - **Player 1**'s marker starts at position **0**.
+  - **Player 2**'s marker starts at position **10**.
+- **Center Position**: The central position is at **position 5**.
+
+The initial setup places both players at opposite ends of the track, equidistant from the center.
+
+## Game Components
+
+- **Linear Track**: A straight line of positions numbered from 0 to 10.
+  - Positions are sequential and represent the possible locations for player markers.
+- **Player Markers**: Distinct symbols or tokens representing each player on the track.
+  - **Player 1**: Represented by `P1`.
+  - **Player 2**: Represented by `P2`.
+- **Positions**: Numerical identifiers for each spot on the track.
+  - Positions **0** and **10** are the starting points.
+  - Position **5** is the winning center position.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Player Actions**:
+  - On their turn, a player must move their marker towards the center by **1 or 2 positions**.
+  - Movement is mandatory; a player cannot skip a turn or move 0 positions.
+- **Turn Progression**:
+  - Each turn consists of one player making their move.
+  - The game continues with players alternating turns until the game ends.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Direction**: Players can only move towards the center position.
+  - **Player 1** moves from lower to higher numbered positions.
+  - **Player 2** moves from higher to lower numbered positions.
+- **Movement Options**: On each turn, a player chooses to move **1 or 2 positions**.
+- **Restrictions**:
+  - A player cannot move past the center position (position 5).
+  - If a player is **1 position** away from the center, they must move **1 position**.
+
+### Winning the Game
+
+- **Victory Condition**: The first player to land **exactly** on **position 5** wins the game.
+- **Simultaneous Arrival**:
+  - If both players reach position 5 on the same turn, the player who moved **second** in that turn wins.
+- **No Draws**: The rules ensure that a winner is always determined, and a draw is not possible.
+
+### Additional Rules
+
+- **Occupied Positions**:
+  - Players cannot land on the same position as the other player's marker, except for the center position.
+  - The center position (position 5) can be occupied by both players in the case of simultaneous arrival.
+- **Valid Moves**:
+  - Players must always make a valid move towards the center.
+  - Players cannot move away from the center or remain stationary.
+
+## Scoring
+
+- **Winning the Game**: The player who meets the victory condition wins the game.
+  - No point system is used; the outcome is win or loss.
+- **Recording Wins**: Players can keep track of the number of games won over multiple rounds if desired.
+
+## Examples
+
+### Example 1: Player 1 Wins
+
+**Turn 1:**
+- **Player 1** moves from position 0 to **position 2** (moves 2 positions).
+- **Player 2** moves from position 10 to **position 9** (moves 1 position).
+
+**Turn 2:**
+- **Player 1** moves from position 2 to **position 4** (moves 2 positions).
+- **Player 2** moves from position 9 to **position 7** (moves 2 positions).
+
+**Turn 3:**
+- **Player 1** moves from position 4 to **position 5** (moves 1 position).
+  - **Player 1** has reached the center and wins the game.
+- **Player 2** does not get a turn because the game ends when Player 1 reaches the center.
+
+### Example 2: Player 2 Wins on Simultaneous Arrival
+
+**Turn 1:**
+- **Player 1** moves from position 0 to **position 1** (moves 1 position).
+- **Player 2** moves from position 10 to **position 8** (moves 2 positions).
+
+**Turn 2:**
+- **Player 1** moves from position 1 to **position 3** (moves 2 positions).
+- **Player 2** moves from position 8 to **position 6** (moves 2 positions).
+
+**Turn 3:**
+- **Player 1** moves from position 3 to **position 5** (moves 2 positions).
+  - **Player 1** reaches the center.
+- **Player 2** moves from position 6 to **position 5** (moves 1 position).
+  - **Player 2** also reaches the center on the same turn.
+- **Result**: **Player 2** wins the game because they were the second to move on the turn both players reached the center.
+
+### Command-Line Interaction Sample
+
+#### Game Start
+
+```
+Welcome to Race to the Center!
+Player 1 starts at position 0.
+Player 2 starts at position 10.
+First to reach position 5 wins.
+```
+
+#### Turn Progression
+
+```
+Player 1's turn. You are at position 0. Move 1 or 2 positions? 2
+Player 1 moves to position 2.
+
+Player 2's turn. You are at position 10. Move 1 or 2 positions? 1
+Player 2 moves to position 9.
+
+Player 1's turn. You are at position 2. Move 1 or 2 positions? 2
+Player 1 moves to position 4.
+
+Player 2's turn. You are at position 9. Move 1 or 2 positions? 2
+Player 2 moves to position 7.
+
+Player 1's turn. You are at position 4. Move 1 or 2 positions? 1
+Player 1 moves to position 5.
+Player 1 has reached the center and wins the game!
+```
+
+## Strategic Considerations
+
+- **Planning Ahead**: Players should plan their moves by anticipating the opponent's options and choosing moves that block or delay the opponent's progress.
+- **Turn Order Advantage**:
+  - Moving second on a turn where both players can reach the center can be advantageous.
+  - Players may force a simultaneous arrival and win by moving second.
+
+*Example Strategy*:
+
+- If you're Player 2 and see that both you and Player 1 can reach the center in the next two moves, you may plan to ensure you move second on the critical turn to secure a win.
+
+## Conclusion
+
+"Race to the Center" offers strategic depth through simple mechanics, making it easy to learn but challenging to master. Players must carefully decide on each move whether to advance quickly or control the pace to force a favorable outcome. The game is quick to play, ensuring an engaging experience that emphasizes skill over chance.
+
+Enjoy the race, and may the best strategist win!

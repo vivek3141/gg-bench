@@ -1,0 +1,189 @@
+# Prime Climb: Rule Book
+
+Welcome to **Prime Climb**, an exciting two-player, turn-based strategy game designed for quick play in a command-line interface. Race your opponent to reach the top of the prime staircase by leveraging number theory and strategic planning. May the best mathematician win!
+
+---
+
+## Objective
+
+Be the first player to reach exactly **Step 20** on the staircase by moving up based on strategic number additions. Utilize prime numbers to gain extra turns and outpace your opponent. A player wins by landing precisely on Step 20 without exceeding it.
+
+---
+
+## Setup
+
+- **Staircase Steps**: The game features a staircase numbered from **1 to 20**.
+- **Starting Position**: Both players start at **Step 0**, which is off the staircase.
+- **Player Roles**:
+  - **Player 1**: Makes the first move.
+  - **Player 2**: Moves second.
+
+---
+
+## Game Components
+
+- **Staircase**:
+  - A linear set of steps numbered from **1** (bottom) to **20** (top).
+- **Player Tokens**:
+  - **Player 1 Token**: Represented by `P1`.
+  - **Player 2 Token**: Represented by `P2`.
+- **Move Numbers**:
+  - Numbers from **1 to 9** inclusive.
+  - Available to both players each turn.
+  - Unlimited use; numbers are not depleted upon usage.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  1. **Player 1** takes their turn.
+  2. **Player 2** takes their turn.
+  3. Repeat until one player wins.
+- **Turn Structure**:
+  - **Step 1**: Choose a move number (**1-9**).
+  - **Step 2**: Add the move number to your current step to determine the new step.
+  - **Step 3**: Check for prime number bonus and opponent collision.
+  - **Step 4**: Resolve turn end conditions.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+1. **Choosing Move Numbers**:
+   - On your turn, select any number from **1 to 9** to add to your current step.
+   - Example: If you're on Step 4 and choose **5**, you'll move to Step 9.
+
+2. **Staircase Limits**:
+   - You cannot move beyond **Step 20**.
+   - If a chosen move number would take you past Step 20, the move is invalid; choose a different number.
+
+3. **Occupied Steps**:
+   - Players cannot occupy the same step.
+   - If your calculated step is occupied by your opponent, the move is invalid; select a different number.
+
+### Prime Number Bonus
+
+- **Prime Steps**:
+  - After moving, if you land on a **prime-numbered step**, you earn an **extra turn**.
+  - Prime numbers between 1 and 20: **2, 3, 5, 7, 11, 13, 17, 19**.
+
+- **Extra Turn Rules**:
+  - Extra turns are immediate.
+  - There is no limit to the number of consecutive extra turns.
+  - Each extra turn follows the same rules as a regular turn.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - The first player to land exactly on **Step 20** wins the game.
+- **Invalid Moves**:
+  - If a player has no valid moves (all possible moves either exceed Step 20 or land on the opponent's step), they must pass their turn.
+
+---
+
+## Scoring
+
+- **Tracking Progress**:
+  - Each player's current step number represents their progress.
+  - No points are accumulated; the goal is to reach Step 20.
+
+---
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial State**:
+
+- Player 1 at Step **0**
+- Player 2 at Step **0**
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Current Step**: 0
+- **Move**: Chooses to add **3**.
+- **New Step**: 0 + 3 = **3**
+- **Prime Check**: Step 3 is prime.
+- **Extra Turn**: Granted.
+
+##### **Extra Turn for Player 1**
+
+- **Current Step**: 3
+- **Move**: Chooses to add **4**.
+- **New Step**: 3 + 4 = **7**
+- **Prime Check**: Step 7 is prime.
+- **Extra Turn**: Granted.
+
+##### **Second Extra Turn for Player 1**
+
+- **Current Step**: 7
+- **Move**: Chooses to add **6**.
+- **New Step**: 7 + 6 = **13**
+- **Prime Check**: Step 13 is prime.
+- **Extra Turn**: Granted.
+
+##### **Third Extra Turn for Player 1**
+
+- **Current Step**: 13
+- **Move**: Chooses to add **7**.
+- **New Step**: 13 + 7 = **20**
+- **Prime Check**: Step 20 is not prime.
+- **Extra Turn**: Not granted.
+- **Victory Check**: Reached Step 20.
+- **Result**: **Player 1 wins**!
+
+---
+
+### Command-Line Interaction Example
+
+```
+--- Prime Climb Game Start ---
+
+Player 1 Turn:
+- Current Step: 0
+- Choose a number to add (1-9): 3
+- Moved to Step 3 (Prime)
+- Extra Turn Granted!
+
+Player 1 Extra Turn:
+- Current Step: 3
+- Choose a number to add (1-9): 4
+- Moved to Step 7 (Prime)
+- Extra Turn Granted!
+
+Player 1 Extra Turn:
+- Current Step: 7
+- Choose a number to add (1-9): 6
+- Moved to Step 13 (Prime)
+- Extra Turn Granted!
+
+Player 1 Extra Turn:
+- Current Step: 13
+- Choose a number to add (1-9): 7
+- Moved to Step 20
+- Reached Step 20! Player 1 wins!
+
+--- Game Over ---
+```
+
+---
+
+## Strategy Tips
+
+- **Maximize Extra Turns**:
+  - Aim to land on prime steps to chain extra turns.
+- **Plan Ahead**:
+  - Consider the steps your opponent occupies to avoid invalid moves.
+- **Control the Pace**:
+  - Utilize smaller move numbers to adjust your position strategically.
+- **Block Opponent**:
+  - Occupy steps that might be advantageous to your opponent.
+
+---
+
+Enjoy playing **Prime Climb** and may your ascent be swift and unimpeded by composite numbers!

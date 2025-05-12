@@ -1,0 +1,176 @@
+# Number Hurdles
+
+## Objective
+
+Be the first player to reach the target number **23** exactly by applying allowed arithmetic operations on a shared current number. Strategic planning is essential, as going over the target number results in an immediate loss. The game tests numerical skills and foresight, allowing a skilled player to consistently outperform an unskilled opponent.
+
+## Setup
+
+- **Initial Current Number**: Start the game with the current number set to **1**.
+- **Target Number**: The objective is to reach the target number **23**.
+
+No additional setup is required, making the game easy to initiate in a command-line interface.
+
+## Game Components
+
+- **Current Number**: A shared integer value that players manipulate on their turns. It begins at **1**.
+- **Operations**:
+  - **Add 1**: Increment the current number by 1.
+  - **Multiply by 2**: Double the current number.
+
+These components are simple to represent in a command-line interface, using basic input and output statements.
+
+## Turns
+
+- Players decide who goes first (e.g., coin toss, random selection).
+- Turns alternate between Player 1 and Player 2.
+- During each turn:
+  1. The current number is displayed.
+  2. The active player chooses one of the allowed operations:
+     - Add 1
+     - Multiply by 2
+  3. The chosen operation is applied to the current number.
+  4. The updated current number is checked against the target number.
+
+## Rules and Mechanics
+
+- **Allowed Operations**:
+  - **Add 1**: `current_number = current_number + 1`
+  - **Multiply by 2**: `current_number = current_number * 2`
+- **Winning the Game**:
+  - If a player’s move sets the current number exactly to **23**, that player wins.
+- **Losing the Game**:
+  - If a player's move causes the current number to exceed **23**, that player loses immediately.
+- **Valid Moves**:
+  - Players must choose an operation that results in a current number less than or equal to **23**.
+  - If both operations would exceed **23**, the player loses their turn and the opponent wins by default.
+
+## Scoring
+
+- The game is won by achieving the target number **23** exactly.
+- No points are tallied; the game outcome is win or loss.
+- For match play, players can keep track of wins, and the first to reach a set number of wins (e.g., best of 5) is the overall victor.
+
+## Examples
+
+Below are sample turns illustrating gameplay with command-line interactions.
+
+### Example Game
+
+**Starting the Game**
+
+- Current Number: **1**
+
+**Turn 1: Player 1**
+
+- Current Number: 1
+- Available Operations:
+  - [1] Add 1
+  - [2] Multiply by 2
+- **Player 1 chooses to Multiply by 2**.
+- Current Number after operation: `1 * 2 = 2`
+
+**Turn 2: Player 2**
+
+- Current Number: 2
+- Available Operations:
+  - [1] Add 1
+  - [2] Multiply by 2
+- **Player 2 chooses to Multiply by 2**.
+- Current Number after operation: `2 * 2 = 4`
+
+**Turn 3: Player 1**
+
+- Current Number: 4
+- Available Operations:
+  - [1] Add 1
+  - [2] Multiply by 2
+- **Player 1 chooses to Add 1**.
+- Current Number after operation: `4 + 1 = 5`
+
+**Turn 4: Player 2**
+
+- Current Number: 5
+- Available Operations:
+  - [1] Add 1
+  - [2] Multiply by 2
+- **Player 2 chooses to Multiply by 2**.
+- Current Number after operation: `5 * 2 = 10`
+
+**Turn 5: Player 1**
+
+- Current Number: 10
+- Available Operations:
+  - [1] Add 1
+  - [2] Multiply by 2
+- **Player 1 chooses to Add 1**.
+- Current Number after operation: `10 + 1 = 11`
+
+**Turn 6: Player 2**
+
+- Current Number: 11
+- Available Operations:
+  - [1] Add 1
+  - [2] Multiply by 2
+- **Player 2 chooses to Multiply by 2**.
+- Current Number after operation: `11 * 2 = 22`
+
+**Turn 7: Player 1**
+
+- Current Number: 22
+- Available Operations:
+  - [1] Add 1 (would result in 23)
+  - [2] Multiply by 2 (would result in 44, exceeding 23)
+- **Player 1 must choose Add 1**, as Multiply by 2 would exceed 23 and cause an immediate loss.
+- **Player 1 chooses to Add 1**.
+- Current Number after operation: `22 + 1 = 23`
+- **Player 1 wins by reaching the target number 23 exactly**.
+
+### Command-Line Interaction Sample
+
+```
+Current Number: 1
+Player 1, choose an operation:
+[1] Add 1
+[2] Multiply by 2
+Enter choice: 2
+You chose to Multiply by 2.
+Current Number is now 2.
+
+Current Number: 2
+Player 2, choose an operation:
+[1] Add 1
+[2] Multiply by 2
+Enter choice: 2
+You chose to Multiply by 2.
+Current Number is now 4.
+
+Current Number: 4
+Player 1, choose an operation:
+[1] Add 1
+[2] Multiply by 2
+Enter choice: 1
+You chose to Add 1.
+Current Number is now 5.
+
+...
+
+Current Number: 22
+Player 1, choose an operation:
+[1] Add 1
+[2] Multiply by 2
+Enter choice: 1
+You chose to Add 1.
+Current Number is now 23.
+Congratulations, Player 1! You reached 23 and won the game!
+```
+
+## Strategic Considerations
+
+- **Planning Ahead**: Anticipate the results of your moves to force your opponent into a losing position.
+- **Control Key Numbers**: Aim to maneuver the current number to specific values that limit your opponent's options.
+- **Avoid Overstepping**: Be cautious not to exceed the target number, as this results in an immediate loss.
+
+## Summary
+
+"Number Hurdles" is a simple yet strategic game perfect for a command-line interface. With minimal components and rules, it offers depth through strategic planning and foresight. Players must balance between incremental advances and significant leaps to outmaneuver their opponent without overshooting the target number.

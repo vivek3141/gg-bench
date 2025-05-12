@@ -1,0 +1,300 @@
+# Factor Duel
+
+## Objective
+
+**Primary Goal:** Be the last player able to select a valid number from the shared pool without violating the game's co-prime selection rule.
+
+**Victory Condition:** Players take turns selecting numbers from a shared pool. A player wins by forcing their opponent into a position where no valid moves are available on their turn.
+
+## Setup
+
+1. **Shared Pool Initialization:**
+   - Begin with a shared pool of consecutive integers from **2** to **20** (inclusive).
+     ```
+     Shared Pool: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+     ```
+2. **Player Lists:**
+   - Each player starts with an empty list to keep track of the numbers they've selected.
+     ```
+     Player 1 Numbers: []
+     Player 2 Numbers: []
+     ```
+3. **Determine First Player:**
+   - Flip a coin or use any random method to decide who takes the first turn.
+
+## Game Components
+
+- **Shared Pool:**
+  - A list of numbers from **2** to **20** that both players can select from. Numbers are removed from the pool once selected.
+- **Player Lists:**
+  - Each player maintains a personal list of numbers they have selected.
+- **Numbers:**
+  - **Appearance:** Integers from **2** to **20**.
+  - **Functionality:** Used to apply the co-prime rule, influencing future valid selections.
+  - **Unique Attributes:** Each number can only be selected once and has specific factors affecting selection validity.
+
+## Turns
+
+1. **Turn Order:**
+   - Players alternate turns, starting with the player determined during setup.
+2. **Actions on a Turn:**
+   - **Selection:**
+     - The active player selects a number from the shared pool.
+     - The selected number must **not** share any common factors (other than **1**) with any numbers **previously selected by the same player**.
+   - **Validation:**
+     - Ensure the selected number is valid according to the co-prime rule.
+   - **Update:**
+     - Remove the selected number from the shared pool.
+     - Add the selected number to the active player's list.
+3. **Turn Progression:**
+   - If the active player has made a valid selection, the turn passes to the opponent.
+   - If the active player cannot make a valid move, the game ends, and the opponent wins.
+
+## Rules and Mechanics
+
+### Core Rules:
+
+1. **Co-prime Selection Rule:**
+   - **Definition:** Two numbers are co-prime if their greatest common divisor (GCD) is **1**.
+   - **Rule:** On their turn, a player must select a number from the shared pool that is co-prime with **all numbers they have previously selected**.
+   - **Note:** The selected number does **not** need to be co-prime with the opponent's numbers.
+
+2. **Number Usage:**
+   - Each number in the shared pool can only be selected once.
+   - Once selected, numbers are removed from the pool and cannot be selected again.
+
+3. **Winning the Game:**
+   - A player wins if their opponent cannot select any valid number on their turn.
+
+### Additional Mechanics:
+
+- **Common Factors:**
+  - Players should consider the prime factors of numbers when making selections to avoid limiting their future options.
+  
+- **Strategic Blocking:**
+  - Players can strategically select numbers that limit the opponent's future valid moves.
+
+## Scoring
+
+- **Win/Loss Tracking:**
+  - The game is a zero-sum match where one player wins, and the other loses.
+- **No Points System:**
+  - There is no point or scoring system; the focus is on strategic selection leading to a win or loss.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Shared Pool:**
+
+```
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+**Player 1 and Player 2 Numbers:**
+
+```
+Player 1 Numbers: []
+Player 2 Numbers: []
+```
+
+---
+
+**Turn 1: Player 1**
+
+- **Selection:** Player 1 selects **7**.
+  - **Reasoning:** As the first move, any number can be selected.
+- **Update:**
+  - Remove **7** from the shared pool.
+  - Player 1 Numbers: `[7]`
+
+**Shared Pool Now:**
+
+```
+[2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+---
+
+**Turn 2: Player 2**
+
+- **Selection:** Player 2 selects **10**.
+  - **Reasoning:** No prior numbers in their list, so any number can be selected.
+- **Update:**
+  - Remove **10** from the shared pool.
+  - Player 2 Numbers: `[10]`
+
+**Shared Pool Now:**
+
+```
+[2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+---
+
+**Turn 3: Player 1**
+
+- **Player 1 Numbers:** `[7]`
+- **Valid Selections:**
+  - Must select a number co-prime with **7**.
+  - Numbers co-prime with **7** are those that do not share any common factors with **7**.
+  - **Factors of 7:** 1, 7
+  - **Possible Choices:** `[2, 3, 4, 5, 6, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20]` (exclude multiples of 7)
+
+- **Selection:** Player 1 selects **11**.
+- **Update:**
+  - Remove **11** from the shared pool.
+  - Player 1 Numbers: `[7, 11]`
+
+**Shared Pool Now:**
+
+```
+[2, 3, 4, 5, 6, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
+
+---
+
+**Turn 4: Player 2**
+
+- **Player 2 Numbers:** `[10]`
+- **Valid Selections:**
+  - Must select a number co-prime with **10**.
+  - **Factors of 10:** 1, 2, 5, 10
+  - **Possible Choices:** `[3, 7, 9, 11, 13, 17, 19]` (exclude numbers that share factors with **2** or **5**)
+
+- **Selection:** Player 2 selects **13**.
+- **Update:**
+  - Remove **13** from the shared pool.
+  - Player 2 Numbers: `[10, 13]`
+
+**Shared Pool Now:**
+
+```
+[2, 3, 4, 5, 6, 8, 9, 12, 14, 15, 16, 17, 18, 19, 20]
+```
+
+---
+
+**Turn 5: Player 1**
+
+- **Player 1 Numbers:** `[7, 11]`
+- **Valid Selections:**
+  - Must select a number co-prime with both **7** and **11**.
+  - **Factors of 7:** 1, 7
+  - **Factors of 11:** 1, 11
+  - **Possible Choices:** `[2, 3, 4, 5, 6, 9, 13, 15, 16, 18, 19, 20]`
+
+- **Selection:** Player 1 selects **19**.
+- **Update:**
+  - Remove **19** from the shared pool.
+  - Player 1 Numbers: `[7, 11, 19]`
+
+**Shared Pool Now:**
+
+```
+[2, 3, 4, 5, 6, 8, 9, 12, 14, 15, 16, 17, 18, 20]
+```
+
+---
+
+**Game Continues...**
+
+Players continue in this manner until one player cannot make a valid selection.
+
+### Endgame Scenario
+
+Assume the game reaches a point where:
+
+**Player 1 Numbers:** `[7, 11, 19, 13]`
+
+**Player 2 Numbers:** `[10, 14, 9, 15]`
+
+**Shared Pool:**
+
+```
+[2, 3, 4, 5, 6, 8, 12, 16, 17, 18, 20]
+```
+
+---
+
+**Turn: Player 1**
+
+- **Valid Selections:** Must be co-prime with **7, 11, 13, 19**
+- **Possible Choices:** `[2, 3, 4, 5, 6, 8, 16, 17, 18]`
+- **Selection:** Player 1 selects **17**
+- **Update:**
+  - Remove **17** from the shared pool.
+  - Player 1 Numbers: `[7, 11, 19, 13, 17]`
+
+---
+
+**Turn: Player 2**
+
+- **Valid Selections:** Must be co-prime with **10, 14, 9, 15**
+- **Factors to Consider:** **2, 5, 7, 3**
+- **Possible Choices:** `[16, 18, 20]` (numbers not sharing factors with **2, 3, 5, 7** are limited)
+- **No Valid Moves Left:**
+  - **All remaining numbers share a common factor with Player 2's numbers.**
+  - **Player 2 cannot make a valid selection.**
+
+---
+
+**Conclusion:**
+
+- **Player 2 loses** as they cannot make a valid move.
+- **Player 1 wins** the game.
+
+## Command-Line Interaction Example
+
+```plaintext
+Welcome to Factor Duel!
+
+Shared Pool: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+Player 1 Numbers: []
+Player 2 Numbers: []
+
+Player 1, it's your turn.
+Select a number from the shared pool: 7
+
+Player 1 selected 7.
+Shared Pool: [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+Player 1 Numbers: [7]
+Player 2 Numbers: []
+
+Player 2, it's your turn.
+Select a number from the shared pool: 10
+
+Player 2 selected 10.
+Shared Pool: [2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+Player 1 Numbers: [7]
+Player 2 Numbers: [10]
+
+Player 1, it's your turn.
+Numbers co-prime with your list [7]: [2, 3, 4, 5, 6, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20]
+Select a number from the shared pool: 11
+
+Player 1 selected 11.
+Shared Pool: [2, 3, 4, 5, 6, 8, 9, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+Player 1 Numbers: [7, 11]
+Player 2 Numbers: [10]
+
+... (game continues) ...
+
+Player 2, it's your turn.
+No valid moves available. You cannot select a number that is co-prime with your numbers [10, 14, 9, 15].
+Player 2 loses. Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Consider future moves when selecting numbers to avoid restricting your options.
+- **Prime Numbers:** Selecting prime numbers can keep your options open, as they are only divisible by 1 and themselves.
+- **Blocking:** Anticipate your opponent's possible selections and attempt to limit their valid moves without compromising your own.
+
+## Conclusion
+
+Factor Duel is a strategic game of number selection and foresight. By understanding number relationships and planning ahead, players can outmaneuver their opponent and secure victory.
+
+---
+
+Enjoy the challenge and may the most strategic player win!

@@ -1,0 +1,217 @@
+# Factor Duel
+
+**A Strategic Two-Player Command-Line Game**
+
+---
+
+## Objective
+
+Factor Duel is a two-player turn-based strategy game played using a command-line interface. The primary goal is to reduce a shared positive integer, known as the **Current Number**, to exactly zero on your turn by subtracting one of its factors. Players take turns selecting factors of the Current Number, reducing it strategically. Victory is achieved by the player who successfully reduces the Current Number to zero or forces the opponent into a position where they cannot make a valid move.
+
+---
+
+## Setup
+
+1. **Initialize the Current Number**: The game starts with a shared positive integer called the **Current Number**. The default starting value is **100**, but players can agree on any positive integer suitable for the desired game length and complexity.
+   
+2. **Determine Turn Order**: Decide which player goes first. This can be done by mutual agreement or by a simple method such as flipping a coin.
+
+3. **Prepare the Used Numbers List**: Create an empty list called the **Used Numbers List** to keep track of all numbers selected during the game.
+
+---
+
+## Game Components
+
+- **Current Number**: A shared positive integer that players will reduce during the game. It starts at the agreed-upon initial value (e.g., 100).
+
+- **Used Numbers List**: A list that records all numbers that have been selected by either player throughout the game. This ensures no number is used more than once.
+
+- **Players**: Two participants who alternate turns, referred to as **Player 1** and **Player 2**.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+
+  1. **Display Information**: At the start of each turn, display the Current Number and the Used Numbers List.
+  
+  2. **Determine Available Moves**: Calculate all positive integer factors of the Current Number that have not been used yet.
+  
+  3. **Player Action**: The player selects one available factor.
+  
+  4. **Update Game State**:
+     - Subtract the selected number from the Current Number.
+     - Add the selected number to the Used Numbers List.
+  
+  5. **Check for Win Condition**: If the Current Number is reduced to zero, the player who made the move wins the game.
+
+- **Turn Progression**: Players alternate turns until the game ends with a win or loss condition.
+
+---
+
+## Rules and Mechanics
+
+1. **Selecting a Number**:
+
+   - **Valid Selection**: On your turn, you must select a positive integer that is both:
+     - A factor (divides evenly into) of the Current Number.
+     - Not already in the Used Numbers List.
+   
+   - **Invalid Move**: If there are no valid factors available on your turn, you lose the game.
+
+2. **Updating the Current Number**:
+
+   - **Subtraction**: Subtract the selected number from the Current Number.
+   - **New Current Number**: The result becomes the new Current Number for the next turn.
+   - **Zero Condition**: If the Current Number becomes zero after subtraction, the player who made the move wins.
+
+3. **Used Numbers List**:
+
+   - **Recording Moves**: Add every selected number to the Used Numbers List immediately after it is chosen.
+   - **Uniqueness**: No number can be selected more than once during the game.
+
+4. **Win Condition**:
+
+   - **Winning**: You win if you reduce the Current Number to exactly zero on your turn.
+   - **Losing**: You lose if you cannot make a valid move on your turn due to no available factors.
+
+5. **No Draws**:
+
+   - The game cannot end in a draw; it will always result in a win or loss.
+
+---
+
+## Scoring
+
+- **Game Points**: No points are tracked during the game. The focus is on strategic play to achieve a win.
+  
+- **Match Play**: Players may choose to play multiple rounds, keeping track of wins to determine an overall champion.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Starting Current Number**: 12  
+**Used Numbers List**: Empty
+
+---
+
+#### **Player 1's Turn**
+
+- **Current Number**: 12
+- **Available Factors**: 1, 2, 3, 4, 6, 12
+- **Unused Factors**: All (since the Used Numbers List is empty)
+- **Player 1 Selects**: 6
+- **Calculation**: 12 - 6 = 6
+- **New Current Number**: 6
+- **Update Used Numbers List**: [6]
+
+---
+
+#### **Player 2's Turn**
+
+- **Current Number**: 6
+- **Available Factors**: 1, 2, 3, 6
+- **Unused Factors**: 1, 2, 3
+- **Player 2 Selects**: 3
+- **Calculation**: 6 - 3 = 3
+- **New Current Number**: 3
+- **Update Used Numbers List**: [6, 3]
+
+---
+
+#### **Player 1's Turn**
+
+- **Current Number**: 3
+- **Available Factors**: 1, 3
+- **Unused Factors**: 1
+- **Player 1 Selects**: 1
+- **Calculation**: 3 - 1 = 2
+- **New Current Number**: 2
+- **Update Used Numbers List**: [6, 3, 1]
+
+---
+
+#### **Player 2's Turn**
+
+- **Current Number**: 2
+- **Available Factors**: 1, 2
+- **Unused Factors**: 2
+- **Player 2 Selects**: 2
+- **Calculation**: 2 - 2 = 0
+- **New Current Number**: 0
+- **Update Used Numbers List**: [6, 3, 1, 2]
+
+---
+
+#### **Conclusion**
+
+- **Player 2 Wins**: The Current Number is exactly zero after Player 2's move.
+
+---
+
+### Command-Line Interaction Example
+
+```
+Starting the game. Current Number is 12.
+Used Numbers: None
+
+Player 1's turn.
+Available factors of 12 not used: 1, 2, 3, 4, 6, 12
+Enter your chosen factor: 6
+
+Player 1 selects 6.
+New Current Number is 6.
+Used Numbers: 6
+
+Player 2's turn.
+Available factors of 6 not used: 1, 2, 3
+Enter your chosen factor: 3
+
+Player 2 selects 3.
+New Current Number is 3.
+Used Numbers: 6, 3
+
+Player 1's turn.
+Available factors of 3 not used: 1
+Enter your chosen factor: 1
+
+Player 1 selects 1.
+New Current Number is 2.
+Used Numbers: 6, 3, 1
+
+Player 2's turn.
+Available factors of 2 not used: 2
+Enter your chosen factor: 2
+
+Player 2 selects 2.
+New Current Number is 0.
+Used Numbers: 6, 3, 1, 2
+
+Player 2 wins!
+```
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Consider the factors that will be available after your move to anticipate your opponent's options.
+
+- **Control the Game**: Aim to leave the Current Number in a state where your opponent has limited or no valid moves.
+
+- **Optimal Move Selection**: Early in the game, selecting larger factors can reduce the options for both players, adding pressure.
+
+- **Used Numbers Awareness**: Keep track of the Used Numbers List to avoid attempting invalid moves and to strategize effectively.
+
+---
+
+## Conclusion
+
+Factor Duel combines simple arithmetic with strategic depth, offering a quick and engaging experience. Its straightforward rules make it easy to code and play in a command-line environment. Players who carefully consider their moves and anticipate their opponent's options can consistently outperform less experienced players, ensuring a competitive and skill-based game.
+
+---
+
+Enjoy playing Factor Duel, and may the best strategist win!

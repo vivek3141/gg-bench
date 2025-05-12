@@ -1,0 +1,316 @@
+**Game Name:** Divisibility Duel
+
+---
+
+### **Objective**
+
+Be the first player to achieve **exactly 12 points** by strategically multiplying a shared number with digits from your set to create numbers divisible by 6.
+
+---
+
+### **Setup**
+
+1. **Shared Number Initialization**:
+   - The game starts with the **Shared Number** set to **1**.
+
+2. **Player Digit Sets**:
+   - Each player receives a personal set of digits from **1 to 9**.
+   - These digits are unique to each player and can only be used once.
+
+3. **Starting Points**:
+   - Both players start with **0 points**.
+
+---
+
+### **Game Components**
+
+1. **Shared Number**:
+   - A communal number that gets updated every turn based on player actions.
+   - Begins at **1** and changes as players multiply it by their chosen digits.
+
+2. **Player Digit Sets**:
+   - Each player has the digits **1 through 9**.
+   - Digits are used to multiply the Shared Number.
+   - Once a digit is used, it cannot be reused by the same player.
+
+3. **Score Tracker**:
+   - Keeps track of each player's points.
+   - Points are gained based on whether the new Shared Number is divisible by 6.
+
+---
+
+### **Turns**
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., by coin toss).
+   - Turns alternate between players.
+
+2. **Turn Structure**:
+   - **Step 1**: **Choose a Digit** - The player selects an unused digit from their Digit Set.
+   - **Step 2**: **Multiply** - The chosen digit is multiplied with the current Shared Number.
+   - **Step 3**: **Update Shared Number** - The result becomes the new Shared Number.
+   - **Step 4**: **Scoring** - Determine if the new Shared Number is divisible by 6 and update points accordingly.
+   - **Step 5**: **Check for Win or Reset** - If a player reaches exactly 12 points, they win. If they exceed 12 points, their score resets to 6.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Digit Selection**:
+   - Players must select a digit from their Digit Set that has not been previously used.
+   - Once a digit is used, it is removed from the player's available digits.
+
+2. **Multiplying the Shared Number**:
+   - The selected digit is multiplied by the current Shared Number to produce a new Shared Number.
+   - **Formula**: `New Shared Number = Current Shared Number × Chosen Digit`
+
+3. **Scoring**:
+   - **Divisible by 6**:
+     - If the new Shared Number is divisible by 6 (i.e., `New Shared Number % 6 == 0`), the player earns **2 points**.
+   - **Not Divisible by 6**:
+     - If the new Shared Number is not divisible by 6, the player earns **1 point**.
+   - **Score Reset**:
+     - If a player's score exceeds **12 points** after scoring, their score **resets to 6 points**.
+
+4. **Winning the Game**:
+   - The first player to reach **exactly 12 points** at the end of their turn wins the game.
+   - If both players reach 12 points in the same round, the player who reached it first wins.
+
+5. **Endgame Condition**:
+   - If a player runs out of digits before reaching 12 points, they continue to skip their turn while the other player continues until the game concludes.
+
+6. **Invalid Moves**:
+   - Selecting a digit not in the Digit Set or already used results in losing that turn.
+
+---
+
+### **Scoring**
+
+- **Points are tracked individually** for each player.
+- **Earning Points**:
+  - **2 Points**: New Shared Number is divisible by 6.
+  - **1 Point**: New Shared Number is not divisible by 6.
+- **Score Reset**:
+  - Exceeding 12 points resets the player's score to 6.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Initial Setup**:
+- Shared Number: **1**
+- Player 1 Digits: **1-9**
+- Player 2 Digits: **1-9**
+- Player 1 Points: **0**
+- Player 2 Points: **0**
+
+---
+
+**Turn 1: Player 1**
+
+- **Chooses Digit**: **2**
+- **Calculation**: `1 × 2 = 2`
+- **Shared Number**: **2**
+- **Divisibility Check**: `2 % 6 ≠ 0` (Not divisible)
+- **Points Earned**: **1**
+- **Player 1 Total Points**: **1**
+
+---
+
+**Turn 2: Player 2**
+
+- **Chooses Digit**: **3**
+- **Calculation**: `2 × 3 = 6`
+- **Shared Number**: **6**
+- **Divisibility Check**: `6 % 6 = 0` (Divisible)
+- **Points Earned**: **2**
+- **Player 2 Total Points**: **2**
+
+---
+
+**Turn 3: Player 1**
+
+- **Chooses Digit**: **4**
+- **Calculation**: `6 × 4 = 24`
+- **Shared Number**: **24**
+- **Divisibility Check**: `24 % 6 = 0` (Divisible)
+- **Points Earned**: **2**
+- **Player 1 Total Points**: **3**
+
+---
+
+**Turn 4: Player 2**
+
+- **Chooses Digit**: **5**
+- **Calculation**: `24 × 5 = 120`
+- **Shared Number**: **120**
+- **Divisibility Check**: `120 % 6 = 0` (Divisible)
+- **Points Earned**: **2**
+- **Player 2 Total Points**: **4**
+
+---
+
+**Turn 5: Player 1**
+
+- **Chooses Digit**: **6**
+- **Calculation**: `120 × 6 = 720`
+- **Shared Number**: **720**
+- **Divisibility Check**: `720 % 6 = 0` (Divisible)
+- **Points Earned**: **2**
+- **Player 1 Total Points**: **5**
+
+---
+
+**Turn 6: Player 2**
+
+- **Chooses Digit**: **7**
+- **Calculation**: `720 × 7 = 5040`
+- **Shared Number**: **5040**
+- **Divisibility Check**: `5040 % 6 = 0` (Divisible)
+- **Points Earned**: **2**
+- **Player 2 Total Points**: **6**
+
+---
+
+**Turn 7: Player 1**
+
+- **Chooses Digit**: **1**
+- **Calculation**: `5040 × 1 = 5040`
+- **Shared Number**: **5040**
+- **Divisibility Check**: `5040 % 6 = 0` (Divisible)
+- **Points Earned**: **2**
+- **Player 1 Total Points**: **7**
+
+---
+
+**Continuing the Game**
+
+- Players continue selecting unused digits, multiplying the Shared Number, and earning points based on divisibility by 6.
+
+---
+
+**Winning the Game**
+
+- **Scenario**: After several turns, Player 2 reaches **12 points**.
+- **Outcome**: Player 2 wins the game.
+
+---
+
+### **Command-Line Interaction Example**
+
+Below is an illustrative example of how the game might be played in a command-line interface.
+
+**Game Start**
+
+```
+Welcome to Divisibility Duel!
+Player 1 and Player 2, prepare your digits (1-9).
+
+Shared Number: 1
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, your available digits: 1 2 3 4 5 6 7 8 9
+Enter a digit to multiply with the Shared Number: 2
+
+You chose 2.
+Calculation: 1 x 2 = 2
+2 is not divisible by 6.
+You earn 1 point.
+Your total points: 1
+Shared Number is now 2.
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, your available digits: 1 2 3 4 5 6 7 8 9
+Enter a digit to multiply with the Shared Number: 3
+
+You chose 3.
+Calculation: 2 x 3 = 6
+6 is divisible by 6.
+You earn 2 points.
+Your total points: 2
+Shared Number is now 6.
+```
+
+---
+
+**Player 1's Turn**
+
+```
+Player 1, your available digits: 1 3 4 5 6 7 8 9
+Enter a digit to multiply with the Shared Number: 4
+
+You chose 4.
+Calculation: 6 x 4 = 24
+24 is divisible by 6.
+You earn 2 points.
+Your total points: 3
+Shared Number is now 24.
+```
+
+---
+
+**Player 2's Turn**
+
+```
+Player 2, your available digits: 1 2 4 5 6 7 8 9
+Enter a digit to multiply with the Shared Number: 5
+
+You chose 5.
+Calculation: 24 x 5 = 120
+120 is divisible by 6.
+You earn 2 points.
+Your total points: 4
+Shared Number is now 120.
+```
+
+---
+
+**...Game Continues...**
+
+---
+
+**Final Turn Example**
+
+```
+Player 2, your available digits: 1 2 8 9
+Enter a digit to multiply with the Shared Number: 2
+
+You chose 2.
+Calculation: 30240 x 2 = 60480
+60480 is divisible by 6.
+You earn 2 points.
+Your total points: 12
+Congratulations, you reached exactly 12 points!
+Player 2 wins the game!
+```
+
+---
+
+### **Strategy Tips**
+
+- **Aim for Divisibility**: Always try to create a Shared Number divisible by 6 to earn more points.
+- **Digit Management**: Save higher digits for when the Shared Number is not a multiple of 6, as they can help you reach divisibility.
+- **Score Monitoring**: Be cautious not to exceed 12 points, or your score will reset to 6.
+- **Predict Opponent's Moves**: Keep track of the digits your opponent has used to anticipate their potential moves.
+
+---
+
+### **Conclusion**
+
+Divisibility Duel is a strategic two-player game that combines basic arithmetic with tactical decision-making. Players must carefully choose which digits to play to maximize their points while managing their limited resources. The game is designed to be simple to code and quick to play, with a clear objective and mechanics that allow for strategic depth and competitive play.
+
+---
+
+Enjoy the game, and may the best strategist win!

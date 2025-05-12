@@ -1,0 +1,237 @@
+**Number Blossoms**
+
+---
+
+### **Objective**
+
+Be the first player to complete your blossom by adding four petals connected to a central number according to specific rules. A blossom consists of a central number and up to four petal numbers. Players aim to strategically choose numbers to build their blossom before their opponent does.
+
+---
+
+### **Setup**
+
+- **Players:** Two players.
+- **Number Pool:** A shared pool of numbers from **1** to **9** inclusive.
+- **Blossoms:** Each player has their own blossom, initially empty.
+
+**Initial Steps:**
+
+1. **Determine Turn Order:** Decide who will be Player 1 and Player 2 (can be random or agreed upon).
+2. **Choose Central Numbers:**
+   - Starting with Player 1, each player selects a central number for their blossom from the number pool.
+   - The central number is unique to each player.
+   - Once chosen, remove the central numbers from the number pool.
+
+---
+
+### **Game Components**
+
+- **Blossom Diagram (Conceptual):** Each player's blossom consists of:
+  - **Central Number:** The core of the blossom.
+  - **Petals:** Up to four numbers connected to the central number.
+- **Number Pool:** The shared set of numbers **1-9**, minus any numbers already selected as central numbers or petals.
+
+---
+
+### **Turns**
+
+- The game is played in turns, alternating between Player 1 and Player 2.
+- **Turn Structure:**
+  1. **Choose a Petal Number:**
+     - Select a number from the current number pool.
+     - The chosen number must satisfy the petal placement rules.
+  2. **Update Blossom and Pool:**
+     - Add the selected number to your blossom as a petal.
+     - Remove the number from the number pool.
+  3. **Passing a Turn:**
+     - If no valid moves are available, the player passes their turn.
+
+---
+
+### **Rules and Mechanics**
+
+1. **Central Number Selection:**
+   - Must be chosen from the number pool on the player's first turn.
+   - Represents the core of the player's blossom.
+   - Cannot be changed once selected.
+
+2. **Adding Petals:**
+   - On each turn after selecting the central number, a player attempts to add one petal to their blossom.
+   - **Petal Placement Rules:**
+     - The petal number must share a common factor greater than **1** with the central number (i.e., their Greatest Common Divisor (GCD) > 1).
+     - The petal number must not have been previously used in the player's own blossom.
+     - The petal number must be available in the number pool.
+   - **Example of Valid Petals:**
+     - Central number **6** can have petals **2**, **3**, **4**, **6**, **9** (since GCDs are 2, 3, 2, 6, 3 respectively).
+
+3. **Shared Number Pool:**
+   - Both players draw from the same number pool.
+   - Numbers removed from the pool cannot be used by either player.
+
+4. **Invalid Moves:**
+   - If a player cannot add a valid petal on their turn, they must pass.
+   - Play continues to the next player.
+
+5. **Winning the Game:**
+   - The first player to successfully add **four petals** to their blossom wins.
+   - If both players complete their blossoms in the same round, the player who took the **first turn** wins.
+
+---
+
+### **Scoring**
+
+- **Victory Condition:** Complete your blossom with four valid petals before your opponent.
+- **No Points System:** The game does not track points; the focus is on strategic completion.
+
+---
+
+### **Examples**
+
+#### **Example Game Play**
+
+**Number Pool at Start:** `{1, 2, 3, 4, 5, 6, 7, 8, 9}`
+
+1. **Player 1's Turn:**
+   - **Chooses central number:** **6**
+   - **Number Pool now:** `{1, 2, 3, 4, 5, 7, 8, 9}`
+
+2. **Player 2's Turn:**
+   - **Chooses central number:** **5**
+   - **Number Pool now:** `{1, 2, 3, 4, 7, 8, 9}`
+
+3. **Player 1's Turn:**
+   - **Selects petal number:** **2**
+     - **Validation:** GCD(6, 2) = 2 (valid)
+   - **Updates blossom and pool:**
+     - **Blossom petals:** `{2}`
+     - **Number Pool now:** `{1, 3, 4, 7, 8, 9}`
+
+4. **Player 2's Turn:**
+   - **Selects petal number:** **1**
+     - **Validation:** GCD(5, 1) = 1 (invalid)
+   - **Selects petal number:** **5**
+     - **Already used as central number (own blossom), cannot reuse**
+   - **Selects petal number:** **No valid moves available**
+   - **Player 2 passes turn.**
+
+5. **Player 1's Turn:**
+   - **Selects petal number:** **3**
+     - **Validation:** GCD(6, 3) = 3 (valid)
+   - **Updates blossom and pool:**
+     - **Blossom petals:** `{2, 3}`
+     - **Number Pool now:** `{1, 4, 7, 8, 9}`
+
+6. **Player 2's Turn:**
+   - **No valid moves available (passes turn).**
+
+7. **Player 1's Turn:**
+   - **Selects petal number:** **9**
+     - **Validation:** GCD(6, 9) = 3 (valid)
+   - **Updates blossom and pool:**
+     - **Blossom petals:** `{2, 3, 9}`
+     - **Number Pool now:** `{1, 4, 7, 8}`
+
+8. **Player 2's Turn:**
+   - **No valid moves available (passes turn).**
+
+9. **Player 1's Turn:**
+   - **Selects petal number:** **4**
+     - **Validation:** GCD(6, 4) = 2 (valid)
+   - **Updates blossom and pool:**
+     - **Blossom petals:** `{2, 3, 9, 4}`
+     - **Number Pool now:** `{1, 7, 8}`
+   - **Player 1 has four petals and wins the game.**
+
+#### **Example Command-Line Interaction**
+
+```
+=== Number Blossoms Game Start ===
+
+Number Pool: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Player 1, select your central number:
+> 6
+Blossom Central Number set to 6.
+Number Pool Updated: 1, 2, 3, 4, 5, 7, 8, 9
+
+Player 2, select your central number:
+> 5
+Blossom Central Number set to 5.
+Number Pool Updated: 1, 2, 3, 4, 7, 8, 9
+
+Player 1, select a petal number for your blossom:
+Available Numbers: 1, 2, 3, 4, 7, 8, 9
+> 2
+Added 2 to your blossom as a petal.
+Number Pool Updated: 1, 3, 4, 7, 8, 9
+
+Player 2, select a petal number for your blossom:
+Available Numbers: 1, 3, 4, 7, 8, 9
+> 1
+Cannot add 1 to your blossom. GCD of 5 and 1 is 1.
+> 3
+Cannot add 3 to your blossom. GCD of 5 and 3 is 1.
+> 5
+Cannot reuse your central number as a petal.
+> Pass
+Player 2 passes their turn.
+
+Player 1, select a petal number for your blossom:
+Available Numbers: 1, 3, 4, 7, 8, 9
+> 3
+Added 3 to your blossom as a petal.
+Number Pool Updated: 1, 4, 7, 8, 9
+
+Player 2, select a petal number for your blossom:
+Available Numbers: 1, 4, 7, 8, 9
+> Pass
+Player 2 passes their turn.
+
+Player 1, select a petal number for your blossom:
+Available Numbers: 1, 4, 7, 8, 9
+> 9
+Added 9 to your blossom as a petal.
+Number Pool Updated: 1, 4, 7, 8
+
+Player 2, select a petal number for your blossom:
+Available Numbers: 1, 4, 7, 8
+> Pass
+Player 2 passes their turn.
+
+Player 1, select a petal number for your blossom:
+Available Numbers: 1, 4, 7, 8
+> 4
+Added 4 to your blossom as a petal.
+Number Pool Updated: 1, 7, 8
+
+Player 1 has completed their blossom with four petals!
+Player 1 wins the game!
+
+=== Game Over ===
+```
+
+---
+
+### **Ensure Strategic Depth**
+
+- **Choosing the Central Number Wisely:**
+  - Opt for numbers with multiple factors (e.g., 6 has factors 1, 2, 3, 6) to maximize petal options.
+  - Avoid prime numbers as central numbers since they have limited or no valid petals.
+  
+- **Managing the Number Pool:**
+  - Keep track of numbers your opponent may need and consider selecting them proactively.
+  - Be mindful of the numbers remaining in the pool to plan your future moves.
+
+- **Anticipating Opponent's Moves:**
+  - Observe your opponent's blossom to predict their next possible moves.
+  - Use this information to strategize your own number selections.
+
+---
+
+### **Conclusion**
+
+**Number Blossoms** is a strategic and engaging two-player game that combines elements of number theory with tactical planning. Its simple rules and quick gameplay make it easy to code and enjoyable to play in a command-line interface. Players must think ahead and make calculated decisions to outmaneuver their opponent and complete their blossom first.
+
+---
+
+**Enjoy the game and may the best strategist win!**

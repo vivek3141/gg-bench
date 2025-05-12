@@ -1,0 +1,253 @@
+# Game Title: Number Snatch
+
+## Objective
+
+Be the player with the **highest total sum** of captured numbers at the end of the game by strategically selecting numbers from a shared sequence.
+
+## Setup
+
+- An ordered sequence of consecutive positive integers is laid out horizontally.
+- For example, the numbers from **1 to 21** are arranged in a line from left to right.
+- The sequence is visible to both players.
+
+## Game Components
+
+- **Number Sequence**: A consecutive sequence of positive integers (e.g., 1 to 21).
+- **Player Scores**: Each player has a running total of the numbers they have captured.
+
+## Turns
+
+- Players take turns alternately, starting with **Player 1**.
+- On each turn, a player must select and remove one number from the sequence.
+
+## Rules and Mechanics
+
+### 1. Selecting Numbers
+
+- On your turn, you may choose to capture either the **first** (leftmost) or the **last** (rightmost) number remaining in the sequence.
+- The chosen number is **added to your total score**.
+- The number is then **removed** from the sequence, shortening it accordingly.
+
+### 2. Game Progression
+
+- The sequence shrinks as numbers are removed from either end.
+- Play continues with players alternately selecting numbers from the updated sequence.
+
+### 3. End of Game
+
+- The game ends when **all numbers have been captured**, and there are no more numbers left in the sequence.
+
+### 4. Winning the Game
+
+- The player with the **highest total score** (sum of their captured numbers) at the end of the game **wins**.
+- There is no possibility of a draw since the total sum of numbers is known and players alternate turns.
+
+## Scoring
+
+- Each player's score is the sum of the numbers they have captured during the game.
+- Scores are tracked throughout the game and totaled at the end to determine the winner.
+
+## Examples
+
+### Example Game Play
+
+**Initial Sequence**:  
+`1  2  3  4  5  6  7  8  9`
+
+**Player 1's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 9
+- **Strategic Choice**:  
+  - Player 1 chooses **9** (the larger number).
+- **Action**:  
+  - Captures **9** and adds it to their score.
+- **Player 1's Score**: 9
+- **Updated Sequence**:  
+  `1  2  3  4  5  6  7  8`
+
+---
+
+**Player 2's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 8
+- **Strategic Choice**:  
+  - Player 2 chooses **8**.
+- **Action**:  
+  - Captures **8** and adds it to their score.
+- **Player 2's Score**: 8
+- **Updated Sequence**:  
+  `1  2  3  4  5  6  7`
+
+---
+
+**Player 1's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 7
+- **Strategic Choice**:  
+  - Player 1 chooses **7**.
+- **Action**:  
+  - Captures **7** and adds it to their score.
+- **Player 1's Score**: 9 + 7 = 16
+- **Updated Sequence**:  
+  `1  2  3  4  5  6`
+
+---
+
+**Player 2's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 6
+- **Strategic Choice**:  
+  - Player 2 chooses **6**.
+- **Action**:  
+  - Captures **6** and adds it to their score.
+- **Player 2's Score**: 8 + 6 = 14
+- **Updated Sequence**:  
+  `1  2  3  4  5`
+
+---
+
+**Player 1's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 5
+- **Strategic Choice**:  
+  - Player 1 chooses **5**.
+- **Action**:  
+  - Captures **5** and adds it to their score.
+- **Player 1's Score**: 16 + 5 = 21
+- **Updated Sequence**:  
+  `1  2  3  4`
+
+---
+
+**Player 2's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 4
+- **Strategic Choice**:  
+  - Player 2 chooses **4**.
+- **Action**:  
+  - Captures **4** and adds it to their score.
+- **Player 2's Score**: 14 + 4 = 18
+- **Updated Sequence**:  
+  `1  2  3`
+
+---
+
+**Player 1's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 3
+- **Strategic Choice**:  
+  - Player 1 chooses **3**.
+- **Action**:  
+  - Captures **3** and adds it to their score.
+- **Player 1's Score**: 21 + 3 = 24
+- **Updated Sequence**:  
+  `1  2`
+
+---
+
+**Player 2's Turn**:
+
+- **Options**:  
+  - **First number**: 1  
+  - **Last number**: 2
+- **Strategic Choice**:  
+  - Player 2 chooses **2**.
+- **Action**:  
+  - Captures **2** and adds it to their score.
+- **Player 2's Score**: 18 + 2 = 20
+- **Updated Sequence**:  
+  `1`
+
+---
+
+**Player 1's Turn**:
+
+- **Only one number left**: 1
+- **Action**:  
+  - Captures **1** and adds it to their score.
+- **Player 1's Score**: 24 + 1 = 25
+
+---
+
+**End of Game**
+
+- **Player 1's Total Score**: 25
+- **Player 2's Total Score**: 20
+- **Winner**: **Player 1**
+
+## Command-Line Interaction
+
+At each turn, the game will display:
+
+- The **current sequence** of numbers.
+- **Player scores**.
+- The **options available** (first or last number in the sequence).
+
+**Sample Turn**:
+
+```
+Current Sequence: 1 2 3 4 5 6 7 8 9
+Player 1's Score: 0
+Player 2's Score: 0
+
+Player 1, it's your turn.
+Options:
+- Enter 'F' to pick the first number: 1
+- Enter 'L' to pick the last number: 9
+Your choice: L
+
+You picked 9.
+Your new score: 9
+
+Press Enter to continue...
+```
+
+---
+
+**Next Turn**:
+
+```
+Current Sequence: 1 2 3 4 5 6 7 8
+Player 1's Score: 9
+Player 2's Score: 0
+
+Player 2, it's your turn.
+Options:
+- Enter 'F' to pick the first number: 1
+- Enter 'L' to pick the last number: 8
+Your choice: F
+
+You picked 1.
+Your new score: 1
+
+Press Enter to continue...
+```
+
+*Note: The sample shows Player 2 choosing the first number to illustrate different choices.*
+
+## Strategic Tips
+
+- **Look Ahead**: Anticipate future moves by considering how your choice will affect the sequence.
+- **Denying Options**: Sometimes it's beneficial to select a number that prevents your opponent from accessing higher numbers on their next turn.
+- **Balance Immediate Gain vs. Future Advantage**: Taking the highest number might not always be the best move if it allows your opponent to capture even higher totals subsequently.
+- **Keep Track of Sums**: Be aware of the total remaining points in the sequence to make informed decisions.
+
+## Conclusion
+
+"Number Snatch" is a game of strategic planning, foresight, and simple arithmetic. By carefully choosing numbers and anticipating your opponent's moves, you can maximize your total score and secure victory. The game is easy to learn but offers depth for those who think ahead, making it engaging for both new and experienced players.
+
+Enjoy the challenge and may the best strategist win!

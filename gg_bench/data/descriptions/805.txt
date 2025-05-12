@@ -1,0 +1,283 @@
+# Prime Duel: Rule Book
+
+---
+
+## Objective
+
+**Prime Duel** is a strategic, two-player, turn-based game played in a command-line interface. The primary goal is to reduce your opponent's life points to zero by strategically selecting numbers to attack or heal. Skilled play involves understanding number properties and making optimal choices to outmaneuver your opponent.
+
+---
+
+## Setup
+
+1. **Life Points**: Both players start with **50 life points**.
+
+2. **Number Pool**: A shared pool of numbers ranging from **2 to 20** is available. Numbers in this range can be used multiple times by either player throughout the game.
+
+3. **Starting Player**: Decide who goes first (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Players**: Two participants.
+
+- **Life Points Tracker**: Each player keeps track of their own and their opponent's life points (can be done with simple variables or written notes).
+
+- **Number Pool**: Numbers from **2** to **20**, accessible to both players. Numbers can be reused and are not depleted upon use.
+
+- **Command-Line Interface**: Players interact by entering commands and numbers as prompted.
+
+---
+
+## Turns
+
+- **Turn Structure**:
+  1. **Selection Phase**: The active player selects a number from **2** to **20**.
+  2. **Resolution Phase**: Apply the effects of the chosen number (attack or heal).
+  3. **Update Phase**: Adjust life points accordingly and announce the current life totals.
+  4. **Turn End**: The turn passes to the other player.
+
+- **Game Progression**: Players alternate turns until one player's life points are reduced to zero or below.
+
+---
+
+## Rules and Mechanics
+
+### Number Selection
+
+- **Valid Numbers**: On your turn, choose any integer between **2** and **20** (inclusive).
+
+- **Reuse Allowed**: Numbers can be selected multiple times by either player throughout the game.
+
+### Effects of Numbers
+
+1. **Prime Numbers**:
+   - **Attack**: If the chosen number is **prime**, you deal damage to your opponent equal to the value of that prime number.
+   - **Example**: Choosing **7** (a prime number) deals **7 damage** to your opponent.
+
+2. **Composite Numbers**:
+   - **Heal**: If the chosen number is **composite**, you heal yourself by the number of **unique prime factors** of that number.
+   - **Example**: Choosing **6** (which has prime factors **2** and **3**) heals you by **2 points**.
+
+### Prime and Composite Determination
+
+- **Prime Numbers**: Numbers greater than 1 that have no positive divisors other than **1** and themselves (e.g., 2, 3, 5, 7, 11, 13, 17, 19).
+
+- **Composite Numbers**: Numbers greater than 1 that are **not prime**; they have additional divisors besides 1 and themselves (e.g., 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20).
+
+- **Unique Prime Factors**: The distinct prime numbers that multiply together to equal the composite number.
+  - **Example**: The number **12** has prime factors **2** and **3** (since \(2 \times 2 \times 3 = 12\)), so it has **2 unique prime factors**.
+
+### Life Points
+
+- **Tracking**: Each player must keep an accurate record of both their own and their opponent's life points after each turn.
+
+- **Zero Life Points**: If a player's life points are reduced to **zero or below**, they lose the game immediately.
+
+---
+
+## Scoring and Winning
+
+- **Damage Dealing**: When attacking, subtract the damage from your opponent's life points.
+
+- **Healing**: When healing, add the appropriate amount to your own life points.
+
+- **Victory Condition**: The first player to reduce their opponent's life points to **zero or below** wins the game.
+
+---
+
+## Examples
+
+### Sample Game Playthrough
+
+**Initial Setup**:
+- Player 1 Life Points: **50**
+- Player 2 Life Points: **50**
+
+---
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Chooses **7** (prime).
+  - Deals **7 damage** to Player 2.
+  - **Player 2's Life Points**: 50 - 7 = **43**
+
+---
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - Chooses **6** (composite).
+  - Prime factors: **2**, **3** (2 unique).
+  - Heals **2 points**.
+  - **Player 2's Life Points**: 43 + 2 = **45**
+
+---
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - Chooses **5** (prime).
+  - Deals **5 damage** to Player 2.
+  - **Player 2's Life Points**: 45 - 5 = **40**
+
+---
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - Chooses **15** (composite).
+  - Prime factors: **3**, **5** (2 unique).
+  - Heals **2 points**.
+  - **Player 2's Life Points**: 40 + 2 = **42**
+
+---
+
+**Turn 5**:
+- **Player 1's Turn**:
+  - Chooses **13** (prime).
+  - Deals **13 damage** to Player 2.
+  - **Player 2's Life Points**: 42 - 13 = **29**
+
+---
+
+**Turn 6**:
+- **Player 2's Turn**:
+  - Chooses **19** (prime).
+  - Deals **19 damage** to Player 1.
+  - **Player 1's Life Points**: 50 - 19 = **31**
+
+---
+
+**Turn 7**:
+- **Player 1's Turn**:
+  - Chooses **4** (composite).
+  - Prime factors: **2** (only 1 unique).
+  - Heals **1 point**.
+  - **Player 1's Life Points**: 31 + 1 = **32**
+
+---
+
+**Turn 8**:
+- **Player 2's Turn**:
+  - Chooses **14** (composite).
+  - Prime factors: **2**, **7** (2 unique).
+  - Heals **2 points**.
+  - **Player 2's Life Points**: 29 + 2 = **31**
+
+---
+
+**Turn 9**:
+- **Player 1's Turn**:
+  - Chooses **17** (prime).
+  - Deals **17 damage** to Player 2.
+  - **Player 2's Life Points**: 31 - 17 = **14**
+
+---
+
+**Turn 10**:
+- **Player 2's Turn**:
+  - Chooses **18** (composite).
+  - Prime factors: **2**, **3** (2 unique).
+  - Heals **2 points**.
+  - **Player 2's Life Points**: 14 + 2 = **16**
+
+---
+
+**Turn 11**:
+- **Player 1's Turn**:
+  - Chooses **11** (prime).
+  - Deals **11 damage** to Player 2.
+  - **Player 2's Life Points**: 16 - 11 = **5**
+
+---
+
+**Turn 12**:
+- **Player 2's Turn**:
+  - Chooses **20** (composite).
+  - Prime factors: **2**, **5** (2 unique).
+  - Heals **2 points**.
+  - **Player 2's Life Points**: 5 + 2 = **7**
+
+---
+
+**Turn 13**:
+- **Player 1's Turn**:
+  - Chooses **2** (prime).
+  - Deals **2 damage** to Player 2.
+  - **Player 2's Life Points**: 7 - 2 = **5**
+
+---
+
+**Turn 14**:
+- **Player 2's Turn**:
+  - Chooses **9** (composite).
+  - Prime factors: **3** (only 1 unique).
+  - Heals **1 point**.
+  - **Player 2's Life Points**: 5 + 1 = **6**
+
+---
+
+**Turn 15**:
+- **Player 1's Turn**:
+  - Chooses **3** (prime).
+  - Deals **3 damage** to Player 2.
+  - **Player 2's Life Points**: 6 - 3 = **3**
+
+---
+
+**Turn 16**:
+- **Player 2's Turn**:
+  - Chooses **12** (composite).
+  - Prime factors: **2**, **3** (2 unique).
+  - Heals **2 points**.
+  - **Player 2's Life Points**: 3 + 2 = **5**
+
+---
+
+**Turn 17**:
+- **Player 1's Turn**:
+  - Chooses **7** (prime).
+  - Deals **7 damage** to Player 2.
+  - **Player 2's Life Points**: 5 - 7 = **-2**
+
+**Result**:
+- **Player 1 Wins!**
+
+---
+
+## Strategy Tips
+
+- **Balancing Attack and Defense**: While attacking with prime numbers deals significant damage, don't neglect opportunities to heal when your life points are low.
+
+- **Prime Number Knowledge**: Familiarity with prime numbers between 2 and 20 allows for quick decision-making.
+
+- **Composite Number Selection**: Choosing composites with more unique prime factors results in greater healing. Numbers like **6**, **10**, **14**, **15**, **21** (if range is extended) are beneficial.
+
+- **Anticipate Opponent's Moves**: Keep track of the opponent's life points and predict whether they are likely to attack or heal next.
+
+---
+
+## Command-Line Interaction Example
+
+**Prompt**:
+```
+Player 1's turn. Your life points: 32. Opponent's life points: 31.
+Choose a number between 2 and 20: 
+```
+
+**Player 1 Input**:
+```
+17
+```
+
+**Response**:
+```
+You chose 17, which is prime.
+You deal 17 damage to Player 2.
+Player 2's life points: 14
+```
+
+---
+
+## Conclusion
+
+**Prime Duel** combines simple arithmetic with strategic depth, providing engaging gameplay that is quick to learn but challenging to master. The game's mechanics ensure that a skilled player, utilizing number theory and strategic planning, can consistently outperform an unskilled player. Enjoy testing your mathematical wit against your opponent in this battle of numbers!

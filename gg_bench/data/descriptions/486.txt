@@ -1,0 +1,309 @@
+# **Color Capture**
+
+## **Objective**
+
+Color Capture is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to strategically collect colored tokens to achieve a majority of any one color. A player wins by having more than half of the tokens of a single color by the end of the game. If neither player achieves a color majority, the player with the most total tokens wins.
+
+## **Setup**
+
+- **Token Sequence**: The game begins with a linear sequence of 15 colored tokens arranged in the following repeating pattern:
+
+  ```
+  [Red, Blue, Green, Red, Blue, Green, Red, Blue, Green, Red, Blue, Green, Red, Blue, Green]
+  ```
+
+- **Initial Display**: The sequence is displayed to both players, with positions numbered from left (1) to right (15):
+
+  ```
+  Position: 1   2     3     4   5     6     7   8     9    10  11   12   13  14   15
+  Token:   Red Blue Green Red Blue Green Red Blue Green Red Blue Green Red Blue Green
+  ```
+
+- **Starting Conditions**: No tokens have been collected. Players decide who takes the first turn.
+
+## **Game Components**
+
+- **Tokens**: There are 15 tokens in total:
+
+  - **Red Tokens**: 5 tokens
+  - **Blue Tokens**: 5 tokens
+  - **Green Tokens**: 5 tokens
+
+- **Token Properties**:
+
+  - **Color**: Each token is identified by its color: Red, Blue, or Green.
+  - **Position**: Tokens are positioned in a line and can only be taken from either end.
+
+- **Player Collections**: Each player has a personal collection area to keep their acquired tokens.
+
+## **Turns**
+
+- **Turn Structure**:
+
+  1. **Selection Phase**: The player selects one token from either the leftmost (position 1) or rightmost (position 15) end of the sequence.
+  2. **Acquisition**: The selected token is removed from the sequence and added to the player's collection.
+  3. **Sequence Update**: The remaining tokens shift accordingly, and positions are updated for the next turn.
+
+- **Turn Order**: Players alternate turns throughout the game.
+
+## **Rules and Mechanics**
+
+- **Token Selection**:
+
+  - On their turn, a player must pick one token.
+  - Only tokens at the current ends of the sequence (leftmost or rightmost) are available for selection.
+
+- **Objective Strategy**:
+
+  - **Color Majority Goal**: Players aim to collect more than half (i.e., at least 3) of any one color.
+  - **Blocking**: Players may also strategize to prevent the opponent from achieving a color majority.
+
+- **End of Game**:
+
+  - The game ends when all tokens have been collected (after 15 turns in total).
+
+- **Winning Conditions**:
+
+  1. **Color Majority Victory**:
+
+     - If a player has collected at least 3 tokens of a single color, they win immediately at the end of the game.
+
+  2. **Total Tokens Victory**:
+
+     - If neither player has a color majority, the player with the most total tokens wins.
+
+  3. **Tie-Breaker**:
+
+     - If both players have the same total number of tokens, the player with the highest number of tokens of any single color wins.
+     - If still tied, the second-highest count of tokens of a different color is considered.
+     - **No Draws**: Due to the odd number of tokens, a tie is impossible.
+
+## **Scoring**
+
+- **Color Majority**:
+
+  - **Red**: First to collect 3 or more Red tokens.
+  - **Blue**: First to collect 3 or more Blue tokens.
+  - **Green**: First to collect 3 or more Green tokens.
+
+- **Total Tokens**:
+
+  - Count the total number of tokens in each player's collection.
+  - The player with the higher count wins if no color majority is achieved.
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Initial Setup**
+
+```
+Positions: 1   2     3     4   5     6     7   8     9    10  11   12   13  14   15
+Tokens:    R   B     G     R   B     G     R   B     G     R   B     G     R   B     G
+```
+
+(R = Red, B = Blue, G = Green)
+
+#### **Turn-by-Turn Example**
+
+1. **Player 1's Turn**
+
+   - **Available Tokens**: Position 1 (Red), Position 15 (Green)
+   - **Choice**: Picks Position 15 (Green)
+   - **Player 1's Collection**: Green
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8     9    10  11   12   13  14
+     Tokens:    R   B     G     R   B     G     R   B     G     R   B     G     R   B
+     ```
+
+2. **Player 2's Turn**
+
+   - **Available Tokens**: Position 1 (Red), Position 14 (Blue)
+   - **Choice**: Picks Position 1 (Red)
+   - **Player 2's Collection**: Red
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8     9    10  11   12   13
+     Tokens:    B   G     R     B   G     R     B   G     R     B    G     R    B
+     ```
+
+3. **Player 1's Turn**
+
+   - **Available Tokens**: Position 1 (Blue), Position 13 (Blue)
+   - **Choice**: Picks Position 1 (Blue)
+   - **Player 1's Collection**: Green, Blue
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8     9    10  11   12
+     Tokens:    G   R     B     G   R     B     G   R     B     G    R    B
+     ```
+
+4. **Player 2's Turn**
+
+   - **Available Tokens**: Position 1 (Green), Position 12 (B)
+   - **Choice**: Picks Position 12 (B)
+   - **Player 2's Collection**: Red, Blue
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8     9    10  11
+     Tokens:    G   R     B     G   R     B     G   R     B     G    R
+     ```
+
+5. **Player 1's Turn**
+
+   - **Available Tokens**: Position 1 (Green), Position 11 (Red)
+   - **Choice**: Picks Position 11 (Red)
+   - **Player 1's Collection**: Green, Blue, Red
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8     9    10
+     Tokens:    G   R     B     G   R     B     G   R     B     G
+     ```
+
+6. **Player 2's Turn**
+
+   - **Available Tokens**: Position 1 (Green), Position 10 (Green)
+   - **Choice**: Picks Position 1 (Green)
+   - **Player 2's Collection**: Red, Blue, Green
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8     9
+     Tokens:    R   B     G     R   B     G     R   B     G
+     ```
+
+7. **Player 1's Turn**
+
+   - **Available Tokens**: Position 1 (Red), Position 9 (Green)
+   - **Choice**: Picks Position 1 (Red)
+   - **Player 1's Collection**: Green, Blue, Red, Red
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7   8
+     Tokens:    B   G     R     B   G     R     B   G
+     ```
+
+8. **Player 2's Turn**
+
+   - **Available Tokens**: Position 1 (Blue), Position 8 (Green)
+   - **Choice**: Picks Position 8 (Green)
+   - **Player 2's Collection**: Red, Blue, Green, Green
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6     7
+     Tokens:    B   G     R     B   G     R     B
+     ```
+
+9. **Player 1's Turn**
+
+   - **Available Tokens**: Position 1 (Blue), Position 7 (Blue)
+   - **Choice**: Picks Position 1 (Blue)
+   - **Player 1's Collection**: Green, Blue, Red, Red, Blue
+   - **Updated Sequence**:
+
+     ```
+     Positions: 1   2     3     4   5     6
+     Tokens:    G   R     B     G   R     B
+     ```
+
+10. **Player 1 Achieves Victory Condition**
+
+    - **Color Majority Check**:
+
+      - **Red Tokens**: Player 1 has 2 Red tokens.
+      - **Blue Tokens**: Player 1 has 2 Blue tokens.
+      - **Green Tokens**: Player 1 has 1 Green token.
+
+    - No color majority yet, game continues.
+
+11. **Player 2's Turn**
+
+    - **Available Tokens**: Position 1 (Green), Position 6 (Blue)
+    - **Choice**: Picks Position 1 (Green)
+    - **Player 2's Collection**: Red, Blue, Green, Green, Green
+    - **Updated Sequence**:
+
+      ```
+      Positions: 1   2     3     4   5
+      Tokens:    R   B     G     R   B
+      ```
+
+    - **Color Majority Check**:
+
+      - **Green Tokens**: Player 2 has 3 Green tokens.
+      - **Player 2 Wins**: Achieved a majority of Green tokens.
+
+#### **Game Conclusion**
+
+- **Winner**: Player 2 wins by achieving a majority of Green tokens.
+
+## **Command-Line Interaction Example**
+
+Assuming a simple command-line interface where players input commands to select tokens.
+
+### **Prompt Style**
+
+- **Display Remaining Tokens**: Show positions and tokens.
+- **Player Input**: Prompt the player to choose a position (leftmost or rightmost).
+
+### **Sample Interaction**
+
+```plaintext
+Remaining Tokens:
+Position: 1   2     3     4   5     6     7   8     9    10  11   12   13  14   15
+Token:    R   B     G     R   B     G     R   B     G     R   B     G     R   B     G
+
+Player 1's Turn:
+Choose a token from Position 1 (R) or Position 15 (G): 15
+
+You picked Position 15: Green.
+
+Remaining Tokens:
+Position: 1   2     3     4   5     6     7   8     9    10  11   12   13  14
+Token:    R   B     G     R   B     G     R   B     G     R   B     G     R   B
+
+Player 2's Turn:
+Choose a token from Position 1 (R) or Position 14 (B): 1
+
+You picked Position 1: Red.
+
+[...Game continues in this fashion until conclusion...]
+```
+
+### **End of Game Summary**
+
+At the end of the game, the command-line interface would display each player's collections and declare the winner.
+
+```plaintext
+Game Over!
+
+Player 1's Collection:
+- Red Tokens: 2
+- Blue Tokens: 2
+- Green Tokens: 1
+
+Player 2's Collection:
+- Red Tokens: 1
+- Blue Tokens: 1
+- Green Tokens: 3
+
+Winner: Player 2 wins by collecting a majority of Green tokens!
+```
+
+## **Strategy Tips**
+
+- **Planning Ahead**: Anticipate which tokens will become available after your turn to block your opponent's potential majorities.
+- **Balance vs. Majority**: Decide whether to block your opponent or focus on building your own majority.
+- **Edge Control**: Since you can only pick tokens from the ends, consider how your choice affects the next available tokens.
+
+---
+
+**Color Capture** offers a simple yet strategically rich gameplay experience that is easy to code and play within a command-line interface. Its unique mechanics ensure that skilled players can consistently outmaneuver their opponents, while its straightforward rules make it accessible for new players.

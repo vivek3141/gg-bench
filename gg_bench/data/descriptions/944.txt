@@ -1,0 +1,212 @@
+**Game Name**: Boundary Race
+
+---
+
+**Objective**:
+
+Be the first player to reach **exactly 50 points** without exceeding it. Strategically decide when to accept or reject numbers to accumulate points while potentially hindering your opponent's progress. If your score exceeds 50, it resets to 25, so plan carefully to outmaneuver your opponent and win the race.
+
+---
+
+**Setup**:
+
+1. **Players**: Two players participate in the game.
+2. **Starting Scores**: Both players begin with a score of **0 points**.
+3. **Turn Order**: Decide who takes the first turn (e.g., by mutual agreement or a coin toss).
+4. **Game Interface**: The game is played in a command-line interface that displays:
+   - Current scores.
+   - Generated numbers.
+   - Available options for each player.
+
+---
+
+**Game Components**:
+
+1. **Scoreboard**:
+   - Tracks and displays each player's current score after every turn.
+
+2. **Random Number Generator**:
+   - Generates a random integer between **1 and 10** (inclusive) at the start of each turn.
+
+3. **Rejected Number Pool**:
+   - Holds a number rejected by a player on their turn, making it available for the opponent on their next turn.
+
+4. **Turn Indicator**:
+   - Shows which player's turn it is.
+
+---
+
+**Turns**:
+
+- **Turn Sequence**:
+  1. The current player is presented with a **Generated Number**.
+  2. If the opponent rejected a number on their previous turn, the **Rejected Number** is also presented.
+  3. The player chooses to **Accept** or **Reject** the available number(s).
+  4. The player's score is updated based on their choices.
+  5. The turn ends, and control passes to the next player.
+
+- **Actions During a Turn**:
+  - **Accept**:
+    - Add the selected number(s) to your score.
+  - **Reject**:
+    - Pass the generated number to the opponent.
+    - Note: Cannot reject numbers on more than **two consecutive turns**.
+
+---
+
+**Rules and Mechanics**:
+
+1. **Accepting Numbers**:
+   - You may choose to accept the **Generated Number**, the **Rejected Number**, or **both** if available.
+   - Accepted numbers are immediately added to your score.
+
+2. **Rejecting Numbers**:
+   - When you reject the **Generated Number**, it becomes available for your opponent on their next turn.
+   - You may not reject numbers on more than **two consecutive turns**.
+
+3. **Opponent's Options After Rejection**:
+   - If a number was rejected on your opponent's last turn, you have the option to accept:
+     - The **Rejected Number**.
+     - The **Newly Generated Number**.
+     - **Both Numbers**.
+     - Note: You cannot reject both numbers if you have already rejected numbers on two consecutive turns.
+
+4. **Score Reset Upon Exceeding 50**:
+   - If your score exceeds **50**, it is immediately reset to **25**.
+   - The game continues with your new score.
+
+5. **Winning the Game**:
+   - The first player to reach a score of **exactly 50 points** wins.
+   - If both players reach 50 in the same turn, the first to reach it during that turn wins.
+
+6. **Consecutive Rejection Limit**:
+   - Players cannot reject numbers on more than **two consecutive turns**.
+   - After two consecutive rejections, you must accept at least one number on your next turn.
+
+---
+
+**Scoring**:
+
+- **Accepting Numbers**:
+  - Add the accepted number(s) to your current score.
+- **Score Reset**:
+  - If your score exceeds **50**, it resets to **25**.
+- **Winning Condition**:
+  - Reach exactly **50** points before your opponent.
+
+---
+
+**Examples**:
+
+1. **Basic Turn Example**:
+
+   - **Player 1's Turn**:
+     - Generated Number: **7**
+     - Options:
+       - Accept **7**
+       - Reject **7**
+     - Player 1 chooses to **Accept 7**.
+     - Player 1's score: **0 + 7 = 7**
+
+   - **Player 2's Turn**:
+     - Generated Number: **5**
+     - No Rejected Number available.
+     - Options:
+       - Accept **5**
+       - Reject **5**
+     - Player 2 chooses to **Reject 5**.
+     - Player 2's score remains **0**.
+     - Player 2 has used **one consecutive rejection**.
+
+2. **Turn with Rejected Numbers**:
+
+   - **Player 1's Turn**:
+     - Rejected Number from Player 2: **5**
+     - Generated Number: **9**
+     - Options:
+       - Accept **5**
+       - Accept **9**
+       - Accept **5** and **9**
+       - Reject both numbers
+     - Player 1 chooses to **Accept 9**.
+     - Player 1's score: **7 + 9 = 16**
+
+   - **Player 2's Turn**:
+     - Generated Number: **4**
+     - Rejected Number from previous turn: **5**
+     - Options:
+       - Accept **4**
+       - Accept **5**
+       - Accept **4** and **5**
+       - Reject both numbers
+     - Player 2 chooses to **Accept 4** and **5**.
+     - Player 2's score: **0 + 4 + 5 = 9**
+
+3. **Score Reset Example**:
+
+   - **Player 1's Turn**:
+     - Current Score: **47**
+     - Generated Number: **5**
+     - Options:
+       - Accept **5** (would bring score to **52**)
+       - Reject **5**
+     - Player 1 chooses to **Accept 5**.
+     - Player 1's score exceeds 50: **47 + 5 = 52**
+     - Score resets to **25**
+
+---
+
+**Command-Line Interactions**:
+
+- **Sample Turn**:
+
+  ```
+  Player 1's Turn
+  ----------------
+  Your current score: 16
+  Rejected number from Player 2: 5
+  Generated number: 9
+
+  Available options:
+  1) Accept 9
+  2) Accept 5
+  3) Accept both 5 and 9
+  4) Reject both numbers
+
+  Enter the number of your choice: 1
+
+  You chose to accept 9.
+  Your new score: 25
+  ```
+
+- **Invalid Input Handling**:
+  - If a player tries to reject numbers after two consecutive rejections, prompt an error and ask for a valid choice.
+  - Ensure players cannot exceed the rejection limit.
+
+---
+
+**Strategies**:
+
+- **Monitor Scores**:
+  - Keep track of both your own and your opponent's scores.
+  - Plan your acceptance or rejection based on how close you are to 50.
+
+- **Rejecting High Numbers**:
+  - Reject high numbers if they would cause you to exceed 50.
+  - Force your opponent to decide whether to accept a risky number.
+
+- **Using Rejected Numbers**:
+  - When both a rejected and a newly generated number are available, consider accepting both if it helps you reach 50.
+
+- **Consecutive Rejections**:
+  - Use your two consecutive rejections wisely to avoid being forced into accepting a detrimental number.
+
+---
+
+**Conclusion**:
+
+Boundary Race is a fast-paced, strategic game that combines luck with tactical decision-making. Its simple rules make it easy to code and play in a command-line interface, while the depth of strategy ensures skilled players can consistently outperform less experienced opponents. Enjoy the race to 50!
+
+---
+
+**Note**: This game is unique and has been specifically designed to meet the criteria of simplicity, quick gameplay, and strategic depth, ensuring an enjoyable experience for both players and an easy implementation in a command-line environment.

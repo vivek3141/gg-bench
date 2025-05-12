@@ -1,0 +1,229 @@
+# Sum Battle
+
+## Objective
+
+Defeat your opponent by reducing their Health Points (HP) to zero through strategic number selection and health management.
+
+---
+
+## Setup
+
+- **Players**: Two players are required.
+- **Health Points (HP)**: Each player starts with **50 HP**.
+- **Number Pool**: A shared pool of numbers from **1 to 10**.
+  - Each number can be used only once per game.
+- **Starting the Game**:
+  - Decide who goes first (e.g., coin toss, mutual agreement).
+
+---
+
+## Game Components
+
+- **Health Points (HP)**:
+  - Represents the life total of each player.
+  - Starting at **50 HP** for both players.
+- **Number Pool**:
+  - A set of integers from **1 to 10** shared by both players.
+  - Numbers are removed from the pool once used.
+- **Command-Line Interface**:
+  - Players input their choices via prompts.
+
+---
+
+## Turns
+
+### Turn Structure
+
+1. **Attack Phase**:
+   - The active player selects a number from the Number Pool to attack with.
+   - The chosen number is removed from the Number Pool.
+2. **Defense Phase**:
+   - The defending player chooses how many HP to sacrifice to block the attack.
+   - The block amount must be between **0** and the **attack number**.
+3. **Damage Calculation**:
+   - Calculate the **damage taken** and **total HP lost** by the defender.
+   - Defender's HP is reduced accordingly.
+4. **Turn End**:
+   - Players switch roles for the next turn.
+
+---
+
+## Rules and Mechanics
+
+### 1. Attack Phase
+
+- **Selection**:
+  - Choose any available number from the Number Pool.
+  - Announce the selected number to your opponent.
+- **Number Usage**:
+  - Each number can only be used once per game.
+
+### 2. Defense Phase
+
+- **Sacrifice HP to Block**:
+  - Decide how much HP to sacrifice to reduce incoming damage.
+  - **Block Amount**:
+    - Must be a whole number between **0** and the **attack number**.
+  - Announce the block amount to the attacker.
+
+### 3. Damage Calculation
+
+- **Damage Taken**:
+  - **Damage Taken** = **Attack Number** - **Block Amount**
+- **Total HP Lost**:
+  - **Total HP Lost** = **Block Amount** (sacrificed) + **Damage Taken**
+- **HP Adjustment**:
+  - Subtract the **Total HP Lost** from the defender's current HP.
+
+### 4. Health Management
+
+- **Strategic Sacrifice**:
+  - Sacrificing HP can reduce incoming damage but decreases your own HP.
+- **Zero HP Limit**:
+  - If a player's HP drops to **zero or below**, they lose the game.
+
+### 5. Winning the Game
+
+- **Victory Condition**:
+  - Reduce your opponent's HP to **zero or below**.
+- **Game End**:
+  - The game ends immediately when the victory condition is met.
+
+---
+
+## Scoring
+
+- **Health Points (HP)**:
+  - The primary measure of each player's status.
+  - Keep track of your own and your opponent's HP after each turn.
+- **Number Pool**:
+  - Monitor the remaining numbers to strategize future moves.
+  
+---
+
+## Examples
+
+### Initial State
+
+- **Player A HP**: 50
+- **Player B HP**: 50
+- **Number Pool**: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+---
+
+### Example Turn Sequence
+
+#### **Turn 1: Player A's Turn**
+
+- **Attack Phase**:
+  - **Player A** selects **7** from the Number Pool.
+- **Defense Phase**:
+  - **Player B** decides to sacrifice **3 HP** to block.
+- **Damage Calculation**:
+  - **Damage Taken** = 7 (attack) - 3 (block) = **4**
+  - **Total HP Lost** = 3 (sacrificed) + 4 (damage) = **7 HP**
+- **Result**:
+  - **Player B HP**: 50 - 7 = **43 HP**
+  - **Number Pool**: {1, 2, 3, 4, 5, 6, 8, 9, 10}
+
+---
+
+#### **Turn 2: Player B's Turn**
+
+- **Attack Phase**:
+  - **Player B** selects **9** from the Number Pool.
+- **Defense Phase**:
+  - **Player A** decides to sacrifice **0 HP** to block.
+- **Damage Calculation**:
+  - **Damage Taken** = 9 (attack) - 0 (block) = **9**
+  - **Total HP Lost** = 0 (sacrificed) + 9 (damage) = **9 HP**
+- **Result**:
+  - **Player A HP**: 50 - 9 = **41 HP**
+  - **Number Pool**: {1, 2, 3, 4, 5, 6, 8, 10}
+
+---
+
+#### **Turn 3: Player A's Turn**
+
+- **Attack Phase**:
+  - **Player A** selects **6** from the Number Pool.
+- **Defense Phase**:
+  - **Player B** decides to sacrifice **6 HP** to block.
+- **Damage Calculation**:
+  - **Damage Taken** = 6 - 6 = **0**
+  - **Total HP Lost** = 6 + 0 = **6 HP**
+- **Result**:
+  - **Player B HP**: 43 - 6 = **37 HP**
+  - **Number Pool**: {1, 2, 3, 4, 5, 8, 10}
+
+---
+
+#### **Turn 4: Player B's Turn**
+
+- **Attack Phase**:
+  - **Player B** selects **10** from the Number Pool.
+- **Defense Phase**:
+  - **Player A** decides to sacrifice **5 HP** to block.
+- **Damage Calculation**:
+  - **Damage Taken** = 10 - 5 = **5**
+  - **Total HP Lost** = 5 + 5 = **10 HP**
+- **Result**:
+  - **Player A HP**: 41 - 10 = **31 HP**
+  - **Number Pool**: {1, 2, 3, 4, 5, 8}
+
+---
+
+*...The game continues until one player's HP reaches zero or below.*
+
+---
+
+## Command-Line Interaction Example
+
+### **Player A's Turn**
+
+- **System**: "Player A, it's your turn."
+- **System**: "Available numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10"
+- **Player A**: "I choose **7**."
+- **System**: "Player B, Player A has attacked with **7**."
+- **System**: "How much HP will you sacrifice to block? (0 to 7)"
+- **Player B**: "I sacrifice **3 HP**."
+- **System**: "Player B sacrifices 3 HP to block."
+- **System**: "Damage taken: 7 - 3 = **4**"
+- **System**: "Total HP lost by Player B: 3 + 4 = **7 HP**"
+- **System**: "Player B HP: 43"
+
+---
+
+### **Player B's Turn**
+
+- **System**: "Player B, it's your turn."
+- **System**: "Available numbers: 1, 2, 3, 4, 5, 6, 8, 9, 10"
+- **Player B**: "I choose **9**."
+- **System**: "Player A, Player B has attacked with **9**."
+- **System**: "How much HP will you sacrifice to block? (0 to 9)"
+- **Player A**: "I sacrifice **0 HP**."
+- **System**: "Player A sacrifices 0 HP to block."
+- **System**: "Damage taken: 9 - 0 = **9**"
+- **System**: "Total HP lost by Player A: 0 + 9 = **9 HP**"
+- **System**: "Player A HP: 41"
+
+---
+
+*...The game proceeds with players alternating turns.*
+
+---
+
+## Strategy Tips
+
+- **Monitor the Number Pool**:
+  - Keep track of numbers your opponent may use.
+- **HP Management**:
+  - Balance between conserving HP and blocking damage.
+- **Anticipate Opponent Moves**:
+  - Predict whether your opponent is likely to use high or low numbers.
+- **Optimal Blocking**:
+  - Sometimes it's better to take full damage to save HP for future blocks.
+
+---
+
+Enjoy playing **Sum Battle**! May the best strategist win.

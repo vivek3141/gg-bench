@@ -1,0 +1,246 @@
+# Number Duel Rule Book
+
+## Objective
+
+Number Duel is a strategic two-player turn-based game where each player aims to reduce their opponent's points to zero before their own points are depleted. By selecting numbers thoughtfully and anticipating the opponent's choices, players engage in a battle of wits and tactics. The first player to bring the opponent's points to zero wins the game.
+
+## Setup
+
+- **Players:** Two players.
+- **Starting Points:** Each player begins with **15 points**.
+- **Number Range:** Players will select numbers between **1 and 5**, inclusive.
+
+No physical setup is required other than a means to track each player's points, which can be done easily within a command-line interface or on a piece of paper.
+
+## Game Components
+
+- **Player Points:** Numerical values representing each player's remaining points. Both players start with 15 points.
+- **Selection Range:** Numbers from **1 to 5**. Players will choose from these numbers during each turn.
+- **Turn Indicator:** A means to track whose turn it is, although in this game, selections are made simultaneously.
+
+## Turns
+
+1. **Simultaneous Selection:**
+   - At the beginning of each round, both players **simultaneously** select a number from **1 to 5** without revealing it to the opponent.
+   - In a command-line interface, this can be simulated by prompting each player for their selection in turn without displaying it until both choices are made.
+
+2. **Reveal:**
+   - Once both players have made their selections, the chosen numbers are revealed to both players.
+
+3. **Resolution:**
+   - The game state is updated according to the rules outlined in the **Rules and Mechanics** section.
+
+4. **Next Round:**
+   - Steps 1-3 are repeated until one player's points are reduced to zero or below.
+
+## Rules and Mechanics
+
+1. **Number Selection:**
+   - Players must choose an **integer between 1 and 5**, inclusive, during each round.
+
+2. **Comparing Numbers:**
+   - After both numbers are revealed, they are compared.
+
+3. **Outcome Determination:**
+   - **Different Numbers:**
+     - The player who selected the **higher number** subtracts **their own number** from the opponent's points.
+     - The player with the lower number does not alter the opponent's points.
+   - **Same Numbers:**
+     - If both players select the **same number**, each player subtracts **their own number** from **their own points**.
+
+4. **Points Reduction:**
+   - Players adjust the points according to the outcome:
+     - Subtracting the appropriate value from the opponent's or their own points as determined.
+   - Points can become zero or negative.
+
+5. **Winning the Game:**
+   - The first player to reduce the opponent's points to **zero or below** wins the game.
+   - If both players reach zero or below in the same round:
+     - The player who initiated the points reduction (the one who had the higher number in that round) is declared the winner.
+     - If both players subtracted from their own points due to selecting the same number and both reach zero or below, the game proceeds to an immediate **sudden death round**.
+
+6. **Sudden Death Round:**
+   - In the event of a tie where both points reach zero or below simultaneously due to both players selecting the same number:
+     - Players engage in a sudden death round following the same rules.
+     - This continues until the tie is broken.
+
+## Scoring
+
+- **Points Tracking:**
+  - Each player's points should be tracked after every round.
+  - Points are adjusted based on the outcomes described in the rules.
+
+- **Victory Condition:**
+  - The game is won when one player's points are reduced to zero or below, and the other player has more than zero points (unless both points reach zero or below, triggering sudden death).
+
+## Examples
+
+### Example Scenario
+
+**Initial State:**
+- Player A Points: 15
+- Player B Points: 15
+
+**Round 1:**
+
+- **Player A selects:** 4
+- **Player B selects:** 2
+- **Outcome:** Player A's number (4) is higher than Player B's number (2).
+  - Player A subtracts **their own number (4)** from **Player B's points**.
+
+**Updated Points:**
+- Player A Points: 15
+- Player B Points: 15 - 4 = **11**
+
+---
+
+**Round 2:**
+
+- **Player A selects:** 3
+- **Player B selects:** 3
+- **Outcome:** Both players selected the same number.
+  - Each player subtracts **their own number (3)** from **their own points**.
+
+**Updated Points:**
+- Player A Points: 15 - 3 = **12**
+- Player B Points: 11 - 3 = **8**
+
+---
+
+**Round 3:**
+
+- **Player A selects:** 5
+- **Player B selects:** 2
+- **Outcome:** Player A's number (5) is higher than Player B's number (2).
+  - Player A subtracts **their own number (5)** from **Player B's points**.
+
+**Updated Points:**
+- Player A Points: 12
+- Player B Points: 8 - 5 = **3**
+
+---
+
+**Round 4:**
+
+- **Player A selects:** 1
+- **Player B selects:** 3
+- **Outcome:** Player B's number (3) is higher than Player A's number (1).
+  - Player B subtracts **their own number (3)** from **Player A's points**.
+
+**Updated Points:**
+- Player A Points: 12 - 3 = **9**
+- Player B Points: 3
+
+---
+
+**Round 5:**
+
+- **Player A selects:** 4
+- **Player B selects:** 2
+- **Outcome:** Player A's number (4) is higher than Player B's number (2).
+  - Player A subtracts **their own number (4)** from **Player B's points**.
+
+**Updated Points:**
+- Player A Points: 9
+- Player B Points: 3 - 4 = **-1**
+
+**Result:**
+- Player B's points have been reduced below zero.
+- **Player A wins the game.**
+
+### Command-Line Interaction Sample
+
+Below is a sample of how the game might be played in a command-line interface.
+
+**Game Start:**
+
+```plaintext
+Player A Points: 15
+Player B Points: 15
+
+Round 1
+---------
+Player A, enter your number (1-5): *[input hidden]*
+Player B, enter your number (1-5): *[input hidden]*
+```
+
+*(Players privately input their choices, which are revealed after both have entered.)*
+
+```plaintext
+Player A selected: 4
+Player B selected: 2
+
+Player A's number is higher.
+Player A subtracts 4 from Player B's points.
+
+Updated Points:
+Player A Points: 15
+Player B Points: 11
+
+Press Enter to proceed to the next round.
+```
+
+*(The game continues in this manner, prompting each player for their selection and updating the points accordingly.)*
+
+---
+
+**Sudden Death Example**
+
+If at the end of a round both players reach zero or below due to selecting the same number:
+
+```plaintext
+Player A Points: 2
+Player B Points: 2
+
+Round 5
+---------
+Player A, enter your number (1-5): *[input hidden]*
+Player B, enter your number (1-5): *[input hidden]*
+
+Player A selected: 2
+Player B selected: 2
+
+Both players selected the same number.
+Each player subtracts 2 from their own points.
+
+Updated Points:
+Player A Points: 2 - 2 = 0
+Player B Points: 2 - 2 = 0
+
+Both players have reached zero points.
+Sudden Death Round Initiated!
+
+Round 6
+---------
+Player A, enter your number (1-5): *[input hidden]*
+Player B, enter your number (1-5): *[input hidden]*
+
+Player A selected: 3
+Player B selected: 1
+
+Player A's number is higher.
+Player A subtracts 3 from Player B's points.
+
+Updated Points:
+Player A Points: 0
+Player B Points: 0 - 3 = -3
+
+Player B's points have dropped below zero.
+Player A wins the game!
+```
+
+## Strategic Depth
+
+- **Predicting Opponent's Choices:**
+  - Anticipate whether the opponent will choose a high or low number based on the current points.
+  
+- **Risk vs. Reward:**
+  - Choosing a higher number can deal more damage but risks greater self-harm if numbers match.
+  - Selecting lower numbers may conserve high numbers for critical moments.
+  
+- **Psychological Play:**
+  - Bluffing and patterns can be used to confuse the opponent.
+
+## Conclusion
+
+Number Duel is a simple yet strategic game that combines elements of prediction, risk management, and psychological tactics. Easy to implement in a command-line interface and quick to play, it provides depth and complexity that allows skilled players to consistently outperform unskilled opponents. Enjoy the battle of minds and may the best strategist win!

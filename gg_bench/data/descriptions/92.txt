@@ -1,0 +1,254 @@
+# Terrain Race
+
+## Objective
+
+Be the first player to reach the finish line by navigating through a randomly generated terrain filled with obstacles. Players must strategically decide how far to move each turn, balancing speed with the risk of encountering obstacles. The first player to reach or pass the final position **20** wins the game. If a player cannot move forward due to obstacles, they lose.
+
+---
+
+## Setup
+
+1. **Track Generation**:
+   - Create a straight-line track consisting of **20 positions**, numbered from **1** to **20**.
+   - Each position on the track can be either **Clear (C)** or contain an **Obstacle (O)**.
+   - Randomly assign obstacles to the track positions (excluding the starting position 0). Each position from 1 to 20 has a **30% chance** of containing an obstacle.
+   - Example Track:
+     ```
+     [0] C O C C O C C O C C O C C O C C O C C
+     ```
+
+2. **Player Positions**:
+   - Both players start at **position 0**, which is always clear.
+
+3. **Display**:
+   - The track is displayed to both players, showing the positions and whether they are clear or have obstacles.
+   - Players can see the positions of obstacles to plan their moves.
+
+---
+
+## Game Components
+
+1. **Track**:
+   - A linear array representing positions **0** to **20**.
+   - Each position holds a value:
+     - `'C'` for **Clear**
+     - `'O'` for **Obstacle**
+
+2. **Players**:
+   - **Player 1** and **Player 2**
+   - Each player has a current position on the track, starting at position **0**.
+
+3. **Movement Options**:
+   - On each turn, a player can choose to move **1**, **2**, or **3** positions forward.
+
+---
+
+## Turns
+
+1. **Turn Order**:
+   - **Player 1** starts the game.
+   - Players alternate turns thereafter.
+
+2. **Turn Structure**:
+   - **Choose Movement Distance**: The player selects to move **1**, **2**, or **3** positions ahead.
+   - **Obstacle Check**:
+     - The game checks all positions the player would move through **and land on** for obstacles.
+     - Positions are checked in sequence starting from the position immediately ahead.
+   - **Movement Resolution**:
+     - **Successful Move**: If **all** positions are clear, the player moves to the new position.
+     - **Failed Move**: If **any** position contains an obstacle, the player remains at their current position.
+   - **End of Turn**: The turn ends, and control passes to the other player.
+
+---
+
+## Rules and Mechanics
+
+1. **Movement Limitations**:
+   - Players cannot move beyond position **20**.
+   - If a player's selected move would take them beyond position 20, they stop exactly at position 20.
+
+2. **Obstacle Interaction**:
+   - Obstacles block movement. If a player encounters an obstacle in any of the positions they would move through or land on, their move fails.
+   - Obstacles remain in place for the entire game.
+
+3. **Player Interaction**:
+   - Multiple players can occupy the same position simultaneously.
+   - Players do not block each other's movement.
+
+4. **Winning the Game**:
+   - The first player to reach position **20** (the finish line) wins the game.
+   - If both players reach position 20 on the same turn, the **first player** to reach it during that turn wins.
+   - If a player cannot make any valid moves due to obstacles (all options blocked), they **lose**, and the other player wins.
+
+5. **No Draw Mechanism**:
+   - The game cannot end in a draw. A winner is always determined based on who reaches the finish line first or who can still make valid moves.
+
+---
+
+## Scoring
+
+- **Victory Condition**: Reaching position **20** first.
+- **Loss Condition**: Being unable to make a valid move when it's your turn.
+- No points are tracked; the game is won by meeting the victory condition.
+
+---
+
+## Examples
+
+### Example Scenario
+
+**Initial Track**:
+```
+[0] C O C C O C C O C C O C C O C C O C C
+```
+
+**Player Positions**:
+- **Player 1**: Position **0**
+- **Player 2**: Position **0**
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Move Choice**: **3** positions ahead.
+- **Positions to Check**: 1, 2, **3**
+  - Position 1: **C**
+  - Position 2: **O** (Obstacle)
+- **Outcome**: Move **fails** (obstacle at position 2). Player 1 remains at position **0**.
+
+#### Turn 2: Player 2
+
+- **Move Choice**: **1** position ahead.
+- **Positions to Check**: 1
+  - Position 1: **C**
+- **Outcome**: Move **succeeds**. Player 2 moves to position **1**.
+
+#### Turn 3: Player 1
+
+- **Move Choice**: **1** position ahead.
+- **Positions to Check**: 1
+  - Position 1: **C**
+- **Outcome**: Move **succeeds**. Player 1 moves to position **1**.
+
+#### Turn 4: Player 2
+
+- **Move Choice**: **2** positions ahead.
+- **Positions to Check**: 2, **3**
+  - Position 2: **O** (Obstacle)
+- **Outcome**: Move **fails**. Player 2 remains at position **1**.
+
+#### Turn 5: Player 1
+
+- **Move Choice**: **2** positions ahead.
+- **Positions to Check**: 2, **3**
+  - Position 2: **O** (Obstacle)
+- **Outcome**: Move **fails**. Player 1 remains at position **1**.
+
+#### Turn 6: Player 2
+
+- **Move Choice**: **1** position ahead.
+- **Positions to Check**: 2
+  - Position 2: **O** (Obstacle)
+- **Outcome**: Move **fails**. Player 2 remains at position **1**.
+
+#### Turn 7: Player 1
+
+- **Move Choice**: **1** position ahead.
+- **Positions to Check**: 2
+  - Position 2: **O** (Obstacle)
+- **Outcome**: Move **fails**. Player 1 remains at position **1**.
+
+#### Turn 8: Player 2
+
+- **Move Choice**: **3** positions ahead.
+- **Positions to Check**: 2, 3, **4**
+  - Position 2: **O** (Obstacle)
+- **Outcome**: Move **fails**. Player 2 remains at position **1**.
+
+### Game Progression
+
+- Both players are blocked by the obstacle at position **2**.
+- They need to consider alternative strategies or hope for opportunities to move in future turns.
+- If at any point a player can make a successful move forward while the other cannot, that player gains a significant advantage.
+
+### Endgame Scenario
+
+- Suppose Player 2 eventually moves successfully and reaches position **20** first.
+- **Outcome**: Player 2 **wins** the game.
+
+---
+
+## Command-Line Interaction Example
+
+### Game Start
+
+```
+Welcome to Terrain Race!
+Track:
+[0] C O C C O C C O C C O C C O C C O C C
+
+Both players start at position 0.
+```
+
+### Player 1's Turn
+
+```
+Player 1, you are at position 0.
+Choose your move distance (1, 2, or 3): 1
+Positions to check: Position 1
+Position 1 is Clear.
+Move successful! You move to position 1.
+```
+
+### Player 2's Turn
+
+```
+Player 2, you are at position 0.
+Choose your move distance (1, 2, or 3): 3
+Positions to check: Position 1, Position 2, Position 3
+Position 1 is Clear.
+Position 2 is Obstacle.
+Move failed. You remain at position 0.
+```
+
+### Player 1's Next Turn
+
+```
+Player 1, you are at position 1.
+Choose your move distance (1, 2, or 3): 2
+Positions to check: Position 2, Position 3
+Position 2 is Obstacle.
+Move failed. You remain at position 1.
+```
+
+### Continuing the Game
+
+- Players continue taking turns, choosing move distances and checking for obstacles.
+- The game continues until one player reaches position 20 or a player cannot make a valid move.
+
+---
+
+## Strategic Considerations
+
+- **Risk vs. Reward**:
+  - Moving **3** positions advances you faster but increases the risk of encountering an obstacle.
+  - Moving **1** position is safer but slower.
+- **Obstacle Awareness**:
+  - Pay attention to the positions of obstacles to plan future moves.
+- **Opponent Position**:
+  - Consider the opponent's position when deciding your move to maintain a lead or catch up.
+- **No Backtracking**:
+  - Players cannot move backward; plan ahead to avoid getting stuck.
+- **Winning Tactics**:
+  - If your opponent is blocked, a successful move can secure your victory.
+  - Use obstacles to your advantage by moving when your opponent cannot.
+
+---
+
+## Conclusion
+
+Terrain Race is a game of strategy and chance, combining careful planning with the unpredictability of obstacles. With simple rules and quick gameplay, it's ideal for testing your strategic decision-making in a fun and competitive environment. May the best player reach the finish line first!
+
+---
+
+**Enjoy the race and good luck!**

@@ -1,0 +1,181 @@
+# Crystal Capture: Rule Book
+
+## Objective
+
+**Crystal Capture** is a strategic two-player, turn-based game played on a command-line interface. The primary goal is to be the first player to collect exactly **15 Crystal Points** by capturing crystals from a shared pool. Players must carefully choose which crystals to capture while anticipating their opponent's moves. The game ends quickly, and a skilled player can consistently outperform an unskilled player.
+
+## Setup
+
+- **Crystal Pool**: The game begins with a shared pool of crystals numbered from **1** to **9**.
+- **Player Points**: Both players start with **0 Crystal Points**.
+- **Turn Order**: Determine randomly which player goes first.
+
+## Game Components
+
+### Crystals
+
+- **Crystals Numbered 1-9**: Each crystal has a unique number from **1** to **9**.
+- **Appearance**: Represented numerically in the command-line interface (e.g., `1`, `2`, ..., `9`).
+- **Functionality**: Each crystal's number indicates its **Crystal Points** value when captured.
+- **Unique Attributes**: Once a crystal is captured, it is removed from the pool and cannot be chosen again.
+
+## Turns
+
+### Turn Structure
+
+1. **Display Available Crystals**: At the start of each turn, the available crystals in the pool are shown.
+2. **Player Action**: The current player chooses one crystal from the pool to capture.
+3. **Update Points**: The chosen crystal's points are added to the player's total Crystal Points.
+4. **Check for Win Condition**: After the capture, check if the player's total Crystal Points equal exactly **15**.
+5. **Next Player's Turn**: If the game hasn't ended, the turn passes to the other player.
+
+### Player Actions During Turn
+
+- **Capture a Crystal**: Select one available crystal from the pool to add its points to your total.
+- **Strategic Planning**: Consider which crystals remain and plan to reach exactly 15 points before your opponent.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Crystal Selection**: On your turn, you **must** capture one crystal from the pool.
+2. **Point Accumulation**: Add the value of the captured crystal to your total Crystal Points.
+3. **Win Condition**: The first player to reach **exactly 15 Crystal Points** wins the game.
+4. **Cannot Exceed 15**: If capturing a crystal would cause your total points to exceed 15, you **cannot** select that crystal.
+5. **Forced Moves**: If there are crystals you can legally capture (without exceeding 15), you **must** choose one. If no legal moves are available, you pass your turn.
+6. **No Draws**: The game continues until one player reaches exactly 15 points. Given the limited number of crystals and the rules, a draw is impossible.
+
+### Special Mechanics
+
+- **Anticipation**: Players must anticipate their opponent's potential moves to block them from reaching 15 points first.
+- **Denial Strategy**: Capture crystals that your opponent may need to reach 15 points.
+
+### Interaction Between Components
+
+- **Crystal Availability**: The pool diminishes as crystals are captured, altering the strategic landscape each turn.
+- **Point Totals**: Keep track of both players' point totals to inform your strategy.
+
+## Scoring
+
+- **Crystal Points**: The values of the crystals captured by a player.
+- **Winning the Game**: Achieved by accumulating exactly **15 Crystal Points**.
+- **Tracking Points**: Each player's total is updated and displayed after every turn.
+
+## Examples
+
+### Example Scenario
+
+Let's illustrate how a game might proceed between **Player 1** and **Player 2**.
+
+#### Initial State
+
+- **Available Crystals**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1 Points**: 0
+- **Player 2 Points**: 0
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**
+   - **Available Crystals**: 1-9
+   - **Action**: Player 1 captures crystal **8**.
+   - **Player 1 Points**: 0 + 8 = **8**
+   - **Available Crystals**: 1-7, 9
+
+2. **Player 2's Turn**
+   - **Available Crystals**: 1-7, 9
+   - **Action**: Player 2 captures crystal **7**.
+   - **Player 2 Points**: 0 + 7 = **7**
+   - **Available Crystals**: 1-6, 9
+
+3. **Player 1's Turn**
+   - **Available Crystals**: 1-6, 9
+   - **Action**: Player 1 captures crystal **6**.
+   - **Player 1 Points**: 8 + 6 = **14**
+   - **Available Crystals**: 1-5, 9
+
+4. **Player 2's Turn**
+   - **Available Crystals**: 1-5, 9
+   - **Action**: Player 2 cannot capture crystal **9** (7 + 9 = 16 > 15)
+   - **Action**: Player 2 captures crystal **8**, but it's not available.
+   - **Action**: Player 2 captures crystal **9** (illegal move).
+   - **Valid Action**: Player 2 captures crystal **4**.
+   - **Player 2 Points**: 7 + 4 = **11**
+   - **Available Crystals**: 1-3, 5, 9
+
+5. **Player 1's Turn**
+   - **Available Crystals**: 1-3, 5, 9
+   - **Action**: Player 1 needs **1** point to reach 15 (15 - 14).
+   - **Action**: Captures crystal **1**.
+   - **Player 1 Points**: 14 + 1 = **15**
+   - **Player 1 Wins!**
+
+### Command-Line Interaction
+
+#### Turn Example
+
+```plaintext
+Available Crystals: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Player 1 Points: 0
+Player 2 Points: 0
+
+Player 1, choose a crystal to capture: 8
+
+You have captured crystal 8.
+Player 1 Points: 8
+
+------------------------
+
+Available Crystals: 1, 2, 3, 4, 5, 6, 7, 9
+Player 1 Points: 8
+Player 2 Points: 0
+
+Player 2, choose a crystal to capture: 7
+
+You have captured crystal 7.
+Player 2 Points: 7
+
+------------------------
+
+Available Crystals: 1, 2, 3, 4, 5, 6, 9
+Player 1 Points: 8
+Player 2 Points: 7
+
+Player 1, choose a crystal to capture: 6
+
+You have captured crystal 6.
+Player 1 Points: 14
+
+------------------------
+
+Available Crystals: 1, 2, 3, 4, 5, 9
+Player 1 Points: 14
+Player 2 Points: 7
+
+Player 2, choose a crystal to capture: 4
+
+You have captured crystal 4.
+Player 2 Points: 11
+
+------------------------
+
+Available Crystals: 1, 2, 3, 5, 9
+Player 1 Points: 14
+Player 2 Points: 11
+
+Player 1, choose a crystal to capture: 1
+
+You have captured crystal 1.
+Player 1 Points: 15
+
+Congratulations, Player 1! You have exactly 15 points and win the game!
+```
+
+## Strategic Tips
+
+- **Plan Ahead**: Keep track of which crystals remain and calculate potential moves for both yourself and your opponent.
+- **Block Opponent**: If you see your opponent approaching 15 points, capture crystals they may need.
+- **Optimize Your Total**: Aim to reach totals that give you flexibility in future turns.
+
+## Conclusion
+
+**Crystal Capture** is a simple yet strategic game that tests players' planning and foresight. With straightforward rules and quick gameplay, it's easy to code and play in a command-line interface. May the best strategist win!

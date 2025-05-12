@@ -1,0 +1,171 @@
+# Rule Book: Multiplication Duel
+
+## Objective
+
+**Multiplication Duel** is a two-player, turn-based game where players compete to be the first to reach **exactly 100** by multiplying numbers. Players take turns selecting integers to multiply with a running total. The primary goal is to strategically choose numbers that bring the running total closer to 100 without exceeding it. The player who reaches exactly 100 first wins the game. If a player causes the total to exceed 100, they lose.
+
+---
+
+## Setup
+
+- **Starting Total**: The game begins with a running total of **1**.
+- **Players**: Two players, referred to as **Player 1** and **Player 2**.
+- **Number Range**: Numbers available for multiplication are integers from **2 to 9**, inclusive.
+- **Initial Decision**: Decide who takes the first turn (e.g., by coin toss or mutual agreement).
+
+---
+
+## Game Components
+
+- **Running Total**: A shared total that starts at 1 and is updated each turn based on player choices.
+- **Available Numbers**: Integers from **2** to **9**.
+  - Each number can be selected multiple times; there is no limit to how often a number can be used.
+- **Target Total**: The number **100**, which players aim to reach exactly without exceeding.
+
+---
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **On a Player's Turn**:
+  1. **Choose a Number**: Select an integer between 2 and 9 (inclusive).
+  2. **Multiply**: Multiply the running total by the chosen number.
+  3. **Update**: The new product becomes the running total.
+  4. **Announce**: State the chosen number and the new running total.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - Players must choose an integer between **2** and **9**, inclusive.
+   - There are no restrictions on how many times a number can be chosen during the game.
+
+2. **Updating Running Total**:
+   - Multiply the current running total by the chosen number to get the new running total.
+   - The running total is updated immediately after each turn.
+
+3. **Winning the Game**:
+   - **Exact Match**: The player who brings the running total to **exactly 100** wins.
+   - **Overreach**: If a player's multiplication causes the running total to exceed 100, that player **loses** immediately.
+
+4. **Invalid Moves**:
+   - If all possible choices would cause the running total to exceed 100, the player must select a number that exceeds 100 and thus loses.
+   - There are no skips or passes; a player must make a move on their turn.
+
+---
+
+## Scoring
+
+- **Single Game Victory**: Winning a game by reaching exactly 100 scores one point.
+- **Match Play**:
+  - Players can agree on a match length (e.g., best of five games).
+  - The player who first reaches the agreed number of victories wins the match.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Starting Running Total**: 1
+
+---
+
+**Player 1's Turn**:
+
+- **Choice**: 5
+- **Calculation**: 1 × 5 = 5
+- **Running Total**: 5
+- **Announcement**: "I choose 5. The running total is now 5."
+
+---
+
+**Player 2's Turn**:
+
+- **Choice**: 6
+- **Calculation**: 5 × 6 = 30
+- **Running Total**: 30
+- **Announcement**: "I choose 6. The running total is now 30."
+
+---
+
+**Player 1's Turn**:
+
+- **Choice**: 3
+- **Calculation**: 30 × 3 = 90
+- **Running Total**: 90
+- **Announcement**: "I choose 3. The running total is now 90."
+
+---
+
+**Player 2's Turn**:
+
+- **Choices**:
+  - Any number chosen will exceed 100:
+    - 90 × 2 = 180
+    - 90 × 3 = 270
+    - ...
+    - 90 × 9 = 810
+- **Outcome**:
+  - Player 2 cannot avoid exceeding 100.
+  - Player 2 must choose a number and loses the game.
+- **Announcement**: "I choose 2. The running total is now 180. I have exceeded 100 and lose the game."
+
+---
+
+**Result**: Player 1 wins by forcing Player 2 into an unavoidable loss.
+
+---
+
+### Command-Line Interaction Example
+
+```plaintext
+Starting the Multiplication Duel!
+
+Running Total: 1
+
+Player 1, choose a number to multiply (2-9): 5
+You chose 5.
+Running Total is now 5.
+
+Player 2, choose a number to multiply (2-9): 6
+You chose 6.
+Running Total is now 30.
+
+Player 1, choose a number to multiply (2-9): 3
+You chose 3.
+Running Total is now 90.
+
+Player 2, choose a number to multiply (2-9): 2
+You chose 2.
+Running Total is now 180.
+
+Player 2 has exceeded 100 and loses the game.
+Player 1 wins!
+```
+
+---
+
+## Strategic Tips
+
+- **Planning Ahead**: Anticipate future running totals to force your opponent into a losing position.
+- **Control the Pace**: Early in the game, avoid making the running total too large too quickly.
+- **Critical Numbers**: Be aware of running totals that leave your opponent with no safe options on their next turn.
+
+---
+
+## Ensuring Fair Play
+
+- **Valid Input**: Players must choose valid numbers (integers from 2 to 9). Invalid inputs should be rejected.
+- **Honesty**: As this is a strategic game, players should act in good faith and avoid attempting to exploit any loopholes.
+
+---
+
+## Conclusion
+
+Multiplication Duel is an engaging and strategic game that combines simple arithmetic with forward-thinking tactics. Its straightforward rules make it easy to code and play in a command-line interface, while its depth ensures that skilled players can consistently outmaneuver less experienced opponents. Enjoy the challenge of reaching exactly 100 before your opponent does!
+
+---
+
+Happy multiplying!

@@ -1,0 +1,184 @@
+# Battle of Divisibility
+
+## Objective
+
+**Battle of Divisibility** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to be the first player to reduce your opponent's number to zero through strategic number selection and divisibility tactics. Victory is achieved when your opponent's number reaches zero, resulting in their loss and your win.
+
+## Setup
+
+- Each player starts with an initial **Life Number** of **100**.
+- There are no physical components; all interactions occur within the command-line interface.
+- Players decide who takes the first turn (e.g., by mutual agreement or randomly).
+
+## Game Components
+
+- **Life Numbers**: Each player has a Life Number, starting at 100. This number represents the player's remaining vitality in the game.
+- **Choice Numbers**: On their turn, players select a Choice Number between **1** and **9** (inclusive). These numbers are used to perform actions against the opponent.
+
+## Turns
+
+- Players take turns alternately.
+- On each turn, a player performs the following actions:
+  1. **Select a Choice Number**: Choose an integer between 1 and 9 (inclusive).
+  2. **Apply the Choice Number**: Attempt to subtract the Choice Number from the opponent's Life Number according to the game rules.
+- Turns continue until one player's Life Number is reduced to zero.
+
+## Rules and Mechanics
+
+1. **Selecting the Choice Number**:
+   - The player must choose an integer between **1** and **9**, inclusive.
+
+2. **Applying the Choice Number**:
+   - **Divisibility Check**: If the chosen Choice Number **exactly divides** the opponent's current Life Number, then:
+     - Subtract the Choice Number from the opponent's Life Number.
+     - Example: Opponent's Life Number is 100, and you choose 4 (which divides 100 evenly since 100 % 4 == 0). Opponent's Life Number becomes 100 - 4 = 96.
+   - **Failure to Divide**: If the Choice Number does **not** exactly divide the opponent's Life Number, then:
+     - Subtract the Choice Number from **your own** Life Number.
+     - Example: Your Life Number is 100, opponent's Life Number is 97, and you choose 5 (which does not divide 97 evenly). Your Life Number becomes 100 - 5 = 95.
+
+3. **Life Number Constraints**:
+   - A player's Life Number cannot go below zero. If an action would result in a negative Life Number, set the Life Number to zero instead.
+
+4. **Winning the Game**:
+   - The first player to reduce their opponent's Life Number to **zero** wins the game.
+   - If both players reach zero on the same turn, the player who initiated the action wins.
+
+## Scoring
+
+- **Life Number Tracking**: Each player's Life Number serves as their score, starting at 100 and decreasing based on the actions taken during the game.
+- **Victory Condition**: The game does not use points for scoring beyond tracking the Life Numbers. The win condition is solely based on reducing the opponent's Life Number to zero.
+
+## Examples
+
+### Example Game Play-Through
+
+**Initial State**:
+
+- Player 1 Life Number: 100
+- Player 2 Life Number: 100
+
+**Turn 1**: *Player 1's Turn*
+
+- **Choice Number**: Player 1 chooses **5**.
+- **Divisibility Check**: 5 divides Player 2's Life Number (100 % 5 == 0).
+- **Action**: Subtract 5 from Player 2's Life Number.
+- **Result**:
+  - Player 1 Life Number: **100**
+  - Player 2 Life Number: **95**
+
+**Turn 2**: *Player 2's Turn*
+
+- **Choice Number**: Player 2 chooses **6**.
+- **Divisibility Check**: 6 does not divide Player 1's Life Number (100 % 6 != 0).
+- **Action**: Subtract 6 from **Player 2's own** Life Number.
+- **Result**:
+  - Player 1 Life Number: **100**
+  - Player 2 Life Number: **89**
+
+**Turn 3**: *Player 1's Turn*
+
+- **Choice Number**: Player 1 chooses **7**.
+- **Divisibility Check**: 7 does not divide Player 2's Life Number (89 % 7 != 0).
+- **Action**: Subtract 7 from Player 1's Life Number.
+- **Result**:
+  - Player 1 Life Number: **93**
+  - Player 2 Life Number: **89**
+
+**Turn 4**: *Player 2's Turn*
+
+- **Choice Number**: Player 2 chooses **1**.
+- **Divisibility Check**: 1 divides Player 1's Life Number (93 % 1 == 0).
+- **Action**: Subtract 1 from Player 1's Life Number.
+- **Result**:
+  - Player 1 Life Number: **92**
+  - Player 2 Life Number: **89**
+
+**Turn 5**: *Player 1's Turn*
+
+- **Choice Number**: Player 1 chooses **4**.
+- **Divisibility Check**: 4 does not divide Player 2's Life Number (89 % 4 != 0).
+- **Action**: Subtract 4 from Player 1's Life Number.
+- **Result**:
+  - Player 1 Life Number: **88**
+  - Player 2 Life Number: **89**
+
+**Turn 6**: *Player 2's Turn*
+
+- **Choice Number**: Player 2 chooses **17**.
+- **Invalid Choice**: Number not between 1 and 9.
+- **Action**: Prompt Player 2 to choose a valid number.
+
+**Turn 6 (Retry)**: *Player 2's Turn*
+
+- **Choice Number**: Player 2 chooses **8**.
+- **Divisibility Check**: 8 does not divide Player 1's Life Number (88 % 8 == 0).
+- **Action**: Subtract 8 from Player 1's Life Number.
+- **Result**:
+  - Player 1 Life Number: **80**
+  - Player 2 Life Number: **89**
+
+*Note*: There's an error here. Since 8 divides 88 evenly, the action should subtract 8 from **Player 1's** Life Number.
+
+Let's correct the action.
+
+**Corrected Turn 6**:
+
+- **Divisibility Check**: 8 divides Player 1's Life Number (88 % 8 == 0).
+- **Action**: Subtract 8 from Player 1's Life Number.
+- **Result**:
+  - Player 1 Life Number: **80**
+  - Player 2 Life Number: **89**
+
+**Continuing the Game**
+
+The players continue taking turns, strategically selecting numbers to reduce their opponent's Life Number while minimizing the impact on their own. The game proceeds until one player's Life Number is reduced to zero.
+
+### Sample Command-Line Interaction
+
+```plaintext
+Player 1 Life Number: 100
+Player 2 Life Number: 100
+
+Player 1's turn.
+Enter a number between 1 and 9: 5
+5 divides 100. Subtracting 5 from Player 2.
+Player 2 Life Number is now 95.
+
+Player 2's turn.
+Enter a number between 1 and 9: 6
+6 does not divide 100. Subtracting 6 from your own Life Number.
+Player 2 Life Number is now 89.
+
+Player 1's turn.
+Enter a number between 1 and 9: 7
+7 does not divide 95. Subtracting 7 from your own Life Number.
+Player 1 Life Number is now 93.
+
+...
+
+Player 1's turn.
+Enter a number between 1 and 9: 5
+5 divides 5. Subtracting 5 from Player 2.
+Player 2 Life Number is now 0.
+
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Choose Divisors Wisely**: Aim to select numbers that divide your opponent's Life Number to reduce it directly.
+- **Avoid Self-Harm**: If no available numbers divide your opponent's Life Number, consider the impact of subtracting from your own Life Number.
+- **Anticipate Opponent's Options**: Keep track of numbers that could divide your own Life Number to defend against potential large subtractions.
+- **Manipulate Life Numbers**: Sometimes it's strategic to reduce your own Life Number to a value that's less divisible, limiting your opponent's options.
+
+## Game Variations
+
+For added complexity or to adjust game length, consider the following variations:
+
+- **Alter Starting Life Number**: Begin with a different Life Number (e.g., 50 or 200) to shorten or lengthen the game.
+- **Change Choice Number Range**: Modify the range of selectable numbers (e.g., 1 to 5 for a quicker game).
+- **Special Numbers**: Introduce special rules for certain numbers (e.g., choosing 3 allows you to skip your opponent's next turn).
+
+---
+
+Enjoy playing **Battle of Divisibility**, and may the most strategic player win!

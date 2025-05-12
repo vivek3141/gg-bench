@@ -1,0 +1,247 @@
+# **Target Number**
+
+## **Objective**
+
+Be the first player to reach the exact **target score** by strategically selecting numbers to add to your personal total. To win, you must reach the target score exactly without exceeding it. If you cannot make a valid move without surpassing the target, you lose.
+
+---
+
+## **Setup**
+
+1. **Determine the Target Score**
+
+   - Decide on a target score that players will aim to reach. 
+   - Recommended range: **15 to 30** for a quick and strategic game. For example, **23**.
+
+2. **Initialize Player Scores**
+
+   - Both players begin with a personal score of **0**.
+
+3. **Create Available Numbers List**
+
+   - A shared list of numbers from **1 to 9** is generated.
+   - All numbers are initially available for selection.
+
+---
+
+## **Game Components**
+
+- **Target Score**
+
+  - A predetermined positive integer that players strive to reach exactly.
+
+- **Player Scores**
+
+  - Each player has a personal score starting at **0**.
+  - Scores are updated each turn based on the numbers selected.
+
+- **Available Numbers List**
+
+  - Contains numbers **1** through **9**.
+  - Numbers are removed from the list once selected by any player.
+
+---
+
+## **Turns**
+
+- **Turn Order**
+
+  - Players alternate turns, starting with **Player 1**.
+
+- **Turn Actions**
+
+  1. **Select a Number**
+
+     - Choose a number from the **available numbers list**.
+
+  2. **Update Personal Score**
+
+     - Add the selected number to your personal score.
+
+  3. **Update Available Numbers**
+
+     - Remove the selected number from the available numbers list.
+
+- **End of Turn**
+
+  - Check if the game has been won or if a player cannot make a valid move.
+
+---
+
+## **Rules and Mechanics**
+
+1. **Selecting Numbers**
+
+   - You **must** choose a number from the available numbers list on your turn.
+   - Numbers **cannot** be reused once selected by either player.
+
+2. **Valid Moves**
+
+   - A move is valid if the selected number, when added to your score, does **not** exceed the target score.
+   - If no valid moves are available, you **lose** the game.
+
+3. **Updating Scores**
+
+   - Add the selected number to your personal score each turn.
+   - Monitor your score to avoid exceeding the target.
+
+4. **Winning the Game**
+
+   - The first player to reach the **exact** target score **wins**.
+   - The game ends immediately upon reaching the target.
+
+5. **Losing the Game**
+
+   - If you cannot make a valid move without surpassing the target score on your turn, you **lose**.
+   - The opposing player wins by default.
+
+6. **Strategic Considerations**
+
+   - Plan ahead to reserve numbers you may need later.
+   - Consider blocking your opponent by selecting numbers they might require.
+
+---
+
+## **Scoring**
+
+- **Personal Scores**
+
+  - Keep a running total of your personal score.
+  - Aim to reach the target score **exactly**.
+
+- **No Additional Points**
+
+  - There are no bonus points or complex scoring mechanisms.
+  - The focus is on reaching the target score before your opponent.
+
+---
+
+## **Examples**
+
+### **Example Game Play**
+
+**Setup**
+
+- **Target Score:** 23
+- **Available Numbers:** 1, 2, 3, 4, 5, 6, 7, 8, 9
+- **Player 1 Score:** 0
+- **Player 2 Score:** 0
+
+**Turn 1: Player 1**
+
+- **Action:** Chooses **9**
+- **Player 1 Score:** 0 + 9 = **9**
+- **Available Numbers:** 1, 2, 3, 4, 5, 6, 7, 8
+
+**Turn 2: Player 2**
+
+- **Action:** Chooses **8**
+- **Player 2 Score:** 0 + 8 = **8**
+- **Available Numbers:** 1, 2, 3, 4, 5, 6, 7
+
+**Turn 3: Player 1**
+
+- **Action:** Chooses **7**
+- **Player 1 Score:** 9 + 7 = **16**
+- **Available Numbers:** 1, 2, 3, 4, 5, 6
+
+**Turn 4: Player 2**
+
+- **Action:** Chooses **6**
+- **Player 2 Score:** 8 + 6 = **14**
+- **Available Numbers:** 1, 2, 3, 4, 5
+
+**Turn 5: Player 1**
+
+- **Action:** Chooses **5**
+- **Player 1 Score:** 16 + 5 = **21**
+- **Available Numbers:** 1, 2, 3, 4
+
+**Turn 6: Player 2**
+
+- **Action:** Chooses **4**
+- **Player 2 Score:** 14 + 4 = **18**
+- **Available Numbers:** 1, 2, 3
+
+**Turn 7: Player 1**
+
+- **Action:** Chooses **2**
+- **Player 1 Score:** 21 + 2 = **23**
+- **Result:** Player 1 reaches the target score and **wins**.
+
+---
+
+### **Command-Line Interaction Example**
+
+```
+--- Target Number Game Start ---
+Target Score: 23
+
+Available Numbers: 1 2 3 4 5 6 7 8 9
+
+Player 1 Score: 0
+Player 2 Score: 0
+
+Player 1's turn.
+Select a number from the available numbers: 9
+
+Player 1 selects 9.
+Player 1 Score: 9
+Available Numbers: 1 2 3 4 5 6 7 8
+
+Player 2's turn.
+Select a number from the available numbers: 8
+
+Player 2 selects 8.
+Player 2 Score: 8
+Available Numbers: 1 2 3 4 5 6 7
+
+Player 1's turn.
+Select a number from the available numbers: 7
+
+Player 1 selects 7.
+Player 1 Score: 16
+Available Numbers: 1 2 3 4 5 6
+
+... (continues)
+
+Player 1's turn.
+Select a number from the available numbers: 2
+
+Player 1 selects 2.
+Player 1 Score: 23
+Available Numbers: 1 3
+
+Player 1 has reached the target score!
+
+--- Player 1 Wins! ---
+```
+
+---
+
+## **Strategic Tips**
+
+- **Plan Ahead**
+
+  - Anticipate which numbers you'll need in future turns.
+  - Keep track of numbers your opponent may be aiming for.
+
+- **Control the Game**
+
+  - Deny your opponent critical numbers by selecting them first.
+  - Calculate possible future scores to stay ahead.
+
+- **Stay Flexible**
+
+  - Have backup plans in case your preferred numbers are taken.
+  - Be ready to adapt your strategy based on the available numbers.
+
+---
+
+## **Game Summary**
+
+*Target Number* is a simple yet strategic game that requires forward-thinking and careful planning. With straightforward rules and minimal components, it's easy to learn and quick to play, making it ideal for command-line interface gameplay. Players must balance the dual aims of advancing their own score while hindering their opponent's progress, leading to engaging and competitive matches.
+
+---
+
+Enjoy playing *Target Number*, and may the most strategic player win!

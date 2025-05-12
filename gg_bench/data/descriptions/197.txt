@@ -1,0 +1,223 @@
+# Pathway Duel
+
+## Objective
+The primary goal of **Pathway Duel** is to be the first player to reach your opponent's starting position on a 5x5 grid while strategically blocking their path. A player also wins if their opponent has no legal moves remaining.
+
+## Setup
+- **Grid Configuration**: A 5x5 grid is established, represented by rows and columns numbered from 0 to 4.
+- **Starting Positions**:
+  - **Player 1** starts at the top-left corner position `(Row 0, Column 0)`.
+  - **Player 2** starts at the bottom-right corner position `(Row 4, Column 4)`.
+- **Initial Conditions**:
+  - All cells are initially empty and unblocked except for the starting positions occupied by the players.
+
+## Game Components
+- **Grid**: A 5x5 grid consisting of 25 cells that can be in one of three states:
+  - **Empty (`.`)**: Unoccupied and unblocked cells.
+  - **Occupied (`A` or `B`)**: Cells currently occupied by Player 1 (`A`) or Player 2 (`B`).
+  - **Blocked (`X`)**: Cells that have been vacated by a player and are now impassable.
+- **Player Markers**:
+  - **Player 1 Marker**: Represented by `A`.
+  - **Player 2 Marker**: Represented by `B`.
+
+## Turns
+- **Turn Order**: Players take turns alternately, starting with Player 1.
+- **Turn Structure**: On a player's turn, they perform the following actions in order:
+  1. **Movement**: Move their marker to an adjacent unblocked cell.
+  2. **Blocking**: Block the cell they just moved from.
+
+## Rules and Mechanics
+
+### Movement
+- **Adjacent Cells**: Players can move to any of the four adjacent cells (up, down, left, or right). Diagonal moves are not allowed.
+- **Legal Moves**:
+  - A move is legal if the target cell is:
+    - Within the bounds of the grid.
+    - Not blocked (`X`).
+    - Not occupied by the opponent.
+- **Forced Loss**: If a player has no legal moves on their turn, they lose the game.
+
+### Blocking
+- **Blocking Mechanism**:
+  - After moving, the cell vacated by the player becomes blocked.
+  - Blocked cells are marked with an `X`.
+  - Once a cell is blocked, it remains impassable for the rest of the game.
+- **Blocking Strategy**: Players can use blocking to impede their opponent's movement options.
+
+### Winning the Game
+- **Victory Conditions**:
+  1. **Reaching Opponent's Starting Position**: A player wins if they move onto the cell that was their opponent's starting position.
+  2. **Opponent Immobilization**: A player wins if their opponent cannot make a legal move on their turn.
+
+### Game End
+- **Conclusion**: The game ends immediately when one player achieves a victory condition.
+- **No Draws**: There are no draw conditions in Pathway Duel.
+
+## Scoring
+- **Win/Loss Outcome**: The game is binary—one player wins, and the other loses.
+- **No Point System**: There is no point tally; the focus is on strategic movement and blocking.
+
+## Examples
+
+### Example Game
+
+#### Initial Grid
+
+```
+[ A ]  .     .     .     .
+  .    .     .     .     .
+  .    .     .     .     .
+  .    .     .     .     .
+  .    .     .     .    [ B ]
+```
+
+#### Turn-by-Turn Breakdown
+
+1. **Turn 1 - Player 1 (A)**
+   - **Move**: From `(0,0)` to `(0,1)`.
+   - **Block**: Cell `(0,0)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ A ]  .     .     .
+     .     .     .     .     .
+     .     .     .     .     .
+     .     .     .     .     .
+     .     .     .     .    [ B ]
+   ```
+
+2. **Turn 2 - Player 2 (B)**
+   - **Move**: From `(4,4)` to `(4,3)`.
+   - **Block**: Cell `(4,4)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ A ]  .     .     .
+     .     .     .     .     .
+     .     .     .     .     .
+     .     .     .     .     .
+     .     .     .    [ B ] [ X ]
+   ```
+
+3. **Turn 3 - Player 1 (A)**
+   - **Move**: From `(0,1)` to `(1,1)`.
+   - **Block**: Cell `(0,1)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ X ]  .     .     .
+     .    [ A ]  .     .     .
+     .     .     .     .     .
+     .     .     .     .     .
+     .     .     .    [ B ] [ X ]
+   ```
+
+4. **Turn 4 - Player 2 (B)**
+   - **Move**: From `(4,3)` to `(3,3)`.
+   - **Block**: Cell `(4,3)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ X ]  .     .     .
+     .    [ A ]  .     .     .
+     .     .     .     .     .
+     .     .     .    [ B ]   .
+     .     .     .     [ X ] [ X ]
+   ```
+
+5. **Turn 5 - Player 1 (A)**
+   - **Move**: From `(1,1)` to `(1,2)`.
+   - **Block**: Cell `(1,1)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ X ]  .     .     .
+     .    [ X ] [ A ]  .     .
+     .     .     .     .     .
+     .     .     .    [ B ]   .
+     .     .     .     [ X ] [ X ]
+   ```
+
+6. **Turn 6 - Player 2 (B)**
+   - **Move**: From `(3,3)` to `(2,3)`.
+   - **Block**: Cell `(3,3)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ X ]  .     .     .
+     .    [ X ] [ A ]  .     .
+     .     .     .    [ B ]   .
+     .     .     [ X ]  .     .
+     .     .     .     [ X ] [ X ]
+   ```
+
+7. **Turn 7 - Player 1 (A)**
+   - **Move**: From `(1,2)` to `(2,2)`.
+   - **Block**: Cell `(1,2)` is now blocked.
+
+   **Grid State:**
+
+   ```
+   [ X ] [ X ]  .     .     .
+     .    [ X ] [ X ]  .     .
+     .     .    [ A ] [ B ]   .
+     .     .     [ X ]  .     .
+     .     .     .     [ X ] [ X ]
+   ```
+
+8. **Turn 8 - Player 2 (B)**
+   - **No Legal Moves**: Player 2 cannot move to any adjacent unblocked cell.
+
+   **Result**: Player 1 wins because Player 2 has no legal moves.
+
+### Command-Line Interaction Example
+
+- **Game Start**:
+  ```
+  Player 1 (A) starting at (0,0)
+  Player 2 (B) starting at (4,4)
+  ```
+
+- **Turn Prompts**:
+  ```
+  Player A's turn:
+  Current Position: (0,0)
+  Available Moves: Right to (0,1), Down to (1,0)
+  Enter move direction (up, down, left, right): right
+
+  Moving right...
+  Blocking cell (0,0)
+  ```
+
+- **Grid Display After Each Turn**:
+  ```
+  Grid State:
+  [ X ] [ A ]  .     .     .
+    .     .     .     .     .
+    .     .     .     .     .
+    .     .     .     .     .
+    .     .     .     .    [ B ]
+  ```
+
+- **Win Announcement**:
+  ```
+  Player B has no legal moves remaining.
+  Player A wins the game!
+  ```
+
+## Strategy Tips
+- **Plan Ahead**: Think multiple moves ahead to avoid getting trapped.
+- **Block Wisely**: Use blocking to limit your opponent's options while keeping your path open.
+- **Control the Center**: Dominating the center can provide more movement options.
+- **Force Moves**: Try to force your opponent into positions where they have fewer choices.
+
+## Conclusion
+Pathway Duel is a game of strategic movement and foresight. By effectively navigating the grid and employing tactical blocking, skilled players can consistently outperform less experienced opponents. The simplicity of the rules combined with the depth of strategy makes Pathway Duel an engaging and competitive game that concludes quickly without the possibility of a draw.
+
+Enjoy the challenge and may the best strategist win!

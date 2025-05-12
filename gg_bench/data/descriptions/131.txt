@@ -1,0 +1,504 @@
+# Flag Chase
+
+## Objective
+
+**Flag Chase** is a strategic two-player, turn-based game played on a simple linear grid in a command-line interface. The primary goal is to capture your opponent's flag by moving your piece to their base position at the opposite end of the grid. A skilled player can leverage strategic movement and mind games to outplay their opponent and secure victory.
+
+## Setup
+
+- **Grid Layout**: A linear grid consisting of 5 cells in a single row, numbered from 1 to 5.
+  ```
+  [1] [2] [3] [4] [5]
+  ```
+- **Starting Positions**:
+  - **Player 1 (P1)** starts at **Cell 1**.
+  - **Player 2 (P2)** starts at **Cell 5**.
+- **Flags**: Each player's flag is located at their respective starting cell (P1's flag at Cell 1, P2's flag at Cell 5).
+- **Initial Conditions**: Both players' pieces are positioned on their starting cells, guarding their flags.
+
+## Game Components
+
+- **Grid Cells**: Represented numerically from 1 to 5.
+  - **Cell Appearance**: Empty cells are displayed as `[ ]`.
+  - **Player Pieces**:
+    - **P1** is represented by `P1`.
+    - **P2** is represented by `P2`.
+  - **Flags**: Implicitly located at each player's starting cell.
+- **Player Pieces**: Each player controls a single piece used to navigate the grid and engage the opponent.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with **Player 1**.
+- **Turn Structure**:
+  1. **Movement Phase**:
+     - The active player chooses to move their piece **forward** or **backward** by **one cell**.
+     - Movement is restricted to within the grid (Cells 1 to 5).
+  2. **Conflict Check**:
+     - If both players occupy the same cell after movement, a **Battle** occurs.
+     - If no battle occurs, the turn passes to the next player.
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Forward Movement**:
+  - P1 moves from lower-numbered cells to higher-numbered cells (e.g., from Cell 2 to Cell 3).
+  - P2 moves from higher-numbered cells to lower-numbered cells (e.g., from Cell 4 to Cell 3).
+- **Backward Movement**:
+  - Players can move back towards their own base to strategize or avoid conflict.
+- **Boundary Limitation**:
+  - Players cannot move beyond the grid boundaries (Cell 1 and Cell 5).
+  - Attempting to move beyond the grid results in staying in the current position.
+
+### Battle Mechanics
+
+- A **Battle** occurs when both players' pieces occupy the same cell.
+- **Battle Resolution**:
+  1. **Secret Choice**:
+     - Each player privately selects a number between **1 and 5**.
+  2. **Reveal**:
+     - The chosen numbers are revealed simultaneously.
+  3. **Outcome**:
+     - **Higher Number Wins**:
+       - The player who chose the higher number wins the battle.
+       - The losing player's piece is sent back to their own base (Cell 1 for P1, Cell 5 for P2).
+     - **Tie**:
+       - In case of a tie, both players' pieces are sent back to their respective bases.
+- **Post-Battle**:
+  - The winning player remains on the contested cell.
+  - The next turn begins with the player following the one who initiated the last move.
+
+### Winning the Game
+
+- **Capturing the Flag**:
+  - A player captures the opponent's flag by moving their piece onto the opponent's base cell while the opponent's piece is not present there.
+- **Victory Condition**:
+  - The first player to successfully capture the opponent's flag wins the game.
+- **Defensive Stand**:
+  - If a player reaches the opponent's base cell and the opponent's piece is there, a battle occurs as per the battle mechanics.
+
+## Scoring
+
+- There is no point tracking in **Flag Chase**.
+- The outcome is binary: one player wins by capturing the opponent's flag.
+
+## Example Gameplay
+
+### Initial Grid State
+
+```
+[P1] [ ] [ ] [ ] [P2]
+```
+
+### Sample Turns
+
+#### Turn 1: Player 1
+
+- **Action**: Moves forward to Cell 2.
+- **Grid**:
+  ```
+  [ ] [P1] [ ] [ ] [P2]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 2: Player 2
+
+- **Action**: Moves forward to Cell 4.
+- **Grid**:
+  ```
+  [ ] [P1] [ ] [P2] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 3: Player 1
+
+- **Action**: Moves forward to Cell 3.
+- **Grid**:
+  ```
+  [ ] [ ] [P1] [P2] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 4: Player 2
+
+- **Action**: Moves backward to Cell 3 (where P1 is located).
+- **Grid**:
+  ```
+  [ ] [ ] [P1,P2] [ ] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number between 1 and 5.
+    - **P1 Chooses**: 4
+    - **P2 Chooses**: 2
+  - **Result**:
+    - P1 wins the battle.
+    - P2's piece is sent back to Cell 5.
+    - Grid:
+      ```
+      [ ] [ ] [P1] [ ] [P2]
+      ```
+
+#### Turn 5: Player 1
+
+- **Action**: Moves forward to Cell 4.
+- **Grid**:
+  ```
+  [ ] [ ] [ ] [P1] [P2]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 6: Player 2
+
+- **Action**: Moves backward to Cell 4 (where P1 is located).
+- **Grid**:
+  ```
+  [ ] [ ] [ ] [P1,P2] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 3
+    - **P2 Chooses**: 5
+  - **Result**:
+    - P2 wins the battle.
+    - P1's piece is sent back to Cell 1.
+    - Grid:
+      ```
+      [P1] [ ] [ ] [P2] [ ]
+      ```
+
+#### Turn 7: Player 1
+
+- **Action**: Moves forward to Cell 2.
+- **Grid**:
+  ```
+  [ ] [P1] [ ] [P2] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 8: Player 2
+
+- **Action**: Moves forward to Cell 3.
+- **Grid**:
+  ```
+  [ ] [P1] [P2] [ ] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 9: Player 1
+
+- **Action**: Moves forward to Cell 2 (cannot move forward to Cell 3 as it is occupied).
+- **Decision**: Alternatively, P1 decides to move backward to Cell 1 to protect the flag.
+- **Grid**:
+  ```
+  [P1] [ ] [P2] [ ] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 10: Player 2
+
+- **Action**: Moves forward to Cell 2.
+- **Grid**:
+  ```
+  [P1] [P2] [ ] [ ] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 2
+    - **P2 Chooses**: 4
+  - **Result**:
+    - P2 wins the battle.
+    - P1's piece is sent back to Cell 1.
+    - Grid:
+      ```
+      [P1] [P2] [ ] [ ] [ ]
+      ```
+
+#### Turn 11: Player 1
+
+- **Action**: P1 is at Cell 1 and decides to stay (no movement).
+- **Grid**:
+  ```
+  [P1] [P2] [ ] [ ] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 12: Player 2
+
+- **Action**: Moves forward to Cell 1 (P1's base).
+- **Grid**:
+  ```
+  [P1,P2] [ ] [ ] [ ] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 5
+    - **P2 Chooses**: 3
+  - **Result**:
+    - P1 wins the battle.
+    - P2's piece is sent back to Cell 5.
+    - Grid:
+      ```
+      [P1] [ ] [ ] [ ] [P2]
+      ```
+
+#### Turn 13: Player 1
+
+- **Action**: Moves forward to Cell 2.
+- **Grid**:
+  ```
+  [ ] [P1] [ ] [ ] [P2]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 14: Player 2
+
+- **Action**: Moves forward to Cell 4.
+- **Grid**:
+  ```
+  [ ] [P1] [ ] [P2] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 15: Player 1
+
+- **Action**: Moves forward to Cell 3.
+- **Grid**:
+  ```
+  [ ] [ ] [P1] [P2] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 16: Player 2
+
+- **Action**: Moves backward to Cell 3 (battle occurs).
+- **Grid**:
+  ```
+  [ ] [ ] [P1,P2] [ ] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 2
+    - **P2 Chooses**: 1
+  - **Result**:
+    - P1 wins the battle.
+    - P2's piece is sent back to Cell 5.
+    - Grid:
+      ```
+      [ ] [ ] [P1] [ ] [P2]
+      ```
+
+#### Turn 17: Player 1
+
+- **Action**: Moves forward to Cell 4.
+- **Grid**:
+  ```
+  [ ] [ ] [ ] [P1] [P2]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 18: Player 2
+
+- **Action**: Moves forward to Cell 4 (battle occurs).
+- **Grid**:
+  ```
+  [ ] [ ] [ ] [P1,P2] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 1
+    - **P2 Chooses**: 5
+  - **Result**:
+    - P2 wins the battle.
+    - P1's piece is sent back to Cell 1.
+    - Grid:
+      ```
+      [P1] [ ] [ ] [P2] [ ]
+      ```
+
+#### Turn 19: Player 1
+
+- **Action**: Moves forward to Cell 2.
+- **Grid**:
+  ```
+  [ ] [P1] [ ] [P2] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 20: Player 2
+
+- **Action**: Moves forward to Cell 3.
+- **Grid**:
+  ```
+  [ ] [P1] [P2] [ ] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 21: Player 1
+
+- **Action**: Moves forward to Cell 2 (cannot proceed, decides to move back to Cell 1 to protect the flag).
+- **Grid**:
+  ```
+  [P1] [ ] [P2] [ ] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 22: Player 2
+
+- **Action**: Moves forward to Cell 2.
+- **Grid**:
+  ```
+  [P1] [P2] [ ] [ ] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 3
+    - **P2 Chooses**: 4
+  - **Result**:
+    - P2 wins the battle.
+    - P1's piece is sent back to Cell 1.
+    - Grid:
+      ```
+      [P1] [P2] [ ] [ ] [ ]
+      ```
+
+#### Turn 23: Player 1
+
+- **Action**: P1 stays at Cell 1 to defend the flag.
+- **Grid**:
+  ```
+  [P1] [P2] [ ] [ ] [ ]
+  ```
+- **No Battle Occurs**.
+
+#### Turn 24: Player 2
+
+- **Action**: Moves forward to Cell 1.
+- **Grid**:
+  ```
+  [P1,P2] [ ] [ ] [ ] [ ]
+  ```
+- **Battle Occurs**:
+  - Both players choose a number.
+    - **P1 Chooses**: 2
+    - **P2 Chooses**: 5
+  - **Result**:
+    - P2 wins the battle.
+    - P1's piece is sent back to Cell 1 (already there, cannot move back further).
+- **Flag Capture**:
+  - Since P2 is on P1's base cell and P1's piece is incapacitated (sent back to base but already there), P2 captures P1's flag.
+- **Game Over**:
+  - **Player 2 Wins**.
+
+## Command-Line Interaction Example
+
+Here's how the game might look in a command-line interface.
+
+### Initial Setup
+
+```
+Grid: [P1] [ ] [ ] [ ] [P2]
+```
+
+### Turn Prompt
+
+#### Player 1's Turn
+
+```
+Player 1, choose action:
+1. Move Forward
+2. Move Backward
+Enter choice (1-2): 
+```
+
+#### Player 1 Enters:
+
+```
+1
+```
+
+#### Updated Grid
+
+```
+Grid: [ ] [P1] [ ] [ ] [P2]
+```
+
+#### Player 2's Turn
+
+```
+Player 2, choose action:
+1. Move Forward
+2. Move Backward
+Enter choice (1-2): 
+```
+
+#### Player 2 Enters:
+
+```
+1
+```
+
+#### Updated Grid
+
+```
+Grid: [ ] [P1] [ ] [P2] [ ]
+```
+
+...
+
+### Battle Prompt
+
+When a battle occurs:
+
+```
+Battle Initiated at Cell 3!
+Player 1, choose a number between 1 and 5: 
+```
+
+Player 1 enters:
+
+```
+4
+```
+
+```
+Player 2, choose a number between 1 and 5: 
+```
+
+Player 2 enters:
+
+```
+2
+```
+
+```
+Player 1 chose 4.
+Player 2 chose 2.
+Player 1 wins the battle!
+Player 2 is sent back to their base.
+```
+
+### Victory Announcement
+
+```
+Player 2 has captured Player 1's flag!
+Player 2 Wins!
+```
+
+## Conclusion
+
+**Flag Chase** is a straightforward yet strategically rich game that can be easily implemented in a command-line interface. It combines elements of prediction, bluffing, and tactical movement, ensuring that a skilled player can consistently outmaneuver an unskilled opponent. The game's simplicity in rules and components makes it quick to play while offering depth for strategic planning.
+
+## Summary of Key Points
+
+- **Objective**: Capture the opponent's flag by reaching their base cell (Cell 5 for P1, Cell 1 for P2).
+- **Setup**: 5-cell linear grid; P1 starts at Cell 1, P2 at Cell 5.
+- **Game Components**: Grid with cells, player pieces (P1 and P2).
+- **Turns**: Players alternate turns, moving one cell forward or backward.
+- **Rules and Mechanics**:
+  - Move within grid boundaries.
+  - Battles occur when both players occupy the same cell.
+  - Battles are resolved by secretly choosing numbers between 1 and 5.
+  - Winner of the battle remains; loser returns to base.
+- **Scoring**: No scoring system; the first to capture the opponent's flag wins.
+
+Enjoy playing **Flag Chase** and may the best strategist win!

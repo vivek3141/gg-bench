@@ -1,0 +1,328 @@
+# Number Clash: A Strategic Two-Player Command-Line Game
+
+## Objective
+
+**Number Clash** is a strategic two-player turn-based game where the primary goal is to reduce your opponent's Life Points to zero by playing numbered cards. Players achieve victory by carefully choosing when to attack and when to defend, balancing offense and defense to outmaneuver their opponent. The player who successfully reduces the opponent's Life Points to zero first wins the game.
+
+## Setup
+
+1. **Life Points**: Both players start with **10 Life Points**.
+2. **Deck Preparation**:
+   - Create a shared deck consisting of **number cards from 1 to 10**, with four copies of each card, resulting in a 40-card deck.
+   - Shuffle the deck thoroughly.
+3. **Initial Hand**:
+   - Both players draw **three cards** from the deck to form their starting hand.
+   - Players should keep their hands hidden from their opponent.
+
+## Game Components
+
+- **Number Cards (1-10)**:
+  - **Appearance**: Each card is labeled with a number from 1 to 10.
+  - **Quantity**: There are four copies of each number, totaling 40 cards.
+  - **Functionality**:
+    - **Attack Cards**: Used to deal damage to the opponent.
+    - **Defense Cards**: Used to block incoming attacks.
+  - **Unique Attributes**:
+    - Higher-numbered cards can block or overpower lower-numbered cards.
+    - Strategic value varies based on the timing and combination of plays.
+
+- **Life Points Tracker**:
+  - A numerical value representing each player's remaining Life Points.
+  - Starts at 10 for each player and decreases as they take damage.
+
+## Turns
+
+1. **Turn Order**:
+   - Players decide who goes first (e.g., by coin toss or mutual agreement).
+   - Turns alternate between Player 1 and Player 2.
+
+2. **Turn Structure**:
+   - **Draw Phase**: At the beginning of your turn, if you have fewer than three cards, draw cards from the deck until you have three cards in your hand. If the deck is depleted, skip the draw phase.
+   - **Action Phase**:
+     - **Play an Attack Card**: Choose one card from your hand to attack your opponent.
+     - **Pass**: Optionally, you may choose to pass your turn without attacking.
+   - **End of Turn**: Your turn ends after the Action Phase.
+
+3. **Defense Opportunity**:
+   - When attacked, the defending player may choose to play a Defense Card from their hand to block the attack.
+
+## Rules and Mechanics
+
+### Attacking
+
+- **Playing an Attack Card**:
+  - During your Action Phase, select one card from your hand to initiate an attack.
+  - Announce the attack by stating the number on the card (e.g., "I attack with a 7").
+
+- **Attack Value**:
+  - The number on the Attack Card represents the attack's strength and potential damage.
+
+### Defending
+
+- **Defending Against an Attack**:
+  - Upon being attacked, the defending player may choose to play a Defense Card from their hand.
+  - To successfully block an attack, the Defense Card must be **equal to or higher than** the Attack Card.
+
+- **Defense Outcomes**:
+  - **Successful Block**:
+    - If the Defense Card is equal to or higher than the Attack Card, the attack is blocked, and no Life Points are lost.
+    - Both the Attack and Defense Cards are discarded face-up.
+  - **Failed Block or No Defense**:
+    - If the defender cannot or chooses not to play a Defense Card, they lose Life Points equal to the Attack Card's value.
+    - The Attack Card is discarded face-up.
+    - The defender retains all cards in their hand.
+
+### Special Rules
+
+- **Hand Limit**:
+  - A player may have a maximum of three cards in their hand.
+  - If you already have three cards at the beginning of your turn, you do not draw any additional cards.
+
+- **Deck Depletion**:
+  - If the deck runs out of cards, players continue the game with the cards remaining in their hands.
+  - No further cards can be drawn once the deck is depleted.
+
+- **Passing**:
+  - Players may choose to pass their turn without attacking.
+  - Passing may be strategic to conserve cards or force the opponent to act.
+
+## Scoring
+
+- **Life Points**:
+  - Each player starts with 10 Life Points.
+  - Life Points decrease when a player takes damage from an unblocked attack.
+  - **Damage Calculation**: Damage equals the value of the unblocked Attack Card.
+  - **Winning the Game**: The first player to reduce their opponent's Life Points to zero wins the game.
+
+- **Tie-Breaker**:
+  - There is no draw mechanism. The game continues until one player's Life Points reach zero.
+  - If both players reach zero Life Points in the same turn (possible with special rule variations), the attacking player is declared the winner.
+
+## Examples
+
+### Sample Turn Sequence
+
+#### Initial Hands and Setup
+
+- **Player 1's Hand**: [4, 7, 2]
+- **Player 2's Hand**: [5, 3, 8]
+- Both players have 10 Life Points.
+
+#### Turn 1: Player 1's Turn
+
+1. **Draw Phase**:
+   - Player 1 has three cards and does not draw.
+2. **Action Phase**:
+   - Player 1 decides to attack with the **7**.
+   - Announces: "I attack with a 7."
+3. **Defense Opportunity**:
+   - Player 2 has [5, 3, 8].
+   - Player 2 chooses to defend with the **8**.
+   - Announces: "I defend with an 8."
+4. **Resolution**:
+   - Attack is successfully blocked (8 ≥ 7).
+   - Both the **7** and **8** are discarded.
+5. **End of Turn**:
+   - Player 1's hand: [4, 2]
+   - Player 2's hand: [5, 3]
+
+#### Turn 1: Aftermath
+
+- **Player 1 Life Points**: 10
+- **Player 2 Life Points**: 10
+
+#### Turn 2: Player 2's Turn
+
+1. **Draw Phase**:
+   - Player 2 has two cards, draws one card.
+   - Draws a **6**.
+   - Hand is now [5, 3, 6]
+2. **Action Phase**:
+   - Player 2 attacks with the **6**.
+   - Announces: "I attack with a 6."
+3. **Defense Opportunity**:
+   - Player 1 has [4, 2].
+   - Cannot defend (no card ≥ 6).
+   - Announces: "I cannot defend."
+4. **Resolution**:
+   - Player 1 loses 6 Life Points (10 - 6 = 4).
+   - Attack Card **6** is discarded.
+5. **End of Turn**:
+   - Player 2's hand: [5, 3]
+
+#### Turn 2: Aftermath
+
+- **Player 1 Life Points**: 4
+- **Player 2 Life Points**: 10
+
+#### Turn 3: Player 1's Turn
+
+1. **Draw Phase**:
+   - Player 1 has two cards, draws one card.
+   - Draws a **10**.
+   - Hand is now [4, 2, 10]
+2. **Action Phase**:
+   - Player 1 attacks with the **10**.
+   - Announces: "I attack with a 10."
+3. **Defense Opportunity**:
+   - Player 2 has [5, 3].
+   - Cannot defend (no card ≥ 10).
+   - Announces: "I cannot defend."
+4. **Resolution**:
+   - Player 2 loses 10 Life Points (10 - 10 = 0).
+   - Attack Card **10** is discarded.
+5. **End of Turn**:
+   - Player 1's hand: [4, 2]
+
+#### Conclusion
+
+- **Player 1 Life Points**: 4
+- **Player 2 Life Points**: 0
+- **Winner**: Player 1 wins the game.
+
+## Strategic Tips
+
+- **Card Management**:
+  - Balance the use of high-value cards for both attacking and defending.
+  - Preserve at least one high-numbered card to defend against powerful attacks.
+
+- **Predicting Opponent's Hand**:
+  - Keep track of cards that have been played to anticipate what your opponent may have.
+  - If the opponent has few cards, they may be unable to defend against certain attacks.
+
+- **Tactical Passing**:
+  - Passing can be advantageous if you suspect the opponent cannot attack effectively.
+  - Forces the opponent to act first, potentially depleting their hand.
+
+- **Life Points Consideration**:
+  - Assess whether to take minor damage instead of using a high-value Defense Card.
+  - Sometimes it's better to save powerful cards for critical moments.
+
+## Command-Line Interaction Example
+
+Assuming a command-line interface where players input commands to play the game.
+
+### Starting the Game
+
+```
+Welcome to Number Clash!
+Player 1 and Player 2 both start with 10 Life Points.
+Deck is shuffled. Dealing 3 cards to each player.
+```
+
+### Player 1's Turn
+
+```
+Player 1's turn.
+Your hand: [4, 7, 2]
+Enter your action:
+1. Attack with a card
+2. Pass
+> 1
+Enter the card you want to attack with:
+> 7
+You attack Player 2 with a 7.
+```
+
+### Player 2's Defense
+
+```
+Player 2, you are being attacked with a 7.
+Your hand: [5, 3, 8]
+Enter your action:
+1. Defend with a card
+2. Take damage
+> 1
+Enter the card you want to defend with:
+> 8
+You defend with an 8. Attack is blocked.
+```
+
+### End of Turn Status
+
+```
+Cards discarded: Attack [7], Defense [8]
+Player 1 Life Points: 10
+Player 2 Life Points: 10
+```
+
+### Player 2's Turn
+
+```
+Player 2's turn.
+Your hand: [5, 3]
+Drawing a card...
+You drew a 6.
+Your hand: [5, 3, 6]
+Enter your action:
+1. Attack with a card
+2. Pass
+> 1
+Enter the card you want to attack with:
+> 6
+You attack Player 1 with a 6.
+```
+
+### Player 1's Defense
+
+```
+Player 1, you are being attacked with a 6.
+Your hand: [4, 2]
+Enter your action:
+1. Defend with a card
+2. Take damage
+> 2
+You chose not to defend. You lose 6 Life Points.
+```
+
+### End of Turn Status
+
+```
+Cards discarded: Attack [6]
+Player 1 Life Points: 4
+Player 2 Life Points: 10
+```
+
+### Player 1's Turn
+
+```
+Player 1's turn.
+Your hand: [4, 2]
+Drawing a card...
+You drew a 10.
+Your hand: [4, 2, 10]
+Enter your action:
+1. Attack with a card
+2. Pass
+> 1
+Enter the card you want to attack with:
+> 10
+You attack Player 2 with a 10.
+```
+
+### Player 2's Defense
+
+```
+Player 2, you are being attacked with a 10.
+Your hand: [5, 3]
+Enter your action:
+1. Defend with a card
+2. Take damage
+> 2
+You chose not to defend. You lose 10 Life Points.
+```
+
+### Game Over
+
+```
+Cards discarded: Attack [10]
+Player 1 Life Points: 4
+Player 2 Life Points: 0
+Player 2 has been defeated.
+Player 1 wins the game!
+Thank you for playing Number Clash!
+```
+
+---
+
+Ensure you follow the rules carefully and think strategically to outplay your opponent in **Number Clash**. May the best player win!

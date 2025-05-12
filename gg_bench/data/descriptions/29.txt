@@ -1,0 +1,273 @@
+# Shield and Sword: A Two-Player Turn-Based Strategy Game
+
+## Objective
+
+**Primary Goal:**  
+Be the first player to reduce your opponent's health points to zero.
+
+**Victory Condition:**  
+A player wins the game by strategically selecting actions to deplete the opponent's health while protecting their own. There are no draws; the game continues until one player's health reaches zero.
+
+---
+
+## Setup
+
+**Initial Health Points:**  
+- Each player starts with **10 Health Points (HP)**.
+
+**Actions Available:**  
+- Both players have access to the same set of actions:
+  - **Attack**
+  - **Defend**
+  - **Charge**
+
+**Starting Conditions:**  
+- No additional setup is required. Players are ready to begin the game immediately after understanding the rules and mechanics.
+
+---
+
+## Game Components
+
+**Health Points (HP):**  
+- Represents the player's remaining vitality.
+- Tracked numerically from 10 down to 0.
+
+**Actions:**  
+- **Attack:**
+  - Deals damage to the opponent unless they defend.
+- **Defend:**
+  - Blocks incoming attacks for the current turn.
+- **Charge:**
+  - Enhances the next attack but leaves the player vulnerable.
+
+**Command-Line Inputs:**  
+- Players input their chosen actions during their turn.
+- Actions are selected by typing the corresponding command.
+
+---
+
+## Turns
+
+**Turn Structure:**  
+1. **Action Selection:**
+   - Both players **simultaneously and secretly** choose one action: `Attack`, `Defend`, or `Charge`.
+2. **Action Revelation:**
+   - Players reveal their chosen actions at the same time.
+3. **Action Resolution:**
+   - The outcomes of the actions are calculated based on the rules.
+4. **Health Update:**
+   - HP adjustments are made according to the actions' effects.
+5. **Next Turn:**
+   - The process repeats until one player's HP reaches zero.
+
+**Order of Actions:**  
+- Since actions are simultaneous, there is no priority based on turn order.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Action Selection Constraints:**
+   - Players must choose one of the three actions each turn.
+   - The `Charge` action has effects on subsequent turns.
+
+2. **Attack Mechanics:**
+   - **Standard Damage:** 
+     - Deals **2 damage** to the opponent.
+   - **Blocked Attacks:**
+     - If the opponent chose `Defend`, the attack deals **no damage**.
+   - **Charged Attack:** 
+     - If the player charged in the previous turn, the `Attack` deals **double damage (4 damage)**.
+
+3. **Defend Mechanics:**
+   - **Block Incoming Attacks:**
+     - Negates all damage from an opponent's `Attack` action for that turn.
+   - **No Effect on Charge Damage:**
+     - Does not prevent damage from being attacked while charging.
+
+4. **Charge Mechanics:**
+   - **Enhance Next Attack:**
+     - The next `Attack` action deals double damage.
+   - **Vulnerability:**
+     - If attacked while charging, the player takes **3 damage** instead of the standard 2.
+   - **No Damage Dealt during Charge:**
+     - The `Charge` action itself does not deal damage.
+
+5. **Simultaneous Actions:**
+   - If both players choose the same action, resolve the outcome based on the action type:
+     - **Both Attack:** Both players deal damage to each other unless defended.
+     - **Both Defend:** No damage is dealt.
+     - **Both Charge:** Both players prepare for a stronger attack on the next turn.
+
+### Interaction Examples
+
+- **Attack vs. Attack:** Both players lose 2 HP.
+- **Attack vs. Defend:** The defending player takes no damage.
+- **Attack vs. Charge:** Charging player takes 3 damage; attacker takes no damage.
+- **Defend vs. Charge:** No damage is dealt; charging player prepares for next turn.
+- **Charge vs. Charge:** Both players prepare for a stronger attack; no damage this turn.
+
+---
+
+## Scoring
+
+**Health Point Tracking:**
+- Keep track of each player's HP after every turn.
+- HP cannot exceed the starting amount of 10.
+
+**Winning the Game:**
+- The first player to reduce the opponent's HP to **0 or below** wins.
+- There are no ties or draws; play continues until a winner emerges.
+
+---
+
+## Examples
+
+### Sample Turn Sequence
+
+**Initial State:**
+- Player 1 HP: 10
+- Player 2 HP: 10
+
+**Turn 1:**
+- **Action Selection:**
+  - Player 1 chooses to `Charge`.
+  - Player 2 chooses to `Attack`.
+- **Action Resolution:**
+  - Player 1 is charging and takes 3 damage (vulnerable during charge).
+  - Player 1 HP: 7
+  - Player 2 HP: 10
+- **Notes:**
+  - Player 1's next `Attack` will deal double damage.
+
+**Turn 2:**
+- **Action Selection:**
+  - Player 1 chooses to `Attack` (charged).
+  - Player 2 chooses to `Defend`.
+- **Action Resolution:**
+  - Player 1's charged attack would deal 4 damage but is blocked.
+  - No HP change.
+- **Player States:**
+  - Player 1 HP: 7
+  - Player 2 HP: 10
+
+**Turn 3:**
+- **Action Selection:**
+  - Player 1 chooses to `Attack`.
+  - Player 2 chooses to `Attack`.
+- **Action Resolution:**
+  - Both players deal 2 damage to each other.
+- **Player States:**
+  - Player 1 HP: 5
+  - Player 2 HP: 8
+
+**Turn 4:**
+- **Action Selection:**
+  - Player 1 chooses to `Defend`.
+  - Player 2 chooses to `Attack`.
+- **Action Resolution:**
+  - Player 1 blocks the attack.
+- **Player States:**
+  - Player 1 HP: 5
+  - Player 2 HP: 8
+
+**Turn 5:**
+- **Action Selection:**
+  - Player 1 chooses to `Attack`.
+  - Player 2 chooses to `Charge`.
+- **Action Resolution:**
+  - Player 2 is charging and takes 3 damage.
+- **Player States:**
+  - Player 1 HP: 5
+  - Player 2 HP: 5
+- **Notes:**
+  - Player 2's next `Attack` will deal double damage.
+
+**Turn 6:**
+- **Action Selection:**
+  - Player 1 chooses to `Defend`.
+  - Player 2 chooses to `Attack` (charged).
+- **Action Resolution:**
+  - Player 1 blocks the attack.
+- **Player States:**
+  - Player 1 HP: 5
+  - Player 2 HP: 5
+
+**Turn 7:**
+- **Action Selection:**
+  - Player 1 chooses to `Attack`.
+  - Player 2 chooses to `Attack`.
+- **Action Resolution:**
+  - Both players deal 2 damage to each other.
+- **Player States:**
+  - Player 1 HP: 3
+  - Player 2 HP: 3
+
+**Turn 8:**
+- **Action Selection:**
+  - Player 1 chooses to `Attack`.
+  - Player 2 chooses to `Defend`.
+- **Action Resolution:**
+  - Player 2 blocks the attack.
+- **Player States:**
+  - Player 1 HP: 3
+  - Player 2 HP: 3
+
+**Turn 9:**
+- **Action Selection:**
+  - Player 1 chooses to `Charge`.
+  - Player 2 chooses to `Attack`.
+- **Action Resolution:**
+  - Player 1 takes 3 damage (vulnerable during charge).
+  - **Player 1 HP: 0**
+  - Player 2 HP: 3
+- **Game Over:**
+  - Player 2 wins!
+
+### Command-Line Interaction Example
+
+**Notation:**
+- Players will input their actions when prompted.
+- Outputs will display the results and updated HP.
+
+**Sample Turn:**
+
+```
+[Turn 1]
+Player 1, enter your action (Attack, Defend, Charge): Charge
+Player 2, enter your action (Attack, Defend, Charge): Attack
+
+Actions revealed:
+Player 1 chose Charge.
+Player 2 chose Attack.
+
+Resolution:
+Player 1 is charging and takes 3 damage.
+Player 2's attack hits for 3 damage.
+
+Health Update:
+Player 1 HP: 7
+Player 2 HP: 10
+```
+
+---
+
+## Strategy Tips
+
+- **Predict Opponent's Moves:**  
+  Anticipate whether your opponent will attack, defend, or charge to choose the most effective action.
+
+- **Use Charge Wisely:**  
+  Charging can turn the tide but leaves you vulnerable. Consider your opponent's likely actions.
+
+- **Defend at the Right Time:**  
+  Defending can negate damage but doesn't help you reduce your opponent's HP. Use it when you expect a powerful attack.
+
+- **Keep Track of Previous Actions:**  
+  Remembering what actions your opponent has taken can inform your strategy for future turns.
+
+---
+
+Enjoy the game of **Shield and Sword**, where mind games and strategy determine the victor. May the best tactician win!

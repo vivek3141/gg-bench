@@ -1,0 +1,170 @@
+# Strategy Stacks
+
+## Objective
+
+**Strategy Stacks** is a two-player, turn-based game where players take turns selecting numbers from a shared list. The primary goal is to force your opponent into a position where they cannot make a valid move on their turn, thus securing your victory. Players must strategically select numbers that limit their opponent's options while expanding their own possibilities.
+
+## Setup
+
+1. **Players**: Two players, referred to as **Player 1** and **Player 2**.
+2. **Number List**: A shared list of integers from **1** to **9**.
+3. **Starting Conditions**: The game begins with all numbers available in the list. No numbers have been selected yet.
+
+## Game Components
+
+- **Number List**: A list containing the numbers **1** through **9**. Each number can be selected only once during the game.
+- **Player Selection History**: Each player keeps track of the numbers they have selected. This can be as simple as a list or array in the command-line interface.
+
+## Turns
+
+1. **Turn Order**: Players take turns alternately. **Player 1** goes first.
+2. **Actions per Turn**:
+   - **Select a Number**: On their turn, a player selects a number from the shared list according to the game rules.
+   - **Update Lists**:
+     - Remove the selected number from the shared list.
+     - Add the selected number to the player's selection history.
+3. **Progression**: The game continues with players alternating turns until one player cannot make a valid move.
+
+## Rules and Mechanics
+
+1. **First Turn**:
+   - **Player 1** selects any number from **1** to **9** in the shared list.
+2. **Subsequent Turns**:
+   - On their turn, a player must choose a number from the shared list that is **either a factor or a multiple** of the **last number selected by their opponent**.
+   - If multiple valid numbers are available, the player may choose any of them.
+3. **Invalid Moves**:
+   - If a player cannot select a valid number on their turn (i.e., there are no remaining numbers that are a factor or multiple of the opponent's last selected number), they **lose the game**.
+4. **Number Usage**:
+   - Each number from **1** to **9** can be selected only once during the game. Once a number is selected, it is removed from the shared list and cannot be chosen again.
+
+## Scoring
+
+- **Winning the Game**: The winner is the last player able to make a valid move according to the game rules.
+- **No Point System**: There is no point or scoring system beyond determining the winner. The focus is on strategic number selection to outmaneuver the opponent.
+
+## Examples
+
+### Example Scenario
+
+#### Starting the Game
+
+- **Shared Number List**: `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+- **Player 1 Selection History**: `[]`
+- **Player 2 Selection History**: `[]`
+
+#### Turn-by-Turn Play
+
+1. **Player 1's Turn**:
+   - **Action**: Chooses **6**.
+   - **Reasoning**: Starting with a composite number may limit the opponent's options.
+   - **Updates**:
+     - **Shared Number List**: `[1, 2, 3, 4, 5, 7, 8, 9]`
+     - **Player 1 Selection History**: `[6]`
+
+2. **Player 2's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **6**: `[2, 3]`
+   - **Action**: Chooses **3**.
+   - **Updates**:
+     - **Shared Number List**: `[1, 2, 4, 5, 7, 8, 9]`
+     - **Player 2 Selection History**: `[3]`
+
+3. **Player 1's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **3**: `[9]`
+   - **Action**: Chooses **9**.
+   - **Updates**:
+     - **Shared Number List**: `[1, 2, 4, 5, 7, 8]`
+     - **Player 1 Selection History**: `[6, 9]`
+
+4. **Player 2's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **9**: `[1]`
+   - **Action**: Chooses **1**.
+   - **Updates**:
+     - **Shared Number List**: `[2, 4, 5, 7, 8]`
+     - **Player 2 Selection History**: `[3, 1]`
+
+5. **Player 1's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **1**: `[2, 4, 5, 7, 8]`
+   - **Action**: Chooses **2**.
+   - **Updates**:
+     - **Shared Number List**: `[4, 5, 7, 8]`
+     - **Player 1 Selection History**: `[6, 9, 2]`
+
+6. **Player 2's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **2**: `[4, 8]`
+   - **Action**: Chooses **8**.
+   - **Updates**:
+     - **Shared Number List**: `[4, 5, 7]`
+     - **Player 2 Selection History**: `[3, 1, 8]`
+
+7. **Player 1's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **8**: `[4]`
+   - **Action**: Chooses **4**.
+   - **Updates**:
+     - **Shared Number List**: `[5, 7]`
+     - **Player 1 Selection History**: `[6, 9, 2, 4]`
+
+8. **Player 2's Turn**:
+   - **Available Numbers**: Numbers that are factors or multiples of **4**: None (`[5, 7]` are not factors or multiples of **4**)
+   - **Outcome**: **Player 2 cannot make a valid move and loses the game.**
+
+### Command-Line Interaction Sample
+
+The following is a sample of how the game might be played in a command-line interface:
+
+```
+Game Start!
+Shared Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Player 1's Turn:
+Available Numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+Select a number: 6
+
+Player 2's Turn:
+Last opponent's number: 6
+Available Numbers (factors or multiples of 6): [2, 3]
+Select a number: 3
+
+Player 1's Turn:
+Last opponent's number: 3
+Available Numbers (factors or multiples of 3): [9]
+Select a number: 9
+
+Player 2's Turn:
+Last opponent's number: 9
+Available Numbers (factors or multiples of 9): [1]
+Select a number: 1
+
+Player 1's Turn:
+Last opponent's number: 1
+Available Numbers (factors or multiples of 1): [2, 4, 5, 7, 8]
+Select a number: 2
+
+Player 2's Turn:
+Last opponent's number: 2
+Available Numbers (factors or multiples of 2): [4, 8]
+Select a number: 8
+
+Player 1's Turn:
+Last opponent's number: 8
+Available Numbers (factors or multiples of 8): [4]
+Select a number: 4
+
+Player 2's Turn:
+Last opponent's number: 4
+Available Numbers (factors or multiples of 4): []
+No available moves. Player 2 loses!
+
+Player 1 wins the game!
+```
+
+## Strategic Considerations
+
+- **Plan Ahead**: Consider not only your current move but also how it will affect your opponent's options.
+- **Force Moves**: Try to force your opponent into a position where their only available move limits their future options.
+- **Number Selection**:
+  - **High Numbers**: Selecting higher numbers may limit the opponent's options due to fewer factors.
+  - **Numbers with Multiple Factors**: Choosing numbers like **6** can provide more options for both players. Use this to your advantage based on the game state.
+
+## Conclusion
+
+**Strategy Stacks** is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. The game is quick to play and easy to code for a command-line interface, making it accessible while offering depth for skilled players to consistently win against less experienced opponents.

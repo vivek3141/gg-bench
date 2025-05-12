@@ -1,0 +1,203 @@
+## Spy Versus Spy: A Grid Navigation Duel
+
+### Objective
+
+Be the first player to navigate your spy from your base to your opponent's base on a shared grid filled with hidden traps. Use strategic movement and revealed information to outmaneuver your opponent and reach the goal before they do.
+
+### Setup
+
+- **Grid Creation**: The game is played on a 5x5 grid, creating a total of 25 cells. The grid coordinates range from (0,0) at the top-left corner to (4,4) at the bottom-right corner.
+- **Base Positions**:
+  - **Player 1** starts at their base located at cell **(0,0)** (top-left corner).
+  - **Player 2** starts at their base located at cell **(4,4)** (bottom-right corner).
+- **Trap Placement**:
+  - **Five traps** are randomly placed on the grid at the start of the game.
+  - The positions of the traps are **hidden** from both players.
+  - The trap locations are the **same for both players**, ensuring a fair challenge.
+
+### Game Components
+
+- **Grid**: A 5x5 grid represented in the command-line interface, with cells identified by their coordinates (row, column).
+- **Spies**: Each player controls a spy represented by a unique symbol:
+  - **Player 1**: `S1`
+  - **Player 2**: `S2`
+- **Cells**:
+  - **Unknown Cells**: Represented by `?`, indicating unrevealed areas.
+  - **Safe Cells**: Once revealed, safe cells are marked with `.`.
+  - **Trap Cells**: When revealed, trap cells are marked with `X`.
+  - **Bases**: Marked with `B1` for Player 1's base and `B2` for Player 2's base.
+
+### Turns
+
+- **Turn Order**:
+  - **Player 1** takes the first turn.
+  - Players alternate turns thereafter.
+- **Turn Actions**:
+  - **Movement**: On your turn, move your spy to an adjacent cell (up, down, left, or right).
+  - **Revealing Cells**:
+    - The cell you move into becomes revealed.
+    - If the cell is a trap, you must return to your base.
+
+### Rules and Mechanics
+
+#### Movement Rules
+
+- **Adjacency**: Spies can move to any horizontally or vertically adjacent cell.
+- **Boundaries**: Spies cannot move outside the grid boundaries.
+- **Occupancy**: Both spies can occupy the same cell; however, there is no interaction between spies in the same cell.
+
+#### Cell Revealing
+
+- **Safe Cells (`.`)**:
+  - If you move into a safe cell, your spy remains there.
+  - The cell stays revealed for both players for the rest of the game.
+- **Trap Cells (`X`)**:
+  - If you move into a trap cell, your spy is immediately sent back to your base.
+  - The trap cell is revealed and remains visible to both players.
+
+#### Returning to Base
+
+- **Trap Trigger**:
+  - Upon triggering a trap, you lose any progress and must start over from your base on your next turn.
+- **No Penalty for Safe Cells**:
+  - Moving into a safe cell does not affect your spy negatively.
+
+#### Victory Conditions
+
+- **Winning the Game**:
+  - Reach your opponent's base before they reach yours.
+  - You must land exactly on the opponent's base cell to win.
+
+### Scoring
+
+No point system is used. The game is won by successfully reaching the opponent's base according to the victory conditions.
+
+### Examples
+
+#### Example Turn Sequence
+
+Assume both players start with the grid unrevealed:
+
+```
+Player 1 (S1) starts at (0,0)
+Player 2 (S2) starts at (4,4)
+```
+
+**Turn 1: Player 1**
+
+- **Action**: Move from (0,0) to (0,1)
+- **Result**:
+  - Cell (0,1) is revealed.
+  - Suppose (0,1) is a **safe cell (`.`)**.
+- **Grid Update**:
+
+```
+[ S1 ][  . ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][ B2 ]
+```
+
+**Turn 2: Player 2**
+
+- **Action**: Move from (4,4) to (4,3)
+- **Result**:
+  - Cell (4,3) is revealed.
+  - Suppose (4,3) is a **trap cell (`X`)**.
+  - Player 2 returns to base at (4,4).
+- **Grid Update**:
+
+```
+[ S1 ][  . ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  X ][ S2 ]
+```
+
+**Turn 3: Player 1**
+
+- **Action**: Move from (0,1) to (0,2)
+- **Result**:
+  - Cell (0,2) is revealed.
+  - Suppose (0,2) is a **safe cell (`.`)**.
+- **Grid Update**:
+
+```
+[  . ][ S1 ][  . ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  X ][ S2 ]
+```
+
+**Turn 4: Player 2**
+
+- **Action**: Attempt to move from (4,4) to (3,4)
+- **Result**:
+  - Cell (3,4) is revealed.
+  - Suppose (3,4) is a **safe cell (`.`)**.
+  - Player 2 moves to (3,4).
+- **Grid Update**:
+
+```
+[  . ][ S1 ][  . ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][  ? ]
+[  ? ][  ? ][  ? ][  ? ][ S2 ]
+[  ? ][  ? ][  ? ][  X ][  . ]
+```
+
+**Gameplay Continues**
+
+Players continue taking turns, revealing more of the grid and navigating towards each other's bases while avoiding traps.
+
+#### Sample Command-Line Interaction
+
+**Player 1's Turn**
+
+```
+It's Player 1's turn.
+Current Position: (0,1)
+Enter move direction (up, down, left, right): right
+You moved right to (0,2).
+Cell (0,2) is safe.
+```
+
+**Player 2's Turn**
+
+```
+It's Player 2's turn.
+Current Position: (4,4)
+Enter move direction (up, down, left, right): up
+You moved up to (3,4).
+Cell (3,4) is safe.
+```
+
+**Player 1 Encounters a Trap**
+
+```
+It's Player 1's turn.
+Current Position: (0,2)
+Enter move direction (up, down, left, right): down
+You moved down to (1,2).
+Oh no! You hit a trap at (1,2)!
+Returning to base at (0,0).
+```
+
+### Additional Notes
+
+- **Strategy Tips**:
+  - **Memory**: Keep track of revealed safe cells and traps to plan your route effectively.
+  - **Risk Management**: Decide when to explore new cells or use known safe paths.
+  - **Anticipate Opponent**: Watch your opponent's moves to infer safe paths and potential traps.
+- **Game Balance**:
+  - Since both players share the same trap locations, the game is balanced and fair.
+  - The element of chance is minimized as the game progresses and more of the grid is revealed.
+
+### Summary
+
+"Spy Versus Spy: A Grid Navigation Duel" is a strategic, turn-based game that challenges players to navigate through a hidden grid filled with traps. With simple mechanics suitable for a command-line interface, the game emphasizes strategic planning, memory, and adaptability. The first spy to successfully reach the opponent's base wins the game.
+
+Enjoy the challenge and may the best spy win!

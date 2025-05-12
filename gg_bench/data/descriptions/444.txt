@@ -1,0 +1,239 @@
+# Divisor Duel
+
+## Objective
+
+Be the player who reduces the shared number to **1** by strategically subtracting its proper divisors. The goal is to force your opponent into a position where they cannot make a valid move.
+
+---
+
+## Setup
+
+1. **Choose a Starting Number (`N`):**
+   - Decide on a positive integer greater than **1** to be the starting number. For a quick game, choose a smaller number (e.g., 15 or 21). For a longer game, select a larger number (e.g., 50 or 100).
+   - This number `N` is shared between both players and will decrease as the game progresses.
+
+2. **Determine Player Order:**
+   - Decide who will take the first turn. This can be done by mutual agreement, coin toss, or any random method.
+
+---
+
+## Game Components
+
+- **Shared Number (`N`):** The central number that players will manipulate during the game.
+- **Proper Divisors:** Positive integers less than `N` that divide `N` evenly without leaving a remainder (excluding `N` itself).
+- **No Physical Components Required:** The game can be played using paper and pencil or within a command-line interface, making it easy and simple to code.
+
+---
+
+## Turns
+
+1. **Player Actions:**
+   - On your turn, you must perform the following steps:
+     1. **Identify Proper Divisors:** List all proper divisors of the current `N`.
+     2. **Choose a Divisor:** Select one of the proper divisors to subtract from `N`.
+     3. **Calculate New `N`:** Subtract the chosen divisor from `N` to get the new `N`.
+     4. **Announce Move:** Inform your opponent of the chosen divisor and the new value of `N`.
+
+2. **Turn Progression:**
+   - Players alternate turns until the game ends.
+   - The game ends when `N` is reduced to **1** or a player cannot make a valid move.
+
+---
+
+## Rules and Mechanics
+
+1. **Valid Moves:**
+   - On your turn, you **must** subtract a proper divisor of the current `N`.
+   - A **proper divisor** is a positive integer less than `N` that divides `N` evenly.
+     - For example, the proper divisors of **15** are **1**, **3**, and **5**.
+
+2. **Subtracting Divisors:**
+   - Subtract the chosen proper divisor from `N`:
+     \[
+     N_{\text{new}} = N_{\text{current}} - \text{divisor}
+     \]
+   - The new `N` becomes the starting point for the next player's turn.
+
+3. **Winning the Game:**
+   - If you reduce `N` to **1** on your turn, you **win** the game.
+   - Announce that `N` is now **1** and that you have won.
+
+4. **Losing the Game:**
+   - If it's your turn and `N` is **1**, or if `N` has no proper divisors (meaning it's a prime number and only divisible by **1** and itself), you cannot make a move and thus **lose** the game.
+
+5. **No Skipping Turns:**
+   - Players cannot skip their turn. If a valid move is possible, it must be made.
+
+---
+
+## Scoring
+
+- **Win/Loss Outcome:**
+  - The game is won by the player who reduces `N` to **1**.
+  - There is no point scoring. The focus is on strategic play and winning the game.
+
+---
+
+## Examples
+
+### Example Game 1
+
+**Starting `N`:** 15
+
+#### Turn 1
+- **Player 1's Turn:**
+  - Proper divisors of 15: **1**, **3**, **5**
+  - Player 1 chooses to subtract **5**.
+  - New `N`: \(15 - 5 = 10\)
+  - Announces: "I subtract 5 from 15. New N is 10."
+
+#### Turn 2
+- **Player 2's Turn:**
+  - Proper divisors of 10: **1**, **2**, **5**
+  - Player 2 chooses to subtract **5**.
+  - New `N`: \(10 - 5 = 5\)
+  - Announces: "I subtract 5 from 10. New N is 5."
+
+#### Turn 3
+- **Player 1's Turn:**
+  - Proper divisors of 5: **1**
+  - Player 1 chooses to subtract **1**.
+  - New `N`: \(5 - 1 = 4\)
+  - Announces: "I subtract 1 from 5. New N is 4."
+
+#### Turn 4
+- **Player 2's Turn:**
+  - Proper divisors of 4: **1**, **2**
+  - Player 2 chooses to subtract **2**.
+  - New `N`: \(4 - 2 = 2\)
+  - Announces: "I subtract 2 from 4. New N is 2."
+
+#### Turn 5
+- **Player 1's Turn:**
+  - Proper divisors of 2: **1**
+  - Player 1 chooses to subtract **1**.
+  - New `N`: \(2 - 1 = 1\)
+  - Announces: "I subtract 1 from 2. New N is 1."
+  - **Player 1 wins the game!**
+
+### Example Game 2
+
+**Starting `N`:** 21
+
+#### Turn 1
+- **Player 1's Turn:**
+  - Proper divisors of 21: **1**, **3**, **7**
+  - Player 1 chooses to subtract **7**.
+  - New `N`: \(21 - 7 = 14\)
+  - Announces: "I subtract 7 from 21. New N is 14."
+
+#### Turn 2
+- **Player 2's Turn:**
+  - Proper divisors of 14: **1**, **2**, **7**
+  - Player 2 chooses to subtract **7**.
+  - New `N`: \(14 - 7 = 7\)
+  - Announces: "I subtract 7 from 14. New N is 7."
+
+#### Turn 3
+- **Player 1's Turn:**
+  - Proper divisors of 7: **1**
+  - Player 1 chooses to subtract **1**.
+  - New `N`: \(7 - 1 = 6\)
+  - Announces: "I subtract 1 from 7. New N is 6."
+
+#### Turn 4
+- **Player 2's Turn:**
+  - Proper divisors of 6: **1**, **2**, **3**
+  - Player 2 chooses to subtract **3**.
+  - New `N`: \(6 - 3 = 3\)
+  - Announces: "I subtract 3 from 6. New N is 3."
+
+#### Turn 5
+- **Player 1's Turn:**
+  - Proper divisors of 3: **1**
+  - Player 1 chooses to subtract **1**.
+  - New `N`: \(3 - 1 = 2\)
+  - Announces: "I subtract 1 from 3. New N is 2."
+
+#### Turn 6
+- **Player 2's Turn:**
+  - Proper divisors of 2: **1**
+  - Player 2 chooses to subtract **1**.
+  - New `N`: \(2 - 1 = 1\)
+  - Announces: "I subtract 1 from 2. New N is 1."
+  - **Player 2 wins the game!**
+
+---
+
+## Command-Line Interaction Example
+
+Here's how the game might look in a command-line interface.
+
+```
+=== Divisor Duel ===
+
+Enter starting number N (greater than 1): 15
+
+Player 1 and Player 2, decide who goes first.
+
+-- Player 1's Turn --
+Current N is 15
+Proper divisors of 15 are: 1, 3, 5
+Enter the divisor to subtract: 5
+You subtracted 5 from N.
+New N is 10
+
+-- Player 2's Turn --
+Current N is 10
+Proper divisors of 10 are: 1, 2, 5
+Enter the divisor to subtract: 5
+You subtracted 5 from N.
+New N is 5
+
+-- Player 1's Turn --
+Current N is 5
+Proper divisors of 5 are: 1
+Enter the divisor to subtract: 1
+You subtracted 1 from N.
+New N is 4
+
+-- Player 2's Turn --
+Current N is 4
+Proper divisors of 4 are: 1, 2
+Enter the divisor to subtract: 2
+You subtracted 2 from N.
+New N is 2
+
+-- Player 1's Turn --
+Current N is 2
+Proper divisors of 2 are: 1
+Enter the divisor to subtract: 1
+You subtracted 1 from N.
+New N is 1
+
+N has been reduced to 1.
+Player 1 wins the game!
+
+Thank you for playing Divisor Duel.
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:** Consider how your move will affect the subsequent choices available to your opponent.
+- **Control the Game:** Aim to reduce `N` to numbers that limit your opponent's options.
+- **Prime Numbers:** Be mindful when `N` becomes a prime number greater than 2, as the only proper divisor will be **1**.
+- **Avoid Giving Advantage:** Try not to reduce `N` to a number where the only proper divisor is **1** on your turn unless it leads you directly to a win.
+
+---
+
+## Additional Notes
+
+- **Mathematical Skills:** Basic knowledge of divisibility and prime numbers enhances the strategic depth.
+- **Fair Play:** Ensure both players have equal understanding of the rules and access to necessary tools (like a list of divisors) if needed.
+- **Variations:** For added complexity, experiment with different starting numbers or introduce time limits per turn.
+
+---
+
+Enjoy testing your numerical strategy and foresight in **Divisor Duel**!

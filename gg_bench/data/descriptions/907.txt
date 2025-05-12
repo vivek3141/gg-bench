@@ -1,0 +1,154 @@
+# Divider's Duel: Rule Book
+
+## Objective
+
+**Divider's Duel** is a two-player, turn-based numerical strategy game. The primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns dividing a shared number by its proper divisors. The player who makes the last valid move wins the game.
+
+## Setup
+
+- **Starting Number**: The game begins with a shared positive integer called the **Current Number**. The default starting number is **60**, but players can agree on any suitable positive integer greater than 2.
+- **Player Roles**: There are two players, referred to as **Player 1** and **Player 2**. Players decide who goes first, perhaps by a coin toss or mutual agreement.
+
+## Game Components
+
+- **Current Number**: A shared positive integer that changes throughout the game based on players' moves.
+- **Proper Divisors**: The divisors of the Current Number excluding 1 and the number itself. These are the numbers players can choose to divide the Current Number.
+- **Command-Line Interface**: Players input their moves and receive game updates via the command line.
+
+## Turns
+
+- Players alternate turns starting with **Player 1**.
+- On their turn, a player must:
+  1. **Choose a Proper Divisor** of the Current Number.
+  2. **Divide** the Current Number by the chosen divisor.
+  3. **Update** the Current Number to the result of the division.
+
+## Rules and Mechanics
+
+1. **Valid Moves**:
+   - A move is valid if the chosen divisor is a proper divisor of the Current Number (greater than 1 and less than the Current Number).
+   - The result of the division must be an integer (no fractions or decimals).
+
+2. **Updating the Current Number**:
+   - After a valid division, the Current Number becomes the integer result of the division.
+   - The new Current Number is used by the next player on their turn.
+
+3. **Winning the Game**:
+   - A player **loses** if:
+     - They cannot make a valid move on their turn because the Current Number is a **prime number** (it has no proper divisors other than 1 and itself).
+     - They attempt to make an invalid move (e.g., choosing a non-divisor or resulting in a non-integer).
+
+   - The opposing player **wins** the game.
+
+4. **No Draws**:
+   - The game cannot end in a draw. Play continues until one player cannot make a valid move.
+
+## Scoring
+
+- **Victory**: The player who forces their opponent into a position with no valid moves wins the game.
+- **Tracking**: No points are accumulated; only the win/loss outcome matters.
+
+## Examples
+
+### Example Game Play
+
+**Starting the Game**
+
+- Current Number: **60**
+- Player 1 and Player 2 decide who goes first. Let's say **Player 1** starts.
+
+---
+
+#### **Turn 1: Player 1**
+
+- **Current Number**: 60
+- **Proper Divisors of 60**: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+- **Player 1's Move**: Chooses divisor **2**
+- **Calculation**: 60 ÷ 2 = **30**
+- **Updated Current Number**: **30**
+
+---
+
+#### **Turn 2: Player 2**
+
+- **Current Number**: 30
+- **Proper Divisors of 30**: 2, 3, 5, 6, 10, 15
+- **Player 2's Move**: Chooses divisor **5**
+- **Calculation**: 30 ÷ 5 = **6**
+- **Updated Current Number**: **6**
+
+---
+
+#### **Turn 3: Player 1**
+
+- **Current Number**: 6
+- **Proper Divisors of 6**: 2, 3
+- **Player 1's Move**: Chooses divisor **3**
+- **Calculation**: 6 ÷ 3 = **2**
+- **Updated Current Number**: **2**
+
+---
+
+#### **Turn 4: Player 2**
+
+- **Current Number**: 2
+- **Proper Divisors of 2**: None (since 2 is prime)
+- **Player 2's Situation**: Cannot make a valid move
+- **Result**: **Player 2 loses**, **Player 1 wins**
+
+---
+
+### Sample Command-Line Interaction
+
+Below is how the game might unfold in a command-line interface.
+
+**Game Start**
+
+```
+Welcome to Divider's Duel!
+Starting Number: 60
+
+Player 1's turn.
+Current Number: 60
+Proper Divisors: 2, 3, 4, 5, 6, 10, 12, 15, 20, 30
+Enter your chosen divisor: 2
+60 divided by 2 is 30.
+
+Player 2's turn.
+Current Number: 30
+Proper Divisors: 2, 3, 5, 6, 10, 15
+Enter your chosen divisor: 5
+30 divided by 5 is 6.
+
+Player 1's turn.
+Current Number: 6
+Proper Divisors: 2, 3
+Enter your chosen divisor: 3
+6 divided by 3 is 2.
+
+Player 2's turn.
+Current Number: 2
+Proper Divisors: None
+2 is a prime number. No valid moves left.
+Player 2 cannot make a move. Player 1 wins!
+```
+
+---
+
+## Additional Guidelines
+
+- **Input Validation**: The game should check that players enter valid divisors.
+- **Strategy Tips**:
+  - Aim to reduce the Current Number to a prime number on your opponent's turn.
+  - Be cautious of numbers that have fewer proper divisors.
+  - Plan ahead by considering the possible divisors your opponent will have.
+
+- **Custom Starting Number**:
+  - Players can agree to start with a different number for variety.
+  - Recommended to choose composite numbers to ensure multiple divisors.
+
+## Conclusion
+
+Divider's Duel is a simple yet strategic game that requires players to think ahead and make calculated moves. The rules are straightforward, making it easy to code and play via a command-line interface. The absence of a draw mechanism ensures that each game concludes with a definitive winner, and skilled players can consistently outmaneuver less experienced opponents through strategic play.
+
+Enjoy the challenge and may the best strategist win!

@@ -1,0 +1,171 @@
+# Quantum Clash: A Command-Line Strategy Game
+
+## Objective
+
+The objective of **Quantum Clash** is to be the first player to collapse all quantum nodes on the game grid to your favor. Players strategically control and collapse nodes by choosing actions that influence the state of the grid. A player wins by successfully converting all nodes to their color, leaving no potential moves for the opponent.
+
+## Setup
+
+- **Game Grid**: A 3x3 grid of quantum nodes, each starting in a neutral state.
+- **Players**: Two players, **Player Red** and **Player Blue**.
+- **Starting Conditions**: All nodes are initialized in a superposition state, not owned by either player.
+
+## Game Components
+
+- **Quantum Nodes**: Represented in the command-line interface as grid positions (e.g., A1, B2, C3).
+  - **States**:
+    - **Superposition (S)**: Neutral state, available for influence.
+    - **Collapsed to Red (R)**: Controlled by Player Red.
+    - **Collapsed to Blue (B)**: Controlled by Player Blue.
+- **Energy Points (EP)**:
+  - Each player starts with **5 Energy Points**.
+  - Energy Points are used to perform actions.
+
+## Turns
+
+- Players alternate turns, starting with **Player Red**.
+- **Turn Structure**:
+  1. **Choose Action**: Influence a node, collapse a node, or pass.
+  2. **Resolve Action**: Apply the effects of the chosen action.
+  3. **Update EP**: Adjust Energy Points based on actions taken.
+  4. **Check for Win Condition**: Determine if a player has won the game.
+
+## Rules and Mechanics
+
+### Actions
+
+1. **Influence a Node**:
+   - **Cost**: 1 EP.
+   - **Effect**: Place an influence marker on a superposition node.
+     - If the node already has the opponent's influence, the markers cancel out and are removed.
+     - If the node has no opposing influence, your marker remains.
+   - **Limit**: A node can have only one influence marker per player.
+
+2. **Collapse a Node**:
+   - **Cost**: 2 EP.
+   - **Prerequisite**: You must have an influence marker on the node, and the opponent must have none.
+   - **Effect**: The node collapses to your color and is now under your control.
+
+3. **Pass**:
+   - **Cost**: 0 EP.
+   - **Effect**: Skip your turn.
+
+### Energy Points (EP)
+
+- **Replenishment**: At the start of your turn, you gain **2 EP**, up to a maximum of 5 EP.
+- **Management**: Strategically spend EP to control the board.
+
+### Node Interactions
+
+- **Influence Markers**:
+  - Represented as `(r)` for Red and `(b)` for Blue next to the node identifier.
+  - Markers are visible to both players.
+- **Cancelling Out**:
+  - If both players have influence on a node, the node returns to superposition, and both markers are removed.
+  
+### Winning the Game
+
+- A player wins when:
+  - All nodes have collapsed to their color.
+  - The opponent has no legal moves remaining (no EP and cannot perform any action).
+
+## Scoring
+
+- **Victory**: The winning player is declared based on the win conditions.
+- **No Points System**: The game does not track points beyond the win condition.
+
+## Examples
+
+### Sample Turn Structure
+
+#### Initial Grid State:
+
+```
+  A   B   C
+1 [S] [S] [S]
+2 [S] [S] [S]
+3 [S] [S] [S]
+```
+
+#### Player Red's Turn:
+
+- **EP**: 5
+- **Action**: Influence node B2.
+- **EP after action**: 4
+- **Grid Update**:
+
+```
+  A     B       C
+1 [S]   [S]     [S]
+2 [S]  [S](r)   [S]
+3 [S]   [S]     [S]
+```
+
+#### Player Blue's Turn:
+
+- **EP**: 5
+- **Action**: Influence node B2.
+- **EP after action**: 4
+- **Resolution**:
+  - Blue's influence cancels Red's influence on B2.
+- **Grid Update**:
+
+```
+  A   B   C
+1 [S] [S] [S]
+2 [S] [S] [S]
+3 [S] [S] [S]
+```
+
+#### Player Red's Next Turn:
+
+- **EP**: 6 (but capped at 5 EP maximum)
+- **Action**: Influence node A1.
+- **EP after action**: 4
+- **Grid Update**:
+
+```
+  A    B   C
+1 [S](r)[S][S]
+2 [S] [S] [S]
+3 [S] [S] [S]
+```
+
+### Command-Line Interaction Example
+
+**Player Red's Turn:**
+
+```
+Your EP: 5
+Available actions:
+1. Influence a node (Cost: 1 EP)
+2. Collapse a node (Cost: 2 EP)
+3. Pass (Cost: 0 EP)
+Choose action: 1
+Enter node to influence (e.g., A1): B2
+You have placed an influence marker on B2.
+```
+
+**Player Blue's Turn:**
+
+```
+Your EP: 5
+Available actions:
+1. Influence a node (Cost: 1 EP)
+2. Collapse a node (Cost: 2 EP)
+3. Pass (Cost: 0 EP)
+Choose action: 1
+Enter node to influence (e.g., A1): B2
+You have cancelled the influence on B2. It remains in superposition.
+```
+
+## Strategy Tips
+
+- **EP Management**: Balance your EP spending to ensure you can perform critical actions when needed.
+- **Influence Placement**: Anticipate your opponent's moves by placing influence on nodes that are strategic for collapse.
+- **Blocking**: Use influence to block your opponent from collapsing nodes.
+- **Collapsing Early**: Secure nodes by collapsing them when the opportunity arises to prevent interference.
+
+---
+
+Enjoy playing **Quantum Clash** and may the most strategic player win!

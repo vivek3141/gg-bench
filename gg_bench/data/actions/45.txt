@@ -1,0 +1,15 @@
+In the game, the action space is represented by a single integer from 0 to 15, corresponding to each cell in the 4x4 grid. The indices are mapped to grid positions by interpreting the integer as a row-major order index. Specifically:
+
+- **Action Index = row * grid_size + column**
+  
+This means:
+- Index 0 maps to the top-left cell (row 0, column 0).
+- Index 1 maps to (row 0, column 1).
+- Index 2 maps to (row 0, column 2).
+- Index 3 maps to (row 0, column 3).
+- ...
+- Index 15 maps to the bottom-right cell (row 3, column 3).
+
+To convert an action index to grid coordinates, use:
+- **Row** = index // grid_size
+- **Column** = index % grid_size

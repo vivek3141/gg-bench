@@ -1,0 +1,352 @@
+# **Blockade**
+
+## **Objective**
+
+The objective of **Blockade** is to be the first player to prevent your opponent from making any valid moves. Players achieve victory by strategically placing their symbols on a grid to limit the opponent's options until they have no legal moves left.
+
+---
+
+## **Setup**
+
+1. **Game Grid:** Prepare a 5x5 grid representing the game board. Each cell in the grid is identified by its row and column numbers, ranging from 1 to 5. The grid is initially empty.
+
+2. **Player Symbols:**
+   - **Player 1:** Uses the symbol `X`.
+   - **Player 2:** Uses the symbol `O`.
+
+3. **Starting Conditions:** Decide which player will make the first move (Player 1 by default).
+
+---
+
+## **Game Components**
+
+- **Grid Cells (25):** Each cell can be in one of three states:
+  - **Empty (`.`):** The cell is unoccupied.
+  - **Occupied by Player 1 (`X`):** The cell contains Player 1's symbol.
+  - **Occupied by Player 2 (`O`):** The cell contains Player 2's symbol.
+
+- **Player Symbols:**
+  - **`X`:** Represents Player 1.
+  - **`O`:** Represents Player 2.
+
+- **Game Grid Visualization:**
+
+  ```
+  (1,1) (1,2) (1,3) (1,4) (1,5)
+  (2,1) (2,2) (2,3) (2,4) (2,5)
+  (3,1) (3,2) (3,3) (3,4) (3,5)
+  (4,1) (4,2) (4,3) (4,4) (4,5)
+  (5,1) (5,2) (5,3) (5,4) (5,5)
+  ```
+
+---
+
+## **Turns**
+
+1. **Turn Order:** Players alternate turns, starting with Player 1 unless otherwise decided.
+
+2. **Player Actions on Their Turn:**
+   - **Place Symbol:** Place your symbol (`X` or `O`) on one valid empty cell following the placement rules.
+
+3. **Turn Progression:**
+   - After placing a symbol, the turn passes to the opponent.
+   - The game continues until one player cannot make a valid move on their turn.
+
+---
+
+## **Rules and Mechanics**
+
+### **Placement Rules:**
+
+1. **First Move:**
+   - The first player can place their symbol on **any** empty cell on the grid.
+
+2. **Subsequent Moves:**
+   - A player must place their symbol on an empty cell that is **adjacent** (up, down, left, or right) to a cell **most recently** occupied by the opponent.
+   - Diagonal adjacency is **not** considered valid.
+
+3. **Valid Cells for Placement:**
+   - A cell is valid if it is empty and directly adjacent to the opponent's last placed symbol.
+   - If there are multiple valid cells, the player can choose any one of them.
+
+### **Movement Restrictions:**
+
+- **Occupied Cells:** Players cannot place their symbol on a cell that is already occupied by any symbol.
+- **No Valid Moves:** If a player has no valid cells to place their symbol (i.e., no empty cells adjacent to the opponent's last move), they lose the game.
+
+---
+
+## **Scoring**
+
+- **Winning the Game:** The player who successfully blocks their opponent, leaving them with no valid moves on their turn, wins the game.
+- **No Points System:** There is no point scoring; the game is won by achieving the objective.
+- **No Draws:** The game cannot end in a draw due to the finite grid size and placement rules.
+
+---
+
+## **Examples**
+
+### **Example Game Playthrough**
+
+#### **Initial Grid:**
+
+All cells are empty.
+
+```
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . .
+```
+
+#### **Turn 1: Player 1**
+
+- **Action:** Player 1 places `X` at **(3,3)** (center of the grid).
+- **Grid:**
+
+  ```
+  . . . . .
+  . . . . .
+  . . X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 2: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (3,3):
+  - (2,3), (4,3), (3,2), (3,4)
+- **Action:** Player 2 places `O` at **(3,2)**.
+- **Grid:**
+
+  ```
+  . . . . .
+  . . . . .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 3: Player 1**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (3,2):
+  - (2,2), (4,2), (3,1)
+- **Action:** Player 1 places `X` at **(2,2)**.
+- **Grid:**
+
+  ```
+  . . . . .
+  . X . . .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 4: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (2,2):
+  - (1,2), (2,1), (2,3)
+- **Action:** Player 2 places `O` at **(2,3)**.
+- **Grid:**
+
+  ```
+  . . . . .
+  . X O . .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 5: Player 1**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (2,3):
+  - (1,3), (2,4)
+- **Action:** Player 1 places `X` at **(2,4)**.
+- **Grid:**
+
+  ```
+  . . . . .
+  . X O X .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 6: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (2,4):
+  - (1,4), (2,5)
+- **Action:** Player 2 places `O` at **(1,4)**.
+- **Grid:**
+
+  ```
+  . . . O .
+  . X O X .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 7: Player 1**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (1,4):
+  - (1,3), (1,5)
+- **Action:** Player 1 places `X` at **(1,3)**.
+- **Grid:**
+
+  ```
+  . . X O .
+  . X O X .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 8: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (1,3):
+  - (1,2)
+- **Action:** Player 2 places `O` at **(1,2)**.
+- **Grid:**
+
+  ```
+  . O X O .
+  . X O X .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 9: Player 1**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (1,2):
+  - (1,1), (2,2)
+- **Note:** (2,2) is already occupied.
+- **Action:** Player 1 places `X` at **(1,1)**.
+- **Grid:**
+
+  ```
+  X O X O .
+  . X O X .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 10: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (1,1):
+  - (2,1)
+- **Action:** Player 2 places `O` at **(2,1)**.
+- **Grid:**
+
+  ```
+  X O X O .
+  O X O X .
+  . O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 11: Player 1**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (2,1):
+  - (3,1)
+- **Action:** Player 1 places `X` at **(3,1)**.
+- **Grid:**
+
+  ```
+  X O X O .
+  O X O X .
+  X O X . .
+  . . . . .
+  . . . . .
+  ```
+
+#### **Turn 12: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (3,1):
+  - (4,1)
+- **Action:** Player 2 places `O` at **(4,1)**.
+- **Grid:**
+
+  ```
+  X O X O .
+  O X O X .
+  X O X . .
+  O . . . .
+  . . . . .
+  ```
+
+#### **Turn 13: Player 1**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (4,1):
+  - (5,1)
+- **Action:** Player 1 places `X` at **(5,1)**.
+- **Grid:**
+
+  ```
+  X O X O .
+  O X O X .
+  X O X . .
+  O . . . .
+  X . . . .
+  ```
+
+#### **Turn 14: Player 2**
+
+- **Valid Placement Cells:** Any empty cell adjacent to (5,1):
+  - None (since (4,1) and (5,2) are either occupied or not adjacent to the last move)
+- **Outcome:** Player 2 has no valid moves.
+
+---
+
+### **Conclusion**
+
+- **Winner:** Player 1 wins the game as Player 2 cannot make a valid move.
+- **Game End Condition:** Player 2 has no empty adjacent cells to the last symbol placed by Player 1 at (5,1).
+
+---
+
+## **Strategic Tips**
+
+- **Control the Center:** Early in the game, controlling central positions can offer more adjacent cells for future moves.
+- **Limit Opponent's Options:** Place your symbols to reduce the number of valid adjacent cells available to your opponent on their next turn.
+- **Plan Ahead:** Anticipate your opponent's possible moves and aim to force them into positions with fewer subsequent options.
+- **Edge and Corner Cells:** Be cautious when playing on the edges and corners as they have fewer adjacent cells, which can be advantageous or limiting depending on the situation.
+
+---
+
+## **Command-Line Interaction Example**
+
+### **Notation:**
+
+- Rows and columns are numbered from 1 to 5.
+- Input format for placing a symbol: `row column` (e.g., `3 3`).
+
+### **Sample Turn Interaction:**
+
+#### **Player 1's Turn:**
+
+```
+Player 1 (X), enter your move (row column): 3 3
+```
+
+- Player 1 inputs: `3 3`
+- The game updates the grid and displays it.
+
+#### **Player 2's Turn:**
+
+```
+Player 2 (O), possible moves adjacent to (3,3):
+(2,3), (4,3), (3,2), (3,4)
+Enter your move (row column): 3 2
+```
+
+- Player 2 inputs: `3 2`
+- The game updates and displays the grid.
+
+---
+
+By following these rules and understanding the mechanics, players can enjoy a competitive and strategic game of **Blockade**. May the most strategic player win!

@@ -1,0 +1,224 @@
+# Summation Showdown
+
+## Objective
+
+Be the first player to reach **exactly 50** by strategically adding numbers from your unique set to the shared total. Plan your moves carefully to outmaneuver your opponent and force them into a position where they cannot win.
+
+---
+
+## Setup
+
+1. **Players**: Two players compete against each other.
+2. **Initial Total**: The game starts with a shared total of **0**.
+3. **Number Sets**:
+   - **Player 1** receives a unique set of numbers from **1 to 9** (inclusive).
+   - **Player 2** receives a different unique set of numbers from **1 to 9** (inclusive).
+   - Each player's set is independent; numbers used by one player are not available to the other.
+
+---
+
+## Game Components
+
+- **Number Sets**: Each player has their own set of numbers from **1 to 9**:
+
+  ```
+  Player 1's Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+  Player 2's Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+  ```
+
+- **Shared Total**: A single integer value that both players contribute to, starting at **0**.
+
+- **Command-Line Interface**: Players input their chosen numbers and view the shared total through text-based prompts.
+
+---
+
+## Turns
+
+- **Turn Order**: Players take turns alternately. Decide who goes first by mutual agreement or a random method before starting the game.
+
+- **Turn Actions**:
+  - **Select a Number**: On their turn, a player selects **one unused number** from their own set.
+  - **Add to Total**: The selected number is added to the shared total.
+  - **Announce Move**: The player must announce the chosen number and the new total.
+
+- **Turn Progression**: After a player completes their turn, the other player takes their turn following the same structure.
+
+---
+
+## Rules and Mechanics
+
+1. **Selecting Numbers**:
+   - Players can only choose **unused numbers** from their own set.
+   - Once a number is used, it cannot be selected again by that player.
+
+2. **Adding to Total**:
+   - On each turn, the player's chosen number is **added** to the shared total.
+   - The new total must be **tracked and announced** after each addition.
+
+3. **Winning the Game**:
+   - The player whose addition brings the shared total to **exactly 50** **wins** the game.
+   - Strategic selection of numbers is crucial to reach exactly 50.
+
+4. **Losing the Game**:
+   - If a player's addition causes the total to **exceed 50**, they **lose** the game immediately.
+   - Players must be cautious to avoid surpassing the target total.
+
+5. **Forbidden Moves**:
+   - Players **cannot skip their turn**.
+   - Players **must** select a number if they have unused numbers remaining.
+
+6. **End of Numbers**:
+   - If both players run out of numbers before reaching 50, the player whose move caused all numbers to be used **loses** the game.
+
+---
+
+## Scoring
+
+- **Victory**: The winning player is the one who brings the total to exactly 50.
+- **Defeat**: A player loses if they:
+  - Cause the total to exceed 50.
+  - Have no valid moves left when it's their turn (all numbers used and total is below 50).
+
+- **No Draws**: The game cannot end in a draw due to the finite number of moves and the rules governing victory and defeat.
+
+---
+
+## Examples
+
+Below are example scenarios illustrating how the game is played using command-line interactions.
+
+### Example 1: Standard Playthrough
+
+**Initial Setup**:
+- Shared Total: 0
+- Player 1's Numbers: 1-9
+- Player 2's Numbers: 1-9
+
+**Turn 1**:
+- **Player 1** selects **9**.
+- Shared Total: 0 + 9 = **9**
+- *Command Output*: `Player 1 chooses 9. Total is now 9.`
+
+**Turn 2**:
+- **Player 2** selects **8**.
+- Shared Total: 9 + 8 = **17**
+- *Command Output*: `Player 2 chooses 8. Total is now 17.`
+
+**Turn 3**:
+- **Player 1** selects **7**.
+- Shared Total: 17 + 7 = **24**
+- *Command Output*: `Player 1 chooses 7. Total is now 24.`
+
+**Turn 4**:
+- **Player 2** selects **9**.
+- Shared Total: 24 + 9 = **33**
+- *Command Output*: `Player 2 chooses 9. Total is now 33.`
+
+**Turn 5**:
+- **Player 1** selects **6**.
+- Shared Total: 33 + 6 = **39**
+- *Command Output*: `Player 1 chooses 6. Total is now 39.`
+
+**Turn 6**:
+- **Player 2** considers options:
+  - Remaining Numbers: 1-7 (excluding 8 and 9)
+  - Needs to avoid exceeding 50.
+
+- **Player 2** selects **5**.
+- Shared Total: 39 + 5 = **44**
+- *Command Output*: `Player 2 chooses 5. Total is now 44.`
+
+**Turn 7**:
+- **Player 1** now assesses the situation:
+  - Remaining Numbers: 1-5 (excluding 6-9)
+
+- **Player 1** selects **5**.
+- Shared Total: 44 + 5 = **49**
+- *Command Output*: `Player 1 chooses 5. Total is now 49.`
+
+**Turn 8**:
+- **Player 2** must reach exactly 50 without exceeding it.
+  - Remaining Numbers: 1-4,6,7
+  - *Cannot add any number without exceeding 50.*
+
+- **Player 2** selects **1**.
+- Shared Total: 49 + 1 = **50**
+- *Command Output*: `Player 2 chooses 1. Total is now 50.`
+- **Player 2 wins!**
+
+### Example 2: Exceeding Total
+
+**Initial Setup**:
+- Shared Total: 45
+- Player 1's Remaining Numbers: 3
+- Player 2's Remaining Numbers: 4
+
+**Turn 1**:
+- **Player 1** must choose **3**.
+- Shared Total: 45 + 3 = **48**
+- *Command Output*: `Player 1 chooses 3. Total is now 48.`
+
+**Turn 2**:
+- **Player 2** has only **4** remaining.
+- Adding 4 will cause the total to exceed 50.
+
+- **Player 2** selects **4**.
+- Shared Total: 48 + 4 = **52**
+- *Command Output*: `Player 2 chooses 4. Total is now 52.`
+- **Player 2 loses!**
+
+**Player 1** wins because **Player 2** exceeded 50.
+
+### Example 3: Running Out of Numbers
+
+**Initial Setup**:
+- Shared Total: 47
+- Both players have only one number left: **3**.
+
+**Turn 1**:
+- **Player 1** selects **3**.
+- Shared Total: 47 + 3 = **50**
+- *Command Output*: `Player 1 chooses 3. Total is now 50.`
+- **Player 1 wins!**
+
+---
+
+## Command-Line Interaction
+
+**Prompt Structure**:
+
+- The program prompts the active player for input:
+  ```
+  Player X, choose a number from your available numbers: [list of numbers]
+  ```
+- The player inputs their chosen number.
+- The program updates and displays the new total:
+  ```
+  Player X chooses N. Total is now T.
+  ```
+- If the game ends, the program announces the winner or loser:
+  ```
+  Player X wins!
+  ```
+  or
+  ```
+  Player X loses!
+  ```
+
+**Input Validation**:
+
+- Ensure that the player's input is a valid, unused number from their set.
+- If an invalid input is detected, prompt the player again.
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of both your and your opponent's remaining numbers.
+- **Control the Total**: Aim to force the total into ranges that limit your opponent's options.
+- **Calculate Outcomes**: Anticipate future moves to avoid exceeding 50 on your turn.
+- **Number Management**: Save certain numbers for critical moments to secure a win.
+
+---
+
+By following these rules and guidelines, players can engage in a strategic and competitive game that tests their planning and numerical skills. Enjoy the challenge of **Summation Showdown**!

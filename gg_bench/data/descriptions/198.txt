@@ -1,0 +1,189 @@
+# Number Quest
+
+## Objective
+
+**Number Quest** is a two-player, turn-based strategy game where the goal is to be the first player to reach the **target number** of **20** exactly. Players achieve victory by strategically applying mathematical operations to their current score, planning ahead to outmaneuver their opponent. A player wins by reaching exactly 20; if a player exceeds 20, their score resets to zero, adding a layer of risk and strategy to the gameplay.
+
+## Setup
+
+1. **Starting Scores**: Both players begin with a **current score** of **0**.
+2. **Target Number**: The target score to reach is **20**.
+3. **Operations Available**: Both players have access to the same set of mathematical operations.
+4. **Determine First Player**: Decide who takes the first turn (e.g., by a coin toss or mutual agreement).
+
+## Game Components
+
+- **Current Score**: A numerical value starting at 0 for each player, updated throughout the game.
+- **Target Number**: The number 20, which players aim to reach exactly.
+- **Operations**: The set of operations players can use on their turn:
+
+  1. **Addition (+)**:
+     - **Add 1**: Increase current score by 1.
+     - **Add 2**: Increase current score by 2.
+  2. **Multiplication (×)**:
+     - **Multiply by 2**: Double the current score.
+  3. **Subtraction (−)**:
+     - **Subtract 1**: Decrease current score by 1 (but not below zero).
+
+- **Command-Line Interface**: Players input commands to perform operations, and the game displays current scores and prompts.
+
+## Turns
+
+- **Turn Structure**:
+  - Players alternate turns.
+  - On each turn, the active player selects **one** operation to apply to their current score.
+
+- **Actions During a Turn**:
+  1. **Select Operation**: Choose one of the available operations.
+  2. **Apply Operation**: Update the current score accordingly.
+  3. **Check for Win Condition**: Determine if the new score is exactly 20.
+  4. **Handle Overruns**: If the score exceeds 20, reset the current score to 0.
+  5. **Pass Turn**: The next player takes their turn.
+
+- **Progression of Turns**:
+  - The game continues with players alternating turns until one player reaches exactly 20 and wins the game.
+
+## Rules and Mechanics
+
+1. **Operation Usage**:
+   - Operations can be used multiple times throughout the game.
+   - Only one operation can be used per turn.
+
+2. **Score Management**:
+   - Scores are updated at the end of each turn based on the operation used.
+   - If an operation would cause the current score to drop below 0, the score remains at 0.
+
+3. **Winning the Game**:
+   - The first player to reach a current score of **exactly 20** wins.
+   - If a player's operation causes their score to exceed 20, their current score resets to **0**, and play continues.
+
+4. **Strategic Considerations**:
+   - Players must plan their moves to reach 20 without overshooting.
+   - Anticipating the opponent's potential moves is key to securing a win.
+
+## Scoring
+
+- **Current Score Tracking**:
+  - Each player's current score is maintained and displayed after every turn.
+  - Scores are essential for both offensive (reaching 20) and defensive (preventing the opponent from winning) strategies.
+
+- **Winning Condition**:
+  - There is no point system beyond reaching the target number.
+  - The game does not end in a draw; play continues until a player wins.
+
+## Examples
+
+### Example Game Playthrough
+
+**Initial State**:
+- Player 1's score: 0
+- Player 2's score: 0
+
+---
+
+**Turn 1**:
+- **Player 1's Turn**:
+  - Chooses to **Add 2**.
+  - **Calculation**: 0 + 2 = 2
+  - **Player 1's new score**: 2
+
+**Turn 2**:
+- **Player 2's Turn**:
+  - Chooses to **Multiply by 2**.
+  - **Calculation**: 0 × 2 = 0
+  - **Player 2's new score**: 0
+
+---
+
+**Turn 3**:
+- **Player 1's Turn**:
+  - Chooses to **Multiply by 2**.
+  - **Calculation**: 2 × 2 = 4
+  - **Player 1's new score**: 4
+
+**Turn 4**:
+- **Player 2's Turn**:
+  - Chooses to **Add 2**.
+  - **Calculation**: 0 + 2 = 2
+  - **Player 2's new score**: 2
+
+---
+
+**Turn 5**:
+- **Player 1's Turn**:
+  - Chooses to **Multiply by 2**.
+  - **Calculation**: 4 × 2 = 8
+  - **Player 1's new score**: 8
+
+**Turn 6**:
+- **Player 2's Turn**:
+  - Chooses to **Multiply by 2**.
+  - **Calculation**: 2 × 2 = 4
+  - **Player 2's new score**: 4
+
+---
+
+**Turn 7**:
+- **Player 1's Turn**:
+  - Chooses to **Add 2**.
+  - **Calculation**: 8 + 2 = 10
+  - **Player 1's new score**: 10
+
+**Turn 8**:
+- **Player 2's Turn**:
+  - Chooses to **Add 2**.
+  - **Calculation**: 4 + 2 = 6
+  - **Player 2's new score**: 6
+
+---
+
+**Turn 9**:
+- **Player 1's Turn**:
+  - Chooses to **Multiply by 2**.
+  - **Calculation**: 10 × 2 = 20
+  - **Player 1's new score**: 20
+  - **Win Condition Met**: Player 1 wins the game by reaching exactly 20.
+
+### Sample Command-Line Interaction
+
+```
+Player 1's turn. Current score: 0
+Choose an operation: +1, +2, x2, -1
+> +2
+Player 1 adds 2. New score: 2
+
+Player 2's turn. Current score: 0
+Choose an operation: +1, +2, x2, -1
+> x2
+Player 2 multiplies by 2. New score: 0
+
+Player 1's turn. Current score: 2
+Choose an operation: +1, +2, x2, -1
+> x2
+Player 1 multiplies by 2. New score: 4
+
+Player 2's turn. Current score: 0
+Choose an operation: +1, +2, x2, -1
+> +2
+Player 2 adds 2. New score: 2
+
+... [game continues]
+
+Player 1's turn. Current score: 10
+Choose an operation: +1, +2, x2, -1
+> x2
+Player 1 multiplies by 2. New score: 20
+
+Congratulations! Player 1 wins by reaching exactly 20.
+```
+
+## Strategic Tips
+
+- **Avoid Overshooting**: Be cautious with multiplication when your score is above 10 to prevent exceeding 20.
+- **Plan Ahead**: Anticipate the results of your operations several turns in advance.
+- **Monitor Opponent's Score**: Pay attention to your opponent's score to predict their possible moves and adjust your strategy accordingly.
+- **Use Subtraction Wisely**: The subtract 1 operation can be crucial when you need to adjust your score to reach exactly 20 on your next turn.
+
+---
+
+**Number Quest** combines simple arithmetic with strategic planning, making it easy to code for a command-line interface while offering depth for players to develop and refine their strategies. The clear mechanics ensure that a skilled player can consistently outperform an unskilled one, and the absence of a draw condition ensures each game concludes with a definitive winner.

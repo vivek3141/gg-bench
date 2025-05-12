@@ -1,0 +1,187 @@
+# Prime Sum Duel
+
+## Objective
+
+Be the first player to collect **exactly three prime numbers** that **sum up to the target number**. Victory is achieved by strategically selecting prime numbers to match the target sum before your opponent does.
+
+---
+
+## Setup
+
+1. **Select Target Sum**:
+   - At the start of the game, a **target sum** is randomly selected between **20** and **40** (inclusive).
+   - Example: Target Sum = **30**.
+
+2. **Number Pool**:
+   - The game uses numbers from **2** to **19** (inclusive).
+   - Both prime and non-prime numbers are available for selection.
+
+3. **Player Collections**:
+   - Each player has a personal collection to hold their selected prime numbers.
+   - A maximum of **three prime numbers** can be held in a player's collection at any time.
+
+---
+
+## Game Components
+
+- **Target Sum**: A randomly chosen number between **20** and **40**.
+- **Number Pool**: Numbers ranging from **2** to **19**.
+- **Player Collections**: Holds selected prime numbers, up to a maximum of three per player.
+
+---
+
+## Turns
+
+- **Turn Order**:
+  - Players take turns alternatively.
+  - Determine the first player randomly or by mutual agreement.
+
+- **Turn Actions**:
+  - On your turn, **select one number** from the number pool.
+
+- **Selection Outcomes**:
+  - If the number is **prime**:
+    - **Add** it to your collection.
+    - Once added, a number **cannot be removed** from your collection.
+  - If the number is **not prime**:
+    - It is **discarded**, and the turn passes to the opponent.
+
+---
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - You **must select** a number on your turn; skipping is not allowed.
+   - Numbers can be selected **multiple times** by either player.
+
+2. **Building Your Collection**:
+   - You can only hold up to **three prime numbers** in your collection.
+   - Once you have **three primes**, you cannot select more numbers.
+
+3. **Winning the Game**:
+   - **Win** by having your three prime numbers **sum exactly** to the target sum.
+   - If your three primes **do not sum** to the target, you **lose** immediately upon collecting the third prime.
+
+4. **Losing the Game**:
+   - If your three primes **exceed** or **do not match** the target sum, you lose.
+   - If both players end up losing, the player whose sum is **closer** to the target sum wins.
+   - In the event of a tie in closeness, the player who reached their sum **first** wins.
+
+5. **Opponent Interaction**:
+   - Since both players can select the same numbers, strategic blocking is possible.
+   - Pay attention to the opponent’s selections to anticipate their potential sums.
+
+6. **Game End Conditions**:
+   - A player wins immediately upon achieving a correct sum.
+   - A player loses immediately upon reaching three primes that do not sum to the target.
+
+---
+
+## Scoring
+
+- **Victory**:
+  - Achieved by being the **first** to collect three prime numbers that **sum exactly** to the target sum.
+
+- **Defeat**:
+  - Occurs if your collection of three primes **does not sum** to the target.
+
+- **Tie-Breaker**:
+  - If both players fail to meet the target sum:
+    - The player whose sum is **closer** to the target wins.
+    - If both are equally close, the player who assembled their collection **first** wins.
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Target Sum**: 30
+
+**Player 1's Collection** | **Sum** | **Player 2's Collection** | **Sum**
+--- | --- | --- | ---
+7 | 7 | 11 | 11
+7, 13 | 20 | 11, 17 | 28
+7, 13, 2 | 22 | 11, 17, 2 | **30**
+
+- **Outcome**:
+  - **Player 2** wins by achieving the target sum of **30** with primes **11, 17, 2**.
+
+### Sample Turn-by-Turn Interaction
+
+1. **Player 1's Turn**:
+   - Selects **7**.
+   - **7** is prime. Collection: `[7]`.
+
+2. **Player 2's Turn**:
+   - Selects **11**.
+   - **11** is prime. Collection: `[11]`.
+
+3. **Player 1's Turn**:
+   - Selects **13**.
+   - **13** is prime. Collection: `[7, 13]`.
+
+4. **Player 2's Turn**:
+   - Selects **17**.
+   - **17** is prime. Collection: `[11, 17]`.
+
+5. **Player 1's Turn**:
+   - Selects **2**.
+   - **2** is prime. Collection: `[7, 13, 2]`.
+   - Sum is **22**. Does not equal target sum. Player 1 must wait for Player 2's turn.
+
+6. **Player 2's Turn**:
+   - Selects **2**.
+   - **2** is prime. Collection: `[11, 17, 2]`.
+   - Sum is **30**. Equals target sum.
+   - **Player 2 wins**.
+
+### Strategic Considerations
+
+- **Blocking**:
+  - Anticipate which primes your opponent needs and select them first.
+
+- **Sum Planning**:
+  - Calculate potential sums before selecting a prime to avoid immediate loss.
+
+- **Risk Management**:
+  - If forced to choose a third prime that overshoots the target, consider choosing a smaller prime or one that may prevent the opponent from winning.
+
+---
+
+## Command-Line Interaction Example
+
+```
+[Game Start]
+Target Sum is randomly selected: 31
+
+Player 1's Turn:
+Select a number between 2 and 19: 13
+13 is a prime number. Added to your collection: [13]
+
+Player 2's Turn:
+Select a number between 2 and 19: 11
+11 is a prime number. Added to your collection: [11]
+
+Player 1's Turn:
+Select a number between 2 and 19: 17
+17 is a prime number. Added to your collection: [13, 17]
+
+Player 2's Turn:
+Select a number between 2 and 19: 7
+7 is a prime number. Added to your collection: [11, 7]
+
+Player 1's Turn:
+Select a number between 2 and 19: 19
+19 is a prime number. Added to your collection: [13, 17, 19]
+Your sum is 49, which does not equal the target sum.
+You have exceeded the target sum. You lose.
+
+Player 2 wins!
+```
+
+---
+
+## Summary
+
+"Prime Sum Duel" is a strategic two-player game where mathematical planning and foresight are key. Players must carefully select prime numbers to match a target sum while anticipating and countering their opponent's moves. The simplicity of the game's mechanics makes it easy to learn and play, yet it offers depth for strategic decision-making.

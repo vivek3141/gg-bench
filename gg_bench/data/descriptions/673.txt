@@ -1,0 +1,248 @@
+# **Flag Chase** - Rule Book
+
+---
+
+## **Objective**
+
+Be the first player to capture your opponent's flag by strategically moving your agent across the grid while avoiding hidden traps. Victory is achieved by moving your agent onto the opponent's flag position.
+
+---
+
+## **Setup**
+
+1. **Game Grid**:
+   - The game is played on a 5x5 grid with coordinates ranging from (1,1) to (5,5).
+   - Rows are numbered 1 to 5 from top to bottom.
+   - Columns are lettered A to E from left to right (optional for command-line clarity).
+
+2. **Flags**:
+   - Each player has one flag.
+   - **Player 1's Flag**: Placed at coordinate **(1,1)**.
+   - **Player 2's Flag**: Placed at coordinate **(5,5)**.
+
+3. **Agents**:
+   - Each player has one agent representing them on the grid.
+   - Agents start on their own flag's position.
+     - **Player 1's Agent**: Starts at **(1,1)**.
+     - **Player 2's Agent**: Starts at **(5,5)**.
+
+4. **Traps**:
+   - Each player has **two traps** to use during the game.
+   - Traps are placed secretly on the grid during the player's turn.
+
+---
+
+## **Game Components**
+
+1. **Grid (5x5)**:
+   - A virtual grid where players move their agents.
+   - Coordinates help identify positions (e.g., (3,2)).
+
+2. **Agents**:
+   - Represent players' positions on the grid.
+   - Can move one space per turn in any direction.
+
+3. **Flags**:
+   - Stationary positions that must be reached to win.
+   - Cannot be occupied by traps.
+
+4. **Traps**:
+   - Hidden from the opponent.
+   - Triggered when an agent steps on their location.
+   - Remove an opponent's trap once triggered.
+
+---
+
+## **Turns**
+
+1. **Turn Order**:
+   - Players alternate turns starting with **Player 1**.
+
+2. **Actions Per Turn**:
+   - On your turn, you may perform **one** of the following actions:
+     - **Move** your agent to an adjacent cell.
+     - **Place** one trap on an unoccupied, non-flag cell (if traps remain).
+
+3. **Movement**:
+   - Agents may move to any of the adjacent eight cells (including diagonals).
+   - Movement is limited to one cell per turn.
+
+4. **Trap Placement**:
+   - Traps are placed secretly on the grid.
+   - Cannot be placed on flags, occupied cells, or outside the grid.
+   - Each player has a maximum of two traps.
+   - Only one trap can be placed per turn.
+
+---
+
+## **Rules and Mechanics**
+
+### **Movement Rules**
+
+- Agents move to adjacent cells, including diagonals.
+- Agents cannot move off the grid.
+- Agents cannot move to a cell occupied by another agent or a known trap.
+
+### **Trap Rules**
+
+- **Placement**:
+  - Declared by specifying the coordinates (e.g., "TRAP 3 4").
+  - Traps are hidden from the opponent.
+- **Triggering Traps**:
+  - If an agent moves onto a cell containing a trap:
+    - The trap is revealed and removed from the game.
+    - The agent is sent back to their **own flag's position**.
+- **Limitations**:
+  - Traps cannot be placed on flags or cells currently occupied.
+  - Players cannot place a trap on their own agent's current position.
+
+### **Capturing the Flag**
+
+- The game is won by moving your agent onto the opponent's flag position.
+- The opponent's flag position is fixed and known.
+
+### **Additional Mechanics**
+
+- **Hidden Information**:
+  - Trap locations are secret until triggered.
+  - Agents’ positions are public knowledge.
+- **Collision**:
+  - Agents cannot occupy the same cell.
+  - If movement would result in collision, the move is invalid.
+
+---
+
+## **Scoring**
+
+- **Winning the Game**:
+  - The first player to **capture the opponent's flag** wins.
+
+- **Losing the Game**:
+  - If a player cannot make a legal move on their turn (not applicable in this game due to movement and trap options), the game continues as normal.
+
+---
+
+## **Examples**
+
+### **Example Scenario**
+
+**Initial Setup**:
+
+- Player 1's Agent and Flag: **(1,1)**
+- Player 2's Agent and Flag: **(5,5)**
+- Both players have 2 traps remaining.
+
+---
+
+**Turn 1 - Player 1**:
+
+- **Action**: Moves agent to **(2,2)**.
+- **Command**: `MOVE 2 2`
+
+**Turn 1 - Player 2**:
+
+- **Action**: Places a trap at **(3,3)**.
+- **Command**: `TRAP 3 3`
+- **Note**: Location of trap is hidden from Player 1.
+
+---
+
+**Turn 2 - Player 1**:
+
+- **Action**: Places a trap at **(4,4)**.
+- **Command**: `TRAP 4 4`
+- **Note**: Location of trap is hidden from Player 2.
+
+**Turn 2 - Player 2**:
+
+- **Action**: Moves agent to **(4,4)**.
+- **Command**: `MOVE 4 4`
+- **Outcome**: 
+  - Agent triggers Player 1's trap at **(4,4)**.
+  - Agent is sent back to **(5,5)**.
+  - Trap at **(4,4)** is removed from the game.
+  - Player 2 now has 2 traps remaining.
+
+---
+
+**Turn 3 - Player 1**:
+
+- **Action**: Moves agent to **(3,3)**.
+- **Command**: `MOVE 3 3`
+- **Outcome**:
+  - Agent triggers Player 2's trap at **(3,3)**.
+  - Agent is sent back to **(1,1)**.
+  - Trap at **(3,3)** is removed from the game.
+  - Player 1 now has 1 trap remaining.
+
+**Turn 3 - Player 2**:
+
+- **Action**: Places a trap at **(2,2)**.
+- **Command**: `TRAP 2 2`
+- **Note**: Location of trap is hidden from Player 1.
+
+---
+
+**Play continues** until one player reaches the opponent's flag.
+
+---
+
+### **Command-Line Interaction Example**
+
+**Player Commands**:
+
+- **Move**: `MOVE x y`  
+  Moves agent to the specified coordinates.
+- **Trap**: `TRAP x y`  
+  Places a trap at the specified coordinates.
+
+**Sample Turn**:
+
+- **Prompt**: `Player 1, enter your move:`
+- **Input**: `MOVE 2 2`
+- **Output**: `Player 1 moves to (2,2)`
+
+**If a Trap is Triggered**:
+
+- **Output**:
+  ```
+  Trap triggered at (x,y)!
+  Player's agent returns to their flag at (1,1).
+  ```
+
+**Trap Placement Confirmation**:
+
+- **Output**: `Trap placed at your chosen location.`
+
+**Invalid Moves**:
+
+- If a player attempts an invalid move (e.g., moving off the grid, moving to an occupied cell):
+  - **Output**: `Invalid move. Please choose a valid adjacent cell.`
+
+---
+
+## **Strategy Tips**
+
+- **Trap Placement**:
+  - Anticipate your opponent's path to your flag when placing traps.
+  - Use traps to protect your flag or hinder direct paths.
+
+- **Movement**:
+  - Vary your path to avoid potential traps.
+  - Consider moving diagonally to reach the goal faster.
+
+- **Observation**:
+  - Keep track of opponent's traps based on their actions.
+  - Note when an opponent chooses to place a trap instead of moving.
+
+---
+
+## **Game End**
+
+The game concludes immediately when a player's agent reaches the opponent's flag location. Announce the victory:
+
+- **Output**: `Player X has captured the flag at (x, y)! Player X wins the game!`
+
+---
+
+**Enjoy your strategic quest to outsmart your opponent and capture the flag!**

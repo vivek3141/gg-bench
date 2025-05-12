@@ -1,0 +1,267 @@
+# Operation Stack
+
+## Objective
+
+Be the first player to manipulate the shared stack such that, after your turn, the stack contains exactly one number equal to **24**, thereby winning the game.
+
+---
+
+## Setup
+
+1. **Determine Starting Player**: Decide who will take the first turn (e.g., flip a coin).
+2. **Initialize the Stack**: Begin with an empty stack.
+3. **Game Start**: Players will alternate turns performing actions on the shared stack.
+
+---
+
+## Game Components
+
+- **Shared Stack**: A stack data structure used to hold numbers.
+- **Numbers**: Integers from **1** to **9** (inclusive). These can be used multiple times.
+- **Operations**: Arithmetic operations available are **addition (+)**, **subtraction (-)**, and **multiplication (\*)**.
+- **Player Indicators**: Players will be referred to as **Player 1** and **Player 2**.
+
+---
+
+## Turns
+
+- **Turn Order**: Players take turns alternately throughout the game.
+- **Actions per Turn**: On each turn, a player must choose one of the following actions:
+  1. **Push**: Add a number onto the top of the stack.
+  2. **Operate**: Pop the top two numbers off the stack, perform an operation, and push the result back onto the stack.
+
+---
+
+## Rules and Mechanics
+
+### 1. Push Action
+
+- **Selecting a Number**:
+  - Choose any integer between **1** and **9** (inclusive).
+  - There is no limit to how many times a number can be used during the game.
+- **Pushing onto the Stack**:
+  - The chosen number is placed on top of the stack.
+
+### 2. Operate Action
+
+- **Stack Requirement**:
+  - There must be **at least two numbers** on the stack to perform this action.
+- **Popping Operands**:
+  - Pop the **top two numbers** off the stack.
+  - The **first number popped** becomes the **second operand**, and the **second number popped** becomes the **first operand**.
+- **Choosing an Operation**:
+  - Select one of the allowed operations: **addition (+)**, **subtraction (-)**, or **multiplication (\*)**.
+- **Performing the Operation**:
+  - Apply the chosen operation to the operands:
+    - **Addition (+)**: `Result = First Operand + Second Operand`
+    - **Subtraction (-)**: `Result = First Operand - Second Operand`
+    - **Multiplication (\*)**: `Result = First Operand * Second Operand`
+  - **Note**: Division is **not allowed**.
+- **Pushing the Result**:
+  - Push the calculated result back onto the top of the stack.
+
+### 3. Winning the Game
+
+- **Victory Condition**:
+  - After completing your turn, if the stack contains **exactly one number**, and that number is **24**, you win the game immediately.
+
+### 4. Losing the Game
+
+- **Invalid Move**:
+  - Attempting an **Operate** action when there are fewer than two numbers on the stack results in an immediate loss.
+- **No Valid Actions**:
+  - If you cannot perform a valid action on your turn (e.g., the stack is empty, and you are prohibited from pushing), you lose.
+- **Invalid Operations**:
+  - Using operations other than addition, subtraction, or multiplication, or any undefined operation, results in a loss.
+
+### 5. Additional Rules
+
+- **Integer Arithmetic**:
+  - All calculations are performed using integer arithmetic.
+  - **Negative numbers** are permitted as results and can be pushed onto the stack.
+- **No Skipping Turns**:
+  - Players must perform an action on their turn; skipping is not allowed.
+- **No Undoing Moves**:
+  - Once an action is completed and the turn has ended, moves cannot be undone.
+
+---
+
+## Scoring
+
+- **Winning**:
+  - The player who creates a stack with a single number equal to **24** wins the game.
+- **Losing**:
+  - If a player cannot make a valid move or makes an invalid move, they lose the game.
+
+*There is no point system; the game is won or lost based on meeting the victory or loss conditions.*
+
+---
+
+## Examples
+
+### Example Game Play
+
+**Game Start**
+
+- **Initial Stack**: Empty
+
+**Turn 1: Player 1**
+
+- **Action**: Push
+- **Number Chosen**: 7
+- **Stack after Turn**: [7]
+
+**Turn 2: Player 2**
+
+- **Action**: Push
+- **Number Chosen**: 3
+- **Stack after Turn**: [7, 3]
+
+**Turn 3: Player 1**
+
+- **Action**: Operate
+- **Stack Before Operation**: [7, 3]
+- **Operands Popped**:
+  - Second Operand: 3 (popped first)
+  - First Operand: 7 (popped second)
+- **Operation Chosen**: Multiplication (\*)
+- **Calculation**: 7 \* 3 = 21
+- **Result Pushed**: 21
+- **Stack after Turn**: [21]
+
+**Turn 4: Player 2**
+
+- **Action**: Push
+- **Number Chosen**: 3
+- **Stack after Turn**: [21, 3]
+
+**Turn 5: Player 1**
+
+- **Action**: Operate
+- **Stack Before Operation**: [21, 3]
+- **Operands Popped**:
+  - Second Operand: 3 (popped first)
+  - First Operand: 21 (popped second)
+- **Operation Chosen**: Addition (+)
+- **Calculation**: 21 + 3 = 24
+- **Result Pushed**: 24
+- **Stack after Turn**: [24]
+- **Victory Check**: Stack has one number equal to 24.
+- **Outcome**: **Player 1 wins the game!**
+
+### Command-Line Interaction Example
+
+**Assumptions**: Players input their actions and any required numbers or operations.
+
+**Turn 1: Player 1**
+
+- *System Output*: "Stack: []"
+- *Prompt*: "Player 1, choose an action ('push' or 'operate'): "
+- *Player Input*: `push`
+- *Prompt*: "Enter a number between 1 and 9: "
+- *Player Input*: `5`
+- *System Output*: "Stack after turn: [5]"
+
+**Turn 2: Player 2**
+
+- *System Output*: "Stack: [5]"
+- *Prompt*: "Player 2, choose an action ('push' or 'operate'): "
+- *Player Input*: `push`
+- *Prompt*: "Enter a number between 1 and 9: "
+- *Player Input*: `8`
+- *System Output*: "Stack after turn: [5, 8]"
+
+**Turn 3: Player 1**
+
+- *System Output*: "Stack: [5, 8]"
+- *Prompt*: "Player 1, choose an action ('operate'): "
+- *Player Input*: `operate`
+- *System Output*: "Operands Popped: First Operand = 5, Second Operand = 8"
+- *Prompt*: "Choose an operation ('+', '-', '*'): "
+- *Player Input*: `*`
+- *System Output*: "Result: 5 * 8 = 40"
+- *System Output*: "Stack after turn: [40]"
+
+**Turn 4: Player 2**
+
+- *System Output*: "Stack: [40]"
+- *Prompt*: "Player 2, choose an action ('push' or 'operate'): "
+- *Player Input*: `push`
+- *Prompt*: "Enter a number between 1 and 9: "
+- *Player Input*: `4`
+- *System Output*: "Stack after turn: [40, 4]"
+
+**Turn 5: Player 1**
+
+- *System Output*: "Stack: [40, 4]"
+- *Prompt*: "Player 1, choose an action ('operate'): "
+- *Player Input*: `operate`
+- *System Output*: "Operands Popped: First Operand = 40, Second Operand = 4"
+- *Prompt*: "Choose an operation ('-', '+', '*'): "
+- *Player Input*: `-`
+- *System Output*: "Result: 40 - 4 = 36"
+- *System Output*: "Stack after turn: [36]"
+
+**Turn 6: Player 2**
+
+- *System Output*: "Stack: [36]"
+- *Prompt*: "Player 2, choose an action ('push' or 'operate'): "
+- *Player Input*: `push`
+- *Prompt*: "Enter a number between 1 and 9: "
+- *Player Input*: `12`
+- *System Output*: "Invalid number. Please enter a number between 1 and 9."
+- *Prompt*: "Enter a number between 1 and 9: "
+- *Player Input*: `6`
+- *System Output*: "Stack after turn: [36, 6]"
+
+**Turn 7: Player 1**
+
+- *System Output*: "Stack: [36, 6]"
+- *Prompt*: "Player 1, choose an action ('operate'): "
+- *Player Input*: `operate`
+- *System Output*: "Operands Popped: First Operand = 36, Second Operand = 6"
+- *Prompt*: "Choose an operation ('+', '-', '*'): "
+- *Player Input*: `-`
+- *System Output*: "Result: 36 - 6 = 30"
+- *System Output*: "Stack after turn: [30]"
+
+**Turn 8: Player 2**
+
+- *System Output*: "Stack: [30]"
+- *Prompt*: "Player 2, choose an action ('push' or 'operate'): "
+- *Player Input*: `push`
+- *Prompt*: "Enter a number between 1 and 9: "
+- *Player Input*: `6`
+- *System Output*: "Stack after turn: [30, 6]"
+
+**Turn 9: Player 1**
+
+- *System Output*: "Stack: [30, 6]"
+- *Prompt*: "Player 1, choose an action ('operate'): "
+- *Player Input*: `operate`
+- *System Output*: "Operands Popped: First Operand = 30, Second Operand = 6"
+- *Prompt*: "Choose an operation ('+', '-', '*'): "
+- *Player Input*: `-`
+- *System Output*: "Result: 30 - 6 = 24"
+- *System Output*: "Stack after turn: [24]"
+- *Victory Check*: "Stack has one number equal to 24."
+- *System Output*: "**Player 1 wins the game!**"
+
+---
+
+## Strategy Tips
+
+- **Plan Ahead**:
+  - Think about the potential results of your moves and how they can lead to 24.
+- **Operation Order**:
+  - Remember that subtraction is not commutative. The order in which you pop the operands affects the result.
+- **Anticipate Opponent's Moves**:
+  - Try to predict your opponent's strategy and plan your moves to counteract them.
+- **Use of Negative Numbers**:
+  - Don't be afraid to work with negative numbers if it brings you closer to 24.
+- **Control the Stack**:
+  - Managing the size of the stack can give you an advantage.
+
+---
+
+By following this rule book, players will have a clear understanding of how to play **Operation Stack**, enabling strategic and competitive gameplay within a simple command-line interface.

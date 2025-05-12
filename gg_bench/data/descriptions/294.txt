@@ -1,0 +1,98 @@
+# Divider
+
+## Objective
+
+Be the last player able to make a valid move by reducing the shared number according to the game rules. Force your opponent into a position where they cannot make a valid move to win the game.
+
+## Setup
+
+- **Initial Number (N):** Choose a starting positive integer greater than 1. For a quick game, a smaller number like **16** is recommended.
+- **Players:** Two players take turns.
+
+## Game Components
+
+- **Shared Number (N):** A positive integer that changes throughout the game based on players' moves.
+
+## Turns
+
+- The game is played in alternating turns, starting with **Player 1**.
+- On each turn, a player:
+  1. **Selects a Proper Divisor:** Chooses a proper divisor of the current number **N** (a whole number greater than 1 and less than **N** that divides **N** without a remainder).
+  2. **Divides the Number:** Divides **N** by the selected divisor.
+  3. **Updates N:** The result becomes the new **N** for the next turn.
+
+## Rules and Mechanics
+
+### Proper Divisors
+
+- A **proper divisor** of a number **N** is a positive integer greater than 1 and less than **N** that divides **N** exactly (without leaving a remainder).
+
+### Valid Moves
+
+- On their turn, a player must:
+  - Choose a proper divisor of the current **N**.
+  - Divide **N** by this divisor to obtain a new **N**.
+- If a player cannot choose a proper divisor (because **N** is prime), they lose their turn and the game.
+
+### Ending the Game
+
+- The game ends when:
+  - A player cannot make a valid move on their turn because **N** is a prime number.
+  - The last player to make a valid move wins the game.
+
+## Scoring
+
+- There is no point system.
+- The outcome is either a **win** or a **loss**.
+- The player who forces the opponent into a position with no valid moves wins.
+
+## Examples
+
+### Example Game Play
+
+**Starting N = 16**
+
+1. **Player 1's Turn**
+   - Current **N**: 16
+   - Proper divisors of 16: 2, 4, 8
+   - **Player 1 selects 8**
+   - New **N**: 16 ÷ 8 = **2**
+
+2. **Player 2's Turn**
+   - Current **N**: 2
+   - **2 is a prime number**
+   - **Player 2 cannot make a valid move**
+   - **Player 1 wins the game**
+
+### Command-Line Interaction
+
+```
+Game Start! Initial N is 16.
+
+Player 1's turn.
+Current N is 16.
+Choose a proper divisor of 16: 8
+You chose 8. N is now 2.
+
+Player 2's turn.
+Current N is 2.
+2 is a prime number with no proper divisors.
+Player 2 cannot make a move.
+Player 1 wins!
+```
+
+## Strategy Tips
+
+- **Plan Ahead:** Anticipate your opponent's potential moves and aim to leave them with a prime number on their turn.
+- **Choose Larger Divisors Early:** Reducing **N** significantly can limit your opponent's options.
+- **Avoid Prime Numbers on Your Turn:** Try not to leave yourself with a prime number when possible.
+
+## Notes
+
+- **Ease of Coding:** This game involves simple arithmetic operations and can be easily implemented in a command-line interface.
+- **No Draws:** The game cannot end in a draw due to the nature of the moves and winning conditions.
+- **Skill Matters:** Strategic planning allows a skilled player to consistently beat an unskilled player.
+
+---
+
+Enjoy playing **Divider** and may the best strategist win!

@@ -1,0 +1,276 @@
+**Subtraction Square**
+
+---
+
+**Objective**
+
+The primary goal of Subtraction Square is to strategically reduce your opponent's score to exactly zero by selecting numbers from a shared grid. Each number chosen subtracts from the opponent's score. The player who successfully reduces their opponent's score to zero wins the game. If a player cannot make a valid move on their turn, they lose.
+
+---
+
+**Setup**
+
+1. **Grid Initialization**: Create a 4x4 grid filled with the numbers 1 through 16, randomly arranged.
+   
+2. **Player Scores**: Both players start with a score of **20**.
+
+3. **Starting Player**: Decide who goes first (e.g., by random selection or mutual agreement).
+
+---
+
+**Game Components**
+
+- **The Grid**: A 4x4 grid displayed in the command-line interface. Each cell contains a unique number from 1 to 16 at the start of the game.
+  
+  - *Appearance*: The grid is presented with rows and columns, labeling each cell with its corresponding number.
+  
+  - *Functionality*: Numbers selected by players are removed from the grid and cannot be chosen again.
+
+- **Player Scores**:
+  
+  - *Representation*: Each player's score is displayed after every turn.
+  
+  - *Starting Value*: Both players begin with a score of 20.
+  
+  - *Updates*: Scores decrease based on the opponent's selections.
+
+- **Available Numbers**:
+  
+  - *Definition*: Numbers currently on the grid that have not been selected.
+  
+  - *Attributes*: Each number corresponds to the amount it will subtract from the opponent's score when selected.
+
+---
+
+**Turns**
+
+1. **Turn Structure**:
+
+   - **View State**: At the start of each turn, the player views the current grid and both players' scores.
+   
+   - **Select Number**: The player selects an available number from the grid.
+   
+   - **Subtract Score**: The selected number is subtracted from the opponent's score.
+   
+   - **Update Grid**: The selected number is removed from the grid.
+   
+   - **End Turn**: The turn ends, and control passes to the opponent.
+
+2. **Turn Progression**:
+
+   - Players alternate turns until the game ends.
+   
+   - The game proceeds quickly due to the limited number of available moves.
+
+---
+
+**Rules and Mechanics**
+
+1. **Number Selection**:
+
+   - **Valid Moves**: On their turn, a player must select a number that does not reduce the opponent's score below zero.
+   
+   - **Invalid Moves**: If all remaining numbers would cause the opponent's score to become negative, the player cannot make a move and loses the game.
+
+2. **Score Reduction**:
+
+   - The selected number is subtracted from the opponent's score.
+   
+   - A player's score cannot go below zero.
+   
+   - Reaching exactly zero is the winning condition.
+
+3. **Removing Numbers**:
+
+   - Once a number is selected, it is removed from the grid and cannot be chosen again.
+   
+   - The grid updates after each turn to reflect the remaining available numbers.
+
+4. **Winning the Game**:
+
+   - A player wins by reducing their opponent's score to exactly zero.
+   
+   - If a player cannot make a valid move on their turn, they lose the game.
+
+---
+
+**Scoring**
+
+- **Score Tracking**: Each player's score begins at 20 and decreases based on the numbers selected by the opponent.
+  
+- **Winning Condition**: Reduce your opponent's score to exactly zero to win.
+  
+- **Losing Condition**: Being unable to make a valid move on your turn results in a loss.
+
+---
+
+**Examples**
+
+*Example Game Play:*
+
+**Initial Setup**
+
+- **Grid**:
+
+  |  5  | 12  |  1  |  8  |
+  |-----|-----|-----|-----|
+  |  3  | 16  |  7  |  2  |
+  |  9  |  4  | 11  | 14  |
+  |  6  | 10  | 13  | 15  |
+
+- **Scores**:
+
+  - Player 1 Score: 20
+  - Player 2 Score: 20
+
+---
+
+**Turn 1: Player 1**
+
+- **Action**: Selects number **5**.
+  
+- **Effect**: Player 2's score is reduced by 5 (20 - 5 = 15).
+  
+- **Grid Update**:
+
+  |  X  | 12  |  1  |  8  |
+  |-----|-----|-----|-----|
+  |  3  | 16  |  7  |  2  |
+  |  9  |  4  | 11  | 14  |
+  |  6  | 10  | 13  | 15  |
+
+- **Scores**:
+
+  - Player 1 Score: 20
+  - Player 2 Score: 15
+
+---
+
+**Turn 2: Player 2**
+
+- **Action**: Selects number **16**.
+  
+- **Effect**: Player 1's score is reduced by 16 (20 - 16 = 4).
+  
+- **Grid Update**:
+
+  |  X  | 12  |  1  |  8  |
+  |-----|-----|-----|-----|
+  |  3  |  X  |  7  |  2  |
+  |  9  |  4  | 11  | 14  |
+  |  6  | 10  | 13  | 15  |
+
+- **Scores**:
+
+  - Player 1 Score: 4
+  - Player 2 Score: 15
+
+---
+
+**Turn 3: Player 1**
+
+- **Action**: Selects number **1**.
+  
+- **Effect**: Player 2's score is reduced by 1 (15 - 1 = 14).
+  
+- **Grid Update**:
+
+  |  X  | 12  |  X  |  8  |
+  |-----|-----|-----|-----|
+  |  3  |  X  |  7  |  2  |
+  |  9  |  4  | 11  | 14  |
+  |  6  | 10  | 13  | 15  |
+
+- **Scores**:
+
+  - Player 1 Score: 4
+  - Player 2 Score: 14
+
+---
+
+**Turn 4: Player 2**
+
+- **Action**: Selects number **4** (must choose a number ≤ Player 1's score).
+  
+- **Effect**: Player 1's score is reduced by 4 (4 - 4 = 0).
+  
+- **Grid Update**:
+
+  |  X  | 12  |  X  |  8  |
+  |-----|-----|-----|-----|
+  |  3  |  X  |  7  |  2  |
+  |  9  |  X  | 11  | 14  |
+  |  6  | 10  | 13  | 15  |
+
+- **Scores**:
+
+  - Player 1 Score: 0
+  - Player 2 Score: 14
+
+- **Result**: Player 2 wins by reducing Player 1's score to zero.
+
+---
+
+**Sample Command-Line Interaction**
+
+```
+--- Player 1's Turn ---
+
+Current Grid:
+[ 5 ][12 ][ 1 ][ 8 ]
+[ 3 ][16 ][ 7 ][ 2 ]
+[ 9 ][ 4 ][11 ][14 ]
+[ 6 ][10 ][13 ][15 ]
+
+Your Score: 20
+Opponent's Score: 20
+
+Select a number from the grid to subtract from your opponent's score:
+> 5
+
+You selected 5.
+
+Opponent's new score: 15
+
+Number 5 has been removed from the grid.
+
+---
+
+--- Player 2's Turn ---
+
+Current Grid:
+[ X ][12 ][ 1 ][ 8 ]
+[ 3 ][16 ][ 7 ][ 2 ]
+[ 9 ][ 4 ][11 ][14 ]
+[ 6 ][10 ][13 ][15 ]
+
+Your Score: 15
+Opponent's Score: 20
+
+Select a number from the grid to subtract from your opponent's score:
+> 16
+
+You selected 16.
+
+Opponent's new score: 4
+
+Number 16 has been removed from the grid.
+
+...
+```
+
+---
+
+**Strategic Tips**
+
+- **Anticipate Opponent's Moves**: Keep track of the remaining numbers and consider how they could impact your score in future turns.
+
+- **Manage the Opponent's Score**: Aim to leave your opponent with a score that limits their options, potentially forcing them into a losing position.
+
+- **Balance Offense and Defense**: While reducing your opponent's score is crucial, be mindful of not leaving yourself vulnerable to a counter-attack that could cost you the game.
+
+---
+
+**Conclusion**
+
+Subtraction Square is a fast-paced, strategic game that tests players' numerical reasoning and foresight. With simple rules and mechanics, it's easy to learn but offers depth for those looking to master its intricacies. Enjoy the challenge of outsmarting your opponent in this engaging and unique command-line game!

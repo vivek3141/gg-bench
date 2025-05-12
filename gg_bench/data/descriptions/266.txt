@@ -1,0 +1,146 @@
+# Number Blitz
+
+## Objective
+
+**Number Blitz** is a fast-paced, two-player turn-based game where players compete to reach a target score first. The primary goal is to strategically select numbers from a shared pool to accumulate points while preventing your opponent from reaching the target before you. The player who reaches the exact target score first wins the game. There is no possibility of a draw.
+
+## Setup
+
+- **Target Score**: Prior to starting the game, players agree on a target score (e.g., 50).
+- **Number Pool**: A shared pool of numbers ranging from **1 to 9** is used. Each number within this range is available in **unlimited quantities**.
+- **Starting Scores**: Both players begin with a score of **0**.
+
+## Game Components
+
+- **Number Pool**: Digits from **1** to **9**.
+- **Player Scores**: A running total of each player's accumulated points.
+- **Command-Line Interface**: Players input their chosen numbers and view scores via the CLI.
+
+## Turns
+
+- Players alternate turns, with **Player 1** starting the game.
+- During a turn, a player selects **one number** from the number pool.
+- The selected number is added to the player's score.
+- There are no skips or passes; a player must select a number on their turn.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On their turn, a player chooses a number between **1 and 9**.
+   - The number is added to their score.
+   - Since the number pool has unlimited quantities, the same number can be chosen multiple times by either player.
+
+2. **Winning the Game**:
+   - The first player to reach the **exact target score** wins.
+   - If a player's score exceeds the target score, they **lose** immediately.
+
+3. **Strategy**:
+   - Players must aim to reach the target score while also considering the possible moves of their opponent.
+   - Planning ahead is crucial to force the opponent into a position where they cannot avoid exceeding the target score on their next turn.
+
+4. **No Draws**:
+   - The game cannot end in a draw due to the exact target score rule and the immediate loss condition when exceeding the target.
+
+## Scoring
+
+- **Accumulating Points**:
+  - Each player's score is the sum of the numbers they've selected over their turns.
+- **Winning Condition**:
+  - Reach the **exact target score** without exceeding it.
+- **Losing Condition**:
+  - Exceed the target score at any point during the game.
+
+## Examples
+
+### Example Game
+
+**Target Score**: 15
+
+**Gameplay**:
+
+- **Player 1's Turn**:
+  - Chooses **5**.
+  - Player 1's score: **5**
+
+- **Player 2's Turn**:
+  - Chooses **4**.
+  - Player 2's score: **4**
+
+- **Player 1's Turn**:
+  - Chooses **6**.
+  - Player 1's score: **11**
+
+- **Player 2's Turn**:
+  - Chooses **5**.
+  - Player 2's score: **9**
+
+- **Player 1's Turn**:
+  - Chooses **4**.
+  - Player 1's score: **15**
+  - **Player 1 wins!**
+
+### Command-Line Interaction Sample
+
+```
+Target Score is 15.
+Player 1, enter your number (1-9): 5
+Player 1 score: 5
+
+Player 2, enter your number (1-9): 4
+Player 2 score: 4
+
+Player 1, enter your number (1-9): 6
+Player 1 score: 11
+
+Player 2, enter your number (1-9): 5
+Player 2 score: 9
+
+Player 1, enter your number (1-9): 4
+Player 1 score: 15
+
+Player 1 has reached the target score and wins the game!
+```
+
+### Strategic Considerations
+
+- If the target score is **21**, a skilled player can force a win by controlling the cumulative score.
+- Example with Target Score 21:
+
+```
+Player 1's Turn:
+- Chooses 4
+- Score: 4
+
+Player 2's Turn:
+- Chooses 5
+- Score: 5
+
+Player 1's Turn:
+- Chooses 7
+- Cumulative Score (Player 1): 11
+- Player 1's total score: 4 + 7 = 11
+
+Player 2's Turn:
+- Chooses 6
+- Cumulative Score (Player 2): 11
+- Player 2's total score: 5 + 6 = 11
+
+Player 1's Turn:
+- Chooses 5
+- Cumulative Score (Player 1): 16
+
+Player 2's Turn:
+- At this point, no matter what number Player 2 chooses (1-9), they cannot reach exactly 21 without exceeding it on their next turn, assuming Player 1 plays optimally.
+- Player 2 might choose 4, bringing their score to 15.
+
+Player 1's Turn:
+- Chooses 5
+- Cumulative Score (Player 1): 21
+- Player 1 wins.
+```
+
+In this example, Player 1 planned their moves to ensure they could reach the target score first.
+
+## Conclusion
+
+**Number Blitz** is a simple yet strategic game that requires players to think ahead and anticipate their opponent's moves. Its minimalistic design makes it easy to implement in a command-line interface and ensures quick gameplay. The clear winning condition and lack of a draw mechanism keep the game engaging and competitive, allowing skilled players to consistently outmaneuver less experienced opponents.

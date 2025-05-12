@@ -1,0 +1,143 @@
+# Number Split
+
+## Objective
+
+**Number Split** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to force your opponent into a position where they cannot make a valid move. Players take turns splitting a number according to specific rules, and the last player able to make a valid split wins the game.
+
+## Setup
+
+1. **Starting Number**: Begin the game with a positive integer agreed upon by both players. For a quick game, a starting number between 10 and 20 is recommended. For example, let’s start with **15**.
+2. **Player Assignment**: Decide which player goes first. This can be done by mutual agreement or by a random method like flipping a coin.
+
+## Game Components
+
+- **Current Number**: The main element of the game, which changes throughout the gameplay as players split it.
+- **Split Numbers**: At each turn, the current number is split into two smaller positive integers.
+- **Discarded Number**: One of the split numbers that is removed from play. Specific rules apply to which numbers can be discarded.
+
+## Turns
+
+- Play proceeds in turns, alternating between Player 1 and Player 2.
+- During their turn, a player will:
+  1. Split the current number into two smaller positive integers.
+  2. Choose one of the split numbers to keep as the new current number.
+  3. Discard the other split number according to the rules.
+- The turn ends after the player announces the new current number. The opponent then takes their turn.
+
+## Rules and Mechanics
+
+1. **Splitting the Number**:
+   - On your turn, you must split the current number **N** into two positive integers **a** and **b** such that **a + b = N**.
+   - Both **a** and **b** must be positive integers greater than zero.
+2. **Choosing Numbers**:
+   - You may choose to keep either **a** or **b** as the new current number for the next turn.
+   - The **discarded number** (the number you didn't keep) must be **greater than 1**. You cannot discard the number **1**.
+3. **Discarding Numbers**:
+   - The discarded number is removed from play and cannot be used again.
+   - Discarded numbers must be **greater than 1**. If your split results in a **1**, you must keep the **1** as the new current number and discard the other number.
+4. **Winning the Game**:
+   - A player loses if they are forced to split the number **2**, since it can only be split into **1** and **1**, and discarding **1** is not allowed.
+   - If the current number is **1** at the start of your turn, you cannot make a valid split, and thus you lose the game.
+5. **Invalid Moves**:
+   - If a player cannot make a valid move according to the rules, they lose the game.
+   - Players must adhere strictly to the rules for splitting and discarding numbers.
+
+## Scoring
+
+- The game is won by the player who successfully forces their opponent into a position where they cannot make a valid move.
+- There are no points accumulated during the game; only a win or loss is recorded.
+
+## Examples
+
+Below are sample turns illustrating how the game is played.
+
+### Example Game
+
+**Starting Number**: 15
+
+**Player 1's Turn**:
+- **Current Number**: 15
+- **Action**: Split 15 into **10** and **5**.
+- **Decision**: Keep **5** as the new current number; discard **10**.
+- **Reason**: Discarded number **10** is greater than 1 (valid discard).
+
+**Player 2's Turn**:
+- **Current Number**: 5
+- **Action**: Split 5 into **3** and **2**.
+- **Decision**: Keep **3** as the new current number; discard **2**.
+- **Reason**: Discarded number **2** is greater than 1 (valid discard).
+
+**Player 1's Turn**:
+- **Current Number**: 3
+- **Action**: Split 3 into **2** and **1**.
+- **Decision**: Keep **1** as the new current number; discard **2**.
+- **Reason**: Discarded number **2** is greater than 1 (valid discard).
+
+**Player 2's Turn**:
+- **Current Number**: 1
+- **Action**: Cannot split **1** into two positive integers greater than zero.
+- **Result**: Player 2 cannot make a valid move and loses the game.
+
+### Additional Example
+
+**Starting Number**: 12
+
+**Player 1's Turn**:
+- **Current Number**: 12
+- **Action**: Split 12 into **7** and **5**.
+- **Decision**: Keep **5** as the new current number; discard **7**.
+- **Reason**: Discarded number **7** is greater than 1 (valid discard).
+
+**Player 2's Turn**:
+- **Current Number**: 5
+- **Action**: Split 5 into **4** and **1**.
+- **Decision**: Keep **4** as the new current number; discard **1**.
+- **Reason**: Cannot discard **1**, so this move is invalid. Player 2 must keep **1** and discard **4** instead.
+
+**Player 2 Corrected Turn**:
+- **Action**: Split 5 into **4** and **1**.
+- **Decision**: Keep **1** as the new current number; discard **4**.
+- **Result**: Player 2 has **1** as the current number.
+
+**Player 1's Turn**:
+- **Current Number**: 1
+- **Action**: Cannot split **1** into two positive integers greater than zero.
+- **Result**: Player 1 cannot make a valid move and loses the game.
+
+## Command-Line Interaction Example
+
+Below is an example of how the game might be played in a command-line interface.
+
+```
+Game Start: Starting Number is 15
+
+Player 1's Turn:
+Current Number: 15
+Enter two positive integers that sum to 15: 9 6
+Choose number to keep (9 or 6): 6
+Discarded number 9 is valid.
+New Current Number is 6
+
+Player 2's Turn:
+Current Number: 6
+Enter two positive integers that sum to 6: 5 1
+Cannot discard 1. You must keep 1 and discard 5.
+New Current Number is 1
+
+Player 1's Turn:
+Current Number: 1
+Cannot make a valid move. Player 1 loses.
+Player 2 wins the game!
+```
+
+## Strategy Tips
+
+- **Think Ahead**: Consider the possible splits your opponent can make after your turn. Try to leave them with numbers that are difficult to split.
+- **Avoid Low Numbers**: If possible, avoid keeping numbers like 3 or 2 as the current number, as they offer fewer splitting options.
+- **Force the 1**: Strategically force your opponent into a position where they must keep **1** as the current number, leading them to lose on their next turn.
+
+## Summary
+
+Number Split is a simple yet strategic game that combines basic arithmetic with foresight and planning. By carefully selecting how to split numbers and anticipating your opponent's moves, you can consistently outmaneuver less skilled players. The game's simplicity makes it easy to code and quick to play, ensuring an engaging experience that sharpens strategic thinking.
+
+Enjoy the challenge, and may the best strategist win!

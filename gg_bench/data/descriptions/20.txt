@@ -1,0 +1,167 @@
+# **Prime Connection**
+
+## **Objective**
+
+Prime Connection is a two-player turn-based strategy game played in a command-line interface. The primary goal is to be the last player to make a valid move according to the game's rules. Players select numbers from a common pool, strategically forcing their opponent into a position where they cannot make a valid selection on their turn, thus achieving victory.
+
+## **Setup**
+
+1. **Number Pool Initialization**: The game starts with a common pool of numbers ranging from **1 to 50**.
+2. **Determine First Player**: Players decide who will take the first turn. This can be done by mutual agreement or a random selection method.
+3. **Empty Selection List**: Both players start with no numbers selected.
+
+## **Game Components**
+
+- **Number Pool**: A list of numbers from **1 to 50** available for selection. Numbers are removed from this pool once selected.
+- **Player Selections**: Each player maintains a list of numbers they have selected during the game.
+- **Command-Line Interface**: Players interact with the game by entering commands or selections into the command line.
+
+## **Turns**
+
+- **Turn Order**: Players alternate turns, starting with the first player determined during setup.
+- **Player Actions on Their Turn**:
+  1. **View Available Numbers**: Players can view the current number pool.
+  2. **Select a Number**: Choose a valid number from the pool according to the rules.
+- **Turn Progression**: After a player makes a valid selection, the turn passes to the opponent.
+
+## **Rules and Mechanics**
+
+1. **First Turn**:
+   - The first player may select **any number** from the number pool.
+2. **Subsequent Turns**:
+   - On your turn, you **must select a number** from the pool that **shares a common factor greater than 1** with the **last number selected by your opponent**.
+3. **Number Selection**:
+   - **Valid Selection**: A number is valid if it meets the criteria above and is still available in the number pool.
+   - **Invalid Selection**: If no valid numbers are available, the player cannot make a move and loses the game.
+4. **Number Removal**:
+   - Once a number is selected, it is **removed** from the number pool for the remainder of the game.
+5. **Endgame Condition**:
+   - The game ends when a player cannot make a valid move on their turn, resulting in a **loss** for that player and a **win** for the opponent.
+
+## **Scoring**
+
+- **Winning the Game**: The winner is the player who successfully forces their opponent into a position where they cannot make a valid move according to the game's rules.
+- **No Points System**: There is no points or scoring system; victory is determined solely by the above condition.
+
+## **Examples**
+
+### **Sample Game Play**
+
+#### **Game Start**
+
+- **Number Pool**: 1 to 50
+
+#### **Player 1's Turn**
+
+- **Action**: Selects **15** (since it's the first turn, any number is valid).
+- **Number Pool**: Numbers 1-50 excluding **15**.
+
+#### **Player 2's Turn**
+
+- **Last Number Selected by Opponent**: **15**
+- **Valid Numbers**: Must share a common factor greater than 1 with **15**.
+  - Factors of 15: **3**, **5**
+  - Eligible Numbers: Any remaining numbers divisible by **3** or **5**.
+    - Examples: 3, 5, 6, 9, 10, 12, 18, 20, 21, 24, 25, 27, 30, 33, 35, 36, 39, 40, 42, 45, 48, 50
+- **Action**: Selects **10**.
+- **Number Pool**: Numbers 1-50 excluding **15** and **10**.
+
+#### **Player 1's Turn**
+
+- **Last Number Selected by Opponent**: **10**
+- **Valid Numbers**: Must share a common factor greater than 1 with **10**.
+  - Factors of 10: **2**, **5**
+  - Eligible Numbers: Remaining numbers divisible by **2** or **5**.
+    - Examples: 2, 4, 5, 6, 8, 12, 14, 16, 18, 20, 22, 24, 25, 26, 28, 30, 32, 34, 35, 36, 38, 40, 42, 44, 45, 46, 48, 50
+- **Action**: Selects **25**.
+- **Number Pool**: Numbers 1-50 excluding **15**, **10**, and **25**.
+
+#### **Player 2's Turn**
+
+- **Last Number Selected by Opponent**: **25**
+- **Valid Numbers**: Must share a common factor greater than 1 with **25**.
+  - Factors of 25: **5**
+  - Eligible Numbers: Remaining numbers divisible by **5**.
+    - Examples: 5, 20, 30, 35, 40, 45, 50
+- **Action**: Selects **30**.
+- **Number Pool**: Numbers 1-50 excluding **15**, **10**, **25**, and **30**.
+
+#### **Game Progression**
+
+- Players continue in this manner, selecting valid numbers based on the last number chosen by their opponent.
+- The pool of available numbers diminishes, and strategic selections become crucial.
+
+#### **Endgame Scenario**
+
+Suppose later in the game:
+
+- **Player 1's Turn**
+  - **Last Number Selected by Opponent**: **49**
+  - **Factors of 49**: **7**
+  - Eligible Numbers: Remaining numbers divisible by **7**.
+    - Examples (assuming they are still available): 7, 14, 21, 28, 35, 42
+  - **Action**: Selects **42**.
+- **Player 2's Turn**
+  - **Last Number Selected by Opponent**: **42**
+  - **Factors of 42**: **2**, **3**, **7**
+  - Eligible Numbers: Remaining numbers divisible by **2**, **3**, or **7**.
+    - If no such numbers are left, Player 2 **cannot make a valid move** and **loses** the game.
+
+### **Sample Command-Line Interaction**
+
+```plaintext
+--- Prime Connection ---
+
+Available Numbers:
+1-50
+
+Player 1's Turn:
+Select a number: 15
+
+Player 1 selected 15.
+
+Available Numbers:
+1-14,16-50
+
+Player 2's Turn:
+Last number selected by opponent: 15
+Valid numbers share a factor with 15 (factors: 3,5)
+Available choices: 3,5,6,9,10,12,18,20,...
+
+Select a number: 10
+
+Player 2 selected 10.
+
+Available Numbers:
+1-9,11-14,16-50
+
+Player 1's Turn:
+Last number selected by opponent: 10
+Valid numbers share a factor with 10 (factors: 2,5)
+Available choices: 2,4,5,6,8,12,...
+
+Select a number: 25
+
+Player 1 selected 25.
+
+...
+
+Player 2's Turn:
+Last number selected by opponent: 42
+Valid numbers share a factor with 42 (factors: 2,3,7)
+Available choices: None
+
+Player 2 cannot make a valid move.
+Player 1 wins the game!
+```
+
+## **Strategy Tips**
+
+- **Plan Ahead**: Anticipate your opponent's options based on your selections.
+- **Control the Factors**: Choose numbers that limit the common factors available for your opponent.
+- **Avoid Shared Factors**: Be cautious of selecting numbers with many factors, as this may provide more options for your opponent.
+- **Track Remaining Numbers**: Keep an eye on the number pool to inform your strategic choices.
+
+## **Conclusion**
+
+Prime Connection combines numerical strategy with foresight, offering players a deep and engaging experience despite its simple rules. Mastery comes from understanding number properties and leveraging them to corner your opponent. Enjoy the challenge and may the best strategist win!

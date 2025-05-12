@@ -1,0 +1,161 @@
+# Odd-Even Elimination
+
+## Objective
+
+Be the last player able to make a valid move by strategically removing numbers from a shared list according to the odd-even elimination rules.
+
+## Setup
+
+1. **Number Range**: The game begins with a consecutive list of numbers from **1** to **20**.
+2. **Players**: Two players participate, taking turns.
+3. **Initial Conditions**: No numbers have been removed at the start of the game.
+
+## Game Components
+
+- **Number List**: A shared list containing the numbers **1** to **20**.
+  - **Appearance**: The numbers are displayed in ascending order.
+  - **Functionality**: Players remove numbers from this list based on the game rules.
+  - **Unique Attributes**: Once a number is removed, it cannot be selected again.
+
+## Turns
+
+- **Turn Structure**:
+  1. **Player Action**: On their turn, a player removes one valid number from the list.
+  2. **Turn Progression**: Turns alternate between the two players.
+- **First Turn**: The first player can remove any number from the list since no numbers have been removed yet.
+
+## Rules and Mechanics
+
+### Core Rules
+
+1. **Valid Moves**:
+   - If the **last number removed** was **odd**, the next player must remove an **even** number.
+   - If the **last number removed** was **even**, the next player must remove an **odd** number.
+2. **Removal Constraints**:
+   - **Available Numbers**: Players can only remove numbers that are still in the list and meet the odd or even requirement based on the last move.
+   - **No Repeats**: Once a number is removed, it cannot be selected again.
+3. **Winning the Game**:
+   - A player **loses** if they cannot make a valid move on their turn.
+   - The **other player wins** by default.
+
+### Additional Mechanics
+
+- **Invalid Moves**: If a player attempts to remove an invalid number (e.g., wrong parity or already removed), they lose their turn, and the opponent gets an extra turn.
+- **Strategic Considerations**:
+  - Players should track which numbers have been removed to plan future moves.
+  - Anticipating the opponent's options can provide a strategic advantage.
+
+## Scoring
+
+- **Victory Condition**: The game is won by the player who successfully makes the last valid move, leaving the opponent without any valid options.
+- **No Points System**: The game does not use a points system; victory is determined solely by the ability to make a valid move when the opponent cannot.
+
+## Examples
+
+### Example Game Play
+
+**Starting Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+#### Turn 1
+- **Player 1** removes **3** (an odd number).
+- **Numbers Remaining**: 1, 2, 4, 5, 6, 7, 8, 9, 10
+
+#### Turn 2
+- The last number removed was **odd** (**3**).
+- **Player 2** must remove an **even** number.
+- **Player 2** removes **6**.
+- **Numbers Remaining**: 1, 2, 4, 5, 7, 8, 9, 10
+
+#### Turn 3
+- The last number removed was **even** (**6**).
+- **Player 1** must remove an **odd** number.
+- **Player 1** removes **5**.
+- **Numbers Remaining**: 1, 2, 4, 7, 8, 9, 10
+
+#### Turn 4
+- The last number removed was **odd** (**5**).
+- **Player 2** must remove an **even** number.
+- **Player 2** removes **2**.
+- **Numbers Remaining**: 1, 4, 7, 8, 9, 10
+
+#### Turn 5
+- The last number removed was **even** (**2**).
+- **Player 1** must remove an **odd** number.
+- **Player 1** removes **9**.
+- **Numbers Remaining**: 1, 4, 7, 8, 10
+
+#### Turn 6
+- The last number removed was **odd** (**9**).
+- **Player 2** must remove an **even** number.
+- **Player 2** removes **8**.
+- **Numbers Remaining**: 1, 4, 7, 10
+
+#### Turn 7
+- The last number removed was **even** (**8**).
+- **Player 1** must remove an **odd** number.
+- **Player 1** removes **7**.
+- **Numbers Remaining**: 1, 4, 10
+
+#### Turn 8
+- The last number removed was **odd** (**7**).
+- **Player 2** must remove an **even** number.
+- **Player 2** removes **4**.
+- **Numbers Remaining**: 1, 10
+
+#### Turn 9
+- The last number removed was **even** (**4**).
+- **Player 1** must remove an **odd** number.
+- **Player 1** removes **1**.
+- **Numbers Remaining**: 10
+
+#### Turn 10
+- The last number removed was **odd** (**1**).
+- **Player 2** must remove an **even** number.
+- **Player 2** removes **10**.
+- **Numbers Remaining**: None
+
+#### Conclusion
+- All numbers have been removed.
+- Since **Player 2** made the last valid move, **Player 2 wins**.
+
+### Command-Line Interaction Example
+
+Below is a sample of how the game might look in a command-line interface.
+
+```
+Welcome to Odd-Even Elimination!
+
+Numbers Remaining: 1 2 3 4 5 6 7 8 9 10
+
+Player 1's turn.
+No numbers have been removed yet.
+Select any number: 3
+
+Player 1 removed 3 (Odd).
+
+Numbers Remaining: 1 2 4 5 6 7 8 9 10
+
+Player 2's turn.
+Last number was Odd (3).
+You must remove an Even number.
+Available Even numbers: 2 4 6 8 10
+Select a number: 6
+
+Player 2 removed 6 (Even).
+
+Numbers Remaining: 1 2 4 5 7 8 9 10
+
+Player 1's turn.
+Last number was Even (6).
+You must remove an Odd number.
+Available Odd numbers: 1 5 7 9
+Select a number: 5
+
+Player 1 removed 5 (Odd).
+
+... [Game continues as in the example above] ...
+```
+
+## Summary
+
+**Odd-Even Elimination** is a strategic two-player game that requires players to think ahead and adapt to the changing number pool. By following the simple yet engaging rules, players must consider not only their current move but also the implications for future turns. The alternating odd-even rule creates a dynamic where each decision directly affects the opponent's options, ensuring that the game remains competitive and ends with a clear winner.

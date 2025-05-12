@@ -1,0 +1,219 @@
+# Game Name: Number Harmony
+
+## Objective
+
+**Primary Goal:**  
+In *Number Harmony*, two players take turns adding single-digit numbers (from 1 to 9) to a shared sequence. The objective is to **avoid creating a sequence where any three consecutive digits sum to 15**. The player who **adds a digit that causes any three consecutive digits to sum to 15 loses** the game. There are no draws in this game; play continues until one player loses according to the rules.
+
+---
+
+## Setup
+
+- **Starting Condition:**  
+  - The game begins with an **empty sequence**.
+- **Players:**  
+  - Two players, **Player 1** and **Player 2**.
+  - Player 1 makes the **first move**.
+
+---
+
+## Game Components
+
+- **Digits (1-9):**  
+  - These are the numbers players can choose from on their turn.
+  - Each digit can be used **multiple times** throughout the game.
+- **Shared Sequence:**  
+  - A sequence that both players contribute to by adding digits.
+  - The sequence grows as players take turns.
+
+---
+
+## Turns
+
+- **Turn Structure:**
+
+  1. **Select a Digit:**  
+     - On their turn, a player selects any **single-digit number between 1 and 9** (inclusive).
+  2. **Add to Sequence:**  
+     - The chosen digit is appended to the **end of the shared sequence**.
+  3. **Check for Sum to 15:**  
+     - After the digit is added, check if **any three consecutive digits** in the sequence sum to **15**.
+     - **Important:** This check includes **all sets of three consecutive digits**, not just the last three added.
+  4. **Determine Outcome:**  
+     - If the addition of the digit results in any three consecutive digits summing to 15, the **player who made the move loses**.
+     - If not, the turn passes to the **other player**.
+
+- **Turn Progression:**
+  - Players **alternate turns** until the game ends according to the rules.
+
+---
+
+## Rules and Mechanics
+
+### Core Rules:
+
+1. **Digit Selection:**
+   - Players may choose **any digit from 1 to 9** on their turn.
+   - There are **no restrictions** on how many times a digit can be used in the sequence.
+
+2. **Building the Sequence:**
+   - Digits are **appended** to the existing sequence.
+   - The sequence is a continuous list of digits, growing with each turn.
+
+3. **Sum to 15 Rule:**
+   - After each move, check the entire sequence for **any instance where three consecutive digits sum to 15**.
+   - If such an instance is found, the player who just played **loses the game**.
+
+4. **No Skipping Turns:**
+   - Players **cannot skip** their turn.
+   - A valid digit **must** be played if possible.
+
+5. **Game End:**
+   - The game ends immediately when a player loses according to the **Sum to 15 Rule**.
+   - There is **no draw** condition.
+
+### Special Notes:
+
+- **Strategic Play:**
+  - Players must think ahead to avoid setting up the sequence in a way that forces them to lose on subsequent turns.
+  - Observing the existing sequence and calculating possible sums is crucial.
+
+- **Examples of Three Consecutive Digits Summing to 15:**
+  - **[4][5][6]**: 4 + 5 + 6 = 15
+  - **[7][8][0]**: 7 + 8 + 0 = 15 (note that 0 cannot be played, but for the sake of example)
+  - **[9][4][2]**: 9 + 4 + 2 = 15
+
+---
+
+## Scoring
+
+- **Winning the Game:**
+  - The game is won by the player who **avoids creating** a sequence where any three consecutive digits sum to 15.
+  
+- **Losing the Game:**
+  - A player **loses** by adding a digit that results in any three consecutive digits in the sequence summing to 15.
+
+- **No Points System:**
+  - *Number Harmony* does not utilize a points system; victory is determined solely by the game's objective.
+
+---
+
+## Examples
+
+### Example Game
+
+Let's illustrate how *Number Harmony* is played through a sample game between Player 1 and Player 2.
+
+#### Initial State:
+- Sequence: (empty)
+
+#### Turn 1: Player 1
+
+- **Action:** Selects and adds **5** to the sequence.
+- **Sequence after move:** [5]
+- **Check for Sum to 15:** Not applicable (less than three digits).
+- **Outcome:** Game continues.
+
+#### Turn 2: Player 2
+
+- **Action:** Selects and adds **7** to the sequence.
+- **Sequence after move:** [5][7]
+- **Check for Sum to 15:** Not applicable (less than three digits).
+- **Outcome:** Game continues.
+
+#### Turn 3: Player 1
+
+- **Action:** Selects and adds **2** to the sequence.
+- **Sequence after move:** [5][7][2]
+- **Check for Sum to 15:**
+  - Sum of last three digits: 5 + 7 + 2 = 14
+- **Outcome:** Game continues.
+
+#### Turn 4: Player 2
+
+- **Action:** Selects and adds **6** to the sequence.
+- **Sequence after move:** [5][7][2][6]
+- **Check for Sum to 15:**
+  - Sum of digits 7 + 2 + 6 = 15
+- **Result:** Player 2 **loses** the game.
+  - The three consecutive digits [7][2][6] sum to 15.
+
+### Command-Line Interaction Example
+
+Below is a simulated command-line interaction between the two players.
+
+#### Start of Game:
+
+```
+Welcome to Number Harmony!
+
+Player 1, it's your turn.
+Current sequence: 
+Please select a digit (1-9): 5
+```
+
+#### After Player 1's Move:
+
+```
+Player 1 added 5 to the sequence.
+Current sequence: [5]
+No three consecutive digits to check.
+Player 2, it's your turn.
+Please select a digit (1-9): 7
+```
+
+#### After Player 2's Move:
+
+```
+Player 2 added 7 to the sequence.
+Current sequence: [5][7]
+No three consecutive digits to check.
+Player 1, it's your turn.
+Please select a digit (1-9): 2
+```
+
+#### After Player 1's Move:
+
+```
+Player 1 added 2 to the sequence.
+Current sequence: [5][7][2]
+Checking sums of three consecutive digits...
+Sum of [5][7][2] = 14
+No sum equals 15. Game continues.
+Player 2, it's your turn.
+Please select a digit (1-9): 6
+```
+
+#### After Player 2's Move:
+
+```
+Player 2 added 6 to the sequence.
+Current sequence: [5][7][2][6]
+Checking sums of three consecutive digits...
+Sum of [5][7][2] = 14
+Sum of [7][2][6] = 15
+Player 2 has created a sum of 15 with digits [7][2][6].
+Player 2 loses. Player 1 wins!
+```
+
+---
+
+## Strategic Tips
+
+- **Plan Ahead:**  
+  Consider how your chosen digit will affect not only the current state but potential future sums.
+
+- **Avoid Setting Traps for Yourself:**  
+  Be cautious of sequences that could force you into a losing position on your next turn.
+
+- **Monitor the Sequence:**  
+  Keep track of the last two digits in the sequence before your turn to avoid completing a sum of 15.
+
+- **Force Your Opponent's Hand:**  
+  If possible, play in a way that limits your opponent's safe options.
+
+---
+
+## Summary
+
+*Number Harmony* is a simple yet strategic game that challenges players to think ahead and be mindful of the sums created within a shared sequence. With straightforward rules and a clear objective, it offers quick gameplay that's easy to code and ideal for a command-line interface. Whether you're looking to test your strategic planning or just enjoy a fast-paced numerical challenge, *Number Harmony* provides an engaging experience for players of all skill levels.

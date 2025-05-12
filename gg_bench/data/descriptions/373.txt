@@ -1,0 +1,265 @@
+# Bit Flip Challenge: Rule Book
+
+## Objective
+
+The primary goal of **Bit Flip Challenge** is to be the first player to flip all bits in your 8-bit binary sequence (byte) to `1`. Players take turns strategically flipping bits according to the game rules. Victory is achieved when a player's byte consists entirely of `1`s before their opponent's does.
+
+## Setup
+
+1. **Initialize Players**: Two players, referred to as Player 1 and Player 2.
+2. **Starting Byte**: Each player begins with their own 8-bit byte initialized to all zeros: `00000000`.
+3. **Turn Order**: Determine which player will take the first turn (e.g., by a random selection or agreement).
+
+## Game Components
+
+- **8-bit Byte**: Represents each player's current state. Initially set to `00000000` for both players.
+- **Bits**: Individual positions in the byte, numbered from **Bit 1** (leftmost) to **Bit 8** (rightmost).
+  
+  ```
+  Bit Positions:  1 2 3 4 5 6 7 8
+  Initial State:  0 0 0 0 0 0 0 0
+  ```
+  
+- **Command-Line Interface**: Players input their moves via command-line prompts.
+
+## Turns
+
+- Players alternate turns throughout the game.
+- **Turn Structure**:
+  1. **Choose Action**: On their turn, a player selects an action (Single Flip or Double Flip).
+  2. **Execute Action**: The chosen action is performed according to the rules.
+  3. **Update Byte**: The player's byte is updated to reflect the changes.
+  4. **End Turn**: The turn ends, and control passes to the opponent.
+
+## Rules and Mechanics
+
+### Actions
+
+**1. Single Flip**
+- **Description**: Flip a single `0` bit to `1`.
+- **How to Perform**:
+  - Select one bit position (1-8) that is currently `0`.
+  - Change its value to `1`.
+- **Restrictions**:
+  - Cannot flip a bit that is already `1`.
+
+**2. Double Flip with Risk**
+- **Description**: Attempt to flip two adjacent `0` bits to `1`, with a risk of regression.
+- **How to Perform**:
+  - Select a pair of adjacent bit positions (e.g., bits 3 and 4) where both bits are `0`.
+  - Change both bits to `1`.
+  - **Risk Factor**: After flipping, one random `1` bit in your byte (excluding the two just flipped) is reverted back to `0`, if any exist.
+    - If there are no other `1` bits, no additional bits are reverted.
+- **Restrictions**:
+  - Selected bits must be adjacent and both must be `0`.
+  - Cannot choose bits at positions where one or both are already `1`.
+
+### Additional Rules
+
+- **Victory Condition**: The first player whose byte reaches `11111111` wins the game.
+- **Valid Moves**: If a player has no valid moves (e.g., all bits are `1` except non-adjacent `0`s and they cannot perform a Double Flip), they must perform any valid action if possible.
+- **Error Handling**: Invalid inputs or moves (such as choosing a bit out of range or flipping a bit that's already `1`) result in the player being prompted again.
+
+## Scoring
+
+- There is no point tracking in **Bit Flip Challenge**.
+- The game's progress is tracked by each player's 8-bit byte.
+- The player who successfully flips all bits to `1` first is declared the winner.
+
+## Examples
+
+### Sample Game Play
+
+#### Initial State
+
+- **Player 1's Byte**: `0 0 0 0 0 0 0 0`
+- **Player 2's Byte**: `0 0 0 0 0 0 0 0`
+
+#### Turn Sequence
+
+1. **Player 1's Turn**
+   - **Action**: Single Flip
+   - **Choice**: Flip Bit 1
+   - **Result**:
+     - **Player 1's Byte**: `1 0 0 0 0 0 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 1, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 1
+     Enter the bit position to flip (1-8): 1
+     Bit 1 flipped to 1.
+     Your current byte: 1 0 0 0 0 0 0 0
+     ```
+
+2. **Player 2's Turn**
+   - **Action**: Double Flip with Risk
+   - **Choice**: Flip Bits 2 and 3
+   - **Risk Outcome**: Randomly reverts Bit 1 to `0` (since no other `1`s exist, no bits revert)
+   - **Result**:
+     - **Player 2's Byte**: `0 1 1 0 0 0 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 2, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 2
+     Enter the first bit position to flip (1-7): 2
+     Flipping Bits 2 and 3.
+     No additional bits to revert.
+     Your current byte: 0 1 1 0 0 0 0 0
+     ```
+
+3. **Player 1's Turn**
+   - **Action**: Double Flip with Risk
+   - **Choice**: Flip Bits 2 and 3
+   - **Risk Outcome**: Randomly reverts Bit 1 back to `0`
+   - **Result**:
+     - **Player 1's Byte**: `0 1 1 0 0 0 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 1, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 2
+     Enter the first bit position to flip (1-7): 2
+     Flipping Bits 2 and 3.
+     Bit 1 reverted back to 0.
+     Your current byte: 0 1 1 0 0 0 0 0
+     ```
+
+4. **Player 2's Turn**
+   - **Action**: Single Flip
+   - **Choice**: Flip Bit 4
+   - **Result**:
+     - **Player 2's Byte**: `0 1 1 1 0 0 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 2, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 1
+     Enter the bit position to flip (1-8): 4
+     Bit 4 flipped to 1.
+     Your current byte: 0 1 1 1 0 0 0 0
+     ```
+
+5. **Player 1's Turn**
+   - **Action**: Single Flip
+   - **Choice**: Flip Bit 1
+   - **Result**:
+     - **Player 1's Byte**: `1 1 1 0 0 0 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 1, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 1
+     Enter the bit position to flip (1-8): 1
+     Bit 1 flipped to 1.
+     Your current byte: 1 1 1 0 0 0 0 0
+     ```
+
+6. **Player 2's Turn**
+   - **Action**: Double Flip with Risk
+   - **Choice**: Flip Bits 5 and 6
+   - **Risk Outcome**: Randomly reverts Bit 2 back to `0`
+   - **Result**:
+     - **Player 2's Byte**: `0 0 1 1 1 1 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 2, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 2
+     Enter the first bit position to flip (1-7): 5
+     Flipping Bits 5 and 6.
+     Bit 2 reverted back to 0.
+     Your current byte: 0 0 1 1 1 1 0 0
+     ```
+
+7. **Player 1's Turn**
+   - **Action**: Double Flip with Risk
+   - **Choice**: Flip Bits 4 and 5
+   - **Risk Outcome**: Randomly reverts Bit 1 back to `0`
+   - **Result**:
+     - **Player 1's Byte**: `0 1 1 1 1 0 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 1, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 2
+     Enter the first bit position to flip (1-7): 4
+     Flipping Bits 4 and 5.
+     Bit 1 reverted back to 0.
+     Your current byte: 0 1 1 1 1 0 0 0
+     ```
+
+8. **Player 2's Turn**
+   - **Action**: Single Flip
+   - **Choice**: Flip Bit 7
+   - **Result**:
+     - **Player 2's Byte**: `0 0 1 1 1 1 1 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 2, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 1
+     Enter the bit position to flip (1-8): 7
+     Bit 7 flipped to 1.
+     Your current byte: 0 0 1 1 1 1 1 0
+     ```
+
+9. **Player 1's Turn**
+   - **Action**: Single Flip
+   - **Choice**: Flip Bit 6
+   - **Result**:
+     - **Player 1's Byte**: `0 1 1 1 1 1 0 0`
+   - **Command-Line Interaction**:
+     ```
+     Player 1, choose your action:
+     1. Single Flip
+     2. Double Flip with Risk
+     Enter the number of your action: 1
+     Enter the bit position to flip (1-8): 6
+     Bit 6 flipped to 1.
+     Your current byte: 0 1 1 1 1 1 0 0
+     ```
+
+10. **Player 2's Turn**
+    - **Action**: Double Flip with Risk
+    - **Choice**: Flip Bits 8 and 1 (wrapping not allowed, invalid move)
+    - **Valid Move**: Flip Bits 8 and 0 (invalid, since bit positions are 1-8)
+    - **Valid Move**: Flip Bits 7 and 8
+    - **Chosen Move**: Flip Bit 8 (since Bit 8 is `0` and Bits 7 and 8 are not both `0`)
+    - **Result**:
+      - **Player 2's Byte**: `0 0 1 1 1 1 1 1`
+    - **Command-Line Interaction**:
+      ```
+      Player 2, choose your action:
+      1. Single Flip
+      2. Double Flip with Risk
+      Enter the number of your action: 1
+      Enter the bit position to flip (1-8): 8
+      Bit 8 flipped to 1.
+      Your current byte: 0 0 1 1 1 1 1 1
+      ```
+
+11. **Player 2 Wins**
+    - **Player 2's Byte**: `0 0 1 1 1 1 1 1`
+    - On the next turn, Player 1 cannot flip two adjacent `0`s (since Bits 1 and 7 are not adjacent) and can only flip one bit at a time.
+    - Even if Player 1 flips a `0` to `1`, Player 2 has a chance to win on their next turn.
+    - **Outcome**: Assuming optimal play, Player 2 will win by flipping remaining bits to `1`.
+
+### Strategic Considerations
+
+- **Risk vs. Reward**: Choosing the Double Flip with Risk can accelerate progress but may cause setbacks.
+- **Bit Selection**: Prioritize flipping bits that open up opportunities for future Double Flips.
+- **Observation**: Keep track of which bits have reverted to plan subsequent moves accordingly.
+
+## Conclusion
+
+**Bit Flip Challenge** is a fast-paced, strategic game that combines elements of luck and decision-making. It is easy to learn and play within a command-line interface, providing depth and complexity through its risk-based mechanics. Players must balance caution with ambition to outmaneuver their opponent and achieve victory.

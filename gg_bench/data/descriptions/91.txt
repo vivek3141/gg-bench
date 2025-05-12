@@ -1,0 +1,239 @@
+# Game Name: Number Run
+
+## Objective
+
+Be the first player to reach your opponent's starting position on the grid while maximizing your score. Use strategic movement and challenges to outmaneuver your opponent and claim victory.
+
+## Setup
+
+- **Grid**: The game is played on a 5x5 grid with cells labeled by their coordinates `(row, column)`, ranging from `(0,0)` to `(4,4)`.
+- **Cell Values**: Each cell on the grid is randomly assigned a value between **1** and **5** at the start of the game.
+- **Starting Positions**:
+  - **Player 1** starts at the top-left corner `(0,0)`.
+  - **Player 2** starts at the bottom-right corner `(4,4)`.
+- **Scores**: Both players start with a score of **0**.
+- **Visited Cells**: No cells have been visited at the beginning of the game.
+
+## Game Components
+
+- **Grid (5x5)**: Represents the playing field where players move their tokens.
+- **Cells**: Each cell contains:
+  - A numerical value between 1 and 5.
+  - Coordinates indicating its position on the grid.
+- **Player Tokens**: Markers that represent each player's current position on the grid.
+- **Scores**: Numerical trackers that accumulate the sum of the cell values each player has moved into.
+- **Visited Cells Record**: A log of cells that have been visited by each player to prevent revisiting.
+
+## Turns
+
+- Players alternate turns, starting with **Player 1**.
+- During each turn, a player must move their token to an adjacent, unvisited cell.
+- After moving, players may have the option to initiate a challenge if conditions are met.
+
+## Rules and Mechanics
+
+### Movement
+
+1. **Adjacency**:
+   - You may move to any cell that is directly **above**, **below**, **to the left**, or **to the right** of your current position.
+   - **Diagonal** movements are **not** allowed.
+
+2. **Unvisited Cells**:
+   - You **cannot** move to a cell that you have previously visited.
+   - You **cannot** move to a cell occupied by your opponent.
+
+3. **Movement Execution**:
+   - Declare your intended move by specifying the coordinates of the adjacent cell.
+   - Update your current position to the new cell.
+   - Add the value of the new cell to your cumulative score.
+   - Mark the new cell as visited.
+
+### Scoring
+
+- **Accumulation**:
+  - Each time you move into a new cell, **add** the cell's value to your score.
+- **Score Reset**:
+  - If you lose a challenge and are sent back to your starting position, your score resets to **0**.
+
+### Challenges
+
+1. **Initiating a Challenge**:
+   - You may initiate a challenge **only** if you move into a cell that is **adjacent** to your opponent's current position **after** your movement.
+   - Declare your intention to challenge at the end of your movement turn.
+
+2. **Resolving a Challenge**:
+   - **Compare** your current score with your opponent's current score.
+   - The player with the **higher** score **wins** the challenge.
+   - In case of a **tie**, the challenge has no effect; both players remain in their positions.
+
+3. **Challenge Outcomes**:
+   - **Winner**:
+     - Remains in their current position.
+   - **Loser**:
+     - Is sent back to their starting position.
+     - Their score resets to **0**.
+     - All previously visited cells by the loser remain marked as visited.
+
+### Winning the Game
+
+- **Victory Condition**:
+  - You win the game if you move your token into your opponent's **starting position**.
+- **Alternative Victory**:
+  - If your opponent cannot make a valid move on their turn (all adjacent cells have been visited), you **win** the game.
+
+## Scoring
+
+- **Track Scores**:
+  - Each player maintains a cumulative score based on the cell values they have moved into.
+- **Usage in Challenges**:
+  - Scores are critical in determining the outcome of challenges.
+- **Resetting Scores**:
+  - A player's score resets to **0** if they lose a challenge and are sent back to their starting position.
+
+## Examples
+
+### Initial Grid Setup
+
+(Note: Cell values are randomly assigned and will vary each game.)
+
+```
+Grid Positions with Cell Values:
+
+(0,0): 3   (0,1): 1   (0,2): 4   (0,3): 2   (0,4): 5
+(1,0): 2   (1,1): 5   (1,2): 1   (1,3): 3   (1,4): 4
+(2,0): 4   (2,1): 2   (2,2): 5   (2,3): 1   (2,4): 3
+(3,0): 1   (3,1): 4   (3,2): 2   (3,3): 5   (3,4): 2
+(4,0): 5   (4,1): 3   (4,2): 1   (4,3): 4   (4,4): 2
+```
+
+### Sample Gameplay
+
+#### Player 1's First Turn
+
+- **Current Position**: `(0,0)`
+- **Current Score**: `0`
+- **Available Moves**: `(0,1)`, `(1,0)`
+- **Action**:
+  - Moves to `(0,1)`
+  - Cell value at `(0,1)` is `1`
+  - Adds `1` to score. New score is `1`
+- **Command-Line Interaction**:
+  ```
+  Player 1's turn.
+  Current position: (0,0)
+  Current score: 0
+  Available moves: (0,1), (1,0)
+  Enter your move (row,column): 0,1
+  Moved to (0,1).
+  Cell value: 1
+  New score: 1
+  ```
+
+#### Player 2's First Turn
+
+- **Current Position**: `(4,4)`
+- **Current Score**: `0`
+- **Available Moves**: `(3,4)`, `(4,3)`
+- **Action**:
+  - Moves to `(3,4)`
+  - Cell value at `(3,4)` is `2`
+  - Adds `2` to score. New score is `2`
+- **Command-Line Interaction**:
+  ```
+  Player 2's turn.
+  Current position: (4,4)
+  Current score: 0
+  Available moves: (3,4), (4,3)
+  Enter your move (row,column): 3,4
+  Moved to (3,4).
+  Cell value: 2
+  New score: 2
+  ```
+
+#### Player 1's Second Turn
+
+- **Current Position**: `(0,1)`
+- **Available Moves**: `(0,2)`, `(1,1)`, `(0,0)` (cannot return to `(0,0)`; already visited)
+- **Action**:
+  - Moves to `(1,1)`
+  - Cell value at `(1,1)` is `5`
+  - Adds `5` to score. New score is `6`
+- **Command-Line Interaction**:
+  ```
+  Player 1's turn.
+  Current position: (0,1)
+  Current score: 1
+  Available moves: (0,2), (1,1)
+  Enter your move (row,column): 1,1
+  Moved to (1,1).
+  Cell value: 5
+  New score: 6
+  ```
+
+#### Encounter and Challenge
+
+Assume several turns later, the players are adjacent.
+
+- **Player 1 Position**: `(2,2)` with score `14`
+- **Player 2 Position**: `(2,3)` with score `12`
+- **Player 1's Turn**:
+  - Moves to `(2,2)`
+  - Notices Player 2 is adjacent at `(2,3)`
+  - Decides to initiate a challenge
+- **Challenge Resolution**:
+  - Player 1's score: `14`
+  - Player 2's score: `12`
+  - Player 1 wins the challenge
+  - Player 2 is sent back to `(4,4)` and score resets to `0`
+- **Command-Line Interaction**:
+  ```
+  Player 1's turn.
+  Current position: (1,2)
+  Current score: 9
+  Available moves: (1,1), (2,2)
+  Enter your move (row,column): 2,2
+  Moved to (2,2).
+  Cell value: 5
+  New score: 14
+  Opponent is adjacent at (2,3).
+  Do you want to challenge? (yes/no): yes
+  Challenge initiated!
+  Your score: 14
+  Opponent's score: 12
+  You win the challenge!
+  Opponent returns to starting position and score resets to 0.
+  ```
+
+#### Winning the Game
+
+Later, Player 1 reaches Player 2's starting position.
+
+- **Player 1's Position**: `(4,4)`
+- **Action**:
+  - Moves to `(4,4)`
+  - Reaches opponent's starting position
+  - Wins the game
+- **Command-Line Interaction**:
+  ```
+  Player 1's turn.
+  Current position: (4,3)
+  Current score: 22
+  Available moves: (4,4)
+  Enter your move (row,column): 4,4
+  Moved to (4,4).
+  Cell value: 2
+  New score: 24
+  You have reached the opponent's starting position!
+  Player 1 wins the game!
+  ```
+
+## Ensure Strategic Depth and Complexity
+
+- **Variable Grid Values**: Each game is different due to random cell values, requiring adaptation.
+- **Movement Planning**: Players must plan routes to maximize scores and avoid getting trapped.
+- **Challenges**: Deciding when to challenge adds a layer of strategy regarding score management.
+- **Resource Management**: Balancing the risk of high-value cells against the possibility of a counter-challenge.
+
+## Summary
+
+Number Run is an engaging, strategic game that combines movement planning and numerical strategy in a simple-to-understand format suitable for a command-line interface. The game ensures that skilled players can consistently outperform unskilled players through careful planning and strategic decision-making.

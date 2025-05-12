@@ -1,0 +1,224 @@
+# Digit Dilemma
+
+## Objective
+
+**Be the player with the higher numerical value of your constructed number at the end of the game.** Players take turns selecting digits from a shared sequence to build their own numbers. Strategic selection is key to outmaneuvering your opponent and achieving victory.
+
+## Setup
+
+- **Shared Digit Sequence**: A sequence of 20 random digits (0-9) is generated and displayed to both players. The digits are arranged in a line and are accessible from either end.
+  
+  Example:
+  ```
+  Shared Sequence: 4 7 1 9 3 2 8 5 0 6 2 3 7 4 8 1 5 9 0 6
+  ```
+
+- **Player Numbers**: Each player starts with an empty number (no digits).
+
+- **Player Roles**: Decide which player goes first. You can flip a coin, have the system choose at random, or agree between players.
+
+## Game Components
+
+- **Shared Sequence**: A mutable list of digits accessible from both ends.
+  
+- **Player Numbers**: Each player's number is a string or array of digits that they build during the game.
+
+- **Turns Tracker**: Keeps track of whose turn it is.
+
+## Turns
+
+- **Turn Structure**:
+  
+  1. **Display Current State**:
+     - Current shared sequence of digits.
+     - Each player's current number.
+  
+  2. **Player Action**:
+     - The active player chooses **one digit** from **either the start or the end** of the shared sequence.
+     - The chosen digit is appended to the **right end** of their own number.
+  
+  3. **Update Sequence**:
+     - Remove the chosen digit from the shared sequence.
+  
+  4. **Switch Turns**:
+     - The other player becomes the active player.
+
+- **Example Turn**:
+  
+  - **Shared Sequence**: `4 7 1 9 3 2 8 5 0 6 2 3 7 4 8 1 5 9 0 6`
+  - **Player 1's Number**: (empty)
+  - **Player 2's Number**: (empty)
+  
+  **Player 1's Turn**:
+  - Chooses `4` from the start.
+  - **Player 1's Number**: `4`
+  - **Updated Sequence**: `7 1 9 3 2 8 5 0 6 2 3 7 4 8 1 5 9 0 6`
+
+## Rules and Mechanics
+
+1. **Digit Selection**:
+   - On your turn, you **must** select one digit.
+   - You may only choose from the **start or the end** of the shared sequence.
+   - You **cannot** skip your turn or pass.
+
+2. **Building Your Number**:
+   - Append the chosen digit to the **right end** of your current number.
+   - The number builds from left to right based on your selections.
+
+3. **Sequence Depletion**:
+   - The game ends when all digits have been selected and the shared sequence is empty.
+
+4. **No Skipping Digits**:
+   - You cannot select digits from the middle of the sequence.
+   - Only the **first** (leftmost) or **last** (rightmost) digit is available on your turn.
+
+5. **No Draws**:
+   - If both players end up with numbers of equal value, the **second player** (the one who did not start first) is declared the winner. This rule ensures that there are no ties.
+
+## Scoring
+
+- **Number Evaluation**:
+  - At the game's end, each player's number is considered as a whole integer.
+  - Example: If your selected digits were `4`, `9`, `2`, your number is `492`.
+
+- **Determining the Winner**:
+  - The player with the **higher numerical value** wins the game.
+  - If both numbers are equal, the **second player wins**, as per the no-draw rule.
+
+## Examples
+
+### Example Game
+
+**Initial Shared Sequence**:
+
+```
+Shared Sequence: 3 6 1 9 4 7 2 5 8 0
+```
+
+**Player 1's Number**: (empty)
+
+**Player 2's Number**: (empty)
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**:
+   - Chooses `3` from the start.
+   - **Player 1's Number**: `3`
+   - **Updated Sequence**: `6 1 9 4 7 2 5 8 0`
+  
+2. **Player 2's Turn**:
+   - Chooses `0` from the end.
+   - **Player 2's Number**: `0`
+   - **Updated Sequence**: `6 1 9 4 7 2 5 8`
+
+3. **Player 1's Turn**:
+   - Chooses `6` from the start.
+   - **Player 1's Number**: `3 6`
+   - **Updated Sequence**: `1 9 4 7 2 5 8`
+
+4. **Player 2's Turn**:
+   - Chooses `8` from the end.
+   - **Player 2's Number**: `0 8`
+   - **Updated Sequence**: `1 9 4 7 2 5`
+
+5. **Player 1's Turn**:
+   - Chooses `1` from the start.
+   - **Player 1's Number**: `3 6 1`
+   - **Updated Sequence**: `9 4 7 2 5`
+
+6. **Player 2's Turn**:
+   - Chooses `5` from the end.
+   - **Player 2's Number**: `0 8 5`
+   - **Updated Sequence**: `9 4 7 2`
+
+7. **Player 1's Turn**:
+   - Chooses `9` from the start.
+   - **Player 1's Number**: `3 6 1 9`
+   - **Updated Sequence**: `4 7 2`
+
+8. **Player 2's Turn**:
+   - Chooses `2` from the end.
+   - **Player 2's Number**: `0 8 5 2`
+   - **Updated Sequence**: `4 7`
+
+9. **Player 1's Turn**:
+   - Chooses `4` from the start.
+   - **Player 1's Number**: `3 6 1 9 4`
+   - **Updated Sequence**: `7`
+
+10. **Player 2's Turn**:
+    - Chooses `7` from the start (only option left).
+    - **Player 2's Number**: `0 8 5 2 7`
+    - **Updated Sequence**: (empty)
+
+**Final Numbers**:
+
+- **Player 1's Number**: `36194`
+- **Player 2's Number**: `08527`
+
+**Scoring**:
+
+- **Player 1's Value**: `36194`
+- **Player 2's Value**: `8527` (Note that leading zero is ignored in numerical value)
+
+**Winner**: **Player 1**, because `36194` > `8527`.
+
+### Strategic Considerations
+
+- **High vs. Low Digits**: Prioritize selecting higher digits to build a larger number.
+- **Blocking**: Anticipate your opponent's moves. If a high digit is at one end and a low digit at the other, you may need to decide between increasing your own number or preventing your opponent from accessing a high digit.
+- **Positioning**: Remember that you always append digits to the **right end** of your number. The order of digits can significantly impact the final value.
+
+## Command-Line Interaction Sample
+
+Assuming a command-line interface where inputs and outputs are displayed textually.
+
+**System Displays**:
+
+```
+Current Shared Sequence: 4 9 1 7 2 5 8 6 3 0
+Player 1's Number:
+Player 2's Number:
+Player 1, it's your turn.
+Choose 'start' to select 4 or 'end' to select 0:
+```
+
+**Player 1 Inputs**:
+
+```
+start
+```
+
+**System Updates**:
+
+```
+Player 1 chose 4 from the start.
+Player 1's Number: 4
+Updated Shared Sequence: 9 1 7 2 5 8 6 3 0
+Player 2, it's your turn.
+Choose 'start' to select 9 or 'end' to select 0:
+```
+
+**Player 2 Inputs**:
+
+```
+end
+```
+
+**System Updates**:
+
+```
+Player 2 chose 0 from the end.
+Player 2's Number: 0
+Updated Shared Sequence: 9 1 7 2 5 8 6 3
+Player 1, it's your turn.
+Choose 'start' to select 9 or 'end' to select 3:
+```
+
+*...and so on until the sequence is depleted.*
+
+## Conclusion
+
+"Digit Dilemma" is a simple yet strategic game that challenges players to think ahead and make tactical decisions based on the shared sequence of digits. By carefully selecting digits and anticipating your opponent's moves, you can build a higher-value number and claim victory.
+
+Enjoy the game and may the best strategist win!

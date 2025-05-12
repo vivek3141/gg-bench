@@ -1,0 +1,130 @@
+# Number Chain
+
+## Objective
+
+Be the first player to successfully extend the number chain to reach the target length by adding numbers according to specific rules. A player wins by being able to make a valid move when the opponent cannot, or by being the first to reach the chain length of 10.
+
+## Setup
+
+- **Starting Number**: The game begins with a single number: **1**.
+- **Chain Length**: Agree on a target chain length (default is **10** numbers).
+- **Player Order**: Decide who goes first (e.g., coin toss).
+
+## Game Components
+
+- **Number Chain**: A sequential list of numbers starting with 1, extended by players.
+- **Players**: Two players take turns to add numbers to the chain.
+- **Available Numbers**: All positive integers greater than 1 (each number can be used only once).
+
+## Turns
+
+- Players alternate turns.
+- On each turn, a player adds **one** number to the end of the chain, following the game rules.
+
+## Rules and Mechanics
+
+### 1. Adding a Number
+
+- **Increasing Order**: The number added must be **greater than** the last number in the chain.
+
+### 2. Validity Criteria
+
+The new number must satisfy **at least one** of the following conditions with respect to the **previous number** in the chain:
+
+- **Divisibility**: The new number is divisible by the previous number.
+  - *Mathematically*: `New Number % Previous Number == 0`.
+- **Common Digit**: The new number shares at least one digit with the previous number.
+  - *Example*: Previous number is 14; valid next numbers could be 24 (shares '4') or 17 (shares '1').
+
+### 3. Restrictions
+
+- **Unique Numbers**: Each number can be used only once in the game.
+- **Positive Integers**: Only positive integers greater than the previous number are allowed.
+
+### 4. Winning the Game
+
+- **Victory by Completion**: Be the first to extend the chain to the agreed target length (e.g., 10 numbers).
+- **Victory by Default**: If your opponent cannot make a valid move on their turn, you win.
+
+## Scoring
+
+- No points are tracked beyond the chain length.
+- The focus is on extending the chain according to the rules.
+- Optional: Play multiple rounds and keep track of wins to determine an overall champion.
+
+## Examples
+
+### Sample Turn Sequence
+
+**Initial Chain**: `1`
+
+1. **Player 1's Turn**
+   - Adds **2**:
+     - 2 > 1
+     - 2 % 1 == 0 (Divisible)
+   - **Chain**: `1, 2`
+
+2. **Player 2's Turn**
+   - Adds **4**:
+     - 4 > 2
+     - 4 % 2 == 0 (Divisible)
+   - **Chain**: `1, 2, 4`
+
+3. **Player 1's Turn**
+   - Adds **14**:
+     - 14 > 4
+     - Shares digit '4' with 4 (Common Digit)
+   - **Chain**: `1, 2, 4, 14`
+
+4. **Player 2's Turn**
+   - Adds **28**:
+     - 28 > 14
+     - 28 % 14 == 0 (Divisible)
+   - **Chain**: `1, 2, 4, 14, 28`
+
+5. **Player 1's Turn**
+   - Adds **42**:
+     - 42 > 28
+     - Shares digit '2' with 28 (Common Digit)
+   - **Chain**: `1, 2, 4, 14, 28, 42`
+
+### Sample Command-Line Interaction
+
+```
+Current Chain: 1, 2, 4
+Player 1's Turn
+Enter a number greater than 4: 14
+Valid move! 14 shares a digit with 4.
+New Chain: 1, 2, 4, 14
+
+Current Chain: 1, 2, 4, 14
+Player 2's Turn
+Enter a number greater than 14: 28
+Valid move! 28 is divisible by 14.
+New Chain: 1, 2, 4, 14, 28
+
+Current Chain: 1, 2, 4, 14, 28
+Player 1's Turn
+Enter a number greater than 28: 35
+Invalid move! 35 is not divisible by 28 and shares no common digits.
+Player 1 loses. Player 2 wins!
+```
+
+## Strategies
+
+- **Plan Ahead**: Anticipate future numbers to ensure valid moves on subsequent turns.
+- **Limit Opponent's Options**: Choose numbers that reduce the number of valid moves for your opponent.
+- **Balance Divisibility and Common Digits**: Use both criteria to maximize your options.
+
+## Game End
+
+- The game concludes when the chain reaches the target length or when a player cannot make a valid move.
+- The player who successfully extends the chain or who causes their opponent to have no valid moves is declared the winner.
+
+## Notes
+
+- **Uniqueness**: "Number Chain" is a unique game with its own set of mechanics, not directly resembling existing games like Nim or Tic-Tac-Toe.
+- **Command-Line Implementation**: The game is designed for easy coding in a command-line interface, requiring simple input and output functions.
+- **Strategic Depth**: Despite its simplicity, the game offers strategic complexity, rewarding skilled play over chance.
+
+Enjoy playing **Number Chain** and may the best strategist win!

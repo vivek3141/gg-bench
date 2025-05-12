@@ -1,0 +1,278 @@
+# Pocket Addition
+
+## Rule Book
+
+### Objective
+
+Become the first player to exactly reach a total sum of **15** by strategically selecting numbers from a shared pool. If no player can reach exactly 15, the player with the highest total sum less than 15 when the game ends wins.
+
+### Setup
+
+- **Shared Pool of Numbers**: Create a list of digits from **1** to **9**.
+- **Player Pockets**: Each player has an empty "pocket" to hold their selected numbers.
+- **Starting Conditions**: Both players begin with a total sum of **0**.
+
+### Game Components
+
+- **Numbers (1-9)**:
+  - A set of digits from **1** to **9**.
+  - Each number is unique and can be selected only once.
+- **Player Pockets**:
+  - An individual collection area for each player to hold their chosen numbers.
+  - Keeps track of each player's total sum.
+
+### Turns
+
+1. **Decide First Player**:
+   - Determine who goes first (e.g., coin toss, random selection).
+2. **Taking Turns**:
+   - Players alternate turns throughout the game.
+   - On your turn, you must select one available number from the shared pool.
+3. **Selecting Numbers**:
+   - Choose any one number from the pool.
+   - Add the selected number to your pocket.
+   - Remove the number from the shared pool; it cannot be selected again.
+
+### Rules and Mechanics
+
+1. **Total Sum Limit**:
+   - A player's total sum **cannot exceed 15**.
+   - If selecting any remaining number would cause your total sum to exceed 15, you must **pass** your turn.
+2. **Winning the Game**:
+   - **Immediate Win**: If your total sum reaches **exactly 15**, you win immediately.
+   - **Endgame Win**: If no player reaches 15 and no valid moves remain (all numbers are taken or both players must pass), the game ends. The player with the **highest total sum less than 15** wins.
+   - **Tie-Breaker**: If both players have the same total sum less than 15, the player who made the **last valid move** wins.
+3. **Passing**:
+   - If you cannot select any remaining numbers without exceeding 15, you must **pass** your turn.
+   - If both players pass consecutively, the game ends.
+4. **Strategic Considerations**:
+   - Keep track of both your own and your opponent's total sums.
+   - Anticipate which numbers your opponent might select.
+   - Plan your selections to reach 15 before your opponent or to block their potential moves.
+
+### Scoring
+
+- **Winning Conditions**:
+  - **Exact 15 Victory**: Achieve a total sum of exactly 15.
+  - **Highest Sum Victory**: If no one reaches 15, have the highest total sum less than 15 when the game ends.
+- **No Draws**: The game cannot end in a tie due to the tie-breaker rule based on who made the last valid move.
+
+### Examples
+
+#### Example 1: Early Victory
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Turn 1**:
+- *Player 1* selects **8**.
+- *Player 1's Total Sum*: 8
+
+**Turn 2**:
+- *Player 2* selects **7**.
+- *Player 2's Total Sum*: 7
+
+**Turn 3**:
+- *Player 1* selects **7** (now the numbers are unique, so this move isn't valid). Correcting:
+- *Player 1* selects **7** (But 8+7=15, which is valid).
+- *Player 1's Total Sum*: 15
+- *Player 1* wins the game immediately by reaching a total sum of 15.
+
+#### Example 2: Strategic Play
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Turn 1**:
+- *Player 1* selects **6**.
+- *Player 1's Total Sum*: 6
+
+**Turn 2**:
+- *Player 2* selects **9**.
+- *Player 2's Total Sum*: 9
+
+**Turn 3**:
+- *Player 1* selects **8** (Not valid; 6+8=14, which is less than 15, so valid).
+- *Player 1's Total Sum*: 14
+
+**Turn 4**:
+- *Player 2* cannot select any number without exceeding 15 (9 + smallest remaining number 1 = 10, which is less than 15). So, *Player 2* selects **6**.
+- *Player 2's Total Sum*: 15
+- *Player 2* wins the game immediately.
+
+#### Example 3: Endgame Victory
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Turn 1**:
+- *Player 1* selects **5**.
+- *Player 1's Total Sum*: 5
+
+**Turn 2**:
+- *Player 2* selects **8**.
+- *Player 2's Total Sum*: 8
+
+**Turn 3**:
+- *Player 1* selects **9**.
+- *Player 1's Total Sum*: 14
+
+**Turn 4**:
+- *Player 2* cannot pick **7** (8+7=15), but **7** is available.
+- *Player 2* selects **7**.
+- *Player 2's Total Sum*: 15
+- *Player 2* wins the game immediately.
+
+#### Example 4: Tie-Breaker Situation
+
+- **Available Numbers**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+**Turn 1**:
+- *Player 1* selects **7**.
+- *Player 1's Total Sum*: 7
+
+**Turn 2**:
+- *Player 2* selects **8**.
+- *Player 2's Total Sum*: 8
+
+**Turn 3**:
+- *Player 1* selects **5**.
+- *Player 1's Total Sum*: 12
+
+**Turn 4**:
+- *Player 2* selects **4**.
+- *Player 2's Total Sum*: 12
+
+**Turn 5**:
+- *Player 1* passes (selecting any remaining number would exceed 15).
+
+**Turn 6**:
+- *Player 2* passes (same reason).
+
+**End of Game**:
+- Both players have a total sum of **12**.
+- *Player 2* made the last valid move.
+- *Player 2* wins the game based on the tie-breaker rule.
+
+### Command-Line Interaction Example
+
+**Game Start**:
+
+- **Available Numbers**: 1 2 3 4 5 6 7 8 9
+- **Player 1 Total Sum**: 0
+- **Player 2 Total Sum**: 0
+
+---
+
+**Player 1's Turn**:
+
+```
+Available Numbers: 1 2 3 4 5 6 7 8 9
+Your Total Sum: 0
+Select a number: 6
+```
+
+- *Player 1* selects **6**.
+- **Player 1's Total Sum**: 6
+
+---
+
+**Player 2's Turn**:
+
+```
+Available Numbers: 1 2 3 4 5 7 8 9
+Your Total Sum: 0
+Select a number: 9
+```
+
+- *Player 2* selects **9**.
+- **Player 2's Total Sum**: 9
+
+---
+
+**Player 1's Turn**:
+
+```
+Available Numbers: 1 2 3 4 5 7 8
+Your Total Sum: 6
+Select a number: 8
+```
+
+- *Player 1* selects **8**.
+- **Player 1's Total Sum**: 14
+
+---
+
+**Player 2's Turn**:
+
+```
+Available Numbers: 1 2 3 4 5 7
+Your Total Sum: 9
+Select a number: 6
+```
+
+- *Player 2* attempts to select **6** (already taken).
+- Invalid selection. Prompt again.
+
+```
+Available Numbers: 1 2 3 4 5 7
+Your Total Sum: 9
+Select a number: 5
+```
+
+- *Player 2* selects **5**.
+- **Player 2's Total Sum**: 14
+
+---
+
+**Player 1's Turn**:
+
+```
+Available Numbers: 1 2 3 4 7
+Your Total Sum: 14
+Cannot select any number without exceeding 15. You pass your turn.
+```
+
+- *Player 1* passes.
+
+---
+
+**Player 2's Turn**:
+
+```
+Available Numbers: 1 2 3 4 7
+Your Total Sum: 14
+Cannot select any number without exceeding 15. You pass your turn.
+```
+
+- *Player 2* passes.
+
+---
+
+**Game End**:
+
+- Both players have a total sum of **14**.
+- *Player 2* made the last valid move.
+- **Player 2 wins the game** based on the tie-breaker rule.
+
+### Strategic Depth and Complexity
+
+**Planning Ahead**:
+
+- Skilled players will track which numbers remain and calculate possible sums for both themselves and their opponent.
+- By anticipating the opponent's moves, a player can select numbers that benefit themselves while limiting the opponent's options.
+
+**Number Selection Strategy**:
+
+- **High Numbers**: Taking high numbers early can quickly increase your sum but may limit your options later.
+- **Low Numbers**: Selecting low numbers keeps your total sum low, providing flexibility in later turns.
+
+**Blocking Opponent**:
+
+- Selecting numbers that your opponent needs can prevent them from reaching 15.
+- Forcing the opponent into a position where they must pass gives you a strategic advantage.
+
+**Tie-Breaker Awareness**:
+
+- Being aware of the tie-breaker rule can influence decisions, such as ensuring you make the last valid move when sums are equal.
+
+---
+
+**Pocket Addition** is a simple yet strategic game that requires players to think ahead and make calculated decisions. Its straightforward rules and quick gameplay make it suitable for a command-line interface, and it provides depth that allows skilled players to consistently outmaneuver unskilled opponents.

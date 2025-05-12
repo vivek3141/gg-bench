@@ -1,0 +1,155 @@
+# Zero Sum Duel
+
+## Objective
+
+In **Zero Sum Duel**, two players compete to be the first to bring a shared total to exactly zero. Players take turns selecting unique numbers and choosing to either add or subtract them from the shared total. Strategic planning and foresight are essential, as each number can only be used once, and every decision directly impacts the path to victory.
+
+## Setup
+
+1. **Shared Total Initialization**: The game starts with a shared total of **zero**.
+2. **Number Pool**: A set of numbers from **1** to **9** is available for both players.
+3. **Player Designation**: Two players are identified as **Player 1** and **Player 2**. Determine who goes first (e.g., by mutual agreement or a random method like a coin toss).
+
+## Game Components
+
+- **Shared Total**: An integer value that players will manipulate throughout the game to reach exactly zero.
+- **Number Pool**: A list of unique numbers from **1** to **9**. Each number can be used only once during the game.
+- **Players**: Two participants alternating turns, making strategic choices to win the game.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Turn Structure**:
+  1. **Available Numbers Display**: At the start of a player's turn, display the remaining numbers in the number pool.
+  2. **Shared Total Display**: Show the current shared total.
+  3. **Number Selection**: The player selects an unused number from the number pool.
+  4. **Operation Choice**: The player decides to **add** or **subtract** the chosen number from the shared total.
+  5. **Update Total**: Apply the operation and update the shared total.
+  6. **Check for Win**: If the shared total is exactly zero, the current player wins.
+  7. **End Turn**: If the game hasn't ended, proceed to the next player's turn.
+
+## Rules and Mechanics
+
+### 1. Number Selection
+
+- **Unique Usage**: Each number from **1** to **9** can be selected only once during the game.
+- **Valid Choices**: Players must choose from the remaining numbers in the number pool.
+
+### 2. Operation Choice
+
+- **Addition or Subtraction**: On their turn, players may choose to either **add** or **subtract** the selected number from the shared total.
+- **Mandatory Operation**: Players must perform an operation; passing is not allowed.
+
+### 3. Updating the Shared Total
+
+- **Immediate Update**: Apply the chosen operation to the shared total immediately.
+- **Display Update**: Show the new shared total after the operation.
+
+### 4. Winning the Game
+
+- **Objective**: The first player to make the shared total exactly **zero** wins the game.
+- **No Draws**: If all numbers have been used and the shared total is not zero, the last player who made a valid move wins by default.
+
+### 5. Invalid Moves
+
+- **Number Reuse**: Selecting a number that has already been used is invalid.
+- **Operation Requirement**: Failing to choose an operation (add or subtract) is invalid.
+- **Penalty for Invalid Moves**: An invalid move results in **immediate forfeiture**, and the opposing player wins the game.
+
+## Scoring
+
+- **Winning**: Victory is achieved by being the first to bring the shared total to zero.
+- **Series Play**: Optionally, players can track wins over multiple games to determine an overall winner after a series of matches.
+
+## Examples
+
+### Example Game Play
+
+#### Initial State
+
+- **Shared Total**: 0
+- **Number Pool**: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+#### Turn-by-Turn Breakdown
+
+1. **Player 1's Turn**
+   - **Available Numbers**: 1, 2, 3, 4, 5, 6, 7, 8, 9
+   - **Shared Total**: 0
+   - **Number Selected**: 5
+   - **Operation**: Add
+   - **Calculation**: 0 + 5 = **5**
+   - **Updated Shared Total**: 5
+   - **Updated Number Pool**: [1, 2, 3, 4, 6, 7, 8, 9]
+
+2. **Player 2's Turn**
+   - **Available Numbers**: 1, 2, 3, 4, 6, 7, 8, 9
+   - **Shared Total**: 5
+   - **Number Selected**: 3
+   - **Operation**: Subtract
+   - **Calculation**: 5 - 3 = **2**
+   - **Updated Shared Total**: 2
+   - **Updated Number Pool**: [1, 2, 4, 6, 7, 8, 9]
+
+3. **Player 1's Turn**
+   - **Available Numbers**: 1, 2, 4, 6, 7, 8, 9
+   - **Shared Total**: 2
+   - **Number Selected**: 2
+   - **Operation**: Subtract
+   - **Calculation**: 2 - 2 = **0**
+   - **Updated Shared Total**: 0
+   - **Player 1 Wins!**
+
+### Command-Line Interaction Example
+
+#### Player 1's Turn
+
+```
+Available Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9
+Shared Total: 0
+Player 1, enter the number you want to use: 5
+Do you want to (A)dd or (S)ubtract it? A
+You chose to add 5.
+New Shared Total: 5
+```
+
+#### Player 2's Turn
+
+```
+Available Numbers: 1, 2, 3, 4, 6, 7, 8, 9
+Shared Total: 5
+Player 2, enter the number you want to use: 3
+Do you want to (A)dd or (S)ubtract it? S
+You chose to subtract 3.
+New Shared Total: 2
+```
+
+#### Player 1's Turn
+
+```
+Available Numbers: 1, 2, 4, 6, 7, 8, 9
+Shared Total: 2
+Player 1, enter the number you want to use: 2
+Do you want to (A)dd or (S)ubtract it? S
+You chose to subtract 2.
+New Shared Total: 0
+Player 1 wins!
+```
+
+## Strategic Depth and Complexity
+
+- **Number Awareness**: Keep track of which numbers have been used to plan future moves effectively.
+- **Operation Choice**: Decide whether adding or subtracting a number brings you closer to zero without setting up your opponent for an easy win.
+- **Predictive Play**: Anticipate your opponent's potential moves based on the remaining numbers.
+- **Risk Management**: Balancing bold moves with cautious play can prevent giving your opponent an advantage.
+
+## Tips for Players
+
+- **Early Game**: Focus on creating a shared total that limits your opponent's options.
+- **Mid Game**: Monitor the numbers left in the pool to plan your path to zero.
+- **End Game**: Calculate possible combinations with the remaining numbers to secure a win.
+
+---
+
+By adhering to these rules and engaging with the strategic elements, players can enjoy a fast-paced and intellectually stimulating game of **Zero Sum Duel**. It's simple to code in a command-line interface and offers depth that allows skilled players to consistently outperform less experienced opponents.
+
+Have fun dueling!

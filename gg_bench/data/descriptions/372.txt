@@ -1,0 +1,191 @@
+# Digit Duel
+
+## Rule Book
+
+### Objective
+
+Be the first player to reduce your opponent's life points to zero by strategically selecting and using digits to attack and defend.
+
+### Setup
+
+- **Players**: 2
+- **Life Points**: Each player starts with **10 life points**.
+- **Digits**: Each player has access to digits **1** through **9**, inclusive.
+
+### Game Components
+
+- **Life Points**: Numerical value representing a player's health. Starts at 10 for each player.
+- **Digits (1-9)**: Numbers used for attacking and defending. Each digit can be used **only once** per player.
+- **Turn Indicator**: Tracks whose turn it is to attack.
+
+### Turns
+
+1. **Attack Phase**:
+   - The attacking player selects an unused digit from **1** to **9**.
+   - Announces the chosen digit as the **Attack Value**.
+
+2. **Defense Phase**:
+   - The defending player selects an unused digit from **1** to **9**.
+   - Announces the chosen digit as the **Defense Value**.
+
+3. **Resolution Phase**:
+   - Compare the **Attack Value** and **Defense Value**.
+   - Adjust life points based on the outcome.
+
+4. **Turn End**:
+   - Update the list of used digits for both players.
+   - Switch roles: the attacker becomes the defender, and vice versa.
+
+### Rules and Mechanics
+
+#### Digit Selection
+
+- **Unique Use**: Once a digit is used by a player, it cannot be used again by that player.
+- **Independent Choices**: Both players have access to all digits **1-9** until they personally use them.
+
+#### Attacking
+
+- The attacker selects an **unused digit** and announces it.
+- Strategy involves choosing a digit that can overcome the opponent's possible defenses.
+
+#### Defending
+
+- The defender selects an **unused digit** and announces it in response.
+- Aim to match or exceed the Attack Value to prevent damage.
+
+#### Damage Calculation
+
+- **Successful Attack**: If the Attack Value is **greater than** the Defense Value:
+  - Damage dealt equals **Attack Value minus Defense Value**.
+  - Subtract damage from the defender's life points.
+- **Blocked Attack**: If the Attack Value is **less than or equal to** the Defense Value:
+  - No damage is dealt.
+
+#### Life Points
+
+- Cannot exceed the starting value of **10**.
+- Reduce based on damage taken.
+- If a player's life points reach **0 or below**, they lose the game.
+
+#### Endgame Conditions
+
+- **Victory**: Achieved when the opponent's life points are reduced to zero or below.
+- **Exhausted Digits**:
+  - If all digits are used and both players still have life points, the player with the **higher** life points wins.
+  - If life points are **equal**, the player who was the **attacker in the last turn wins**.
+
+### Scoring
+
+- **Life Points Tracking**: Keep a running total after each turn.
+- **Damage Dealt**: Record the damage inflicted during successful attacks.
+
+### Examples
+
+#### Example Game Play
+
+**Initial State**
+
+- Player 1 Life Points: **10**
+- Player 2 Life Points: **10**
+- Player 1 Unused Digits: **1-9**
+- Player 2 Unused Digits: **1-9**
+
+---
+
+**Turn 1**
+
+- **Player 1 Attacks with 7**
+  - **Player 1's Unused Digits**: 1-6, 8-9
+- **Player 2 Defends with 5**
+  - **Player 2's Unused Digits**: 1-4, 6-9
+
+**Resolution**
+
+- Attack Value **7** > Defense Value **5**
+- Damage: 7 - 5 = **2**
+- **Player 2 Life Points**: 10 - 2 = **8**
+
+---
+
+**Turn 2**
+
+- **Player 2 Attacks with 9**
+  - **Player 2's Unused Digits**: 1-4, 6-8
+- **Player 1 Defends with 8**
+  - **Player 1's Unused Digits**: 1-6, 9
+
+**Resolution**
+
+- Attack Value **9** > Defense Value **8**
+- Damage: 9 - 8 = **1**
+- **Player 1 Life Points**: 10 - 1 = **9**
+
+---
+
+**Turn 3**
+
+- **Player 1 Attacks with 6**
+  - **Player 1's Unused Digits**: 1-5, 9
+- **Player 2 Defends with 6**
+  - **Player 2's Unused Digits**: 1-4, 7-8
+
+**Resolution**
+
+- Attack Value **6** <= Defense Value **6**
+- **No damage dealt**
+
+---
+
+**Turn 4**
+
+- **Player 2 Attacks with 8**
+  - **Player 2's Unused Digits**: 1-4, 7
+- **Player 1 Defends with 5**
+  - **Player 1's Unused Digits**: 1-4, 9
+
+**Resolution**
+
+- Attack Value **8** > Defense Value **5**
+- Damage: 8 - 5 = **3**
+- **Player 1 Life Points**: 9 - 3 = **6**
+
+---
+
+**Game Continues**
+
+Players continue taking turns until one player's life points reach zero or all digits are exhausted.
+
+#### Command-Line Interaction Example
+
+```
+--- Player 1's Turn ---
+Available Digits: 1,2,3,4,9
+Life Points: Player 1 - 6, Player 2 - 8
+Enter your Attack Value: 4
+
+--- Player 2's Defense ---
+Available Digits: 1,2,3,7
+Life Points: Player 2 - 8
+Enter your Defense Value: 3
+
+--- Turn Resolution ---
+Player 1 attacked with 4
+Player 2 defended with 3
+Damage Dealt: 4 - 3 = 1
+Player 2 Life Points: 8 - 1 = 7
+
+--- End of Turn ---
+```
+
+### Strategy Tips
+
+- **Digit Management**: Use higher digits when you predict your opponent has few defenses left.
+- **Predict Opponent Moves**: Keep track of digits your opponent has used to anticipate their options.
+- **Balance**: Don't deplete all high digits early; you may need them for critical defenses or attacks.
+- **Bluffing**: Sometimes attacking with a lower digit can bait the opponent into wasting a high defense digit.
+
+### Conclusion
+
+Digit Duel is a fast-paced game of prediction and strategy. By carefully choosing when to use each digit, players can outmaneuver their opponents and claim victory. With simple mechanics and deep strategic potential, Digit Duel offers engaging gameplay suitable for quick matches on a command-line interface.
+
+Enjoy the duel!

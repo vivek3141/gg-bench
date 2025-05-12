@@ -1,0 +1,259 @@
+# Divide and Conquer
+
+## Objective
+
+**Divide and Conquer** is a two-player turn-based game where the objective is to be the player who reduces a shared number, **N**, to **1** by strategically dividing it by its proper divisors. The game requires careful selection of divisors to control the flow and force your opponent into a position where they cannot make a valid move.
+
+---
+
+## Setup
+
+1. **Initial Number (N):**
+
+   - The game starts with a shared positive integer **N** greater than **1**.
+   - By default, **N** is set to **100**, but players can agree on a different starting number if desired.
+
+2. **Determining Turn Order:**
+
+   - Decide which player goes first (**Player 1** and **Player 2**).
+   - This can be determined by a coin toss, random selection, or mutual agreement.
+
+---
+
+## Game Components
+
+1. **Shared Number (N):**
+
+   - A positive integer that both players will manipulate during the game.
+   - Updated after each valid move.
+
+2. **Proper Divisors:**
+
+   - Numbers that divide **N** evenly (without leaving a remainder), excluding **1** and **N** itself.
+   - For example, proper divisors of **100** are **2, 4, 5, 10, 20, 25, 50**.
+
+---
+
+## Turns
+
+1. **Turn Structure:**
+
+   - Players take turns alternately, starting with **Player 1**.
+   - Each turn consists of selecting a valid move and updating **N**.
+
+2. **Player Actions During a Turn:**
+
+   - **Select a Proper Divisor:** Choose a number that is a proper divisor of the current **N**.
+   - **Divide N:** Divide **N** by the selected proper divisor.
+   - **Update N:** The result of the division becomes the new shared number **N**.
+
+3. **Turn Progression:**
+
+   - The updated **N** is then used by the next player on their turn.
+   - The game continues until **N** is reduced to **1**.
+
+---
+
+## Rules and Mechanics
+
+1. **Proper Divisors Only:**
+
+   - Players can only divide **N** by its proper divisors.
+   - Dividing by **1** or **N** itself is **not allowed**.
+
+2. **Exact Division Required:**
+
+   - The chosen divisor must divide **N** exactly (resulting in an integer).
+   - If the division would result in a fraction or decimal, the move is invalid.
+
+3. **Valid Moves:**
+
+   - If **N** has no proper divisors (i.e., **N** is a prime number), the player cannot make a move and loses their turn.
+
+4. **Win Condition:**
+
+   - The player who reduces **N** to **1** on their turn **wins the game**.
+   - If a player cannot make a valid move when it's their turn (because **N** has no proper divisors), they **lose**, and their opponent **wins**.
+
+---
+
+## Scoring
+
+- **Victory:** The game is won outright by the player who successfully reduces **N** to **1**.
+- **No Points System:** There is no point scoring; the focus is on strategic play to win the game.
+- **Game Length:** The game is designed to end quickly, often within a few moves.
+
+---
+
+## Examples
+
+### Example Game Play 1
+
+**Starting N = 100**
+
+1. **Player 1's Turn:**
+
+   - **Proper Divisors of 100:** 2, 4, 5, 10, 20, 25, 50.
+   - **Player 1 Chooses:** 25.
+   - **Calculation:** 100 ÷ 25 = 4.
+   - **Updated N:** 4.
+
+2. **Player 2's Turn:**
+
+   - **Proper Divisors of 4:** 2.
+   - **Player 2 Chooses:** 2.
+   - **Calculation:** 4 ÷ 2 = 2.
+   - **Updated N:** 2.
+
+3. **Player 1's Turn:**
+
+   - **Proper Divisors of 2:** None (2 is prime).
+   - **Player 1 Cannot Move:** No valid proper divisors.
+   - **Player 1 Loses.**
+
+   - **Player 2 Wins!**
+
+### Example Game Play 2
+
+**Starting N = 60**
+
+1. **Player 1's Turn:**
+
+   - **Proper Divisors of 60:** 2, 3, 4, 5, 6, 10, 12, 15, 20, 30.
+   - **Player 1 Chooses:** 30.
+   - **Calculation:** 60 ÷ 30 = 2.
+   - **Updated N:** 2.
+
+2. **Player 2's Turn:**
+
+   - **Proper Divisors of 2:** None (2 is prime).
+   - **Player 2 Cannot Move:** No valid proper divisors.
+   - **Player 2 Loses.**
+
+   - **Player 1 Wins!**
+
+### Example Game Play 3
+
+**Starting N = 45**
+
+1. **Player 1's Turn:**
+
+   - **Proper Divisors of 45:** 3, 5, 9, 15.
+   - **Player 1 Chooses:** 15.
+   - **Calculation:** 45 ÷ 15 = 3.
+   - **Updated N:** 3.
+
+2. **Player 2's Turn:**
+
+   - **Proper Divisors of 3:** None (3 is prime).
+   - **Player 2 Cannot Move:** No valid proper divisors.
+   - **Player 2 Loses.**
+
+   - **Player 1 Wins!**
+
+---
+
+## Command-Line Interaction Examples
+
+### Sample Turn Structure
+
+1. **Display Current N:**
+
+   ```
+   Current N: 100
+   ```
+
+2. **Prompt Player for Input:**
+
+   ```
+   Player 1, enter a proper divisor of 100:
+   ```
+
+3. **Player Input:**
+
+   ```
+   25
+   ```
+
+4. **Validate and Update:**
+
+   - Check if 25 is a proper divisor of 100 (it is).
+   - Calculate new N: 100 ÷ 25 = 4.
+   - Update N to 4.
+
+5. **Display Updated N:**
+
+   ```
+   Valid move. N is now 4.
+   ```
+
+6. **Next Player's Turn:**
+
+   ```
+   Current N: 4
+   Player 2, enter a proper divisor of 4:
+   ```
+
+### Handling Invalid Input
+
+1. **Invalid Divisor Entry:**
+
+   ```
+   Current N: 4
+   Player 2, enter a proper divisor of 4:
+   ```
+   
+   Player enters:
+   
+   ```
+   5
+   ```
+   
+2. **Validation Feedback:**
+
+   ```
+   5 is not a proper divisor of 4. Please enter a valid proper divisor.
+   ```
+
+3. **Prompt Again:**
+
+   ```
+   Player 2, enter a proper divisor of 4:
+   ```
+
+### Announcing the Winner
+
+- When a player cannot make a valid move:
+
+  ```
+  Player 2 cannot make a move. No proper divisors available.
+  Player 1 wins the game!
+  ```
+
+---
+
+## Strategy Tips
+
+1. **Control the Game Flow:**
+
+   - Aim to reduce **N** to a prime number on your opponent's turn, leaving them without a valid move.
+
+2. **Choose Larger Divisors When Advantageous:**
+
+   - Dividing by larger proper divisors can reduce **N** more significantly, potentially limiting your opponent's options.
+
+3. **Anticipate Opponent's Moves:**
+
+   - Consider the possible resulting **N** values after your move and how they might benefit or hinder your opponent.
+
+4. **Avoid Creating a Prime N on Your Turn:**
+
+   - Unless it results in **N = 1**, avoid leaving yourself with a prime number to avoid losing your ability to move.
+
+---
+
+## Conclusion
+
+**Divide and Conquer** is a simple yet strategic game that tests players' mathematical skills and foresight. Its simplicity makes it easy to code and ideal for a command-line interface, while its strategic depth ensures that skilled players can consistently outperform unskilled players. The game ends quickly, with clear win conditions and no possibility of a draw.
+
+Enjoy playing **Divide and Conquer** and may the best strategist win!

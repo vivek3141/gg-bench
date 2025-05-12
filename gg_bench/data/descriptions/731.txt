@@ -1,0 +1,228 @@
+# GridLock: A Two-Player Strategic Pathfinding Game
+
+## Objective
+
+Be the first player to navigate your cursor from your starting corner to the opposite corner of a 10x10 grid, or immobilize your opponent so they have no valid moves left. Victory is achieved by either reaching the opponent's starting corner or blocking the opponent's cursor such that they cannot move.
+
+---
+
+## Setup
+
+- **Players**: Two participants, Player 1 and Player 2.
+- **Grid**: A 10x10 grid representing the game board.
+- **Starting Positions**:
+  - **Player 1** starts at the top-left corner, coordinate **(0, 0)**.
+  - **Player 2** starts at the bottom-right corner, coordinate **(9, 9)**.
+- **Initial Conditions**:
+  - All cells on the grid are empty except for the starting positions of the players' cursors.
+
+---
+
+## Game Components
+
+- **Grid**:
+  - A two-dimensional grid with rows and columns numbered from 0 to 9.
+  - Each cell can be empty or contain a cursor or a lock.
+- **Cursors**:
+  - Each player controls a cursor that occupies one cell on the grid.
+  - The cursor represents the player's current position.
+- **Locks**:
+  - Tokens that players place on the grid to block cells.
+  - Locks remain on the grid permanently once placed.
+  - Represented differently from cursors for clear distinction.
+
+---
+
+## Turns
+
+Players alternate turns beginning with **Player 1**. Each turn consists of two phases performed in order:
+
+1. **Movement Phase**:
+   - Move your cursor one cell in any orthogonal direction (up, down, left, or right).
+   - Diagonal movements are not permitted.
+2. **Lock Placement Phase**:
+   - Place a lock on any empty cell adjacent (orthogonally) to your cursor's **new** position.
+   - If there are no valid cells to place a lock, this phase is skipped.
+
+---
+
+## Rules and Mechanics
+
+### Movement Rules
+
+- **Mandatory Movement**:
+  - You must move your cursor if it has at least one valid move.
+  - If your cursor is surrounded by locks and cannot move, you lose the game.
+- **Valid Moves**:
+  - Move to an empty cell that is directly above, below, left, or right of your current position.
+  - You cannot move into a cell occupied by a lock or the opponent's cursor.
+- **Edge of the Grid**:
+  - The grid wraps around; moving off one edge brings you to the opposite edge (optional rule for advanced play).
+
+### Lock Placement Rules
+
+- **After Moving**:
+  - You must place a lock on an empty cell adjacent to your cursor's new position.
+  - Locks can be placed on any empty adjacent cell, including the one you just vacated.
+- **Lock Restrictions**:
+  - Cannot place a lock on a cell occupied by any cursor or existing lock.
+  - Locks are permanent and cannot be moved or removed.
+
+### Winning the Game
+
+- **Reaching Opponent's Starting Corner**:
+  - If you move your cursor into the opponent's starting position (either (9, 9) for Player 1 or (0, 0) for Player 2), you win the game.
+- **Immobilizing the Opponent**:
+  - If your opponent cannot make a valid move on their turn because their cursor is completely surrounded by locks, you win the game.
+- **No Draws**:
+  - The game cannot end in a draw; play continues until one player wins.
+
+---
+
+## Scoring
+
+- **Victory Conditions**:
+  - No points are tallied; instead, focus is on meeting one of the victory conditions.
+- **Game Tracking**:
+  - Keep track of cursor positions and lock placements on the grid.
+- **Skill Factors**:
+  - Strategic placement of locks and movement choices are key to winning.
+
+---
+
+## Examples
+
+### Example Scenario 1: Basic Turn
+
+**Game State**:
+- Player 1 is at position **(2, 2)**.
+- Player 2 is at position **(7, 7)**.
+- Several locks are placed on the grid.
+
+**Player 1's Turn**:
+
+1. **Movement Phase**:
+   - Available moves from **(2, 2)**: **(2, 3)**, **(2, 1)**, **(1, 2)**, **(3, 2)**.
+   - Player 1 chooses to move to **(2, 3)**.
+
+2. **Lock Placement Phase**:
+   - Available cells to place a lock adjacent to **(2, 3)**: **(2, 4)**, **(2, 2)**, **(1, 3)**, **(3, 3)**.
+   - Player 1 places a lock at **(3, 3)**.
+
+**Command-Line Interaction**:
+```
+Player 1's Turn
+Current Position: (2, 2)
+Available Moves: [(2, 3), (2, 1), (1, 2), (3, 2)]
+Enter move coordinates (row col): 2 3
+Moved to (2, 3)
+Available Lock Placements: [(2, 4), (2, 2), (1, 3), (3, 3)]
+Enter lock coordinates (row col): 3 3
+Lock placed at (3, 3)
+```
+
+### Example Scenario 2: Winning by Arrival
+
+**Game State**:
+- Player 1 is at position **(9, 8)**.
+- Player 2 is at position **(0, 1)**.
+- No locks are immediately blocking paths to the starting positions.
+
+**Player 1's Turn**:
+
+1. **Movement Phase**:
+   - Available moves from **(9, 8)**: **(9, 9)** (opponent's starting position), **(9, 7)**, **(8, 8)**.
+   - Player 1 moves to **(9, 9)**.
+
+2. **Lock Placement Phase**:
+   - Not necessary; game ends upon reaching the opponent's starting position.
+
+**Command-Line Interaction**:
+```
+Player 1's Turn
+Current Position: (9, 8)
+Available Moves: [(9, 9), (9, 7), (8, 8)]
+Enter move coordinates (row col): 9 9
+Moved to (9, 9)
+Congratulations! Player 1 wins by reaching the opponent's starting corner!
+```
+
+### Example Scenario 3: Winning by Immobilization
+
+**Game State**:
+- Player 2 is at position **(5, 5)**.
+- Surrounding cells **(5, 6)**, **(5, 4)**, **(4, 5)**, **(6, 5)** are occupied by locks.
+
+**Player 2's Turn**:
+
+- **Movement Phase**:
+  - No available moves; all adjacent cells are blocked.
+- **Result**:
+  - Player 1 wins as Player 2 cannot make a move.
+
+**Command-Line Interaction**:
+```
+Player 2's Turn
+Current Position: (5, 5)
+No available moves. You are immobilized.
+Player 1 wins by immobilization!
+```
+
+---
+
+## Strategy Tips
+
+- **Advance Strategically**:
+  - Balance advancing toward the goal and hindering your opponent.
+- **Effective Lock Placement**:
+  - Use locks to create barriers or funnel the opponent into traps.
+- **Anticipate Opponent Moves**:
+  - Predict possible opponent paths and block them proactively.
+- **Resource Management**:
+  - Be mindful of the limited adjacent cells for lock placement.
+
+---
+
+## Command-Line Interaction Overview
+
+- **Movement**:
+  - Prompt: `Enter move coordinates (row col):`
+  - Input the desired row and column to move to.
+- **Lock Placement**:
+  - Prompt: `Enter lock coordinates (row col):`
+  - Input the desired row and column to place a lock.
+- **Invalid Moves**:
+  - If an invalid input is provided, prompt again with an error message.
+- **Game Status**:
+  - After each turn, display the updated grid and cursor positions.
+
+---
+
+## Sample Code Snippet for Grid Representation
+
+Below is a simplified representation of how the grid might be displayed in a command-line interface:
+
+```
+   0 1 2 3 4 5 6 7 8 9
+  ---------------------
+0| P . . . . . . . . . |0
+1| . . . . . . . . . . |1
+2| . . L . . . . . . . |2
+3| . . . . . . . . . . |3
+4| . . . . . . . . . . |4
+5| . . . . . . . . . . |5
+6| . . . . . . . . . . |6
+7| . . . . . . . . . . |7
+8| . . . . . . . . . . |8
+9| . . . . . . . . . P |9
+  ---------------------
+   0 1 2 3 4 5 6 7 8 9
+```
+
+- `P`: Player cursors.
+- `L`: Locks.
+- `.`: Empty cells.
+
+---
+
+By following this rule book, players should have all the information necessary to play **GridLock**. The game offers strategic depth through movement and lock placement, ensuring that skillful play leads to consistent victories. Enjoy challenging your opponent in this battle of wits and strategy!

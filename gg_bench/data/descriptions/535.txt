@@ -1,0 +1,176 @@
+# Equation Duel: Rule Book
+
+## Objective
+
+**Be the first player to construct a valid arithmetic equation using the shared pool of number and operator tiles.** The equation must be mathematically correct, adhering to standard arithmetic rules. Successfully creating such an equation before your opponent secures your victory.
+
+## Setup
+
+1. **Game Board**: A virtual equation space where tiles are placed to form equations. This is represented as a linear sequence in the command-line interface where numbers and operators are arranged.
+
+2. **Tile Pool**:
+   - **Number Tiles**: Digits from `0` to `9`, each available exactly once except for an extra `1` tile to enhance strategic options (total of 11 number tiles).
+   - **Operator Tiles**: Symbols including `+`, `-`, `*`, `/`, and `=`. Operator tiles are unlimited in quantity for simplicity.
+
+3. **Starting Condition**:
+   - The equation space begins empty.
+   - Both players have access to the shared pool of number and operator tiles.
+
+## Game Components
+
+- **Number Tiles**:
+  - Digits `0` through `9`, with one additional `1` tile.
+  - Each number tile can be used only once.
+- **Operator Tiles**:
+  - Symbols: `+` (addition), `-` (subtraction), `*` (multiplication), `/` (division), `=` (equality).
+  - Unlimited in quantity; can be used multiple times.
+- **Equation Space**:
+  - A shared area where players build the equation.
+  - Represented as a sequence in the command-line interface.
+- **Tile Pool**:
+  - A shared collection of all available number and operator tiles.
+  - Visible to both players throughout the game.
+
+## Turns
+
+1. **Turn Order**:
+   - Players alternate turns, starting with Player 1.
+
+2. **Player Actions on a Turn**:
+   - **Place Tiles**:
+     - **Mandatory**: You must place **at least one new tile** from the shared pool into the equation space.
+     - You may place multiple new tiles if desired.
+     - Tiles can be placed in any position(s) within the equation space.
+   - **Rearrange Equation**:
+     - **Optional**: You may rearrange any or all tiles currently in the equation space, including those just placed.
+     - Rearrangement is only allowed during your turn.
+   - **Forming an Equation**:
+     - After placing and possibly rearranging tiles, attempt to form a valid equation.
+     - If you create a valid equation, you win the game.
+   - **End of Turn**:
+     - If no valid equation is formed, your turn ends, and play passes to your opponent.
+
+## Rules and Mechanics
+
+1. **Equation Formation**:
+   - Must include an `=` sign separating the left-hand side (LHS) and right-hand side (RHS).
+   - Both LHS and RHS must be valid mathematical expressions.
+   - Standard order of operations applies: Multiplication and division before addition and subtraction.
+   - Parentheses are **not** used in this game.
+
+2. **Tile Usage**:
+   - **Number Tiles**:
+     - Once placed in the equation space, they cannot be removed.
+     - Each number tile can be used only once.
+   - **Operator Tiles**:
+     - Unlimited; can be used multiple times.
+     - Can be added or rearranged freely during your turn.
+
+3. **Valid Equations**:
+   - Equations must be mathematically correct (e.g., `2+2=4` is valid).
+   - No division by zero.
+   - Leading zeros in numbers are not allowed (e.g., `01` is invalid).
+   - Both sides of the equation must be numerical expressions (e.g., `5=5` is valid, `5=` is invalid).
+
+4. **Winning the Game**:
+   - The first player to create a valid equation wins immediately.
+   - If all number tiles have been placed and no valid equation has been formed, the last player who made a move loses.
+
+5. **Game End Condition**:
+   - The game continues until a player forms a valid equation or the tiles are exhausted without a valid equation, resulting in a loss for the last player.
+
+## Scoring
+
+- There is no point-scoring system.
+- Victory is achieved by meeting the objective of forming a valid equation first.
+
+## Examples
+
+### Example Game Play
+
+**Starting Game**:
+- Equation Space: Empty
+- Available Number Tiles: `0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9`
+- Available Operator Tiles: Unlimited `+`, `-`, `*`, `/`, `=`
+
+---
+
+**Player 1's Turn**:
+
+- **Action**: Places `4`, `=` into the equation space.
+- **Equation Space**: `4 =`
+- **Rearrangement**: Not applicable.
+- **Valid Equation?**: No (Incomplete equation).
+- **Turn Ends**.
+
+---
+
+**Player 2's Turn**:
+
+- **Action**: Places `2` into the equation space.
+- **Equation Space**: `4 = 2`
+- **Rearrangement**: Attempts to rearrange to `2 = 4`
+- **Valid Equation?**: No (Incorrect equality).
+- **Turn Ends**.
+
+---
+
+**Player 1's Turn**:
+
+- **Action**: Places `+`, `2` into the equation space.
+- **Equation Space**: `4 + 2 = 2`
+- **Rearrangement**: Rearranges to `2 + 2 = 4`
+- **Valid Equation?**: Yes (`2 + 2 = 4`)
+- **Player 1 Wins!**
+
+---
+
+## Command-Line Interaction Example
+
+**Player 1's Turn**:
+
+- **Prompt**: "Your turn. Current equation: (empty). Available number tiles: `[0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9]`. Enter tiles to place:"
+- **Player Input**: `4 =`
+- **Prompt**: "Equation space is now: `4 =`. Do you want to rearrange the equation? (yes/no)"
+- **Player Input**: `no`
+- **Turn Ends**.
+
+---
+
+**Player 2's Turn**:
+
+- **Prompt**: "Your turn. Current equation: `4 =`. Available number tiles: `[0, 1, 1, 2, 3, 5, 6, 7, 8, 9]`. Enter tiles to place:"
+- **Player Input**: `2`
+- **Prompt**: "Equation space is now: `4 = 2`. Do you want to rearrange the equation? (yes/no)"
+- **Player Input**: `yes`
+- **Prompt**: "Enter new arrangement:"
+- **Player Input**: `2 = 4`
+- **Prompt**: "Checking equation... Invalid. Turn ends."
+- **Turn Ends**.
+
+---
+
+**Player 1's Turn**:
+
+- **Prompt**: "Your turn. Current equation: `4 = 2`. Available number tiles: `[0, 1, 1, 3, 5, 6, 7, 8, 9]`. Enter tiles to place:"
+- **Player Input**: `+ 2`
+- **Prompt**: "Equation space is now: `4 = 2 + 2`. Do you want to rearrange the equation? (yes/no)"
+- **Player Input**: `yes`
+- **Prompt**: "Enter new arrangement:"
+- **Player Input**: `2 + 2 = 4`
+- **Prompt**: "Checking equation... Valid! You win!"
+
+---
+
+## Strategic Considerations
+
+- **Tile Management**: Keep track of which number tiles have been used to anticipate possible equations.
+- **Equation Setup**: Place tiles that set up for a potential win on your next turn while preventing your opponent from winning.
+- **Rearrangement**: Use the rearrangement option to your advantage by reconfiguring the equation space to form a valid equation.
+- **Blocking**: Be cautious of setting up the equation space in a way that your opponent can win on their turn.
+
+## Final Notes
+
+Equation Duel combines arithmetic skill with strategic planning. The game encourages players to think ahead, manage limited resources (number tiles), and react dynamically to the evolving equation space. Its simplicity and depth make it an engaging challenge suitable for quick matches in a command-line environment.
+
+Enjoy the duel, and may the best mathematician win!

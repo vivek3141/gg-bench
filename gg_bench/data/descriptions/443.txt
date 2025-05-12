@@ -1,0 +1,236 @@
+# Sum Squares
+
+## Objective
+
+Sum Squares is a strategic two-player, turn-based game where players take turns selecting numbers from 1 to 9. The primary goal is to be the first player whose selected numbers sum up to a perfect square number (such as 4, 9, 16, or 25). Strategic thinking and foresight are essential, as players must plan their selections while anticipating and blocking their opponent's moves.
+
+## Setup
+
+- **Number Pool**: A shared pool containing the numbers **1** through **9**.
+- **Player Lists**: Each player has an empty list to record the numbers they have selected.
+- **Starting Player**: Decide who goes first (e.g., coin toss or mutual agreement).
+
+## Game Components
+
+- **Numbers (1-9)**: The digits **1** to **9**, each can be selected only once during the game.
+  - *Appearance*: The numbers are simply represented by their numerical digits.
+  - *Functionality*: Numbers are selected by players to add to their personal totals.
+  - *Unique Attributes*: Once a number is selected by a player, it is no longer available to either player for the rest of the game.
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with the player chosen to go first.
+- **Actions During a Turn**:
+  1. **Select a Number**: Choose any available number from the pool.
+  2. **Record the Number**: Add the selected number to your list of numbers.
+  3. **Update Total Sum**: Add the selected number to your personal total sum.
+- **Progression**: The game continues with players alternating turns until one player wins or no more moves are possible.
+
+## Rules and Mechanics
+
+1. **Number Selection**:
+   - On your turn, select **one** available number from **1** to **9** that has not yet been chosen by either player.
+   - You **must** select a number on your turn if any are available.
+
+2. **Summing Numbers**:
+   - Keep a running total of the sum of the numbers you have selected.
+   - Only your own selected numbers contribute to your total sum.
+
+3. **Winning the Game**:
+   - The first player whose total sum equals **exactly** one of the perfect square numbers **4, 9, 16, or 25** wins the game.
+   - Perfect squares within the range of possible sums (1+2+3+4+5+6+7+8+9=45) are 4, 9, 16, 25, and 36, but since 36 and above cannot be reached with the available numbers without exceeding the total sum limit, only consider 4, 9, 16, or 25.
+
+4. **Blocking**:
+   - Players can select numbers that may prevent their opponent from reaching a perfect square total.
+   - Strategic selection is crucial to both advance your total towards a perfect square and hinder your opponent.
+
+5. **End of Game**:
+   - **Win**: Achieve a total sum that is exactly a perfect square (4, 9, 16, or 25).
+   - **Loss**: If no numbers remain and no player has reached a perfect square total, the player with the **highest total sum less than the next perfect square** wins.
+     - Example: If both players have totals less than 16, the player closer to 16 without exceeding it wins.
+   - **No Draws**: The game cannot end in a draw due to the discrete nature of number selection and the win conditions.
+
+## Scoring
+
+- **Winning Condition**: Achieving a total sum equal to a perfect square (4, 9, 16, or 25).
+- **No Points System**: The game is won outright by meeting the winning condition; no point tracking is necessary beyond the total sums.
+- **Strategic Victory**: Skillful play is rewarded by enabling a player to win before all numbers are exhausted.
+
+## Examples
+
+### Example 1: Winning with Total Sum of 9
+
+**Turn 1**:
+- **Player 1** selects **5**.
+  - Player 1's numbers: [5]
+  - Player 1's total sum: 5
+
+**Turn 2**:
+- **Player 2** selects **4**.
+  - Player 2's numbers: [4]
+  - Player 2's total sum: 4
+
+**Turn 3**:
+- **Player 1** selects **2**.
+  - Player 1's numbers: [5, 2]
+  - Player 1's total sum: 7
+
+**Turn 4**:
+- **Player 2** selects **1**.
+  - Player 2's numbers: [4, 1]
+  - Player 2's total sum: 5
+
+**Turn 5**:
+- **Player 1** selects **3**.
+  - Player 1's numbers: [5, 2, 3]
+  - Player 1's total sum: **10**
+
+**Turn 6**:
+- **Player 2** selects **5** (*but 5 is already taken*), so selects **6** instead.
+  - Player 2's numbers: [4, 1, 6]
+  - Player 2's total sum: **11**
+
+**Turn 7**:
+- **Player 1** selects **9**.
+  - Player 1's numbers: [5, 2, 3, 9]
+  - Player 1's total sum: **19**
+
+**Turn 8**:
+- **Player 2** selects **2** (*but 2 is already taken*), so selects **8** instead.
+  - Player 2's numbers: [4, 1, 6, 8]
+  - Player 2's total sum: **19**
+
+**Turn 9**:
+- **Player 1** selects **4** (*already taken*), selects **7**.
+  - Player 1's numbers: [5, 2, 3, 9, 7]
+  - Player 1's total sum: **26**
+
+No player has reached a perfect square total. Remaining numbers are limited, and players check whether they can reach 25.
+
+**Turn 10**:
+- **Player 2** selects **3** (*already taken*), selects **7** (*taken*), selects **9**.
+  - Player 2's numbers: [4, 1, 6, 8, 9]
+  - Player 2's total sum: **28**
+
+At this point, all numbers have been selected.
+
+- **Player 1's total sum**: 26 (closest to 25 without exceeding)
+- **Player 2's total sum**: 28
+
+**Result**: **Player 1 wins** for having the highest total sum less than the next perfect square (which is 36).
+
+### Example 2: Direct Win with Total Sum of 16
+
+**Turn 1**:
+- **Player 1** selects **9**.
+  - Player 1's total sum: 9
+
+**Turn 2**:
+- **Player 2** selects **7**.
+  - Player 2's total sum: 7
+
+**Turn 3**:
+- **Player 1** selects **4**.
+  - Player 1's total sum: **13**
+
+**Turn 4**:
+- **Player 2** selects **3**.
+  - Player 2's total sum: 10
+
+**Turn 5**:
+- **Player 1** selects **3** (*already taken*), selects **2** instead.
+  - Player 1's total sum: **15**
+
+**Turn 6**:
+- **Player 2** selects **6**.
+  - Player 2's total sum: 16
+
+**Result**: **Player 2 wins** by reaching a total sum of **16**, which is a perfect square.
+
+## Command-Line Interaction Sample
+
+```plaintext
+Welcome to Sum Squares!
+Numbers available: 1 2 3 4 5 6 7 8 9
+
+Player 1, select a number: 5
+Player 1 selects 5.
+Player 1's total sum: 5
+
+Numbers available: 1 2 3 4 6 7 8 9
+
+Player 2, select a number: 4
+Player 2 selects 4.
+Player 2's total sum: 4
+
+Numbers available: 1 2 3 6 7 8 9
+
+Player 1, select a number: 9
+Player 1 selects 9.
+Player 1's total sum: 14
+
+Numbers available: 1 2 3 6 7 8
+
+Player 2, select a number: 2
+Player 2 selects 2.
+Player 2's total sum: 6
+
+Numbers available: 1 3 6 7 8
+
+Player 1, select a number: 1
+Player 1 selects 1.
+Player 1's total sum: **15**
+
+Player 1 wins by reaching a perfect square total of 15!
+(Note: 15 is not a perfect square; game continues.)
+
+Numbers available: 3 6 7 8
+
+Player 2, select a number: 8
+Player 2 selects 8.
+Player 2's total sum: **14**
+
+Numbers available: 3 6 7
+
+Player 1, select a number: 6
+Player 1 selects 6.
+Player 1's total sum: **21**
+
+Numbers available: 3 7
+
+Player 2, select a number: 7
+Player 2 selects 7.
+Player 2's total sum: **21**
+
+Numbers available: 3
+
+Player 1, select a number: 3
+Player 1 selects 3.
+Player 1's total sum: **24**
+
+All numbers have been selected.
+
+Player 1's total sum: 24
+Player 2's total sum: 21
+
+No player reached a perfect square total.
+
+Next perfect square after 16 is 25.
+
+Player 2 wins for having the highest total sum less than 25!
+```
+
+*Note*: In the sample above, there was an error in declaring a victory on a total sum of 15. Since 15 is not a perfect square, the game continues.
+
+## Strategy Tips
+
+- **Plan Ahead**: Keep track of both your own and your opponent's total sums. Anticipate which numbers can help you reach a perfect square.
+- **Block Your Opponent**: If you notice your opponent is close to a perfect square total, consider selecting numbers they may need.
+- **Optimal Sums**: Aim for totals of 9 or 16, as they are more achievable with the available numbers.
+- **Number Availability**: Pay attention to which numbers have been taken to adjust your strategy accordingly.
+
+## Conclusion
+
+Sum Squares is a simple yet strategically deep game that challenges players to think ahead and outmaneuver their opponent. With straightforward rules and quick gameplay, it's an excellent game for testing numerical strategy and can be easily played in a command-line interface.
+
+Enjoy the game and may the best strategist win!

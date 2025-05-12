@@ -1,0 +1,257 @@
+# Countdown Clash
+
+## Objective
+
+Be the first player to reduce your opponent's Shield Points (SP) from **10** to **0** by strategically selecting attack values or defending to restore your own SP. The game combines offense and defense, requiring players to anticipate and counter their opponent's moves. Victory is achieved when your opponent's SP reaches zero or below.
+
+## Setup
+
+1. **Shield Points Initialization**:
+   - Both Player 1 and Player 2 start with **10 Shield Points (SP)**.
+2. **Attack Pool**:
+   - Attack values range from **1** to **5**. These values represent the strength of an attack a player can choose on their turn.
+3. **Defend Option**:
+   - Players have the option to defend on their turn, restoring **1 SP** to themselves (cannot exceed the maximum of 10 SP).
+
+_No physical components are required as the game is played via a command-line interface._
+
+## Game Components
+
+- **Players**:
+  - **Player 1** and **Player 2**.
+- **Shield Points (SP)**:
+  - A numerical value representing each player's health or defense, starting at **10 SP**.
+- **Attack Values**:
+  - Integers from **1** to **5** that players can use to reduce their opponent's SP.
+- **Defend Action**:
+  - An action that allows a player to restore **1 SP** to themselves instead of attacking.
+
+## Turns
+
+- Players take turns performing one action per turn.
+- **Turn Structure**:
+  1. **Action Selection**:
+     - The player chooses to either **attack** or **defend**.
+  2. **Executing an Attack**:
+     - If attacking, the player selects an attack value between **1** and **5**.
+     - The selected attack value is subtracted from the opponent's SP.
+     - Announce the attack and the opponent's new SP.
+  3. **Executing Defend**:
+     - If defending, the player restores **1 SP** to themselves (not exceeding 10 SP).
+     - Announce the defense and the player's new SP.
+- **Turn Progression**:
+  - After a player completes their action, the turn passes to the opponent.
+
+## Rules and Mechanics
+
+### 1. Attack Rules
+
+- **Attack Value Selection**:
+  - On their turn, a player can choose an attack value of **1**, **2**, **3**, **4**, or **5**.
+  - Attack values represent the damage dealt to the opponent.
+- **Applying Damage**:
+  - The opponent's SP is reduced by the attack value.
+  - If the opponent's SP reaches **0** or below, the game ends, and the attacking player wins.
+- **Unlimited Use**:
+  - Attack values can be used multiple times; there is no limit on how often a specific attack value can be selected.
+
+### 2. Defend Rules
+
+- **Defending Action**:
+  - Instead of attacking, a player may choose to defend.
+- **Restoring SP**:
+  - When defending, the player increases their own SP by **1**.
+  - SP cannot exceed the maximum of **10**.
+- **Strategic Use**:
+  - Defending allows a player to prolong the game and potentially outlast the opponent.
+
+### 3. Game End Conditions
+
+- **Victory**:
+  - A player wins if they reduce their opponent's SP to **0** or below on their turn.
+- **No Draws**:
+  - There are no draw conditions; the game continues until one player's SP reaches zero or below.
+- **Simultaneous Zero SP**:
+  - If both players' SP would reach zero after an attack, the attacking player wins.
+
+### 4. Additional Rules
+
+- **Mandatory Actions**:
+  - Players must perform an action (attack or defend) on their turn; skipping a turn is not allowed.
+- **SP Tracking**:
+  - Both players should be informed of the current SP after each action.
+- **Valid Inputs**:
+  - Players must input valid commands; invalid inputs result in a prompt to re-enter.
+
+## Scoring
+
+- **Shield Points (SP)**:
+  - The only score tracked during the game.
+  - Reflects the player's current defensive status.
+- **Winning the Game**:
+  - No cumulative scoring; the objective is to deplete the opponent's SP to zero or below.
+
+## Examples
+
+### Example Game Play
+
+#### Starting Condition
+
+- **Player 1 SP**: 10
+- **Player 2 SP**: 10
+
+---
+
+#### Turn 1: Player 1
+
+- **Action**: Attack
+- **Attack Value**: 3
+- **Result**:
+  - Player 1 attacks with a value of **3**.
+  - Player 2's SP is reduced from **10** to **7**.
+- **Announcement**:
+  - "Player 1 attacks with 3. Player 2's SP is now 7."
+
+---
+
+#### Turn 2: Player 2
+
+- **Action**: Attack
+- **Attack Value**: 5
+- **Result**:
+  - Player 2 attacks with a value of **5**.
+  - Player 1's SP is reduced from **10** to **5**.
+- **Announcement**:
+  - "Player 2 attacks with 5. Player 1's SP is now 5."
+
+---
+
+#### Turn 3: Player 1
+
+- **Action**: Defend
+- **Result**:
+  - Player 1 increases their SP from **5** to **6**.
+- **Announcement**:
+  - "Player 1 defends and restores 1 SP. SP is now 6."
+
+---
+
+#### Turn 4: Player 2
+
+- **Action**: Attack
+- **Attack Value**: 4
+- **Result**:
+  - Player 2 attacks with a value of **4**.
+  - Player 1's SP is reduced from **6** to **2**.
+- **Announcement**:
+  - "Player 2 attacks with 4. Player 1's SP is now 2."
+
+---
+
+#### Turn 5: Player 1
+
+- **Action**: Attack
+- **Attack Value**: 5
+- **Result**:
+  - Player 1 attacks with a value of **5**.
+  - Player 2's SP is reduced from **7** to **2**.
+- **Announcement**:
+  - "Player 1 attacks with 5. Player 2's SP is now 2."
+
+---
+
+#### Turn 6: Player 2
+
+- **Action**: Attack
+- **Attack Value**: 2
+- **Result**:
+  - Player 2 attacks with a value of **2**.
+  - Player 1's SP is reduced from **2** to **0**.
+- **Announcement**:
+  - "Player 2 attacks with 2. Player 1's SP is now 0."
+- **Game End**:
+  - Player 1's SP has reached zero.
+  - **Player 2 wins the game.**
+
+### Command-Line Interaction Example
+
+**Game Start**
+
+```
+Player 1 SP: 10
+Player 2 SP: 10
+```
+
+**Turn 1 - Player 1**
+
+```
+Player 1, choose your action [attack 1-5 / defend]:
+> attack 3
+Player 1 attacks with 3.
+Player 2's SP is now 7.
+```
+
+**Turn 2 - Player 2**
+
+```
+Player 2, choose your action [attack 1-5 / defend]:
+> attack 5
+Player 2 attacks with 5.
+Player 1's SP is now 5.
+```
+
+**Turn 3 - Player 1**
+
+```
+Player 1, choose your action [attack 1-5 / defend]:
+> defend
+Player 1 defends and restores 1 SP.
+Player 1's SP is now 6.
+```
+
+**Turn 4 - Player 2**
+
+```
+Player 2, choose your action [attack 1-5 / defend]:
+> attack 4
+Player 2 attacks with 4.
+Player 1's SP is now 2.
+```
+
+**Turn 5 - Player 1**
+
+```
+Player 1, choose your action [attack 1-5 / defend]:
+> attack 5
+Player 1 attacks with 5.
+Player 2's SP is now 2.
+```
+
+**Turn 6 - Player 2**
+
+```
+Player 2, choose your action [attack 1-5 / defend]:
+> attack 2
+Player 2 attacks with 2.
+Player 1's SP is now 0.
+Player 1 has been defeated!
+Player 2 wins the game!
+```
+
+## Strategic Depth and Complexity
+
+- **Decision Making**:
+  - Players must choose between attacking to deplete the opponent's SP or defending to restore their own.
+  - Selecting the appropriate attack value is crucial; higher attacks deal more damage but may not always be the optimal choice.
+- **Predicting Opponent's Moves**:
+  - Anticipate whether the opponent will attack or defend and adjust your strategy accordingly.
+  - If an opponent is likely to defend, a lower attack might suffice.
+- **Resource Management**:
+  - Balancing SP restoration with offensive moves can prolong survival and create opportunities to win.
+  - Keeping track of both players' SP helps in planning future moves.
+- **No Randomness**:
+  - The game does not rely on chance, allowing skillful players to consistently outperform less experienced opponents.
+
+## Summary
+
+"Countdown Clash" is a fast-paced, strategic game that is simple to learn and easy to play in a command-line interface. Players engage in a battle of wits, making critical decisions each turn that can lead to victory or defeat. With straightforward mechanics and the absence of random elements, the game offers depth and competitiveness suitable for players seeking both fun and a challenge.

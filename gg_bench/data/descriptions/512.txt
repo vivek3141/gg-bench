@@ -1,0 +1,201 @@
+**Digit Subtraction Duel** – Rule Book
+
+---
+
+### **Objective**
+
+Be the first player to reduce the shared starting number to **exactly zero** by strategically subtracting digits from it on your turn.
+
+---
+
+### **Setup**
+
+1. **Choose a Starting Number**:
+   - Both players agree on a positive integer **N** to start the game (e.g., N = 25).
+   - The starting number **N** is shared and visible to both players.
+
+2. **Determine Turn Order**:
+   - Decide who will take the first turn (e.g., by mutual agreement, coin toss, or random selection).
+
+---
+
+### **Game Components**
+
+- **Shared Number (N)**:
+  - A positive integer that changes as players subtract digits.
+  - Displayed to both players throughout the game.
+
+---
+
+### **Turns**
+
+1. **Turn Sequence**:
+   - Players take turns alternately.
+   - Each turn consists of a single action.
+
+2. **Turn Actions**:
+   - On your turn, **subtract one of the digits of N** from N.
+   - The digit must be a **non-zero** digit present in the current N.
+   - Update **N** to the new value after subtraction.
+
+3. **Announce Move**:
+   - Clearly state which digit you are subtracting and the new value of N.
+   - Example: "I subtract 5 from 25, resulting in N = 20."
+
+---
+
+### **Rules and Mechanics**
+
+1. **Valid Moves**:
+   - **Selecting a Digit**:
+     - Choose any non-zero digit currently in N.
+     - If N is 102, digits are 1, 0, and 2 (only 1 and 2 can be subtracted).
+   - **Subtracting the Digit**:
+     - Subtract the chosen digit from N.
+     - The new N must be **positive**.
+
+2. **Invalid Moves**:
+   - **Zero Digit**:
+     - You cannot subtract a zero.
+   - **Negative Result**:
+     - N must remain positive; moves resulting in zero or negative N are invalid unless reaching exactly zero.
+
+3. **Winning the Game**:
+   - The player who reduces N to **exactly zero** wins.
+   - If a player cannot make a valid move on their turn, they **lose**, and the other player wins.
+
+---
+
+### **Scoring**
+
+- **Victory**:
+  - Achieved by being the player to reduce N to zero.
+
+- **Tracking Progress**:
+  - Keep a record of N after each turn.
+
+---
+
+### **Examples**
+
+#### **Example 1**
+
+*Starting N: 25*
+
+- **Player 1's Turn**:
+  - N = 25; digits are **2** and **5**.
+  - Subtract **5**: 25 − 5 = **20**.
+- **Player 2's Turn**:
+  - N = 20; digits are **2** and **0** (can't subtract 0).
+  - Subtract **2**: 20 − 2 = **18**.
+- **Player 1's Turn**:
+  - N = 18; digits are **1** and **8**.
+  - Subtract **8**: 18 − 8 = **10**.
+- **Player 2's Turn**:
+  - N = 10; digits are **1** and **0**.
+  - Subtract **1**: 10 − 1 = **9**.
+- **Player 1's Turn**:
+  - N = 9; digit is **9**.
+  - Subtract **9**: 9 − 9 = **0**.
+- **Player 1 Wins**.
+
+#### **Example 2**
+
+*Starting N: 41*
+
+- **Player 1's Turn**:
+  - N = 41; digits are **4** and **1**.
+  - Subtract **4**: 41 − 4 = **37**.
+- **Player 2's Turn**:
+  - N = 37; digits are **3** and **7**.
+  - Subtract **7**: 37 − 7 = **30**.
+- **Player 1's Turn**:
+  - N = 30; digits are **3** and **0**.
+  - Subtract **3**: 30 − 3 = **27**.
+- **Player 2's Turn**:
+  - N = 27; digits are **2** and **7**.
+  - Subtract **7**: 27 − 7 = **20**.
+- **Player 1's Turn**:
+  - N = 20; digits are **2** and **0**.
+  - Subtract **2**: 20 − 2 = **18**.
+- **...Game Continues...**
+
+---
+
+### **Command-Line Interaction Example**
+
+#### **Game Start**
+
+```
+Welcome to Digit Subtraction Duel!
+Enter the starting number N:
+>> 25
+Who will go first? (Enter Player 1 or Player 2)
+>> Player 1
+```
+
+#### **Gameplay**
+
+**Player 1's Turn**
+
+```
+Current N: 25
+Available digits to subtract: 2, 5
+Player 1, enter the digit to subtract:
+>> 5
+Player 1 subtracts 5 from 25. New N is 20.
+```
+
+**Player 2's Turn**
+
+```
+Current N: 20
+Available digits to subtract: 2
+Player 2, enter the digit to subtract:
+>> 2
+Player 2 subtracts 2 from 20. New N is 18.
+```
+
+**Player 1's Turn**
+
+```
+Current N: 18
+Available digits to subtract: 1, 8
+Player 1, enter the digit to subtract:
+>> 8
+Player 1 subtracts 8 from 18. New N is 10.
+```
+
+**Game Continues Until N Reaches 0**
+
+---
+
+### **Strategy Tips**
+
+- **Plan Ahead**:
+  - Anticipate the results of your moves to limit your opponent's options.
+  
+- **Digit Selection**:
+  - Choose digits that reduce N to numbers with fewer or less favorable digits for your opponent.
+
+- **Avoiding Traps**:
+  - Be cautious of leaving N at a number where the opponent can win on their next turn.
+
+---
+
+### **Ensuring Fair Play**
+
+- **Valid Input**:
+  - Only enter digits present in N.
+  - Ensure subtraction results in positive N.
+
+- **Dispute Resolution**:
+  - If an invalid move is made, the player should redo their turn with a valid move.
+
+---
+
+**Enjoy playing Digit Subtraction Duel and may the most strategic player win!**
+
+---
+
+*Note: This game is designed to be simple to code in a command-line interface, offers quick gameplay with no possibility of a draw, and provides strategic depth that allows skilled players to consistently win.*

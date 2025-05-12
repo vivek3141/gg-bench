@@ -1,0 +1,278 @@
+# Power Clash: Rule Book
+
+## Objective
+
+**Power Clash** is a two-player, turn-based strategy game played in a command-line interface. The primary goal is to deplete your opponent's **Power Core** from 10 to 0 units before they do the same to you. Victory is achieved by strategically choosing when to **Charge** your attack power and when to **Attack** your opponent.
+
+---
+
+## Setup
+
+- **Starting Conditions**:
+  - **Power Core**: Each player begins with 10 power units.
+  - **Charge Level**: Each player starts with a Charge Level of 1.
+
+- **Game Start**:
+  - Decide which player goes first (e.g., randomly or by agreement).
+  - No physical components are needed; all interactions occur via the command line.
+
+---
+
+## Game Components
+
+### 1. Power Core
+
+- **Description**: Represents the player's health or life force.
+- **Starting Value**: 10 units for each player.
+- **Attributes**:
+  - Cannot exceed 10 units.
+  - Cannot drop below 0 units.
+
+### 2. Charge Level
+
+- **Description**: Indicates the strength of the player's next Attack.
+- **Starting Value**: 1 for each player.
+- **Attributes**:
+  - Minimum Charge Level is 1.
+  - Maximum Charge Level is 5.
+  - Resets to 1 after an Attack.
+
+### 3. Actions
+
+- **Charge**: Increases your Charge Level by 1, up to a maximum of 5.
+- **Attack**: Inflicts damage equal to your current Charge Level, then resets Charge Level to 1.
+
+---
+
+## Turns
+
+- **Turn Order**: Players alternate turns, starting with Player 1.
+- **Turn Structure**:
+  1. **Display Status**:
+     - Current Power Core of both players.
+     - Current Charge Level of the acting player.
+  2. **Choose Action**:
+     - **Charge** or **Attack**.
+  3. **Execute Action**:
+     - Update game state based on the chosen action.
+  4. **End Turn**:
+     - Check for win condition.
+     - If the game continues, pass the turn to the other player.
+
+### Actions in Detail
+
+#### 1. Charge
+
+- **Effect**: Increases your Charge Level by 1.
+- **Limits**:
+  - Cannot increase Charge Level above 5.
+- **Command-Line Input**: `charge`
+
+#### 2. Attack
+
+- **Effect**:
+  - Reduces your opponent's Power Core by your current Charge Level.
+  - Resets your Charge Level back to 1.
+- **Command-Line Input**: `attack`
+
+---
+
+## Rules and Mechanics
+
+1. **Charging**:
+   - Use the `charge` command to increase your Charge Level.
+   - Strategic to build up for a more powerful Attack.
+   - Risky, as you may be attacked while charging.
+
+2. **Attacking**:
+   - Use the `attack` command to deal damage.
+   - Damage equals your current Charge Level.
+   - Charge Level resets to 1 after attacking.
+
+3. **Power Core Management**:
+   - Monitor both your own and your opponent's Power Core.
+   - Cannot heal or exceed the initial 10 units.
+
+4. **Charge Level Limits**:
+   - Minimum Charge Level is always 1.
+   - Even after being reset post-Attack, it does not drop below 1.
+
+5. **Winning the Game**:
+   - If a player's Power Core drops to 0 or below, they lose the game immediately.
+   - There are no draws; the game continues until one player wins.
+
+6. **No Skipping Turns**:
+   - Players must choose an action on their turn; skipping is not allowed.
+
+---
+
+## Scoring
+
+- **No Points System**: The game does not track points beyond the Power Core units and Charge Levels.
+- **Victory Condition**: Reduce your opponent's Power Core to 0 or less.
+- **Tracking**: Players should keep track of:
+  - Their own and opponent's Power Core units.
+  - Their current Charge Level.
+
+---
+
+## Examples
+
+### Example Turn Sequence
+
+**Starting Conditions**:
+
+- **Player 1**:
+  - Power Core: 10
+  - Charge Level: 1
+- **Player 2**:
+  - Power Core: 10
+  - Charge Level: 1
+
+---
+
+**Turn 1**: **Player 1**
+
+- **Action**: `charge`
+- **Outcome**:
+  - Player 1's Charge Level increases to 2.
+- **Status**:
+  - Player 1 - Power Core: 10, Charge Level: 2
+  - Player 2 - Power Core: 10, Charge Level: 1
+
+---
+
+**Turn 2**: **Player 2**
+
+- **Action**: `attack`
+- **Outcome**:
+  - Player 1's Power Core decreases by 1 (from 10 to 9).
+  - Player 2's Charge Level resets to 1.
+- **Status**:
+  - Player 1 - Power Core: 9, Charge Level: 2
+  - Player 2 - Power Core: 10, Charge Level: 1
+
+---
+
+**Turn 3**: **Player 1**
+
+- **Action**: `attack`
+- **Outcome**:
+  - Player 2's Power Core decreases by 2 (from 10 to 8).
+  - Player 1's Charge Level resets to 1.
+- **Status**:
+  - Player 1 - Power Core: 9, Charge Level: 1
+  - Player 2 - Power Core: 8, Charge Level: 1
+
+---
+
+**Turn 4**: **Player 2**
+
+- **Action**: `charge`
+- **Outcome**:
+  - Player 2's Charge Level increases to 2.
+- **Status**:
+  - Player 1 - Power Core: 9, Charge Level: 1
+  - Player 2 - Power Core: 8, Charge Level: 2
+
+---
+
+**Turn 5**: **Player 1**
+
+- **Action**: `charge`
+- **Outcome**:
+  - Player 1's Charge Level increases to 2.
+- **Status**:
+  - Player 1 - Power Core: 9, Charge Level: 2
+  - Player 2 - Power Core: 8, Charge Level: 2
+
+---
+
+**Turn 6**: **Player 2**
+
+- **Action**: `attack`
+- **Outcome**:
+  - Player 1's Power Core decreases by 2 (from 9 to 7).
+  - Player 2's Charge Level resets to 1.
+- **Status**:
+  - Player 1 - Power Core: 7, Charge Level: 2
+  - Player 2 - Power Core: 8, Charge Level: 1
+
+---
+
+**Turn 7**: **Player 1**
+
+- **Action**: `attack`
+- **Outcome**:
+  - Player 2's Power Core decreases by 2 (from 8 to 6).
+  - Player 1's Charge Level resets to 1.
+- **Status**:
+  - Player 1 - Power Core: 7, Charge Level: 1
+  - Player 2 - Power Core: 6, Charge Level: 1
+
+---
+
+### Command-Line Interaction Example
+
+**Player 1's Turn**:
+
+```
+---------------------------
+Player 1's Turn
+---------------------------
+Your Power Core: 9
+Your Charge Level: 2
+Opponent's Power Core: 8
+
+Choose your action ('charge' or 'attack'): attack
+You chose to attack!
+You dealt 2 damage to the opponent.
+Your Charge Level resets to 1.
+
+Press Enter to end your turn.
+```
+
+**Player 2's Turn**:
+
+```
+---------------------------
+Player 2's Turn
+---------------------------
+Your Power Core: 8
+Your Charge Level: 1
+Opponent's Power Core: 8
+
+Choose your action ('charge' or 'attack'): charge
+You chose to charge!
+Your Charge Level increases to 2.
+
+Press Enter to end your turn.
+```
+
+---
+
+## Strategies
+
+- **Balancing Charge and Attack**:
+  - Determine when to build up your Charge Level for a stronger attack versus when to attack immediately.
+- **Anticipate Opponent's Moves**:
+  - Keep track of the opponent's Charge Level to predict if they might attack soon.
+- **Risk Management**:
+  - Charging to a higher level is risky but can lead to significant damage.
+- **Defense Considerations**:
+  - Sometimes attacking with a lower Charge Level can prevent the opponent from charging further.
+
+---
+
+## Ending the Game
+
+- **Victory**: The game ends immediately when a player's Power Core reaches 0 or below.
+- **No Draws**: The game cannot end in a draw; play continues until one player wins.
+
+---
+
+## Summary
+
+**Power Clash** is a simple yet strategic game that tests players' decision-making skills. With only two actions to choose from each turn, players must wisely decide when to build up power and when to strike. The game is quick to play, easy to code in a command-line interface, and provides ample opportunity for skilled players to outmaneuver their opponents.
+
+Enjoy the duel, and may the best strategist win!

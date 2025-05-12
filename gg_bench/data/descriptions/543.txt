@@ -1,0 +1,180 @@
+# Number Island: A Strategic Two-Player Game
+
+## Objective
+
+**Number Island** is a turn-based strategy game for two players. The primary goal of the game is to be the first player to capture the treasure located at the central cell of a 5x5 grid, representing an island. Players do this by strategically placing their markers on the grid to create a path to the treasure, while blocking and outmaneuvering their opponent.
+
+Victory is achieved when a player successfully places their marker on the central treasure cell.
+
+## Setup
+
+1. **Game Board**: A 5x5 grid representing the island. The cells are identified by their row and column numbers (from 1 to 5).
+
+2. **Treasure Cell**: The central cell of the grid, located at position (3,3), is marked as the **Treasure**.
+
+3. **Starting Positions**: Players choose their starting edge cells:
+   - **Player A** uses the marker 'A'.
+   - **Player B** uses the marker 'B'.
+   - Each player begins by placing one of their markers on any cell along the perimeter (edge) of the grid.
+
+4. **Initial Turn**: Decide which player goes first (e.g., by a coin toss).
+
+## Game Components
+
+- **Game Board**: A virtual 5x5 grid with cells that can hold a single marker.
+- **Markers**:
+  - **Player A**: Uses marker 'A'.
+  - **Player B**: Uses marker 'B'.
+- **Treasure Cell**: The central cell (3,3), which players aim to capture.
+
+## Turns
+
+- Players alternate turns, starting with the player chosen to go first.
+- On each turn, a player performs **one action**:
+  1. **Place a Marker**: Place one of their markers on an empty cell that is adjacent (including diagonally) to a cell occupied by one of their existing markers.
+  2. **Remove a Marker**: Remove one of their own markers from the grid.
+
+## Rules and Mechanics
+
+1. **Placing Markers**:
+   - A marker can be placed on any empty cell adjacent (orthogonally or diagonally) to a cell already occupied by one of the player's markers.
+   - The first marker each player places (the starting position) can be any empty edge cell.
+
+2. **Adjacency**:
+   - Cells are considered adjacent if they share a side or a corner.
+   - Players build paths by placing markers on adjacent cells, aiming to reach the treasure cell.
+
+3. **Capturing the Treasure**:
+   - To place a marker on the treasure cell (3,3), the player must have at least one of their markers on a cell adjacent to the treasure cell.
+   - The first player to place their marker on the treasure cell wins the game immediately.
+
+4. **Removing Markers**:
+   - Instead of placing a marker, a player may choose to remove one of their own markers from the grid.
+   - This can be strategic, to reposition or to unblock potential moves.
+
+5. **Blocking Opponents**:
+   - Players may place their markers to block the opponent's potential paths.
+   - Markers of different players cannot occupy the same cell.
+
+6. **Valid Moves**:
+   - If a player has no valid moves (cannot place or remove a marker), they forfeit their turn.
+   - The game continues until the treasure is captured.
+
+7. **Game End**:
+   - The game ends immediately when a player captures the treasure cell.
+   - There are no draws; the game continues until a player wins.
+
+## Scoring
+
+- **Winning**: The player who captures the treasure cell wins the game.
+- **No Points System**: The game does not use a points or scoring system; victory is achieved by meeting the objective.
+
+## Examples
+
+### Sample Game Play
+
+**Initial Setup**:
+
+- The 5x5 grid is empty except for the treasure cell at position (3,3).
+- Player A and Player B decide who goes first (let's say Player A).
+
+**Turn-by-Turn Example**:
+
+1. **Player A's Turn**:
+   - Chooses starting position at cell (1,1).
+   - Places marker 'A' on cell (1,1).
+
+   ```
+   A . . . .
+   . . . . .
+   . . T . .
+   . . . . .
+   . . . . .
+   ```
+
+2. **Player B's Turn**:
+   - Chooses starting position at cell (5,5).
+   - Places marker 'B' on cell (5,5).
+
+   ```
+   A . . . .
+   . . . . .
+   . . T . .
+   . . . . .
+   . . . . B
+   ```
+
+3. **Player A's Turn**:
+   - Places marker 'A' on cell (2,2), adjacent to (1,1).
+   - Reason: Advancing toward the treasure.
+
+   ```
+   A . . . .
+   . A . . .
+   . . T . .
+   . . . . .
+   . . . . B
+   ```
+
+4. **Player B's Turn**:
+   - Places marker 'B' on cell (4,4), adjacent to (5,5).
+   - Reason: Creating a path to the treasure.
+
+   ```
+   A . . . .
+   . A . . .
+   . . T . .
+   . . . B .
+   . . . . B
+   ```
+
+5. **Player A's Turn**:
+   - Places marker 'A' on cell (3,3), the treasure cell.
+   - Cell (3,3) is adjacent to (2,2), which contains 'A'.
+   - **Player A wins the game!**
+
+   ```
+   A . . . .
+   . A . . .
+   . . A . .
+   . . . B .
+   . . . . B
+   ```
+
+**Command-Line Interaction**:
+
+- **Player A's Turn**:
+  - Input: `place 1 1`
+  - Output: `Player A placed an 'A' at (1,1)`
+
+- **Player B's Turn**:
+  - Input: `place 5 5`
+  - Output: `Player B placed a 'B' at (5,5)`
+
+- **Player A's Turn**:
+  - Input: `place 2 2`
+  - Output: `Player A placed an 'A' at (2,2)`
+
+- **Player B's Turn**:
+  - Input: `place 4 4`
+  - Output: `Player B placed a 'B' at (4,4)`
+
+- **Player A's Turn**:
+  - Input: `place 3 3`
+  - Output: `Player A placed an 'A' at (3,3)`
+  - Output: `Player A has captured the treasure and wins the game!`
+
+### Strategic Considerations
+
+- **Building Paths Quickly**: Players should aim to create the shortest path to the treasure.
+- **Blocking Opponent**: Placing markers to block the opponent's adjacency to the treasure can delay their progress.
+- **Removing Markers**: Strategic removal can open new paths or reposition markers for better advantage.
+- **Starting Position**: Choosing the optimal edge cell can influence the speed to reach the treasure.
+
+## Conclusion
+
+**Number Island** is a simple yet strategic game that challenges players to think ahead and outmaneuver their opponent. With easy-to-understand rules and a clear objective, the game offers depth and replayability, ensuring that skilled players can consistently refine their strategies to achieve victory.
+
+Players are encouraged to consider both offensive tactics (advancing toward the treasure) and defensive moves (blocking and delaying the opponent) to secure their path to victory.
+
+Enjoy your adventure on Number Island!
