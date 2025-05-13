@@ -133,5 +133,13 @@ For each game, the language model plays 30 games against the RL agents, and we c
 If you found this work useful, we would really appreciate it if you cite it with:
 
 ```bibtex
-@misc{hello}
+@misc{verma2025measuringgeneralintelligencegenerated,
+      title={Measuring General Intelligence with Generated Games}, 
+      author={Vivek Verma and David Huang and William Chen and Dan Klein and Nicholas Tomlin},
+      year={2025},
+      eprint={2505.07215},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2505.07215}, 
+}
 ```
