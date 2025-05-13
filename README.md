@@ -10,7 +10,7 @@
   UC Berkeley
 </p>
 <p align="center">
-<a href="">📃 Paper</a>
+<a href="https://arxiv.org/pdf/2505.07215">📃 Paper</a>
 •
 <a href="https://github.com/vivek3141/gg-bench" >💻 Code</a>
 </p>
