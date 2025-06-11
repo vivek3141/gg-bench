@@ -47,7 +47,12 @@ class ModelFactory:
         Raises:
             ValueError: If the model is not supported.
         """
-        if (
+        if model_name.startswith("o1-mini"):
+            from gg_bench.utils.chat_completion.azure_openai_chat_completion import (
+                AzureOpenAIChatCompletion,
+            )
+            return AzureOpenAIChatCompletion(model_name)
+        elif (
             model_name.startswith("gpt")
             or model_name.startswith("o1")
             or model_name.startswith("o3")
@@ -109,6 +114,21 @@ def chat_completion(
         RuntimeError: If there's an error during chat completion.
     """
     provider = ModelFactory.get_provider(model)
+    if model.startswith("o1-mini"):
+        # find system message, if any
+        system_message = next(
+            (msg for msg in messages if msg["role"] == "system"), None
+        )
+        # if it exists, prepend it to user message, and then remove it
+        if system_message:
+            user_message = next(
+                (msg for msg in messages if msg["role"] == "user"), None
+            )
+            if user_message:
+                user_message["content"] = (
+                    system_message["content"] + "\n" + user_message["content"]
+                )
+            messages.remove(system_message)
     output = provider.chat_completion(messages, usage_tracker=usage_tracker, **kwargs)
     return output
 
