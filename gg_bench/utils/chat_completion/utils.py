@@ -27,7 +27,8 @@ def find_config_file(
     path = Path(start_path).resolve()
 
     while path != Path("/") and not (path / config_file).exists():
-        if (path / ".git").exists():
+        if (path / "gg-bench" / config_file).exists():
+            path = path / "gg-bench"
             break
         path = path.parent
 
@@ -36,3 +37,12 @@ def find_config_file(
         raise exception_to_raise(exception_message)
 
     return str(config_path)
+
+
+if __name__ == "__main__":
+    config_file = find_config_file(
+        config_file="openai_config.yaml",
+        exception_to_raise=FileNotFoundError,
+        exception_message="OpenAI config file not found",
+    )
+    print(f"Config file found at: {config_file}")
